@@ -166,7 +166,8 @@ def main():
     for e in ev_in:
         k = (e["claim_id"], e.get("source_url", ""))
         if k in idx:
-            erows[idx[k]].update({c: e[c] for c in ecols if e.get(c)})
+            # keys present in the incoming row overwrite (so a repair can clear a quote)
+            erows[idx[k]].update({c: e[c] for c in ecols if c in e and not c.startswith("_")})
         else:
             idx[k] = len(erows)
             erows.append(e)
