@@ -10,6 +10,10 @@ Material & part fit (20):
   aluminum-first or thin sheet. Otherwise 0
   (unknown size = unknown component = 0). A profiler's 20/12 is kept only if that test
   passes; otherwise it drops to 0.
+Tightened 2026-11-12 after the fact-check (advisor consultation 3): company-level size
+  evidence (a row the sweep marked company-level, or a Path page naming only the company)
+  earns points only when a stated plant-level row places the product line (pole, mast arm,
+  tower, sign or substation structure) at this plant; rows tagged unknown never count.
 Confidence: number of components with points > 0 whose cited supporting claims
   (claim ids named in the <id>:score_<comp> reasoning) all have at least one evidence
   row tagged stated. Components with 0 points never count.
@@ -61,15 +65,22 @@ for p in plants:
     # material rule
     mrows = [r for c in (f"{pid}:part_size_fit", f"{pid}:score_material_part", f"{pid}:materials")
              for r in by_claim.get(c, [])]
-    size_rows = [r for r in by_claim.get(f"{pid}:part_size_fit", []) if r["quote"]]
-    has_dim = any(DIM.search(r["quote"] or "") for r in size_rows)
+    size_rows = [r for r in by_claim.get(f"{pid}:part_size_fit", []) if r["quote"] and r["tag"] != "unknown"]
+    city = p["city"].lower()
+    PROD = re.compile(r"pole|mast|tower|sign|monopole|substation|structure", re.I)
+    line_at_plant = any(r["tag"] == "stated" and PROD.search(r["quote"] or "")
+                        for f in ("products", "weld_processes", "materials", "welder_postings", "production_type")
+                        for r in by_claim.get(f"{pid}:{f}", []))
+    def plant_level(r):
+        return city in (r["quote"] or "").lower() or "company-level" not in (r["reasoning"] or "")
+    has_dim = any(DIM.search(r["quote"] or "") and (plant_level(r) or line_at_plant) for r in size_rows)
     cited_m = set()
     for r in by_claim.get(f"{pid}:score_material_part", []):
         cited_m |= set(CID.findall(r["reasoning"] or ""))
     cited_m |= {f"{pid}:part_size_fit", f"{pid}:materials"}
-    path_stmt = any("path-robotics.com" in (r["source_url"] or "").lower()
+    path_stmt = line_at_plant and any("path-robotics.com" in (r["source_url"] or "").lower()
                     for c in cited_m for r in by_claim.get(c, []))
-    alum = any(r["quote"] and re.search(r"alumin", (r["value"] or "") + (r["quote"] or ""), re.I)
+    alum = any(r["quote"] and r["tag"] != "unknown" and re.search(r"alumin", (r["value"] or "") + (r["quote"] or ""), re.I)
                for r in by_claim.get(f"{pid}:materials", []))
     if sc["material_part"] in (20, 12) and not (has_dim or path_stmt):
         sc["material_part"] = 0
