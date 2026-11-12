@@ -1,0 +1,1331 @@
+{
+ "checker": 3,
+ "vertical": "v-poles-substation",
+ "date": "2026-11-12",
+ "plants": [
+  "p-structural-steel-products-crowley-tx",
+  "p-race-rock-brookshire-tx",
+  "p-distran-pineville-la",
+  "p-nucor-west-hazleton-pa",
+  "p-arcosa-telecom-muskogee-ok",
+  "p-western-utility-telecom-salem-or",
+  "p-meyer-clinton-il",
+  "p-meyer-steele-al",
+  "p-meyer-hager-city-wi",
+  "p-sabre-sioux-city-ia"
+ ],
+ "claims_checked": 131,
+ "claims_corrected": 14,
+ "claims_unreachable": 1,
+ "error_rate": 0.1069,
+ "error_kind_counts": {
+  "other": 4,
+  "quote does not support value": 8,
+  "wrong plant or location": 2
+ },
+ "repeated_kinds": [
+  "other",
+  "quote does not support value"
+ ],
+ "sweep_patterns": [
+  "'quote does not support value' (8): includes a code in use (AWS D1.1) recorded as a certification (QMF, DIS-TRAN), 'partly' vs source 'mostly' (Muskogee x2), quotes that do not name the value (Nucor West Hazleton products/city, Arcosa parent), and a list-PDF row used for products it does not cover (SSP Crowley).",
+  "'other' (4) is not one pattern: stale source for a current-status field (Sabre owner 2015, defunct s-steel.com website), a missed newer open posting (Nucor Decatur), a stated tag on an unknown value (DIS-TRAN part size).",
+  "Sister-plant or company-level facts on a plant row (Brookshire robots and AISC): 2 found."
+ ],
+ "apply_caveat": "Rows 466, 471, 395, 949 and p-nucor-decatur-al:welder_postings carry corrected_source_url because the supporting quote is on a different page. tools/apply_factcheck.py does not read that key, so the coordinator must swap source_url on those evidence rows by hand, or the corrected quote will sit on a page that does not contain it.",
+ "worst_errors": [
+  "p-nucor-decatur-al:welder_postings (PRIORITY): ledger says 'none open', but jobs.nucor.com shows an open NTSAL Fitter Welder posting in Decatur AL dated 2026-11-05 ('Apply now'). The cited Oct 23 posting is filled, and the 'Feb 20, 2026' posting is not on the cited page. Decatur score_labor should be 12, not 0.",
+  "p-race-rock-brookshire-tx:existing_robots and :certifications: a Crowley robotic-cell posting and a company-level 'AISC Quality Fabricator' marketing line are shown as Brookshire facts. The AISC directory lists SSP Crowley and Fort Worth, not Brookshire, and a 'Race Rock' search returns 0. Both should be unknown for Brookshire.",
+  "Certification field misuse (p-qmf-steel-campbell-tx:certifications PRIORITY, p-distran-pineville-la:certifications): 'AWS D1.1' is recorded as a certification when the sources say only that work or inspection follows the D1.1 code. QMF's stated TxDOT DMS 7380/7395 certification is missing."
+ ],
+ "opening_line_problems": [],
+ "opening_line_check": "All 10 opening lines in plants.csv use stated facts only, and none asserts a current Path deployment. Steele, Hager City and Muskogee use past tense ('has advertised', 'has listed') for postings that have now expired, which is accurate. Nucor West Hazleton, Brookshire, Sabre and WUT are tagged inferred but are built only from stated claims. Crowley's line ends with a question, which is fine. Brookshire's opening line does not use the corrected robots or AISC claims.",
+ "plants_closed_or_moved": [],
+ "location_check": [
+  "All 10 plants are open, with 2026 postings, 2026 company pages or 2026 news.",
+  "Meyer Clinton IL is confirmed in Clinton, IL. The vaia Weld Tech posting names the 'Clinton, IL utility pole manufacturing plant' and the Builtin posting the 'plant operation located in Clinton, IL'. The corrected coordinates (40.147, -88.963) and FIPS 17039 (DeWitt) match Clinton city. Street address unknown.",
+  "SSP Crowley and Race Rock share 400 N Tarrant St, Crowley TX 76036. Confirmed: the Race Rock facilities page lists that address for its Crowley fabrication facility; the Race Rock utility and transportation pages state the consolidation of Structural & Steel Products; TxDOT and AISC list SSP at Crowley. p-race-rock-crowley-tx is correctly excluded as a duplicate.",
+  "County FIPS checked for all 10: Rapides 22079, Muskogee 40101, Polk 41053 (West Salem), Tarrant 48439, Waller 48473 (re-geocoded), DeWitt 17039, St. Clair 01115, Pierce 55093, Woodbury 19193, Luzerne 42079. All are consistent.",
+  "Possible address misses (not errors): Nucor West Hazleton posting gives 225 Kiwannis Boulevard, West Hazleton PA 18202; an EPA TRI record surfaced by web search lists Meyer Steele at 585 Duncan Farm Rd, Steele AL 35987 (search snippet, not opened)."
+ ],
+ "priority_rows_verdict": {
+  "p-nucor-decatur-al:welder_postings": "corrected: the cited Oct 23, 2026 posting is filled, but a newer NTSAL Fitter Welder posting (Nov 5, 2026) is open. Feb 20 date unsupported.",
+  "p-qmf-steel-campbell-tx:certifications (qmfsteel.com/careers)": "corrected: the quote is present but describes inspection to the AWS D1.1 code, not a certification. The AISC and ISO 9001:2015 rows from the homepage are confirmed."
+ },
+ "other_findings": [
+  "Meyer Hager City WI is AISC-listed (Highway Component Manufacturer, Bridge Fabricator - Simple, Building Fabricator; see snapshot line 2805), but the ledger has certifications = unknown. The Arcosa Meyer Fort Worth and Lancaster SC listings show the same pattern for other Meyer plants.",
+  "The AISC snapshot file covers only directory pages 1-57 of 95 (companies A-M). Rows for S-W companies (Structural and Steel Products, Western Utility Telecom) had to be checked with the site's company-name search box.",
+  "DIS-TRAN Chicago Heights (link source) is missing from the current distransteel.com location list, and a Chicago Heights Lever posting returns 404. Its operating status should be rechecked.",
+  "TxDOT high-mast list shows MICA Kaufman also fabricates poles, so it is not only a galvanizing plant.",
+  "WUT weld_processes in plants.csv mixes processes with equipment ('8 welding stations, 2 seam welders')."
+ ],
+ "inferred_rows_check": [
+  "One inferred row overstates: p-meyer-clinton-il:triggers says Clinton IS the converted wind-tower facility though the 10-K names no site (see note on row p-meyer-clinton-il:former_use). Otherwise part_size_fit rows say 'likely'/'inferred'; tier/relationship/lookalike rows carry reasoning; Brookshire headcount marks '~300' as inferred.",
+  "p-structural-steel-products-crowley-tx:existing_robots is tagged inferred but is in fact stated: the Crowley posting says 'Operate and monitor the robotic welding cell'. Could be upgraded.",
+  "p-arcosa-telecom-muskogee-ok:prospect_test is tagged stated with value 'pass, with caveat'; a test verdict is a judgement and would be better tagged inferred.",
+  "Inferred supplier links (Nucor Decatur, Nucor Crawfordsville, MICA Kaufman->Haltom City) are correctly tagged inferred."
+ ],
+ "score_notes": [
+  "p-meyer-steele-al:score_scale, p-meyer-hager-city-wi:score_scale, p-meyer-clinton-il:score_scale cite '<plant>:headcount', which has no evidence row (points 5 still match the rubric: multi-plant parent, headcount unknown).",
+  "p-arcosa-telecom-muskogee-ok:score_material_part = 12 and p-race-rock-brookshire-tx:score_material_part = 12 rest on inferred part sizes; every sibling plant was normalised to 0 under the coordinator rule (unknown size = 0). Brookshire's stated 100-ton lift capacity is crane capacity, not a part dimension. Both look missed by the normalisation pass.",
+  "p-race-rock-brookshire-tx:score_scale = 10 needs 100+ employees at the site; that rests on an inferred ~300 (stated 'more than 200 jobs, lifting total Brookshire employment above 500'). The arithmetic is sound, but the component is inferred, not stated.",
+  "p-meyer-clinton-il:score_demand = 15 rests on an inferred link between the 10-K's unnamed converted wind tower facility and Clinton. Web search snippets mention a Meyer ribbon cutting at Clinton for a converted idle plant, which supports the link, but no primary source naming Clinton was read.",
+  "p-structural-steel-products-crowley-tx:score_labor = 20 ('several at once') counts 2 Fitter/Welder Leadman postings plus a Robotic Weld Cell Operator. Two welder postings open at once is defensible as 'several', but the robot operator is not a welder posting.",
+  "p-race-rock-brookshire-tx:existing_robots and certifications are corrected to unknown (sister-plant evidence); confidence for Brookshire is unaffected (those fields are not score components) but plants.csv text should change.",
+  "p-distran-pineville-la: certifications (AWS D1.1) and part_size_fit tag corrected; score unchanged (material 0 already). score_labor 20 is supported: three external welder postings live at once.",
+  "p-nucor-decatur-al:score_labor = 0 should be 12 after the welder_postings correction (open NTSAL Fitter Welder posting dated 2026-11-05).",
+  "All other score_* rows cite existing claims and match the CLAUDE.md rubric levels (process 20 for FCAW/GMAW stated; part_mix 15 custom/ETO, 8 mixed; labor 0/12/20; demand 8 outlook, 15 plant trigger within 24 months; scale 5)."
+ ],
+ "method": "Each stated row's source_url was fetched with tools/fetch_page.py (plain fetch, with headless Chromium fallback) and the quote was matched after normalisation, then read in context for plant and value. AISC rows were checked by typing the company name into the directory's search box in headless Chromium. Brookshire was re-geocoded with the Census API. WebSearch was used only for open/moved status and ownership. claims_checked excludes unreachable rows. Inferred supplier-link rows are included as checks of quote presence and tag.",
+ "rows": [
+  {
+   "claim_id": "p-sabre-sioux-city-ia:products",
+   "source_url": "https://www.tdworld.com/blog/sabre-industries-inc-holds-ribbon-cutting-ceremony-new-industrial-complex-sioux-city-iowa",
+   "evidence_row": 390,
+   "ledger_value": "steel electric transmission structures",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Jan 2013 article; product statement is old but consistent with current Sabre utility/telecom postings."
+  },
+  {
+   "claim_id": "p-sabre-sioux-city-ia:city",
+   "source_url": "https://www.tdworld.com/blog/sabre-industries-inc-holds-ribbon-cutting-ceremony-new-industrial-complex-sioux-city-iowa",
+   "evidence_row": 394,
+   "ledger_value": "Sioux City",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Plant open: Sabre Sioux City postings in 2026 (vaia/tallo search results)."
+  },
+  {
+   "claim_id": "p-sabre-sioux-city-ia:parent_company",
+   "source_url": "https://wirelessestimator.com/articles/2015/sabre-acquires-long-established-fwt-to-expand-its-structures-sector/",
+   "evidence_row": 395,
+   "ledger_value": "Sabre Industries, Inc. (Kohlberg & Company portfolio company)",
+   "ledger_tag": "stated",
+   "verdict": "corrected",
+   "error_kind": "other",
+   "corrected_value": "Sabre Industries, Inc. (acquired by private equity funds affiliated with Blackstone from The Jordan Company, announced April 2021; Kohlberg sold Sabre to TJC in 2019)",
+   "corrected_quote": "Blackstone (NYSE: BX) announced that private equity funds affiliated with Blackstone have agreed to acquire Sabre Industries, Inc. (“Sabre”) from The Jordan Company.",
+   "corrected_tag": "stated",
+   "corrected_source_url": "https://www.blackstone.com/news/press/blackstone-to-acquire-sabre-industries-inc-a-leading-energy-and-telecom-infrastructure-provider/",
+   "note": "Quote is on the 2015 wirelessestimator page but is stale: Kohlberg no longer owns Sabre. Corrected quote from https://www.blackstone.com/news/press/blackstone-to-acquire-sabre-industries-inc-a-leading-energy-and-telecom-infrastructure-provider/ . Current (2026) owner not re-verified beyond the 2021 release."
+  },
+  {
+   "claim_id": "p-sabre-sioux-city-ia:found_by",
+   "source_url": "https://www.tdworld.com/blog/sabre-industries-inc-holds-ribbon-cutting-ceremony-new-industrial-complex-sioux-city-iowa",
+   "evidence_row": 396,
+   "ledger_value": "news;trade press",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-meyer-steele-al:products",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1739445/000173944526000029/aca-20251231.htm",
+   "evidence_row": 413,
+   "ledger_value": "tubular steel transmission, distribution and substation structures (poles)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Arcosa 10-K segment-level quote (Meyer products); parent-level, not a sister plant. Supports value."
+  },
+  {
+   "claim_id": "p-meyer-steele-al:city",
+   "source_url": "https://www.jofdav.com/jobs/38311974-senior-fitter-welder",
+   "evidence_row": 414,
+   "ledger_value": "Steele",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "jofdav page shows the Steele, AL posting text although the listing is marked expired; location supported. Possible address miss: an EPA TRI record seen only in a web search snippet lists the Steele plant at 585 Duncan Farm Rd, Steele AL 35987 (not opened)."
+  },
+  {
+   "claim_id": "p-meyer-steele-al:parent_company",
+   "source_url": "https://builtin.com/job/assistant-plant-manager/9635121",
+   "evidence_row": 415,
+   "ledger_value": "Arcosa, Inc. (Meyer Utility Structures, LLC)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Builtin page is a Clinton IL posting (removed Jun 2026) but the parent sentence is company boilerplate; supports parent for Steele. SCORE NOTE: p-meyer-steele-al:score_scale cites p-meyer-steele-al:headcount, which has no evidence row (5 points still match rubric: multi-plant parent, headcount unknown)."
+  },
+  {
+   "claim_id": "p-meyer-steele-al:welder_postings",
+   "source_url": "https://www.jofdav.com/jobs/38311974-senior-fitter-welder",
+   "evidence_row": 419,
+   "ledger_value": "2 fitter/welder postings seen on aggregator jofdav.com (Senior Fitter/Welder, three shifts; Fitter/Welder), shown as posted 30+ days ago; open status and dates not confirmed",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote is on the Steele jofdav page; value is hedged ('open status and dates not confirmed'). Both jofdav Steele listings now show 'This job listing has expired'; superseded by the companion welder_postings row (0 open). Title of the second posting in the value could not be verified. 'Open' status was checked only against aggregator/job-board copies (now expired); the Decatur case shows this method can miss a newer live posting on the company's own job site. Sweep candidate."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:products",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1739445/000173944526000029/aca-20251231.htm",
+   "evidence_row": 420,
+   "ledger_value": "tubular steel transmission, distribution and substation structures (poles)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Arcosa 10-K segment-level quote (Meyer products); parent-level. Supports value."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:city",
+   "source_url": "https://builtin.com/job/assistant-plant-manager/9635121",
+   "evidence_row": 421,
+   "ledger_value": "Clinton",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Builtin Clinton IL Assistant Plant Manager posting (removed 2026-06-08) names the Clinton, IL plant. Plant confirmed in Clinton IL (vaia Weld Tech posting also says 'Clinton, IL utility pole manufacturing plant'); DeWitt County FIPS 17039 and lat/lon 40.147,-88.963 match Clinton city. Open status rests on 2026 postings (Builtin removed 2026-06-08; vaia Weld Tech undated) and a web search summary of a ribbon cutting that was not opened."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:parent_company",
+   "source_url": "https://builtin.com/job/assistant-plant-manager/9635121",
+   "evidence_row": 422,
+   "ledger_value": "Arcosa, Inc. (Meyer Utility Structures, LLC)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Builtin Clinton posting boilerplate supports parent. SCORE NOTE: p-meyer-clinton-il:score_scale cites p-meyer-clinton-il:headcount, which has no evidence row (5 points still match rubric)."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:products",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1739445/000173944526000029/aca-20251231.htm",
+   "evidence_row": 426,
+   "ledger_value": "tubular steel transmission, distribution and substation structures (poles)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Arcosa 10-K segment-level quote (Meyer products); parent-level. Supports value."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:city",
+   "source_url": "https://talents.vaia.com/companies/arcosa/welders-all-experience-levels-49104639",
+   "evidence_row": 427,
+   "ledger_value": "Hager City",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "vaia posting text says 'our plant located in Hager City, WI'. Note: AISC directory also lists 'Meyer Utility Structures, Hager City, WI' (Highway Component Manufacturer, Bridge Fabricator - Simple, Building Fabricator), so the plant's certifications row (unknown) is a miss."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:parent_company",
+   "source_url": "https://builtin.com/job/assistant-plant-manager/9635121",
+   "evidence_row": 428,
+   "ledger_value": "Arcosa, Inc. (Meyer Utility Structures, LLC)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Builtin page is a Clinton IL posting; parent sentence is company boilerplate (also on the Hager City vaia posting). SCORE NOTE: p-meyer-hager-city-wi:score_scale cites p-meyer-hager-city-wi:headcount, which has no evidence row (5 points still match rubric)."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:welder_postings",
+   "source_url": "https://talents.vaia.com/companies/arcosa/welders-all-experience-levels-49104639",
+   "evidence_row": 432,
+   "ledger_value": "0 open verified. 1 posting for 2nd shift Welders ($25.89 start, Mon-Fri 2:45 pm-12:45 am) on vaia.com; posting date and live status not shown, so not counted open; no sign-on bonus stated",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Posting undated on vaia; value correctly does not count it open. 'Open' status was checked only against aggregator/job-board copies (now expired); the Decatur case shows this method can miss a newer live posting on the company's own job site. Sweep candidate."
+  },
+  {
+   "claim_id": "p-nucor-west-hazleton-pa:products",
+   "source_url": "https://nucor.com/?p=2587",
+   "evidence_row": 466,
+   "ledger_value": "steel utility poles and structures",
+   "ledger_tag": "stated",
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "steel poles and steel structures for utility infrastructure",
+   "corrected_quote": "the Company acquired Summit Utility Structures LLC, a producer of steel poles and steel structures for utility infrastructure in eastern Pennsylvania",
+   "corrected_tag": "stated",
+   "corrected_source_url": "https://s202.q4cdn.com/531038915/files/doc_news/Nucor-Towers--Structures-Expanding-Nationwide-Footprint-2025.pdf",
+   "note": "Cited quote only says Nucor is investing in the Hazleton site; it names no product. Corrected quote is from Nucor's Jan 9, 2025 release (https://s202.q4cdn.com/531038915/files/doc_news/Nucor-Towers--Structures-Expanding-Nationwide-Footprint-2025.pdf)."
+  },
+  {
+   "claim_id": "p-nucor-west-hazleton-pa:parent_company",
+   "source_url": "https://www.thefabricator.com/thefabricator/news/metalsmaterials/nucor-to-acquire-summit-structures-llc",
+   "evidence_row": 470,
+   "ledger_value": "Nucor Corporation",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Fabricator: Nucor to acquire Summit Utility Structures (the West Hazleton plant)."
+  },
+  {
+   "claim_id": "p-nucor-west-hazleton-pa:city",
+   "source_url": "https://nucor.com/?p=2587",
+   "evidence_row": 471,
+   "ledger_value": "West Hazleton",
+   "ledger_tag": "stated",
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "West Hazleton",
+   "corrected_quote": "Our West Hazleton, PA division is currently seeking applicants for welding openings.",
+   "corrected_tag": "stated",
+   "corrected_source_url": "https://jobs.nucor.com/job/West_Hazleton-Nucor-Towers-&-Structures-Fitter-Welder-1-PA-18202/1413833600/",
+   "note": "Cited nucor.com quote says 'Hazleton', not West Hazleton (the row's own reasoning admits this). Corrected quote is from the Oct 27, 2026 Nucor posting (https://jobs.nucor.com/job/West_Hazleton-Nucor-Towers-&-Structures-Fitter-Welder-1-PA-18202/1413833600/), which also gives an onsite address of 225 Kiwannis Boulevard, West Hazleton, PA 18202."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:address",
+   "source_url": "https://www.crestoperations.com/dis-tran-steel",
+   "evidence_row": 478,
+   "ledger_value": "529 Cenla Dr",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Crest page lists 529 Cenla Dr, Pineville, LA 71360; distransteel.com contact page names it 'Louisiana Fabrication Facility'."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:products",
+   "source_url": "https://jobs.lever.co/crestoperations/7cff9514-c5e4-4b83-be57-f68435a09995",
+   "evidence_row": 479,
+   "ledger_value": "tubular steel transmission poles, latticed towers, substation deadend and support structures",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Pineville transfer-portal (internal) posting; products stated."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:welder_postings",
+   "source_url": "https://jobs.lever.co/crestoperations/7cff9514-c5e4-4b83-be57-f68435a09995",
+   "evidence_row": 483,
+   "ledger_value": "1 POLE Fitter posting (Day Shift, Plant 2); date not shown",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Posting is an internal transfer-portal Fitter role (current employees only), not an external welder posting; value describes it accurately."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:parent_company",
+   "source_url": "https://www.crestoperations.com/news/dts-ohio-plant-celebrates-grand-opening",
+   "evidence_row": 484,
+   "ledger_value": "Crest Industries / Crest Operations",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Crest news page; DIS-TRAN Steel listed among Crest companies."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:name",
+   "source_url": "https://arcosa.com/?p=208",
+   "evidence_row": 592,
+   "ledger_value": "Arcosa Telecom Structures",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "arcosa.com Engineered Structures page names Arcosa Telecom Structures."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:address",
+   "source_url": "https://arcosa-telecom-structures.azurewebsites.net/contact/",
+   "evidence_row": 593,
+   "ledger_value": "4020 Tull Avenue, Muskogee, OK 74403",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Contact page lists 4020 Tull Avenue, Muskogee, OK 74403. AISC directory also lists Arcosa Telecom Structures, Muskogee OK. Open (site (c) 2026, posting Jul 2026)."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:products",
+   "source_url": "https://insidetowers.com/arcosa-telecom-structures-a-legacy-of-great-customer-service",
+   "evidence_row": 594,
+   "ledger_value": "monopoles fabricated partly with Meyer",
+   "ledger_tag": "stated",
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "monopoles, mostly fabricated in a partnership with sister company Meyer Utility Structures (2022); also self-supporting towers, guyed towers and tower modification packages",
+   "corrected_quote": "monopoles, which are mostly fabricated in a partnership with another Arcosa company, Meyer Utility Structures",
+   "corrected_tag": "stated",
+   "note": "Source says 'mostly', ledger says 'partly'. Understates Meyer's share of monopole fabrication, which bears on how much pole welding Muskogee itself does."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:headcount",
+   "source_url": "https://insidetowers.com/arcosa-telecom-structures-a-legacy-of-great-customer-service",
+   "evidence_row": 595,
+   "ledger_value": "more than 60",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Stated in a March 2, 2022 article; more than 4 years old."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:website",
+   "source_url": "https://arcosa-telecom-structures.azurewebsites.net/contact/",
+   "evidence_row": 596,
+   "ledger_value": "https://arcosa-telecom-structures.azurewebsites.net/",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote is just the site name; the source URL is the company's own site, so the value is supported."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:prospect_test",
+   "source_url": "https://arcosa-telecom-structures.azurewebsites.net/?p=214",
+   "evidence_row": 778,
+   "ledger_value": "pass, with caveat",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote supports in-house welding (AWS certified welders, CWIs). 'pass' is a judgement; arguably should be tagged inferred."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:products",
+   "source_url": "https://www.distransteel.com/",
+   "evidence_row": 820,
+   "ledger_value": "custom steel transmission and substation structures",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:welder_postings",
+   "source_url": "https://www.distransteel.com/careers",
+   "evidence_row": 821,
+   "ledger_value": "Welders/Fitters, Pineville LA",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Careers page lists 'Welders/Fitters, Pineville, LA' (undated)."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:found_by",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "evidence_row": 822,
+   "ledger_value": "AISC;news;company site",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "AISC directory live search (company-name box) returns 'DIS-TRAN Steel, LLC Pineville LA Highway Component Manufacturer, Building Fabricator'; also in snapshot ledger/audit/source-snapshot-aisc-directory-2026-11-12.txt."
+  },
+  {
+   "claim_id": "p-nucor-west-hazleton-pa:products",
+   "source_url": "https://pgjonline.com/news/2026/july/modernizing-the-grid-building-with-nucor-domestic-eaf-steel",
+   "evidence_row": 863,
+   "ledger_value": "utility poles / steel utility structures",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Full sentence: 'These state-of-the-art sites will complement Nucor's Hazelton, Pennsylvania facility and significantly expand domestic capacity for finished utility structures' (July 2026). Supports value."
+  },
+  {
+   "claim_id": "p-nucor-west-hazleton-pa:found_by",
+   "source_url": "https://pgjonline.com/news/2026/july/modernizing-the-grid-building-with-nucor-domestic-eaf-steel",
+   "evidence_row": 864,
+   "ledger_value": "news",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:products",
+   "source_url": "https://www.txdot.gov/content/dam/docs/division/mtd/mpl/tsp.pdf",
+   "evidence_row": 889,
+   "ledger_value": "traffic signal poles, high mast poles, overhead sign trusses",
+   "ledger_tag": "stated",
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "traffic signal pole assemblies (TxDOT-approved plant)",
+   "corrected_quote": "98424       Structural and Steel Products, Inc.             Crowley, TX",
+   "corrected_tag": "stated",
+   "note": "Cited TxDOT list is 'Traffic Signal Pole Assembly Fabrication Plants' only; it does not support high mast poles (separate hmip.pdf row) or overhead sign trusses (not on any Crowley-specific source read)."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:products",
+   "source_url": "https://www.txdot.gov/content/dam/docs/division/mtd/mpl/hmip.pdf",
+   "evidence_row": 890,
+   "ledger_value": "high mast illumination poles",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "TxDOT High Mast Illumination Pole plants list (Aug 4, 2026) includes 98424 Structural & Steel Products, Inc., Crowley, TX."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:found_by",
+   "source_url": "https://www.txdot.gov/content/dam/docs/division/mtd/mpl/tsp.pdf",
+   "evidence_row": 894,
+   "ledger_value": "state DOT list",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "TxDOT traffic signal pole plant list (Dec 22, 2025)."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:found_by",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "evidence_row": 895,
+   "ledger_value": "AISC",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "AISC directory live search ('Structural and Steel') returns this row verbatim (plus SSP Fort Worth)."
+  },
+  {
+   "claim_id": "p-western-utility-telecom-salem-or:address",
+   "source_url": "https://www.westernutilitytelecom.com/contact",
+   "evidence_row": 908,
+   "ledger_value": "5032 Salem Dallas Hwy NW, Salem, OR 97304",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Contact page. AISC directory also lists Western Utility Telecom, Salem OR."
+  },
+  {
+   "claim_id": "p-western-utility-telecom-salem-or:products",
+   "source_url": "https://www.westernutilitytelecom.com",
+   "evidence_row": 909,
+   "ledger_value": "distribution, transmission, substation steel",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-western-utility-telecom-salem-or:found_by",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "evidence_row": 913,
+   "ledger_value": "AISC;company site",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "AISC directory live search (company-name box, 'Western Utility') returns 'Western Utility Telecom, Inc. Salem OR Highway Component Manufacturer'. The snapshot file only covers pages A-M, so this row is not in it."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:name",
+   "source_url": "https://www.txdot.gov/content/dam/docs/division/mtd/mpl/tsp.pdf",
+   "evidence_row": 948,
+   "ledger_value": "Structural and Steel Products, Inc. (Crowley)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "TxDOT list name and location."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:website",
+   "source_url": "https://www.dot.ga.gov/PartnerSmart/Materials/Documents/qpl52a.pdf",
+   "evidence_row": 949,
+   "ledger_value": "https://www.s-steel.com",
+   "ledger_tag": "stated",
+   "verdict": "corrected",
+   "error_kind": "other",
+   "corrected_value": "https://www.racerock.com",
+   "corrected_quote": "400 N Tarrant St, Crowley, TX 76036",
+   "corrected_tag": "stated",
+   "corrected_source_url": "https://www.racerock.com/our-facilities",
+   "note": "www.s-steel.com could not be loaded on 2026-11-12 (https: TLS certificate name mismatch; headless browser 502; plain http not testable in this sandbox) on 2026-11-12, and the GA DOT listing (revised 2019-2023) that names it is for SSP Fort Worth. Race Rock's site lists the Crowley facility; corrected quote is from https://www.racerock.com/our-facilities."
+  },
+  {
+   "claim_id": "p-western-utility-telecom-salem-or:name",
+   "source_url": "https://www.westernutilitytelecom.com",
+   "evidence_row": 954,
+   "ledger_value": "Western Utility Telecom, Inc.",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-western-utility-telecom-salem-or:website",
+   "source_url": "https://www.westernutilitytelecom.com",
+   "evidence_row": 955,
+   "ledger_value": "https://www.westernutilitytelecom.com",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-race-rock-brookshire-tx:address",
+   "source_url": "https://www.racerock.com/our-facilities",
+   "evidence_row": 1013,
+   "ledger_value": "7007 FM-362, Brookshire, Texas 77423",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Race Rock facilities page lists Brookshire fabrication facility at 7007 FM-362. Open; groundbreaking of expansion 2026-10-15."
+  },
+  {
+   "claim_id": "p-race-rock-brookshire-tx:name",
+   "source_url": "https://www.racerock.com/our-facilities",
+   "evidence_row": 1014,
+   "ledger_value": "Race Rock - Brookshire",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-race-rock-brookshire-tx:products",
+   "source_url": "https://news.constructconnect.com/race-rock-to-expand-brookshire-texas-manufacturing-campus-to-support-growing-electrical-infrastructure-demand",
+   "evidence_row": 1015,
+   "ledger_value": "Electrical transmission and substation structures",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-race-rock-brookshire-tx:products",
+   "source_url": "https://www.racerock.com/news",
+   "evidence_row": 1016,
+   "ledger_value": "Utility infrastructure production capacity, Brookshire",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-race-rock-brookshire-tx:website",
+   "source_url": "https://www.racerock.com",
+   "evidence_row": 1021,
+   "ledger_value": "https://www.racerock.com",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-race-rock-brookshire-tx:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress",
+   "evidence_row": 1022,
+   "ledger_value": "29.874482318544,-95.959755953579 (county 48473)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-12 with the address returns '7007 FM 362 RD, BROOKSHIRE, TX, 77423', x=-95.959755953579, y=29.874482318544, county 48473. The ledger URL lacks the query string, so the cited page alone shows only the form."
+  },
+  {
+   "claim_id": "c-meyer-utility-structures:supplies:p-arcosa-telecom-muskogee-ok",
+   "source_url": "https://insidetowers.com/arcosa-telecom-structures-a-legacy-of-great-customer-service",
+   "evidence_row": 1082,
+   "ledger_value": "monopole fabrication (partnership; Meyer plant not named)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Inside Towers (Mar 2022): monopoles 'mostly fabricated in a partnership with ... Meyer Utility Structures'. Link value matches; Meyer plant not named."
+  },
+  {
+   "claim_id": "p-nucor-steel-decatur-trinity-al:supplies:p-nucor-decatur-al",
+   "source_url": "https://nucor.com/news-release/nucor-to-build-new-transmission-tower-production-plant-in-alabama-122674",
+   "evidence_row": 1083,
+   "ledger_value": "sheet steel for utility poles (adjacent mill; supply implied)",
+   "ledger_tag": "inferred",
+   "verdict": "unreachable",
+   "note": "Inferred link. https://nucor.com/news-release/... returns 504 in plain fetch and in headless Chromium; Wayback fetch also failed (502). Quote not seen; not confirmed. Tag inferred is appropriate per its reasoning."
+  },
+  {
+   "claim_id": "p-nucor-steel-indiana-crawfordsville-in:supplies:p-nucor-crawfordsville-in",
+   "source_url": "https://www.areadevelopment.com/newsitems/6-16-2023/nucor-corporation-crawfordsville-indiana.shtml",
+   "evidence_row": 1084,
+   "ledger_value": "sheet steel for utility structures (adjacent mill; supply implied)",
+   "ledger_tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred link. Quote found on Area Development page; tag inferred is correct (adjacency stated, supply not stated)."
+  },
+  {
+   "claim_id": "c-nucor-steel-mills:supplies:p-nucor-brigham-city-ut",
+   "source_url": "https://www.recyclingtoday.com/news/nucor-towers-structures-steel-electricity-grid-energy-recycling-investment-utah",
+   "evidence_row": 1085,
+   "ledger_value": "steel plate and sheet by rail",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Recycling Today: Brigham City plant will bring in plate and sheet from Nucor mills by rail."
+  },
+  {
+   "claim_id": "c-nucor-steel-mills:supplies:p-nucor-brigham-city-ut",
+   "source_url": "https://s202.q4cdn.com/531038915/files/doc_news/Nucor-Towers--Structures-Expanding-Nationwide-Footprint-2025.pdf",
+   "evidence_row": 1086,
+   "ledger_value": "steel plate and sheet by rail",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Nucor Jan 9, 2025 release: 'It will receive plate and sheet products from Nucor steel mills via rail'."
+  },
+  {
+   "claim_id": "p-distran-chicago-heights-il:supplies:p-distran-washington-court-house-oh",
+   "source_url": "https://crestoperations.com/news/dis-tran-steel-expands-footprint-in-the-midwest",
+   "evidence_row": 1087,
+   "ledger_value": "steel plate processing for pole manufacturing",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Crest news Oct 18, 2021 states Chicago Heights plate processing supports Washington Court House pole manufacturing. Caution: distransteel.com contact/careers pages (2025) list Pineville, Eunice and Washington Court House but not Chicago Heights, and a Chicago Heights Lever posting returns 404; current operation of Chicago Heights is unconfirmed."
+  },
+  {
+   "claim_id": "p-mica-kaufman-tx:supplies:p-mica-haltom-city-tx",
+   "source_url": "https://www.micasteelworks.com",
+   "evidence_row": 1088,
+   "ledger_value": "hot-dip galvanizing of fabricated poles (same company, inter-plant)",
+   "ledger_tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred link. Quote found; tag inferred is correct. Note: TxDOT high-mast list (Aug 2026) lists MICA Steelworks Kaufman, TX as an approved high-mast pole fabrication plant, so Kaufman also fabricates, not only galvanizes."
+  },
+  {
+   "claim_id": "p-mica-kaufman-tx:supplies:p-mica-haltom-city-tx",
+   "source_url": "https://www.micasteelworks.com/about",
+   "evidence_row": 1089,
+   "ledger_value": "hot-dip galvanizing of fabricated poles (same company, inter-plant)",
+   "ledger_tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred link. Quote found; tag inferred is correct."
+  },
+  {
+   "claim_id": "p-meyer-steele-al:weld_processes",
+   "source_url": "https://www.jofdav.com/jobs/42408404-senior-welder",
+   "evidence_row": 1210,
+   "ledger_value": "flux-core (FCAW) stated; 2G flux-core weld test required for senior welders",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Steele posting (expired) states Flux Core experience required and 2G flux core test."
+  },
+  {
+   "claim_id": "p-meyer-steele-al:materials",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1739445/000173944526000029/aca-20251231.htm",
+   "evidence_row": 1211,
+   "ledger_value": "steel (principal material of Arcosa's Engineered Structures segment; grade not stated)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Segment-level 10-K statement; parent-level."
+  },
+  {
+   "claim_id": "p-meyer-steele-al:production_type",
+   "source_url": "https://www.jofdav.com/jobs/38311974-senior-fitter-welder",
+   "evidence_row": 1213,
+   "ledger_value": "fitters fit pole sections of any size and complexity in any bay, including the arms department (Steele posting)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Steele Senior Fitter/Welder posting (expired)."
+  },
+  {
+   "claim_id": "p-meyer-steele-al:welder_postings",
+   "source_url": "https://www.jofdav.com/jobs/42408404-senior-welder",
+   "evidence_row": 1216,
+   "ledger_value": "0 open verified. 2 Steele postings (Senior Welder 2nd/3rd shift; Senior Fitter/Welder all three shifts) seen on jofdav.com 2026-11-12, both marked expired; overtime and weekends 'as needed'; no sign-on bonus stated",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Both Steele jofdav listings show 'This job has expired'; value correctly says 0 open. Plant is open (2026 postings in search results). 'Open' status was checked only against aggregator/job-board copies (now expired); the Decatur case shows this method can miss a newer live posting on the company's own job site. Sweep candidate."
+  },
+  {
+   "claim_id": "p-meyer-steele-al:opening_line",
+   "source_url": "https://www.jofdav.com/jobs/42408404-senior-welder",
+   "evidence_row": 1218,
+   "ledger_value": "Meyer's Steele, AL plant has advertised for senior welders who must pass a 2G flux-core weld test, and for senior fitter/welders on all three shifts who fit pole sections of any size and complexity.",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Opening line uses stated facts from the Steele postings; no Path deployment claim."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:weld_processes",
+   "source_url": "https://talents.vaia.com/companies/arcosa/welders-all-experience-levels-49104639",
+   "evidence_row": 1226,
+   "ledger_value": "flux-core / metal-core (FCAW/GMAW-MC) experience stated as highly preferred at this plant",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Hager City posting: 'Flux or Metal Core welding experience highly preferred'."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:materials",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1739445/000173944526000029/aca-20251231.htm",
+   "evidence_row": 1227,
+   "ledger_value": "steel (principal material of Arcosa's Engineered Structures segment; grade not stated)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Segment-level 10-K statement; parent-level."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:opening_line",
+   "source_url": "https://talents.vaia.com/companies/arcosa/welders-all-experience-levels-49104639",
+   "evidence_row": 1233,
+   "ledger_value": "Meyer's Hager City, WI plant has advertised for 2nd-shift welders who make full-penetration slip-joint welds on poles, with flux or metal core experience highly preferred.",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Opening line stated facts only (past tense 'has advertised'); no Path deployment claim."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:weld_processes",
+   "source_url": "https://talents.vaia.com/companies/arcosa/clinton/weld-tech-106134079/",
+   "evidence_row": 1271,
+   "ledger_value": "flux-core (FCAW), submerged arc (SAW) and SMAW stated at the Clinton plant",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Clinton posting lists FCAW, SAW, SMAW for welder candidate training and requires 3-5 yrs FCAW/SAW/SMAW."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:materials",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1739445/000173944526000029/aca-20251231.htm",
+   "evidence_row": 1272,
+   "ledger_value": "steel (principal material of Arcosa's Engineered Structures segment; grade not stated)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Segment-level 10-K statement; parent-level."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://talents.vaia.com/companies/arcosa/clinton/weld-tech-106134079/",
+   "evidence_row": 1277,
+   "ledger_value": "0 open verified. No welder posting shown live on a page fetched 2026-11-12 (a Plant Welding Technician posting exists; Fitter/Welder postings seen in search results could not be confirmed live)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Value honestly says 0 open verified; posting undated. 'Open' status was checked only against aggregator/job-board copies (now expired); the Decatur case shows this method can miss a newer live posting on the company's own job site. Sweep candidate."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:city",
+   "source_url": "https://talents.vaia.com/companies/arcosa/clinton/weld-tech-106134079/",
+   "evidence_row": 1280,
+   "ledger_value": "Clinton",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "vaia Weld Tech posting: 'provide the Clinton, IL utility pole manufacturing plant with welding and technical support'. Plant is in Clinton IL."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:opening_line",
+   "source_url": "https://talents.vaia.com/companies/arcosa/clinton/weld-tech-106134079/",
+   "evidence_row": 1281,
+   "ledger_value": "Meyer's Clinton, IL utility pole plant runs a pole school that trains welder candidates in FCAW, SAW and SMAW, and has advertised for a Plant Welding Technician.",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Opening line uses only stated facts from the Clinton posting; no Path deployment claim."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:welds_in_house",
+   "source_url": "https://jobs.portmuskogee.com/companies/arcosa/jobs/86978395-fitter-welder-lead",
+   "evidence_row": 1289,
+   "ledger_value": "yes",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Port Muskogee posting (no longer accepting applications) names the Muskogee plant."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:welds_in_house",
+   "source_url": "https://arcosa-telecom-structures.azurewebsites.net/",
+   "evidence_row": 1290,
+   "ledger_value": "yes",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Homepage: 'We fabricate your specialized components in-house.'"
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:monopole_fabrication",
+   "source_url": "https://insidetowers.com/arcosa-telecom-structures-a-legacy-of-great-customer-service",
+   "evidence_row": 1291,
+   "ledger_value": "partly with Meyer",
+   "ledger_tag": "stated",
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "mostly with Meyer Utility Structures (March 2022)",
+   "corrected_quote": "monopoles, which are mostly fabricated in a partnership with another Arcosa company, Meyer Utility Structures",
+   "corrected_tag": "stated",
+   "note": "Source says 'mostly', ledger says 'partly'."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:materials",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1739445/000173944526000029/aca-20251231.htm",
+   "evidence_row": 1292,
+   "ledger_value": "steel (towers); aluminum not stated",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Segment-level 10-K statement; parent-level. SCORE NOTE: p-arcosa-telecom-muskogee-ok:score_material_part = 12 rests on an inferred part size; sibling plants were normalised to 0 under the coordinator rule (unknown size = 0). Looks missed by normalisation; should be 0."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:certifications",
+   "source_url": "https://www.arcosa.com/?p=208",
+   "evidence_row": 1293,
+   "ledger_value": "AISC certified fabricator; AWS certified welders and CWIs",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "arcosa.com says 'AISC certified fabricator' and 'AWS certified welders and inspectors'; CWIs come from the companion row."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:certifications",
+   "source_url": "https://arcosa-telecom-structures.azurewebsites.net/?p=214",
+   "evidence_row": 1294,
+   "ledger_value": "AISC certified fabricator; AWS certified welders and CWIs",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Towers page: AWS certified welders, CWIs."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:production_type",
+   "source_url": "https://arcosa-telecom-structures.azurewebsites.net/",
+   "evidence_row": 1296,
+   "ledger_value": "custom towers and tower modifications (custom cell towers, custom manufacturing)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Homepage lists Custom Cell Towers and tower modification packages."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:welder_postings",
+   "source_url": "https://jobs.portmuskogee.com/companies/arcosa/jobs/46514789-fitter-welder_senior",
+   "evidence_row": 1298,
+   "ledger_value": "0 open verified. Muskogee Senior Fitter/Welder (1st and 2nd shift) and Fitter/Welder Lead postings on Port Muskogee job board marked no longer accepting applications; no sign-on bonus stated",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Both Port Muskogee listings say 'This job is no longer accepting applications'; value correct. 'Open' status was checked only against aggregator/job-board copies (now expired); the Decatur case shows this method can miss a newer live posting on the company's own job site. Sweep candidate."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:opening_line",
+   "source_url": "https://jobs.portmuskogee.com/companies/arcosa/jobs/46514789-fitter-welder_senior",
+   "evidence_row": 1301,
+   "ledger_value": "Arcosa Telecom Structures in Muskogee has listed flux core, metal core and MIG welding experience for its fitter/welders and fabricates custom towers and tower modification packages.",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Opening line uses stated posting facts (expired posting, 'has listed'); no Path deployment claim."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:parent_company",
+   "source_url": "https://arcosa-telecom-structures.azurewebsites.net/",
+   "evidence_row": 1302,
+   "ledger_value": "Arcosa, Inc.",
+   "ledger_tag": "stated",
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "Arcosa, Inc.",
+   "corrected_quote": "Our Parent Company Arcosa, Inc. (NYSE:ACA), headquartered in Dallas, Texas",
+   "corrected_tag": "stated",
+   "note": "Value right, but the cited quote (copyright line naming Arcosa Telecom Structures, LLC) does not name Arcosa, Inc. Better quote is on the same page."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:former_use",
+   "source_url": "https://markets.financialcontent.com/pennwell.elp/article/bizwire-2022-2-23-arcosa-inc-announces-fourth-quarter-and-full-year-2021-results",
+   "evidence_row": 1341,
+   "ledger_value": "Arcosa idled its Clinton, Illinois wind tower facility in Q4 2021",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Q4 2021 results release states Clinton, Illinois wind tower facility idled. INFERRED-ROW NOTE: p-meyer-clinton-il:triggers (tag inferred) has value 'Clinton plant is Meyer's converted idled Arcosa wind-tower facility' phrased as fact; the 10-K names no site, so the value claims more certainty than its quote. Its reasoning is clear and the link is plausible (web search snippets mention a Meyer ribbon cutting at a converted idle Clinton plant, page not opened), but score_demand 15 rests on it. Suggest wording 'likely' in the value."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:weld_processes",
+   "source_url": "https://jobs.portmuskogee.com/companies/arcosa/jobs/46514789-fitter-welder_senior",
+   "evidence_row": 1342,
+   "ledger_value": "flux-core, metal-core and MIG experience listed for Muskogee fitter/welders",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote is three lines joined with '...'; each line ('Flux Core experience', 'Metal Core experience', 'MIG welding experience') is on the Muskogee Senior Fitter/Welder page. Supports value (posting expired, 6+ months old)."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:weld_processes",
+   "source_url": "https://jobs.lever.co/crestoperations/e14bc81e-88e4-46dc-bd5e-1d8952f0a307",
+   "evidence_row": 1535,
+   "ledger_value": "GMAW (gas metal arc) manual welding; submerged arc (SAW) seam welding; joints per AWS D1.1",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Production Welder II posting: GMAW, CJP welds, joints per AWS D1.1; SAW from companion row."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:weld_processes",
+   "source_url": "https://jobs.lever.co/crestoperations/4a3f4d28-a7f6-4018-b4c8-d0b56af1365d",
+   "evidence_row": 1536,
+   "ledger_value": "SAW at Pineville pole team",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:materials",
+   "source_url": "https://jobs.lever.co/crestoperations/e14bc81e-88e4-46dc-bd5e-1d8952f0a307",
+   "evidence_row": 1537,
+   "ledger_value": "steel",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:certifications",
+   "source_url": "https://jobs.lever.co/crestoperations/e14bc81e-88e4-46dc-bd5e-1d8952f0a307",
+   "evidence_row": 1538,
+   "ledger_value": "AWS D1.1 (welds and joint prep per AWS D1.1)",
+   "ledger_tag": "stated",
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "unknown (no certification stated; posting says joints are prepared to the AWS D1.1 code)",
+   "corrected_quote": "unknown",
+   "corrected_tag": "unknown",
+   "note": "Working to the AWS D1.1 code is not a certification. plants.csv certifications shows 'AWS D1.1 (per posting)'; should be unknown unless another source states one."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:part_size_fit",
+   "source_url": "https://www.distransteel.com/services",
+   "evidence_row": 1539,
+   "ledger_value": "unknown: tubular transmission poles, latticed towers, substation structures; \"fabricate any size project\"; no dimensions",
+   "ledger_tag": "stated",
+   "verdict": "corrected",
+   "error_kind": "other",
+   "corrected_value": "unknown (no dimensions stated; site says 'fabricate any size project')",
+   "corrected_quote": "unknown",
+   "corrected_tag": "unknown",
+   "note": "Value is 'unknown' but tagged stated; tag should be unknown so it does not count toward confidence."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:production_type",
+   "source_url": "https://www.distransteel.com/",
+   "evidence_row": 1540,
+   "ledger_value": "custom engineered structures, designed per customer",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:welder_postings",
+   "source_url": "https://jobs.lever.co/crestoperations/1db1718e-f410-4b01-bf5b-edd239b62f2c",
+   "evidence_row": 1542,
+   "ledger_value": "3 DIS-TRAN Pineville welder openings live 2026-11-12: PREP Welder (Day), Production Welder II (Night), Submerged Arc Welder (Weekend); plus transfer-portal Pole Plant 2 Production Welder (Night); GMAW named; posting dates not shown; no sign-on bonus stated",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Three Lever postings (PREP Welder Day, Production Welder II Night, Submerged Arc Welder Weekend) all live 2026-11-12, Pineville LA. Score_labor 20 supported (three external welder postings open at once)."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:welder_postings",
+   "source_url": "https://jobs.lever.co/crestoperations/e14bc81e-88e4-46dc-bd5e-1d8952f0a307",
+   "evidence_row": 1543,
+   "ledger_value": "Night production welder opening",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:welder_postings",
+   "source_url": "https://jobs.lever.co/crestoperations/4a3f4d28-a7f6-4018-b4c8-d0b56af1365d",
+   "evidence_row": 1544,
+   "ledger_value": "Weekend submerged arc welder opening",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:opening_line",
+   "source_url": "https://jobs.lever.co/crestoperations/4a3f4d28-a7f6-4018-b4c8-d0b56af1365d",
+   "evidence_row": 1548,
+   "ledger_value": "DIS-TRAN Steel is hiring GMAW production and prep welders on night and day shifts in Pineville, plus a weekend submerged arc welder for its Pole team there.",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Opening line uses stated facts from live postings; no Path deployment claim."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:address",
+   "source_url": "https://www.distransteel.com/contact",
+   "evidence_row": 1549,
+   "ledger_value": "4725 Hwy 28 E, Pineville LA is the sales/engineering office and HQ; fabrication facility is 529 Cenla Dr (record address kept)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Contact page: Sales & Engineering Office 4725 Hwy 28 E; Louisiana Fabrication Facility 529 Cenla Dr."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:parent_company",
+   "source_url": "https://www.distransteel.com/careers",
+   "evidence_row": 1550,
+   "ledger_value": "Crest Industries",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Copyright line names Crest Industries, LLC; Crest site lists DIS-TRAN Steel among its companies."
+  },
+  {
+   "claim_id": "p-nucor-west-hazleton-pa:weld_processes",
+   "source_url": "https://jobs.nucor.com/job/West_Hazleton-Nucor-Towers-&-Structures-Fitter-Welder-1-PA-18202/1413833600/",
+   "evidence_row": 1670,
+   "ledger_value": "MIG/flux-core (preferred experience in welder posting); SAW unknown",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "West Hazleton Fitter Welder 1 posting (Oct 27, 2026, 'Apply now'). Note: posting gives an onsite address '225 Kiwannis Boulevard West Hazleton, PA 18202'; ledger address is unknown (possible miss)."
+  },
+  {
+   "claim_id": "p-nucor-west-hazleton-pa:materials",
+   "source_url": "https://nucor.com/?p=2587",
+   "evidence_row": 1671,
+   "ledger_value": "steel (EAF steel poles)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Nucor-wide product page statement; parent-level."
+  },
+  {
+   "claim_id": "p-nucor-west-hazleton-pa:welder_postings",
+   "source_url": "https://jobs.nucor.com/job/West_Hazleton-Nucor-Towers-&-Structures-Fitter-Welder-1-PA-18202/1413833600/",
+   "evidence_row": 1676,
+   "ledger_value": "1 open (posted 2026-10-27); MIG/flux-core preferred; 1st or 2nd shift, 24/7 operation; no sign-on bonus stated; other Hazleton weld tech posting filled",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Posting dated Oct 27, 2026, 'Apply now' shown; 'Our West Hazleton, PA division is currently seeking applicants for welding openings.'"
+  },
+  {
+   "claim_id": "p-nucor-west-hazleton-pa:triggers",
+   "source_url": "https://s202.q4cdn.com/531038915/files/doc_news/Nucor-Towers--Structures-Expanding-Nationwide-Footprint-2025.pdf",
+   "evidence_row": 1677,
+   "ledger_value": "Jan 2025: Hazleton plant being modernized and automated to increase production; Oct 2026 welder hiring",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Jan 9, 2025 release (within 24 months): Summit location in eastern Pennsylvania 'currently being modernized and automated to increase production'."
+  },
+  {
+   "claim_id": "p-nucor-decatur-al:welder_postings",
+   "source_url": "https://jobs.nucor.com/job/Decatur-Fitter-Welder-Nucor-Towers-&-Structures-AL-35601/1413256600/",
+   "evidence_row": 1693,
+   "ledger_value": "none open: Decatur Fitter Welder postings (Oct 23, 2026; Feb 20, 2026) both show 'filled'",
+   "ledger_tag": "stated",
+   "verdict": "corrected",
+   "error_kind": "other",
+   "corrected_value": "1 open: NTSAL Fitter Welder, Decatur AL, dated Nov 5, 2026 with 'Apply now' (https://jobs.nucor.com/job/Decatur-NTSAL-Fitter-Welder-AL-35601/1448225400/); the cited Fitter Welder posting dated Oct 23, 2026 shows filled. No Feb 20, 2026 posting appears on the cited page.",
+   "corrected_quote": "Nucor Towers & Structures Alabama is seeking qualified applicants for the position of Fitter Welder.",
+   "corrected_tag": "stated",
+   "corrected_source_url": "https://jobs.nucor.com/job/Decatur-NTSAL-Fitter-Welder-AL-35601/1448225400/",
+   "note": "PRIORITY ROW. The cited page does show 'Sorry, this position has been filled.' and Date Oct 23, 2026, but 'none open' is wrong: a jobs.nucor.com search for Fitter Welder in Decatur, AL returns an open NTSAL Fitter Welder posting dated Nov 5, 2026. The Feb 20, 2026 date is not on the cited page. Knock-on: p-nucor-decatur-al:score_labor should be 12 (any open welder posting), not 0."
+  },
+  {
+   "claim_id": "p-sabre-sioux-city-ia:weld_processes",
+   "source_url": "https://talents.vaia.com/companies/sabre-industries/sioux-city/welder-nights-115518832/",
+   "evidence_row": 1721,
+   "ledger_value": "GMAW or metal-core experience preferred",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Sabre Sioux City Welder (Nights) posting; also says 'Uses MCAW welding process'. Posting undated."
+  },
+  {
+   "claim_id": "p-sabre-sioux-city-ia:materials",
+   "source_url": "https://talents.vaia.com/companies/sabre-industries/sioux-city/welder-nights-115518832/",
+   "evidence_row": 1722,
+   "ledger_value": "steel",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-western-utility-telecom-salem-or:weld_processes",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/or/salem/welderfitter-bfeac215",
+   "evidence_row": 1928,
+   "ledger_value": "FCAW",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Tallo copy of a Salem Welder/Fitter posting dated 05/17/2026, now marked Expired; process statement still describes this plant."
+  },
+  {
+   "claim_id": "p-western-utility-telecom-salem-or:weld_processes",
+   "source_url": "https://www.westernutilitytelecom.com/about",
+   "evidence_row": 1929,
+   "ledger_value": "8 welding stations, 2 seam welders",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on About page. Note: '8 welding stations, 2 seam welders' is equipment, not a weld process; it sits in weld_processes in plants.csv. Suggest moving to another field."
+  },
+  {
+   "claim_id": "p-western-utility-telecom-salem-or:materials",
+   "source_url": "https://www.westernutilitytelecom.com/utility",
+   "evidence_row": 1930,
+   "ledger_value": "steel poles, galvanized and weathering steel",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-western-utility-telecom-salem-or:certifications",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/or/salem/welderfitter-bfeac215",
+   "evidence_row": 1931,
+   "ledger_value": "AISC Certified Shop",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Expired posting text; AISC certification independently confirmed by AISC directory (Highway Component Manufacturer)."
+  },
+  {
+   "claim_id": "p-western-utility-telecom-salem-or:production_type",
+   "source_url": "https://www.westernutilitytelecom.com",
+   "evidence_row": 1934,
+   "ledger_value": "Custom-engineered structures",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-western-utility-telecom-salem-or:welder_postings",
+   "source_url": "https://www.westernutilitytelecom.com/careers",
+   "evidence_row": 1936,
+   "ledger_value": "Careers page today lists Welder/Fitter openings at Salem OR and Fernley NV (undated); earlier Salem posting dated 2026-05-17 is expired on the job board; processes GMAW spray transfer, FCAW; day and weekend shifts, weekend shift differential; no sign-on bonus or mandatory overtime stated",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Careers page lists Welder/Fitter at Salem, Oregon and Fernley, Nevada (undated)."
+  },
+  {
+   "claim_id": "p-western-utility-telecom-salem-or:welder_postings",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/or/salem/welderfitter-bfeac215",
+   "evidence_row": 1937,
+   "ledger_value": "Day and weekend shifts; weekend shift differential",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "From the expired 05/17/2026 posting; value does not claim it is open."
+  },
+  {
+   "claim_id": "p-western-utility-telecom-salem-or:triggers",
+   "source_url": "https://www.westernutilitytelecom.com/our-commitment-to-quality",
+   "evidence_row": 1938,
+   "ledger_value": "New 20,000 sq ft Powder/Paint facility 'underway' (page undated; cannot place within 24 months)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found; value is hedged (undated), not used as a dated trigger."
+  },
+  {
+   "claim_id": "p-western-utility-telecom-salem-or:multi_site",
+   "source_url": "https://www.westernutilitytelecom.com/careers",
+   "evidence_row": 1942,
+   "ledger_value": "Fernley, Nevada site hiring a Welder/Fitter",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Careers page lists Welder/Fitter and Product Coordinator at Fernley, Nevada."
+  },
+  {
+   "claim_id": "p-race-rock-brookshire-tx:materials",
+   "source_url": "https://www.racerock.com/custom-solutions",
+   "evidence_row": 1968,
+   "ledger_value": "carbon steel, stainless steel or aluminum (company-wide)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Company-wide statement (custom solutions/sub-assemblies); value is labelled company-wide, not Brookshire-specific. SCORE NOTE: p-race-rock-brookshire-tx:score_material_part = 12 rests on inferred part size (100-ton lift is crane capacity, not part size); under the coordinator rule it should be 0."
+  },
+  {
+   "claim_id": "p-race-rock-brookshire-tx:certifications",
+   "source_url": "https://www.racerock.com/custom-solutions",
+   "evidence_row": 1969,
+   "ledger_value": "AISC Quality Fabricator (company-wide)",
+   "ledger_tag": "stated",
+   "verdict": "corrected",
+   "error_kind": "wrong plant or location",
+   "corrected_value": "unknown for Brookshire (AISC certification is per facility; the AISC directory lists Structural and Steel Products at Crowley and Fort Worth, and no Race Rock facility in Brookshire)",
+   "corrected_quote": "unknown",
+   "corrected_tag": "unknown",
+   "note": "Company-level marketing line ('AISC Quality Fabricator', oil and gas section) applied to Brookshire. AISC live company-name searches: 'Race Rock' 0 companies, 'Spitzer' 0, 'Structural and Steel' only Crowley and Fort Worth TX; the snapshot's Brookshire row (Basden Industrial Group) is a different company. plants.csv shows 'AISC Quality Fabricator (company-wide)' for Brookshire."
+  },
+  {
+   "claim_id": "p-race-rock-brookshire-tx:production_type",
+   "source_url": "https://www.racerock.com/utility",
+   "evidence_row": 1971,
+   "ledger_value": "Engineered transmission and substation structures (project-specific)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Company utility page (not plant-specific); Brookshire is the utility structures campus per news."
+  },
+  {
+   "claim_id": "p-race-rock-brookshire-tx:existing_robots",
+   "source_url": "https://www.racerock.com/careers",
+   "evidence_row": 1972,
+   "ledger_value": "yes, company-level: Robotic Weld Cell Operator opening at Crowley, TX; brand not stated; Brookshire unknown",
+   "ledger_tag": "stated",
+   "verdict": "corrected",
+   "error_kind": "wrong plant or location",
+   "corrected_value": "unknown (robotic weld cell posting is for Crowley, TX, a sister plant)",
+   "corrected_quote": "unknown",
+   "corrected_tag": "unknown",
+   "note": "Value starts 'yes' for Brookshire's existing_robots on the strength of a Crowley posting; plants.csv shows 'yes (company-level, Crowley TX)' for Brookshire. Belongs on p-structural-steel-products-crowley-tx only."
+  },
+  {
+   "claim_id": "p-race-rock-brookshire-tx:triggers",
+   "source_url": "https://www.racerock.com/news",
+   "evidence_row": 1974,
+   "ledger_value": "2026-10-15 groundbreaking of $100M Brookshire expansion; 2026-07-15 expansion announced (200+ jobs, up to 50,000 tons capacity)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "News page: groundbreaking October 15, 2026; expansion announced July 15, 2026."
+  },
+  {
+   "claim_id": "p-race-rock-brookshire-tx:triggers",
+   "source_url": "https://news.constructconnect.com/race-rock-to-expand-brookshire-texas-manufacturing-campus-to-support-growing-electrical-infrastructure-demand",
+   "evidence_row": 1975,
+   "ledger_value": "Expansion to add up to 50,000 tons and 200+ jobs",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on ConstructConnect page. SCORE NOTE: p-race-rock-brookshire-tx:score_scale = 10 needs 100+ employees at the site; it rests on an inferred ~300 now (stated: +200 jobs lifts total above 500). Arithmetic sound, but the component is inferred."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:address",
+   "source_url": "https://www.racerock.com/about-us/our-facilities",
+   "evidence_row": 2021,
+   "ledger_value": "400 N Tarrant St, Crowley, TX 76036",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Race Rock facilities page lists 'Fabrication Facility, Crowley, TX, Address: 400 N Tarrant St, Crowley, TX 76036'. SSP Crowley and Race Rock Crowley are the same site (Race Rock consolidated Structural & Steel Products, per racerock.com transportation-lighting and utility pages). Open: Crowley postings dated Oct 20, Oct 22 and Nov 2, 2026."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:parent_company",
+   "source_url": "https://www.racerock.com/transportation-lighting",
+   "evidence_row": 2022,
+   "ledger_value": "Race Rock",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Transportation & Lighting page: consolidation of Structural & Steel Products under the Race Rock umbrella."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:weld_processes",
+   "source_url": "https://racerock.com/jobs/fitter-welder-leadman-1st-shift-full-time-crowley-tx/",
+   "evidence_row": 2023,
+   "ledger_value": "FCAW (flux-core)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Both Crowley Leadman postings require an internal FCAW 1G test."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:materials",
+   "source_url": "https://www.racerock.com/transportation-lighting",
+   "evidence_row": 2024,
+   "ledger_value": "U.S. steel",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:certifications",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "evidence_row": 2025,
+   "ledger_value": "AISC (Highway Component Manufacturer, Bridge Fabricator - Simple, Building Fabricator)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "AISC directory live search shows the Crowley row with these certifications."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:production_type",
+   "source_url": "https://www.racerock.com/transportation-lighting",
+   "evidence_row": 2027,
+   "ledger_value": "engineered-to-order, standard and custom designs",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:welder_postings",
+   "source_url": "https://www.racerock.com/careers",
+   "evidence_row": 2029,
+   "ledger_value": "3 open on careers page 2026-11-12: Fitter/Welder Leadman 1st shift (posted 2026-10-20) and 2nd shift (2026-10-22), Robotic Weld Cell Operator (2026-11-02); no bonus or overtime stated",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Careers page lists both Leadman postings and the Robotic Weld Cell Operator for Crowley; detail pages dated Oct 20, Oct 22, Nov 2 2026. The two Leadman pages differ only by shift/date. SCORE NOTE: score_labor 20 ('several at once') counts 2 Fitter/Welder Leadman postings plus a Robotic Weld Cell Operator; the robot operator is not a welder posting. Two welder postings at once is defensible as 'several'."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:welder_postings",
+   "source_url": "https://racerock.com/jobs/robotic-weld-cell-technician-1st-shift-full-time-crowley-tx/",
+   "evidence_row": 2030,
+   "ledger_value": "Robotic Weld Cell Operator, 1st shift, posted 2026-11-02",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Detail page dated November 2, 2026; job title on page 'Robotic Weld Cell Operator' (URL slug says technician). INFERRED-ROW NOTE: p-structural-steel-products-crowley-tx:existing_robots is tagged inferred but is stated: this posting says 'Operate and monitor the robotic welding cell'."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:triggers",
+   "source_url": "https://www.plantservices.com/industry-news/news/55269005/race-rock-expands-manufacturing-capacity-with-new-texas-facility",
+   "evidence_row": 2031,
+   "ledger_value": "New manufacturing facility in Crowley (announced 2025-02-19)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Plant Services Feb 19, 2025: Race Rock new manufacturing facility in Crowley; two manufacturing buildings."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:scale_note",
+   "source_url": "https://www.racerock.com/about-us/our-facilities",
+   "evidence_row": 2042,
+   "ledger_value": "multi-plant",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Facilities page: 'With multiple production facilities across the United States'."
+  },
+  {
+   "claim_id": "p-qmf-steel-campbell-tx:certifications",
+   "source_url": "https://www.qmfsteel.com",
+   "evidence_row": 2045,
+   "ledger_value": "AISC",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Homepage: 'AISC certified for light structural and metal components.'"
+  },
+  {
+   "claim_id": "p-qmf-steel-campbell-tx:certifications",
+   "source_url": "https://www.qmfsteel.com/",
+   "evidence_row": 2046,
+   "ledger_value": "ISO 9001:2015",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Homepage: 'ISO9001:2015 Quality Certified.' and 'Our ISO certified production facility'."
+  },
+  {
+   "claim_id": "p-qmf-steel-campbell-tx:certifications",
+   "source_url": "https://www.qmfsteel.com/careers",
+   "evidence_row": 2047,
+   "ledger_value": "AWS D1.1 standards in use",
+   "ledger_tag": "stated",
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "AISC; ISO; TxDOT DMS (AWS D1.1 is the inspection code in use, not a certification)",
+   "corrected_quote": "Our AISC and ISO certifications along with TXDOT DMS certifications are a key part of our success.",
+   "corrected_tag": "stated",
+   "note": "PRIORITY ROW. Quote is on qmfsteel.com/careers (Quality Manager / CWI posting) but describes inspection 'using AWS D1.1 standards', a code in use, not a certification held. Drop it from certifications; the homepage also states 'TXDOT DMS 7380 DMS 7395 CERTIFIED', which is missing from the ledger."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:weld_processes",
+   "source_url": "https://racerock.com/jobs/fitter-welder-leadman-2nd-shift-full-time-crowley-tx/",
+   "evidence_row": 2138,
+   "ledger_value": "FCAW (flux-core), three years required",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "2nd shift Leadman posting (Oct 22, 2026)."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:welder_postings",
+   "source_url": "https://racerock.com/jobs/fitter-welder-leadman-1st-shift-full-time-crowley-tx/",
+   "evidence_row": 2139,
+   "ledger_value": "Fitter/Welder Leadman, 1st shift, posted 2026-10-20",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the source page (fetched 2026-11-12) and supports the value for this plant."
+  }
+ ]
+}
