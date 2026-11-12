@@ -191,7 +191,16 @@ def main():
         if target in pid:
             for c in pcols:
                 if c != "id" and p.get(c):
-                    pid[target][c] = p[c]
+                    if c in ("found_by", "verticals") and pid[target].get(c):
+                        seen = [x.strip() for x in pid[target][c].split(";") if x.strip()]
+                        for x in p[c].split(";"):
+                            if x.strip() and x.strip() not in seen:
+                                seen.append(x.strip())
+                        pid[target][c] = ";".join(seen)
+                    elif c == "status" and pid[target].get(c) == "profiled" and p[c] == "base":
+                        continue  # never downgrade a profiled record
+                    else:
+                        pid[target][c] = p[c]
             pupd += 1
         else:
             row = {c: p.get(c, "") for c in pcols}
