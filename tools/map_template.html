@@ -264,7 +264,7 @@ footer strong{color:var(--text)}
   </div>
   <div class="tools">
    <div class="search"><label class="sr" for="q">Search plants by name</label><input id="q" type="search" placeholder="Search plant, company or city" autocomplete="off"></div>
-   <label class="chk" title="Hide every value tagged inferred. Values with no evidence row stay visible with a marker."><input type="checkbox" id="stated"> Stated facts only</label>
+   <label class="chk" title="Hide every value tagged inferred. Values with no evidence row are never shown."><input type="checkbox" id="stated"> Stated facts only</label>
    <button class="btn" id="csv" type="button">Download CSV</button>
    <button class="btn" id="theme" type="button" aria-label="Switch colour theme">Theme: auto</button>
   </div>
@@ -291,8 +291,16 @@ footer strong{color:var(--text)}
 "use strict";
 const D = JSON.parse(document.getElementById('data').textContent);
 const GEO = JSON.parse(document.getElementById('geo').textContent);
-const EV = D.ev, FC = D.factcheck, M = D.meta, C = M.counts;
+const EV = D.ev, M = D.meta, C = M.counts;
 const P = D.plants, V = D.verticals, LK = D.links;
+/* Ground rule 1: a value with no evidence row is omitted (shown as "not sourced").
+   Exempt: identity and location (name, city, state, lat/lon used only to place dots), the record's status and vertical,
+   and calculated fields (score total, tier, confidence), which are sums of the six component rows. */
+const PEX = new Set(['id','name','city','state','status','verticals','lat','lon','score_total','score_tier','confidence']);
+const VEX = new Set(['id','name','status','rank']);
+const UNSRC = {plants: 0, verticals: 0};
+P.forEach(p => { Object.keys(p).forEach(f => { if (!PEX.has(f) && p[f] !== '' && !EV[p.id + ':' + f]) { p[f] = ''; UNSRC.plants++; } }); });
+V.forEach(v => { Object.keys(v).forEach(f => { if (!VEX.has(f) && v[f] !== '' && !EV[v.id + ':' + f]) { v[f] = ''; UNSRC.verticals++; } }); });
 const byId = {}; P.forEach(p => byId[p.id] = p);
 const vById = {}; V.forEach(v => vById[v.id] = v);
 const INCL = P.filter(p => p.status !== 'excluded');
@@ -325,11 +333,13 @@ function effRow(claim, shown){
   rows.forEach(r => { if (norm(r.v) === n) m = r; });
   return m || rows[rows.length-1];
 }
-function verState(row, claim){
-  const o = FC[claim];
-  return o ? o.status : row.vf;
+function verState(row){
+  if (row.vf && row.vf !== 'not_checked') return row.vf;
+  return row.fc ? row.fc.status : (row.vf || 'not_checked');
 }
-function badgeTag(t){
+const isComposed = r => !!(r && r.t === 'inferred' && /^composed from stated claims/i.test(r.r || ''));
+function badgeTag(t, row){
+  if (t === 'inferred' && isComposed(row)) return '<span class="badge b-inf" title="Inferred: composed from stated claims, a guess to verify">inferred &middot; composed</span>';
   if (t === 'inferred') return '<span class="badge b-inf" title="Inferred: a guess to verify">inferred</span>';
   if (t === 'unknown') return '<span class="badge b-unknown">unknown</span>';
   return '';
@@ -341,15 +351,14 @@ function val(obj, field, prefix, opt){
   const claim = prefix + ':' + field;
   const row = effRow(claim, raw);
   const text = raw == null || raw === '' ? '' : raw;
-  if (text === '' && !row) return '<span class="muted">not in ledger</span> <span class="noev">no evidence row</span>';
+  if (text === '' && !row) return '<span class="muted">not sourced</span>';
   if (row && row.t === 'inferred' && S.stated) return '<span class="hid">inferred value hidden</span>';
   let shown = esc(opt.max && text.length > opt.max ? text.slice(0, opt.max).trimEnd() + '…' : text);
-  if (text === '') shown = '<span class="muted">not in ledger</span>';
-  if (!row) return '<span>' + shown + '</span> <span class="noev" title="This value has no row in evidence.csv">no evidence row</span>';
+  if (text === '') shown = '<span class="muted">not sourced</span>';
   const unk = row.t === 'unknown' || /^unknown\b/i.test(text);
-  const vs = verState(row, claim);
+  const vs = verState(row);
   const mark = vs === 'corrected' ? ' <span class="badge b-warn" title="A fact-check corrected this claim">corrected</span>' : vs === 'unreachable' ? ' <span class="badge b-bad">source unreachable</span>' : '';
-  return '<button type="button" class="val' + (unk ? ' unk' : '') + '" data-claim="' + esc(claim) + '" data-shown="' + esc(text) + '" aria-label="' + esc((opt.label || field.replace(/_/g,' ')) + ': ' + (text || 'not in ledger') + '. Open evidence') + '">' + shown + '</button> ' + badgeTag(row.t) + mark;
+  return '<button type="button" class="val' + (unk ? ' unk' : '') + '" data-claim="' + esc(claim) + '" data-shown="' + esc(text) + '" aria-label="' + esc((opt.label || field.replace(/_/g,' ')) + ': ' + (text || 'not sourced') + '. Open evidence') + '">' + shown + '</button> ' + badgeTag(row.t, row) + mark;
 }
 function tierBadge(t){ return t ? '<span class="badge b-st">' + esc(t) + '</span>' : ''; }
 function scoreBadge(p){
@@ -382,7 +391,7 @@ const cmpScore = (a,b) => scoreOf(b) - scoreOf(a) || (+b.confidence||0) - (+a.co
 /* ---------- header, nav, footer ---------- */
 function renderChrome(){
   $('#stats').innerHTML =
-    '<div class="stat"><b>' + C.verticals_done + '<small class="muted" style="font-size:13px;font-weight:600"> / ' + C.verticals_total + '</small></b><span>Verticals done' + (C.verticals_accepted ? ' (' + C.verticals_accepted + ' accepted, in progress)' : '') + '</span></div>' +
+    '<div class="stat"><b>' + C.verticals_done + '<small class="muted" style="font-size:13px;font-weight:600"> / ' + C.verticals_total + '</small></b><span>Verticals done' + (C.verticals_partial || C.verticals_accepted ? ' (' + [C.verticals_partial ? C.verticals_partial + ' partial' : '', C.verticals_accepted ? C.verticals_accepted + ' accepted, not started' : ''].filter(Boolean).join(', ') + ')' : '') + '</span></div>' +
     '<div class="stat"><b>' + C.plants_found + '</b><span>Plants found (' + C.plants_included + ' included, ' + C.plants_excluded + ' excluded)</span></div>' +
     '<div class="stat"><b>' + C.plants_profiled + '</b><span>Plants profiled</span></div>';
   $('#tabs').innerHTML = VIEWS.map(v => '<button type="button" data-view="' + v[0] + '">' + esc(v[1]) + '</button>').join('');
@@ -444,7 +453,8 @@ function renderRanking(){
       (c.excluded ? '<div class="vnum"><b>' + c.excluded + '</b><span>excluded</span></div>' : '') + bar +
       (c.included ? '<button type="button" class="btn small" data-showv="' + esc(v.id) + '">Show on map</button>' : '') + '</div>' +
       '<div class="score-grid">' + sg + '</div>' +
-      (v.reason ? '<p class="reason"><strong>Why this status:</strong> ' + esc(v.reason) + '</p>' : '') +
+      (v.status === 'partial' ? '<p class="reason partial"><span class="badge b-warn">partial</span> Research or checks on this vertical are incomplete. See the Method page for what was and was not finished.</p>' : '') +
+      '<p class="reason"><strong>Why this status:</strong> ' + val(v, 'reason', v.id, {label: 'reason'}) + '</p>' +
       '<details class="more"><summary>Definition</summary><p>' + val(v, 'definition', v.id) + '</p></details></article>';
   }).join('') + '</div>';
   el.querySelectorAll('[data-showv]').forEach(b => b.addEventListener('click', () => { S.f.vert = b.dataset.showv; go('map'); }));
@@ -610,8 +620,8 @@ function renderSupply(){
       const row = effRow(x.l.claim_id, x.l.what_is_supplied);
       const nm = e => e.plant ? '<button type="button" class="link" data-plant="' + esc(e.id) + '">' + esc(e.name) + '</button>' : esc(e.name);
       return '<div class="lcard">' + nm(x.other) + ' <span class="arrow">' + (x.toMaker ? '&rarr; supplies' : '&larr; is supplied by') + '</span> ' + nm(x.mineEnd) +
-        '<div class="small">' + (S.stated && row && row.t === 'inferred' ? '<span class="hid">inferred link detail hidden</span>' : esc(x.l.what_is_supplied)) + ' ' + (row ? badgeTag(row.t) : '<span class="noev">no evidence row</span>') + '</div>' +
-        (row && !(S.stated && row.t === 'inferred') ? '<div style="margin-top:4px"><button type="button" class="btn small" data-claim="' + esc(x.l.claim_id) + '" data-shown="' + esc(x.l.what_is_supplied) + '">Evidence for this link</button> <span class="badge b-' + ({confirmed:'ok',corrected:'warn',unreachable:'bad'}[verState(row, x.l.claim_id)] || 'grey') + '">' + esc(String(verState(row, x.l.claim_id)).replace('_',' ')) + '</span></div>' : '') + '</div>';
+        '<div class="small">' + (S.stated && row && row.t === 'inferred' ? '<span class="hid">inferred link detail hidden</span>' : row ? esc(x.l.what_is_supplied) : '') + ' ' + (row ? badgeTag(row.t, row) : '<span class="muted">not sourced</span>') + '</div>' +
+        (row && !(S.stated && row.t === 'inferred') ? '<div style="margin-top:4px"><button type="button" class="btn small" data-claim="' + esc(x.l.claim_id) + '" data-shown="' + esc(x.l.what_is_supplied) + '">Evidence for this link</button> <span class="badge b-' + ({confirmed:'ok',corrected:'warn',unreachable:'bad'}[verState(row)] || 'grey') + '">' + esc(String(verState(row)).replace('_',' ')) + '</span></div>' : '') + '</div>';
     }).join('') + '</div>';
   });
   $('#sclist').innerHTML = h;
@@ -666,27 +676,55 @@ function renderExcluded(){
 
 /* ---------- method ---------- */
 function pct(x){ return x == null ? '' : (Math.round(x * 1000) / 10) + '%'; }
+function kindsHtml(k){ const e = Object.entries(k || {}).sort((a,b) => b[1]-a[1]); return e.length ? e.map(x => esc(x[0]) + ' ' + x[1]).join(', ') : '<span class="muted">none recorded</span>'; }
+function roundTable(r){
+  return '<div class="tscroll"><table class="t"><thead><tr><th>Checker</th><th>Corrected / checked</th><th>Unreachable</th><th>Error rate</th><th>Error kinds</th></tr></thead><tbody>' +
+    r.checkers.map(c => '<tr><td>' + esc(c.checker) + '</td><td>' + c.corrected + ' / ' + c.checked + '</td><td>' + c.unreachable + '</td><td>' + (c.rate != null ? pct(c.rate) : pct(c.checked ? c.corrected / c.checked : null)) + '</td><td class="small">' + kindsHtml(c.kinds) + '</td></tr>').join('') +
+    '<tr><td><strong>All</strong></td><td><strong>' + r.corrected + ' / ' + r.checked + '</strong></td><td><strong>' + r.unreachable + '</strong></td><td><strong>' + pct(r.rate) + '</strong></td><td class="small">' + kindsHtml(r.kinds) + '</td></tr></tbody></table></div>';
+}
+function factHtml(){
+  const vs = V.filter(v => (D.audit[v.id] || {}).rounds);
+  if (!vs.length) return '<h3>Fact-check</h3><p class="muted">No fact-check report in the ledger yet.</p>';
+  const vf = D.log.verify || {};
+  let h = '<h3>Fact-check</h3><p class="small muted">Independent checkers re-fetch each cited source and compare it with the ledger value. A claim is &ldquo;corrected&rdquo; when the source does not support the value for that plant. Unreachable sources are reported apart and are never counted as confirmed. Error rate = corrected &divide; checked. Results are reported as measured.</p>';
+  vs.forEach(v => {
+    const rd = D.audit[v.id].rounds, r1 = rd['1'], r2 = rd['2'];
+    h += '<h4>' + esc(v.name) + '</h4>';
+    if (r1) h += '<p><strong>Round 1 (before repairs): ' + r1.corrected + ' / ' + r1.checked + ' = ' + pct(r1.rate) + '</strong> claims corrected' + (r1.unreachable ? ' (' + r1.unreachable + ' unreachable, not counted)' : '') + '. Error kinds: ' + kindsHtml(r1.kinds) + '.</p>' + roundTable(r1) +
+      '<details class="card pad" style="margin:8px 0"><summary style="cursor:pointer;font-weight:600;color:var(--accent)">Worst errors found in round 1</summary>' + r1.checkers.map(c => '<p class="small"><strong>Checker ' + esc(c.checker) + '</strong></p><ul class="small">' + c.worst.map(w => '<li>' + esc(w) + '</li>').join('') + '</ul>').join('') + '</details>';
+    if (r2) h += '<p><strong>Round 2, after repairs: ' + r2.corrected + ' / ' + r2.checked + ' = ' + pct(r2.rate) + '</strong> claims corrected on a fresh sample' + (r2.unreachable ? ' (' + r2.unreachable + ' unreachable)' : '') + '. Error kinds: ' + kindsHtml(r2.kinds) + '.</p>' + roundTable(r2);
+    else h += '<p class="muted"><strong>Round 2 (after repairs):</strong> no report yet. The repair pass has not been re-measured.</p>';
+  });
+  h += '<h4>Verify stages during profiling and the repair pass (from run_log.md)</h4><ul>' +
+    (vf.waves || []).map((w, i) => '<li>Profiling wave ' + (i + 1) + ': ' + w[0] + ' quotes checked, ' + w[1] + ' fixed, ' + w[2] + ' claims downgraded to inferred or unknown.</li>').join('') +
+    (vf.repaired != null ? '<li>Repair pass after the round 1 fact-check: ' + vf.repaired + ' evidence rows repaired or added.</li>' : '') + '</ul>';
+  return h;
+}
 function renderMethod(){
   const el = $('#v-method'), B = D.log.bullets;
   const ul = a => a.length ? '<ul>' + a.map(x => '<li>' + x + '</li>').join('') + '</ul>' : '<p class="muted">Nothing logged yet.</p>';
   const rows = V.slice().sort((a,b) => (+a.rank||99) - (+b.rank||99)).map(v => {
-    const c = vCounts(v), a = D.audit[v.id] || {}, lg = a.log || {}, fc = a.factcheck;
-    const miss = lg.corrected_miss || lg.miss;
+    const c = vCounts(v), a = D.audit[v.id] || {}, lg = a.log || {};
+    const mh = lg.miss || [], miss = mh[mh.length - 1];
+    const hist = mh.map(m => m.pct).filter(x => x != null).filter((x, i, arr) => i === 0 || x !== arr[i-1]);
     const la = (a.listaudit || []).map(x => 'Auditor ' + esc(x.auditor) + ': ' + x.rows + ' rows, ' + x.in_definition + ' in definition, ' + x.searches + ' searches').join('<br>');
     const mc = a.miss_candidates;
-    return '<tr><td><strong>' + esc(v.name) + '</strong><br><span class="badge b-grey">' + esc(v.status) + '</span></td><td>' + (c.included ? c.included + ' included, ' + c.profiled + ' profiled<br>' + c.High + ' High / ' + c.Medium + ' Medium / ' + c.Low + ' Low' : '<span class="muted">none researched</span>') + '</td>' +
-      '<td>' + (miss ? '<strong>' + esc(miss.headline) + '</strong>' + (lg.corrected_miss && lg.miss ? '<br><span class="muted small">earlier: ' + esc(lg.miss.headline) + '</span>' : '') : '<span class="muted">not audited</span>') + (mc ? '<br><span class="small muted">' + mc.combined_in_definition + ' auditor plants in definition; ' + mc.matched + ' matched, ' + mc.unmatched + ' unmatched before adjudication</span>' : '') + (la ? '<br><span class="small muted">' + la + '</span>' : '') + '</td>' +
-      '<td>' + (fc ? '<strong>' + (fc.rate != null ? pct(fc.rate) : '?') + '</strong> (' + fc.corrected + ' corrected of ' + fc.checked + ' checked' + (fc.unreachable ? ', ' + fc.unreachable + ' unreachable' : '') + ')' : lg.fact ? '<strong>' + esc(lg.fact.headline) + '</strong>' : (c.included ? '<span class="muted">pending: no fact-check report yet</span>' : '<span class="muted">not checked</span>')) + '</td></tr>';
+    const rd = a.rounds || {}, r1 = rd['1'], r2 = rd['2'];
+    const stCls = {done:'b-ok',partial:'b-warn',accepted:'b-st',rejected:'b-bad'}[v.status] || 'b-grey';
+    return '<tr><td><strong>' + esc(v.name) + '</strong><br><span class="badge ' + stCls + '">' + esc(v.status) + '</span></td><td>' + (c.included ? c.included + ' included, ' + c.profiled + ' profiled<br>' + c.High + ' High / ' + c.Medium + ' Medium / ' + c.Low + ' Low' : '<span class="muted">none researched</span>') + '</td>' +
+      '<td>' + (miss ? '<strong>Final: ' + (miss.frac ? miss.frac[0] + ' / ' + miss.frac[1] + ' = ' : '') + miss.pct + '%</strong>' + (hist.length > 1 ? '<br><span class="muted small">history: ' + hist.map(x => x + '%').join(' &rarr; ') + '</span>' : '') : '<span class="muted">not audited</span>') + (mc ? '<br><span class="small muted">' + mc.combined_in_definition + ' auditor plants in definition; ' + mc.matched + ' matched, ' + mc.unmatched + ' unmatched before adjudication</span>' : '') + (la ? '<br><span class="small muted">' + la + '</span>' : '') + '</td>' +
+      '<td>' + (r1 ? '<strong>Round 1: ' + pct(r1.rate) + '</strong> (' + r1.corrected + ' corrected of ' + r1.checked + ' checked' + (r1.unreachable ? ', ' + r1.unreachable + ' unreachable' : '') + ')' + (r2 ? '<br><strong>Round 2, after repairs: ' + pct(r2.rate) + '</strong> (' + r2.corrected + ' of ' + r2.checked + ')' : '<br><span class="muted small">Round 2 (after repairs): not run yet</span>') : (c.included ? '<span class="muted">pending: no fact-check report yet</span>' : '<span class="muted">not checked</span>')) + '</td></tr>';
   }).join('');
   const centroid = P.filter(p => /centroid/i.test(p.address)).length;
   const noAddr = P.filter(p => /^unknown/i.test(p.address)).length;
   const inferredN = Object.values(EV).reduce((n, rs) => n + rs.filter(r => r.t === 'inferred').length, 0);
   const totalEv = C.evidence_rows;
+  const mat0 = P.filter(p => p.status === 'profiled' && +p.score_material_part === 0).length;
   const lowConf = P.filter(p => p.status === 'profiled' && +p.confidence <= 2).length;
   const qc = D.qc, pcs = D.posting_check;
   const linkTags = LK.map(l => { const r = effRow(l.claim_id, l.what_is_supplied); return r ? r.t : 'none'; });
   el.innerHTML = '<div class="view-h"><h2>Method</h2><p>How the map is built, what the numbers mean, how well it has been checked, and what it cannot tell you.</p></div><div class="prose">' +
-  '<h3>What is on the map</h3><p>The ledger holds one row per physical plant. A plant is <strong>included</strong> (status base or profiled) when it welds in-house, welding is a core production step, and it works in carbon or stainless steel (aluminum-first plants are kept and noted). Plants that fail stay in the ledger as <strong>excluded</strong>, with the reason. <strong>Base</strong> plants have an identity record only; <strong>profiled</strong> plants have a researched profile and a score. Every value on the map links to a row in <code>evidence.csv</code>: a quote, a source link, a retrieval date and a tag. A value with no evidence row is marked <span class="noev">no evidence row</span>.</p>' +
+  '<h3>What is on the map</h3><p>The ledger holds one row per physical plant. A plant is <strong>included</strong> (status base or profiled) when it welds in-house, welding is a core production step, and it works in carbon or stainless steel (aluminum-first plants are kept and noted). Plants that fail stay in the ledger as <strong>excluded</strong>, with the reason. <strong>Base</strong> plants have an identity record only; <strong>profiled</strong> plants have a researched profile and a score. Every value on the map links to a row in <code>evidence.csv</code>: a quote, a source link, a retrieval date and a tag. A value with no evidence row is not shown; the page says <span class="muted">not sourced</span> instead (name, city and state identify the plant and are the only exceptions; score totals, tiers and confidence are <strong>calculated</strong> from the six component rows).</p>' +
   '<h3>Verticals</h3><p>A vertical is a product family with a shared welded-part profile (for example, utility poles and substation steel). The planner scores each on weld intensity, part-size fit, part variety, hiring pain, demand outlook and Path presence, then the coordinator accepts, rejects or keeps it as a candidate. Rejected verticals stay in the ledger with the reason. One vertical is researched per session; a vertical is <em>done</em> only after profiling, fact-check and list audit.</p>' +
   '<h3>Supply-chain tiers</h3><table class="t"><tbody><tr><td><strong>OEM</strong></td><td>Sells a finished product under its own name.</td></tr><tr><td><strong>Tier 1</strong></td><td>Supplies welded assemblies directly to OEMs.</td></tr><tr><td><strong>Tier 2</strong></td><td>Supplies components or sub-weldments to Tier 1s.</td></tr><tr><td><strong>Contract fabricator</strong></td><td>Builds to customer drawings across customers and sectors.</td></tr><tr><td><strong>Tier 3</strong></td><td>Materials and processing only; usually fails the prospect test.</td></tr></tbody></table><p class="small muted">A secondary tier is recorded where two apply. Industry alone never sets a tier; most tiers here are tagged inferred.</p>' +
   '<h3>Relationships to Path</h3><table class="t"><tbody><tr><td><strong>known_customer</strong></td><td>Path&rsquo;s own material or a primary source names this plant as a customer, or its company has a single welding site (tagged inferred).</td></tr><tr><td><strong>customer_other_plant</strong></td><td>Same parent as a reported customer, but this plant is not reported as converted.</td></tr><tr><td><strong>lookalike</strong></td><td>A direct product competitor of a named customer; the customer is named in the record.</td></tr><tr><td><strong>new</strong></td><td>None of the above.</td></tr></tbody></table>' +
@@ -699,10 +737,14 @@ function renderMethod(){
   '<tr><td>Scale</td><td>10</td><td>Multi-plant parent and 100+ employees at the site 10; one of the two 5</td></tr></tbody></table></div>' +
   '<p><strong>Tiers:</strong> <span class="badge b-high">High</span> 70+, <span class="badge b-medium">Medium</span> 45-69, <span class="badge b-low">Low</span> under 45. <strong>Confidence</strong> = how many of the six components rest on stated evidence (0-6). Path capability limits used for part fit: the 2026 analyst report (cells up to 60 ft long, 15 ft wide, 55,000 lb) and the older sales sheet (large cell 8-72 in diameter, up to 65 ft, 10,500 lb); the Rove walking robot is for work too large to move.</p>' +
   '<p><strong>The “live trigger” flag</strong> on the call list means the plant’s Demand and triggers component is 15, that is, a plant-level trigger within the last 24 months.</p>' +
-  '<h4>Coordinator’s scoring rules (from run_log.md)</h4>' + ul(B.rules) +
+  '<h4>How the coordinator applied the rubric (read from run_log.md)</h4>' +
+  '<p class="small muted">The rubric above is the brief. These are the interpretations the coordinator logged while scoring, quoted from the run log. Where they say &ldquo;stated&rdquo;, a source must say it; nothing is inferred from industry.</p>' + ul(B.rules) +
+  '<p><strong>Data gap, not a poor fit:</strong> ' + mat0 + ' of ' + C.plants_profiled + ' profiled plants score 0 on material and part fit because no source states the size or weight of the parts welded at that plant. Pole makers rarely publish section dimensions. Their real fit is unknown, and a score of 0 here reflects missing data.</p>' +
+  '<h4>Confidence</h4>' + ul(B.confidence.length ? B.confidence : ['Confidence = how many of the six components rest on stated evidence (0-6).']) +
   '<h3>Back-test</h3><p>The scoring was tested on Path’s reported customers: a good model should score them High.</p>' + ul(B.backtest.concat(B.weights)) +
   '<h3>Audit numbers by vertical</h3><div class="tscroll card pad"><table class="t"><thead><tr><th>Vertical</th><th>Plants</th><th>Miss rate (list audit)</th><th>Fact error rate</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
   '<p class="small muted"><strong>Miss rate</strong> = in-definition plants found by independent auditors that were absent from the ledger, divided by all in-definition auditor plants. <strong>Fact error rate</strong> = claims corrected by the fact-checker divided by claims checked; unreachable sources are reported separately and never counted as confirmed. Both come from <code>ledger/audit/</code> and <code>run_log.md</code>.</p>' +
+  factHtml() +
   '<h3>Checks run on the evidence</h3><ul><li>Quote check at merge: ' + qc.found + ' quotes found in their source, ' + qc.not_found + ' not found, ' + qc.unreachable + ' unreachable (' + qc.files + ' check files). Not-found and unreachable quotes show a flag in the evidence drawer.</li>' +
   (pcs && pcs.CITY_NOT_ON_PAGE != null ? '<li>Wrong-plant sweep of job postings: ' + pcs.city_on_page + ' pages show the plant’s city, ' + pcs.CITY_NOT_ON_PAGE + ' do not (flagged in the drawer), ' + pcs.unreachable + ' unreachable.</li>' : '') +
   '<li>Verified status per claim in the drawer: <em>not checked</em>, <em>confirmed</em>, <em>corrected</em> (a checker changed the value) or <em>unreachable</em>. Currently ' + Object.values(EV).reduce((n, rs) => n + rs.filter(r => r.vf === 'confirmed').length, 0) + ' evidence rows are confirmed and ' + Object.values(EV).reduce((n, rs) => n + rs.filter(r => r.vf === 'corrected').length, 0) + ' corrected, out of ' + totalEv + '.</li></ul>' +
@@ -735,27 +777,30 @@ function profileHtml(p){
   if (p.status === 'excluded') h += '<div class="banner ex"><strong>Excluded from the map.</strong> ' + val(p, 'exclusion_reason', pre, {label: 'exclusion reason'}) + '</div>';
   else if (!prof) h += '<div class="banner"><strong>Not yet profiled.</strong> Only the base record is in the ledger: no score, process or material findings, postings, triggers or opening line yet.</div>';
   if (prof){
-    h += '<div class="sec"><h3>Score</h3><div class="bigscore"><span class="n">' + esc(p.score_total) + '</span><div><span class="badge b-' + t.toLowerCase() + '">' + t + '</span><div class="small muted">out of 100 &middot; sum of six components (calculated)</div><div class="small"><strong>Confidence ' + esc(p.confidence) + ' of 6:</strong> components resting on stated evidence</div></div></div><p class="small muted" style="margin:8px 0 0">Each component\u2019s points are a rubric judgement, so they carry the ledger\u2019s tag. Click a component for its reasoning and the supporting claims that hold the quotes.' + (S.stated ? ' Stated-only mode lists only supporting claims that include stated evidence.' : '') + '</p><div style="margin-top:8px">';
+    h += '<div class="sec"><h3>Score</h3><div class="bigscore"><span class="n">' + esc(p.score_total) + '</span><div><span class="badge b-' + t.toLowerCase() + '">' + t + '</span><div class="small muted">out of 100 &middot; sum of the six component rows below (<strong>calculated</strong>)</div><div class="small"><strong>Confidence ' + esc(p.confidence) + ' of 6</strong> (<strong>calculated</strong>): components resting on stated evidence</div></div></div><p class="small muted" style="margin:8px 0 0">Each component\u2019s points are a rubric judgement, so they carry the ledger\u2019s tag. Click a component for its reasoning and the supporting claims that hold the quotes.' + (S.stated ? ' Stated-only mode lists only supporting claims that include stated evidence.' : '') + '</p><div style="margin-top:8px">';
     COMP.forEach(c => {
       const claim = pre + ':' + c[0], row = effRow(claim, p[c[0]]), pts = +p[c[0]] || 0;
       const hide = false;
       const ids = row && row.r ? [...new Set(row.r.match(/\b(?:p|c|v|bt)-[a-z0-9-]+:[a-z_]+(?::(?:p|c)-[a-z0-9-]+)?/g) || [])].filter(i => EV[i] && i !== claim && !(S.stated && EV[i].every(r => r.t === 'inferred'))) : [];
-      h += '<div class="comp"><div class="row"><span class="lbl">' + c[1] + '</span>' + (hide ? '<span class="hid">inferred, hidden</span>' : '<button type="button" class="val" data-claim="' + esc(claim) + '" data-shown="' + esc(p[c[0]]) + '" aria-label="' + esc(c[1] + ': ' + pts + ' of ' + c[2] + ' points. Open evidence') + '"><strong>' + pts + '</strong> / ' + c[2] + '</button> ' + (row ? badgeTag(row.t) : '<span class="noev">no evidence row</span>')) + '</div>' +
+      h += '<div class="comp"><div class="row"><span class="lbl">' + c[1] + '</span>' + (hide ? '<span class="hid">inferred, hidden</span>' : '<button type="button" class="val" data-claim="' + esc(claim) + '" data-shown="' + esc(p[c[0]]) + '" aria-label="' + esc(c[1] + ': ' + pts + ' of ' + c[2] + ' points. Open evidence') + '"><strong>' + pts + '</strong> / ' + c[2] + '</button> ' + (row ? badgeTag(row.t, row) : '<span class="muted">not sourced</span>')) + '</div>' +
         '<div class="meter"><i style="width:' + (hide ? 0 : pts / c[2] * 100) + '%"></i></div>' +
         (!hide && row && row.r ? '<div class="why">' + esc(row.r.replace(/;?\s*supporting claims:.*$/i, '').replace(/;?\s*counts toward confidence:.*$/i, '')) + '</div>' : '') +
         (!hide && ids.length ? '<div class="chips" aria-label="Supporting claims">' + ids.map(i => '<button type="button" class="chip" data-claim="' + esc(i) + '">' + esc(i.startsWith(pre + ':') ? i.slice(pre.length + 1) : i) + '</button>').join('') + '</div>' : '') + '</div>';
     });
     h += '</div></div>';
-    h += '<div class="sec"><h3>Opening line</h3><div class="opening">' + val(p, 'opening_line', pre, {label: 'opening line'}) + '</div></div>';
+    const olr = effRow(pre + ':opening_line', p.opening_line);
+    const olIds = olr && olr.r ? [...new Set(olr.r.match(/\b(?:p|c|v|bt)-[a-z0-9-]+:[a-z_]+(?::(?:p|c)-[a-z0-9-]+)?/g) || [])].filter(i => EV[i]) : [];
+    h += '<div class="sec"><h3>Opening line</h3><div class="opening">' + val(p, 'opening_line', pre, {label: 'opening line'}) + '</div>' +
+      (olr && isComposed(olr) && !(S.stated) ? '<p class="small muted" style="margin:6px 0 2px">Composed from these stated claims (click one for its quote and source):</p><div class="chips" aria-label="Claims behind the opening line">' + olIds.map(i => '<button type="button" class="chip" data-claim="' + esc(i) + '">' + esc(i.startsWith(pre + ':') ? i.slice(pre.length + 1) : i) + '</button>').join('') + '</div>' : '') + '</div>';
   }
   h += '<div class="sec"><h3>Relationship to Path</h3><dl class="kv"><dt>Relationship</dt><dd>' + val(p, 'relationship', pre) + '</dd>' + (p.lookalike_of ? '<dt>Lookalike of</dt><dd>' + val(p, 'lookalike_of', pre, {label: 'lookalike of'}) + '</dd>' : '') + '</dl></div>';
   const kv = (f, l) => '<dt>' + l + '</dt><dd>' + val(p, f, pre, {label: l}) + '</dd>';
-  h += '<div class="sec"><h3>Base record</h3><dl class="kv">' + kv('address','Address') + kv('county_fips','County FIPS') + '<dt>Coordinates</dt><dd>' + val(p, 'lat', pre, {label:'latitude'}) + ', ' + val(p, 'lon', pre, {label:'longitude'}) + '</dd>' + kv('website','Website') +
-    '<dt>Verticals</dt><dd>' + vNames(p).map(x => esc(vName(x))).join('; ') + '</dd>' + kv('products','Products') + kv('tier','Tier') + (p.tier_secondary ? kv('tier_secondary','Secondary tier') : '') + kv('headcount','Headcount') + kv('found_by','Found by') + kv('last_checked','Last checked') + '</dl></div>';
+  h += '<div class="sec"><h3>Base record</h3><dl class="kv">' + kv('address','Address') + kv('website','Website') +
+    '<dt>Verticals</dt><dd>' + vNames(p).map(x => esc(vName(x))).join('; ') + '</dd>' + kv('products','Products') + kv('tier','Tier') + (p.tier_secondary ? kv('tier_secondary','Secondary tier') : '') + kv('headcount','Headcount') + kv('found_by','Found by') + '</dl></div>';
   if (prof) h += '<div class="sec"><h3>Profile</h3><dl class="kv">' + [['weld_processes','Weld processes'],['materials','Materials'],['certifications','Certifications'],['part_size_fit','Part size fit'],['production_type','Production type'],['existing_robots','Existing robots'],['welder_postings','Welder postings'],['triggers','Triggers'],['bottleneck_guess','Bottleneck guess']].map(x => kv(x[0], x[1])).join('') + '</dl></div>';
   const lk = LK.filter(l => l.from_id === p.id || l.to_id === p.id);
   if (lk.length) h += '<div class="sec"><h3>Supply links</h3>' + lk.map(l => { const o = endpoint(l.from_id === p.id ? l.to_id : l.from_id); const row = effRow(l.claim_id, l.what_is_supplied);
-    return '<div class="small" style="margin-bottom:6px">' + (l.from_id === p.id ? 'Supplies ' : 'Supplied by ') + (o.plant ? '<button type="button" class="link" data-plant="' + esc(o.id) + '">' + esc(o.name) + '</button>' : esc(o.name)) + ': ' + esc(l.what_is_supplied) + ' ' + (row ? badgeTag(row.t) + ' <button type="button" class="btn small" data-claim="' + esc(l.claim_id) + '" data-shown="' + esc(l.what_is_supplied) + '">Evidence</button>' : '<span class="noev">no evidence row</span>') + '</div>'; }).join('') + '</div>';
+    return '<div class="small" style="margin-bottom:6px">' + (l.from_id === p.id ? 'Supplies ' : 'Supplied by ') + (o.plant ? '<button type="button" class="link" data-plant="' + esc(o.id) + '">' + esc(o.name) + '</button>' : esc(o.name)) + ': ' + (row ? esc(l.what_is_supplied) : '') + ' ' + (row ? badgeTag(row.t, row) + ' <button type="button" class="btn small" data-claim="' + esc(l.claim_id) + '" data-shown="' + esc(l.what_is_supplied) + '">Evidence</button>' : '<span class="muted">not sourced</span>') + '</div>'; }).join('') + '</div>';
   h += '</div>';
   return h;
 }
@@ -776,25 +821,25 @@ function drawerHtml(claim, shown){
   const owner = byId[parts[0]] ? byId[parts[0]].name : vById[parts[0]] ? vById[parts[0]].name : parts[0];
   let h = '<div class="dlg-h"><h2 id="drawer-t">Evidence</h2>' + (dstack.length > 1 ? '<button type="button" class="btn" data-back>Back</button>' : '') + '<button type="button" class="btn" data-close="drawer">Close</button></div><div class="dlg-b">';
   h += '<div class="small muted">' + esc(owner) + ' &middot; <code>' + esc(claim) + '</code></div><h3 style="margin:6px 0 2px;font-size:16px">' + esc(field.replace(/_/g,' ')) + '</h3>';
-  if (!rows.length) return h + '<div class="banner"><strong>No evidence row.</strong> This value is in the ledger but has no row in <code>evidence.csv</code>, so no quote or source can be shown. Treat it as unsourced.</div></div>';
+  if (!rows.length) return h + '<div class="banner"><strong>Not sourced.</strong> <code>evidence.csv</code> has no row for this claim, so no value, quote or source is shown.</div></div>';
   const cur = effRow(claim, shown);
   if (rows.length > 1) h += '<p class="small muted">' + rows.length + ' evidence rows share this claim id. The one matching the displayed value is outlined.</p>';
   rows.forEach(r => {
-    const vs = verState(r, claim), fc = FC[claim];
+    const vs = verState(r), fc = r.fc;
     const vcls = {confirmed:'b-ok', corrected:'b-warn', unreachable:'b-bad'}[vs] || 'b-grey';
     let host = ''; try { host = new URL(r.u).hostname.replace(/^www\./,''); } catch(e){ host = r.u; }
     h += '<div class="evrow' + (r === cur ? ' sel' : '') + '"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">' +
-      (r.t === 'inferred' ? '<span class="badge b-inf">inferred</span>' : r.t === 'stated' ? '<span class="badge b-stated">stated</span>' : '<span class="badge b-unknown">unknown</span>') +
+      (r.t === 'inferred' ? '<span class="badge b-inf">' + (isComposed(r) ? 'inferred &middot; composed' : 'inferred') + '</span>' : r.t === 'stated' ? '<span class="badge b-stated">stated</span>' : '<span class="badge b-unknown">unknown</span>') +
       '<span class="badge ' + vcls + '">verified: ' + esc(String(vs).replace('_',' ')) + '</span>' + (r.st ? '<span class="badge b-st">' + esc(r.st) + '</span>' : '') +
       (r.qc ? '<span class="badge b-bad" title="At merge time the quote was not found on the page, or the page could not be reached">quote check: ' + esc(r.qc.replace('_',' ')) + '</span>' : '') +
       (r.cc ? '<span class="badge b-warn" title="Wrong-plant sweep: this job-posting page does not show the plant’s city">city not on page</span>' : '') + '</div>' +
       '<div style="margin-top:6px"><strong>' + esc(r.v) + '</strong></div>' +
-      (r.q ? '<blockquote>' + esc(r.q) + '</blockquote>' : '<p class="small muted">' + (/^score_/.test(field) ? 'No quote of its own: the points are a rubric judgement. The quotes sit on the supporting claims linked below.' : 'No quote recorded.') + '</p>') +
+      (r.q ? '<blockquote>' + esc(r.q) + '</blockquote>' : '<p class="small muted">' + (isComposed(r) ? 'No quote of its own: this line is composed from the stated claims linked below, so it is a guess to verify.' : /^score_/.test(field) ? 'No quote of its own: the points are a rubric judgement. The quotes sit on the supporting claims linked below.' : 'No quote recorded.') + '</p>') +
       (r.t === 'inferred' ? '<p class="small"><strong>Reasoning (why this is a guess):</strong> ' + (r.r ? linkClaims(esc(r.r), claim) : 'none recorded') + '</p>' : r.r ? '<p class="small"><strong>Reasoning:</strong> ' + linkClaims(esc(r.r), claim) + '</p>' : '') +
-      '<dl><dt>Source</dt><dd>' + (r.u ? '<a href="' + esc(r.u) + '" target="_blank" rel="noopener noreferrer">' + esc(host) + '</a> <span class="muted small">(opens the source page)</span>' : '<span class="muted">no source link</span>') + '</dd>' +
+      '<dl><dt>Source</dt><dd>' + (r.u ? '<a href="' + esc(r.u) + '" target="_blank" rel="noopener noreferrer">' + esc(host) + '</a> <span class="muted small">(opens the source page)</span>' : '<span class="muted">' + (isComposed(r) ? 'none: composed from other claims' : 'no source link') + '</span>') + '</dd>' +
       '<dt>Archive</dt><dd>' + (r.a ? '<a href="' + esc(r.a) + '" target="_blank" rel="noopener noreferrer">archived copy</a>' : '<span class="muted">no archive copy</span>') + '</dd>' +
       '<dt>Retrieved</dt><dd>' + esc(r.d || 'not recorded') + '</dd><dt>Produced by</dt><dd>' + esc(r.by) + '</dd>' +
-      (fc ? '<dt>Fact-check</dt><dd>' + esc(fc.status) + (fc.note ? ': ' + esc(fc.note) : '') + ' <span class="muted small">(' + esc(fc.file) + ')</span></dd>' : '') + '</dl></div>';
+      (fc ? '<dt>Fact-check</dt><dd>' + (fc.round === 2 ? 'round 2 (after repairs): ' : 'round 1: ') + esc(fc.status) + (fc.kind ? ' (' + esc(fc.kind) + ')' : '') + (fc.new && fc.status === 'corrected' ? '. Checker\u2019s corrected value: ' + esc(String(fc.new).slice(0, 300)) : '') + (fc.note ? '. ' + esc(fc.note) : '') + ' <span class="muted small">(' + esc(fc.file) + ')</span></dd>' : '') + '</dl></div>';
   });
   return h + '</div>';
 }
@@ -814,7 +859,7 @@ function openEvidence(claim, shown, opener){
 /* ---------- CSV ---------- */
 function csvCell(s){ s = String(s == null ? '' : s); return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g,'""') + '"' : s; }
 function plantCsv(rows){
-  const cols = Object.keys(P[0]);
+  const cols = Object.keys(P[0]).filter(c => !['lat','lon','county_fips'].includes(c));
   const out = [cols.concat(['inferred_fields']).map(csvCell).join(',')];
   rows.forEach(p => {
     const inf = [];

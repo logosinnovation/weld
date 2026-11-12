@@ -12,11 +12,11 @@ The script never edits the ledger and adds no data: it only reshapes what the le
 import csv, glob, html, json, os, re, subprocess, sys, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-L = os.path.join(ROOT, "ledger")
+L = os.environ.get("LEDGER_DIR") or os.path.join(ROOT, "ledger")
 ASSET = os.path.join(ROOT, "tools", "assets", "states-10m.json")
 ATLAS_URL = "https://cdn.jsdelivr.net/npm/us-atlas@3.0.1/states-10m.json"
 TEMPLATE = os.path.join(ROOT, "tools", "map_template.html")
-OUT = os.path.join(ROOT, "map", "index.html")
+OUT = os.environ.get("MAP_OUT") or os.path.join(ROOT, "map", "index.html")
 
 STATE_ABBR = {
  "Alabama":"AL","Alaska":"AK","Arizona":"AZ","Arkansas":"AR","California":"CA","Colorado":"CO","Connecticut":"CT",
@@ -130,7 +130,7 @@ def parse_log(text, vertical_ids):
     sections, cur = [], None
     cur_vertical = None
     per_v = {}      # vid -> {"miss": (headline, line), "fact": ...}
-    bullets = {"rules": [], "backtest": [], "weights": [], "limits": [], "failures": [], "advisor": []}
+    bullets = {"rules": [], "confidence": [], "backtest": [], "weights": [], "limits": [], "failures": [], "advisor": []}
     dates = set(re.findall(r"20\d\d-\d\d-\d\d", text))
     for ln in lines:
         if ln.startswith("## "):
@@ -148,28 +148,37 @@ def parse_log(text, vertical_ids):
         if not body.startswith("- "):
             continue
         body = body[2:]
-        for kind, pat in (("corrected_miss", r"\*\*Corrected miss rate[^*]*\*\*"),
-                          ("miss", r"\*\*Miss rate[^*]*\*\*"),
+        for kind, pat in (("miss", r"\*\*(?:Corrected )?[Mm]iss rate[^*]*\*\*"),
                           ("fact", r"\*\*Fact error rate[^*]*\*\*")):
             m = re.search(pat, body)
             if m and cur_vertical:
                 pct = re.search(r"(\d+(?:\.\d+)?)\s*%", m.group(0))
-                per_v.setdefault(cur_vertical, {})[kind] = {
-                    "headline": m.group(0).strip("*").strip(),
+                frac = re.search(r"(\d+)\s*/\s*(\d+)", m.group(0))
+                per_v.setdefault(cur_vertical, {}).setdefault(kind, []).append({
+                    "headline": m.group(0).strip("*").strip().rstrip("."),
                     "pct": float(pct.group(1)) if pct else None,
-                    "line": md_inline(body)}
+                    "frac": [int(frac.group(1)), int(frac.group(2))] if frac else None,
+                    "line": md_inline(body)})
         if re.search(r"\*\*Weights", body):
             bullets["weights"].append(md_inline(body))
         elif re.search(r"Back-test result", body):
             bullets["backtest"].append(md_inline(body))
         elif re.search(r"\*\*(Process rule|Material rule|Relationship rule|Score storage)", body) or "Confidence is recomputed" in body:
+            cm = re.search(r"Confidence is recomputed[^.]*\.", body)
+            if cm:
+                bullets["confidence"].append(md_inline(cm.group(0)))
+                body = body.replace(cm.group(0), "").strip()
             bullets["rules"].append(md_inline(body))
         if re.search(r"Known (limit|gap)|Coverage gaps accepted|city-centroid|city centroids", body):
             bullets["limits"].append(md_inline(body))
         if re.search(r"Source failures", body):
             bullets["failures"].append(md_inline(body))
     secs = [{"title": s["title"], "html": md_block(s["lines"])} for s in sections]
-    return secs, per_v, bullets, sorted(dates)
+    ints = lambda m: [int(x) for x in m.groups()]
+    vs = [ints(m) for m in re.finditer(r"Verify stages: (\d+) quotes checked, (\d+) fixed, (\d+) claims downgraded", text)]
+    rp = re.search(r"(\d+) evidence rows repaired", text)
+    verify = {"waves": vs, "repaired": int(rp.group(1)) if rp else None}
+    return secs, per_v, bullets, sorted(dates), verify
 
 
 # ---------------------------------------------------------------- audit json
@@ -210,34 +219,53 @@ def norm_status(s):
 
 def build_audit(vids):
     audit = {v: {} for v in vids}
-    factcheck = {}
+    factcheck = {}      # (claim_id, source_url) -> verdict record; later round overrides earlier
+    rounds = {}         # vid -> {1: [checker dicts], 2: [...]}
     for path in sorted(glob.glob(os.path.join(L, "audit", "fact-check-*.json"))):
         d = load_json(path)
-        if not d:
+        if not isinstance(d, dict):
             continue
-        vid = first_key(d, ["vertical"]) or re.sub(r"^fact-check-|\.json$", "", os.path.basename(path))
-        rows = find_rows(d)
-        checked = first_key(d, ["claims_checked", "checked", "n_checked"]) or len(rows)
-        corrected = first_key(d, ["claims_corrected", "corrected", "n_corrected"])
-        if corrected is None:
-            corrected = sum(1 for r in rows if norm_status(first_key(r, ["status", "verdict", "result", "verified"])) == "corrected")
-        rate = first_key(d, ["fact_error_rate", "error_rate"])
-        if rate is None and checked:
-            rate = corrected / checked
-        if isinstance(rate, str):
-            m = re.search(r"[\d.]+", rate); rate = float(m.group(0)) if m else None
-            if rate and rate > 1: rate /= 100
-        kinds = first_key(d, ["error_kind_counts", "error_kinds", "kinds", "counts_by_kind"]) or {}
-        unreach = sum(1 for r in rows if norm_status(first_key(r, ["status", "verdict", "result", "verified"])) == "unreachable")
-        if vid in audit:
-            audit[vid]["factcheck"] = {"file": os.path.basename(path), "checked": checked, "corrected": corrected,
-                                       "rate": rate, "unreachable": unreach, "kinds": kinds}
+        base = os.path.basename(path)
+        rnd = 2 if re.search(r"round-?2", base, re.I) or str(d.get("round")) == "2" else 1
+        vid = d.get("vertical") or next((v for v in vids if v in base), None)
+        rows = d.get("rows") if isinstance(d.get("rows"), list) else find_rows(d)
+        rows = [r for r in rows if isinstance(r, dict) and r.get("claim_id") and "*" not in r["claim_id"]]
+        def cnt(st): return sum(1 for r in rows if norm_status(first_key(r, ["verdict", "status", "result"])) == st)
+        checked = d.get("claims_checked") if d.get("claims_checked") is not None else len(rows)
+        corrected = d.get("claims_corrected") if d.get("claims_corrected") is not None else cnt("corrected")
+        unreach = d.get("claims_unreachable") if d.get("claims_unreachable") is not None else cnt("unreachable")
+        kinds = d.get("error_kind_counts") or {}
+        worst = d.get("worst_errors")
+        if isinstance(worst, str):
+            worst = [worst]
+        label = d.get("checker") if d.get("checker") is not None else re.sub(r"^.*round-?2-?|\.json$", "", base)
+        rec = {"file": base, "checker": label, "checked": checked, "corrected": corrected, "unreachable": unreach,
+               "rate": d.get("error_rate"), "kinds": kinds, "date": d.get("date"),
+               "worst": [str(x) for x in (worst or [])][:3], "repeated": [str(x) for x in (d.get("repeated_kinds") or [])]}
+        rounds.setdefault(vid, {}).setdefault(rnd, []).append(rec)
         for r in rows:
-            st = norm_status(first_key(r, ["status", "verdict", "result", "verified"]))
+            st = norm_status(first_key(r, ["verdict", "status", "result"]))
             if not st:
                 continue
-            note = first_key(r, ["correct_value", "corrected_value", "correction", "note", "notes", "error_kind", "kind"])
-            factcheck[r["claim_id"]] = {"status": st, "note": str(note) if note else "", "file": os.path.basename(path)}
+            note = first_key(r, ["note", "notes"]) or ""
+            factcheck[(r["claim_id"], r.get("source_url") or "")] = {
+                "status": st, "round": rnd, "file": base, "note": str(note)[:400],
+                "kind": r.get("error_kind") or "", "new": first_key(r, ["corrected_value", "correct_value"]) or ""}
+    for vid, rs in rounds.items():
+        if vid not in audit:
+            continue
+        out = {}
+        for rnd, lst in rs.items():
+            lst.sort(key=lambda x: str(x["checker"]))
+            chk = sum(x["checked"] for x in lst); cor = sum(x["corrected"] for x in lst)
+            kinds = {}
+            for x in lst:
+                for k, n in (x["kinds"] or {}).items():
+                    kinds[k] = kinds.get(k, 0) + n
+            out[str(rnd)] = {"checkers": lst, "checked": chk, "corrected": cor,
+                             "unreachable": sum(x["unreachable"] for x in lst),
+                             "rate": (cor / chk) if chk else None, "kinds": kinds}
+        audit[vid]["rounds"] = out
     for path in sorted(glob.glob(os.path.join(L, "audit", "list-audit-*.json"))):
         d = load_json(path)
         if not d or d.get("vertical") not in audit:
@@ -282,7 +310,7 @@ def main():
     vids = [v["id"] for v in verticals]
     with open(os.path.join(L, "run_log.md"), encoding="utf-8") as f:
         log_text = f.read()
-    secs, per_v, bullets, log_dates = parse_log(log_text, set(vids))
+    secs, per_v, bullets, log_dates, verify = parse_log(log_text, set(vids))
     audit, factcheck, qc, qc_rows, pcheck = build_audit(vids)
     for v, d in per_v.items():
         audit[v]["log"] = d
@@ -299,7 +327,15 @@ def main():
             row["qc"] = qc_rows[k]
         if pc_rows.get(k) == "CITY_NOT_ON_PAGE":
             row["cc"] = 1
+        fcr = factcheck.get(k)
+        if fcr:
+            row["fc"] = fcr
         ev.setdefault(e["claim_id"], []).append(row)
+    # fact-check verdicts whose (claim_id, source_url) matched no evidence row: report, never guess
+    seen = {(e["claim_id"], e["source_url"]) for e in evidence}
+    unmatched = [k for k in factcheck if k not in seen]
+    if unmatched:
+        print("NOTE: %d fact-check verdicts match no evidence row (claim_id, source_url), e.g. %s" % (len(unmatched), unmatched[:2]), file=sys.stderr)
 
     dates = sorted({e["retrieved_date"] for e in evidence if re.match(r"\d{4}-\d\d-\d\d$", e["retrieved_date"])}
                    | {p["last_checked"] for p in plants if re.match(r"\d{4}-\d\d-\d\d$", p["last_checked"])}
@@ -324,10 +360,10 @@ def main():
     data = {
         "meta": {"counts": counts, "dates": dates, "first": dates[0] if dates else "", "last": dates[-1] if dates else "",
                  "commit": commit, "state_abbr": STATE_ABBR},
-        "verticals": verticals, "plants": plants, "links": links, "ev": ev, "factcheck": factcheck,
+        "verticals": verticals, "plants": plants, "links": links, "ev": ev,
         "audit": audit, "qc": qc,
         "posting_check": pcheck.get("summary", {}),
-        "log": {"sections": secs, "bullets": bullets},
+        "log": {"sections": secs, "bullets": bullets, "verify": verify},
     }
     geo = load_geo()
     with open(TEMPLATE, encoding="utf-8") as f:
