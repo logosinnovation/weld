@@ -1,0 +1,912 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Path Prospect Map</title>
+<meta name="description" content="A national map of US plants that could use Path Robotics' autonomous welding, by vertical and supply-chain tier. Every value traces to a quoted source.">
+<meta name="color-scheme" content="light dark">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<style>
+:root{
+  --bg:#f4f6f8; --surface:#fff; --surface2:#eef1f5; --text:#17202a; --muted:#566273; --border:#d9dfe6;
+  --accent:#1d4ed8; --accent-ink:#fff; --focus:#1d4ed8;
+  --high:#0b8a5c; --med:#c76a00; --low:#5f6f86; --np:#8b96a6;
+  --high-bg:#dcf4ea; --med-bg:#fdecd2; --low-bg:#e5e9f0; --np-bg:#eef0f3;
+  --inf:#6d28d9; --inf-bg:#ede7fb; --ok:#0b7a4b; --ok-bg:#dcf4ea; --warn:#a15c00; --warn-bg:#fdecd2; --bad:#b42318; --bad-bg:#fde3df;
+  --land:#e3e8ee; --land-has:#c9d6ea; --land-sel:#9db7e8; --stroke:#fff;
+  --t-oem:#2563eb; --t-t1:#0d9488; --t-t2:#9333ea; --t-cf:#db2777; --t-t3:#78716c; --t-unk:#8b96a6;
+  --sup:#c2410c; --shadow:0 1px 2px rgba(15,23,42,.06),0 4px 14px rgba(15,23,42,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1319; --surface:#161c24; --surface2:#1d2530; --text:#e7ebf1; --muted:#9ba8b8; --border:#2b3542;
+    --accent:#7ba3ff; --accent-ink:#0b1220; --focus:#9dbaff;
+    --high:#3ccf97; --med:#f2a73b; --low:#93a3bb; --np:#7d8998;
+    --high-bg:#12382b; --med-bg:#3b2a10; --low-bg:#232d3a; --np-bg:#1d2530;
+    --inf:#c4adff; --inf-bg:#2a2146; --ok:#58d79f; --ok-bg:#12382b; --warn:#f2a73b; --warn-bg:#3b2a10; --bad:#ff8f84; --bad-bg:#431a16;
+    --land:#232c38; --land-has:#2f4468; --land-sel:#3f5f97; --stroke:#0e1319;
+    --t-oem:#6ea0ff; --t-t1:#3dd6c6; --t-t2:#c28bff; --t-cf:#ff7ab8; --t-t3:#b0a8a1; --t-unk:#7d8998;
+    --sup:#ff9a57; --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1319; --surface:#161c24; --surface2:#1d2530; --text:#e7ebf1; --muted:#9ba8b8; --border:#2b3542;
+  --accent:#7ba3ff; --accent-ink:#0b1220; --focus:#9dbaff;
+  --high:#3ccf97; --med:#f2a73b; --low:#93a3bb; --np:#7d8998;
+  --high-bg:#12382b; --med-bg:#3b2a10; --low-bg:#232d3a; --np-bg:#1d2530;
+  --inf:#c4adff; --inf-bg:#2a2146; --ok:#58d79f; --ok-bg:#12382b; --warn:#f2a73b; --warn-bg:#3b2a10; --bad:#ff8f84; --bad-bg:#431a16;
+  --land:#232c38; --land-has:#2f4468; --land-sel:#3f5f97; --stroke:#0e1319;
+  --t-oem:#6ea0ff; --t-t1:#3dd6c6; --t-t2:#c28bff; --t-cf:#ff7ab8; --t-t3:#b0a8a1; --t-unk:#7d8998;
+  --sup:#ff9a57; --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-variant-numeric:tabular-nums}
+h1,h2,h3,h4{line-height:1.2;margin:0}
+button,select,input{font:inherit;color:inherit}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:8px;top:-60px;background:var(--accent);color:var(--accent-ink);padding:8px 12px;border-radius:6px;z-index:100}
+.skip:focus{top:8px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 16px}
+
+/* header */
+header.top{background:var(--surface);border-bottom:1px solid var(--border)}
+.top-row{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;padding:14px 0}
+.brand h1{font-size:22px;letter-spacing:-.01em}
+.brand p{margin:2px 0 0;color:var(--muted);font-size:13px}
+.stats{display:flex;gap:10px;margin-left:auto;flex-wrap:wrap}
+.stat{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:6px 14px;min-width:110px}
+.stat b{display:block;font-size:22px;line-height:1.15}
+.stat span{font-size:12px;color:var(--muted)}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:0 0 12px}
+.search{flex:1 1 220px;min-width:0;max-width:380px}
+.search input{width:100%;padding:8px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);}
+.chk{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);cursor:pointer;user-select:none;font-size:14px}
+.chk input{width:16px;height:16px;accent-color:var(--accent)}
+.btn{padding:7px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);cursor:pointer;font-size:14px}
+.btn:hover{background:var(--surface2)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.small{padding:3px 9px;font-size:13px}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:thin;border-top:1px solid var(--border);margin:0 -16px;padding:0 16px}
+nav.tabs button{background:none;border:0;border-bottom:3px solid transparent;padding:11px 14px;cursor:pointer;white-space:nowrap;color:var(--muted);font-weight:600;font-size:14px}
+nav.tabs button[aria-current="page"]{color:var(--text);border-bottom-color:var(--accent)}
+nav.tabs button:hover{color:var(--text)}
+
+main{padding:24px 0 40px;min-height:60vh}
+.view-h{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;margin-bottom:10px}
+.view-h h2{font-size:20px}
+.view-h p{margin:0;color:var(--muted);font-size:14px;flex:1 1 320px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow)}
+.pad{padding:14px 16px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+
+/* filters */
+.filters{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin-bottom:12px}
+.filters label{display:flex;flex-direction:column;font-size:12px;color:var(--muted);gap:3px}
+.filters select{padding:7px 8px;border:1px solid var(--border);border-radius:8px;background:var(--surface);min-width:0;width:100%}
+.filters .count{grid-column:1/-1;display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+
+/* badges */
+.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.02em;padding:1px 7px;border-radius:999px;vertical-align:1px;white-space:nowrap;border:1px solid transparent}
+.b-inf{color:var(--inf);background:var(--inf-bg);border:1px dashed var(--inf);text-transform:uppercase;font-size:10px}
+.b-stated{color:var(--ok);background:var(--ok-bg)}
+.b-unknown{color:var(--muted);background:var(--surface2);border:1px solid var(--border)}
+.b-high{color:var(--high);background:var(--high-bg)} .b-medium{color:var(--med);background:var(--med-bg)} .b-low{color:var(--low);background:var(--low-bg)} .b-np{color:var(--muted);background:var(--np-bg);border:1px dashed var(--np)}
+.b-ok{color:var(--ok);background:var(--ok-bg)} .b-warn{color:var(--warn);background:var(--warn-bg)} .b-bad{color:var(--bad);background:var(--bad-bg)} .b-grey{color:var(--muted);background:var(--surface2);border:1px solid var(--border)}
+.b-st{color:var(--accent);background:var(--surface2);border:1px solid var(--border)}
+.noev{font-size:10px;color:var(--muted);border:1px dotted var(--muted);border-radius:4px;padding:0 4px;white-space:nowrap;vertical-align:1px}
+.hid{font-size:12px;color:var(--muted);font-style:italic}
+button.val{all:unset;cursor:pointer;color:inherit;border-bottom:1px dotted var(--muted);border-radius:2px}
+button.val:hover{background:var(--surface2);border-bottom-color:var(--accent)}
+button.val:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
+button.val.unk{color:var(--muted);font-style:italic}
+button.link{all:unset;cursor:pointer;color:var(--accent);font-weight:600}
+button.link:hover{text-decoration:underline}
+button.link:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.dot-i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px;border:2px solid transparent}
+.d-high{background:var(--high)} .d-medium{background:var(--med)} .d-low{background:var(--low)} .d-np{background:transparent;border-color:var(--np)}
+
+/* ranking */
+.vcards{display:grid;gap:12px}
+.vcard{padding:14px 16px}
+.vcard.rej{opacity:.82}
+.vhead{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.vrank{width:34px;height:34px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);display:grid;place-items:center;font-weight:800}
+.vhead h3{font-size:17px;flex:1 1 220px}
+.vmeta{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.vnum b{font-size:20px;display:block;line-height:1.1}.vnum span{font-size:12px;color:var(--muted)}
+.bar{display:flex;height:12px;border-radius:6px;overflow:hidden;background:var(--surface2);border:1px solid var(--border);flex:1 1 220px;min-width:160px}
+.bar i{display:block;height:100%}
+.bar .s-high{background:var(--high)}.bar .s-medium{background:var(--med)}.bar .s-low{background:var(--low)}.bar .s-np{background:repeating-linear-gradient(45deg,var(--np-bg),var(--np-bg) 4px,var(--border) 4px,var(--border) 6px)}
+.score-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px 18px;margin:12px 0 0}
+.score-grid div.k{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700}
+.score-grid div.v{font-size:14px}
+.reason{margin:12px 0 0;color:var(--muted);font-size:13.5px}
+details.more{margin-top:10px}
+details.more summary{cursor:pointer;color:var(--accent);font-weight:600;font-size:13.5px}
+details.more p{margin:8px 0 0;font-size:13.5px}
+
+/* map */
+.mapgrid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(300px,1fr);gap:14px;align-items:start}
+.mapbox{position:relative;padding:8px}
+.mapbox svg{display:block;width:100%;height:auto;touch-action:pan-y pinch-zoom}
+.st{fill:var(--land);stroke:var(--stroke);stroke-width:.7;vector-effect:non-scaling-stroke;cursor:pointer}
+.st.has{fill:var(--land-has)} .st.sel{fill:var(--land-sel)}
+.st:hover{filter:brightness(.94)}
+.pt{cursor:pointer;stroke:var(--surface);stroke-width:1.2;vector-effect:non-scaling-stroke}
+.pt.c-high{fill:var(--high)} .pt.c-medium{fill:var(--med)} .pt.c-low{fill:var(--low)}
+.pt.c-np{fill:var(--surface);stroke:var(--np);stroke-width:2}
+.pt.c-oem{fill:var(--t-oem)} .pt.c-t1{fill:var(--t-t1)} .pt.c-t2{fill:var(--t-t2)} .pt.c-cf{fill:var(--t-cf)} .pt.c-t3{fill:var(--t-t3)} .pt.c-unk{fill:var(--t-unk)}
+.pt.dim{opacity:.35}
+.pt.sup{stroke:var(--sup);stroke-width:3}
+.pt.excl{fill:var(--surface);stroke:var(--np);stroke-dasharray:3 2;stroke-width:2}
+.pt:hover,.pt:focus{stroke:var(--text);stroke-width:2.5;outline:none}
+.pt:focus-visible{stroke:var(--focus);stroke-width:3.5}
+.lk{stroke:var(--sup);stroke-width:2;fill:none;vector-effect:non-scaling-stroke;stroke-dasharray:5 3}
+.mapctl{position:absolute;right:14px;top:14px;display:flex;flex-direction:column;gap:4px}
+.mapctl button{width:32px;height:32px;border:1px solid var(--border);border-radius:8px;background:var(--surface);cursor:pointer;font-size:18px;line-height:1}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--muted);padding:6px 8px 2px;align-items:center}
+.legend span.i{display:inline-flex;align-items:center;gap:5px}
+.legend svg{width:14px;height:14px}
+.note{font-size:12.5px;color:var(--muted);padding:2px 8px 6px}
+.list{max-height:640px;overflow:auto}
+.list h3{font-size:15px;padding:12px 14px 6px;position:sticky;top:0;background:var(--surface);z-index:1}
+.prow{display:flex;gap:10px;align-items:center;padding:8px 14px;border-top:1px solid var(--border)}
+.prow .nm{flex:1;min-width:0}
+.prow .nm .sub{font-size:12.5px;color:var(--muted)}
+.prow .sc{font-weight:800;min-width:34px;text-align:right}
+.empty{padding:18px;color:var(--muted)}
+
+/* call list */
+.calls{overflow:hidden}
+.crow{display:grid;grid-template-columns:32px minmax(170px,1.3fr) 104px 48px 70px 44px minmax(120px,1.2fr) minmax(180px,2.2fr);gap:4px 12px;padding:9px 14px;border-top:1px solid var(--border);align-items:start;font-size:13.5px}
+.crow.hd{border-top:0;background:var(--surface2);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700;position:sticky;top:0;z-index:2}
+.crow .rk{color:var(--muted);font-weight:700}
+.crow .nm{font-weight:700}
+.crow .nm .sub{display:block;font-weight:400;color:var(--muted);font-size:12.5px}
+.crow .scr{font-weight:800;font-size:16px}
+.crow .ol{color:var(--text);font-size:13px}
+.live{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);border-radius:999px;padding:1px 7px;margin-bottom:3px}
+.sortsel{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--muted)}
+.sortsel select{padding:5px 8px;border:1px solid var(--border);border-radius:8px;background:var(--surface)}
+
+/* supply */
+.sc-top{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin-bottom:12px}
+.sc-top label{display:flex;flex-direction:column;font-size:12px;color:var(--muted);gap:3px;flex:1 1 260px;max-width:520px;min-width:0}
+.sc-top select{width:100%;min-width:0;padding:8px;border:1px solid var(--border);border-radius:8px;background:var(--surface)}
+.lcard{padding:10px 14px;border-top:1px solid var(--border);font-size:14px}
+.lcard .arrow{color:var(--sup);font-weight:700}
+.tiergrp h4{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:10px 14px 2px}
+
+/* method */
+.prose{max-width:900px}
+.prose h3{font-size:18px;margin:26px 0 8px}
+.prose h4{font-size:15px;margin:16px 0 6px}
+.prose p,.prose li{font-size:14.5px}
+.prose ul{padding-left:20px}
+table.t{border-collapse:collapse;width:100%;font-size:13.5px}
+table.t th,table.t td{border-bottom:1px solid var(--border);padding:7px 8px;text-align:left;vertical-align:top}
+table.t th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.tscroll{overflow-x:auto}
+code{background:var(--surface2);border-radius:4px;padding:0 4px;font-size:.92em}
+.logbox{max-height:520px;overflow:auto;padding:4px 16px 12px}
+
+/* dialogs */
+dialog{border:0;padding:0;background:var(--surface);color:var(--text);box-shadow:-8px 0 40px rgba(0,0,0,.28);margin:0 0 0 auto;max-width:640px;width:100%;height:100dvh;max-height:100dvh;overflow:auto}
+dialog#drawer{max-width:520px}
+dialog::backdrop{background:rgba(10,16,24,.45)}
+.dlg-h{position:sticky;top:0;background:var(--surface);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;gap:10px;align-items:center;z-index:3}
+.dlg-h h2{font-size:18px;flex:1;min-width:0}
+.dlg-b{padding:14px 16px 28px}
+.sec{margin-top:18px}
+.sec>h3{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px;border-bottom:1px solid var(--border);padding-bottom:4px}
+dl.kv{display:grid;grid-template-columns:150px minmax(0,1fr);gap:6px 12px;margin:0;font-size:14px}
+dl.kv dt{color:var(--muted);font-size:13px}
+dl.kv dd{margin:0;overflow-wrap:anywhere}
+.banner{padding:10px 12px;border-radius:10px;background:var(--np-bg);border:1px dashed var(--np);font-size:14px;margin-top:12px}
+.banner.ex{background:var(--bad-bg);border:1px solid var(--bad)}
+.bigscore{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.bigscore .n{font-size:40px;font-weight:800;line-height:1}
+.comp{padding:8px 0;border-top:1px solid var(--border)}
+.comp:first-of-type{border-top:0}
+.comp .row{display:flex;gap:10px;align-items:center}
+.comp .row .lbl{flex:1;font-weight:600;font-size:14px}
+.comp .meter{height:6px;border-radius:3px;background:var(--surface2);margin-top:5px;overflow:hidden}
+.comp .meter i{display:block;height:100%;background:var(--accent)}
+.comp .why{font-size:12.5px;color:var(--muted);margin-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
+.chip{all:unset;cursor:pointer;font-size:11.5px;padding:2px 8px;border-radius:999px;background:var(--surface2);border:1px solid var(--border);color:var(--accent);font-weight:600}
+.chip:hover{border-color:var(--accent)}
+.chip:focus-visible{outline:3px solid var(--focus)}
+.opening{font-size:15.5px;line-height:1.5;padding:12px 14px;border-left:4px solid var(--accent);background:var(--surface2);border-radius:0 10px 10px 0}
+.evrow{border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-top:10px}
+.evrow.sel{border-color:var(--accent)}
+blockquote{margin:8px 0;padding:8px 12px;border-left:3px solid var(--border);background:var(--surface2);border-radius:0 8px 8px 0;font-size:14px;overflow-wrap:anywhere}
+.evrow dl{display:grid;grid-template-columns:110px minmax(0,1fr);gap:4px 10px;margin:6px 0 0;font-size:13px}
+.evrow dt{color:var(--muted)} .evrow dd{margin:0;overflow-wrap:anywhere}
+
+footer{border-top:1px solid var(--border);background:var(--surface);padding:16px 0 28px;font-size:13px;color:var(--muted)}
+footer strong{color:var(--text)}
+
+@media (max-width:900px){
+  .mapgrid{grid-template-columns:1fr}
+  .filters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .list{max-height:none}
+}
+@media (max-width:760px){
+  .crow{grid-template-columns:30px minmax(0,1fr) 50px 50px;grid-template-areas:"rk nm scr tier" ". rel rel rel" ". trg trg trg" ". ol ol ol"}
+  .crow.hd{display:none}
+  .crow>.rk{grid-area:rk}.crow>.nm{grid-area:nm}.crow>.scr{grid-area:scr}.crow>.tr{grid-area:tier}
+  .crow>.rel{grid-area:rel}.crow>.trg{grid-area:trg}.crow>.ol{grid-area:ol}
+  .crow>.cf{display:none}
+  .stats{margin-left:0;width:100%}.stat{flex:1;min-width:0;padding:6px 10px}
+  .stat b{font-size:19px}.stat span{font-size:11px;display:block;line-height:1.25}.top-row{padding:10px 0 8px;gap:8px}.brand p{display:none}
+  .tools{gap:6px}.chk,.btn{padding:6px 9px;font-size:13px}.search{flex-basis:100%;max-width:none}
+  dl.kv{grid-template-columns:1fr;gap:0}dl.kv dt{margin-top:8px}
+  .evrow dl{grid-template-columns:1fr;gap:0}.evrow dt{margin-top:6px}
+  dialog,dialog#drawer{max-width:100%}
+  .brand h1{font-size:19px}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+ <div class="wrap">
+  <div class="top-row">
+   <div class="brand"><h1>Path Prospect Map</h1><p>US plants that could use autonomous welding. Every value traces to a quoted source.</p></div>
+   <div class="stats" id="stats" aria-label="Run totals"></div>
+  </div>
+  <div class="tools">
+   <div class="search"><label class="sr" for="q">Search plants by name</label><input id="q" type="search" placeholder="Search plant, company or city" autocomplete="off"></div>
+   <label class="chk" title="Hide every value tagged inferred. Values with no evidence row stay visible with a marker."><input type="checkbox" id="stated"> Stated facts only</label>
+   <button class="btn" id="csv" type="button">Download CSV</button>
+   <button class="btn" id="theme" type="button" aria-label="Switch colour theme">Theme: auto</button>
+  </div>
+  <nav class="tabs" id="tabs" aria-label="Views"></nav>
+ </div>
+</header>
+<main id="main" class="wrap" tabindex="-1">
+ <section id="v-ranking" hidden></section>
+ <section id="v-map" hidden></section>
+ <section id="v-supply" hidden></section>
+ <section id="v-calls" hidden></section>
+ <section id="v-excluded" hidden></section>
+ <section id="v-method" hidden></section>
+</main>
+<footer><div class="wrap" id="foot"></div></footer>
+
+<dialog id="profile" aria-labelledby="profile-t"></dialog>
+<dialog id="drawer" aria-labelledby="drawer-t"></dialog>
+
+<script id="data" type="application/json">__DATA__</script>
+<script id="geo" type="application/json">__GEO__</script>
+<script>
+(function(){
+"use strict";
+const D = JSON.parse(document.getElementById('data').textContent);
+const GEO = JSON.parse(document.getElementById('geo').textContent);
+const EV = D.ev, FC = D.factcheck, M = D.meta, C = M.counts;
+const P = D.plants, V = D.verticals, LK = D.links;
+const byId = {}; P.forEach(p => byId[p.id] = p);
+const vById = {}; V.forEach(v => vById[v.id] = v);
+const INCL = P.filter(p => p.status !== 'excluded');
+const EXCL = P.filter(p => p.status === 'excluded');
+const COMP = [
+  ['score_process','Process fit',20],['score_material_part','Material and part fit',20],['score_part_mix','Part mix',15],
+  ['score_labor','Labor pain',20],['score_demand','Demand and triggers',15],['score_scale','Scale',10]];
+const TIERS = ['OEM','Tier 1','Tier 2','Contract fabricator','Tier 3'];
+const TCLS = {'OEM':'oem','Tier 1':'t1','Tier 2':'t2','Contract fabricator':'cf','Tier 3':'t3'};
+const SCORECARD = [['est_us_plants','Est. US plants'],['weld_intensity','Weld intensity'],['part_size_fit','Part-size fit'],['part_variety','Part variety'],['hiring_pain','Hiring pain'],['demand_outlook','Demand outlook'],['path_presence','Path presence'],['fit_test','Fit test']];
+const VIEWS = [['ranking','Vertical ranking'],['map','Plant map'],['supply','Supply chain'],['calls','Call list'],['excluded','Excluded ('+EXCL.length+')'],['method','Method']];
+
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm = s => String(s == null ? '' : s).trim().toLowerCase();
+const $ = (s, r) => (r || document).querySelector(s);
+const sTier = p => p.status === 'profiled' && p.score_tier ? p.score_tier : '';
+const tcls = t => t ? t.toLowerCase() : 'np';
+const vNames = p => (p.verticals||'').split(/\s*[;,|]\s*/).filter(Boolean);
+const vName = id => vById[id] ? vById[id].name : id;
+const stateName = ab => { for (const k in M.state_abbr) if (M.state_abbr[k] === ab) return k; return ab; };
+
+/* ---------- state ---------- */
+const S = {view:'ranking', q:'', stated:false, f:{vert:'',tier:'',rel:'',state:'',stier:''}, sort:'score', liveOnly:false, maker:'', colorBy:'score'};
+try { const t = localStorage.getItem('ppm-theme'); if (t) document.documentElement.dataset.theme = t; } catch(e){}
+
+/* ---------- evidence helpers ---------- */
+function effRow(claim, shown){
+  const rows = EV[claim]; if (!rows) return null;
+  const n = norm(shown); let m = null;
+  rows.forEach(r => { if (norm(r.v) === n) m = r; });
+  return m || rows[rows.length-1];
+}
+function verState(row, claim){
+  const o = FC[claim];
+  return o ? o.status : row.vf;
+}
+function badgeTag(t){
+  if (t === 'inferred') return '<span class="badge b-inf" title="Inferred: a guess to verify">inferred</span>';
+  if (t === 'unknown') return '<span class="badge b-unknown">unknown</span>';
+  return '';
+}
+/* a clickable value. obj = record, field = column, prefix = claim id prefix */
+function val(obj, field, prefix, opt){
+  opt = opt || {};
+  const raw = obj[field];
+  const claim = prefix + ':' + field;
+  const row = effRow(claim, raw);
+  const text = raw == null || raw === '' ? '' : raw;
+  if (text === '' && !row) return '<span class="muted">not in ledger</span> <span class="noev">no evidence row</span>';
+  if (row && row.t === 'inferred' && S.stated) return '<span class="hid">inferred value hidden</span>';
+  let shown = esc(opt.max && text.length > opt.max ? text.slice(0, opt.max).trimEnd() + '…' : text);
+  if (text === '') shown = '<span class="muted">not in ledger</span>';
+  if (!row) return '<span>' + shown + '</span> <span class="noev" title="This value has no row in evidence.csv">no evidence row</span>';
+  const unk = row.t === 'unknown' || /^unknown\b/i.test(text);
+  const vs = verState(row, claim);
+  const mark = vs === 'corrected' ? ' <span class="badge b-warn" title="A fact-check corrected this claim">corrected</span>' : vs === 'unreachable' ? ' <span class="badge b-bad">source unreachable</span>' : '';
+  return '<button type="button" class="val' + (unk ? ' unk' : '') + '" data-claim="' + esc(claim) + '" data-shown="' + esc(text) + '" aria-label="' + esc((opt.label || field.replace(/_/g,' ')) + ': ' + (text || 'not in ledger') + '. Open evidence') + '">' + shown + '</button> ' + badgeTag(row.t) + mark;
+}
+function tierBadge(t){ return t ? '<span class="badge b-st">' + esc(t) + '</span>' : ''; }
+function scoreBadge(p){
+  const t = sTier(p);
+  return t ? '<span class="badge b-' + t.toLowerCase() + '">' + t + '</span>' : '<span class="badge b-np">not yet profiled</span>';
+}
+
+/* ---------- filtering ---------- */
+function matchQ(p){
+  if (!S.q) return true;
+  const q = norm(S.q);
+  return norm(p.name).includes(q) || norm(p.parent_company).includes(q) || norm(p.city).includes(q) || norm(p.state) === q;
+}
+function passes(p, ignoreScoreTier){
+  const f = S.f;
+  if (!matchQ(p)) return false;
+  if (f.vert && !vNames(p).includes(f.vert)) return false;
+  if (f.tier && (p.tier||'unknown') !== f.tier) return false;
+  if (f.rel && (p.relationship||'unknown') !== f.rel) return false;
+  if (f.state && p.state !== f.state) return false;
+  if (!ignoreScoreTier && f.stier){
+    const t = sTier(p) || 'Not profiled';
+    if (t !== f.stier) return false;
+  }
+  return true;
+}
+const scoreOf = p => p.score_total === '' || p.score_total == null ? -1 : +p.score_total;
+const cmpScore = (a,b) => scoreOf(b) - scoreOf(a) || (+b.confidence||0) - (+a.confidence||0) || a.name.localeCompare(b.name);
+
+/* ---------- header, nav, footer ---------- */
+function renderChrome(){
+  $('#stats').innerHTML =
+    '<div class="stat"><b>' + C.verticals_done + '<small class="muted" style="font-size:13px;font-weight:600"> / ' + C.verticals_total + '</small></b><span>Verticals done' + (C.verticals_accepted ? ' (' + C.verticals_accepted + ' accepted, in progress)' : '') + '</span></div>' +
+    '<div class="stat"><b>' + C.plants_found + '</b><span>Plants found (' + C.plants_included + ' included, ' + C.plants_excluded + ' excluded)</span></div>' +
+    '<div class="stat"><b>' + C.plants_profiled + '</b><span>Plants profiled</span></div>';
+  $('#tabs').innerHTML = VIEWS.map(v => '<button type="button" data-view="' + v[0] + '">' + esc(v[1]) + '</button>').join('');
+  const d = M.dates;
+  const range = d.length > 1 ? d[0] + ' to ' + d[d.length-1] : (d[0] || 'unknown');
+  $('#foot').innerHTML = '<p><strong>Inferred fields are guesses to verify.</strong> Values tagged inferred carry an &ldquo;inferred&rdquo; label; click any value for its quote, source and verified status.</p>' +
+    '<p>Run dates: ' + esc(d.length > 1 && d.length < 6 ? d.join(', ') : range) + (M.commit ? ' &middot; built from ledger commit ' + esc(M.commit) : '') + ' &middot; ' + C.evidence_rows + ' evidence rows &middot; Path Prospect Map, an outside pitch to Path sales. Business-level facts only.</p>';
+}
+function setActiveTab(){
+  document.querySelectorAll('#tabs button').forEach(b => { if (b.dataset.view === S.view) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); });
+}
+
+/* ---------- filter bar ---------- */
+function opts(list, cur, all){ return '<option value="">' + all + '</option>' + list.map(o => '<option value="' + esc(o[0]) + '"' + (o[0] === cur ? ' selected' : '') + '>' + esc(o[1]) + '</option>').join(''); }
+function filterBar(id, withScoreTier){
+  const states = [...new Set(P.map(p => p.state).filter(Boolean))].sort();
+  const rels = [...new Set(P.map(p => p.relationship || 'unknown'))].sort();
+  const tiers = [...new Set([...TIERS, ...P.map(p => p.tier || 'unknown')])];
+  const f = S.f;
+  return '<div class="filters" id="' + id + '">' +
+   '<label>Vertical<select data-f="vert">' + opts(V.filter(v => P.some(p => vNames(p).includes(v.id))).map(v => [v.id, v.name]), f.vert, 'All verticals') + '</select></label>' +
+   '<label>Supply-chain tier<select data-f="tier">' + opts(tiers.map(t => [t,t]), f.tier, 'All tiers') + '</select></label>' +
+   '<label>Relationship<select data-f="rel">' + opts(rels.map(t => [t,t.replace(/_/g,' ')]), f.rel, 'All relationships') + '</select></label>' +
+   '<label>State<select data-f="state">' + opts(states.map(t => [t, stateName(t)]), f.state, 'All states') + '</select></label>' +
+   (withScoreTier ? '<label>Score tier<select data-f="stier">' + opts(['High','Medium','Low','Not profiled'].map(t => [t,t]), f.stier, 'All score tiers') + '</select></label>' : '<span></span>') +
+   '<label>&nbsp;<button type="button" class="btn" data-reset>Reset filters</button></label>' +
+   '<div class="count" data-count></div></div>';
+}
+function syncFilters(root){ root.querySelectorAll('select[data-f]').forEach(s => { s.value = S.f[s.dataset.f]; }); }
+function bindFilters(root, rerender){
+  root.querySelectorAll('select[data-f]').forEach(s => s.addEventListener('change', () => { S.f[s.dataset.f] = s.value; rerender(); }));
+  const r = root.querySelector('[data-reset]');
+  if (r) r.addEventListener('click', () => { S.f = {vert:'',tier:'',rel:'',state:'',stier:''}; S.q=''; $('#q').value=''; refresh(); });
+}
+
+/* ---------- ranking ---------- */
+function vCounts(v){
+  const ps = P.filter(p => vNames(p).includes(v.id));
+  const inc = ps.filter(p => p.status !== 'excluded');
+  const c = {total: ps.length, included: inc.length, profiled: inc.filter(p => p.status === 'profiled').length, excluded: ps.length - inc.length, High:0, Medium:0, Low:0};
+  inc.forEach(p => { const t = sTier(p); if (t) c[t]++; });
+  c.np = c.included - c.High - c.Medium - c.Low;
+  return c;
+}
+function renderRanking(){
+  const el = $('#v-ranking');
+  const vs = V.slice().sort((a,b) => (+a.rank||99) - (+b.rank||99));
+  el.innerHTML = '<div class="view-h"><h2>Vertical ranking</h2><p>' + V.length + ' verticals from the ledger, ranked by the planner scorecard. Plant counts and High / Medium / Low splits come from plants.csv; only verticals that have been researched have plants.</p></div><div class="vcards">' +
+  vs.map(v => {
+    const c = vCounts(v);
+    const bar = c.included ? '<div class="bar" role="img" aria-label="' + c.High + ' High, ' + c.Medium + ' Medium, ' + c.Low + ' Low, ' + c.np + ' not yet profiled">' +
+      ['High','Medium','Low','np'].map(k => { const n = k === 'np' ? c.np : c[k]; return n ? '<i class="s-' + k.toLowerCase() + '" style="width:' + (n / c.included * 100) + '%"></i>' : ''; }).join('') + '</div>' : '<span class="muted small">No plants researched yet</span>';
+    const sg = SCORECARD.map(f => '<div><div class="k">' + f[1] + '</div><div class="v">' + val(v, f[0], v.id, {label: f[1], max: 260}) + '</div></div>').join('');
+    return '<article class="card vcard' + (v.status === 'rejected' ? ' rej' : '') + '" id="vc-' + esc(v.id) + '">' +
+      '<div class="vhead"><span class="vrank" aria-label="Rank ' + esc(v.rank) + '">' + esc(v.rank) + '</span><h3>' + esc(v.name) + '</h3>' +
+      '<span class="badge ' + ({done:'b-ok',accepted:'b-st',partial:'b-warn',rejected:'b-bad',candidate:'b-grey'}[v.status] || 'b-grey') + '">' + esc(v.status) + '</span></div>' +
+      '<div class="vmeta"><div class="vnum"><b>' + c.included + '</b><span>included plants</span></div><div class="vnum"><b>' + c.profiled + '</b><span>profiled</span></div>' +
+      '<div class="vnum"><b style="color:var(--high)">' + c.High + '</b><span>High</span></div><div class="vnum"><b style="color:var(--med)">' + c.Medium + '</b><span>Medium</span></div><div class="vnum"><b style="color:var(--low)">' + c.Low + '</b><span>Low</span></div>' +
+      (c.excluded ? '<div class="vnum"><b>' + c.excluded + '</b><span>excluded</span></div>' : '') + bar +
+      (c.included ? '<button type="button" class="btn small" data-showv="' + esc(v.id) + '">Show on map</button>' : '') + '</div>' +
+      '<div class="score-grid">' + sg + '</div>' +
+      (v.reason ? '<p class="reason"><strong>Why this status:</strong> ' + esc(v.reason) + '</p>' : '') +
+      '<details class="more"><summary>Definition</summary><p>' + val(v, 'definition', v.id) + '</p></details></article>';
+  }).join('') + '</div>';
+  el.querySelectorAll('[data-showv]').forEach(b => b.addEventListener('click', () => { S.f.vert = b.dataset.showv; go('map'); }));
+}
+
+/* ---------- map component ---------- */
+const W = 975, H = 610;
+const proj = d3.geoAlbersUsa().scale(1280).translate([W/2, H/2]);
+const gpath = d3.geoPath(proj);
+function makeMap(host){
+  const svg = d3.select(host).append('svg').attr('viewBox', '0 0 ' + W + ' ' + H).attr('role', 'group').attr('aria-label', 'Map of the United States with plant dots');
+  const g = svg.append('g');
+  const gs = g.append('g');
+  const gl = g.append('g');
+  const gd = g.append('g');
+  const counts = {};
+  INCL.forEach(p => counts[p.state] = (counts[p.state]||0) + 1);
+  const paths = gs.selectAll('path').data(GEO.features).join('path').attr('class', f => 'st' + (counts[f.properties.abbr] ? ' has' : '')).attr('d', gpath);
+  paths.append('title').text(f => f.properties.name + (counts[f.properties.abbr] ? ': ' + counts[f.properties.abbr] + ' included plants' : ''));
+  let k = 1;
+  const zoom = d3.zoom().scaleExtent([1, 14]).translateExtent([[0,0],[W,H]]).filter(e => e.type === 'wheel' ? (e.ctrlKey || e.metaKey) : e.type.startsWith('touch') ? (e.touches && e.touches.length > 1) : !e.button)
+    .on('zoom', e => { k = e.transform.k; g.attr('transform', e.transform); scaleDots(); });
+  svg.call(zoom).on('dblclick.zoom', null);
+  function scaleDots(){ gd.selectAll('circle.pt').attr('r', d => d.r / Math.sqrt(k)); }
+  const ctl = d3.select(host).append('div').attr('class', 'mapctl');
+  [['+', 'Zoom in', () => svg.transition().duration(200).call(zoom.scaleBy, 1.7)], ['−', 'Zoom out', () => svg.transition().duration(200).call(zoom.scaleBy, 1/1.7)], ['⌂', 'Reset zoom', () => svg.transition().duration(200).call(zoom.transform, d3.zoomIdentity)]]
+    .forEach(b => ctl.append('button').attr('type','button').attr('aria-label', b[1]).attr('title', b[1] + ' (Ctrl or Cmd + scroll also zooms)').text(b[0]).on('click', b[2]));
+  function place(dots){
+    const grp = {};
+    dots.forEach(d => { const p = proj([+d.p.lon, +d.p.lat]); d.xy = p; if (p) { const key = Math.round(p[0]) + ',' + Math.round(p[1]); (grp[key] = grp[key] || []).push(d); } });
+    Object.values(grp).forEach(a => { if (a.length > 1) a.forEach((d,i) => { const ang = i / a.length * 2*Math.PI - Math.PI/2, rad = 4 + a.length * .7; d.xy = [d.xy[0] + Math.cos(ang)*rad, d.xy[1] + Math.sin(ang)*rad]; }); });
+    return dots.filter(d => d.xy);
+  }
+  return {
+    svg, paths, g,
+    onState(fn){ paths.on('click', (e,f) => fn(f.properties.abbr)); },
+    update(dots, o){
+      o = o || {};
+      dots = place(dots);
+      paths.classed('sel', f => !!o.selState && f.properties.abbr === o.selState);
+      const sel = gd.selectAll('circle.pt').data(dots, d => d.p.id);
+      sel.exit().remove();
+      const en = sel.enter().append('circle').attr('tabindex', 0).attr('role', 'button');
+      en.append('title');
+      const all = en.merge(sel);
+      all.attr('class', d => 'pt ' + d.cls).attr('cx', d => d.xy[0]).attr('cy', d => d.xy[1]).attr('r', d => d.r / Math.sqrt(k))
+        .attr('aria-label', d => d.p.name + ', ' + d.p.city + ' ' + d.p.state + ', ' + d.label + '. Open profile')
+        .on('click', (e,d) => openPlant(d.p.id, e.currentTarget))
+        .on('keydown', (e,d) => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openPlant(d.p.id, e.currentTarget); } });
+      all.select('title').text(d => d.p.name + ' (' + d.p.city + ', ' + d.p.state + ') - ' + d.label);
+      // draw order: dim first, highlighted last
+      all.sort((a,b) => (a.z||0) - (b.z||0));
+      const lines = (o.lines || []).map(l => { const a = proj([+l[0].lon, +l[0].lat]), b = proj([+l[1].lon, +l[1].lat]); return a && b ? 'M' + a + 'L' + b : null; }).filter(Boolean);
+      gl.selectAll('path').data(lines).join('path').attr('class','lk').attr('d', d => d);
+    }
+  };
+}
+const dotCls = (p, by) => by === 'tier' ? 'c-' + (TCLS[p.tier] || 'unk') : 'c-' + tcls(sTier(p));
+const dotLabel = p => sTier(p) ? sTier(p) + ' ' + p.score_total : 'not yet profiled';
+let mapA = null, mapB = null;
+
+function legend(by){
+  if (by === 'tier') return TIERS.map(t => '<span class="i"><svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.5" style="fill:var(--t-' + TCLS[t].replace('t1','t1') + ')"/></svg>' + t + '</span>').join('');
+  return '<span class="i"><svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.5" fill="var(--high)"/></svg>High 70+</span><span class="i"><svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.5" fill="var(--med)"/></svg>Medium 45-69</span><span class="i"><svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.5" fill="var(--low)"/></svg>Low under 45</span><span class="i"><svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="5" fill="none" stroke="var(--np)" stroke-width="2"/></svg>Not yet profiled</span>';
+}
+function plantRow(p, extra){
+  const t = sTier(p);
+  return '<div class="prow"><span class="dot-i d-' + (t ? t.toLowerCase() : 'np') + '" aria-hidden="true"></span><div class="nm"><button type="button" class="link" data-plant="' + esc(p.id) + '">' + esc(p.name) + '</button>' +
+    '<div class="sub">' + esc(p.city) + ', ' + esc(p.state) + (p.tier ? ' &middot; ' + esc(p.tier) : '') + (p.relationship ? ' &middot; ' + esc(p.relationship.replace(/_/g,' ')) : '') + (extra ? ' &middot; ' + extra : '') + '</div></div>' +
+    '<span class="sc">' + (t ? esc(p.score_total) : '') + '</span>' + (t || p.status === 'excluded' ? '' : '<span class="badge b-np">not yet profiled</span>') + '</div>';
+}
+function renderMap(){
+  const el = $('#v-map');
+  if (!el.dataset.init){
+    el.innerHTML = '<div class="view-h"><h2>Plant map</h2><p>Every included plant is a dot. Click a state to list its plants, a dot to open the plant profile. Use Ctrl or Cmd with the scroll wheel, or the buttons, to zoom.</p></div>' + filterBar('fbar-map', true) +
+      '<div class="mapgrid"><div class="card"><div class="mapbox" id="mapA"></div><div class="legend"><span id="mapcount"></span><label>Colour dots by <select id="colorBy" style="padding:3px 6px;border:1px solid var(--border);border-radius:6px;background:var(--surface)"><option value="score">score tier</option><option value="tier">supply-chain tier</option></select></label></div><div class="legend" id="legendA"></div><div class="note" id="noteA"></div></div><div class="card list" id="maplist" aria-live="polite"></div></div>';
+    bindFilters($('#fbar-map'), renderMap);
+    mapA = makeMap($('#mapA'));
+    $('#colorBy').addEventListener('change', e => { S.colorBy = e.target.value; renderMap(); });
+    mapA.onState(ab => { S.f.state = S.f.state === ab ? '' : ab; renderMap(); });
+    el.dataset.init = 1;
+  } else {
+  }
+  syncFilters($('#fbar-map'));
+  const list = INCL.filter(p => passes(p));
+  const by = S.colorBy;
+  mapA.update(list.map(p => ({p, cls: dotCls(p, by), r: sTier(p) === 'High' ? 7 : 5.5, label: dotLabel(p) + (by === 'tier' ? ', ' + (p.tier || 'tier unknown') : ''), z: sTier(p) === 'High' ? 3 : sTier(p) === 'Medium' ? 2 : sTier(p) ? 1 : 0})), {selState: S.f.state});
+  $('#mapcount').innerHTML = 'Showing <strong>' + list.length + '</strong> of ' + INCL.length + ' included plants.';
+  $('#colorBy').value = by;
+  $('#legendA').innerHTML = legend(by);
+  $('#noteA').textContent = 'Dots for plants in the same city are fanned out slightly so each can be clicked. Some coordinates are city centroids (see Method, known limits).';
+  const sorted = list.slice().sort(cmpScore);
+  $('#maplist').innerHTML = '<h3>' + (S.f.state ? 'Plants in ' + esc(stateName(S.f.state)) + ' (' + sorted.length + ')' : 'Plants shown (' + sorted.length + ')') + '</h3>' +
+    (sorted.length ? sorted.map(p => plantRow(p)).join('') : '<div class="empty">No included plants match these filters.</div>');
+}
+
+/* ---------- supply chain ---------- */
+function companyName(id){
+  const m = id.replace(/^c-/, '').split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+  return m;
+}
+function endpoint(id){
+  if (byId[id]) return {id, plant: byId[id], name: byId[id].name, tier: byId[id].tier || 'unknown'};
+  return {id, plant: null, name: companyName(id) + ' (company level)', tier: 'Company level, no plant row'};
+}
+const makerKey = p => { const raw = /^unknown/i.test(p.parent_company || 'unknown') ? p.name : p.parent_company; return raw; };
+const makerNorm = raw => raw.toLowerCase().replace(/\(.*?\)/g, ' ').replace(/[^a-z0-9 ]+/g, ' ').replace(/\b(inc|llc|corp|corporation|co|company|industries|ltd|holdings|group)\b/g, ' ').replace(/\s+/g, ' ').trim();
+function makerList(){
+  const groups = {};
+  P.forEach(p => { const raw = makerKey(p), n = makerNorm(raw) || raw; const g = groups[n] = groups[n] || {names: {}, ps: []}; g.names[raw] = (g.names[raw]||0) + 1; g.ps.push(p); });
+  const m = {};
+  Object.values(groups).forEach(g => { const label = Object.entries(g.names).sort((a,b) => b[1]-a[1] || a[0].length - b[0].length)[0][0]; m[label] = g.ps; });
+  return Object.entries(m).filter(([k, ps]) => ps.some(p => p.status !== 'excluded') || ps.some(p => LK.some(l => l.from_id === p.id || l.to_id === p.id))).sort((a,b) => b[1].length - a[1].length || a[0].localeCompare(b[0]));
+}
+function renderSupply(){
+  const el = $('#v-supply');
+  const makers = makerList();
+  if (!S.maker || !makers.some(m => m[0] === S.maker)) { const nl = m => LK.filter(l => m[1].some(p => p.id === l.from_id || p.id === l.to_id)).length; S.maker = (makers.slice().sort((a,b) => nl(b) - nl(a))[0] || [''])[0]; }
+  if (!el.dataset.init){
+    el.innerHTML = '<div class="view-h"><h2>Supply chain</h2><p>Choose a maker. Its plants are highlighted on the map and listed by tier; suppliers and customers linked in links.csv are outlined in orange, with the evidence for each link.</p></div>' +
+      '<div class="sc-top"><label>Maker (parent company)<select id="makerSel"></select></label></div>' +
+      '<div class="mapgrid"><div><div class="card"><div class="mapbox" id="mapB"></div><div class="legend" id="legendB"></div></div></div><div class="card list" id="sclist" aria-live="polite"></div></div>';
+    mapB = makeMap($('#mapB'));
+    $('#makerSel').addEventListener('change', e => { S.maker = e.target.value; renderSupply(); });
+    el.dataset.init = 1;
+  }
+  const sel = $('#makerSel');
+  sel.innerHTML = makers.map(([k, ps]) => { const nl = LK.filter(l => ps.some(p => p.id === l.from_id || p.id === l.to_id)).length; return '<option value="' + esc(k) + '"' + (k === S.maker ? ' selected' : '') + '>' + esc(k) + ' (' + ps.length + ' plant' + (ps.length === 1 ? '' : 's') + (nl ? ', ' + nl + ' link' + (nl === 1 ? '' : 's') : '') + ')</option>'; }).join('');
+  const mp = (makers.find(m => m[0] === S.maker) || ['', []])[1];
+  const mpIds = new Set(mp.map(p => p.id));
+  const links = LK.filter(l => mpIds.has(l.from_id) || mpIds.has(l.to_id));
+  const supIds = new Set();
+  links.forEach(l => { [l.from_id, l.to_id].forEach(i => { if (!mpIds.has(i) && byId[i]) supIds.add(i); }); });
+  const lines = [];
+  links.forEach(l => { const a = byId[l.from_id], b = byId[l.to_id]; if (a && b) lines.push([a, b]); });
+  const dots = [];
+  INCL.forEach(p => { if (!mpIds.has(p.id) && !supIds.has(p.id)) dots.push({p, cls: 'c-np dim', r: 4, label: 'other included plant', z: 0}); });
+  P.forEach(p => {
+    if (supIds.has(p.id)) dots.push({p, cls: (p.status === 'excluded' ? 'excl' : dotCls(p, 'score')) + ' sup', r: 7, label: 'linked plant' + (p.status === 'excluded' ? ' (excluded)' : ''), z: 4});
+    else if (mpIds.has(p.id)) dots.push({p, cls: p.status === 'excluded' ? 'excl' : dotCls(p, 'score'), r: 7.5, label: dotLabel(p) + (p.status === 'excluded' ? ' (excluded)' : ''), z: 5});
+  });
+  mapB.update(dots, {lines});
+  $('#legendB').innerHTML = '<span class="i"><svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.5" fill="var(--high)"/></svg>Maker plant (colour = score tier)</span><span class="i"><svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="5" fill="var(--low)" stroke="var(--sup)" stroke-width="2.5"/></svg>Linked plant</span><span class="i"><svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="5" fill="none" stroke="var(--np)" stroke-dasharray="3 2" stroke-width="2"/></svg>Excluded plant</span><span class="i"><svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="4" fill="var(--np)" opacity=".4"/></svg>Other included plant</span>';
+  // list by tier
+  const byTier = {};
+  mp.slice().sort(cmpScore).forEach(p => { const t = p.tier || 'unknown'; (byTier[t] = byTier[t] || []).push(p); });
+  const order = [...TIERS, 'unknown'];
+  let h = '<h3>' + esc(S.maker) + ': plants by tier (' + mp.length + ')</h3>';
+  order.filter(t => byTier[t]).forEach(t => {
+    h += '<div class="tiergrp"><h4>' + esc(t) + ' (' + byTier[t].length + ')</h4>' + byTier[t].map(p => plantRow(p, p.status === 'excluded' ? '<span class="badge b-bad">excluded</span>' : '')).join('') + '</div>';
+  });
+  h += '<h3 style="margin-top:8px">Linked suppliers and customers (' + links.length + ')</h3>';
+  if (!links.length) h += '<div class="empty">No supplier links in the ledger for this maker. Public sources rarely name a pole maker’s suppliers or a plant’s customers (see Method, known limits).</div>';
+  const lt = {};
+  links.forEach(l => {
+    const toMaker = mpIds.has(l.to_id);
+    const other = endpoint(toMaker ? l.from_id : l.to_id);
+    const mineEnd = endpoint(toMaker ? l.to_id : l.from_id);
+    (lt[other.tier] = lt[other.tier] || []).push({l, other, mineEnd, toMaker});
+  });
+  Object.keys(lt).sort((a,b) => (order.indexOf(a) < 0 ? 99 : order.indexOf(a)) - (order.indexOf(b) < 0 ? 99 : order.indexOf(b))).forEach(t => {
+    h += '<div class="tiergrp"><h4>' + esc(t) + '</h4>' + lt[t].map(x => {
+      const row = effRow(x.l.claim_id, x.l.what_is_supplied);
+      const nm = e => e.plant ? '<button type="button" class="link" data-plant="' + esc(e.id) + '">' + esc(e.name) + '</button>' : esc(e.name);
+      return '<div class="lcard">' + nm(x.other) + ' <span class="arrow">' + (x.toMaker ? '&rarr; supplies' : '&larr; is supplied by') + '</span> ' + nm(x.mineEnd) +
+        '<div class="small">' + (S.stated && row && row.t === 'inferred' ? '<span class="hid">inferred link detail hidden</span>' : esc(x.l.what_is_supplied)) + ' ' + (row ? badgeTag(row.t) : '<span class="noev">no evidence row</span>') + '</div>' +
+        (row && !(S.stated && row.t === 'inferred') ? '<div style="margin-top:4px"><button type="button" class="btn small" data-claim="' + esc(x.l.claim_id) + '" data-shown="' + esc(x.l.what_is_supplied) + '">Evidence for this link</button> <span class="badge b-' + ({confirmed:'ok',corrected:'warn',unreachable:'bad'}[verState(row, x.l.claim_id)] || 'grey') + '">' + esc(String(verState(row, x.l.claim_id)).replace('_',' ')) + '</span></div>' : '') + '</div>';
+    }).join('') + '</div>';
+  });
+  $('#sclist').innerHTML = h;
+}
+
+/* ---------- call list ---------- */
+function callRows(){
+  let rows = P.filter(p => p.status === 'profiled' && passes(p));
+  if (S.liveOnly) rows = rows.filter(p => +p.score_demand === 15);
+  const s = S.sort;
+  rows.sort(s === 'name' ? (a,b) => a.name.localeCompare(b.name) : s === 'state' ? (a,b) => a.state.localeCompare(b.state) || cmpScore(a,b) : s === 'confidence' ? (a,b) => (+b.confidence) - (+a.confidence) || cmpScore(a,b) : cmpScore);
+  return rows;
+}
+function renderCalls(){
+  const el = $('#v-calls');
+  if (!el.dataset.init){
+    el.innerHTML = '<div class="view-h"><h2>Call list</h2><p>Profiled plants ranked by score. Score tiers: High 70+, Medium 45-69, Low under 45. Confidence is how many of the six components rest on stated evidence.</p></div>' + filterBar('fbar-calls', true) +
+      '<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:10px"><label class="chk"><input type="checkbox" id="live"> Live trigger only <span class="muted small">(plant-level trigger in the last 24 months)</span></label><label class="sortsel">Sort by <select id="sortsel"><option value="score">score</option><option value="confidence">confidence</option><option value="name">plant name</option><option value="state">state</option></select></label><span id="callcount" class="muted small"></span></div>' +
+      '<div class="card calls" id="calllist"></div>';
+    bindFilters($('#fbar-calls'), renderCalls);
+    $('#live').addEventListener('change', e => { S.liveOnly = e.target.checked; renderCalls(); });
+    $('#sortsel').addEventListener('change', e => { S.sort = e.target.value; renderCalls(); });
+    el.dataset.init = 1;
+  }
+  syncFilters($('#fbar-calls'));
+  $('#live').checked = S.liveOnly; $('#sortsel').value = S.sort;
+  const rows = callRows();
+  $('#fbar-calls [data-count]').textContent = '';
+  $('#callcount').textContent = rows.length + ' of ' + C.plants_profiled + ' profiled plants';
+  $('#calllist').innerHTML = '<div class="crow hd" role="row"><span>#</span><span>Plant</span><span>Relationship</span><span>Score</span><span>Tier</span><span>Conf.</span><span>Live trigger</span><span>Opening line</span></div>' +
+    (rows.length ? rows.map((p, i) => {
+      const live = +p.score_demand === 15;
+      const t = sTier(p);
+      return '<div class="crow"><span class="rk">' + (i+1) + '</span><span class="nm"><button type="button" class="link" data-plant="' + esc(p.id) + '">' + esc(p.name) + '</button><span class="sub">' + esc(p.city) + ', ' + esc(p.state) + (p.tier ? ' &middot; ' + esc(p.tier) : '') + '</span></span>' +
+        '<span class="rel">' + esc((p.relationship||'unknown').replace(/_/g,' ')) + '</span>' +
+        '<span class="scr">' + esc(p.score_total) + '</span><span class="tr"><span class="badge b-' + t.toLowerCase() + '">' + t + '</span></span>' +
+        '<span class="cf" title="Components resting on stated evidence">' + esc(p.confidence) + '/6</span>' +
+        '<span class="trg">' + (live ? '<span class="live">live trigger</span><br>' : '') + '<span class="small">' + val(p, 'triggers', p.id, {max: 90, label: 'trigger'}) + '</span></span>' +
+        '<span class="ol">' + val(p, 'opening_line', p.id, {max: 230, label: 'opening line'}) + '</span></div>';
+    }).join('') : '<div class="empty">No profiled plants match. Clear a filter or the live-trigger toggle.</div>');
+}
+
+/* ---------- excluded ---------- */
+function renderExcluded(){
+  const el = $('#v-excluded');
+  const rows = EXCL.filter(p => passes(p, true)).sort((a,b) => a.name.localeCompare(b.name));
+  el.innerHTML = '<div class="view-h"><h2>Excluded plants (with reasons)</h2><p>Plants kept in the ledger but not shown on the map because they fail the prospect test or are out of the vertical definition. They are never deleted.</p></div>' +
+    '<div class="card"><div class="muted small" style="padding:10px 14px">' + rows.length + ' of ' + EXCL.length + ' excluded plants</div>' +
+    (rows.map(p => '<div class="prow" style="align-items:flex-start"><div class="nm"><button type="button" class="link" data-plant="' + esc(p.id) + '">' + esc(p.name) + '</button><div class="sub">' + esc(p.city) + ', ' + esc(p.state) + (p.parent_company ? ' &middot; ' + esc(p.parent_company) : '') + '</div>' +
+      '<div class="small" style="margin-top:3px"><strong>Reason:</strong> ' + val(p, 'exclusion_reason', p.id, {label: 'exclusion reason'}) + '</div></div></div>').join('') || '<div class="empty">No excluded plants match.</div>') + '</div>';
+}
+
+/* ---------- method ---------- */
+function pct(x){ return x == null ? '' : (Math.round(x * 1000) / 10) + '%'; }
+function renderMethod(){
+  const el = $('#v-method'), B = D.log.bullets;
+  const ul = a => a.length ? '<ul>' + a.map(x => '<li>' + x + '</li>').join('') + '</ul>' : '<p class="muted">Nothing logged yet.</p>';
+  const rows = V.slice().sort((a,b) => (+a.rank||99) - (+b.rank||99)).map(v => {
+    const c = vCounts(v), a = D.audit[v.id] || {}, lg = a.log || {}, fc = a.factcheck;
+    const miss = lg.corrected_miss || lg.miss;
+    const la = (a.listaudit || []).map(x => 'Auditor ' + esc(x.auditor) + ': ' + x.rows + ' rows, ' + x.in_definition + ' in definition, ' + x.searches + ' searches').join('<br>');
+    const mc = a.miss_candidates;
+    return '<tr><td><strong>' + esc(v.name) + '</strong><br><span class="badge b-grey">' + esc(v.status) + '</span></td><td>' + (c.included ? c.included + ' included, ' + c.profiled + ' profiled<br>' + c.High + ' High / ' + c.Medium + ' Medium / ' + c.Low + ' Low' : '<span class="muted">none researched</span>') + '</td>' +
+      '<td>' + (miss ? '<strong>' + esc(miss.headline) + '</strong>' + (lg.corrected_miss && lg.miss ? '<br><span class="muted small">earlier: ' + esc(lg.miss.headline) + '</span>' : '') : '<span class="muted">not audited</span>') + (mc ? '<br><span class="small muted">' + mc.combined_in_definition + ' auditor plants in definition; ' + mc.matched + ' matched, ' + mc.unmatched + ' unmatched before adjudication</span>' : '') + (la ? '<br><span class="small muted">' + la + '</span>' : '') + '</td>' +
+      '<td>' + (fc ? '<strong>' + (fc.rate != null ? pct(fc.rate) : '?') + '</strong> (' + fc.corrected + ' corrected of ' + fc.checked + ' checked' + (fc.unreachable ? ', ' + fc.unreachable + ' unreachable' : '') + ')' : lg.fact ? '<strong>' + esc(lg.fact.headline) + '</strong>' : (c.included ? '<span class="muted">pending: no fact-check report yet</span>' : '<span class="muted">not checked</span>')) + '</td></tr>';
+  }).join('');
+  const centroid = P.filter(p => /centroid/i.test(p.address)).length;
+  const noAddr = P.filter(p => /^unknown/i.test(p.address)).length;
+  const inferredN = Object.values(EV).reduce((n, rs) => n + rs.filter(r => r.t === 'inferred').length, 0);
+  const totalEv = C.evidence_rows;
+  const lowConf = P.filter(p => p.status === 'profiled' && +p.confidence <= 2).length;
+  const qc = D.qc, pcs = D.posting_check;
+  const linkTags = LK.map(l => { const r = effRow(l.claim_id, l.what_is_supplied); return r ? r.t : 'none'; });
+  el.innerHTML = '<div class="view-h"><h2>Method</h2><p>How the map is built, what the numbers mean, how well it has been checked, and what it cannot tell you.</p></div><div class="prose">' +
+  '<h3>What is on the map</h3><p>The ledger holds one row per physical plant. A plant is <strong>included</strong> (status base or profiled) when it welds in-house, welding is a core production step, and it works in carbon or stainless steel (aluminum-first plants are kept and noted). Plants that fail stay in the ledger as <strong>excluded</strong>, with the reason. <strong>Base</strong> plants have an identity record only; <strong>profiled</strong> plants have a researched profile and a score. Every value on the map links to a row in <code>evidence.csv</code>: a quote, a source link, a retrieval date and a tag. A value with no evidence row is marked <span class="noev">no evidence row</span>.</p>' +
+  '<h3>Verticals</h3><p>A vertical is a product family with a shared welded-part profile (for example, utility poles and substation steel). The planner scores each on weld intensity, part-size fit, part variety, hiring pain, demand outlook and Path presence, then the coordinator accepts, rejects or keeps it as a candidate. Rejected verticals stay in the ledger with the reason. One vertical is researched per session; a vertical is <em>done</em> only after profiling, fact-check and list audit.</p>' +
+  '<h3>Supply-chain tiers</h3><table class="t"><tbody><tr><td><strong>OEM</strong></td><td>Sells a finished product under its own name.</td></tr><tr><td><strong>Tier 1</strong></td><td>Supplies welded assemblies directly to OEMs.</td></tr><tr><td><strong>Tier 2</strong></td><td>Supplies components or sub-weldments to Tier 1s.</td></tr><tr><td><strong>Contract fabricator</strong></td><td>Builds to customer drawings across customers and sectors.</td></tr><tr><td><strong>Tier 3</strong></td><td>Materials and processing only; usually fails the prospect test.</td></tr></tbody></table><p class="small muted">A secondary tier is recorded where two apply. Industry alone never sets a tier; most tiers here are tagged inferred.</p>' +
+  '<h3>Relationships to Path</h3><table class="t"><tbody><tr><td><strong>known_customer</strong></td><td>Path&rsquo;s own material or a primary source names this plant as a customer, or its company has a single welding site (tagged inferred).</td></tr><tr><td><strong>customer_other_plant</strong></td><td>Same parent as a reported customer, but this plant is not reported as converted.</td></tr><tr><td><strong>lookalike</strong></td><td>A direct product competitor of a named customer; the customer is named in the record.</td></tr><tr><td><strong>new</strong></td><td>None of the above.</td></tr></tbody></table>' +
+  '<h3>Score (profiled plants, 0-100)</h3><p>Points come only from evidence; an unknown component scores 0. Six components, weights unchanged by the back-test:</p><div class="tscroll"><table class="t"><thead><tr><th>Component</th><th>Max</th><th>Rubric</th></tr></thead><tbody>' +
+  '<tr><td>Process fit</td><td>20</td><td>MIG or flux-core on production weldments 20; mixed with TIG 12; mostly TIG or spot 4</td></tr>' +
+  '<tr><td>Material and part fit</td><td>20</td><td>Steel parts within a cell’s limits 20; too big to move but suited to Rove 12; aluminum-first or thin sheet 4</td></tr>' +
+  '<tr><td>Part mix</td><td>15</td><td>Many part types or custom work 15; mixed 8; high-volume identical parts 0</td></tr>' +
+  '<tr><td>Labor pain</td><td>20</td><td>Welder postings open 60+ days, several at once, or a sign-on bonus or mandatory overtime 20; any open welder posting 12; none found 0</td></tr>' +
+  '<tr><td>Demand and triggers</td><td>15</td><td>A plant-level trigger within 24 months 15; only the vertical’s demand outlook 8</td></tr>' +
+  '<tr><td>Scale</td><td>10</td><td>Multi-plant parent and 100+ employees at the site 10; one of the two 5</td></tr></tbody></table></div>' +
+  '<p><strong>Tiers:</strong> <span class="badge b-high">High</span> 70+, <span class="badge b-medium">Medium</span> 45-69, <span class="badge b-low">Low</span> under 45. <strong>Confidence</strong> = how many of the six components rest on stated evidence (0-6). Path capability limits used for part fit: the 2026 analyst report (cells up to 60 ft long, 15 ft wide, 55,000 lb) and the older sales sheet (large cell 8-72 in diameter, up to 65 ft, 10,500 lb); the Rove walking robot is for work too large to move.</p>' +
+  '<p><strong>The “live trigger” flag</strong> on the call list means the plant’s Demand and triggers component is 15, that is, a plant-level trigger within the last 24 months.</p>' +
+  '<h4>Coordinator’s scoring rules (from run_log.md)</h4>' + ul(B.rules) +
+  '<h3>Back-test</h3><p>The scoring was tested on Path’s reported customers: a good model should score them High.</p>' + ul(B.backtest.concat(B.weights)) +
+  '<h3>Audit numbers by vertical</h3><div class="tscroll card pad"><table class="t"><thead><tr><th>Vertical</th><th>Plants</th><th>Miss rate (list audit)</th><th>Fact error rate</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+  '<p class="small muted"><strong>Miss rate</strong> = in-definition plants found by independent auditors that were absent from the ledger, divided by all in-definition auditor plants. <strong>Fact error rate</strong> = claims corrected by the fact-checker divided by claims checked; unreachable sources are reported separately and never counted as confirmed. Both come from <code>ledger/audit/</code> and <code>run_log.md</code>.</p>' +
+  '<h3>Checks run on the evidence</h3><ul><li>Quote check at merge: ' + qc.found + ' quotes found in their source, ' + qc.not_found + ' not found, ' + qc.unreachable + ' unreachable (' + qc.files + ' check files). Not-found and unreachable quotes show a flag in the evidence drawer.</li>' +
+  (pcs && pcs.CITY_NOT_ON_PAGE != null ? '<li>Wrong-plant sweep of job postings: ' + pcs.city_on_page + ' pages show the plant’s city, ' + pcs.CITY_NOT_ON_PAGE + ' do not (flagged in the drawer), ' + pcs.unreachable + ' unreachable.</li>' : '') +
+  '<li>Verified status per claim in the drawer: <em>not checked</em>, <em>confirmed</em>, <em>corrected</em> (a checker changed the value) or <em>unreachable</em>. Currently ' + Object.values(EV).reduce((n, rs) => n + rs.filter(r => r.vf === 'confirmed').length, 0) + ' evidence rows are confirmed and ' + Object.values(EV).reduce((n, rs) => n + rs.filter(r => r.vf === 'corrected').length, 0) + ' corrected, out of ' + totalEv + '.</li></ul>' +
+  '<h3>Known limits</h3><ul>' +
+  '<li><strong>' + inferredN + ' of ' + totalEv + ' evidence rows are inferred</strong> (guesses to verify, always labelled). Tiers, bottlenecks and many process and material fields are inferred; industry alone never sets a weld process.</li>' +
+  '<li><strong>Thin supply-chain data:</strong> only ' + LK.length + ' supplier links exist (' + linkTags.filter(t => t === 'stated').length + ' stated, ' + linkTags.filter(t => t === 'inferred').length + ' inferred). Public sources rarely name who supplies a pole maker or who buys from a plant.</li>' +
+  '<li><strong>Coordinates:</strong> ' + centroid + ' plants use a city centroid because the street address could not be matched, and ' + noAddr + ' have no confirmed street address; many others were placed from a city-level match. Dots show the town, not the building.</li>' +
+  '<li><strong>Profile depth:</strong> ' + lowConf + ' of ' + C.plants_profiled + ' profiled plants have confidence of 2 or less, because most facts come from job postings and company pages that do not state plant-level details. Unknown parts score 0, so scores err low.</li>' +
+  '<li><strong>Headcount, part sizes and existing robots</strong> are mostly unknown; no OSHA data file was available this run.</li>' +
+  '<li>Excluded plants stay in the ledger; closed, future or not-yet-welding plants (for example sites still under construction) are logged as future triggers.</li></ul>' + ul(B.limits) +
+  (B.failures.length ? '<h4>Sources that failed</h4>' + ul(B.failures) : '') +
+  '<h3>Advisor checkpoints</h3><p class="small muted">' + (B.advisor.length ? B.advisor.map(esc).join(' &middot; ') : 'None logged.') + '</p>' +
+  '<h3>Run log</h3><details class="card"><summary class="pad" style="cursor:pointer;font-weight:600;color:var(--accent)">Open the full run_log.md (' + D.log.sections.length + ' sections)</summary><div class="logbox">' + D.log.sections.map(s => '<h3>' + esc(s.title) + '</h3>' + s.html).join('') + '</div></details>' +
+  '</div>';
+}
+
+/* ---------- profile ---------- */
+function openDlg(d, opener){
+  if (!d._opener || !d.open) d._opener = opener || document.activeElement;
+  if (!d.open) d.showModal();
+}
+function closeDlg(d){ if (d.open) d.close(); }
+function profileHtml(p){
+  const pre = p.id;
+  const prof = p.status === 'profiled';
+  const t = sTier(p);
+  let h = '<div class="dlg-h"><h2 id="profile-t">' + esc(p.name) + '</h2><button type="button" class="btn" data-close="profile">Close</button></div><div class="dlg-b">';
+  h += '<div class="muted">' + val(p, 'parent_company', pre, {label: 'parent company'}) + ' &middot; ' + esc(p.city) + ', ' + esc(p.state) + '</div>';
+  h += '<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;align-items:center">' + scoreBadge(p) + (p.status === 'excluded' ? '<span class="badge b-bad">excluded</span>' : '') + tierBadge(p.tier) + (p.tier_secondary ? '<span class="badge b-st">also ' + esc(p.tier_secondary) + '</span>' : '') + (p.relationship ? '<span class="badge b-grey">' + esc(p.relationship.replace(/_/g,' ')) + '</span>' : '') + '</div>';
+  if (p.status === 'excluded') h += '<div class="banner ex"><strong>Excluded from the map.</strong> ' + val(p, 'exclusion_reason', pre, {label: 'exclusion reason'}) + '</div>';
+  else if (!prof) h += '<div class="banner"><strong>Not yet profiled.</strong> Only the base record is in the ledger: no score, process or material findings, postings, triggers or opening line yet.</div>';
+  if (prof){
+    h += '<div class="sec"><h3>Score</h3><div class="bigscore"><span class="n">' + esc(p.score_total) + '</span><div><span class="badge b-' + t.toLowerCase() + '">' + t + '</span><div class="small muted">out of 100 &middot; sum of six components (calculated)</div><div class="small"><strong>Confidence ' + esc(p.confidence) + ' of 6:</strong> components resting on stated evidence</div></div></div><p class="small muted" style="margin:8px 0 0">Each component\u2019s points are a rubric judgement, so they carry the ledger\u2019s tag. Click a component for its reasoning and the supporting claims that hold the quotes.' + (S.stated ? ' Stated-only mode lists only supporting claims that include stated evidence.' : '') + '</p><div style="margin-top:8px">';
+    COMP.forEach(c => {
+      const claim = pre + ':' + c[0], row = effRow(claim, p[c[0]]), pts = +p[c[0]] || 0;
+      const hide = false;
+      const ids = row && row.r ? [...new Set(row.r.match(/\b(?:p|c|v|bt)-[a-z0-9-]+:[a-z_]+(?::(?:p|c)-[a-z0-9-]+)?/g) || [])].filter(i => EV[i] && i !== claim && !(S.stated && EV[i].every(r => r.t === 'inferred'))) : [];
+      h += '<div class="comp"><div class="row"><span class="lbl">' + c[1] + '</span>' + (hide ? '<span class="hid">inferred, hidden</span>' : '<button type="button" class="val" data-claim="' + esc(claim) + '" data-shown="' + esc(p[c[0]]) + '" aria-label="' + esc(c[1] + ': ' + pts + ' of ' + c[2] + ' points. Open evidence') + '"><strong>' + pts + '</strong> / ' + c[2] + '</button> ' + (row ? badgeTag(row.t) : '<span class="noev">no evidence row</span>')) + '</div>' +
+        '<div class="meter"><i style="width:' + (hide ? 0 : pts / c[2] * 100) + '%"></i></div>' +
+        (!hide && row && row.r ? '<div class="why">' + esc(row.r.replace(/;?\s*supporting claims:.*$/i, '').replace(/;?\s*counts toward confidence:.*$/i, '')) + '</div>' : '') +
+        (!hide && ids.length ? '<div class="chips" aria-label="Supporting claims">' + ids.map(i => '<button type="button" class="chip" data-claim="' + esc(i) + '">' + esc(i.startsWith(pre + ':') ? i.slice(pre.length + 1) : i) + '</button>').join('') + '</div>' : '') + '</div>';
+    });
+    h += '</div></div>';
+    h += '<div class="sec"><h3>Opening line</h3><div class="opening">' + val(p, 'opening_line', pre, {label: 'opening line'}) + '</div></div>';
+  }
+  h += '<div class="sec"><h3>Relationship to Path</h3><dl class="kv"><dt>Relationship</dt><dd>' + val(p, 'relationship', pre) + '</dd>' + (p.lookalike_of ? '<dt>Lookalike of</dt><dd>' + val(p, 'lookalike_of', pre, {label: 'lookalike of'}) + '</dd>' : '') + '</dl></div>';
+  const kv = (f, l) => '<dt>' + l + '</dt><dd>' + val(p, f, pre, {label: l}) + '</dd>';
+  h += '<div class="sec"><h3>Base record</h3><dl class="kv">' + kv('address','Address') + kv('county_fips','County FIPS') + '<dt>Coordinates</dt><dd>' + val(p, 'lat', pre, {label:'latitude'}) + ', ' + val(p, 'lon', pre, {label:'longitude'}) + '</dd>' + kv('website','Website') +
+    '<dt>Verticals</dt><dd>' + vNames(p).map(x => esc(vName(x))).join('; ') + '</dd>' + kv('products','Products') + kv('tier','Tier') + (p.tier_secondary ? kv('tier_secondary','Secondary tier') : '') + kv('headcount','Headcount') + kv('found_by','Found by') + kv('last_checked','Last checked') + '</dl></div>';
+  if (prof) h += '<div class="sec"><h3>Profile</h3><dl class="kv">' + [['weld_processes','Weld processes'],['materials','Materials'],['certifications','Certifications'],['part_size_fit','Part size fit'],['production_type','Production type'],['existing_robots','Existing robots'],['welder_postings','Welder postings'],['triggers','Triggers'],['bottleneck_guess','Bottleneck guess']].map(x => kv(x[0], x[1])).join('') + '</dl></div>';
+  const lk = LK.filter(l => l.from_id === p.id || l.to_id === p.id);
+  if (lk.length) h += '<div class="sec"><h3>Supply links</h3>' + lk.map(l => { const o = endpoint(l.from_id === p.id ? l.to_id : l.from_id); const row = effRow(l.claim_id, l.what_is_supplied);
+    return '<div class="small" style="margin-bottom:6px">' + (l.from_id === p.id ? 'Supplies ' : 'Supplied by ') + (o.plant ? '<button type="button" class="link" data-plant="' + esc(o.id) + '">' + esc(o.name) + '</button>' : esc(o.name)) + ': ' + esc(l.what_is_supplied) + ' ' + (row ? badgeTag(row.t) + ' <button type="button" class="btn small" data-claim="' + esc(l.claim_id) + '" data-shown="' + esc(l.what_is_supplied) + '">Evidence</button>' : '<span class="noev">no evidence row</span>') + '</div>'; }).join('') + '</div>';
+  h += '</div>';
+  return h;
+}
+function openPlant(id, opener){
+  const p = byId[id]; if (!p) return;
+  const d = $('#profile');
+  d.innerHTML = profileHtml(p); d.dataset.pid = id;
+  openDlg(d, opener);
+  d.scrollTop = 0;
+  try { history.replaceState(null, '', '#' + S.view + '/' + id); } catch(e){}
+}
+
+/* ---------- evidence drawer ---------- */
+const dstack = [];
+function drawerHtml(claim, shown){
+  const rows = EV[claim] || [];
+  const parts = claim.split(':'); const field = parts.slice(1).join(':');
+  const owner = byId[parts[0]] ? byId[parts[0]].name : vById[parts[0]] ? vById[parts[0]].name : parts[0];
+  let h = '<div class="dlg-h"><h2 id="drawer-t">Evidence</h2>' + (dstack.length > 1 ? '<button type="button" class="btn" data-back>Back</button>' : '') + '<button type="button" class="btn" data-close="drawer">Close</button></div><div class="dlg-b">';
+  h += '<div class="small muted">' + esc(owner) + ' &middot; <code>' + esc(claim) + '</code></div><h3 style="margin:6px 0 2px;font-size:16px">' + esc(field.replace(/_/g,' ')) + '</h3>';
+  if (!rows.length) return h + '<div class="banner"><strong>No evidence row.</strong> This value is in the ledger but has no row in <code>evidence.csv</code>, so no quote or source can be shown. Treat it as unsourced.</div></div>';
+  const cur = effRow(claim, shown);
+  if (rows.length > 1) h += '<p class="small muted">' + rows.length + ' evidence rows share this claim id. The one matching the displayed value is outlined.</p>';
+  rows.forEach(r => {
+    const vs = verState(r, claim), fc = FC[claim];
+    const vcls = {confirmed:'b-ok', corrected:'b-warn', unreachable:'b-bad'}[vs] || 'b-grey';
+    let host = ''; try { host = new URL(r.u).hostname.replace(/^www\./,''); } catch(e){ host = r.u; }
+    h += '<div class="evrow' + (r === cur ? ' sel' : '') + '"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">' +
+      (r.t === 'inferred' ? '<span class="badge b-inf">inferred</span>' : r.t === 'stated' ? '<span class="badge b-stated">stated</span>' : '<span class="badge b-unknown">unknown</span>') +
+      '<span class="badge ' + vcls + '">verified: ' + esc(String(vs).replace('_',' ')) + '</span>' + (r.st ? '<span class="badge b-st">' + esc(r.st) + '</span>' : '') +
+      (r.qc ? '<span class="badge b-bad" title="At merge time the quote was not found on the page, or the page could not be reached">quote check: ' + esc(r.qc.replace('_',' ')) + '</span>' : '') +
+      (r.cc ? '<span class="badge b-warn" title="Wrong-plant sweep: this job-posting page does not show the plant’s city">city not on page</span>' : '') + '</div>' +
+      '<div style="margin-top:6px"><strong>' + esc(r.v) + '</strong></div>' +
+      (r.q ? '<blockquote>' + esc(r.q) + '</blockquote>' : '<p class="small muted">' + (/^score_/.test(field) ? 'No quote of its own: the points are a rubric judgement. The quotes sit on the supporting claims linked below.' : 'No quote recorded.') + '</p>') +
+      (r.t === 'inferred' ? '<p class="small"><strong>Reasoning (why this is a guess):</strong> ' + (r.r ? linkClaims(esc(r.r), claim) : 'none recorded') + '</p>' : r.r ? '<p class="small"><strong>Reasoning:</strong> ' + linkClaims(esc(r.r), claim) + '</p>' : '') +
+      '<dl><dt>Source</dt><dd>' + (r.u ? '<a href="' + esc(r.u) + '" target="_blank" rel="noopener noreferrer">' + esc(host) + '</a> <span class="muted small">(opens the source page)</span>' : '<span class="muted">no source link</span>') + '</dd>' +
+      '<dt>Archive</dt><dd>' + (r.a ? '<a href="' + esc(r.a) + '" target="_blank" rel="noopener noreferrer">archived copy</a>' : '<span class="muted">no archive copy</span>') + '</dd>' +
+      '<dt>Retrieved</dt><dd>' + esc(r.d || 'not recorded') + '</dd><dt>Produced by</dt><dd>' + esc(r.by) + '</dd>' +
+      (fc ? '<dt>Fact-check</dt><dd>' + esc(fc.status) + (fc.note ? ': ' + esc(fc.note) : '') + ' <span class="muted small">(' + esc(fc.file) + ')</span></dd>' : '') + '</dl></div>';
+  });
+  return h + '</div>';
+}
+function linkClaims(html, self){
+  return html.replace(/\b(?:p|c|v|bt)-[a-z0-9-]+:[a-z_]+(?::(?:p|c)-[a-z0-9-]+)?/g, m => EV[m] && m !== self ? '<button type="button" class="chip" data-claim="' + m + '">' + m + '</button>' : m);
+}
+function openEvidence(claim, shown, opener){
+  const d = $('#drawer');
+  if (!d.open) dstack.length = 0;
+  dstack.push([claim, shown]);
+  d.innerHTML = drawerHtml(claim, shown);
+  openDlg(d, opener);
+  d.scrollTop = 0;
+  const f = d.querySelector('[data-close]'); if (f && !d.contains(document.activeElement)) f.focus();
+}
+
+/* ---------- CSV ---------- */
+function csvCell(s){ s = String(s == null ? '' : s); return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g,'""') + '"' : s; }
+function plantCsv(rows){
+  const cols = Object.keys(P[0]);
+  const out = [cols.concat(['inferred_fields']).map(csvCell).join(',')];
+  rows.forEach(p => {
+    const inf = [];
+    const vals = cols.map(c => { const r = effRow(p.id + ':' + c, p[c]); if (r && r.t === 'inferred'){ inf.push(c); if (S.stated) return ''; } return p[c]; });
+    out.push(vals.concat([inf.join(' ')]).map(csvCell).join(','));
+  });
+  return out.join('\r\n');
+}
+function currentCsv(){
+  const v = S.view;
+  if (v === 'ranking'){
+    const cols = ['rank','id','name','status','included_plants','profiled','high','medium','low','excluded'].concat(SCORECARD.map(f => f[0]));
+    return ['path-prospect-verticals', [cols.join(',')].concat(V.map(x => { const c = vCounts(x); return [x.rank, x.id, x.name, x.status, c.included, c.profiled, c.High, c.Medium, c.Low, c.excluded].concat(SCORECARD.map(f => { const r = effRow(x.id + ':' + f[0], x[f[0]]); return S.stated && r && r.t === 'inferred' ? '' : x[f[0]]; })).map(csvCell).join(','); })).join('\r\n')];
+  }
+  if (v === 'calls') return ['path-prospect-call-list', plantCsv(callRows())];
+  if (v === 'excluded') return ['path-prospect-excluded', plantCsv(EXCL.filter(p => passes(p, true)))];
+  if (v === 'supply'){
+    const mp = (makerList().find(m => m[0] === S.maker) || ['', []])[1];
+    return ['path-prospect-supply-' + S.maker.toLowerCase().replace(/[^a-z0-9]+/g,'-'), plantCsv(mp)];
+  }
+  if (v === 'method') return ['path-prospect-plants-all', plantCsv(P)];
+  return ['path-prospect-plant-map', plantCsv(INCL.filter(p => passes(p)))];
+}
+function download(){
+  const [name, text] = currentCsv();
+  const blob = new Blob(['﻿' + text], {type: 'text/csv;charset=utf-8'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name + '-' + (M.last || 'ledger') + '.csv';
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
+/* ---------- routing / refresh ---------- */
+const RENDER = {ranking: renderRanking, map: renderMap, supply: renderSupply, calls: renderCalls, excluded: renderExcluded, method: renderMethod};
+const dirty = new Set(Object.keys(RENDER));
+function refresh(){ Object.keys(RENDER).forEach(k => dirty.add(k)); renderActive(); }
+function renderActive(){
+  VIEWS.forEach(v => { $('#v-' + v[0]).hidden = v[0] !== S.view; });
+  setActiveTab();
+  if (dirty.has(S.view)){ dirty.delete(S.view); RENDER[S.view](); }
+  $('#csv').title = 'Download the current ' + (VIEWS.find(v => v[0] === S.view)[1].toLowerCase()) + ' as CSV';
+}
+function go(view, focus){
+  S.view = view;
+  dirty.add(view);
+  try { history.replaceState(null, '', '#' + view); } catch(e){}
+  renderActive();
+  if (focus){ const h = $('#v-' + view + ' h2'); if (h){ h.tabIndex = -1; h.focus(); } }
+  window.scrollTo(0, 0);
+}
+
+document.addEventListener('click', e => {
+  const t = e.target.closest('button,[data-claim]'); if (!t) return;
+  if (t.dataset.view){ go(t.dataset.view, true); return; }
+  if (t.dataset.claim){ openEvidence(t.dataset.claim, t.dataset.shown, t); return; }
+  if (t.dataset.plant){ openPlant(t.dataset.plant, t); return; }
+  if (t.dataset.close){ closeDlg($('#' + t.dataset.close)); return; }
+  if (t.hasAttribute('data-back')){ dstack.pop(); const [c, s] = dstack[dstack.length-1]; $('#drawer').innerHTML = drawerHtml(c, s); $('#drawer').scrollTop = 0; const f = $('#drawer [data-close]'); if (f) f.focus(); return; }
+});
+['profile','drawer'].forEach(id => {
+  const d = $('#' + id);
+  d.addEventListener('close', () => {
+    if (id === 'drawer') dstack.length = 0;
+    if (id === 'profile'){ try { history.replaceState(null, '', '#' + S.view); } catch(e){} }
+    const o = d._opener; d._opener = null;
+    if (o && document.contains(o)) o.focus();
+  });
+  d.addEventListener('click', e => { if (e.target === d) d.close(); });  // click on backdrop
+});
+$('#q').addEventListener('input', e => { S.q = e.target.value; refresh(); });
+$('#stated').addEventListener('change', e => {
+  S.stated = e.target.checked; refresh();
+  const pd = $('#profile'); if (pd.open && pd.dataset.pid) pd.innerHTML = profileHtml(byId[pd.dataset.pid]);
+  const dd = $('#drawer'); if (dd.open && dstack.length){ const [c, s] = dstack[dstack.length-1]; dd.innerHTML = drawerHtml(c, s); }
+});
+$('#csv').addEventListener('click', download);
+$('#theme').addEventListener('click', () => {
+  const cur = document.documentElement.dataset.theme || '';
+  const nxt = cur === '' ? 'light' : cur === 'light' ? 'dark' : '';
+  if (nxt) document.documentElement.dataset.theme = nxt; else delete document.documentElement.dataset.theme;
+  try { localStorage.setItem('ppm-theme', nxt); } catch(e){}
+  $('#theme').textContent = 'Theme: ' + (nxt || 'auto');
+});
+$('#theme').textContent = 'Theme: ' + (document.documentElement.dataset.theme || 'auto');
+
+renderChrome();
+(function init(){
+  const h = (location.hash || '').replace(/^#/, '').split('/');
+  if (RENDER[h[0]]) S.view = h[0];
+  renderActive();
+  if (h[1] && byId[h[1]]) openPlant(h[1]);
+})();
+window.addEventListener('hashchange', () => { const h = location.hash.replace(/^#/, '').split('/'); if (RENDER[h[0]] && h[0] !== S.view) go(h[0]); });
+})();
+</script>
+</body>
+</html>

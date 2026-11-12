@@ -158,12 +158,12 @@ def parse_log(text, vertical_ids):
                     "headline": m.group(0).strip("*").strip(),
                     "pct": float(pct.group(1)) if pct else None,
                     "line": md_inline(body)}
-        if re.search(r"\*\*(Process rule|Material rule|Relationship rule|Score storage)", body) or "Confidence is recomputed" in body or "Confidence =" in body:
-            bullets["rules"].append(md_inline(body))
-        if re.search(r"Back-test result|back-test", body, re.I):
-            bullets["backtest"].append(md_inline(body))
-        if re.search(r"\*\*Weights", body) or re.search(r"weight change|weights unchanged", body, re.I):
+        if re.search(r"\*\*Weights", body):
             bullets["weights"].append(md_inline(body))
+        elif re.search(r"Back-test result", body):
+            bullets["backtest"].append(md_inline(body))
+        elif re.search(r"\*\*(Process rule|Material rule|Relationship rule|Score storage)", body) or "Confidence is recomputed" in body:
+            bullets["rules"].append(md_inline(body))
         if re.search(r"Known (limit|gap)|Coverage gaps accepted|city-centroid|city centroids", body):
             bullets["limits"].append(md_inline(body))
         if re.search(r"Source failures", body):
