@@ -1,0 +1,377 @@
+{
+ "checker": "fact-checker B (round 2), v-poles-substation",
+ "claims_checked": 40,
+ "claims_corrected": 8,
+ "claims_unreachable": 0,
+ "error_rate": 0.2,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 8,
+  "invented fact": 0,
+  "other": 0
+ },
+ "repeated_kinds": [
+  "quote does not support value (8x): sub-patterns (a) legal-entity suffix \"LLC\" added to parent_company where the cited page does not say it (4 Meyer rows, 1 DIS-TRAN row; AISC lists Meyer Fort Worth as \"Inc.\"); (b) a search-absence clause (\"no welder posting verified\", \"0 open verified\") inside a stated welder_postings row (Lancaster, Sumterville); (c) a multi-source found_by value on a single-source row (Ameron AISC). Sweep all records for (a) and (b)."
+ ],
+ "worst_errors": [
+  "p-meyer-lancaster-sc:welder_postings (line 446) and p-arcosa-traffic-structures-sumterville-fl:welder_postings (line 1314): a stated row asserts a search absence (\"no welder posting verified\" / \"0 open verified\") that its single expired-listing page cannot show; this feeds labor = 0, and search results list other fitter/welder and welding-technician titles at both sites.",
+  "p-meyer-fort-worth-tx:parent_company (lines 435, 2224): value says \"Meyer Utility Structures, LLC\", which is on neither cited page, and the AISC directory lists the Fort Worth site as \"ARCOSA Meyer Utility Structures Inc.\".",
+  "p-ameron-tulsa-ok:found_by (line 813): the AISC row claims \"AISC;state DOT list\"; the AISC source supports only AISC. Minor, but a single-source row carrying a multi-source value."
+ ],
+ "opening_line_problems": [
+  "p-arcosa-traffic-structures-sumterville-fl: the opening line names \"tolling gantries, overhead sign structures\" but no stated row for this plant carries them (the stated products row says only \"mast arm and strain poles\"; the other products row is inferred, from arcosa.com). The ATS homepage does say it, so the fix is to add a stated products row, not to reword. The MIG/flux-core clause comes from an expired posting with no date. No Path deployment asserted.",
+  "p-meyer-lancaster-sc: \"to run its in-plant welding schools and track welder defect rates\" is carried only by the inferred bottleneck_guess row; the stated rows (weld_processes, welder_postings) do not include those duties. The text is on the posting (\"Organize and revamp the in-plant welding schools\", \"Maintain all metrics for all welders at the site related to defect rates\"), so add a stated row or drop the clause. No Path deployment asserted.",
+  "p-ameron-tulsa-ok: uses only stated rows (2011 Area Development; nov.com parent), but its plant fact is a 2011 announcement that may describe a second Tulsa site, not the pinned 2333 S Yukon plant (see the p-ameron-tulsa-ok:score_* row). Weak as an opener."
+ ],
+ "plants_closed_or_moved": [
+  "None of the 5 plants found closed or moved; the open status of each rests on current company sites, 2025-2026 postings and state DOT lists.",
+  "p-ameron-tulsa-ok: unresolved two-site question. Unresolved. A search summary (not a quote; the news9/newson6 source pages 404, costar 403) says that in Jan 2011 Ameron already had a Tulsa plant at 2333 South Yukon and the new 75,000 sq ft steel pole plant would be in Cherokee Industrial Park. If so, rows 585 and 2231 and the opening line describe a different Tulsa site from the pin, and the record may merge two plants. Three bounded fetches (EDGAR full-text, LA Business Journal) did not settle it; NOV 10-Ks for 2012-2016 mention Ameron poles in Tulsa and may list both properties. Rows kept confirmed at city level (Tulsa). Recommend a list-auditor or profiler check of the NOV 2012 10-K properties section and Ameron's current locations."
+ ],
+ "rows": [
+  {
+   "claim_id": "p-meyer-fort-worth-tx:city",
+   "source_url": "https://talents.vaia.com/companies/arcosa-inc/fitter-welder-weekend-shift-72043694/",
+   "verdict": "confirmed",
+   "ledger_value": "Fort Worth",
+   "note": "evidence.csv line 434. Vaia posting text names \"our plant located in Ft. Worth, TX\". Plant open: 2026 Fort Worth Meyer/Arcosa postings in search results; no closure news found."
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:parent_company",
+   "source_url": "https://builtin.com/job/assistant-plant-manager/9635121",
+   "verdict": "corrected",
+   "ledger_value": "Arcosa, Inc. (Meyer Utility Structures, LLC)",
+   "note": "evidence.csv line 435. Built In page (Clinton, IL Assistant Plant Manager posting, removed Jun 8 2026) states Meyer is an Arcosa subsidiary, but nowhere says \"LLC\". The AISC snapshot (line 318) lists the Fort Worth site as \"ARCOSA Meyer Utility Structures Inc.\", so the LLC suffix is contradicted for this plant, not just missing. Parent itself confirmed.",
+   "corrected_value": "Arcosa, Inc. (Meyer Utility Structures)",
+   "corrected_quote": "Meyer Utility Structures is a proud subsidiary of the infrastructure company, Arcosa, Inc.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:parent_company",
+   "source_url": "https://www.meyerutilitystructures.com",
+   "verdict": "corrected",
+   "ledger_value": "Arcosa, Inc. (Meyer Utility Structures, LLC)",
+   "note": "evidence.csv line 2224. Meyer homepage quote is present but the page never says \"LLC\" (copyright line reads \"Meyer Utility Structures\"). AISC snapshot line 318 lists Fort Worth as \"ARCOSA Meyer Utility Structures Inc.\" Parent (Arcosa) confirmed; company is also now CRH-owned per arcosa.com (Oct 23 2026 release), which the coordinator row carries as inferred.",
+   "corrected_value": "Arcosa, Inc. (Meyer Utility Structures)",
+   "corrected_quote": "Meyer Utility Structures is a proud subsidiary of the newly-formed infrastructure company, ARCOSA, Inc.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:website",
+   "source_url": "https://www.meyerutilitystructures.com",
+   "verdict": "confirmed",
+   "ledger_value": "https://www.meyerutilitystructures.com",
+   "note": "evidence.csv line 2225. Copyright line present on meyerutilitystructures.com. Note the site lists Memphis HQ, not Fort Worth."
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:weld_processes",
+   "source_url": "https://talents.vaia.com/companies/arcosa-inc/fitter-welder-weekend-shift-72043694/",
+   "verdict": "confirmed",
+   "ledger_value": "MIG welding named for the Fort Worth Fitter/Welder role; flux or metal core experience highly preferred",
+   "note": "evidence.csv line 1241. Both fragments on the Fort Worth posting: \"Through the MIG welding process, you are responsible for welding together structural steel...\" and \"Flux or Metal Core welding experience highly preferred.\" Plant-level."
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:welder_postings",
+   "source_url": "https://talents.vaia.com/companies/arcosa-inc/fitter-welder-weekend-shift-72043694/",
+   "verdict": "confirmed",
+   "ledger_value": "1 Fitter/Welder posting for the Fort Worth plant, weekend shift Fri-Sun 4:00 am - 4:30 pm; posting date and live status not shown",
+   "note": "evidence.csv line 439. Page shows the Ft. Worth Fitter/Welder posting and \"Schedule - Must be able to work Fri-Sun 4:00 am - 4:30 pm.\" No posting date and no expiry marker shown (\"Apply Now\" present), so \"date and live status not shown\" holds. Vaia appends an unrelated NABRICO Marine employer blurb; ignore."
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:city",
+   "source_url": "https://www.disabledperson.com/jobs/32919064-plant-welding-engineer",
+   "verdict": "confirmed",
+   "ledger_value": "Lancaster",
+   "note": "evidence.csv line 441. Expired disabledperson.com listing names \"the Lancaster, SC operation\". Page returned HTTP 404 but the body shows the full expired listing text, read 2026-11-12; archive_url blank. Plant open: search results show 2025-2026 Lancaster, SC Meyer/Arcosa postings (plant manager, maintenance, quality inspector, welding technician); AISC snapshot line 2806 lists \"Meyer Utility Structures, LLC Lancaster SC\"."
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:parent_company",
+   "source_url": "https://builtin.com/job/assistant-plant-manager/9635121",
+   "verdict": "corrected",
+   "ledger_value": "Arcosa, Inc. (Meyer Utility Structures, LLC)",
+   "note": "evidence.csv line 442. Built In page is a Clinton, IL posting; it supports Arcosa as parent but not the \"LLC\" suffix. (AISC snapshot line 2806 does list \"Meyer Utility Structures, LLC\" in Lancaster, so LLC is plausibly right for Lancaster, but it is not on this page; add an AISC row if wanted.)",
+   "corrected_value": "Arcosa, Inc. (Meyer Utility Structures)",
+   "corrected_quote": "Meyer Utility Structures is a proud subsidiary of the infrastructure company, Arcosa, Inc.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:parent_company",
+   "source_url": "https://www.meyerutilitystructures.com",
+   "verdict": "corrected",
+   "ledger_value": "Arcosa, Inc. (Meyer Utility Structures, LLC)",
+   "note": "evidence.csv line 2226. Meyer homepage does not say \"LLC\". Parent Arcosa confirmed.",
+   "corrected_value": "Arcosa, Inc. (Meyer Utility Structures)",
+   "corrected_quote": "Meyer Utility Structures is a proud subsidiary of the newly-formed infrastructure company, ARCOSA, Inc.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:website",
+   "source_url": "https://www.meyerutilitystructures.com",
+   "verdict": "confirmed",
+   "ledger_value": "https://www.meyerutilitystructures.com",
+   "note": "evidence.csv line 2227. Copyright line present."
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:weld_processes",
+   "source_url": "https://www.disabledperson.com/jobs/32919064-plant-welding-engineer",
+   "verdict": "confirmed",
+   "ledger_value": "FCAW, SAW and GMAW named as required knowledge in a Plant Welding Engineer posting for the Lancaster, SC operation (posting now expired)",
+   "note": "evidence.csv line 1256. \"Advanced knowledge of FCAW, SAW, and GMAW welding processes\" is on the Lancaster posting; value says posting expired, which the page shows. Posting date unknown (30+ days ago), so recency not established. Page returned HTTP 404 but the body shows the full expired listing text, read 2026-11-12; archive_url blank."
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:welder_postings",
+   "source_url": "https://www.disabledperson.com/jobs/32919064-plant-welding-engineer",
+   "verdict": "corrected",
+   "ledger_value": "no welder posting verified for Lancaster; one Plant Welding Engineer posting found, now expired",
+   "note": "evidence.csv line 446. The page supports one Plant Welding Engineer posting for the Lancaster, SC operation, marked expired, \"Posted ... 30+ days ago\" (no date). It cannot state the clause \"no welder posting verified for Lancaster\": that is a search finding and needs its own inferred row (the ledger already tags the DIS-TRAN equivalent inferred). Search results (not quotes, not researched further) list Lancaster welding-technician and other Meyer titles; the profiler may want to recheck labor. Page returned HTTP 404 but the body shows the full expired listing text, read 2026-11-12; archive_url blank.",
+   "corrected_value": "one Plant Welding Engineer posting for the Lancaster, SC operation, marked expired (posting date not shown)",
+   "corrected_quote": "Arcosa Meyer Utility Structures (AMUS) is searching for a Plant Welding Engineer for the Lancaster, SC operation! ... This job has expired.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-distran-washington-court-house-oh:address",
+   "source_url": "https://www.distransteel.com/contact",
+   "verdict": "confirmed",
+   "ledger_value": "1629 Old US 35 SE, Washington Court House, OH 43160",
+   "note": "evidence.csv line 823. distransteel.com/contact lists \"Ohio Fabrication Facility 1629 Old US 35 SE Washington Court House, OH 43160\"."
+  },
+  {
+   "claim_id": "p-distran-washington-court-house-oh:found_by",
+   "source_url": "https://crestoperations.com/news/dis-tran-steel-expands-with-manufacturing-facility-in-ohio",
+   "verdict": "confirmed",
+   "ledger_value": "news;company site",
+   "note": "evidence.csv line 826. Provenance field; the page is a news release on the parent company site."
+  },
+  {
+   "claim_id": "p-distran-washington-court-house-oh:materials",
+   "source_url": "https://crestoperations.com/news/dis-tran-steel-expands-with-manufacturing-facility-in-ohio",
+   "verdict": "confirmed",
+   "ledger_value": "steel (tapered tubular steel poles)",
+   "note": "evidence.csv line 1558. Quote is an exact but truncated substring (\"...electric  utilit\", cut mid-word, double space as on page); supports steel poles at Washington Court House. Suggest trimming the quote to a whole phrase."
+  },
+  {
+   "claim_id": "p-distran-washington-court-house-oh:parent_company",
+   "source_url": "https://www.crestoperations.com/news/dts-ohio-plant-celebrates-grand-opening",
+   "verdict": "corrected",
+   "ledger_value": "Crest Industries, LLC",
+   "note": "evidence.csv line 489. Page is Crest Industries' own site listing DIS-TRAN Steel among its companies, and the Crest CEO comments on the Ohio plant, so Crest as parent holds; but the page says \"Crest Industries\" (footer \"(c)2022 Crest Industries\"), never \"LLC\". Row 1567 (careers page) supports the LLC form.",
+   "corrected_value": "Crest Industries",
+   "corrected_quote": "Crest Industries CEO and Owner Kenneth Robison",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-distran-washington-court-house-oh:parent_company",
+   "source_url": "https://www.distransteel.com/careers",
+   "verdict": "confirmed",
+   "ledger_value": "Crest Industries, LLC",
+   "note": "evidence.csv line 1567. DIS-TRAN Steel careers page footer \"Copyright (c) 2025 Crest Industries, LLC.\" on DIS-TRAN's own site supports Crest Industries, LLC as parent."
+  },
+  {
+   "claim_id": "p-distran-washington-court-house-oh:products",
+   "source_url": "https://www.crestoperations.com/news/dts-ohio-plant-celebrates-grand-opening",
+   "verdict": "confirmed",
+   "ledger_value": "tapered tubular steel poles",
+   "note": "evidence.csv line 485. Crest news Nov 30 2021, datelined Washington Court House, OH: production of tapered tubular steel poles began Feb 2021. Plant open: Washington Court House listed as \"Ohio Fabrication Facility\" on distransteel.com/contact (2025 copyright); careers page lists an Equipment Operator I opening there; 2026 aggregator postings for the site; no closure news."
+  },
+  {
+   "claim_id": "p-distran-washington-court-house-oh:products",
+   "source_url": "https://crestoperations.com/news/dis-tran-steel-expands-with-manufacturing-facility-in-ohio",
+   "verdict": "confirmed",
+   "ledger_value": "tapered tubular steel poles for electric utility",
+   "note": "evidence.csv line 824. Crest news Sept 29 2020 announcement (future tense: \"will ... produce\"); production start confirmed by row 485."
+  },
+  {
+   "claim_id": "p-distran-washington-court-house-oh:website",
+   "source_url": "https://www.distransteel.com/",
+   "verdict": "confirmed",
+   "ledger_value": "https://www.distransteel.com/",
+   "note": "evidence.csv line 2229. Page title matches."
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:address",
+   "source_url": "https://arcosa-traffic-structures.azurewebsites.net/contact/",
+   "verdict": "confirmed",
+   "ledger_value": "1749 CR 525 E, Sumterville, FL 33585",
+   "note": "evidence.csv line 575. Contact page lists 1749 CR 525 E, Sumterville, FL 33585."
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:certifications",
+   "source_url": "https://arcosa-traffic-structures.azurewebsites.net/",
+   "verdict": "confirmed",
+   "ledger_value": "AISC and AWS certified fabricator",
+   "note": "evidence.csv line 1310. \"Arcosa Traffic Structures is an AISC/AWS Certified Fabricator, and listed as an approved vendor for multiple product lines\" present; AISC part also in the snapshot (line 322)."
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:found_by",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "verdict": "confirmed",
+   "ledger_value": "AISC",
+   "note": "evidence.csv line 857. AISC snapshot line 322: \"Arcosa Traffic Structures Sumterville FL Highway Component Manufacturer, Bridge Fabricator - Simple\"."
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:materials",
+   "source_url": "https://arcosa-traffic-structures.azurewebsites.net/",
+   "verdict": "confirmed",
+   "ledger_value": "steel (structural steel products)",
+   "note": "evidence.csv line 2230. Sentence present on ATS homepage."
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:name",
+   "source_url": "https://arcosa-traffic-structures.azurewebsites.net/",
+   "verdict": "confirmed",
+   "ledger_value": "Arcosa Traffic Structures",
+   "note": "evidence.csv line 574. ATS homepage sentence present. Plant open: site copyright 2026, Sumterville address on homepage and contact page; 2026 Sumterville postings in search results; no closure news."
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:parent_company",
+   "source_url": "https://arcosa-traffic-structures.azurewebsites.net/",
+   "verdict": "confirmed",
+   "ledger_value": "Arcosa, Inc.",
+   "note": "evidence.csv line 1319. \"Arcosa Traffic Structures is a proud subsidiary of Arcosa.\" present."
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:production_type",
+   "source_url": "https://arcosa-traffic-structures.azurewebsites.net/",
+   "verdict": "confirmed",
+   "ledger_value": "custom/engineered DOT structures",
+   "note": "evidence.csv line 1312. Sentence present (Monotube Truss section); page also says the team can \"engineer, quote, fabricate, and deliver, complex structural steel projects\". Supports custom/engineered DOT structures."
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:products",
+   "source_url": "https://arcosa-traffic-structures.azurewebsites.net/",
+   "verdict": "confirmed",
+   "ledger_value": "mast arm and strain poles",
+   "note": "evidence.csv line 576. Sentence present; the homepage (single-plant site, Sumterville HQ address) describes the plant's product."
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:prospect_test",
+   "source_url": "https://arcosa-traffic-structures.azurewebsites.net/",
+   "verdict": "confirmed",
+   "ledger_value": "pass",
+   "note": "evidence.csv line 776. Quote present. \"pass\" is a judgment, but the page also says ATS is \"the fabricator of choice for projects requiring structural steel tolling gantries...\" and fabricates \"complex structural steel projects\", and AWS certification implies in-house welding; the Sumterville fitter/welder posting (row 1343) shows welding on site."
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:website",
+   "source_url": "https://arcosa-traffic-structures.azurewebsites.net/",
+   "verdict": "confirmed",
+   "ledger_value": "https://arcosa-traffic-structures.azurewebsites.net/",
+   "note": "evidence.csv line 578. Title matches."
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:weld_processes",
+   "source_url": "https://www.jofdav.com/jobs/27976270-entry-fitter-welder",
+   "verdict": "confirmed",
+   "ledger_value": "MIG welding experience required and flux core preferred in a (now expired) Sumterville Entry Fitter/Welder posting",
+   "note": "evidence.csv line 1343. \"MIG welding experience\" and \"Flux Core experience preferred\" both listed under \"What you'll need\"; \"Location: Sumterville, FL\"; posting expired. Page returned HTTP 404 but the body shows the full expired listing text, read 2026-11-12; archive_url blank."
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:welder_postings",
+   "source_url": "https://www.jofdav.com/jobs/27976270-entry-fitter-welder",
+   "verdict": "corrected",
+   "ledger_value": "0 open verified. One Entry Fitter/Welder posting for Sumterville on jofdav.com is marked expired",
+   "note": "evidence.csv line 1314. Page supports one Sumterville Entry Fitter/Welder posting, marked expired, \"Posted ... 30+ days ago\" (no date). The clause \"0 open verified\" is an absence finding, not on the page; move it to a separate inferred row. Search results (not quotes, not researched) show Senior Fitter/Welder and other Sumterville Arcosa titles, so labor may merit a recheck. jofdav.com serves the same disabledperson.com listing. Page returned HTTP 404 but the body shows the full expired listing text, read 2026-11-12; archive_url blank.",
+   "corrected_value": "One Entry Fitter/Welder posting for Sumterville on jofdav.com, marked expired (posting date not shown)",
+   "corrected_quote": "Entry Fitter/Welder at Arcosa Inc in Sumterville, Florida ... This job has expired.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:address",
+   "source_url": "https://www.dot.ga.gov/PartnerSmart/Materials/Documents/qpl52a.pdf",
+   "verdict": "confirmed",
+   "ledger_value": "2333 S Yukon Ave, Tulsa, OK 74107",
+   "note": "evidence.csv line 584. GDOT QPL-52 (revised July 19, 2023) lists Ameron Pole Products, LLC, source location Tulsa, OK, address 2333 South Yukon Avenue, Tulsa, OK 74107."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:found_by",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "verdict": "corrected",
+   "ledger_value": "AISC;state DOT list",
+   "note": "evidence.csv line 813. AISC snapshot line 256 (\"Ameron Pole Products Tulsa OK Highway Component Manufacturer, Building Fabricator\") supports \"AISC\" only; \"state DOT list\" is supported by the separate TxDOT row (886) and GDOT address row (584), not this source.",
+   "corrected_value": "AISC",
+   "corrected_quote": "Ameron Pole Products\tTulsa\tOK\tHighway Component Manufacturer, Building Fabricator",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:found_by",
+   "source_url": "https://www.txdot.gov/content/dam/docs/division/mtd/mpl/tsp.pdf",
+   "verdict": "confirmed",
+   "ledger_value": "state DOT list",
+   "note": "evidence.csv line 886. TxDOT Traffic Signal Pole Assembly Fabrication Plants list (Dec 22, 2025): \"99190 Ameron Pole Products Tusla, OK\" (typo on the list; stamp page says Tulsa, OK). Approved under DMS-7380 \"Steel Non-Bridge Member Fabrication Plant Qualification\": recent evidence the Tulsa plant operates as a steel fabrication plant. Plant open: no closure news found; 2025 Tulsa Ameron postings in search results."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:materials",
+   "source_url": "https://www.areadevelopment.com/newsitems/1-25-2011/ameron-steel-tulsa-oklahoma1253.shtml",
+   "verdict": "confirmed",
+   "ledger_value": "steel (poles)",
+   "note": "evidence.csv line 2231. Same 2011 Area Development quote; supports steel. Same two-site caution as row 585."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:name",
+   "source_url": "https://www.nov.com/poleproducts",
+   "verdict": "confirmed",
+   "ledger_value": "Ameron Pole Products LLC",
+   "note": "evidence.csv line 583. \"Ameron Pole Products LLC is a subsidiary of\" present; footer \"Copyright (c)2026 Ameron Pole Products LLC\"."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:parent_company",
+   "source_url": "https://www.nov.com/poleproducts",
+   "verdict": "confirmed",
+   "ledger_value": "Arcosa, Inc.",
+   "note": "evidence.csv line 1334. \"Ameron Pole Products LLC is a subsidiary of / Arcosa, Inc.\" present (line break between). Arcosa itself acquired by CRH (arcosa.com release Oct 23 2026)."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:products",
+   "source_url": "https://www.areadevelopment.com/newsitems/1-25-2011/ameron-steel-tulsa-oklahoma1253.shtml",
+   "verdict": "confirmed",
+   "ledger_value": "steel poles",
+   "note": "evidence.csv line 585. Area Development 01/25/2011 item says Ameron \"is building a 75,000-square-foot facility in Tulsa, Oklahoma, that will produce steel poles\". City-level match. CAUTION: see the p-ameron-tulsa-ok:score_* row on whether this new 2011 facility is the 2333 S Yukon site."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:website",
+   "source_url": "https://www.nov.com/poleproducts",
+   "verdict": "confirmed",
+   "ledger_value": "https://www.nov.com/poleproducts",
+   "note": "evidence.csv line 587. Page at nov.com/poleproducts is the Ameron Pole Products site (title, footer copyright Ameron Pole Products LLC)."
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:score_*",
+   "source_url": "",
+   "verdict": "confirmed",
+   "note": "Score and consistency check (not counted in claims_checked). Points match the rubric and run_log rules: 20+0+15+0+8+5=48 Medium; material 0 per the run_log material rule (no stated size); confidence 1 matches the run_log rule (only process rests wholly on stated claims). MISMATCHES: score_scale cites p-meyer-fort-worth-tx:headcount, which has no evidence row. certifications is \"unknown\" but the AISC snapshot (line 318) lists \"ARCOSA Meyer Utility Structures Inc. Fort Worth TX Highway Component Manufacturer, Bridge Fabricator - Simple, Building Fabricator\": a missed certification (scores unaffected). Labor 0 is defensible: posting is undated, with no live status. Opening line OK: uses stated welder_postings and weld_processes, no Path deployment asserted. parent_company in plants.csv uses the coordinator inferred row (CRH acquisition, which arcosa.com does state, Oct 23 2026)."
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:score_*",
+   "source_url": "",
+   "verdict": "confirmed",
+   "note": "Score and consistency check (not counted in claims_checked). Points match the rubric: 20+0+15+0+8+5=48 Medium. Process 20 rests on a welding-engineer posting naming FCAW/GMAW (and SAW) as required knowledge, acceptable. Confidence 1 matches the rule. MISMATCHES: score_scale cites p-meyer-lancaster-sc:headcount, which has no evidence row. certifications is \"unknown\" but the AISC snapshot (line 2806) lists \"Meyer Utility Structures, LLC Lancaster SC Highway Component Manufacturer, Bridge Fabricator - Simple, Building Fabricator\": a missed certification. See opening_line_problems."
+  },
+  {
+   "claim_id": "p-distran-washington-court-house-oh:score_*",
+   "source_url": "",
+   "verdict": "confirmed",
+   "note": "Score and consistency check (not counted in claims_checked). Points match: 0+0+15+0+8+5=28 Low. Process 0 is correct (no Ohio process stated). Part mix 15 rests on an inferred company-level row; allowed, but it does not count toward confidence. Opening line OK (stated products row, no Path claim). Note: the AISC snapshot lists DIS-TRAN Steel, LLC only at Pineville, LA, not Washington Court House."
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:score_*",
+   "source_url": "",
+   "verdict": "confirmed",
+   "note": "Score and consistency check (not counted in claims_checked). Points match: 20+0+15+0+8+5=48 Medium; confidence 2 (process, part mix) matches the rule. MISMATCH: plants.csv products (\"Mast arm and strain poles, overhead sign structures, tolling gantries, monotube cantilevers and trusses\") is broader than its only stated products row (\"mast arm and strain poles\"). The ATS homepage does say \"structural steel tolling gantries, overhead sign structures, and mast arm and steel strain poles\", so add a stated row from it. See opening_line_problems."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:score_*",
+   "source_url": "",
+   "verdict": "confirmed",
+   "note": "Score and consistency check (not counted in claims_checked). Points match: 0+0+8+0+8+5=21 Low; confidence 0 matches the rule. Part mix 8 (\"mixed\") rests on an inferred brand-wide row; 15 would need plant evidence. TWO-SITE QUESTION: Unresolved. A search summary (not a quote; the news9/newson6 source pages 404, costar 403) says that in Jan 2011 Ameron already had a Tulsa plant at 2333 South Yukon and the new 75,000 sq ft steel pole plant would be in Cherokee Industrial Park. If so, rows 585 and 2231 and the opening line describe a different Tulsa site from the pin, and the record may merge two plants. Three bounded fetches (EDGAR full-text, LA Business Journal) did not settle it; NOV 10-Ks for 2012-2016 mention Ameron poles in Tulsa and may list both properties. Rows kept confirmed at city level (Tulsa). Recommend a list-auditor or profiler check of the NOV 2012 10-K properties section and Ameron's current locations. plants.csv found_by is duplicated (\"state DOT list (GA, OH);...;state DOT list\"). The OH list was not checked here."
+  }
+ ]
+}
