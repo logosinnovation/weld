@@ -23,7 +23,7 @@ STOP = {"inc", "llc", "corp", "corporation", "co", "company", "the", "of", "and"
 
 
 def toks(s):
-    return {t for t in re.findall(r"[a-z0-9]+", (s or "").lower()) if t not in STOP and len(t) > 2}
+    return {t for t in re.findall(r"[a-z0-9&]+", (s or "").lower()) if t not in STOP and (len(t) > 2 or t in {"kw", "pk"})}
 
 
 def city(s):
@@ -55,14 +55,15 @@ for r in comb.values():
         out_def.append(r)
         continue
     st = r.get("state", "").upper()
-    at = toks(r.get("name")) | toks(r.get("parent_company"))
+    at = (toks(r.get("name")) | toks(r.get("parent_company"))) - toks(r.get("city"))
     best = None
     for p in plants:
         if p["state"].upper() != st:
             continue
-        pt = toks(p["name"]) | toks(p["parent_company"]) | toks(p["id"].replace("-", " "))
+        idt = toks(p["id"].replace("-", " ")) - toks(p["city"]) - {p["state"].lower(), "p"}
+        pt = (toks(p["name"]) | toks(p["parent_company"]) | idt) - toks(p["city"])
         same_city = city(p["city"]) == city(r.get("city")) and city(r.get("city"))
-        if (same_city and (at & pt)) or (same_city and not at) or (at & pt and not r.get("city")):
+        if (same_city and (at & pt)) or (at & pt and not city(r.get("city"))):
             best = p
             break
         if at & pt and best is None:
@@ -73,7 +74,7 @@ for r in comb.values():
         unmatched.append((r, best[1]["id"] if best else ""))
 
 print(f"auditor rows: {len(audit)}; combined unique: {len(comb)}; in-definition: {len(matched) + len(unmatched)}; out: {len(out_def)}")
-print(f"matched: {len(matched)}; unmatched (candidate misses): {len(unmatched)}")
+print(f"matched rows: {len(matched)} -> unique ledger plants: {len({i for _, i, _ in matched})}; unmatched (candidate misses): {len(unmatched)}")
 for r, hint in unmatched:
     print(f"  MISS? [{r['_auditor']}] {r.get('name')} | {r.get('city')}, {r.get('state')} | {str(r.get('products'))[:60]} | same-company-other-city: {hint} | {r.get('url')}")
 json.dump({"vertical": vert,
