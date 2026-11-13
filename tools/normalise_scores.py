@@ -67,7 +67,7 @@ for p in plants:
              for r in by_claim.get(c, [])]
     size_rows = [r for r in by_claim.get(f"{pid}:part_size_fit", []) if r["quote"] and r["tag"] != "unknown"]
     city = p["city"].lower()
-    PROD = re.compile(r"pole|mast|tower|sign|monopole|substation|structure", re.I)
+    PROD = re.compile(r"pole|mast|tower|sign|monopole|substation|structure|hull|barge|vessel|ship|boat|module|block|unit|panel|foundation|deck|tank|section", re.I)
     line_at_plant = any(r["tag"] == "stated" and PROD.search(r["quote"] or "")
                         for f in ("products", "weld_processes", "materials", "welder_postings", "production_type")
                         for r in by_claim.get(f"{pid}:{f}", []))

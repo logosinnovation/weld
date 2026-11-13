@@ -19,7 +19,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STOP = {"inc", "llc", "corp", "corporation", "co", "company", "the", "of", "and", "industries",
         "manufacturing", "steel", "structures", "structure", "products", "pole", "poles", "fabricating",
         "fabrication", "fabricators", "division", "plant", "utility", "lighting", "traffic", "group",
-        "usa", "america", "american", "international", "systems", "metal", "metals", "works", "llp", "ltd"}
+        "usa", "america", "american", "international", "systems", "metal", "metals", "works", "llp", "ltd",
+        "shipyard", "shipyards", "shipbuilding", "ship", "marine", "boat", "boats", "barge", "barges", "yard", "repair", "shipbuilders", "maritime", "vessel", "vessels"}
 
 
 def toks(s):
