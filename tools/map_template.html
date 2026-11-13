@@ -163,12 +163,24 @@ details.more p{margin:8px 0 0;font-size:13.5px}
 
 /* call list */
 .calls{overflow:hidden}
-.crow{display:grid;grid-template-columns:32px minmax(170px,1.3fr) 104px 48px 70px 44px 84px 80px minmax(120px,1.2fr) minmax(180px,2.2fr);gap:4px 12px;padding:9px 14px;border-top:1px solid var(--border);align-items:start;font-size:13.5px}
+.crow{display:grid;grid-template-columns:32px minmax(160px,1.2fr) minmax(96px,.8fr) 124px 48px 70px 44px 96px 104px minmax(120px,1.1fr) minmax(200px,2.4fr);gap:4px 12px;padding:9px 14px;border-top:1px solid var(--border);align-items:start;font-size:13.5px}
 .crow.hd{border-top:0;background:var(--surface2);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700;position:sticky;top:0;z-index:2}
 .crow .rk{color:var(--muted);font-weight:700}
 .crow .nm{font-weight:700}
 .crow .nm .sub{display:block;font-weight:400;color:var(--muted);font-size:12.5px}
 .crow .unkc,.crow .ceil{font-size:13px}.crow .ceil{font-weight:700}.crow.hd .calc{display:block;text-transform:none;letter-spacing:0;font-weight:500;font-size:10px}
+.b-path{color:var(--warn);background:var(--warn-bg);border:1px solid var(--warn);white-space:normal;text-align:left;cursor:pointer;font-weight:700}
+.b-path:hover{filter:brightness(.95)}
+.b-rub-ok{color:var(--ok);background:transparent;border:1px solid var(--ok);text-transform:none;font-size:10.5px}
+.b-rub-inf{color:var(--inf);background:var(--inf-bg);border:1px dashed var(--inf);text-transform:none;font-size:10.5px}
+.dem,.trd{display:block;font-weight:400;font-size:11.5px;color:var(--muted)}
+.blockh{padding:10px 14px;background:var(--warn-bg);border-top:1px solid var(--border);font-weight:700;font-size:13.5px}
+.blockh.net{background:var(--surface2)}
+.blockh span{font-weight:400;color:var(--muted);font-size:12.5px;display:block}
+.rollup{max-height:150px;overflow:auto}
+.rollup table{width:100%}
+.fbtn{display:none}
+nav.tabs.more{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 34px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 34px),transparent)}
 .b-pre{color:var(--accent);background:var(--surface2);border:1px dashed var(--accent)}
 .unkn{font-size:12px;color:var(--muted);font-style:italic}
 .crow .scr{font-weight:800;font-size:16px}
@@ -241,11 +253,14 @@ footer strong{color:var(--text)}
   .list{max-height:none}
 }
 @media (max-width:760px){
-  .crow{grid-template-columns:30px minmax(0,1fr) 50px 50px;grid-template-areas:"rk nm scr tier" ". rel rel rel" ". unk ceil ceil" ". trg trg trg" ". ol ol ol"}
+  .crow{grid-template-columns:30px minmax(0,1fr) 50px 50px;grid-template-areas:"rk nm scr tier" ". acct acct acct" ". rel rel rel" ". unk ceil ceil" ". trg trg trg" ". ol ol ol"}
   .crow.hd{display:none}
   .crow>.rk{grid-area:rk}.crow>.nm{grid-area:nm}.crow>.scr{grid-area:scr}.crow>.tr{grid-area:tier}
-  .crow>.unkc{grid-area:unk}.crow>.ceil{grid-area:ceil}.crow>.rel{grid-area:rel}.crow>.trg{grid-area:trg}.crow>.ol{grid-area:ol}
+  .crow>.unkc{grid-area:unk}.crow>.acct{grid-area:acct}.crow>.ceil{grid-area:ceil}.crow>.rel{grid-area:rel}.crow>.trg{grid-area:trg}.crow>.ol{grid-area:ol}
   .crow>.cf{display:none}
+  .crow>.acct::before{content:'Account: ';color:var(--muted)}
+  .fbtn{display:inline-block;margin-bottom:8px}
+  .filters{display:none}.filters.open{display:grid}
   .crow>.unkc::before{content:'Unknown: '}.crow>.ceil::before{content:'Ceiling (calculated): ';font-weight:400}
   .stats{margin-left:0;width:100%}.stat{flex:1;min-width:0;padding:6px 10px}
   .stat b{font-size:19px}.stat span{font-size:11px;display:block;line-height:1.25}.top-row{padding:10px 0 8px;gap:8px}.brand p{display:none}
@@ -326,8 +341,69 @@ const vNames = p => (p.verticals||'').split(/\s*[;,|]\s*/).filter(Boolean);
 const vName = id => vById[id] ? vById[id].name : id;
 const stateName = ab => { for (const k in M.state_abbr) if (M.state_abbr[k] === ab) return k; return ab; };
 
+const pl = (n, w, pw) => n + ' ' + (n === 1 ? w : (pw || w + 's'));
+const ID_RE = /\b(?:p|c|v|bt)-[a-z0-9-]+:[a-z_]+(?::(?:p|c)-[a-z0-9-]+)?/g;
+/* reader view of a reasoning string: drop internal clean-up and coordinator notes after " | " */
+const cleanR = r => String(r || '').split(' | ')[0].replace(/[.;]?\s*clean-up\b.*$/i, '').replace(/[.;]?\s*coordinator \d{4}-.*$/i, '').trim();
+const claimIds = r => [...new Set(cleanR(r).match(ID_RE) || [])];
+const hasStated = id => (EV[id] || []).some(r => r.t === 'stated');
+/* account: a display grouping only (never stored in the ledger) */
+function acctOf(p){
+  const par = String(p.parent_company || '').replace(/\s*\(.*$/, '').replace(/,?\s+(Inc|LLC|Corporation|Corp|Company)\.?$/i, '').replace(/,$/, '').trim();
+  const nm = String(p.name || '').replace(/\s*\(.*$/, '').replace(/,?\s+(Inc|LLC|Corp|Co)\.?$/i, '').trim();
+  if (/arcosa|crh|meyer utility|ameron/i.test(par + ' ' + nm)) return 'Arcosa (CRH)';
+  if (/^sabre|\bfwt\b/i.test(par) || /^fwt\b/i.test(nm)) return 'Sabre Industries';
+  if (/valmont/i.test(par)) return 'Valmont';
+  if (/nucor/i.test(par)) return 'Nucor';
+  if (/nello/i.test(par)) return 'Nello';
+  if (/race rock/i.test(par + ' ' + nm)) return 'Race Rock';
+  if (/dyson|hapco/i.test(par + ' ' + nm)) return 'Hapco (Dyson-Kissner-Moran)';
+  if (/^crest industries/i.test(par)) return 'Crest Industries (DIS-TRAN)';
+  if (/^mai group/i.test(par)) return 'MaiCo Industries';
+  if (/^millerbernd/i.test(par)) return 'Millerbernd';
+  if (!par || /^(unknown|none|independent|employee-owned)/i.test(par)) return nm || p.name;
+  return par;
+}
+/* Path-relationship status: from a confirmed, stated c-<company>:path_customer evidence row */
+const PATH_LABEL = {'c-millerbernd': 'Path reference customer', 'c-nello': 'Path FAT passed (site not named)', 'c-valmont': 'Path customer per 2021 reference (plant not named)'};
+const PS_CACHE = {};
+function pathStatus(p){
+  if (p.id in PS_CACHE) return PS_CACHE[p.id];
+  let res = null;
+  const pn = norm(p.parent_company);
+  Object.keys(PATH_LABEL).forEach(key => {
+    const slug = key.slice(2).replace(/-/g, ' ');
+    if (res || !(pn.includes(slug) || p.id.indexOf('-' + key.slice(2) + '-') >= 0)) return;
+    const rows = EV[key + ':path_customer'];
+    if (rows && rows.some(r => norm(r.v) === 'confirmed' && r.t === 'stated')) res = {key, label: PATH_LABEL[key], claim: key + ':path_customer'};
+  });
+  return (PS_CACHE[p.id] = res);
+}
+function pathBadge(p){
+  const ps = pathStatus(p); if (!ps) return '';
+  return '<button type="button" class="badge b-path" data-claim="' + esc(ps.claim) + '" data-shown="confirmed" title="Open the evidence row for this Path account status">' + esc(ps.label) + '</button>';
+}
+/* a composed line whose every composing claim has a stated row can stay visible in stated-only mode */
+const composedStated = r => !!(r && isComposed(r) && claimIds(r.r).length > 0 && claimIds(r.r).every(hasStated));
+/* a score component counts toward confidence when points > 0 and every cited claim has a stated row (demand 8 never counts) */
+function compStated(p, f){
+  const pts = +p[f] || 0; if (!pts || (f === 'score_demand' && pts === 8)) return false;
+  const claim = p.id + ':' + f, row = effRow(claim, p[f]); if (!row || !row.r) return false;
+  const ids = claimIds(row.r).filter(i => i !== claim);
+  return ids.length > 0 && ids.every(hasStated);
+}
+const MON = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+function trigDate(t){
+  if (!t) return null; let best = null;
+  const push = (y, m, d, txt) => { const v = y * 10000 + (m + 1) * 100 + (d || 1); if (!best || v > best.v) best = {v, txt}; };
+  for (const m of String(t).matchAll(/\b(20\d\d)-(\d\d)(?:-(\d\d))?\b/g)) push(+m[1], +m[2] - 1, +m[3] || 0, m[0]);
+  for (const m of String(t).matchAll(/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+(?:(\d{1,2}),\s*)?(20\d\d)\b/gi)) push(+m[3], MON[m[1].toLowerCase()], +m[2] || 0, m[0]);
+  if (!best) for (const m of String(t).matchAll(/\b(20\d\d)\b/g)) push(+m[1], 0, 0, m[1]);
+  return best ? best.txt : null;
+}
+
 /* ---------- state ---------- */
-const S = {view:'ranking', q:'', stated:false, f:{vert:'',tier:'',rel:'',state:'',stier:''}, sort:'score', liveOnly:false, lowCeil:false, pre:false, maker:'', colorBy:'score'};
+const S = {view:'ranking', q:'', stated:false, f:{vert:'',tier:'',rel:'',state:'',stier:''}, sort:'score', liveOnly:false, lowCeil:false, merge:false, pre:false, maker:'', colorBy:'score'};
 try { const t = localStorage.getItem('ppm-theme'); if (t) document.documentElement.dataset.theme = t; } catch(e){}
 
 /* ---------- evidence helpers ---------- */
@@ -356,13 +432,14 @@ function val(obj, field, prefix, opt){
   const row = effRow(claim, raw);
   const text = raw == null || raw === '' ? '' : raw;
   if (text === '' && !row) return '<span class="muted">not sourced</span>';
-  if (row && row.t === 'inferred' && S.stated) return '<span class="hid">inferred value hidden</span>';
+  const keepComposed = !!(row && S.stated && composedStated(row));
+  if (row && row.t === 'inferred' && S.stated && !keepComposed) return '<span class="hid">inferred value hidden</span>';
   let shown = esc(opt.max && text.length > opt.max ? text.slice(0, opt.max).trimEnd() + '…' : text);
   if (text === '') shown = '<span class="muted">not sourced</span>';
   const unk = row.t === 'unknown' || /^unknown\b/i.test(text);
   const vs = verState(row);
   const mark = vs === 'corrected' ? ' <span class="badge b-warn" title="A fact-check corrected this claim">corrected</span>' : vs === 'unreachable' ? ' <span class="badge b-bad">source unreachable</span>' : '';
-  return '<button type="button" class="val' + (unk ? ' unk' : '') + '" data-claim="' + esc(claim) + '" data-shown="' + esc(text) + '" aria-label="' + esc((opt.label || field.replace(/_/g,' ')) + ': ' + (text || 'not sourced') + '. Open evidence') + '">' + shown + '</button> ' + badgeTag(row.t, row) + mark;
+  return '<button type="button" class="val' + (unk ? ' unk' : '') + '" data-claim="' + esc(claim) + '" data-shown="' + esc(text) + '" aria-label="' + esc((opt.label || field.replace(/_/g,' ')) + ': ' + (text || 'not sourced') + '. Open evidence') + '">' + shown + '</button> ' + (keepComposed ? '<span class="badge b-stated" title="Every claim this line is composed from has a stated evidence row">composed from stated claims</span>' : badgeTag(row.t, row)) + mark;
 }
 function tierBadge(t){ return t ? '<span class="badge b-st">' + esc(t) + '</span>' : ''; }
 function scoreBadge(p){
@@ -374,7 +451,7 @@ function scoreBadge(p){
 function matchQ(p){
   if (!S.q) return true;
   const q = norm(S.q);
-  return norm(p.name).includes(q) || norm(p.parent_company).includes(q) || norm(p.city).includes(q) || norm(p.state) === q;
+  return norm(p.name).includes(q) || norm(p.parent_company).includes(q) || norm(acctOf(p)).includes(q) || norm(p.city).includes(q) || norm(p.state) === q;
 }
 function passes(p, ignoreScoreTier){
   const f = S.f;
@@ -395,9 +472,12 @@ const UNK_LBL = {process:'Process fit', material_part:'Material and part fit', p
 const unkOf = p => (DV[p.id] && DV[p.id].unk) || [];
 const ceilOf = p => DV[p.id] && DV[p.id].ceil != null ? DV[p.id].ceil : null;
 const isPre = p => !!(DV[p.id] && DV[p.id].pre);
-const preBadge = p => isPre(p) ? '<span class="badge b-pre" title="Under construction or ramping up: no process or robots locked in yet">Pre-production</span>' : '';
+const preBadge = p => isPre(p) ? '<span class="badge b-pre" title="Under construction, ramping up, or converting from another product: no process or robots may be locked in yet">New or converting plant</span>' : '';
+const liveOf = p => +p.score_demand === 15 ? 1 : 0;
+const posSignal = p => (+p.score_process === 20 && compStated(p, 'score_process')) || (+p.score_labor > 0 && compStated(p, 'score_labor')) || (+p.score_demand === 15 && compStated(p, 'score_demand'));
+const researchFirst = p => p.status === 'profiled' && scoreOf(p) < 45 && (ceilOf(p) || 0) >= 70 && posSignal(p);
 const scoreOf = p => p.score_total === '' || p.score_total == null ? -1 : +p.score_total;
-const cmpScore = (a,b) => scoreOf(b) - scoreOf(a) || (+b.confidence||0) - (+a.confidence||0) || a.name.localeCompare(b.name);
+const cmpScore = (a,b) => scoreOf(b) - scoreOf(a) || (+b.confidence||0) - (+a.confidence||0) || liveOf(b) - liveOf(a) || a.name.localeCompare(b.name);
 
 /* ---------- header, nav, footer ---------- */
 function renderChrome(){
@@ -407,9 +487,9 @@ function renderChrome(){
     '<div class="stat"><b>' + C.plants_profiled + '</b><span>Plants profiled</span></div>';
   $('#tabs').innerHTML = VIEWS.map(v => '<button type="button" data-view="' + v[0] + '">' + esc(v[1]) + '</button>').join('');
   const d = M.dates;
-  const range = d.length > 1 ? d[0] + ' to ' + d[d.length-1] : (d[0] || 'unknown');
+  const range = d.length > 1 ? d[0] + ' to ' + d[d.length-1] : (d[0] || 'unknown');  // first and last session headings of run_log.md
   $('#foot').innerHTML = '<p><strong>Inferred fields are guesses to verify.</strong> Values tagged inferred carry an &ldquo;inferred&rdquo; label; click any value for its quote, source and verified status.</p>' +
-    '<p>Run dates: ' + esc(d.length > 1 && d.length < 6 ? d.join(', ') : range) + (M.commit ? ' &middot; built from ledger commit ' + esc(M.commit) : '') + ' &middot; ' + C.evidence_rows + ' evidence rows &middot; Path Prospect Map, an outside pitch to Path sales. Business-level facts only.</p>';
+    '<p>Run dates: ' + esc(range) + ' &middot; ' + C.evidence_rows + ' evidence rows &middot; Path Prospect Map, an outside pitch to Path sales. Business-level facts only.</p>';
 }
 function setActiveTab(){
   document.querySelectorAll('#tabs button').forEach(b => { if (b.dataset.view === S.view) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); });
@@ -417,19 +497,27 @@ function setActiveTab(){
 
 /* ---------- filter bar ---------- */
 function opts(list, cur, all){ return '<option value="">' + all + '</option>' + list.map(o => '<option value="' + esc(o[0]) + '"' + (o[0] === cur ? ' selected' : '') + '>' + esc(o[1]) + '</option>').join(''); }
-function filterBar(id, withScoreTier){
-  const states = [...new Set(P.map(p => p.state).filter(Boolean))].sort();
-  const rels = [...new Set(P.map(p => p.relationship || 'unknown'))].sort();
-  const tiers = [...new Set([...TIERS, ...P.map(p => p.tier || 'unknown')])];
-  const f = S.f;
-  return '<div class="filters" id="' + id + '">' +
-   '<label>Vertical<select data-f="vert">' + opts(V.filter(v => P.some(p => vNames(p).includes(v.id))).map(v => [v.id, v.name]), f.vert, 'All verticals') + '</select></label>' +
-   '<label>Supply-chain tier<select data-f="tier">' + opts(tiers.map(t => [t,t]), f.tier, 'All tiers') + '</select></label>' +
-   '<label>Relationship<select data-f="rel">' + opts(rels.map(t => [t,t.replace(/_/g,' ')]), f.rel, 'All relationships') + '</select></label>' +
-   '<label>State<select data-f="state">' + opts(states.map(t => [t, stateName(t)]), f.state, 'All states') + '</select></label>' +
-   (withScoreTier ? '<label>Score tier<select data-f="stier">' + opts(['High','Medium','Low','Not profiled'].map(t => [t,t]), f.stier, 'All score tiers') + '</select></label>' : '<span></span>') +
+function optsC(items, cur, all){
+  const list = items.slice(); if (cur && !list.some(o => o[0] === cur)) list.push([cur, cur, 0]);
+  return '<option value="">' + all + '</option>' + list.map(o => '<option value="' + esc(o[0]) + '"' + (o[0] === cur ? ' selected' : '') + '>' + esc(o[1]) + ' (' + o[2] + ')</option>').join('');
+}
+/* base = the plants this view can show; menus list only values that exist in it, with counts */
+function filterBar(id, base, o){
+  o = o || {};
+  const f = S.f, cnt = fn => base.filter(fn).length;
+  const states = [...new Set(base.map(p => p.state).filter(Boolean))].sort();
+  const rels = [...new Set(base.map(p => p.relationship || 'unknown'))].sort();
+  const tiers = [...TIERS, 'unknown'].filter(t => base.some(p => (p.tier || 'unknown') === t));
+  const verts = V.filter(v => base.some(p => vNames(p).includes(v.id)));
+  const sts = ['High','Medium','Low','Not profiled'].filter(t => base.some(p => (sTier(p) || 'Not profiled') === t));
+  return '<button type="button" class="btn fbtn" data-ftoggle aria-expanded="false" aria-controls="' + id + '">Filters</button><div class="filters" id="' + id + '">' +
+   '<label>Vertical<select data-f="vert">' + optsC(verts.map(v => [v.id, v.name, cnt(p => vNames(p).includes(v.id))]), f.vert, 'All verticals') + '</select></label>' +
+   '<label>Supply-chain tier<select data-f="tier">' + optsC(tiers.map(t => [t, t, cnt(p => (p.tier || 'unknown') === t)]), f.tier, 'All tiers') + '</select></label>' +
+   '<label>Relationship<select data-f="rel">' + optsC(rels.map(t => [t, t.replace(/_/g,' '), cnt(p => (p.relationship || 'unknown') === t)]), f.rel, 'All relationships') + '</select></label>' +
+   '<label>State<select data-f="state">' + optsC(states.map(t => [t, stateName(t), cnt(p => p.state === t)]), f.state, 'All states') + '</select></label>' +
+   (o.score ? '<label>Score tier<select data-f="stier">' + optsC(sts.map(t => [t, t, cnt(p => (sTier(p) || 'Not profiled') === t)]), f.stier, 'All score tiers') + '</select></label>' : '<span></span>') +
    '<label>&nbsp;<button type="button" class="btn" data-reset>Reset filters</button></label>' +
-   '<div class="count"><label class="chk" style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" data-pre> Pre-production only <span class="muted small">(under construction or ramping up: ' + (DS.preprod || 0) + ' plants)</span></label></div>' +
+   (o.nopre ? '' : '<div class="count"><label class="chk" style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" data-pre> New or converting plants only <span class="muted small">(' + pl(DS.preprod || 0, 'plant') + ': under construction, ramping up or converting)</span></label></div>') +
    '<div class="count" data-count></div></div>';
 }
 function syncFilters(root){ const pc = root.querySelector('input[data-pre]'); if (pc) pc.checked = S.pre; root.querySelectorAll('select[data-f]').forEach(s => { s.value = S.f[s.dataset.f]; }); }
@@ -438,7 +526,9 @@ function bindFilters(root, rerender){
   const pc = root.querySelector('input[data-pre]');
   if (pc) pc.addEventListener('change', () => { S.pre = pc.checked; rerender(); });
   const r = root.querySelector('[data-reset]');
-  if (r) r.addEventListener('click', () => { S.f = {vert:'',tier:'',rel:'',state:'',stier:''}; S.q=''; S.pre=false; S.lowCeil=false; S.liveOnly=false; $('#q').value=''; refresh(); });
+  if (r) r.addEventListener('click', () => { S.f = {vert:'',tier:'',rel:'',state:'',stier:''}; S.q=''; S.pre=false; S.lowCeil=false; S.liveOnly=false; S.merge=false; $('#q').value=''; refresh(); });
+  const ft = root.previousElementSibling;
+  if (ft && ft.hasAttribute('data-ftoggle')) ft.addEventListener('click', () => { const open = root.classList.toggle('open'); ft.setAttribute('aria-expanded', open); });
 }
 
 /* ---------- ranking ---------- */
@@ -449,6 +539,11 @@ function vCounts(v){
   inc.forEach(p => { const t = sTier(p); if (t) c[t]++; });
   c.np = c.included - c.High - c.Medium - c.Low;
   return c;
+}
+function auditLine(v){
+  if (!SM || SM.vertical !== v.id) return '';
+  const pp = SM.plants || {}, mr = SM.miss_rate || {}, rs = SM.fact_check_rounds || [];
+  return '<p class="reason"><strong>Latest audit summary (ledger/audit/summary.json):</strong> ' + [pp.found != null ? pp.found + ' found, ' + pp.included + ' included, ' + pp.profiled + ' profiled' : '', mr.value ? 'miss rate ' + mr.value : '', rs.length ? 'fact error rate ' + rs.map(r => 'round ' + r.round + ' ' + (r.display || pct(r.rate))).join('; ') : ''].filter(Boolean).map(esc).join('; ') + '. See the Method page.</p>';
 }
 function renderRanking(){
   const el = $('#v-ranking');
@@ -462,13 +557,13 @@ function renderRanking(){
     return '<article class="card vcard' + (v.status === 'rejected' ? ' rej' : '') + '" id="vc-' + esc(v.id) + '">' +
       '<div class="vhead"><span class="vrank" aria-label="Rank ' + esc(v.rank) + '">' + esc(v.rank) + '</span><h3>' + esc(v.name) + '</h3>' +
       '<span class="badge ' + ({done:'b-ok',accepted:'b-st',partial:'b-warn',rejected:'b-bad',candidate:'b-grey'}[v.status] || 'b-grey') + '">' + esc(v.status) + '</span></div>' +
-      '<div class="vmeta"><div class="vnum"><b>' + c.included + '</b><span>included plants</span></div><div class="vnum"><b>' + c.profiled + '</b><span>profiled</span></div>' +
+      '<div class="vmeta"><div class="vnum"><b>' + c.included + '</b><span>included ' + (c.included === 1 ? 'plant' : 'plants') + '</span></div><div class="vnum"><b>' + c.profiled + '</b><span>profiled</span></div>' +
       '<div class="vnum"><b style="color:var(--high)">' + c.High + '</b><span>High</span></div><div class="vnum"><b style="color:var(--med)">' + c.Medium + '</b><span>Medium</span></div><div class="vnum"><b style="color:var(--low)">' + c.Low + '</b><span>Low</span></div>' +
       (c.excluded ? '<div class="vnum"><b>' + c.excluded + '</b><span>excluded</span></div>' : '') + bar +
       (c.included ? '<button type="button" class="btn small" data-showv="' + esc(v.id) + '">Show on map</button>' : '') + '</div>' +
       '<div class="score-grid">' + sg + '</div>' +
       (v.status === 'partial' ? '<p class="reason partial"><span class="badge b-warn">partial</span> Research or checks on this vertical are incomplete. See the Method page for what was and was not finished.</p>' : '') +
-      '<p class="reason"><strong>Why this status:</strong> ' + val(v, 'reason', v.id, {label: 'reason'}) + '</p>' +
+      '<p class="reason"><strong>Why this status (as recorded in verticals.csv):</strong> ' + val(v, 'reason', v.id, {label: 'reason'}) + '</p>' + auditLine(v) +
       '<details class="more"><summary>Definition</summary><p>' + val(v, 'definition', v.id) + '</p></details></article>';
   }).join('') + '</div>';
   el.querySelectorAll('[data-showv]').forEach(b => b.addEventListener('click', () => { S.f.vert = b.dataset.showv; go('map'); }));
@@ -487,7 +582,7 @@ function makeMap(host){
   const counts = {};
   INCL.forEach(p => counts[p.state] = (counts[p.state]||0) + 1);
   const paths = gs.selectAll('path').data(GEO.features).join('path').attr('class', f => 'st' + (counts[f.properties.abbr] ? ' has' : '')).attr('d', gpath);
-  paths.append('title').text(f => f.properties.name + (counts[f.properties.abbr] ? ': ' + counts[f.properties.abbr] + ' included plants' : ''));
+  paths.append('title').text(f => f.properties.name + (counts[f.properties.abbr] ? ': ' + pl(counts[f.properties.abbr], 'included plant') : ''));
   let k = 1;
   const zoom = d3.zoom().scaleExtent([1, 14]).translateExtent([[0,0],[W,H]]).filter(e => e.type === 'wheel' ? (e.ctrlKey || e.metaKey) : e.type.startsWith('touch') ? (e.touches && e.touches.length > 1) : !e.button)
     .on('zoom', e => { k = e.transform.k; g.attr('transform', e.transform); scaleDots(); });
@@ -543,7 +638,7 @@ function plantRow(p, extra){
 function renderMap(){
   const el = $('#v-map');
   if (!el.dataset.init){
-    el.innerHTML = '<div class="view-h"><h2>Plant map</h2><p>Every included plant is a dot. Click a state to list its plants, a dot to open the plant profile. Use Ctrl or Cmd with the scroll wheel, or the buttons, to zoom.</p></div>' + filterBar('fbar-map', true) +
+    el.innerHTML = '<div class="view-h"><h2>Plant map</h2><p>Every included plant is a dot. Click a state to list its plants, a dot to open the plant profile. Use Ctrl or Cmd with the scroll wheel, or the buttons, to zoom.</p></div>' + filterBar('fbar-map', INCL, {score: true}) +
       '<div class="mapgrid"><div class="card"><div class="mapbox" id="mapA"></div><div class="legend"><span id="mapcount"></span><label>Colour dots by <select id="colorBy" style="padding:3px 6px;border:1px solid var(--border);border-radius:6px;background:var(--surface)"><option value="score">score tier</option><option value="tier">supply-chain tier</option></select></label></div><div class="legend" id="legendA"></div><div class="note" id="noteA"></div></div><div class="card list" id="maplist" aria-live="polite"></div></div>';
     bindFilters($('#fbar-map'), renderMap);
     mapA = makeMap($('#mapA'));
@@ -556,12 +651,12 @@ function renderMap(){
   const list = INCL.filter(p => passes(p));
   const by = S.colorBy;
   mapA.update(list.map(p => ({p, cls: dotCls(p, by), r: sTier(p) === 'High' ? 7 : 5.5, label: dotLabel(p) + (by === 'tier' ? ', ' + (p.tier || 'tier unknown') : ''), z: sTier(p) === 'High' ? 3 : sTier(p) === 'Medium' ? 2 : sTier(p) ? 1 : 0})), {selState: S.f.state});
-  $('#mapcount').innerHTML = 'Showing <strong>' + list.length + '</strong> of ' + INCL.length + ' included plants.';
+  $('#mapcount').innerHTML = 'Showing <strong>' + list.length + '</strong> of ' + pl(INCL.length, 'included plant') + '.';
   $('#colorBy').value = by;
   $('#legendA').innerHTML = legend(by);
   $('#noteA').textContent = 'Dots for plants in the same city are fanned out slightly so each can be clicked. Some coordinates are city centroids (see Method, known limits).';
   const sorted = list.slice().sort(cmpScore);
-  $('#maplist').innerHTML = '<h3>' + (S.f.state ? 'Plants in ' + esc(stateName(S.f.state)) + ' (' + sorted.length + ')' : 'Plants shown (' + sorted.length + ')') + '</h3>' +
+  $('#maplist').innerHTML = '<h3>' + (S.f.state ? (sorted.length === 1 ? 'Plant' : 'Plants') + ' in ' + esc(stateName(S.f.state)) + ' (' + sorted.length + ')' : 'Plants shown (' + sorted.length + ')') + '</h3>' +
     (sorted.length ? sorted.map(p => plantRow(p)).join('') : '<div class="empty">No included plants match these filters.</div>');
 }
 
@@ -583,6 +678,7 @@ function makerList(){
   Object.values(groups).forEach(g => { const label = Object.entries(g.names).sort((a,b) => b[1]-a[1] || a[0].length - b[0].length)[0][0]; m[label] = g.ps; });
   return Object.entries(m).filter(([k, ps]) => ps.some(p => p.status !== 'excluded') || ps.some(p => LK.some(l => l.from_id === p.id || l.to_id === p.id))).sort((a,b) => b[1].length - a[1].length || a[0].localeCompare(b[0]));
 }
+const other_tier = o => o.plant ? (o.plant.tier ? 'Plant tier: ' + o.plant.tier + '.' : '') : 'Company level, no plant row.';
 function renderSupply(){
   const el = $('#v-supply');
   const makers = makerList();
@@ -596,7 +692,7 @@ function renderSupply(){
     el.dataset.init = 1;
   }
   const sel = $('#makerSel');
-  sel.innerHTML = makers.map(([k, ps]) => { const nl = LK.filter(l => ps.some(p => p.id === l.from_id || p.id === l.to_id)).length; return '<option value="' + esc(k) + '"' + (k === S.maker ? ' selected' : '') + '>' + esc(k) + ' (' + ps.length + ' plant' + (ps.length === 1 ? '' : 's') + (nl ? ', ' + nl + ' link' + (nl === 1 ? '' : 's') : '') + ')</option>'; }).join('');
+  sel.innerHTML = makers.map(([k, ps]) => { const nl = LK.filter(l => ps.some(p => p.id === l.from_id || p.id === l.to_id)).length; return '<option value="' + esc(k) + '"' + (k === S.maker ? ' selected' : '') + '>' + esc(k) + ' (' + pl(ps.length, 'plant') + (nl ? ', ' + pl(nl, 'link') : '') + ')</option>'; }).join('');
   const mp = (makers.find(m => m[0] === S.maker) || ['', []])[1];
   const mpIds = new Set(mp.map(p => p.id));
   const links = LK.filter(l => mpIds.has(l.from_id) || mpIds.has(l.to_id));
@@ -627,14 +723,15 @@ function renderSupply(){
     const toMaker = mpIds.has(l.to_id);
     const other = endpoint(toMaker ? l.from_id : l.to_id);
     const mineEnd = endpoint(toMaker ? l.to_id : l.from_id);
-    (lt[other.tier] = lt[other.tier] || []).push({l, other, mineEnd, toMaker});
+    const grp = toMaker ? 'Suppliers to this maker' : 'Customers of this maker';
+    (lt[grp] = lt[grp] || []).push({l, other, mineEnd, toMaker});
   });
-  Object.keys(lt).sort((a,b) => (order.indexOf(a) < 0 ? 99 : order.indexOf(a)) - (order.indexOf(b) < 0 ? 99 : order.indexOf(b))).forEach(t => {
-    h += '<div class="tiergrp"><h4>' + esc(t) + '</h4>' + lt[t].map(x => {
+  Object.keys(lt).sort().reverse().forEach(t => {
+    h += '<div class="tiergrp"><h4>' + esc(t) + ' (' + lt[t].length + ')</h4>' + lt[t].map(x => {
       const row = effRow(x.l.claim_id, x.l.what_is_supplied);
       const nm = e => e.plant ? '<button type="button" class="link" data-plant="' + esc(e.id) + '">' + esc(e.name) + '</button>' : esc(e.name);
       return '<div class="lcard">' + nm(x.other) + ' <span class="arrow">' + (x.toMaker ? '&rarr; supplies' : '&larr; is supplied by') + '</span> ' + nm(x.mineEnd) +
-        '<div class="small">' + (S.stated && row && row.t === 'inferred' ? '<span class="hid">inferred link detail hidden</span>' : row ? esc(x.l.what_is_supplied) : '') + ' ' + (row ? badgeTag(row.t, row) : '<span class="muted">not sourced</span>') + '</div>' +
+        '<div class="small"><span class="muted">' + esc(other_tier(x.other)) + '</span> ' + (S.stated && row && row.t === 'inferred' ? '<span class="hid">inferred link detail hidden</span>' : row ? esc(x.l.what_is_supplied) : '') + ' ' + (row ? badgeTag(row.t, row) : '<span class="muted">not sourced</span>') + '</div>' +
         (row && !(S.stated && row.t === 'inferred') ? '<div style="margin-top:4px"><button type="button" class="btn small" data-claim="' + esc(x.l.claim_id) + '" data-shown="' + esc(x.l.what_is_supplied) + '">Evidence for this link</button> <span class="badge b-' + ({confirmed:'ok',corrected:'warn',unreachable:'bad'}[verState(row)] || 'grey') + '">' + esc(String(verState(row)).replace('_',' ')) + '</span></div>' : '') + '</div>';
     }).join('') + '</div>';
   });
@@ -642,44 +739,70 @@ function renderSupply(){
 }
 
 /* ---------- call list ---------- */
+const UNK_SHORT = {process:'process', material_part:'material', part_mix:'part mix', labor:'labor', scale:'scale'};
 function callRows(){
   let rows = P.filter(p => p.status === 'profiled' && passes(p));
   if (S.liveOnly) rows = rows.filter(p => +p.score_demand === 15);
-  if (S.lowCeil) rows = rows.filter(p => +p.score_total < 45 && (ceilOf(p) || 0) >= 70);
+  if (S.lowCeil) rows = rows.filter(researchFirst);
   const s = S.sort;
-  rows.sort(s === 'name' ? (a,b) => a.name.localeCompare(b.name) : s === 'state' ? (a,b) => a.state.localeCompare(b.state) || cmpScore(a,b) : s === 'confidence' ? (a,b) => (+b.confidence) - (+a.confidence) || cmpScore(a,b) : cmpScore);
+  rows.sort(s === 'name' ? (a,b) => a.name.localeCompare(b.name) : s === 'state' ? (a,b) => a.state.localeCompare(b.state) || cmpScore(a,b) : s === 'confidence' ? (a,b) => (+b.confidence) - (+a.confidence) || cmpScore(a,b) : s === 'ceiling' ? (a,b) => (ceilOf(b) || 0) - (ceilOf(a) || 0) || cmpScore(a,b) : s === 'unknowns' ? (a,b) => unkOf(b).length - unkOf(a).length || cmpScore(a,b) : cmpScore);
   return rows;
+}
+function trigShown(p){ const r = effRow(p.id + ':triggers', p.triggers); return !!(p.triggers && r && !(S.stated && r.t === 'inferred')); }
+function callRow(p, i){
+  const live = liveOf(p), t = sTier(p), ps = pathStatus(p);
+  const td = live && trigShown(p) ? trigDate(p.triggers) : null;
+  const unk = unkOf(p), dem = DV[p.id] && DV[p.id].dem;
+  return '<div class="crow"><span class="rk">' + (i+1) + '</span><span class="nm"><button type="button" class="link" data-plant="' + esc(p.id) + '">' + esc(p.name) + '</button><span class="sub">' + esc(p.city) + ', ' + esc(p.state) + (p.tier ? ' &middot; ' + esc(p.tier) : '') + '</span>' + (isPre(p) ? '<span class="sub">' + preBadge(p) + '</span>' : '') + '</span>' +
+    '<span class="acct">' + esc(acctOf(p)) + '</span>' +
+    '<span class="rel">' + esc((p.relationship||'unknown').replace(/_/g,' ')) + (ps ? '<br>' + pathBadge(p) : '') + '</span>' +
+    '<span class="scr">' + esc(p.score_total) + '</span><span class="tr"><span class="badge b-' + t.toLowerCase() + '">' + t + '</span></span>' +
+    '<span class="cf" title="Components resting on stated evidence">' + esc(p.confidence) + '/6</span>' +
+    '<span class="unkc" title="Components scored 0 because no source states the underlying fact. Demand is never counted as unknown.">' + (unk.length ? esc(unk.map(k => UNK_SHORT[k]).join(', ')) : 'none') + '</span>' +
+    '<span class="ceil" title="Calculated: score plus the maximum points of each unknown component. Not a score. The demand allowance is not included.">' + (ceilOf(p) == null ? '' : ceilOf(p)) + (dem ? '<span class="dem">+' + dem + ' if a plant trigger is found</span>' : '') + '</span>' +
+    '<span class="trg">' + (live ? '<span class="live">live trigger</span> <span class="trd">' + (td ? esc(td) : 'date not stated') + '</span>' : '') + '<span class="small">' + val(p, 'triggers', p.id, {max: 90, label: 'trigger'}) + '</span></span>' +
+    '<span class="ol">' + val(p, 'opening_line', p.id, {label: 'opening line'}) + '</span></div>';
+}
+function rollupHtml(rows){
+  const g = {};
+  rows.forEach(p => { const a = acctOf(p), x = g[a] = g[a] || {a, n:0, best:-1, ex: false}; x.n++; x.best = Math.max(x.best, scoreOf(p)); if (pathStatus(p)) x.ex = true; });
+  const list = Object.values(g).sort((a,b) => b.best - a.best || b.n - a.n || a.a.localeCompare(b.a));
+  return '<details class="card pad" open style="margin-bottom:10px"><summary style="cursor:pointer;font-weight:600;color:var(--accent)">Account roll-up: ' + pl(list.length, 'account') + ' across ' + pl(rows.length, 'plant') + '</summary><p class="small muted" style="margin:6px 0">Account is a display grouping of the parent company, not a ledger field. Click an account to filter the list to it.</p><div class="rollup tscroll"><table class="t"><thead><tr><th>Account</th><th>Plants</th><th>Best score</th><th>Path status</th></tr></thead><tbody>' +
+    list.map(x => '<tr><td><button type="button" class="link" data-acct="' + esc(x.a) + '">' + esc(x.a) + '</button></td><td>' + x.n + '</td><td>' + x.best + '</td><td>' + (x.ex ? '<span class="badge b-warn">existing Path account</span>' : '<span class="muted">net new</span>') + '</td></tr>').join('') + '</tbody></table></div></details>';
 }
 function renderCalls(){
   const el = $('#v-calls');
   if (!el.dataset.init){
-    el.innerHTML = '<div class="view-h"><h2>Call list</h2><p>Profiled plants ranked by score. Score tiers: High 70+, Medium 45-69, Low under 45. Confidence is how many of the six components rest on stated evidence.</p></div>' + filterBar('fbar-calls', true) +
-      '<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:10px"><label class="chk"><input type="checkbox" id="live"> Live trigger only <span class="muted small">(plant-level trigger in the last 24 months)</span></label><label class="chk"><input type="checkbox" id="lowceil"> Low score, high ceiling (research first) <span class="muted small">(score under 45 and calculated ceiling 70 or more)</span></label><label class="sortsel">Sort by <select id="sortsel"><option value="score">score</option><option value="confidence">confidence</option><option value="name">plant name</option><option value="state">state</option></select></label><span id="callcount" class="muted small"></span></div>' +
-      '<div class="card calls" id="calllist"></div>';
+    const nrf = P.filter(researchFirst).length;
+    el.innerHTML = '<div class="view-h"><h2>Call list</h2><p>Profiled plants ranked by score. Score tiers: High 70+, Medium 45-69, Low under 45. Confidence is how many of the six components rest on stated evidence.</p></div>' + filterBar('fbar-calls', P.filter(p => p.status === 'profiled'), {score: true, nopre: true}) +
+      '<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px"><label class="chk"><input type="checkbox" id="live"> Live trigger only <span class="muted small">(plant-level trigger in the last 24 months)</span></label>' +
+      '<label class="chk"><input type="checkbox" id="prechip"> New or converting plants only <span class="muted small">(' + pl(DS.preprod || 0, 'plant') + ')</span></label>' +
+      '<label class="chk"><input type="checkbox" id="lowceil"> Low score, high ceiling (research first) <span class="muted small">(score under 45, ceiling 70 or more, and at least one stated positive signal: process 20, labor above 0 or a plant trigger; ' + pl(nrf, 'plant') + ' pass)</span></label>' +
+      '<label class="chk"><input type="checkbox" id="merge"> Merge existing Path accounts into the ranked list</label>' +
+      '<label class="sortsel">Sort by <select id="sortsel"><option value="score">score</option><option value="confidence">confidence</option><option value="ceiling">ceiling (highest first)</option><option value="unknowns">unknown components (most first)</option><option value="name">plant name</option><option value="state">state</option></select></label><span id="callcount" class="muted small"></span></div>' +
+      '<div id="rollup"></div><div class="card calls" id="calllist"></div><p class="small muted" id="tienote" style="margin-top:8px"></p>';
     bindFilters($('#fbar-calls'), renderCalls);
     $('#live').addEventListener('change', e => { S.liveOnly = e.target.checked; renderCalls(); });
+    $('#prechip').addEventListener('change', e => { S.pre = e.target.checked; renderCalls(); });
     $('#lowceil').addEventListener('change', e => { S.lowCeil = e.target.checked; renderCalls(); });
+    $('#merge').addEventListener('change', e => { S.merge = e.target.checked; renderCalls(); });
     $('#sortsel').addEventListener('change', e => { S.sort = e.target.value; renderCalls(); });
     el.dataset.init = 1;
   }
   syncFilters($('#fbar-calls'));
-  $('#live').checked = S.liveOnly; $('#lowceil').checked = S.lowCeil; $('#sortsel').value = S.sort;
+  $('#live').checked = S.liveOnly; $('#prechip').checked = S.pre; $('#lowceil').checked = S.lowCeil; $('#merge').checked = S.merge; $('#sortsel').value = S.sort;
   const rows = callRows();
+  const ex = S.merge ? [] : rows.filter(p => pathStatus(p)), net = S.merge ? rows : rows.filter(p => !pathStatus(p));
   $('#fbar-calls [data-count]').textContent = '';
-  $('#callcount').textContent = rows.length + ' of ' + C.plants_profiled + ' profiled plants';
-  $('#calllist').innerHTML = '<div class="crow hd" role="row"><span>#</span><span>Plant</span><span>Relationship</span><span>Score</span><span>Tier</span><span>Conf.</span><span>Unknowns</span><span>Ceiling <span class="calc">calculated</span></span><span>Live trigger</span><span>Opening line</span></div>' +
-    (rows.length ? rows.map((p, i) => {
-      const live = +p.score_demand === 15;
-      const t = sTier(p);
-      return '<div class="crow"><span class="rk">' + (i+1) + '</span><span class="nm"><button type="button" class="link" data-plant="' + esc(p.id) + '">' + esc(p.name) + '</button><span class="sub">' + esc(p.city) + ', ' + esc(p.state) + (p.tier ? ' &middot; ' + esc(p.tier) : '') + '</span>' + (isPre(p) ? '<span class="sub">' + preBadge(p) + '</span>' : '') + '</span>' +
-        '<span class="rel">' + esc((p.relationship||'unknown').replace(/_/g,' ')) + '</span>' +
-        '<span class="scr">' + esc(p.score_total) + '</span><span class="tr"><span class="badge b-' + t.toLowerCase() + '">' + t + '</span></span>' +
-        '<span class="cf" title="Components resting on stated evidence">' + esc(p.confidence) + '/6</span>' +
-        '<span class="unkc" title="Components scored 0 because no source states the underlying fact (out of 6; demand is never unknown)">' + unkOf(p).length + ' of 6</span>' +
-        '<span class="ceil" title="Calculated: score plus the maximum points of each unknown component. Not a score.">' + (ceilOf(p) == null ? '' : ceilOf(p)) + '</span>' +
-        '<span class="trg">' + (live ? '<span class="live">live trigger</span><br>' : '') + '<span class="small">' + val(p, 'triggers', p.id, {max: 90, label: 'trigger'}) + '</span></span>' +
-        '<span class="ol">' + val(p, 'opening_line', p.id, {max: 230, label: 'opening line'}) + '</span></div>';
-    }).join('') : '<div class="empty">No profiled plants match. Clear a filter or a toggle.</div>');
+  $('#callcount').textContent = rows.length + ' of ' + pl(C.plants_profiled, 'profiled plant');
+  $('#rollup').innerHTML = rows.length ? rollupHtml(rows) : '';
+  const hd = '<div class="crow hd" role="row"><span>#</span><span>Plant</span><span>Account</span><span>Relationship</span><span>Score</span><span>Tier</span><span>Conf.</span><span>Unknowns</span><span>Ceiling <span class="calc">calculated</span></span><span>Live trigger</span><span>Opening line</span></div>';
+  let h = hd;
+  if (ex.length) h += '<div class="blockh" role="heading" aria-level="3">Existing Path accounts: route to the account owner (' + ex.length + ')<span>Path&rsquo;s own material or a reference names the company as a customer. Do not cold-call; open the Path badge for the evidence. Use &ldquo;Merge&rdquo; above to rank these with the rest.</span></div>' + ex.map(callRow).join('');
+  if (rows.length) h += (ex.length ? '<div class="blockh net" role="heading" aria-level="3">Net-new prospects, ranked (' + net.length + ')</div>' : '') + net.map(callRow).join('');
+  else h += '<div class="empty">No profiled plants match. Clear a filter or a toggle.</div>';
+  $('#calllist').innerHTML = h;
+  $('#tienote').textContent = 'Ties: equal scores are ordered by confidence, then plants with a live trigger, then plant name A to Z.';
 }
 
 /* ---------- excluded ---------- */
@@ -694,44 +817,42 @@ function renderExcluded(){
 
 /* ---------- method ---------- */
 function pct(x){ return x == null ? '' : (Math.round(x * 1000) / 10) + '%'; }
-function kindsHtml(k){ const e = Object.entries(k || {}).sort((a,b) => b[1]-a[1]); return e.length ? e.map(x => esc(x[0]) + ' ' + x[1]).join(', ') : '<span class="muted">none recorded</span>'; }
+function kindsHtml(k){ const e = Object.entries(k || {}).filter(x => x[1] > 0).sort((a,b) => b[1]-a[1]); return e.length ? e.map(x => esc(x[0]) + ' ' + x[1]).join(', ') : '<span class="muted">none recorded</span>'; }
+const SM = D.summary || null;
+const NA = '<span class="muted">not available</span>';
+const chkLabel = file => String(file || '').replace(/^fact-check-/, '').replace(/\.json$/, '').replace(SM && SM.vertical ? SM.vertical + '-' : '#', '');
 function roundTable(r){
-  return '<div class="tscroll"><table class="t"><thead><tr><th>Checker</th><th>Corrected / checked</th><th>Unreachable</th><th>Error rate</th><th>Error kinds</th></tr></thead><tbody>' +
-    r.checkers.map(c => '<tr><td>' + esc(c.checker) + '</td><td>' + c.corrected + ' / ' + c.checked + '</td><td>' + c.unreachable + '</td><td>' + (c.rate != null ? pct(c.rate) : pct(c.checked ? c.corrected / c.checked : null)) + '</td><td class="small">' + kindsHtml(c.kinds) + '</td></tr>').join('') +
-    '<tr><td><strong>All</strong></td><td><strong>' + r.corrected + ' / ' + r.checked + '</strong></td><td><strong>' + r.unreachable + '</strong></td><td><strong>' + pct(r.rate) + '</strong></td><td class="small">' + kindsHtml(r.kinds) + '</td></tr></tbody></table></div>';
+  const kinds = {}; (r.checkers || []).forEach(c => Object.entries(c.kinds || {}).forEach(([k, n]) => { kinds[k] = (kinds[k] || 0) + n; }));
+  return '<div class="tscroll"><table class="t"><thead><tr><th>Checker file</th><th>Corrected / checked</th><th>Error rate</th><th>Error kinds</th></tr></thead><tbody>' +
+    (r.checkers || []).map(c => '<tr><td>' + esc(chkLabel(c.file)) + '</td><td>' + c.corrected + ' / ' + c.checked + '</td><td>' + pct(c.checked ? c.corrected / c.checked : null) + '</td><td class="small">' + kindsHtml(c.kinds) + '</td></tr>').join('') +
+    '<tr><td><strong>All, round ' + r.round + '</strong></td><td><strong>' + r.corrected + ' / ' + r.checked + '</strong></td><td><strong>' + pct(r.rate) + '</strong></td><td class="small">' + kindsHtml(kinds) + '</td></tr></tbody></table></div>';
 }
 function factHtml(){
-  const vs = V.filter(v => (D.audit[v.id] || {}).rounds);
-  if (!vs.length) return '<h3>Fact-check</h3><p class="muted">No fact-check report in the ledger yet.</p>';
-  const vf = D.log.verify || {};
-  let h = '<h3>Fact-check</h3><p class="small muted">Independent checkers re-fetch each cited source and compare it with the ledger value. A claim is &ldquo;corrected&rdquo; when the source does not support the value for that plant. Unreachable sources are reported apart and are never counted as confirmed. Error rate = corrected &divide; checked. Results are reported as measured.</p>';
-  vs.forEach(v => {
-    const rd = D.audit[v.id].rounds, r1 = rd['1'], r2 = rd['2'];
-    h += '<h4>' + esc(v.name) + '</h4>';
-    if (r1) h += '<p><strong>Round 1 (before repairs): ' + r1.corrected + ' / ' + r1.checked + ' = ' + pct(r1.rate) + '</strong> claims corrected' + (r1.unreachable ? ' (' + r1.unreachable + ' unreachable, not counted)' : '') + '. Error kinds: ' + kindsHtml(r1.kinds) + '.</p>' + roundTable(r1) +
-      '<details class="card pad" style="margin:8px 0"><summary style="cursor:pointer;font-weight:600;color:var(--accent)">Worst errors found in round 1</summary>' + r1.checkers.map(c => '<p class="small"><strong>Checker ' + esc(c.checker) + '</strong></p><ul class="small">' + c.worst.map(w => '<li>' + esc(w) + '</li>').join('') + '</ul>').join('') + '</details>';
-    if (r2) h += '<p><strong>Round 2, after repairs: ' + r2.corrected + ' / ' + r2.checked + ' = ' + pct(r2.rate) + '</strong> claims corrected on a fresh sample' + (r2.unreachable ? ' (' + r2.unreachable + ' unreachable)' : '') + '. Error kinds: ' + kindsHtml(r2.kinds) + '.</p>' + roundTable(r2);
-    else h += '<p class="muted"><strong>Round 2 (after repairs):</strong> no report yet. The repair pass has not been re-measured.</p>';
+  const intro = '<h3>Fact-check</h3><p class="small muted">Independent checkers re-fetch each cited source and compare it with the ledger value. A claim is &ldquo;corrected&rdquo; when the source does not support the value for that plant. Unreachable sources are reported apart and are never counted as confirmed. Error rate = corrected &divide; checked. Figures come from <code>ledger/audit/summary.json</code>; per-checker detail is grouped by round.</p>';
+  const rs = SM && SM.fact_check_rounds;
+  if (!rs || !rs.length) return intro + '<p>Fact-check figures: ' + NA + '.</p>';
+  const A = D.audit[SM.vertical] || {}, files = A.files || {};
+  let h = intro + '<h4>' + esc(vName(SM.vertical)) + '</h4>';
+  rs.forEach(r => {
+    h += '<p><strong>Round ' + r.round + ': ' + (r.display || (r.corrected + ' / ' + r.checked + ' = ' + pct(r.rate))) + '</strong>' + (r.label ? ' &middot; ' + esc(String(r.label).replace(/^Round \d+:\s*/i, '')) : '') + (r.unreachable ? ' (' + r.unreachable + ' unreachable, not counted)' : '') + '.' + (r.note ? ' ' + esc(r.note) : '') + '</p>';
+    if (r.checkers && r.checkers.length) h += roundTable(r);
+    const worst = (r.checkers || []).map(c => ({c, w: (files[c.file] || {}).worst || []})).filter(x => x.w.length);
+    if (worst.length) h += '<details class="card pad" style="margin:8px 0"><summary style="cursor:pointer;font-weight:600;color:var(--accent)">Worst errors found in round ' + r.round + '</summary>' + worst.map(x => '<p class="small"><strong>' + esc(chkLabel(x.c.file)) + '</strong></p><ul class="small">' + x.w.map(w => '<li>' + esc(w) + '</li>').join('') + '</ul>').join('') + '</details>';
   });
-  h += '<h4>Verify stages during profiling and the repair pass (from run_log.md)</h4><ul>' +
-    (vf.waves || []).map((w, i) => '<li>Profiling wave ' + (i + 1) + ': ' + w[0] + ' quotes checked, ' + w[1] + ' fixed, ' + w[2] + ' claims downgraded to inferred or unknown.</li>').join('') +
-    (vf.repaired != null ? '<li>Repair pass after the round 1 fact-check: ' + vf.repaired + ' evidence rows repaired or added.</li>' : '') + '</ul>';
   return h;
 }
 function renderMethod(){
   const el = $('#v-method'), B = D.log.bullets;
   const ul = a => a.length ? '<ul>' + a.map(x => '<li>' + x + '</li>').join('') + '</ul>' : '<p class="muted">Nothing logged yet.</p>';
   const rows = V.slice().sort((a,b) => (+a.rank||99) - (+b.rank||99)).map(v => {
-    const c = vCounts(v), a = D.audit[v.id] || {}, lg = a.log || {};
-    const mh = lg.miss || [], miss = mh[mh.length - 1];
-    const hist = mh.map(m => m.pct).filter(x => x != null).filter((x, i, arr) => i === 0 || x !== arr[i-1]);
-    const la = (a.listaudit || []).map(x => 'Auditor ' + esc(x.auditor) + ': ' + x.rows + ' rows, ' + x.in_definition + ' in definition, ' + x.searches + ' searches').join('<br>');
-    const mc = a.miss_candidates;
-    const rd = a.rounds || {}, r1 = rd['1'], r2 = rd['2'];
+    const c = vCounts(v), a = D.audit[v.id] || {};
+    const la = (a.listaudit || []).map(x => 'Auditor ' + esc(x.auditor) + ': ' + pl(x.rows, 'row') + ', ' + x.in_definition + ' in definition, ' + pl(x.searches, 'search', 'searches')).join('<br>');
+    const inSM = SM && SM.vertical === v.id;
     const stCls = {done:'b-ok',partial:'b-warn',accepted:'b-st',rejected:'b-bad'}[v.status] || 'b-grey';
-    return '<tr><td><strong>' + esc(v.name) + '</strong><br><span class="badge ' + stCls + '">' + esc(v.status) + '</span></td><td>' + (c.included ? c.included + ' included, ' + c.profiled + ' profiled<br>' + c.High + ' High / ' + c.Medium + ' Medium / ' + c.Low + ' Low' : '<span class="muted">none researched</span>') + '</td>' +
-      '<td>' + (miss ? '<strong>Final: ' + (miss.frac ? miss.frac[0] + ' / ' + miss.frac[1] + ' = ' : '') + miss.pct + '%</strong>' + (hist.length > 1 ? '<br><span class="muted small">history: ' + hist.map(x => x + '%').join(' &rarr; ') + '</span>' : '') : '<span class="muted">not audited</span>') + (mc ? '<br><span class="small muted">' + mc.combined_in_definition + ' auditor plants in definition; ' + mc.matched + ' matched, ' + mc.unmatched + ' unmatched before adjudication</span>' : '') + (la ? '<br><span class="small muted">' + la + '</span>' : '') + '</td>' +
-      '<td>' + (r1 ? '<strong>Round 1: ' + pct(r1.rate) + '</strong> (' + r1.corrected + ' corrected of ' + r1.checked + ' checked' + (r1.unreachable ? ', ' + r1.unreachable + ' unreachable' : '') + ')' + (r2 ? '<br><strong>Round 2, after repairs: ' + pct(r2.rate) + '</strong> (' + r2.corrected + ' of ' + r2.checked + ')' : '<br><span class="muted small">Round 2 (after repairs): not run yet</span>') : (c.included ? '<span class="muted">pending: no fact-check report yet</span>' : '<span class="muted">not checked</span>')) + '</td></tr>';
+    const mr = inSM && SM.miss_rate;
+    const missCell = !c.included ? '<span class="muted">not audited</span>' : !mr ? NA : '<strong>' + esc(mr.value || '') + '</strong>' + (mr.note ? '<br><span class="small">' + esc(mr.note) + '</span>' : '') + ((mr.history || []).length ? '<br><span class="muted small">history: ' + mr.history.map(esc).join(' &rarr; ') + '</span>' : '') + (la ? '<br><span class="small muted">' + la + '</span>' : '');
+    const fcCell = !c.included ? '<span class="muted">not checked</span>' : !(inSM && SM.fact_check_rounds && SM.fact_check_rounds.length) ? NA : SM.fact_check_rounds.map(r => '<strong>Round ' + r.round + ': ' + pct(r.rate) + '</strong> (' + r.corrected + ' corrected of ' + r.checked + ')').join('<br>');
+    return '<tr><td><strong>' + esc(v.name) + '</strong><br><span class="badge ' + stCls + '">' + esc(v.status) + '</span></td><td>' + (c.included ? pl(c.included, 'plant') + ' included, ' + c.profiled + ' profiled<br>' + c.High + ' High / ' + c.Medium + ' Medium / ' + c.Low + ' Low' : '<span class="muted">none researched</span>') + '</td><td>' + missCell + '</td><td>' + fcCell + '</td></tr>';
   }).join('');
   const centroid = P.filter(p => /centroid/i.test(p.address)).length;
   const noAddr = P.filter(p => /^unknown/i.test(p.address)).length;
@@ -745,7 +866,7 @@ function renderMethod(){
   '<h3>What is on the map</h3><p>The ledger holds one row per physical plant. A plant is <strong>included</strong> (status base or profiled) when it welds in-house, welding is a core production step, and it works in carbon or stainless steel (aluminum-first plants are kept and noted). Plants that fail stay in the ledger as <strong>excluded</strong>, with the reason. <strong>Base</strong> plants have an identity record only; <strong>profiled</strong> plants have a researched profile and a score. Every value on the map links to a row in <code>evidence.csv</code>: a quote, a source link, a retrieval date and a tag. A value with no evidence row is not shown; the page says <span class="muted">not sourced</span> instead (name, city and state identify the plant and are the only exceptions; score totals, tiers and confidence are <strong>calculated</strong> from the six component rows).</p>' +
   '<h3>Verticals</h3><p>A vertical is a product family with a shared welded-part profile (for example, utility poles and substation steel). The planner scores each on weld intensity, part-size fit, part variety, hiring pain, demand outlook and Path presence, then the coordinator accepts, rejects or keeps it as a candidate. Rejected verticals stay in the ledger with the reason. One vertical is researched per session; a vertical is <em>done</em> only after profiling, fact-check and list audit.</p>' +
   '<h3>Supply-chain tiers</h3><table class="t"><tbody><tr><td><strong>OEM</strong></td><td>Sells a finished product under its own name.</td></tr><tr><td><strong>Tier 1</strong></td><td>Supplies welded assemblies directly to OEMs.</td></tr><tr><td><strong>Tier 2</strong></td><td>Supplies components or sub-weldments to Tier 1s.</td></tr><tr><td><strong>Contract fabricator</strong></td><td>Builds to customer drawings across customers and sectors.</td></tr><tr><td><strong>Tier 3</strong></td><td>Materials and processing only; usually fails the prospect test.</td></tr></tbody></table><p class="small muted">A secondary tier is recorded where two apply. Industry alone never sets a tier; most tiers here are tagged inferred.</p>' +
-  '<h3>Relationships to Path</h3><table class="t"><tbody><tr><td><strong>known_customer</strong></td><td>Path&rsquo;s own material or a primary source names this plant as a customer, or its company has a single welding site (tagged inferred).</td></tr><tr><td><strong>customer_other_plant</strong></td><td>Same parent as a reported customer, but this plant is not reported as converted.</td></tr><tr><td><strong>lookalike</strong></td><td>A direct product competitor of a named customer; the customer is named in the record.</td></tr><tr><td><strong>new</strong></td><td>None of the above.</td></tr></tbody></table>' +
+  '<h3>Relationships to Path</h3><table class="t"><tbody><tr><td><strong>known_customer</strong></td><td>Path&rsquo;s own material or a primary source names this plant as a customer, or its company has a single welding site (tagged inferred).</td></tr><tr><td><strong>customer_other_plant</strong></td><td>Plant of a company Path reports as a customer; the source does not say this plant has converted. A Path-status badge shows what the source does say.</td></tr><tr><td><strong>lookalike</strong></td><td>A direct product competitor of a named customer; the customer is named in the record.</td></tr><tr><td><strong>new</strong></td><td>None of the above.</td></tr></tbody></table>' +
   '<h3>Score (profiled plants, 0-100)</h3><p>Points come only from evidence; an unknown component scores 0. Six components, weights unchanged by the back-test:</p><div class="tscroll"><table class="t"><thead><tr><th>Component</th><th>Max</th><th>Rubric</th></tr></thead><tbody>' +
   '<tr><td>Process fit</td><td>20</td><td>MIG or flux-core on production weldments 20; mixed with TIG 12; mostly TIG or spot 4</td></tr>' +
   '<tr><td>Material and part fit</td><td>20</td><td>Steel parts within a cell’s limits 20; too big to move but suited to Rove 12; aluminum-first or thin sheet 4</td></tr>' +
@@ -758,12 +879,12 @@ function renderMethod(){
   '<h4>How the coordinator applied the rubric (read from run_log.md)</h4>' +
   '<p class="small muted">The rubric above is the brief. These are the interpretations the coordinator logged while scoring, quoted from the run log. Where they say &ldquo;stated&rdquo;, a source must say it; nothing is inferred from industry.</p>' + ul(B.rules) +
   '<p><strong>Data gap, not a poor fit:</strong> ' + mat0 + ' of ' + C.plants_profiled + ' profiled plants score 0 on material and part fit because no source states the size or weight of the parts welded at that plant. Pole makers rarely publish section dimensions. Their real fit is unknown, and a score of 0 here reflects missing data.</p>' +
-  '<h3>Why many scores are Low</h3><p>The rubric awards points only for what a source states, so a plant that has not published a fact scores 0 on that component. Measured on the ' + C.plants_profiled + ' profiled plants at build time: the ' + DS.low_n + ' Low plants have on average <strong>' + DS.avg_unk_low + ' unknown components</strong> out of 6, against ' + DS.avg_unk_high + ' for the ' + DS.high_n + ' High plants (Medium: ' + DS.avg_unk_medium + '). <strong>' + DS.low_mat0 + ' of the ' + DS.low_n + ' Low plants</strong> score 0 on material and part fit only because no source states their part size. <strong>' + DS.low_ceil70 + ' of the ' + DS.low_n + ' Low plants</strong> have a ceiling of 70 or more. The <strong>ceiling</strong> is calculated: the score plus the maximum points of every unknown component, plus 7 if Demand sits at the vertical-level 8, capped at 100. A component is unknown when it scores 0 and its plant field (weld processes, part size fit, production type, welder postings, headcount) is empty, starts with &ldquo;unknown&rdquo; or says &ldquo;not stated&rdquo;. The ceiling is a research-priority signal, not a score. <strong>A Low score with a high ceiling means the plant has not published the facts the rubric needs; research it before ruling it out.</strong> The call list has a &ldquo;Low score, high ceiling (research first)&rdquo; filter (score under 45, ceiling 70 or more).</p>' +
-  '<h4>Pre-production prospects</h4><p>A plant that is under construction or ramping up (' + (DS.preprod || 0) + ' now) is kept as a prospect and shown with a <span class="badge b-pre">Pre-production</span> badge: it has no welding process or robots locked in yet, which can make it an early, actionable account, but most of its score components are unknown until it publishes. The flag comes from the ledger&rsquo;s status record or a trigger or status-detail line naming construction or ramp-up; a plant whose own status says it is operating is not flagged.</p>' +
+  '<h3>Why many scores are Low</h3><p>The rubric awards points only for what a source states, so a plant that has not published a fact scores 0 on that component. Measured on the ' + C.plants_profiled + ' profiled plants at build time: the ' + DS.low_n + ' Low plants have on average <strong>' + DS.avg_unk_low + ' unknown components</strong> out of 6, against ' + DS.avg_unk_high + ' for the ' + DS.high_n + ' High plants (Medium: ' + DS.avg_unk_medium + '). <strong>' + DS.low_mat0 + ' of the ' + DS.low_n + ' Low plants</strong> score 0 on material and part fit only because no source states their part size. <strong>' + DS.low_ceil70 + ' of the ' + DS.low_n + ' Low plants</strong> have a ceiling of 70 or more. The <strong>ceiling</strong> is calculated: the score plus the maximum points of every unknown component, capped at 100. The demand allowance is shown beside it and is not inside it: a plant at the vertical-level 8 shows &ldquo;+7 if a plant trigger is found&rdquo;. A component is unknown when it scores 0 and its plant field (weld processes, part size fit, production type, welder postings, headcount) is empty, starts with &ldquo;unknown&rdquo; or says &ldquo;not stated&rdquo;. For labor, <strong>&ldquo;none found&rdquo; counts as unknown</strong> too: not finding a posting says nothing about whether the plant has a welder shortage, so it is treated the same as &ldquo;unknown&rdquo;. The ceiling is a research-priority signal, not a score. <strong>A Low score with a high ceiling means the plant has not published the facts the rubric needs; research it before ruling it out.</strong> The call list has a &ldquo;Low score, high ceiling (research first)&rdquo; filter: score under 45, ceiling 70 or more, and at least one stated positive signal (process fit 20, any labor points, or a plant-level trigger), so it does not just list plants about which nothing is known; ' + pl(P.filter(researchFirst).length, 'plant') + ' pass. The call list can also be sorted by ceiling or by number of unknown components.</p>' +
+  '<h4>New or converting plants</h4><p>A plant that is under construction, ramping up, or converting from another product (' + (DS.preprod || 0) + ' now, for example a wind-tower plant switching to utility poles) is kept as a prospect and shown with a <span class="badge b-pre">New or converting plant</span> badge: its welding process and robots may not be locked in yet, which can make it an early, actionable account, but most of its score components are unknown until it publishes. The flag comes from the ledger&rsquo;s status record or a trigger or status-detail line naming construction, ramp-up, conversion or transition; a plant whose own status says it is operating is not flagged. <strong>Live trigger</strong> badges show the date found in the trigger text, or &ldquo;date not stated&rdquo;.</p><h4>Accounts and existing Path customers</h4><p><strong>Account</strong> is a display grouping of the parent company (for example every Arcosa, Meyer and Ameron plant is &ldquo;Arcosa (CRH)&rdquo;); it is computed in the page and is not a ledger field. Where a Path source confirms that a plant&rsquo;s company is a Path customer (Millerbernd, Nello, Valmont), the plant carries a Path-status badge linked to that evidence row and sits in the &ldquo;Existing Path accounts: route to the account owner&rdquo; block above the ranked net-new list on the call list. Ties in the ranked list are ordered by confidence, then live trigger, then name.</p>' +
   '<h4>Confidence</h4>' + ul(B.confidence.length ? B.confidence : ['Confidence = how many of the six components rest on stated evidence (0-6).']) +
   '<h3>Back-test</h3><p>The scoring was tested on Path’s reported customers: a good model should score them High.</p>' + ul(B.backtest.concat(B.weights)) +
   '<h3>Audit numbers by vertical</h3><div class="tscroll card pad"><table class="t"><thead><tr><th>Vertical</th><th>Plants</th><th>Miss rate (list audit)</th><th>Fact error rate</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
-  '<p class="small muted"><strong>Miss rate</strong> = in-definition plants found by independent auditors that were absent from the ledger, divided by all in-definition auditor plants. <strong>Fact error rate</strong> = claims corrected by the fact-checker divided by claims checked; unreachable sources are reported separately and never counted as confirmed. Both come from <code>ledger/audit/</code> and <code>run_log.md</code>.</p>' +
+  '<p class="small muted"><strong>Miss rate</strong> = in-definition plants found by independent auditors that were absent from the ledger, divided by all in-definition auditor plants. <strong>Fact error rate</strong> = claims corrected by the fact-checker divided by claims checked; unreachable sources are reported separately and never counted as confirmed. Both are read from <code>ledger/audit/summary.json</code>' + (SM ? ' (vertical status there: ' + esc(SM.status || 'unknown') + ')' : '; that file is missing, so they show as not available') + '. The miss rate is a rough guide, not a completeness percentage: the auditors use the same kind of web search as the plant finder, so they share its blind spots.</p>' +
   factHtml() +
   '<h3>Checks run on the evidence</h3><ul><li>Quote check at merge: ' + qc.found + ' quotes found in their source, ' + qc.not_found + ' not found, ' + qc.unreachable + ' unreachable (' + qc.files + ' check files). Not-found and unreachable quotes show a flag in the evidence drawer.</li>' +
   (pcs && pcs.CITY_NOT_ON_PAGE != null ? '<li>Wrong-plant sweep of job postings: ' + pcs.city_on_page + ' pages show the plant’s city, ' + pcs.CITY_NOT_ON_PAGE + ' do not (flagged in the drawer), ' + pcs.unreachable + ' unreachable.</li>' : '') +
@@ -771,10 +892,10 @@ function renderMethod(){
   '<h3>Known limits</h3><ul>' +
   '<li><strong>' + inferredN + ' of ' + totalEv + ' evidence rows are inferred</strong> (guesses to verify, always labelled). Tiers, bottlenecks and many process and material fields are inferred; industry alone never sets a weld process.</li>' +
   '<li><strong>Thin supply-chain data:</strong> only ' + LK.length + ' supplier links exist (' + linkTags.filter(t => t === 'stated').length + ' stated, ' + linkTags.filter(t => t === 'inferred').length + ' inferred). Public sources rarely name who supplies a pole maker or who buys from a plant.</li>' +
-  '<li><strong>Coordinates:</strong> ' + centroid + ' plants use a city centroid because the street address could not be matched, and ' + noAddr + ' have no confirmed street address; many others were placed from a city-level match. Dots show the town, not the building.</li>' +
+  '<li><strong>Coordinates:</strong> ' + pl(centroid, 'plant') + (centroid === 1 ? ' uses' : ' use') + ' a city centroid because the street address could not be matched, and ' + pl(noAddr, 'plant') + (noAddr === 1 ? ' has' : ' have') + ' no confirmed street address; others were placed from a city-level match. Dots show the town, not the building.</li>' +
   '<li><strong>Profile depth:</strong> ' + lowConf + ' of ' + C.plants_profiled + ' profiled plants have confidence of 2 or less, because most facts come from job postings and company pages that do not state plant-level details. Unknown parts score 0, so scores err low.</li>' +
   '<li><strong>Headcount, part sizes and existing robots</strong> are mostly unknown; no OSHA data file was available this run.</li>' +
-  '<li>Excluded plants stay in the ledger; closed, future or not-yet-welding plants (for example sites still under construction) are logged as future triggers.</li></ul>' + ul(B.limits) +
+  '<li>Excluded plants stay in the ledger with the reason. Sites under construction or converting are kept as profiled prospects and carry the &ldquo;New or converting plant&rdquo; badge.</li>' + ((SM && SM.known_limits) || []).map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' + (SM ? '' : '<p class="small muted">Audit-derived limits: ' + NA + ' (ledger/audit/summary.json is missing).</p>') +
   (B.failures.length ? '<h4>Sources that failed</h4>' + ul(B.failures) : '') +
   '<h3>Advisor checkpoints</h3><p class="small muted">' + (B.advisor.length ? B.advisor.map(esc).join(' &middot; ') : 'None logged.') + '</p>' +
   '<h3>Run log</h3><details class="card"><summary class="pad" style="cursor:pointer;font-weight:600;color:var(--accent)">Open the full run_log.md (' + D.log.sections.length + ' sections)</summary><div class="logbox">' + D.log.sections.map(s => '<h3>' + esc(s.title) + '</h3>' + s.html).join('') + '</div></details>' +
@@ -792,27 +913,28 @@ function profileHtml(p){
   const prof = p.status === 'profiled';
   const t = sTier(p);
   let h = '<div class="dlg-h"><h2 id="profile-t">' + esc(p.name) + '</h2><button type="button" class="btn" data-close="profile">Close</button></div><div class="dlg-b">';
-  h += '<div class="muted">' + val(p, 'parent_company', pre, {label: 'parent company'}) + ' &middot; ' + esc(p.city) + ', ' + esc(p.state) + '</div>';
-  h += '<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;align-items:center">' + scoreBadge(p) + (p.status === 'excluded' ? '<span class="badge b-bad">excluded</span>' : '') + tierBadge(p.tier) + (p.tier_secondary ? '<span class="badge b-st">also ' + esc(p.tier_secondary) + '</span>' : '') + (p.relationship ? '<span class="badge b-grey">' + esc(p.relationship.replace(/_/g,' ')) + '</span>' : '') + preBadge(p) + '</div>';
-  if (isPre(p)) h += '<div class="banner"><strong>Pre-production prospect.</strong> This plant is under construction or ramping up, so its process, robots and headcount are not locked in yet. Most of its score components read 0 because nothing is published yet, not because it is a poor fit. See the status detail evidence below.</div>';
+  h += '<div class="muted">' + val(p, 'parent_company', pre, {label: 'parent company'}) + ' &middot; ' + esc(p.city) + ', ' + esc(p.state) + '</div><div class="small muted">Account (display grouping): <strong>' + esc(acctOf(p)) + '</strong></div>';
+  h += '<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;align-items:center">' + scoreBadge(p) + (p.status === 'excluded' ? '<span class="badge b-bad">excluded</span>' : '') + tierBadge(p.tier) + (p.tier_secondary ? '<span class="badge b-st">also ' + esc(p.tier_secondary) + '</span>' : '') + (p.relationship ? '<span class="badge b-grey">' + esc(p.relationship.replace(/_/g,' ')) + '</span>' : '') + pathBadge(p) + preBadge(p) + '</div>';
+  if (pathStatus(p)) h += '<div class="banner" style="background:var(--warn-bg);border:1px solid var(--warn)"><strong>Existing Path account: route to the account owner.</strong> ' + esc(pathStatus(p).label) + '. The badge above opens the evidence row (a quote from the source and its link). Do not treat this plant as a cold prospect.</div>';
+  if (isPre(p)) h += '<div class="banner"><strong>New or converting plant.</strong> This plant is under construction, ramping up or converting from another product, so its process, robots and headcount may not be locked in yet. Most of its score components read 0 because nothing is published yet, not because it is a poor fit. See the status detail evidence below.</div>';
   if (p.status === 'excluded') h += '<div class="banner ex"><strong>Excluded from the map.</strong> ' + val(p, 'exclusion_reason', pre, {label: 'exclusion reason'}) + '</div>';
   else if (!prof) h += '<div class="banner"><strong>Not yet profiled.</strong> Only the base record is in the ledger: no score, process or material findings, postings, triggers or opening line yet.</div>';
   if (prof){
-    h += '<div class="sec"><h3>Score</h3><div class="bigscore"><span class="n">' + esc(p.score_total) + '</span><div><span class="badge b-' + t.toLowerCase() + '">' + t + '</span><div class="small muted">out of 100 &middot; sum of the six component rows below (<strong>calculated</strong>)</div><div class="small"><strong>Confidence ' + esc(p.confidence) + ' of 6</strong> (<strong>calculated</strong>): components resting on stated evidence</div></div></div><p class="small" id="unkline" style="margin:8px 0 0"><strong>' + unkOf(p).length + ' of 6 components unknown</strong> &middot; ceiling ' + ceilOf(p) + ' (<strong>calculated</strong>): the score counts only what sources state; unknown components score 0.</p><p class="small muted" style="margin:8px 0 0">Each component\u2019s points are a rubric judgement, so they carry the ledger\u2019s tag. Click a component for its reasoning and the supporting claims that hold the quotes.' + (S.stated ? ' Stated-only mode lists only supporting claims that include stated evidence.' : '') + '</p><div style="margin-top:8px">';
+    h += '<div class="sec"><h3>Score</h3><div class="bigscore"><span class="n">' + esc(p.score_total) + '</span><div><span class="badge b-' + t.toLowerCase() + '">' + t + '</span><div class="small muted">out of 100 &middot; sum of the six component rows below (<strong>calculated</strong>)</div><div class="small"><strong>Confidence ' + esc(p.confidence) + ' of 6</strong> (<strong>calculated</strong>): components resting on stated evidence</div></div></div><p class="small" id="unkline" style="margin:8px 0 0"><strong>Unknown components: ' + (unkOf(p).length ? esc(unkOf(p).map(k => UNK_SHORT[k]).join(', ')) : 'none') + '</strong> &middot; ceiling ' + ceilOf(p) + ' (<strong>calculated</strong>): the score counts only what sources state; unknown components score 0.' + (DV[p.id] && DV[p.id].dem ? ' Demand allowance, not in the ceiling: +' + DV[p.id].dem + ' if a plant trigger is found.' : '') + '</p><p class="small muted" style="margin:8px 0 0">Each component\u2019s points are a rubric judgement. &ldquo;Rubric &middot; stated evidence&rdquo; means every claim behind the points has a stated source and the component counts toward confidence; &ldquo;rubric &middot; inferred evidence&rdquo; means it does not. Click a component for its reasoning and the supporting claims that hold the quotes.' + (S.stated ? ' Stated-only mode lists only supporting claims that include stated evidence.' : '') + '</p><div style="margin-top:8px">';
     COMP.forEach(c => {
       const claim = pre + ':' + c[0], row = effRow(claim, p[c[0]]), pts = +p[c[0]] || 0;
       const hide = false;
-      const ids = row && row.r ? [...new Set(row.r.match(/\b(?:p|c|v|bt)-[a-z0-9-]+:[a-z_]+(?::(?:p|c)-[a-z0-9-]+)?/g) || [])].filter(i => EV[i] && i !== claim && !(S.stated && EV[i].every(r => r.t === 'inferred'))) : [];
-      h += '<div class="comp"><div class="row"><span class="lbl">' + c[1] + '</span>' + (hide ? '<span class="hid">inferred, hidden</span>' : '<button type="button" class="val" data-claim="' + esc(claim) + '" data-shown="' + esc(p[c[0]]) + '" aria-label="' + esc(c[1] + ': ' + pts + ' of ' + c[2] + ' points. Open evidence') + '"><strong>' + pts + '</strong> / ' + c[2] + '</button> ' + (row ? badgeTag(row.t, row) : '<span class="muted">not sourced</span>')) + '</div>' +
+      const ids = row && row.r ? claimIds(row.r).filter(i => EV[i] && i !== claim && !(S.stated && EV[i].every(r => r.t === 'inferred'))) : [];
+      h += '<div class="comp"><div class="row"><span class="lbl">' + c[1] + '</span>' + (hide ? '<span class="hid">inferred, hidden</span>' : '<button type="button" class="val" data-claim="' + esc(claim) + '" data-shown="' + esc(p[c[0]]) + '" aria-label="' + esc(c[1] + ': ' + pts + ' of ' + c[2] + ' points. Open evidence') + '"><strong>' + pts + '</strong> / ' + c[2] + '</button> ' + (row ? (row.t === 'inferred' ? (compStated(p, c[0]) ? '<span class="badge b-rub-ok" title="Counts toward confidence: every claim behind these points has a stated source">rubric &middot; stated evidence</span>' : '<span class="badge b-rub-inf" title="Does not count toward confidence: at least one claim behind these points is inferred or unknown, or the points are zero">rubric &middot; inferred evidence</span>') : badgeTag(row.t, row)) : '<span class="muted">not sourced</span>')) + '</div>' +
         (unkOf(p).includes(c[0].replace('score_','')) ? '<div class="unkn">unknown \u2014 no source states this</div>' : '') + '<div class="meter"><i style="width:' + (hide ? 0 : pts / c[2] * 100) + '%"></i></div>' +
-        (!hide && row && row.r ? '<div class="why">' + esc(row.r.replace(/;?\s*supporting claims:.*$/i, '').replace(/;?\s*counts toward confidence:.*$/i, '')) + '</div>' : '') +
+        (!hide && row && row.r ? '<div class="why">' + esc(cleanR(row.r).replace(/;?\s*supporting claims:.*$/i, '').replace(/;?\s*counts toward confidence:.*$/i, '')) + '</div>' : '') +
         (!hide && ids.length ? '<div class="chips" aria-label="Supporting claims">' + ids.map(i => '<button type="button" class="chip" data-claim="' + esc(i) + '">' + esc(i.startsWith(pre + ':') ? i.slice(pre.length + 1) : i) + '</button>').join('') + '</div>' : '') + '</div>';
     });
     h += '</div></div>';
     const olr = effRow(pre + ':opening_line', p.opening_line);
-    const olIds = olr && olr.r ? [...new Set(olr.r.match(/\b(?:p|c|v|bt)-[a-z0-9-]+:[a-z_]+(?::(?:p|c)-[a-z0-9-]+)?/g) || [])].filter(i => EV[i]) : [];
+    const olIds = olr && olr.r ? claimIds(olr.r).filter(i => EV[i]) : [];
     h += '<div class="sec"><h3>Opening line</h3><div class="opening">' + val(p, 'opening_line', pre, {label: 'opening line'}) + '</div>' +
-      (olr && isComposed(olr) && !(S.stated) ? '<p class="small muted" style="margin:6px 0 2px">Composed from these stated claims (click one for its quote and source):</p><div class="chips" aria-label="Claims behind the opening line">' + olIds.map(i => '<button type="button" class="chip" data-claim="' + esc(i) + '">' + esc(i.startsWith(pre + ':') ? i.slice(pre.length + 1) : i) + '</button>').join('') + '</div>' : '') + '</div>';
+      (olr && isComposed(olr) ? '<p class="small muted" style="margin:6px 0 2px">Composed from these stated claims (click one for its quote and source):</p><div class="chips" aria-label="Claims behind the opening line">' + olIds.map(i => '<button type="button" class="chip" data-claim="' + esc(i) + '">' + esc(i.startsWith(pre + ':') ? i.slice(pre.length + 1) : i) + '</button>').join('') + '</div>' : '') + '</div>';
   }
   h += '<div class="sec"><h3>Relationship to Path</h3><dl class="kv"><dt>Relationship</dt><dd>' + val(p, 'relationship', pre) + '</dd>' + (p.lookalike_of ? '<dt>Lookalike of</dt><dd>' + val(p, 'lookalike_of', pre, {label: 'lookalike of'}) + '</dd>' : '') + '</dl></div>';
   const kv = (f, l) => '<dt>' + l + '</dt><dd>' + val(p, f, pre, {label: l}) + '</dd>';
@@ -850,17 +972,17 @@ function drawerHtml(claim, shown){
     const vcls = {confirmed:'b-ok', corrected:'b-warn', unreachable:'b-bad'}[vs] || 'b-grey';
     let host = ''; try { host = new URL(r.u).hostname.replace(/^www\./,''); } catch(e){ host = r.u; }
     h += '<div class="evrow' + (r === cur ? ' sel' : '') + '"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">' +
-      (r.t === 'inferred' ? '<span class="badge b-inf">' + (isComposed(r) ? 'inferred &middot; composed' : 'inferred') + '</span>' : r.t === 'stated' ? '<span class="badge b-stated">stated</span>' : '<span class="badge b-unknown">unknown</span>') +
+      (r.t === 'inferred' && /^score_/.test(field) && byId[parts[0]] ? (compStated(byId[parts[0]], field) ? '<span class="badge b-rub-ok">rubric &middot; stated evidence</span>' : '<span class="badge b-rub-inf">rubric &middot; inferred evidence</span>') : r.t === 'inferred' ? '<span class="badge b-inf">' + (isComposed(r) ? 'inferred &middot; composed' : 'inferred') + '</span>' : r.t === 'stated' ? '<span class="badge b-stated">stated</span>' : '<span class="badge b-unknown">unknown</span>') +
       '<span class="badge ' + vcls + '">verified: ' + esc(String(vs).replace('_',' ')) + '</span>' + (r.st ? '<span class="badge b-st">' + esc(r.st) + '</span>' : '') +
       (r.qc ? '<span class="badge b-bad" title="At merge time the quote was not found on the page, or the page could not be reached">quote check: ' + esc(r.qc.replace('_',' ')) + '</span>' : '') +
       (r.cc ? '<span class="badge b-warn" title="Wrong-plant sweep: this job-posting page does not show the plant’s city">city not on page</span>' : '') + '</div>' +
       '<div style="margin-top:6px"><strong>' + esc(r.v) + '</strong></div>' +
       (r.q ? '<blockquote>' + esc(r.q) + '</blockquote>' : '<p class="small muted">' + (isComposed(r) ? 'No quote of its own: this line is composed from the stated claims linked below, so it is a guess to verify.' : /^score_/.test(field) ? 'No quote of its own: the points are a rubric judgement. The quotes sit on the supporting claims linked below.' : 'No quote recorded.') + '</p>') +
-      (r.t === 'inferred' ? '<p class="small"><strong>Reasoning (why this is a guess):</strong> ' + (r.r ? linkClaims(esc(r.r), claim) : 'none recorded') + '</p>' : r.r ? '<p class="small"><strong>Reasoning:</strong> ' + linkClaims(esc(r.r), claim) + '</p>' : '') +
+      (r.t === 'inferred' ? '<p class="small"><strong>Reasoning (why this is a guess):</strong> ' + (r.r ? linkClaims(esc(cleanR(r.r)), claim) : 'none recorded') + '</p>' : r.r ? '<p class="small"><strong>Reasoning:</strong> ' + linkClaims(esc(cleanR(r.r)), claim) + '</p>' : '') +
       '<dl><dt>Source</dt><dd>' + (r.u ? '<a href="' + esc(r.u) + '" target="_blank" rel="noopener noreferrer">' + esc(host) + '</a> <span class="muted small">(opens the source page)</span>' : '<span class="muted">' + (isComposed(r) ? 'none: composed from other claims' : 'no source link') + '</span>') + '</dd>' +
       '<dt>Archive</dt><dd>' + (r.a ? '<a href="' + esc(r.a) + '" target="_blank" rel="noopener noreferrer">archived copy</a>' : '<span class="muted">no archive copy</span>') + '</dd>' +
       '<dt>Retrieved</dt><dd>' + esc(r.d || 'not recorded') + '</dd><dt>Produced by</dt><dd>' + esc(r.by) + '</dd>' +
-      (fc ? '<dt>Fact-check</dt><dd>' + (fc.round === 2 ? 'round 2 (after repairs): ' : 'round 1: ') + esc(fc.status) + (fc.kind ? ' (' + esc(fc.kind) + ')' : '') + (fc.new && fc.status === 'corrected' ? '. Checker\u2019s corrected value: ' + esc(String(fc.new).slice(0, 300)) : '') + (fc.note ? '. ' + esc(fc.note) : '') + ' <span class="muted small">(' + esc(fc.file) + ')</span></dd>' : '') + '</dl></div>';
+      (fc ? '<dt>Fact-check</dt><dd>' + ('round ' + fc.round + ': ') + esc(fc.status) + (fc.kind ? ' (' + esc(fc.kind) + ')' : '') + (fc.new && fc.status === 'corrected' ? '. Checker\u2019s corrected value: ' + esc(String(fc.new).slice(0, 300)) : '') + (fc.note ? '. ' + esc(fc.note) : '') + ' <span class="muted small">(' + esc(fc.file) + ')</span></dd>' : '') + '</dl></div>';
   });
   return h + '</div>';
 }
@@ -881,11 +1003,12 @@ function openEvidence(claim, shown, opener){
 function csvCell(s){ s = String(s == null ? '' : s); return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g,'""') + '"' : s; }
 function plantCsv(rows){
   const cols = Object.keys(P[0]).filter(c => !['lat','lon','county_fips'].includes(c));
-  const out = [cols.concat(['unknown_components','ceiling_calculated','pre_production','inferred_fields']).map(csvCell).join(',')];
+  const out = [cols.concat(['account','path_status','unknown_components','ceiling_calculated','new_or_converting_plant','inferred_fields']).map(csvCell).join(',')];
   rows.forEach(p => {
     const inf = [];
-    const vals = cols.map(c => { const r = effRow(p.id + ':' + c, p[c]); if (r && r.t === 'inferred'){ inf.push(c); if (S.stated) return ''; } return p[c]; });
-    const extra = p.status === 'profiled' ? [unkOf(p).length + ' of 6', ceilOf(p) == null ? '' : ceilOf(p), isPre(p) ? 'yes' : ''] : ['', '', isPre(p) ? 'yes' : ''];
+    const vals = cols.map(c => { const r = effRow(p.id + ':' + c, p[c]); if (r && r.t === 'inferred'){ inf.push(c); if (S.stated && !composedStated(r)) return ''; } return p[c]; });
+    const ps = pathStatus(p);
+    const extra = [acctOf(p), ps ? ps.label : ''].concat(p.status === 'profiled' ? [unkOf(p).map(k => UNK_SHORT[k]).join(' '), ceilOf(p) == null ? '' : ceilOf(p), isPre(p) ? 'yes' : ''] : ['', '', isPre(p) ? 'yes' : '']);
     out.push(vals.concat(extra, [inf.join(' ')]).map(csvCell).join(','));
   });
   return out.join('\r\n');
@@ -933,6 +1056,7 @@ function go(view, focus){
 
 document.addEventListener('click', e => {
   const t = e.target.closest('button,[data-claim]'); if (!t) return;
+  if (t.dataset.acct){ S.q = t.dataset.acct; $('#q').value = S.q; refresh(); return; }
   if (t.dataset.view){ go(t.dataset.view, true); return; }
   if (t.dataset.claim){ openEvidence(t.dataset.claim, t.dataset.shown, t); return; }
   if (t.dataset.plant){ openPlant(t.dataset.plant, t); return; }
@@ -966,6 +1090,7 @@ $('#theme').addEventListener('click', () => {
 $('#theme').textContent = 'Theme: ' + (document.documentElement.dataset.theme || 'auto');
 
 renderChrome();
+(function tabFade(){ const n = $('#tabs'); const upd = () => n.classList.toggle('more', n.scrollLeft + n.clientWidth < n.scrollWidth - 4); n.addEventListener('scroll', upd); window.addEventListener('resize', upd); upd(); })();
 (function init(){
   const h = (location.hash || '').replace(/^#/, '').split('/');
   if (RENDER[h[0]]) S.view = h[0];

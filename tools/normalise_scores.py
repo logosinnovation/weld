@@ -28,9 +28,9 @@ import sys
 
 L = "ledger/"
 COMP = ["process", "material_part", "part_mix", "labor", "demand", "scale"]
-DIM = re.compile(r"\d[\d,\.]*\s*(?:-|to)?\s*\d*[\d,\.]*\s*(?:ft|feet|foot|in\b|inch|inches|\"|lb|lbs|pound|ton|tons|mm|meter|m\b|')", re.I)
+DIM = re.compile(r"\d[\d,\.]*\s*(?:-|to)?\s*\d*[\d,\.]*\s*(?:ft|feet|foot|in\b|inch|inches|\"|”|″|lb|lbs|pound|ton|tons|mm|meter|m\b|'|’|′)", re.I)
 CID = re.compile(r"\b([pcv]-[a-z0-9-]+:[a-z_]+)")
-TODAY = "2026-11-12"
+TODAY = "2026-11-13"
 
 
 def tier(t):

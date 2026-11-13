@@ -250,3 +250,27 @@ Coordinator decisions applied now (mechanical):
 - **Process rule wording clarified:** MIG or flux-core named (required, desired or preferred) in a welder or fitter posting for this plant, or stated by the plant, = 20. A qualification in a non-welding role (e.g. robotic-cell operator) does not count.
 - **Inclusion rule written down (review coverage-8/-12):** a plant with a current government or certification listing (state DOT qualified list, AISC certification) for an in-scope product is included (base, low confidence), not excluded, unless a source shows it is closed or the product is made elsewhere. Aluminum-only plants (no carbon or stainless welding) are excluded by the prospect test; aluminum-first plants that also weld steel are included and noted.
 - **Miss-rate presentation:** 5/64 = 7.8% is measured against two auditors who share the finder's sources, so it is a lower bound. The reviewer found further plants; the rate is recomputed after they are checked.
+
+## 2026-11-13: review fixes merged (workflow poles-review-fixes-1)
+
+- **Merged** review-fix-labor (24 plants, 183 rows), review-fix-valmont (5 plants, 153 rows) and review-fix-coverage (21 plants, 354 rows), in that order. Before each merge its `evidence_remove` list was applied with the new `tools/apply_removals.py`: 53 superseded rows retired (33 + 18 + 2). Each retired row is kept with its reason in `ledger/audit/retired-evidence.csv`.
+- **Quote checks:**
+  - Labor: 100/100 found.
+  - Valmont: 52 found. The 5 "not found" are AISC rows; all match the committed AISC snapshot exactly. The 1 unreachable is a closed Teal copy of Elkhart's "Welder 1st Shift - Steel" posting (404).
+  - Coverage: 150 found. The 13 "not found" are all AISC rows, and all 13 match the snapshot.
+- **Coordinator decisions on the agents' open questions:**
+  - FWT Fort Worth: process and labor set to 0 (option b; 53 -> 21 Low). The tie of Sabre's "Kenn" site to FWT's address is inferred, and inferred-attribution postings earn no points (precedent: DIS-TRAN Washington Court House and the old Alvarado sister-plant row). The Kenn posting is kept as a lead.
+  - Valmont Birmingham Tacker: counted as a welding role (production tack welding with a GMAW qualification test is manual welding). 45 Medium.
+  - Valmont Claremore: process and part size rest on a ~Nov 2024 posting, and the values now say "as of ~Nov 2024". Kept: how a plant welds is a standing fact, and the 24-month window applies to triggers. 80 High.
+  - Structural & Steel Products Crowley: the Fitter/Welder Leadman roles count, under the counting rule (working leads weld).
+  - V&S Canton and Burton process: 12 (CLAUDE.md "mixed with TIG" = 12; the QMF precedent). Under the session-2 wording they would be 68; not applied.
+  - V&S Muskogee material 20: the seam welder's capacity (60 ft x 80 in) bounds the largest pole section, which fits the 2026 analyst cell limits. LSI material 20: steel poles 4-6 in, up to 39 ft, fit the 2026 limits. Both are boundary calls, noted in their rows.
+  - ROHN scale 5: two Peoria divisions are two physical plants.
+  - Hughes Brothers: a boundary inclusion (steel H-frames to 345 kV).
+  - Exclusion reasons cleared by hand on Valley, Elkhart and Plymouth (the merge doesn't overwrite with blanks).
+- **Normaliser bug fixed:** the dimension regex in `normalise_scores.py` missed curly quote marks (60' and 80" typed as ’ and ”), so it zeroed Muskogee and LSI material. Fixed and restored (55 and 48 Medium). Only these two plants were affected: the earlier run only lowers scores, and HW Metals scores 20 on another row. V&S Canton's 6" figure is an angle-punching capacity, not a welded part, and it stays 0.
+- **Field drift:** Western Utility Telecom listed "GMAW spray transfer" and "2 seam welders" with no evidence row. The field is trimmed to what the rows quote, and the score_process reasoning is corrected (FCAW alone meets 20). The new `tools/field_drift_check.py` flags 21 more candidates (`ledger/audit/field-drift-2026-11-13.json`). Real cases include Millerbernd's and Nello South Bend's "AWS/AISC" certifications, Nello Westby's "robotics investment" trigger, and Nucor Crawfordsville's, Hapco Oklahoma City's and Klute's trigger figures. These go to the attribution clean-up (phase F2).
+- **Counts now:** 117 plants in the vertical; 80 included and profiled, 37 excluded. Tiers: High 8, Medium 32, Low 40. Material unknown (0) on 68 of 80.
+- **Miss rate, two measures:**
+  - Auditor-measured: 5/64 = 7.8%. A lower bound: the two auditors share the finder's sources.
+  - Finder first pass against every plant verified to date: 22 of the 80 included plants were not on the finder's included list. That is 7 found by the list auditors (Elkhart, Birmingham, Raycap, Race Rock, Cem-Tec, Ehresmann, Meyer Tulsa), 2 by follow-up research (HW Metals, Ameron 66th St N), 11 by the higher-tier review (Valmont El Dorado, V&S x3, ROHN, Sabre Conroe, CommStructures, Hughes, LSI, Musco, U.S. Pole), and 2 wrongly excluded then reinstated (Valley, Plymouth). **22/80 = 27.5%**, over the 20% advisor threshold, so it goes to the advisor at the done checkpoint. All 22 are in the ledger now. 9 leads remain unverified (in review-fix-coverage `unverified`).

@@ -125,19 +125,15 @@ def md_block(lines):
 
 
 def parse_log(text, vertical_ids):
-    """Returns (sections html list, per-vertical audit lines, bullets for the method page)."""
+    """Returns (sections html list, bullets for the method page, session dates). No audit numbers are read from prose."""
     lines = text.splitlines()
     sections, cur = [], None
-    cur_vertical = None
-    per_v = {}      # vid -> {"miss": (headline, line), "fact": ...}
     bullets = {"rules": [], "confidence": [], "backtest": [], "weights": [], "limits": [], "failures": [], "advisor": []}
-    dates = set(re.findall(r"20\d\d-\d\d-\d\d", text))
+    dates = set(re.findall(r"(?m)^## (20\d\d-\d\d-\d\d)\b", text))  # session headings only
     for ln in lines:
         if ln.startswith("## "):
             cur = {"title": ln[3:], "lines": []}
             sections.append(cur)
-            m = re.search(r"`(v-[a-z0-9-]+)`", ln)
-            cur_vertical = m.group(1) if m and m.group(1) in vertical_ids else None
             continue
         if cur is None:
             continue
@@ -148,17 +144,6 @@ def parse_log(text, vertical_ids):
         if not body.startswith("- "):
             continue
         body = body[2:]
-        for kind, pat in (("miss", r"\*\*(?:Corrected )?[Mm]iss rate[^*]*\*\*"),
-                          ("fact", r"\*\*Fact error rate[^*]*\*\*")):
-            m = re.search(pat, body)
-            if m and cur_vertical:
-                pct = re.search(r"(\d+(?:\.\d+)?)\s*%", m.group(0))
-                frac = re.search(r"(\d+)\s*/\s*(\d+)", m.group(0))
-                per_v.setdefault(cur_vertical, {}).setdefault(kind, []).append({
-                    "headline": m.group(0).strip("*").strip().rstrip("."),
-                    "pct": float(pct.group(1)) if pct else None,
-                    "frac": [int(frac.group(1)), int(frac.group(2))] if frac else None,
-                    "line": md_inline(body)})
         if re.search(r"\*\*Weights", body):
             bullets["weights"].append(md_inline(body))
         elif re.search(r"Back-test result", body):
@@ -169,16 +154,10 @@ def parse_log(text, vertical_ids):
                 bullets["confidence"].append(md_inline(cm.group(0)))
                 body = body.replace(cm.group(0), "").strip()
             bullets["rules"].append(md_inline(body))
-        if re.search(r"Known (limit|gap)|Coverage gaps accepted|city-centroid|city centroids", body):
-            bullets["limits"].append(md_inline(body))
         if re.search(r"Source failures", body):
             bullets["failures"].append(md_inline(body))
     secs = [{"title": s["title"], "html": md_block(s["lines"])} for s in sections]
-    ints = lambda m: [int(x) for x in m.groups()]
-    vs = [ints(m) for m in re.finditer(r"Verify stages: (\d+) quotes checked, (\d+) fixed, (\d+) claims downgraded", text)]
-    rp = re.search(r"(\d+) evidence rows repaired", text)
-    verify = {"waves": vs, "repaired": int(rp.group(1)) if rp else None}
-    return secs, per_v, bullets, sorted(dates), verify
+    return secs, bullets, sorted(dates)
 
 
 # ---------------------------------------------------------------- audit json
@@ -226,7 +205,8 @@ def build_audit(vids):
         if not isinstance(d, dict):
             continue
         base = os.path.basename(path)
-        rnd = 2 if re.search(r"round-?2", base, re.I) or str(d.get("round")) == "2" else 1
+        mr = re.search(r"round-?(\d+)", base, re.I)
+        rnd = int(mr.group(1)) if mr else (int(d["round"]) if str(d.get("round", "")).isdigit() else 1)  # -1/-2/-3 = round 1
         vid = d.get("vertical") or next((v for v in vids if v in base), None)
         rows = d.get("rows") if isinstance(d.get("rows"), list) else find_rows(d)
         rows = [r for r in rows if isinstance(r, dict) and r.get("claim_id") and "*" not in r["claim_id"]]
@@ -266,6 +246,7 @@ def build_audit(vids):
                              "unreachable": sum(x["unreachable"] for x in lst),
                              "rate": (cor / chk) if chk else None, "kinds": kinds}
         audit[vid]["rounds"] = out
+        audit[vid]["files"] = {x["file"]: {"worst": x["worst"], "repeated": x["repeated"]} for lst in rs.values() for x in lst}
     for path in sorted(glob.glob(os.path.join(L, "audit", "list-audit-*.json"))):
         d = load_json(path)
         if not d or d.get("vertical") not in audit:
@@ -276,14 +257,6 @@ def build_audit(vids):
         audit[d["vertical"]].setdefault("listaudit", []).append({
             "auditor": d.get("auditor"), "angle": d.get("angle"), "rows": n, "in_definition": in_def,
             "searches": d.get("searches_run"), "until_dry": d.get("searches_until_dry")})
-    for path in sorted(glob.glob(os.path.join(L, "audit", "miss-candidates-*.json"))):
-        d = load_json(path)
-        if not d or d.get("vertical") not in audit:
-            continue
-        audit[d["vertical"]]["miss_candidates"] = {
-            "combined_in_definition": d.get("combined_in_definition"),
-            "matched": len(d.get("matched", [])), "unmatched": len(d.get("unmatched", [])),
-            "out_of_definition": len(d.get("out_of_definition", []))}
     # verification overview
     qc = {"found": 0, "not_found": 0, "unreachable": 0, "files": 0}
     qc_rows = {}
@@ -307,8 +280,10 @@ COMPS = [("process", "score_process", "weld_processes", 20), ("material_part", "
          ("scale", "score_scale", "headcount", 10)]
 
 
-def field_unknown(v):
+def field_unknown(v, key=None):
     v = (v or "").strip().lower()
+    if key == "labor" and re.match(r"none\b", v):   # "none found" carries no information: same as unknown
+        return True
     return v == "" or v.startswith("unknown") or "not stated" in v
 
 
@@ -332,7 +307,7 @@ def derive(plants, evidence):
         st = [e["value"].strip().lower() for e in evby.get(pid + ":status", [])]
         det = [e["value"].lower() for e in evby.get(pid + ":status_detail", [])]
         flagged = any("pre-production prospect" in v and not re.search(r"found to be operating|not pre-production", v) for v in st)
-        mention = re.compile(r"under construction|ramping")
+        mention = re.compile(r"under construction|ramping|transition(?:ing)? (?:its|the|from)|conversion|converted|convert(?:ing)? ")
         txt = [(p.get("triggers") or "").lower()] + det
         if not flagged and any(mention.search(t) for t in txt):
             # a plant whose own status row says it is operating is not pre-production
@@ -343,10 +318,10 @@ def derive(plants, evidence):
             score = num(p["score_total"])
             unk, head = [], 0
             for key, sf, uf, mx in COMPS:
-                if num(p[sf]) == 0 and field_unknown(p.get(uf)):
+                if num(p[sf]) == 0 and field_unknown(p.get(uf), key):
                     unk.append(key); head += mx
             if num(p["score_demand"]) == 8:
-                head += 7
+                d["dem"] = 7          # shown beside the ceiling, never inside it
             d["unk"] = unk
             d["ceil"] = int(min(100, score + head))
             prof.append((p, d))
@@ -374,10 +349,12 @@ def main():
     vids = [v["id"] for v in verticals]
     with open(os.path.join(L, "run_log.md"), encoding="utf-8") as f:
         log_text = f.read()
-    secs, per_v, bullets, log_dates, verify = parse_log(log_text, set(vids))
+    secs, bullets, log_dates = parse_log(log_text, set(vids))
     audit, factcheck, qc, qc_rows, pcheck = build_audit(vids)
-    for v, d in per_v.items():
-        audit[v]["log"] = d
+    # headline audit figures come only from ledger/audit/summary.json (written by the coordinator)
+    summary = load_json(os.path.join(L, "audit", "summary.json")) if os.path.exists(os.path.join(L, "audit", "summary.json")) else None
+    if summary is not None and not isinstance(summary, dict):
+        summary = None
 
     # evidence indexed by claim_id, compact keys
     ev = {}
@@ -401,10 +378,7 @@ def main():
     if unmatched:
         print("NOTE: %d fact-check verdicts match no evidence row (claim_id, source_url), e.g. %s" % (len(unmatched), unmatched[:2]), file=sys.stderr)
 
-    dates = sorted({e["retrieved_date"] for e in evidence if re.match(r"\d{4}-\d\d-\d\d$", e["retrieved_date"])}
-                   | {p["last_checked"] for p in plants if re.match(r"\d{4}-\d\d-\d\d$", p["last_checked"])}
-                   | {v["last_checked"] for v in verticals if re.match(r"\d{4}-\d\d-\d\d$", v["last_checked"])}
-                   | set(log_dates))
+    dates = log_dates  # first and last "## YYYY-MM-DD" session headings of run_log.md
     included = [p for p in plants if p["status"] in ("base", "profiled")]
     counts = {
         "verticals_total": len(verticals),
@@ -417,19 +391,16 @@ def main():
         "plants_excluded": sum(1 for p in plants if p["status"] == "excluded"),
         "evidence_rows": len(evidence),
     }
-    try:
-        commit = subprocess.run(["git", "-C", ROOT, "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
-    except Exception:
-        commit = ""
     derived, dstats = derive(plants, evidence)
     data = {
         "derived": derived, "dstats": dstats,
         "meta": {"counts": counts, "dates": dates, "first": dates[0] if dates else "", "last": dates[-1] if dates else "",
-                 "commit": commit, "state_abbr": STATE_ABBR},
+                 "state_abbr": STATE_ABBR},
         "verticals": verticals, "plants": plants, "links": links, "ev": ev,
         "audit": audit, "qc": qc,
         "posting_check": pcheck.get("summary", {}),
-        "log": {"sections": secs, "bullets": bullets, "verify": verify},
+        "log": {"sections": secs, "bullets": bullets},
+        "summary": summary,
     }
     geo = load_geo()
     with open(TEMPLATE, encoding="utf-8") as f:
