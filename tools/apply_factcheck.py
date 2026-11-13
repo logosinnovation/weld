@@ -54,6 +54,9 @@ for r in rows:
             if cv:
                 e["value"] = cv
             cq = (r.get("corrected_quote") or "").strip()
+            cu = (r.get("corrected_source_url") or "").strip()
+            if cu.startswith("http"):
+                e["source_url"] = cu
             if cv.lower() == "unknown" or cq.lower() == "unknown":
                 e["tag"] = "unknown"
                 e["quote"] = ""
