@@ -568,3 +568,17 @@ Coordinator decisions applied now (mechanical):
   - Company-level link targets (c-electric-boat) show as company nodes.
   - Pre-production badges: Saronic Port Alpha, Master Boat's new facility, Anduril Arsenal-2, Hadrian Cherokee, New Pacific.
   - `tools/smoke_map.js` asserts both verticals' figures and cross-contamination. SMOKE PASSED, 0 console errors.
+
+### Ships profiler E and fact-check round 2 (workflow ships-final-profile-check)
+
+- **Profiler E:** the 8 base plants ranking inside the top 40 are now profiled. DSC Poplarville 75 High; Colonna's Steel America 72 High; Accurity 67 Medium (after the ruling below); Nichols Brothers 64 Medium; Keel Alma 53 Medium; Vessel Repair Port Arthur 35 Low; Fairlead Newport News 28 Low; Westport Orange 23 Low. Merged: 12 rows retired, 196 added; 0 rejected.
+- **Fact-check round 2 (checker D, confirming): 22/360 = 6.1%** (6.4% without the 18 unreachable rows, 16 of them an EPA FRS maintenance outage).
+  - By set: profiler-E plants 10/159 = 6.4%; fill-in and closure plants 3/124 = 2.6%; base-record sample 9/77 = 13.0% (6 defects on 5 plants, no score effect).
+  - Kinds: quote does not support value 18, other 4 (dates or tense). No wrong plant, wrong process, closed plant or invented fact. Applied, 0 unmatched.
+  - Worst: Gunderson's line presented a March 2025 contract as current; Sunflower had three clauses not on its 2023 page; DSC had a company-level row tagged stated.
+- **Coordinator rulings:**
+  - Accurity process 12 -> 20 under rule 1: the production welder posting names FCAW and GMAW only; GTAW is on a general shop list that also covers pipe spools. 67 Medium.
+  - NNS Norfolk material 20 -> 0: one panel weight without dimensions does not establish a cell fit. 13 Low. Its opening line now asks whether the campus still builds panels rather than assuming it does. Its recorded address matches Fairlead's Norfolk address: flagged.
+- **Ships now:** 218 plants; 47 profiled (High 18 / Medium 15 / Low 14), 87 base, 84 excluded. Every top-40 plant by the ranking is profiled.
+- **Fact error rate by round:** 7.3%, 6.1%.
+- summary-v-shipbuilding-naval.json rewritten; map rebuilt; smoke passed.

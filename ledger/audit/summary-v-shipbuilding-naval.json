@@ -2,20 +2,20 @@
  "vertical": "v-shipbuilding-naval",
  "status": "partial",
  "plants": {
-  "found": 168,
-  "included": 127,
-  "profiled": 39,
-  "excluded": 41,
+  "found": 218,
+  "included": 134,
+  "profiled": 47,
+  "excluded": 84,
   "tiers": {
-   "High": 16,
-   "Medium": 12,
-   "Low": 11
+   "High": 18,
+   "Medium": 15,
+   "Low": 14
   },
-  "profiled_fact_checked": 39,
-  "material_unknown": 33
+  "profiled_fact_checked": 47,
+  "material_unknown": 40
  },
- "links": 25,
- "evidence_rows": 6361,
+ "links": 24,
+ "evidence_rows": 7362,
  "fact_check_rounds": [
   {
    "round": 1,
@@ -69,20 +69,47 @@
    ],
    "rate": 0.0731,
    "display": "47 / 643 = 7.3%"
+  },
+  {
+   "round": 2,
+   "label": "Round 2: closure pass (new profiles, fill-ins and new base records)",
+   "checked": 360,
+   "corrected": 22,
+   "unreachable": 18,
+   "checkers": [
+    {
+     "file": "fact-check-v-shipbuilding-naval-round2-D.json",
+     "checked": 360,
+     "corrected": 22,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 18,
+      "invented fact": 0,
+      "other": 4
+     }
+    }
+   ],
+   "rate": 0.0611,
+   "display": "22 / 360 = 6.1%"
   }
  ],
  "miss_rate": {
-  "value": "30/107 = 28.0% (auditor-measured); up to 47/124 = 37.9% if all 17 unverified candidates are real",
-  "note": "Two blind list auditors (program/buyer angle and registry/geography angle) found 107 in-definition plants that exist; 77 were in the ledger and 30 were not. All 30 are now base records (unprofiled). They are mostly small inland towboat, barge and dredge builders, plus Navy structure suppliers (Fairlead, Colonna's Steel America, Hadrian Cherokee, NNS Norfolk campus). 17 candidates remain unverified. A closure pass is pending.",
+  "value": "30/107 = 28.0% (auditor-measured); up to 48/125 = 38.4% if all 18 unverified candidates are real",
+  "note": "Two blind list auditors found 107 in-definition plants that exist; 77 were in the ledger and 30 were not (now all in the ledger). Mostly small inland towboat, barge and dredge builders, plus Navy structure suppliers (Fairlead, Colonna's Steel America, Hadrian Cherokee, NNS Norfolk). A closure pass then checked the auditors' unchecked names, all 93 MARAD Small Shipyard Grant recipients FY2023-26 and open leads: it added 7 included plants, none ranking in the top 40.",
   "history": [
-   "28.0% (round 1)"
+   "28.0% (round 1 audit)",
+   "closure: +7 base, none top-40"
   ]
  },
  "known_limits": [
   "Part size is unknown for most profiled plants, so material scores 0 there; a Low score usually means missing data, not a poor fit (see the Unknowns and ceiling columns).",
-  "88 included plants are base records (not profiled or scored), including the 30 plants added from the list audit.",
+  "87 included plants are base records (not profiled or scored); every plant ranking in the top 40 by relationship, tier, open postings and headcount is profiled.",
   "EPA ECHO lists about 1,030 active NAICS 336611 facilities; that list has not been reconciled row by row against the ledger.",
-  "Welder-posting counts are a snapshot of 2026-11-13 job boards; a posting counts only when the board or posting names the yard (shared city locations do not count).",
-  "Pre-production yards (Saronic Port Alpha, Hadrian Cherokee, New Pacific Vancouver) are flagged."
+  "Welder-posting counts are a snapshot of 2026-11-13 job boards; a posting counts only when the board or posting names the yard.",
+  "NNS Norfolk campus: no source confirms operation after 2023.",
+  "Base-record sample in round 2 ran 13.0% (9 of 77 rows, no score effect); base records are less checked than profiled plants."
  ]
 }
