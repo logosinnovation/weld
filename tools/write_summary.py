@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Write ledger/audit/summary.json: the audit figures the map shows, computed from the
+"""Write ledger/audit/summary-<vertical>.json (one file per vertical): the audit figures the map shows, computed from the
 ledger and audit files (not parsed from run_log prose).
 
 Usage: python3 tools/write_summary.py v-poles-substation [--miss "5/64 = 7.8%"] [--miss-note "..."]
@@ -24,11 +24,15 @@ def opt(name, many=False):
     return vals if many else (vals[-1] if vals else None)
 
 
+LABELS_BY_VERT = {}
+LABELS_BY_VERT["v-shipbuilding-naval"] = {1: "Round 1: all 39 profiled plants (three checkers), after profiling",
+                                          2: "Round 2: closure pass (new profiles, fill-ins and new base records)"}
 LABELS = {1: "Round 1: designed sample of 30 plants (all High, all customer plants, then by score), before repairs",
           2: "Round 2: 10 unsampled plants from multi-plant parents, after the first repair pass",
           3: "Round 3: all 23 plants no checker had seen, after the attribution clean-up",
           4: "Round 4: 32 plants added or changed by the first higher-tier review, after the attribution clean-up",
           5: "Round 5: 9 plants whose points changed in the final higher-tier review, plus 6 new addresses"}
+LABELS = LABELS_BY_VERT.get(vert, LABELS)
 rounds = {}
 for f in sorted(glob.glob(f"ledger/audit/fact-check-{vert}-*.json")):
     base = os.path.basename(f)
@@ -69,7 +73,7 @@ out = {
                   "history": (opt("--miss-history") or "").split("|") if opt("--miss-history") else []},
     "known_limits": opt("--limit", many=True),
 }
-json.dump(out, open("ledger/audit/summary.json", "w"), indent=1)
+json.dump(out, open(f"ledger/audit/summary-{vert}.json", "w"), indent=1)
 print(json.dumps({k: out[k] for k in ("status", "plants", "links")}, indent=0))
 for r in out["fact_check_rounds"]:
     print(r["round"], r["display"])

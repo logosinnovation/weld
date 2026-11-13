@@ -1,0 +1,88 @@
+{
+ "vertical": "v-shipbuilding-naval",
+ "status": "partial",
+ "plants": {
+  "found": 168,
+  "included": 127,
+  "profiled": 39,
+  "excluded": 41,
+  "tiers": {
+   "High": 16,
+   "Medium": 12,
+   "Low": 11
+  },
+  "profiled_fact_checked": 39,
+  "material_unknown": 33
+ },
+ "links": 25,
+ "evidence_rows": 6361,
+ "fact_check_rounds": [
+  {
+   "round": 1,
+   "label": "Round 1: all 39 profiled plants (three checkers), after profiling",
+   "checked": 643,
+   "corrected": 47,
+   "unreachable": 1,
+   "checkers": [
+    {
+     "file": "fact-check-v-shipbuilding-naval-A.json",
+     "checked": 205,
+     "corrected": 8,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 5,
+      "invented fact": 0,
+      "other": 3
+     }
+    },
+    {
+     "file": "fact-check-v-shipbuilding-naval-B.json",
+     "checked": 202,
+     "corrected": 16,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 12,
+      "invented fact": 0,
+      "other": 4
+     }
+    },
+    {
+     "file": "fact-check-v-shipbuilding-naval-C.json",
+     "checked": 236,
+     "corrected": 23,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 20,
+      "invented fact": 0,
+      "other": 3
+     }
+    }
+   ],
+   "rate": 0.0731,
+   "display": "47 / 643 = 7.3%"
+  }
+ ],
+ "miss_rate": {
+  "value": "30/107 = 28.0% (auditor-measured); up to 47/124 = 37.9% if all 17 unverified candidates are real",
+  "note": "Two blind list auditors (program/buyer angle and registry/geography angle) found 107 in-definition plants that exist; 77 were in the ledger and 30 were not. All 30 are now base records (unprofiled). They are mostly small inland towboat, barge and dredge builders, plus Navy structure suppliers (Fairlead, Colonna's Steel America, Hadrian Cherokee, NNS Norfolk campus). 17 candidates remain unverified. A closure pass is pending.",
+  "history": [
+   "28.0% (round 1)"
+  ]
+ },
+ "known_limits": [
+  "Part size is unknown for most profiled plants, so material scores 0 there; a Low score usually means missing data, not a poor fit (see the Unknowns and ceiling columns).",
+  "88 included plants are base records (not profiled or scored), including the 30 plants added from the list audit.",
+  "EPA ECHO lists about 1,030 active NAICS 336611 facilities; that list has not been reconciled row by row against the ledger.",
+  "Welder-posting counts are a snapshot of 2026-11-13 job boards; a posting counts only when the board or posting names the yard (shared city locations do not count).",
+  "Pre-production yards (Saronic Port Alpha, Hadrian Cherokee, New Pacific Vancouver) are flagged."
+ ]
+}

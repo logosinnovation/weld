@@ -76,6 +76,9 @@ for r in rows:
             if pid_ in pid and field in pcols:
                 if pv and (pv.lower().lstrip("( ").startswith("keep") or "identical to the current" in pv.lower()):
                     pass  # multi-row claim: this row is one fragment; the field keeps its value
+                elif pv and pv.lstrip("( ").lower().startswith("same as"):
+                    if cv:
+                        pid[pid_][field] = cv
                 elif pv:
                     pid[pid_][field] = pv
                 elif cv:

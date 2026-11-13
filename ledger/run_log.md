@@ -517,3 +517,28 @@ Coordinator decisions applied now (mechanical):
   - The finder slices B and C under-swept the small Gulf and inland builders.
   - Slice D missed Fairlead, Colonna's Steel America and Hadrian, and slice A missed NNS's own Norfolk site.
 - **Counts:** 168 plants in the vertical: 39 profiled, 88 base, 41 excluded.
+
+### Advisor consultation 7 (2026-11-13): ships miss rate 28.0% (over 20%)
+
+- **Advice:** not done. Ship it as partial now, then run one bounded closure pass:
+  1. A plant-finder on auditor B's unchecked names, auditor A's leftovers, all FY2023-26 MARAD Small Shipyard Grant recipients reconciled by script, and the open leads.
+  2. Profile the NNS Norfolk campus (customer_other_plant). Resolve LAD's three sites (the record may be on the wrong yard; two are missing).
+  3. Check the 94 matched audit rows by eye.
+  4. Re-run the scripted line checks.
+  5. One fact-checker on the closure work.
+  6. Fix the summary writer, which would overwrite poles.
+  - **Done if** the closure pass adds no top-40 plant and only a handful overall, and its checker is at or under 10%.
+- **What changed:**
+  - `write_summary.py` now writes `ledger/audit/summary-<vertical>.json` with round labels per vertical. The poles file was renamed to `summary-v-poles-substation.json`, contents unchanged. The map-builder is updating the map to read one summary per vertical.
+  - Ships set to **partial** (verticals.csv and the status evidence row); `summary-v-shipbuilding-naval.json` written.
+  - **Matched rows checked by eye** (94):
+    - Steiner Construction was paired with Steiner Shipyard, a different company, and Rodriguez Coden with Master Boat Builders. Both are already among the 30 verified misses.
+    - West Gulf Marine was paired with Gulf Copper Galveston. It is now an 18th unverified candidate.
+    - Galliano (Houma) was paired with LaShip, another Chouest Houma yard. Plausibly the same; already unverified.
+    - Conrad Deepwater South was matched to the main yard; it is in the ledger as its own record.
+    - **Miss rate unchanged at 30/107 = 28.0%; upper bound 48/125 = 38.4%** if all 18 unverified are real. The log's "72 plus 5" is corrected: the 77 found are the matched-and-included plants plus the resolved-to-existing ones.
+  - **Scripted line checks on the 39 ships plants** found 8 problems:
+    - The same placeholder bug, in another form: "(same as corrected_value)" had been written into the NASSCO and Sturgeon Bay opening lines. Restored from their rows; `apply_factcheck.py` now handles that form.
+    - Two missing bottleneck rows (OPIP, Keel Goose Creek) added as unknown.
+    - Keel Goose Creek's question made second person.
+    - LAD's line cites a triggers claim that is now inferred (company-level); it goes to the LAD profiler.
