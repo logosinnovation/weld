@@ -466,3 +466,29 @@ Coordinator decisions applied now (mechanical):
   2. **Hull size.** Material is 12 (too big to move, suited to Rove) when a stated dimension or weight of the welded product the plant builds (vessel, barge, block, unit or module) exceeds the cell limits. It is 20 when a stated welded part fits a cell. A facility, crane or lift capacity is not a part size; NASSCO's blast-cell size and NNS's superlift weight go to the fact-checkers to judge under this rule.
   3. **Shared job-board locations.** A posting counts for a plant only when the board's location field or the posting text names that site. A city shared by several of the company's sites does not count (Bollinger Pascagoula labor 0). A Workday requisition-location field that names a yard does count (Eastern Allanton).
   4. **Grants.** A dated MARAD Small Shipyard Grant or similar award for equipment at the plant within 24 months is a plant-level trigger (demand 15).
+
+### Ships Stage F, round 1 (workflow ships-stage-f; resumed after a usage-limit stop)
+
+- **Fact-check, all 39 profiled plants:**
+  - A 8/205 = 3.9%, B 16/202 = 7.9%, C 23/236 = 9.7%. **Pooled 47/643 = 7.3%.**
+  - Kinds: quote does not support value 37, other 10 (an article date or status restated as current). No invented fact, wrong process or closed plant.
+  - Applied with `apply_factcheck.py`, 0 unmatched. The tool now honours a checker's `plants_csv_value`: "keep current" leaves the plant field alone when the corrected row is one fragment of a multi-row claim.
+- **Coordinator rulings on score notes:**
+  - NABRICO Ashland City demand 15 -> 8: the sale covers the whole barge business, a company-level event. 73 High.
+  - JamesBuilt process 12 -> 0: a pooled multi-site posting. 47 Medium.
+  - NASSCO material 12 -> 0: 52x52x30 ft is a facility envelope. 75 High.
+  - LAD demand 15 -> 8: the award and grant name only the shared city. 28 Low.
+  - Senesco material 12 -> 0: the figure is a machine capability. 35 Low.
+  - NNS material 12 stands: the 704 t, ~80x105 ft superlift is a stated welded block.
+  - Rule 1 confirmed by the checkers at EB, Austal, Eastern Allanton and Philly (TIG only in pipe roles, so 20), and at St. Johns, OPIP, Keel Hollywood, Rhoads, Trident and Conrad Deepwater South (TIG in the production posting, so 12).
+- **Pending evidence** (agent `ships-fills-1`):
+  - Bollinger Pascagoula labor 0 -> 20: ADP's HomeDepartment "BMS Pascagoula" names this yard, not the repair yard, the same test as Eastern's location field. To apply once a stated row quotes it.
+  - Chesapeake process 20 -> 12: TIG in a production fitter posting; needs its row.
+  - Caruthersville Yard II to be excluded: fiberglass barge-cover manufacturing.
+  - Extra live postings at JamesBuilt and Gunderson.
+- 36 tier, tier_secondary and prospect_test rows tagged stated retagged inferred (they are judgements).
+- **List audit:**
+  - Auditor A: 199 rows (112 in, 87 out), 58 searches. Auditor B: 147 rows (103 in, 44 out), 84 searches.
+  - `compare_audit.py`: 153 in-definition auditor plants matched to 72 ledger plants, with **59 candidate misses**. Some are matcher artifacts (Keel Yonges Island, EB Quonset, Eastern Allanton, SanJac, Giddings). Many are real: towboat and barge yards, Fairlead x2, Hadrian, Bayou Metal, Galliano, NNS Norfolk campus. 19 rest only on the 2023 Shipbuilding History small-builder list.
+  - Two plant-finders are verifying all 59 (workflow ships-miss-verify) before the miss rate is computed. It will clearly be over 20%, so it goes to the advisor.
+- **Ships tiers now (39 profiled):** High 16, Medium 11, Low 12.

@@ -72,8 +72,14 @@ for r in rows:
                 e["reasoning"] = "fact-check correction"
             corrected_claims.add(r["claim_id"])
             pid_, field = r["claim_id"].split(":", 1)
-            if pid_ in pid and field in pcols and cv:
-                pid[pid_][field] = cv
+            pv = (r.get("plants_csv_value") or "").strip()
+            if pid_ in pid and field in pcols:
+                if pv and pv.lower().startswith("keep"):
+                    pass  # multi-row claim: this row is one fragment; the field keeps its value
+                elif pv:
+                    pid[pid_][field] = pv
+                elif cv:
+                    pid[pid_][field] = cv
         if len(hits) > 1 and r.get("source_url"):
             break
 
