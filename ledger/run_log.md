@@ -542,3 +542,17 @@ Coordinator decisions applied now (mechanical):
     - Two missing bottleneck rows (OPIP, Keel Goose Creek) added as unknown.
     - Keel Goose Creek's question made second person.
     - LAD's line cites a triggers claim that is now inferred (company-level); it goes to the LAD profiler.
+
+### Ships closure pass (workflow ships-closure; three agents hit the usage limit and were resumed)
+
+- **Closure-1 (unchecked auditor names, unverified candidates, leads):** 58 decisions.
+  - 7 base: Accurity Owensboro (Tier 1, structural fabrication for NNS through Colonna's from Aug 2026), Ellicott New Richmond, West Gulf Marine, Western Towboat, Sunflower Dubuque, Stabbert Anacortes, Sisco Marine.
+  - 8 excluded: Saronic Austin, DSC Greenbush, Bludworth Pier 38, NNS Hampton (light manufacturing), Trident Baltimore, Fishersville and High Bridge (machinery), Textron New Orleans.
+  - 6 resolved to existing; 37 unverified, each with what was tried.
+  - The agent hit the usage limit after writing its complete file (58 decision lines), so the file was used as written.
+- **Closure-2 (MARAD Small Shipyard Grants FY2023-26):** 104 awards, 93 unique recipients, reconciled by script and checked by eye.
+  - 42 already in the ledger, 1 new base (Burger Boat, yachts), 34 excluded (21 repair-only, 2 aluminum-only, 11 not shipbuilders), 16 unverified.
+  - The award-by-award reconciliation is in the inbox file's `grant_reconciliation` key.
+- **Merged:** 50 plants added, 782 evidence rows; 0 rejected, 0 coverage gaps. Quotes: 423 of 423 found.
+- **Convergence:** the closure pass added 8 included plants, all base and without welder postings. Its best new plant (Accurity) ranks 41st by the profiling order, so the pass added no top-40 plant, which meets the consultation-7 condition.
+- **Ranking check across all ships base plants:** 7 base plants from the list audit now rank inside the top 40 (Keel Alma, Fairlead Newport News, Nichols Brothers, Vessel Repair Port Arthur, DSC Poplarville, Colonna's, Westport Orange), plus NNS Norfolk (being profiled). These 7 and Accurity go to one more profiler, so the scored set matches the ranking. One fact-checker then covers all closure and fill-in work.
