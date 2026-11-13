@@ -1,0 +1,1783 @@
+{
+ "checker": "fact-checker A (round 5, confirming)",
+ "vertical": "v-poles-substation",
+ "date": "2026-11-13",
+ "plants": [
+  "p-fwt-fort-worth-tx",
+  "p-sabre-marshall-tx",
+  "p-ameron-tulsa-ok",
+  "p-nucor-decatur-al",
+  "p-nello-south-bend-in",
+  "p-mica-haltom-city-tx",
+  "p-meyer-clinton-il",
+  "p-musco-muscatine-ia",
+  "p-grid-structures-amite-city-la"
+ ],
+ "address_checks": [
+  "p-valmont-claremore-ok",
+  "p-meyer-lancaster-sc",
+  "p-sabre-sioux-city-ia",
+  "p-valmont-jasper-tn",
+  "p-sabre-bossier-city-la",
+  "p-fwt-hicksville-oh"
+ ],
+ "decision_rule": "Same as rounds 3-4. Corrected: the value adds a fact the cited page does not show, tags a judgement or an inferred site tie as stated, places a company-level or inferred-site fact at the plant, or the quote is not on the page. Confirmed: every additive clause is on the cited page or on a sibling row of the same claim_id whose source was opened on 2026-11-13. Limiting parentheticals and source notes are not additive. A board's address field counts as stating a site's address only if the board uses that address for that site alone.",
+ "fwt_fort_worth_verdict": "INFERRED. No page states the Kenn site's address in so many words, and nothing discriminates between Sabre's Fort Worth sites. Sabre's own UKG Ready board (221 requisitions, read 2026-11-13) files all 25 Fort Worth requisitions under '5750 I-20, Fort Worth 76119', whatever the site code: Kenn, Kenn-Inventory, 36th (e.g. 'Longseamer B - 36th (Nights)', 'EHS Manager- 36th'), AlvU ('Program Manager - AlvU') and uncoded. No requisition text names a street. EPA FRS lists separate Sabre sites in Fort Worth at 2400 NE 36th St (SABRE COMMUNICATIONS CORP) and 2300 W Risinger Rd (SABRE TUBULAR STRUCTURES), as well as SABRE-FWT at 5750 E. Interstate 20. Supporting evidence that does not settle it: EPA 'FWT INC EXPANSION' in Kennedale, about 330 m from the 5750 record; the template of a Marshall 'Sr Supervisor - MarU' requisition names 'the Kennedale, Texas Sabre Tubular Structures Manufacturing Facility' (no street). 'Kenn = Kennedale = 5750 E I-20' is a reasonable reading, not a statement. Under the precedent that inferred-attribution postings earn no points, process 20 -> 0 and labor 20 -> 0, giving a total of 61 -> 21 (Low) and confidence 2 -> 0. 13 FWT rows are corrected: 12 stated rows retagged inferred or with the Kenn clause removed, plus inferred row 3316, which carries a Tallo date found on no cited page. Sources that could settle it were unreachable: fastdol OSHA establishment pages (HTTP 402; a search summary, not quotable, describes a Kennedale establishment at 5750 East Interstate 20), the OSHA establishment search (405), TDLR TABS (503, maintenance) and sabreindustries.com location pages (403).",
+ "claims_checked": 170,
+ "claims_corrected": 14,
+ "claims_unreachable": 0,
+ "error_rate": 0.082,
+ "error_rate_excluding_fwt_kenn_block": 0.006,
+ "error_rate_note": "14/170 = 8.2%. 13 of the 14 corrections follow from one decision: the Kenn tie at FWT Fort Worth is inferred. Without that block the rate is 1/157 = 0.6%. 139 stated rows (129 on the 9 plants plus 10 address rows on the 6 address plants) and 31 inferred rows cited by score rows. Score rows are judged in score_notes and are outside the denominator.",
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 13,
+  "invented fact": 0,
+  "other": 1
+ },
+ "repeated_kinds": [
+  "quote does not support value (13). All 13 are at one plant and follow one pattern: postings tied to a plant through a job board's address field, when the board uses that address for more than one site code (Sabre's Fort Worth catch-all '5750 I-20' carries Kenn, 36th and AlvU), tagged stated.",
+  "SWEEP CANDIDATES on Sabre's board, each with one board address per city but several site codes:",
+  "- Sioux City, 7101 Southbridge Drive: codes IowaSG, IowaT and others. EPA also lists Sabre at 2101 Murray St, Sioux City.",
+  "- Bossier City, 5031 Hazel Jones Road: codes SBST, SBSU and Building Systems.",
+  "- Conroe, 3575 Pollok Drive: codes ConSG, ConT and ConU.",
+  "- Alvarado, 8653 E Hwy 67: codes AlvSG and AlvU. EPA lists Sabre Galvanizing at 8669 E Hwy 67.",
+  "Each is a single plant only if those codes are departments of one campus, not separate sites. Their Sabre postings tie needs the same test applied to FWT.",
+  "CLEAR:",
+  "- Sabre Marshall: 2938 Brown Rd carries only MarU.",
+  "- Sabre Hicksville: one address, no site code.",
+  "- Arcosa's board gives distinct street lines (2333 S Yukon Ave vs 4903 E 66th St N; 10000 Tabor Rd)."
+ ],
+ "worst_errors": [
+  "p-fwt-fort-worth-tx: process 20 and labor 20 rest on Sabre requisitions coded 'Kenn', tied to FWT's 5750 E I-20 plant only by the board's address field. The board files every Fort Worth requisition (Kenn, 36th, AlvU) under 5750 I-20, and EPA lists other Sabre Fort Worth sites at 2400 NE 36th St and 2300 W Risinger Rd. The tie is inferred, not stated, so score 61 Medium -> 21 Low and confidence 2 -> 0. The opening line names 'the Kenn site at 5750 I-20' as fact. Rows 3301, 3305-3310, 3312-3316 and 3317 are corrected.",
+  "p-grid-structures-amite-city-la:welder_postings (row 1476): says the Amite Welder posting 'is no longer listed on 2026-11-13'. It is listed: Southland's UKG board API shows requisition 621269191 'Welder (Day & Night Shift)' at 13040 Foulks Lane, $27-31/hr, alongside the Fitter. The FCAW process row (2475) is therefore on a live posting, not a 'standing fact', and labor is understated: two welding roles at once = 20 under the ledger's counting rule (60 -> 68).",
+  "p-fwt-fort-worth-tx:alias (row 3317): 'the likely origin of Sabre's site code Kenn' is a judgement tagged stated, and it carries part of the tie used to score the plant. The welder_postings value also adds a 'Tallo copy' date that no cited page shows."
+ ],
+ "score_problems": [
+  "p-fwt-fort-worth-tx: score_process 20 -> 0 and score_labor 20 -> 0 (Kenn tie inferred; precedent: inferred-attribution postings earn no points). Total 61 -> 21 (Low), confidence 2 -> 0 (scale rests on an inferred parent row). Revert to the coordinator's earlier option (b).",
+  "p-grid-structures-amite-city-la: score_labor 12 -> 20. The Welder (Day & Night Shift) and Fitter (Day & Night Shift) requisitions are both open at 13040 Foulks Lane on 2026-11-13, and the ledger's counting rule counts fitters. Total 60 -> 68 (Medium). If Fitter is not counted, the Welder alone holds 12. The score_total row's reasoning says confidence 4 and counts demand 8, which the 11-13 rule forbids; plants.csv has 3, which is right.",
+  "p-sabre-marshall-tx: plants.csv confidence 2, but the score_total row says 3. Process (stated), labor (stated) and scale (multi_plant stated, EPA FRS) give 3. The 61 total is right.",
+  "p-mica-haltom-city-tx: plants.csv confidence 4, but the score_total row says 3. Labor 20 rests on aggregator-only listings (Vaia: SAW Welder and Fitter on the list page, Welder - 1st shift on its own page with Apply Now). MICA Kaufman's aggregator stub scores 0, so the two are inconsistent. Coordinator's call; the alternative is labor 0, total 48 (Medium).",
+  "p-nello-south-bend-in: labor 20 holds. The raw HTML of the two posting pages gives datePublished 2026-02-02 (Welder) and 2026-01-30 (Sub-arc seam welder), and both are still listed on 2026-11-13. The Welder posting alone (FWT-style counting leaves the seam-welder machine operator out) was published 2026-02-02 and is still listed, so 20 holds on the 60+ day test if the listing has been continuous (dateModified 2026-08-24). The 'no year' sensitivity in the score_total row is resolved. Material 20 rests on an inferred, company-level part_size_fit row: Path's FAT on Nello base plates names no plant. Points per the coordinator rule, no confidence.",
+  "p-meyer-clinton-il: demand 15 confirmed. The Arcosa postings dated 2026-08-17 and 2026-10-05 call Clinton 'our new plant' and 'a startup manufacturing facility', and the 10-K's 'operational in the second-half of 2026' conversion is consistent with that. This differs from the Valmont Tulsa precedent (a hiring event, scored 8): here the plant itself is starting up within 24 months.",
+  "Arithmetic re-derived from confirmed evidence: FWT 0+0+8+0+8+5 = 21 Low, conf 0 (ledger 61/2). Marshall 20+0+8+20+8+5 = 61 Medium, conf 3 (ledger conf 2). Ameron Yukon 20+0+8+20+8+5 = 61 Medium, conf 2. Nucor Decatur 20+0+8+12+15+5 = 60 Medium, conf 3. Nello 0+20+15+20+15+5 = 75 High, conf 3. MICA 20+0+15+20+8+5 = 68 Medium, conf 3 (ledger 4). Meyer Clinton 20+0+15+20+15+5 = 75 High, conf 3. Musco 0+0+8+0+15+5 = 28 Low, conf 2. Grid 20+0+15+20+8+5 = 68 Medium, conf 3 (ledger 60)."
+ ],
+ "opening_line_problems": [
+  "p-fwt-fort-worth-tx: the line ('Sabre's job board lists Welder A, Welder C, Welder Trainee and Welder/Fitter C openings for the Kenn site at 5750 I-20 in Fort Worth ...') rests on the inferred Kenn tie. It is literally true of the board, but addressed to FWT it presents an inferred attribution as fact. Rewrite from stated FWT facts (EPA SABRE-FWT at 5750 E I-20; the 2015 acquisition), or frame it as Sabre's Fort Worth-area openings without naming this plant.",
+  "p-grid-structures-amite-city-la: the line ('lists a Day & Night Shift welder opening at Amite at $27-$31 an hour asking for some flux core experience') is accurate: the Welder requisition is open today. No change; the coordinator's note that it closed is wrong.",
+  "Clause by clause, the Marshall, Ameron, Nucor, MICA and Meyer Clinton lines rest on stated rows checked today. Two lines use a clause that is true on its page but sits only in an inferred-tagged row. Musco: 'where all welding will be air-conditioned' is the company's own words on the Voice of Muscatine page ('All of our welding will happen in an air-conditioned environment', May 2026, checked today), but its only row is p-musco-muscatine-ia:prospect_test, tagged inferred; add a stated row or cite the triggers page. Nello: 'passed a factory acceptance test with Path' is Path's own statement (checked today), but its row p-nello-south-bend-in:relationship is inferred and Path names no plant; the line words it as a company fact, so it is acceptable, but the claim it cites is inferred."
+ ],
+ "plants_closed_or_moved": [],
+ "plant_status_notes": "Marshall: 10 open MarU requisitions at 2938 Brown Rd on Sabre's board; a Maintenance Manager requisition names 'the Marshall facility'. No news, EPA or AISC record was found (one WebSearch found none), so the site rests on Sabre's board alone; that board is primary. FWT Fort Worth: EPA FRS lists SABRE-FWT, FWT and FWT, INC. at 5750 E Interstate 20, but whether this plant is operating now rests on the inferred Kenn tie. Sabre clearly runs active Fort Worth-area sites (25 open requisitions). Ameron Yukon: 6 open postings at 2333 S Yukon Ave (LoadSearchResults). Nucor Decatur: open Fitter Welder posting dated 2026-11-05 (Apply now); EPA puts the plant at 913 Maero St, Trinity 35673; AISC snapshot line 3121 'Nucor Towers & Structures Inc - NTS, Trinity AL'. Nello: postings live. MICA: aggregator only. Meyer Clinton: 31 open postings at 10000 Tabor Rd. Musco: May 2026 expansion article; no postings found. Grid: 28 open requisitions on Southland's board, 16 at 13040 Foulks Lane. The 6 address plants: every address and ZIP matches its cited page (Workday cxs JSON, UKG Ready JSON, EPA FRS ZipCode fields).",
+ "method": "All 139 stated rows with a source URL for the 9 plants, plus the 10 address rows of the 6 address plants, were fetched with tools/fetch_page.py on 2026-11-13 (plain, with a headless-browser fallback). Every '...'-joined fragment was matched against normalised visible text and raw HTML/JSON. 137/139 matched automatically; the other 2 were resolved by hand (MICA's star character; Grid FCAW via the UKG requisition API). AISC rows were checked against the committed snapshot. Board data: Sabre UKG Ready API (all 221 requisitions and the detail JSON of all 35 Fort Worth and Marshall requisitions), Arcosa UKG LoadSearchResults (306 postings), Southland/Grid UKG Ready API (28 requisitions; Welder and Fitter details), Nello posting raw HTML (datePublished). EPA FRS REST queries: FWT TX, SABRE TX/IA/LA, NUCOR TOWERS AL, MEYER IL/SC, ARCOSA Clinton IL, VALMONT OK, MUSCO IA, FWT OH. Every EPA address row's ZIP and county was checked. FRS detail pages were read for 2 Musco Oskaloosa registry IDs. 31 inferred rows cited by score rows (production_type, part_size_fit, parent_company, materials, relationship, triggers and the count rows) were checked for quote and tag and are counted in the denominator; every quote was on its page and every tag was right except the FWT count row 3316. Note for apply_factcheck.py: rows with an empty source_url (3316, 3353, 560, 2489) match every row of their claim_id; 3316's corrected value equals the value given for 3312-3315. Shared v-poles-substation:demand_outlook rows (4) were re-fetched and confirmed outside the denominator. 3 WebSearch queries were used for discovery and open-status checks only (Sabre Marshall, Sabre Kennedale, MICA Haltom City); no search text is quoted. Source failures: fastdol.com (402), OSHA IMIS establishment search (405), TDLR TABS (503 maintenance until 2026-11-13 16:00), sabreindustries.com /locations and /about (403). No ledger files were edited.",
+ "shared_claims_checked": [
+  {
+   "claim_id": "v-poles-substation:demand_outlook",
+   "evidence_row": 46,
+   "verdict": "confirmed",
+   "note": "Quote on the page, re-fetched 2026-11-13."
+  },
+  {
+   "claim_id": "v-poles-substation:demand_outlook",
+   "evidence_row": 47,
+   "verdict": "confirmed",
+   "note": "Quote on the page, re-fetched 2026-11-13."
+  },
+  {
+   "claim_id": "v-poles-substation:demand_outlook",
+   "evidence_row": 48,
+   "verdict": "confirmed",
+   "note": "Quote on the page, re-fetched 2026-11-13."
+  },
+  {
+   "claim_id": "v-poles-substation:demand_outlook",
+   "evidence_row": 49,
+   "verdict": "confirmed",
+   "note": "Quote on the page, re-fetched 2026-11-13."
+  }
+ ],
+ "rows": [
+  {
+   "claim_id": "p-nello-south-bend-in:address",
+   "source_url": "https://nelloinc.com/",
+   "ledger_value": "1201 S Sheridan Street, South Bend, IN 46619",
+   "evidence_row": 345,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:products",
+   "source_url": "https://nelloinc.com/manufacturing",
+   "ledger_value": "Tapered steel poles and substation structures",
+   "evidence_row": 346,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:products",
+   "source_url": "https://nelloinc.com/transmission-infrastructure",
+   "ledger_value": "Transmission and distribution poles",
+   "evidence_row": 347,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:welder_postings",
+   "source_url": "https://nelloinc.com/careers",
+   "ledger_value": "2 welder postings listed at once on Nello's own careers page (read 2026-11-13): Sub-arc seam welder 2nd shift (dated Jan 30; operates a robot welding machine; GMAW experience preferred) and Welder (dated Feb 2; 1st and 2nd shift incl. Saturdays; 1G weld test). The page shows no year; both were still listed on 2026-11-13",
+   "evidence_row": 351,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Visible page shows no year; the raw HTML of both posting pages carries datePublished 2026-01-30 (sub-arc seam welder) and 2026-02-02 (Welder), dateModified 2026-08-11 / 2026-08-24. Both still listed on the careers page 2026-11-13. 'The page shows no year' is true of visible text; the year is 2026. Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:name",
+   "source_url": "https://nelloinc.com/our-divisions",
+   "ledger_value": "Nello Corporation - South Bend",
+   "evidence_row": 352,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:triggers",
+   "source_url": "https://nelloinc.com/our-company",
+   "ledger_value": "2025 launch of campus expansion: over 100 acres, total facilities over 320,000 sq ft",
+   "evidence_row": 353,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:city",
+   "source_url": "https://wirelessestimator.com/articles/2015/sabre-acquires-long-established-fwt-to-expand-its-structures-sector/",
+   "ledger_value": "Fort Worth",
+   "evidence_row": 387,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:city",
+   "source_url": "https://builtin.com/job/assistant-plant-manager/9635121",
+   "ledger_value": "Clinton",
+   "evidence_row": 402,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nucor-decatur-al:city",
+   "source_url": "https://governor.alabama.gov/newsroom/2026/10/governor-ivey-announces-60-million-nucor-corp-manufacturing-expansion-in-morgan-county/",
+   "ledger_value": "Decatur",
+   "evidence_row": 429,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nucor-decatur-al:products",
+   "source_url": "https://governor.alabama.gov/newsroom/2026/10/governor-ivey-announces-60-million-nucor-corp-manufacturing-expansion-in-morgan-county/",
+   "ledger_value": "utility poles; steel utility structures supporting electric transmission",
+   "evidence_row": 430,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:address",
+   "source_url": "https://www.micasteelworks.com/contact",
+   "ledger_value": "4201 Old Denton Rd",
+   "evidence_row": 464,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, browser)."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:found_by",
+   "source_url": "https://www.areadevelopment.com/newsitems/7-14-2015/falcon-steel-haltom-city-texas890873.shtml",
+   "ledger_value": "company site;news",
+   "evidence_row": 469,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:address",
+   "source_url": "https://www.gridstructures.com/contact",
+   "ledger_value": "13040 Foulks Ln",
+   "evidence_row": 489,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:parent_company",
+   "source_url": "https://www.gridstructures.com",
+   "ledger_value": "Southland Steel",
+   "evidence_row": 494,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:parent_company",
+   "source_url": "https://www.micasteelworks.com",
+   "ledger_value": "MICA Steelworks",
+   "evidence_row": 522,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:name",
+   "source_url": "https://www.nov.com/poleproducts",
+   "ledger_value": "Ameron Pole Products LLC",
+   "evidence_row": 556,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:address",
+   "source_url": "https://www.dot.ga.gov/PartnerSmart/Materials/Documents/qpl52a.pdf",
+   "ledger_value": "2333 S Yukon Ave, Tulsa, OK 74107",
+   "evidence_row": 557,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:website",
+   "source_url": "https://www.nov.com/poleproducts",
+   "ledger_value": "https://www.nov.com/poleproducts",
+   "evidence_row": 559,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:found_by",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC",
+   "evidence_row": 774,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, aisc-snapshot)."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:welder_postings",
+   "source_url": "https://www.micasteelworks.com/careers",
+   "ledger_value": "Signing bonus for welders and fitters advertised on the MICA careers page (company-wide, not specific to Haltom City; applications go to 4201 Old Denton Road, Haltom City)",
+   "evidence_row": 776,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page ('★ Signing Bonus for Welders & Fitters'; the CSV quote's star character did not match the script's normaliser, checked by grep). Company-wide, as the value says."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:found_by",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC;job posting;web search",
+   "evidence_row": 777,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, aisc-snapshot)."
+  },
+  {
+   "claim_id": "p-nucor-decatur-al:products",
+   "source_url": "https://www.steelorbis.com/steel-news/latest-news/nucor-to-invest-60-million-to-expand-utility-structures-facility-in-alabama-1486296.htm",
+   "ledger_value": "utility poles / steel utility structures",
+   "evidence_row": 819,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nucor-decatur-al:found_by",
+   "source_url": "https://www.steelorbis.com/steel-news/latest-news/nucor-to-invest-60-million-to-expand-utility-structures-facility-in-alabama-1486296.htm",
+   "ledger_value": "news",
+   "evidence_row": 820,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:found_by",
+   "source_url": "https://www.txdot.gov/content/dam/docs/division/mtd/mpl/tsp.pdf",
+   "ledger_value": "state DOT list",
+   "evidence_row": 844,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:found_by",
+   "source_url": "https://www.txdot.gov/content/dam/docs/division/mtd/mpl/hmip.pdf",
+   "ledger_value": "state DOT list",
+   "evidence_row": 845,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:weld_processes",
+   "source_url": "https://talents.vaia.com/companies/arcosa/clinton/weld-tech-106134079/",
+   "ledger_value": "flux-core (FCAW), submerged arc (SAW) and SMAW stated at the Clinton plant",
+   "evidence_row": 1192,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:city",
+   "source_url": "https://talents.vaia.com/companies/arcosa/clinton/weld-tech-106134079/",
+   "ledger_value": "Clinton",
+   "evidence_row": 1198,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:parent_company",
+   "source_url": "https://www.nov.com/poleproducts",
+   "ledger_value": "Arcosa, Inc.",
+   "evidence_row": 1241,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:former_use",
+   "source_url": "https://markets.financialcontent.com/pennwell.elp/article/bizwire-2022-2-23-arcosa-inc-announces-fourth-quarter-and-full-year-2021-results",
+   "ledger_value": "Arcosa idled its Clinton, Illinois wind tower facility in Q4 2021",
+   "evidence_row": 1248,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:weld_processes",
+   "source_url": "https://nelloinc.com/careers",
+   "ledger_value": "submerged arc (sub-arc seam welding) stated; robotic and manual welding stated; MIG/FCAW not stated",
+   "evidence_row": 1251,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:weld_processes",
+   "source_url": "https://nelloinc.com/manufacturing",
+   "ledger_value": "robotic and manual welding; AWS D1.1 qualified",
+   "evidence_row": 1252,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:materials",
+   "source_url": "https://nelloinc.com/manufacturing",
+   "ledger_value": "galvanized and weathering steel poles",
+   "evidence_row": 1253,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:certifications",
+   "source_url": "https://nelloinc.com/manufacturing",
+   "ledger_value": "ISO 9001:2015",
+   "evidence_row": 1254,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:production_type",
+   "source_url": "https://nelloinc.com/careers",
+   "ledger_value": "custom-engineered poles and substation steel alongside high-volume wireless tower pipe",
+   "evidence_row": 1256,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:production_type",
+   "source_url": "https://nelloinc.com/manufacturing",
+   "ledger_value": "high-volume wireless pipe processing",
+   "evidence_row": 1257,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:existing_robots",
+   "source_url": "https://nelloinc.com/manufacturing",
+   "ledger_value": "yes (brand not stated)",
+   "evidence_row": 1258,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:parent_company",
+   "source_url": "https://nelloinc.com/our-company",
+   "ledger_value": "Nello Industries Investco",
+   "evidence_row": 1265,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:triggers",
+   "source_url": "https://nelloinc.com/manufacturing",
+   "ledger_value": "further facility and capability expansion underway (undated, current page)",
+   "evidence_row": 1383,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:weld_processes",
+   "source_url": "https://talents.vaia.com/companies/mica-steelworks/haltom-city/welder-1st-shift-70674876/",
+   "ledger_value": "Flux-core / metal-core wire (wire welder); submerged arc (SAW) seams",
+   "evidence_row": 1384,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:weld_processes",
+   "source_url": "https://talents.vaia.com/companies/mica-steelworks/",
+   "ledger_value": "SAW operator posting at Haltom City",
+   "evidence_row": 1385,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:materials",
+   "source_url": "https://talents.vaia.com/companies/mica-steelworks/haltom-city/welder-1st-shift-70674876/",
+   "ledger_value": "steel",
+   "evidence_row": 1386,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:certifications",
+   "source_url": "https://www.micasteelworks.com/about",
+   "ledger_value": "AISC (certified facilities); no AWS D1.1/ASME/ISO/CWB found on MICA site",
+   "evidence_row": 1387,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:production_type",
+   "source_url": "https://www.micasteelworks.com",
+   "ledger_value": "custom engineered and light duty poles (many structure types, engineered-to-order)",
+   "evidence_row": 1389,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:welder_postings",
+   "source_url": "https://talents.vaia.com/companies/mica-steelworks/haltom-city/welder-1st-shift-70674876/",
+   "ledger_value": "Haltom City Welder 1st shift schedule",
+   "evidence_row": 1391,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:headcount",
+   "source_url": "https://jobs.weekday.works/mica-steelworks-fitter%2Fwelder",
+   "ledger_value": "86 (company-wide, aggregator profile; Haltom City site count unknown)",
+   "evidence_row": 1392,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:parent_company",
+   "source_url": "https://www.micasteelworks.com/contact",
+   "ledger_value": "MICA Steelworks (sites: Haltom City, Euless, Kaufman)",
+   "evidence_row": 1401,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, browser)."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:existing_robots",
+   "source_url": "https://www.gridstructures.com/capabilities/production",
+   "ledger_value": "both Grid Structures facilities equipped with robotics (welding not specified); brand not stated",
+   "evidence_row": 1475,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:welder_postings",
+   "source_url": "https://secure7.saashr.com/ta/6215176.careers?CareersSearch",
+   "ledger_value": "1 Fitter (Day & Night Shift) opening for Grid Structures at Amite, LA, $27.00-$31.00/hr; posting date not shown (the Welder posting seen 2026-11-12 is no longer listed on 2026-11-13)",
+   "evidence_row": 1476,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "2 welding-role openings for Grid Structures at 13040 Foulks Lane, Amite, LA on Southland's own UKG board, read 2026-11-13: Welder (Day & Night Shift) and Fitter (Day & Night Shift), each $27.00-$31.00/hr; posting dates not shown",
+   "corrected_quote": "Fitter (Day & Night Shift) Apply Amite, LA $27.00 - $31.00 / Hour",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "note": "The value says the Welder posting 'is no longer listed on 2026-11-13'. It is listed: requisition 621269191 'Welder (Day & Night Shift)', address 13040 Foulks Lane, Amite 70422, base pay 27-31, in https://secure7.saashr.com/ta/rest/ui/recruitment/companies/%7C6215176/job-requisitions?offset=0&size=100 (28 requisitions, matching the careers page's '28 jobs'); its detail carries '1-2 years welding experience with some flux core welding (FCAW)'. Probably on page 2 of the HTML listing."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:triggers",
+   "source_url": "https://www.bicmagazine.com/industry/investment-banking/southland-steel-fabricators-invests-25-million-for-advanced-technology-expansion-louisiana-facility/",
+   "ledger_value": "Southland Steel announced a $25M expansion of its Greensburg facility on October 8, 2024 (other site; before 2024-11-12)",
+   "evidence_row": 1478,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:parent_company",
+   "source_url": "https://www.gridstructures.com/capabilities/production",
+   "ledger_value": "Southland Steel (Grid Structures operates out of Southland's original fabrication plant and a second location in Greensburg, LA)",
+   "evidence_row": 1479,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nucor-decatur-al:materials",
+   "source_url": "https://governor.alabama.gov/newsroom/2026/10/governor-ivey-announces-60-million-nucor-corp-manufacturing-expansion-in-morgan-county/",
+   "ledger_value": "steel (utility poles)",
+   "evidence_row": 1557,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nucor-decatur-al:triggers",
+   "source_url": "https://governor.alabama.gov/newsroom/2026/10/governor-ivey-announces-60-million-nucor-corp-manufacturing-expansion-in-morgan-county/",
+   "ledger_value": "2026-10-20: $60M expansion, 60 additional jobs, increased utility pole production",
+   "evidence_row": 1562,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:website",
+   "source_url": "https://www.sabreindustries.com",
+   "ledger_value": "https://www.sabreindustries.com",
+   "evidence_row": 2013,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:website",
+   "source_url": "https://www.gridstructures.com/",
+   "ledger_value": "https://www.gridstructures.com/",
+   "evidence_row": 2029,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:website",
+   "source_url": "https://nelloinc.com/",
+   "ledger_value": "https://nelloinc.com/",
+   "evidence_row": 2079,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:website",
+   "source_url": "https://www.micasteelworks.com",
+   "ledger_value": "https://www.micasteelworks.com",
+   "evidence_row": 2086,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nucor-decatur-al:website",
+   "source_url": "https://www.nucor.com/towers-and-structures",
+   "ledger_value": "https://www.nucor.com/towers-and-structures",
+   "evidence_row": 2089,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:website",
+   "source_url": "https://www.meyerutilitystructures.com",
+   "ledger_value": "https://www.meyerutilitystructures.com",
+   "evidence_row": 2090,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_dtl.disp_program_facility?p_registry_id=110055499278",
+   "ledger_value": "NOV Ameron Tulsa Pole Products Welding & Fabrication (EPA FRS facility name; Tulsa welding & fabrication plant)",
+   "evidence_row": 2259,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_dtl.disp_program_facility?p_registry_id=110055499278",
+   "ledger_value": "2333 S Yukon Ave, Tulsa, OK 74107",
+   "evidence_row": 2260,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:address",
+   "source_url": "https://www.newson6.com/story/5e3665182f69d76f620775e5/california-company-to-build-new-plant-in-tulsa",
+   "ledger_value": "2333 S Yukon Ave, Tulsa, OK 74107",
+   "evidence_row": 2261,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:parent_company",
+   "source_url": "https://data.epa.gov/efservice/tri_facility/tri_facility_id/7410WMRNTL2333S/JSON",
+   "ledger_value": "Arcosa, Inc. (acquired by CRH, completed Oct 2026)",
+   "evidence_row": 2262,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:found_by",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_dtl.disp_program_facility?p_registry_id=110055499278",
+   "ledger_value": "EPA FRS/TRI",
+   "evidence_row": 2270,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:found_by",
+   "source_url": "https://www.newson6.com/story/5e3665182f69d76f620775e5/california-company-to-build-new-plant-in-tulsa",
+   "ledger_value": "news",
+   "evidence_row": 2271,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:certifications",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC certified: Building Fabricator; Bridge Fabricator - Simple (directory row 'Southland Grid Structures LLC.', Amite)",
+   "evidence_row": 2370,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, aisc-snapshot)."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:weld_processes",
+   "source_url": "https://secure7.saashr.com/ta/6215176.careers?CareersSearch",
+   "ledger_value": "flux-core (FCAW) listed under desired skills in the Amite welder posting",
+   "evidence_row": 2475,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote not visible on the listing URL's first page, but the Welder (Day & Night Shift) requisition is open today: UKG API requisition 621269191 at 13040 Foulks Lane, Amite, description contains the exact line. The posting did not close."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=56e021f8-26c2-449d-a081-c10b5cf13daf",
+   "ledger_value": "7 open welder/fitter postings for the Clinton plant (10000 Tabor Rd) on Arcosa's job board, read 2026-11-13: Night Shift Welder, Night Shift Fitter/Welder and Night Shift Sr. Fitter/Welder (all posted 2026-09-29, oldest, 45 days), Fitter Welder Lead (2026-10-19), Welder, Fitter/Welder and Sr. Fitter/Welder (2026-11-06). Night shift 6pm-4:30am with $1.50/hr differential; flux or metal core highly preferred; no sign-on bonus or mandatory overtime stated. Also a Weld Tech (plant welding technician) posting (2026-09-01), not counted",
+   "evidence_row": 2481,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, browser)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=897e8c15-67f9-4723-862c-de5438cc7f01",
+   "ledger_value": "7 open welder/fitter postings for the Clinton plant (10000 Tabor Rd) on Arcosa's job board, read 2026-11-13: Night Shift Welder, Night Shift Fitter/Welder and Night Shift Sr. Fitter/Welder (all posted 2026-09-29, oldest, 45 days), Fitter Welder Lead (2026-10-19), Welder, Fitter/Welder and Sr. Fitter/Welder (2026-11-06). Night shift 6pm-4:30am with $1.50/hr differential; flux or metal core highly preferred; no sign-on bonus or mandatory overtime stated. Also a Weld Tech (plant welding technician) posting (2026-09-01), not counted",
+   "evidence_row": 2482,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, browser)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=1df0c73d-9a6a-46cd-9ac4-fc8ef2426953",
+   "ledger_value": "7 open welder/fitter postings for the Clinton plant (10000 Tabor Rd) on Arcosa's job board, read 2026-11-13: Night Shift Welder, Night Shift Fitter/Welder and Night Shift Sr. Fitter/Welder (all posted 2026-09-29, oldest, 45 days), Fitter Welder Lead (2026-10-19), Welder, Fitter/Welder and Sr. Fitter/Welder (2026-11-06). Night shift 6pm-4:30am with $1.50/hr differential; flux or metal core highly preferred; no sign-on bonus or mandatory overtime stated. Also a Weld Tech (plant welding technician) posting (2026-09-01), not counted",
+   "evidence_row": 2483,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, browser)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=3d21bd4e-4218-471e-b4df-5a19f81cccbb",
+   "ledger_value": "7 open welder/fitter postings for the Clinton plant (10000 Tabor Rd) on Arcosa's job board, read 2026-11-13: Night Shift Welder, Night Shift Fitter/Welder and Night Shift Sr. Fitter/Welder (all posted 2026-09-29, oldest, 45 days), Fitter Welder Lead (2026-10-19), Welder, Fitter/Welder and Sr. Fitter/Welder (2026-11-06). Night shift 6pm-4:30am with $1.50/hr differential; flux or metal core highly preferred; no sign-on bonus or mandatory overtime stated. Also a Weld Tech (plant welding technician) posting (2026-09-01), not counted",
+   "evidence_row": 2484,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, browser)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=4a2e38cf-3bae-4376-a6aa-945fd285e5af",
+   "ledger_value": "7 open welder/fitter postings for the Clinton plant (10000 Tabor Rd) on Arcosa's job board, read 2026-11-13: Night Shift Welder, Night Shift Fitter/Welder and Night Shift Sr. Fitter/Welder (all posted 2026-09-29, oldest, 45 days), Fitter Welder Lead (2026-10-19), Welder, Fitter/Welder and Sr. Fitter/Welder (2026-11-06). Night shift 6pm-4:30am with $1.50/hr differential; flux or metal core highly preferred; no sign-on bonus or mandatory overtime stated. Also a Weld Tech (plant welding technician) posting (2026-09-01), not counted",
+   "evidence_row": 2485,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, browser)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=7483bd57-93f8-4191-a8d1-19494621ae5d",
+   "ledger_value": "7 open welder/fitter postings for the Clinton plant (10000 Tabor Rd) on Arcosa's job board, read 2026-11-13: Night Shift Welder, Night Shift Fitter/Welder and Night Shift Sr. Fitter/Welder (all posted 2026-09-29, oldest, 45 days), Fitter Welder Lead (2026-10-19), Welder, Fitter/Welder and Sr. Fitter/Welder (2026-11-06). Night shift 6pm-4:30am with $1.50/hr differential; flux or metal core highly preferred; no sign-on bonus or mandatory overtime stated. Also a Weld Tech (plant welding technician) posting (2026-09-01), not counted",
+   "evidence_row": 2486,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, browser)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=bfdfb7e5-33d1-4010-a5c6-302aa7895551",
+   "ledger_value": "7 open welder/fitter postings for the Clinton plant (10000 Tabor Rd) on Arcosa's job board, read 2026-11-13: Night Shift Welder, Night Shift Fitter/Welder and Night Shift Sr. Fitter/Welder (all posted 2026-09-29, oldest, 45 days), Fitter Welder Lead (2026-10-19), Welder, Fitter/Welder and Sr. Fitter/Welder (2026-11-06). Night shift 6pm-4:30am with $1.50/hr differential; flux or metal core highly preferred; no sign-on bonus or mandatory overtime stated. Also a Weld Tech (plant welding technician) posting (2026-09-01), not counted",
+   "evidence_row": 2487,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, browser)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=2a845a68-c661-4014-b218-babba429e365",
+   "ledger_value": "7 open welder/fitter postings for the Clinton plant (10000 Tabor Rd) on Arcosa's job board, read 2026-11-13: Night Shift Welder, Night Shift Fitter/Welder and Night Shift Sr. Fitter/Welder (all posted 2026-09-29, oldest, 45 days), Fitter Welder Lead (2026-10-19), Welder, Fitter/Welder and Sr. Fitter/Welder (2026-11-06). Night shift 6pm-4:30am with $1.50/hr differential; flux or metal core highly preferred; no sign-on bonus or mandatory overtime stated. Also a Weld Tech (plant welding technician) posting (2026-09-01), not counted",
+   "evidence_row": 2488,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, browser)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:weld_processes",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=2a845a68-c661-4014-b218-babba429e365",
+   "ledger_value": "flux-core (FCAW), submerged arc (SAW) and SMAW stated at the Clinton plant",
+   "evidence_row": 2490,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, browser)."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=755063c1-9148-4211-96c7-47b8d5b9d502",
+   "ledger_value": "2 open fitter welder postings at 2333 S Yukon Ave (board label 'Tulsa, OK -Finish') on Arcosa's job board, read 2026-11-13: Fitter Welder Career Day Shift 5:00AM-3:30PM (posted 2026-08-25, oldest, 80 days) and Night Shift 4:00PM-2:30AM weekdays (2026-08-28). The job summary asks for qualified MIG Fitter/Welders. No sign-on bonus stated",
+   "evidence_row": 2531,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Open; LoadSearchResults API (read today) gives '2333 S Yukon Ave', 'Tulsa, OK -Finish', posted 2026-08-25. Quote on the page (fetched 2026-11-13, browser)."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=202c7928-70b1-4f3b-84af-90b17871c045",
+   "ledger_value": "2 open fitter welder postings at 2333 S Yukon Ave (board label 'Tulsa, OK -Finish') on Arcosa's job board, read 2026-11-13: Fitter Welder Career Day Shift 5:00AM-3:30PM (posted 2026-08-25, oldest, 80 days) and Night Shift 4:00PM-2:30AM weekdays (2026-08-28). The job summary asks for qualified MIG Fitter/Welders. No sign-on bonus stated",
+   "evidence_row": 2532,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Open; API gives '2333 S Yukon Ave', posted 2026-08-28. Quote on the page (fetched 2026-11-13, browser)."
+  },
+  {
+   "claim_id": "p-musco-muscatine-ia:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=MUSCO&state_abbr=IA&output=JSON",
+   "ledger_value": "Musco Sports Lighting (Muscatine)",
+   "evidence_row": 3003,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-musco-muscatine-ia:address",
+   "source_url": "https://www.voiceofmuscatine.com/?p=298230",
+   "ledger_value": "2107 Stewart Rd, Muscatine, IA",
+   "evidence_row": 3004,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-musco-muscatine-ia:website",
+   "source_url": "https://www.musco.com/solution/structures/",
+   "ledger_value": "https://www.musco.com",
+   "evidence_row": 3006,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-musco-muscatine-ia:products",
+   "source_url": "https://quadcitiesbusiness.com/?p=60231",
+   "ledger_value": "pole manufacturing and aluminum fabrication (28,000 sq ft building opened June 10, 2024)",
+   "evidence_row": 3007,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:alias",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC row 'Southland Grid Structures LLC.', Amite LA",
+   "evidence_row": 3083,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, aisc-snapshot)."
+  },
+  {
+   "claim_id": "p-nucor-decatur-al:welder_postings",
+   "source_url": "https://jobs.nucor.com/job/Decatur-NTSAL-Fitter-Welder-AL-35601/1448225400/",
+   "ledger_value": "1 open NTSAL Fitter Welder posting at Decatur, AL, dated Nov 5, 2026 (Apply now shown)",
+   "evidence_row": 3192,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:certifications",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC: Building Fabricator",
+   "evidence_row": 3197,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, aisc-snapshot)."
+  },
+  {
+   "claim_id": "p-musco-muscatine-ia:triggers",
+   "source_url": "https://www.voiceofmuscatine.com/?p=298230",
+   "ledger_value": "2026-05: $17M expansion, new 94,000 sq ft fabrication and warehouse building at 2107 Stewart Rd, 25 new jobs; construction from June 2026",
+   "evidence_row": 3218,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:address",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Claremore-OK/Assembly-Welder_R28558",
+   "ledger_value": "25010 Alliance Dr, Claremore, OK 74017",
+   "evidence_row": 3246,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Workday cxs JSON, address line present. Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=VALMONT&state_abbr=OK&output=JSON",
+   "ledger_value": "25010 Alliance Dr, Claremore, OK 74017",
+   "evidence_row": 3247,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "EPA FRS: VALMONT NEWMARK, 25010 ALLIANCE DR, Claremore, ZipCode 74017. Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-valmont-jasper-tn:address",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Jasper-TN/Fitter-Welder---Multiple-Night-Shifts_R29212",
+   "ledger_value": "1950 Industrial Blvd, Jasper, TN 37347",
+   "evidence_row": 3251,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Workday cxs JSON, address line present. Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?city_name=CLINTON&state_abbr=IL&facility_name=MEYER&output=JSON",
+   "ledger_value": "10000 Tabor Rd, Clinton, IL 61727",
+   "evidence_row": 3255,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:address",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=56e021f8-26c2-449d-a081-c10b5cf13daf",
+   "ledger_value": "10000 Tabor Rd, Clinton, IL 61727",
+   "evidence_row": 3256,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Street line is in the JSON embedded in the posting page's raw HTML (checked in raw HTML) and in Arcosa's LoadSearchResults API (306 postings, read 2026-11-13): 'Clinton, IL', '10000 Tabor Rd', 61727. Quote on the page (fetched 2026-11-13, browser)."
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=MEYER&state_abbr=SC&output=JSON",
+   "ledger_value": "3468 Old Camden Hwy, Lancaster, SC 29720",
+   "evidence_row": 3264,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "EPA FRS: MEYER UTILITY STRUCTURES LLC PLANT 1665, 3468 OLD CAMDEN HWY, Lancaster, ZipCode 29720. Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-sabre-sioux-city-ia:address",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755371080?lang=en-US",
+   "ledger_value": "7101 Southbridge Drive, Sioux City, IA 51111",
+   "evidence_row": 3281,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "UKG Ready requisition JSON; Sioux City requisitions all use 7101 Southbridge Drive. Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-sabre-sioux-city-ia:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=SABRE&state_abbr=IA&output=JSON",
+   "ledger_value": "7101 Southbridge Drive, Sioux City, IA 51111",
+   "evidence_row": 3282,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "EPA FRS: SABRE INDUSTRIES TOWERS AND POLES, 7101 SOUTHBRIDGE DR, ZipCode 51111. Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-fwt-hicksville-oh:address",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755419393?lang=en-US",
+   "ledger_value": "761 West High Street, Hicksville, OH 43526",
+   "evidence_row": 3286,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "UKG Ready JSON; board has one Hicksville address. Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-fwt-hicksville-oh:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=FWT&state_abbr=OH&output=JSON",
+   "ledger_value": "761 West High Street, Hicksville, OH 43526",
+   "evidence_row": 3287,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "EPA FRS: SABRE-FWT, 761 W. HIGH ST., Hicksville, ZipCode 43526 (FWT, LLC record gives 761 WEST HIGH STREET). Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-sabre-bossier-city-la:address",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755384067?lang=en-US",
+   "ledger_value": "5031 Hazel Jones Road, Bossier City, LA 71111",
+   "evidence_row": 3291,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "UKG Ready JSON. Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-sabre-bossier-city-la:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=SABRE&state_abbr=LA&output=JSON",
+   "ledger_value": "5031 Hazel Jones Road, Bossier City, LA 71111",
+   "evidence_row": 3292,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "EPA FRS: 5031 HAZEL JONES RD, Bossier City, ZipCode 71111. Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nucor-decatur-al:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=NUCOR%20TOWERS&state_abbr=AL&output=JSON",
+   "ledger_value": "913 Maero St, Trinity, AL 35673 (Nucor postings give the location as Decatur, AL)",
+   "evidence_row": 3296,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "EPA FRS record 913 MAERO ST, Trinity, ZipCode 356736020, Morgan County. AISC snapshot line 3121 also lists Nucor Towers & Structures Inc - NTS, Trinity AL. Decatur posting city on sibling row 3192. Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nucor-decatur-al:lat",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=NUCOR%20TOWERS&state_abbr=AL&output=JSON",
+   "ledger_value": "34.62905,-87.08385 (county 01103)",
+   "evidence_row": 3297,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Coordinates on the page; county given as FIPSCode 'AL103' (= 01103). Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nucor-decatur-al:lon",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=NUCOR%20TOWERS&state_abbr=AL&output=JSON",
+   "ledger_value": "-87.08385",
+   "evidence_row": 3298,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=FWT&state_abbr=TX&output=JSON",
+   "ledger_value": "5750 E Interstate 20, Fort Worth, TX 76119",
+   "evidence_row": 3300,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "EPA FRS JSON fetched 2026-11-13: SABRE-FWT, 5750 E. INTERSTATE 20, Fort Worth, ZipCode 76119. Address of the FWT plant is confirmed; what is not confirmed is that the Kenn requisitions belong to it. Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:address",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755411337?lang=en-US",
+   "ledger_value": "5750 E Interstate 20, Fort Worth, TX 76119",
+   "evidence_row": 3301,
+   "tag": "stated",
+   "verdict": "corrected",
+   "note": "The street is right for the FWT plant (EPA row 3300), but this row's basis, that Sabre's board 'gives the Kenn site's street', fails the decision rule: the board uses 5750 I-20 for every Fort Worth requisition (Kenn, 36th, AlvU, uncoded). As evidence it shows only Sabre's Fort Worth board address. Retag inferred; reasoning should say so.",
+   "corrected_value": "5750 E Interstate 20, Fort Worth, TX 76119",
+   "corrected_quote": "\"job_title\":\"Welder C - Kenn\",\"location\":{\"address_line_1\":\"5750 I-20\",\"country\":\"USA\",\"city\":\"Fort Worth\",\"state\":\"TX\",\"zip\":\"76119\"}",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:lat",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=FWT&state_abbr=TX&output=JSON",
+   "ledger_value": "32.66746,-97.23767 (county 48439)",
+   "evidence_row": 3302,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "EPA coordinates on the page. County 48439 appears on the sibling FWT record at the same coordinates (FIPSCode 48439). Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:lon",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=FWT&state_abbr=TX&output=JSON",
+   "ledger_value": "-97.23767",
+   "evidence_row": 3303,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "EPA coordinates on the page. Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=FWT&state_abbr=TX&output=JSON",
+   "ledger_value": "Sabre-FWT (Fort Worth, 5750 E I-20; Sabre site code Kenn)",
+   "evidence_row": 3305,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Sabre-FWT (Fort Worth, 5750 E I-20)",
+   "corrected_quote": "\"FacilityName\":\"SABRE-FWT\", \"LocationAddress\":\"5750 E. INTERSTATE 20\"",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Clause 'Sabre site code Kenn' is not on the EPA page and is the inferred tie. Sabre's board files every Fort Worth requisition under '5750 I-20, Fort Worth 76119': 25 requisitions read 2026-11-13 via the UKG Ready API, coded Kenn, Kenn-Inventory, 36th, AlvU and uncoded (e.g. 'Longseamer B - 36th (Nights)', 'Program Manager - AlvU', 'EHS Manager- 36th'). No requisition text states the Kenn site's street; EPA FRS lists separate Sabre sites at 2400 NE 36th St and 2300 W Risinger Rd, Fort Worth. The Kenn = 5750 I-20 tie is therefore inferred (supporting but not sufficient: EPA 'FWT INC EXPANSION', Kennedale, ~330 m from the 5750 record; a Marshall 'Sr Supervisor - MarU' template names 'the Kennedale, Texas Sabre Tubular Structures Manufacturing Facility' without a street)."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:operating_status",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755411337?lang=en-US",
+   "ledger_value": "operating: open welder requisitions at this address on Sabre's own job board (read 2026-11-13)",
+   "evidence_row": 3306,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "operating status not tied to a plant-specific source: EPA FRS names SABRE-FWT at 5750 E. Interstate 20; Sabre's board lists open Fort Worth requisitions (Kenn, 36th, AlvU) all under 5750 I-20, so which site they staff is inferred",
+   "corrected_quote": "\"job_title\":\"Welder C - Kenn\",\"location\":{\"address_line_1\":\"5750 I-20\",\"country\":\"USA\",\"city\":\"Fort Worth\",\"state\":\"TX\",\"zip\":\"76119\"}",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Sabre's board files every Fort Worth requisition under '5750 I-20, Fort Worth 76119': 25 requisitions read 2026-11-13 via the UKG Ready API, coded Kenn, Kenn-Inventory, 36th, AlvU and uncoded (e.g. 'Longseamer B - 36th (Nights)', 'Program Manager - AlvU', 'EHS Manager- 36th'). No requisition text states the Kenn site's street; EPA FRS lists separate Sabre sites at 2400 NE 36th St and 2300 W Risinger Rd, Fort Worth. The Kenn = 5750 I-20 tie is therefore inferred (supporting but not sufficient: EPA 'FWT INC EXPANSION', Kennedale, ~330 m from the 5750 record; a Marshall 'Sr Supervisor - MarU' template names 'the Kennedale, Texas Sabre Tubular Structures Manufacturing Facility' without a street)."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:weld_processes",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755411337?lang=en-US",
+   "ledger_value": "GMAW (spray arc transfer) for production welding and a GMAW 2G qualification test (Welder C - Kenn); FCAW tack welding of pole assemblies and FCAW or GMAW finish welds (Welder/Fitter C - Kenn)",
+   "evidence_row": 3307,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "GMAW (spray arc transfer) and a GMAW 2G qualification test in Sabre requisition Welder C - Kenn; FCAW tack welding and FCAW or GMAW finish welds in Welder/Fitter C - Kenn. Sabre's board files these Kenn requisitions under its Fort Worth address 5750 I-20, which it also uses for 36th- and AlvU-coded requisitions, so their tie to this plant is inferred",
+   "corrected_quote": "Must be able to pass and qualify to a GMAW 2G weld test ... Uses GMAW welding process (Spray Arc transfer) to weld components or assemblies.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Quote is on the page; plant attribution is inferred. Sabre's board files every Fort Worth requisition under '5750 I-20, Fort Worth 76119': 25 requisitions read 2026-11-13 via the UKG Ready API, coded Kenn, Kenn-Inventory, 36th, AlvU and uncoded (e.g. 'Longseamer B - 36th (Nights)', 'Program Manager - AlvU', 'EHS Manager- 36th'). No requisition text states the Kenn site's street; EPA FRS lists separate Sabre sites at 2400 NE 36th St and 2300 W Risinger Rd, Fort Worth. The Kenn = 5750 I-20 tie is therefore inferred (supporting but not sufficient: EPA 'FWT INC EXPANSION', Kennedale, ~330 m from the 5750 record; a Marshall 'Sr Supervisor - MarU' template names 'the Kennedale, Texas Sabre Tubular Structures Manufacturing Facility' without a street)."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:weld_processes",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755411338?lang=en-US",
+   "ledger_value": "GMAW (spray arc transfer) for production welding and a GMAW 2G qualification test (Welder C - Kenn); FCAW tack welding of pole assemblies and FCAW or GMAW finish welds (Welder/Fitter C - Kenn)",
+   "evidence_row": 3308,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "GMAW (spray arc transfer) and a GMAW 2G qualification test in Sabre requisition Welder C - Kenn; FCAW tack welding and FCAW or GMAW finish welds in Welder/Fitter C - Kenn. Sabre's board files these Kenn requisitions under its Fort Worth address 5750 I-20, which it also uses for 36th- and AlvU-coded requisitions, so their tie to this plant is inferred",
+   "corrected_quote": "Uses the Flux Cored Arc Welding process to tack weld various small components to round or formed shafts to make a pole assembly",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Quote on page; plant attribution inferred (see p-fwt-fort-worth-tx:weld_processes row 3307)."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:materials",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755411338?lang=en-US",
+   "ledger_value": "steel (fitters cut steel with plasma and oxy-fuel torches; pole shafts and base plates)",
+   "evidence_row": 3309,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "steel (Sabre requisition Welder/Fitter C - Kenn: fitters cut steel with plasma and oxy-fuel torches); tie of the Kenn requisitions to this plant inferred",
+   "corrected_quote": "Uses plasma torch and oxy-fuel torch to cut steel.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Quote on page; plant attribution inferred (Kenn tie)."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:products",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755411338?lang=en-US",
+   "ledger_value": "steel pole assemblies: round tube or formed shaft with baseplate, hand hole, arm mounts and other small parts, built in a Large Pole department (Sabre posting text for the Kenn site; the same role text is used at other Sabre pole plants)",
+   "evidence_row": 3310,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "steel pole assemblies: round tube or formed shaft with baseplate, hand hole, arm mounts and other small parts, built in a Large Pole department (Sabre requisition text for the Kenn site, shared with other Sabre pole plants; tie of the Kenn requisitions to this plant inferred)",
+   "corrected_quote": "The pole assembly generally consists of a round tube or formed shaft, baseplate, hand hole, arm mounting simplex, tenon top, vangs, step lugs, ladder clips, and/or other small parts.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Quote on page; plant attribution inferred (Kenn tie)."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:welder_postings",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755424065?lang=en-US",
+   "ledger_value": "4 open welder requisitions for the Kenn site (5750 I-20, Fort Worth) on Sabre's own job board, read 2026-11-13: Welder A - Kenn, Welder C - Kenn (GMAW 2G test), Welder Trainee - Kenn, Welder/Fitter C - Kenn. Also Longseamer C - Kenn (Nights) and Longseamer Trainee - Kenn, not counted. The board shows no posting dates; a Tallo copy dates the Longseamer Trainee 2026-11-04",
+   "evidence_row": 3312,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "4 open welder requisitions coded 'Kenn' on Sabre's own job board, read 2026-11-13: Welder A - Kenn, Welder C - Kenn (GMAW 2G test), Welder Trainee - Kenn, Welder/Fitter C - Kenn; also Longseamer C - Kenn (Nights) and Longseamer Trainee - Kenn, not counted. The board files them under its Fort Worth address 5750 I-20, which it also uses for 36th- and AlvU-coded requisitions, so their tie to this plant is inferred. No posting dates on the board",
+   "corrected_quote": "\"job_title\":\"Welder A - Kenn\",\"location\":{\"address_line_1\":\"5750 I-20\",\"country\":\"USA\",\"city\":\"Fort Worth\",\"state\":\"TX\",\"zip\":\"76119\"}",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Requisition open and quote on the page (checked 2026-11-13). Plant attribution inferred. Also: the clause 'a Tallo copy dates the Longseamer Trainee 2026-11-04' is on no cited page (no Tallo row); drop it or add a row. Sabre's board files every Fort Worth requisition under '5750 I-20, Fort Worth 76119': 25 requisitions read 2026-11-13 via the UKG Ready API, coded Kenn, Kenn-Inventory, 36th, AlvU and uncoded (e.g. 'Longseamer B - 36th (Nights)', 'Program Manager - AlvU', 'EHS Manager- 36th'). No requisition text states the Kenn site's street; EPA FRS lists separate Sabre sites at 2400 NE 36th St and 2300 W Risinger Rd, Fort Worth. The Kenn = 5750 I-20 tie is therefore inferred (supporting but not sufficient: EPA 'FWT INC EXPANSION', Kennedale, ~330 m from the 5750 record; a Marshall 'Sr Supervisor - MarU' template names 'the Kennedale, Texas Sabre Tubular Structures Manufacturing Facility' without a street)."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:welder_postings",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755411337?lang=en-US",
+   "ledger_value": "4 open welder requisitions for the Kenn site (5750 I-20, Fort Worth) on Sabre's own job board, read 2026-11-13: Welder A - Kenn, Welder C - Kenn (GMAW 2G test), Welder Trainee - Kenn, Welder/Fitter C - Kenn. Also Longseamer C - Kenn (Nights) and Longseamer Trainee - Kenn, not counted. The board shows no posting dates; a Tallo copy dates the Longseamer Trainee 2026-11-04",
+   "evidence_row": 3313,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "4 open welder requisitions coded 'Kenn' on Sabre's own job board, read 2026-11-13: Welder A - Kenn, Welder C - Kenn (GMAW 2G test), Welder Trainee - Kenn, Welder/Fitter C - Kenn; also Longseamer C - Kenn (Nights) and Longseamer Trainee - Kenn, not counted. The board files them under its Fort Worth address 5750 I-20, which it also uses for 36th- and AlvU-coded requisitions, so their tie to this plant is inferred. No posting dates on the board",
+   "corrected_quote": "\"job_title\":\"Welder C - Kenn\",\"location\":{\"address_line_1\":\"5750 I-20\",\"country\":\"USA\",\"city\":\"Fort Worth\",\"state\":\"TX\",\"zip\":\"76119\"}",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Requisition open and quote on the page (checked 2026-11-13). Plant attribution inferred. Also: the clause 'a Tallo copy dates the Longseamer Trainee 2026-11-04' is on no cited page (no Tallo row); drop it or add a row. "
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:welder_postings",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755411339?lang=en-US",
+   "ledger_value": "4 open welder requisitions for the Kenn site (5750 I-20, Fort Worth) on Sabre's own job board, read 2026-11-13: Welder A - Kenn, Welder C - Kenn (GMAW 2G test), Welder Trainee - Kenn, Welder/Fitter C - Kenn. Also Longseamer C - Kenn (Nights) and Longseamer Trainee - Kenn, not counted. The board shows no posting dates; a Tallo copy dates the Longseamer Trainee 2026-11-04",
+   "evidence_row": 3314,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "4 open welder requisitions coded 'Kenn' on Sabre's own job board, read 2026-11-13: Welder A - Kenn, Welder C - Kenn (GMAW 2G test), Welder Trainee - Kenn, Welder/Fitter C - Kenn; also Longseamer C - Kenn (Nights) and Longseamer Trainee - Kenn, not counted. The board files them under its Fort Worth address 5750 I-20, which it also uses for 36th- and AlvU-coded requisitions, so their tie to this plant is inferred. No posting dates on the board",
+   "corrected_quote": "\"job_title\":\"Welder Trainee - Kenn \",\"location\":{\"address_line_1\":\"5750 I-20\",\"country\":\"USA\",\"city\":\"Fort Worth\",\"state\":\"TX\",\"zip\":\"76119\"}",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Requisition open and quote on the page (checked 2026-11-13). Plant attribution inferred. Also: the clause 'a Tallo copy dates the Longseamer Trainee 2026-11-04' is on no cited page (no Tallo row); drop it or add a row. "
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:welder_postings",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755411338?lang=en-US",
+   "ledger_value": "4 open welder requisitions for the Kenn site (5750 I-20, Fort Worth) on Sabre's own job board, read 2026-11-13: Welder A - Kenn, Welder C - Kenn (GMAW 2G test), Welder Trainee - Kenn, Welder/Fitter C - Kenn. Also Longseamer C - Kenn (Nights) and Longseamer Trainee - Kenn, not counted. The board shows no posting dates; a Tallo copy dates the Longseamer Trainee 2026-11-04",
+   "evidence_row": 3315,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "4 open welder requisitions coded 'Kenn' on Sabre's own job board, read 2026-11-13: Welder A - Kenn, Welder C - Kenn (GMAW 2G test), Welder Trainee - Kenn, Welder/Fitter C - Kenn; also Longseamer C - Kenn (Nights) and Longseamer Trainee - Kenn, not counted. The board files them under its Fort Worth address 5750 I-20, which it also uses for 36th- and AlvU-coded requisitions, so their tie to this plant is inferred. No posting dates on the board",
+   "corrected_quote": "\"job_title\":\"Welder/Fitter C - Kenn\",\"location\":{\"address_line_1\":\"5750 I-20\",\"country\":\"USA\",\"city\":\"Fort Worth\",\"state\":\"TX\",\"zip\":\"76119\"}",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Requisition open and quote on the page (checked 2026-11-13). Plant attribution inferred. Also: the clause 'a Tallo copy dates the Longseamer Trainee 2026-11-04' is on no cited page (no Tallo row); drop it or add a row. "
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:alias",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=FWT&state_abbr=TX&output=JSON",
+   "ledger_value": "EPA FRS also lists 'FWT INC EXPANSION' in Kennedale, TX at coordinates about 300 m from the 5750 E. Interstate 20 record: the likely origin of Sabre's site code 'Kenn'",
+   "evidence_row": 3317,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "EPA FRS also lists 'FWT INC EXPANSION' in Kennedale, TX ('NORTHEAST QUADRANT OF I.H. 820 AND BUSINESS U.S. 2'), at coordinates about 300 m from the 5750 E. Interstate 20 record",
+   "corrected_quote": "\"FacilityName\":\"FWT INC EXPANSION\", \"LocationAddress\":\"NORTHEAST QUADRANT OF I.H. 820 AND BUSINESS U.S. 2\", \"SupplementalLocation\":null, \"CityName\":\"KENNEDALE\"",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "'the likely origin of Sabre's site code Kenn' is a judgement tagged stated (the row's own reasoning says it is a reading); move it to an inferred row. The page's address text is truncated at 'BUSINESS U.S. 2'; do not expand it."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:welder_postings",
+   "source_url": "https://www.nelloinc.com/careers-application/welder-2nd-shift",
+   "ledger_value": "2 welder postings listed at once on Nello's own careers page (read 2026-11-13): Sub-arc seam welder 2nd shift (dated Jan 30; operates a robot welding machine; GMAW experience preferred) and Welder (dated Feb 2; 1st and 2nd shift incl. Saturdays; 1G weld test). The page shows no year; both were still listed on 2026-11-13",
+   "evidence_row": 3322,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page. datePublished 2026-02-02T09:58:38-0500 in raw HTML (year resolved). Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:welder_postings",
+   "source_url": "https://www.nelloinc.com/careers-application/administrative-clerk-shipping-sub-arc-seam-welder-2nd-shift",
+   "ledger_value": "2 welder postings listed at once on Nello's own careers page (read 2026-11-13): Sub-arc seam welder 2nd shift (dated Jan 30; operates a robot welding machine; GMAW experience preferred) and Welder (dated Feb 2; 1st and 2nd shift incl. Saturdays; 1G weld test). The page shows no year; both were still listed on 2026-11-13",
+   "evidence_row": 3323,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page. datePublished 2026-01-30T18:17:42-0500 in raw HTML. Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:triggers",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=4f8accd3-d446-41ae-8eaa-dcf2b491758b",
+   "ledger_value": "Arcosa's own 2026 postings call Clinton 'our new plant' and 'a startup manufacturing facility' (Maintenance Manager, posted 2026-08-17; NDT Quality Inspector, 2026-10-05). Arcosa (10-K; Feb 27, 2026 call) said it was converting its idled Illinois wind tower facility to utility poles, operational in 2H 2026 (plant not named there; EPA FRS puts Meyer Utility Structures at the former Arcosa Wind Towers site)",
+   "evidence_row": 3325,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote fragments on the Maintenance Manager page (browser). The 10-K clause is on sibling row 1205's page (10-K fetched: 'converting an idled wind tower facility to utility structures, which is expected to be operational in the second-half of 2026'); the call clause on sibling row 3220's page (fetched). The EPA parenthetical: FRS lists MEYER UTILITY STRUCTURES at ROUTE 51 N and 10000 TABOR RD, Clinton, and ARCOSA WIND TOWERS INC, RT 51 N, Clinton at the same coordinates (40.177947, -88.95532) (query facility_name=ARCOSA). Quote on the page (fetched 2026-11-13, browser)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:triggers",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=e8adbe5f-dc59-4fe0-bf5f-b8754ee25e0a",
+   "ledger_value": "Arcosa's own 2026 postings call Clinton 'our new plant' and 'a startup manufacturing facility' (Maintenance Manager, posted 2026-08-17; NDT Quality Inspector, 2026-10-05). Arcosa (10-K; Feb 27, 2026 call) said it was converting its idled Illinois wind tower facility to utility poles, operational in 2H 2026 (plant not named there; EPA FRS puts Meyer Utility Structures at the former Arcosa Wind Towers site)",
+   "evidence_row": 3326,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page ('NDT Quality Inspector', posted October 5, 2026, 'our new plant location in Clinton, IL'). Other clauses as row 3325. Quote on the page (fetched 2026-11-13, browser)."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:welder_postings",
+   "source_url": "https://talents.vaia.com/companies/mica-steelworks/",
+   "ledger_value": "3 Haltom City welder/fitter roles listed at once on the Vaia job aggregator (read 2026-11-13): Welder - 1st shift, Night-Shift Submerged Arc Welder (SAW) and Fitter; MICA's own listings are on Indeed, which blocks page fetches, so open status is not confirmed on a primary board. MICA's careers page advertises a signing bonus for welders and fitters (company-wide; applications go to 4201 Old Denton Road, Haltom City)",
+   "evidence_row": 3327,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Cited Vaia list page shows two Haltom City roles (Night-Shift SAW Welder, Fitter); the third (Welder - 1st shift, 'Apply Now') is on sibling row 1391's page opened 2026-11-13; the bonus and the 4201 Old Denton Road and Indeed clauses are on the careers page (sibling row 776). Aggregator only: open status not confirmed on a primary board (Indeed blocked; WebSearch finds many energyhire re-listings with unclear dates). Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-musco-muscatine-ia:multi_plant",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=MUSCO&state_abbr=IA&output=JSON",
+   "ledger_value": "multi-site: EPA FRS lists Musco Sports Lighting LLC facilities at Oskaloosa (1107 11th Ave W; 200 1st Ave W) as well as 2107 Stewart Rd, Muscatine",
+   "evidence_row": 3331,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Three Musco Sports Lighting LLC records on the page (1107 11th Ave W and 200 1st Ave W, Oskaloosa; 2107 Stewart Rd). The FRS detail pages for registry 110001361295 and 110009453661 give NAICS 335129/335121 (lighting equipment manufacturing). Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-sabre-marshall-tx:name",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755377235?lang=en-US",
+   "ledger_value": "Sabre Industries (Marshall, TX; Sabre site code MarU)",
+   "evidence_row": 3332,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-sabre-marshall-tx:address",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755377235?lang=en-US",
+   "ledger_value": "2938 Brown Rd, Marshall, TX 75672",
+   "evidence_row": 3333,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Sabre board uses 2938 Brown Rd only for MarU requisitions (10 of 221), so the address discriminates. No independent (news/EPA/AISC) source found for the site; one WebSearch found none. Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-sabre-marshall-tx:city",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755432256?lang=en-US",
+   "ledger_value": "Marshall",
+   "evidence_row": 3334,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "'Mgr - Maintenance - MarU' requisition: 'the Marshall facility'. Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-sabre-marshall-tx:products",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/772145478?lang=en-US",
+   "ledger_value": "steel pole assemblies: round tube or formed shaft with baseplate, hand hole, arm mounts and other small parts, built in a Large Pole department (Sabre posting text for the Marshall site; the same role text is used at other Sabre pole plants)",
+   "evidence_row": 3343,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on page. Caution: Sabre reuses role text across sites (a 'Sr Supervisor - MarU' requisition names 'the Kennedale, Texas Sabre Tubular Structures Manufacturing Facility'); the value already says the text is shared. Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-sabre-marshall-tx:products",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755377235?lang=en-US",
+   "ledger_value": "pole assemblies drilled and welded to drawings",
+   "evidence_row": 3344,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-sabre-marshall-tx:weld_processes",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755377235?lang=en-US",
+   "ledger_value": "GMAW (spray arc transfer) for production welding and a GMAW 2G qualification test (Welder C - MarU); FCAW tack welding of pole assemblies (Welder/Fitter C - MarU)",
+   "evidence_row": 3345,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-sabre-marshall-tx:weld_processes",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/772145478?lang=en-US",
+   "ledger_value": "GMAW (spray arc transfer) for production welding and a GMAW 2G qualification test (Welder C - MarU); FCAW tack welding of pole assemblies (Welder/Fitter C - MarU)",
+   "evidence_row": 3346,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-sabre-marshall-tx:materials",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/772145478?lang=en-US",
+   "ledger_value": "steel (fitters cut steel with plasma and oxy-fuel torches; pole shafts and base plates)",
+   "evidence_row": 3347,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-sabre-marshall-tx:welder_postings",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755377235?lang=en-US",
+   "ledger_value": "4 open welder requisitions at 2938 Brown Rd, Marshall on Sabre's own job board, read 2026-11-13: Welder C - MarU (GMAW 2G test; from $21.50/hr), Welder/Fitter C - MarU, and two Welder Trainee - MarU. Also Lead - Welder, Weld Coach and Weld Tech - MarU, not counted. The board shows no posting dates",
+   "evidence_row": 3349,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Open; from $21.50/hr (base_pay_from 21.5 HOUR on 755377235). Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-sabre-marshall-tx:welder_postings",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/772145478?lang=en-US",
+   "ledger_value": "4 open welder requisitions at 2938 Brown Rd, Marshall on Sabre's own job board, read 2026-11-13: Welder C - MarU (GMAW 2G test; from $21.50/hr), Welder/Fitter C - MarU, and two Welder Trainee - MarU. Also Lead - Welder, Weld Coach and Weld Tech - MarU, not counted. The board shows no posting dates",
+   "evidence_row": 3350,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-sabre-marshall-tx:welder_postings",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755432841?lang=en-US",
+   "ledger_value": "4 open welder requisitions at 2938 Brown Rd, Marshall on Sabre's own job board, read 2026-11-13: Welder C - MarU (GMAW 2G test; from $21.50/hr), Welder/Fitter C - MarU, and two Welder Trainee - MarU. Also Lead - Welder, Weld Coach and Weld Tech - MarU, not counted. The board shows no posting dates",
+   "evidence_row": 3351,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-sabre-marshall-tx:welder_postings",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755400395?lang=en-US",
+   "ledger_value": "4 open welder requisitions at 2938 Brown Rd, Marshall on Sabre's own job board, read 2026-11-13: Welder C - MarU (GMAW 2G test; from $21.50/hr), Welder/Fitter C - MarU, and two Welder Trainee - MarU. Also Lead - Welder, Weld Coach and Weld Tech - MarU, not counted. The board shows no posting dates",
+   "evidence_row": 3352,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-sabre-marshall-tx:multi_plant",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=SABRE&state_abbr=TX&output=JSON",
+   "ledger_value": "multi-plant parent: EPA FRS lists Sabre Industries facilities at Alvarado and Conroe, TX",
+   "evidence_row": 3355,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Both records on the EPA page (8653 E HWY 67 Alvarado; 3575 POLLOK DR Conroe). Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?city_name=CLINTON&state_abbr=IL&facility_name=MEYER&output=JSON",
+   "ledger_value": "Meyer Utility Structures (Clinton)",
+   "evidence_row": 3380,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nucor-decatur-al:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=NUCOR%20TOWERS&state_abbr=AL&output=JSON",
+   "ledger_value": "Nucor Towers & Structures (Decatur)",
+   "evidence_row": 3388,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:name",
+   "source_url": "https://www.gridstructures.com",
+   "ledger_value": "Grid Structures (Southland Steel)",
+   "evidence_row": 3391,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:weld_processes",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/?q=Ameron&o=postedDateDesc",
+   "ledger_value": "MIG: Ameron's Tulsa (ZIP 74107) Fitter Welder postings on Arcosa's job board ask for 'qualified MIG Fitter/Welders' for the layout and assembly of pole sections; the posting duties name arc, gas-shielded arc or gas welding",
+   "evidence_row": 3429,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Search-results card (browser) for 'Fitter Welder_Career_ Night Shift 4:00PM to 2:30AM Weekdays', Aug 28, 2026, Tulsa, OK 74107, carries the MIG job summary; the Day Shift card (Aug 25, 74107) carries the same summary. LoadSearchResults API: both at '2333 S Yukon Ave', label 'Tulsa, OK -Finish'. The 'Arc, Gas-Shielded Arc, or Gas Welding' clause is on the sibling detail pages (rows 2531/2532). Quote on the page (fetched 2026-11-13, browser)."
+  },
+  {
+   "claim_id": "p-nucor-decatur-al:weld_processes",
+   "source_url": "https://jobs.nucor.com/job/Decatur-NTSAL-Fitter-Welder-AL-35601/1448225400/",
+   "ledger_value": "MIG / flux-core: 'Mig Flux core welding experience' is a preferred qualification in the plant's own open NTSAL Fitter Welder posting (dated 2026-11-05)",
+   "evidence_row": 3430,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:production_type",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755411338?lang=en-US",
+   "ledger_value": "pole assemblies built to drawings (mixed; volume not stated)",
+   "evidence_row": 3311,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-sabre-marshall-tx:production_type",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/772145478?lang=en-US",
+   "ledger_value": "pole assemblies built to drawings (mixed; volume not stated)",
+   "evidence_row": 3348,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-sabre-marshall-tx:parent_company",
+   "source_url": "https://secure6.saashr.com/ta/rest/ui/recruitment/companies/%7C6173477/job-requisitions/755377235?lang=en-US",
+   "ledger_value": "Sabre Industries, Inc. (TPG agreed 2026-02-06 to buy a majority stake from Blackstone funds; completion not verified as of 2026-11-13)",
+   "evidence_row": 3338,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:triggers",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1739445/000173944526000029/aca-20251231.htm",
+   "ledger_value": "Clinton plant is Meyer's converted idled Arcosa wind-tower facility; 10-K says conversion to utility structures expected operational 2H 2026",
+   "evidence_row": 1205,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "10-K text on the page; the Clinton tie is correctly tagged inferred (former_use row 1248 names Clinton). Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:triggers",
+   "source_url": "https://www.fool.com/earnings/call-transcripts/2026/02/27/arcosa-aca-q4-2025-earnings-call-transcript",
+   "ledger_value": "Feb 27, 2026 call: conversion of the idled Illinois wind tower facility to large utility poles, expected operational in 2H 2026",
+   "evidence_row": 3220,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Call transcript quote on the page; tie correctly inferred. Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nucor-decatur-al:production_type",
+   "source_url": "https://nucor.com/?p=2587",
+   "ledger_value": "Mixed: transmission and light-duty poles",
+   "evidence_row": 1559,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:production_type",
+   "source_url": "https://www.gridstructures.com/capabilities/production",
+   "ledger_value": "customized steel poles and structures",
+   "evidence_row": 2028,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:production_type",
+   "source_url": "https://www.gridstructures.com/solutions/power-delivery-structures/transmission-structures",
+   "ledger_value": "anything from one light duty steel pole to miles of massive, engineered structures",
+   "evidence_row": 1473,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-musco-muscatine-ia:production_type",
+   "source_url": "https://www.musco.com/solution/structures/",
+   "ledger_value": "site-specific designs on a standard pole system (mixed)",
+   "evidence_row": 3012,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13, plain)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:relationship",
+   "source_url": "https://www.path-robotics.com/videos/nello-utility-pole-welding",
+   "ledger_value": "customer_other_plant",
+   "evidence_row": 349,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred, quote on Path page; plant not named."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:part_size_fit",
+   "source_url": "https://www.path-robotics.com/videos/nello-utility-pole-welding",
+   "ledger_value": "dimensions not stated; presumed to fit a Path cell because Path says Nello passed a factory acceptance test on utility pole base plates (plant not named; cell not yet on their floor)",
+   "evidence_row": 1255,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row, quote on Path page (names no plant; base plates). Correctly tagged inferred; carries material 20 (see score_notes)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:part_size_fit",
+   "source_url": "https://www.arcosa.com/?p=208",
+   "ledger_value": "Tubular transmission/substation pole sections, likely beyond the 65 ft cell; Rove candidate (size at plant not stated)",
+   "evidence_row": 1194,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Count/inference checked against the board APIs read 2026-11-13."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:welder_postings",
+   "source_url": "",
+   "ledger_value": "4 open welder requisitions for the Kenn site (5750 I-20, Fort Worth) on Sabre's own job board, read 2026-11-13: Welder A - Kenn, Welder C - Kenn (GMAW 2G test), Welder Trainee - Kenn, Welder/Fitter C - Kenn. Also Longseamer C - Kenn (Nights) and Longseamer Trainee - Kenn, not counted. The board shows no posting dates; a Tallo copy dates the Longseamer Trainee 2026-11-04",
+   "evidence_row": 3316,
+   "tag": "inferred",
+   "verdict": "corrected",
+   "note": "Count matches the API. The value's clause 'a Tallo copy dates the Longseamer Trainee 2026-11-04' is on no cited page (no Tallo row exists); dropped. This row has no source_url, so apply_factcheck matches every welder_postings row of this claim; the corrected value is the same literal value given for rows 3312-3315.",
+   "corrected_value": "4 open welder requisitions coded 'Kenn' on Sabre's own job board, read 2026-11-13: Welder A - Kenn, Welder C - Kenn (GMAW 2G test), Welder Trainee - Kenn, Welder/Fitter C - Kenn; also Longseamer C - Kenn (Nights) and Longseamer Trainee - Kenn, not counted. The board files them under its Fort Worth address 5750 I-20, which it also uses for 36th- and AlvU-coded requisitions, so their tie to this plant is inferred. No posting dates on the board",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-sabre-marshall-tx:welder_postings",
+   "source_url": "",
+   "ledger_value": "4 open welder requisitions at 2938 Brown Rd, Marshall on Sabre's own job board, read 2026-11-13: Welder C - MarU (GMAW 2G test; from $21.50/hr), Welder/Fitter C - MarU, and two Welder Trainee - MarU. Also Lead - Welder, Weld Coach and Weld Tech - MarU, not counted. The board shows no posting dates",
+   "evidence_row": 3353,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Count matches the API: 10 requisitions at 2938 Brown Rd, 4 production welder/fitter roles."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:welder_postings",
+   "source_url": "",
+   "ledger_value": "2 open fitter welder postings at 2333 S Yukon Ave (board label 'Tulsa, OK -Finish') on Arcosa's job board, read 2026-11-13: Fitter Welder Career Day Shift 5:00AM-3:30PM (posted 2026-08-25, oldest, 80 days) and Night Shift 4:00PM-2:30AM weekdays (2026-08-28). The job summary asks for qualified MIG Fitter/Welders. No sign-on bonus stated",
+   "evidence_row": 560,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Count matches the LoadSearchResults API (2 Fitter Welder postings at 2333 S Yukon Ave)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "",
+   "ledger_value": "7 open welder/fitter postings for the Clinton plant (10000 Tabor Rd) on Arcosa's job board, read 2026-11-13: Night Shift Welder, Night Shift Fitter/Welder and Night Shift Sr. Fitter/Welder (all posted 2026-09-29, oldest, 45 days), Fitter Welder Lead (2026-10-19), Welder, Fitter/Welder and Sr. Fitter/Welder (2026-11-06). Night shift 6pm-4:30am with $1.50/hr differential; flux or metal core highly preferred; no sign-on bonus or mandatory overtime stated. Also a Weld Tech (plant welding technician) posting (2026-09-01), not counted",
+   "evidence_row": 2489,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Count matches the API: 7 welder/fitter postings at 10000 Tabor Rd (Weld Tech not counted)."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:parent_company",
+   "source_url": "https://wirelessestimator.com/articles/2015/sabre-acquires-long-established-fwt-to-expand-its-structures-sector/",
+   "ledger_value": "Sabre Industries, Inc. (acquired FWT 2015)",
+   "evidence_row": 388,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row cited by a score row; quote on the page (fetched 2026-11-13); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:parent_company",
+   "source_url": "https://www.blackstone.com/news/press/tpg-to-acquire-majority-stake-in-sabre-industries-from-blackstone-energy-transition-partners/",
+   "ledger_value": "Sabre Industries, Inc. (TPG signed definitive agreements on 2026-02-06 to acquire a majority stake; existing investor Blackstone will retain a significant minority stake)",
+   "evidence_row": 2216,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row cited by a score row; quote on the page (fetched 2026-11-13); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-nucor-decatur-al:parent_company",
+   "source_url": "https://www.areadevelopment.com/newsitems/1-13-2025/nucor-towers-structures-brigham-city-utah.shtml",
+   "ledger_value": "Nucor Corporation",
+   "evidence_row": 431,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row cited by a score row; quote on the page (fetched 2026-11-13); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:parent_company",
+   "source_url": "https://builtin.com/job/assistant-plant-manager/9635121",
+   "ledger_value": "Arcosa, Inc. (Meyer Utility Structures, LLC)",
+   "evidence_row": 403,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row cited by a score row; quote on the page (fetched 2026-11-13); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:parent_company",
+   "source_url": "https://www.arcosa.com",
+   "ledger_value": "Arcosa, Inc. (Arcosa press release 2026-10-23: CRH completed acquisition of Arcosa; new ultimate parent CRH)",
+   "evidence_row": 2100,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row cited by a score row; quote on the page (fetched 2026-11-13); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-musco-muscatine-ia:parent_company",
+   "source_url": "https://www.voiceofmuscatine.com/?p=298230",
+   "ledger_value": "Musco Lighting (privately owned)",
+   "evidence_row": 3005,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row cited by a score row; quote on the page (fetched 2026-11-13); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:part_size_fit",
+   "source_url": "https://www.nov.com/poleproducts",
+   "ledger_value": "Lighting, traffic and small-cell poles; dimensions not stated; likely within the large cell (65 ft/10,500 lb) but unconfirmed",
+   "evidence_row": 1236,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row cited by a score row; quote on the page (fetched 2026-11-13); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:production_type",
+   "source_url": "https://www.nov.com/poleproducts",
+   "ledger_value": "mix of pole types across the Ameron line (company-level; Tulsa mix not stated)",
+   "evidence_row": 1237,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row cited by a score row; quote on the page (fetched 2026-11-13); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:parent_company",
+   "source_url": "https://www.arcosa.com",
+   "ledger_value": "Arcosa, Inc. (acquired by CRH, completed Oct 2026)",
+   "evidence_row": 2105,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row cited by a score row; quote on the page (fetched 2026-11-13); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:materials",
+   "source_url": "https://www.fdot.gov/construction/Engineers/PaintedPoleSuppliers.shtm",
+   "ledger_value": "steel (poles)",
+   "evidence_row": 2265,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row cited by a score row; quote on the page (fetched 2026-11-13); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:materials",
+   "source_url": "https://www.arcosa.com/?p=208",
+   "ledger_value": "steel (steel street-lighting, traffic and small-cell poles)",
+   "evidence_row": 1234,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row cited by a score row; quote on the page (fetched 2026-11-13); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-nucor-decatur-al:part_size_fit",
+   "source_url": "https://governor.alabama.gov/newsroom/2026/10/governor-ivey-announces-60-million-nucor-corp-manufacturing-expansion-in-morgan-county/",
+   "ledger_value": "unknown size; utility poles, transmission and light-duty; fit to cell unconfirmed",
+   "evidence_row": 1558,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row cited by a score row; quote on the page (fetched 2026-11-13); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:materials",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1739445/000173944526000029/aca-20251231.htm",
+   "ledger_value": "steel (principal material of Arcosa's Engineered Structures segment; grade not stated)",
+   "evidence_row": 1193,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row cited by a score row; quote on the page (fetched 2026-11-13); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-musco-muscatine-ia:materials",
+   "source_url": "https://www.musco.com/solution/structures/",
+   "ledger_value": "galvanized steel poles (company-level); aluminum fabrication also on site",
+   "evidence_row": 3008,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row cited by a score row; quote on the page (fetched 2026-11-13); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:materials",
+   "source_url": "https://www.gridstructures.com/",
+   "ledger_value": "steel poles and structures",
+   "evidence_row": 1470,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row cited by a score row; quote on the page (fetched 2026-11-13); tag inferred is correct."
+  }
+ ],
+ "score_notes": [
+  {
+   "plant": "p-fwt-fort-worth-tx",
+   "component": "score_process",
+   "ledger_points": 20,
+   "should_be": 0,
+   "why": "weld_processes rows (3307, 3308) tie Kenn requisitions to this plant only through the board's catch-all Fort Worth address; the tie is inferred. Precedent: inferred-attribution postings earn no points."
+  },
+  {
+   "plant": "p-fwt-fort-worth-tx",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 0,
+   "why": "Same tie: welder_postings rows 3312-3315 are inferred. Total 61 -> 21 (Low), confidence 2 -> 0."
+  },
+  {
+   "plant": "p-fwt-fort-worth-tx",
+   "component": "score_part_mix",
+   "ledger_points": 8,
+   "should_be": 8,
+   "why": "Rests on the inferred production_type row (Kenn requisition text). It earns points without confidence under rule 1. The coordinator may also drop it to 0 for consistency with the inferred tie; the total would then be 13."
+  },
+  {
+   "plant": "p-grid-structures-amite-city-la",
+   "component": "score_labor",
+   "ledger_points": 12,
+   "should_be": 20,
+   "why": "Welder (Day & Night Shift) req 621269191 and Fitter (Day & Night Shift) req 621269192 are both open at 13040 Foulks Lane on 2026-11-13. Two welding roles at once = 20 under the counting rule (Fitter counted). Alternative: 12 if Fitter is not counted. Total 60 -> 68."
+  },
+  {
+   "plant": "p-grid-structures-amite-city-la",
+   "component": "score_process",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "The FCAW line is in the live Welder requisition (not only a standing fact)."
+  },
+  {
+   "plant": "p-sabre-marshall-tx",
+   "component": "confidence",
+   "ledger_points": 2,
+   "should_be": 3,
+   "why": "Process, labor and scale (multi_plant stated, EPA FRS) all rest on stated rows; the score_total row already says 3."
+  },
+  {
+   "plant": "p-mica-haltom-city-tx",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "Follows the rubric if aggregator listings are accepted (3 roles with Apply Now on Vaia). This is inconsistent with MICA Kaufman (aggregator stub = 0). Coordinator's call; alternative 0, total 48. plants.csv confidence 4 should be 3 per the score_total row."
+  },
+  {
+   "plant": "p-nello-south-bend-in",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "Two welder postings listed at once; datePublished 2026-01-30 and 2026-02-02 in raw HTML, both still listed on 2026-11-13. Holds on the Welder posting alone under the 60+ day test: published 2026-02-02, still listed (continuity not proven)."
+  },
+  {
+   "plant": "p-nello-south-bend-in",
+   "component": "score_material_part",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "Kept per the coordinator rule (Path's own statement). Note: Path's FAT names Nello, not the South Bend plant (row 1255 inferred), so it earns no confidence."
+  },
+  {
+   "plant": "p-meyer-clinton-il",
+   "component": "score_demand",
+   "ledger_points": 15,
+   "should_be": 15,
+   "why": "Stated, dated Arcosa postings (2026-08-17, 2026-10-05) call Clinton a new/start-up plant; this is a plant-level trigger within 24 months."
+  },
+  {
+   "plant": "p-musco-muscatine-ia",
+   "component": "score_scale",
+   "ledger_points": 5,
+   "should_be": 5,
+   "why": "The EPA FRS JSON shows Musco Sports Lighting LLC at 2 Oskaloosa addresses plus Muscatine; the FRS detail pages (registry 110001361295, 110009453661) give lighting-equipment manufacturing NAICS. Suggest citing a detail page so 'multi-plant' is stated, not just 'multi-site'."
+  },
+  {
+   "plant": "p-ameron-tulsa-ok",
+   "component": "score_process",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "The 'qualified MIG Fitter/Welders' summary is on the 74107 Fitter Welder cards (both shifts) on Arcosa's search page; both are at 2333 S Yukon Ave per LoadSearchResults."
+  },
+  {
+   "plant": "p-nucor-decatur-al",
+   "component": "score_process",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "'Mig Flux core welding experience' (preferred) in the plant's own open NTSAL Fitter Welder posting dated Nov 5, 2026 (Apply now); rule 2 counts preferred qualifications in a welder/fitter posting."
+  }
+ ]
+}

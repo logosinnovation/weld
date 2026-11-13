@@ -27,7 +27,8 @@ def opt(name, many=False):
 LABELS = {1: "Round 1: designed sample of 30 plants (all High, all customer plants, then by score), before repairs",
           2: "Round 2: 10 unsampled plants from multi-plant parents, after the first repair pass",
           3: "Round 3: all 23 plants no checker had seen, after the attribution clean-up",
-          4: "Round 4: plants added or changed after the higher-tier review"}
+          4: "Round 4: 32 plants added or changed by the first higher-tier review, after the attribution clean-up",
+          5: "Round 5: 9 plants whose points changed in the final higher-tier review, plus 6 new addresses"}
 rounds = {}
 for f in sorted(glob.glob(f"ledger/audit/fact-check-{vert}-*.json")):
     base = os.path.basename(f)

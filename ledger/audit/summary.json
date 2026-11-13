@@ -2,20 +2,20 @@
  "vertical": "v-poles-substation",
  "status": "partial",
  "plants": {
-  "found": 118,
-  "included": 88,
+  "found": 129,
+  "included": 89,
   "profiled": 81,
-  "excluded": 30,
+  "excluded": 40,
   "tiers": {
-   "Medium": 35,
+   "Medium": 34,
    "High": 9,
-   "Low": 37
+   "Low": 38
   },
-  "profiled_fact_checked": 80,
+  "profiled_fact_checked": 81,
   "material_unknown": 69
  },
  "links": 7,
- "evidence_rows": 3431,
+ "evidence_rows": 3649,
  "fact_check_rounds": [
   {
    "round": 1,
@@ -147,7 +147,7 @@
   },
   {
    "round": 4,
-   "label": "Round 4: plants added or changed after the higher-tier review",
+   "label": "Round 4: 32 plants added or changed by the first higher-tier review, after the attribution clean-up",
    "checked": 326,
    "corrected": 29,
    "unreachable": 0,
@@ -197,25 +197,51 @@
    ],
    "rate": 0.089,
    "display": "29 / 326 = 8.9%"
+  },
+  {
+   "round": 5,
+   "label": "Round 5: 9 plants whose points changed in the final higher-tier review, plus 6 new addresses",
+   "checked": 170,
+   "corrected": 14,
+   "unreachable": 0,
+   "checkers": [
+    {
+     "file": "fact-check-v-poles-substation-round5-A.json",
+     "checked": 170,
+     "corrected": 14,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 13,
+      "invented fact": 0,
+      "other": 1
+     }
+    }
+   ],
+   "rate": 0.0824,
+   "display": "14 / 170 = 8.2%"
   }
  ],
  "miss_rate": {
-  "value": "5/64 = 7.8% (list auditors); 30/88 = 34.1% (finder first pass vs all plants verified to date)",
-  "note": "The auditor figure is a lower bound: both auditors drew on the finder's source types; every plant they found is now in the ledger. The first-pass figure counts every included plant the plant-finder did not have on its included list: 7 found by the auditors, 2 by follow-up research, 12 by the higher-tier reviews (incl. Sabre Marshall), and 9 the finder had excluded that the inclusion rule includes (Valley, Plymouth and 7 DOT-listed sign and pole fabricators now at base). All 30 are in the ledger now; 7 leads remain unverified.",
+  "value": "Auditor-measured 8/58 = 13.8% (6 never found, 2 found but wrongly excluded); finder first pass 31/89 = 34.8% (22 never found = 24.7%; 9 found but wrongly excluded = 10.1%)",
+  "note": "Auditor-measured: of the 58 in-definition plants the two list auditors found (now included), 8 were not on the plant-finder's included list. It is a lower bound: the auditors used the finder's kinds of sources. First pass: of all 89 plants now included, 31 were not on the finder's included list: 22 it never found (7 auditors, 2 follow-up research, 13 higher-tier reviews and lead close-out) and 9 it found but excluded although the inclusion rule includes them. All are in the ledger now. Leads closed 2026-11-13: 17 checked (1 included, 10 excluded, 6 unverified with what was tried); 1 new lead open: a possible MICA Steelworks welding site at Euless TX.",
   "history": [
    "9.5%",
    "9.2%",
    "6.3%",
    "7.8%",
-   "27.5% first-pass",
-   "34.1% first-pass"
+   "13.8% auditor (recount)",
+   "34.8% first pass"
   ]
  },
  "known_limits": [
   "Part size is unknown for 69 of 81 profiled plants, so material scores 0 there; a Low score usually means missing data, not a poor fit (see the Unknowns and ceiling columns).",
-  "Welder-posting counts are a snapshot of 2026-11-13 job boards; some posting dates come from aggregator copies (Tallo) of postings confirmed open on the company's own board.",
+  "Welder-posting counts are a snapshot of 2026-11-13 job boards. Sabre's board files every requisition in a city under one address with several site codes, so Sabre postings are tied to a plant only where the city has one Sabre plant; FWT Fort Worth's are not counted.",
   "Pre-production plants (Nucor Brigham City ramping, Hapco Oklahoma City under construction) are scored on stated plans; Nucor's Indiana pole plant (Crawfordsville) is operating.",
-  "7 plants included by the DOT-listing rule are base records, not profiled or scored.",
-  "Fact-check error rates are per stated claim checked; on a strict page-only reading (every clause on the one cited page) round 4 would be higher (checker A: 16.0% vs 6.4%)."
+  "8 plants included by the DOT-listing rule or the lead close-out are base records, not profiled or scored.",
+  "Opening lines are composed from stated claims; the round-5 line check corrected 16 of 98 lines (9 for a fact, 7 for the closing question) and the corrections are applied.",
+  "Fact-check error rates are per claim checked; on a strict page-only reading (every clause on the one cited page) round 4 would be higher (checker A: 16.0% vs 6.4%)."
  ]
 }
