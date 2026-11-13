@@ -1,0 +1,2759 @@
+{
+ "checker": "fact-checker B (round 1)",
+ "vertical": "v-shipbuilding-naval",
+ "date": "2026-11-13",
+ "plants": [
+  "p-arcosa-marine-caruthersville-mo",
+  "p-biw-bath-me",
+  "p-conrad-morgan-city-la",
+  "p-eastern-panama-city-fl",
+  "p-electric-boat-north-kingstown-ri",
+  "p-great-lakes-shipyard-cleveland-oh",
+  "p-heartland-fabrication-brownsville-pa",
+  "p-keel-goose-creek-sc",
+  "p-lad-services-morgan-city-la",
+  "p-nns-goose-creek-sc",
+  "p-philly-shipyard-philadelphia-pa",
+  "p-saronic-franklin-la",
+  "p-trident-lockport-la"
+ ],
+ "decision_rule": "As in poles rounds 3-5. Corrected: the value adds a fact the cited page does not show, tags a judgement as stated, places a company-level fact at the plant, ties a posting or trigger to the plant through a location shared by several sites, or the quote is not on the page. Confirmed: the cited page, or for a multi-row claim a sibling row's page opened 2026-11-13, carries every additive clause. Limiting parentheticals and rubric labels ('many part types', 'Rove', 'aluminum-first') are not additive. Opening lines: every clause must be carried by a stated row (value or quote) of a claim named in the reasoning, the line must end in a 'you' question, and no status may be asserted beyond its dated source. Scope (headline denominator): every stated row of the 13 plants in the delegated fields (name, address, city, state, parent_company, products, weld_processes, materials, certifications, part_size_fit, production_type, existing_robots, welder_postings, triggers, headcount, relationship); every row (any tag, with a source) of a claim cited by a score_* row or an opening line, including company (c-) and vertical rows; and the 13 opening_line rows. Other stated rows of these plants were checked too and are reported under wider_set, outside the headline.",
+ "claims_checked": 202,
+ "claims_corrected": 16,
+ "claims_unreachable": 1,
+ "error_rate": 0.079,
+ "error_rate_substantive": 0.02,
+ "error_rate_excluding_lad_shared_city_block": 0.061,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 12,
+  "invented fact": 0,
+  "other": 4
+ },
+ "wider_set": {
+  "rows_checked_incl_out_of_scope": 223,
+  "corrected_incl_out_of_scope": 19,
+  "error_rate": 0.085,
+  "error_kind_counts": {
+   "wrong plant or location": 0,
+   "wrong process": 0,
+   "wrong tier": 0,
+   "closed business": 0,
+   "quote does not support value": 15,
+   "invented fact": 0,
+   "other": 4
+  },
+  "note": "Out-of-scope rows are stated rows outside the delegated field list and not cited by any score or opening line (tier, prospect_test, website, lat/lon, county_fips, found_by, hiring_plan, hiring_context, status_detail, county_conflict, supplies links, LAD's stated bottleneck). Reported as findings, outside the headline denominator."
+ },
+ "counts_note": "16/202 in scope corrected; 4 substantive (a wrong or misplaced fact, or a point-earning tie), 12 attribution or wording form (true fact, wrong page, tag or tense). LAD shared-city block: 4 rows from one decision.",
+ "apply_note": "tools/apply_factcheck.py copies corrected_value into plants.csv whenever the claim field is a plants.csv column. Several corrected rows here are one row of a multi-row claim, so copying their row-level value would overwrite the whole plant field with a fragment. Each such row carries 'plants_csv_value': the value the plant field should hold after the merge, or '(keep current ...)'. Apply that by hand after running the script, or pass the script only the evidence changes. LAD rows 4284, 4285, 4051 and 5008 should also move to c-lad-services claim_ids, which the script cannot do.",
+ "repeated_kinds": [
+  "quote does not support value: 12 of 16 in-scope corrections (15 of 19 with the 3 out-of-scope rows). Sub-patterns to sweep:",
+  "(a) SHARED-CITY COMPANY AWARDS PLACED AT A PLANT (4 rows, all at LAD Morgan City: triggers 4284/4285, products 4051, materials 5008). A USACE award 'built in Morgan City' and a MARAD grant to the LLC 'Morgan City' were tagged stated at one yard, though LAD has two or more 70380 sites (EPA: 2575 Hwy 662 and 1079 E Stephensville Rd). Sweep every v-shipbuilding-naval triggers, products and materials row whose site tie is only a city or ZIP that the company shares with another of its sites (Morgan City: Conrad, LAD, Bollinger; Panama City: Eastern; Pascagoula: Bollinger and Ingalls; Newport News: NNS, OPIP and Trident). A grant counts under rule 4 only when it names the plant, as Caruthersville's 'Plant No. 1075' does.",
+  "(b) JUDGEMENTS TAGGED STATED (out of scope here, but a large sweep): Philly tier, Saronic tier and Trident prospect_test. Ledger-wide in this vertical, 18 tier rows, 1 tier_secondary row and 20 prospect_test rows are tagged stated (e.g. Austal, Bollinger x5, Fincantieri x3, NASSCO, NNS, Ingalls; prospect_test at Chesapeake, Blount, Senesco, Keel x3, Trident Newport News). Same fix as poles F2: retag inferred with reasoning.",
+  "(c) Attribution form (8 rows: 6 at plant level plus vertical row 65 and the Eastern opening line): a clause that is true on another page but not on the cited one. Cases: NABRICO 'former Arcosa'; the 'Apr 2026' sale month; Eastern's 'Nelson Street Shipyard' name on an EPA row; the Caruthersville list-page quote; LAD's EPA 'Amelia facility' address tie; Caruthersville's 'so the barge plant is 265' deduction; the demand-outlook row's Saronic and Arcosa clauses; Eastern's c- trigger row 5415, which holds only the date the LPD 32 line rests on.",
+  "other: 4 (EB approval month in a trigger and its opening line; LAD 'moves ahead' and Saronic 'set to begin' status wording in opening lines). This is a pattern for the line editors: a status from a dated source is restated as current."
+ ],
+ "worst_errors": [
+  "p-lad-services-morgan-city-la (rows 4284, 4285, plus 4051 and 5008): demand 15 rests on a USACE award 'built in Morgan City' and a MARAD grant to 'LAD Services of Louisiana LLC, Morgan City'. The ledger's own relationship row 4054 already says the award 'does not pick a site'. LAD reports three facilities; EPA FRS lists two under ZIP 70380, the Amelia facility at 2575 Hwy 662 (city Morgan City) and LAD SALVAGE at 1079 E Stephensville Rd (city Stephensville, St. Martin Parish), and the third is unlocated. Neither the award nor the grant names a yard, and the Conrad 'Morgan City' deck barge was kept company-level for the same reason. Demand 15 -> 8; total 35 -> 28 (Low); confidence 2 -> 1. Rows retagged inferred; move them to c-lad-services:triggers. Sensitivity: 35 stands if 'Morgan City' is read as the Hwy 662 site.",
+  "p-arcosa-marine-caruthersville-mo (row 5575): the site tie that carries process 20 and labor 20 (40 of 60 points) is written into a stated row as a conclusion ('so the barge plant in the postings is 265 County Hwy 346'). The tie holds on stated facts, so the score stands: all four postings say 'barge plant'; Waterways Journal splits Caruthersville into barge construction and fiberglass cover manufacturing; EPA files 2077 County Line Rd as 'Caruthersville Composites' (SIC 3089); and the board files the covers site's postings under a separate location, 'Caruthersville, MO Covers'. The deduction must still move to reasoning. Sensitivity: 60 -> 20 if the coordinator applies the FWT precedent.",
+  "p-electric-boat-north-kingstown-ri (row 5134 and the opening line): 'Quonset approved land in September 2026' dates the approval to the article. NEREJ (Sep 11, 2026) says the QDC Board 'recently' approved it. No score effect; the line is rewritten with 'reported September 2026'."
+ ],
+ "score_problems": [
+  "p-lad-services-morgan-city-la: score_demand 15 -> 8 (the award and grant name no yard; LAD sites share ZIP 70380). Total 35 -> 28, Low; confidence 2 -> 1. Sensitivity: 35 if 'Morgan City' is read as the Hwy 662 site.",
+  "No other component changes on the 13 plants. Process, labor, demand and scale were re-derived for all 13 against pages and boards read today. Every counted posting is open today: NABRICO ADP 4/4, BIW iCIMS 4/4, EB iCIMS 7/7, Conrad UltiPro 1/1, NNS HII 5/5, Philly UKG 2/2, Saronic Ashby 2/2. The TIG rule was checked at BIW, EB, Philly and Saronic (only EB's separate pipe role names GTAW, so 20).",
+  "Sensitivity, not applied: Caruthersville 60 -> 20 if the 'barge plant' tie is treated as inferred (basis in score_notes).",
+  "p-heartland-fabrication-brownsville-pa: labor 0 is unverified (heartlandbarge.com 403 and bot check), not confirmed; row 5606 is marked unreachable."
+ ],
+ "opening_line_problems": [
+  "p-electric-boat-north-kingstown-ri: the approval month is not stated; replacement line in the row.",
+  "p-lad-services-morgan-city-la: 'as the Path welding plan you announced in December 2025 moves ahead' asserts progress no source shows; replacement drops 'moves ahead'. The reasoning must re-cite c-lad-services:triggers once rows 4284 and 4285 move. No site deployment is asserted (correct).",
+  "p-saronic-franklin-la: 'set to begin' restates February 2026's 'will begin' as current; replacement dates it ('Path said in February 2026 that ... would begin').",
+  "p-eastern-panama-city-fl: the line text is accurate (row 5418 confirmed), but its LPD 32, six-unit and Gulf Coast clauses were carried by no stated row value or quote. The fix is on c-eastern-shipbuilding:triggers row 5415 (corrected), not on the line.",
+  "The other 9 lines pass: every clause is on a stated row of a cited claim, each ends in a 'you' question, there is no pitch language, and the HII (NNS Goose Creek) line asserts no deployment at the site."
+ ],
+ "plants_closed_or_moved": [],
+ "plant_status_notes": "All 13 have current activity in sources dated 2026, and none is closed. Caruthersville: 4 live barge-plant postings; MARAD Aug 2026. Bath: 4 live reqs; Pier Support Center Apr 2026. Conrad Front Street: live fitter posting at 1501 Front Street. Eastern Nelson Street: the OPC work it was dedicated to was suspended Nov 17, 2025, and the Workday board shows only office roles at 'Nelson'. Its operation rests on the Sep 2025 DDG-unit pilot and improvement project; the Nov 2026 LPD 32 units are placed at Eastern's 'Gulf Coast facilities', not at Nelson Street. Watch this plant. EB Quonset: 7 live reqs at 165 Dillabur Avenue. Great Lakes Cleveland: two-tug order Sep 2026. Heartland: 410 employees, Sep 2026 expansion. Keel Goose Creek: 7 live non-welding listings; no source shows welding at the site (prospect test low-certainty, as the ledger says). LAD: home page live, Oct 2026 award; but whether barges are built at the 2547/2575 Hwy 662 site or at the Stephensville Rd site (EPA 'LAD SALVAGE', 1079 E Stephensville Rd, 70380, St. Martin Parish) is not shown by any page. A web-search digest (not quotable) placed the LAD shipyard on E Stephensville Rd; the record may sit on the wrong LAD yard. NNS Goose Creek: 5 live reqs. Philly: 2,000 staff, lease Sep 2026. Saronic Franklin: live reqs, expansion due end-2026. Trident Lockport: rests on one open ADP posting (NDT Inspector II, posted 2026-07-30) whose body says 'Location: Lockport, LA' but whose board location is 'Gulf Coast, New Orleans, LA, US' (70123). There is no street address, no EPA record, and no Lockport entry on Trident's location list, so a Trident-run welding plant at Lockport is not shown by any page. (A web-search digest mentions a June 2026 'TIGER Team' NDT posting in the same division; not opened.) Treat it as unverified. Outside the 13: p-arcosa-marine-caruthersville-mo-2 (Yard II, 2077 Co Rd 337) is fiberglass barge cover manufacturing (Waterways Journal: 'Fiberglass Barge Cover Manufacturing: Paducah, Ky., and Caruthersville, Mo.'; EPA ECHO 'NABRICO MARINE PRODUCTS - CARUTHERSVILLE COMPOSITES', SIC 3089, NAICS 326121). It is base/included, but under the boundary rule (fiberglass out) it should be excluded like Paducah.",
+ "method": "All 114 distinct source URLs cited by the 13 plants' rows and the cited company and vertical rows were requested on 2026-11-13; 113 returned the page, and heartlandbarge.com returned 403 or a bot check (row 5606 unreachable) (plain, with headless Chromium for 13 JavaScript or blocked pages). Each quote's '...'-joined fragments were matched against normalised visible text and raw HTML/JSON (soft hyphens stripped). EPA FRS pages throttled (429) were re-fetched. Boards read through their APIs today: NABRICO ADP job-requisitions list (all 34) and detail JSON for the 4 counted postings; Conrad UltiPro LoadSearchResults (POST, 14 postings); Eastern Workday CXS (welder search plus requisition-location descriptors); Trident ADP list (17); Saronic Ashby posting API (273); Keel Paylocity (browser); HII careers search; BIW and EB iCIMS (JSON-LD datePosted and streetAddress); Philly UKG detail pages. Extra EPA FRS queries: LAD (all LAD sites in LA) and LAD SALVAGE. Location discovery used two WebSearch queries only (LAD sites; Trident Lockport); no search summary is used as a quote. Opening lines were checked clause by clause against the stated rows of the claims their reasoning names.",
+ "score_notes": [
+  {
+   "plant": "p-lad-services-morgan-city-la",
+   "component": "score_demand",
+   "ledger_points": 15,
+   "should_be": 8,
+   "why": "Both triggers (the Oct 2026 USACE award 'built in Morgan City' and the Aug 2026 MARAD grant to 'LAD Services of Louisiana LLC, Morgan City') name no yard. EPA FRS lists two LAD sites in ZIP 70380 (2575 Hwy 662 'Amelia facility'; LAD SALVAGE, 1079 E Stephensville Rd), and LAD reports three facilities. Under coordinator rules 3-4 and the Conrad precedent these are company-level. Vertical outlook only = 8."
+  },
+  {
+   "plant": "p-lad-services-morgan-city-la",
+   "component": "score_total",
+   "ledger_points": 35,
+   "should_be": 28,
+   "why": "0+0+15+0+8+5 = 28, Low (unchanged tier). Confidence 2 -> 1: only scale rests on stated rows (part mix is an inferred company-level row; demand 8 never counts)."
+  },
+  {
+   "plant": "p-lad-services-morgan-city-la",
+   "component": "score_scale",
+   "ledger_points": 5,
+   "should_be": 5,
+   "why": "c-lad-services:multi_plant ('three facilities throughout south Louisiana') is stated on ladcompanies.com today."
+  },
+  {
+   "plant": "p-lad-services-morgan-city-la",
+   "component": "score_part_mix",
+   "ledger_points": 15,
+   "should_be": 15,
+   "why": "Inferred company-level row ('Every barge project starts with a different operational requirement'): earns points, no confidence (session-2 rule 1)."
+  },
+  {
+   "plant": "p-arcosa-marine-caruthersville-mo",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "All four requisitions are open in the ADP list API today (Welder II 10-28, Welder III 09-22, Fitter II 09-22, Fitter III 09-28): several at once. Site tie: the posting text names the 'barge plant' (rule 3 allows posting text). NABRICO's other Caruthersville site is fiberglass cover manufacturing (Waterways Journal; EPA SIC 3089 'Caruthersville Composites'), and the covers site posts under its own board location ('Caruthersville, MO Covers'). Sensitivity: if the coordinator treats the 'barge plant' tie as inferred (FWT precedent), process and labor fall to 0 and the total to 20, Low."
+  },
+  {
+   "plant": "p-arcosa-marine-caruthersville-mo",
+   "component": "score_process",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "FCAW required in Welder III (open today). Same site-tie basis and sensitivity as labor."
+  },
+  {
+   "plant": "p-arcosa-marine-caruthersville-mo",
+   "component": "score_demand",
+   "ledger_points": 15,
+   "should_be": 15,
+   "why": "The MARAD grant (Aug 13, 2026) names 'Nabrico Marine Plant No. 1075, Caruthersville', which is EPA's name for 265 County Hwy 346. Rule 4."
+  },
+  {
+   "plant": "p-arcosa-marine-caruthersville-mo",
+   "component": "score_scale",
+   "ledger_points": 5,
+   "should_be": 5,
+   "why": "c-nabrico:multi_plant: 'NABRICO operates six manufacturing facilities' (Wynnchurch page today). Headcount unknown."
+  },
+  {
+   "plant": "p-biw-bath-me",
+   "component": "score_process",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "FCAW/GMAW-P in the Bath Welder (Grade 7) posting (US-ME-Bath). No TIG on any Bath page read."
+  },
+  {
+   "plant": "p-biw-bath-me",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "Welder (Grade 7, 7 positions) and three Shipfitter requisitions are open at Bath today. Posting dates not shown, as the value says; 'several at once' does not need dates."
+  },
+  {
+   "plant": "p-biw-bath-me",
+   "component": "score_part_mix",
+   "ledger_points": 15,
+   "should_be": 15,
+   "why": "Shipfitter postings list foundations, tanks, small assemblies, bulkheads, deck sections and grating."
+  },
+  {
+   "plant": "p-biw-bath-me",
+   "component": "score_demand",
+   "ledger_points": 15,
+   "should_be": 15,
+   "why": "Pier Support Center at the Bath yard (Mainebiz, Apr 14 2026, 'next to Pier 2'); DDG 51 option Jul 31 2025."
+  },
+  {
+   "plant": "p-biw-bath-me",
+   "component": "score_scale",
+   "ledger_points": 10,
+   "should_be": 10,
+   "why": "GD multi-plant stated. 100+ at site rests on the inferred BIW-wide 6,800 (Oct 12 2026): points, no confidence, as the ledger has it."
+  },
+  {
+   "plant": "p-conrad-morgan-city-la",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "Structural Fitter STRUC001047 at 1501 Front Street, open today in the UltiPro POST API, posted 2026-05-18 (179 days, so 60+). The duties include welding. The supervisors' three-yard listings are correctly not counted."
+  },
+  {
+   "plant": "p-conrad-morgan-city-la",
+   "component": "score_part_mix",
+   "ledger_points": 15,
+   "should_be": 15,
+   "why": "'A variety of small and medium-sized vessels' on the Morgan City yard page."
+  },
+  {
+   "plant": "p-conrad-morgan-city-la",
+   "component": "score_demand",
+   "ledger_points": 8,
+   "should_be": 8,
+   "why": "Correct. The 2026 awards are placed at Amelia, Orange, or a shared 'Morgan City'."
+  },
+  {
+   "plant": "p-conrad-morgan-city-la",
+   "component": "score_scale",
+   "ledger_points": 5,
+   "should_be": 5,
+   "why": "Five Gulf Coast shipyards (Marine Log; contact page)."
+  },
+  {
+   "plant": "p-eastern-panama-city-fl",
+   "component": "score_demand",
+   "ledger_points": 15,
+   "should_be": 15,
+   "why": "gCaptain (Sep 16 2025): the agreement builds on the Nelson Street pilot, plus 'a major improvement project at its Nelson Street government shipbuilding facility'. Plant-level."
+  },
+  {
+   "plant": "p-eastern-panama-city-fl",
+   "component": "score_labor",
+   "ledger_points": 0,
+   "should_be": 0,
+   "why": "Workday today: welder requisitions are Allanton or Port St Joe; 'Nelson' appears on office roles only."
+  },
+  {
+   "plant": "p-eastern-panama-city-fl",
+   "component": "score_part_mix",
+   "ledger_points": 15,
+   "should_be": 15,
+   "why": "Inferred production_type: points, no confidence."
+  },
+  {
+   "plant": "p-electric-boat-north-kingstown-ri",
+   "component": "score_process",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "Manual and mechanized pulse/spray GMAW (AFC), GMAW/SMAW (Experienced). GTAW appears only in the separate Pipe Welder role, so 20 under coordinator rule 1."
+  },
+  {
+   "plant": "p-electric-boat-north-kingstown-ri",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "7 Quonset Point requisitions open today (JSON-LD streetAddress 165 Dillabur Avenue); oldest datePosted 2026-07-31."
+  },
+  {
+   "plant": "p-electric-boat-north-kingstown-ri",
+   "component": "score_demand",
+   "ledger_points": 15,
+   "should_be": 15,
+   "why": "Jul 29 2026 contract money for Quonset Point improvements (turnto10); the QDC lease approval was reported Sep 11 2026 (month of approval not stated, but within 24 months either way)."
+  },
+  {
+   "plant": "p-electric-boat-north-kingstown-ri",
+   "component": "score_scale",
+   "ledger_points": 5,
+   "should_be": 5,
+   "why": "GD multi-plant stated; site headcount unknown."
+  },
+  {
+   "plant": "p-great-lakes-shipyard-cleveland-oh",
+   "component": "score_demand",
+   "ledger_points": 15,
+   "should_be": 15,
+   "why": "Sep 23, 2026 two-tug order, to be built at Great Lakes Shipyard in Cleveland."
+  },
+  {
+   "plant": "p-great-lakes-shipyard-cleveland-oh",
+   "component": "score_labor",
+   "ledger_points": 0,
+   "should_be": 0,
+   "why": "The careers page today lists no welder or fitter role."
+  },
+  {
+   "plant": "p-heartland-fabrication-brownsville-pa",
+   "component": "score_material_part",
+   "ledger_points": 12,
+   "should_be": 12,
+   "why": "Coordinator rule 2: a stated 300-ft, 320-ton barge (welded product) exceeds the cell limits, so Rove = 12."
+  },
+  {
+   "plant": "p-heartland-fabrication-brownsville-pa",
+   "component": "score_part_mix",
+   "ledger_points": 0,
+   "should_be": 0,
+   "why": "One product line at 180 a year and a barge every 32 hours: high-volume repeat. The profiler's sensitivity (8) is noted; 0 follows the rubric."
+  },
+  {
+   "plant": "p-heartland-fabrication-brownsville-pa",
+   "component": "score_demand",
+   "ledger_points": 15,
+   "should_be": 15,
+   "why": "Sep 21, 2026 $60M expansion of the Brownsville yard."
+  },
+  {
+   "plant": "p-heartland-fabrication-brownsville-pa",
+   "component": "score_scale",
+   "ledger_points": 5,
+   "should_be": 5,
+   "why": "~410 at Brownsville stated; multi-plant parent not stated."
+  },
+  {
+   "plant": "p-keel-goose-creek-sc",
+   "component": "score_labor",
+   "ledger_points": 0,
+   "should_be": 0,
+   "why": "The Paylocity browser render today shows no welder or fitter at Goose Creek."
+  },
+  {
+   "plant": "p-keel-goose-creek-sc",
+   "component": "score_scale",
+   "ledger_points": 5,
+   "should_be": 5,
+   "why": "Keel: 'nine facilities' (keelusa.com/history)."
+  },
+  {
+   "plant": "p-nns-goose-creek-sc",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "MECH TECH P1/P2/P3 (Welder) and C1/C3 (Fitter) are listed today, entity Newport News Shipbuilding, location Goose Creek. Goose Creek is not shared by another HII site; Keel Goose Creek is another company."
+  },
+  {
+   "plant": "p-nns-goose-creek-sc",
+   "component": "score_process",
+   "ledger_points": 0,
+   "should_be": 0,
+   "why": "The Mech Tech P2 posting names no process ('welding processes on aluminum and steel')."
+  },
+  {
+   "plant": "p-nns-goose-creek-sc",
+   "component": "score_demand",
+   "ledger_points": 15,
+   "should_be": 15,
+   "why": "The asset acquisition closed in January 2025 (after 2024-11-13), with the ramp since; HII's one-year release."
+  },
+  {
+   "plant": "p-nns-goose-creek-sc",
+   "component": "score_scale",
+   "ledger_points": 10,
+   "should_be": 10,
+   "why": "HII multi-plant (stated) and 475 at Goose Creek (SCBIZ, Mar 13 2025)."
+  },
+  {
+   "plant": "p-philly-shipyard-philadelphia-pa",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "Welder B (Nov 10) and Shipbuilder (Nov 3, plate and stiffener assembly; 'welding and fitting') are both open on the UKG board: two at once (Muskogee precedent)."
+  },
+  {
+   "plant": "p-philly-shipyard-philadelphia-pa",
+   "component": "score_process",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "FCAW named first; no TIG."
+  },
+  {
+   "plant": "p-philly-shipyard-philadelphia-pa",
+   "component": "score_scale",
+   "ledger_points": 10,
+   "should_be": 10,
+   "why": "Close to 2,000 at the yard (Inquirer, Sep 23 2026); Hanwha Ocean's Geoje shipyard."
+  },
+  {
+   "plant": "p-saronic-franklin-la",
+   "component": "score_scale",
+   "ledger_points": 10,
+   "should_be": 10,
+   "why": "Austin production is stated on the same Ashby API page (team 'Production - TX' roles, e.g. a composites technician at 'a high rate boat building factory'). The quoted row is weaker; re-quote it."
+  },
+  {
+   "plant": "p-saronic-franklin-la",
+   "component": "score_material_part",
+   "ledger_points": 4,
+   "should_be": 4,
+   "why": "Aluminum-first boundary rule (the Marauder is aluminum); steel certifications are also stated."
+  },
+  {
+   "plant": "p-saronic-franklin-la",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "Welder (2026-03-11) and Fitter (2025-11-17) are both live in the Ashby API today; 60+ days."
+  },
+  {
+   "plant": "p-trident-lockport-la",
+   "component": "score_part_mix",
+   "ledger_points": 15,
+   "should_be": 15,
+   "why": "Stated production_type from the Lockport NDT posting (CVN, VCS/ORP, DDG structures and modular fabrications). It depends on the Lockport site existing; see plant_status_notes."
+  },
+  {
+   "plant": "p-trident-lockport-la",
+   "component": "score_scale",
+   "ledger_points": 5,
+   "should_be": 5,
+   "why": "'Working across Michigan, Virginia and Louisiana' (HII release) shows a multi-site parent."
+  },
+  {
+   "plant": "p-heartland-fabrication-brownsville-pa",
+   "component": "score_labor",
+   "ledger_points": 0,
+   "should_be": 0,
+   "why": "Unverified: the cited source (heartlandbarge.com) returned 403 or a bot check today, so 'none found' could not be re-read. 0 stands under 'none found = 0', but a live posting would give 12-20 (the Sep 2026 plan adds ~150 jobs including welders and fitters)."
+  }
+ ],
+ "field_drift_notes": [
+  "p-electric-boat-north-kingstown-ri: plants.csv products says 'hull modules'; the rows say 'outer hull' and 'frames/cylinders'.",
+  "p-conrad-morgan-city-la: plants.csv products adds 'steel and aluminum' and '(tugs, push boats, ferries, barges)'; row 4059 states only 'small and medium-sized vessels for commercial and government customers' (the vessel types come from the company menu: company level).",
+  "p-great-lakes-shipyard-cleveland-oh: plants.csv name 'Great Lakes Shipyard (The Great Lakes Group)' vs name row 'The Great Lakes Towing Company (shipyard)'.",
+  "p-philly-shipyard-philadelphia-pa: bottleneck_guess calls Welder B 'entry-level'; the Welder B page does not say so.",
+  "p-arcosa-marine-caruthersville-mo: the inferred tier, relationship and lookalike rows (4310-4312) cite the ADP list page, whose rendered text does not hold their quote; re-point them to requisition 84085732_19."
+ ],
+ "rows": [
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:name",
+   "source_url": "https://careers-gdeb.icims.com/jobs/21516/afc-welder-fitter-fabricator/job?in_iframe=1",
+   "ledger_value": "Electric Boat - Quonset Point Facility",
+   "evidence_row": 3850,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=ELECTRIC%20BOAT&state_abbr=RI&output=JSON",
+   "ledger_value": "165 Dillabur Ave, North Kingstown, RI 02852",
+   "evidence_row": 3851,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "The quote is on the EPA page, which lists several EB sites in North Kingstown (25 Durfee St, 1530 Davisville Rd, 360 Callahan Rd, 165 Dillabur Ave). The Quonset Point Facility tie is stated in the JSON-LD of each EB Quonset posting opened today: 'streetAddress':'165 Dillabur Avenue', postalCode 02852."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:parent_company",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=ELECTRIC%20BOAT&state_abbr=RI&output=JSON",
+   "ledger_value": "General Dynamics",
+   "evidence_row": 3852,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:products",
+   "source_url": "https://careers-gdeb.icims.com/jobs/21516/afc-welder-fitter-fabricator/job?in_iframe=1",
+   "ledger_value": "Submarine pressure-hull frames and cylinders, Virginia and Columbia class; outer hull of Virginia and Columbia class",
+   "evidence_row": 3853,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Both fragments are on the AFC posting. plants.csv says 'hull modules', which this row does not; see field_drift_notes."
+  },
+  {
+   "claim_id": "p-biw-bath-me:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=BATH%20IRON&state_abbr=ME&output=JSON",
+   "ledger_value": "Bath Iron Works",
+   "evidence_row": 3866,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-biw-bath-me:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=BATH%20IRON&state_abbr=ME&output=JSON",
+   "ledger_value": "700 Washington St, Bath, ME 04530",
+   "evidence_row": 3867,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-biw-bath-me:products",
+   "source_url": "https://www.gd.com/our-businesses/marine-systems",
+   "ledger_value": "Arleigh Burke and Zumwalt-class destroyers",
+   "evidence_row": 3868,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-biw-bath-me:products",
+   "source_url": "https://careers-gdbiw.icims.com/jobs/search?ss=1&searchKeyword=fitter&in_iframe=1",
+   "ledger_value": "steel, stainless and aluminum units and assemblies",
+   "evidence_row": 3869,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-nns-goose-creek-sc:name",
+   "source_url": "https://seapowermagazine.org/hii-expands-shipbuilding-capacity-announcing-intent-to-acquire-south-carolina-advanced-metal-fabricator-assets-and-workforce/",
+   "ledger_value": "Newport News Shipbuilding - Charleston Operations",
+   "evidence_row": 3931,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-nns-goose-creek-sc:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=NEWPORT%20NEWS&state_abbr=SC&output=JSON",
+   "ledger_value": "2040 Bushy Park Rd, Goose Creek, SC 29445",
+   "evidence_row": 3932,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-nns-goose-creek-sc:parent_company",
+   "source_url": "https://hii.com/news/hii-marks-one-year-of-newport-news-shipbuilding-charleston-operations",
+   "ledger_value": "HII (Huntington Ingalls Industries)",
+   "evidence_row": 3933,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-nns-goose-creek-sc:products",
+   "source_url": "https://seapowermagazine.org/hii-expands-shipbuilding-capacity-announcing-intent-to-acquire-south-carolina-advanced-metal-fabricator-assets-and-workforce/",
+   "ledger_value": "Submarine and aircraft carrier modules and structures; complex metal modules; steel and aluminum assemblies",
+   "evidence_row": 3935,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-nns-goose-creek-sc:products",
+   "source_url": "https://careers.huntingtoningalls.com/job/Goose-Creek-MECH-TECH-P-2-%28WELDER%29-Sout/1418629500/",
+   "ledger_value": "steel and aluminum assemblies",
+   "evidence_row": 3936,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-nns-goose-creek-sc:welder_postings",
+   "source_url": "https://careers.huntingtoningalls.com/search/?q=welder&sortColumn=referencedate&sortDirection=desc",
+   "ledger_value": "3 open Mech Tech (Welder) postings, Goose Creek; Mech Tech P 3 (Welder) Oct 22, 2026",
+   "evidence_row": 3940,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "The HII careers search shows MECH TECH P 1/P 2/P 3 (WELDER), Goose Creek, dated Oct 21, Nov 7 and Oct 22, 2026, today. The posting entity is 'Newport News Shipbuilding'. Goose Creek is not a shared HII city in the ledger."
+  },
+  {
+   "claim_id": "p-nns-goose-creek-sc:welder_postings",
+   "source_url": "https://hii.com/news/hiis-newport-news-shipbuilding-charleston-operations-to-host-skilled-trades-hiring-event-oct-27",
+   "ledger_value": "hiring event for hundreds incl. welders (Oct 2026)",
+   "evidence_row": 3941,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=PHILLY%20SHIPYARD&state_abbr=PA&output=JSON",
+   "ledger_value": "Philly Shipyard",
+   "evidence_row": 3955,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=PHILLY%20SHIPYARD&state_abbr=PA&output=JSON",
+   "ledger_value": "2100 Kitty Hawk Ave, Philadelphia, PA 19112",
+   "evidence_row": 3956,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:products",
+   "source_url": "https://maritime-executive.com/article/report-hanwha-ocean-plans-large-scale-expansion-of-philly-shipyard",
+   "ledger_value": "Jones Act tankers and containerships; MARAD training ships; MARAD training ships in order book",
+   "evidence_row": 3957,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:products",
+   "source_url": "https://www.bairdmaritime.com/security/naval/naval-ships/hanwha-expands-philly-shipyard-capabilities",
+   "ledger_value": "preparing for combat-ship construction by 2028",
+   "evidence_row": 3958,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:tier",
+   "source_url": "https://maritime-executive.com/article/report-hanwha-ocean-plans-large-scale-expansion-of-philly-shipyard",
+   "ledger_value": "OEM",
+   "evidence_row": 3959,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "corrected",
+   "corrected_value": "OEM",
+   "corrected_quote": "It reports that it has built half of the current Jones Act vessels in the U.S. since 2000.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "severity": "attribution",
+   "note": "Out of the delegated field list. Tier is a judgement (CLAUDE.md: industry alone never sets a tier). The quote supports it but does not state it, so the row should be inferred with reasoning. The value is right.",
+   "plants_csv_value": "OEM"
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:headcount",
+   "source_url": "https://www.inquirer.com/business/hanwha-philly-shipyard-expansion-lease-pidc-navy-yard-20260923.html",
+   "ledger_value": "close to 2,000 full-time",
+   "evidence_row": 3960,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-eastern-panama-city-fl:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=EASTERN%20SHIPBUILDING&state_abbr=FL&output=JSON",
+   "ledger_value": "Eastern Shipbuilding - Nelson Street Shipyard",
+   "evidence_row": 3962,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "Eastern Shipbuilding - Nelson Street Shipyard",
+   "corrected_quote": "Nelson Street Shipyard 2200 Nelson Street",
+   "corrected_source_url": "https://www.easternshipbuilding.com/facilities/",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "severity": "attribution",
+   "note": "The EPA page names 'EASTERN SHIPBUILDING GROUP, INC.' at 2200 Nelson St, not 'Nelson Street Shipyard'. The yard name is on Eastern's facilities page (rows 3963 and 3964).",
+   "plants_csv_value": "Eastern Shipbuilding - Nelson Street Shipyard"
+  },
+  {
+   "claim_id": "p-eastern-panama-city-fl:address",
+   "source_url": "https://www.easternshipbuilding.com/facilities/",
+   "ledger_value": "2200 Nelson St, Panama City, FL 32401",
+   "evidence_row": 3963,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-eastern-panama-city-fl:website",
+   "source_url": "https://www.easternshipbuilding.com/facilities/",
+   "ledger_value": "https://www.easternshipbuilding.com/facilities/",
+   "evidence_row": 3964,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-eastern-panama-city-fl:parent_company",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=EASTERN%20SHIPBUILDING&state_abbr=FL&output=JSON",
+   "ledger_value": "Eastern Shipbuilding Group",
+   "evidence_row": 3965,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-eastern-panama-city-fl:products",
+   "source_url": "https://www.easternshipbuilding.com/facilities/",
+   "ledger_value": "U.S. Coast Guard Offshore Patrol Cutters (steel); adjacent 6-acre modular pre-fabrication yard",
+   "evidence_row": 3966,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=SARONIC&state_abbr=LA&output=JSON",
+   "ledger_value": "Saronic Technologies - Franklin",
+   "evidence_row": 3988,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=SARONIC&state_abbr=LA&output=JSON",
+   "ledger_value": "320 Borough Ln, Franklin, LA 70538",
+   "evidence_row": 3989,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:parent_company",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=SARONIC&state_abbr=LA&output=JSON",
+   "ledger_value": "Saronic Technologies",
+   "evidence_row": 3990,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:products",
+   "source_url": "https://www.marinelog.com/news/gulf-craft-acquired-by-autonomous-vessel-innovator-saronic/",
+   "ledger_value": "Marauder MUSV",
+   "evidence_row": 3992,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:products",
+   "source_url": "https://jobs.ashbyhq.com/saronic/bee16057-c1f1-43f1-aef8-e596108964b9",
+   "ledger_value": "hulls, decks, bulkheads, frames, foundations; carbon steel, aluminum, stainless",
+   "evidence_row": 3993,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:tier",
+   "source_url": "https://www.workboat.com/shipbuilding/saronic-s-300-million-shipyard-expansion-in-louisiana",
+   "ledger_value": "OEM",
+   "evidence_row": 3994,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "corrected",
+   "corrected_value": "OEM",
+   "corrected_quote": "Saronic’s Louisiana shipyard is the central hub for prototyping and rapidly producing the Marauder, a new class of autonomous ships.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "severity": "attribution",
+   "note": "Out of the delegated field list. A tier judgement tagged stated; retag inferred. The value is right.",
+   "plants_csv_value": "OEM"
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:relationship",
+   "source_url": "https://www.marinelink.com/news/ai-welding-studied-louisiana-shipyard-535657",
+   "ledger_value": "known_customer",
+   "evidence_row": 3995,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:headcount",
+   "source_url": "https://www.workboat.com/shipbuilding/saronic-s-300-million-shipyard-expansion-in-louisiana",
+   "ledger_value": "more than 100 (late 2025)",
+   "evidence_row": 3996,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:welder_postings",
+   "source_url": "https://api.ashbyhq.com/posting-api/job-board/saronic",
+   "ledger_value": "Welder posted 2026-03-11 and Fitter posted 2025-11-17, Production - LA (Franklin), both listed 2026-11-13",
+   "evidence_row": 3997,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Ashby API today: Welder (publishedAt 2026-03-11) and Fitter (2025-11-17), team 'Production - LA', location Franklin, LA. No TIG/GTAW in either posting."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:welder_postings",
+   "source_url": "https://jobs.ashbyhq.com/saronic",
+   "ledger_value": "Fitter open, Franklin",
+   "evidence_row": 3998,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-lad-services-morgan-city-la:name",
+   "source_url": "https://www.ladcompanies.com/",
+   "ledger_value": "LAD Services of Louisiana",
+   "evidence_row": 4047,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-lad-services-morgan-city-la:address",
+   "source_url": "https://www.ladcompanies.com/",
+   "ledger_value": "2547 Hwy 662, Morgan City, LA 70380",
+   "evidence_row": 4048,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-lad-services-morgan-city-la:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=LAD%20SERVICES&state_abbr=LA&output=JSON",
+   "ledger_value": "2575 Hwy 662, Morgan City (EPA FRS registry 110071146609)",
+   "evidence_row": 4049,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "2575 Hwy 662, Morgan City (EPA FRS 110071146609, 'LAD SERVICES OF LOUISIANA, LLC - AMELIA FACILITY'); that this is the same yard as the 2547 Hwy 662 company address is inferred",
+   "corrected_quote": "\"FacilityName\":\"LAD SERVICES OF LOUISIANA, LLC - AMELIA FACILITY\", \"LocationAddress\":\"2575 HWY 662\"",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "severity": "attribution",
+   "note": "The quote is on the page. It is a different street number and a facility name ('Amelia facility') from the plant's 2547 Hwy 662 company address. EPA also lists LAD SALVAGE at 1079 E Stephensville Rd, 70380. The tie of the EPA record to this plant is a judgement. The lat/lon rows built on it are already inferred.",
+   "plants_csv_value": "2547 Hwy 662, Morgan City, LA 70380"
+  },
+  {
+   "claim_id": "p-lad-services-morgan-city-la:products",
+   "source_url": "https://www.ladcompanies.com/barge-fabrication",
+   "ledger_value": "New barges: deck, hopper, tank, spud, crane, equipment, specialty barges; custom marine structures",
+   "evidence_row": 4050,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-lad-services-morgan-city-la:products",
+   "source_url": "https://www.highergov.com/news/lad-services-wins-12-million-army-corps-barge-con-6490165/",
+   "ledger_value": "Three new welded steel barges for the US Army Corps of Engineers, built in Morgan City",
+   "evidence_row": 4051,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "company level: three new welded steel barges for USACE, to be built in Morgan City (yard not named; placement at this yard inferred)",
+   "corrected_quote": "has won an $11.52 million firm-fixed-price contract to provide three new welded steel barges for the U.S. Army Corps of Engineers. The barges will be built in Morgan City, with work expected to be completed by June 16, 2028.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "severity": "substantive",
+   "block": "lad_shared_city",
+   "note": "The same shared-ZIP placement as row 4285. The product line stands on row 4050 (company barge-fabrication page). Basis: the ledger's own relationship row 4054 says the award 'does not pick a site'. LAD reports 'three facilities throughout southern Louisiana' (ladcompanies.com/about) but publishes only 2547 Hwy 662. EPA FRS lists 'LAD SERVICES OF LOUISIANA, LLC - AMELIA FACILITY' at 2575 Hwy 662 (city Morgan City) and 'LAD SALVAGE' at 1079 E Stephensville Rd (city Stephensville, St. Martin Parish), both under ZIP 70380. The third facility is unlocated. So the Morgan City ZIP is shared by at least two LAD sites, and the award and grant name no yard. That matches the Conrad precedent (deck barge 'in Morgan City' kept at c-conrad:triggers) and rules 3-4. Retagged inferred because the plant placement is a judgement; the coordinator should move these rows to c-lad-services. Sensitivity: if 'Morgan City' is read as the Hwy 662 site, demand stays 15 and the total 35.",
+   "plants_csv_value": "New steel barges (deck, hopper, tank, spud, crane, equipment and specialty barges) and custom marine structures; also drydock and topside repair"
+  },
+  {
+   "claim_id": "p-conrad-morgan-city-la:name",
+   "source_url": "https://conradindustries.com/contact",
+   "ledger_value": "Conrad Morgan City",
+   "evidence_row": 4056,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-conrad-morgan-city-la:address",
+   "source_url": "https://conradindustries.com/contact",
+   "ledger_value": "1501 Front Street, Morgan City, LA 70380",
+   "evidence_row": 4057,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-conrad-morgan-city-la:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=CONRAD%20SHIPYARD&state_abbr=LA&output=JSON",
+   "ledger_value": "1501 Front St, Morgan City (EPA FRS registry 110000846568)",
+   "evidence_row": 4058,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-conrad-morgan-city-la:products",
+   "source_url": "https://conradindustries.com/facilities/morgan-city/",
+   "ledger_value": "Small and medium-sized vessels for commercial and government customers",
+   "evidence_row": 4059,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-lad-services-morgan-city-la:triggers",
+   "source_url": "https://www.workboat.com/marad-awards-35-2-million-to-45-small-shipyards",
+   "ledger_value": "Aug 13, 2026: MARAD Small Shipyard Grant $1,041,329 for a 165-ton crawler crane",
+   "evidence_row": 4284,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "company level: Aug 13, 2026: MARAD Small Shipyard Grant of $1,041,329 to LAD Services of Louisiana LLC, Morgan City, for a 165-ton crawler crane; the grant names no yard, so placing it at this yard is inferred",
+   "corrected_quote": "LAD Services of Louisiana LLC, Morgan City — $1,041,329 for a 165-ton crawler crane.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "severity": "substantive",
+   "block": "lad_shared_city",
+   "note": "The quote is on the WorkBoat page. Rule 4 counts a grant 'for equipment at the plant'; this one names the LLC and city only (contrast Caruthersville's 'Plant No. 1075'). Basis: the ledger's own relationship row 4054 says the award 'does not pick a site'. LAD reports 'three facilities throughout southern Louisiana' (ladcompanies.com/about) but publishes only 2547 Hwy 662. EPA FRS lists 'LAD SERVICES OF LOUISIANA, LLC - AMELIA FACILITY' at 2575 Hwy 662 (city Morgan City) and 'LAD SALVAGE' at 1079 E Stephensville Rd (city Stephensville, St. Martin Parish), both under ZIP 70380. The third facility is unlocated. So the Morgan City ZIP is shared by at least two LAD sites, and the award and grant name no yard. That matches the Conrad precedent (deck barge 'in Morgan City' kept at c-conrad:triggers) and rules 3-4. Retagged inferred because the plant placement is a judgement; the coordinator should move these rows to c-lad-services. Sensitivity: if 'Morgan City' is read as the Hwy 662 site, demand stays 15 and the total 35.",
+   "plants_csv_value": "company level only (no yard named): Oct 1, 2026 USACE award for three welded steel barges to be built in Morgan City; Aug 13, 2026 MARAD grant of $1,041,329 to LAD Services of Louisiana LLC, Morgan City, for a 165-ton crawler crane"
+  },
+  {
+   "claim_id": "p-lad-services-morgan-city-la:triggers",
+   "source_url": "https://www.highergov.com/news/lad-services-wins-12-million-army-corps-barge-con-6490165/",
+   "ledger_value": "USACE award for three welded steel barges, completion by June 2028; Oct 1, 2026: $11.52M USACE contract for three welded steel barges built in Morgan City, due June 16, 2028",
+   "evidence_row": 4285,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "company level: Oct 1, 2026: $11.52M USACE contract for three welded steel barges to be built in Morgan City, due June 16, 2028; the award names no LAD yard, so placing it at this yard is inferred",
+   "corrected_quote": "has won an $11.52 million firm-fixed-price contract to provide three new welded steel barges for the U.S. Army Corps of Engineers. The barges will be built in Morgan City, with work expected to be completed by June 16, 2028.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "severity": "substantive",
+   "block": "lad_shared_city",
+   "note": "The quote is on the HigherGov page. Basis: the ledger's own relationship row 4054 says the award 'does not pick a site'. LAD reports 'three facilities throughout southern Louisiana' (ladcompanies.com/about) but publishes only 2547 Hwy 662. EPA FRS lists 'LAD SERVICES OF LOUISIANA, LLC - AMELIA FACILITY' at 2575 Hwy 662 (city Morgan City) and 'LAD SALVAGE' at 1079 E Stephensville Rd (city Stephensville, St. Martin Parish), both under ZIP 70380. The third facility is unlocated. So the Morgan City ZIP is shared by at least two LAD sites, and the award and grant name no yard. That matches the Conrad precedent (deck barge 'in Morgan City' kept at c-conrad:triggers) and rules 3-4. Retagged inferred because the plant placement is a judgement; the coordinator should move these rows to c-lad-services. Sensitivity: if 'Morgan City' is read as the Hwy 662 site, demand stays 15 and the total 35.",
+   "plants_csv_value": "company level only (no yard named): Oct 1, 2026 USACE award for three welded steel barges to be built in Morgan City; Aug 13, 2026 MARAD grant of $1,041,329 to LAD Services of Louisiana LLC, Morgan City, for a 165-ton crawler crane"
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=ARCOSA%20MARINE&state_abbr=MO&output=JSON",
+   "ledger_value": "Arcosa Marine Products Plant 1075",
+   "evidence_row": 4304,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=TRINITY%20MARINE&state_abbr=MO&output=JSON",
+   "ledger_value": "Trinity Marine Products Plant 75",
+   "evidence_row": 4305,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:address",
+   "source_url": "https://nabricomarine.com/contact-us/",
+   "ledger_value": "265 County Hwy 346, Caruthersville, MO 63830",
+   "evidence_row": 4306,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:parent_company",
+   "source_url": "https://www.workboat.com/marad-awards-35-2-million-to-45-small-shipyards",
+   "ledger_value": "NABRICO Marine Products (former Arcosa Marine Products)",
+   "evidence_row": 4307,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "NABRICO Marine Products (the former Arcosa Marine barge business)",
+   "corrected_quote": "While the business is now operating as a standalone entity under Wynnchurch Capital, the entire leadership team from Arcosa Marine remains in place.",
+   "corrected_source_url": "https://www.waterwaysjournal.net/2026/05/15/nabrico-forges-path-anticipates-growing-demand-for-new-construction-barges/",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "severity": "attribution",
+   "note": "WorkBoat's page shows 'Arcosa Marine Products, Nabrico Marine Plant No. 1075' but not 'former'. The sibling Wynnchurch page does not name Arcosa either. The clause is true and stated on the Waterways Journal page.",
+   "plants_csv_value": "(keep current: NABRICO Marine Products (Wynnchurch Capital investment, April 2026))"
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:products",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=81462df6-ccee-442f-9f3f-7e62b0968391&ccId=19000101_000001&lang=en_US",
+   "ledger_value": "Barge plant (welding)",
+   "evidence_row": 4308,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "Barge plant (welding)",
+   "corrected_quote": "NABRICO Marine Products is searching for a Welder in our Caruthersville, MO barge plant.",
+   "corrected_source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/84085732_19?cid=81462df6-ccee-442f-9f3f-7e62b0968391&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "severity": "attribution",
+   "note": "The cited ADP list page (recruitment.html) shows titles and locations only. The sentence is in the Welder II requisition JSON (row 5582's URL), which was checked today. The inferred tier, relationship and lookalike rows (4310-4312) cite the same list page and need the same source fix.",
+   "plants_csv_value": "(keep current plants.csv products value)"
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:products",
+   "source_url": "https://www.workboat.com/marad-awards-35-2-million-to-45-small-shipyards",
+   "ledger_value": "600-ton press modernisation",
+   "evidence_row": 4309,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:triggers",
+   "source_url": "https://www.workboat.com/marad-awards-35-2-million-to-45-small-shipyards",
+   "ledger_value": "Aug 13, 2026: MARAD FY2026 small shipyard grant, $911,171 to modernize the plant's 600-ton press",
+   "evidence_row": 4313,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-heartland-fabrication-brownsville-pa:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=HEARTLAND%20FABRICATION&state_abbr=PA&output=JSON",
+   "ledger_value": "Heartland Fabrication LLC",
+   "evidence_row": 4326,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-heartland-fabrication-brownsville-pa:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=HEARTLAND%20FABRICATION&state_abbr=PA&output=JSON",
+   "ledger_value": "1800 Paul Thomas Blvd, Brownsville, PA 15417",
+   "evidence_row": 4327,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-heartland-fabrication-brownsville-pa:parent_company",
+   "source_url": "https://www.marinelog.com/inland-coastal/heartland-fabrication-to-invest-60m-in-expanding-hopper-barge-production/",
+   "ledger_value": "Heartland Companies Inc.",
+   "evidence_row": 4328,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-heartland-fabrication-brownsville-pa:products",
+   "source_url": "https://www.marinelog.com/inland-coastal/heartland-fabrication-to-invest-60m-in-expanding-hopper-barge-production/",
+   "ledger_value": "280 per year from 2028",
+   "evidence_row": 4329,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-heartland-fabrication-brownsville-pa:products",
+   "source_url": "https://www.observer-reporter.com/editors_pick/2026/jul/08/brownsville-barge-plant-launching-65-million-expansion/",
+   "ledger_value": "300-foot barges",
+   "evidence_row": 4330,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-heartland-fabrication-brownsville-pa:headcount",
+   "source_url": "https://www.marinelog.com/inland-coastal/heartland-fabrication-to-invest-60m-in-expanding-hopper-barge-production/",
+   "ledger_value": "approximately 410 (Sep 2026)",
+   "evidence_row": 4331,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-heartland-fabrication-brownsville-pa:triggers",
+   "source_url": "https://www.marinelog.com/inland-coastal/heartland-fabrication-to-invest-60m-in-expanding-hopper-barge-production/",
+   "ledger_value": "Sep 21, 2026: ~$60M multi-year expansion; capability from 180 to 280 hopper barges a year from 2028",
+   "evidence_row": 4335,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-heartland-fabrication-brownsville-pa:triggers",
+   "source_url": "https://www.observer-reporter.com/editors_pick/2026/jul/08/brownsville-barge-plant-launching-65-million-expansion/",
+   "ledger_value": "Jul 2026: $65M expansion announced during a Senate tour",
+   "evidence_row": 4336,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-heartland-fabrication-brownsville-pa:triggers",
+   "source_url": "https://www.marinelog.com/news/duffy-announces-8-75m-in-small-shipyard-grants/",
+   "ledger_value": "Jul 21, 2025: MARAD FY2025 grant for a plasma cutting machine",
+   "evidence_row": 4337,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-great-lakes-shipyard-cleveland-oh:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=GREAT%20LAKES%20TOWING&state_abbr=OH&output=JSON",
+   "ledger_value": "The Great Lakes Towing Company (shipyard)",
+   "evidence_row": 4433,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA shows 'THE GREAT LAKES TOWING COMPANY, LLC' at 4500 Division Avenue. plants.csv carries the name 'Great Lakes Shipyard (The Great Lakes Group)', which is supported by the shipyard page (website row 5662)."
+  },
+  {
+   "claim_id": "p-great-lakes-shipyard-cleveland-oh:parent_company",
+   "source_url": "https://thegreatlakesgroup.com/2026/09/25/press-release-the-great-lakes-towing-company-orders-two-new-damen-tugs-from-great-lakes-shipyard",
+   "ledger_value": "The Great Lakes Group",
+   "evidence_row": 4435,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-great-lakes-shipyard-cleveland-oh:products",
+   "source_url": "https://thegreatlakesgroup.com/new-vessel-construction",
+   "ledger_value": "ocean, lake and river vessels and barges",
+   "evidence_row": 4436,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-great-lakes-shipyard-cleveland-oh:products",
+   "source_url": "https://thegreatlakesgroup.com/barge-construction",
+   "ledger_value": "barges, certified welders",
+   "evidence_row": 4437,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-great-lakes-shipyard-cleveland-oh:welder_postings",
+   "source_url": "https://thegreatlakesgroup.com/careers",
+   "ledger_value": "none open: careers page lists Controller, Director of Fleet Engineering, Manager New Construction, mechanics, a captain and a machinist; no welder or fitter role",
+   "evidence_row": 4441,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-great-lakes-shipyard-cleveland-oh:triggers",
+   "source_url": "https://thegreatlakesgroup.com/2026/09/25/press-release-the-great-lakes-towing-company-orders-two-new-damen-tugs-from-great-lakes-shipyard",
+   "ledger_value": "Sep 23, 2026: Great Lakes Towing ordered two Damen-designed harbor tugs from Great Lakes Shipyard; construction to begin later in 2026 in Cleveland",
+   "evidence_row": 4442,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-keel-goose-creek-sc:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=PEGASUS%20STEEL&state_abbr=SC&output=JSON",
+   "ledger_value": "Pegasus Steel, a Keel company - Goose Creek",
+   "evidence_row": 4599,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-keel-goose-creek-sc:address",
+   "source_url": "https://keelusa.com/locations/",
+   "ledger_value": "1 Alliance Dr, Goose Creek, SC 29445",
+   "evidence_row": 4600,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-keel-goose-creek-sc:parent_company",
+   "source_url": "https://keelusa.com/keel-a-purpose-built-company/",
+   "ledger_value": "Keel (Arlington Capital Partners)",
+   "evidence_row": 4601,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-keel-goose-creek-sc:products",
+   "source_url": "https://www.live5news.com/2024/02/21/state-military-manufacturing-companies-merge-together/?outputType=amp",
+   "ledger_value": "Parts for aircraft carriers, combat vehicles and submarines (Pegasus Steel, sites Ladson, Goose Creek, Hollywood)",
+   "evidence_row": 4602,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "The 2024 quote is on the page. The value names Pegasus Steel (company) as the subject and lists the three sites; it does not place the products at Goose Creek, and plants.csv says 'site role not stated'."
+  },
+  {
+   "claim_id": "p-keel-goose-creek-sc:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/9298c9b6-3bb4-4a0d-a877-d406414fb161/Keel-Platform",
+   "ledger_value": "none counted: Goose Creek listings are a beveler, burn-table operators, a CNC machinist, a laser tracker trainee, a liaison engineer and a quality lead",
+   "evidence_row": 4605,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Browser render today: the Goose Creek listings are Beveler I, Liaison Engineer, two Burn Table Operators, Laser Tracker Trainee, CNC Machinist and Quality Technician Team Lead. No welder or fitter."
+  },
+  {
+   "claim_id": "p-keel-goose-creek-sc:found_by",
+   "source_url": "https://keelusa.com/locations/",
+   "ledger_value": "company site;job posting;government file (EPA FRS);news",
+   "evidence_row": 4607,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-keel-goose-creek-sc:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1%20Alliance%20Dr%2C%20Goose%20Creek%2C%20SC%2029445&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "45015",
+   "evidence_row": 4608,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-keel-goose-creek-sc:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1%20Alliance%20Dr%2C%20Goose%20Creek%2C%20SC%2029445&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "33.023813",
+   "evidence_row": 4609,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-trident-lockport-la:name",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201827236155_1?cid=64c575fd-f386-4283-8274-3c67631f5ee8&ccId=19000101_000001&lang=en_US&locale=en_US",
+   "ledger_value": "Trident Modules Division, Lockport",
+   "evidence_row": 4650,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "ADP requisition 9201827236155_1 (NDT Inspector II, posted 2026-07-30) is open today. Its body reads 'Department: Modules Division – Quality Assurance Location: Lockport, LA', but the board location field is 'Gulf Coast, New Orleans, LA, US' (70123). See plant_status_notes."
+  },
+  {
+   "claim_id": "p-trident-lockport-la:city",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201827236155_1?cid=64c575fd-f386-4283-8274-3c67631f5ee8&ccId=19000101_000001&lang=en_US&locale=en_US",
+   "ledger_value": "Lockport, LA",
+   "evidence_row": 4651,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-trident-lockport-la:parent_company",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201827236155_1?cid=64c575fd-f386-4283-8274-3c67631f5ee8&ccId=19000101_000001&lang=en_US&locale=en_US",
+   "ledger_value": "Trident Maritime Systems",
+   "evidence_row": 4653,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-trident-lockport-la:products",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201827236155_1?cid=64c575fd-f386-4283-8274-3c67631f5ee8&ccId=19000101_000001&lang=en_US&locale=en_US",
+   "ledger_value": "Ship structures and modular fabrications for CVN, VCS/ORP and DDG",
+   "evidence_row": 4654,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "On the page. It says the inspector inspects these structures; that they are fabricated at Lockport is a reading of 'Location: Lockport, LA'."
+  },
+  {
+   "claim_id": "p-trident-lockport-la:products",
+   "source_url": "https://www.hii.com/news/at-sea-air-space-2026-hii-celebrates-manufacturing-job-creation-expansion-of-us-shipbuilding-industrial-base",
+   "ledger_value": "Trident builds units in Louisiana (company level)",
+   "evidence_row": 4655,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-trident-lockport-la:prospect_test",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201827236155_1?cid=64c575fd-f386-4283-8274-3c67631f5ee8&ccId=19000101_000001&lang=en_US&locale=en_US",
+   "ledger_value": "pass",
+   "evidence_row": 4657,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "corrected",
+   "corrected_value": "pass (low certainty: only an NDT inspection posting places welded work at Lockport)",
+   "corrected_quote": "Perform VT (Visual Testing) and VT Level II inspections on welds, components, and structures to verify conformance with NAVSEA and NNS standards.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "severity": "attribution",
+   "note": "Out of the delegated field list. A prospect-test verdict tagged stated, while its own reasoning says '(inferred)'. The poles F2 precedent retagged 17 such rows."
+  },
+  {
+   "claim_id": "p-trident-lockport-la:found_by",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201827236155_1?cid=64c575fd-f386-4283-8274-3c67631f5ee8&ccId=19000101_000001&lang=en_US&locale=en_US",
+   "ledger_value": "job posting;company site",
+   "evidence_row": 4658,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-eastern-panama-city-fl:supplies:p-ingalls-pascagoula-ms",
+   "source_url": "https://gcaptain.com/eastern-shipbuilding-partners-with-hii-to-boost-u-s-navy-destroyer-production",
+   "ledger_value": "Outfitted structural units for Flight III Arleigh Burke-class destroyers (DDG 135 pilot; 2025 strategic agreement)",
+   "evidence_row": 4813,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-keel-goose-creek-sc:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1%20Alliance%20Dr%2C%20Goose%20Creek%2C%20SC%2029445&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-80.085828",
+   "evidence_row": 4816,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-keel-goose-creek-sc:state",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1%20Alliance%20Dr%2C%20Goose%20Creek%2C%20SC%2029445&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "SC",
+   "evidence_row": 4817,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-keel-goose-creek-sc:city",
+   "source_url": "https://keelusa.com/locations/",
+   "ledger_value": "Goose Creek",
+   "evidence_row": 4850,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-keel-goose-creek-sc:website",
+   "source_url": "https://keelusa.com/locations/",
+   "ledger_value": "https://keelusa.com",
+   "evidence_row": 4851,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-trident-lockport-la:state",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201827236155_1?cid=64c575fd-f386-4283-8274-3c67631f5ee8&ccId=19000101_000001&lang=en_US&locale=en_US",
+   "ledger_value": "LA",
+   "evidence_row": 4859,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-nns-goose-creek-sc:materials",
+   "source_url": "https://careers.huntingtoningalls.com/job/Goose-Creek-MECH-TECH-P-2-%28WELDER%29-Sout/1418629500/",
+   "ledger_value": "aluminum and steel parts and assemblies",
+   "evidence_row": 4932,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-nns-goose-creek-sc:production_type",
+   "source_url": "https://scbiz.com/inside-goose-creek-operations-of-the-largest-military-shipbuilder-in-the-u-s/",
+   "ledger_value": "submarine modules (Virginia-class habitability, auxiliary machine room, weapons; Columbia-class auxiliary machine room, weapons) and carrier structural units; carrier structural units",
+   "evidence_row": 4933,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-nns-goose-creek-sc:welder_postings",
+   "source_url": "https://careers.huntingtoningalls.com/search/?q=fitter&sortColumn=referencedate&sortDirection=desc",
+   "ledger_value": "Mech Tech (Fitter) postings Nov 10 and Oct 22, 2026",
+   "evidence_row": 4934,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "The HII careers search shows MECH TECH C 1 (Nov 10) and C 3 (Oct 22) (FITTER), Goose Creek, today."
+  },
+  {
+   "claim_id": "p-nns-goose-creek-sc:triggers",
+   "source_url": "https://hii.com/news/hii-marks-one-year-of-newport-news-shipbuilding-charleston-operations",
+   "ledger_value": "Jan 2025: HII closed the W International asset acquisition; production ramp-up since; first unit within 40 days; 2025 production targets exceeded",
+   "evidence_row": 4935,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-nns-goose-creek-sc:headcount",
+   "source_url": "https://scbiz.com/inside-goose-creek-operations-of-the-largest-military-shipbuilder-in-the-u-s/",
+   "ledger_value": "475 (March 2025)",
+   "evidence_row": 4936,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-nns-goose-creek-sc:status_detail",
+   "source_url": "https://scbiz.com/inside-goose-creek-operations-of-the-largest-military-shipbuilder-in-the-u-s/",
+   "ledger_value": "full-rate production not expected until 2027-2028",
+   "evidence_row": 4937,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-nns-goose-creek-sc:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Goose Creek site posted a Mech Tech fitter role on Nov 10, 2026 alongside three welder roles, as you ramp up after HII's January 2025 acquisition; with HII's Path agreement in place, which module welds would you look at first?",
+   "evidence_row": 4939,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by a stated row of a cited claim (rows opened 2026-11-13); ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:weld_processes",
+   "source_url": "https://api.ashbyhq.com/posting-api/job-board/saronic",
+   "ledger_value": "SMAW, GMAW (MIG), FCAW and GMAW-P on carbon steel, aluminum and stainless",
+   "evidence_row": 4965,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:materials",
+   "source_url": "https://www.workboat.com/saronic-flips-its-first-marauder-usv-hull",
+   "ledger_value": "aluminum-first: the Marauder is an aluminum vessel",
+   "evidence_row": 4966,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "WorkBoat, Nov 6, 2026: 'the completed aluminum vessel'. 'Aluminum-first' is the vertical boundary label; sibling row 4968 records carbon and stainless steel certifications."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:materials",
+   "source_url": "https://www.marinelog.com/shipbuilding/shipyards/shipyard-news/saronics-first-marauder-goes-from-design-to-on-water-reality-in-under-a-year/",
+   "ledger_value": "aluminum shipbuilding techniques",
+   "evidence_row": 4967,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:materials",
+   "source_url": "https://api.ashbyhq.com/posting-api/job-board/saronic",
+   "ledger_value": "also carbon steel and stainless (welder certifications) and Cupro-Nickel pipe",
+   "evidence_row": 4968,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:production_type",
+   "source_url": "https://www.marinelog.com/shipbuilding/shipyards/shipyard-news/saronics-first-marauder-goes-from-design-to-on-water-reality-in-under-a-year/",
+   "ledger_value": "series production of one class: repeatable system to build fleets; up to 20 Marauders a year; up to 20 Marauders per year after expansion",
+   "evidence_row": 4969,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:production_type",
+   "source_url": "https://api.ashbyhq.com/posting-api/job-board/saronic",
+   "ledger_value": "structural parts: hulls, decks, bulkheads, frames, foundations",
+   "evidence_row": 4970,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:existing_robots",
+   "source_url": "https://www.path-robotics.com/news/saronic-path-robotics-physical-ai-shipbuilding",
+   "ledger_value": "Path Robotics welding cells: collaboration announced Feb 2026 to integrate them at Franklin; deployment status not stated",
+   "evidence_row": 4971,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:relationship",
+   "source_url": "https://www.path-robotics.com/news/saronic-path-robotics-physical-ai-shipbuilding",
+   "ledger_value": "known_customer: Path's own release names the Franklin shipyard",
+   "evidence_row": 4972,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:welder_postings",
+   "source_url": "https://jobs.ashbyhq.com/saronic/0d5f0adc-adc9-45e4-b195-5088c2611f29",
+   "ledger_value": "Fitter duties include tacking and welding foundations",
+   "evidence_row": 4973,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:triggers",
+   "source_url": "https://www.workboat.com/shipbuilding/saronic-s-300-million-shipyard-expansion-in-louisiana",
+   "ledger_value": "Dec 3, 2025: $300M Franklin expansion: 300,000+ sq ft, three new slips, dedicated large-vessel line for the 180-ft Marauder, 1,500 jobs; completion targeted end of 2026; three new slips and a dedicated large-vessel assembly line",
+   "evidence_row": 4974,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Franklin Welder posting has been open since March 11, 2026 and the Fitter since November 2025, with the $300M expansion due to finish by end-2026; with the Path welding-cell initiative set to begin in Franklin, which Marauder welds would you want it to cover first?",
+   "evidence_row": 4976,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "Your Franklin Welder posting has been open since March 11, 2026 and the Fitter since November 2025, with the $300M expansion due to finish by end-2026; Path said in February 2026 that its welding-cell initiative would begin in Franklin, so which Marauder welds would you want it to cover first?",
+   "corrected_quote": "The initiative will begin at Saronic’s Franklin, Louisiana facility, where intelligent welding cells will combine Path Robotics’ AI-enabled welding models with Saronic’s in-house team of welders.",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "severity": "attribution",
+   "note": "'Set to begin' restates as current, in November 2026, a 'will begin' from the February 12-14, 2026 releases. Whether the initiative has begun is not known. The replacement dates the clause to its source. The posting dates (Welder 2026-03-11, Fitter 2025-11-17, both live in the Ashby API today) and 'end of 2026' (WorkBoat) are confirmed.",
+   "plants_csv_value": "Your Franklin Welder posting has been open since March 11, 2026 and the Fitter since November 2025, with the $300M expansion due to finish by end-2026; Path said in February 2026 that its welding-cell initiative would begin in Franklin, so which Marauder welds would you want it to cover first?"
+  },
+  {
+   "claim_id": "p-lad-services-morgan-city-la:parent_company",
+   "source_url": "https://www.ladcompanies.com/",
+   "ledger_value": "LAD Companies Inc.",
+   "evidence_row": 4999,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-lad-services-morgan-city-la:website",
+   "source_url": "https://www.ladcompanies.com/",
+   "ledger_value": "https://www.ladcompanies.com",
+   "evidence_row": 5000,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-lad-services-morgan-city-la:city",
+   "source_url": "https://www.ladcompanies.com/",
+   "ledger_value": "Morgan City",
+   "evidence_row": 5001,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-lad-services-morgan-city-la:state",
+   "source_url": "https://www.ladcompanies.com/",
+   "ledger_value": "LA",
+   "evidence_row": 5002,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-lad-services-morgan-city-la:county_conflict",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=LAD%20SERVICES&state_abbr=LA&output=JSON",
+   "ledger_value": "EPA FRS county: St. Mary Parish (22101)",
+   "evidence_row": 5004,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-lad-services-morgan-city-la:materials",
+   "source_url": "https://ladcompanies.com/new-barge-fabrication-guide/",
+   "ledger_value": "steel plate",
+   "evidence_row": 5007,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-lad-services-morgan-city-la:materials",
+   "source_url": "https://www.highergov.com/news/lad-services-wins-12-million-army-corps-barge-con-6490165/",
+   "ledger_value": "welded steel barges (USACE award, built in Morgan City)",
+   "evidence_row": 5008,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "company level: welded steel barges (USACE award, to be built in Morgan City; yard not named; placement inferred)",
+   "corrected_quote": "has won an $11.52 million firm-fixed-price contract to provide three new welded steel barges for the U.S. Army Corps of Engineers. The barges will be built in Morgan City, with work expected to be completed by June 16, 2028.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "severity": "substantive",
+   "block": "lad_shared_city",
+   "note": "The same shared-ZIP placement; no score effect (material 0). Sibling row 5007 is a generic guide sentence, so steel is company level for LAD.",
+   "plants_csv_value": "steel (company level: barges built almost entirely from steel plate; welded steel barges for USACE, yard not named)"
+  },
+  {
+   "claim_id": "p-lad-services-morgan-city-la:production_type",
+   "source_url": "https://www.ladcompanies.com/barge-fabrication",
+   "ledger_value": "custom: every barge project built to different requirements",
+   "evidence_row": 5009,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Cited by a score or opening line; tagged inferred with reasoning; quote on the page (fetched 2026-11-13) where one is given; points earned without confidence where the row is inferred."
+  },
+  {
+   "claim_id": "p-lad-services-morgan-city-la:existing_robots",
+   "source_url": "https://www.path-robotics.com/news/lad-services-partners-with-path-robotics-to-revolutionize-barge-manufacturing-with-physical-ai-for-w",
+   "ledger_value": "Path physical-AI welding: LAD announced plans to deploy (Dec 1, 2025); site and status not stated",
+   "evidence_row": 5010,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-lad-services-morgan-city-la:welder_postings",
+   "source_url": "https://www.ladcompanies.com/employment-opportunities",
+   "ledger_value": "none found: LAD's employment page offers a downloadable application only; no listings; web search found no LAD postings",
+   "evidence_row": 5011,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Cited by a score or opening line; tagged inferred with reasoning; quote on the page (fetched 2026-11-13) where one is given; points earned without confidence where the row is inferred."
+  },
+  {
+   "claim_id": "p-lad-services-morgan-city-la:bottleneck_guess",
+   "source_url": "https://www.path-robotics.com/news/lad-services-partners-with-path-robotics-to-revolutionize-barge-manufacturing-with-physical-ai-for-w",
+   "ledger_value": "Welder availability, in LAD's own words: skilled welders are getting harder to find and it could not make everything it needed with people alone (Dec 2025, company level)",
+   "evidence_row": 5012,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-lad-services-morgan-city-la:opening_line",
+   "source_url": "",
+   "ledger_value": "In October 2026 LAD won a USACE award for three welded steel barges to be built in Morgan City, after an August MARAD grant for a 165-ton crawler crane; as the Path welding plan you announced in December 2025 moves ahead, which barge welds would you start with?",
+   "evidence_row": 5013,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "In October 2026 LAD won a USACE award for three welded steel barges to be built in Morgan City, after an August MARAD grant for a 165-ton crawler crane; with the Path welding plan you announced in December 2025, which barge welds would you start with?",
+   "corrected_quote": "LAD Services, a leading shipbuilder in Louisiana, announces their plan to deploy Path Robotics' physical-AI for welding to address the skilled welder shortage and close the gap between demand and production speed.",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "severity": "attribution",
+   "note": "'As the Path welding plan ... moves ahead' asserts progress that no source shows. The only source is the Dec 1, 2025 announcement of a 'plan to deploy'. The replacement drops the status claim. The award and grant clauses are phrased at company level ('LAD won'), which is right. The reasoning must re-cite them to c-lad-services:triggers once rows 4284 and 4285 move. No Path deployment is asserted at this site.",
+   "plants_csv_value": "In October 2026 LAD won a USACE award for three welded steel barges to be built in Morgan City, after an August MARAD grant for a 165-ton crawler crane; with the Path welding plan you announced in December 2025, which barge welds would you start with?"
+  },
+  {
+   "claim_id": "p-keel-goose-creek-sc:materials",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4590839",
+   "ledger_value": "plate steel; heavy structural steel components",
+   "evidence_row": 5037,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Paylocity 4590839 is Burn Table Operator - 2nd Shift, Goose Creek, SC. 'Fabricate heavy structural steel components' is on the page."
+  },
+  {
+   "claim_id": "p-keel-goose-creek-sc:open_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/9298c9b6-3bb4-4a0d-a877-d406414fb161/Keel-Platform",
+   "ledger_value": "Beveler I (11/10/2026); Burn Table Operator 2nd shift and weekend (10/15/2026) at Goose Creek; Burn Table Operator - 2nd Shift (10/15/2026)",
+   "evidence_row": 5038,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "A plain fetch gets no listings (JavaScript board). The browser render today shows 'Beveler I 11/10/2026 Goose Creek Location' and 'Burn Table Operator - 2nd Shift 10/15/2026 Goose Creek Location'."
+  },
+  {
+   "claim_id": "p-keel-goose-creek-sc:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Goose Creek site posted a Beveler I on Nov 10, 2026 and burn-table operator roles in October for plate steel and heavy structural components; which welding steps run at Goose Creek and which at Ladson?",
+   "evidence_row": 5040,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by a stated row of a cited claim (rows opened 2026-11-13); ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-biw-bath-me:parent_company",
+   "source_url": "https://investorrelations.gd.com/news/press-release-details/2025/General-Dynamics-Bath-Iron-Works-Awarded-Contract-for-Additional-DDG-51-Destroyer/default.aspx",
+   "ledger_value": "General Dynamics",
+   "evidence_row": 5065,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-biw-bath-me:weld_processes",
+   "source_url": "https://careers-gdbiw.icims.com/jobs/4952/welder-%28grade-7%29/job?in_iframe=1",
+   "ledger_value": "FCAW and GMAW-P",
+   "evidence_row": 5068,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-biw-bath-me:materials",
+   "source_url": "https://careers-gdbiw.icims.com/jobs/4965/shipfitter-%28grades-4---6%29/job?in_iframe=1",
+   "ledger_value": "steel, stainless steel and aluminum (sheet metal) items",
+   "evidence_row": 5069,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-biw-bath-me:production_type",
+   "source_url": "https://careers-gdbiw.icims.com/jobs/4965/shipfitter-%28grades-4---6%29/job?in_iframe=1",
+   "ledger_value": "many part types: hull outfit foundations, tanks, small assemblies, bulkhead assemblies",
+   "evidence_row": 5070,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-biw-bath-me:production_type",
+   "source_url": "https://careers-gdbiw.icims.com/jobs/4966/shipfitter-%28grades-7---9%29/job?in_iframe=1",
+   "ledger_value": "entire deck sections, grating assemblies, critical foundations",
+   "evidence_row": 5071,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-biw-bath-me:welder_postings",
+   "source_url": "https://careers-gdbiw.icims.com/jobs/4952/welder-%28grade-7%29/job?in_iframe=1",
+   "ledger_value": "Welder (Grade 7): 7 remaining positions, post end 12/31/2026, Bath",
+   "evidence_row": 5075,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "iCIMS 4952: Location US-ME-Bath, Remaining Positions 7, Post End 12/31/2026. No TIG/GTAW on the page."
+  },
+  {
+   "claim_id": "p-biw-bath-me:welder_postings",
+   "source_url": "https://careers-gdbiw.icims.com/jobs/4964/shipfitter-%28grades-1---3%29/job?in_iframe=1",
+   "ledger_value": "Shipfitter (Grades 1-3): 8 remaining positions, Bath",
+   "evidence_row": 5076,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-biw-bath-me:welder_postings",
+   "source_url": "https://careers-gdbiw.icims.com/jobs/4965/shipfitter-%28grades-4---6%29/job?in_iframe=1",
+   "ledger_value": "Shipfitter (Grades 4-6): 15 remaining positions, Bath",
+   "evidence_row": 5077,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-biw-bath-me:welder_postings",
+   "source_url": "https://careers-gdbiw.icims.com/jobs/4966/shipfitter-%28grades-7---9%29/job?in_iframe=1",
+   "ledger_value": "Shipfitter (Grades 7-9): 11 remaining positions, Bath",
+   "evidence_row": 5078,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-biw-bath-me:triggers",
+   "source_url": "https://mainebiz.biz/article/bath-iron-works-inaugurates-40m-building-to-speed-production-of-navy-warships/",
+   "ledger_value": "Apr 2026: $40M Pier Support Center opened at BIW to speed DDG 51 production",
+   "evidence_row": 5079,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-biw-bath-me:triggers",
+   "source_url": "https://investorrelations.gd.com/news/press-release-details/2025/General-Dynamics-Bath-Iron-Works-Awarded-Contract-for-Additional-DDG-51-Destroyer/default.aspx",
+   "ledger_value": "Jul 31 2025: Navy added a DDG 51 destroyer to BIW multi-year contract",
+   "evidence_row": 5080,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-biw-bath-me:headcount",
+   "source_url": "https://marinelog.com/news/pentagon-certifies-production-capacity-for-second-ddg-at-gd-biw",
+   "ledger_value": "6,800 (Bath Iron Works, all sites)",
+   "evidence_row": 5081,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Cited by a score or opening line; tagged inferred with reasoning; quote on the page (fetched 2026-11-13) where one is given; points earned without confidence where the row is inferred."
+  },
+  {
+   "claim_id": "p-biw-bath-me:opening_line",
+   "source_url": "",
+   "ledger_value": "Bath Iron Works opened a $40 million Pier Support Center in April 2026, and your Bath welder requisition lists 7 open positions with FCAW and GMAW-P weld tests; how are you staffing structural welding to speed destroyer production?",
+   "evidence_row": 5083,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by a stated row of a cited claim (rows opened 2026-11-13); ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:weld_processes",
+   "source_url": "https://careers-gdeb.icims.com/jobs/21516/afc-welder-fitter-fabricator/job?in_iframe=1",
+   "ledger_value": "manual and mechanized pulse/spray GMAW (frames and cylinders)",
+   "evidence_row": 5119,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:weld_processes",
+   "source_url": "https://careers-gdeb.icims.com/jobs/21521/welder----experienced-or-formal-training/job?in_iframe=1",
+   "ledger_value": "GMAW and SMAW on structural assemblies",
+   "evidence_row": 5120,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:weld_processes",
+   "source_url": "https://careers-gdeb.icims.com/jobs/21519/pipe-welder/job?in_iframe=1",
+   "ledger_value": "GTAW on submarine piping (pipe welder role)",
+   "evidence_row": 5121,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:materials",
+   "source_url": "https://careers-gdeb.icims.com/jobs/21516/afc-welder-fitter-fabricator/job?in_iframe=1",
+   "ledger_value": "steel",
+   "evidence_row": 5122,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:production_type",
+   "source_url": "https://careers-gdeb.icims.com/jobs/21408/shipfitter---entry-level-and-skilled/job?in_iframe=1",
+   "ledger_value": "many part types: foundations, structures, bulkheads, frames, components, deck packages",
+   "evidence_row": 5123,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:welder_postings",
+   "source_url": "https://careers-gdeb.icims.com/jobs/20028/welder---entry-level/job?in_iframe=1",
+   "ledger_value": "Welder - Entry Level, EB Quonset Point Facility",
+   "evidence_row": 5127,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2026-07-31 (105 days) and streetAddress 165 Dillabur Avenue."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:welder_postings",
+   "source_url": "https://careers-gdeb.icims.com/jobs/21516/afc-welder-fitter-fabricator/job?in_iframe=1",
+   "ledger_value": "AFC Welder-Fitter/Fabricator, EB Quonset Point Facility",
+   "evidence_row": 5128,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:welder_postings",
+   "source_url": "https://careers-gdeb.icims.com/jobs/21521/welder----experienced-or-formal-training/job?in_iframe=1",
+   "ledger_value": "Welder - Experienced or Formal Training, EB Quonset Point Facility",
+   "evidence_row": 5129,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:welder_postings",
+   "source_url": "https://careers-gdeb.icims.com/jobs/21522/x-ray-welder/job?in_iframe=1",
+   "ledger_value": "X-Ray Welder, EB Quonset Point Facility",
+   "evidence_row": 5130,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:welder_postings",
+   "source_url": "https://careers-gdeb.icims.com/jobs/21519/pipe-welder/job?in_iframe=1",
+   "ledger_value": "Pipe Welder, EB Quonset Point Facility",
+   "evidence_row": 5131,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2026-11-04. GTAW appears only in this pipe-welder role, so process stays 20 under coordinator rule 1."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:welder_postings",
+   "source_url": "https://careers-gdeb.icims.com/jobs/21406/rt-shipfitter/job?in_iframe=1",
+   "ledger_value": "RT Shipfitter, EB Quonset Point Facility",
+   "evidence_row": 5132,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:welder_postings",
+   "source_url": "https://careers-gdeb.icims.com/jobs/21408/shipfitter---entry-level-and-skilled/job?in_iframe=1",
+   "ledger_value": "Shipfitter - Entry Level and Skilled, EB Quonset Point Facility",
+   "evidence_row": 5133,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:triggers",
+   "source_url": "https://nerej.com/print/63225",
+   "ledger_value": "Sep 2026: ~43 acres approved for two EB buildings of 540,000+ sq ft at Quonset",
+   "evidence_row": 5134,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "Reported Sep 11, 2026: the QDC Board 'recently' approved a lease amendment adding ~43 acres on Davisville Rd, where EB plans two buildings of 540,000+ sq ft for ship manufacturing and fabrication (approval date not stated)",
+   "corrected_quote": "The QDC Board recently gave unanimous approval to two lease amendments that will provide Electric Boat with the additional space it needs",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "severity": "attribution",
+   "note": "The quote is on the NEREJ page, dated September 11, 2026. The page says the approval came 'recently' and gives no month, so 'Sep 2026: ... approved' dates the approval to the article. Demand 15 is unaffected (within 24 months either way, and row 5135 is dated Jul 29 2026).",
+   "plants_csv_value": "Reported Sep 11, 2026: the Quonset Development Corp. board approved ~43 acres for two EB buildings of 540,000+ sq ft for ship manufacturing and fabrication; Jul 29 2026: EB submarine contract with money for improvements at Quonset Point"
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:triggers",
+   "source_url": "https://turnto10.com/news/local/story/general-dynamics-electric-boat-77-billion-dollar-submarine-contract-newport-news-shipbuilding-virgina-columbia-class-groton-connecticut-quonset-point-rhode-island-department-of-defense-july-29-2026",
+   "ledger_value": "Jul 29 2026: EB submarine contract with money for improvements at Quonset Point",
+   "evidence_row": 5135,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:hiring_plan",
+   "source_url": "https://www.reed.senate.gov/news/releases/reed-investments-in-submarine-production-lead-to-3500-new-jobs-coming-to-quonset-point",
+   "ledger_value": "EB plans 3,500 Rhode Island-based hires (2026)",
+   "evidence_row": 5137,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:opening_line",
+   "source_url": "",
+   "ledger_value": "Quonset approved land in September 2026 for two Electric Boat buildings of more than 540,000 sq ft, and your Quonset Point facility has seven welder and shipfitter postings open, including pulse/spray GMAW roles; how will you staff welding for the new halls?",
+   "evidence_row": 5139,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "Quonset's development board has approved about 43 more acres where Electric Boat plans two buildings of more than 540,000 sq ft (reported September 2026), and your Quonset Point facility has seven welder and shipfitter postings open, including pulse/spray GMAW roles; how will you staff welding for the new halls?",
+   "corrected_quote": "The QDC Board recently gave unanimous approval to two lease amendments that will provide Electric Boat with the additional space it needs",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "severity": "attribution",
+   "note": "'Quonset approved land in September 2026' gives an approval month the source does not state ('recently', in an article dated Sep 11, 2026). Every other clause is confirmed: 7 open postings at the EB Quonset Point Facility (iCIMS, 165 Dillabur Avenue in JSON-LD) and pulse/spray GMAW in the AFC posting.",
+   "plants_csv_value": "Quonset's development board has approved about 43 more acres where Electric Boat plans two buildings of more than 540,000 sq ft (reported September 2026), and your Quonset Point facility has seven welder and shipfitter postings open, including pulse/spray GMAW roles; how will you staff welding for the new halls?"
+  },
+  {
+   "claim_id": "p-trident-lockport-la:production_type",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201827236155_1?cid=64c575fd-f386-4283-8274-3c67631f5ee8&ccId=19000101_000001&lang=en_US&locale=en_US",
+   "ledger_value": "ship structures and modular fabrications for CVN, VCS/ORP and DDG programs",
+   "evidence_row": 5250,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-trident-lockport-la:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201827236155_1?cid=64c575fd-f386-4283-8274-3c67631f5ee8&ccId=19000101_000001&lang=en_US&locale=en_US",
+   "ledger_value": "none counted; NDT Inspector II at Lockport (posted 2026-07-30), not counted",
+   "evidence_row": 5259,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Cited by a score or opening line; tagged inferred with reasoning; quote on the page (fetched 2026-11-13) where one is given; points earned without confidence where the row is inferred."
+  },
+  {
+   "claim_id": "p-trident-lockport-la:scale_basis",
+   "source_url": "https://www.hii.com/news/at-sea-air-space-2026-hii-celebrates-manufacturing-job-creation-expansion-of-us-shipbuilding-industrial-base",
+   "ledger_value": "multi-site parent",
+   "evidence_row": 5260,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-trident-lockport-la:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Modules Division in Lockport inspects ship structures and modular fabrications for CVN, Virginia-class and DDG programs; how many welders do you have on those units today?",
+   "evidence_row": 5261,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by a stated row of a cited claim (rows opened 2026-11-13); ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:website",
+   "source_url": "https://hanwhaphillyshipyard.com/?p=1108",
+   "ledger_value": "https://hanwhaphillyshipyard.com",
+   "evidence_row": 5293,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:parent_company",
+   "source_url": "https://maritime-executive.com/article/report-hanwha-ocean-plans-large-scale-expansion-of-philly-shipyard",
+   "ledger_value": "Hanwha Ocean",
+   "evidence_row": 5294,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:weld_processes",
+   "source_url": "https://recruiting.ultipro.com/PHI1012PSHP/JobBoard/0c249280-d8e4-4995-8566-77ba7689e58a/OpportunityDetail?opportunityId=396379a2-6504-437b-802c-a5ebe4d6b2fa",
+   "ledger_value": "FCAW, SMAW, SAW, automated tractor welding",
+   "evidence_row": 5296,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Welder B (posted Nov 10, 2026, Philadelphia 19112) lists FCAW, SMAW, SAW and tractors. No TIG."
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:materials",
+   "source_url": "https://recruiting.ultipro.com/PHI1012PSHP/JobBoard/0c249280-d8e4-4995-8566-77ba7689e58a/OpportunityDetail?opportunityId=396379a2-6504-437b-802c-a5ebe4d6b2fa",
+   "ledger_value": "stainless steel fillet welding listed (steel ships)",
+   "evidence_row": 5297,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:production_type",
+   "source_url": "https://recruiting.ultipro.com/PHI1012PSHP/JobBoard/0c249280-d8e4-4995-8566-77ba7689e58a/OpportunityDetail?opportunityId=38badcf6-fdc1-40e3-aaff-0a42f320f677",
+   "ledger_value": "plate and stiffener assemblies, large panels, double bottoms, web line",
+   "evidence_row": 5298,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:production_type",
+   "source_url": "https://maritime-executive.com/article/report-hanwha-ocean-plans-large-scale-expansion-of-philly-shipyard",
+   "ledger_value": "product tankers and containerships; MARAD training ships",
+   "evidence_row": 5299,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/PHI1012PSHP/JobBoard/0c249280-d8e4-4995-8566-77ba7689e58a/OpportunityDetail?opportunityId=396379a2-6504-437b-802c-a5ebe4d6b2fa",
+   "ledger_value": "Welder B, posted 2026-11-10, Philadelphia 19112",
+   "evidence_row": 5303,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/PHI1012PSHP/JobBoard/0c249280-d8e4-4995-8566-77ba7689e58a/OpportunityDetail?opportunityId=38badcf6-fdc1-40e3-aaff-0a42f320f677",
+   "ledger_value": "Shipbuilder, posted 2026-11-03 (plate and stiffener assembly)",
+   "evidence_row": 5304,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Shipbuilder (posted Nov 3, 2026) covers plate and stiffener assembly, hot work, and 'welding and fitting' among its qualifications. Counted as a fitting role."
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:hiring_context",
+   "source_url": "https://www.inquirer.com/business/hanwha-philly-shipyard-navy-contracts-20260401.html",
+   "ledger_value": "flood of applications reported (Apr 2026)",
+   "evidence_row": 5305,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:triggers",
+   "source_url": "https://www.inquirer.com/business/hanwha-philly-shipyard-expansion-lease-pidc-navy-yard-20260923.html",
+   "ledger_value": "Sep 23 2026: 47-acre lease at the Navy Yard; up to 5,000 more full-time employees planned",
+   "evidence_row": 5306,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:scale_basis",
+   "source_url": "https://maritime-executive.com/article/report-hanwha-ocean-plans-large-scale-expansion-of-philly-shipyard",
+   "ledger_value": "multi-plant parent (Hanwha Ocean Geoje shipyard)",
+   "evidence_row": 5307,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:opening_line",
+   "source_url": "",
+   "ledger_value": "Hanwha agreed in September 2026 to lease another 47 acres at the Navy Yard, and your November 2026 Welder B posting lists FCAW, SMAW, submerged-arc and tractor welding; how are you planning welding capacity for the larger yard?",
+   "evidence_row": 5309,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by a stated row of a cited claim (rows opened 2026-11-13); ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-eastern-panama-city-fl:welder_postings",
+   "source_url": "https://easternshipbuilding.wd12.myworkdayjobs.com/wday/cxs/easternshipbuilding/EasternShipbuildingGroupsystem/job/Panama-City-FL/Engineering-Scheduler_JR101204",
+   "ledger_value": "none found: on Eastern's Workday board (52 postings, 2026-11-13) only office roles carry requisition location 'Nelson' (e.g. Recruiter, Engineering Scheduler, Project Engineer III); all welder and shipfitter requisitions are 'Allanton' or 'Port St Joe'",
+   "evidence_row": 5409,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Workday API today: the welder requisitions (Welder 1/C JR101341 and JR101331, Pipe Welder 1/C JR101113) carry requisition location 'Allanton', and JR101258 'Port St Joe'. JR101204 Engineering Scheduler is 'Nelson'. 'None found' holds under rule 3."
+  },
+  {
+   "claim_id": "p-eastern-panama-city-fl:products",
+   "source_url": "https://gcaptain.com/eastern-shipbuilding-partners-with-hii-to-boost-u-s-navy-destroyer-production",
+   "ledger_value": "outfitted structural units for HII Ingalls' Flight III DDGs (pilot at Nelson Street; Sept 2025 strategic agreement)",
+   "evidence_row": 5410,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-eastern-panama-city-fl:products",
+   "source_url": "https://professionalmariner.com/eastern-suspends-work-on-offshore-patrol-cutter-program/",
+   "ledger_value": "OPC program work suspended Nov 2025 (Nelson Street was dedicated to OPC)",
+   "evidence_row": 5411,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-eastern-panama-city-fl:triggers",
+   "source_url": "https://gcaptain.com/eastern-shipbuilding-partners-with-hii-to-boost-u-s-navy-destroyer-production",
+   "ledger_value": "agreement dated Sep 16, 2025",
+   "evidence_row": 5412,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-eastern-panama-city-fl:materials",
+   "source_url": "https://www.easternshipbuilding.com/facilities/",
+   "ledger_value": "aluminum and steel (fabrication buildings)",
+   "evidence_row": 5413,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-eastern-panama-city-fl:production_type",
+   "source_url": "https://www.easternshipbuilding.com/facilities/",
+   "ledger_value": "custom units and hulls: outfitted structural units for DDGs built to Ingalls' program, OPC hulls, modular pre-fabrication",
+   "evidence_row": 5414,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Cited by a score or opening line; tagged inferred with reasoning; quote on the page (fetched 2026-11-13) where one is given; points earned without confidence where the row is inferred."
+  },
+  {
+   "claim_id": "p-eastern-panama-city-fl:opening_line",
+   "source_url": "",
+   "ledger_value": "Ingalls picked Eastern in November 2026 to build six structural units for LPD 32 at its Gulf Coast facilities, a year after a September 2025 agreement for destroyer units that built on a pilot at Nelson Street; how are you planning unit fabrication at Nelson Street now that the cutter work has stopped?",
+   "evidence_row": 5418,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "The line text is accurate and every clause is on the cited pages, including the LPD 32 release. It is carried by a stated row once row 5415 takes its corrected value and quote (see row 5415). 'Cutter work has stopped' is the Nov 17, 2025 OPC suspension. It ends in a 'you' question. Eastern is not a Path account, and none is claimed."
+  },
+  {
+   "claim_id": "p-conrad-morgan-city-la:parent_company",
+   "source_url": "https://marinelog.com/shipbuilding/shipyards/shipyard-news/conrad-industries-reports-249-7m-backlog",
+   "ledger_value": "Conrad Industries, Inc.",
+   "evidence_row": 5518,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-conrad-morgan-city-la:website",
+   "source_url": "https://conradindustries.com/facilities/morgan-city/",
+   "ledger_value": "https://conradindustries.com",
+   "evidence_row": 5519,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-conrad-morgan-city-la:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/CON1089COSP/JobBoard/6554dd3b-1e05-4c1c-9fbf-4c08b0376985/JobBoardView/LoadSearchResults",
+   "ledger_value": "Structural Fitter: fits plate and steel components, prepares joints for welding, supervises tackers",
+   "evidence_row": 5520,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "The quote is not in the GET render of LoadSearchResults (the endpoint needs a POST). The POST returns STRUC001047 'Structural Fitter' at '1501 Front Street', PostedDate 2026-05-18, with the BriefDescription quoted. The detail page duties include 'measuring, fitting, and welding'. Open today; 179 days."
+  },
+  {
+   "claim_id": "p-conrad-morgan-city-la:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/CON1089COSP/JobBoard/6554dd3b-1e05-4c1c-9fbf-4c08b0376985/OpportunityDetail?opportunityId=a1448e0d-e4fd-4c1a-ab4c-93b8dd79f1e7",
+   "ledger_value": "detail page: posted May 18, 2026; requisition STRUC001047",
+   "evidence_row": 5521,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "The detail page shows 'Posted on May 18, 2026'. The street is in the board API (POST), which was checked today."
+  },
+  {
+   "claim_id": "p-conrad-morgan-city-la:production_type",
+   "source_url": "https://conradindustries.com/facilities/morgan-city/",
+   "ledger_value": "many vessel types: 'a variety of small and medium-sized vessels' for commercial and government customers",
+   "evidence_row": 5523,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-conrad-morgan-city-la:opening_line",
+   "source_url": "",
+   "ledger_value": "Conrad's Front Street yard in Morgan City has had a Structural Fitter posting open since May 18, 2026; how are you covering fit-up on your current builds there?",
+   "evidence_row": 5530,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by a stated row of a cited claim (rows opened 2026-11-13); ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:parent_company",
+   "source_url": "https://www.wynnchurch.com/portfolio/nabrico-marine-products",
+   "ledger_value": "NABRICO Marine Products (Wynnchurch Capital investment, April 2026)",
+   "evidence_row": 5572,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:website",
+   "source_url": "https://nabricomarine.com/contact-us/",
+   "ledger_value": "https://nabricomarine.com",
+   "evidence_row": 5573,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:welder_postings",
+   "source_url": "https://nabricomarine.com/contact-us/",
+   "ledger_value": "site tie: NABRICO lists a second Caruthersville site, Yard II at 2077 Co Rd 337",
+   "evidence_row": 5574,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "On the NABRICO contact page. Waterways Journal confirms the second Caruthersville site is fiberglass barge cover manufacturing."
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:welder_postings",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110017980595&output=JSON",
+   "ledger_value": "site tie: EPA names the 2077 County Line Road site 'Caruthersville Composites', so the 'barge plant' in the postings is 265 County Hwy 346",
+   "evidence_row": 5575,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "site tie evidence: EPA names the 2077 County Line Road site 'NABRICO MARINE PRODUCTS - CARUTHERSVILLE COMPOSITES' (SIC 3089, plastics)",
+   "corrected_quote": "\"FacilityName\":\"NABRICO MARINE PRODUCTS - CARUTHERSVILLE COMPOSITES\", \"FacilityStreet\":\"2077 COUNTY LINE ROAD #337\"",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "severity": "attribution",
+   "note": "The EPA quote is on the page. The value's conclusion ('so the barge plant in the postings is 265 County Hwy 346') is a deduction tagged stated. Drop it from the stated value and keep it in the score_labor reasoning. The deduction holds, so the score stands (see score_notes): Waterways Journal (row 5586's page) lists 'Barge Construction: Ashland City, Tenn., and Caruthersville, Mo.' and separately 'Fiberglass Barge Cover Manufacturing: Paducah, Ky., and Caruthersville, Mo.'; all four requisitions say 'Caruthersville, MO barge plant' or 'barge manufacturing plant'; the board files the covers site's posting under a separate location, 'Caruthersville, MO Covers, Pemiscot'.",
+   "plants_csv_value": "(keep current plants.csv welder_postings value)"
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:weld_processes",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/65261898_1?cid=81462df6-ccee-442f-9f3f-7e62b0968391&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "FCAW (2 years required for Welder III); manual, auto and semi-automatic welding equipment named",
+   "evidence_row": 5576,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:materials",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/65261898_1?cid=81462df6-ccee-442f-9f3f-7e62b0968391&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "metal (barges); steel not named in Caruthersville postings",
+   "evidence_row": 5577,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Cited by a score or opening line; tagged inferred with reasoning; quote on the page (fetched 2026-11-13) where one is given; points earned without confidence where the row is inferred."
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:production_type",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/65261898_1?cid=81462df6-ccee-442f-9f3f-7e62b0968391&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "unknown at plant level (postings repeat company boilerplate: tank and dry cargo barges)",
+   "evidence_row": 5580,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Cited by a score or opening line; tagged unknown with reasoning; quote on the page (fetched 2026-11-13) where one is given; points earned without confidence where the row is inferred."
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/84085732_19?cid=81462df6-ccee-442f-9f3f-7e62b0968391&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "Welder II (trainee-level), posted 2026-10-28, Caruthersville barge plant",
+   "evidence_row": 5582,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Requisition 84085732_19 is open in the ADP list API today (postDate 2026-10-28); location ' Caruthersville, MO, US'; the text says 'barge plant'."
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/65261898_1?cid=81462df6-ccee-442f-9f3f-7e62b0968391&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "Welder III (senior, FCAW), posted 2026-09-22, Caruthersville barge plant",
+   "evidence_row": 5583,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Open in the ADP list API today (65261898_1, 2026-09-22); 'Minimum of 2 years of FCAW weld experience'."
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/65261438_1?cid=81462df6-ccee-442f-9f3f-7e62b0968391&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "Fitter II (tack welds), posted 2026-09-22, Caruthersville barge plant",
+   "evidence_row": 5584,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Open in the ADP list API today (65261438_1, 2026-09-22); 'barge manufacturing plant'."
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/68504346_1?cid=81462df6-ccee-442f-9f3f-7e62b0968391&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "Fitter III (tack welds), posted 2026-09-28, Caruthersville barge plant",
+   "evidence_row": 5585,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Open in the ADP list API today (68504346_1, 2026-09-28); 'barge manufacturing plant'."
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:triggers",
+   "source_url": "https://www.waterwaysjournal.net/2026/05/15/nabrico-forges-path-anticipates-growing-demand-for-new-construction-barges/",
+   "ledger_value": "Apr 2026 sale of the barge business included Caruthersville barge construction",
+   "evidence_row": 5586,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "2026 (reported May 15, 2026): sale of Arcosa Marine's barge business to Wynnchurch, including Caruthersville barge construction; April 2026 is on the Wynnchurch page (parent row 5572), not this page",
+   "corrected_quote": "Barge Construction: Ashland City, Tenn., and Caruthersville, Mo., as well as the currently idle Madisonville, La.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "severity": "attribution",
+   "note": "The quote is on the page. The month 'Apr 2026' is not on this page or on sibling triggers row 4313's page. Wynnchurch states 'invested in NABRICO Marine Products in April 2026' (row 5572). No score effect: demand 15 rests on the plant-named MARAD grant.",
+   "plants_csv_value": "(keep current plants.csv triggers value; April 2026 is on the Wynnchurch parent row)"
+  },
+  {
+   "claim_id": "p-arcosa-marine-caruthersville-mo:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Caruthersville barge plant posted a Welder II opening on Oct 28, 2026, with Welder III and two fitter roles open since September, and MARAD awarded the plant $911,171 in August to modernize its 600-ton press; how are you staffing the weld side as that work comes on?",
+   "evidence_row": 5590,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by a stated row of a cited claim (rows opened 2026-11-13); ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-heartland-fabrication-brownsville-pa:materials",
+   "source_url": "https://www.marinelog.com/inland-coastal/heartland-fabrication-to-invest-60m-in-expanding-hopper-barge-production/",
+   "ledger_value": "steel (American-made steel; ~340 tons per hopper barge)",
+   "evidence_row": 5600,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-heartland-fabrication-brownsville-pa:part_size_fit",
+   "source_url": "https://www.observer-reporter.com/editors_pick/2026/jul/08/brownsville-barge-plant-launching-65-million-expansion/",
+   "ledger_value": "Rove: 300-ft, ~320-ton hopper barges welded whole at the yard, beyond every cell limit; sub-assemblies not dimensioned",
+   "evidence_row": 5602,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Observer-Reporter: 'Once finished, the 300-foot vessels are launched' and 'a newly constructed 320-ton barge'. 'Rove' and 'beyond every cell limit' are the rubric label under coordinator rule 2."
+  },
+  {
+   "claim_id": "p-heartland-fabrication-brownsville-pa:production_type",
+   "source_url": "https://www.observer-reporter.com/editors_pick/2026/jul/08/brownsville-barge-plant-launching-65-million-expansion/",
+   "ledger_value": "high-volume repeat: one product line (inland hopper barges), built to order at about one barge every 32 hours; 180 a year rising to 280 by 2028",
+   "evidence_row": 5603,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'Right now, we build a barge in 32 hours' is on the page. 180 and 280 are on sibling row 5604's page (Marine Log). 'High-volume repeat' is the rubric label."
+  },
+  {
+   "claim_id": "p-heartland-fabrication-brownsville-pa:production_type",
+   "source_url": "https://www.marinelog.com/inland-coastal/heartland-fabrication-to-invest-60m-in-expanding-hopper-barge-production/",
+   "ledger_value": "build to order",
+   "evidence_row": 5604,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-heartland-fabrication-brownsville-pa:existing_robots",
+   "source_url": "https://www.marinelog.com/inland-coastal/heartland-fabrication-to-invest-60m-in-expanding-hopper-barge-production/",
+   "ledger_value": "unknown today; planned: automated structural and robotic welding lines in the Sept 2026 expansion plan",
+   "evidence_row": 5605,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-heartland-fabrication-brownsville-pa:welder_postings",
+   "source_url": "https://heartlandbarge.com",
+   "ledger_value": "none found: heartlandbarge.com blocked (Cloudflare); aggregator hits were expired (Vaia 410, Mokaru 410, SonicJobs 404) or mis-attributed (Tallo)",
+   "evidence_row": 5606,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "unreachable",
+   "note": "heartlandbarge.com returned 403 (plain) and a bot check (browser) on 2026-11-13. The row's 'none found' cannot be re-read on its source, so labor 0 at Heartland is unverified (not confirmed). The row is inferred and the score is 0 either way."
+  },
+  {
+   "claim_id": "p-heartland-fabrication-brownsville-pa:hiring_plan",
+   "source_url": "https://www.marinelog.com/inland-coastal/heartland-fabrication-to-invest-60m-in-expanding-hopper-barge-production/",
+   "ledger_value": "expansion to add ~150+ positions including welders and fitters (plan, not a posting)",
+   "evidence_row": 5607,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-heartland-fabrication-brownsville-pa:opening_line",
+   "source_url": "",
+   "ledger_value": "Heartland announced in September 2026 a $60 million expansion that adds automated structural and robotic welding lines and takes Brownsville from 180 to 280 hopper barges a year by 2028; which welds are you planning to move onto those lines first?",
+   "evidence_row": 5609,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by a stated row of a cited claim (rows opened 2026-11-13); ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-great-lakes-shipyard-cleveland-oh:website",
+   "source_url": "https://thegreatlakesgroup.com/great-lakes-shipyard",
+   "ledger_value": "https://thegreatlakesgroup.com",
+   "evidence_row": 5662,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-great-lakes-shipyard-cleveland-oh:materials",
+   "source_url": "https://thegreatlakesgroup.com/new-vessel-construction",
+   "ledger_value": "steel and aluminum",
+   "evidence_row": 5664,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-great-lakes-shipyard-cleveland-oh:production_type",
+   "source_url": "https://thegreatlakesgroup.com/great-lakes-shipyard",
+   "ledger_value": "many part types: construction, fabrication and repair for all types of commercial and government vessels, tugs, ferries and barges",
+   "evidence_row": 5667,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "p-great-lakes-shipyard-cleveland-oh:opening_line",
+   "source_url": "",
+   "ledger_value": "Great Lakes Towing ordered two more Damen harbor tugs from your Cleveland yard in September 2026, with construction starting this year, and you are hiring a Manager, New Construction; how are you planning the hull welding alongside barge and repair jobs?",
+   "evidence_row": 5671,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by a stated row of a cited claim (rows opened 2026-11-13); ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "c-hii:path_customer",
+   "source_url": "https://www.path-robotics.com/news/path-robotics-announces-300-million-series-e-led-by-georgian",
+   "ledger_value": "confirmed",
+   "evidence_row": 4,
+   "tag": "stated",
+   "in_scope": true,
+   "shared_with_checker_A": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "c-hii:path_customer",
+   "source_url": "https://www.path-robotics.com/news/hii-signs-performance-based-production-agreements-with-path-robotics-and-graymatter-robotics",
+   "ledger_value": "confirmed",
+   "evidence_row": 13,
+   "tag": "stated",
+   "in_scope": true,
+   "shared_with_checker_A": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "c-lad-services:path_customer",
+   "source_url": "https://www.path-robotics.com/news/lad-services-partners-with-path-robotics-to-revolutionize-barge-manufacturing-with-physical-ai-for-w",
+   "ledger_value": "confirmed",
+   "evidence_row": 16,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "c-hii:multi_plant",
+   "source_url": "https://virginiabusiness.com/hii-partners-path-robotics-ai-welding-newport-news/",
+   "ledger_value": "HII operates Newport News Shipbuilding (VA) and Ingalls Shipbuilding (MS) shipyards",
+   "evidence_row": 4891,
+   "tag": "stated",
+   "in_scope": true,
+   "shared_with_checker_A": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "c-saronic:multi_plant",
+   "source_url": "https://api.ashbyhq.com/posting-api/job-board/saronic",
+   "ledger_value": "Saronic produces vessels in Austin TX as well as at the Franklin LA shipyard",
+   "evidence_row": 4893,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Shared company row. The quoted 2nd Shift Manufacturing Engineer (Austin) text is in the Ashby API. The same page carries stronger evidence of Austin production, e.g. team 'Production - TX' roles (Sub-Assembly Technician; Hull & Deck Infusion - Composites Technician: '...resin infusion at a high rate boat building factory'). Suggest re-quoting one of those. Scale 10 stands."
+  },
+  {
+   "claim_id": "c-keel:multi_plant",
+   "source_url": "https://keelusa.com/history/",
+   "ledger_value": "nine facilities, over 1,150 team members (2024 formation)",
+   "evidence_row": 4894,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "c-lad-services:multi_plant",
+   "source_url": "https://www.ladcompanies.com/",
+   "ledger_value": "LAD Companies: three facilities in south Louisiana",
+   "evidence_row": 4899,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "c-eastern-shipbuilding:multi_plant",
+   "source_url": "https://www.easternshipbuilding.com/facilities/",
+   "ledger_value": "yes: three shipyards on the Florida Gulf Coast (Nelson Street, Allanton, Port St. Joe)",
+   "evidence_row": 5320,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "c-conrad:multi_plant",
+   "source_url": "https://marinelog.com/shipbuilding/shipyards/shipyard-news/conrad-industries-reports-249-7m-backlog",
+   "ledger_value": "yes: five Gulf Coast shipyards",
+   "evidence_row": 5321,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "c-eastern-shipbuilding:triggers",
+   "source_url": "https://www.easternshipbuilding.com/eastern-shipbuilding-group-inc-to-fabricate-structural-units-for-future-uss-philadelphia-lpd-32/",
+   "ledger_value": "release dated Nov 4, 2026",
+   "evidence_row": 5415,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "Nov 4, 2026: Ingalls selected Eastern (ESG) to build six structural units for LPD 32 at its Gulf Coast facilities (yard not named)",
+   "corrected_quote": "Eastern Shipbuilding Group, Inc. (ESG) has been selected by HII’s Ingalls Shipbuilding division to construct key structural modular units for the U.S. Navy’s future USS Philadelphia (LPD 32) ... ESG will leverage its Gulf Coast facilities to manufacture six structural units.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "severity": "attribution",
+   "note": "The Eastern opening line's LPD 32, six-unit and Gulf Coast clauses rest on this row. Its value ('release dated Nov 4, 2026') and quote ('November 4, 2026') carry only the date. Every clause is on the release page, opened today; the corrected value and quote carry them. The value was not wrong, only too thin for the line that cites it."
+  },
+  {
+   "claim_id": "c-eastern-shipbuilding:triggers",
+   "source_url": "https://gcaptain.com/eastern-shipbuilding-starts-construction-on-washington-states-new-hybrid-electric-ferries-as-third-vessel-confirmed/",
+   "ledger_value": "Aug 2026: steel cutting for three WSF 160-vehicle hybrid-electric ferries at Eastern's Panama City facilities (yard not named)",
+   "evidence_row": 5416,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "c-conrad:triggers",
+   "source_url": "https://dredgewire.com/conrad-shipyard-awarded-122-million-navy-contract-modification-for-four-additional-yrbm-vessels/",
+   "ledger_value": "May 2026: $122.4M Navy modification for four more YRBMs, work performed in Amelia, LA (not Front Street)",
+   "evidence_row": 5526,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "c-conrad:triggers",
+   "source_url": "https://www.navalnews.com/naval-news/2026/09/u-s-navy-taps-three-shipyards-in-280m-push-to-accelerate-lcu-1700-production/",
+   "ledger_value": "Sep 2026: LCU 1700 prototype agreement to Conrad Shipyard of Orange, Texas (not Front Street)",
+   "evidence_row": 5527,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "c-conrad:triggers",
+   "source_url": "https://www.workboat.com/conrad-shipyard-lands-24-million-army-corps-barge-contract",
+   "ledger_value": "Jul 2026: $24M Army Corps deck barge to Conrad Shipyard LLC, Morgan City (yard not named; Morgan City also hosts Deepwater South)",
+   "evidence_row": 5528,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "c-nabrico:multi_plant",
+   "source_url": "https://www.wynnchurch.com/portfolio/nabrico-marine-products",
+   "ledger_value": "NABRICO operates six manufacturing facilities",
+   "evidence_row": 5543,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "c-conrad:multi_plant",
+   "source_url": "https://conradindustries.com/contact",
+   "ledger_value": "Conrad lists several yards: Morgan City, Amelia, Deepwater South, Deepwater Repair, Orange",
+   "evidence_row": 5723,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13; value clauses read against the quoted text and its page, and no additive clause was found missing."
+  },
+  {
+   "claim_id": "v-shipbuilding-naval:demand_outlook",
+   "source_url": "https://www.path-robotics.com/news/hii-signs-performance-based-production-agreements-with-path-robotics-and-graymatter-robotics",
+   "ledger_value": "Strong: HII outsourcing +30% in 2026; Saronic $300M Franklin expansion; Arcosa barge backlog $296.9M",
+   "evidence_row": 65,
+   "tag": "stated",
+   "in_scope": true,
+   "shared_with_checker_A": true,
+   "verdict": "corrected",
+   "corrected_value": "Strong: HII plans to outsource 2.5M+ hours of shipbuilding work in 2026, a 30% increase from 2025 (the Saronic and Arcosa clauses need their own rows)",
+   "corrected_quote": "In 2026, HII plans to outsource more than 2.5 million hours of shipbuilding work, a 30% increase from 2025",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "severity": "attribution",
+   "note": "Shared row (vertical level, cited by demand 8 at Conrad, Keel and Trident). The Path page carries only the HII clause. 'Saronic $300M Franklin expansion' is true (WorkBoat, row 4974's page), but 'Arcosa barge backlog $296.9M' was not on any page opened today. No score effect: demand 8 rests on the vertical outlook alone."
+  }
+ ]
+}
