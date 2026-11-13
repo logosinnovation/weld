@@ -556,3 +556,15 @@ Coordinator decisions applied now (mechanical):
 - **Merged:** 50 plants added, 782 evidence rows; 0 rejected, 0 coverage gaps. Quotes: 423 of 423 found.
 - **Convergence:** the closure pass added 8 included plants, all base and without welder postings. Its best new plant (Accurity) ranks 41st by the profiling order, so the pass added no top-40 plant, which meets the consultation-7 condition.
 - **Ranking check across all ships base plants:** 7 base plants from the list audit now rank inside the top 40 (Keel Alma, Fairlead Newport News, Nichols Brothers, Vessel Repair Port Arthur, DSC Poplarville, Colonna's, Westport Orange), plus NNS Norfolk (being profiled). These 7 and Accurity go to one more profiler, so the scored set matches the ranking. One fact-checker then covers all closure and fill-in work.
+- **Closure profiles merged** (16 rows retired first, then 64 added; 24/24 quotes found):
+  - **NNS Norfolk** (customer_other_plant): profiled, 33 Low. Steel panels for CVN 80 since Nov 2023 (one panel 8,200 lb), so material 20 on weight alone, a boundary call. **Not confirmed operating after 2023**: HII's current NNS fact sheet names only Goose Creek as an additional site.
+  - **LAD Hwy 662 (Amelia facility):** record corrected and renamed. The county stays 22007: LA 662 is in Assumption Parish, and EPA's "St. Mary" is the mailing area. The opening line is rebuilt from company-level stated rows; 28 Low.
+  - **New base record:** LAD Stephensville Rd (EPA "LAD SALVAGE", St. Martin Parish 22099), customer_other_plant. LAD's third facility was not found (unverified; Berwick and Amelia leads).
+  - **Trident Lockport excluded** under the Ferndale precedent: no address or facility record, only a regional posting. Scores, opening line and bottleneck cleared by hand; its 2 links deleted.
+- **Closure-2 rerun (second pass):** Burger Boat withdrawn. Its dated builds are aluminium; steel appears only as a capability phrase. The plant row and 15 rows were removed (kept in retired-evidence.csv); it is now an unverified lead, not an excluded plant. Sunflower resolves to closure-1's record. Net new base records from the grants: 0.
+- **Map (map-builder):**
+  - Reads `summary-<vertical>.json`; one Method audit section per vertical, with each vertical's own fact-check files.
+  - HII, Saronic and LAD sites appear in the existing-accounts block.
+  - Company-level link targets (c-electric-boat) show as company nodes.
+  - Pre-production badges: Saronic Port Alpha, Master Boat's new facility, Anduril Arsenal-2, Hadrian Cherokee, New Pacific.
+  - `tools/smoke_map.js` asserts both verticals' figures and cross-contamination. SMOKE PASSED, 0 console errors.

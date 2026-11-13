@@ -362,6 +362,7 @@ function acctOf(p){
   if (/arcosa|crh|meyer utility|ameron/i.test(par + ' ' + nm)) return 'Arcosa (CRH)';
   if (/^sabre|\bfwt\b/i.test(par) || /^fwt\b/i.test(nm)) return 'Sabre Industries';
   if (/valmont/i.test(par)) return 'Valmont';
+  if (/\bhii\b|huntington ingalls/i.test(par + ' ' + nm)) return 'HII';
   if (/nucor/i.test(par)) return 'Nucor';
   if (/nello/i.test(par)) return 'Nello';
   if (/race rock/i.test(par + ' ' + nm)) return 'Race Rock';
@@ -373,7 +374,9 @@ function acctOf(p){
   return par;
 }
 /* Path-relationship status: from a confirmed, stated c-<company>:path_customer evidence row */
-const PATH_LABEL = {'c-millerbernd': 'Path reference customer', 'c-nello': 'Path FAT passed (site not named)', 'c-valmont': 'Path customer per 2021 reference (plant not named)'};
+const PATH_LABEL = {'c-millerbernd': 'Path reference customer', 'c-nello': 'Path FAT passed (site not named)', 'c-valmont': 'Path customer per 2021 reference (plant not named)',
+  'c-hii': 'Path customer per HII announcement (plant not named)', 'c-saronic': 'Path customer: Franklin yard named', 'c-lad-services': 'Path customer: plan to deploy announced'};
+const PATH_ALIAS = {'c-hii': /\bhii\b|huntington ingalls/, 'c-saronic': /saronic/, 'c-lad-services': /\blad (services|companies)\b|\blad-services\b/};
 const PS_CACHE = {};
 function pathStatus(p){
   if (p.id in PS_CACHE) return PS_CACHE[p.id];
@@ -381,9 +384,14 @@ function pathStatus(p){
   const pn = norm(p.parent_company);
   Object.keys(PATH_LABEL).forEach(key => {
     const slug = key.slice(2).replace(/-/g, ' ');
-    if (res || !(pn.includes(slug) || p.id.indexOf('-' + key.slice(2) + '-') >= 0)) return;
+    const hit = PATH_ALIAS[key] ? PATH_ALIAS[key].test(pn + ' ' + norm(p.name) + ' ' + p.id) : (pn.includes(slug) || p.id.indexOf('-' + key.slice(2) + '-') >= 0);
+    if (res || !hit) return;
     const rows = EV[key + ':path_customer'];
-    if (rows && rows.some(r => norm(r.v) === 'confirmed' && r.t === 'stated')) res = {key, label: PATH_LABEL[key], claim: key + ':path_customer'};
+    if (rows && rows.some(r => norm(r.v) === 'confirmed' && r.t === 'stated')) {
+      let label = PATH_LABEL[key];
+      if (key === 'c-saronic' && !/franklin/.test(p.id)) label = 'Path customer (Franklin yard named; this site not)';
+      res = {key, label, claim: key + ':path_customer'};
+    }
   });
   return (PS_CACHE[p.id] = res);
 }
@@ -600,9 +608,9 @@ function vCounts(v){
   return c;
 }
 function auditLine(v){
-  if (!SM || SM.vertical !== v.id) return '';
-  const pp = SM.plants || {}, mr = SM.miss_rate || {}, rs = SM.fact_check_rounds || [];
-  return '<p class="reason"><strong>Latest audit summary (ledger/audit/summary.json):</strong> ' + [pp.found != null ? pp.found + ' found, ' + pp.included + ' included, ' + pp.profiled + ' profiled' : '', mr.value ? 'miss rate ' + mr.value : '', rs.length ? 'fact error rate ' + rs.map(r => 'round ' + r.round + ' ' + (r.display || pct(r.rate))).join('; ') : ''].filter(Boolean).map(esc).join('; ') + '. See the Method page.</p>';
+  const sm = SMV(v.id); if (!sm) return '';
+  const pp = sm.plants || {}, mr = sm.miss_rate || {}, rs = sm.fact_check_rounds || [];
+  return '<p class="reason"><strong>Latest audit summary (ledger/audit/summary-' + esc(v.id) + '.json):</strong> ' + [pp.found != null ? pp.found + ' found, ' + pp.included + ' included, ' + pp.profiled + ' profiled' : '', mr.value ? 'miss rate ' + mr.value : '', rs.length ? 'fact error rate ' + rs.map(r => 'round ' + r.round + ' ' + (r.display || pct(r.rate))).join('; ') : ''].filter(Boolean).map(esc).join('; ') + '. See the Method page, section ' + esc(v.name) + '.</p>';
 }
 function renderRanking(){
   const el = $('#v-ranking');
@@ -724,6 +732,9 @@ function companyName(id){
   const m = id.replace(/^c-/, '').split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
   return m;
 }
+/* a link that ends at a company id (c-<slug>) belongs to a maker that has plants whose ids start p-<slug>- (name match, display only) */
+const coPlants = id => id.indexOf('c-') === 0 && !byId[id] ? P.filter(p => p.id.indexOf('p-' + id.slice(2) + '-') === 0) : [];
+const touches = (l, ids) => ids.has(l.from_id) || ids.has(l.to_id) || coPlants(l.to_id).some(p => ids.has(p.id)) || coPlants(l.from_id).some(p => ids.has(p.id));
 function endpoint(id){
   if (byId[id]) return {id, plant: byId[id], name: byId[id].name, tier: byId[id].tier || 'unknown'};
   return {id, plant: null, name: companyName(id) + ' (company level)', tier: 'Company level, no plant row'};
@@ -741,7 +752,7 @@ const other_tier = o => o.plant ? (mini(o.plant, 'tier') ? 'Plant tier: ' + mini
 function renderSupply(){
   const el = $('#v-supply');
   const makers = makerList();
-  if (!S.maker || !makers.some(m => m[0] === S.maker)) { const nl = m => LK.filter(l => m[1].some(p => p.id === l.from_id || p.id === l.to_id)).length; S.maker = (makers.slice().sort((a,b) => nl(b) - nl(a))[0] || [''])[0]; }
+  if (!S.maker || !makers.some(m => m[0] === S.maker)) { const nl = m => { const ids = new Set(m[1].map(p => p.id)); return LK.filter(l => touches(l, ids)).length; }; S.maker = (makers.slice().sort((a,b) => nl(b) - nl(a))[0] || [''])[0]; }
   if (!el.dataset.init){
     el.innerHTML = '<div class="view-h"><h2>Supply chain</h2><p>Choose a maker. Its plants are highlighted on the map and listed by tier; suppliers and customers linked in links.csv are outlined in orange, with the evidence for each link.</p></div>' +
       '<div class="sc-top"><label>Maker (account: a display grouping of the parent company, as on the call list)<select id="makerSel"></select></label></div>' +
@@ -751,14 +762,14 @@ function renderSupply(){
     el.dataset.init = 1;
   }
   const sel = $('#makerSel');
-  sel.innerHTML = makers.map(([k, ps]) => { const nl = LK.filter(l => ps.some(p => p.id === l.from_id || p.id === l.to_id)).length; return '<option value="' + esc(k) + '"' + (k === S.maker ? ' selected' : '') + '>' + esc(k) + ' (' + pl(ps.length, 'plant') + (nl ? ', ' + pl(nl, 'link') : '') + ')</option>'; }).join('');
+  sel.innerHTML = makers.map(([k, ps]) => { const ids = new Set(ps.map(p => p.id)), nl = LK.filter(l => touches(l, ids)).length; return '<option value="' + esc(k) + '"' + (k === S.maker ? ' selected' : '') + '>' + esc(k) + ' (' + pl(ps.length, 'plant') + (nl ? ', ' + pl(nl, 'link') : '') + ')</option>'; }).join('');
   const mp = (makers.find(m => m[0] === S.maker) || ['', []])[1];
   const mpIds = new Set(mp.map(p => p.id));
-  const links = LK.filter(l => mpIds.has(l.from_id) || mpIds.has(l.to_id));
+  const links = LK.filter(l => touches(l, mpIds));
   const supIds = new Set();
   links.forEach(l => { [l.from_id, l.to_id].forEach(i => { if (!mpIds.has(i) && byId[i]) supIds.add(i); }); });
   const lines = [];
-  links.forEach(l => { const a = byId[l.from_id], b = byId[l.to_id]; if (a && b) lines.push([a, b]); });
+  links.forEach(l => { const a = byId[l.from_id], b = byId[l.to_id]; if (a && b) lines.push([a, b]); else if (a) coPlants(l.to_id).filter(q => mpIds.has(q.id)).forEach(q => lines.push([a, q])); });
   const dots = [];
   INCL.forEach(p => { if (!mpIds.has(p.id) && !supIds.has(p.id)) dots.push({p, cls: 'c-np dim', r: 4, label: 'other included plant', z: 0}); });
   P.forEach(p => {
@@ -776,12 +787,13 @@ function renderSupply(){
     h += '<div class="tiergrp"><h4>' + esc(t) + ' (' + byTier[t].length + ')</h4>' + byTier[t].map(p => plantRow(p, p.status === 'excluded' ? '<span class="badge b-bad">excluded</span>' : '')).join('') + '</div>';
   });
   h += '<h3 style="margin-top:8px">Linked suppliers and customers (' + links.length + ')</h3>';
-  if (!links.length) h += '<div class="empty">No supplier links in the ledger for this maker. Public sources rarely name a pole maker’s suppliers or a plant’s customers (see Method, known limits).</div>';
+  if (!links.length) h += '<div class="empty">No supplier links in the ledger for this maker. Public sources rarely name a maker’s suppliers or a plant’s customers (see Method, known limits for each vertical).</div>';
   const lt = {};
   links.forEach(l => {
-    const toMaker = mpIds.has(l.to_id);
+    const toMaker = mpIds.has(l.to_id) || coPlants(l.to_id).some(q => mpIds.has(q.id));
     const other = endpoint(toMaker ? l.from_id : l.to_id);
     const mineEnd = endpoint(toMaker ? l.to_id : l.from_id);
+    if (!mineEnd.plant && toMaker) mineEnd.name = mineEnd.name.replace(' (company level)', '') + ' (company-level link; matched to this maker by name)';
     const grp = toMaker ? 'Suppliers to this maker' : 'Customers of this maker';
     (lt[grp] = lt[grp] || []).push({l, other, mineEnd, toMaker});
   });
@@ -833,7 +845,7 @@ function renderCalls(){
   const el = $('#v-calls');
   if (!el.dataset.init){
     const nrf = P.filter(researchFirst).length;
-    el.innerHTML = '<div class="view-h"><h2>Call list</h2><p>Profiled plants ranked by score. Score tiers: High 70+, Medium 45-69, Low under 45. Confidence is how many of the six components rest on stated evidence.</p><p><strong>A Low score usually means missing data, not a poor fit.</strong> A component with no published fact scores 0: the ' + DS.low_n + ' Low plants average ' + DS.avg_unk_low + ' unknown components of 6 (High plants: ' + DS.avg_unk_high + '), and ' + DS.low_ceil70 + ' of them would reach 70 or more if every unknown resolved in their favour. The <em>Unknowns</em> and <em>Ceiling</em> columns show this for each plant; the ceiling is calculated and is not a score.</p></div>' + filterBar('fbar-calls', P.filter(p => p.status === 'profiled'), {score: true, nopre: true}) +
+    el.innerHTML = '<div class="view-h"><h2>Call list</h2><p>Profiled plants ranked by score. Score tiers: High 70+, Medium 45-69, Low under 45. Confidence is how many of the six components rest on stated evidence.</p><p><strong>A Low score usually means missing data, not a poor fit.</strong> A component with no published fact scores 0. Per-vertical counts of unknowns are on the Method page; use the vertical filter to see one vertical. The <em>Unknowns</em> and <em>Ceiling</em> columns show this for each plant; the ceiling is calculated and is not a score.</p></div>' + filterBar('fbar-calls', P.filter(p => p.status === 'profiled'), {score: true, nopre: true}) +
       '<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px"><label class="chk"><input type="checkbox" id="live"> Live trigger only <span class="muted small">(plant-level trigger in the last 24 months)</span></label>' +
       '<label class="chk"><input type="checkbox" id="prechip"> Pre-production and converting plants only <span class="muted small">(' + preCount() + ')</span></label>' +
       '<label class="chk"><input type="checkbox" id="lowceil"> Low score, high ceiling (research first) <span class="muted small">(score under 45, ceiling 70 or more, and at least one stated positive signal: process 20, labor above 0 or a plant trigger; ' + pl(nrf, 'plant') + ' pass)</span></label>' +
@@ -877,26 +889,29 @@ function renderExcluded(){
 /* ---------- method ---------- */
 function pct(x){ return x == null ? '' : (Math.round(x * 1000) / 10) + '%'; }
 function kindsHtml(k){ const e = Object.entries(k || {}).filter(x => x[1] > 0).sort((a,b) => b[1]-a[1]); return e.length ? e.map(x => esc(x[0]) + ' ' + x[1]).join(', ') : '<span class="muted">none recorded</span>'; }
-const SM = D.summary || null;
+const SM = D.summary || {};
+const SMV = id => SM[id] || null;
 const NA = '<span class="muted">not available</span>';
-const chkLabel = file => String(file || '').replace(/^fact-check-/, '').replace(/\.json$/, '').replace(SM && SM.vertical ? SM.vertical + '-' : '#', '');
-function roundTable(r){
+const chkLabel = (file, vid) => String(file || '').replace(/^fact-check-/, '').replace(/\.json$/, '').replace(vid ? vid + '-' : '#', '');
+function roundTable(r, vid){
   const kinds = {}; (r.checkers || []).forEach(c => Object.entries(c.kinds || {}).forEach(([k, n]) => { kinds[k] = (kinds[k] || 0) + n; }));
   return '<div class="tscroll"><table class="t"><thead><tr><th>Checker file</th><th>Corrected / checked</th><th>Error rate</th><th>Error kinds</th></tr></thead><tbody>' +
-    (r.checkers || []).map(c => '<tr><td>' + esc(chkLabel(c.file)) + '</td><td>' + c.corrected + ' / ' + c.checked + '</td><td>' + pct(c.checked ? c.corrected / c.checked : null) + '</td><td class="small">' + kindsHtml(c.kinds) + '</td></tr>').join('') +
+    (r.checkers || []).map(c => '<tr><td>' + esc(chkLabel(c.file, vid)) + '</td><td>' + c.corrected + ' / ' + c.checked + '</td><td>' + pct(c.checked ? c.corrected / c.checked : null) + '</td><td class="small">' + kindsHtml(c.kinds) + '</td></tr>').join('') +
     '<tr><td><strong>All, round ' + r.round + '</strong></td><td><strong>' + r.corrected + ' / ' + r.checked + '</strong></td><td><strong>' + pct(r.rate) + '</strong></td><td class="small">' + kindsHtml(kinds) + '</td></tr></tbody></table></div>';
 }
-function factHtml(){
-  const intro = '<h3>Fact-check</h3><p class="small muted">Independent checkers re-fetch each cited source and compare it with the ledger value. A claim is &ldquo;corrected&rdquo; when the source does not support the value for that plant. Unreachable sources are reported apart and are never counted as confirmed. Error rate = corrected &divide; checked. Figures come from <code>ledger/audit/summary.json</code>; per-checker detail is grouped by round.</p>';
-  const rs = SM && SM.fact_check_rounds;
+function factHtml(vid){
+  const sm = SMV(vid);
+  const intro = '<h4>Fact-check</h4><p class="small muted">Independent checkers re-fetch each cited source and compare it with the ledger value. A claim is &ldquo;corrected&rdquo; when the source does not support the value for that plant. Unreachable sources are reported apart and are never counted as confirmed. Error rate = corrected &divide; checked. Figures come from <code>ledger/audit/summary-' + esc(vid) + '.json</code>; per-checker detail is only the fact-check files of this vertical, grouped by round.</p>';
+  const rs = sm && sm.fact_check_rounds;
   if (!rs || !rs.length) return intro + '<p>Fact-check figures: ' + NA + '.</p>';
-  const A = D.audit[SM.vertical] || {}, files = A.files || {};
-  let h = intro + '<h4>' + esc(vName(SM.vertical)) + '</h4>';
+  const A = D.audit[vid] || {}, files = A.files || {};
+  let h = intro;
   rs.forEach(r => {
+    const cks = (r.checkers || []).filter(c => !c.file || String(c.file).indexOf(vid) >= 0);
     h += '<p><strong>Round ' + r.round + ': ' + (r.display || (r.corrected + ' / ' + r.checked + ' = ' + pct(r.rate))) + '</strong>' + (r.label ? ' &middot; ' + esc(String(r.label).replace(/^Round \d+:\s*/i, '')) : '') + (r.unreachable ? ' (' + r.unreachable + ' unreachable, not counted)' : '') + '.' + (r.note ? ' ' + esc(r.note) : '') + '</p>';
-    if (r.checkers && r.checkers.length) h += roundTable(r);
-    const worst = (r.checkers || []).map(c => ({c, w: (files[c.file] || {}).worst || []})).filter(x => x.w.length);
-    if (worst.length) h += '<details class="card pad" style="margin:8px 0"><summary style="cursor:pointer;font-weight:600;color:var(--accent)">Worst errors found in round ' + r.round + '</summary>' + worst.map(x => '<p class="small"><strong>' + esc(chkLabel(x.c.file)) + '</strong></p><ul class="small">' + x.w.map(w => '<li>' + esc(w) + '</li>').join('') + '</ul>').join('') + '</details>';
+    if (cks.length) h += roundTable(Object.assign({}, r, {checkers: cks}), vid);
+    const worst = cks.map(c => ({c, w: (files[c.file] || {}).worst || []})).filter(x => x.w.length);
+    if (worst.length) h += '<details class="card pad" style="margin:8px 0"><summary style="cursor:pointer;font-weight:600;color:var(--accent)">Worst errors found in round ' + r.round + '</summary>' + worst.map(x => '<p class="small"><strong>' + esc(chkLabel(x.c.file, vid)) + '</strong></p><ul class="small">' + x.w.map(w => '<li>' + esc(w) + '</li>').join('') + '</ul>').join('') + '</details>';
   });
   return h;
 }
@@ -905,17 +920,47 @@ function quoteCheckLine(){
   return '<strong>Automated quote check.</strong> A script re-fetches the source of each <em>stated</em> row and looks for the exact quote; it does not read inferred or unknown rows. Of the ' + n(st) + ' stated rows now in the ledger: ' + g(st,'found') + ' have their present quote found on the live page; ' + g(st,'snapshot') + ' are directory rows that a plain fetch cannot see and that match the saved directory snapshot (<code>' + esc(QC.snapshot_file || 'none') + '</code>); ' + g(st,'not_found') + ' not found; ' + g(st,'unreachable') + ' unreachable; ' + g(st,'unchecked') + ' have no check record for their present quote text (the quote or the source link was edited after the check, or the row was added without one)' + (g(st,'no_quote') ? '; ' + g(st,'no_quote') + ' have no quote' : '') + '. ' +
     'Of the ' + n(ot) + ' inferred and unknown rows: ' + g(ot,'no_quote') + ' have no quote of their own (score rows, composed lines, judgements); ' + (g(ot,'unchecked')) + ' carry a context quote outside the script\u2019s scope; ' + (g(ot,'found') + g(ot,'snapshot')) + ' were checked while tagged stated and found' + (g(ot,'not_found') + g(ot,'unreachable') ? '; ' + (g(ot,'not_found') + g(ot,'unreachable')) + ' not found or unreachable' : '') + '. Not-found and unreachable rows carry a red flag in the evidence drawer, snapshot matches a grey note. The fact-check rounds above are a separate, manual check. Source: ' + (QC.files || 0) + ' check files in ledger/audit/.';
 }
+
+/* one audit section per researched vertical: every figure is scoped to that vertical */
+function vSection(v){
+  const sm = SMV(v.id), c = vCounts(v), st = (DS.v || {})[v.id] || {}, ad = st.addr_included || {n: 0, no_street: 0, city_level: 0};
+  const prof = P.filter(p => p.status === 'profiled' && vNames(p).includes(v.id));
+  const ids = new Set(P.filter(p => vNames(p).includes(v.id)).map(p => p.id));
+  const evRows = []; Object.keys(EV).forEach(k => { const pid = k.split(':')[0]; if (ids.has(pid)) EV[k].forEach(r => evRows.push(r)); });
+  const inferredV = evRows.filter(r => r.t === 'inferred').length;
+  const lks = LK.filter(l => ids.has(l.from_id) || ids.has(l.to_id));
+  const tags = lks.map(l => { const i = claimInfo(l.claim_id, l.what_is_supplied); return i ? i.tag : 'none'; });
+  const mat0 = prof.filter(p => +p.score_material_part === 0).length, lowConf = prof.filter(p => +p.confidence <= 2).length;
+  const stCls = {done:'b-ok',partial:'b-warn',accepted:'b-st',rejected:'b-bad'}[v.status] || 'b-grey';
+  const mr = sm && sm.miss_rate, pp = (sm && sm.plants) || {}, tr = pp.tiers || {};
+  const la = ((D.audit[v.id] || {}).listaudit || []).map(x => 'Auditor ' + esc(x.auditor) + ': ' + pl(x.rows, 'row') + ', ' + x.in_definition + ' in definition, ' + pl(x.searches, 'search', 'searches')).join('<br>');
+  let h = '<section class="vaudit" id="audit-' + esc(v.id) + '"><h3>' + esc(v.name) + ': audit and known limits <span class="badge ' + stCls + '">' + esc(v.status) + '</span></h3>';
+  h += '<p class="small muted">Everything in this section is scoped to this vertical only' + (sm ? ' and read from <code>ledger/audit/summary-' + esc(v.id) + '.json</code> (status there: ' + esc(sm.status || 'unknown') + ')' : '; <code>ledger/audit/summary-' + esc(v.id) + '.json</code> is missing, so audit figures show as not available') + '. Counts below are read from plants.csv at build time.</p>';
+  h += '<p><strong>' + pl(c.included, 'plant') + ' included, ' + c.profiled + ' profiled, ' + c.excluded + ' excluded</strong> (' + c.total + ' found). Tiers of profiled plants: ' + c.High + ' High, ' + c.Medium + ' Medium, ' + c.Low + ' Low; ' + c.np + ' included plants are base records (not profiled or scored).' + (sm && pp.found != null ? ' Summary file: ' + pp.found + ' found, ' + pp.included + ' included, ' + pp.profiled + ' profiled (' + [tr.High != null ? tr.High + ' High' : '', tr.Medium != null ? tr.Medium + ' Medium' : '', tr.Low != null ? tr.Low + ' Low' : ''].filter(Boolean).join(', ') + ').' : '') + '</p>';
+  h += factHtml(v.id);
+  h += '<h4>Miss rate (list audit)</h4>' + (!mr ? '<p>' + NA + '</p>' : '<p><strong>' + esc(mr.value || '') + '</strong></p>' + (mr.note ? '<p class="small">' + esc(mr.note) + '</p>' : '') + ((mr.history || []).length ? '<p class="small muted">History: ' + mr.history.map(esc).join(' &rarr; ') + '</p>' : '')) + (la ? '<p class="small muted">' + la + '</p>' : '');
+  h += '<h4>Reading the scores for this vertical</h4><p><strong>Data gap, not a poor fit:</strong> ' + mat0 + ' of ' + prof.length + ' profiled ' + esc(v.name) + ' plants score 0 on material and part fit because no source states the size or weight of the parts welded there. Their real fit is unknown, and a score of 0 reflects missing data.</p>';
+  if (st.low_n != null && prof.length) h += '<p>The ' + st.low_n + ' Low plants have on average <strong>' + st.avg_unk_low + ' unknown components</strong> out of 6, against ' + st.avg_unk_high + ' for the ' + st.high_n + ' High plants (Medium: ' + st.avg_unk_medium + '). <strong>' + st.low_mat0 + ' of the ' + st.low_n + ' Low plants</strong> score 0 on material and part fit only because no source states their part size; <strong>' + st.low_ceil70 + '</strong> have a ceiling of 70 or more.</p>';
+  h += '<h4>Known limits</h4><ul>' +
+    '<li><strong>' + inferredV + ' of ' + evRows.length + ' plant-level evidence rows for this vertical are inferred</strong> (guesses to verify, always labelled).</li>' +
+    '<li><strong>Supply-chain data:</strong> ' + lks.length + ' supplier links touch this vertical&rsquo;s plants (' + tags.filter(t => t === 'stated').length + ' stated, ' + tags.filter(t => t === 'inferred').length + ' inferred). Some links end at a company, not a plant (shown as a company node on the Supply chain view).</li>' +
+    '<li><strong>Coordinates:</strong> of ' + ad.n + ' included plants, ' + ad.no_street + (ad.no_street === 1 ? ' has' : ' have') + ' no street address and ' + ad.city_level + (ad.city_level === 1 ? ' is' : ' are') + ' placed at city level.</li>' +
+    '<li><strong>Profile depth:</strong> ' + lowConf + ' of ' + prof.length + ' profiled plants have confidence of 2 or less.</li>' +
+    (st.preprod ? '<li><strong>Pre-production or converting plants:</strong> ' + st.preprod + ' flagged in this vertical (see the badge on each).</li>' : '') +
+    ((sm && sm.known_limits) || []).map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>';
+  return h + '</section>';
+}
 function renderMethod(){
   const el = $('#v-method'), B = D.log.bullets;
   const ul = a => a.length ? '<ul>' + a.map(x => '<li>' + x + '</li>').join('') + '</ul>' : '<p class="muted">Nothing logged yet.</p>';
   const rows = V.slice().sort((a,b) => (+a.rank||99) - (+b.rank||99)).map(v => {
     const c = vCounts(v), a = D.audit[v.id] || {};
     const la = (a.listaudit || []).map(x => 'Auditor ' + esc(x.auditor) + ': ' + pl(x.rows, 'row') + ', ' + x.in_definition + ' in definition, ' + pl(x.searches, 'search', 'searches')).join('<br>');
-    const inSM = SM && SM.vertical === v.id;
+    const sm = SMV(v.id), inSM = !!sm;
     const stCls = {done:'b-ok',partial:'b-warn',accepted:'b-st',rejected:'b-bad'}[v.status] || 'b-grey';
-    const mr = inSM && SM.miss_rate;
+    const mr = inSM && sm.miss_rate;
     const missCell = !c.included ? '<span class="muted">not audited</span>' : !mr ? NA : '<strong>' + esc(mr.value || '') + '</strong>' + (mr.note ? '<br><span class="small">' + esc(mr.note) + '</span>' : '') + ((mr.history || []).length ? '<br><span class="muted small">history: ' + mr.history.map(esc).join(' &rarr; ') + '</span>' : '') + (la ? '<br><span class="small muted">' + la + '</span>' : '');
-    const fcCell = !c.included ? '<span class="muted">not checked</span>' : !(inSM && SM.fact_check_rounds && SM.fact_check_rounds.length) ? NA : SM.fact_check_rounds.map(r => '<strong>Round ' + r.round + ': ' + pct(r.rate) + '</strong> (' + r.corrected + ' corrected of ' + r.checked + ')').join('<br>');
+    const fcCell = !c.included ? '<span class="muted">not checked</span>' : !(inSM && sm.fact_check_rounds && sm.fact_check_rounds.length) ? NA : sm.fact_check_rounds.map(r => '<strong>Round ' + r.round + ': ' + pct(r.rate) + '</strong> (' + r.corrected + ' corrected of ' + r.checked + ')').join('<br>');
     return '<tr><td><strong>' + esc(v.name) + '</strong><br><span class="badge ' + stCls + '">' + esc(v.status) + '</span></td><td>' + (c.included ? pl(c.included, 'plant') + ' included, ' + c.profiled + ' profiled<br>' + c.High + ' High / ' + c.Medium + ' Medium / ' + c.Low + ' Low' : '<span class="muted">none researched</span>') + '</td><td>' + missCell + '</td><td>' + fcCell + '</td></tr>';
   }).join('');
   const AD = DS.addr_included || {n: 0, no_street: 0, city_level: 0};
@@ -944,24 +989,21 @@ function renderMethod(){
   '<p><strong>The “live trigger” flag</strong> on the call list means the plant’s Demand and triggers component is 15, that is, a plant-level trigger within the last 24 months.</p>' +
   '<h4>How the coordinator applied the rubric (read from run_log.md)</h4>' +
   '<p class="small muted">The rubric above is the brief. These are the interpretations the coordinator logged while scoring, quoted from the run log. Where they say &ldquo;stated&rdquo;, a source must say it; nothing is inferred from industry.</p>' + ul(B.rules) +
-  '<p><strong>Data gap, not a poor fit:</strong> ' + mat0 + ' of ' + C.plants_profiled + ' profiled plants score 0 on material and part fit because no source states the size or weight of the parts welded at that plant. Pole makers rarely publish section dimensions. Their real fit is unknown, and a score of 0 here reflects missing data.</p>' +
-  '<h3>Why many scores are Low</h3><p>The rubric awards points only for what a source states, so a plant that has not published a fact scores 0 on that component. Measured on the ' + C.plants_profiled + ' profiled plants at build time: the ' + DS.low_n + ' Low plants have on average <strong>' + DS.avg_unk_low + ' unknown components</strong> out of 6, against ' + DS.avg_unk_high + ' for the ' + DS.high_n + ' High plants (Medium: ' + DS.avg_unk_medium + '). <strong>' + DS.low_mat0 + ' of the ' + DS.low_n + ' Low plants</strong> score 0 on material and part fit only because no source states their part size. <strong>' + DS.low_ceil70 + ' of the ' + DS.low_n + ' Low plants</strong> have a ceiling of 70 or more. The <strong>ceiling</strong> is calculated: the score plus the maximum points of every unknown component, capped at 100. The demand allowance is shown beside it and is not inside it: a plant at the vertical-level 8 shows &ldquo;+7 if a plant trigger is found&rdquo;. A component is unknown when it scores 0 and its plant field (weld processes, part size fit, production type, welder postings, headcount) is empty, starts with &ldquo;unknown&rdquo; or says &ldquo;not stated&rdquo;. For labor, <strong>&ldquo;none found&rdquo; counts as unknown</strong> too: not finding a posting says nothing about whether the plant has a welder shortage, so it is treated the same as &ldquo;unknown&rdquo;. The ceiling is a research-priority signal, not a score. <strong>A Low score with a high ceiling means the plant has not published the facts the rubric needs; research it before ruling it out.</strong> The call list has a &ldquo;Low score, high ceiling (research first)&rdquo; filter: score under 45, ceiling 70 or more, and at least one stated positive signal (process fit 20, any labor points, or a plant-level trigger), so it does not just list plants about which nothing is known; ' + pl(P.filter(researchFirst).length, 'plant') + ' pass. The call list can also be sorted by ceiling or by number of unknown components.</p>' +
-  '<h4>Pre-production and converting plants</h4><p>A plant that is under construction, ramping up, or converting from another product (' + preCount() + ') is kept as a prospect. One the ledger&rsquo;s own status row calls a pre-production prospect carries a <span class="badge b-pre">Pre-production plant</span> badge (' + (P.filter(p => preKind(p) === 'status').map(p => esc(p.name)).join('; ') || 'none now') + '); one flagged only by a trigger or status-detail line carries <span class="badge b-pre">New or converting plant</span> (' + (P.filter(p => preKind(p) === 'text').map(p => esc(p.name)).join('; ') || 'none now') + '). In both cases its welding process and robots may not be locked in yet, which can make it an early, actionable account, but most of its score components are unknown until it publishes. The flag comes from the ledger&rsquo;s status record or a trigger or status-detail line naming construction, ramp-up, conversion or transition; a plant whose own status says it is operating is not flagged. <strong>Live trigger</strong> badges show the date found in the trigger text, or &ldquo;date not stated&rdquo;.</p><h4>Accounts and existing Path customers</h4><p><strong>Account</strong> is a display grouping of the parent company (for example every Arcosa, Meyer and Ameron plant is &ldquo;Arcosa (CRH)&rdquo;); it is computed in the page and is not a ledger field. Where a Path source confirms that a plant&rsquo;s company is a Path customer (Millerbernd, Nello, Valmont), the plant carries a Path-status badge linked to that evidence row and sits in the &ldquo;Existing Path accounts: route to the account owner&rdquo; block above the ranked net-new list on the call list. Ties in the ranked list are ordered by confidence, then live trigger, then name.</p>' +
+  '<h3>Why many scores are Low</h3><p>The rubric awards points only for what a source states, so a plant that has not published a fact scores 0 on that component. The counts for each vertical are in its own audit section below (never pooled). The <strong>ceiling</strong> is calculated: the score plus the maximum points of every unknown component, capped at 100. The demand allowance is shown beside it and is not inside it: a plant at the vertical-level 8 shows &ldquo;+7 if a plant trigger is found&rdquo;. A component is unknown when it scores 0 and its plant field (weld processes, part size fit, production type, welder postings, headcount) is empty, starts with &ldquo;unknown&rdquo; or says &ldquo;not stated&rdquo;. For labor, <strong>&ldquo;none found&rdquo; counts as unknown</strong> too: not finding a posting says nothing about whether the plant has a welder shortage, so it is treated the same as &ldquo;unknown&rdquo;. The ceiling is a research-priority signal, not a score. <strong>A Low score with a high ceiling means the plant has not published the facts the rubric needs; research it before ruling it out.</strong> The call list has a &ldquo;Low score, high ceiling (research first)&rdquo; filter: score under 45, ceiling 70 or more, and at least one stated positive signal (process fit 20, any labor points, or a plant-level trigger), so it does not just list plants about which nothing is known; ' + pl(P.filter(researchFirst).length, 'plant') + ' pass across all researched verticals. The call list can also be sorted by ceiling or by number of unknown components.</p>' +
+  '<h4>Pre-production and converting plants</h4><p>A plant that is under construction, ramping up, or converting from another product (' + preCount() + ') is kept as a prospect. One the ledger&rsquo;s own record calls pre-production (a status row, or &ldquo;pre-production&rdquo; in the plant name or products text) carries a <span class="badge b-pre">Pre-production plant</span> badge (' + (P.filter(p => preKind(p) === 'status').map(p => esc(p.name)).join('; ') || 'none now') + '); one flagged only by a trigger or status-detail line carries <span class="badge b-pre">New or converting plant</span> (' + (P.filter(p => preKind(p) === 'text').map(p => esc(p.name)).join('; ') || 'none now') + '). In both cases its welding process and robots may not be locked in yet, which can make it an early, actionable account, but most of its score components are unknown until it publishes. The flag comes from the ledger&rsquo;s status record or a trigger or status-detail line naming construction, ramp-up, conversion or transition; a plant whose own status says it is operating is not flagged. <strong>Live trigger</strong> badges show the date found in the trigger text, or &ldquo;date not stated&rdquo;.</p><h4>Accounts and existing Path customers</h4><p><strong>Account</strong> is a display grouping of the parent company (for example every Arcosa, Meyer and Ameron plant is &ldquo;Arcosa (CRH)&rdquo;); it is computed in the page and is not a ledger field. Where a Path source confirms that a plant&rsquo;s company is a Path customer (Millerbernd, Nello, Valmont, HII, Saronic, LAD), the plant carries a Path-status badge linked to that evidence row and sits in the &ldquo;Existing Path accounts: route to the account owner&rdquo; block above the ranked net-new list on the call list. Ties in the ranked list are ordered by confidence, then live trigger, then name.</p>' +
   '<h4>Confidence</h4>' + ul(B.confidence.length ? B.confidence : ['Confidence = how many of the six components rest on stated evidence (0-6).']) +
   '<h3>Back-test</h3><p>The scoring was tested on Path’s reported customers: a good model should score them High.</p>' + ul(B.backtest.concat(B.weights)) + (custNow.length ? '<p><strong>Scores now, read from plants.csv at build time</strong> (the run-log lines above are dated and quote earlier scores): plants of the companies a Path source confirms as customers score ' + custNow.map(p => '<button type="button" class="link" data-plant="' + esc(p.id) + '">' + esc(p.name) + '</button> ' + esc(p.score_total) + ' ' + esc(sTier(p))).join('; ') + '.</p>' : '') +
   '<h3>Audit numbers by vertical</h3><div class="tscroll card pad"><table class="t"><thead><tr><th>Vertical</th><th>Plants</th><th>Miss rate (list audit)</th><th>Fact error rate</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
-  '<p class="small muted"><strong>Miss rate</strong> = in-definition plants found by independent auditors that were absent from the ledger, divided by all in-definition auditor plants. <strong>Fact error rate</strong> = claims corrected by the fact-checker divided by claims checked; unreachable sources are reported separately and never counted as confirmed. Both are read from <code>ledger/audit/summary.json</code>' + (SM ? ' (vertical status there: ' + esc(SM.status || 'unknown') + ')' : '; that file is missing, so they show as not available') + '. The miss rate is a rough guide, not a completeness percentage: the auditors use the same kind of web search as the plant finder, so they share its blind spots.</p>' +
-  factHtml() +
+  '<p class="small muted"><strong>Miss rate</strong> = in-definition plants found by independent auditors that were absent from the ledger, divided by all in-definition auditor plants. <strong>Fact error rate</strong> = claims corrected by the fact-checker divided by claims checked; unreachable sources are reported separately and never counted as confirmed. Both are read from one file per vertical, <code>ledger/audit/summary-&lt;vertical&gt;.json</code>' + (Object.keys(SM).length ? '' : '; none exists, so they show as not available') + '. The miss rate is a rough guide, not a completeness percentage: the auditors use the same kind of web search as the plant finder, so they share its blind spots.</p>' +
+  V.slice().sort((a,b) => (+a.rank||99) - (+b.rank||99)).filter(v => vCounts(v).included).map(vSection).join('') +
   '<h3>Checks run on the evidence</h3><ul><li>' + quoteCheckLine() + '</li>' +
   (pcs && pcs.CITY_NOT_ON_PAGE != null ? '<li>Wrong-plant sweep of job postings: ' + pcs.city_on_page + ' pages show the plant’s city, ' + pcs.CITY_NOT_ON_PAGE + ' do not (flagged in the drawer), ' + pcs.unreachable + ' unreachable.</li>' : '') +
   '<li>Verified status per claim in the drawer: <em>not checked</em>, <em>confirmed</em>, <em>corrected</em> (a checker changed the value) or <em>unreachable</em>. Currently ' + Object.values(EV).reduce((n, rs) => n + rs.filter(r => r.vf === 'confirmed').length, 0) + ' evidence rows are confirmed and ' + Object.values(EV).reduce((n, rs) => n + rs.filter(r => r.vf === 'corrected').length, 0) + ' corrected, out of ' + totalEv + '.</li></ul>' +
-  '<h3>Known limits</h3><ul>' +
-  '<li><strong>' + inferredN + ' of ' + totalEv + ' evidence rows are inferred</strong> (guesses to verify, always labelled). Tiers, bottlenecks and many process and material fields are inferred; industry alone never sets a weld process.</li>' +
-  '<li><strong>Thin supply-chain data:</strong> only ' + LK.length + ' supplier links exist (' + linkTags.filter(t => t === 'stated').length + ' stated, ' + linkTags.filter(t => t === 'inferred').length + ' inferred). Public sources rarely name who supplies a pole maker or who buys from a plant.</li>' +
-  '<li><strong>Coordinates:</strong> of the ' + AD.n + ' included plants, ' + noAddr + (noAddr === 1 ? ' has' : ' have') + ' no street address in the ledger (the address field is blank or starts with &ldquo;unknown&rdquo;) and ' + centroid + (centroid === 1 ? ' is' : ' are') + ' recorded as placed at city level. Treat every dot as showing the town, not the building.</li>' +
-  '<li><strong>Profile depth:</strong> ' + lowConf + ' of ' + C.plants_profiled + ' profiled plants have confidence of 2 or less, because most facts come from job postings and company pages that do not state plant-level details. Unknown parts score 0, so scores err low.</li>' +
-  '<li><strong>Headcount, part sizes and existing robots</strong> are mostly unknown; no OSHA data file was available this run.</li>' +
-  '<li>Excluded plants stay in the ledger with the reason. Sites under construction or converting are kept as profiled prospects and carry the &ldquo;Pre-production plant&rdquo; or &ldquo;New or converting plant&rdquo; badge.</li>' + ((SM && SM.known_limits) || []).map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' + (SM ? '' : '<p class="small muted">Audit-derived limits: ' + NA + ' (ledger/audit/summary.json is missing).</p>') +
+  '<h3>Known limits (all verticals)</h3><ul>' +
+  '<li><strong>Inferred values are guesses to verify.</strong> Across the whole ledger ' + inferredN + ' of ' + totalEv + ' evidence rows are inferred, always labelled; tiers, bottlenecks and many process and material fields are inferred. Industry alone never sets a weld process. Per-vertical counts are in each vertical&rsquo;s section above.</li>' +
+  '<li><strong>Dots show the town, not the building</strong> where a plant is recorded at city level; see each vertical&rsquo;s section for the counts.</li>' +
+  '<li><strong>Headcount, part sizes and existing robots</strong> are mostly unknown; no OSHA data file was available.</li>' +
+  '<li>Excluded plants stay in the ledger with the reason. Sites under construction or converting are kept as prospects and carry the &ldquo;Pre-production plant&rdquo; or &ldquo;New or converting plant&rdquo; badge.</li></ul>' + (Object.keys(SM).length ? '' : '<p class="small muted">Audit-derived limits: ' + NA + ' (no ledger/audit/summary-*.json file).</p>') +
   (B.failures.length ? '<h4>Sources that failed</h4>' + ul(B.failures) : '') +
   '<h3>Advisor checkpoints</h3><p class="small muted">' + (B.advisor.length ? B.advisor.map(esc).join(' &middot; ') : 'None logged.') + '</p>' +
   '<h3>Run log</h3><details class="card"><summary class="pad" style="cursor:pointer;font-weight:600;color:var(--accent)">Open the full run_log.md (' + D.log.sections.length + ' sections)</summary><div class="logbox">' + D.log.sections.map(s => '<h3>' + esc(s.title) + '</h3>' + s.html).join('') + '</div></details>' +

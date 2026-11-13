@@ -334,7 +334,7 @@ def num(x):
         return 0.0
 
 
-def derive(plants, evidence):
+def derive(plants, evidence, vids=()):
     """Calculated, never stored: unknown components, score ceiling, pre-production flag."""
     evby = {}
     for e in evidence:
@@ -353,8 +353,8 @@ def derive(plants, evidence):
             # a plant whose own status row says it is operating is not pre-production
             flagged = not any("operating" in v for v in st)
         if p["status"] != "excluded":
-            if by_status:
-                d["pre"] = "status"      # the ledger's own status row calls it a pre-production prospect
+            if by_status or re.search(r"pre-production", (p.get("name") or "") + " " + (p.get("products") or ""), re.I):
+                d["pre"] = "status"      # the ledger's own status row, plant name or products text calls it pre-production
             elif flagged:
                 d["pre"] = "text"        # a trigger or status-detail line names construction, ramp-up or conversion
         if p["status"] == "profiled" and str(p.get("score_total", "")).strip() != "":
@@ -370,19 +370,27 @@ def derive(plants, evidence):
             prof.append((p, d))
         if d:
             derived[pid] = d
-    def avg(tier):
-        r = [len(d["unk"]) for p, d in prof if p["score_tier"] == tier]
-        return round(sum(r) / len(r), 1) if r else None
-    low = [(p, d) for p, d in prof if p["score_tier"] == "Low"]
-    stats = {"low_n": len(low), "high_n": sum(1 for p, d in prof if p["score_tier"] == "High"),
-             "avg_unk_low": avg("Low"), "avg_unk_high": avg("High"), "avg_unk_medium": avg("Medium"),
-             "low_mat0": sum(1 for p, d in low if "material_part" in d["unk"]),
-             "low_ceil70": sum(1 for p, d in low if d["ceil"] >= 70),
-             "research_first": sum(1 for p, d in low if d["ceil"] >= 70),
-             "low_unk": sum(1 for p, d in low if d["unk"]),
-             "preprod": sum(1 for d in derived.values() if d.get("pre")),
+    def mkstats(pr):
+        def avg(tier):
+            r = [len(d["unk"]) for p, d in pr if p["score_tier"] == tier]
+            return round(sum(r) / len(r), 1) if r else None
+        low = [(p, d) for p, d in pr if p["score_tier"] == "Low"]
+        return {"low_n": len(low), "high_n": sum(1 for p, d in pr if p["score_tier"] == "High"),
+                "avg_unk_low": avg("Low"), "avg_unk_high": avg("High"), "avg_unk_medium": avg("Medium"),
+                "low_mat0": sum(1 for p, d in low if "material_part" in d["unk"]),
+                "low_ceil70": sum(1 for p, d in low if d["ceil"] >= 70),
+                "research_first": sum(1 for p, d in low if d["ceil"] >= 70),
+                "low_unk": sum(1 for p, d in low if d["unk"])}
+    vsplit = lambda p: re.split(r"\s*[;,|]\s*", p.get("verticals", ""))
+    stats = mkstats(prof)
+    stats.update({"preprod": sum(1 for d in derived.values() if d.get("pre")),
              "preprod_status": sum(1 for d in derived.values() if d.get("pre") == "status"),
-             "preprod_text": sum(1 for d in derived.values() if d.get("pre") == "text")}
+             "preprod_text": sum(1 for d in derived.values() if d.get("pre") == "text")})
+    stats["v"] = {}
+    for vid in vids:
+        st = mkstats([(p, d) for p, d in prof if vid in vsplit(p)])
+        st["preprod"] = sum(1 for p in plants if derived.get(p["id"], {}).get("pre") and vid in vsplit(p))
+        stats["v"][vid] = st
     return derived, stats
 
 
@@ -397,10 +405,17 @@ def main():
         log_text = f.read()
     secs, bullets, log_dates = parse_log(log_text, set(vids))
     audit, factcheck, qc, qc_rows, pcheck = build_audit(vids)
-    # headline audit figures come only from ledger/audit/summary.json (written by the coordinator)
-    summary = load_json(os.path.join(L, "audit", "summary.json")) if os.path.exists(os.path.join(L, "audit", "summary.json")) else None
-    if summary is not None and not isinstance(summary, dict):
-        summary = None
+    # headline audit figures come only from ledger/audit/summary-<vertical>.json (written by the coordinator), one per vertical
+    summary = {}
+    for path in sorted(glob.glob(os.path.join(L, "audit", "summary-*.json"))):
+        d = load_json(path)
+        if isinstance(d, dict) and d.get("vertical"):
+            summary[d["vertical"]] = d
+    legacy = os.path.join(L, "audit", "summary.json")   # fallback for a ledger that still has the single-file form
+    if not summary and os.path.exists(legacy):
+        d = load_json(legacy)
+        if isinstance(d, dict) and d.get("vertical"):
+            summary[d["vertical"]] = d
 
     # evidence indexed by claim_id, compact keys
     ev = {}
@@ -452,7 +467,7 @@ def main():
     qc.update(qstat)
     qc["by_tag"] = qsplit
     qc["snapshot_file"] = os.path.basename(snap_files[-1]) if snap_files else ""
-    derived, dstats = derive(plants, evidence)
+    derived, dstats = derive(plants, evidence, vids)
     # address facts are counted here, on the raw ledger, because the page blanks fields that have no evidence row
     def addr_stats(ps):
         return {"n": len(ps),
@@ -460,6 +475,8 @@ def main():
                 "city_level": sum(1 for p in ps if re.search(r"centroid|coordinates city-level", p["address"], re.I))}
     dstats["addr_included"] = addr_stats(included)
     dstats["addr_all"] = addr_stats(plants)
+    for vid in vids:
+        dstats["v"][vid]["addr_included"] = addr_stats([p for p in included if vid in re.split(r"\s*[;,|]\s*", p.get("verticals", ""))])
     data = {
         "derived": derived, "dstats": dstats,
         "meta": {"counts": counts, "dates": dates, "first": dates[0] if dates else "", "last": dates[-1] if dates else "",
