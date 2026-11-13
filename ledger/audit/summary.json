@@ -1,0 +1,155 @@
+{
+ "vertical": "v-poles-substation",
+ "status": "partial",
+ "plants": {
+  "found": 97,
+  "included": 66,
+  "profiled": 66,
+  "excluded": 31,
+  "tiers": {
+   "Low": 41,
+   "Medium": 21,
+   "High": 4
+  },
+  "profiled_fact_checked": 63,
+  "material_unknown": 57
+ },
+ "links": 7,
+ "evidence_rows": 2686,
+ "fact_check_rounds": [
+  {
+   "round": 1,
+   "label": "Round 1: designed sample of 30 plants (all High, all customer plants, then by score), before repairs",
+   "checked": 355,
+   "corrected": 42,
+   "unreachable": 1,
+   "checkers": [
+    {
+     "file": "fact-check-v-poles-substation-1.json",
+     "checked": 136,
+     "corrected": 10,
+     "kinds": {
+      "wrong plant or location": 1,
+      "other": 4,
+      "quote does not support value": 5
+     }
+    },
+    {
+     "file": "fact-check-v-poles-substation-2.json",
+     "checked": 88,
+     "corrected": 18,
+     "kinds": {
+      "other": 1,
+      "quote does not support value": 6,
+      "wrong plant or location": 11
+     }
+    },
+    {
+     "file": "fact-check-v-poles-substation-3.json",
+     "checked": 131,
+     "corrected": 14,
+     "kinds": {
+      "other": 4,
+      "quote does not support value": 8,
+      "wrong plant or location": 2
+     }
+    }
+   ],
+   "rate": 0.1183,
+   "display": "42 / 355 = 11.8%"
+  },
+  {
+   "round": 2,
+   "label": "Round 2: 10 unsampled plants from multi-plant parents, after the first repair pass",
+   "checked": 62,
+   "corrected": 12,
+   "unreachable": 0,
+   "checkers": [
+    {
+     "file": "fact-check-v-poles-substation-round2-A.json",
+     "checked": 22,
+     "corrected": 4,
+     "kinds": {
+      "other": 2,
+      "quote does not support value": 2
+     }
+    },
+    {
+     "file": "fact-check-v-poles-substation-round2-B.json",
+     "checked": 40,
+     "corrected": 8,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 8,
+      "invented fact": 0,
+      "other": 0
+     }
+    }
+   ],
+   "rate": 0.1935,
+   "display": "12 / 62 = 19.4%"
+  },
+  {
+   "round": 3,
+   "label": "Round 3: all 23 plants no checker had seen, after the attribution clean-up",
+   "checked": 219,
+   "corrected": 18,
+   "unreachable": 0,
+   "checkers": [
+    {
+     "file": "fact-check-v-poles-substation-round3-A.json",
+     "checked": 74,
+     "corrected": 5,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "invented fact": 0,
+      "quote does not support value": 4,
+      "other": 1
+     }
+    },
+    {
+     "file": "fact-check-v-poles-substation-round3-B.json",
+     "checked": 90,
+     "corrected": 3,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 2,
+      "invented fact": 0,
+      "other": 1
+     }
+    },
+    {
+     "file": "fact-check-v-poles-substation-round3-C.json",
+     "checked": 55,
+     "corrected": 10,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 6,
+      "invented fact": 0,
+      "other": 4
+     }
+    }
+   ],
+   "rate": 0.0822,
+   "display": "18 / 219 = 8.2%"
+  }
+ ],
+ "miss_rate": {
+  "value": "5/64 = 7.8%",
+  "note": null,
+  "history": []
+ },
+ "known_limits": []
+}
