@@ -412,3 +412,15 @@ Coordinator decisions applied now (mechanical):
 - **Miss rate:** auditor-measured 8/58 = 13.8%. Finder first pass 32/90 = 35.6%: 23 never found (25.6%) and 9 wrongly excluded (10.0%).
 - **Weights:** unchanged from CLAUDE.md, the whole vertical through. The coordinator rules for applying them are logged above.
 - **Next vertical by rank:** Shipbuilding and naval defense. Not started; CLAUDE.md allows one vertical per session, so it waits for the user's go-ahead.
+
+## 2026-11-13: v-shipbuilding-naval (Shipbuilding and naval defense), Stages B-C started
+
+- **Session rule:** CLAUDE.md says one vertical per session. The user asked in this session to "continue with the next vertical", so the second vertical runs here. The user's explicit instruction overrides the default.
+- **Vertical** (rank 2, accepted 2026-11-12): "Welded steel ship and barge structures built in US shipyards and their structural-assembly suppliers: hull blocks, panels, units and modules, foundations and naval components for Navy, commercial, workboat, unmanned-vessel and inland-barge construction." Confirmed Path customers: HII (production agreement; scope starts with small steel structures), Saronic (Franklin LA), LAD Services (Louisiana barges).
+- **Boundary rules set at find time** (from the poles lessons; logged before research):
+  1. **Construction, not repair:** a yard qualifies if it builds new hulls, barges or structural units, or fabricates structural assemblies or naval components for builders. A repair- or conversion-only yard is excluded ("repair-only; definition covers construction"), kept in the ledger, and marked boundary where repair includes major steel renewal.
+  2. **Material:** aluminum-only and fiberglass builders are excluded. Aluminum-first yards that also weld steel are kept and noted (material scores 4).
+  3. **Inclusion at find time:** a current government, Navy or industry listing naming the plant as a builder or supplier of in-scope structures, or a current welder posting tying in-scope work to the site, means included (base). Judgement exclusions need a quoted reason.
+  4. **Multi-site parents:** one record per physical yard or plant. Navy prime work at one yard does not carry to sister yards (relationship customer_other_plant unless a source names the site).
+  5. **Pre-production and expansion sites** (new yards under construction) are included and flagged, as on poles.
+- **Finder process (remedy from the poles vertical):** the sweeps run inside Stage B: EPA FRS by name and by NAICS 336611, MARAD and Shipbuilders Council lists, Navy and submarine industrial-base supplier announcements, and each parent's own job board by city. The finder is split into four parallel slices by company group and region.
