@@ -396,3 +396,19 @@ Coordinator decisions applied now (mechanical):
   - (d) the inclusion rule applied at finding time, so DOT-listed plants are not excluded on judgement.
   - **Convergence:** the last two passes found one plant each (Sabre Marshall; Sabre 36th St).
 - **Smoke test** saved as `tools/smoke_map.js`. It opens the Method tab and asserts 81, 8.9%, 8.2%, 13.8%, 34.8%, "Round 5" and "partial", and that no stale text remains ("every included plant is profiled", "27.5%", "5/64"). Pass, 0 console errors.
+
+## 2026-11-13: v-poles-substation marked DONE
+
+- **MICA Euless lead closed:** included as base record p-mica-euless-tx (3501 House Anderson Rd; Tarrant County 48439).
+  - A current "Welder - 2nd shift" posting names the "MICA Steelworks Euless, Texas Plant" (flux core and metal core, UT-passable welds; Tallo shows it posted Oct 13 2026, updated Nov 12).
+  - EPA FRS 110070704100 lists "MICA STEELWORKS EULESS" (SIC fabricated structural metal).
+  - MICA's contact page calls Euless an "office", but it calls the TxDOT-approved Kaufman plant an office too. Products are inferred at company level.
+  - 12/12 quotes found.
+  - New lead, not checked: MICA postings at Rhome TX. **The one open lead**, carried to the next pass.
+- **Done criteria (advisor consultation 6) met:** round 5 is 8.2% (9.4% on stated rows), under 10%; the three blockers are cleared (Sabre site sweep, line checks over all 81 plants, MICA Euless); leads are closed (1 included, 10 excluded, 6 unverified with what was tried; Rhome logged as open).
+- verticals.csv and the `v-poles-substation:status` row are set to done. summary.json and the map are rebuilt; `tools/smoke_map.js` passes (0 console errors).
+- **Final counts:** 130 plants found; 90 included (81 profiled, 9 base), 40 excluded. Profiled tiers High 9 / Medium 34 / Low 38.
+- **Fact error rate by round:** 11.8%, 19.4%, 8.2%, 8.9%, 8.2%.
+- **Miss rate:** auditor-measured 8/58 = 13.8%. Finder first pass 32/90 = 35.6%: 23 never found (25.6%) and 9 wrongly excluded (10.0%).
+- **Weights:** unchanged from CLAUDE.md, the whole vertical through. The coordinator rules for applying them are logged above.
+- **Next vertical by rank:** Shipbuilding and naval defense. Not started; CLAUDE.md allows one vertical per session, so it waits for the user's go-ahead.
