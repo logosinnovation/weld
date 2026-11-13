@@ -1,0 +1,855 @@
+{
+ "checker": "fact-checker B (round 4, confirming)",
+ "vertical": "v-poles-substation",
+ "date": "2026-11-13",
+ "plants": [
+  "p-vs-schuler-muskogee-ok",
+  "p-rohn-peoria-il",
+  "p-sabre-conroe-tx",
+  "p-commstructures-pensacola-fl",
+  "p-hughes-brothers-seward-ne",
+  "p-lsi-cincinnati-oh",
+  "p-musco-muscatine-ia",
+  "p-us-pole-palmdale-ca"
+ ],
+ "decision_rule": "Same as round 3. Corrected: the value adds a fact the cited page does not show, tags a judgement or verdict as stated, places a company-level fact at the plant, or the quote is not on the page. Confirmed: the page (not only the quoted fragment) carries every additive clause; fuller support is in note. Limiting parentheticals are not counted as additive.",
+ "claims_checked": 64,
+ "claims_corrected": 13,
+ "claims_unreachable": 0,
+ "error_rate": 0.2031,
+ "error_rate_note": "Headline uses round 4-A's rule: every stated row in the delegated fields and among the score-cited claims (64 rows, in_rate=true); 13/64 = 0.2031, over 10%. The rows list also holds 15 non-stated rows (in_rate=false): 13 inferred or unknown score-cited rows with a source (all confirmed) and 2 score-cited rows with no source that this check corrected (Hughes headcount, CommStructures welder_postings). They are in rows so tools/apply_factcheck.py applies them; matching falls back to (claim_id, '') and each has exactly one evidence row. All rows: 15/79 = 0.1899. Earlier comparable-set figure (stated + sourced cited rows): 13/77 = 0.1688. Score effect: 1 correction changes a score now (Hughes headcount -> scale 0 -> 5); 1 opens a coordinator call on demand (Hughes triggers dates). The other 13 are citation, tag or wording fixes with no score effect. There are no wrong plants, wrong processes, closed plants or invented facts.",
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 13,
+  "invented fact": 0,
+  "other": 0
+ },
+ "error_kind_counts_incl_additional": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 13,
+  "invented fact": 0,
+  "other": 2
+ },
+ "repeated_kinds": [
+  "quote does not support value (13 of 13 counted corrections). Sub-patterns for the sweep: (a) compound value whose extra clause comes from a sibling page on the same site or job board while only one page is cited (8): Sabre Conroe products and weld_processes, Hughes products, Hughes triggers (which also calls a dated post 'undated'), LSI address, LSI materials, Musco products, Musco address (ZIP). (b) company-level or line-level pages tagged stated at one plant (4): ROHN products x2 and materials (two Peoria plants, pages name neither); LSI production_type (the brochure covers steel, aluminum and fiberglass). (c) legal suffix not on the cited page (1): Hughes 'Inc.'.",
+  "Pattern outside the delegated fields (not counted): 4 prospect_test rows carry a 'pass' verdict tagged stated (p-vs-schuler-muskogee-ok, p-sabre-conroe-tx, p-hughes-brothers-seward-ne, p-musco-muscatine-ia). Round 3-A corrected exactly this (Union Metal): a verdict is a judgement and should be inferred. Worth a mechanical sweep across all plants.",
+  "Pattern 'unknown or negative value where an already-cited page states the fact' (other, 2 rows with in_rate=false): Hughes headcount (careers page: '304 Employees'); CommStructures 'site has no careers page' (it has /job-opportunities). Suggest a sweep: for every unknown headcount, weld_processes or part_size_fit row, and every 'no careers page' or 'none found' reason, grep the plant's already-cited pages."
+ ],
+ "worst_errors": [
+  "p-hughes-brothers-seward-ne:headcount is 'unknown', but the careers page the ledger already cites for the address shows '304 Employees' (home page counter: 293). score_scale should be 5, not 0 (100+ employees; no multi-plant parent): total 23 -> 28, Low. Confidence stays 1, because the figure is a company counter across two Seward addresses (tagged inferred).",
+  "p-hughes-brothers-seward-ne:triggers combines two pages and calls the 70,000 sq ft steel fabrication building's operational post 'undated'; the post is dated November 12, 2024, on the 24-month boundary (outside under the ledger's 2024-11-13 cutoff, inside under AGENT_BRIEF's 2024-11-12). The Oct 10, 2025 robotics and seam-welder investment post is recorded only under existing_robots. Demand stays 8 unless the coordinator rules either item a trigger.",
+  "p-rohn-peoria-il:products (x2) and :materials are tagged stated from ROHN's company-level product pages, but ROHN has two Peoria manufacturing sites and the pages name neither. The plant attribution comes from the 'Tubular Products Div.' name; ROHN's own third products row is already tagged inferred for this reason. Retag inferred; no score change (part mix already scored as company-level inferred)."
+ ],
+ "score_problems": [
+  "p-hughes-brothers-seward-ne:score_scale 0 -> 5 (304 employees on the careers page; company counter, tagged inferred, so confidence stays 1). Total 23 -> 28, Low.",
+  "p-hughes-brothers-seward-ne:score_demand 8: coordinator call. It becomes 15 if the Nov 12, 2024 'steel fabrication building operational' post counts (the brief's 2024-11-12 cutoff) or the Oct 10, 2025 robotics investment is accepted as a plant-level trigger. Run-log precedent: Nello Westby's robotics trigger was downgraded for being company-level and undated, not for its kind; Hughes' post is plant-level and dated.",
+  "p-musco-muscatine-ia:score_scale 0 stands for now. The EPA FRS page cited for name lists other Musco Sports Lighting LLC facilities (1107 11th Ave W and 200 1st Ave W, Oskaloosa IA), and the Voice article names a 'director of manufacturing for Musco's operations in Muscatine'. If the coordinator accepts these as a stated multi_plant row: 5 (total 28)."
+ ],
+ "score_notes": [
+  {
+   "plant": "p-hughes-brothers-seward-ne",
+   "component": "score_scale",
+   "ledger_points": 0,
+   "should_be": 5,
+   "why": "headcount corrected from unknown to 304 employees: the hughesbros.com/careers counter (the home page counter shows 293). It is a company counter, and the company lists two Seward addresses (210 N 13th St, 168 N 11th St), so it is tagged inferred. No multi-plant parent. Rubric: 100+ employees only = 5. Total 23 -> 28 (Low). Confidence stays 1: scale rests on an inferred row."
+  },
+  {
+   "plant": "p-hughes-brothers-seward-ne",
+   "component": "score_demand",
+   "ledger_points": 8,
+   "should_be": 8,
+   "why": "Lead with no trigger row yet. (1) hughesbros.com/news/our-steel-fabrication-building-operational is dated November 12 2024: outside the window under the ledger's 'on/after 2024-11-13' (today 2026-11-13), inside under AGENT_BRIEF's 'on or after 2024-11-12'. (2) hughesbros.com/news/automation-progress, dated October 10 2025: robotics investment, 'the addition of the robotic system and another seam welder'. This is plant-level and inside the window. Nello Westby's robotics trigger was downgraded for being company-level and undated, not for its kind. If either is accepted as a trigger row: 15 (total 35 with the scale fix, still Low)."
+  },
+  {
+   "plant": "p-hughes-brothers-seward-ne",
+   "component": "score_part_mix",
+   "ledger_points": 15,
+   "should_be": 15,
+   "why": "Confirmed. The home page counter shows '99000+ Product SKUs', which meets 'many part types' (15), alongside 'Any kind of framing for any kind of pole.' The products page's '6590578 Parts Made in 2023' shows volume too, but with 99,000+ SKUs this isn't 'high-volume identical parts'. Recommend adding a stated row for the SKU counter (home page) so part mix rests on it."
+  },
+  {
+   "plant": "p-musco-muscatine-ia",
+   "component": "score_scale",
+   "ledger_points": 0,
+   "should_be": 0,
+   "why": "Lead with no row yet. The EPA FRS JSON cited for p-musco-muscatine-ia:name lists 'MUSCO SPORTS LIGHTING LLC' registrations at 1107 11TH AVE W and 200 1ST AVE W, OSKALOOSA, as well as 2107 STEWART RD, MUSCATINE. Registry rows don't prove current operation. If the coordinator adds a stated multi_plant row (FRS or a Musco locations page): 5, total 28."
+  },
+  {
+   "plant": "p-vs-schuler-muskogee-ok",
+   "component": "score_material_part",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "No change. Follows the coordinator's 2026-11-13 boundary ruling (seam-welder capacity 60 ft x 80 in vs the 2026 analyst cell limits); the capacity sentence is confirmed on the page. Sensitivity in the ledger row stands."
+  },
+  {
+   "plant": "p-lsi-cincinnati-oh",
+   "component": "score_material_part",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "No change. Follows the coordinator's 2026-11-13 boundary ruling. Both size facts are confirmed: '4”, 5″, and 6″' on the 4SQ page and 'Pole heights up to 39’' in the brochure (the brochure figure covers steel, aluminum and fiberglass, so applying it to steel stays inferred). Note: the shaft is 'electro-welded' bought-in tube, so the plant's welds are attachments to 4-6 in tubes. production_type is re-cited to the poles-overview page ('made-to-order', Cincinnati HQ); part mix 15 and confidence 2 are unchanged."
+  },
+  {
+   "plant": "p-sabre-conroe-tx",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "Confirmed. Four Sabre welding roles are open at Conroe on Tallo (2026-11-13), dated as stated; the oldest (Welder Trainee - Telecom Days, Sep 2, 2026) has been open 72 days. The trainee and fitter counting rule is from review-fix-labor."
+  },
+  {
+   "plant": "p-rohn-peoria-il",
+   "component": "score_part_mix",
+   "ledger_points": 15,
+   "should_be": 15,
+   "why": "No change. The products rows behind it are retagged inferred by this check, but part mix was already scored as company-level inferred (earns points, no confidence; rule 1). 'designs based on customer requirements' meets 'custom work' (15). The pre-engineered lines are a standard catalog, but no page shows high-volume repeat work. Confidence stays 1."
+  }
+ ],
+ "opening_line_problems": [
+  "Not checked (opening lines are being rewritten in parallel). Seen in passing, not counted: p-us-pole-palmdale-ca opening line and prospect_test say 'vertically integrated', but that phrase is not on usaltg.com (the page says 'manufacture all of our products right here in the United States, at our Palmdale, California facility')."
+ ],
+ "plants_closed_or_moved": [],
+ "plant_status_notes": "All 8 operate at the recorded city. V&S Schuler Tubular Products: site live, Sept 2026 news; it is relocating within Muskogee to a new $22M facility at Port Muskogee's John T. Griffin Industrial Park, so the 420 Frankfort Ave address will change. ROHN: site live; AISC snapshot lists 'Rohn Products LLC Plank Road Facilities, Peoria'. Sabre Conroe: four open Conroe postings dated Sep-Oct 2026; EPA FRS 3575 Pollok Dr. CommStructures: site live (2025 footer), 101 E Roberts Rd; government-contractor listings in search. Hughes Brothers: Oct 2025 news, Aug 2026 Seward opening. LSI: the 2026 poles pages say poles are 'manufactured at our Cincinnati headquarters'; the plant is in the Blue Ash section (inside.lighting) with a Cincinnati 45242 mailing address. Musco Muscatine: May 2026 expansion article; EPA FRS 2107 Stewart Rd. U.S. Outdoor Lighting: site live with a Palmdale address; 2026 product press in search.",
+ "vertical_rows_checked": [
+  {
+   "claim_id": "v-poles-substation:demand_outlook",
+   "note": "Shared vertical rows, cited by 6 of the 8 score_demand rows and not counted in claims_checked; round 4-A did not include them either. All 4 quotes were found on their pages (2026-11-13, plain fetch): Valmont 10-Q (vmi-20260926x10q.htm), Arcosa 10-K (aca-20251231.htm), Hydrocarbon Processing (Jul 2026), SteelOrbis (dated 08 October 2026). Values are supported as stated. The coordinator can mark these confirmed once, so the four checkers don't duplicate the work."
+  }
+ ],
+ "method": "Scope: every evidence row tagged stated in the delegated fields for the 8 plants, plus every row cited by a score_* row ('supporting claims'). The headline rate counts the 64 stated rows (round 4-A's rule); 15 non-stated cited rows are in rows with in_rate=false. opening_line and bottleneck_guess were skipped as instructed. All 44 non-AISC source pages were fetched with tools/fetch_page.py on 2026-11-13: 39 plain and 5 headless browser (3 Tallo, 1 Dayforce, plus the Hughes 1st-shift welder page, which returned HTTP 500 and is cited only by an unknown row). The CommStructures /job-opportunities page was also fetched to test the welder_postings reason. Every '...'-joined quote fragment matched the normalised page text. Then each value's additive clauses were read against the whole page. AISC rows were checked against whole lines of ledger/audit/source-snapshot-aisc-directory-2026-11-12.txt. Every cached page was grepped for weld/process/robot/employee/size terms to test 'unknown' rows. Open status came from live pages and 2 WebSearch queries (CommStructures, U.S. Outdoor Lighting). Score arithmetic and confidence were recomputed for all 8 plants: totals and confidence match the ledger before corrections. No ledger files edited. Every corrected_quote fragment was re-checked with norm() against its corrected_source_url (or source_url) page: 15/15 found.",
+ "rows": [
+  {
+   "claim_id": "p-vs-schuler-muskogee-ok:parent_company",
+   "source_url": "https://vsschuler.com/about/",
+   "ledger_value": "Hill & Smith Holdings PLC (parent of V&S Schuler since 2007); V&S Utilities group of five fabrication facilities",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-vs-schuler-muskogee-ok:multi_plant",
+   "source_url": "https://vsschuler.com/about/",
+   "ledger_value": "V&S Utilities: five fabrication facilities (Canton OH, Burton OH, Muskogee OK, Trenton NJ, Elberton GA)",
+   "verdict": "confirmed",
+   "note": "About page: 'the group has five fabrication facilities' after the 2024 Trenton and Elberton acquisitions; home page lists all five locations.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-vs-schuler-muskogee-ok:name",
+   "source_url": "https://vsschuler.com/vs-schuler-tubular-products/",
+   "ledger_value": "V&S Schuler Tubular Products (Muskogee)",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-vs-schuler-muskogee-ok:address",
+   "source_url": "https://www.vsschuler.com/",
+   "ledger_value": "420 Frankfort Ave, Muskogee, OK 74403",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-vs-schuler-muskogee-ok:products",
+   "source_url": "https://vsschuler.com/vs-schuler-tubular-products/",
+   "ledger_value": "tapered tubular poles for the electrical utility industry; embedded and base-plated structures",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-vs-schuler-muskogee-ok:weld_processes",
+   "source_url": "https://vsschuler.com/vs-schuler-tubular-products/",
+   "ledger_value": "seam welding of poles on a BSCO high-capacity seam welder plus a portable seam welder; arc process not named",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-vs-schuler-muskogee-ok:materials",
+   "source_url": "https://vsschuler.com/vs-schuler-tubular-products/",
+   "ledger_value": "galvanized or weathering steel",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-vs-schuler-muskogee-ok:certifications",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC: Building Fabricator",
+   "verdict": "confirmed",
+   "note": "Whole snapshot line: 'V&S Schuler Tubular Products\tMuskogee\tOK\tBuilding Fabricator'.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-vs-schuler-muskogee-ok:part_size_fit",
+   "source_url": "https://vsschuler.com/vs-schuler-tubular-products/",
+   "ledger_value": "poles up to 60 ft long and 80 in diameter (seam-welder capacity): within the 2026 analyst cell limits (60 ft long, 15 ft wide, 55,000 lb); exceeds the older sales sheet's 72 in diameter; weight not stated",
+   "verdict": "confirmed",
+   "ledger_tag": "inferred",
+   "in_rate": false
+  },
+  {
+   "claim_id": "p-vs-schuler-muskogee-ok:production_type",
+   "source_url": "https://vsschuler.com/vs-schuler-tubular-products/",
+   "ledger_value": "wide range of tapered poles; portable seam welder for custom projects",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-vs-schuler-muskogee-ok:existing_robots",
+   "source_url": "https://vsschuler.com/vs-schuler-tubular-products/",
+   "ledger_value": "automated BSCO seam welder that lifts and rotates poles (not a robot); robots unknown",
+   "verdict": "confirmed",
+   "note": "'automated' is a fair gloss of 'This machine lifts and rotates poles during the seaming process, greatly reducing production time.'; no robot named.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-vs-schuler-muskogee-ok:headcount",
+   "source_url": "https://okbusinessvoice.com/?p=7472",
+   "ledger_value": "70+ (more than 70 existing positions, Sept 2026)",
+   "verdict": "confirmed",
+   "note": "Article dated September 10, 2026; 'more than 70 existing positions'.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-vs-schuler-muskogee-ok:triggers",
+   "source_url": "https://okbusinessvoice.com/?p=7472",
+   "ledger_value": "2026-09: $22M new manufacturing facility at Port Muskogee's John T. Griffin Industrial Park, relocating the Muskogee operation to raise capacity; new welding and fabrication jobs over five years",
+   "verdict": "confirmed",
+   "note": "Both trigger pages carry the value. OK Business Voice dated September 10, 2026; Area Development dated 09/15/2026. The relocation stays in Muskogee (Port Muskogee, John T. Griffin Industrial Park).",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-vs-schuler-muskogee-ok:triggers",
+   "source_url": "https://www.areadevelopment.com/newsitems/9-15-2026/vs-schuler-tubular-products-muskogee-oklahoma.shtml",
+   "ledger_value": "dated 2026-09-15: $22M project with a new manufacturing facility",
+   "verdict": "confirmed",
+   "note": "Both trigger pages carry the value. OK Business Voice dated September 10, 2026; Area Development dated 09/15/2026. The relocation stays in Muskogee (Port Muskogee, John T. Griffin Industrial Park).",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-vs-schuler-muskogee-ok:welder_postings",
+   "source_url": "https://us251.dayforcehcm.com/CandidatePortal/en-US/hs/Site/ClientCareersSiteVSSchuler",
+   "ledger_value": "none found: V&S's Dayforce job board (read 2026-11-13) lists only Ohio fitter/welder openings",
+   "verdict": "confirmed",
+   "note": "Dayforce board read 2026-11-13 (browser): 4 postings, all Ohio (Middlefield Fitter/Welder 3rd Shift, posted 2026-09-10; Middlefield Fitter/Welder-3rd shift Req 983, 2026-07-31; Canton Fitter/Welder Req 982, 2026-07-31; Canton Steel Structural Engineer Req 778). None at Muskogee. The board text says the group has 'locations in Ohio, Oklahoma, New Jersey, and Georgia'.",
+   "ledger_tag": "inferred",
+   "in_rate": false
+  },
+  {
+   "claim_id": "p-rohn-peoria-il:name",
+   "source_url": "https://rohnnet.com/location/",
+   "ledger_value": "ROHN Products, Tubular Products Div. (Plank Road)",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-rohn-peoria-il:address",
+   "source_url": "https://rohnnet.com/location/",
+   "ledger_value": "6800 W Plank Rd, Peoria, IL 61604",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-rohn-peoria-il:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=ROHN&state_abbr=IL&output=JSON",
+   "ledger_value": "6800 Plank Road, Peoria 61604 (EPA FRS; coordinates 40.689732, -89.703991)",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-rohn-peoria-il:parent_company",
+   "source_url": "https://rohnnet.com/company-history/",
+   "ledger_value": "ROHN Products, LLC (independent since 2008 per its history page)",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-rohn-peoria-il:products",
+   "source_url": "https://rohnnet.com/steel-poles/",
+   "ledger_value": "tapered steel poles and flanged steel poles (telecom)",
+   "verdict": "corrected",
+   "corrected_value": "tapered steel poles and flanged steel poles (telecom) (company-level product page; attributed to the Tubular Products Div. at 6800 W Plank Rd by division name)",
+   "corrected_quote": "Our Tapered Steel Poles and Flanged Steel Poles feature designs that are aesthetically pleasing and blend well into the environment while requiring minimum space for installation.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 3020. Quote is on the page, but the page is ROHN's company-level product page and names no plant. ROHN lists two Peoria manufacturing sites (Tower Products Div., #1 Fairholm Ave; Tubular Products Div., 6800 W Plank Rd; rohnnet.com/location/), and AISC lists both 'Rohn Products LLC Plank Road Facilities' and 'Rohn Products, L.L.C.' in Peoria. Placing the line at Plank Road rests on the division name, which is an inference; ROHN's own utility-solutions products row is already tagged inferred for the same reason. Value unchanged in substance; tag only.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-rohn-peoria-il:products",
+   "source_url": "https://rohnnet.com/pre-engineered-steel-utility-poles/",
+   "ledger_value": "pre-engineered steel utility poles (light duty), direct embed or flanged",
+   "verdict": "corrected",
+   "corrected_value": "pre-engineered steel utility poles (light duty), direct embed or flanged (company-level product page; attributed to Plank Road by division name)",
+   "corrected_quote": "ROHN Pre-Engineered steel utility poles offer a light duty solution to satisfy utilities desiring an alternative to wood poles.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 3021. Same as the steel-poles row: company-level product page with no plant named; the plant attribution is inferred from the 'Tubular Products Div.' name on the location page.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-rohn-peoria-il:products",
+   "source_url": "https://rohnnet.com/utility-solutions/",
+   "ledger_value": "tubular utility structures designed with PLS software (company-level)",
+   "verdict": "confirmed",
+   "ledger_tag": "inferred",
+   "in_rate": false
+  },
+  {
+   "claim_id": "p-rohn-peoria-il:weld_processes",
+   "source_url": "https://rohnnet.com/utility-solutions/",
+   "ledger_value": "unknown arc process; full-penetration base-plate and seam welds (company-level)",
+   "verdict": "confirmed",
+   "ledger_tag": "inferred",
+   "in_rate": false
+  },
+  {
+   "claim_id": "p-rohn-peoria-il:materials",
+   "source_url": "https://rohnnet.com/pre-engineered-steel-utility-poles/",
+   "ledger_value": "steel (galvanized; weathering steel option)",
+   "verdict": "corrected",
+   "corrected_value": "steel (galvanized; weathering steel option) (company-level product page; attributed to Plank Road)",
+   "corrected_quote": "The poles come standard with a hot-dip galvanized coating, but can also be painted or fabricated with weathering steel.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 3025. Company-level product page; it does not say which of ROHN's two Peoria plants makes the poles. Tag only; steel itself is not in doubt.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-rohn-peoria-il:certifications",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC: Building Fabricator (Rohn Products LLC Plank Road Facilities)",
+   "verdict": "confirmed",
+   "note": "AISC whole snapshot line: 'Rohn Products LLC Plank Road Facilities\tPeoria\tIL\tBuilding Fabricator'. A second line 'Rohn Products, L.L.C.\tPeoria\tIL\tBuilding Fabricator' is presumably Fairholm. AWS row: value is labelled company-level, so not a plant placement.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-rohn-peoria-il:certifications",
+   "source_url": "https://rohnnet.com/manufacturing/",
+   "ledger_value": "AWS Certified Welding Fabricator (company-level)",
+   "verdict": "confirmed",
+   "note": "AISC whole snapshot line: 'Rohn Products LLC Plank Road Facilities\tPeoria\tIL\tBuilding Fabricator'. A second line 'Rohn Products, L.L.C.\tPeoria\tIL\tBuilding Fabricator' is presumably Fairholm. AWS row: value is labelled company-level, so not a plant placement.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-rohn-peoria-il:part_size_fit",
+   "source_url": "https://rohnnet.com/light-duty-poles/",
+   "ledger_value": "unknown: light-duty poles 30-150 ft overall height; section length and diameter not stated",
+   "verdict": "confirmed",
+   "ledger_tag": "inferred",
+   "in_rate": false
+  },
+  {
+   "claim_id": "p-rohn-peoria-il:production_type",
+   "source_url": "https://rohnnet.com/utility-solutions/",
+   "ledger_value": "engineered to customer requirements plus pre-engineered pole lines (company-level)",
+   "verdict": "confirmed",
+   "ledger_tag": "inferred",
+   "in_rate": false
+  },
+  {
+   "claim_id": "p-rohn-peoria-il:welder_postings",
+   "source_url": "https://rohnnet.com/careers/",
+   "ledger_value": "none listed: ROHN's careers page shows no current opening, only a standing call for experienced welders' resumes",
+   "verdict": "confirmed",
+   "note": "Careers page: 'Current Job Openings' section has no listings; resumes accepted for 'Experienced welders to work in our manufacturing plant'.",
+   "ledger_tag": "inferred",
+   "in_rate": false
+  },
+  {
+   "claim_id": "p-rohn-peoria-il:multi_plant",
+   "source_url": "https://rohnnet.com/location/",
+   "ledger_value": "two Peoria manufacturing addresses (Tower Products Div. #1 Fairholm Ave; Tubular Products Div. 6800 W Plank Rd)",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-sabre-conroe-tx:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=SABRE&state_abbr=TX&output=JSON",
+   "ledger_value": "Sabre Industries (Conroe)",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-sabre-conroe-tx:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=SABRE&state_abbr=TX&output=JSON",
+   "ledger_value": "3575 Pollok Dr, Conroe, TX 77303",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-sabre-conroe-tx:multi_plant",
+   "source_url": "https://www.tws.edu/blog/tws-community/meet-sabre-industries/",
+   "ledger_value": "Sabre runs several plants (HR manager responsible for Conroe TX, Alvarado TX and York SC, c. 2020)",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-sabre-conroe-tx:products",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/tx/conroe/welder-2-yrs-experience-5f0ae9d6",
+   "ledger_value": "steel pole assemblies (shaft plus base plate, hand hole, arm simplex, tenon top, vangs, step lugs) in a Large Pole department; telecom work (posting title 'Welder Trainee - Telecom Days')",
+   "verdict": "corrected",
+   "corrected_value": "pole assemblies (welding of components or assemblies; drilling holes on pole assembly per drawings)",
+   "corrected_quote": "Uses magnetic drills to drill various size holes on pole assembly as required by drawings.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 3059. Compound value. The cited Welder (2 yrs. experience) posting shows only 'pole assembly'. The component list (shaft, baseplate, hand hole, arm mounting simplex, tenon top, vangs, step lugs) and 'Large Pole department' are on the GMAW Fitter posting (tallo .../gmaw-fitter-940af21a: 'The pole assembly generally consists of a round tube or formed shaft, baseplate, hand hole, arm mounting simplex, tenon top, vangs, step lugs, ladder clips, and/or other small parts.'), and the 'Welder Trainee - Telecom Days' title is on the Tallo browse page. 'Steel' is not on this page either (the Fitter page says 'cut steel'). Split the value across the three pages; no score effect.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-sabre-conroe-tx:products",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/tx/conroe/gmaw-fitter-940af21a",
+   "ledger_value": "pole assembly fitting in the Large Pole department",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-sabre-conroe-tx:weld_processes",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/tx/conroe/welder-2-yrs-experience-5f0ae9d6",
+   "ledger_value": "GMAW (spray arc) for welders; GMAW 2G qualification test; FCAW for fitter tack welds",
+   "verdict": "corrected",
+   "corrected_value": "GMAW (spray arc transfer) for production welding; GMAW 2G qualification test",
+   "corrected_quote": "Must be able to pass and qualify to a GMAW 2G weld test that meets visual acceptance criteria before being offered the Welder C position. ... Uses GMAW welding process (Spray Arc transfer) to weld components or assemblies.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 3061. Compound value: the clause 'FCAW for fitter tack welds' is not on the cited Welder posting; it is on the GMAW Fitter posting, which has its own weld_processes row (confirmed). Trim the clause here. score_process 20 is unaffected (GMAW stated as the production process in a welder posting for this plant).",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-sabre-conroe-tx:weld_processes",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/tx/conroe/gmaw-fitter-940af21a",
+   "ledger_value": "FCAW tack welding by fitters",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-sabre-conroe-tx:materials",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/tx/conroe/gmaw-fitter-940af21a",
+   "ledger_value": "steel (round tube or formed shafts, base plates)",
+   "verdict": "confirmed",
+   "ledger_tag": "inferred",
+   "in_rate": false
+  },
+  {
+   "claim_id": "p-sabre-conroe-tx:production_type",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/tx/conroe/gmaw-fitter-940af21a",
+   "ledger_value": "engineered pole assemblies built to drawings, parts vary by drawing",
+   "verdict": "confirmed",
+   "ledger_tag": "inferred",
+   "in_rate": false
+  },
+  {
+   "claim_id": "p-sabre-conroe-tx:welder_postings",
+   "source_url": "https://tallo.com/talent/job/browse/manufacturing/welder-or-solderer/tx/conroe",
+   "ledger_value": "4 open Sabre welding postings at Conroe on Tallo (read 2026-11-13): Welder Trainee - Telecom Days (posted 2026-09-02), Welder Trainee - ConU (2026-10-24), Welder (2 yrs. experience) (2026-10-28), GMAW Fitter (2026-10-28); GMAW 2G test; no sign-on bonus or mandatory overtime seen",
+   "verdict": "confirmed",
+   "note": "Tallo browse page (browser, 2026-11-13) lists all four Sabre Conroe roles with the stated dates: Welder (2 yrs. experience) Oct 28, 2026; GMAW Fitter Oct 28, 2026; Welder Trainee - ConU Oct 24, 2026; Welder Trainee - Telecom Days Sep 2, 2026 (72 days open). Welder (2 yrs.) shows 'Expires: 11/30/2026'.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-sabre-conroe-tx:headcount",
+   "source_url": "https://www.tws.edu/blog/tws-community/meet-sabre-industries/",
+   "ledger_value": "163 (c. early 2020; stale)",
+   "verdict": "confirmed",
+   "note": "TWS blog: 'Sabre bought the Conroe plant in August 2019 with 62 employees; six months later, we are at 163 employees.' Page marked archived; value correctly flagged stale.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-sabre-conroe-tx:existing_robots",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/tx/conroe/welder-2-yrs-experience-5f0ae9d6",
+   "ledger_value": "unknown (mechanical rolling equipment rotates sections for welding)",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-commstructures-pensacola-fl:name",
+   "source_url": "https://www.commstructures.com/",
+   "ledger_value": "CommStructures, Inc.",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-commstructures-pensacola-fl:address",
+   "source_url": "https://www.commstructures.com/",
+   "ledger_value": "101 E Roberts Rd, Pensacola, FL 32534",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-commstructures-pensacola-fl:products",
+   "source_url": "https://www.commstructures.com/towers/monopole",
+   "ledger_value": "continuous-taper and step-taper telecom monopoles; towers and tower reinforcements",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-commstructures-pensacola-fl:production_type",
+   "source_url": "https://www.commstructures.com/towers/monopole",
+   "ledger_value": "designed and fabricated per project",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-commstructures-pensacola-fl:existing_robots",
+   "source_url": "https://www.commstructures.com/about",
+   "ledger_value": "unknown (automated beam, angle and drill lines and cutting tables; no welding robots named)",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-hughes-brothers-seward-ne:name",
+   "source_url": "https://www.hughesbros.com/",
+   "ledger_value": "Hughes Brothers, Inc.",
+   "verdict": "corrected",
+   "corrected_value": "Hughes Brothers, Inc.",
+   "corrected_quote": "Hughes Brothers, Inc. warrants that the manufactured materials are free from defects.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 3122. Legal suffix not on the cited page (round-2 sub-pattern a): the home page shows only 'Hughes Brothers - Wood & Steel Electric Utility Products'. The products page carries 'Hughes Brothers, Inc.' in its warranty text. Value unchanged; source and quote replaced.",
+   "corrected_source_url": "https://www.hughesbros.com/products",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-hughes-brothers-seward-ne:address",
+   "source_url": "https://www.hughesbros.com/careers",
+   "ledger_value": "210 N 13th St, Seward, NE 68434",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-hughes-brothers-seward-ne:products",
+   "source_url": "https://www.hughesbros.com/products",
+   "ledger_value": "steel H-frame transmission structures (up to 345 kV), steel framing, davit arms, base plates, storm restoration kits; wood framing",
+   "verdict": "corrected",
+   "corrected_value": "steel H-frames (up to 345 kV), steel framing, steel davits, storm restoration (bundled H-frame structure) kits; wood framing",
+   "corrected_quote": "We have done structural steel H-frames up to 345kV.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 3126. Compound value: 'base plates' is not on the products page (it is on the Oct 10, 2025 automation-progress post). 'transmission structures' is a gloss on '345kV'; the page says 'H-frame products' and 'H-frames up to 345kV'. Trim to what the page carries. No score effect.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-hughes-brothers-seward-ne:products",
+   "source_url": "https://www.hughesbros.com/news/our-steel-fabrication-building-operational",
+   "ledger_value": "steel transmission line structures and parts from a new 70,000 sq ft steel fabrication building",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-hughes-brothers-seward-ne:weld_processes",
+   "source_url": "https://www.hughesbros.com/news/automation-progress",
+   "ledger_value": "seam welding of davit tubes; robotic welding of base plates with gussets; arc process not named",
+   "verdict": "confirmed",
+   "note": "Automation post dated October 10 2025. 'robotic welding of base plates with gussets' is supported by the page as a whole ('started working on automating the welding of base plates with gussets'; 'With the addition of the robotic system').",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-hughes-brothers-seward-ne:materials",
+   "source_url": "https://www.hughesbros.com/products",
+   "ledger_value": "steel (over 75% of shipments) and wood",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-hughes-brothers-seward-ne:production_type",
+   "source_url": "https://www.hughesbros.com/products",
+   "ledger_value": "custom framing for any pole type plus standard kits",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-hughes-brothers-seward-ne:existing_robots",
+   "source_url": "https://www.hughesbros.com/news/automation-progress",
+   "ledger_value": "yes: h-frame robotic systems weld washer nuts and shear blocks; automation of base-plate gusset welding; added seam welder",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-hughes-brothers-seward-ne:welder_postings",
+   "source_url": "https://www.hughesbros.com/jobs/1st-shift-production-welder-openings",
+   "ledger_value": "unknown: the company's '1st Shift Production Welder Openings' page returned HTTP 500 (2026-11-13); careers page lists a 2nd-shift galvanizing helper opening (2026-08-17)",
+   "verdict": "confirmed",
+   "note": "The 1st-shift welder page still returns HTTP 500 (2026-11-13). Careers page shows only the Aug 17, 2026 2nd-shift Galvanizing Helper opening. Unknown stands.",
+   "ledger_tag": "unknown",
+   "in_rate": false
+  },
+  {
+   "claim_id": "p-hughes-brothers-seward-ne:triggers",
+   "source_url": "https://www.hughesbros.com/news/hughes-brothers-expansion-project",
+   "ledger_value": "new steel processing/tube building, targeted to be operational by late summer 2024 (before the 24-month window); 70,000 sq ft steel fabrication building reported operational (undated)",
+   "verdict": "corrected",
+   "corrected_value": "2023-11-03: ground broken on a new tube facility / steel processing building, targeted fully operational by late summer 2024 (outside the 24-month window)",
+   "corrected_quote": "We have broken ground on our new tube facility. ... We would like to have this fully operational by late summer of 2024.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 3136. Two problems. (1) Compound: the clause '70,000 sq ft steel fabrication building reported operational' is not on the cited Nov 3, 2023 page; it is on hughesbros.com/news/our-steel-fabrication-building-operational. (2) That clause says '(undated)', but the operational post is dated 'November 12 2024'. The ledger rows use 'on/after 2024-11-13', so it falls one day outside; AGENT_BRIEF says recent = on or after 2024-11-12, so it falls inside. Separately, hughesbros.com/news/automation-progress is dated 'October 10 2025' (robotics investment, 'the addition of the robotic system and another seam welder'), a dated plant-level item inside the window that is recorded only under existing_robots. See score_notes for demand.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-lsi-cincinnati-oh:name",
+   "source_url": "https://inside.lighting/news/22-11/412-takeaways-our-visit-lsi-headquarters",
+   "ledger_value": "LSI Industries (Blue Ash steel pole plant)",
+   "verdict": "confirmed",
+   "note": "inside.lighting article dated November 16, 2022; current manufacture at the Cincinnati HQ is confirmed by the 2026 poles-overview page.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-lsi-cincinnati-oh:address",
+   "source_url": "https://lsicorp.com/lighting/buy-american-from-lsi/",
+   "ledger_value": "10000 Alliance Rd, Cincinnati, OH 45242 (HQ campus; pole plant in an adjacent building)",
+   "verdict": "corrected",
+   "corrected_value": "10000 Alliance Rd, Cincinnati, OH 45242",
+   "corrected_quote": "10000 Alliance Road ... Cincinnati, Ohio 45242",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 3149. Compound value (round-3 sub-pattern c): the clause '(HQ campus; pole plant in an adjacent building)' is not on the cited Buy American page; it comes from the Nov 16, 2022 inside.lighting article ('A separate building adjacent to LSI's headquarters building is home to its extensive steel pole production facility'), which gives no street address. Keep the clause only with that second source, as inferred (the adjacent building's own address is not stated).",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-lsi-cincinnati-oh:parent_company",
+   "source_url": "https://lsicorp.com/lsi/wp-content/uploads/all/Poles-brochure.pdf",
+   "ledger_value": "LSI Industries Inc.",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-lsi-cincinnati-oh:products",
+   "source_url": "https://lsicorp.com/lighting/poles-overview/",
+   "ledger_value": "made-to-order steel light poles (square, round, straight, tapered) for area and site lighting",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-lsi-cincinnati-oh:materials",
+   "source_url": "https://lsicorp.com/lsi/product/steel-square-straight-pole-4sq/",
+   "ledger_value": "steel (A500 Grade C tube) at this plant; LSI also sells aluminum and fiberglass poles",
+   "verdict": "corrected",
+   "corrected_value": "steel (ASTM A500 Grade C tube) at this plant; LSI also sells aluminum poles",
+   "corrected_quote": "Pole shaft is electro-welded ASTM-A500 Grade C steel tubing with a minimum yield strength of 46,000 psi.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 3155. Detail not on the page: 'fiberglass' is not on the cited 4SQ product page (it is on the Poles brochure PDF: 'Steel, Aluminum or Fiberglass'). Aluminum is on the page (Aluminum Poles menu). Minor; no score effect.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-lsi-cincinnati-oh:part_size_fit",
+   "source_url": "https://lsicorp.com/lsi/wp-content/uploads/all/Poles-brochure.pdf",
+   "ledger_value": "steel poles 4-6 in square/round, heights up to 39 ft: within the 2026 analyst cell limits (60 ft, 15 ft wide); below the older sheet's 8 in minimum diameter; weight not stated",
+   "verdict": "confirmed",
+   "ledger_tag": "inferred",
+   "in_rate": false
+  },
+  {
+   "claim_id": "p-lsi-cincinnati-oh:production_type",
+   "source_url": "https://lsicorp.com/lsi/wp-content/uploads/all/Poles-brochure.pdf",
+   "ledger_value": "made to order, completely configurable (materials, finishes, sizes, styles)",
+   "verdict": "corrected",
+   "ledger_tag": "stated",
+   "in_rate": true,
+   "corrected_value": "made to order (steel poles engineered and manufactured at the Cincinnati headquarters)",
+   "corrected_quote": "Proudly engineered and manufactured at our Cincinnati headquarters, these made-to-order solutions ensure long-term stability in even the most demanding environments.",
+   "corrected_tag": "stated",
+   "corrected_source_url": "https://lsicorp.com/lighting/poles-overview/",
+   "error_kind": "quote does not support value",
+   "note": "Same test as ROHN: the cited Poles brochure covers LSI's whole pole line ('Steel, Aluminum or Fiberglass'; the ledger's own part_size_fit row treats the brochure as line-level) and names no plant, so 'completely configurable (materials, ...)' is line-level, not plant-level. 'Made to order' for the Cincinnati-made steel poles is stated on the poles-overview page (and on the 4SQ page: 'these made to order poles'). Re-cite; value trimmed. score_part_mix 15 and confidence are unchanged (still a stated row)."
+  },
+  {
+   "claim_id": "p-lsi-cincinnati-oh:multi_plant",
+   "source_url": "https://lsicorp.com/lighting/buy-american-from-lsi/",
+   "ledger_value": "multiple U.S. manufacturing facilities",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-lsi-cincinnati-oh:welder_postings",
+   "source_url": "https://lsicorp.com/careers/",
+   "ledger_value": "unknown: LSI careers page blocked (Cloudflare 5xx); a Blue Ash 2nd-shift MIG welder posting seen only in a search result",
+   "verdict": "confirmed",
+   "note": "lsicorp.com/careers now loads (plain fetch, 2026-11-13) but shows no job list; the value's 'blocked' reason is out of date, but 'unknown' stands.",
+   "ledger_tag": "unknown",
+   "in_rate": false
+  },
+  {
+   "claim_id": "p-musco-muscatine-ia:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=MUSCO&state_abbr=IA&output=JSON",
+   "ledger_value": "Musco Sports Lighting (Muscatine)",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-musco-muscatine-ia:address",
+   "source_url": "https://www.voiceofmuscatine.com/?p=298230",
+   "ledger_value": "2107 Stewart Rd, Muscatine, IA 52761",
+   "verdict": "corrected",
+   "corrected_value": "2107 Stewart Rd, Muscatine, IA",
+   "corrected_quote": "Musco’s 2107 Stewart Road facility",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 3177. Detail not on the page: ZIP 52761 is not on the Voice of Muscatine article. It is on the EPA FRS record already cited for name ('MUSCO SPORTS LIGHTING LLC', '2107 STEWART RD', 'MUSCATINE', '52761'). Either drop the ZIP or cite FRS. Minor.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-musco-muscatine-ia:products",
+   "source_url": "https://quadcitiesbusiness.com/?p=60231",
+   "ledger_value": "pole manufacturing (sports and large-area lighting poles) and aluminum fabrication",
+   "verdict": "corrected",
+   "corrected_value": "pole manufacturing and aluminum fabrication (28,000 sq ft building opened June 10, 2024)",
+   "corrected_quote": "That’s the word from Musco company leaders who helped celebrate the opening of a new 28,000-square-foot pole manufacturing and aluminum fabrication building on Monday afternoon, June 10.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 3180. Compound value: '(sports and large-area lighting poles)' is not on the Quad Cities Business page (subscriber-gated; the visible text names only 'pole manufacturing and aluminum fabrication'). 'Sports and large area lighting' is on the Voice of Muscatine article, as a company description, not a description of the Muscatine poles. No score effect.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-musco-muscatine-ia:production_type",
+   "source_url": "https://www.musco.com/solution/structures/",
+   "ledger_value": "site-specific designs on a standard pole system (mixed)",
+   "verdict": "confirmed",
+   "ledger_tag": "inferred",
+   "in_rate": false
+  },
+  {
+   "claim_id": "p-musco-muscatine-ia:triggers",
+   "source_url": "https://www.voiceofmuscatine.com/?p=298230",
+   "ledger_value": "2026-05: $17M expansion, new 94,000 sq ft fabrication and warehouse building at 2107 Stewart Rd, 25 new jobs; construction from June 2026",
+   "verdict": "confirmed",
+   "note": "Article dated 'Fri, May 15, 2026'; $17M, 94,000 sq ft, 2107 Stewart Road, start in June, 25 new jobs all on the page.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-us-pole-palmdale-ca:name",
+   "source_url": "https://inside.lighting/press/25-q2/same-legacy-new-name-reengineered-todays-market",
+   "ledger_value": "U.S. Outdoor Lighting (formerly U.S. Pole Company)",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-us-pole-palmdale-ca:address",
+   "source_url": "https://usaltg.com/",
+   "ledger_value": "660 W Avenue O, Palmdale, CA 93551",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-us-pole-palmdale-ca:parent_company",
+   "source_url": "https://inside.lighting/press/25-q2/same-legacy-new-name-reengineered-todays-market",
+   "ledger_value": "U.S. Outdoor Lighting (U.S. Pole Company, Inc.)",
+   "verdict": "confirmed",
+   "note": "Rename press release dated June 24, 2025 carries 'U.S. Pole Company, Inc.' and 'U.S. Outdoor Lighting'.",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-us-pole-palmdale-ca:products",
+   "source_url": "https://usaltg.com/",
+   "ledger_value": "lighting poles (fluted, tapered, straight; square or round), pole arms, bases; luminaires",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-us-pole-palmdale-ca:materials",
+   "source_url": "https://usaltg.com/",
+   "ledger_value": "aluminum or steel (share not stated)",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-us-pole-palmdale-ca:production_type",
+   "source_url": "https://usaltg.com/",
+   "ledger_value": "custom-configured pole assemblies",
+   "verdict": "confirmed",
+   "ledger_tag": "stated",
+   "in_rate": true
+  },
+  {
+   "claim_id": "p-commstructures-pensacola-fl:welder_postings",
+   "source_url": "",
+   "ledger_value": "none found (web search, 2026-11-13; site has no careers page)",
+   "verdict": "corrected",
+   "corrected_value": "none found: site careers page (/job-opportunities) has a general application only, no listed openings (2026-11-13)",
+   "corrected_quote": "We appreciate your interest in working for CommStructures, Inc.",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "corrected_source_url": "https://www.commstructures.com/job-opportunities",
+   "note": "evidence.csv data row 3106. The value says the 'site has no careers page'. That is wrong: the footer of every page links 'Careers' to /job-opportunities, which carries a general application form and no postings. 'None found' stands, so labor 0 is unchanged; the reason clause and source are wrong.",
+   "ledger_tag": "inferred",
+   "in_rate": false
+  },
+  {
+   "claim_id": "p-hughes-brothers-seward-ne:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "verdict": "corrected",
+   "corrected_value": "304 (company-wide counter on the careers page; home page counter shows 293)",
+   "corrected_quote": "304 ... Employees",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "corrected_source_url": "https://www.hughesbros.com/careers",
+   "note": "evidence.csv data row 3137. Missed stated fact. The ledger row is 'unknown' with no source, but the careers page the ledger already cites for the address shows '304 Employees' (and the home page shows '293 Employees'). Tagged inferred: it is a company counter, and the company lists two Seward addresses (210 N 13th St, 168 N 11th St); that all 304 work at one site is inferred, not stated. Changes score_scale 0 -> 5 but not confidence (see score_notes).",
+   "ledger_tag": "unknown",
+   "in_rate": false
+  }
+ ]
+}

@@ -274,3 +274,26 @@ Coordinator decisions applied now (mechanical):
 - **Miss rate, two measures:**
   - Auditor-measured: 5/64 = 7.8%. A lower bound: the two auditors share the finder's sources.
   - Finder first pass against every plant verified to date: 22 of the 80 included plants were not on the finder's included list. That is 7 found by the list auditors (Elkhart, Birmingham, Raycap, Race Rock, Cem-Tec, Ehresmann, Meyer Tulsa), 2 by follow-up research (HW Metals, Ameron 66th St N), 11 by the higher-tier review (Valmont El Dorado, V&S x3, ROHN, Sabre Conroe, CommStructures, Hughes, LSI, Musco, U.S. Pole), and 2 wrongly excluded then reinstated (Valley, Plymouth). **22/80 = 27.5%**, over the 20% advisor threshold, so it goes to the advisor at the done checkpoint. All 22 are in the ledger now. 9 leads remain unverified (in review-fix-coverage `unverified`).
+
+## 2026-11-13: phase F2, attribution clean-up and round-4 fact-check (workflow poles-f2-cleanup-factcheck)
+
+- **Editors A and B:** rewrote the opening line and bottleneck guess for all 80 profiled plants.
+  - Opening lines are composed only from stated claims, which are named in each row's reasoning. They lead with the newest fact, contain no pitch language, and end in a "you" question.
+  - Lines for existing Path accounts (Millerbernd, Nello/LaX, Valmont) are framed for account expansion and assert no plant-level deployment.
+  - "Unclear" bottlenecks are now "unknown". Hughes Brothers carries the only stated bottleneck, in its own words.
+  - 113 superseded rows retired (82 + 31). Each plant now has exactly one opening_line row and one bottleneck_guess row, each matching plants.csv (checked).
+- **Attribution clean-up:** 24 plants' fields trimmed or re-sourced. Certifications that were code references or personnel became AISC-snapshot rows (Millerbernd, Nello South Bend, MICA Kaufman). Trigger figures are now quoted with dates (Nucor Crawfordsville, Klute, Nucor West Hazleton, Crowley). Undated or unbacked clauses were dropped (QMF Fanuc, Race Rock "$100M" in products, West Hazleton "welder hiring"). 40 rows replaced. `field_drift_check.py` now flags 9 candidates, all false positives.
+- **Round 4 fact-check** (16 plants never checked + 16 with new posting rows): A 8/125 = 6.4%, B 13/64 = 20.3%, C 8/137 = 5.8%. **Pooled 29/326 = 8.9%.**
+  - Every correction is "quote does not support value": compound clauses from a sibling page, company-level pages tagged stated at a plant, legal suffixes, and supervisory "Lead" postings counted as welder postings.
+  - No wrong plant, wrong process, closed plant or invented fact.
+  - Checker B's set (all new plants from the review) is over 10% on its own.
+  - On a strict page-only reading, checker A's rate is 16.0%; the clauses involved were all confirmed on a sibling primary source the same day.
+  - All 31 corrections applied with `apply_factcheck.py` (0 unmatched).
+- **Coordinator decisions:**
+  - Ameron 66th St N process 20 -> 0: the only source is a Facility Foreman posting, a non-welding role. Total 13.
+  - Hughes Brothers: headcount 304 (company counter, inferred to the site) gives scale 5. A new stated triggers row (Oct 10 2025: robotics investment, another seam welder, "we are adding welders"; each fragment checked on the page) gives demand 15. Total 35, still Low.
+  - Sabre Hicksville: renamed "Sabre Industries (Hicksville, OH)". Process 20 and labor 20 are kept, unlike FWT Fort Worth: Sabre's own board lists a single Hicksville site (761 West High Street), so its Hicksville postings belong to this plant. The FWT history is the only inferred part.
+  - Muskogee labor stays 20 on 2 non-lead postings open at once, plus mandatory Fridays. Meyer Fort Worth's count drops from 6 to 5, labor unchanged.
+  - 17 prospect_test rows carrying a "pass" verdict retagged from stated to inferred.
+- **Counts:** 117 plants; 80 profiled, 37 excluded; High 8 / Medium 32 / Low 40. All 80 profiled plants have now been fact-checked in at least one round (summary.json: profiled_fact_checked 80).
+- **Leads for the final review:** street addresses found on primary job boards for 9 plants whose address is unknown (Claremore, Clinton, Meyer Fort Worth, Lancaster, Steele, Hager City, Alvarado, Sioux City, Hicksville); Musco multi-plant (EPA FRS lists Oskaloosa sites); Western Utility's AISC listing.

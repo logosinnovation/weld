@@ -1,0 +1,1389 @@
+{
+ "checker": "fact-checker C (round 4, confirming)",
+ "vertical": "v-poles-substation",
+ "date": "2026-11-13",
+ "plants": [
+  "p-valmont-elkhart-in",
+  "p-valmont-brenham-tx",
+  "p-meyer-clinton-il",
+  "p-ameron-tulsa-ok",
+  "p-valmont-tulsa-ok",
+  "p-meyer-fort-worth-tx",
+  "p-distran-pineville-la",
+  "p-arcosa-telecom-muskogee-ok",
+  "p-valmont-claremore-ok",
+  "p-meyer-lancaster-sc",
+  "p-valmont-columbus-ne",
+  "p-fwt-hicksville-oh",
+  "p-sabre-alvarado-tx",
+  "p-sabre-sioux-city-ia",
+  "p-meyer-steele-al",
+  "p-meyer-hager-city-wi"
+ ],
+ "decision_rule": "Scope: rows with verified = not_checked. Every stated row in the delegated fields was checked, plus every score_process and score_labor row; opening_line and bottleneck_guess were skipped. Corrected: the value adds a fact the cited page does not show, tags a judgement or verdict as stated, places a company-level or inferred-site fact at the plant, or the quote is not on the page. Confirmed: every additive clause is on the cited page (not only the quoted fragment). For multi-row compound values (welder_postings, materials, parent CRH clause), a clause may instead sit on a sibling row of the same claim_id whose page was opened 2026-11-13, as in round 4-A. Street addresses in welder_postings values that come from the job-board API (UKG and Workday address lines) were checked in that API and are not counted as additive. Lead postings were read in full and counted only when the duties include hands-on welding or fitting (run-log counting rule: working leads). Sensitivity, on round 4-A's strict page-only basis: these would also become corrections. (i) About 33 Arcosa UKG welder_postings rows whose street (and board label) appears only in the LoadSearchResults API, not on the detail page (Clinton 8, Fort Worth 6, Muskogee 6, Lancaster 4, Steele 4, Hager City 3, Ameron 2; the detail pages show city and ZIP only). (ii) Compound weld_processes, materials and welder_postings rows whose other clauses sit on a sibling page (e.g. Hicksville, Alvarado, Brenham and Lancaster weld_processes; Elkhart materials 2850). (iii) Ameron parent row 2395 (CRH clause on arcosa.com sibling row). (iv) Claremore part_size_fit row 1076 ('suited to Rove' rubric label). All of these are attribution form, not wrong facts. Every such clause was verified true on a primary source opened 2026-11-13.",
+ "claims_checked": 137,
+ "claims_corrected": 8,
+ "claims_unreachable": 0,
+ "error_rate": 0.0584,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 8,
+  "invented fact": 0,
+  "other": 0
+ },
+ "repeated_kinds": [
+  "quote does not support value: 8 of 8 corrections (5 distinct claims). Sweep these sub-patterns: (a) SUPERVISORY 'LEAD' POSTINGS COUNTED AS WELDER POSTINGS. Muskogee: four Fitter/Welder Leads (rows 2677-2680; claim count 6 -> 2). Fort Worth: Lead Welder 2nd Shift (row 2660; 6 -> 5). Round 4-A flagged the same thing for the Meyer Tulsa Lead Welder. The run-log counting rule says working leads only, so every counted 'Lead' posting in the ledger should be read for hands-on welding duties. Clinton's and Lancaster's leads pass. No score changed here, but a plant whose 'several at once' rests on a supervisory lead would drop to 12. (b) Legal suffix not on the page: Ameron Yukon name 'Ameron Pole Products LLC' (repeat of round 4-A on 66th St). (c) An inferred site tie written into a stated name: Hicksville 'former FWT plant'. (d) A company home page cited as stated plant-level parent: Elkhart row 2201. The 2026-11-13 weld_processes and existing_robots rows had 0 errors."
+ ],
+ "worst_errors": [
+  "p-arcosa-telecom-muskogee-ok:welder_postings (rows 2677-2680): '6 open fitter/welder postings' counts four Fitter/Welder Lead roles whose duties are supervisory only ('Manage employees, monitor, and approve timesheets and work logs'; 'Assign employees to workstations'). Under the working-lead counting rule the count is 2 (Day 2026-10-23, Night 2026-11-05). Labor 20 survives (2 at once plus 'some mandatory Fridays'). Process 20 now rests only on an aggregator copy (row 1295), because the Leads' flux/metal-core line is a non-welding-role qualification.",
+  "p-fwt-hicksville-oh:name (row 2707): 'Sabre Industries (Hicksville; former FWT plant)' is tagged stated, but no page names FWT, and the ledger's own row 1701 says the tie is inferred. That tie is what lets Sabre Hicksville postings carry process 20 and labor 20 on this FWT record (see score_notes).",
+  "p-meyer-fort-worth-tx:welder_postings (row 2660): the 'Fitter/Welder Lead - 2nd Shift' posting is counted as a fitter/welder posting, but it is a supervisory Lead Welder (assists the bay supervisor; paperwork; coaching; no hands-on welding). Count 6 -> 5; no score change. This is the same pattern as round 4-A's Meyer Tulsa. Also: p-ameron-tulsa-ok:name 'LLC' not on the EPA page; p-valmont-elkhart-in:parent_company row 2201 cites a company home page."
+ ],
+ "score_problems": [
+  "No point changes are needed on the 16 plants. All 31 score_process/score_labor rows follow the rubric and the run-log rules given the confirmed evidence, including after the two count corrections (Muskogee 6 -> 2, Fort Worth 6 -> 5). Totals re-summed: all match.",
+  "The other four components (material, part mix, demand, scale) were read against the rules but not re-verified at source. No rule breach was seen: material 0 without a stated size (Claremore 12 on a stated 120 in / 80,000 lb posting, kept by coordinator decision); demand 8 except Clinton 15 (trigger tie to Clinton inferred, so it gives no confidence); scale 5 everywhere (multi-plant parent, no 100+ site headcount). The confidence column in plants.csv was not recomputed.",
+  "p-fwt-hicksville-oh: process 20 and labor 20 rest on Sabre 'Hicksville, OH' postings tied to the FWT record by inference. This is consistent only if the coordinator accepts 'the parent's only site in town' (Sabre's own board has one Hicksville address, 761 West High Street, and a 'Large Pole department'). Under the FWT Fort Worth precedent (inferred-attribution postings earn no points), both would be 0 (61 -> 21). Coordinator's call.",
+  "p-arcosa-telecom-muskogee-ok: process 20 now has a single support, an aggregator copy of a Fitter/Welder Senior posting (row 1295). The live Lead postings are supervisory and don't count under rule 2. If the copy expires, process falls to 0 (68 -> 48)."
+ ],
+ "score_notes": [
+  {
+   "plant": "p-fwt-hicksville-oh",
+   "component": "score_process",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "Rule 2 is met (FCAW and a GMAW 2G test in Hicksville welder postings). Conditional: the postings name Sabre, not FWT; the tie to this record is inferred (row 1701). If the FWT Fort Worth precedent is applied strictly, 0. Sabre's own UKG Ready board lists a single Hicksville site (761 West High Street), which supports the tie better than in Fort Worth, where Sabre and FWT have several sites."
+  },
+  {
+   "plant": "p-fwt-hicksville-oh",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "3 open at once (Tallo, oldest 2026-09-11, 63 days). Open status is also seen on Sabre's own board (Welder/Fitter (Day/Night), Welder (Day/Night), Welder Trainee at 761 West High Street). The own board shows no posting dates, so the 63 days rests on Tallo. The same attribution condition as process applies."
+  },
+  {
+   "plant": "p-sabre-alvarado-tx",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "Welder Trainee - AlvU and Welder A - AlvU are open on Sabre's own board (8653 E Hwy 67). 'Welder B - AlvU' (Sabre Communications Corporation, Tallo 2026-11-10) is not on Sabre Industries' UKG Ready board (it may be on a separate entity's board). The board also shows Welder C - AlvU, Welder/Fitter A - AlvU, Welder/Fitter C - AlvU (x2) and Lead - Welder Nights, so 'several at once' holds either way. The 100-day age rests on Tallo's 'Posted 08/05/2026'."
+  },
+  {
+   "plant": "p-sabre-sioux-city-ia",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "Welder Trainee (Nights), Welder B and Longseamer Trainee (Days/Nights) are all open on Sabre's own board at 7101 Southbridge Drive. Dates rest on Tallo. Sabre's board shows more welder roles than counted (Welder Trainee (Days), Welder/Fitter, Welder C, Lead - Welder (Nights))."
+  },
+  {
+   "plant": "p-valmont-elkhart-in",
+   "component": "score_process",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "Clarified rule 2: MIG is required in the plant's own Aluminum Welder posting. The supporting claim is tagged inferred (template plus aluminum), so no confidence point. This tag is conservative, because the requirement is stated on Elkhart's own page."
+  },
+  {
+   "plant": "p-arcosa-telecom-muskogee-ok",
+   "component": "score_process",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "20 holds, but on a narrower basis than round 4-A assumed. The live Fitter/Welder Lead postings are supervisory, so their 'flux and or metal core ... high preferred' line is a non-welding-role qualification (rule 2: does not count). The basis is the confirmed row 1295, a welder-role posting (aggregator copy of Fitter/Welder Senior). If that copy expires, the live Day and Night Fitter/Welder postings name no process, and process would fall to 0 at the next refresh (68 -> 48)."
+  },
+  {
+   "plant": "p-valmont-columbus-ne",
+   "component": "score_process",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "Correct points. The reasoning text 'MIG stated for pole and substation welding' overstates the claim ('5+ years MIG welding experience' in a welder posting). Wording only."
+  },
+  {
+   "plant": "p-arcosa-telecom-muskogee-ok",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "The counted postings fall from 6 to 2 (the four Leads are supervisory). 20 still holds: 2 open at once, and the Day Shift posting states 'some mandatory Fridays'."
+  },
+  {
+   "plant": "p-meyer-fort-worth-tx",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "The counted postings fall from 6 to 5 (the Lead Welder 2nd Shift is supervisory). 20 holds: oldest 2026-07-24, 112 days."
+  }
+ ],
+ "opening_line_problems": [
+  "Skipped per delegation (opening_line and bottleneck_guess are being rewritten in parallel)."
+ ],
+ "plants_closed_or_moved": [],
+ "plant_status_notes": "All 16 plants operate at the recorded city, each with open postings read 2026-11-13. Valmont Workday (canApply true): Elkhart 3403 Charlotte Ave, Brenham 2551 Valmont Dr, Claremore 25010 Alliance Dr, Tulsa 801 N Xanthus, Columbus 1600 East 29th Ave. Arcosa UKG: Clinton 10000 Tabor Rd, Fort Worth 2300 W. Risinger Rd, Lancaster 3468 Old Camden Hwy, Steele 585 Duncan Farms Rd (label 'Gadsden, AL'; pages say Steele, AL 35987), Hager City W8020 150th Ave, Muskogee 4020 Tull Ave, Ameron 2333 S Yukon Ave (label 'Tulsa, OK -Finish'; TRI fac_closed_ind 0). Crest Lever: DIS-TRAN Pineville. Sabre's own UKG Ready board (secure6.saashr.com, company 6173477): Alvarado 8653 E Hwy 67, Sioux City 7101 Southbridge Drive, Hicksville 761 West High Street. Gaps for the coordinator (not counted as errors, since the rows are tagged unknown): (1) plants.csv address is 'unknown' for Claremore, Clinton, Fort Worth, Lancaster, Steele, Hager City, Alvarado, Sioux City and Hicksville, but the street addresses above are now on primary job boards. (2) existing_robots is 'unknown' for Valmont Tulsa and Valmont Columbus, but each has an open 'Robotic Welder' posting (Tulsa R29009, 2026-09-25; Columbus R28643, 2026-08-27: 'Adjusts and sets robotic weld machine to specification', 'Robotic Welder position in the Global Utility Division'). These rows are already quoted under welder_postings (rows 2732, 2743) and could become stated existing_robots rows. A web search found no source tying 761 W High St to FWT; a 2014 OSHA release places an FWT pole/tower plant in Hicksville without a street.",
+ "method": "Scope: 247 not_checked rows on the 16 plants in the delegated fields. 137 were checked: 106 stated rows plus 31 score_process/score_labor rows. Inferred count rows and unknown rows were read for context but are not in the denominator. All 103 distinct non-AISC source URLs were fetched with tools/fetch_page.py on 2026-11-13 (UKG detail pages via headless browser; Workday cxs, Lever API, EPA JSON plain). Every '...'-joined fragment of the 143 quoted rows matched the normalised page text (143/143). The AISC row was checked against ledger/audit/source-snapshot-aisc-directory-2026-11-12.txt line 4824. Open status and street addresses: Arcosa UKG JobBoardView/LoadSearchResults (306 postings); Valmont Workday jobs search (POST cxs/jobs) and canApply on each cxs posting; Crest Lever per-posting API (200 = live; createdAt converted to dates); Sabre UKG Ready job-requisitions API (221 requisitions; no dates exposed). Posting ages recomputed to 2026-11-13. Score totals re-summed for all 16 plants. Material, part-mix, demand and scale rows were read against the run-log rules (not re-fetched); confidence was not recomputed. Lead postings (Clinton, Lancaster, Fort Worth, Muskogee x4) were read in full. One WebSearch for the Hicksville address. No ledger files edited.",
+ "rows": [
+  {
+   "claim_id": "p-valmont-brenham-tx:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1067,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1070,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:weld_processes",
+   "source_url": "https://www.weldinginfo.org/job/fitter-13",
+   "ledger_value": "GMAW (as of a posting copy marked 'Posted 2 years ago', about Nov 2024)",
+   "evidence_row": 1073,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (weldinginfo copy 'Posted 2 years ago'). The value's 'as of ~Nov 2024' dating is right. Current Claremore postings (Structural Back Welder) name sub-arc only."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:part_size_fit",
+   "source_url": "https://www.weldinginfo.org/job/fitter-13",
+   "ledger_value": "As of a posting copy marked 'Posted 2 years ago' (about Nov 2024): Up to 120 in diameter and 80,000 lb: exceeds the older large-cell limit (72 in, 10,500 lb) and the 2026 limit (55,000 lb); suited to Rove",
+   "evidence_row": 1076,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page ('Posted 2 years ago'). The fit comparison is arithmetic against the CLAUDE.md cell limits (120 in > 72 in; 80,000 lb > 55,000 lb). 'Suited to Rove' is the rubric's label for that fit level, not a stated fact. Round 2 confirmed the same wording. Sensitivity: under a reading that treats this label as a verdict, this would be a correction."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1083,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1086,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-valmont-tulsa-ok:weld_processes",
+   "source_url": "https://builtin.com/job/fitter/4154063",
+   "ledger_value": "GMAW (as of a Tulsa Fitter posting removed 2025-05-08)",
+   "evidence_row": 1089,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Built In page: 'Sorry, this job was removed ... May 08, 2025', 801 N Xanthus Tulsa. Fitter role; GMAW stated as the welding process. Dating is right."
+  },
+  {
+   "claim_id": "p-valmont-tulsa-ok:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1099,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-valmont-tulsa-ok:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1102,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "20 is right (5 counted open at once). A 6th open welding posting at 801 N Xanthus, 'Sub Arc Base Welder' R29441 (startDate 2026-11-10, Workday label 'Claremore OK - Utility'), is noted in row 2733's reasoning but not counted. That does not change the points."
+  },
+  {
+   "claim_id": "p-valmont-columbus-ne:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1128,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "20 is right ('Must have 5+ years MIG welding experience' in Welder - 3rd Shift). Wording only: the reasoning says 'for pole and substation welding', but the claim does not say that."
+  },
+  {
+   "claim_id": "p-valmont-columbus-ne:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1131,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-meyer-steele-al:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1179,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-meyer-steele-al:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1182,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1194,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1197,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "20 is right: the single welder posting is dated 'Posted on September 9, 2026' on its page (65 days on 2026-11-13, 60+), and it is still in the UKG listing."
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1209,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1212,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "20 holds after the count correction (6 -> 5): 5 open at once, oldest 2026-07-24 (112 days)."
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1223,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1226,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "20 holds. Fitter Welder_Lead (2026-08-31, 74 days) is a working lead ('Weld clips and hardware', 'Perform full penetration (such as slip joint) welds'; 'Flux Core experience'), so it counts. With the Welder (2026-09-22) that is 2 open at once, and the oldest is 60+ days."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1239,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1242,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1258,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "20 holds on the claim's confirmed row 1295: a portmuskogee.com copy of a Fitter/Welder Senior posting (a welder role) listing flux-core, metal-core and MIG experience. The live Fitter/Welder Lead postings that say 'flux and or metal core welding is high preferred' are supervisory, so under rule 2 they do not count (non-welding role). The live Day and Night Fitter/Welder postings name no process."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1261,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "20 holds after the count correction (6 -> 2): two open at once (Day 2026-10-23, Night 2026-11-05), and the Day posting states 'some mandatory Fridays'."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1291,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:welder_postings",
+   "source_url": "https://jobs.lever.co/crestoperations/1db1718e-f410-4b01-bf5b-edd239b62f2c",
+   "ledger_value": "3 open welder postings for DIS-TRAN Steel at Pineville on Crest's Lever board (read 2026-11-13): Submerged Arc Welder - Weekend Shift (Pole team; created 2026-04-21, oldest, 206 days), Production Welder II - Night Shift (2026-07-27; GMAW required), PREP Welder - Day Shift (2026-08-14; GMAW preferred). Also an internal transfer-portal Pole Plant 2 Production Welder - Night Shift opportunity (2026-04-28), not counted. No sign-on bonus stated",
+   "evidence_row": 1494,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the page fetched 2026-11-13. Crest Lever per-posting API returns 200 (live); createdAt converted to dates (2026-04-21, 2026-07-27, 2026-08-14, 2026-04-28). Additive clauses ('Pole team', GMAW required or preferred) checked on the Lever pages."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:welder_postings",
+   "source_url": "https://jobs.lever.co/crestoperations/e14bc81e-88e4-46dc-bd5e-1d8952f0a307",
+   "ledger_value": "3 open welder postings for DIS-TRAN Steel at Pineville on Crest's Lever board (read 2026-11-13): Submerged Arc Welder - Weekend Shift (Pole team; created 2026-04-21, oldest, 206 days), Production Welder II - Night Shift (2026-07-27; GMAW required), PREP Welder - Day Shift (2026-08-14; GMAW preferred). Also an internal transfer-portal Pole Plant 2 Production Welder - Night Shift opportunity (2026-04-28), not counted. No sign-on bonus stated",
+   "evidence_row": 1495,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the page fetched 2026-11-13. Crest Lever per-posting API returns 200 (live); createdAt converted to dates (2026-04-21, 2026-07-27, 2026-08-14, 2026-04-28). Additive clauses ('Pole team', GMAW required or preferred) checked on the Lever pages."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:welder_postings",
+   "source_url": "https://jobs.lever.co/crestoperations/4a3f4d28-a7f6-4018-b4c8-d0b56af1365d",
+   "ledger_value": "3 open welder postings for DIS-TRAN Steel at Pineville on Crest's Lever board (read 2026-11-13): Submerged Arc Welder - Weekend Shift (Pole team; created 2026-04-21, oldest, 206 days), Production Welder II - Night Shift (2026-07-27; GMAW required), PREP Welder - Day Shift (2026-08-14; GMAW preferred). Also an internal transfer-portal Pole Plant 2 Production Welder - Night Shift opportunity (2026-04-28), not counted. No sign-on bonus stated",
+   "evidence_row": 1496,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the page fetched 2026-11-13. Crest Lever per-posting API returns 200 (live); createdAt converted to dates (2026-04-21, 2026-07-27, 2026-08-14, 2026-04-28). Additive clauses ('Pole team', GMAW required or preferred) checked on the Lever pages."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1503,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1506,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-sabre-alvarado-tx:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1659,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-sabre-alvarado-tx:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1662,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-sabre-sioux-city-ia:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1676,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-sabre-sioux-city-ia:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1679,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Points follow the CLAUDE.md rubric and the run-log rules of 2026-11-12/13, given the confirmed evidence."
+  },
+  {
+   "claim_id": "p-fwt-hicksville-oh:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1705,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "20 follows rule 2 (FCAW in the Welder/Fitter posting; GMAW 2G test in Welder C and Trainee). Caveat: the postings reach this plant only by inference (Sabre, Hicksville; FWT not named). See score_notes."
+  },
+  {
+   "claim_id": "p-fwt-hicksville-oh:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1708,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "20 holds: 3 open at once; Sabre's own board shows Welder/Fitter (Day/Night), Welder (Day/Night) and Welder Trainee open at 761 West High Street. The attribution caveat is in score_notes."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "evidence_row": 1781,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "20 follows the clarified rule 2: 'One (1) to three (3) year of previous, hands-on MIG welding experience' is required in Elkhart's own Aluminum Welder posting (3403 Charlotte Ave). The supporting claim is tagged inferred, so it gives no confidence. Aluminum is already handled by the material component."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "evidence_row": 1784,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "12 is right: one open welder posting (Aluminum Welder 2nd Shift, startDate 2026-11-10, canApply true). The two Welder Assistants are helper roles."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:parent_company",
+   "source_url": "https://www.valmont.com",
+   "ledger_value": "Valmont Industries",
+   "evidence_row": 2201,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Valmont Industries",
+   "corrected_quote": "Valmont Industries, Inc.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv row 2201. valmont.com home page is company-level: it shows '© Valmont Industries, Inc.' and the Omaha HQ but never mentions Elkhart, so it places a company-level fact at the plant. Retag inferred (reasoning: Valmont's own job board lists the Elkhart plant). The value is right and is carried at plant level by sibling row 2907 (Workday posting at 3403 Charlotte Ave under the Valmont header), confirmed this round."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:products",
+   "source_url": "https://www.weldinginfo.org/?p=17335",
+   "ledger_value": "Welder Assistant opening at Elkhart: burns holes in poles or components (posted about 2 years before 2026-11-12; not current)",
+   "evidence_row": 2204,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_dtl.disp_program_facility?p_registry_id=110055499278",
+   "ledger_value": "Ameron Pole Products LLC (Tulsa welding & fabrication plant)",
+   "evidence_row": 2392,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "NOV Ameron Tulsa Pole Products Welding & Fabrication (EPA FRS facility name; Tulsa welding & fabrication plant)",
+   "corrected_quote": "NOV AMERON TULSA POLE PRODUCTS WELDING & FABRICATION",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv row 2392. Quote is on the FRS page, but the page never shows the legal name 'Ameron Pole Products LLC' (no 'LLC' anywhere on it). Same pattern as round 2 (legal suffixes) and round 4-A (Ameron 66th St name). Plant identity, address and operation are confirmed (TRI fac_closed_ind 0; two open Arcosa postings at 2333 S Yukon Ave)."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_dtl.disp_program_facility?p_registry_id=110055499278",
+   "ledger_value": "2333 S Yukon Ave, Tulsa, OK 74107",
+   "evidence_row": 2393,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:address",
+   "source_url": "https://www.newson6.com/story/5e3665182f69d76f620775e5/california-company-to-build-new-plant-in-tulsa",
+   "ledger_value": "2333 S Yukon Ave, Tulsa, OK 74107",
+   "evidence_row": 2394,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:parent_company",
+   "source_url": "https://data.epa.gov/efservice/tri_facility/tri_facility_id/7410WMRNTL2333S/JSON",
+   "ledger_value": "Arcosa, Inc. (acquired by CRH, completed Oct 2026)",
+   "evidence_row": 2395,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "TRI JSON for 7410WMRNTL2333S: parent_co_name 'ARCOSA INC', fac_closed_ind 0. The CRH clause is carried by sibling row 2236 (arcosa.com: 'CRH Completes $8.5B Acquisition of Arcosa', press release October 23, 2026), as in round 4-A. Sensitivity: strict page-only = correction."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:parent_company",
+   "source_url": "https://www.weldinginfo.org/job/fitter-13",
+   "ledger_value": "Valmont Industries (named as the company on a Claremore, OK Fitter posting shown as posted 2 years ago)",
+   "evidence_row": 2517,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=56e021f8-26c2-449d-a081-c10b5cf13daf",
+   "ledger_value": "7 open welder/fitter postings for the Clinton plant (10000 Tabor Rd) on Arcosa's job board, read 2026-11-13: Night Shift Welder, Night Shift Fitter/Welder and Night Shift Sr. Fitter/Welder (all posted 2026-09-29, oldest, 45 days), Fitter Welder Lead (2026-10-19), Welder, Fitter/Welder and Sr. Fitter/Welder (2026-11-06). Night shift 6pm-4:30am with $1.50/hr differential; flux or metal core highly preferred; no sign-on bonus or mandatory overtime stated. Also a Weld Tech (plant welding technician) posting (2026-09-01), not counted",
+   "evidence_row": 2635,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=897e8c15-67f9-4723-862c-de5438cc7f01",
+   "ledger_value": "7 open welder/fitter postings for the Clinton plant (10000 Tabor Rd) on Arcosa's job board, read 2026-11-13: Night Shift Welder, Night Shift Fitter/Welder and Night Shift Sr. Fitter/Welder (all posted 2026-09-29, oldest, 45 days), Fitter Welder Lead (2026-10-19), Welder, Fitter/Welder and Sr. Fitter/Welder (2026-11-06). Night shift 6pm-4:30am with $1.50/hr differential; flux or metal core highly preferred; no sign-on bonus or mandatory overtime stated. Also a Weld Tech (plant welding technician) posting (2026-09-01), not counted",
+   "evidence_row": 2636,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=1df0c73d-9a6a-46cd-9ac4-fc8ef2426953",
+   "ledger_value": "7 open welder/fitter postings for the Clinton plant (10000 Tabor Rd) on Arcosa's job board, read 2026-11-13: Night Shift Welder, Night Shift Fitter/Welder and Night Shift Sr. Fitter/Welder (all posted 2026-09-29, oldest, 45 days), Fitter Welder Lead (2026-10-19), Welder, Fitter/Welder and Sr. Fitter/Welder (2026-11-06). Night shift 6pm-4:30am with $1.50/hr differential; flux or metal core highly preferred; no sign-on bonus or mandatory overtime stated. Also a Weld Tech (plant welding technician) posting (2026-09-01), not counted",
+   "evidence_row": 2637,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=3d21bd4e-4218-471e-b4df-5a19f81cccbb",
+   "ledger_value": "7 open welder/fitter postings for the Clinton plant (10000 Tabor Rd) on Arcosa's job board, read 2026-11-13: Night Shift Welder, Night Shift Fitter/Welder and Night Shift Sr. Fitter/Welder (all posted 2026-09-29, oldest, 45 days), Fitter Welder Lead (2026-10-19), Welder, Fitter/Welder and Sr. Fitter/Welder (2026-11-06). Night shift 6pm-4:30am with $1.50/hr differential; flux or metal core highly preferred; no sign-on bonus or mandatory overtime stated. Also a Weld Tech (plant welding technician) posting (2026-09-01), not counted",
+   "evidence_row": 2638,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=4a2e38cf-3bae-4376-a6aa-945fd285e5af",
+   "ledger_value": "7 open welder/fitter postings for the Clinton plant (10000 Tabor Rd) on Arcosa's job board, read 2026-11-13: Night Shift Welder, Night Shift Fitter/Welder and Night Shift Sr. Fitter/Welder (all posted 2026-09-29, oldest, 45 days), Fitter Welder Lead (2026-10-19), Welder, Fitter/Welder and Sr. Fitter/Welder (2026-11-06). Night shift 6pm-4:30am with $1.50/hr differential; flux or metal core highly preferred; no sign-on bonus or mandatory overtime stated. Also a Weld Tech (plant welding technician) posting (2026-09-01), not counted",
+   "evidence_row": 2639,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=7483bd57-93f8-4191-a8d1-19494621ae5d",
+   "ledger_value": "7 open welder/fitter postings for the Clinton plant (10000 Tabor Rd) on Arcosa's job board, read 2026-11-13: Night Shift Welder, Night Shift Fitter/Welder and Night Shift Sr. Fitter/Welder (all posted 2026-09-29, oldest, 45 days), Fitter Welder Lead (2026-10-19), Welder, Fitter/Welder and Sr. Fitter/Welder (2026-11-06). Night shift 6pm-4:30am with $1.50/hr differential; flux or metal core highly preferred; no sign-on bonus or mandatory overtime stated. Also a Weld Tech (plant welding technician) posting (2026-09-01), not counted",
+   "evidence_row": 2640,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=bfdfb7e5-33d1-4010-a5c6-302aa7895551",
+   "ledger_value": "7 open welder/fitter postings for the Clinton plant (10000 Tabor Rd) on Arcosa's job board, read 2026-11-13: Night Shift Welder, Night Shift Fitter/Welder and Night Shift Sr. Fitter/Welder (all posted 2026-09-29, oldest, 45 days), Fitter Welder Lead (2026-10-19), Welder, Fitter/Welder and Sr. Fitter/Welder (2026-11-06). Night shift 6pm-4:30am with $1.50/hr differential; flux or metal core highly preferred; no sign-on bonus or mandatory overtime stated. Also a Weld Tech (plant welding technician) posting (2026-09-01), not counted",
+   "evidence_row": 2641,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=2a845a68-c661-4014-b218-babba429e365",
+   "ledger_value": "7 open welder/fitter postings for the Clinton plant (10000 Tabor Rd) on Arcosa's job board, read 2026-11-13: Night Shift Welder, Night Shift Fitter/Welder and Night Shift Sr. Fitter/Welder (all posted 2026-09-29, oldest, 45 days), Fitter Welder Lead (2026-10-19), Welder, Fitter/Welder and Sr. Fitter/Welder (2026-11-06). Night shift 6pm-4:30am with $1.50/hr differential; flux or metal core highly preferred; no sign-on bonus or mandatory overtime stated. Also a Weld Tech (plant welding technician) posting (2026-09-01), not counted",
+   "evidence_row": 2642,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:weld_processes",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=2a845a68-c661-4014-b218-babba429e365",
+   "ledger_value": "flux-core (FCAW), submerged arc (SAW) and SMAW stated at the Clinton plant",
+   "evidence_row": 2644,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Clinton Weld Tech posting (open, 2026-09-01): trains welder candidates on FCAW, SAW, SMAW for 'the Clinton, IL utility pole manufacturing plant'. The plant's own Fitter/Welder postings also say 'Through the MIG welding process' and 'Flux or Metal Core welding experience highly preferred', which the value does not list."
+  },
+  {
+   "claim_id": "p-meyer-steele-al:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=ed4bc510-ab97-4040-a5f5-fc17109b9bd8",
+   "ledger_value": "3 open welder/fitter postings for the Steele plant (585 Duncan Farms Rd) on Arcosa's job board, read 2026-11-13: Seam Welder - Weekend Shift (posted 2026-08-04, oldest, 101 days), Fitter/Welder (2026-10-14; flux core experience preferred), Seam Welder (2026-11-05). No sign-on bonus or mandatory overtime stated. Also a Welding Instructor (pole school, 2026-07-29), not counted",
+   "evidence_row": 2646,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-steele-al:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=afd4fd18-60e6-4a9a-89cd-c4b4a4e431e7",
+   "ledger_value": "3 open welder/fitter postings for the Steele plant (585 Duncan Farms Rd) on Arcosa's job board, read 2026-11-13: Seam Welder - Weekend Shift (posted 2026-08-04, oldest, 101 days), Fitter/Welder (2026-10-14; flux core experience preferred), Seam Welder (2026-11-05). No sign-on bonus or mandatory overtime stated. Also a Welding Instructor (pole school, 2026-07-29), not counted",
+   "evidence_row": 2647,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-steele-al:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=be3c141d-7d65-45f5-812f-9beb78d40eb5",
+   "ledger_value": "3 open welder/fitter postings for the Steele plant (585 Duncan Farms Rd) on Arcosa's job board, read 2026-11-13: Seam Welder - Weekend Shift (posted 2026-08-04, oldest, 101 days), Fitter/Welder (2026-10-14; flux core experience preferred), Seam Welder (2026-11-05). No sign-on bonus or mandatory overtime stated. Also a Welding Instructor (pole school, 2026-07-29), not counted",
+   "evidence_row": 2648,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-steele-al:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=280ca060-fc2b-4507-86cf-7ff62f480d16",
+   "ledger_value": "3 open welder/fitter postings for the Steele plant (585 Duncan Farms Rd) on Arcosa's job board, read 2026-11-13: Seam Welder - Weekend Shift (posted 2026-08-04, oldest, 101 days), Fitter/Welder (2026-10-14; flux core experience preferred), Seam Welder (2026-11-05). No sign-on bonus or mandatory overtime stated. Also a Welding Instructor (pole school, 2026-07-29), not counted",
+   "evidence_row": 2649,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=af831e49-85b3-466e-b358-f5eefcf5e4c3",
+   "ledger_value": "1 open welder posting for the Hager City plant (W8020 150th Ave) on Arcosa's job board, read 2026-11-13: 'Welders - All Experience Levels' (2nd shift Mon-Fri 2:45 pm-12:45 am, starting pay $25.89; posted 2026-09-09, 65 days open); flux or metal core highly preferred; no sign-on bonus stated. Also a Welding Technician (2026-09-18) and a Welding Instructor (2026-10-12), not counted",
+   "evidence_row": 2652,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=51321a99-8629-499e-8f2f-1aea4643be02",
+   "ledger_value": "1 open welder posting for the Hager City plant (W8020 150th Ave) on Arcosa's job board, read 2026-11-13: 'Welders - All Experience Levels' (2nd shift Mon-Fri 2:45 pm-12:45 am, starting pay $25.89; posted 2026-09-09, 65 days open); flux or metal core highly preferred; no sign-on bonus stated. Also a Welding Technician (2026-09-18) and a Welding Instructor (2026-10-12), not counted",
+   "evidence_row": 2653,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=bd50fed7-5189-4970-9fde-fd914693738b",
+   "ledger_value": "1 open welder posting for the Hager City plant (W8020 150th Ave) on Arcosa's job board, read 2026-11-13: 'Welders - All Experience Levels' (2nd shift Mon-Fri 2:45 pm-12:45 am, starting pay $25.89; posted 2026-09-09, 65 days open); flux or metal core highly preferred; no sign-on bonus stated. Also a Welding Technician (2026-09-18) and a Welding Instructor (2026-10-12), not counted",
+   "evidence_row": 2654,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:weld_processes",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=af831e49-85b3-466e-b358-f5eefcf5e4c3",
+   "ledger_value": "flux-core / metal-core (FCAW/GMAW-MC) experience stated as highly preferred at this plant",
+   "evidence_row": 2656,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=1696d020-cb81-477a-829b-dbe41a0e945b",
+   "ledger_value": "6 open fitter/welder postings for the Fort Worth plant (2300 W. Risinger Rd) on Arcosa's job board, read 2026-11-13: Senior Fitter/Welder 2nd shift (posted 2026-07-24, oldest, 112 days), Fitter/Welder Weekend Shift (2026-08-11), Fitter/Welder Lead 2nd shift (2026-10-07), Fitter Welder Career Weekend Shift (2026-10-21), Fitter Welder Career 2nd shift and Senior Fitter/Welder 2nd shift (2026-11-02). 2nd shift Mon-Fri 4pm-2:30am, Saturdays as production requires; MIG named, flux or metal core highly preferred; no sign-on bonus stated",
+   "evidence_row": 2658,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=9b59237b-ad22-4821-8c3b-1b80e13373e6",
+   "ledger_value": "6 open fitter/welder postings for the Fort Worth plant (2300 W. Risinger Rd) on Arcosa's job board, read 2026-11-13: Senior Fitter/Welder 2nd shift (posted 2026-07-24, oldest, 112 days), Fitter/Welder Weekend Shift (2026-08-11), Fitter/Welder Lead 2nd shift (2026-10-07), Fitter Welder Career Weekend Shift (2026-10-21), Fitter Welder Career 2nd shift and Senior Fitter/Welder 2nd shift (2026-11-02). 2nd shift Mon-Fri 4pm-2:30am, Saturdays as production requires; MIG named, flux or metal core highly preferred; no sign-on bonus stated",
+   "evidence_row": 2659,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=43dad7b4-4c47-41f9-9331-56ffb9d8428b",
+   "ledger_value": "6 open fitter/welder postings for the Fort Worth plant (2300 W. Risinger Rd) on Arcosa's job board, read 2026-11-13: Senior Fitter/Welder 2nd shift (posted 2026-07-24, oldest, 112 days), Fitter/Welder Weekend Shift (2026-08-11), Fitter/Welder Lead 2nd shift (2026-10-07), Fitter Welder Career Weekend Shift (2026-10-21), Fitter Welder Career 2nd shift and Senior Fitter/Welder 2nd shift (2026-11-02). 2nd shift Mon-Fri 4pm-2:30am, Saturdays as production requires; MIG named, flux or metal core highly preferred; no sign-on bonus stated",
+   "evidence_row": 2660,
+   "tag": "stated",
+   "verdict": "corrected",
+   "note": "evidence.csv row 2660. The posting is open (UKG, 2300 W. Risinger Rd., 2026-10-07). It is a 'Lead Welder' whose duties are supervisory: assist the bay supervisor with expectations, schedules and forecasting, production paperwork and coaching. The requirements ask only that 'Experience in a metal fabrication or welding facility is high preferred'; no hands-on welding. It is not a working lead, so it is not a counted welder posting (count 6 -> 5). Same pattern as round 4-A's Meyer Tulsa 'Lead Welder'. Score unaffected: 5 open, oldest 112 days.",
+   "corrected_value": "5 open fitter/welder postings for the Fort Worth plant (2300 W. Risinger Rd) on Arcosa's job board, read 2026-11-13: Senior Fitter/Welder 2nd shift (posted 2026-07-24, oldest, 112 days), Fitter/Welder Weekend Shift (2026-08-11), Fitter Welder Career Weekend Shift (2026-10-21), Fitter Welder Career 2nd shift and Senior Fitter/Welder 2nd shift (2026-11-02). 2nd shift Mon-Fri 4pm-2:30am, Saturdays as production requires; MIG named, flux or metal core highly preferred; no sign-on bonus stated. Not counted: Fitter/Welder Lead - 2nd Shift (2026-10-07), a supervisory role (assists the bay supervisor with schedules, paperwork and coaching; no hands-on welding duties)",
+   "corrected_quote": "looking to hire a 2nd Shift Lead Welder for our plant located in Ft. Worth, TX. ... Assist the bay supervisor with the communication of daily expectations for Quality, Production, Safety and On Time Deliveries.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=367e2df4-e954-4b44-be85-bd1097514e29",
+   "ledger_value": "6 open fitter/welder postings for the Fort Worth plant (2300 W. Risinger Rd) on Arcosa's job board, read 2026-11-13: Senior Fitter/Welder 2nd shift (posted 2026-07-24, oldest, 112 days), Fitter/Welder Weekend Shift (2026-08-11), Fitter/Welder Lead 2nd shift (2026-10-07), Fitter Welder Career Weekend Shift (2026-10-21), Fitter Welder Career 2nd shift and Senior Fitter/Welder 2nd shift (2026-11-02). 2nd shift Mon-Fri 4pm-2:30am, Saturdays as production requires; MIG named, flux or metal core highly preferred; no sign-on bonus stated",
+   "evidence_row": 2661,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=df225d52-b2c0-4ef9-a85f-ecba9294b65c",
+   "ledger_value": "6 open fitter/welder postings for the Fort Worth plant (2300 W. Risinger Rd) on Arcosa's job board, read 2026-11-13: Senior Fitter/Welder 2nd shift (posted 2026-07-24, oldest, 112 days), Fitter/Welder Weekend Shift (2026-08-11), Fitter/Welder Lead 2nd shift (2026-10-07), Fitter Welder Career Weekend Shift (2026-10-21), Fitter Welder Career 2nd shift and Senior Fitter/Welder 2nd shift (2026-11-02). 2nd shift Mon-Fri 4pm-2:30am, Saturdays as production requires; MIG named, flux or metal core highly preferred; no sign-on bonus stated",
+   "evidence_row": 2662,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=a9d1a616-94cc-498c-9183-2f55fa2df9ba",
+   "ledger_value": "6 open fitter/welder postings for the Fort Worth plant (2300 W. Risinger Rd) on Arcosa's job board, read 2026-11-13: Senior Fitter/Welder 2nd shift (posted 2026-07-24, oldest, 112 days), Fitter/Welder Weekend Shift (2026-08-11), Fitter/Welder Lead 2nd shift (2026-10-07), Fitter Welder Career Weekend Shift (2026-10-21), Fitter Welder Career 2nd shift and Senior Fitter/Welder 2nd shift (2026-11-02). 2nd shift Mon-Fri 4pm-2:30am, Saturdays as production requires; MIG named, flux or metal core highly preferred; no sign-on bonus stated",
+   "evidence_row": 2663,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:weld_processes",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=9b59237b-ad22-4821-8c3b-1b80e13373e6",
+   "ledger_value": "MIG welding named for the Fort Worth Fitter/Welder role; flux or metal core experience highly preferred (Fort Worth posting)",
+   "evidence_row": 2665,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=cbbc8142-6c49-491a-88d0-a1589eebd099",
+   "ledger_value": "2 open welder/fitter postings for the Lancaster plant (3468 Old Camden Hwy) on Arcosa's job board, read 2026-11-13: Fitter Welder Lead (posted 2026-08-31, oldest, 74 days) and Welder (career welders, 2026-09-22; 6 months flux core experience required). No sign-on bonus stated. Also a Pole School Welding Instructor (2nd shift, 2026-10-13) and a Welding Technician - Multiple Shifts (2026-10-16), not counted",
+   "evidence_row": 2667,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=9f39a218-36d1-4eb9-9a01-6c3ed95b42b5",
+   "ledger_value": "2 open welder/fitter postings for the Lancaster plant (3468 Old Camden Hwy) on Arcosa's job board, read 2026-11-13: Fitter Welder Lead (posted 2026-08-31, oldest, 74 days) and Welder (career welders, 2026-09-22; 6 months flux core experience required). No sign-on bonus stated. Also a Pole School Welding Instructor (2nd shift, 2026-10-13) and a Welding Technician - Multiple Shifts (2026-10-16), not counted",
+   "evidence_row": 2668,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=2ccbdba7-9d2f-4e64-838f-813b9f991d3e",
+   "ledger_value": "2 open welder/fitter postings for the Lancaster plant (3468 Old Camden Hwy) on Arcosa's job board, read 2026-11-13: Fitter Welder Lead (posted 2026-08-31, oldest, 74 days) and Welder (career welders, 2026-09-22; 6 months flux core experience required). No sign-on bonus stated. Also a Pole School Welding Instructor (2nd shift, 2026-10-13) and a Welding Technician - Multiple Shifts (2026-10-16), not counted",
+   "evidence_row": 2669,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=6388ede6-6840-40b9-8a5f-f30ad9944fb5",
+   "ledger_value": "2 open welder/fitter postings for the Lancaster plant (3468 Old Camden Hwy) on Arcosa's job board, read 2026-11-13: Fitter Welder Lead (posted 2026-08-31, oldest, 74 days) and Welder (career welders, 2026-09-22; 6 months flux core experience required). No sign-on bonus stated. Also a Pole School Welding Instructor (2nd shift, 2026-10-13) and a Welding Technician - Multiple Shifts (2026-10-16), not counted",
+   "evidence_row": 2670,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:weld_processes",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=9f39a218-36d1-4eb9-9a01-6c3ed95b42b5",
+   "ledger_value": "flux-core (FCAW): 6 months of flux core welding experience required in the plant's Welder posting; FCAW, SAW and SMAW named in its Welding Technician posting (Arcosa job board, read 2026-11-13)",
+   "evidence_row": 2672,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:weld_processes",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=6388ede6-6840-40b9-8a5f-f30ad9944fb5",
+   "ledger_value": "flux-core (FCAW): 6 months of flux core welding experience required in the plant's Welder posting; FCAW, SAW and SMAW named in its Welding Technician posting (Arcosa job board, read 2026-11-13)",
+   "evidence_row": 2673,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=30523c38-ba99-47e2-8b5e-39157434548c",
+   "ledger_value": "6 open fitter/welder postings for the Muskogee plant (4020 Tull Ave) on Arcosa's job board, read 2026-11-13: Fitter/Welder - Day Shift (posted 2026-10-23, oldest, 21 days; 4am-2:30pm Mon-Thu with some mandatory Fridays), Fitter/Welder - Night Shift (2026-11-05), and four Fitter/Welder Lead roles (Arms, Low Profile Station, Night Shift, Telecom Towers; 2026-11-09). No sign-on bonus stated. Also a Cobot Welder Operator (2026-10-05), not counted",
+   "evidence_row": 2675,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=db5ab0b1-213c-4e51-971c-9d1cf1fa75f6",
+   "ledger_value": "6 open fitter/welder postings for the Muskogee plant (4020 Tull Ave) on Arcosa's job board, read 2026-11-13: Fitter/Welder - Day Shift (posted 2026-10-23, oldest, 21 days; 4am-2:30pm Mon-Thu with some mandatory Fridays), Fitter/Welder - Night Shift (2026-11-05), and four Fitter/Welder Lead roles (Arms, Low Profile Station, Night Shift, Telecom Towers; 2026-11-09). No sign-on bonus stated. Also a Cobot Welder Operator (2026-10-05), not counted",
+   "evidence_row": 2676,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=0302121d-2648-42a3-90d1-262ba0e2b47a",
+   "ledger_value": "6 open fitter/welder postings for the Muskogee plant (4020 Tull Ave) on Arcosa's job board, read 2026-11-13: Fitter/Welder - Day Shift (posted 2026-10-23, oldest, 21 days; 4am-2:30pm Mon-Thu with some mandatory Fridays), Fitter/Welder - Night Shift (2026-11-05), and four Fitter/Welder Lead roles (Arms, Low Profile Station, Night Shift, Telecom Towers; 2026-11-09). No sign-on bonus stated. Also a Cobot Welder Operator (2026-10-05), not counted",
+   "evidence_row": 2677,
+   "tag": "stated",
+   "verdict": "corrected",
+   "note": "evidence.csv row 2677. The posting is open (UKG LoadSearchResults, 4020 Tull Ave, 2026-11-09) and the quote is on the page. But its duties are supervisory only: 'Manage daily production operations', 'Manage employees, monitor, and approve timesheets and work logs', 'Assign employees to workstations'. There is no hands-on welding or fitting duty. The counting rule counts working leads only (production roles whose duties are manual welding or fitting), so this row does not support counting the role among '6 open fitter/welder postings'. One claim-level error (6 -> 2) shared by rows 2677-2680. Score unaffected: labor 20 still holds on 2 open at once plus 'some mandatory Fridays'.",
+   "corrected_value": "2 open fitter/welder postings for the Muskogee plant (4020 Tull Ave) on Arcosa's job board, read 2026-11-13: Fitter/Welder - Day Shift (posted 2026-10-23, oldest, 21 days; 4am-2:30pm Mon-Thu with some mandatory Fridays) and Fitter/Welder - Night Shift (2026-11-05). No sign-on bonus stated. Not counted: four Fitter/Welder Lead roles (Arms, Low Profile Station, Night Shift, Telecom Towers; 2026-11-09), whose duties are supervisory (manage employees, approve timesheets, assign workstations, coach on fit-up and welding), and a Cobot Welder Operator (2026-10-05)",
+   "corrected_quote": "Arcosa Telecom is currently looking to hire a Fitter/Welder Lead for the plant operation located in Muskogee, OK. In this role, you will oversee multiple activities simultaneously and take ownership of the output from employees working on their team. ... Manage employees, monitor, and approve timesheets and work logs",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=2fbbadd5-0f84-40bf-8340-ecf324cc1f0f",
+   "ledger_value": "6 open fitter/welder postings for the Muskogee plant (4020 Tull Ave) on Arcosa's job board, read 2026-11-13: Fitter/Welder - Day Shift (posted 2026-10-23, oldest, 21 days; 4am-2:30pm Mon-Thu with some mandatory Fridays), Fitter/Welder - Night Shift (2026-11-05), and four Fitter/Welder Lead roles (Arms, Low Profile Station, Night Shift, Telecom Towers; 2026-11-09). No sign-on bonus stated. Also a Cobot Welder Operator (2026-10-05), not counted",
+   "evidence_row": 2678,
+   "tag": "stated",
+   "verdict": "corrected",
+   "note": "evidence.csv row 2678. The posting is open (UKG LoadSearchResults, 4020 Tull Ave, 2026-11-09) and the quote is on the page. But its duties are supervisory only: 'Manage daily production operations', 'Manage employees, monitor, and approve timesheets and work logs', 'Assign employees to workstations'. There is no hands-on welding or fitting duty. The counting rule counts working leads only (production roles whose duties are manual welding or fitting), so this row does not support counting the role among '6 open fitter/welder postings'. One claim-level error (6 -> 2) shared by rows 2677-2680. Score unaffected: labor 20 still holds on 2 open at once plus 'some mandatory Fridays'.",
+   "corrected_value": "2 open fitter/welder postings for the Muskogee plant (4020 Tull Ave) on Arcosa's job board, read 2026-11-13: Fitter/Welder - Day Shift (posted 2026-10-23, oldest, 21 days; 4am-2:30pm Mon-Thu with some mandatory Fridays) and Fitter/Welder - Night Shift (2026-11-05). No sign-on bonus stated. Not counted: four Fitter/Welder Lead roles (Arms, Low Profile Station, Night Shift, Telecom Towers; 2026-11-09), whose duties are supervisory (manage employees, approve timesheets, assign workstations, coach on fit-up and welding), and a Cobot Welder Operator (2026-10-05)",
+   "corrected_quote": "Arcosa Telecom is currently looking to hire a Fitter/Welder Lead for the plant operation located in Muskogee, OK. In this role, you will oversee multiple activities simultaneously and take ownership of the output from employees working on their team. ... Manage employees, monitor, and approve timesheets and work logs",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=7d7ff676-8457-4082-9ed6-90abbd3d604c",
+   "ledger_value": "6 open fitter/welder postings for the Muskogee plant (4020 Tull Ave) on Arcosa's job board, read 2026-11-13: Fitter/Welder - Day Shift (posted 2026-10-23, oldest, 21 days; 4am-2:30pm Mon-Thu with some mandatory Fridays), Fitter/Welder - Night Shift (2026-11-05), and four Fitter/Welder Lead roles (Arms, Low Profile Station, Night Shift, Telecom Towers; 2026-11-09). No sign-on bonus stated. Also a Cobot Welder Operator (2026-10-05), not counted",
+   "evidence_row": 2679,
+   "tag": "stated",
+   "verdict": "corrected",
+   "note": "evidence.csv row 2679. The posting is open (UKG LoadSearchResults, 4020 Tull Ave, 2026-11-09) and the quote is on the page. But its duties are supervisory only: 'Manage daily production operations', 'Manage employees, monitor, and approve timesheets and work logs', 'Assign employees to workstations'. There is no hands-on welding or fitting duty. The counting rule counts working leads only (production roles whose duties are manual welding or fitting), so this row does not support counting the role among '6 open fitter/welder postings'. One claim-level error (6 -> 2) shared by rows 2677-2680. Score unaffected: labor 20 still holds on 2 open at once plus 'some mandatory Fridays'.",
+   "corrected_value": "2 open fitter/welder postings for the Muskogee plant (4020 Tull Ave) on Arcosa's job board, read 2026-11-13: Fitter/Welder - Day Shift (posted 2026-10-23, oldest, 21 days; 4am-2:30pm Mon-Thu with some mandatory Fridays) and Fitter/Welder - Night Shift (2026-11-05). No sign-on bonus stated. Not counted: four Fitter/Welder Lead roles (Arms, Low Profile Station, Night Shift, Telecom Towers; 2026-11-09), whose duties are supervisory (manage employees, approve timesheets, assign workstations, coach on fit-up and welding), and a Cobot Welder Operator (2026-10-05)",
+   "corrected_quote": "Arcosa Telecom is currently looking to hire a Fitter/Welder Lead for the plant operation located in Muskogee, OK. In this role, you will oversee multiple activities simultaneously and take ownership of the output from employees working on their team. ... Manage employees, monitor, and approve timesheets and work logs",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=da88e65d-494c-4b9f-80db-e0a0412f4f64",
+   "ledger_value": "6 open fitter/welder postings for the Muskogee plant (4020 Tull Ave) on Arcosa's job board, read 2026-11-13: Fitter/Welder - Day Shift (posted 2026-10-23, oldest, 21 days; 4am-2:30pm Mon-Thu with some mandatory Fridays), Fitter/Welder - Night Shift (2026-11-05), and four Fitter/Welder Lead roles (Arms, Low Profile Station, Night Shift, Telecom Towers; 2026-11-09). No sign-on bonus stated. Also a Cobot Welder Operator (2026-10-05), not counted",
+   "evidence_row": 2680,
+   "tag": "stated",
+   "verdict": "corrected",
+   "note": "evidence.csv row 2680. The posting is open (UKG LoadSearchResults, 4020 Tull Ave, 2026-11-09) and the quote is on the page. But its duties are supervisory only: 'Manage daily production operations', 'Manage employees, monitor, and approve timesheets and work logs', 'Assign employees to workstations'. There is no hands-on welding or fitting duty. The counting rule counts working leads only (production roles whose duties are manual welding or fitting), so this row does not support counting the role among '6 open fitter/welder postings'. One claim-level error (6 -> 2) shared by rows 2677-2680. Score unaffected: labor 20 still holds on 2 open at once plus 'some mandatory Fridays'.",
+   "corrected_value": "2 open fitter/welder postings for the Muskogee plant (4020 Tull Ave) on Arcosa's job board, read 2026-11-13: Fitter/Welder - Day Shift (posted 2026-10-23, oldest, 21 days; 4am-2:30pm Mon-Thu with some mandatory Fridays) and Fitter/Welder - Night Shift (2026-11-05). No sign-on bonus stated. Not counted: four Fitter/Welder Lead roles (Arms, Low Profile Station, Night Shift, Telecom Towers; 2026-11-09), whose duties are supervisory (manage employees, approve timesheets, assign workstations, coach on fit-up and welding), and a Cobot Welder Operator (2026-10-05)",
+   "corrected_quote": "Arcosa Telecom is currently looking to hire a Fitter/Welder Lead for the plant operation located in Muskogee, OK. In this role, you will oversee multiple activities simultaneously and take ownership of the output from employees working on their team. ... Manage employees, monitor, and approve timesheets and work logs",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:existing_robots",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=3f02db67-2341-48a5-88aa-2cff6afb30cd",
+   "ledger_value": "yes: collaborative welding robots (cobots) in use; brand not stated (Cobot Welder Operator posting, Arcosa board, posted 2026-10-05)",
+   "evidence_row": 2681,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Page says the operator is 'responsible for operating, setting up, and monitoring collaborative welding robots (cobots)' at the Muskogee plant. Posting open in UKG LoadSearchResults (4020 Tull Ave)."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=755063c1-9148-4211-96c7-47b8d5b9d502",
+   "ledger_value": "2 open fitter welder postings at 2333 S Yukon Ave (board label 'Tulsa, OK -Finish') on Arcosa's job board, read 2026-11-13: Fitter Welder Career Day Shift 5:00AM-3:30PM (posted 2026-08-25, oldest, 80 days) and Night Shift 4:00PM-2:30AM weekdays (2026-08-28). Process named only generically (arc, gas-shielded arc or gas welding). No sign-on bonus stated",
+   "evidence_row": 2685,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=202c7928-70b1-4f3b-84af-90b17871c045",
+   "ledger_value": "2 open fitter welder postings at 2333 S Yukon Ave (board label 'Tulsa, OK -Finish') on Arcosa's job board, read 2026-11-13: Fitter Welder Career Day Shift 5:00AM-3:30PM (posted 2026-08-25, oldest, 80 days) and Night Shift 4:00PM-2:30AM weekdays (2026-08-28). Process named only generically (arc, gas-shielded arc or gas welding). No sign-on bonus stated",
+   "evidence_row": 2686,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the UKG detail page fetched 2026-11-13. Open status and street were checked in Arcosa's UKG LoadSearchResults API (306 postings). Additive clauses (shift, differential, process, 'not counted' roles) were checked on this page or a sibling row's page. Lead roles were read in full: Clinton's and Lancaster's leads are working leads (weld clips, full-penetration welds); Fort Worth's and Muskogee's are supervisory (see corrected rows)."
+  },
+  {
+   "claim_id": "p-sabre-alvarado-tx:welder_postings",
+   "source_url": "https://tallo.com/talent/job/browse/manufacturing/welder-or-solderer/tx/alvarado",
+   "ledger_value": "3 open welder postings for Sabre at Alvarado, TX (Tallo copies, read 2026-11-13): Welder Trainee - AlvU (posted 2026-08-05, oldest, 100 days), Welder A - AlvU (2026-09-15; 3G/4G FCAW test), Welder B - AlvU (Sabre Communications Corporation, 2026-11-10; GMAW 2G test). Also a Weld Coach - Nights (2026-10-07) and a 3DLP Operator, not counted. No sign-on bonus stated",
+   "evidence_row": 2688,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Tallo page fetched 2026-11-13. Dates come from Tallo (an aggregator). Open status was checked on Sabre's own UKG Ready board (secure6.saashr.com company 6173477; no dates exposed). 'Welder B - AlvU' (Sabre Communications Corporation) is NOT on Sabre Industries' board; it is seen only on Tallo (may be a separate entity's board). The other counted Alvarado postings are open there at 8653 E Hwy 67."
+  },
+  {
+   "claim_id": "p-sabre-alvarado-tx:welder_postings",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/tx/alvarado/welder-trainee-alvu-77bf738a",
+   "ledger_value": "3 open welder postings for Sabre at Alvarado, TX (Tallo copies, read 2026-11-13): Welder Trainee - AlvU (posted 2026-08-05, oldest, 100 days), Welder A - AlvU (2026-09-15; 3G/4G FCAW test), Welder B - AlvU (Sabre Communications Corporation, 2026-11-10; GMAW 2G test). Also a Weld Coach - Nights (2026-10-07) and a 3DLP Operator, not counted. No sign-on bonus stated",
+   "evidence_row": 2689,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Tallo page fetched 2026-11-13. Dates come from Tallo (an aggregator). Open status was checked on Sabre's own UKG Ready board (secure6.saashr.com company 6173477; no dates exposed). 'Welder B - AlvU' (Sabre Communications Corporation) is NOT on Sabre Industries' board; it is seen only on Tallo (may be a separate entity's board). The other counted Alvarado postings are open there at 8653 E Hwy 67."
+  },
+  {
+   "claim_id": "p-sabre-alvarado-tx:weld_processes",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/tx/alvarado/welder-b-alvu-a65f1743",
+   "ledger_value": "GMAW (Welder B: GMAW 2G weld test; GMAW to weld components or assemblies) and FCAW (3G and 4G FCAW test in the Welder A and Welder Trainee postings), Alvarado, TX",
+   "evidence_row": 2690,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  },
+  {
+   "claim_id": "p-sabre-alvarado-tx:weld_processes",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/tx/alvarado/welder-a-alvu-e8f5b70d",
+   "ledger_value": "GMAW (Welder B: GMAW 2G weld test; GMAW to weld components or assemblies) and FCAW (3G and 4G FCAW test in the Welder A and Welder Trainee postings), Alvarado, TX",
+   "evidence_row": 2691,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  },
+  {
+   "claim_id": "p-sabre-sioux-city-ia:welder_postings",
+   "source_url": "https://tallo.com/talent/job/browse/manufacturing/welder-or-solderer/ia/sioux-city",
+   "ledger_value": "3 open welder postings for Sabre at Sioux City, IA (Tallo copies, read 2026-11-13): Longseamer Trainee (Days) (posted 2026-08-29, oldest, 76 days; long shifts including weekends), Welder Trainee (Nights) (2026-09-10), Welder B ($23.50/hr, 2026-09-28). Also a Weld Coach - STS - Days ($30/hr, 2026-09-09) and a 3DLP Trainee, not counted. No sign-on bonus stated",
+   "evidence_row": 2693,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Tallo page fetched 2026-11-13. Dates come from Tallo (an aggregator). Open status was checked on Sabre's own UKG Ready board (secure6.saashr.com company 6173477; no dates exposed). All three counted postings are open on Sabre's board at 7101 Southbridge Drive."
+  },
+  {
+   "claim_id": "p-sabre-sioux-city-ia:welder_postings",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/ia/sioux-city/longseamer-trainee-days-9f76b768",
+   "ledger_value": "3 open welder postings for Sabre at Sioux City, IA (Tallo copies, read 2026-11-13): Longseamer Trainee (Days) (posted 2026-08-29, oldest, 76 days; long shifts including weekends), Welder Trainee (Nights) (2026-09-10), Welder B ($23.50/hr, 2026-09-28). Also a Weld Coach - STS - Days ($30/hr, 2026-09-09) and a 3DLP Trainee, not counted. No sign-on bonus stated",
+   "evidence_row": 2694,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Tallo page fetched 2026-11-13. Dates come from Tallo (an aggregator). Open status was checked on Sabre's own UKG Ready board (secure6.saashr.com company 6173477; no dates exposed). All three counted postings are open on Sabre's board at 7101 Southbridge Drive."
+  },
+  {
+   "claim_id": "p-sabre-sioux-city-ia:welder_postings",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/ia/sioux-city/welder-trainee-nights-e202790a",
+   "ledger_value": "3 open welder postings for Sabre at Sioux City, IA (Tallo copies, read 2026-11-13): Longseamer Trainee (Days) (posted 2026-08-29, oldest, 76 days; long shifts including weekends), Welder Trainee (Nights) (2026-09-10), Welder B ($23.50/hr, 2026-09-28). Also a Weld Coach - STS - Days ($30/hr, 2026-09-09) and a 3DLP Trainee, not counted. No sign-on bonus stated",
+   "evidence_row": 2695,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Tallo page fetched 2026-11-13. Dates come from Tallo (an aggregator). Open status was checked on Sabre's own UKG Ready board (secure6.saashr.com company 6173477; no dates exposed). All three counted postings are open on Sabre's board at 7101 Southbridge Drive."
+  },
+  {
+   "claim_id": "p-sabre-sioux-city-ia:weld_processes",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/ia/sioux-city/welder-trainee-nights-e202790a",
+   "ledger_value": "MCAW (metal-cored); GMAW/metal-core experience preferred",
+   "evidence_row": 2696,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Page also says 'Uses MCAW welding process to weld small components or assemblies', which supports MCAW. The posting is also on Sabre's own board at 7101 Southbridge Drive."
+  },
+  {
+   "claim_id": "p-fwt-hicksville-oh:welder_postings",
+   "source_url": "https://tallo.com/talent/job/browse/manufacturing/welder-or-solderer/oh/hicksville",
+   "ledger_value": "3 open welder postings for Sabre Industries at Hicksville, OH (Tallo copies, read 2026-11-13): Welder Trainee (Nights) (posted 2026-09-11, oldest, 63 days; GMAW 2G qualification test), Welder C (2026-10-17; GMAW 2G test), Welder/Fitter (Day/Night) (2026-10-30; FCAW tack welding of pole assemblies). No sign-on bonus stated",
+   "evidence_row": 2703,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Tallo page fetched 2026-11-13. Dates come from Tallo (an aggregator). Open status was checked on Sabre's own UKG Ready board (secure6.saashr.com company 6173477; no dates exposed). 'Welder C' is NOT on Sabre's board under Hicksville (the board shows 'Welder (Day/Night)' with the same GMAW 2G test); Welder/Fitter (Day/Night) and Welder Trainee are open at 761 West High Street."
+  },
+  {
+   "claim_id": "p-fwt-hicksville-oh:welder_postings",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/oh/hicksville/welder-trainee-nights-e2ad0344",
+   "ledger_value": "3 open welder postings for Sabre Industries at Hicksville, OH (Tallo copies, read 2026-11-13): Welder Trainee (Nights) (posted 2026-09-11, oldest, 63 days; GMAW 2G qualification test), Welder C (2026-10-17; GMAW 2G test), Welder/Fitter (Day/Night) (2026-10-30; FCAW tack welding of pole assemblies). No sign-on bonus stated",
+   "evidence_row": 2704,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Tallo page fetched 2026-11-13. Dates come from Tallo (an aggregator). Open status was checked on Sabre's own UKG Ready board (secure6.saashr.com company 6173477; no dates exposed). 'Welder C' is NOT on Sabre's board under Hicksville (the board shows 'Welder (Day/Night)' with the same GMAW 2G test); Welder/Fitter (Day/Night) and Welder Trainee are open at 761 West High Street."
+  },
+  {
+   "claim_id": "p-fwt-hicksville-oh:weld_processes",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/oh/hicksville/welderfitter-daynight-eafd1ef8",
+   "ledger_value": "FCAW tack welding of pole assemblies (Welder/Fitter posting); GMAW 2G weld test required (Welder C and Welder Trainee postings), Sabre Industries, Hicksville, OH",
+   "evidence_row": 2705,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  },
+  {
+   "claim_id": "p-fwt-hicksville-oh:weld_processes",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/oh/hicksville/welder-c-1509a1b5",
+   "ledger_value": "FCAW tack welding of pole assemblies (Welder/Fitter posting); GMAW 2G weld test required (Welder C and Welder Trainee postings), Sabre Industries, Hicksville, OH",
+   "evidence_row": 2706,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  },
+  {
+   "claim_id": "p-fwt-hicksville-oh:name",
+   "source_url": "https://tallo.com/talent/job/browse/manufacturing/welder-or-solderer/oh/hicksville",
+   "ledger_value": "Sabre Industries (Hicksville; former FWT plant)",
+   "evidence_row": 2707,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Sabre Industries (Hicksville, OH)",
+   "corrected_quote": "Welder/Fitter (Day/Night) Sabre Industries Hicksville, OH · Onsite Posted Oct 30, 2026",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv row 2707. The Tallo list shows Sabre Industries in Hicksville but nothing about FWT. 'former FWT plant' is an inference (the claim's own sibling row 1701 says 'That this is the former FWT plant is inferred (same town and parent; street address not shown)'), so it cannot sit in a stated row. Keep it as an inferred row. Sabre's own UKG Ready board (secure6.saashr.com company 6173477, read 2026-11-13) lists all Hicksville postings at '761 West High Street', which can fill the address but still does not name FWT."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Brenham-TX/Base-Welder---Weekend-Shift_R29272-1",
+   "ledger_value": "8 open welder/fitter-welder postings at 2551 Valmont Dr, Brenham on Valmont's careers site, read 2026-11-13: Base Welder - Weekend Shift (posted 2026-10-22, oldest, 22 days), Custom Fitter Welder I - Weekend Days (2026-10-23), Large Pole Backwelder - Days (2026-10-29), and Custom Fitter Welder I - Nights, Small Pole Fitter Welder - Nights, Flip Tack Machine Operator/Welder - Nights, Small Parts Fitter Welder - Nights or Evenings, Large Pole Backwelder - Nights (all 2026-11-10). Night shift differential raised to $1.50/hr; extra hours outside the standard schedule 'as needed'; annual discretionary bonus (not a sign-on bonus)",
+   "evidence_row": 2715,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Brenham-TX/Large-Pole-Fitter-Welder---Weekend-Days_R27924",
+   "ledger_value": "8 open welder/fitter-welder postings at 2551 Valmont Dr, Brenham on Valmont's careers site, read 2026-11-13: Base Welder - Weekend Shift (posted 2026-10-22, oldest, 22 days), Custom Fitter Welder I - Weekend Days (2026-10-23), Large Pole Backwelder - Days (2026-10-29), and Custom Fitter Welder I - Nights, Small Pole Fitter Welder - Nights, Flip Tack Machine Operator/Welder - Nights, Small Parts Fitter Welder - Nights or Evenings, Large Pole Backwelder - Nights (all 2026-11-10). Night shift differential raised to $1.50/hr; extra hours outside the standard schedule 'as needed'; annual discretionary bonus (not a sign-on bonus)",
+   "evidence_row": 2716,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Brenham-TX/Large-Pole-Backwelder---Days_R29299",
+   "ledger_value": "8 open welder/fitter-welder postings at 2551 Valmont Dr, Brenham on Valmont's careers site, read 2026-11-13: Base Welder - Weekend Shift (posted 2026-10-22, oldest, 22 days), Custom Fitter Welder I - Weekend Days (2026-10-23), Large Pole Backwelder - Days (2026-10-29), and Custom Fitter Welder I - Nights, Small Pole Fitter Welder - Nights, Flip Tack Machine Operator/Welder - Nights, Small Parts Fitter Welder - Nights or Evenings, Large Pole Backwelder - Nights (all 2026-11-10). Night shift differential raised to $1.50/hr; extra hours outside the standard schedule 'as needed'; annual discretionary bonus (not a sign-on bonus)",
+   "evidence_row": 2717,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Brenham-TX/Large-Pole-Fitter-Welder---Nights_R28794",
+   "ledger_value": "8 open welder/fitter-welder postings at 2551 Valmont Dr, Brenham on Valmont's careers site, read 2026-11-13: Base Welder - Weekend Shift (posted 2026-10-22, oldest, 22 days), Custom Fitter Welder I - Weekend Days (2026-10-23), Large Pole Backwelder - Days (2026-10-29), and Custom Fitter Welder I - Nights, Small Pole Fitter Welder - Nights, Flip Tack Machine Operator/Welder - Nights, Small Parts Fitter Welder - Nights or Evenings, Large Pole Backwelder - Nights (all 2026-11-10). Night shift differential raised to $1.50/hr; extra hours outside the standard schedule 'as needed'; annual discretionary bonus (not a sign-on bonus)",
+   "evidence_row": 2718,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Brenham-TX/Small-Pole-Fitter-Welder---Nights_R29418",
+   "ledger_value": "8 open welder/fitter-welder postings at 2551 Valmont Dr, Brenham on Valmont's careers site, read 2026-11-13: Base Welder - Weekend Shift (posted 2026-10-22, oldest, 22 days), Custom Fitter Welder I - Weekend Days (2026-10-23), Large Pole Backwelder - Days (2026-10-29), and Custom Fitter Welder I - Nights, Small Pole Fitter Welder - Nights, Flip Tack Machine Operator/Welder - Nights, Small Parts Fitter Welder - Nights or Evenings, Large Pole Backwelder - Nights (all 2026-11-10). Night shift differential raised to $1.50/hr; extra hours outside the standard schedule 'as needed'; annual discretionary bonus (not a sign-on bonus)",
+   "evidence_row": 2719,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Brenham-TX/Flip-Tack-Machine-Operator---Welder---Nights_R29175",
+   "ledger_value": "8 open welder/fitter-welder postings at 2551 Valmont Dr, Brenham on Valmont's careers site, read 2026-11-13: Base Welder - Weekend Shift (posted 2026-10-22, oldest, 22 days), Custom Fitter Welder I - Weekend Days (2026-10-23), Large Pole Backwelder - Days (2026-10-29), and Custom Fitter Welder I - Nights, Small Pole Fitter Welder - Nights, Flip Tack Machine Operator/Welder - Nights, Small Parts Fitter Welder - Nights or Evenings, Large Pole Backwelder - Nights (all 2026-11-10). Night shift differential raised to $1.50/hr; extra hours outside the standard schedule 'as needed'; annual discretionary bonus (not a sign-on bonus)",
+   "evidence_row": 2720,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Brenham-TX/Small-Parts-Fitter-Welder---Nights-or-Evenings_R29178",
+   "ledger_value": "8 open welder/fitter-welder postings at 2551 Valmont Dr, Brenham on Valmont's careers site, read 2026-11-13: Base Welder - Weekend Shift (posted 2026-10-22, oldest, 22 days), Custom Fitter Welder I - Weekend Days (2026-10-23), Large Pole Backwelder - Days (2026-10-29), and Custom Fitter Welder I - Nights, Small Pole Fitter Welder - Nights, Flip Tack Machine Operator/Welder - Nights, Small Parts Fitter Welder - Nights or Evenings, Large Pole Backwelder - Nights (all 2026-11-10). Night shift differential raised to $1.50/hr; extra hours outside the standard schedule 'as needed'; annual discretionary bonus (not a sign-on bonus)",
+   "evidence_row": 2721,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Brenham-TX/Large-Pole-Backwelder---Nights_R28791",
+   "ledger_value": "8 open welder/fitter-welder postings at 2551 Valmont Dr, Brenham on Valmont's careers site, read 2026-11-13: Base Welder - Weekend Shift (posted 2026-10-22, oldest, 22 days), Custom Fitter Welder I - Weekend Days (2026-10-23), Large Pole Backwelder - Days (2026-10-29), and Custom Fitter Welder I - Nights, Small Pole Fitter Welder - Nights, Flip Tack Machine Operator/Welder - Nights, Small Parts Fitter Welder - Nights or Evenings, Large Pole Backwelder - Nights (all 2026-11-10). Night shift differential raised to $1.50/hr; extra hours outside the standard schedule 'as needed'; annual discretionary bonus (not a sign-on bonus)",
+   "evidence_row": 2722,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:weld_processes",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Brenham-TX/Large-Pole-Fitter-Welder---Nights_R28794",
+   "ledger_value": "GMAW and FCAW (tack welds), SAW (structural welds)",
+   "evidence_row": 2724,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:weld_processes",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Brenham-TX/Small-Parts-Fitter-Welder---Nights-or-Evenings_R29178",
+   "ledger_value": "GMAW and FCAW (tack welds), SAW (structural welds)",
+   "evidence_row": 2725,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  },
+  {
+   "claim_id": "p-valmont-tulsa-ok:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Tulsa-OK/Structural-Welder_R28540",
+   "ledger_value": "5 open welder/fitter postings at 801 N Xanthus, Tulsa (Global Utility Division) on Valmont's careers site, read 2026-11-13: Structural Welder (posted 2026-11-04; $2.00/hr night differential), Fitter I (2026-11-04), Welder I (2026-11-10), two Fitter I (2026-11-12). Oldest 9 days; no sign-on bonus stated. Also a Robotic Welder (2026-09-25; overtime of over ten hours a week when required), not counted",
+   "evidence_row": 2727,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-tulsa-ok:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Tulsa-OK/Welder-I_R29461",
+   "ledger_value": "5 open welder/fitter postings at 801 N Xanthus, Tulsa (Global Utility Division) on Valmont's careers site, read 2026-11-13: Structural Welder (posted 2026-11-04; $2.00/hr night differential), Fitter I (2026-11-04), Welder I (2026-11-10), two Fitter I (2026-11-12). Oldest 9 days; no sign-on bonus stated. Also a Robotic Welder (2026-09-25; overtime of over ten hours a week when required), not counted",
+   "evidence_row": 2728,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-tulsa-ok:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Tulsa-OK/Fitter-I_R28769",
+   "ledger_value": "5 open welder/fitter postings at 801 N Xanthus, Tulsa (Global Utility Division) on Valmont's careers site, read 2026-11-13: Structural Welder (posted 2026-11-04; $2.00/hr night differential), Fitter I (2026-11-04), Welder I (2026-11-10), two Fitter I (2026-11-12). Oldest 9 days; no sign-on bonus stated. Also a Robotic Welder (2026-09-25; overtime of over ten hours a week when required), not counted",
+   "evidence_row": 2729,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-tulsa-ok:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Tulsa-OK/Fitter-I_R29478",
+   "ledger_value": "5 open welder/fitter postings at 801 N Xanthus, Tulsa (Global Utility Division) on Valmont's careers site, read 2026-11-13: Structural Welder (posted 2026-11-04; $2.00/hr night differential), Fitter I (2026-11-04), Welder I (2026-11-10), two Fitter I (2026-11-12). Oldest 9 days; no sign-on bonus stated. Also a Robotic Welder (2026-09-25; overtime of over ten hours a week when required), not counted",
+   "evidence_row": 2730,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-tulsa-ok:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Tulsa-OK/Structural-Fitter_R28505",
+   "ledger_value": "5 open welder/fitter postings at 801 N Xanthus, Tulsa (Global Utility Division) on Valmont's careers site, read 2026-11-13: Structural Welder (posted 2026-11-04; $2.00/hr night differential), Fitter I (2026-11-04), Welder I (2026-11-10), two Fitter I (2026-11-12). Oldest 9 days; no sign-on bonus stated. Also a Robotic Welder (2026-09-25; overtime of over ten hours a week when required), not counted",
+   "evidence_row": 2731,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-tulsa-ok:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Tulsa-OK/Robotic-Welder_R29009",
+   "ledger_value": "5 open welder/fitter postings at 801 N Xanthus, Tulsa (Global Utility Division) on Valmont's careers site, read 2026-11-13: Structural Welder (posted 2026-11-04; $2.00/hr night differential), Fitter I (2026-11-04), Welder I (2026-11-10), two Fitter I (2026-11-12). Oldest 9 days; no sign-on bonus stated. Also a Robotic Welder (2026-09-25; overtime of over ten hours a week when required), not counted",
+   "evidence_row": 2732,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Claremore-OK/Assembly-Welder_R28558",
+   "ledger_value": "2 open welder postings at 25010 Alliance Dr, Claremore on Valmont's careers site, read 2026-11-13: Assembly Welder (posted 2026-08-13, 92 days; fits and welds pole shaft halves; $2/hr night differential) and Structural Back Welder (sub-arc, 2026-11-09). Also a temporary Welder/Sub Arc Helper (2026-11-06), not counted. No sign-on bonus stated",
+   "evidence_row": 2735,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Claremore-OK/Structural-Back-Welder_R29442",
+   "ledger_value": "2 open welder postings at 25010 Alliance Dr, Claremore on Valmont's careers site, read 2026-11-13: Assembly Welder (posted 2026-08-13, 92 days; fits and welds pole shaft halves; $2/hr night differential) and Structural Back Welder (sub-arc, 2026-11-09). Also a temporary Welder/Sub Arc Helper (2026-11-06), not counted. No sign-on bonus stated",
+   "evidence_row": 2736,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Claremore-OK/Welder-Sub-Arc-Helper_R29419",
+   "ledger_value": "2 open welder postings at 25010 Alliance Dr, Claremore on Valmont's careers site, read 2026-11-13: Assembly Welder (posted 2026-08-13, 92 days; fits and welds pole shaft halves; $2/hr night differential) and Structural Back Welder (sub-arc, 2026-11-09). Also a temporary Welder/Sub Arc Helper (2026-11-06), not counted. No sign-on bonus stated",
+   "evidence_row": 2737,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-columbus-ne:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Columbus-NE/Experienced-Welder_R29256",
+   "ledger_value": "3 open welder postings at 1600 East 29th Ave, Columbus on Valmont's careers site, read 2026-11-13: Experienced Welder (weekend 12-hour shifts, posted 2026-10-19), Welder - 3rd Shift (5+ years MIG required, 2026-10-19), Experienced Welder (2026-11-04). Oldest 25 days; annual performance bonus plan (not a sign-on bonus). Also a Robotic Welder - 3rd Shift (2026-08-27), not counted",
+   "evidence_row": 2740,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-columbus-ne:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Columbus-NE/Welder---3rd-Shift_R29257",
+   "ledger_value": "3 open welder postings at 1600 East 29th Ave, Columbus on Valmont's careers site, read 2026-11-13: Experienced Welder (weekend 12-hour shifts, posted 2026-10-19), Welder - 3rd Shift (5+ years MIG required, 2026-10-19), Experienced Welder (2026-11-04). Oldest 25 days; annual performance bonus plan (not a sign-on bonus). Also a Robotic Welder - 3rd Shift (2026-08-27), not counted",
+   "evidence_row": 2741,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-columbus-ne:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Columbus-NE/Experienced-Welder_R29407",
+   "ledger_value": "3 open welder postings at 1600 East 29th Ave, Columbus on Valmont's careers site, read 2026-11-13: Experienced Welder (weekend 12-hour shifts, posted 2026-10-19), Welder - 3rd Shift (5+ years MIG required, 2026-10-19), Experienced Welder (2026-11-04). Oldest 25 days; annual performance bonus plan (not a sign-on bonus). Also a Robotic Welder - 3rd Shift (2026-08-27), not counted",
+   "evidence_row": 2742,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-columbus-ne:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Columbus-NE/Robotic-Welder---3rd-Shift_R28643",
+   "ledger_value": "3 open welder postings at 1600 East 29th Ave, Columbus on Valmont's careers site, read 2026-11-13: Experienced Welder (weekend 12-hour shifts, posted 2026-10-19), Welder - 3rd Shift (5+ years MIG required, 2026-10-19), Experienced Welder (2026-11-04). Oldest 25 days; annual performance bonus plan (not a sign-on bonus). Also a Robotic Welder - 3rd Shift (2026-08-27), not counted",
+   "evidence_row": 2743,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-columbus-ne:weld_processes",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Columbus-NE/Welder---3rd-Shift_R29257",
+   "ledger_value": "MIG (GMAW)",
+   "evidence_row": 2745,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:welder_postings",
+   "source_url": "https://api.lever.co/v0/postings/crestoperations/4a3f4d28-a7f6-4018-b4c8-d0b56af1365d?mode=json",
+   "ledger_value": "3 open welder postings for DIS-TRAN Steel at Pineville on Crest's Lever board (read 2026-11-13): Submerged Arc Welder - Weekend Shift (Pole team; created 2026-04-21, oldest, 206 days), Production Welder II - Night Shift (2026-07-27; GMAW required), PREP Welder - Day Shift (2026-08-14; GMAW preferred). Also an internal transfer-portal Pole Plant 2 Production Welder - Night Shift opportunity (2026-04-28), not counted. No sign-on bonus stated",
+   "evidence_row": 2754,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the page fetched 2026-11-13. Crest Lever per-posting API returns 200 (live); createdAt converted to dates (2026-04-21, 2026-07-27, 2026-08-14, 2026-04-28). Additive clauses ('Pole team', GMAW required or preferred) checked on the Lever pages."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:welder_postings",
+   "source_url": "https://api.lever.co/v0/postings/crestoperations/e14bc81e-88e4-46dc-bd5e-1d8952f0a307?mode=json",
+   "ledger_value": "3 open welder postings for DIS-TRAN Steel at Pineville on Crest's Lever board (read 2026-11-13): Submerged Arc Welder - Weekend Shift (Pole team; created 2026-04-21, oldest, 206 days), Production Welder II - Night Shift (2026-07-27; GMAW required), PREP Welder - Day Shift (2026-08-14; GMAW preferred). Also an internal transfer-portal Pole Plant 2 Production Welder - Night Shift opportunity (2026-04-28), not counted. No sign-on bonus stated",
+   "evidence_row": 2755,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the page fetched 2026-11-13. Crest Lever per-posting API returns 200 (live); createdAt converted to dates (2026-04-21, 2026-07-27, 2026-08-14, 2026-04-28). Additive clauses ('Pole team', GMAW required or preferred) checked on the Lever pages."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:welder_postings",
+   "source_url": "https://api.lever.co/v0/postings/crestoperations/1db1718e-f410-4b01-bf5b-edd239b62f2c?mode=json",
+   "ledger_value": "3 open welder postings for DIS-TRAN Steel at Pineville on Crest's Lever board (read 2026-11-13): Submerged Arc Welder - Weekend Shift (Pole team; created 2026-04-21, oldest, 206 days), Production Welder II - Night Shift (2026-07-27; GMAW required), PREP Welder - Day Shift (2026-08-14; GMAW preferred). Also an internal transfer-portal Pole Plant 2 Production Welder - Night Shift opportunity (2026-04-28), not counted. No sign-on bonus stated",
+   "evidence_row": 2756,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the page fetched 2026-11-13. Crest Lever per-posting API returns 200 (live); createdAt converted to dates (2026-04-21, 2026-07-27, 2026-08-14, 2026-04-28). Additive clauses ('Pole team', GMAW required or preferred) checked on the Lever pages."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:welder_postings",
+   "source_url": "https://api.lever.co/v0/postings/crestoperations/58aa15e8-4506-4108-b943-61b32d5beff8?mode=json",
+   "ledger_value": "3 open welder postings for DIS-TRAN Steel at Pineville on Crest's Lever board (read 2026-11-13): Submerged Arc Welder - Weekend Shift (Pole team; created 2026-04-21, oldest, 206 days), Production Welder II - Night Shift (2026-07-27; GMAW required), PREP Welder - Day Shift (2026-08-14; GMAW preferred). Also an internal transfer-portal Pole Plant 2 Production Welder - Night Shift opportunity (2026-04-28), not counted. No sign-on bonus stated",
+   "evidence_row": 2757,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the page fetched 2026-11-13. Crest Lever per-posting API returns 200 (live); createdAt converted to dates (2026-04-21, 2026-07-27, 2026-08-14, 2026-04-28). Additive clauses ('Pole team', GMAW required or preferred) checked on the Lever pages."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:city",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Elkhart-IN/Aluminum-Welder-2nd-Shift_R29450",
+   "ledger_value": "Elkhart",
+   "evidence_row": 2839,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:state",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Elkhart-IN/Aluminum-Welder-2nd-Shift_R29450",
+   "ledger_value": "IN",
+   "evidence_row": 2840,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:address",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/Elkhart-IN/Aluminum-Welder-2nd-Shift_R29450",
+   "ledger_value": "3403 Charlotte Ave, Elkhart, IN 46517-1150",
+   "evidence_row": 2843,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "The Workday page shows '3403 Charlotte Ave Elkhart Indiana 46517-1150'."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:address",
+   "source_url": "https://www.in.gov/idem/files/notice_20261127_air_50724pn-as.pdf",
+   "ledger_value": "3403 Charlotte Ave, Elkhart, IN 46517-1150",
+   "evidence_row": 2844,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:products",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/Elkhart-IN/Welder-Assistant_R29452",
+   "ledger_value": "poles and pole components (current postings: burning holes in poles; welding in an aluminum welding department)",
+   "evidence_row": 2847,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:products",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "highway components (AISC Highway Component Manufacturer certification)",
+   "evidence_row": 2848,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "AISC snapshot line 4824."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:materials",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/Elkhart-IN/Welder-Assistant_R29452",
+   "ledger_value": "aluminum (current postings name an aluminum welding department) and steel (a 'Welder 1st Shift - Steel' posting at Elkhart, now closed)",
+   "evidence_row": 2850,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Compound value checked across sibling rows 2850/2851. The aluminum clause is on this page; the steel clause is on the Teal page (row 2851)."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:materials",
+   "source_url": "https://www.tealhq.com/job/welder_7ea1a31ca83e9c462e792807024b29615fa31",
+   "ledger_value": "aluminum (current postings name an aluminum welding department) and steel (a 'Welder 1st Shift - Steel' posting at Elkhart, now closed)",
+   "evidence_row": 2851,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Teal returns HTTP 404 status, but the rendered body (fetched 2026-11-13 in headless Chromium) shows 'Welder 1st Shift - Steel / Valmont Industries, Inc. • Elkhart, IN / 81d ... This job is no longer available'. That is exactly what the value claims: a steel welder posting existed and is now closed. The page is a closed-posting stub, not unreachable. This explains why the coordinator's earlier quote check classed the URL as unreachable."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:certifications",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC: Highway Component Manufacturer",
+   "evidence_row": 2852,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "AISC snapshot line 4824: 'Valmont Industries, Inc. - Elkhart / Elkhart / IN / Highway Component Manufacturer'."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Elkhart-IN/Aluminum-Welder-2nd-Shift_R29450",
+   "ledger_value": "1 open welder posting and 2 welder-assistant postings at 3403 Charlotte Ave on Valmont's job board (read 2026-11-13), all in the aluminum welding department: Aluminum Welder 2nd Shift (posted 2026-11-10), Welder Assistant (2026-11-12), Welder Assistant - 2nd Shift (2026-11-12). No steel welder posting open; a 'Welder 1st Shift - Steel' posting is closed. No sign-on bonus or mandatory overtime stated",
+   "evidence_row": 2855,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Elkhart-IN/Welder-Assistant_R29452",
+   "ledger_value": "1 open welder posting and 2 welder-assistant postings at 3403 Charlotte Ave on Valmont's job board (read 2026-11-13), all in the aluminum welding department: Aluminum Welder 2nd Shift (posted 2026-11-10), Welder Assistant (2026-11-12), Welder Assistant - 2nd Shift (2026-11-12). No steel welder posting open; a 'Welder 1st Shift - Steel' posting is closed. No sign-on bonus or mandatory overtime stated",
+   "evidence_row": 2856,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Elkhart-IN/Welder-Assistant---2nd-Shift_R29449",
+   "ledger_value": "1 open welder posting and 2 welder-assistant postings at 3403 Charlotte Ave on Valmont's job board (read 2026-11-13), all in the aluminum welding department: Aluminum Welder 2nd Shift (posted 2026-11-10), Welder Assistant (2026-11-12), Welder Assistant - 2nd Shift (2026-11-12). No steel welder posting open; a 'Welder 1st Shift - Steel' posting is closed. No sign-on bonus or mandatory overtime stated",
+   "evidence_row": 2857,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Every '...' fragment matched the Workday cxs JSON fetched 2026-11-13 (title, address line, startDate, canApply=true). The count was checked against the Valmont Workday jobs search by city. Additive clauses (differentials, bonus type, 'as needed' hours, department) were checked on this page or a sibling row's page of the same claim."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:parent_company",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/Elkhart-IN/Aluminum-Welder-2nd-Shift_R29450",
+   "ledger_value": "Valmont Industries",
+   "evidence_row": 2907,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fetched 2026-11-13). Every additive clause is on this page or, for a compound value repeated across rows of the claim, on a sibling row's page opened the same day."
+  }
+ ]
+}

@@ -2,20 +2,20 @@
  "vertical": "v-poles-substation",
  "status": "partial",
  "plants": {
-  "found": 97,
-  "included": 66,
-  "profiled": 66,
-  "excluded": 31,
+  "found": 117,
+  "included": 80,
+  "profiled": 80,
+  "excluded": 37,
   "tiers": {
-   "Low": 41,
-   "Medium": 21,
-   "High": 4
+   "Medium": 32,
+   "High": 8,
+   "Low": 40
   },
-  "profiled_fact_checked": 63,
-  "material_unknown": 57
+  "profiled_fact_checked": 80,
+  "material_unknown": 68
  },
  "links": 7,
- "evidence_rows": 2686,
+ "evidence_rows": 3268,
  "fact_check_rounds": [
   {
    "round": 1,
@@ -144,12 +144,76 @@
    ],
    "rate": 0.0822,
    "display": "18 / 219 = 8.2%"
+  },
+  {
+   "round": 4,
+   "label": "Round 4: plants added or changed after the higher-tier review",
+   "checked": 326,
+   "corrected": 29,
+   "unreachable": 0,
+   "checkers": [
+    {
+     "file": "fact-check-v-poles-substation-round4-A.json",
+     "checked": 125,
+     "corrected": 8,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 8,
+      "invented fact": 0,
+      "other": 0
+     }
+    },
+    {
+     "file": "fact-check-v-poles-substation-round4-B.json",
+     "checked": 64,
+     "corrected": 13,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 13,
+      "invented fact": 0,
+      "other": 0
+     }
+    },
+    {
+     "file": "fact-check-v-poles-substation-round4-C.json",
+     "checked": 137,
+     "corrected": 8,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 8,
+      "invented fact": 0,
+      "other": 0
+     }
+    }
+   ],
+   "rate": 0.089,
+   "display": "29 / 326 = 8.9%"
   }
  ],
  "miss_rate": {
-  "value": "5/64 = 7.8%",
-  "note": null,
-  "history": []
+  "value": "5/64 = 7.8% (list auditors); 22/80 = 27.5% (finder first pass vs all plants verified to date)",
+  "note": "The auditor figure is a lower bound: both auditors drew on the finder's source types. The first-pass figure counts every included plant the plant-finder did not have (7 found by auditors, 2 by follow-up research, 11 by the higher-tier review, 2 wrongly excluded then reinstated); all 22 are now in the ledger. 9 leads remain unverified.",
+  "history": [
+   "9.5%",
+   "9.2%",
+   "6.3%",
+   "7.8%",
+   "27.5% first-pass"
+  ]
  },
- "known_limits": []
+ "known_limits": [
+  "Part size is unknown for 68 of 80 profiled plants, so material scores 0 there; a Low score usually means missing data, not a poor fit (see the Unknowns and ceiling columns).",
+  "Welder-posting counts are a snapshot of 2026-11-13 job boards; Sabre's own site has a human check, so Sabre counts rest on Tallo copies checked against Sabre's UKG Ready board.",
+  "Pre-production plants (Nucor Brigham City ramping, Hapco Oklahoma City under construction) are scored on stated plans; Nucor's Indiana and Utah pole plants are tracked.",
+  "Fact-check error rates are per stated claim checked; on a strict page-only reading (every clause on the one cited page) round 4 would be higher (checker A: 16.0% vs 6.4%)."
+ ]
 }
