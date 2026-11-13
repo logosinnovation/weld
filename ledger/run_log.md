@@ -297,3 +297,35 @@ Coordinator decisions applied now (mechanical):
   - 17 prospect_test rows carrying a "pass" verdict retagged from stated to inferred.
 - **Counts:** 117 plants; 80 profiled, 37 excluded; High 8 / Medium 32 / Low 40. All 80 profiled plants have now been fact-checked in at least one round (summary.json: profiled_fact_checked 80).
 - **Leads for the final review:** street addresses found on primary job boards for 9 plants whose address is unknown (Claremore, Clinton, Meyer Fort Worth, Lancaster, Steele, Hager City, Alvarado, Sioux City, Hicksville); Musco multi-plant (EPA FRS lists Oskaloosa sites); Western Utility's AISC listing.
+
+## 2026-11-13: higher-tier final review (workflow poles-final-fable-review)
+
+- The first attempt was cut off by a usage limit; it left an empty inbox stub and half-finished map edits, committed as WIP `9fae162`. The rerun finished both.
+- **Ledger review (top-tier model): "ready" once its inbox file is merged.** 0 blockers, 8 majors (all fixed in its inbox), 5 minors. File: `ledger/audit/review-fable-final-ledger.json`.
+  - Re-derived all 40 High and Medium plants component by component.
+  - Re-read counted postings on the primary boards for 22 of them (Arcosa UKG, Valmont Workday, Sabre's own UKG Ready). No counted posting had closed, no trigger older than 24 months was scored 15, and there was no invented fact, wrong plant or closed plant.
+- **Merged** `fable-final-fixes.json`: 23 superseded rows retired first, then 1 plant added, 29 updated and 186 rows added; 0 rejected, 0 coverage gaps. Coordinator decisions:
+  - **FWT Fort Worth: the reviewer's tie is accepted, reversing option (b).** EPA FRS names SABRE-FWT at 5750 E Interstate 20, and Sabre's own board files the counted "Kenn" requisitions under that address. The tie is now stated, not inferred. Renamed "Sabre-FWT (Fort Worth ...)". Score 21 -> 61, Medium.
+  - Ameron Yukon process 0 -> 20: the Arcosa board summary says "qualified MIG Fitter/Welders". Total 61, Medium.
+  - Nucor Decatur process 0 -> 20: "Mig Flux core welding experience" in its own Fitter Welder posting. 60, Medium. Address 913 Maero St, Trinity.
+  - Nello South Bend labor 12 -> 20: two welder listings are live on Nello's careers page at once. 75, High. Sensitivity: the listings show no year; if they are stale, 55.
+  - MICA Haltom City labor stays 20, now on three Haltom City roles listed at once (aggregator; Indeed blocked). The company-wide signing bonus no longer carries it.
+  - Meyer Clinton demand 15 now rests on Arcosa postings calling Clinton "our new plant" and "a startup manufacturing facility".
+  - **New plant: Sabre Industries Marshall TX** (2938 Brown Rd, site code MarU). 61 Medium. Rests on Sabre's own board only, so it needs a fact-check.
+  - **7 exclusions reversed under the written inclusion rule** (a current DOT listing for an in-scope product means included): Commercial Fabricators Bridgeview, Mid-Park Clarkson, Ackerman & Baynes, Clark Machine, Griffin Welding, L&M Fabrication, Specialty Fab. They are now base records, not profiled, with exclusion reasons cleared by hand.
+  - Street addresses and geocodes added for 13 plants (job boards, EPA FRS). The pins move up to 15.5 km; no county FIPS changes.
+  - Musco scale 0 -> 5 (multi-site per EPA FRS); Western Utility's certification is AISC Highway Component Manufacturer; Meyer Tulsa's count drops 3 -> 2 (a supervisory Lead), labor unchanged.
+- **Map review (top-tier model): "ready".** 10 map defects fixed. The ones that matter most:
+  - Score reasoning that contradicted the points (61 rows) now shows the latest coordinator basis first.
+  - The pre-production banner was false for the converting Meyer plants.
+  - AISC snapshot matches were shown as failed quote checks.
+  - Stated-only mode differed between the page and the CSV.
+  - Every Low profile now explains which components are unknown and the ceiling.
+  - Zero console errors at 1440 px, at 390 px and in dark mode. File: `ledger/audit/review-fable-final-map.json`.
+- **Full quote re-check** (`verify_ledger_quotes.py`): 1,204 found plain, 26 found in a browser, 44 matched the AISC snapshot, 6 not found.
+  - The two Meyer address quotes are JSON in the posting page's HTML source, checked by the reviewer in raw HTML.
+  - Two are website-name rows on unscored plants (Griffin, Allstate).
+  - Grid Structures: its Welder posting closed between 11-12 and 11-13. A Fitter (Day & Night Shift) posting for Grid at Amite is open; checked today, it holds labor at 12. The FCAW process row is kept as a standing fact (Claremore precedent), and the welder_postings row is updated.
+- `verticals.csv` reason updated to current counts. The `v-poles-substation:status` evidence row is set to partial (it said accepted).
+- **Counts:** 118 plants: 81 profiled, 7 base, 30 excluded. High 9 / Medium 35 / Low 37. 80 of 81 profiled plants fact-checked; Sabre Marshall is not yet checked.
+- **Miss rate:** the auditor-measured figure is unchanged at 5/64 = 7.8%; every auditor plant is now in the ledger, and `compare_audit.py`'s 5 "MISS?" lines are all matcher artifacts. The finder first-pass figure is **30/88 = 34.1%**: 22 earlier, plus Marshall, plus the 7 reinstated. That is over the 20% advisor threshold; see advisor consultation 5.

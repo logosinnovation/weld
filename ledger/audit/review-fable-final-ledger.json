@@ -1,0 +1,208 @@
+{
+ "reviewer": "fable-final-review",
+ "date": "2026-11-13",
+ "vertical": "v-poles-substation",
+ "verdict": "ready",
+ "summary": "Verdict: ready once ledger/inbox/fable-final-fixes.json is merged (apply evidence_remove first; clear exclusion_reason by hand on the 7 reinstated plants). What was checked: all 40 High and Medium plants were re-derived component by component from their evidence rows against CLAUDE.md and the run-log rules. Open status and dates of every counted posting were re-read today on the primary boards for 22 of the 40: Arcosa UKG (306 postings, 8 plants), Valmont Workday (76, 9 plants), Sabre's own UKG Ready board (221 requisitions, 5 plants). Nello's careers page, the Maico KansasWorks posting and the Nucor Crawfordsville posting were re-read too; the Lever, Dayforce and Paylocity postings behind DIS-TRAN Pineville, the V&S plants and Universal were not. No counted posting had closed, no trigger scored 15 is older than 2024-11-13, and no invented fact, wrong plant or closed plant was found. What was wrong: 8 major and 5 minor findings, no blockers. Six change a score or add a plant: FWT Fort Worth 21 -> 61, Ameron Tulsa (Yukon) 41 -> 61, Nucor Decatur 40 -> 60, Nello South Bend 67 -> 75 (High), Musco 23 -> 28, and a new Sabre plant at Marshall TX (61). Two more keep the total but move it onto stated evidence (Meyer Clinton demand; MICA Haltom City labor). Thirteen plants get street addresses, six map pins move by 8 to 16 km, and seven exclusions that contradict the written inclusion rule become base records. Consistency: the same address-match rule now covers FWT Fort Worth and Sabre Hicksville; V&S Canton and Burton at 12 match QMF, the only other plant whose posting lists TIG; material 20/12 rests on a stated dimension or Path's own statement at all nine plants that have it; every Valmont plant is customer_other_plant, Millerbernd Winsted known_customer, Nello and LaX customer_other_plant. After the merge: 118 plants; 81 profiled, 7 base, 30 excluded; High 9, Medium 35, Low 37. Headline figures the merge makes stale: those counts; profiled_fact_checked (80 of 81); 'every included plant is profiled' (7 base); material unknown (69 of 81); and the miss rate. On the run log's second measure the count rises from 22 of 80 to 30 of 88 = 34.1% (Sabre Marshall plus the 7 reinstated exclusions); the auditor-measured 5/64 needs a re-run of compare_audit.py. Both were already over the 20% advisor threshold logged for the done checkpoint. 'Ready' here means the ledger content; the coordinator still owes the advisor consultation, a fact-check of Sabre Marshall and a rebuilt summary and Method page. Sabre Marshall and the three re-scored Low plants have not been seen by an independent fact-checker; every quote this review wrote was checked on its page today.",
+ "findings": [
+  {
+   "id": "final-1",
+   "severity": "major",
+   "plant_ids": [
+    "p-fwt-fort-worth-tx",
+    "p-fwt-hicksville-oh"
+   ],
+   "finding": "FWT Fort Worth (21, Low) and Sabre Hicksville (61, Medium) were scored under opposite rules on the same kind of evidence. Fort Worth's process and labor were zeroed because the tie between Sabre's 'Kenn' postings and the FWT plant was 'inferred'; Hicksville kept both. Primary sources now tie both by address: EPA's Facility Registry names SABRE-FWT at 5750 E. Interstate 20, Fort Worth and at 761 W. High St., Hicksville, and Sabre's own job board gives those streets for its Fort Worth and Hicksville requisitions. At Fort Worth the tie is address plus site code: the board puts every Fort Worth requisition under 5750 I-20, including one coded '36th' (not used), and the counted ones are coded 'Kenn'; EPA lists 'FWT INC EXPANSION' in Kennedale about 300 m from the 5750 record. Fort Worth becomes 61 Medium; Hicksville stays 61 with the FWT history now stated. This reverses a coordinator decision (option b, 53 -> 21), so it is the coordinator's to confirm: if a source naming the Kenn site at this street in so many words is required, Fort Worth returns to 21 and Hicksville is unaffected (one address, no second site code). Fort Worth also gains a street address, FRS coordinates (it was plotted at the city centre, about 13 km away), a name, an opening line and four open welder requisitions.",
+   "evidence": "EPA FRS facility_name=FWT&state_abbr=TX: \"FacilityName\":\"SABRE-FWT\", \"LocationAddress\":\"5750 E. INTERSTATE 20\"; state_abbr=OH: \"FacilityName\":\"SABRE-FWT\", \"LocationAddress\":\"761 W. HIGH ST.\". Sabre UKG Ready requisition 755411337: \"job_title\":\"Welder C - Kenn\",\"location\":{\"address_line_1\":\"5750 I-20\",...\"Fort Worth\"}; 'Uses GMAW welding process (Spray Arc transfer) to weld components or assemblies.' Requisition 755419393: Welder/Fitter (Day/Night), 761 West High Street, Hicksville.",
+   "fixed_in_inbox": true
+  },
+  {
+   "id": "final-2",
+   "severity": "major",
+   "plant_ids": [
+    "p-ameron-tulsa-ok",
+    "p-nucor-decatur-al"
+   ],
+   "finding": "Two plants sat in Low with process 0 although their own open postings name MIG. (a) Ameron Tulsa, 2333 S Yukon Ave (41): Arcosa's job board summary for both open Fitter Welder postings says 'qualified MIG Fitter/Welders responsible for the layout & assembly of pole sections'. The ledger read only the detail pages, which omit the summary. Process 0 -> 20, total 61 Medium. (b) Nucor Decatur (40): its open NTSAL Fitter Welder posting dated 2026-11-05 lists 'Mig Flux core welding experience' under Preferred Qualifications, the same line that gives Nucor West Hazleton 20; the ledger still carried the earlier 'filled' posting and a sister-plant inference. Process 0 -> 20, total 60 Medium. Both are plants with open welder postings that a rep would not have been shown on the call list.",
+   "evidence": "Arcosa UKG board search 'Ameron' (browser, 2026-11-13): 'Fitter Welder_Career_ Night Shift 4:00PM to 2:30AM Weekdays ... Tulsa, OK 74107, USA ... JOB SUMMARY Ameron Pole Products, an Arcosa's company, has openings for qualified MIG Fitter/Welders responsible for the layout & assembly of pole sections.' jobs.nucor.com/job/Decatur-NTSAL-Fitter-Welder-AL-35601/1448225400/: 'Date: Nov 5, 2026 ... Preferred Qualifications: ... Mig Flux core welding experience'. Checked the same way and left at 0: Nucor Crawfordsville and Brigham City Fitter Welder postings (no process named).",
+   "fixed_in_inbox": true
+  },
+  {
+   "id": "final-3",
+   "severity": "major",
+   "plant_ids": [
+    "p-sabre-marshall-tx"
+   ],
+   "finding": "A Sabre pole plant is missing from the ledger: 2938 Brown Rd, Marshall, TX 75672 (Sabre site code 'MarU', which the coverage fix had listed as unresolved). Sabre's own job board has ten open requisitions there, four of them production welder or fitter roles on pole assemblies (GMAW spray arc; FCAW tacks; a Large Pole department), plus a Maintenance Manager for 'the Marshall facility'. Added as a new profiled plant scored on the Sabre Conroe basis: 61 Medium, confidence 3. It rests on Sabre's job board alone (no news, EPA or AISC record found) and has not been seen by a fact-checker.",
+   "evidence": "Sabre UKG Ready requisitions 755377235 (\"job_title\":\"Welder C - MarU\",\"location\":{\"address_line_1\":\"2938 Brown Rd\",...\"Marshall\",\"state\":\"TX\",\"zip\":\"75672\"}), 772145478 (Welder/Fitter C - MarU: 'Works in Large Pole department on individual fitter station to assemble pole assembly.'), 755432256 ('at the Marshall facility'). Census geocoder match: 2938 BROWN RD, MARSHALL, TX, 75672 (Harrison County 48203).",
+   "fixed_in_inbox": true
+  },
+  {
+   "id": "final-4",
+   "severity": "major",
+   "plant_ids": [
+    "p-nello-south-bend-in"
+   ],
+   "finding": "Nello South Bend's labor was 12 ('2 listed ... no dates') while two welder postings open at once score 20 at Sabre Bossier, Arcosa Telecom Muskogee, Valmont Claremore, Meyer Lancaster and Crowley. Nello's own careers page still lists both (Welder; Sub-arc seam welder 2nd shift), and the posting pages are dated Feb 2 and Jan 30. Labor 12 -> 20; total 67 -> 75, Medium -> High. Sensitivity: the High tier depends on both listings being live; the dates show no year, and if the coordinator treats them as stale, labor is 0 and the total 55. Process stays 0: GMAW appears only as a preferred qualification for the seam-welder machine operator, read the same way as Nucor Crawfordsville's Automation Operator.",
+   "evidence": "https://nelloinc.com/careers: 'Welder Nello Inc. Read more → ... Sub-arc seam welder 2nd shift'; 'We are family-owned and operated right here in South Bend.' Posting pages: 'Welder Feb 2', 'Sub-arc seam welder 2nd shift Jan 30 ... GMAW welding experience is preferred'.",
+   "fixed_in_inbox": true
+  },
+  {
+   "id": "final-5",
+   "severity": "major",
+   "plant_ids": [
+    "p-meyer-clinton-il"
+   ],
+   "finding": "Meyer Clinton's High tier (75) depended on demand 15, and both trigger rows were inferred site ties (a 10-K and an earnings call that name no plant). Under the rule applied to FWT Fort Worth that is 8 and the plant drops to 68 Medium. A stated, dated, plant-named trigger exists: Arcosa's own postings call Clinton 'our new plant' and 'a startup manufacturing facility' (2026-08-17, 2026-10-05). Demand 15 now rests on those; total unchanged; confidence 2 -> 3.",
+   "evidence": "Arcosa UKG posting 4f8accd3-d446-41ae-8eaa-dcf2b491758b: 'Posted on August 17, 2026 ... Maintenance Manager for our new plant in Clinton, IL. ... in a startup manufacturing facility.' Posting e8adbe5f-dc59-4fe0-bf5f-b8754ee25e0a: 'Posted on October 5, 2026 ... for our new plant location in Clinton, IL.' EPA FRS also puts MEYER UTILITY STRUCTURES, LLC (10000 TABOR RD) at the coordinates of ARCOSA WIND TOWERS INC, Clinton.",
+   "fixed_in_inbox": true
+  },
+  {
+   "id": "final-6",
+   "severity": "major",
+   "plant_ids": [
+    "p-mica-haltom-city-tx",
+    "p-mica-kaufman-tx"
+   ],
+   "finding": "MICA Haltom City's labor 20 rested on a company-wide signing bonus (careers page of a four-site company) tagged stated at the plant, while MICA Kaufman's labor is 0 because the same bonus 'is not tied to Kaufman'. Re-based: three Haltom City welder/fitter roles are listed at once on the Vaia aggregator (Welder - 1st shift, Night-Shift SAW Welder, Fitter), which is 20 under the several-at-once rule; the bonus row is retagged inferred. Total unchanged at 68; confidence 4 -> 3 because MICA's own listings are on Indeed (blocked) and open status is aggregator-only. The bonus row stays stated with company-wide wording (the opening line cites it) but no longer earns points. If the coordinator does not accept aggregator-only listings, labor is 0 and the plant is 48, the treatment Kaufman's aggregator stub gets.",
+   "evidence": "https://www.micasteelworks.com/careers: '★ Signing Bonus for Welders & Fitters' beside contact blocks for Haltom City, Euless and Kaufman. https://talents.vaia.com/companies/mica-steelworks/: 'Night-Shift Submerged Arc Welder (SAW) | Precision Welds MICA Steelworks Haltom City Full-Time ... Fitter MICA Steelworks Haltom City Full-Time'.",
+   "fixed_in_inbox": true
+  },
+  {
+   "id": "final-7",
+   "severity": "major",
+   "plant_ids": [
+    "p-valmont-claremore-ok",
+    "p-valmont-jasper-tn",
+    "p-meyer-clinton-il",
+    "p-meyer-fort-worth-tx",
+    "p-meyer-lancaster-sc",
+    "p-meyer-steele-al",
+    "p-meyer-hager-city-wi",
+    "p-sabre-alvarado-tx",
+    "p-sabre-sioux-city-ia",
+    "p-fwt-hicksville-oh",
+    "p-sabre-bossier-city-la",
+    "p-fwt-fort-worth-tx",
+    "p-nucor-decatur-al"
+   ],
+   "finding": "Thirteen plants, twelve of them on the High/Medium call list, showed 'unknown' for the street address although the address is on a primary job board or in EPA's registry. All nine coordinator leads are confirmed, plus Jasper (1950 Industrial Blvd), Bossier City (5031 Hazel Jones Road), FWT Fort Worth (5750 E Interstate 20) and Nucor Decatur (913 Maero St, Trinity). Each now has a quoted row and a geocode. Pins move from city-centre points to the street address: Meyer Fort Worth 15.5 km, Sioux City 13.2, FWT Fort Worth 13.0, Claremore 11.6, Nucor Decatur 9.5 (to Trinity), Bossier City 8.6, Clinton 4.4, Steele 3.4, Alvarado 3.2, Lancaster 2.1, Hicksville 1.4, Hager City 1.0; Jasper's pin was already on its street. No county FIPS changes.",
+   "evidence": "Valmont Workday job API: '25010 Alliance Dr Claremore Oklahoma 74017', '1950 Industrial Blvd Jasper Tennessee 37347-0438'. EPA FRS: MEYER UTILITY STRUCTURES, LLC 10000 TABOR RD; PLANT 1665 3468 OLD CAMDEN HWY; 585 DUNCAN FARMS ROAD; PLANT NO. 1663 W8020 150TH AVE; VALMONT NEWMARK 25010 ALLIANCE DR; NUCOR TOWERS AND STRUCTURES 913 MAERO ST. Sabre UKG Ready requisitions: 8653 E Hwy 67; 7101 Southbridge Drive; 761 West High Street; 5031 Hazel Jones Road. Arcosa UKG posting JSON: 2300 W. Risinger Rd. Census geocoder matched 9 of 13; the other four use EPA FRS coordinates.",
+   "fixed_in_inbox": true
+  },
+  {
+   "id": "final-8",
+   "severity": "major",
+   "plant_ids": [
+    "p-commercial-fabricators-bridgeview-il",
+    "p-mid-park-highway-clarkson-ky",
+    "p-ackerman-baynes-baltimore-md",
+    "p-clark-machine-baltimore-md",
+    "p-griffin-welding-waterbury-ct",
+    "p-lm-fabrication-bath-pa",
+    "p-specialty-fab-north-lima-oh"
+   ],
+   "finding": "Seven exclusions contradict the inclusion rule the coordinator wrote on 2026-11-13 (a current DOT or certification listing for an in-scope product means included as base, low confidence). Each is on a current state DOT approved list for sign, signal or lighting structures (WisDOT, Maryland SHA, MassDOT); two also name the product on their own site (Ackerman & Baynes 'highway sign structures'; Mid-Park's 'sign structures product line'). They are excluded for 'general fabricator' or 'welding not shown', the test the rule replaced, while Larwel, QMF, Metal Pros and PennFab are included on equivalent listings. The inbox sets all seven to base with a status row; they are not profiled or scored. exclusion_reason must be cleared by hand. Sampled and accepted as excluded: the concrete, composite, galvanizing, mill, duplicate, closed, lattice-tower and 2013-list-only rows, McCook, Ferndale, Salem, TAPP, Pacific Steel, Aura (category-level listing), Hadco and Mid-Park Leitchfield. This is a rule-consistency call: the alternative is to keep them excluded and narrow the written rule.",
+   "evidence": "ledger evidence rows (retrieved 2026-11-12): WisDOT approved list '7247 S 78th Ave, Commercial Fabricators ... Bridgeview, IL 60455' with '(1) Monotubes (2) Planar Trusses (3) Four Chord Trusses'; roads.maryland.gov/OMT/overheadsign.pdf 'Ackerman & Baynes, LLC Baltimore MD', 'Clark Machine Corp. Baltimore MD'; mass.gov approved fabricators 'Griffin Welding, LLC - Waterbury, CT', 'L&M Fabrication and Machine, Inc. – Bath, PA', 'Specialty Fab - North Lima, OH'; ackbay.com 'we have manufactured bridge components, highway sign structures'; mid-park.com/about 'Mid-Park expanded their sign structures product line to the national market.' The listing pages were not re-fetched in this review.",
+   "fixed_in_inbox": true
+  },
+  {
+   "id": "final-9",
+   "severity": "minor",
+   "plant_ids": [
+    "p-meyer-tulsa-ok",
+    "p-meyer-fort-worth-tx",
+    "p-arcosa-telecom-muskogee-ok"
+   ],
+   "finding": "Lead postings: Meyer Tulsa still counted a supervisory '2nd Shift Lead Welder' (the template round 4 removed at Fort Worth); count 3 -> 2, labor stays 20 on two Welder/Fitter postings. Meyer Fort Worth and Arcosa Telecom Muskogee carried stale '6 open' values and score reasons after their round-4 corrections (5 and 2); now consistent. Clinton's and Lancaster's 'Fitter Welder_Lead' postings were read as working leads by round 4-C and are left counted; Lancaster's 20 depends on that reading (12 and a total of 60 without it).",
+   "evidence": "Arcosa UKG listing 2026-11-13: Tulsa Lead Welder 37bed2ea...: 'responsible for ensuring that your team's daily work assignments are completed'. plants.csv welder_postings vs evidence values beginning '6 open'.",
+   "fixed_in_inbox": true
+  },
+  {
+   "id": "final-10",
+   "severity": "minor",
+   "plant_ids": [
+    "p-valmont-elkhart-in",
+    "p-valmont-birmingham-al",
+    "p-grid-structures-amite-city-la",
+    "p-western-utility-telecom-salem-or",
+    "p-musco-muscatine-ia"
+   ],
+   "finding": "Small attribution fixes. Elkhart: process 20 rested on a row tagged inferred although the MIG requirement is on Elkhart's own posting; retagged stated (confidence 1 -> 2). Birmingham: materials 'unknown' although its Tacker posting says 'tack welding to steel shapes'. Grid Structures: weld_processes said FCAW 'required'; the posting lists it under desired skills. Western Utility: certifications now 'AISC: Highway Component Manufacturer' from the directory snapshot (was a posting phrase), and 'GMAW spray transfer', which no row quotes, is dropped from welder_postings. Musco: EPA FRS lists Musco Sports Lighting sites in Oskaloosa and Muscatine, so scale 0 -> 5 (23 -> 28, Low).",
+   "evidence": "Valmont Workday Aluminum-Welder-2nd-Shift_R29450: 'One (1) to three (3) year of previous, hands-on MIG welding experience in a production environment'; Tacker_R29249-1: 'performing production tack welding to steel shapes using the GMAW process.' AISC snapshot line 4996: 'Western Utility Telecom, Inc.\\tSalem\\tOR\\tHighway Component Manufacturer'. EPA FRS facility_name=MUSCO&state_abbr=IA.",
+   "fixed_in_inbox": true
+  },
+  {
+   "id": "final-11",
+   "severity": "minor",
+   "plant_ids": [
+    "p-meyer-clinton-il",
+    "p-meyer-fort-worth-tx",
+    "p-meyer-lancaster-sc",
+    "p-meyer-steele-al",
+    "p-meyer-hager-city-wi",
+    "p-sabre-alvarado-tx",
+    "p-sabre-sioux-city-ia",
+    "p-sabre-bossier-city-la",
+    "p-nucor-decatur-al",
+    "p-nucor-west-hazleton-pa",
+    "p-distran-pineville-la",
+    "p-grid-structures-amite-city-la",
+    "p-mica-haltom-city-tx",
+    "p-sovereign-allentown-pa",
+    "p-distran-washington-court-house-oh",
+    "p-browning-enterprise-attalla-al",
+    "p-hapco-oklahoma-city-ok"
+   ],
+   "finding": "Evidence-row gaps: 17 included plants had a name with no evidence row (the Method page treats name as bookkeeping, so this is tidiness, not a breach), and 34 'unknown' field values (headcount, certifications, address, parent) had none either. The inbox adds name rows for the 13 call-list plants (EPA FRS or an already-confirmed page) and 'unknown' rows for the rest. Not fixed: name rows for Sovereign, DTS Ohio and Browning, and a products row for Hapco Oklahoma City (all Low).",
+   "evidence": "Join of plants.csv fields to evidence.csv claim_ids, 2026-11-13.",
+   "fixed_in_inbox": true
+  },
+  {
+   "id": "final-12",
+   "severity": "minor",
+   "plant_ids": [
+    "p-valmont-claremore-ok",
+    "p-valmont-tulsa-ok",
+    "p-arcosa-traffic-structures-sumterville-fl",
+    "p-arcosa-telecom-muskogee-ok",
+    "p-sabre-alvarado-tx",
+    "p-sabre-sioux-city-ia",
+    "p-fwt-hicksville-oh",
+    "p-sabre-conroe-tx",
+    "p-sabre-bossier-city-la"
+   ],
+   "finding": "Process and posting rows that rest on copies. Claremore's GMAW and its 120 in / 80,000 lb part size come from a third-party copy of a posting about two years old; today's Claremore postings name sub-arc only, so the High score (80) depends on the coordinator's 'how a plant welds is a standing fact' ruling. Valmont Tulsa's GMAW is from a posting removed in May 2025; a live 'Sub Arc Base Welder' posting at 801 N Xanthus says 'Apply a backing weld using the GMAW process' but carries the Workday label 'Claremore OK - Utility', so it was not used. Sumterville and Arcosa Telecom process rows are aggregator copies. The five Sabre plants' posting dates come from Tallo copies; Sabre's own board confirms the roles are open and gives the addresses but shows no dates. None changes a score today.",
+   "evidence": "Valmont Workday R29441 (2026-11-10): '801 N Xanthus Tulsa Oklahoma 74110-4949 ... Apply a backing weld using the GMAW process'. Sabre UKG Ready requisition list (221 requisitions, read 2026-11-13).",
+   "fixed_in_inbox": false
+  },
+  {
+   "id": "final-13",
+   "severity": "minor",
+   "plant_ids": [
+    "p-sabre-alvarado-tx",
+    "p-sabre-sioux-city-ia",
+    "p-sabre-conroe-tx",
+    "p-fwt-hicksville-oh",
+    "p-sabre-bossier-city-la",
+    "p-lsi-cincinnati-oh",
+    "p-klute-york-ne"
+   ],
+   "finding": "Judgement calls left for the coordinator. (a) Part mix across Sabre plants: Alvarado and Sioux City 15 (a 2016 trade article about Alvarado), Conroe, Hicksville, Fort Worth and Marshall 8 (postings: parts chosen per drawing), Bossier 0, on similar evidence. Settling on 8 for all would take Alvarado and Sioux City from 68 to 61 and Bossier from 53 to 61; no tier changes. (b) LSI Cincinnati (48): no row shows in-house welding (the only weld quote is purchased electro-welded tubing), so the prospect test rests on 'engineered and manufactured at our Cincinnati headquarters'. (c) Klute's parent row says 'no company website found' while other rows quote kluteinc.com.",
+   "evidence": "score_part_mix rows for the Sabre plants; p-lsi-cincinnati-oh:materials quote 'Pole shaft is electro-welded ASTM-A500 Grade C steel tubing'; p-klute-york-ne:parent_company.",
+   "fixed_in_inbox": false
+  }
+ ],
+ "not_verified": [
+  "Sources behind the material, part-mix and scale rows of the 40 plants were read in the ledger but not re-fetched, except where a finding touches them. Trigger pages for Jasper, Crowley, Klute, V&S Muskogee, Crawfordsville and West Hazleton were not re-fetched (each was confirmed in a fact-check round); their dates were checked against the 2024-11-13 cutoff from the quoted text.",
+  "Sabre Marshall: found only on Sabre's own job board; no news, EPA FRS or AISC record. Its products sentence is role text Sabre uses at several pole plants. Needs one independent fact-check.",
+  "MICA Haltom City: open status of the three roles is from an aggregator; Indeed (MICA's own listing) is behind a Cloudflare wall.",
+  "Nello: the posting pages show 'Jan 30' and 'Feb 2' with no year.",
+  "The seven reinstated plants: their DOT listing pages were not re-fetched; the ledger rows are dated 2026-11-12.",
+  "p-grid-structures-amite-city-la:weld_processes (process 20, 60 Medium): the FCAW quote is an earlier agent's; the careers list page no longer shows the posting body, so it could not be re-found today. Only the value wording was changed.",
+  "FWT Fort Worth: the Kenn-to-plant tie is address plus site code, not a sentence naming the Kenn site at 5750 E I-20.",
+  "Leads not followed: a possible further Sabre site in Fort Worth (EPA FRS 'SABRE COMMUNICATIONS CORP, 2400 NE 36TH ST'; Sabre's board has a 'Longseamer B - 36th (Nights)' requisition under the 5750 I-20 address) and Sabre's second Sioux City address (2101 Murray St, EPA FRS 'SABRE TOWERS & POLES'). Neither has a row.",
+  "tools/merge_inbox.py --dry-run and tools/apply_removals.py could not be run in this session (blocked as ledger-modifying). The inbox file was checked with a read-only copy of their rules: 0 rejected rows, 0 removal keys missing, 0 duplicate keys, 0 coverage gaps on the plants it touches, score arithmetic re-summed.",
+  "Confidence was recomputed by hand only for the plants whose basis changed; the coordinator's normaliser should recompute it after the merge."
+ ]
+}

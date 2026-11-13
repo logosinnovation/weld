@@ -410,6 +410,7 @@ def main():
         with open(snap_files[-1], encoding="utf-8") as f:
             snapshot = wsnorm(f.read())
     qstat = {"found": 0, "snapshot": 0, "not_found": 0, "unreachable": 0, "unchecked": 0, "no_quote": 0}
+    qsplit = {"stated": dict(qstat), "other": dict(qstat)}
     pc_rows = {(r.get("claim_id"), r.get("source_url")): r.get("verdict") for r in pcheck.get("rows", [])}
     for e in evidence:
         row = {"v": e["value"], "t": e["tag"], "q": e["quote"], "u": e["source_url"], "st": e["source_type"],
@@ -417,7 +418,10 @@ def main():
                "vf": e["verified"]}
         k = (e["claim_id"], e["source_url"])
         qv = quote_verdict(e, qc_rows, snapshot)
-        qstat[qv or ("no_quote" if not wsnorm(e["quote"]) else "unchecked")] += 1
+        qk = qv or ("no_quote" if not wsnorm(e["quote"]) else "unchecked")
+        qstat[qk] += 1
+        # the quote-check script reads stated rows only, so the Method page reports stated rows apart
+        qsplit["stated" if e["tag"] == "stated" else "other"][qk] += 1
         if qv in ("not_found", "unreachable", "snapshot"):
             row["qc"] = qv
         if pc_rows.get(k) == "CITY_NOT_ON_PAGE":
@@ -446,6 +450,7 @@ def main():
         "evidence_rows": len(evidence),
     }
     qc.update(qstat)
+    qc["by_tag"] = qsplit
     qc["snapshot_file"] = os.path.basename(snap_files[-1]) if snap_files else ""
     derived, dstats = derive(plants, evidence)
     # address facts are counted here, on the raw ledger, because the page blanks fields that have no evidence row
