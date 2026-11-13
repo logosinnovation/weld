@@ -200,3 +200,11 @@ Asked: confirm "partial" and what must happen before the final report. Advice an
 - **Deviations from the brief:** every included plant was profiled (60), not just the top 40; two list auditors were used and started before plant-finder finished; the environment's network was switched to unrestricted (applies to future sessions); WebFetch was unusable, so a fetch helper replaced it.
 - **Next session:** (1) one attribution sweep plus a confirming fact-check on poles, to reach done; (2) then the next vertical by rank: shipbuilding and naval defense (`v-shipbuilding-naval`).
 - **Open leads:** Valmont Elkhart (3403 vs 58027 Charlotte Ave) and Ferndale status; Ameron Tulsa's possible second site (Cherokee Industrial Park); Pacific Steel Structures' Tualatin OR manufacturing partner; Nucor Crawfordsville IN and Brigham City UT once they're producing; a possible Millerbernd 150,000 sq ft expansion (location unknown); CRH's acquisition of Arcosa and TPG's majority stake in Sabre as account-level triggers.
+
+## 2026-11-13: Session 2 (continuing v-poles-substation)
+User instructions: explain why Low scores often reflect missing data; add the Nucor Indiana and Utah plants; answer the two open questions (Ameron's possible second Tulsa site; Pacific Steel Structures' Tualatin OR partner); then an attribution clean-up, a confirming fact-check, and a review by a higher-tier model before marking the vertical done; shipbuilding after that.
+
+### Pre-production prospects (rule added)
+- **New rule:** a plant under construction that will make in-scope products is included as a **pre-production prospect** (status base, then profiled), not excluded. Rationale: these plants have no welding process or robots locked in yet, which makes them some of the most actionable prospects for Path. Their scores will mostly show 0s because the plant isn't operating yet.
+- Applied to p-nucor-crawfordsville-in and p-nucor-brigham-city-ut (the user's instruction), and, for consistency, p-hapco-oklahoma-city-ok (groundbreaking 2026; reported aluminum focus, kept and noted). Each has an evidence row `<id>:status` recording the decision.
+- The Crawfordsville row quotes "The facility currently employs 328 people", so it may already be operating; the profiler checks this.
