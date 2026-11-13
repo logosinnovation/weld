@@ -453,3 +453,16 @@ Coordinator decisions applied now (mechanical):
   - HII, EB and Ingalls structural-unit suppliers (Keel x3, Trident x2, Gulf Copper Galveston, Rhoads, BAE Jacksonville);
   - the leading barge and workboat yards by postings and sources.
   - 4 profilers x 10, grouped by company. The other 57 included plants stay base.
+
+### Ships Stages D-E merged (workflow ships-profile)
+
+- **Merged:** profilers A-D (40 plants) and repair-1 (77 base and excluded records), with each file's evidence_remove applied before its merge (58 rows retired). 0 rows rejected, except one example row with no reasoning (Eastern Nelson). 0 coverage gaps.
+- **Southwest Shipyard Channelview** is excluded as repair-only, per the boundary rule (its own page lists only barge-repair docks). Profiled: 39.
+- **Philly Shipyard** is set to relationship new (Jones Act and MARAD ships; only a Navy design-study subcontract). lookalike_of cleared by hand.
+- **NASSCO Jacksonville** moves to 2999 Mayport Rd (nassco.com). EPA also registers it at 8500 Heckscher Dr, BAE's address. Conrad Deepwater Repair is a distinct yard next to Deepwater South (its own page, acreage and phone) and stays excluded as repair-only.
+- **Ships tiers (39 profiled):** High 16, Medium 12, Low 11. Material is unknown (0) on most plants.
+- **Coordinator rules for this vertical** (the profilers split; these apply in fact-check and normalisation):
+  1. **TIG.** Process scores 12 ("mixed with TIG") when the plant's own structural or production welder or fitter postings name TIG/GTAW alongside MIG or FCAW, even as a plus. It scores 20 when TIG appears only in a separate pipe or specialty welder role, because structural production welding is then MIG or FCAW.
+  2. **Hull size.** Material is 12 (too big to move, suited to Rove) when a stated dimension or weight of the welded product the plant builds (vessel, barge, block, unit or module) exceeds the cell limits. It is 20 when a stated welded part fits a cell. A facility, crane or lift capacity is not a part size; NASSCO's blast-cell size and NNS's superlift weight go to the fact-checkers to judge under this rule.
+  3. **Shared job-board locations.** A posting counts for a plant only when the board's location field or the posting text names that site. A city shared by several of the company's sites does not count (Bollinger Pascagoula labor 0). A Workday requisition-location field that names a yard does count (Eastern Allanton).
+  4. **Grants.** A dated MARAD Small Shipyard Grant or similar award for equipment at the plant within 24 months is a plant-level trigger (demand 15).
