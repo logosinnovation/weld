@@ -424,3 +424,32 @@ Coordinator decisions applied now (mechanical):
   4. **Multi-site parents:** one record per physical yard or plant. Navy prime work at one yard does not carry to sister yards (relationship customer_other_plant unless a source names the site).
   5. **Pre-production and expansion sites** (new yards under construction) are included and flagged, as on poles.
 - **Finder process (remedy from the poles vertical):** the sweeps run inside Stage B: EPA FRS by name and by NAICS 336611, MARAD and Shipbuilders Council lists, Navy and submarine industrial-base supplier announcements, and each parent's own job board by city. The finder is split into four parallel slices by company group and region.
+
+### Ships Stages B-C merged (workflow ships-finder)
+
+- **Four slices merged:** 134 plants written (97 base, 37 excluded), 1,266 evidence rows added, 15 supplier links. 0 rows rejected, 0 duplicate ids.
+  - A: Navy primes and major yards, 40 plants.
+  - B: Gulf commercial, workboat and barge yards, 39.
+  - C: inland, Atlantic, Great Lakes and Pacific yards, 36.
+  - D: naval structure and module suppliers (Keel, Trident, Gulf Copper, Rhoads, BAE, BWXT, Anduril and others), 19.
+- **Gaps to repair:**
+  - 96 coverage gaps, all parent_company or website fields (B 65, C 31).
+  - 36 quotes not found and 32 pages unreachable. Most are JavaScript job boards (ADP, Paylocity, which need the browser) or EPA FRS timeouts.
+  - Address conflicts to resolve: NASSCO Jacksonville (excluded) and BAE Jacksonville share 8500 Heckscher Dr; two Conrad Morgan City records share 995 Duhon Blvd; Trident Lockport has no address.
+- **Ranking:** `rank_for_profiling.py` misparsed postings for this vertical (ZIP codes and years read as posting counts). The coordinator ranked instead by relationship, tier, the number of stated welder_postings rows, headcount and sources.
+- **Relationship rule for this vertical** (the slices were inconsistent):
+  - known_customer: the source names the site (Saronic Franklin), or a single-site customer.
+  - customer_other_plant: other HII sites, Saronic Brownsville, other LAD sites.
+  - lookalike, naming the customer:
+    - (a) Navy or Coast Guard combatant, auxiliary or submarine builders -> HII;
+    - (b) plants building structural units, modules or hull sections for Navy yards -> HII, because Path's HII scope is "small steel structures" in HII's distributed shipbuilding;
+    - (c) inland or coastal barge, tug and workboat builders -> LAD Services;
+    - (d) unmanned or small military steel craft -> Saronic.
+  - new: everything else in scope (ferries, research and fishing vessels, yachts).
+  - Profilers apply the rule to their plants; the repair agent applies it to the rest.
+- **Profiling selection (40, per FULL_PROFILES_PER_VERTICAL):**
+  - every customer and customer_other_plant site (7);
+  - the Navy combatant and submarine yards;
+  - HII, EB and Ingalls structural-unit suppliers (Keel x3, Trident x2, Gulf Copper Galveston, Rhoads, BAE Jacksonville);
+  - the leading barge and workboat yards by postings and sources.
+  - 4 profilers x 10, grouped by company. The other 57 included plants stay base.
