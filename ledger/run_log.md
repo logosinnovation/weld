@@ -582,3 +582,19 @@ Coordinator decisions applied now (mechanical):
 - **Ships now:** 218 plants; 47 profiled (High 18 / Medium 15 / Low 14), 87 base, 84 excluded. Every top-40 plant by the ranking is profiled.
 - **Fact error rate by round:** 7.3%, 6.1%.
 - summary-v-shipbuilding-naval.json rewritten; map rebuilt; smoke passed.
+
+### Advisor consultation 8 (2026-11-13): ships done checkpoint after round 2
+
+- **Advice:** mark done after five scripted fixes; no new agent round and no further consultation.
+  1. Re-run the ranking and correct "every top-40 plant is profiled" (LAD Stephensville).
+  2. Recount the miss rate (Sisco and West Gulf were confirmed in closure).
+  3. Run `verify_ledger_quotes.py` over the whole ledger, and zero any High or Medium component whose quote can't be re-found.
+  4. Re-run the line checks on all 47 plants and sweep for tense errors.
+  5. Update verticals.csv, the status row, the smoke test and the map; republish.
+  - Not blocking: base records are the weak layer (13.0% sample; run drift on base too); posting searches were not run for most audit-added base plants; Accurity's late posting made it a top-40 plant (profiled and checked); NNS Norfolk's address flag; next-vertical remedy: run the blind audit right after the finder.
+- **Done so far:**
+  1. **Ranking on the final ledger:** the only base plant in the top 40 is LAD Stephensville (9th, customer_other_plant). It stays unscored because no source says which LAD yard builds new barges. Status rows added to both LAD records and to NNS Norfolk (operation after 2023 unconfirmed; address shared with Fairlead's Norfolk site).
+  2. **Miss rate recount:** closure-1 confirmed Sisco Marine and West Gulf Marine (both auditor candidates). **32/109 = 29.4%**; 15 auditor candidates remain unverified, so the upper bound is 47/124 = 37.9%.
+  4. **Line checks on all 47 profiled ships plants:** 0 problems. Tense sweep: 3 bottlenecks presented dated work as current and were reworded with the date (Gunderson's March 2025 Tidewater contract, DSC's Dec 2025 release, St. Johns' 2025 orders). The other "while" uses join two current stated facts.
+  - **Drift:** `field_drift_check.py --all` now includes base records. It flags 73 ships rows (`ledger/audit/field-drift-ships-2026-11-13.json`), many of them date, day-count or pay-rate formats. This is a known limit and the first follow-up, along with posting searches on base records.
+  3. `verify_ledger_quotes.py` is running.

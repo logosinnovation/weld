@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Flag plant fields whose process terms or numbers appear in no evidence row (value or
 quote) for the same claim. Heuristic; prints candidates for a human or agent to fix.
-Usage: python3 tools/field_drift_check.py [--json out.json]"""
+Usage: python3 tools/field_drift_check.py [--all] [--json out.json]  (--all includes base records)"""
 import csv, json, re, sys
 TERMS = re.compile(r"\b(GMAW|MIG|FCAW|flux[- ]core|SAW|sub ?arc|submerged|TIG|GTAW|SMAW|stick|spray|pulse|robot\w*|cobot\w*|AWS|D1\.1|D1\.\d|ISO ?\d+|AISC|CWB)\b", re.I)
 NUM = re.compile(r"\b\d[\d,\.]*\b")
@@ -12,7 +12,7 @@ for e in csv.DictReader(open("ledger/evidence.csv")):
     by.setdefault(e["claim_id"], []).append((e["value"] or "") + " " + (e["quote"] or "") + " " + (e["reasoning"] or ""))
 out = []
 for p in csv.DictReader(open("ledger/plants.csv")):
-    if p["status"] != "profiled":
+    if p["status"] not in (("profiled", "base") if "--all" in sys.argv else ("profiled",)):
         continue
     for f in FIELDS:
         v = p.get(f) or ""
