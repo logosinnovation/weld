@@ -301,6 +301,70 @@ def build_audit(vids):
     return audit, factcheck, qc, qc_rows, (pc or {})
 
 
+# ---------------------------------------------------------------- derived: unknowns, ceiling, pre-production
+COMPS = [("process", "score_process", "weld_processes", 20), ("material_part", "score_material_part", "part_size_fit", 20),
+         ("part_mix", "score_part_mix", "production_type", 15), ("labor", "score_labor", "welder_postings", 20),
+         ("scale", "score_scale", "headcount", 10)]
+
+
+def field_unknown(v):
+    v = (v or "").strip().lower()
+    return v == "" or v.startswith("unknown") or "not stated" in v
+
+
+def num(x):
+    try:
+        return float(x)
+    except (TypeError, ValueError):
+        return 0.0
+
+
+def derive(plants, evidence):
+    """Calculated, never stored: unknown components, score ceiling, pre-production flag."""
+    evby = {}
+    for e in evidence:
+        evby.setdefault(e["claim_id"], []).append(e)
+    derived, prof = {}, []
+    for p in plants:
+        pid = p["id"]
+        d = {}
+        # pre-production: status row, or triggers / status_detail naming construction or ramp-up
+        st = [e["value"].strip().lower() for e in evby.get(pid + ":status", [])]
+        det = [e["value"].lower() for e in evby.get(pid + ":status_detail", [])]
+        flagged = any("pre-production prospect" in v and not re.search(r"found to be operating|not pre-production", v) for v in st)
+        mention = re.compile(r"under construction|ramping")
+        txt = [(p.get("triggers") or "").lower()] + det
+        if not flagged and any(mention.search(t) for t in txt):
+            # a plant whose own status row says it is operating is not pre-production
+            flagged = not any("operating" in v for v in st)
+        if flagged and p["status"] != "excluded":
+            d["pre"] = 1
+        if p["status"] == "profiled" and str(p.get("score_total", "")).strip() != "":
+            score = num(p["score_total"])
+            unk, head = [], 0
+            for key, sf, uf, mx in COMPS:
+                if num(p[sf]) == 0 and field_unknown(p.get(uf)):
+                    unk.append(key); head += mx
+            if num(p["score_demand"]) == 8:
+                head += 7
+            d["unk"] = unk
+            d["ceil"] = int(min(100, score + head))
+            prof.append((p, d))
+        if d:
+            derived[pid] = d
+    def avg(tier):
+        r = [len(d["unk"]) for p, d in prof if p["score_tier"] == tier]
+        return round(sum(r) / len(r), 1) if r else None
+    low = [(p, d) for p, d in prof if p["score_tier"] == "Low"]
+    stats = {"low_n": len(low), "high_n": sum(1 for p, d in prof if p["score_tier"] == "High"),
+             "avg_unk_low": avg("Low"), "avg_unk_high": avg("High"), "avg_unk_medium": avg("Medium"),
+             "low_mat0": sum(1 for p, d in low if "material_part" in d["unk"]),
+             "low_ceil70": sum(1 for p, d in low if d["ceil"] >= 70),
+             "research_first": sum(1 for p, d in low if d["ceil"] >= 70),
+             "preprod": sum(1 for d in derived.values() if d.get("pre"))}
+    return derived, stats
+
+
 # ---------------------------------------------------------------- main
 def main():
     verticals = read_csv("verticals.csv")
@@ -357,7 +421,9 @@ def main():
         commit = subprocess.run(["git", "-C", ROOT, "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
     except Exception:
         commit = ""
+    derived, dstats = derive(plants, evidence)
     data = {
+        "derived": derived, "dstats": dstats,
         "meta": {"counts": counts, "dates": dates, "first": dates[0] if dates else "", "last": dates[-1] if dates else "",
                  "commit": commit, "state_abbr": STATE_ABBR},
         "verticals": verticals, "plants": plants, "links": links, "ev": ev,

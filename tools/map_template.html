@@ -163,11 +163,14 @@ details.more p{margin:8px 0 0;font-size:13.5px}
 
 /* call list */
 .calls{overflow:hidden}
-.crow{display:grid;grid-template-columns:32px minmax(170px,1.3fr) 104px 48px 70px 44px minmax(120px,1.2fr) minmax(180px,2.2fr);gap:4px 12px;padding:9px 14px;border-top:1px solid var(--border);align-items:start;font-size:13.5px}
+.crow{display:grid;grid-template-columns:32px minmax(170px,1.3fr) 104px 48px 70px 44px 84px 80px minmax(120px,1.2fr) minmax(180px,2.2fr);gap:4px 12px;padding:9px 14px;border-top:1px solid var(--border);align-items:start;font-size:13.5px}
 .crow.hd{border-top:0;background:var(--surface2);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700;position:sticky;top:0;z-index:2}
 .crow .rk{color:var(--muted);font-weight:700}
 .crow .nm{font-weight:700}
 .crow .nm .sub{display:block;font-weight:400;color:var(--muted);font-size:12.5px}
+.crow .unkc,.crow .ceil{font-size:13px}.crow .ceil{font-weight:700}.crow.hd .calc{display:block;text-transform:none;letter-spacing:0;font-weight:500;font-size:10px}
+.b-pre{color:var(--accent);background:var(--surface2);border:1px dashed var(--accent)}
+.unkn{font-size:12px;color:var(--muted);font-style:italic}
 .crow .scr{font-weight:800;font-size:16px}
 .crow .ol{color:var(--text);font-size:13px}
 .live{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);border-radius:999px;padding:1px 7px;margin-bottom:3px}
@@ -238,11 +241,12 @@ footer strong{color:var(--text)}
   .list{max-height:none}
 }
 @media (max-width:760px){
-  .crow{grid-template-columns:30px minmax(0,1fr) 50px 50px;grid-template-areas:"rk nm scr tier" ". rel rel rel" ". trg trg trg" ". ol ol ol"}
+  .crow{grid-template-columns:30px minmax(0,1fr) 50px 50px;grid-template-areas:"rk nm scr tier" ". rel rel rel" ". unk ceil ceil" ". trg trg trg" ". ol ol ol"}
   .crow.hd{display:none}
   .crow>.rk{grid-area:rk}.crow>.nm{grid-area:nm}.crow>.scr{grid-area:scr}.crow>.tr{grid-area:tier}
-  .crow>.rel{grid-area:rel}.crow>.trg{grid-area:trg}.crow>.ol{grid-area:ol}
+  .crow>.unkc{grid-area:unk}.crow>.ceil{grid-area:ceil}.crow>.rel{grid-area:rel}.crow>.trg{grid-area:trg}.crow>.ol{grid-area:ol}
   .crow>.cf{display:none}
+  .crow>.unkc::before{content:'Unknown: '}.crow>.ceil::before{content:'Ceiling (calculated): ';font-weight:400}
   .stats{margin-left:0;width:100%}.stat{flex:1;min-width:0;padding:6px 10px}
   .stat b{font-size:19px}.stat span{font-size:11px;display:block;line-height:1.25}.top-row{padding:10px 0 8px;gap:8px}.brand p{display:none}
   .tools{gap:6px}.chk,.btn{padding:6px 9px;font-size:13px}.search{flex-basis:100%;max-width:none}
@@ -323,7 +327,7 @@ const vName = id => vById[id] ? vById[id].name : id;
 const stateName = ab => { for (const k in M.state_abbr) if (M.state_abbr[k] === ab) return k; return ab; };
 
 /* ---------- state ---------- */
-const S = {view:'ranking', q:'', stated:false, f:{vert:'',tier:'',rel:'',state:'',stier:''}, sort:'score', liveOnly:false, maker:'', colorBy:'score'};
+const S = {view:'ranking', q:'', stated:false, f:{vert:'',tier:'',rel:'',state:'',stier:''}, sort:'score', liveOnly:false, lowCeil:false, pre:false, maker:'', colorBy:'score'};
 try { const t = localStorage.getItem('ppm-theme'); if (t) document.documentElement.dataset.theme = t; } catch(e){}
 
 /* ---------- evidence helpers ---------- */
@@ -379,12 +383,19 @@ function passes(p, ignoreScoreTier){
   if (f.tier && (p.tier||'unknown') !== f.tier) return false;
   if (f.rel && (p.relationship||'unknown') !== f.rel) return false;
   if (f.state && p.state !== f.state) return false;
+  if (S.pre && !isPre(p)) return false;
   if (!ignoreScoreTier && f.stier){
     const t = sTier(p) || 'Not profiled';
     if (t !== f.stier) return false;
   }
   return true;
 }
+const DV = D.derived || {}, DS = D.dstats || {};
+const UNK_LBL = {process:'Process fit', material_part:'Material and part fit', part_mix:'Part mix', labor:'Labor pain', scale:'Scale'};
+const unkOf = p => (DV[p.id] && DV[p.id].unk) || [];
+const ceilOf = p => DV[p.id] && DV[p.id].ceil != null ? DV[p.id].ceil : null;
+const isPre = p => !!(DV[p.id] && DV[p.id].pre);
+const preBadge = p => isPre(p) ? '<span class="badge b-pre" title="Under construction or ramping up: no process or robots locked in yet">Pre-production</span>' : '';
 const scoreOf = p => p.score_total === '' || p.score_total == null ? -1 : +p.score_total;
 const cmpScore = (a,b) => scoreOf(b) - scoreOf(a) || (+b.confidence||0) - (+a.confidence||0) || a.name.localeCompare(b.name);
 
@@ -418,13 +429,16 @@ function filterBar(id, withScoreTier){
    '<label>State<select data-f="state">' + opts(states.map(t => [t, stateName(t)]), f.state, 'All states') + '</select></label>' +
    (withScoreTier ? '<label>Score tier<select data-f="stier">' + opts(['High','Medium','Low','Not profiled'].map(t => [t,t]), f.stier, 'All score tiers') + '</select></label>' : '<span></span>') +
    '<label>&nbsp;<button type="button" class="btn" data-reset>Reset filters</button></label>' +
+   '<div class="count"><label class="chk" style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" data-pre> Pre-production only <span class="muted small">(under construction or ramping up: ' + (DS.preprod || 0) + ' plants)</span></label></div>' +
    '<div class="count" data-count></div></div>';
 }
-function syncFilters(root){ root.querySelectorAll('select[data-f]').forEach(s => { s.value = S.f[s.dataset.f]; }); }
+function syncFilters(root){ const pc = root.querySelector('input[data-pre]'); if (pc) pc.checked = S.pre; root.querySelectorAll('select[data-f]').forEach(s => { s.value = S.f[s.dataset.f]; }); }
 function bindFilters(root, rerender){
   root.querySelectorAll('select[data-f]').forEach(s => s.addEventListener('change', () => { S.f[s.dataset.f] = s.value; rerender(); }));
+  const pc = root.querySelector('input[data-pre]');
+  if (pc) pc.addEventListener('change', () => { S.pre = pc.checked; rerender(); });
   const r = root.querySelector('[data-reset]');
-  if (r) r.addEventListener('click', () => { S.f = {vert:'',tier:'',rel:'',state:'',stier:''}; S.q=''; $('#q').value=''; refresh(); });
+  if (r) r.addEventListener('click', () => { S.f = {vert:'',tier:'',rel:'',state:'',stier:''}; S.q=''; S.pre=false; S.lowCeil=false; S.liveOnly=false; $('#q').value=''; refresh(); });
 }
 
 /* ---------- ranking ---------- */
@@ -513,7 +527,7 @@ function makeMap(host){
   };
 }
 const dotCls = (p, by) => by === 'tier' ? 'c-' + (TCLS[p.tier] || 'unk') : 'c-' + tcls(sTier(p));
-const dotLabel = p => sTier(p) ? sTier(p) + ' ' + p.score_total : 'not yet profiled';
+const dotLabel = p => (sTier(p) ? sTier(p) + ' ' + p.score_total : 'not yet profiled') + (isPre(p) ? ', pre-production' : '');
 let mapA = null, mapB = null;
 
 function legend(by){
@@ -523,7 +537,7 @@ function legend(by){
 function plantRow(p, extra){
   const t = sTier(p);
   return '<div class="prow"><span class="dot-i d-' + (t ? t.toLowerCase() : 'np') + '" aria-hidden="true"></span><div class="nm"><button type="button" class="link" data-plant="' + esc(p.id) + '">' + esc(p.name) + '</button>' +
-    '<div class="sub">' + esc(p.city) + ', ' + esc(p.state) + (p.tier ? ' &middot; ' + esc(p.tier) : '') + (p.relationship ? ' &middot; ' + esc(p.relationship.replace(/_/g,' ')) : '') + (extra ? ' &middot; ' + extra : '') + '</div></div>' +
+    '<div class="sub">' + esc(p.city) + ', ' + esc(p.state) + (p.tier ? ' &middot; ' + esc(p.tier) : '') + (p.relationship ? ' &middot; ' + esc(p.relationship.replace(/_/g,' ')) : '') + (extra ? ' &middot; ' + extra : '') + '</div>' + (isPre(p) ? '<div>' + preBadge(p) + '</div>' : '') + '</div>' +
     '<span class="sc">' + (t ? esc(p.score_total) : '') + '</span>' + (t || p.status === 'excluded' ? '' : '<span class="badge b-np">not yet profiled</span>') + '</div>';
 }
 function renderMap(){
@@ -631,6 +645,7 @@ function renderSupply(){
 function callRows(){
   let rows = P.filter(p => p.status === 'profiled' && passes(p));
   if (S.liveOnly) rows = rows.filter(p => +p.score_demand === 15);
+  if (S.lowCeil) rows = rows.filter(p => +p.score_total < 45 && (ceilOf(p) || 0) >= 70);
   const s = S.sort;
   rows.sort(s === 'name' ? (a,b) => a.name.localeCompare(b.name) : s === 'state' ? (a,b) => a.state.localeCompare(b.state) || cmpScore(a,b) : s === 'confidence' ? (a,b) => (+b.confidence) - (+a.confidence) || cmpScore(a,b) : cmpScore);
   return rows;
@@ -639,29 +654,32 @@ function renderCalls(){
   const el = $('#v-calls');
   if (!el.dataset.init){
     el.innerHTML = '<div class="view-h"><h2>Call list</h2><p>Profiled plants ranked by score. Score tiers: High 70+, Medium 45-69, Low under 45. Confidence is how many of the six components rest on stated evidence.</p></div>' + filterBar('fbar-calls', true) +
-      '<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:10px"><label class="chk"><input type="checkbox" id="live"> Live trigger only <span class="muted small">(plant-level trigger in the last 24 months)</span></label><label class="sortsel">Sort by <select id="sortsel"><option value="score">score</option><option value="confidence">confidence</option><option value="name">plant name</option><option value="state">state</option></select></label><span id="callcount" class="muted small"></span></div>' +
+      '<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:10px"><label class="chk"><input type="checkbox" id="live"> Live trigger only <span class="muted small">(plant-level trigger in the last 24 months)</span></label><label class="chk"><input type="checkbox" id="lowceil"> Low score, high ceiling (research first) <span class="muted small">(score under 45 and calculated ceiling 70 or more)</span></label><label class="sortsel">Sort by <select id="sortsel"><option value="score">score</option><option value="confidence">confidence</option><option value="name">plant name</option><option value="state">state</option></select></label><span id="callcount" class="muted small"></span></div>' +
       '<div class="card calls" id="calllist"></div>';
     bindFilters($('#fbar-calls'), renderCalls);
     $('#live').addEventListener('change', e => { S.liveOnly = e.target.checked; renderCalls(); });
+    $('#lowceil').addEventListener('change', e => { S.lowCeil = e.target.checked; renderCalls(); });
     $('#sortsel').addEventListener('change', e => { S.sort = e.target.value; renderCalls(); });
     el.dataset.init = 1;
   }
   syncFilters($('#fbar-calls'));
-  $('#live').checked = S.liveOnly; $('#sortsel').value = S.sort;
+  $('#live').checked = S.liveOnly; $('#lowceil').checked = S.lowCeil; $('#sortsel').value = S.sort;
   const rows = callRows();
   $('#fbar-calls [data-count]').textContent = '';
   $('#callcount').textContent = rows.length + ' of ' + C.plants_profiled + ' profiled plants';
-  $('#calllist').innerHTML = '<div class="crow hd" role="row"><span>#</span><span>Plant</span><span>Relationship</span><span>Score</span><span>Tier</span><span>Conf.</span><span>Live trigger</span><span>Opening line</span></div>' +
+  $('#calllist').innerHTML = '<div class="crow hd" role="row"><span>#</span><span>Plant</span><span>Relationship</span><span>Score</span><span>Tier</span><span>Conf.</span><span>Unknowns</span><span>Ceiling <span class="calc">calculated</span></span><span>Live trigger</span><span>Opening line</span></div>' +
     (rows.length ? rows.map((p, i) => {
       const live = +p.score_demand === 15;
       const t = sTier(p);
-      return '<div class="crow"><span class="rk">' + (i+1) + '</span><span class="nm"><button type="button" class="link" data-plant="' + esc(p.id) + '">' + esc(p.name) + '</button><span class="sub">' + esc(p.city) + ', ' + esc(p.state) + (p.tier ? ' &middot; ' + esc(p.tier) : '') + '</span></span>' +
+      return '<div class="crow"><span class="rk">' + (i+1) + '</span><span class="nm"><button type="button" class="link" data-plant="' + esc(p.id) + '">' + esc(p.name) + '</button><span class="sub">' + esc(p.city) + ', ' + esc(p.state) + (p.tier ? ' &middot; ' + esc(p.tier) : '') + '</span>' + (isPre(p) ? '<span class="sub">' + preBadge(p) + '</span>' : '') + '</span>' +
         '<span class="rel">' + esc((p.relationship||'unknown').replace(/_/g,' ')) + '</span>' +
         '<span class="scr">' + esc(p.score_total) + '</span><span class="tr"><span class="badge b-' + t.toLowerCase() + '">' + t + '</span></span>' +
         '<span class="cf" title="Components resting on stated evidence">' + esc(p.confidence) + '/6</span>' +
+        '<span class="unkc" title="Components scored 0 because no source states the underlying fact (out of 6; demand is never unknown)">' + unkOf(p).length + ' of 6</span>' +
+        '<span class="ceil" title="Calculated: score plus the maximum points of each unknown component. Not a score.">' + (ceilOf(p) == null ? '' : ceilOf(p)) + '</span>' +
         '<span class="trg">' + (live ? '<span class="live">live trigger</span><br>' : '') + '<span class="small">' + val(p, 'triggers', p.id, {max: 90, label: 'trigger'}) + '</span></span>' +
         '<span class="ol">' + val(p, 'opening_line', p.id, {max: 230, label: 'opening line'}) + '</span></div>';
-    }).join('') : '<div class="empty">No profiled plants match. Clear a filter or the live-trigger toggle.</div>');
+    }).join('') : '<div class="empty">No profiled plants match. Clear a filter or a toggle.</div>');
 }
 
 /* ---------- excluded ---------- */
@@ -740,6 +758,8 @@ function renderMethod(){
   '<h4>How the coordinator applied the rubric (read from run_log.md)</h4>' +
   '<p class="small muted">The rubric above is the brief. These are the interpretations the coordinator logged while scoring, quoted from the run log. Where they say &ldquo;stated&rdquo;, a source must say it; nothing is inferred from industry.</p>' + ul(B.rules) +
   '<p><strong>Data gap, not a poor fit:</strong> ' + mat0 + ' of ' + C.plants_profiled + ' profiled plants score 0 on material and part fit because no source states the size or weight of the parts welded at that plant. Pole makers rarely publish section dimensions. Their real fit is unknown, and a score of 0 here reflects missing data.</p>' +
+  '<h3>Why many scores are Low</h3><p>The rubric awards points only for what a source states, so a plant that has not published a fact scores 0 on that component. Measured on the ' + C.plants_profiled + ' profiled plants at build time: the ' + DS.low_n + ' Low plants have on average <strong>' + DS.avg_unk_low + ' unknown components</strong> out of 6, against ' + DS.avg_unk_high + ' for the ' + DS.high_n + ' High plants (Medium: ' + DS.avg_unk_medium + '). <strong>' + DS.low_mat0 + ' of the ' + DS.low_n + ' Low plants</strong> score 0 on material and part fit only because no source states their part size. <strong>' + DS.low_ceil70 + ' of the ' + DS.low_n + ' Low plants</strong> have a ceiling of 70 or more. The <strong>ceiling</strong> is calculated: the score plus the maximum points of every unknown component, plus 7 if Demand sits at the vertical-level 8, capped at 100. A component is unknown when it scores 0 and its plant field (weld processes, part size fit, production type, welder postings, headcount) is empty, starts with &ldquo;unknown&rdquo; or says &ldquo;not stated&rdquo;. The ceiling is a research-priority signal, not a score. <strong>A Low score with a high ceiling means the plant has not published the facts the rubric needs; research it before ruling it out.</strong> The call list has a &ldquo;Low score, high ceiling (research first)&rdquo; filter (score under 45, ceiling 70 or more).</p>' +
+  '<h4>Pre-production prospects</h4><p>A plant that is under construction or ramping up (' + (DS.preprod || 0) + ' now) is kept as a prospect and shown with a <span class="badge b-pre">Pre-production</span> badge: it has no welding process or robots locked in yet, which can make it an early, actionable account, but most of its score components are unknown until it publishes. The flag comes from the ledger&rsquo;s status record or a trigger or status-detail line naming construction or ramp-up; a plant whose own status says it is operating is not flagged.</p>' +
   '<h4>Confidence</h4>' + ul(B.confidence.length ? B.confidence : ['Confidence = how many of the six components rest on stated evidence (0-6).']) +
   '<h3>Back-test</h3><p>The scoring was tested on Path’s reported customers: a good model should score them High.</p>' + ul(B.backtest.concat(B.weights)) +
   '<h3>Audit numbers by vertical</h3><div class="tscroll card pad"><table class="t"><thead><tr><th>Vertical</th><th>Plants</th><th>Miss rate (list audit)</th><th>Fact error rate</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
@@ -773,17 +793,18 @@ function profileHtml(p){
   const t = sTier(p);
   let h = '<div class="dlg-h"><h2 id="profile-t">' + esc(p.name) + '</h2><button type="button" class="btn" data-close="profile">Close</button></div><div class="dlg-b">';
   h += '<div class="muted">' + val(p, 'parent_company', pre, {label: 'parent company'}) + ' &middot; ' + esc(p.city) + ', ' + esc(p.state) + '</div>';
-  h += '<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;align-items:center">' + scoreBadge(p) + (p.status === 'excluded' ? '<span class="badge b-bad">excluded</span>' : '') + tierBadge(p.tier) + (p.tier_secondary ? '<span class="badge b-st">also ' + esc(p.tier_secondary) + '</span>' : '') + (p.relationship ? '<span class="badge b-grey">' + esc(p.relationship.replace(/_/g,' ')) + '</span>' : '') + '</div>';
+  h += '<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;align-items:center">' + scoreBadge(p) + (p.status === 'excluded' ? '<span class="badge b-bad">excluded</span>' : '') + tierBadge(p.tier) + (p.tier_secondary ? '<span class="badge b-st">also ' + esc(p.tier_secondary) + '</span>' : '') + (p.relationship ? '<span class="badge b-grey">' + esc(p.relationship.replace(/_/g,' ')) + '</span>' : '') + preBadge(p) + '</div>';
+  if (isPre(p)) h += '<div class="banner"><strong>Pre-production prospect.</strong> This plant is under construction or ramping up, so its process, robots and headcount are not locked in yet. Most of its score components read 0 because nothing is published yet, not because it is a poor fit. See the status detail evidence below.</div>';
   if (p.status === 'excluded') h += '<div class="banner ex"><strong>Excluded from the map.</strong> ' + val(p, 'exclusion_reason', pre, {label: 'exclusion reason'}) + '</div>';
   else if (!prof) h += '<div class="banner"><strong>Not yet profiled.</strong> Only the base record is in the ledger: no score, process or material findings, postings, triggers or opening line yet.</div>';
   if (prof){
-    h += '<div class="sec"><h3>Score</h3><div class="bigscore"><span class="n">' + esc(p.score_total) + '</span><div><span class="badge b-' + t.toLowerCase() + '">' + t + '</span><div class="small muted">out of 100 &middot; sum of the six component rows below (<strong>calculated</strong>)</div><div class="small"><strong>Confidence ' + esc(p.confidence) + ' of 6</strong> (<strong>calculated</strong>): components resting on stated evidence</div></div></div><p class="small muted" style="margin:8px 0 0">Each component\u2019s points are a rubric judgement, so they carry the ledger\u2019s tag. Click a component for its reasoning and the supporting claims that hold the quotes.' + (S.stated ? ' Stated-only mode lists only supporting claims that include stated evidence.' : '') + '</p><div style="margin-top:8px">';
+    h += '<div class="sec"><h3>Score</h3><div class="bigscore"><span class="n">' + esc(p.score_total) + '</span><div><span class="badge b-' + t.toLowerCase() + '">' + t + '</span><div class="small muted">out of 100 &middot; sum of the six component rows below (<strong>calculated</strong>)</div><div class="small"><strong>Confidence ' + esc(p.confidence) + ' of 6</strong> (<strong>calculated</strong>): components resting on stated evidence</div></div></div><p class="small" id="unkline" style="margin:8px 0 0"><strong>' + unkOf(p).length + ' of 6 components unknown</strong> &middot; ceiling ' + ceilOf(p) + ' (<strong>calculated</strong>): the score counts only what sources state; unknown components score 0.</p><p class="small muted" style="margin:8px 0 0">Each component\u2019s points are a rubric judgement, so they carry the ledger\u2019s tag. Click a component for its reasoning and the supporting claims that hold the quotes.' + (S.stated ? ' Stated-only mode lists only supporting claims that include stated evidence.' : '') + '</p><div style="margin-top:8px">';
     COMP.forEach(c => {
       const claim = pre + ':' + c[0], row = effRow(claim, p[c[0]]), pts = +p[c[0]] || 0;
       const hide = false;
       const ids = row && row.r ? [...new Set(row.r.match(/\b(?:p|c|v|bt)-[a-z0-9-]+:[a-z_]+(?::(?:p|c)-[a-z0-9-]+)?/g) || [])].filter(i => EV[i] && i !== claim && !(S.stated && EV[i].every(r => r.t === 'inferred'))) : [];
       h += '<div class="comp"><div class="row"><span class="lbl">' + c[1] + '</span>' + (hide ? '<span class="hid">inferred, hidden</span>' : '<button type="button" class="val" data-claim="' + esc(claim) + '" data-shown="' + esc(p[c[0]]) + '" aria-label="' + esc(c[1] + ': ' + pts + ' of ' + c[2] + ' points. Open evidence') + '"><strong>' + pts + '</strong> / ' + c[2] + '</button> ' + (row ? badgeTag(row.t, row) : '<span class="muted">not sourced</span>')) + '</div>' +
-        '<div class="meter"><i style="width:' + (hide ? 0 : pts / c[2] * 100) + '%"></i></div>' +
+        (unkOf(p).includes(c[0].replace('score_','')) ? '<div class="unkn">unknown \u2014 no source states this</div>' : '') + '<div class="meter"><i style="width:' + (hide ? 0 : pts / c[2] * 100) + '%"></i></div>' +
         (!hide && row && row.r ? '<div class="why">' + esc(row.r.replace(/;?\s*supporting claims:.*$/i, '').replace(/;?\s*counts toward confidence:.*$/i, '')) + '</div>' : '') +
         (!hide && ids.length ? '<div class="chips" aria-label="Supporting claims">' + ids.map(i => '<button type="button" class="chip" data-claim="' + esc(i) + '">' + esc(i.startsWith(pre + ':') ? i.slice(pre.length + 1) : i) + '</button>').join('') + '</div>' : '') + '</div>';
     });
@@ -797,7 +818,7 @@ function profileHtml(p){
   const kv = (f, l) => '<dt>' + l + '</dt><dd>' + val(p, f, pre, {label: l}) + '</dd>';
   h += '<div class="sec"><h3>Base record</h3><dl class="kv">' + kv('address','Address') + kv('website','Website') +
     '<dt>Verticals</dt><dd>' + vNames(p).map(x => esc(vName(x))).join('; ') + '</dd>' + kv('products','Products') + kv('tier','Tier') + (p.tier_secondary ? kv('tier_secondary','Secondary tier') : '') + kv('headcount','Headcount') + kv('found_by','Found by') + '</dl></div>';
-  if (prof) h += '<div class="sec"><h3>Profile</h3><dl class="kv">' + [['weld_processes','Weld processes'],['materials','Materials'],['certifications','Certifications'],['part_size_fit','Part size fit'],['production_type','Production type'],['existing_robots','Existing robots'],['welder_postings','Welder postings'],['triggers','Triggers'],['bottleneck_guess','Bottleneck guess']].map(x => kv(x[0], x[1])).join('') + '</dl></div>';
+  if (prof) h += '<div class="sec"><h3>Profile</h3><dl class="kv">' + [['weld_processes','Weld processes'],['materials','Materials'],['certifications','Certifications'],['part_size_fit','Part size fit'],['production_type','Production type'],['existing_robots','Existing robots'],['welder_postings','Welder postings'],['triggers','Triggers'],['bottleneck_guess','Bottleneck guess']].map(x => kv(x[0], x[1])).join('') + (EV[pre + ':status_detail'] ? '<dt>Status detail</dt><dd>' + EV[pre + ':status_detail'].map(r => '<div>' + val({status_detail: r.v}, 'status_detail', pre, {label: 'status detail'}) + '</div>').join('') + '</dd>' : '') + '</dl></div>';
   const lk = LK.filter(l => l.from_id === p.id || l.to_id === p.id);
   if (lk.length) h += '<div class="sec"><h3>Supply links</h3>' + lk.map(l => { const o = endpoint(l.from_id === p.id ? l.to_id : l.from_id); const row = effRow(l.claim_id, l.what_is_supplied);
     return '<div class="small" style="margin-bottom:6px">' + (l.from_id === p.id ? 'Supplies ' : 'Supplied by ') + (o.plant ? '<button type="button" class="link" data-plant="' + esc(o.id) + '">' + esc(o.name) + '</button>' : esc(o.name)) + ': ' + (row ? esc(l.what_is_supplied) : '') + ' ' + (row ? badgeTag(row.t, row) + ' <button type="button" class="btn small" data-claim="' + esc(l.claim_id) + '" data-shown="' + esc(l.what_is_supplied) + '">Evidence</button>' : '<span class="muted">not sourced</span>') + '</div>'; }).join('') + '</div>';
@@ -860,11 +881,12 @@ function openEvidence(claim, shown, opener){
 function csvCell(s){ s = String(s == null ? '' : s); return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g,'""') + '"' : s; }
 function plantCsv(rows){
   const cols = Object.keys(P[0]).filter(c => !['lat','lon','county_fips'].includes(c));
-  const out = [cols.concat(['inferred_fields']).map(csvCell).join(',')];
+  const out = [cols.concat(['unknown_components','ceiling_calculated','pre_production','inferred_fields']).map(csvCell).join(',')];
   rows.forEach(p => {
     const inf = [];
     const vals = cols.map(c => { const r = effRow(p.id + ':' + c, p[c]); if (r && r.t === 'inferred'){ inf.push(c); if (S.stated) return ''; } return p[c]; });
-    out.push(vals.concat([inf.join(' ')]).map(csvCell).join(','));
+    const extra = p.status === 'profiled' ? [unkOf(p).length + ' of 6', ceilOf(p) == null ? '' : ceilOf(p), isPre(p) ? 'yes' : ''] : ['', '', isPre(p) ? 'yes' : ''];
+    out.push(vals.concat(extra, [inf.join(' ')]).map(csvCell).join(','));
   });
   return out.join('\r\n');
 }
