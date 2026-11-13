@@ -367,3 +367,32 @@ Coordinator decisions applied now (mechanical):
 - **Sabre site codes:** round 5-A found Sabre's board uses one address per city with several site codes (Sioux City IowaSG and IowaT, Bossier SBST and SBSU, Conroe ConSG, ConT and ConU, Alvarado AlvSG and AlvU). The lead close-out confirmed Sioux City is a single consolidated site. No evidence of a second plant in the other three cities; the codes read as business units at one site. Logged as a known limit.
 - **Counts:** 129 plants: 81 profiled, 8 base, 40 excluded. High 9 / Medium 34 / Low 38.
 - **Miss rate:** auditor-measured 8/58 = 13.8%. Finder first pass 31/89 = 34.8%: 22 never found (24.7%) and 9 found but wrongly excluded (10.1%).
+
+### Advisor consultation 6 (2026-11-13): done checkpoint after round 5
+
+- **Advice:** close; three small blockers, and no further fact-check round or consultation needed once they are cleared.
+  1. Run the Sabre site-code sweep that was logged as settled but not checked.
+  2. Apply round 5-A's line findings (Nello, Musco) and script three checks over all 81 profiled lines.
+  3. Close the MICA Euless lead, and check whether any inferred row with an unfound quote earns points.
+  - Report round 5 on stated rows too, log the finder-process remedy, and make the smoke test assert the current figures.
+- **What was done:**
+  1. **Sabre sweep:** EPA FRS queried for SABRE in TX, LA and IA (saved as `ledger/audit/source-snapshot-epa-frs-sabre-2026-11-13.txt`).
+     - One Sabre fabrication site each in Alvarado (8653 E Hwy 67, plus Sabre Galvanizing next door at 8669, the "SG" codes), Conroe (3575 Pollok Dr) and Bossier City (5031 Hazel Jones Rd). Each matches the ledger address.
+     - Sioux City: 7101 Southbridge (2101 Murray St consolidated there in 2015; lead close-out).
+     - Fort Worth has three Sabre sites (5750 E I-20, 2400 NE 36th St, 2300 W Risinger Rd), which is why FWT's postings can't be placed.
+     - Alvarado, Bossier City, Conroe and Sioux City scores stand.
+  2. **Line checks over all 81 profiled lines** (one row per plant, matching plants.csv; closing question ends in "?" with "you"; every cited claim has a stated row): 6 problems found and fixed.
+     - DIS-TRAN Washington Court House and CHM Fort Worth questions made second person.
+     - Ameron 66th St and ROHN re-cited to stated rows (open_postings + address; name + address).
+     - Musco: the "air-conditioned welding" clause dropped (it was held only by an inferred row).
+     - Nello South Bend passes: its Path clause cites the stated c-nello:path_customer row and asserts no plant-level deployment.
+  3. **Unfound inferred quotes:** of the 13, only PennFab's weld_processes row is cited by a point-earning score, and PennFab's process 20 also rests on a stated row (services/welding page). The row's source_url is moved from the blog index to the article, and the quote was checked there. The other 12 are Census geocode descriptions or website rows on unscored plants. MICA Euless lead sent to a plant-finder.
+- **Round 5 rate:** 14/170 = 8.2% over all checked rows; **13/139 = 9.4% on stated rows only** (1 inferred row corrected). Both are under 10%.
+- **Lead counts:** working leads count, under the counting rule. Round 4-C found that Clinton's and Lancaster's leads weld (clip welding, full-penetration welds), while Meyer Fort Worth's, Muskogee's and Meyer Tulsa's are supervisory. Not an inconsistency.
+- **Finder-process remedy for the next vertical** (miss rate: 24.7% never found on the first pass). Run inside the plant-finder stage, not after it:
+  - (a) an AISC directory name sweep for every parent and known maker;
+  - (b) a sweep of every parent's own job board by city;
+  - (c) EPA FRS and TRI name queries;
+  - (d) the inclusion rule applied at finding time, so DOT-listed plants are not excluded on judgement.
+  - **Convergence:** the last two passes found one plant each (Sabre Marshall; Sabre 36th St).
+- **Smoke test** saved as `tools/smoke_map.js`. It opens the Method tab and asserts 81, 8.9%, 8.2%, 13.8%, 34.8%, "Round 5" and "partial", and that no stale text remains ("every included plant is profiled", "27.5%", "5/64"). Pass, 0 console errors.
