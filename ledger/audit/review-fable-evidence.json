@@ -1,0 +1,215 @@
+{
+ "lens": "evidence",
+ "verdict": "fix_first",
+ "summary": "Verdict: fix_first. Scope: I checked the 18 highest-scoring plants (ranks 14-18 tie at 55) and ran my own scripts over all 66 profiled plants. Method: (a) fetch_page.py --check on every stated row cited by a score row or opening line of those 18 plants (about 120 quote/URL pairs): all found except three that need browser navigation (Universal's Paylocity list, confirmed by browser; two Grid Structures rows, see evidence-10); (b) live re-fetch of every posting behind a labor 12 or 20 in the top 18; (c) parent job boards queried directly (Arcosa UKG board, Crest Lever API, Tallo listings for Sabre); (d) a rubric script over all six components, confidence, tiers and totals. What holds up: arithmetic, tier thresholds and score-row values reproduce with 0 errors; quotes are on their pages and name the right plant; the postings behind Maico, Universal, DIS-TRAN, MICA, Meyer Tulsa, Crowley, Nello, West Hazleton, Grid, PennFab, Millerbernd and Western Utility Telecom are live today; Meyer Tulsa's Feb 27, 2026 trigger and FCAW rows (never fact-checked before) verify; twelve of fifteen demand-15 triggers are dated plant-level events inside the 24-month window; tiers (OEM / Contract fabricator / Tier 1) fit the definitions; the map was built from the current ledger. What does not: (1) labor is wrong for at least eleven plants of two multi-plant parents. Arcosa's own job board, which the ledger already cites for Meyer Tulsa, shows open dated welder postings at eight Arcosa plants that the map reports as '0 open' or 'none found' (Meyer Clinton becomes High at 75; six others move 48 -> 68), and live Sabre postings exist for Alvarado, Sioux City and Hicksville (Alvarado 28 -> 68). The ranking and the top-10 list are materially wrong until this is fixed. (2) The number 1 plant, Millerbernd Winsted, is Path's published case-study account but carries a cold opening line and the label customer_other_plant. (3) Material 12 at DiHighway and Race Rock Brookshire contradicts the coordinator's own rulings on Muskogee and PennFab; both drop to Low. (4) Confidence is computed unevenly (the vertical-level demand 8 counts for 40 of 51 plants and not the other 11). (5) Three demand-15 scores rest on a hiring event or a company-level ownership change. (6) Relationship and owner fields: HW Metals is not a direct competitor lookalike; lookalike_of uses three formats; Sabre, Sovereign, two Meyer plants and Hapco carry stale or inconsistent owner text; the Hicksville plant is still named FWT, LLC on 2015 evidence; a 2017 headcount scores scale 10. Not checked: plants below rank 18 were covered by the scripts and spot checks only; Valmont's own careers site returned 502, so labor 0 at the seven Valmont plants is untested against a primary board; Nucor sibling plants were not re-pulled; FWT Fort Worth's current status is unresolved; closing of the TPG-Sabre deal could not be confirmed. If evidence-1 to evidence-6 are applied, expect roughly: High 4 -> 5 (Clinton in; Crowley stays or drops per evidence-7), and eight to ten Medium plants reordered.",
+ "findings": [
+  {
+   "id": "evidence-1",
+   "severity": "blocker",
+   "area": "labor score / welder_postings (Arcosa family)",
+   "plant_ids": [
+    "p-meyer-clinton-il",
+    "p-meyer-steele-al",
+    "p-meyer-hager-city-wi",
+    "p-meyer-fort-worth-tx",
+    "p-meyer-lancaster-sc",
+    "p-arcosa-telecom-muskogee-ok",
+    "p-arcosa-traffic-structures-sumterville-fl",
+    "p-ameron-tulsa-ok"
+   ],
+   "finding": "Eight Arcosa-family plants show labor 0 and welder_postings text such as '0 open verified' / 'none found', but Arcosa's own job board (the same board the ledger already uses as stated evidence for p-meyer-tulsa-ok) lists open, dated welder postings at every one of them today. The map therefore states something false about these plants and under-scores each by 20. Meyer Clinton becomes High (55 -> 75) and would enter the top-5; six others go 48 -> 68.",
+   "evidence": "Fetched 2026-11-13: POST https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/JobBoardView/LoadSearchResults (306 postings), filtered to titles with weld/fitter, grouped by location address. Clinton IL (10000 Tabor Rd): 8 postings incl. Night Shift Welder, Night Shift Fitter/Welder, Night Shift Sr. Fitter/Welder (all 2026-09-29), Fitter Welder_Lead (10-19), Welder, Fitter/Welder, Sr. Fitter/Welder (11-06), Weld Tech (09-01, 73 days). Detail page opportunityId=bfdfb7e5-33d1-4010-a5c6-302aa7895551: 'Posted on November 6, 2026 ... Meyer Utility Structures is searching for Welders for the Clinton, IL utility pole manufacturing plant.' Steele AL (585 Duncan Farms Rd): Seam Welder - Weekend Shift (08-04, 101 days), Weld Tech (07-30), Fitter/Welder (10-14), Seam Welder (11-05). Hager City WI (W8020 150th Ave): 'Welders - All Experience Levels' (09-09, 65 days; detail page af831e49-85b3-466e-b358-f5eefcf5e4c3: 'Posted on September 9, 2026 ... looking to hire 2nd shift Welders for our plant located in Hager City, WI ... Flux or Metal Core welding experience highly preferred'), Welding Technician (09-18), Welding Instructor (10-12). Fort Worth TX (2300 W. Risinger Rd): 6 postings, oldest 'Fitter/Welder _Senior 2ND SHIFT' 07-24 (112 days), Fitter/Welder- Weekend Shift 08-11, Fitter/Welder Lead 10-07, three more 10-21..11-02. Lancaster SC (3468 Old Camden Hwy): Fitter Welder_Lead (08-31, 74 days), Welder (09-22), Pole School Welding Instructor (10-13), Welding Technician (10-16). Muskogee OK (4020 Tull Ave): 7 postings incl. Fitter/Welder Day (10-23) and Night (11-05), four Fitter/Welder Lead roles (11-09), and 'Cobot Welder Operator' (10-05). Sumterville FL (1749 CR 525): Senior Fitter/Welder, detail page c69a295b-f4f0-477d-97e3-c043da65c67b: 'Posted on July 27, 2026 ... Arcosa Traffic Structures is currently hiring for Fitter/Welders for the plant operation in Sumterville, FL' (109 days). Ameron Tulsa, 2333 S Yukon Ave (board label 'Tulsa, OK -Finish'): Fitter Welder_Career Day Shift (detail 755063c1-9148-4211-96c7-47b8d5b9d502, 'Posted on August 25, 2026', 80 days) and Night Shift (08-28). Ledger today: score_labor = 0 for all eight, e.g. p-meyer-clinton-il:welder_postings = '0 open verified. No welder posting shown live on a page fetched 2026-11-12'; p-arcosa-traffic-structures-sumterville-fl:welder_postings = 'none found' (reasoning 'no dated search run'); those values were built from aggregator copies (vaia.com, jofdav.com, portmuskogee) instead of the parent's board.",
+   "fix": "For each of the eight plants add stated welder_postings evidence rows from the Arcosa board detail pages (quote the 'Posted on <date>' line plus the sentence naming the plant; source_type job posting), replace the plants.csv welder_postings text with the count, titles and oldest date, retire the 'none found'/'0 open verified' rows, and set score_labor = 20 (several at once and/or 60+ days: Clinton, Steele, Hager City, Fort Worth, Lancaster, Muskogee, Sumterville, Ameron Yukon). New totals: Clinton 75 High; Steele, Hager City, Fort Worth, Lancaster, Muskogee, Sumterville 68 Medium; Ameron Tulsa (Yukon) 41 Low. Recompute confidence, rebuild the map, and re-issue the top-10 list. Also record existing_robots for Muskogee from the 'Cobot Welder Operator' posting. Add a rule for future verticals: when one plant of a parent is scored from the parent's job board, pull that board for every sibling plant in the same pass."
+  },
+  {
+   "id": "evidence-2",
+   "severity": "major",
+   "area": "labor/process scores and stale identity (Sabre family)",
+   "plant_ids": [
+    "p-sabre-alvarado-tx",
+    "p-sabre-sioux-city-ia",
+    "p-fwt-hicksville-oh",
+    "p-fwt-fort-worth-tx"
+   ],
+   "finding": "Sabre plants are scored from stale or sister-plant material while live, dated Sabre welder postings exist for each site. Sabre Alvarado (28, Low; process 0 'inferred from sister plant', labor 0) has at least four live Sabre welder postings and a posting that states GMAW on pole assemblies. Sabre Sioux City (labor 0) has four. The Hicksville OH record is named 'FWT, LLC (Hicksville)', its only stated plant-level evidence is a 2015 article, and its opening line quotes that 2015 article; Sabre Industries is hiring welders in Hicksville today and its posting states flux-core on poles (that this is the former FWT plant is my inference: same town, same parent, pole work; the address was not shown). FWT Fort Worth likewise rests only on the 2015 article; its current operation is not evidenced in the ledger (Valmont Elkhart and Ferndale were excluded for exactly that reason).",
+   "evidence": "Fetched 2026-11-13 (browser): https://tallo.com/talent/job/browse/manufacturing/welder-or-solderer/oh/hicksville lists 'Welder/Fitter (Day/Night) Sabre Industries Posted Oct 30, 2026 (Updated Nov 8, 2026)', 'Welder C Sabre Industries Posted Oct 17, 2026', 'Welder Trainee (Nights) Sabre Industries Posted Sep 11, 2026 (Updated Oct 28, 2026)'; posting text: 'Uses the Flux Cored Arc Welding process to tack weld various small components to round or formed shafts to make a pole'. .../tx/alvarado lists 'Welder B - AlvU' (Sabre Communications Corporation, 'Location: Alvarado, TX (Onsite)', posted Nov 10, 2026), 'Weld Coach - Nights' (Sabre Industries, Inc., Oct 7), 'Welder A - AlvU' (Sabre Industries, Sep 15), 'Welder Trainee - AlvU' (Sabre Industries, Inc., Aug 5, 100 days), all Alvarado, TX; text of the Welder B - AlvU posting: 'Must be able to pass and qualify a GMAW 2G weld test', 'Uses GMAW welding process to weld components or assemblies', 'assist fitter in assembling pole assembly'. .../ia/sioux-city lists, for Sabre Industries at Sioux City, IA: 'Welder B' (posted Sep 28, 2026), 'Welder Trainee (Nights)' (Sep 10, 64 days), 'Weld Coach - STS - Days' (Sep 9), 'Longseamer Trainee (Days)' (Aug 29). .../tx/fort-worth lists 'Longseamer Trainee - Kenn, Sabre Industries, Inc., Fort Worth, TX, Posted Nov 4, 2026'. Ledger: p-sabre-alvarado-tx score_process 0 and score_labor 0; p-sabre-sioux-city-ia welder_postings 'Welder (Nights) posting page live on aggregator but undated ... not counted'; p-fwt-hicksville-oh and p-fwt-fort-worth-tx have one stated plant-level source, wirelessestimator.com 2015 ('will continue to serve customers from its plants in Fort Worth and Hicksville'); the AISC snapshot lists Sabre at Sioux City, Alvarado and Bossier City only. These are aggregator copies (Sabre's own site has a human check), but the ledger already accepts dated Tallo rows for Millerbernd and Western Utility Telecom.",
+   "fix": "Open each Tallo detail page for the three sites, add stated weld_processes and welder_postings rows (quote title, company, city and 'Posted' date; note 'aggregator copy of the Sabre posting'). Re-score: Alvarado process 20 + labor 20 -> 68 Medium; Sioux City labor 20 -> 68 Medium; Hicksville process 20 + labor 20 (three open, oldest 63 days) -> 61 Medium. Rename p-fwt-hicksville-oh to 'Sabre Industries (Hicksville; former FWT plant)' with the 2015 row as history, and rewrite its opening line from the current posting. For p-fwt-fort-worth-tx either find a current source (the 'Longseamer Trainee - Kenn' posting suggests a Sabre site in the Fort Worth/Kennedale area; confirm the address) or move it to excluded with reason 'current operation unverified since 2015', as was done for Elkhart and Ferndale."
+  },
+  {
+   "id": "evidence-3",
+   "severity": "blocker",
+   "area": "relationship / opening line (rank 1 plant)",
+   "plant_ids": [
+    "p-millerbernd-winsted-mn"
+   ],
+   "finding": "The top-ranked plant on the map (88, High) is Path's own published case-study customer, yet it is labelled customer_other_plant ('same parent, not reported as converted') and its opening line is a cold pitch ('how are you covering pole welding capacity?') that never mentions the Path cells. The record contradicts itself: existing_robots says 'yes: Path welding cells', and the material score of 20 is earned only because 'Path cells fabricate Millerbernd's T&I poles'. An SDR who uses this line on an existing account will look uninformed. The ledger's own facts make Winsted the converted site: Path's page names T&I poles, and the ledger excludes Millerbernd's other two campuses (595 Industrial Dr and Sauk Rapids) as circular-products plants that do not make poles.",
+   "evidence": "https://www.path-robotics.com/videos/case-study-millerbernd (fetched 2026-11-13): 'Hear how Millerbernd has leveraged Path's intelligent welding cells to fabricate Transportation & Infrastructure poles.' Ledger rows: p-millerbernd-winsted-mn:relationship = customer_other_plant (coordinator 'strict rule'); :existing_robots = 'yes: Path welding cells ... attributed to the Winsted main campus because T&I poles are made there'; :score_material_part reasoning cites the Path page. Lead, not a quote: two web searches on 2026-11-13 returned summaries of Millerbernd postings for a 'Path Cell Robotics Automation Technician' on the 'Transportation & Infrastructure (Pole) team' in Winsted (career.com posting 3/17/2025; factoryfix automation-technician-weekend-shift--winsted--mn--1638672135 and tealhq copies now return 410/closed), which would be a primary source naming the plant.",
+   "fix": "Mechanical minimum (no rule change): rewrite the opening line as an account-expansion line that acknowledges the existing Path cells (e.g. which pole weldments still go through manual GMAW or the sub-arc seam station), and flag the plant on the map and in the top-10 list as an existing Path account so it does not head the cold-call list. Rule decision for the coordinator (it overrides the logged strict rule, since Millerbernd has three welding sites): set relationship = known_customer, tag inferred, reasoning 'Path names Millerbernd's T&I poles and the ledger shows T&I poles are made only at the Winsted main campus', i.e. extend the single-site exception to 'single site for the named product'. Research: retrieve an archived or live copy of the 'Path Cell Robotics Automation Technician' posting and add it as a stated row for existing_robots and relationship. Apply the same wording check to Nello South Bend (FAT passed; line is acceptable) and the Valmont plants (line for p-valmont-tulsa-ok asks 'could an autonomous cell add welding capacity' of a company whose 2021 statement says Path is on its factory floors; add the caveat)."
+  },
+  {
+   "id": "evidence-4",
+   "severity": "major",
+   "area": "material_part score consistency",
+   "plant_ids": [
+    "p-dihighway-new-york-mills-ny",
+    "p-race-rock-brookshire-tx",
+    "p-arcosa-telecom-muskogee-ok",
+    "p-pennfab-morrisville-pa"
+   ],
+   "finding": "Two plants keep material 12 ('too big to move, suited to Rove') on evidence that the coordinator ruled out for other plants. DiHighway's 12 rests on an assembled span ('designed to span from 1 lane up to 240 feet'), with the ledger itself noting 'shop component sizes not stated'; Arcosa Muskogee was set to 0 because 'towers up to 400 ft is a finished height, not a part size'. Race Rock Brookshire's 12 rests on crane capacity ('Heavy Fabrication & Lifting Capacity up to 100-Ton Lifts'); PennFab was set to 0 because its quote 'gives shop bay size and crane capacity, not part size'. Applying the rule evenly moves both plants from Medium to Low.",
+   "evidence": "Ledger rows: p-dihighway-new-york-mills-ny:part_size_fit (stated) quote 'designed to span from 1 lane up to 240 feet across entire length of major freeways' (https://www.dihighway.com/overhead-sign-structures) and inferred row 'fabricated in sections ... shop component sizes not stated'; score_material_part reasoning 'Verify stage: kept at 12'. p-race-rock-brookshire-tx:part_size_fit (inferred) quote 'Heavy Fabrication & Lifting Capacity up to 100-Ton Lifts, Supported by Extensive Overhead Crane Coverage' (racerock.com/our-facilities). Compare run_log: 'Arcosa Muskogee material 12 -> 0 (\"towers up to 400 ft\" is a finished height, not a part size)' and p-pennfab-morrisville-pa:score_material_part 'set to 0 (was 12): part_size_fit quote gives shop bay size and crane capacity'.",
+   "fix": "Set score_material_part = 0 for p-dihighway-new-york-mills-ny (55 -> 43, Low) and p-race-rock-brookshire-tx (52 -> 40, Low); set part_size_fit to 'unknown (assembled span / crane capacity only)'; recompute confidence (DiHighway 3 -> 2). Or, if the coordinator prefers to count finished-structure dimensions, restore Muskogee and PennFab to 12 and say so in run_log; either way one rule."
+  },
+  {
+   "id": "evidence-5",
+   "severity": "major",
+   "area": "confidence figure",
+   "plant_ids": [
+    "p-millerbernd-winsted-mn",
+    "p-western-utility-telecom-salem-or",
+    "p-meyer-tulsa-ok",
+    "p-pennfab-morrisville-pa",
+    "p-dihighway-new-york-mills-ny",
+    "p-meyer-steele-al",
+    "p-meyer-hager-city-wi",
+    "p-meyer-fort-worth-tx",
+    "p-meyer-lancaster-sc",
+    "p-arcosa-traffic-structures-sumterville-fl",
+    "p-arcosa-telecom-muskogee-ok",
+    "p-ameron-tulsa-ok",
+    "p-browning-enterprise-attalla-al",
+    "p-metal-pros-wichita-ks"
+   ],
+   "finding": "Confidence is not comparable between plants. (a) Demand 8 (vertical outlook only, no plant fact) adds 1 to confidence for 40 of the 51 plants at demand 8 and 0 for the other 11, depending only on whether the profiler happened to also cite the plant's (unknown) triggers claim in the score row. (b) tools/normalise_scores.py treats a claim_id as stated if any row under it is stated, so a component counts even when the row that carries the rubric fact is inferred. Millerbernd shows confidence 5, but its labor 20 ('several postings at once') rests on two inferred welder_postings rows (the stated rows under that claim_id are the shift pattern and '4x10 work week, optional overtime'), and its material 20 rests on an inferred existing_robots row. Western Utility Telecom's labor 12 rests on an inferred careers-page row; the stated row is the shift list of a posting that expired in June 2026.",
+   "evidence": "My script (scratchpad check.py, comp analysis) recomputed every plant: totals, tiers and the normaliser's own confidence rule all reproduce (0 arithmetic errors across 66 plants). Demand-8 plants where demand is NOT counted: p-meyer-steele-al, p-meyer-hager-city-wi, p-meyer-fort-worth-tx, p-meyer-lancaster-sc, p-browning-enterprise-attalla-al, p-arcosa-traffic-structures-sumterville-fl, p-ameron-tulsa-ok, p-arcosa-telecom-muskogee-ok, p-pennfab-morrisville-pa, p-metal-pros-wichita-ks, p-dihighway-new-york-mills-ny; counted for the other 40 (e.g. p-brookfield-brookfield-mo has confidence 1 from demand 8 alone). Millerbernd welder_postings rows: tags inferred, inferred, stated ('4x10 week with optional overtime'), stated ('shifts: 1st, 2nd and weekend'). Also: five Meyer plants' score_scale rows cite '<id>:headcount', a claim_id with no evidence row.",
+   "fix": "(1) Mechanical, in normalise_scores.py: a demand score of 8 never counts toward confidence (it is not plant evidence). This lowers the 40 plants listed as 'counted' by 1 and makes the figure uniform (Millerbernd, Maico, DIS-TRAN Pineville, MICA Haltom City, Universal and Western Utility Telecom 5 -> 4; Crowley and Meyer Tulsa unchanged because their demand is 15 on stated triggers). (2) By hand for the two cases found: Millerbernd labor and material and Western Utility Telecom labor do not count until their carrying rows are stated (Millerbernd 4 -> 3 if only labor is fixed via evidence-13's Tallo rows, Western Utility Telecom 4 -> 3). (3) Going forward, have each score row name the specific evidence row (claim_id plus source_url) it relies on, and count the component only if that row is stated; do not use an 'all rows under the claim are stated' test, which would penalise plants with extra inferred context rows (Meyer Tulsa would fall from 4 to 1). Remove the five dangling '<id>:headcount' citations. State the rule on the Method page."
+  },
+  {
+   "id": "evidence-6",
+   "severity": "major",
+   "area": "demand score consistency",
+   "plant_ids": [
+    "p-valmont-tulsa-ok",
+    "p-nello-spring-grove-mn",
+    "p-nello-westby-wi"
+   ],
+   "finding": "Three demand-15 scores do not meet 'a plant-level trigger within RECENCY_MONTHS' as it was applied to other plants. Valmont Tulsa's trigger is a state workforce-office hiring event (2026-07-15) for 'Structural Fitter Welders, Quality Inspectors, and Maintenance Techs': that is labor evidence (and four months old), not a demand trigger, and labor is scored 0. Nello/LaX Spring Grove and Westby get 15 for 'Feb 2026 new ownership ... investing in advanced technology, robotics, and automation', a company-level statement that the sweep already retagged inferred because it names neither plant; Westby's only triggers row is 'opening of a second facility in Westby, Wisconsin, in 2024' (month not stated, so not shown to be inside the 24-month window). Comparable parent-level events were scored 8 elsewhere (Millerbernd's C4 acquisition, Grid's Greensburg expansion, DIS-TRAN's sister-company complex).",
+   "evidence": "https://oklahoma.gov/oesc/events-calendar/2026/july/valmont-2026-07-15.html (fetched 2026-11-13): 'Valmont Utility is hosting a hiring event to fill open positions as Structural Fitter Welders, Quality Inspectors, and Maintenance Techs ... Valmont Utility Tulsa, OK 74110'. https://www.laxindustries.com/about: 'the opening of a second facility in Westby, Wisconsin, in 2024. In February of 2026, the company entered a new era under new ownership and officially became LaX Industries. Today ... LaX Industries is investing in advanced technology, robotics, and automation while creating new jobs'. Ledger: p-nello-westby-wi has one triggers row (the 2024 opening); its score_demand reasoning cites the Feb 2026 ownership change, which has no row under Westby. The other twelve demand-15 plants checked out: dated plant-level expansions or announcements between 2025-01-09 and 2026-10-25 (Crowley 2025-02-19, Meyer Tulsa 2026-02-27, Nello South Bend '2025', West Hazleton 2025-01-09, Klute 2025-08-19, Brookshire 2026-10-15, Crawfordsville 2026-10-08, Jasper 2026-10-25, Decatur 2026-10-20, Brigham City 2025-01-09, Hapco OKC 2026-08-12; Meyer Clinton is inferred and already excluded from confidence).",
+   "fix": "p-valmont-tulsa-ok: set score_demand = 8 (55 -> 48, still Medium), move the hiring event into welder_postings as a dated past event (labor stays 0 unless a live posting is found), and drop it from the opening line or date it clearly. p-nello-spring-grove-mn and p-nello-westby-wi: set score_demand = 8 (35 -> 28 each, Low unchanged), or find a dated plant-level source for the Westby opening (month in 2024/2025) or the announced investment."
+  },
+  {
+   "id": "evidence-7",
+   "severity": "minor",
+   "area": "labor score at a High plant",
+   "plant_ids": [
+    "p-structural-steel-products-crowley-tx",
+    "p-nucor-crawfordsville-in"
+   ],
+   "finding": "Crowley's High tier (75) depends on labor 20 for 'several welder postings open at once', counted from two Fitter/Welder Leadman roles (lead hands who 'plan, assign, supervise and review work') and a Robotic Weld Cell Operator; there is no rank-and-file welder posting, none is 60+ days old, and no bonus is stated. At labor 12 the plant is 67, Medium. Nucor Crawfordsville, with one Fitter Welder plus two weld-cell Automation Operator postings, was scored 12 with the note 'operator postings noted but not counted as several'.",
+   "evidence": "Fetched 2026-11-13: https://www.racerock.com/careers lists 'Fitter/Welder Leadman – 1st Shift – Full Time – Crowley, TX', '... 2nd Shift ...', 'Robotic Weld Cell Operator – 1st Shift – Full Time – Crowley, TX' (all still live); detail page racerock.com/jobs/fitter-welder-leadman-1st-shift-full-time-crowley-tx/: 'October 20, 2026', '1. Plan, assign, supervise and review work performed by their assigned employees', 'Successful completion of an internal FCAW welding test 1G', 'Three-years flux core welding experience'. p-nucor-crawfordsville-in:score_labor reasoning: 'two weld-cell operator postings noted but not counted as several'. The Feb. 19, 2025 trigger article and the FCAW rows for Crowley check out.",
+   "fix": "Decide one rule for lead and robot-operator roles and apply it to both plants. Either Crowley stays 20 and Crawfordsville rises to 20 (45 -> 53), or Crowley drops to 12 (75 -> 67, Medium). Record the sensitivity in the score row as was done for Meyer Tulsa. Note for sales: Crowley already runs a robotic weld cell (existing_robots is inferred from the posting title; the detail page text 'Operate and monitor the robotic welding cell' supports a stated row)."
+  },
+  {
+   "id": "evidence-8",
+   "severity": "minor",
+   "area": "scale score on stale headcount",
+   "plant_ids": [
+    "p-sabre-bossier-city-la"
+   ],
+   "finding": "Scale 10 uses a 2017 headcount ('retain 167 existing jobs ... creating the 50 new direct jobs'); the evidence row's own reasoning says '2017 figure; stale'. Nine-year-old headcount is shown as the site's size.",
+   "evidence": "p-sabre-bossier-city-la:headcount, source opportunitylouisiana.gov 2017; score_scale reasoning 'multi-plant parent and 100+ employees (167, 2017)'. Other dated headcounts are recent enough: Jasper 270 (May 2024), Crawfordsville 328 (Oct 2026, both the Nucor release and SteelOrbis), Klute 175 (Aug 2025), Universal 'over 200' (current site).",
+   "fix": "Set headcount display to '167 (2017)' and score_scale = 5 (18 -> 13) unless a source dated within 24 months is found; same treatment as Valmont Birmingham ('approx. 70 (2018)')."
+  },
+  {
+   "id": "evidence-9",
+   "severity": "minor",
+   "area": "stale or inconsistent owner strings; lookalike_of format",
+   "plant_ids": [
+    "p-sabre-alvarado-tx",
+    "p-sabre-sioux-city-ia",
+    "p-sabre-bossier-city-la",
+    "p-fwt-fort-worth-tx",
+    "p-fwt-hicksville-oh",
+    "p-sovereign-allentown-pa",
+    "p-meyer-fort-worth-tx",
+    "p-meyer-lancaster-sc",
+    "p-hapco-abingdon-va",
+    "p-hapco-oklahoma-city-ok",
+    "p-chm-saginaw-tx",
+    "p-distran-pineville-la",
+    "p-structural-steel-products-fort-worth-tx",
+    "p-hw-metals-tualatin-or"
+   ],
+   "finding": "Owner fields read as current but are stale or differ between sister plants. (1) Five Sabre/FWT plants describe the TPG deal only as signed on 2026-02-06 (p-sabre-sioux-city-ia adds 'close expected by Q2 2026'); it is November 2026 and the ledger has no closing source. (2) Sovereign Allentown: 'Nucor Corporation (agreed to acquire, June 2022)'. (3) Meyer Fort Worth and Lancaster show 'Arcosa, Inc. (Meyer Utility Structures)' while the other eight Arcosa plants show '(acquired by CRH, completed Oct 2026)'. (4) Hapco Abingdon parent 'unknown' vs Hapco Oklahoma City 'Dyson-Kissner-Moran Corporation'. (5) p-chm-saginaw-tx parent_company is blank. (6) 'Crest Industries' vs 'Crest Industries, LLC'; 'Race Rock' vs 'Race Rock Group'. (7) lookalike_of mixes 'Valmont' (28), 'Millerbernd' (2), 'c-millerbernd' (18), 'c-nello' (1). (8) HW Metals is a build-to-print contract fabricator that makes poles for Pacific Steel Structures; 'lookalike of Valmont' does not fit the rule 'lookalike only for direct product competitors'.",
+   "evidence": "plants.csv parent_company and lookalike_of columns (counts from my script). Web search 2026-11-13 found only the signing (Blackstone release 2026-02-06; ESG Today 2026-02-09: 'expected to close by the second quarter of 2026'); no completion notice found. arcosa.com fetched 2026-11-13 shows 'CRH Completes $8.5B Acquisition of Arcosa'.",
+   "fix": "Sabre x5: reword to 'Sabre Industries, Inc. (TPG agreed 2026-02-06 to buy a majority stake from Blackstone; completion not verified as of 2026-11-13)' or add a closing source. Sovereign: 'Nucor Corporation (acquisition agreed June 2022)' plus a completion source, or 'Nucor Corporation'. Copy the CRH string to p-meyer-fort-worth-tx and p-meyer-lancaster-sc. Use one Hapco parent value for both plants (the OKC row's source). Fill p-chm-saginaw-tx parent_company = 'CHM Industries, Inc.'. Normalise Crest and Race Rock spellings. Normalise lookalike_of to the c-<company> ids. HW Metals: relationship = new (tier Tier 1, secondary Contract fabricator), keeping the Pacific Steel link."
+  },
+  {
+   "id": "evidence-10",
+   "severity": "minor",
+   "area": "process rule wording and evidence rows",
+   "plant_ids": [
+    "p-grid-structures-amite-city-la",
+    "p-nucor-west-hazleton-pa",
+    "p-sabre-sioux-city-ia",
+    "p-meyer-hager-city-wi",
+    "p-ameron-tulsa-ok-2",
+    "p-pennfab-morrisville-pa",
+    "p-nucor-crawfordsville-in"
+   ],
+   "finding": "The run_log rule says process 20 needs MIG or flux-core 'named as a requirement in a welder or fitter posting'. Five plants hold 20 on a preferred or desired qualification in a welder posting (Grid: listed under 'DESIRED EDUCATION, KNOWLEDGE, AND/OR SKILLS' while the ledger value says 'required'; West Hazleton: under 'Preferred Qualifications'; Sabre Sioux City: 'preferred'; Meyer Hager City and Ameron 66th St: 'highly preferred'). The later log line ('a process named in a welder posting for the plant = 20') covers them, so the scores are consistent with each other, but the written rule and one value are not. PennFab's only stated weld_processes row quotes a sentence that names no process ('We at PennFab use this process due to the high deposition rates ...').",
+   "evidence": "Fetched 2026-11-13: jobs.nucor.com West Hazleton Fitter Welder page: 'Date: Oct 27, 2026', 'Preferred Qualifications: ... 2. Mig Flux core Welding Experience'. Grid careers page (secure7.saashr.com/ta/6215176.careers, page 2 of 2): 'Welder (Day & Night Shift) ... Amite, LA' still listed. p-grid-structures-amite-city-la:weld_processes value 'flux-core (FCAW) required in Amite welder posting'. The two Grid quotes ('1-2 years welding experience with some flux core welding (FCAW)' and 'Welder (Day & Night Shift) Apply Amite, LA Welder $27.00 - $31.00 / Hour') do not reproduce from the cited URL with fetch_page.py --check: the list is paged (28 jobs, the welder role is on page 2) and the FCAW line sits in a detail view. On page 2 I saw the title and 'Amite, LA' but could not confirm the pay line for the Welder role; on page 1 the $27.00 - $31.00 pay appears on 'Fitter (Day & Night Shift)'. The opening line quotes '$27-$31 an hour' for the welder opening.",
+   "fix": "Restate the rule in run_log as 'MIG/flux-core named (required or preferred) in a welder or fitter posting for this plant, or stated by the plant; a preferred item in a non-welding role does not count'. Change the Grid value to 'flux-core (FCAW) listed under desired skills in the Amite welder posting'; cite the posting's own detail URL for both Grid rows, re-confirm the welder pay range there, and correct the opening line if the $27-$31 figure belongs to the Fitter role. PennFab: replace the quote with the page's sentence that names gas metal arc / flux core, or cite the careers line 'Must have MIG welding experience.'"
+  },
+  {
+   "id": "evidence-11",
+   "severity": "minor",
+   "area": "dated evidence feeding current scores",
+   "plant_ids": [
+    "p-valmont-claremore-ok",
+    "p-valmont-tulsa-ok",
+    "p-western-utility-telecom-salem-or",
+    "p-valmont-birmingham-al"
+   ],
+   "finding": "Some points rest on postings that are no longer live. The opening lines disclose this, but the map's score does not. Valmont Claremore (60): process 20 and material 12 both come from one posting copy that the page marks 'Posted 2 years ago' (so about Nov 2024, at the edge of the window). Valmont Tulsa: process 20 from a posting 'removed ... May 08, 2025'. Western Utility Telecom: process 20 from a Tallo copy posted May 17, 2026 that Tallo now shows as no longer available (its live careers page names no process).",
+   "evidence": "Fetched 2026-11-13: https://www.weldinginfo.org/job/fitter-13 'Claremore, Oklahoma, US ... Posted 2 years ago ... Valmont Industries ... using the GMAW welding process ... products up to 120 inches in diameter and weighing up to 80,000 lbs.'; https://builtin.com/job/fitter/4154063 'Sorry, this job was removed at 03:10 p.m. (UTC) on Thursday, May 08, 2025 ... 801 N Xanthus Tulsa Oklahoma 74110'; Tallo WUT page: 'Posted May 17, 2026 (Updated Jun 13, 2026)'. Process and part size are slow-changing facts, so the points are defensible. Lead: a web-search summary shows a KansasWorks 'Structural Fitter' posting tied to Valmont Claremore 'Posted On: Jul 15, 2026' (kansasworks.com/jobs/13588409, 13461109, 13614871 returned HTTP 401 today).",
+   "fix": "Add 'as of <posting date>' to the weld_processes and part_size_fit values for these plants so the map shows the age. Research: Valmont's own careers site (valmontcareers.com returned 502 today; valmont.jobs.net 403) for live welder postings at Claremore, Tulsa, Brenham, Jasper and Columbus; all seven Valmont plants score labor 0 from aggregator copies only, the same gap found for Arcosa and Sabre."
+  },
+  {
+   "id": "evidence-12",
+   "severity": "minor",
+   "area": "evidence hygiene (ground rule 1)",
+   "plant_ids": [
+    "p-ameron-tulsa-ok",
+    "p-maico-ellsworth-ks",
+    "p-universal-industrial-sales-lindon-ut",
+    "p-arcosa-traffic-structures-sumterville-fl",
+    "p-western-utility-telecom-salem-or",
+    "p-distran-pineville-la",
+    "p-meyer-steele-al",
+    "p-meyer-hager-city-wi",
+    "p-arcosa-telecom-muskogee-ok",
+    "p-mica-kaufman-tx"
+   ],
+   "finding": "(1) p-ameron-tulsa-ok has an opening line on the map with no evidence row, and the line contains pitch language rather than fact ('we would like to show how Path cells handle pole welding at that site'). (2) Four claims carry a leftover 'unknown' / 'none found' row beside a stated row that contradicts it: p-maico-ellsworth-ks:welder_postings, p-universal-industrial-sales-lindon-ut:welder_postings, p-arcosa-traffic-structures-sumterville-fl:welder_postings, p-western-utility-telecom-salem-or:certifications. (3) Five opening_line rows are tagged stated although the run_log rule is that composed lines are inferred: p-meyer-steele-al, p-meyer-hager-city-wi, p-arcosa-telecom-muskogee-ok, p-mica-kaufman-tx, p-distran-pineville-la (its line covers three postings but cites one quote).",
+   "evidence": "My script over evidence.csv: claim_ids with both unknown and stated tags (4); opening_line rows tagged stated (5); profiled plants whose opening_line has no evidence row (1). verified column: 1,865 not_checked, 607 confirmed, 210 corrected, 1 unreachable; archive_url filled on 1 of 2,683 rows (already disclosed in run_log).",
+   "fix": "Add an inferred opening_line row for p-ameron-tulsa-ok and reword the line to facts only (the EPA 'Welding & Fabrication' name and, after evidence-1, the two Fitter Welder postings open since August 2026). Retire the four stale unknown rows. Retag the five opening_line rows inferred with 'composed from stated claims: ...'."
+  },
+  {
+   "id": "evidence-13",
+   "severity": "suggestion",
+   "area": "stronger evidence available for existing top scores",
+   "plant_ids": [
+    "p-distran-pineville-la",
+    "p-millerbernd-winsted-mn",
+    "p-hw-metals-tualatin-or",
+    "p-maico-ellsworth-ks",
+    "p-universal-industrial-sales-lindon-ut",
+    "p-mica-haltom-city-tx"
+   ],
+   "finding": "Several top scores are right but can rest on better rows. DIS-TRAN Pineville's postings are undated in the ledger; the Lever API gives creation dates that put all three past 60 days. Millerbernd's 'several at once' can be made stated from Tallo's dated list. HW Metals' material 20 should say which limit fits: 60 ft continuous length and 138 in width fit the 2026 analyst limits, while the 70 ft and 11 ft-diameter maxima exceed both length limits and the older 72 in sheet. MICA's labor 20 rests on a company-wide careers banner ('★ Signing Bonus for Welders & Fitters'); it is still live.",
+   "evidence": "https://api.lever.co/v0/postings/crestoperations?mode=json (2026-11-13): 'PREP Welder - Day Shift' Pineville created 2026-08-14 (91 days), 'Production Welder II - Night Shift' 2026-07-27 (109 days), 'Submerged Arc Welder - Weekend Shift' 2026-04-21 (206 days); no welder postings for Washington Court House. Tallo Winsted list (2026-11-13): 'Welder 2 or 3 - Winsted - any shift' posted Oct 11 and Oct 12, 2026, 'Submerged Arc Seam Welder - 2nd or Weekend shift' posted Sep 30, 2026 (the ledger's factoryfix '...1902638266' URL is closed, 410). KansasWorks job 13626472 (Maico): 'Posted On: Jul 29, 2026, Updated On: Oct 15, 2026', still live (107 days). Paylocity (Universal): 'FCAW / GMAW / Arc Welder Days & Nights * 09/8/2026' still live (66 days). hwmetals.com/tapered-tubular-steel: 'up to 138\" x 138\" x 70' and a 11' diameter, in continuous lengths up to 60', longer using splices'.",
+   "fix": "Add the Lever-dated rows for DIS-TRAN (labor reasoning becomes '60+ days and several at once'); replace Millerbernd's two inferred welder_postings rows with stated Tallo rows; add the limit note to HW Metals' part_size_fit value. No score changes."
+  }
+ ]
+}

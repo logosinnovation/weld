@@ -96,6 +96,8 @@ for p in plants:
     for c in COMP:
         if sc[c] <= 0:
             continue
+        if c == "demand" and sc[c] == 8:
+            continue  # vertical-level outlook is not plant evidence (review evidence-5, 2026-11-13)
         rows = by_claim.get(f"{pid}:score_{c}", [])
         cited = set()
         for r in rows:
