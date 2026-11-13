@@ -17,7 +17,8 @@ import json
 import re
 import sys
 
-TODAY = "2026-11-12"
+import datetime
+TODAY = datetime.date.today().isoformat()
 files = [a for a in sys.argv[1:] if not a.startswith("--")]
 rows = []
 for f in files:

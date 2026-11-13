@@ -329,3 +329,23 @@ Coordinator decisions applied now (mechanical):
 - `verticals.csv` reason updated to current counts. The `v-poles-substation:status` evidence row is set to partial (it said accepted).
 - **Counts:** 118 plants: 81 profiled, 7 base, 30 excluded. High 9 / Medium 35 / Low 37. 80 of 81 profiled plants fact-checked; Sabre Marshall is not yet checked.
 - **Miss rate:** the auditor-measured figure is unchanged at 5/64 = 7.8%; every auditor plant is now in the ledger, and `compare_audit.py`'s 5 "MISS?" lines are all matcher artifacts. The finder first-pass figure is **30/88 = 34.1%**: 22 earlier, plus Marshall, plus the 7 reinstated. That is over the 20% advisor threshold; see advisor consultation 5.
+
+### Advisor consultation 5 (2026-11-13): before marking done; miss rate over 20%
+
+- **Advice:** keep the vertical partial for one bounded pass.
+  1. An independent round-5 fact-check of everything the final review changed. FWT Fort Worth comes first: the Kenn-site tie may still be inferred if Sabre's board files every Fort Worth requisition under 5750 I-20.
+  2. An independent check of the opening lines, which were rewritten before later corrections landed.
+  3. Reconcile the miss-rate figures, and report "never found" apart from "found but wrongly excluded".
+  4. Close the open leads (Sabre 36th St, Sioux City Murray St, STP, York SC, the unverified names, the AISC sweep names).
+  5. Decide Sabre part mix, LSI's prospect test and Klute's parent row.
+- **Done if** round 5 is at or under 10% and the leads are closed; otherwise ship as partial.
+- **What changed:**
+  - `apply_factcheck.py` now stamps today's date.
+  - `ledger/audit/stale-lines-2026-11-13.json` lists 86 line rows whose cited claims changed; it goes to the line checker.
+  - **One Sabre part-mix rule:** every Sabre plant builds engineered pole assemblies to drawings with volume not stated, which is mixed, 8. Alvarado and Sioux City 68 -> 61; Bossier 53 -> 61. No tier change.
+  - LSI keeps its inferred prospect_test pass, flagged for verification. Klute's parent row no longer says "no company website".
+  - Round 5 launched: fact-checker A (the 9 changed plants plus 6 addresses), the line checker (44 High and Medium plants plus 10 Low), and a plant-finder for the leads.
+- **Miss rate recounted from the audit files:**
+  - `compare_audit.py` still matches "Meyer Utility Structures - Tulsa" to Ameron Tulsa, and Ehresmann was never an auditor plant, so the earlier 5/64 was mis-built.
+  - Auditor-found plants now included: 58. Of these, 8 were not on the finder's included list (Cem-Tec, Race Rock, Raycap, Valmont Birmingham, Elkhart, Plymouth, Valley, Meyer Tulsa). **Auditor-measured miss rate 8/58 = 13.8%**: 6/58 = 10.3% never found, 2/58 wrongly excluded.
+  - First pass against all 88 included plants: **never found 21/88 = 23.9%; found but wrongly excluded 9/88 = 10.2%** (30/88 = 34.1% together).
