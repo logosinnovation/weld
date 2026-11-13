@@ -1,0 +1,547 @@
+{
+ "checker": "fact-checker A (round 3, confirming)",
+ "vertical": "v-poles-substation",
+ "date": "2026-11-13",
+ "plants": [
+  "p-nucor-crawfordsville-in",
+  "p-union-metal-canton-oh",
+  "p-structures-usa-elizabethtown-ky",
+  "p-kw-industries-sugar-land-tx",
+  "p-cem-tec-phoenix-az",
+  "p-chm-fort-worth-tx",
+  "p-hapco-oklahoma-city-ok",
+  "p-structural-steel-products-fort-worth-tx"
+ ],
+ "decision_rule": "Corrected: the value adds a fact the cited page does not show, or tags a judgement or verdict as stated. Confirmed: the page (not only the quoted fragment) carries every additive clause; the fuller support is in note. Limiting parentheticals ('not mandatory overtime', 'not a certification', '2013 announcement') are not counted as additive.",
+ "claims_checked": 74,
+ "claims_corrected": 5,
+ "claims_unreachable": 0,
+ "error_rate": 0.0676,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "invented fact": 0,
+  "quote does not support value": 4,
+  "other": 1
+ },
+ "repeated_kinds": [
+  "quote does not support value (4 of 5 corrections). Sub-patterns for the sweep: (a) a job-posting qualification read as the plant's production process (Nucor Crawfordsville weld_processes); (b) planned or future facts written in the present tense on pre-production plants (Hapco 'more than one plant'); (c) one value combining two sources while citing only one (Hapco address: '577 Industrial Park' + I-240 location); (d) a detail not on the page ('steel' in Nucor products)."
+ ],
+ "worst_errors": [
+  "p-nucor-crawfordsville-in:weld_processes: 'MIG/flux-core' tagged stated, but the posting lists 'MIG flux core welding experience' only as a preferred qualification; the production process is not stated. score_process 20 is unsupported (65 -> 45, confidence 4 -> 3).",
+  "p-hapco-oklahoma-city-ok:parent_company: the value is a present-tense multi-plant claim ('Hapco has more than one plant') resting on a plant that is not built; the real parent (Dyson-Kissner-Moran Corporation, stated on inside.lighting) had no evidence row although plants.csv shows it. It supports score_scale 5 and confidence 3.",
+  "p-hapco-oklahoma-city-ok:address: compound value; 'OKC 577 Industrial Park' is not on the cited News9 page (it comes from okbusinessvoice.com)."
+ ],
+ "score_problems": [
+  "p-nucor-crawfordsville-in:score_process 20 rests on weld_processes, which this check corrected to unknown (a preferred qualification, not a stated production process). Under the run-log rule (only generic welding stated = 0): process 0, total 65 -> 45 (Medium, at the floor), confidence 4 -> 3.",
+  "p-hapco-oklahoma-city-ok:score_scale 5: 'multi-plant parent stated' cites parent_company, which stated a future second plant in the present tense (corrected). Hapco operates one plant today (Abingdon). The points could stand only if the parent Dyson-Kissner-Moran Corporation is evidenced as multi-plant; no row shows that. If removed: total 24 -> 19, confidence 3 -> 2.",
+  "p-hapco-oklahoma-city-ok: plants.csv parent_company 'Dyson-Kissner-Moran Corporation' had no evidence row (ground rule 1); the correction above supplies a stated quote.",
+  "p-kw-industries-sugar-land-tx:score_part_mix 15 and p-structural-steel-products-fort-worth-tx:score_part_mix 8 rest only on production_type rows that clean-up retagged inferred as company-level. The run log set part mix to 0 in that situation for Elkhart, Ferndale and Birmingham (consultation 3). Question for the coordinator; not re-scored here. SSP's part-mix reasoning still calls its supporting row 'stated'.",
+  "p-chm-fort-worth-tx:score_material_part and p-structural-steel-products-fort-worth-tx:score_material_part: the reasoning text still says 'rubric level 12 applied as a fallback' while the value is 0 (the normalisation note is appended). Wording only; the points are correct.",
+  "Duplicate opening_line rows: KW Sugar Land (2), CHM Fort Worth (2), SSP Fort Worth (2). KW's older row cites plant-level production_type rows that are now inferred.",
+  "Arithmetic checked for all 8 plants: totals equal the sum of components; tiers and confidence match the stated-support rule (Nucor 65/Medium/4, Union Metal 16/Low/2, Structures USA 23/Low/2, KW 28/Low/1, Cem-Tec 23/Low/2, CHM 28/Low/2, Hapco 24/Low/3, SSP 21/Low/2), before the changes above.",
+  "p-nucor-crawfordsville-in:score_labor 12: one Fitter Welder posting counted; the two open Automation Operator (robotic weld-cell) postings need 6 months welding experience but were not counted as 'several at once'. Coordinator's stated judgement; noted, not flagged as an error."
+ ],
+ "opening_line_problems": [
+  "p-structures-usa-elizabethtown-ky: 'a June 15, 2026 PennDOT letter recommends listing it' is wrong. The letter is on Structures USA's own letterhead, addressed to PennDOT and signed by a Manager of Engineering, and refers to PennDOT in the third person. Suggested: '... and in a June 15, 2026 letter to PennDOT its engineering manager recommends listing it as an approved fabricator for mast arms, strain poles and pedestal poles.'",
+  "p-hapco-oklahoma-city-ok: 'operations expected in late 2027' and 'welding among the 80-plus new jobs' have no stated evidence row; the rows the line cites (weld_processes, headcount) are inferred. The facts are on stated pages (inside.lighting: 'operations expected to begin in late 2027'; okbusinessvoice.com: 'positions ... including production, welding, ...'), so stated rows should be added or the clauses dropped.",
+  "p-kw-industries-sugar-land-tx: the line rests only on company-level claims (c-kw-industries:production_type); the plant-level equivalents are inferred. It is worded as a company statement ('KW Industries says its facilities...'), so it is accurate, but it is not a plant-level stated claim.",
+  "p-nucor-crawfordsville-in: 'is investing $105 million' drops the release's 'pending receipt of regulatory and other approvals'; 'already runs robotic weld cells' is supported by the Automation Operator duty line ('Load, operate, and maintain robotic plasma and weld cells', welder_postings row), not by the existing_robots rows the line cites (a plan and a job title). Minor.",
+  "None of the 8 opening lines asserts a current Path deployment."
+ ],
+ "plants_closed_or_moved": [],
+ "plant_status_notes": "All 8 operate (or, for Hapco, are under construction) at the recorded city. Nucor: AISC lists the plant at New Ross, IN; Nucor and news place it in Crawfordsville, adjacent to Nucor Steel Indiana (same county). Union Metal: site live, 2026 Canton job listing in search, AISC-listed. Structures USA: 2024 Kentucky SOS filing and June 2026 letter at 333 Peterson Dr. KW Sugar Land: AISC lists both Sugar Land and East Bernard. Cem-Tec, CHM, SSP: live sites or 2026 lists at the recorded addresses.",
+ "method": "All 35 non-AISC source pages fetched with tools/fetch_page.py on 2026-11-13 (33 plain, 2 browser); every quote fragment matched the normalised page text (74/74). AISC rows checked against the committed snapshot. WebSearch used only for open/moved checks. No ledger files edited.",
+ "rows": [
+  {
+   "claim_id": "p-chm-fort-worth-tx:address",
+   "source_url": "https://www.chmutility.com/get-in-touch",
+   "ledger_value": "4700 Blue Mound Rd., Fort Worth, TX 76106 (listed as 'Production Facility'; corporate office listed separately at 700 E. McLeroy Blvd., Saginaw, TX 76179)",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-chm-fort-worth-tx:products",
+   "source_url": "https://www.chmutility.com/capabilities/production",
+   "ledger_value": "steel monopole and H-frame structures",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-union-metal-canton-oh:name",
+   "source_url": "https://www.unionmetal.com/about-us",
+   "ledger_value": "Union Metal Industries Corp.",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-union-metal-canton-oh:address",
+   "source_url": "https://www.unionmetal.com/",
+   "ledger_value": "1432 Maple Ave NE, Canton, OH 44705",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-union-metal-canton-oh:products",
+   "source_url": "https://www.unionmetal.com/about-us",
+   "ledger_value": "highly engineered steel structures for traffic and roadway lighting; pole fabrication for wireless communication towers",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-union-metal-canton-oh:website",
+   "source_url": "https://www.unionmetal.com/",
+   "ledger_value": "https://www.unionmetal.com/",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-kw-industries-sugar-land-tx:address",
+   "source_url": "https://kwindustries.com/contact/",
+   "ledger_value": "909 Industrial Blvd, Sugar Land, TX 77478",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-structural-steel-products-fort-worth-tx:name",
+   "source_url": "https://www.dot.ga.gov/PartnerSmart/Materials/Documents/qpl52a.pdf",
+   "ledger_value": "Structural & Steel Products, Inc.",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-structural-steel-products-fort-worth-tx:address",
+   "source_url": "https://roads.maryland.gov/OMT/lightstruc.pdf",
+   "ledger_value": "3001 West Pafford Street, Fort Worth, TX 76110",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-structures-usa-elizabethtown-ky:name",
+   "source_url": "https://www.dot.state.oh.us/Divisions/ConstructionMgt/Materials/Pages/SignalSupportsandStrainPolesCertified.aspx",
+   "ledger_value": "Structures USA, LLC",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-structures-usa-elizabethtown-ky:address",
+   "source_url": "https://www.dot.state.oh.us/Divisions/ConstructionMgt/Materials/Pages/SignalSupportsandStrainPolesCertified.aspx",
+   "ledger_value": "333 Peterson Drive, Elizabethtown, KY 42701",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hapco-oklahoma-city-ok:name",
+   "source_url": "https://www.hapco.com/hapco-breaks-ground-on-new-oklahoma-city-manufacturing-facility/",
+   "ledger_value": "Hapco Pole Products (Oklahoma City, under construction)",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hapco-oklahoma-city-ok:website",
+   "source_url": "https://www.hapco.com/",
+   "ledger_value": "https://www.hapco.com/",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-union-metal-canton-oh:prospect_test",
+   "source_url": "https://www.unionmetal.com/about-us",
+   "ledger_value": "pass",
+   "verdict": "corrected",
+   "corrected_value": "pass",
+   "corrected_quote": "Welding conforms to AWS D1.1",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "A prospect-test verdict is a judgement, so it must be tagged inferred (as Cem-Tec's and others' were in clean-up). The page supports in-house welding of steel shafts ('Welding conforms to AWS D1.1'; 'fabrication of tapered shafts ... unobtrusive weld seams'), so the verdict itself stands."
+  },
+  {
+   "claim_id": "p-structural-steel-products-fort-worth-tx:products",
+   "source_url": "https://www.mass.gov/info-details/approved-fabricators-of-signs-luminaires-and-signal-supports",
+   "ledger_value": "listed on state DOT list",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-structural-steel-products-fort-worth-tx:found_by",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC",
+   "verdict": "confirmed",
+   "note": "Checked against ledger/audit/source-snapshot-aisc-directory-2026-11-12.txt (AISC directory snapshot). Checked against the AISC snapshot."
+  },
+  {
+   "claim_id": "p-structures-usa-elizabethtown-ky:products",
+   "source_url": "https://docs.penndot.pa.gov/Public/Bureaus/BOO/SignalPoles/Structures_USA.pdf",
+   "ledger_value": "mast arms, strain poles, pedestal poles recommended for PennDOT approved fabricator",
+   "verdict": "confirmed",
+   "note": "The June 15, 2026 letter is on Structures USA letterhead, addressed to PennDOT, and signed by a Manager of Engineering; it refers to PennDOT in the third person. It is not a PennDOT letter (see opening_line_problems). Product clause supported."
+  },
+  {
+   "claim_id": "p-structures-usa-elizabethtown-ky:found_by",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC",
+   "verdict": "confirmed",
+   "note": "Checked against ledger/audit/source-snapshot-aisc-directory-2026-11-12.txt (AISC directory snapshot). Checked against the AISC snapshot."
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:products",
+   "source_url": "https://www.steelorbis.com/steel-news/latest-news/nucor-to-invest-105-million-to-expand-utility-structures-facility-in-indiana-1482465.htm",
+   "ledger_value": "utility poles / steel utility structures",
+   "verdict": "corrected",
+   "corrected_value": "utility poles and related products",
+   "corrected_quote": "The additional $105 million investment will add capacity to manufacture utility poles and related products supporting the country's power transmission and distribution infrastructure.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Minor: 'steel utility structures' is not in the SteelOrbis text (headline says 'utility structures facility'; 'steel' not shown). Same class as the round-2 legal-suffix corrections."
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:found_by",
+   "source_url": "https://www.steelorbis.com/steel-news/latest-news/nucor-to-invest-105-million-to-expand-utility-structures-facility-in-indiana-1482465.htm",
+   "ledger_value": "news",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:headcount",
+   "source_url": "https://www.steelorbis.com/steel-news/latest-news/nucor-to-invest-105-million-to-expand-utility-structures-facility-in-indiana-1482465.htm",
+   "ledger_value": "328",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hapco-oklahoma-city-ok:found_by",
+   "source_url": "https://www.hapco.com/hapco-breaks-ground-on-new-oklahoma-city-manufacturing-facility/",
+   "ledger_value": "news",
+   "verdict": "confirmed",
+   "note": "Cited page is Hapco's own news post (company site); news coverage also exists (inside.lighting, News9), so 'news' stands."
+  },
+  {
+   "claim_id": "p-structural-steel-products-fort-worth-tx:found_by",
+   "source_url": "https://www.txdot.gov/content/dam/docs/division/mtd/mpl/hmip.pdf",
+   "ledger_value": "state DOT list",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cem-tec-phoenix-az:address",
+   "source_url": "https://www.cem-tec.com",
+   "ledger_value": "3745 S 7th Ave, Phoenix, AZ 85041",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cem-tec-phoenix-az:name",
+   "source_url": "https://www.cem-tec.com",
+   "ledger_value": "Cem-Tec Corporation",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cem-tec-phoenix-az:products",
+   "source_url": "https://www.cem-tec.com",
+   "ledger_value": "Lighting, transportation and wireless steel structures",
+   "verdict": "confirmed",
+   "note": "Quote says 'steel solutions' (not 'structures'); the page lists Area and Site Lighting, Street Lighting, Cellular Structure and Traffic Poles, which carry the value."
+  },
+  {
+   "claim_id": "p-cem-tec-phoenix-az:website",
+   "source_url": "https://www.cem-tec.com",
+   "ledger_value": "https://www.cem-tec.com",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-chm-fort-worth-tx:weld_processes",
+   "source_url": "https://www.chmutility.com/capabilities/production",
+   "ledger_value": "submerged arc long-seam welders (3); final welding in one of 42 welding stations",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-chm-fort-worth-tx:materials",
+   "source_url": "https://www.chmutility.com/capabilities/production",
+   "ledger_value": "steel plate (cut on CNC plasma tables)",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-chm-fort-worth-tx:certifications",
+   "source_url": "https://www.chmutility.com/",
+   "ledger_value": "AWS and AISC certified manufacturer (company site)",
+   "verdict": "confirmed",
+   "note": "AISC snapshot also lists 'CHM Industries, Inc.  Fort Worth  TX  Highway Component Manufacturer'."
+  },
+  {
+   "claim_id": "p-chm-fort-worth-tx:certifications",
+   "source_url": "https://www.chmutility.com/capabilities/production",
+   "ledger_value": "D1.1 code (not a certification): all welders certified in accordance with AWS D1.1",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-chm-fort-worth-tx:production_type",
+   "source_url": "https://www.chmutility.com/company/vertically-integrated",
+   "ledger_value": "custom engineered structures",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-structural-steel-products-fort-worth-tx:certifications",
+   "source_url": "https://www.txdot.gov/content/dam/docs/division/mtd/mpl/hmip.pdf",
+   "ledger_value": "TxDOT-approved high mast illumination pole fabrication plant (DMS-7380 qualification), plant 99951, Fort Worth",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-structural-steel-products-fort-worth-tx:parent_company",
+   "source_url": "https://dallasinnovates.com/?p=167884",
+   "ledger_value": "Race Rock Group (acquired Structural & Steel Products, Inc.)",
+   "verdict": "confirmed",
+   "note": "2020 article; current ownership confirmed by racerock.com/about-us ('November 2020 Acquisition of Structural & Steel Products')."
+  },
+  {
+   "claim_id": "p-chm-fort-worth-tx:name",
+   "source_url": "https://www.chmutility.com/get-in-touch",
+   "ledger_value": "CHM Utility (CHM Industries) production facility",
+   "verdict": "confirmed",
+   "note": "Page header reads 'A Division of CHM Industries' / 'CHM Utility'; production facility at 4700 Blue Mound Rd."
+  },
+  {
+   "claim_id": "p-union-metal-canton-oh:materials",
+   "source_url": "https://www.unionmetal.com/",
+   "ledger_value": "steel (and aluminum poles)",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-union-metal-canton-oh:certifications",
+   "source_url": "https://www.unionmetal.com/about-us",
+   "ledger_value": "AISC factory certified (the site also says welding conforms to the AWS D1.1 code, which is not a certification)",
+   "verdict": "confirmed",
+   "note": "Site footer is ©2018-2019, but the AISC snapshot lists 'Union Metal Industries Corporation  Canton  OH  Highway Component Manufacturer, Building Fabricator'. Plant operating (2026 Canton job listing in search)."
+  },
+  {
+   "claim_id": "p-union-metal-canton-oh:production_type",
+   "source_url": "https://www.unionmetal.com/about-us",
+   "ledger_value": "engineered customized poles; high-volume pole fabrication for wireless communication towers",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-structures-usa-elizabethtown-ky:materials",
+   "source_url": "https://www.areadevelopment.com/newsItems/9-6-2013/structures-usa-manufacturing-operation-elizabethtown-kentucky389432.shtml",
+   "ledger_value": "steel and aluminum tubular products (2013 announcement of the plant's planned primary focus)",
+   "verdict": "confirmed",
+   "note": "Value is dated as the 2013 planned focus."
+  },
+  {
+   "claim_id": "p-structures-usa-elizabethtown-ky:production_type",
+   "source_url": "https://docs.penndot.pa.gov/Public/Bureaus/BOO/SignalPoles/Structures_USA.pdf",
+   "ledger_value": "Custom-designed tubular/pole products",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cem-tec-phoenix-az:materials",
+   "source_url": "https://www.cem-tec.com",
+   "ledger_value": "steel",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cem-tec-phoenix-az:production_type",
+   "source_url": "https://www.cem-tec.com/about-us",
+   "ledger_value": "projects customized to fit customer needs",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-chm-fort-worth-tx:website",
+   "source_url": "https://www.chmutility.com/",
+   "ledger_value": "https://www.chmutility.com/",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-union-metal-canton-oh:parent_company",
+   "source_url": "https://www.unionmetal.com/about-us",
+   "ledger_value": "none named (privately owned)",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-structural-steel-products-fort-worth-tx:products",
+   "source_url": "https://www.txdot.gov/content/dam/docs/division/mtd/mpl/hmip.pdf",
+   "ledger_value": "high mast illumination poles (TxDOT-approved fabrication plant)",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-structural-steel-products-fort-worth-tx:parent_company",
+   "source_url": "https://www.racerock.com/about-us",
+   "ledger_value": "Race Rock Group (acquired Structural & Steel Products, November 2020)",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-structural-steel-products-fort-worth-tx:website",
+   "source_url": "https://www.racerock.com/",
+   "ledger_value": "https://www.racerock.com/",
+   "verdict": "confirmed",
+   "note": "Race Rock home page does not name SSP or Fort Worth; the plant tie is on racerock.com/about-us/our-facilities ('Fabrication Facility, Fort Worth, TX ... 3001 West Pafford Street')."
+  },
+  {
+   "claim_id": "p-structural-steel-products-fort-worth-tx:address",
+   "source_url": "https://www.racerock.com/about-us/our-facilities",
+   "ledger_value": "3001 West Pafford Street, Fort Worth, TX 76110 (Race Rock lists it as its Fort Worth fabrication facility, 2026-11-12)",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-structures-usa-elizabethtown-ky:parent_company",
+   "source_url": "https://www.areadevelopment.com/newsItems/9-6-2013/structures-usa-manufacturing-operation-elizabethtown-kentucky389432.shtml",
+   "ledger_value": "VSI Sales LLC (Structures USA LLC described in 2013 as its newly-formed manufacturing arm)",
+   "verdict": "confirmed",
+   "note": "Value is dated to 2013; current ownership not confirmed."
+  },
+  {
+   "claim_id": "p-structures-usa-elizabethtown-ky:website",
+   "source_url": "https://www.structuresusa.us/",
+   "ledger_value": "https://www.structuresusa.us/",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-kw-industries-sugar-land-tx:website",
+   "source_url": "https://kwindustries.com/",
+   "ledger_value": "https://kwindustries.com/",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cem-tec-phoenix-az:parent_company",
+   "source_url": "https://www.cem-tec.com/about-us",
+   "ledger_value": "Cem-Tec Corporation (third-generation family business)",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:name",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "Nucor Towers & Structures Indiana",
+   "verdict": "confirmed",
+   "note": "Checked against ledger/audit/source-snapshot-aisc-directory-2026-11-12.txt (AISC directory snapshot). AISC snapshot row lists the city as New Ross, IN; Nucor releases, postings and news place the plant in Crawfordsville (Montgomery County). Plant operating; city kept."
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:parent_company",
+   "source_url": "https://s202.q4cdn.com/531038915/files/doc_news/Nucor-to-Expand-Utility-Towers--Structures-Facility-in-Indiana-2026.pdf",
+   "ledger_value": "Nucor Corporation",
+   "verdict": "confirmed",
+   "note": "'Nucor Corporation' appears on the release, so the suffix is supported here."
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:status_detail",
+   "source_url": "https://s202.q4cdn.com/531038915/files/doc_news/Nucor-to-Expand-Utility-Towers--Structures-Facility-in-Indiana-2026.pdf",
+   "ledger_value": "expansion pending approvals",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:products",
+   "source_url": "https://s202.q4cdn.com/531038915/files/doc_news/Nucor-to-Expand-Utility-Towers--Structures-Facility-in-Indiana-2026.pdf",
+   "ledger_value": "utility poles and related products for power transmission and distribution",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:headcount",
+   "source_url": "https://s202.q4cdn.com/531038915/files/doc_news/Nucor-to-Expand-Utility-Towers--Structures-Facility-in-Indiana-2026.pdf",
+   "ledger_value": "328",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:weld_processes",
+   "source_url": "https://jobs.nucor.com/job/Crawfordsville-NTSIN-Automation-Operator-IN-47933/1405879500/",
+   "ledger_value": "MIG/flux-core (named in a Crawfordsville posting for robotic weld-cell operators)",
+   "verdict": "corrected",
+   "corrected_value": "unknown: production weld process not stated for the plant (the Automation Operator posting lists 'MIG flux core welding experience' only under Preferred Qualifications; its duties say only 'robotic plasma and weld cells')",
+   "corrected_quote": "MIG flux core welding experience",
+   "corrected_tag": "unknown",
+   "error_kind": "quote does not support value",
+   "note": "Process claim. The quote is a preferred hiring qualification, not a statement of the process used in production. Under the run-log process rule (only generic welding stated = 0) score_process 20 is unsupported: total 65 -> 45 (still Medium, at the floor), confidence 4 -> 3. Do not re-score from a value that keeps 'MIG' under a stated tag."
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:materials",
+   "source_url": "https://jobs.nucor.com/job/Crawfordsville-NTSIN-Day-Shift-Fitter-Welder-IN-47933/1437782900/",
+   "ledger_value": "steel",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:certifications",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC certified (Building Fabricator)",
+   "verdict": "confirmed",
+   "note": "Checked against ledger/audit/source-snapshot-aisc-directory-2026-11-12.txt (AISC directory snapshot). AISC snapshot: 'Nucor Towers & Structures Indiana  New Ross  IN  Building Fabricator'."
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:existing_robots",
+   "source_url": "https://nucor.com/?p=2587",
+   "ledger_value": "Nucor planned automation and robotics for the Crawfordsville plant",
+   "verdict": "confirmed",
+   "note": "Undated product page; value is phrased as a plan, so it is not stale in the present tense."
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:existing_robots",
+   "source_url": "https://jobs.nucor.com/job/Crawfordsville-NTSIN-Robot-Cell-Lead-IN-47933/1448964400/",
+   "ledger_value": "plant posting for a Robot Cell Lead (night shift), dated Nov 9, 2026",
+   "verdict": "confirmed",
+   "note": "Posting title 'NTSIN Robot Cell Lead', dated Nov 9, 2026, night shift 6pm-6am."
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:welder_postings",
+   "source_url": "https://jobs.nucor.com/job/Crawfordsville-NTSIN-Day-Shift-Fitter-Welder-IN-47933/1437782900/",
+   "ledger_value": "weekends and holidays as operating conditions require (not mandatory overtime)",
+   "verdict": "confirmed",
+   "note": "Posting dated Nov 5, 2026. The parenthetical 'not mandatory overtime' is a limiting note, not counted."
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:welder_postings",
+   "source_url": "https://jobs.nucor.com/job/Crawfordsville-NTSIN-Automation-Operator-IN-47933/1405879500/",
+   "ledger_value": "also open: Automation Operator for robotic weld cells (Oct 30, 2026), needs 6 months welding experience",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:welder_postings",
+   "source_url": "https://jobs.nucor.com/job/Crawfordsville-NTSIN-Night-Shift-Automation-Operator-IN-47933/1408174000/",
+   "ledger_value": "also open: Night Shift Automation Operator for robotic weld cells (Oct 30, 2026)",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:welder_postings",
+   "source_url": "https://jobs.nucor.com/job/crawfordsville-ntsin-fitter-welder-in-47933/1402599400",
+   "ledger_value": "earlier Night Shift Fitter Welder posting (Oct 11, 2026) filled",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:triggers",
+   "source_url": "https://s202.q4cdn.com/531038915/files/doc_news/Nucor-to-Expand-Utility-Towers--Structures-Facility-in-Indiana-2026.pdf",
+   "ledger_value": "announced Oct 8, 2026",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hapco-oklahoma-city-ok:parent_company",
+   "source_url": "https://www.hapco.com/hapco-breaks-ground-on-new-oklahoma-city-manufacturing-facility/",
+   "ledger_value": "Hapco has more than one plant (Abingdon flagship plus Oklahoma City)",
+   "verdict": "corrected",
+   "corrected_value": "Dyson-Kissner-Moran Corporation",
+   "corrected_quote": "Chairman and Chief Executive Officer of Dyson-Kissner-Moran Corporation ... Hapco's parent company",
+   "corrected_tag": "stated",
+   "corrected_source_url": "https://inside.lighting/press/26-q3/hapco-breaks-ground-new-oklahoma-city-manufacturing-facility",
+   "error_kind": "quote does not support value",
+   "note": "The value is not a parent company, and it states in the present tense that Hapco has more than one plant, but the quote says the new (unbuilt) facility 'will complement' Abingdon. Correct fact for multi-plant: one operating plant (Abingdon) plus Oklahoma City under construction. plants.csv parent_company (Dyson-Kissner-Moran Corporation) had no evidence row; the corrected quote supplies one (verified with fetch_page --check)."
+  },
+  {
+   "claim_id": "p-hapco-oklahoma-city-ok:address",
+   "source_url": "https://www.news9.com/oklahoma-city-news/hapco-pole-products-break-ground-new-okc-manufacturing-facility",
+   "ledger_value": "OKC 577 Industrial Park, off I-240 between S Bryant Ave and S Eastern Ave, Oklahoma City, OK (no street number published)",
+   "verdict": "corrected",
+   "corrected_value": "off I-240 between South Bryant Avenue and South Eastern Avenue, Oklahoma City, OK (no street number published)",
+   "corrected_quote": "Hapco Pole Products’ Oklahoma City facility is located off of I-240, between South Bryant Avenue and South Eastern Avenue.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Compound value: 'OKC 577 Industrial Park' is not on the News9 page; it is supported separately by the okbusinessvoice.com address row."
+  },
+  {
+   "claim_id": "p-hapco-oklahoma-city-ok:address",
+   "source_url": "https://okbusinessvoice.com/2026/07/21/why-hapco-chose-oklahoma-city-for-its-next-manufacturing-chapter/",
+   "ledger_value": "OKC 577 Industrial Park",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hapco-oklahoma-city-ok:status_detail",
+   "source_url": "https://inside.lighting/press/26-q3/hapco-breaks-ground-new-oklahoma-city-manufacturing-facility",
+   "ledger_value": "groundbreaking week of Aug 12, 2026 press item",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hapco-oklahoma-city-ok:materials",
+   "source_url": "https://okbusinessvoice.com/2026/07/21/why-hapco-chose-oklahoma-city-for-its-next-manufacturing-chapter/",
+   "ledger_value": "aluminum-first (aluminum light poles); steel not stated for this plant",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hapco-oklahoma-city-ok:triggers",
+   "source_url": "https://inside.lighting/press/26-q3/hapco-breaks-ground-new-oklahoma-city-manufacturing-facility",
+   "ledger_value": "groundbreaking reported Aug 12, 2026",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hapco-oklahoma-city-ok:triggers",
+   "source_url": "https://www.hapco.com/hapco-breaks-ground-on-new-oklahoma-city-manufacturing-facility/",
+   "ledger_value": "groundbreaking",
+   "verdict": "confirmed"
+  }
+ ]
+}

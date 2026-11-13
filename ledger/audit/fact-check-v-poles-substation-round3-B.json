@@ -1,0 +1,699 @@
+{
+ "checker": "fact-checker B (round 3, confirming)",
+ "vertical": "v-poles-substation",
+ "date": "2026-11-13",
+ "plants": [
+  "p-larwel-roanoke-tx",
+  "p-raycap-north-charleston-sc",
+  "p-browning-enterprise-attalla-al",
+  "p-stony-brook-calverton-ny",
+  "p-metal-pros-wichita-ks",
+  "p-pelco-structural-claremore-ok",
+  "p-ehresmann-yankton-sd",
+  "p-hurtt-marceline-mo"
+ ],
+ "claims_checked": 90,
+ "claims_corrected": 3,
+ "claims_unreachable": 0,
+ "error_rate": 0.0333,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 2,
+  "invented fact": 0,
+  "other": 1
+ },
+ "repeated_kinds": [],
+ "worst_errors": [
+  "p-raycap-north-charleston-sc:production_type: a company-wide product statement ('Raycap's goal is ... STEALTH poles ... customizable based on the location') is presented as the North Charleston plant's production type. Corrected to inferred. It is the only support for score_part_mix 15 and part of the opening line.",
+  "p-ehresmann-yankton-sd:certifications: the value 'AISC' reads as a registry certification, but the AISC certified-company directory has no Ehresmann row (only EEI Enterprise, LLC, Yankton). Corrected to the company's own claim. The opening line states the certification as fact.",
+  "p-raycap-north-charleston-sc:products: the second clause (concealed small cell and STEALTH poles) is taken from the company-goal sentence, not from text naming the plant. Corrected to the plant-naming text (steel fabrication/integration and composite/concealment facilities, STEALTH line)."
+ ],
+ "opening_line_problems": [
+  "p-ehresmann-yankton-sd: 'Ehresmann Engineering in Yankton is certified by the American Institute of Steel Construction' states AISC certification as fact. Only the company's own site says so; the AISC directory snapshot lists EEI Enterprise, LLC (Yankton) and not Ehresmann. Reword to 'says it is certified by AISC'.",
+  "p-raycap-north-charleston-sc: the second clause ('and that its STEALTH poles are customizable based on the location') rests on p-raycap-north-charleston-sc:production_type, now corrected to inferred (company-level). The clause is accurately attributed to the release but is not a plant-level stated fact; consider dropping it or keeping only the 112,000 sq ft facility clause.",
+  "No opening line among the 8 plants asserts a current Path deployment. The other 6 lines (Larwel, Browning, Stony Brook, Metal Pros, Pelco, Hurtt) use only stated claims for their plants."
+ ],
+ "score_problems": [
+  "p-raycap-north-charleston-sc:score_part_mix 15: its only cited claim (production_type) is now inferred (company-level statement). Points can stay at the custom level only if the coordinator accepts the inference. In either case confidence drops from 2 to 1.",
+  "p-raycap-north-charleston-sc:score_scale 5: the reasoning says 'multi-site parent' but cites only p-raycap-north-charleston-sc:headcount (unknown rows). No cited claim establishes a multi-plant parent. Support exists: raycap.com/company lists plants in Germany, Greece, Slovenia, Kearny NJ, Post Falls ID and three in North Charleston. Add a parent/multi-plant claim and cite it. Lead, not evidence: search results show 2026 Raycap plant-manager postings citing about 300 plant employees, which would make scale 10 if confirmed from a fetchable page.",
+  "p-hurtt-marceline-mo:score_scale and p-stony-brook-calverton-ny:score_scale cite '<id>:headcount', but no headcount evidence row exists for either plant. The points (0) are right but the citations point to missing rows.",
+  "Part mix scored inconsistently: Larwel scores 8 (mixed) for 'TxDOT-standard plus custom'. Stony Brook's own text is 'One offs or production runs', and Browning's quoted sentence continues 'From prototype to mass production' (cut from the ledger quote), yet both score 15. Both are arguably the mixed level (8). Flag for the coordinator to decide. If changed, Stony Brook goes 23 to 16 and Browning 23 to 16.",
+  "p-metal-pros-wichita-ks:welder_postings has two evidence rows: a stale 'none found' (unknown) and the stated '1 open: Welder (ALL SHIFTS)'. score_labor 12 matches the stated row; retire the stale row.",
+  "Stale reasoning text: the material reasoning for Raycap ('scored 12 per ledger precedent'), Pelco ('rubric level 12 applied as a fallback'), Browning, Metal Pros and Ehresmann ('suited to Rove') still describes the old 12 level, although the value is correctly 0 under the run_log material rule (normalisation notes are appended). Rewrite the reasoning to say 'unknown part size = 0'.",
+  "p-hurtt-marceline-mo:materials is 'unknown (steel not stated)' in the ledger, but hurttfab.com/capabilities (already a source for this plant) states 'Products are manufactured using steel, stainless steel, and aluminum'. This is a missed stated fact that bears on the prospect test (it welds carbon/stainless steel). It does not change score_material_part (no part size). It is not counted in claims_checked because the row is tagged unknown.",
+  "Arithmetic and tiers checked for all 8 plants: totals equal the sum of components (Larwel 36, Raycap 28, Browning 23, Stony Brook 23, Metal Pros 35, Pelco 35, Ehresmann 23, Hurtt 23; all Low). Confidence values match the run_log rule (components above 0 whose cited claims are all stated), except Raycap after this correction. All other cited claim_ids exist. Rubric levels otherwise match CLAUDE.md as clarified (Larwel process 20 on stated MIG; Browning process 0 on SAW only; labor 12 for Metal Pros and Pelco on one undated open posting; Hurtt labor 0 for a standing resume invitation)."
+ ],
+ "plants_closed_or_moved": [],
+ "other_findings": [
+  "All 8 plants are operating at the recorded city. Larwel: TxDOT list dated 2026-10-28 and site (c) 2026 (one MapQuest 'Closed' flag is likely hours). Raycap: 2026 North Charleston postings in search results. Browning: site and 2026 company blog. Stony Brook: AISC snapshot 2026-11-12 and MassDOT list. Metal Pros: site (c) 2026, live careers page, AISC. Pelco: site (c) 2026, live careers, AISC. Ehresmann: site (c) 2025, MapQuest open. Hurtt: AISC snapshot, live contact and employment pages.",
+  "Pelco lead (not evidence): an IBISWorld SupplierIQ profile in search results lists 175 employees for Pelco Structural LLC. If fetched and quoted, score_scale would go from 0 to 5.",
+  "Ehresmann lead: a sister company, Needmore Towers, is named in a search-result profile; EEI Enterprises LLC shares the Yankton address. Common ownership is not established."
+ ],
+ "rows": [
+  {
+   "claim_id": "p-pelco-structural-claremore-ok:address",
+   "source_url": "https://www.pelcostructural.com",
+   "ledger_value": "1501 Industrial Blvd.",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 507. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-pelco-structural-claremore-ok:products",
+   "source_url": "https://www.pelcostructural.com",
+   "ledger_value": "utility, traffic & lighting, sports lighting and communication poles (site product menu)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 508. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-pelco-structural-claremore-ok:website",
+   "source_url": "https://www.pelcostructural.com",
+   "ledger_value": "https://www.pelcostructural.com",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 512. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-browning-enterprise-attalla-al:products",
+   "source_url": "https://www.slideshare.net/browningent/electrical-transmission-and-distribution-poles-manufacturer-in-attalla-alabama",
+   "ledger_value": "electrical transmission and distribution poles (manufacturer in Attalla, Alabama)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 519. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-pelco-structural-claremore-ok:name",
+   "source_url": "https://pelcostructural.com/",
+   "ledger_value": "Pelco Structural",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 594. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-pelco-structural-claremore-ok:address",
+   "source_url": "https://pelcostructural.com/contact",
+   "ledger_value": "1501 Industrial Blvd, Claremore, OK 74017",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 595. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-pelco-structural-claremore-ok:products",
+   "source_url": "https://pelcostructural.com/products/traffic-lighting/traffic-signals",
+   "ledger_value": "traffic signal poles",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 596. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. The page heading is 'Traffic Signal Poles'."
+  },
+  {
+   "claim_id": "p-pelco-structural-claremore-ok:products",
+   "source_url": "https://pelcostructural.com/products/traffic-lighting/sign-structures",
+   "ledger_value": "sign structures",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 597. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-pelco-structural-claremore-ok:products",
+   "source_url": "https://pelcostructural.com/products/communication",
+   "ledger_value": "communication poles",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 598. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-pelco-structural-claremore-ok:products",
+   "source_url": "https://pelcostructural.com/company",
+   "ledger_value": "custom steel poles; made-to-order, 192,000 sq ft facility",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 599. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-pelco-structural-claremore-ok:website",
+   "source_url": "https://pelcostructural.com/",
+   "ledger_value": "https://pelcostructural.com/",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 600. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-pelco-structural-claremore-ok:welder_postings",
+   "source_url": "https://pelcostructural.com/careers",
+   "ledger_value": "Fitter/Welders listed under Available Positions on careers page 2026-11-12; count, date, process not shown",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 604. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. Careers page 'Available Positions Fitter/Welders', live 2026-11-13. Plant open: 2026 site, careers page, AISC snapshot (Pelco Structural, LLC, Claremore, Highway Component Manufacturer), MassDOT list."
+  },
+  {
+   "claim_id": "p-hurtt-marceline-mo:name",
+   "source_url": "https://hurttfab.com/about",
+   "ledger_value": "Hurtt Fabricating Corp.",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 616. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-hurtt-marceline-mo:address",
+   "source_url": "https://www.dot.ga.gov/PartnerSmart/Materials/Documents/qpl52a.pdf",
+   "ledger_value": "26707 East Scott Road, Marceline, MO 64658",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 617. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. GDOT QPL-52 (revised July 19, 2023) shows 26707 East Scott Road. Re-confirmed as current on the company contact page (hurttfab.com/contact: '26707 East Scott Road ... Marceline, MO 64658')."
+  },
+  {
+   "claim_id": "p-hurtt-marceline-mo:products",
+   "source_url": "https://hurttfab.com/",
+   "ledger_value": "overhead, cantilever, ground-mount sign structures",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 618. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-hurtt-marceline-mo:website",
+   "source_url": "https://hurttfab.com/",
+   "ledger_value": "https://hurttfab.com/",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 619. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-stony-brook-calverton-ny:name",
+   "source_url": "https://www.stonybrookmfg.com/",
+   "ledger_value": "Stony Brook Manufacturing Co.",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 635. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-stony-brook-calverton-ny:address",
+   "source_url": "https://www.stonybrookmfg.com/",
+   "ledger_value": "652 Scott Ave, Calverton, NY 11933",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 636. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-stony-brook-calverton-ny:products",
+   "source_url": "https://www.stonybrookmfg.com/",
+   "ledger_value": "traffic poles, sign structures, lighting poles",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 637. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-stony-brook-calverton-ny:website",
+   "source_url": "https://www.stonybrookmfg.com/",
+   "ledger_value": "https://www.stonybrookmfg.com/",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 638. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-metal-pros-wichita-ks:name",
+   "source_url": "https://metalprosllc.com/",
+   "ledger_value": "Metal Pros, LLC",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 719. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-metal-pros-wichita-ks:products",
+   "source_url": "https://metalprosllc.com/",
+   "ledger_value": "overhead sign structures",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 720. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-metal-pros-wichita-ks:website",
+   "source_url": "https://metalprosllc.com/",
+   "ledger_value": "https://metalprosllc.com/",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 721. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-hurtt-marceline-mo:products",
+   "source_url": "https://www.hurttfab.com/",
+   "ledger_value": "overhead, cantilever, ground-mount sign structures; bridge railings; safety fence framework",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 790. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-hurtt-marceline-mo:products",
+   "source_url": "https://www.hurttfab.com/capabilities",
+   "ledger_value": "in-house fabrication of roadway structures at Marceline plant",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 791. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-hurtt-marceline-mo:found_by",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 793. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. AISC row checked against ledger/audit/source-snapshot-aisc-directory-2026-11-12.txt."
+  },
+  {
+   "claim_id": "p-hurtt-marceline-mo:found_by",
+   "source_url": "https://www.mass.gov/info-details/approved-fabricators-of-signs-luminaires-and-signal-supports",
+   "ledger_value": "state DOT list",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 794. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-stony-brook-calverton-ny:products",
+   "source_url": "https://www.stonybrookmfg.com",
+   "ledger_value": "traffic poles, sign structures, lighting poles, camera poles",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 819. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-stony-brook-calverton-ny:found_by",
+   "source_url": "https://www.mass.gov/info-details/approved-fabricators-of-signs-luminaires-and-signal-supports",
+   "ledger_value": "state DOT list",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 820. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-stony-brook-calverton-ny:found_by",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 821. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. AISC row checked against ledger/audit/source-snapshot-aisc-directory-2026-11-12.txt."
+  },
+  {
+   "claim_id": "p-metal-pros-wichita-ks:products",
+   "source_url": "https://builtin.com/company/metal-pros-llc",
+   "ledger_value": "overhead sign structures, railings, industrial weldments",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 831. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-metal-pros-wichita-ks:found_by",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 833. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. AISC row checked against ledger/audit/source-snapshot-aisc-directory-2026-11-12.txt."
+  },
+  {
+   "claim_id": "p-metal-pros-wichita-ks:found_by",
+   "source_url": "https://www.mass.gov/info-details/approved-fabricators-of-signs-luminaires-and-signal-supports",
+   "ledger_value": "state DOT list",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 834. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-larwel-roanoke-tx:products",
+   "source_url": "https://www.txdot.gov/content/dam/docs/division/mtd/mpl/osb.pdf",
+   "ledger_value": "truss-type overhead sign support structures and sign walkways (TxDOT approved plant)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 893. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. TxDOT Table 2 (list dated October 28, 2026) lists 99948 Larwel Industries, Roanoke TX. This list is also the evidence that the plant is operating; a MapQuest listing marked 'Closed' (search result) looks like an hours flag."
+  },
+  {
+   "claim_id": "p-larwel-roanoke-tx:products",
+   "source_url": "https://www.larwel.com",
+   "ledger_value": "steel fabrication",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 894. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-larwel-roanoke-tx:found_by",
+   "source_url": "https://www.txdot.gov/content/dam/docs/division/mtd/mpl/osb.pdf",
+   "ledger_value": "state DOT list",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 897. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-larwel-roanoke-tx:name",
+   "source_url": "https://www.txdot.gov/content/dam/docs/division/mtd/mpl/osb.pdf",
+   "ledger_value": "Larwel Industries",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 942. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-larwel-roanoke-tx:website",
+   "source_url": "https://www.larwel.com",
+   "ledger_value": "https://www.larwel.com",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 943. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-raycap-north-charleston-sc:address",
+   "source_url": "https://www.raycap.com/contact/",
+   "ledger_value": "7555-A Palmetto Commerce Parkway, North Charleston, SC 29420",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 975. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. Contact page: Raycap Inc., 7555-A Palmetto Commerce Parkway, North Charleston, SC 29420. The company page says there are three North Charleston facilities; this is the listed address. Plant open: 2026 plant-manager and industrial-engineer postings for the North Charleston site appear in search results; no closure news."
+  },
+  {
+   "claim_id": "p-raycap-north-charleston-sc:name",
+   "source_url": "https://www.raycap.com/contact/",
+   "ledger_value": "Raycap Inc.",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 976. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-raycap-north-charleston-sc:products",
+   "source_url": "https://www.raycap.com/raycap-expands-capabilities-at-its-north-carolina-production-facility/",
+   "ledger_value": "steel fabrication and integration facility at the North Charleston plant; concealed small cell poles and fully integrated STEALTH poles (2019 press release)",
+   "verdict": "corrected",
+   "corrected_value": "STEALTH concealment product line manufacturing at the North Charleston plant: 112,000 sq ft steel fabrication and integration facility and 70,000 sq ft composite and concealment fabrication facility (2019 press release)",
+   "corrected_quote": "STEALTH concealment product line portfolio and manufacturing capabilities have been expanded. The East Coast plant in N. Charleston, South Carolina now includes a 112,000 square ft. steel fabrication and integration facility, and a 70,000 square-foot composite and concealment fabrication facility",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv line 977. The first clause is plant-level. The second clause ('concealed small cell poles and fully integrated STEALTH poles') comes from a separate company-goal sentence ('Raycap's goal is to help telecom carriers ... providing ...') that does not name North Charleston. That small-cell poles are made there is only implied by 'Post Falls ... will also support the small cell concealed pole production', so it is inferred. The corrected value keeps only the text that names the plant."
+  },
+  {
+   "claim_id": "p-raycap-north-charleston-sc:website",
+   "source_url": "https://www.raycap.com/contact/",
+   "ledger_value": "https://www.raycap.com",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 983. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-ehresmann-yankton-sd:address",
+   "source_url": "https://ehresmannengineering.com/",
+   "ledger_value": "4400 West 31st Street, Yankton, SD 57078",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1032. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-ehresmann-yankton-sd:name",
+   "source_url": "https://ehresmannengineering.com/",
+   "ledger_value": "Ehresmann Engineering",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1033. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-ehresmann-yankton-sd:products",
+   "source_url": "https://ehresmannengineering.com/",
+   "ledger_value": "towers (guyed, self-supporting, monopoles, government), concealment towers (canister, bell/clock, flagpole, cross, monopine), mounts and components, modification material",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1034. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-ehresmann-yankton-sd:products",
+   "source_url": "https://mapquest.com/us/south-dakota/ehresmann-engineering-269989218",
+   "ledger_value": "Self-supporting towers, monopoles, concealment towers",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1035. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. Third-party directory text; supports the value."
+  },
+  {
+   "claim_id": "p-ehresmann-yankton-sd:website",
+   "source_url": "https://ehresmannengineering.com/",
+   "ledger_value": "https://ehresmannengineering.com/",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1040. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-hurtt-marceline-mo:certifications",
+   "source_url": "https://hurttfab.com/capabilities",
+   "ledger_value": "AISC Certified Metal Component Manufacturer; in-house AWS and NACE certified inspectors and welders (personnel certifications)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1416. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. 'Certified Metal Component Manufacturer' is the company's wording. The AISC directory lists Hurtt as 'Highway Component Manufacturer, Bridge Fabricator - Simple', so the certification itself is confirmed."
+  },
+  {
+   "claim_id": "p-hurtt-marceline-mo:production_type",
+   "source_url": "https://hurttfab.com/capabilities",
+   "ledger_value": "custom designed per structure",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1418. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-hurtt-marceline-mo:production_type",
+   "source_url": "https://hurttfab.com/",
+   "ledger_value": "more than 100 customers who serve 41 state transportation departments",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1423. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. Matches the quote. It describes the customer base rather than production type (field placement only)."
+  },
+  {
+   "claim_id": "p-stony-brook-calverton-ny:materials",
+   "source_url": "https://www.stonybrookmfg.com/",
+   "ledger_value": "steel and aluminum",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1464. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-stony-brook-calverton-ny:certifications",
+   "source_url": "https://www.stonybrookmfg.com/about",
+   "ledger_value": "company about page says AISC certified fabricator for Simple Bridge and Fracture Critical (page text c. 2014, © 2014 footer)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1465. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. The value is correctly dated to c. 2014. The current AISC directory lists only 'Bridge Fabricator - Simple' (no fracture-critical endorsement shown), so the dated framing matters."
+  },
+  {
+   "claim_id": "p-stony-brook-calverton-ny:production_type",
+   "source_url": "https://www.stonybrookmfg.com/custom-poles",
+   "ledger_value": "one-offs and production runs; custom",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1467. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-stony-brook-calverton-ny:products",
+   "source_url": "https://www.stonybrookmfg.com/about",
+   "ledger_value": "15-year distribution relationship with Valmont Structures (mast arm and strain poles for New York State), as of the about page text c. 2014 (© 2014 footer)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1474. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. The value matches the dated quote. It is a distribution relationship, not a product the plant makes; field placement only."
+  },
+  {
+   "claim_id": "p-pelco-structural-claremore-ok:materials",
+   "source_url": "https://pelcostructural.com/products/utility/transmission",
+   "ledger_value": "steel (tapered steel transmission poles; weathering steel)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1562. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. Weathering steel is a stated option ('available in both weathering steel and galvanized finishes')."
+  },
+  {
+   "claim_id": "p-pelco-structural-claremore-ok:production_type",
+   "source_url": "https://pelcostructural.com/company",
+   "ledger_value": "made-to-order custom steel poles",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1565. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-raycap-north-charleston-sc:materials",
+   "source_url": "https://www.raycap.com/raycap-expands-capabilities-at-its-north-carolina-production-facility/",
+   "ledger_value": "steel (112,000 sq ft steel fabrication and integration facility, 2019 press release)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1876. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-raycap-north-charleston-sc:certifications",
+   "source_url": "https://www.raycap.com/company/",
+   "ledger_value": "ISO 9001:2015 (also ISO 14001, ISO 45001)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1877. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. The quote names the three North Charleston facilities. Plant-level."
+  },
+  {
+   "claim_id": "p-raycap-north-charleston-sc:production_type",
+   "source_url": "https://www.raycap.com/raycap-expands-capabilities-at-its-north-carolina-production-facility/",
+   "ledger_value": "concealed small cell poles and STEALTH poles customizable based on the location (2019 press release)",
+   "verdict": "corrected",
+   "corrected_value": "STEALTH poles, topper designs and shrouds customizable based on the location (company-level product statement in the 2019 release; the link to North Charleston production is inferred)",
+   "corrected_quote": "fully integrated STEALTH poles, topper designs, and shrouds that are quickly deployable and customizable based on the location",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv line 1894. The quoted sentence begins 'Raycap's goal is to help telecom carriers realize their 5G vision by providing...'. It is a company-wide product statement and does not name the North Charleston plant, and the release also names Post Falls ID for small-cell pole production. Presented as plant-level production type, it is not stated for this plant. This affects score_part_mix (15) and confidence, and the opening line's second clause."
+  },
+  {
+   "claim_id": "p-ehresmann-yankton-sd:materials",
+   "source_url": "https://ehresmannengineering.com/",
+   "ledger_value": "steel (steel fabricating)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1893. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-ehresmann-yankton-sd:certifications",
+   "source_url": "https://ehresmannengineering.com/",
+   "ledger_value": "AISC",
+   "verdict": "corrected",
+   "corrected_value": "AISC (company's own claim: 'Certified by the American Institute of Steel Construction', next to a 'Full Member' badge; Ehresmann Engineering has no row in the AISC certified-company directory snapshot of 2026-11-12)",
+   "corrected_quote": "Full Member Certified by the American Institute of Steel Construction for the highest standards in fabrication and safety.",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "note": "evidence.csv line 1909. The quote is on the page, but the bare value 'AISC' reads as a registry certification. The AISC directory snapshot has no Ehresmann row. It does list 'EEI Enterprise, LLC, Yankton, SD, Building Fabricator', and MapQuest shows 'EEI Enterprises LLC' 'also at this address'. A shared address does not show they are the same entity, so the certification should be shown as the company's own claim."
+  },
+  {
+   "claim_id": "p-ehresmann-yankton-sd:production_type",
+   "source_url": "https://ehresmannengineering.com/",
+   "ledger_value": "engineer and fabricate tower structures; many tower types listed (guyed, self-supporting, monopole, concealment)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1896. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-larwel-roanoke-tx:address",
+   "source_url": "https://www.larwel.com/contact/",
+   "ledger_value": "3601 Haynes Road, Roanoke, TX 76262",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2043. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-larwel-roanoke-tx:weld_processes",
+   "source_url": "https://www.larwel.com/about-us/",
+   "ledger_value": "MIG welders (short arc and pulse arc); stud welders listed as shop equipment",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2045. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. About page lists the 12,000 sq ft Roanoke facility's equipment, including 'Mig welders: Short arc & Pulse arc' and 'Stud welders'. Plant-level."
+  },
+  {
+   "claim_id": "p-larwel-roanoke-tx:materials",
+   "source_url": "https://www.larwel.com/steel-fabrication/",
+   "ledger_value": "steel",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2046. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-larwel-roanoke-tx:certifications",
+   "source_url": "https://www.larwel.com/steel-fabrication/",
+   "ledger_value": "AISC; CWF",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2047. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-larwel-roanoke-tx:production_type",
+   "source_url": "https://www.larwel.com/about-us/",
+   "ledger_value": "TxDOT-standard plus custom",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2049. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. Both clauses are on the page: products 'standardized and designed by TXDOT engineers' and 'custom steel fabrication services'."
+  },
+  {
+   "claim_id": "p-larwel-roanoke-tx:production_type",
+   "source_url": "https://www.larwel.com/about-us",
+   "ledger_value": "custom steel fabrication",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2050. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-browning-enterprise-attalla-al:website",
+   "source_url": "https://beial.com/",
+   "ledger_value": "https://beial.com/",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2119. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-browning-enterprise-attalla-al:address",
+   "source_url": "https://beial.com/",
+   "ledger_value": "100 7th Avenue SW, Attalla, AL 35954",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2120. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-browning-enterprise-attalla-al:products",
+   "source_url": "https://beial.com/electrical-transmission-and-distribution-poles",
+   "ledger_value": "tapered steel electrical transmission and distribution poles",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2121. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-browning-enterprise-attalla-al:weld_processes",
+   "source_url": "https://beial.com/electrical-transmission-and-distribution-poles",
+   "ledger_value": "submerged arc (SAW) for pole seams",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2122. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. 'The tapered pole is then sealed using our submerged arc welder equipment.' Plant-level (single Attalla site). No MIG is stated."
+  },
+  {
+   "claim_id": "p-browning-enterprise-attalla-al:materials",
+   "source_url": "https://beial.com/electrical-transmission-and-distribution-poles",
+   "ledger_value": "steel (plate)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2123. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-browning-enterprise-attalla-al:production_type",
+   "source_url": "https://beial.com/",
+   "ledger_value": "custom products from one of a kind to OEM",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2126. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. The quote is on the page. The sentence continues 'From prototype to mass production', which the ledger quote leaves out (see score_problems on part mix)."
+  },
+  {
+   "claim_id": "p-browning-enterprise-attalla-al:headcount",
+   "source_url": "https://www.ibisworld.com/united-states/supplieriq/browning-enterprise-inc/430739/",
+   "ledger_value": "37 (estimate)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2130. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. Third-party estimate, labelled as one. The single site is Attalla."
+  },
+  {
+   "claim_id": "p-metal-pros-wichita-ks:materials",
+   "source_url": "https://metalprosllc.com/capabilities/",
+   "ledger_value": "carbon steel, aluminum, stainless steel",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2174. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-metal-pros-wichita-ks:certifications",
+   "source_url": "https://metalprosllc.com/capabilities/",
+   "ledger_value": "AISC (certified annually); weld shop 'certifications to D1.1, D1.2, D1.6, & ASME' (company wording); 2 CWIs on staff",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2175. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. All three clauses are on the capabilities page; the D1.x/ASME item is correctly labelled company wording."
+  },
+  {
+   "claim_id": "p-metal-pros-wichita-ks:production_type",
+   "source_url": "https://metalprosllc.com/",
+   "ledger_value": "custom fabrication to drawings, all shapes and sizes",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2177. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-metal-pros-wichita-ks:welder_postings",
+   "source_url": "https://metalprosllc.com/careers/",
+   "ledger_value": "1 open: Welder (ALL SHIFTS), listed under 'Other Current Openings' on the careers page (re-checked 2026-11-13)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2179. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. 'Other Current Openings: Welder (ALL SHIFTS)' is live on 2026-11-13. Undated, and the value claims no date. Note that a second welder_postings row ('none found', unknown) for this plant is stale and contradicts this one."
+  },
+  {
+   "claim_id": "p-metal-pros-wichita-ks:headcount",
+   "source_url": "https://thefabricator.com/thefabricator/article/arcwelding/one-metal-fabricators-advice-to-build-a-better-shop-culture",
+   "ledger_value": "73 (2023)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2181. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. Article dated October 11, 2023: '73-employee fabricator based in Wichita'. The value is dated (2023)."
+  },
+  {
+   "claim_id": "p-browning-enterprise-attalla-al:products",
+   "source_url": "https://beial.com/",
+   "ledger_value": "commercial building steel components; counterweights; friction pilings (site product menu)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2221. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-browning-enterprise-attalla-al:parent_company",
+   "source_url": "https://beial.com/",
+   "ledger_value": "Browning Enterprise, Inc. (closely held family business)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2222. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-hurtt-marceline-mo:parent_company",
+   "source_url": "https://hurttfab.com/",
+   "ledger_value": "employee-owned (ESOP launched 2016)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2238. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-stony-brook-calverton-ny:certifications",
+   "source_url": "https://www.stonybrookmfg.com/services-offered",
+   "ledger_value": "company says it is 'One of NYSDOTs only certified field welders' (field welding service; company wording, not a listed certification; page text c. 2014, © 2014 footer)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2239. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-metal-pros-wichita-ks:address",
+   "source_url": "https://metalprosllc.com/contact/",
+   "ledger_value": "3900 S. Norman, Wichita, KS 67215",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2240. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-larwel-roanoke-tx:facility_size",
+   "source_url": "https://www.larwel.com/about-us/",
+   "ledger_value": "12,000 sq ft steel manufacturing facility on 5 acres",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2243. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-raycap-north-charleston-sc:parent_company",
+   "source_url": "https://www.raycap.com/raycap-expands-capabilities-at-its-north-carolina-production-facility/",
+   "ledger_value": "Raycap",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2245. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. Copyright footer supports 'Raycap' as the owning group. The page footer is 2026; the release is dated 02.05.2019."
+  },
+  {
+   "claim_id": "p-ehresmann-yankton-sd:parent_company",
+   "source_url": "https://ehresmannengineering.com/",
+   "ledger_value": "Ehresmann Engineering (copyright holder named on its site)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2247. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-pelco-structural-claremore-ok:name",
+   "source_url": "https://pelcostructural.com/contact",
+   "ledger_value": "Pelco Structural, LLC",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2586. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant."
+  },
+  {
+   "claim_id": "p-stony-brook-calverton-ny:certifications",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC Bridge Fabricator - Simple (AISC certified-fabricator directory)",
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2589. Quote is on the page (fetched 2026-11-13) and supports every clause of the value for this plant. AISC row checked against ledger/audit/source-snapshot-aisc-directory-2026-11-12.txt. Row present. Plant open: the AISC directory and the MassDOT approved list (2026) both list Calverton."
+  }
+ ]
+}
