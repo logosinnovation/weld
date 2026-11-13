@@ -499,3 +499,21 @@ Coordinator decisions applied now (mechanical):
   - Gunderson: its own board (jobs.gem.com/giwx) lists an experienced Fitter/Welder (JobTarget date Mar 3, 2026) and a Fitter/Welder Trainee in Portland. Labor 12 -> 20, 82 High.
   - Caruthersville Yard II excluded as fiberglass barge-cover manufacturing (EPA FRS 110017980595 "CARUTHERSVILLE COMPOSITES", SIC 3089; separate "Covers" board location; Waterways Journal May 2026).
 - **Tool bug fixed:** `apply_factcheck.py` wrote a checker's "(keep current ...)" and "(identical to ...)" notes into 6 plant fields (NABRICO x2, Chesapeake). The fields were restored from the commit before the apply, and the tool now recognises those forms. No evidence row was affected.
+
+### Ships miss verification (workflow ships-miss-verify) and miss rate
+
+- **All 59 candidate misses resolved** by two plant-finders:
+  - **30 verified misses**, now base records, plus 2 sister yards named by the candidates' own sites (DSC Poplarville, Bludworth Orange).
+  - **12 already in the ledger** under another id or city (matcher artifacts: Keel Yonges Island, EB Quonset, Eastern Allanton, SanJac, Giddings, Serodino and others).
+  - **2 excluded**, aluminum-only: Midship Marine; Bayou Metal (its HII ROMULUS work is aluminum).
+  - **Duplicates folded:** Fairlead Portsmouth into Newport News; the TAI Holdings award resolved to its builder, Steiner Construction.
+  - **17 unverified**, each with what was tried: Catalyst, Master Marine, Eagle Fabrication, Hope, Bourg, Inland Boat Works, Sisco, Mobro, Newton, Rodriguez Bayou La Batre, Sneed, Progressive, Moe, Galliano MUSV yard, Yager, and the Keel Saginaw and Merrill sites.
+  - Merge: 34 plants added, 486 evidence rows, 3 links; 0 rejected, 0 coverage gaps. Quotes: 289 found, 7 unreachable (transient).
+- **Miss rate (auditor-measured): 30 / 107 = 28.0%.**
+  - Denominator: in-definition auditor plants that exist. 77 were found in the ledger (72 matched by the script plus 5 matcher artifacts that are included) plus the 30 verified misses.
+  - 5 auditor plants are excluded in the ledger, each with a quoted reason (Breaux Brothers aluminum, Metal Shark aluminum, Eastern Port St Joe repair, Southwest Channelview repair, Foss Rainier). They are not counted as misses.
+  - **Over the 20% threshold**, so it goes to the advisor (CLAUDE.md).
+- **Where the misses are:** small inland towboat, barge and dredge builders (Verret, Eymard, Intracoastal Iron Works, FMT, Main Iron Works, John Bludworth, Superior Marine Ways, Sterling, Bludworth, Vessel Repair, Westport, National Maintenance, Donjon, DSC, Ellicott, Duckworth, Jemison, Williams, Rodriguez Coden, Blakeley, WCT, JT Marine, New Pacific, Moran, Marine Group, Steiner Construction), plus Navy structure suppliers (Fairlead, Colonna's Steel America, Hadrian Cherokee, NNS Norfolk campus).
+  - The finder slices B and C under-swept the small Gulf and inland builders.
+  - Slice D missed Fairlead, Colonna's Steel America and Hadrian, and slice A missed NNS's own Norfolk site.
+- **Counts:** 168 plants in the vertical: 39 profiled, 88 base, 41 excluded.
