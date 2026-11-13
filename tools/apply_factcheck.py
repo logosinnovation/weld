@@ -74,7 +74,7 @@ for r in rows:
             pid_, field = r["claim_id"].split(":", 1)
             pv = (r.get("plants_csv_value") or "").strip()
             if pid_ in pid and field in pcols:
-                if pv and pv.lower().startswith("keep"):
+                if pv and (pv.lower().lstrip("( ").startswith("keep") or "identical to the current" in pv.lower()):
                     pass  # multi-row claim: this row is one fragment; the field keeps its value
                 elif pv:
                     pid[pid_][field] = pv
