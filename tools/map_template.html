@@ -183,6 +183,13 @@ details.more p{margin:8px 0 0;font-size:13.5px}
 nav.tabs.more{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 34px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 34px),transparent)}
 .b-pre{color:var(--accent);background:var(--surface2);border:1px dashed var(--accent)}
 .unkn{font-size:12px;color:var(--muted);font-style:italic}
+button.val.mini{border-bottom-style:dotted}
+.inf-m{font-size:9.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--inf);border:1px dashed var(--inf);border-radius:999px;padding:0 5px;white-space:nowrap;vertical-align:1px}
+.lownote{display:block;font-weight:400;font-size:11.5px;color:var(--muted);font-style:italic}
+.banner.low{background:var(--surface2);border:1px solid var(--border)}
+.comp .why.now{color:var(--text)}
+.comp .why.old{font-style:italic}
+.notes{margin:4px 0 0;padding-left:18px;font-size:12.5px}
 .crow .scr{font-weight:800;font-size:16px}
 .crow .ol{color:var(--text);font-size:13px}
 .live{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);border-radius:999px;padding:1px 7px;margin-bottom:3px}
@@ -253,15 +260,15 @@ footer strong{color:var(--text)}
   .list{max-height:none}
 }
 @media (max-width:760px){
-  .crow{grid-template-columns:30px minmax(0,1fr) 50px 50px;grid-template-areas:"rk nm scr tier" ". acct acct acct" ". rel rel rel" ". unk ceil ceil" ". trg trg trg" ". ol ol ol"}
+  .crow{grid-template-columns:30px minmax(0,1fr) 50px 50px;grid-template-areas:"rk nm scr tier" ". acct acct acct" ". rel rel rel" ". cf cf cf" ". unk unk unk" ". ceil ceil ceil" ". trg trg trg" ". ol ol ol"}
   .crow.hd{display:none}
   .crow>.rk{grid-area:rk}.crow>.nm{grid-area:nm}.crow>.scr{grid-area:scr}.crow>.tr{grid-area:tier}
   .crow>.unkc{grid-area:unk}.crow>.acct{grid-area:acct}.crow>.ceil{grid-area:ceil}.crow>.rel{grid-area:rel}.crow>.trg{grid-area:trg}.crow>.ol{grid-area:ol}
-  .crow>.cf{display:none}
+  .crow>.cf{grid-area:cf}.crow>.cf::before{content:'Confidence: ';color:var(--muted)}
   .crow>.acct::before{content:'Account: ';color:var(--muted)}
   .fbtn{display:inline-block;margin-bottom:8px}
   .filters{display:none}.filters.open{display:grid}
-  .crow>.unkc::before{content:'Unknown: '}.crow>.ceil::before{content:'Ceiling (calculated): ';font-weight:400}
+  .crow>.unkc::before{content:'Unknown components: ';color:var(--muted)}.crow>.scr::before{content:'Score';display:block;font-size:9.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.crow>.ceil::before{content:'Ceiling (calculated): ';font-weight:400}
   .stats{margin-left:0;width:100%}.stat{flex:1;min-width:0;padding:6px 10px}
   .stat b{font-size:19px}.stat span{font-size:11px;display:block;line-height:1.25}.top-row{padding:10px 0 8px;gap:8px}.brand p{display:none}
   .tools{gap:6px}.chk,.btn{padding:6px 9px;font-size:13px}.search{flex-basis:100%;max-width:none}
@@ -413,6 +420,42 @@ function effRow(claim, shown){
   rows.forEach(r => { if (norm(r.v) === n) m = r; });
   return m || rows[rows.length-1];
 }
+/* tag for a displayed value. When no row carries exactly the displayed text (the field combines several rows),
+   the most cautious tag wins: any inferred row, or the word "inferred" in the text, makes the value "partly inferred". */
+function claimInfo(claim, shown){
+  const rows = EV[claim]; if (!rows) return null;
+  const n = norm(shown); let m = null;
+  rows.forEach(r => { if (norm(r.v) === n) m = r; });
+  const row = m || rows[rows.length-1];
+  let tag = row.t, mixed = false;
+  if (!m && tag !== 'inferred' && rows.some(r => r.t === 'inferred')) { tag = 'inferred'; mixed = true; }
+  if (tag !== 'inferred' && /\binferred\b/i.test(String(shown || ''))) { tag = 'inferred'; mixed = true; }
+  const vs = m ? verState(m) : (rows.some(r => verState(r) === 'corrected') ? 'corrected' : rows.every(r => verState(r) === 'unreachable') ? 'unreachable' : verState(row));
+  return {row, matched: !!m, tag, mixed, vs};
+}
+const PARTLY = '<span class="badge b-inf" title="This value combines several evidence rows and at least one of them is inferred: a guess to verify">partly inferred</span>';
+const corrMark = vs => vs === 'corrected' ? ' <span class="badge b-warn" title="A fact-checker changed this claim. The value shown is the corrected one; open the evidence to see what it was and why.">fact-check: corrected</span>' : vs === 'unreachable' ? ' <span class="badge b-bad" title="The fact-checker could not reach the source page">source unreachable</span>' : '';
+/* compact clickable value for list rows: opens the evidence drawer and carries a visible inferred mark */
+function mini(p, field, fmt){
+  const raw = p[field]; if (raw == null || raw === '') return '';
+  const claim = p.id + ':' + field, info = claimInfo(claim, raw); if (!info) return '';
+  const lbl = field.replace(/_/g, ' ');
+  if (info.tag === 'inferred' && S.stated) return '<span class="hid">' + lbl + ' hidden (inferred)</span>';
+  return '<button type="button" class="val mini" data-claim="' + esc(claim) + '" data-shown="' + esc(raw) + '" aria-label="' + esc(lbl + ': ' + raw + (info.tag === 'inferred' ? ' (inferred)' : '') + '. Open evidence') + '">' + esc(fmt ? fmt(raw) : raw) + '</button>' + (info.tag === 'inferred' ? ' <span class="inf-m" title="Inferred: a guess to verify">' + (info.mixed ? 'partly inferred' : 'inferred') + '</span>' : '');
+}
+const relFmt = r => String(r).replace(/_/g, ' ');
+/* reasoning strings: the first " | " segment is the original reasoning; later segments are dated notes
+   (coordinator decisions, verify stage, clean-up, sweeps, fact-check). A later decision can change the points,
+   so it is shown as the current basis and the original is marked as earlier. */
+const segsOf = r => String(r || '').split(' | ').map(x => x.trim()).filter(Boolean);
+const laterNotes = r => segsOf(r).slice(1);
+const DECISION_RE = /^(coordinator|verify stage|clean-up)\b/i;
+function latestDecision(r){
+  const notes = laterNotes(r);
+  if (notes.some(x => /^earlier:/i.test(x))) return null;       // the first segment was rewritten and is current
+  const d = notes.filter(x => DECISION_RE.test(x));
+  return d.length ? d[d.length-1] : null;
+}
 function verState(row){
   if (row.vf && row.vf !== 'not_checked') return row.vf;
   return row.fc ? row.fc.status : (row.vf || 'not_checked');
@@ -429,17 +472,18 @@ function val(obj, field, prefix, opt){
   opt = opt || {};
   const raw = obj[field];
   const claim = prefix + ':' + field;
-  const row = effRow(claim, raw);
+  const info = claimInfo(claim, raw), row = info && info.row;
   const text = raw == null || raw === '' ? '' : raw;
   if (text === '' && !row) return '<span class="muted">not sourced</span>';
-  const keepComposed = !!(row && S.stated && composedStated(row));
-  if (row && row.t === 'inferred' && S.stated && !keepComposed) return '<span class="hid">inferred value hidden</span>';
+  const keepComposed = !!(row && S.stated && info.matched && composedStated(row));
+  if (row && info.tag === 'inferred' && S.stated && !keepComposed) return '<span class="hid">inferred value hidden</span>';
   let shown = esc(opt.max && text.length > opt.max ? text.slice(0, opt.max).trimEnd() + '…' : text);
   if (text === '') shown = '<span class="muted">not sourced</span>';
-  const unk = row.t === 'unknown' || /^unknown\b/i.test(text);
-  const vs = verState(row);
-  const mark = vs === 'corrected' ? ' <span class="badge b-warn" title="A fact-check corrected this claim">corrected</span>' : vs === 'unreachable' ? ' <span class="badge b-bad">source unreachable</span>' : '';
-  return '<button type="button" class="val' + (unk ? ' unk' : '') + '" data-claim="' + esc(claim) + '" data-shown="' + esc(text) + '" aria-label="' + esc((opt.label || field.replace(/_/g,' ')) + ': ' + (text || 'not sourced') + '. Open evidence') + '">' + shown + '</button> ' + (keepComposed ? '<span class="badge b-stated" title="Every claim this line is composed from has a stated evidence row">composed from stated claims</span>' : badgeTag(row.t, row)) + mark;
+  const unk = info.tag === 'unknown' || /^unknown\b/i.test(text);
+  const mark = corrMark(info.vs);
+  /* the tag badge is skipped when the text itself already starts with "unknown" (no doubled label) */
+  const tagB = keepComposed ? '<span class="badge b-stated" title="Every claim this line is composed from has a stated evidence row">composed from stated claims</span>' : info.mixed ? PARTLY : (info.tag === 'unknown' && /^unknown\b/i.test(text)) ? '' : badgeTag(info.tag, row);
+  return '<button type="button" class="val' + (unk ? ' unk' : '') + '" data-claim="' + esc(claim) + '" data-shown="' + esc(text) + '" aria-label="' + esc((opt.label || field.replace(/_/g,' ')) + ': ' + (text || 'not sourced') + '. Open evidence') + '">' + shown + '</button> ' + tagB + mark;
 }
 function tierBadge(t){ return t ? '<span class="badge b-st">' + esc(t) + '</span>' : ''; }
 function scoreBadge(p){
@@ -471,8 +515,13 @@ const DV = D.derived || {}, DS = D.dstats || {};
 const UNK_LBL = {process:'Process fit', material_part:'Material and part fit', part_mix:'Part mix', labor:'Labor pain', scale:'Scale'};
 const unkOf = p => (DV[p.id] && DV[p.id].unk) || [];
 const ceilOf = p => DV[p.id] && DV[p.id].ceil != null ? DV[p.id].ceil : null;
-const isPre = p => !!(DV[p.id] && DV[p.id].pre);
-const preBadge = p => isPre(p) ? '<span class="badge b-pre" title="Under construction, ramping up, or converting from another product: no process or robots may be locked in yet">New or converting plant</span>' : '';
+const preKind = p => (DV[p.id] && DV[p.id].pre) || '';
+const isPre = p => !!preKind(p);
+const PRE_LBL = {status: 'Pre-production plant', text: 'New or converting plant'};
+const PRE_TIP = {status: 'The ledger lists this plant as a pre-production prospect (under construction or starting up). Open the profile for the status evidence.', text: 'A trigger or status line in the ledger names construction, ramp-up or a conversion from another product. Open the profile for the evidence.'};
+const preBadge = p => isPre(p) ? '<span class="badge b-pre" title="' + PRE_TIP[preKind(p)] + '">' + PRE_LBL[preKind(p)] + '</span>' : '';
+const preCount = () => pl(DS.preprod || 0, 'plant') + ': ' + (DS.preprod_status || 0) + ' pre-production in the ledger, ' + (DS.preprod_text || 0) + ' converting or ramping up per a trigger line';
+const statusRow = p => { const rs = EV[p.id + ':status']; return rs ? rs[rs.length-1] : null; };
 const liveOf = p => +p.score_demand === 15 ? 1 : 0;
 const posSignal = p => (+p.score_process === 20 && compStated(p, 'score_process')) || (+p.score_labor > 0 && compStated(p, 'score_labor')) || (+p.score_demand === 15 && compStated(p, 'score_demand'));
 const researchFirst = p => p.status === 'profiled' && scoreOf(p) < 45 && (ceilOf(p) || 0) >= 70 && posSignal(p);
@@ -517,7 +566,7 @@ function filterBar(id, base, o){
    '<label>State<select data-f="state">' + optsC(states.map(t => [t, stateName(t), cnt(p => p.state === t)]), f.state, 'All states') + '</select></label>' +
    (o.score ? '<label>Score tier<select data-f="stier">' + optsC(sts.map(t => [t, t, cnt(p => (sTier(p) || 'Not profiled') === t)]), f.stier, 'All score tiers') + '</select></label>' : '<span></span>') +
    '<label>&nbsp;<button type="button" class="btn" data-reset>Reset filters</button></label>' +
-   (o.nopre ? '' : '<div class="count"><label class="chk" style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" data-pre> New or converting plants only <span class="muted small">(' + pl(DS.preprod || 0, 'plant') + ': under construction, ramping up or converting)</span></label></div>') +
+   (o.nopre ? '' : '<div class="count"><label class="chk" style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" data-pre> Pre-production and converting plants only <span class="muted small">(' + preCount() + ')</span></label></div>') +
    '<div class="count" data-count></div></div>';
 }
 function syncFilters(root){ const pc = root.querySelector('input[data-pre]'); if (pc) pc.checked = S.pre; root.querySelectorAll('select[data-f]').forEach(s => { s.value = S.f[s.dataset.f]; }); }
@@ -622,7 +671,7 @@ function makeMap(host){
   };
 }
 const dotCls = (p, by) => by === 'tier' ? 'c-' + (TCLS[p.tier] || 'unk') : 'c-' + tcls(sTier(p));
-const dotLabel = p => (sTier(p) ? sTier(p) + ' ' + p.score_total : 'not yet profiled') + (isPre(p) ? ', pre-production' : '');
+const dotLabel = p => (sTier(p) ? sTier(p) + ' ' + p.score_total : 'not yet profiled') + (isPre(p) ? ', ' + PRE_LBL[preKind(p)].toLowerCase() : '');
 let mapA = null, mapB = null;
 
 function legend(by){
@@ -632,7 +681,7 @@ function legend(by){
 function plantRow(p, extra){
   const t = sTier(p);
   return '<div class="prow"><span class="dot-i d-' + (t ? t.toLowerCase() : 'np') + '" aria-hidden="true"></span><div class="nm"><button type="button" class="link" data-plant="' + esc(p.id) + '">' + esc(p.name) + '</button>' +
-    '<div class="sub">' + esc(p.city) + ', ' + esc(p.state) + (p.tier ? ' &middot; ' + esc(p.tier) : '') + (p.relationship ? ' &middot; ' + esc(p.relationship.replace(/_/g,' ')) : '') + (extra ? ' &middot; ' + extra : '') + '</div>' + (isPre(p) ? '<div>' + preBadge(p) + '</div>' : '') + '</div>' +
+    '<div class="sub">' + [esc(p.city) + ', ' + esc(p.state), mini(p, 'tier'), mini(p, 'relationship', relFmt), extra || ''].filter(Boolean).join(' &middot; ') + '</div>' + (isPre(p) || pathStatus(p) ? '<div style="margin-top:2px;display:flex;gap:4px;flex-wrap:wrap">' + pathBadge(p) + preBadge(p) + '</div>' : '') + '</div>' +
     '<span class="sc">' + (t ? esc(p.score_total) : '') + '</span>' + (t || p.status === 'excluded' ? '' : '<span class="badge b-np">not yet profiled</span>') + '</div>';
 }
 function renderMap(){
@@ -753,12 +802,12 @@ function callRow(p, i){
   const live = liveOf(p), t = sTier(p), ps = pathStatus(p);
   const td = live && trigShown(p) ? trigDate(p.triggers) : null;
   const unk = unkOf(p), dem = DV[p.id] && DV[p.id].dem;
-  return '<div class="crow"><span class="rk">' + (i+1) + '</span><span class="nm"><button type="button" class="link" data-plant="' + esc(p.id) + '">' + esc(p.name) + '</button><span class="sub">' + esc(p.city) + ', ' + esc(p.state) + (p.tier ? ' &middot; ' + esc(p.tier) : '') + '</span>' + (isPre(p) ? '<span class="sub">' + preBadge(p) + '</span>' : '') + '</span>' +
+  return '<div class="crow"><span class="rk">' + (i+1) + '</span><span class="nm"><button type="button" class="link" data-plant="' + esc(p.id) + '">' + esc(p.name) + '</button><span class="sub">' + [esc(p.city) + ', ' + esc(p.state), mini(p, 'tier')].filter(Boolean).join(' &middot; ') + '</span>' + (isPre(p) ? '<span class="sub">' + preBadge(p) + '</span>' : '') + '</span>' +
     '<span class="acct">' + esc(acctOf(p)) + '</span>' +
-    '<span class="rel">' + esc((p.relationship||'unknown').replace(/_/g,' ')) + (ps ? '<br>' + pathBadge(p) : '') + '</span>' +
+    '<span class="rel">' + (mini(p, 'relationship', relFmt) || '<span class="muted">not sourced</span>') + (ps ? '<br>' + pathBadge(p) : '') + '</span>' +
     '<span class="scr">' + esc(p.score_total) + '</span><span class="tr"><span class="badge b-' + t.toLowerCase() + '">' + t + '</span></span>' +
     '<span class="cf" title="Components resting on stated evidence">' + esc(p.confidence) + '/6</span>' +
-    '<span class="unkc" title="Components scored 0 because no source states the underlying fact. Demand is never counted as unknown.">' + (unk.length ? esc(unk.map(k => UNK_SHORT[k]).join(', ')) : 'none') + '</span>' +
+    '<span class="unkc" title="Components scored 0 because no source states the underlying fact. Demand is never counted as unknown.">' + (unk.length ? esc(unk.map(k => UNK_SHORT[k]).join(', ')) : 'none') + (t === 'Low' && unk.length ? '<span class="lownote">' + (unk.length === 1 ? 'scores' : 'score') + ' 0 for lack of a source, not for poor fit</span>' : '') + '</span>' +
     '<span class="ceil" title="Calculated: score plus the maximum points of each unknown component. Not a score. The demand allowance is not included.">' + (ceilOf(p) == null ? '' : ceilOf(p)) + (dem ? '<span class="dem">+' + dem + ' if a plant trigger is found</span>' : '') + '</span>' +
     '<span class="trg">' + (live ? '<span class="live">live trigger</span> <span class="trd">' + (td ? esc(td) : 'date not stated') + '</span>' : '') + '<span class="small">' + val(p, 'triggers', p.id, {max: 90, label: 'trigger'}) + '</span></span>' +
     '<span class="ol">' + val(p, 'opening_line', p.id, {label: 'opening line'}) + '</span></div>';
@@ -774,9 +823,9 @@ function renderCalls(){
   const el = $('#v-calls');
   if (!el.dataset.init){
     const nrf = P.filter(researchFirst).length;
-    el.innerHTML = '<div class="view-h"><h2>Call list</h2><p>Profiled plants ranked by score. Score tiers: High 70+, Medium 45-69, Low under 45. Confidence is how many of the six components rest on stated evidence.</p></div>' + filterBar('fbar-calls', P.filter(p => p.status === 'profiled'), {score: true, nopre: true}) +
+    el.innerHTML = '<div class="view-h"><h2>Call list</h2><p>Profiled plants ranked by score. Score tiers: High 70+, Medium 45-69, Low under 45. Confidence is how many of the six components rest on stated evidence.</p><p><strong>A Low score usually means missing data, not a poor fit.</strong> A component with no published fact scores 0: the ' + DS.low_n + ' Low plants average ' + DS.avg_unk_low + ' unknown components of 6 (High plants: ' + DS.avg_unk_high + '), and ' + DS.low_ceil70 + ' of them would reach 70 or more if every unknown resolved in their favour. The <em>Unknowns</em> and <em>Ceiling</em> columns show this for each plant; the ceiling is calculated and is not a score.</p></div>' + filterBar('fbar-calls', P.filter(p => p.status === 'profiled'), {score: true, nopre: true}) +
       '<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px"><label class="chk"><input type="checkbox" id="live"> Live trigger only <span class="muted small">(plant-level trigger in the last 24 months)</span></label>' +
-      '<label class="chk"><input type="checkbox" id="prechip"> New or converting plants only <span class="muted small">(' + pl(DS.preprod || 0, 'plant') + ')</span></label>' +
+      '<label class="chk"><input type="checkbox" id="prechip"> Pre-production and converting plants only <span class="muted small">(' + preCount() + ')</span></label>' +
       '<label class="chk"><input type="checkbox" id="lowceil"> Low score, high ceiling (research first) <span class="muted small">(score under 45, ceiling 70 or more, and at least one stated positive signal: process 20, labor above 0 or a plant trigger; ' + pl(nrf, 'plant') + ' pass)</span></label>' +
       '<label class="chk"><input type="checkbox" id="merge"> Merge existing Path accounts into the ranked list</label>' +
       '<label class="sortsel">Sort by <select id="sortsel"><option value="score">score</option><option value="confidence">confidence</option><option value="ceiling">ceiling (highest first)</option><option value="unknowns">unknown components (most first)</option><option value="name">plant name</option><option value="state">state</option></select></label><span id="callcount" class="muted small"></span></div>' +
@@ -811,7 +860,7 @@ function renderExcluded(){
   const rows = EXCL.filter(p => passes(p, true)).sort((a,b) => a.name.localeCompare(b.name));
   el.innerHTML = '<div class="view-h"><h2>Excluded plants (with reasons)</h2><p>Plants kept in the ledger but not shown on the map because they fail the prospect test or are out of the vertical definition. They are never deleted.</p></div>' +
     '<div class="card"><div class="muted small" style="padding:10px 14px">' + rows.length + ' of ' + EXCL.length + ' excluded plants</div>' +
-    (rows.map(p => '<div class="prow" style="align-items:flex-start"><div class="nm"><button type="button" class="link" data-plant="' + esc(p.id) + '">' + esc(p.name) + '</button><div class="sub">' + esc(p.city) + ', ' + esc(p.state) + (p.parent_company ? ' &middot; ' + esc(p.parent_company) : '') + '</div>' +
+    (rows.map(p => '<div class="prow" style="align-items:flex-start"><div class="nm"><button type="button" class="link" data-plant="' + esc(p.id) + '">' + esc(p.name) + '</button><div class="sub">' + [esc(p.city) + ', ' + esc(p.state), mini(p, 'parent_company')].filter(Boolean).join(' &middot; ') + '</div>' +
       '<div class="small" style="margin-top:3px"><strong>Reason:</strong> ' + val(p, 'exclusion_reason', p.id, {label: 'exclusion reason'}) + '</div></div></div>').join('') || '<div class="empty">No excluded plants match.</div>') + '</div>';
 }
 

@@ -100,6 +100,7 @@ def md_inline(s):
     s = html.escape(s, quote=False)
     s = re.sub(r"`([^`]+)`", r"<code>\1</code>", s)
     s = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s)
+    s = re.sub(r"(?<![\w*])\*([^*\n]+?)\*(?![\w*])", r"<em>\1</em>", s)
     return s
 
 
@@ -130,6 +131,9 @@ def parse_log(text, vertical_ids):
     sections, cur = [], None
     bullets = {"rules": [], "confidence": [], "backtest": [], "weights": [], "limits": [], "failures": [], "advisor": []}
     dates = set(re.findall(r"(?m)^## (20\d\d-\d\d-\d\d)\b", text))  # session headings only
+    def where():
+        # where in the run log a quoted bullet sits, so dated statements are not read as current
+        return ' <span class="muted small">(run log: ' + md_inline(cur["title"]) + ')</span>'
     for ln in lines:
         if ln.startswith("## "):
             cur = {"title": ln[3:], "lines": []}
@@ -141,19 +145,25 @@ def parse_log(text, vertical_ids):
         if ln.startswith("### Advisor consultation"):
             bullets["advisor"].append(ln[4:])
         body = ln.strip()
+        nm = re.match(r"\d+\. (\*[^*]+\* .*)$", body)   # numbered consistency rules ("1. *Part mix* may ...")
+        if nm and re.match(r"\*(Part mix|Process \d+|Scale|Material|Labor|Demand)\*", nm.group(1)):
+            bullets["rules"].append(md_inline(nm.group(1)) + where())
+            continue
         if not body.startswith("- "):
             continue
         body = body[2:]
         if re.search(r"\*\*Weights", body):
-            bullets["weights"].append(md_inline(body))
+            bullets["weights"].append(md_inline(body) + where())
         elif re.search(r"Back-test result", body):
-            bullets["backtest"].append(md_inline(body))
-        elif re.search(r"\*\*(Process rule|Material rule|Relationship rule|Score storage)", body) or "Confidence is recomputed" in body:
+            bullets["backtest"].append(md_inline(body) + where())
+        elif re.search(r"\*\*Confidence rule", body):
+            bullets["confidence"].append(md_inline(body) + where())
+        elif re.search(r"\*\*(Process rule|Material rule|Relationship rule|Score storage|Inclusion rule|New rule)", body) or "Confidence is recomputed" in body:
             cm = re.search(r"Confidence is recomputed[^.]*\.", body)
             if cm:
-                bullets["confidence"].append(md_inline(cm.group(0)))
+                bullets["confidence"].append(md_inline(cm.group(0)) + where())
                 body = body.replace(cm.group(0), "").strip()
-            bullets["rules"].append(md_inline(body))
+            bullets["rules"].append(md_inline(body) + where())
         if re.search(r"Source failures", body):
             bullets["failures"].append(md_inline(body))
     secs = [{"title": s["title"], "html": md_block(s["lines"])} for s in sections]
@@ -176,6 +186,33 @@ def find_rows(obj):
             if r:
                 return r
     return []
+
+
+def wsnorm(s):
+    return re.sub(r"\s+", " ", str(s or "")).strip()
+
+
+QRANK = {"found": 4, "snapshot": 3, "not_found": 2, "unreachable": 1}
+
+
+def quote_verdict(e, qc_rows, snapshot):
+    """Quote-check verdict for one current evidence row, or None when its current quote was never checked.
+    Only checks of this exact quote count (a row whose quote changed later is not covered by the old check);
+    the best verdict wins, so a page that was unreachable once and found in a later check reads as found.
+    A directory row that a live fetch cannot see (the AISC directory loads by script) is compared with the
+    saved snapshot in ledger/audit/ and reported as a snapshot match, never as found on the live page."""
+    q = wsnorm(e["quote"])
+    if not q:
+        return None
+    vs = [v for cq, v in qc_rows.get((e["claim_id"], e["source_url"]), []) if cq == q]
+    if not vs:
+        return None
+    best = max(vs, key=lambda v: QRANK[v])
+    if best in ("not_found", "unreachable") and snapshot and "aisc.my.site.com" in e["source_url"]:
+        parts = [x.strip() for x in q.split("...") if x.strip()]
+        if parts and all(x in snapshot for x in parts):
+            best = "snapshot"
+    return best
 
 
 def first_key(d, keys):
@@ -258,18 +295,21 @@ def build_audit(vids):
             "auditor": d.get("auditor"), "angle": d.get("angle"), "rows": n, "in_definition": in_def,
             "searches": d.get("searches_run"), "until_dry": d.get("searches_until_dry")})
     # verification overview
-    qc = {"found": 0, "not_found": 0, "unreachable": 0, "files": 0}
-    qc_rows = {}
+    qc = {"files": 0, "checks": 0}
+    qc_rows = {}        # (claim_id, source_url) -> [(normalised quote, verdict class)]
+    QV = {"found": "found", "found_browser": "found", "aisc_snapshot": "snapshot", "not_found": "not_found", "unreachable": "unreachable"}
     for path in sorted(glob.glob(os.path.join(L, "audit", "quote-check-*.json"))):
         d = load_json(path)
         if not d:
             continue
         qc["files"] += 1
         for r in d.get("rows", []):
-            v = r.get("verdict")
-            key = "found" if v == "found" else "unreachable" if v == "unreachable" else "not_found"
-            qc[key] += 1
-            qc_rows[(r.get("claim_id"), r.get("source_url"))] = key
+            v = QV.get(r.get("verdict"))
+            if not v:
+                print("WARN: unknown quote-check verdict", r.get("verdict"), "in", os.path.basename(path), file=sys.stderr)
+                continue
+            qc["checks"] += 1
+            qc_rows.setdefault((r.get("claim_id"), r.get("source_url")), []).append((wsnorm(r.get("quote")), v))
     pc = load_json(os.path.join(L, "audit", "posting-city-check.json"))
     return audit, factcheck, qc, qc_rows, (pc or {})
 
@@ -306,14 +346,17 @@ def derive(plants, evidence):
         # pre-production: status row, or triggers / status_detail naming construction or ramp-up
         st = [e["value"].strip().lower() for e in evby.get(pid + ":status", [])]
         det = [e["value"].lower() for e in evby.get(pid + ":status_detail", [])]
-        flagged = any("pre-production prospect" in v and not re.search(r"found to be operating|not pre-production", v) for v in st)
+        flagged = by_status = any("pre-production prospect" in v and not re.search(r"found to be operating|not pre-production", v) for v in st)
         mention = re.compile(r"under construction|ramping|transition(?:ing)? (?:its|the|from)|conversion|converted|convert(?:ing)? ")
         txt = [(p.get("triggers") or "").lower()] + det
         if not flagged and any(mention.search(t) for t in txt):
             # a plant whose own status row says it is operating is not pre-production
             flagged = not any("operating" in v for v in st)
-        if flagged and p["status"] != "excluded":
-            d["pre"] = 1
+        if p["status"] != "excluded":
+            if by_status:
+                d["pre"] = "status"      # the ledger's own status row calls it a pre-production prospect
+            elif flagged:
+                d["pre"] = "text"        # a trigger or status-detail line names construction, ramp-up or conversion
         if p["status"] == "profiled" and str(p.get("score_total", "")).strip() != "":
             score = num(p["score_total"])
             unk, head = [], 0
@@ -336,7 +379,10 @@ def derive(plants, evidence):
              "low_mat0": sum(1 for p, d in low if "material_part" in d["unk"]),
              "low_ceil70": sum(1 for p, d in low if d["ceil"] >= 70),
              "research_first": sum(1 for p, d in low if d["ceil"] >= 70),
-             "preprod": sum(1 for d in derived.values() if d.get("pre"))}
+             "low_unk": sum(1 for p, d in low if d["unk"]),
+             "preprod": sum(1 for d in derived.values() if d.get("pre")),
+             "preprod_status": sum(1 for d in derived.values() if d.get("pre") == "status"),
+             "preprod_text": sum(1 for d in derived.values() if d.get("pre") == "text")}
     return derived, stats
 
 
@@ -358,14 +404,22 @@ def main():
 
     # evidence indexed by claim_id, compact keys
     ev = {}
+    snap_files = sorted(glob.glob(os.path.join(L, "audit", "source-snapshot-aisc-directory-*.txt")))
+    snapshot = ""
+    if snap_files:
+        with open(snap_files[-1], encoding="utf-8") as f:
+            snapshot = wsnorm(f.read())
+    qstat = {"found": 0, "snapshot": 0, "not_found": 0, "unreachable": 0, "unchecked": 0, "no_quote": 0}
     pc_rows = {(r.get("claim_id"), r.get("source_url")): r.get("verdict") for r in pcheck.get("rows", [])}
     for e in evidence:
         row = {"v": e["value"], "t": e["tag"], "q": e["quote"], "u": e["source_url"], "st": e["source_type"],
                "d": e["retrieved_date"], "a": e["archive_url"], "r": e["reasoning"], "by": e["produced_by"],
                "vf": e["verified"]}
         k = (e["claim_id"], e["source_url"])
-        if qc_rows.get(k) in ("not_found", "unreachable"):
-            row["qc"] = qc_rows[k]
+        qv = quote_verdict(e, qc_rows, snapshot)
+        qstat[qv or ("no_quote" if not wsnorm(e["quote"]) else "unchecked")] += 1
+        if qv in ("not_found", "unreachable", "snapshot"):
+            row["qc"] = qv
         if pc_rows.get(k) == "CITY_NOT_ON_PAGE":
             row["cc"] = 1
         fcr = factcheck.get(k)
@@ -391,7 +445,16 @@ def main():
         "plants_excluded": sum(1 for p in plants if p["status"] == "excluded"),
         "evidence_rows": len(evidence),
     }
+    qc.update(qstat)
+    qc["snapshot_file"] = os.path.basename(snap_files[-1]) if snap_files else ""
     derived, dstats = derive(plants, evidence)
+    # address facts are counted here, on the raw ledger, because the page blanks fields that have no evidence row
+    def addr_stats(ps):
+        return {"n": len(ps),
+                "no_street": sum(1 for p in ps if re.match(r"\s*unknown", p["address"], re.I) or not p["address"].strip()),
+                "city_level": sum(1 for p in ps if re.search(r"centroid|coordinates city-level", p["address"], re.I))}
+    dstats["addr_included"] = addr_stats(included)
+    dstats["addr_all"] = addr_stats(plants)
     data = {
         "derived": derived, "dstats": dstats,
         "meta": {"counts": counts, "dates": dates, "first": dates[0] if dates else "", "last": dates[-1] if dates else "",
