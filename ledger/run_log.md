@@ -612,3 +612,30 @@ Coordinator decisions applied now (mechanical):
 - **Miss rate:** 29.4% (32/109), up to 37.9%. Weights unchanged.
 - **Remedy for the next vertical:** run the blind list audit right after the finder, before choosing the 40, and search welder postings for every base record before ranking.
 - **Next vertical by rank:** Mining and heavy equipment. Not started; it waits for the user.
+
+## 2026-11-14: v-mining-heavy-equipment (Mining and heavy equipment), Stages B-C started
+
+- **Instruction:** the user said "Start it." (next vertical by rank, in this session).
+- **Vertical** (rank 3, accepted 2026-11-12): "Heavy welded steel plate structures for mining, construction and bulk-material equipment made in US plants: buckets, truck bodies, booms, excavator and loader arms, frames, hydraulic tanks and wear attachments."
+  - Confirmed Path customers: Mine Rite (Wyoming; specialty mining attachments; 85% of work moved to a Path cell) and Schenck Process (2021 application).
+  - Not confirmed: AMSi and Cheetah (analyst report only).
+  - Demand outlook and plant count are unknown from Stage A; the finders must supply a stated vertical demand-outlook row.
+- **Boundary rules, set before research:**
+  1. **In:** plants whose core welded products are structures for mining machines, construction and earthmoving machines, or bulk-material and aggregate equipment (crushers, screens, conveyors, feeders), and the attachments, buckets, haul-truck and off-road dump bodies, booms, arms, frames and hydraulic tanks for them. This covers OEM plants, Tier 1 and Tier 2 weldment suppliers, and attachment makers.
+  2. **Out to other verticals** (excluded here with the reason, so a later vertical can pick them up):
+     - agricultural equipment (v-agricultural-equipment);
+     - cranes and lifting equipment (v-cranes-lifting);
+     - on-road dump and truck bodies (v-truck-bodies);
+     - trailers and chassis (v-trailers-chassis-mobile-power).
+     - Forestry machines count as construction equipment when the plant also builds construction or mining machines; a forestry-only plant is boundary, kept and noted.
+  3. **Assembly-only:** a plant that only assembles bought-in weldments (paint and assembly, engines, drivetrains, electronics) fails the prospect test and is excluded, with a quote.
+  4. **One record per physical plant.** The large OEMs (Caterpillar, Deere, Komatsu, Volvo CE, CNH, Doosan Bobcat and others) get a record per US plant that welds structures.
+  5. **High-volume fit:** a high-volume plant with fixed robot lines stays in, but part mix scores 0 where identical high-volume parts are stated. Its weak fit is recorded, not excluded.
+  6. Inclusion at find time, pre-production sites, and relationship as on ships:
+     - known_customer: Mine Rite's plant if a single site;
+     - lookalike: Mine Rite for mining attachments, truck bodies, buckets and tanks; Schenck for bulk-material equipment;
+     - new: otherwise.
+- **Process remedies from ships:**
+  - The blind list audit runs **in parallel with the finders**, before profiling is chosen.
+  - Finders record welder postings, with dates and site, for every plant, so the ranking is not provisional.
+  - EPA FRS and NAICS sweeps (333120 construction machinery, 333131 mining machinery, 333922 conveying equipment, 332312 fabricated structural metal where products fit) run inside the finder stage.
