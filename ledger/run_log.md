@@ -639,3 +639,22 @@ Coordinator decisions applied now (mechanical):
   - The blind list audit runs **in parallel with the finders**, before profiling is chosen.
   - Finders record welder postings, with dates and site, for every plant, so the ranking is not provisional.
   - EPA FRS and NAICS sweeps (333120 construction machinery, 333131 mining machinery, 333922 conveying equipment, 332312 fabricated structural metal where products fit) run inside the finder stage.
+
+### Mining Stages B-C merged; research paused (weekly usage limit)
+
+- **Finders (workflow mining-find-and-audit):** 4 slices.
+  - A: OEMs, 61 plants. B: mining specialists and attachments, 31. C: bulk-material equipment, 46. D: weldment suppliers, 53, plus the vertical's demand outlook.
+  - Three cross-slice duplicates were folded into slice B's ids before the merge: Epiroc Two Harbors = LaBounty, Epiroc Dexter = Paladin, Epiroc Ooltewah = Paladin/C&P. Same addresses; 30 of slice A's rows were remapped.
+  - **Merged:** 188 plants (165 base, 23 excluded), 2,115 evidence rows, 3 links; 0 rejected, 0 coverage gaps.
+  - **Quotes:** 1,298 found. 55 EPA FRS rows unreachable (the outage continues). 45 not found: 44 are browser-only job boards (Mayville Engineering's UKG, ADP) whose page text the finder captured; 1 is a Gradall page.
+- **Blind list audit:** run in parallel with the finders (the process remedy from ships).
+  - Auditor A (company and product angle): 141 rows, 110 in definition, 81 searches.
+  - Auditor B (registries and geography): **stopped at the account's weekly usage limit (resets Nov 19)** after 28 rows.
+  - `compare_audit.py`: 116 in-definition auditor plants, 74 ledger plants matched, **36 candidate misses**, about 31% before verification. Mostly attachment makers, paving and roadbuilding machine makers, and LBX, SANY, Takeuchi, Kubota Salina, L&H Industrial, Weldall and Hol-Mac.
+- **Status: partial** (CLAUDE.md rule 8: research stops, the map ships). No mining plant is profiled or fact-checked yet. Summary written; map rebuilt (smoke passed) and republished.
+- **To resume after Nov 19:**
+  1. Finish auditor B.
+  2. Verify the 36 candidates.
+  3. Rank, with postings searched per plant (the finders already did this for their plants), and profile the top 40.
+  4. Fact-check all profiles.
+  5. Advisor checkpoints: miss rate (likely over 20%) and done.
