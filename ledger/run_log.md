@@ -598,3 +598,17 @@ Coordinator decisions applied now (mechanical):
   4. **Line checks on all 47 profiled ships plants:** 0 problems. Tense sweep: 3 bottlenecks presented dated work as current and were reworded with the date (Gunderson's March 2025 Tidewater contract, DSC's Dec 2025 release, St. Johns' 2025 orders). The other "while" uses join two current stated facts.
   - **Drift:** `field_drift_check.py --all` now includes base records. It flags 73 ships rows (`ledger/audit/field-drift-ships-2026-11-13.json`), many of them date, day-count or pay-rate formats. This is a known limit and the first follow-up, along with posting searches on base records.
   3. `verify_ledger_quotes.py` is running.
+- **Fix 3: full-ledger quote re-check** (`verify_ledger_quotes.py`, 2026-11-14): 2,901 found plain, 41 found in a browser, 79 matched the AISC snapshot, 291 not found.
+  - 237 of the 291 are EPA FRS rows. The registry was returning 503 (maintenance) during the run and still is, so these are outage results. Each was found at its merge-time check.
+  - 28 not-found rows carry points on High or Medium plants. They were re-checked in a browser fragment by fragment, and 18 still miss. All 18 are job-board rows (ADP, Ashby, UltiPro, Paycom, Workday, Jamis, Nucor, Vaia) that independent fact-checkers confirmed on 2026-11-13 through each board's API or a browser. The page-fetch tool cannot reproduce those reads.
+  - One posting is known to have closed since: Valmont Brenham's Flip-Tack Welder (Workday 404 on 2026-11-14).
+  - **Ruling:** posting rows are a dated 2026-11-13 snapshot, confirmed that day by independent checkers, so no component is zeroed. The limit is stated on the map.
+- **Fix 5:** ships set to **done** (verticals.csv; the status evidence row). `summary-v-shipbuilding-naval.json` rewritten (miss 29.4%; limits as above). smoke_map.js asserts done, 29.4%, 7.3% and 6.1%. Map rebuilt: **SMOKE PASSED**. Republished to the same link.
+
+## 2026-11-14: v-shipbuilding-naval marked DONE
+
+- **Final counts:** 218 plants; 134 included (47 profiled, 87 base), 84 excluded. Tiers: High 18 / Medium 15 / Low 14.
+- **Fact error rate:** round 1 7.3% (47/643, all 39 first-wave profiles); round 2 6.1% (22/360; base-record sample 13.0%).
+- **Miss rate:** 29.4% (32/109), up to 37.9%. Weights unchanged.
+- **Remedy for the next vertical:** run the blind list audit right after the finder, before choosing the 40, and search welder postings for every base record before ranking.
+- **Next vertical by rank:** Mining and heavy equipment. Not started; it waits for the user.

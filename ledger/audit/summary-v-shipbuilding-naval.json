@@ -1,6 +1,6 @@
 {
  "vertical": "v-shipbuilding-naval",
- "status": "partial",
+ "status": "done",
  "plants": {
   "found": 218,
   "included": 134,
@@ -15,7 +15,7 @@
   "material_unknown": 40
  },
  "links": 24,
- "evidence_rows": 7362,
+ "evidence_rows": 7365,
  "fact_check_rounds": [
   {
    "round": 1,
@@ -97,19 +97,19 @@
   }
  ],
  "miss_rate": {
-  "value": "30/107 = 28.0% (auditor-measured); up to 48/125 = 38.4% if all 18 unverified candidates are real",
-  "note": "Two blind list auditors found 107 in-definition plants that exist; 77 were in the ledger and 30 were not (now all in the ledger). Mostly small inland towboat, barge and dredge builders, plus Navy structure suppliers (Fairlead, Colonna's Steel America, Hadrian Cherokee, NNS Norfolk). A closure pass then checked the auditors' unchecked names, all 93 MARAD Small Shipyard Grant recipients FY2023-26 and open leads: it added 7 included plants, none ranking in the top 40.",
+  "value": "32/109 = 29.4% (auditor-measured); up to 47/124 = 37.9% if all 15 unverified candidates are real",
+  "note": "Two blind list auditors found 109 in-definition plants that exist; 77 were in the ledger at the audit and 32 were not (30 verified at once, 2 more in the closure pass). All are now in the ledger. Mostly small inland towboat, barge and dredge builders, plus Navy structure suppliers (Fairlead, Colonna's Steel America, Hadrian Cherokee, NNS Norfolk). The closure pass (auditors' unchecked names, all 93 MARAD Small Shipyard Grant recipients FY2023-26, open leads) added 7 included plants; one (Accurity Owensboro) proved top-40 once its posting was found and is profiled.",
   "history": [
    "28.0% (round 1 audit)",
-   "closure: +7 base, none top-40"
+   "29.4% after closure confirmations"
   ]
  },
  "known_limits": [
   "Part size is unknown for most profiled plants, so material scores 0 there; a Low score usually means missing data, not a poor fit (see the Unknowns and ceiling columns).",
-  "87 included plants are base records (not profiled or scored); every plant ranking in the top 40 by relationship, tier, open postings and headcount is profiled.",
-  "EPA ECHO lists about 1,030 active NAICS 336611 facilities; that list has not been reconciled row by row against the ledger.",
-  "Welder-posting counts are a snapshot of 2026-11-13 job boards; a posting counts only when the board or posting names the yard.",
-  "NNS Norfolk campus: no source confirms operation after 2023.",
-  "Base-record sample in round 2 ran 13.0% (9 of 77 rows, no score effect); base records are less checked than profiled plants."
+  "87 included plants are base records (not profiled); every plant in the top 40 by relationship, tier, open postings and headcount is profiled except LAD Stephensville (no source says which LAD yard builds new barges). Welder postings were not searched for most base records added from the audit, so their ranking is provisional.",
+  "Base records are less checked than profiles: the round-2 base sample ran 13.0% (no score effect), and a drift check flags 73 ships rows for review (ledger/audit/field-drift-ships-2026-11-13.json).",
+  "Welder-posting counts are a snapshot of 2026-11-13 job boards (confirmed that day by the fact-checkers through each board's API or a browser); some postings close daily (e.g. a Valmont Brenham posting closed by 2026-11-14).",
+  "EPA ECHO lists about 1,030 active NAICS 336611 facilities; that list has not been reconciled row by row against the ledger. EPA FRS was down (503) during the final quote re-check, so 237 registry quotes were re-checked only at merge time.",
+  "NNS Norfolk campus: no source confirms operation after 2023; its recorded address is also Fairlead's Norfolk address."
  ]
 }
