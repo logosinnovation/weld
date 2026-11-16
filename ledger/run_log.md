@@ -982,3 +982,22 @@ Coordinator decisions applied now (mechanical):
 - **G.R.:** both posting dates now have their own quoted rows (2026-08-24); labor reasoning rewritten.
 - **Last wave:** verify the 64 candidate misses (ledger checked by name first; dated postings on each plant's own board); fact-check the 12 G/H profiles; profile the seven top-40 base plants. After the merge, re-rank once; any miss-derived plant that lands in the top 40 is listed as a stated limit, not profiled.
 - **Reporting:** the miss rate reported is this audit's verified figure; merging the misses does not lower it. Coverage by segment and auditor B's scratchpad file-name exposure are stated.
+
+### 2026-11-16: mining last wave merged (consultation 13 plan)
+
+- **Workflow mining-last-wave** (5 agents, about 98 min): two miss verifiers, fact-checker R3-GH, profiler I, fact-checker R3-I. No agent errors.
+- **Miss verification (71 unmatched re-audit candidates):** 46 new base, 10 excluded, 15 unverified, 0 already in the ledger.
+  - Excluded: Kenco Roseville (castings), Dirt Dog Commerce (agricultural), Cedarapids Cedar Rapids (office), Cemen Tech Indianola (truck mixers, v-truck-bodies), Twinkle West Liberty (fabrication contracted out), Reliable Asphalt Shelbyville (dealer), SWECO Florence (process separators), Conveyor Components Croswell (non-welded), Wausau Wooster (old Rayco plant, now snow plows), CMI Oklahoma City (HQ; CMI builds in Waverly IA).
+  - Pemberton Longwood FL: base with in-definition unknown (welding not stated); not counted as a verified miss.
+- **Verified miss rate (blind re-audit): 45 / (126 + 45) = 45/171 = 26.3%.** Upper bound with the 15 unverified and Pemberton: 61/187 = 32.6%. 18 of the 45 are boundary; core only, 27/153 = 17.6%. Reported as this audit's figure; merging the misses does not lower it.
+- **Done test condition 2: failed.** After the re-rank, General Steel & Supply (Fisher Industries), Dickinson ND, a verified miss, ranks 22 with two dated own-board welder postings (2026-06-17 and 2026-09-16, $1,000 sign-on bonus; site tie inferred under the campus rule). Listed as a stated limit, not profiled, per consultation 13. Next miss-derived plant: Digga Dyersville IA at rank 45.
+- **Profiler I (the seven top-40 base plants):** Thomas Conveyor Burleson 88 High, Brookville 83 High, Tread Roanoke 75 High, NPK Walton Hills 65, Kress Brimfield 63, Astec Eugene 61, Paladin Dexter 53. 24 superseded rows removed before merge.
+- **Fact-check round 3:** R3-GH 7/251 = 2.8%; R3-I 8/109 = 7.3%; **round 3 combined 15/360 = 4.2%** (target 10%). Main kind: clauses in compound values or site-tie judgements the cited page does not carry. Six sibling rows of corrected compound values (Brookville and Kress products and production_type) synced to the corrected text. Coordinator sweep for unquoted single-site clauses in stated rows found one more (Bear Iron Works address), trimmed.
+- **Coordinator rulings:**
+  - **Brookville material stays 20, confidence 3.** The site tie to 175 Evans St is inferred (Brookville Services at 4 S Pickering St, 1.3 km away, does service and rebuilds). Kept under the ships repair-only precedent (a rebuild shop is not a production site), ships rule 2 (a whole steel vehicle's stated dimension) and the Werk-Brau welded-not-stated precedent. The claim is added to `no-confidence-claims.csv`. If material went to 0, Brookville would be 63 Medium.
+  - **Paladin Dexter kept as a profiled boundary plant (53).** No Paladin page says what Dexter builds; the sweeper identity rests on an EPA facility name and an old directory. An inferred identity is not enough to exclude a plant with a live welding posting; stated as a limit on the map.
+  - **Quality Urbandale tier corrected to Tier 1; relationship stays lookalike of Mine Rite** under the tank-supplier precedent (Standard Iron Hartford, Engineered Welding, Metalcraft).
+  - **DCL Charlevoix:** no page ties the EPA Traverse City record to DCL production; no change.
+  - **West River:** score_total and score_tier reasoning rewritten for 23.
+- **Vertical now:** 463 plants: 66 profiled, 286 base, 111 excluded. Profiled tiers High 6 / Medium 37 / Low 23.
+- **Status: partial.** The user is asked: accept partial and move to battery storage, or authorise one directory-driven pass (CEMA, MINExpo, CONEXPO Equipment Components) followed by a fresh blind audit.

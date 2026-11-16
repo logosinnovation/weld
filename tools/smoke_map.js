@@ -43,7 +43,7 @@ async function run(label, ctxOpts, full) {
   check(/Latest audit summary \(ledger\/audit\/summary-v-poles-substation\.json\)/.test(pc) && /13\.8%/.test(pc), `${label}: poles card audit line`);
   check(/Latest audit summary \(ledger\/audit\/summary-v-shipbuilding-naval\.json\)/.test(sc) && /29\.4%/.test(sc) && /7\.3%/.test(sc) && /6\.1%/.test(sc), `${label}: ships card audit line`);
   const mc = await text('#vc-' + MV);
-  check(mc.includes('partial') && mc.includes(String(miningProfiled)) && /summary-v-mining-heavy-equipment\.json/.test(mc) && /30\.2%/.test(mc) && /11\.4%/.test(mc), `${label}: mining card (partial, ${miningProfiled} profiled, miss 30.2%, round 1 11.4%)`);
+  check(mc.includes('partial') && mc.includes(String(miningProfiled)) && /summary-v-mining-heavy-equipment\.json/.test(mc) && /26\.3%/.test(mc) && /11\.4%/.test(mc), `${label}: mining card (partial, ${miningProfiled} profiled, miss 26.3%, round 1 11.4%)`);
   await shot('ranking');
 
   // map: vertical filter, tier filter, state click, search
@@ -160,7 +160,7 @@ async function run(label, ctxOpts, full) {
   const stale = ['every included plant is profiled', '27.5%', '5/64', 'ledger/audit/summary.json', 'Pole makers rarely'].filter(s => (mt + head + callTxt).includes(s));
   check(stale.length === 0, `${label}: no stale text ${JSON.stringify(stale)}`);
   const ms = await text('#audit-' + MV), M_ = sumOf(MV);
-  check(M_.status === 'partial' && ms.includes('partial') && ms.includes(String(miningProfiled)) && ms.includes('11.4%') && ms.includes('30.2%') && (!M_R2 || ms.includes(M_R2)), `${label}: mining section (partial, ${miningProfiled} profiled, round 1 11.4%, miss 30.2%${M_R2 ? ', round 2 ' + M_R2 : ''})`);
+  check(M_.status === 'partial' && ms.includes('partial') && ms.includes(String(miningProfiled)) && ms.includes('11.4%') && ms.includes('26.3%') && (!M_R2 || ms.includes(M_R2)), `${label}: mining section (partial, ${miningProfiled} profiled, round 1 11.4%, miss 26.3%${M_R2 ? ', round 2 ' + M_R2 : ''})`);
   check(!/29\.4%|13\.8%|fact-check-v-poles|fact-check-v-shipbuilding/.test(ms), `${label}: mining section has no poles or ships figures`);
   await shot('method-ships');
   check(errs.length === 0, `${label}: no console errors or runtime requests ${JSON.stringify(errs.slice(0, 3))}`);
