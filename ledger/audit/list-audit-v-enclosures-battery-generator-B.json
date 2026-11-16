@@ -3,8 +3,8 @@
  "auditor": "list-auditor-B",
  "angle": "registries and geography: EPA ECHO by NAICS 335312/332420/332322/332313 (FRS REST down), state economic-development and governor releases 2023-26 (NC, AZ, ID, FL, GA, KY, IN, WI, IL), welder/fabricator job postings naming generator enclosures or fuel tanks by city, UL/STI tank listings, DOE/SEIA/ACP storage manufacturing announcements",
  "searches_run": 66,
- "searches_until_dry": 66,
- "notes": "Independent list built without opening ledger/plants.csv, evidence.csv, links.csv, ledger/inbox, the scratchpad of other agents, or any ledger/audit file about this vertical; an ls of ledger/audit showed file names only, and one unrelated audit file (shipbuilding list-audit B) was opened only to copy the JSON shape. Registry angle: EPA FRS REST returned a maintenance message, so EPA ECHO get_facilities was used instead (active facilities, NAICS 335312: 625 of 710 rows paged; 332420: 308; 332322: 1,166; 332313: 604). ECHO rows were keyword-filtered and cross-matched by name and city to web finds; ECHO contributed Freeman Enclosure Systems (Batavia OH), Tramont (two Milwaukee addresses), Chillicothe Metal (4507 E Rome Rd), Fidelity (Ocala), Taylor Power (Richland MS), Robinson (De Pere), Koontz-Wagner Caldwell, Generac and Kohler/Discovery Energy sites, MTU/Rolls-Royce Mankato, Cummins Fridley, Blue Star. UL Product iQ needs a sign-in, so UL sub-base tank listings were not queried directly (logged as failed source); a UL certificate on modweldco.com was used for Modern Welding. Pages that blocked or failed: chillicothemetal.com and com-fab.com (proxy 502), manufacturing-today.com, azcommerce.com, yanceybros.com, ir.fluenceenergy.com, energy-storage.news, thomasnet news (Cloudflare 403), wardtank.com and speedytanks.com (TLS), nvent.com subdomains (502), web.archive.org (429 under parallel load; Generac Eagle quote confirmed FOUND in a single manual --check). Classification: announced or ramping plants (Fidelity McGregor TX, Generac Belvidere IL opening Q1 2027, Rehlko Kenosha WI late 2026, Yancey Cordele GA, AVL Charlotte NC, Phoenix Products new Zoo Parkway building) are kept as in_definition rows with status in products. Genset OEM plants are in only where a source ties enclosure/tank/frame fabrication to that plant (Generac Eagle, Rehlko Mosel, Cummins Fridley - unverified); engine plants and genset assembly plants without such a source are out (rule 2). BESS cell/module and container-assembly plants with no stated welding are out (rule 5) except Tesla (hiring welders) and GTI (welding stated). Fluence's Goodyear AZ enclosure plant is a contract-manufacturing site; GTI Energy opened a BESS enclosure plant in Goodyear on the same date (May 20, 2025), but no source read here names GTI as Fluence's operator, so Fluence is not listed separately. Lectrus.com now redirects to nVent; Harvard Integrations (Hill Companies) operates in Tea SD, where Lectrus had a plant. Dryness: 66 web searches. The last 8 searches yielded 3 new plants (Coastline Power Solutions, Yancey Cordele, Harvard Integrations), the last 5 yielded 1, the last 2 yielded 0. Treat the list as near-dry for generator-enclosure/tank fabricators; BESS enclosure contract fabrication remains thinly documented publicly. Dates: retrieved 2026-11-16.",
+ "searches_until_dry": "66 (near-dry)",
+ "notes": "Independent list built without opening ledger/plants.csv, evidence.csv, links.csv, ledger/inbox, run_log.md, or any ledger/audit file about this vertical; an ls of ledger/audit showed file names only, and one unrelated audit file (shipbuilding list-audit B) was opened only to copy the JSON shape. The session scratchpad directory is shared and already held other agents' files; none were read. A pre-existing scratchpad/work/verified.json held one unrelated key (a barge-yard quote) that my quote-check script loaded but never used for any row. Registry angle: EPA FRS REST returned a maintenance message, so EPA ECHO get_facilities was used instead (active facilities, NAICS 335312: 625 of 710 rows paged; 332420: 308; 332322: 1,166; 332313: 604). ECHO rows were keyword-filtered and cross-matched by name and city to web finds; ECHO contributed Freeman Enclosure Systems (Batavia OH), Tramont (two Milwaukee addresses), Chillicothe Metal (4507 E Rome Rd), Fidelity (Ocala), Taylor Power (Richland MS), Robinson (De Pere), Koontz-Wagner Caldwell, Generac and Kohler/Discovery Energy sites, MTU/Rolls-Royce Mankato, Cummins Fridley, Blue Star. UL Product iQ: one fetch of the search page returned a 'Sign In' prompt, so UL sub-base tank listings were not used (failed source); a UL certificate hosted on modweldco.com pointed to Modern Welding. Pages that blocked or failed: chillicothemetal.com and com-fab.com (proxy 502), manufacturing-today.com, azcommerce.com, yanceybros.com, ir.fluenceenergy.com, energy-storage.news, thomasnet news (Cloudflare 403), wardtank.com and speedytanks.com (TLS), nvent.com subdomains (502), web.archive.org (429 under parallel load; Generac Eagle quote confirmed FOUND in a single manual --check). Classification: rule 2 was applied as follows: a genset-OEM plant is in only if a loaded source ties enclosure, tank or frame production (fabrication or enclosure assembly) to that specific plant (Generac Eagle, Generac Belvidere, Rehlko Mosel, Rehlko Kenosha are in; Generac Oshkosh/Beaver Dam/Whitewater, Cummins Fridley, mtu Mankato, Cat Griffin and Lafayette, Blue Star, Gillette are out). Dedicated enclosure/tank makers are in on their product line even where only a directory page loaded (Simplex, Pryco, Fidelity McGregor are in with no verified quote). Lectrus plants are all treated alike (in) on the 2010 source; Harvard Integrations now occupies a Tea SD site. announced or ramping plants (Fidelity McGregor TX, Generac Belvidere IL opening Q1 2027, Rehlko Kenosha WI late 2026, Yancey Cordele GA, AVL Charlotte NC, Phoenix Products new Zoo Parkway building) are kept as in_definition rows with status in products. Genset OEM plants are in only where a source ties enclosure/tank/frame fabrication to that plant (Generac Eagle, Rehlko Mosel, Cummins Fridley - unverified); engine plants and genset assembly plants without such a source are out (rule 2). BESS cell/module and container-assembly plants with no stated welding are out (rule 5) except Tesla (hiring welders) and GTI (welding stated). Fluence's Goodyear AZ enclosure plant is a contract-manufacturing site; GTI Energy opened a BESS enclosure plant in Goodyear on the same date (May 20, 2025), but no source read here names GTI as Fluence's operator, so Fluence is not listed separately. lectrus.com now redirects to an nVent page; nVent ownership of Lectrus is not confirmed. Caterpillar's East Peoria enclosure center may duplicate Enercon Engineering. Cities were checked on contact pages for Sea Box (Cinnaminson NJ), Maysteel (Allenton WI, not Menomonee Falls), WINCO (Le Center MN), Gillette (Elkhart IN), WPP (Worldwide Power Products, Houston TX) and Falcon (Manor TX, not Hockley); EK Machine and Fabcon cities remain unknown. Dryness: 66 web searches; near-dry, not fully dry. Per-search new-plant counts in search_log were reconstructed after the fact. The last 8 searches yielded 3 new plants (Coastline Power Solutions, Yancey Cordele, Harvard Integrations); the last 3 yielded 1 (Harvard). BESS enclosure contract fabrication is thinly documented publicly. Unresolved leads not listed as rows (page failed or product line/location unconfirmed): PowerSecure Manufacturing / PowerFab, Randleman NC (ECHO NAICS 335312; PowerSecure site describes distributed generation, enclosure line not confirmed); Atlantic Coastal Welding / Speedytanks (NJ, generator sub-base tanks; TLS failure); Superior Storage Tanks & Trailers, La Mirada CA (ECHO 332313; page 404); Ward Tank, Charlotte NC (ECHO 332313; TLS failure); BMarko Structures (containerized generator enclosures, BESS; location unknown, site failed); Superior Manufacturing Co. (generator enclosures; location unknown); Greer Tank & Welding (GEN-TANK generator base tanks; WA/AK sites, city not confirmed); Taylor Dynamometer, Milwaukee (UL-142 day tanks); Global Power Supply (globalpwr.com, enclosures/fuel tanks; may be distributor); IMP Corporation, GenPowerUSA, Wildcat Power Gen (genset packagers; fabrication not confirmed); Conexwest, Uniteam (container BESS; location/fabrication not confirmed); Prince Manufacturing (BESS enclosures listed; US/Mexico plants not identified); Redbud Fabrication, Rogersville MO (enclosures, generator link unconfirmed); Aegis Manufacturing & Engineering postings in Itasca IL (staffing-agency posts for data-center enclosure builders; employer unknown); Magnolia TX welding/fabrication posting (expired; employer unknown); Fluence Goodyear AZ (contract-manufactured enclosures; operator not named in sources read); LG ES Arizona container line (not located). Dates: retrieved 2026-11-16.",
  "search_log": [
   {
    "n": 1,
@@ -614,9 +614,9 @@
   {
    "name": "Maysteel Industries",
    "parent_company": "Maysteel",
-   "city": "Menomonee Falls",
+   "city": "Allenton",
    "state": "WI",
-   "products": "boundary: thin-sheet NEMA enclosures and cabinets for energy storage and generators; plants in WI, VA, TX, CO (which plant builds BESS not stated)",
+   "products": "boundary: thin-sheet NEMA enclosures and cabinets for energy storage and generators; manufacturing at 6199 County Rd W, Allenton WI, plus Garland TX and Longmont CO (which plant builds BESS not stated)",
    "in_definition": true,
    "boundary": true,
    "why_not": "",
@@ -651,11 +651,11 @@
    "quote_verified": true
   },
   {
-   "name": "Western Power Products (WPP)",
-   "parent_company": "Western Power Products",
-   "city": "unknown",
-   "state": "unknown",
-   "products": "custom genset packaging, ISO container power modules, skids, enclosures, fuel tanks",
+   "name": "Worldwide Power Products (WPP)",
+   "parent_company": "Worldwide Power Products",
+   "city": "Houston",
+   "state": "TX",
+   "products": "custom genset packaging, ISO container power modules, skids, enclosures, fuel tanks (17401 Aldine Westfield Rd per contact page)",
    "in_definition": true,
    "boundary": false,
    "why_not": "",
@@ -821,7 +821,7 @@
   },
   {
    "name": "Lectrus Chattanooga",
-   "parent_company": "nVent (Lectrus brand; acquisition not confirmed here)",
+   "parent_company": "unknown (lectrus.com now redirects to nVent)",
    "city": "Chattanooga",
    "state": "TN",
    "products": "sound-attenuated generator enclosures, sub-base fuel tanks up to 10,000 gal, electrical equipment centers (2010 source)",
@@ -847,13 +847,13 @@
   },
   {
    "name": "Lectrus Houston",
-   "parent_company": "nVent (Lectrus brand)",
+   "parent_company": "unknown (lectrus.com now redirects to nVent)",
    "city": "Houston",
    "state": "TX",
-   "products": "electrical equipment centers; generator enclosure work at this plant not confirmed",
-   "in_definition": false,
+   "products": "Lectrus manufacturing plant (2010 source lists Chattanooga, Houston and Tea as its three plants; company makes sound-attenuated generator enclosures and equipment centers); current status and product split not confirmed",
+   "in_definition": true,
    "boundary": false,
-   "why_not": "other vertical (v-datacenter-grid-prefab): equipment centers / e-houses; genset enclosure line not confirmed at this plant",
+   "why_not": "",
    "url": "https://www.industrialinfo.com/news/article/sound-attenuated-generator-enclosures-by-lectrus-a-feature-of-industry-today-on-industrialinfocom--166462",
    "quote": "Lectrus operates from three of the highest-capacity manufacturing facilities in the industry, located strategically in Chattanooga, Tennessee; Houston, Texas; and Tea, South Dakota",
    "quote_verified": true
@@ -907,7 +907,7 @@
    "boundary": false,
    "why_not": "",
    "url": "https://www.tomballcontrols.com/",
-   "quote": "Seguin Facility",
+   "quote": "Founded in 2022 and headquartered in Von Ormy, Texas, we operate three production facilities and employ more than 400 team members.",
    "quote_verified": true
   },
   {
@@ -920,7 +920,7 @@
    "boundary": false,
    "why_not": "",
    "url": "https://www.tomballcontrols.com/",
-   "quote": "Pleasanton Facility",
+   "quote": "Founded in 2022 and headquartered in Von Ormy, Texas, we operate three production facilities and employ more than 400 team members.",
    "quote_verified": true
   },
   {
@@ -1020,9 +1020,9 @@
    "city": "Fridley",
    "state": "MN",
    "products": "genset assembly; undated Cummins release (page blocked) said factory enclosures 230-500 kW were made at Fridley",
-   "in_definition": true,
+   "in_definition": false,
    "boundary": false,
-   "why_not": "",
+   "why_not": "assembly-only (rule 2, unconfirmed): only an undated Cummins release, which could not be loaded, says enclosures were made at Fridley; no loaded page ties enclosure/tank welding to this plant",
    "url": "",
    "quote": "",
    "quote_verified": false
@@ -1032,7 +1032,7 @@
    "parent_company": "Caterpillar Inc.",
    "city": "East Peoria",
    "state": "IL",
-   "products": "custom genset enclosures and containerized solutions 200 kW-4 MW (from Enercon IP purchase; date and current status unclear)",
+   "products": "custom genset enclosures and containerized solutions 200 kW-4 MW (from Enercon IP purchase; date and current status unclear); possible duplicate of Enercon Engineering East Peoria (Cat bought Enercon IP and assets)",
    "in_definition": true,
    "boundary": false,
    "why_not": "",
@@ -1225,9 +1225,9 @@
   {
    "name": "nVent TRACHTE",
    "parent_company": "nVent Electric",
-   "city": "Madison",
-   "state": "WI",
-   "products": "boundary: prefabricated buildings incl. substation control buildings and BESS enclosures/skids (BESS plant location not confirmed; Texas facility built BESS prototype)",
+   "city": "unknown",
+   "state": "unknown",
+   "products": "boundary: prefabricated buildings incl. substation control buildings and BESS enclosures (nVent TRACHTE); BESS production plant not confirmed (HQ reported as Madison WI and a Texas facility in search summaries only)",
    "in_definition": true,
    "boundary": true,
    "why_not": "",
