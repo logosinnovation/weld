@@ -2,9 +2,9 @@
  "vertical": "v-enclosures-battery-generator",
  "auditor": "list-auditor-A",
  "angle": "company and directory side: genset OEM plant-location pages and 10-K property lists, EGSA/trade-show exhibitor lists, trade press",
- "searches_run": 31,
- "searches_until_dry": 0,
- "notes": "in progress",
+ "searches_run": 40,
+ "searches_until_dry": 35,
+ "notes": "Independent list built 2026-11-16 by list-auditor A (company/directory angle). Sources: EDGAR 10-K property lists (Generac FY2025, Cummins FY2025, Caterpillar FY2025); EGSA Buying Guide (my.egsa.org, categories Enclosures-Generator Set, Fuel Tanks, Generator Sets, Trailers; only Manufacturer-type US members followed up; ~205/212/291/199 records, pages 1-2 read); Workday job APIs (Generac, Caterpillar) and cummins.jobs for site-level welding evidence; trade press (Power Progress, BizTimes, Plant Services, ESS News, governor/state releases). Stopping rule set in advance: stop after 5 consecutive searches with no new in-definition plant. The last search that added an in-definition plant was #35 (governor/state job announcements); #36-#40 added none, then the shared web-search budget ran out at 40, so the RE+ exhibitor and Rehlko other-plant searches could not run. The list is NOT shown to be dry: the 'new plant announcement' angle (#32-#35) was still yielding when it ended. searches_until_dry=35 means the last productive search number, not proof of saturation. searches_run=40 WebSearch calls; EGSA/EDGAR/Workday/site fetches are not counted. in_definition rule for genset OEM plants: true only with site-level welding/enclosure evidence; OEM sites with no welding evidence are false with 'assembly-only (unconfirmed...)'. Boundary rows (in_definition true, boundary true): Falcon Structures, Fabcon, GTI Buffalo, Panel Built. Possible duplicate: GTI Fabrication Goodyear may be the same physical plant as the Fluence Goodyear enclosure plant. Unresolved leads not given rows (no fetched evidence or city): Global Power Supply (custom enclosures/tanks, distributor-fabricator, city unknown), BMarko Structures (GA, container BESS enclosures; site blocked), Conexwest (container sales/mods), Avail/Lectrus Tea SD and Houston TX plants, Robinson Manitowoc WI and Iowa plants, JTS other sites (Caldwell ID / Abilene TX), Highland Tank and Modern Welding other plants, Saft Jacksonville FL BESS containers, NeoVolta Pendergrass GA, Mesa Power Solutions, Greer Tank (GEN-TANK), Safe-T-Tank, IES (ies-co.com), Caterpillar Patterson GA/Mabank TX/Sherman TX, Doosan Bobcat Statesville NC and Atlas Copco Rock Hill SC (mobile power, likely v-trailers), MTU Aiken SC (engines). Source failures: manufacturing-today.com (Cloudflare; Fidelity Waco quote unverified), energy-storage.news (empty), cmcousa.com (Cloudflare), bmarkostructures.com, yanceyengineeredsolutions.com, hipowersystems about page, careers.cummins.com, tesla.com careers (403), steeltank.com member list. Process note: at the start a helper script briefly wrote to an existing scratchpad file (rows.json, a mining-vertical fact-check file) and its directory listing was printed; the added key was removed immediately and no content about this vertical was viewed; all audit work used scratchpad/auditA/ only. Revisions after review: EGSA member profile pages (Buying-Guide-Search-Details) were read for Chillicothe Metal, Epic Power, Enerflex, Gillette, Winco, HIPOWER, Prime MFG, Power System Services, Industrial Service Solutions and TEKSAN. A row is in only where the profile or the company site states that the company manufactures enclosures, tanks or skids; profiles that only list categories under 'Sells' left the row out-unconfirmed. Out rows tagged '(unconfirmed...)' mean welding was not found, not that the site was found to be assembly-only.",
  "search_log": [
   {
    "q": "Caterpillar Griffin Georgia generator set plant enclosures fabrication",
@@ -129,6 +129,42 @@
   {
    "q": "base/sub-base tanks generator Modern Welding/Highland/Southwest Products/Integrity genset tanks plant",
    "new": "Modern Welding 11 plants; Highland Tank 8; Greer Tank (GEN-TANK)"
+  },
+  {
+   "q": "generator enclosure manufacturer new facility expansion 2026 data center welders jobs",
+   "new": "Generac Belvidere IL; AVL Charlotte NC"
+  },
+  {
+   "q": "Diesel Progress generator enclosure fabricator expands plant sub-base tanks 2025",
+   "new": "Tramont 2nd plant Milwaukee; Panel Built (aluminum)"
+  },
+  {
+   "q": "AVL custom power enclosure factory Charlotte NC",
+   "new": "AVL USA Charlotte NC"
+  },
+  {
+   "q": "governor announces jobs facility generator enclosures manufacturer 2025/2026",
+   "new": "Yancey Cordele GA, Batesville MS; Martin Energy Tipton MO; Power Pool Plus SC; JTS Idaho"
+  },
+  {
+   "q": "new manufacturing facility BESS enclosures steel jobs 2025 2026 skids",
+   "new": "none new (KORE lead)"
+  },
+  {
+   "q": "Caterpillar dealer power systems division fabricates generator enclosures fuel tanks packaging center",
+   "new": ""
+  },
+  {
+   "q": "natural gas generator packager Texas data center bridge power skid enclosures fabrication 2026",
+   "new": ""
+  },
+  {
+   "q": "generator day tank manufacturer UL 142 sub-base fabrication USA",
+   "new": ""
+  },
+  {
+   "q": "contract manufacturer genset base frames skids weldments generator OEM supplier",
+   "new": ""
   }
  ],
  "plants": [
@@ -657,7 +693,7 @@
    "parent_company": "Caterpillar Inc.",
    "city": "Griffin",
    "state": "GA",
-   "products": "Cat engines/gensets plus enclosure and containerized-solution packaging center announced 2017 (status of packaging center not reconfirmed)",
+   "products": "Cat engines/gensets plus enclosure and containerized-solution packaging center announced 2017 (status of packaging center not reconfirmed); evidence is a 2017 announcement only; may share or overlap other East Peoria/Griffin enclosure sites",
    "in_definition": true,
    "url": "https://www.powerprogress.com/news/cat-expands-power-generation-capabilities/5020040.article",
    "quote": "Caterpillar will operate manufacturing and testing centers near its production facilities for power solutions in East Peoria, Ill., and Griffin, Ga.",
@@ -670,7 +706,7 @@
    "parent_company": "Caterpillar Inc.",
    "city": "East Peoria",
    "state": "IL",
-   "products": "enclosure and containerized genset packaging center announced 2017 using Enercon IP (status not reconfirmed)",
+   "products": "enclosure and containerized genset packaging center announced 2017 using Enercon IP (status not reconfirmed); evidence is a 2017 announcement only; may share or overlap other East Peoria/Griffin enclosure sites",
    "in_definition": true,
    "url": "https://www.powerprogress.com/news/cat-expands-power-generation-capabilities/5020040.article",
    "quote": "Caterpillar will operate manufacturing and testing centers near its production facilities for power solutions in East Peoria, Ill., and Griffin, Ga.",
@@ -822,24 +858,11 @@
    "why_not": ""
   },
   {
-   "name": "Hennig Rockford Division (formerly AME)",
-   "parent_company": "Hennig Inc.",
-   "city": "Rockford",
-   "state": "IL",
-   "products": "second Hennig generator-enclosure manufacturing building",
-   "in_definition": true,
-   "url": "https://hennigworldwide.com/enclosure-systems",
-   "quote": "Hennig Rockford Division (formerly AME)",
-   "quote_verified": true,
-   "boundary": false,
-   "why_not": ""
-  },
-  {
    "name": "Global Power Components",
    "parent_company": "Global Power Components (GPC)",
-   "city": "West Allis",
+   "city": "Milwaukee",
    "state": "WI",
-   "products": "genset enclosures (Stealth), UL 142 day/base tanks, trailers, containers; welding and sheet metal fabrication (site lists Milwaukee WI 53219 address, which is West Allis area)",
+   "products": "genset enclosures (Stealth), UL 142 day/base tanks, trailers, containers; welding and sheet metal fabrication (site address Milwaukee, WI 53219; OSHPD listing and directories place it in West Allis, WI)",
    "in_definition": true,
    "url": "https://www.globalpowercomponents.com",
    "quote": "GPC provides far more than precision sheet metal fabrication and finishing for our tanks, enclosures, trailers, and containers.",
@@ -982,10 +1005,10 @@
    "parent_company": "Fidelity Manufacturing, LLC",
    "city": "Waco",
    "state": "TX",
-   "products": "regional plant (200,000 sq ft reported) for generator enclosures, fuel tanks, subbases; ramping",
+   "products": "regional plant (200,000 sq ft reported) for generator enclosures, fuel tanks, subbases; ramping; quote not available: source page blocked by Cloudflare, plant location known only from search summaries; announced/new plant, operating status not confirmed from sources read",
    "in_definition": true,
    "url": "https://manufacturing-today.com/news/as-backup-power-demand-surges-regional-expansion-is-fueling-nationwide-growth-for-fidelity-manufacturing/",
-   "quote": "the new regional plant in Waco plays a key role in these growth ambitions",
+   "quote": "",
    "quote_verified": false,
    "boundary": false,
    "why_not": ""
@@ -1078,6 +1101,292 @@
    "why_not": "other vertical (v-pressure-vessels-tanks): general tank maker, genset line not confirmed",
    "url": "https://modweldco.com/",
    "quote": "ASME, NBIC, AWS, AISC, UL, STI, and API, we have it covered.",
+   "quote_verified": true,
+   "boundary": false
+  },
+  {
+   "name": "Tramont Manufacturing (Tower Ave second plant)",
+   "parent_company": "Tramont Manufacturing, LLC (Graycliff Partners)",
+   "city": "Milwaukee",
+   "state": "WI",
+   "products": "second plant at 7900 W. Tower Ave for steel tank fabrication (cutting, forming, welding, painting); HQ plant at 3637 N. Holton St; announced/new plant, operating status not confirmed from sources read",
+   "in_definition": true,
+   "url": "https://biztimes.com/tramont-manufacturing-expanding-local-footprint-following-recent-acquisition/",
+   "quote": "The company plans to use the facility for steel tank fabrication, which includes cutting, forming, welding and painting processes",
+   "quote_verified": true,
+   "boundary": false,
+   "why_not": ""
+  },
+  {
+   "name": "Generac Belvidere facility",
+   "parent_company": "Generac Holdings",
+   "city": "Belvidere",
+   "state": "IL",
+   "products": "large-MW generator enclosure assembly and final packaging; operations begin Q1 2027",
+   "in_definition": false,
+   "why_not": "assembly-only (stated enclosure assembly and packaging; not yet operating)",
+   "url": "https://pulse2.com/generac-acquires-illinois-facility-to-expand-large-megawatt-generator-capacity-amid-rising-data-center-demand/",
+   "quote": "The new site will significantly increase Generac\u2019s ability to assemble generator enclosures and package completed systems for shipment.",
+   "quote_verified": true,
+   "boundary": false
+  },
+  {
+   "name": "Panel Built power products facility",
+   "parent_company": "Panel Built, Inc.",
+   "city": "Blue Ridge",
+   "state": "GA",
+   "products": "boundary: aluminum-first (welded aluminum) generator enclosures line; company also builds modular offices",
+   "in_definition": true,
+   "boundary": true,
+   "url": "https://www.newswire.com/news/panel-built-inc-introduces-new-line-of-aluminum-generator-enclosures-20711945",
+   "quote": "The new line of power products will be manufactured in a whole new Panel Built facility located in Blue Ridge, Georgia.",
+   "quote_verified": true,
+   "why_not": ""
+  },
+  {
+   "name": "AVL USA (AVL Manufacturing) Charlotte plant",
+   "parent_company": "AVL Manufacturing (Hamilton, Ontario)",
+   "city": "Charlotte",
+   "state": "NC",
+   "products": "custom industrial enclosures for large standby generators (data centers); 232,000 sq ft at 13006 Sam Neely Road; opened 2025-26; announced/new plant, operating status not confirmed from sources read",
+   "in_definition": true,
+   "url": "https://governor.nc.gov/news/press-releases/2025/05/22/governor-stein-announces-industrial-manufacturer-will-create-more-325-jobs-charlotte",
+   "quote": "will establish a new production facility in Charlotte to build enclosures for industrial power generators, creating more than 325 jobs",
+   "quote_verified": true,
+   "boundary": false,
+   "why_not": ""
+  },
+  {
+   "name": "Yancey Engineered Solutions (Griffin)",
+   "parent_company": "Yancey Bros. Co. (Cat dealer)",
+   "city": "Griffin",
+   "state": "GA",
+   "products": "sound-attenuated and weather-resistant generator enclosures, containerization, fuel tanks for Cat gensets",
+   "in_definition": true,
+   "url": "https://www.plantservices.com/industry-news/news/55387137/yancey-engineered-solutions-to-build-57-million-georgia-plant",
+   "quote": "especially sound-attenuated and weather-resistant enclosures for generators. The division has an existing factory, testing and service center in Griffin, Georgia.",
+   "quote_verified": true,
+   "boundary": false,
+   "why_not": ""
+  },
+  {
+   "name": "Yancey Engineered Solutions (Cordele)",
+   "parent_company": "Yancey Bros. Co. (Cat dealer)",
+   "city": "Cordele",
+   "state": "GA",
+   "products": "new generator enclosure factory in former Big Tex plant ($5.7M); announced/new plant, operating status not confirmed from sources read",
+   "in_definition": true,
+   "url": "https://www.plantservices.com/industry-news/news/55387137/yancey-engineered-solutions-to-build-57-million-georgia-plant",
+   "quote": "The money will go towards renovating a former Big Tex factory in Cordele.",
+   "quote_verified": true,
+   "boundary": false,
+   "why_not": ""
+  },
+  {
+   "name": "Yancey Engineered Solutions (Batesville)",
+   "parent_company": "Yancey Bros. Co. (Cat dealer)",
+   "city": "Batesville",
+   "state": "MS",
+   "products": "generator enclosures and fuel tanks ($20.8M, 250 jobs); announced/new plant, operating status not confirmed from sources read",
+   "in_definition": true,
+   "url": "https://www.taterecord.com/georgia-company-expanding-batesville",
+   "quote": "Generator enclosure and fuel tank manufacturer Yancey Engineered Solutions, a division of Yancey Bros. Co., is locating operations in Batesville.",
+   "quote_verified": true,
+   "boundary": false,
+   "why_not": ""
+  },
+  {
+   "name": "Martin Energy Group",
+   "parent_company": "Martin Energy Group",
+   "city": "Tipton",
+   "state": "MO",
+   "products": "generator set enclosures / gas genset packages for data-center bridge power",
+   "in_definition": true,
+   "url": "https://www.newstribune.com/news/2024/oct/24/martin-energy-announces-plans-to-expand-tipton/",
+   "quote": "Generator set enclosures -- such as those currently made by Martin Energy, featuring reciprocating engines driving generators to produce electricity -- will be produced in the expansion",
+   "quote_verified": true,
+   "boundary": false,
+   "why_not": ""
+  },
+  {
+   "name": "JTS (Johnson Thermal Systems) Nampa",
+   "parent_company": "JTS",
+   "city": "Nampa",
+   "state": "ID",
+   "products": "integrated generator enclosures and modular power systems; new $55M facility",
+   "in_definition": true,
+   "url": "https://www.plantservices.com/industry-news/news/55301976/jts-invests-55m-to-open-power-systems-manufacturing-facility-in-idaho",
+   "quote": "The company, which provides integrated generator enclosures and modular power systems, invested $55 million into the project and created 140 new jobs.",
+   "quote_verified": true,
+   "boundary": false,
+   "why_not": ""
+  },
+  {
+   "name": "Power Pool Plus",
+   "parent_company": "Power Pool Plus, Inc.",
+   "city": "Greenwood",
+   "state": "SC",
+   "products": "industrial generator manufacturing, contract steel fabrication, generator service (genset enclosure/tank line not explicitly stated)",
+   "in_definition": true,
+   "url": "https://governor.sc.gov/node/793",
+   "quote": "an industrial generator manufacturer, contract steel fabricator and generator service provider",
+   "quote_verified": true,
+   "boundary": false,
+   "why_not": ""
+  },
+  {
+   "name": "HIPOWER Systems (Himoinsa/Yanmar)",
+   "parent_company": "Yanmar (HIPOWER / Himoinsa)",
+   "city": "Olathe",
+   "state": "KS",
+   "products": "standby and mobile gensets for North America; EGSA lists enclosures/fuel tanks; site fabrication not confirmed",
+   "in_definition": false,
+   "why_not": "assembly-only (unconfirmed: no welding evidence found)",
+   "url": "https://www.hipowersystems.com/",
+   "quote": "HIPOWER Mobile generators are engineered specifically for the needs of the North American market.",
+   "quote_verified": true,
+   "boundary": false
+  },
+  {
+   "name": "Prime MFG (Prime Power Generators)",
+   "parent_company": "Prime MFG",
+   "city": "Springfield",
+   "state": "MO",
+   "products": "diesel/natural gas generator packages incl. mobile; EGSA lists enclosures; fabrication not confirmed",
+   "in_definition": false,
+   "why_not": "assembly-only (unconfirmed: no welding evidence found)",
+   "url": "https://goprimepower.com/",
+   "quote": "Prime MFG has designed our packages to run in the harshest conditions and still provide reliable uptime for our customers.",
+   "quote_verified": true,
+   "boundary": false
+  },
+  {
+   "name": "Chillicothe Metal Company",
+   "parent_company": "Chillicothe Metal Company, Inc.",
+   "city": "Chillicothe",
+   "state": "IL",
+   "products": "custom sound-attenuated, weatherproof and containerized genset enclosures (UL2200, IBC); UL142/UL2085 sub-base fuel tanks; 4507 E Rome Rd",
+   "in_definition": true,
+   "url": "https://my.egsa.org/Buying-Guide-Search-Details?zD3FE3CC6B2DB42FB9332962EB7C33A07=00d7afb7fb-7018-4f64-bbbc-8ef297454caa&z0fb61aace1cc4d87853b00d6fd7c5db5=00d7afb7fb-7018-4f64-bbbc-8ef297454caa",
+   "quote": "Other products include UL142 and UL2085 listed sub-base fuel tanks",
+   "quote_verified": true,
+   "boundary": false,
+   "why_not": ""
+  },
+  {
+   "name": "Epic Power Solutions",
+   "parent_company": "Epic Power Solutions",
+   "city": "Ocala",
+   "state": "FL",
+   "products": "UL142/UL2085 fuel tanks, stairs and platforms for power generation (310 Cypress Rd)",
+   "in_definition": true,
+   "url": "https://my.egsa.org/Buying-Guide-Search-Details?zD3FE3CC6B2DB42FB9332962EB7C33A07=00c17833bb-e935-4a6a-a2c1-46c59810e974&z0fb61aace1cc4d87853b00d6fd7c5db5=00c17833bb-e935-4a6a-a2c1-46c59810e974",
+   "quote": "Epic Power Solutions is a Manufacturer of UL142 and UL2085 Fuel Tanks, and Stairs and Platforms for the Power Generation Industry.",
+   "quote_verified": true,
+   "boundary": false,
+   "why_not": ""
+  },
+  {
+   "name": "Power System Services",
+   "parent_company": "Power System Services",
+   "city": "Oneonta",
+   "state": "AL",
+   "products": "refurbishes and resells used gensets; assembles new Cummins gensets",
+   "in_definition": false,
+   "why_not": "distributor/rental/service (refurbish/resell; assembly of new sets)",
+   "url": "https://my.egsa.org/Buying-Guide-Search-Details?zD3FE3CC6B2DB42FB9332962EB7C33A07=003d4d92d8-9bee-46d5-8592-9e9867ff00c2&z0fb61aace1cc4d87853b00d6fd7c5db5=003d4d92d8-9bee-46d5-8592-9e9867ff00c2",
+   "quote": "The majority of our business is refurbishing and reselling used generator sets.",
+   "quote_verified": true,
+   "boundary": false
+  },
+  {
+   "name": "Enerflex (Houston, Telge Rd)",
+   "parent_company": "Enerflex Ltd.",
+   "city": "Houston",
+   "state": "TX",
+   "products": "power and energy infrastructure packages; EGSA lists generator-set enclosures and gensets (10815 Telge Rd); genset enclosure fabrication at site not confirmed beyond directory",
+   "in_definition": false,
+   "url": "https://my.egsa.org/Buying-Guide-Search-Details?zD3FE3CC6B2DB42FB9332962EB7C33A07=00a28cf38c-40f6-4735-b1a2-e4cd3a58d088&z0fb61aace1cc4d87853b00d6fd7c5db5=00a28cf38c-40f6-4735-b1a2-e4cd3a58d088",
+   "quote": "10815 Telge Rd,",
+   "quote_verified": true,
+   "boundary": false,
+   "why_not": "other vertical (gas compression / process packages, v-pressure-vessels-tanks lead); genset enclosure line only in directory Sells list (unconfirmed)"
+  },
+  {
+   "name": "Industrial Service Solutions (Camp Hill)",
+   "parent_company": "Industrial Service Solutions",
+   "city": "Camp Hill",
+   "state": "PA",
+   "products": "generator manufacturing claim plus rotating equipment sales and repair; enclosure welding not stated",
+   "in_definition": false,
+   "why_not": "distributor/rental/service (repair/service company; unconfirmed manufacturing)",
+   "url": "https://my.egsa.org/Buying-Guide-Search-Details?zD3FE3CC6B2DB42FB9332962EB7C33A07=0013f6c9d4-c83e-ef11-b4ad-6045bdb7e4aa&z0fb61aace1cc4d87853b00d6fd7c5db5=0013f6c9d4-c83e-ef11-b4ad-6045bdb7e4aa",
+   "quote": "Generator Manufacturer, Electrical Rotating equipment sales and repair",
+   "quote_verified": true,
+   "boundary": false
+  },
+  {
+   "name": "TEKSAN USA",
+   "parent_company": "Teksan (Turkiye)",
+   "city": "Wood Dale",
+   "state": "IL",
+   "products": "US office of Turkish genset maker; US manufacturing not stated",
+   "in_definition": false,
+   "why_not": "distributor/rental/service (unconfirmed: US sales office; manufacturing outside US)",
+   "url": "https://my.egsa.org/Buying-Guide-Search-Details?zD3FE3CC6B2DB42FB9332962EB7C33A07=00ceca578a-86c4-ee11-92bd-6045bdb84c04&z0fb61aace1cc4d87853b00d6fd7c5db5=00ceca578a-86c4-ee11-92bd-6045bdb84c04",
+   "quote": "901 Mittel Dr,",
+   "quote_verified": true,
+   "boundary": false
+  },
+  {
+   "name": "Hennig Rockford Division (formerly AME)",
+   "parent_company": "Hennig Inc.",
+   "city": "Rockford",
+   "state": "IL",
+   "products": "design, engineering and fabrication of generator enclosures and fuel tanks (Hennig Enclosure Systems; UL-142 sub-base day tanks)",
+   "in_definition": true,
+   "url": "https://www.thefabricator.com/thefabricator/news/materialshandling/hennig-opens-facility-for-enclosure-manufacturing",
+   "quote": "Hennig Inc. has opened a facility in Rockford, Ill., for the design, engineering, and fabrication of enclosures and fuel tanks for power generators",
+   "quote_verified": true,
+   "boundary": false,
+   "why_not": ""
+  },
+  {
+   "name": "INNIO Waukesha Engine",
+   "parent_company": "INNIO",
+   "city": "Waukesha",
+   "state": "WI",
+   "products": "gas engines (EGSA lists enclosures/gensets)",
+   "in_definition": false,
+   "why_not": "engine/alternator-only",
+   "url": "https://www.waukeshaengine.com/",
+   "quote": "Gas Engines",
+   "quote_verified": true,
+   "boundary": false
+  },
+  {
+   "name": "Cummins Power Systems Elkhart",
+   "parent_company": "Cummins Inc.",
+   "city": "Elkhart",
+   "state": "IN",
+   "products": "Power Systems segment manufacturing site per 10-K; products not identified",
+   "in_definition": false,
+   "why_not": "assembly-only (unconfirmed: product line unknown)",
+   "url": "https://www.sec.gov/Archives/edgar/data/26172/000002617226000009/cmi-20251231.htm",
+   "quote": "Indiana: Elkhart, Seymour",
+   "quote_verified": true,
+   "boundary": false
+  },
+  {
+   "name": "Cummins Clovis",
+   "parent_company": "Cummins Inc.",
+   "city": "Clovis",
+   "state": "NM",
+   "products": "natural gas engine build / reman (Power Systems)",
+   "in_definition": false,
+   "why_not": "engine/alternator-only",
+   "url": "https://www.sec.gov/Archives/edgar/data/26172/000002617226000009/cmi-20251231.htm",
+   "quote": "New Mexico: Clovis",
    "quote_verified": true,
    "boundary": false
   }
