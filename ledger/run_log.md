@@ -861,3 +861,23 @@ Coordinator decisions applied now (mechanical):
 - **Leads for other verticals:** Kloeckner Paton IA (agricultural), Intercontinental Engineering Riverside MO (shipbuilding-naval), Etnyre and Schwing trailer and truck lines (trailers, truck bodies).
 - **Sweep notes for the record:** TAG's two Discovery Dr facilities treated as one campus (about 15 m apart, interpolated geocodes), to be confirmed in round 2. Process Machinery's careers page lists an "Ohio Branch" in Columbus; if it produces, its company-level rows must become inferred (round 2 checks).
 - **Next:** round-2 confirming fact-check, rotated (workflow mining-factcheck-round-2): checker A takes round-1 B's plants, B takes D's, C takes A's, D takes C's, and E takes the seven never-checked plants (Process Machinery, iRock and profiler F's five).
+
+## 2026-11-16: mining round-2 fact-check (confirming, rotated) applied
+
+- **Round 2:** five fact-checkers over all 47 profiled plants. Rotation: A took round-1 B's plants, B took D's, C took A's, D took C's, and E took the seven never-checked plants (Process Machinery, iRock and profiler F's five).
+  - **24 / 727 = 3.3% corrected, 0 unreachable** (A 4/153, B 4/137, C 4/156, D 5/143, E 7/138). Round 1 was 11.4%. No invented fact, wrong process, wrong tier or closed business in any report.
+  - Main kinds: an EPA facility name stated as the operator's identity (Tabor Princeton name, address and opening line; Paladin's C&P Attachments name and address), now inferred; company boilerplate stated at one site (L&H production_type); thin rows (Metalcraft Fall River robots, Liebherr postings, Komatsu Peoria chassis, Komatsu Milwaukee headcount split).
+  - Applied with `tools/apply_factcheck.py` (703 confirmed, 24 corrected, 0 unmatched).
+- **Coordinator rulings on the checkers' score notes:**
+  - Tabor Princeton part mix 8 to 0 (21 to 13) and Coperion Whitewater part mix 8 to 0 (40 to 32): the only product lists name no site, so the consultation 10 shared-site rule gives inferred attribution 0. Lead: Coperion's Jul 31 2024 brochure could restore Whitewater's 8 as a stated row.
+  - TAG Chattanooga scale 5 to 0 (21 to 16): its two Discovery Dr buildings (about 334 m apart, same production) are one campus, so TAG is a single-plant company with 70+ employees.
+  - Mellott Warfordsburg part mix 15 to 8 (60 to 53): the custom-fabrication sentence is company-level and Mellott has a second production site (Marion Machine).
+  - Schwing St. Paul part mix stays 8 with its basis moved to the stated product menu. Schwing scale 5 stands under the current rules (the multi-plant sentence sits under a 1990s heading; the 36-month limit is written for headcount only). Recorded as a limit, not changed.
+  - Mine Rite labor stays 0: the About page's "Now hiring welders" links to a Jan 2019 PDF.
+  - Deere Davenport material stays 20: the welded 13-ft-wide bucket over 16,000 lb fits the 2026 analyst cell limits (it would be 12 under the older 10,500 lb sheet).
+  - **Confidence consistency:** a headcount past the 36-month limit earns nothing and now supports no confidence, like an unknown headcount (Yankton and Durand 3 to 2). A part-mix 15 that rests on an inferred company-level row earns points but no confidence (Rockland 4 to 3). These standing rulings live in `ledger/audit/no-confidence-claims.csv`, which `tools/normalise_scores.py` now reads on every run. L&H 4 to 3 followed mechanically from its retagged production_type. Werk-Brau stays 4: its part mix already counted no confidence, and its material rests on the consultation 10 one-campus ruling.
+  - A general rule ignoring unknown-tagged cited claims was considered and not adopted: it would change 13 poles plants' confidence in a finished vertical.
+  - Six stale reasoning texts got coordinator notes (Durand 58, Whitewater and Kansas City "undated", Mount Vernon "start date", ESCO "level 15").
+- **Proposed sweeps not run** (round 2 is under 10%, so they are logged as limits for a later pass): EPA-name identity rows across all base records; thin rows where a field clause sits on no row.
+- **Leads:** Super Steel Mequon expansion (Jun 30 2026, aggregator snippet only; demand 15 if a primary source confirms); Bobcat Bismarck's three FRS addresses within about 0.5 km (labor 12 if shown to be one campus); Ground Force Idaho postings on idahoworks.gov (no welder role).
+- **Counts:** 370 plants, 279 included (47 profiled, 232 base), 91 excluded. Profiled tiers High 3 / Medium 30 / Low 14. Summary rewritten (`ledger/audit/summary-v-mining-heavy-equipment.json`); verticals.csv status partial.

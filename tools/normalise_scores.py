@@ -46,6 +46,12 @@ by_claim = {}
 for e in ev:
     by_claim.setdefault(e["claim_id"], []).append(e)
 stated = {c for c, rows in by_claim.items() if any(r["tag"] == "stated" for r in rows)}
+# --no-conf=<claim_id>: a cited claim that earns no points (e.g. a headcount past the 36-month limit) does not
+# support confidence, the same as an unknown headcount (round-2 ruling, 2026-11-16).
+stated -= {a.split("=", 1)[1] for a in sys.argv[1:] if a.startswith("--no-conf=")}
+import os
+if os.path.exists(L + "audit/no-confidence-claims.csv"):  # standing list, so a later run keeps the rulings
+    stated -= {r["claim_id"] for r in csv.DictReader(open(L + "audit/no-confidence-claims.csv"))}
 
 overrides = {}
 args = sys.argv[1:]

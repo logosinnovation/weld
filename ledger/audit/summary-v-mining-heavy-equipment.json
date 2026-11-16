@@ -2,20 +2,20 @@
  "vertical": "v-mining-heavy-equipment",
  "status": "partial",
  "plants": {
-  "found": 302,
-  "included": 233,
-  "profiled": 42,
-  "excluded": 69,
+  "found": 370,
+  "included": 279,
+  "profiled": 47,
+  "excluded": 91,
   "tiers": {
    "Low": 14,
-   "Medium": 25,
+   "Medium": 30,
    "High": 3
   },
-  "profiled_fact_checked": 40,
-  "material_unknown": 38
+  "profiled_fact_checked": 47,
+  "material_unknown": 43
  },
  "links": 34,
- "evidence_rows": 12111,
+ "evidence_rows": 13233,
  "fact_check_rounds": [
   {
    "round": 1,
@@ -83,19 +83,102 @@
    ],
    "rate": 0.114,
    "display": "71 / 623 = 11.4%"
+  },
+  {
+   "round": 2,
+   "label": "Round 2: confirming round, all 47 profiled plants, checkers rotated (after the sweep)",
+   "checked": 727,
+   "corrected": 24,
+   "unreachable": 0,
+   "checkers": [
+    {
+     "file": "fact-check-v-mining-heavy-equipment-R2-A.json",
+     "checked": 153,
+     "corrected": 4,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 4,
+      "invented fact": 0,
+      "other": 0
+     }
+    },
+    {
+     "file": "fact-check-v-mining-heavy-equipment-R2-B.json",
+     "checked": 137,
+     "corrected": 4,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 1,
+      "invented fact": 0,
+      "other": 3
+     }
+    },
+    {
+     "file": "fact-check-v-mining-heavy-equipment-R2-C.json",
+     "checked": 156,
+     "corrected": 4,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 3,
+      "invented fact": 0,
+      "other": 1
+     }
+    },
+    {
+     "file": "fact-check-v-mining-heavy-equipment-R2-D.json",
+     "checked": 143,
+     "corrected": 5,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 4,
+      "invented fact": 0,
+      "other": 1
+     }
+    },
+    {
+     "file": "fact-check-v-mining-heavy-equipment-R2-E.json",
+     "checked": 138,
+     "corrected": 7,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 6,
+      "invented fact": 0,
+      "other": 1
+     }
+    }
+   ],
+   "rate": 0.033,
+   "display": "24 / 727 = 3.3%"
   }
  ],
  "miss_rate": {
   "value": "38/126 = 30.2% (verified; both auditors); up to 46/134 = 34.3% with 8 unverified",
-  "note": "The blind list audit ran in parallel with the finders, so every verified miss was added before profiling was chosen. Two-list (capture-recapture) estimate of the population the auditors' search methods reach: about 132 plants. Two closure passes then reconciled EPA's mining-machinery (333131) and construction-machinery (333120) registries and added 14 and 24 base plants; the best-scoring plant (Process Machinery, Shelbyville KY) came from closure, so the list has not converged. A bounded final pass (remaining 333120 rows and EPA 333922 conveying equipment) is running.",
+  "note": "The blind list audit ran in parallel with the finders, so every verified miss was added before profiling was chosen. Two-list (capture-recapture) estimate of the population the auditors' search methods reach: about 132 plants. Three closure passes then reconciled EPA's registries for mining machinery (333131), construction machinery (333120) and conveying equipment (333922) and added 14, 24 and 46 base plants. The best-scoring plant (Process Machinery, Shelbyville KY) came from closure, so the list has not converged; the miss rate is not re-measured after closure.",
   "history": [
    "about 31% preliminary (Nov 14)",
    "30.2% verified (Nov 16)"
   ]
  },
  "known_limits": [
-  "Round-1 fact-check found 11.4% of checked claims needed correction (all applied; none changed a score). Most were company-level facts shown at one site; a pattern sweep and a confirming round are running.",
+  "Partial: the bounded final closure pass added 46 base plants, four with a dated welder posting on the company's own board naming the site (Exodus Superior WI, PPI Lenox IA, Syntron Saltillo MS, West River Oakwood VA), so the list has not converged. 121 EPA registry rows (333120 and 333922) are still unverified, 102 of them not researched.",
+  "Fact-check: round 1 found 11.4% of checked claims needed correction (mostly company-level facts shown at one site); after a pattern sweep, the rotated round 2 over all 47 profiles found 3.3%. All corrections are applied.",
   "Material scores 0 on most profiled plants: mining and construction sources rarely state a welded part's size or weight, and payloads, bucket capacities and machine classes do not count as part sizes.",
+  "Only 47 of 279 included plants are profiled; base records carry no score.",
   "EPA FRS was down (503) during parts of the finder stage; some registry quotes were checked only by the finders."
  ]
 }
