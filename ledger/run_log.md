@@ -665,3 +665,16 @@ Coordinator decisions applied now (mechanical):
 - **Auditor B finished** (resumed blind from its own partial file): 145 rows, 108 in definition, 76 discovery searches; dry after about 61.
 - **Auditor A's 36 candidates verified** (two plant-finders): 24 new base records, 6 excluded (e.g. Superior Pekin is an office; LBX Lexington is HQ and distribution), 2 resolved to existing, 4 unverified (TerraSource Duncan, Blue Diamond and others). Merged: 30 plants, 446 rows; 0 rejected. Quotes: 305 found, 6 not found, 4 unreachable (EPA outage). 3 coverage gaps to fix.
 - **Comparison with both auditors complete:** 177 in-definition auditor plants (deduplicated), 117 ledger plants matched, 31 still unmatched. 7 of the 31 are auditor A candidates already decided; 24 are new from auditor B and are being verified (workflow mining-verify-b).
+- **Auditor B's candidates verified** (mining-misses-3 and -4; the two halves overlapped on Craig, which was written once):
+  - 14 base: Klein Jacksonville TX and Ontario CA (haul-truck water tanks), Construction Attachments Lenoir, Rimpull Olathe, Alliance Fabrication Gary, Stedman Aurora, REMco Stockton (current site; Livermore is old), TCI Walnut, Craig Ethridge and others.
+  - 5 excluded, e.g. Sakai Adairsville (assembly only; its frames come from Advanced Steel Technology, Rome GA) and Caterpillar Elkader (closed).
+  - 4 unverified, e.g. Monarch Milwaukee (no 2023+ source) and Morton Metalcraft (now Matcor, Morton IL: a lead).
+  - Merged: 19 plants, 315 rows; 0 rejected. Quotes: 221 found, 4 not found, 4 unreachable.
+- **Miss rate (verified, both auditors): 38 / 126 = 30.2%.**
+  - Denominator: in-definition auditor plants now included in the ledger, matched or resolved, plus verified misses the script didn't match (CMI Waverly, Niece Buda, REMco Stockton).
+  - Upper bound with the 8 unverified: 46/134 = 34.3%.
+  - 13 auditor rows remain unmatched; all are decided (excluded or unverified).
+  - **Over the 20% threshold: advisor checkpoint.**
+- **Vertical now:** 237 plants (203 base, 34 excluded). Not yet profiled.
+- **Where the misses are:** small attachment and bucket makers (Amulet, Genesis, Skid Pro, Virnig, East, Steel Unlimited, Construction Attachments, Craig), roadbuilding and paving machine makers (GOMACO, Weiler, LeeBoy, CMI), aggregate equipment (Stedman, REMco, TCI, General Kinematics), mining service fabricators (L&H Industrial, Phillips, Ground Force, Klein), and weldment suppliers (Weldall, Hol-Mac, Alliance, Warren).
+  - Running the audit in parallel caught these **before** profiling was chosen, which was the point of the remedy.
