@@ -1,0 +1,3397 @@
+{
+ "checker": "fact-checker CS (closure sample; independent random sample of closure-pass-3 base records)",
+ "vertical": "v-mining-heavy-equipment",
+ "date": "2026-11-16",
+ "plants": [
+  "p-diedrich-la-porte-in",
+  "p-wetland-equipment-thibodaux-la",
+  "p-vince-hagan-sunnyvale-tx",
+  "p-morbark-winn-mi",
+  "p-jarraff-st-peter-mn",
+  "p-ppi-pella-ia",
+  "p-intercon-riverside-mo",
+  "p-syntron-saltillo-ms",
+  "p-allen-engineering-paragould-ar",
+  "p-vermeer-freeman-sd",
+  "p-csi-union-grove-nc",
+  "p-timberpro-shawano-wi",
+  "p-risever-jonesboro-ar",
+  "p-mack-theodore-al",
+  "p-gr-manufacturing-trussville-al",
+  "p-bergkamp-salina-ks",
+  "p-hercules-fort-wayne-in",
+  "p-ppi-lenox-ia",
+  "p-west-river-oakwood-va",
+  "p-hem-paving-grundy-center-ia",
+  "p-calder-taylors-sc",
+  "p-voeller-port-washington-wi",
+  "p-big-gun-robotics-newberry-sc",
+  "p-allied-systems-sherwood-or",
+  "p-ppi-humboldt-ia"
+ ],
+ "sample_method": "ids = plants.csv rows with status base and found_by containing 'closure-3' (45 records); random.Random(20261116).sample(sorted(ids), 25).",
+ "decision_rule": "As in R2-A. Corrected = the value adds a fact the cited page does not show, tags a judgement as stated, places a company-level fact at the plant, ties a posting or fact to the plant through a location shared by several sites (campus rule, consultation 10), or the quote is not on the page (raw source, incl. JSON-LD, checked before calling a quote missing); also an inferred relationship that breaks the written mining relationship rule. Confirmed otherwise. Not additive: limiting parentheticals ('company-level', 'site split not stated', 'not counted'), provenance labels, and a site-tie premise in a posting row ('PPI's only Lenox location', 'the company's only facility') when a page opened today carries it (PPI's ADP board location facet; West River's About page 'our facility in Oakwood, Virginia'). An EPA name/address row whose value only restates the EPA record is confirmed; where no cited page ties the EPA facility to the operator, that is reported as a lead or limit unless the value asserts the tie (Tabor precedent). Postings: re-read live today on the employer's own board; site named on the board or text; counting checked against the session-2 labor rule, the standing-ad rule (consultation 12) and the undated/aggregator rules.",
+ "claims_checked": 325,
+ "claims_corrected": 5,
+ "claims_unreachable": 0,
+ "error_rate": 0.0154,
+ "error_rate_note": "5/325 = 1.5% over every row checked (all 224 stated rows of the 25 records plus 101 inferred rows of the rule-bearing fields: relationship, lookalike_of, tier, tier_secondary, welder_postings, parent_company). On stated rows only: 4/224 = 1.8%. The fifth correction is an inferred relationship row (Vermeer Freeman new -> lookalike of Schenck Process). Two of the five change counting inputs for plants now in profiler H's wave (G.R. Trussville, HEM Grundy Center): welder postings called 'undated' carry JSON-LD datePosted. No closed business, wrong plant, wrong process, wrong tier or invented fact found. Prospect_test, found_by and other inferred rows were read but are outside the denominator.",
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 4,
+  "invented fact": 0,
+  "other": 1
+ },
+ "repeated_kinds": [
+  "quote does not support value (4) has three roots: (a) 'undated' own-board welder postings that carry a JSON-LD datePosted (G.R. 12902, HEM 12887) - the round-1 pattern (e) again; (b) judgement tagged stated (Hercules campus distance 12434; Morbark parent from an EEO footer 12232). SWEEP (a): every base or profiled record whose welder_postings says 'undated' - open the posting's raw source and read JSON-LD datePosted; named targets Quality Urbandale ('2 open (undated)') and Bandit Remus, plus Supreme Stoneboro and Allied Sherwood (Allied checked here: its static careers page carries no date). SWEEP (b): campus/distance values tagged stated, and parent rows resting only on a careers-board EEO line.",
+  "other (1) - relationship rule: Vermeer Freeman (trommel screens) is 'new'. Not 3+ in the sample, but the same miss sits on at least five out-of-sample base records that make crushers or screens and are 'new': p-astec-eugene-or (JCI crushers), p-gundlach-belleville-il (crushers), p-superior-belen-nm (VSI crushers), p-fab-tec-moscow-id (jaw/cone/screen plants), p-rd-olson-kelso-wa (crushing and screening plants). Every profiled crusher/screen OEM is a Schenck Process lookalike. Recommend a sweep."
+ ],
+ "worst_errors": [
+  "p-gr-manufacturing-trussville-al:welder_postings (row 12902; plants field): both Trussville Welder postings are called 'undated', but their JSON-LD datePosted is 2026-08-24 (about 84 days open, live on G.R.'s own CareerPlug board). Under the rubric that is labor 20 (60+ days, two at once), not 12. G.R. is in profiler H's wave.",
+  "p-vermeer-freeman-sd:relationship (row 12790): a trommel-screen maker set to 'new' against the written rule (screens -> lookalike of Schenck Process); relationship is the first ranking key. Same miss on 5 out-of-sample crusher/screen base records.",
+  "p-hem-paving-grundy-center-ia:welder_postings (row 12887; plants field): the Welder Fabricator posting is called 'undated' but its JSON-LD datePosted is 3/16/2026 (about 245 days). Labor 20 vs 12 turns on the standing-ad rule; coordinator call. HEM is in profiler H's wave."
+ ],
+ "status_problems": [
+  {
+   "plant": "p-risever-jonesboro-ar",
+   "problem": "operation not verified since 2019",
+   "detail": "Only 2017-2019 sources (announcement, groundbreaking, Oct 2019 trial operations); EPA registration 'Active' but no inspection; a 2026-11-16 search found no newer news, website or posting. Not shown closed. Keep base but do not profile until a current source shows the plant running."
+  },
+  {
+   "plant": "p-big-gun-robotics-newberry-sc",
+   "problem": "operation not verified after 2022",
+   "detail": "Own site biggunrobotics.com is live (copyright 2022, 114 Mawsons Way) with an employment form; newest dated item is the 2019 expansion. Not shown closed. The site says 'High-volume welded assemblies' (weak-fit signal) and runs robotic cells plus 20 manual weld stations."
+  },
+  {
+   "plant": "p-hercules-fort-wayne-in",
+   "problem": "two businesses folded into one record",
+   "detail": "HMC (5025 New Haven Ave; manufacturer and dealer of pile-driving equipment; one non-welding opening) and Titan Metal Worx (5225 New Haven Ave, 0.19 km; contract machining and fabrication; site unreachable) are separate companies under Entegra (2021). The campus rule needs 'the same production'; not shown. Prospect test rests on Titan's fabrication. Consider two records or exclusion of HMC if it only assembles/deals."
+  },
+  {
+   "plant": "p-calder-taylors-sc",
+   "problem": "address may be a sister building",
+   "detail": "EPA FRS gives 250 E Warehouse Ct; the Dec 2020 Construction Equipment Guide article states 'The factory and headquarters for Mauldin Paving Products is at 450 East Warehouse Ct., Taylors, S.C.' Directory listings use 250. Both are on the same short industrial court (likely one campus); company site unreachable. Plant is operating per EPA ('Operating')."
+  },
+  {
+   "plant": "p-ppi-humboldt-ia",
+   "problem": "prospect test not met on evidence",
+   "detail": "Base record with prospect_test 'not confirmed': the full PPI board shows only machining, CI, utility and maintenance roles at Humboldt and no source states welding there. Keep base; it should not be profiled or counted as included until welding is shown."
+  },
+  {
+   "plant": "(all 25)",
+   "problem": "duplicates",
+   "detail": "Checked by script against all 370+ plants: same city or under 1 km. No duplicates. Nearest pairs are different companies (Big Gun vs Komatsu Newberry 0.5 km; Bergkamp vs Great Plains Salina 1.3 km; PPI Pella vs Vermeer Pella 1.8 km)."
+  }
+ ],
+ "plants_closed_or_moved": [],
+ "plant_status_notes": "24 of 25 have a source placing the company at the recorded city that is live or dated 2022 or later; Risever (Jonesboro) has none after Oct 2019 (see status_problems). Live own site or own-board posting read 2026-11-16: Diedrich, Wetland, Vince Hagan, Morbark, PPI Pella/Lenox/Humboldt, Intercon, Syntron, Allen, CSI (cuttingsys.com, copyright 2026), TimberPro (komatsu.jobs Shawano roles), Mack, G.R., Bergkamp, Hercules, West River, HEM, Allied. Vermeer Freeman: aggregator copy of a Vermeer Welder posting at 420 S US Hwy 81 posted Nov 13, 2026 (own board unreachable). Jarraff: Prinoth-run jarraff.com live; EPA 'Operating'. Big Gun: own site copyright 2022. Calder: EPA 'Operating'; company site unreachable. Voeller: undated GMIC member page and an EPA 'Active' registration only (no dated current source). Every EPA DFR page answered (21), and each name, street, lat, lon and FIPS row matches its page and plants.csv; the 3 Census geocoder rows match after rounding.",
+ "field_drift_notes": [
+  "p-hem-paving-grundy-center-ia products: plants.csv carries '(slipform pavers, placer/spreaders, trimmers, texture/cure machines per search; ...)' - search-snippet facts with no evidence row. Suggested full field: 'concrete paving equipment (leading manufacturer of concrete paving equipment; own posting)'. hempaving.com (live) could supply a quotable product list.",
+  "p-vermeer-freeman-sd products: '(soil, compost, gravel, concrete)' and 'green-waste sorting equipment' are on no row. Suggested full field: 'trommel screens and compost turners'.",
+  "p-jarraff-st-peter-mn name: '(Prinoth Vegetation Management North America)' is on no row (seen only in a search snippet); parent field says 'acquired ... 2021' while the row says 'acquisition agreed 2021'. Suggested name: 'Jarraff Industries (Prinoth) - St. Peter'.",
+  "p-gr-manufacturing-trussville-al products: 'custom weldments and installations' - the posting says machines 'are outfitted with complex installations'; 'custom weldments' is not on the page. Suggested: '... (forestry, wildfire suppression, trash handling, governmental and military): complex installations on new machines'.",
+  "p-calder-taylors-sc products: 'rollers, tack tanks' are on the cited article but on no row (thin row; add them to row 12626's value).",
+  "p-mack-theodore-al products: 'log, scrap, waste, rock' grapples and 'steel mills' are on the cited pages but on no row value (thin rows 12942/12943).",
+  "Websites recorded 'unknown' that exist: CSI https://www.cuttingsys.com (774 Zeb Road, copyright 2026), Intercon http://www.intercon.com (stated on the cited Workable company page), HEM https://www.hempaving.com, Big Gun https://www.biggunrobotics.com."
+ ],
+ "leads": [
+  "HEM: hempaving.com states 'Heavy Equipment Manufacturing (HEM)' and 'P.O. Box 97 - 601 E First Street, Grundy Center, Iowa 50638' - ties the EPA facility to HEM Paving; add as name/address/website rows.",
+  "Big Gun Robotics: biggunrobotics.com - 'High-volume welded assemblies', robotic cells, '20 manual weld stations producing weldments', ISO 9001; part mix may be 0 if profiled.",
+  "Vermeer Freeman: Tallo copy of Vermeer's Welder I posting names GMAW-P (AWS D14.0) and FCAW; process evidence if Vermeer's own board becomes reachable.",
+  "Wetland Equipment: site menu lists 'Excavator Attachments' and 'Custom Builds' - relationship ruling question (lookalike of Mine Rite as an attachment seller?)."
+ ],
+ "ruling_questions": [
+  "Vince Hagan: an orphan /careers/welder-fitter/ page (published 2021-07-19, modified 2023-07-31) has an Apply Now button but is not on the current careers list. Is it 'live on a real applicant board' (standing-ad rule: open 12) or not a posting? The finder did not count it.",
+  "Wetland Equipment and CSI: OEMs that also sell attachments (excavator attachments; forestry slasher saws, delimbers, felling heads). The rule makes attachment sellers Mine Rite lookalikes; forestry-only plants are boundary. Do forestry attachments count?",
+  "HEM: a welder posting open about 245 days (posted 2026-03-16) - real 60+ day opening (20) or standing ad (12)?"
+ ],
+ "method": "Scope by script from evidence.csv: every stated row of the 25 records (224) and every inferred row of relationship, lookalike_of, tier, tier_secondary, welder_postings and parent_company (101). All 87 distinct cited URLs were fetched fresh on 2026-11-16 with tools/fetch_page.fetch(with_raw=True) into the scratchpad (21 EPA ECHO DFR JSON, 3 Census geocoder, company sites, job boards); all returned 200 (Tallo 202 challenge resolved in a browser). Each '...'-joined fragment was matched against normalised visible text and raw source (HTML-unescaped): 385 quoted rows; 5 misses resolved (Workable markdown bold; Tallo, komatsu.jobs and Morbark ADP rendered in headless Chromium). Boards read today: PPI ADP Workforce Now requisitions API (both pages, 34 openings, location facet), Bergkamp ADP API, Kadant careers API (Syntron), CareerPlug (G.R.), HireClick (HEM), ApplicantStack (West River), Allied static careers page (HTML comments checked), Morbark ADP (browser), komatsu.jobs (browser), Diedrich, Mack, Vince Hagan, Allen, HMC careers pages. Lat/lon/FIPS compared numerically with page and plants.csv. Duplicate check by city and haversine distance against all plants. Open/closed checks by WebSearch (Risever, Big Gun, Calder, Voeller, Jarraff, CSI, HEM) - discovery only, never quoted; company sites found that way (cuttingsys.com, hempaving.com, biggunrobotics.com) were opened with fetch_page. No ledger file was edited.",
+ "apply_note": "apply_factcheck.py run with --apply on a scratch copy of ledger/: 320 confirmed, 5 corrected, 0 unmatched; plants.csv diff shows exactly three changed fields: G.R. and HEM welder_postings (new full fields) and Vermeer relationship new -> lookalike. Hercules address and Morbark parent rows carry plants_csv_value equal to the current field (tag moves to inferred; field unchanged). Applying leaves Vermeer's lookalike_of blank until the coordinator adds a p-vermeer-freeman-sd:lookalike_of row 'Schenck Process' (inferred) by hand. rank_mining.py on the scratch copy: Vermeer moves from 210th to 100th (not top 40; no counted posting); G.R. (232nd) and HEM (160th) unchanged (relationship new). Field drift, leads, ruling questions and status problems are not applied by the script. The real ledger was not edited.",
+ "rows": [
+  {
+   "claim_id": "p-diedrich-la-porte-in:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110003083804&output=JSON",
+   "ledger_value": "EPA FRS 110003083804: DIEDRICH DRILL INC",
+   "evidence_row": 12304,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityName on the page as quoted; the value only restates the EPA record."
+  },
+  {
+   "claim_id": "p-diedrich-la-porte-in:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110003083804&output=JSON",
+   "ledger_value": "1719 STATE ST, LA PORTE IN 46350 (EPA FRS 110003083804)",
+   "evidence_row": 12305,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-diedrich-la-porte-in:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110003083804&output=JSON",
+   "ledger_value": "41.60727",
+   "evidence_row": 12306,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-diedrich-la-porte-in:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110003083804&output=JSON",
+   "ledger_value": "-86.73103",
+   "evidence_row": 12307,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-diedrich-la-porte-in:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110003083804&output=JSON",
+   "ledger_value": "18091",
+   "evidence_row": 12308,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityFipsCode on the page equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-diedrich-la-porte-in:address",
+   "source_url": "https://www.diedrichdrill.com/",
+   "ledger_value": "1719 State Street, Suite A, La Porte (company's shipping & receiving location; EPA registers the 333120 facility here); office at 5 Fisher Street",
+   "evidence_row": 12309,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Diedrich home page: 'Shipping & Receiving Location: 1719 State Street, Suite A' and 'Office Location: 5 Fisher Street' both on the page; EPA's 333120 registration is 1719 State St (row 12305)."
+  },
+  {
+   "claim_id": "p-diedrich-la-porte-in:products",
+   "source_url": "https://www.diedrichdrill.com/",
+   "ledger_value": "geotechnical drill rigs and tooling, built in-house",
+   "evidence_row": 12310,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'Every rig is built in-house' on the page; value 'built in-house' carried."
+  },
+  {
+   "claim_id": "p-diedrich-la-porte-in:name",
+   "source_url": "https://www.diedrichdrill.com/",
+   "ledger_value": "Diedrich Drill",
+   "evidence_row": 12312,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-diedrich-la-porte-in:website",
+   "source_url": "https://www.diedrichdrill.com/",
+   "ledger_value": "https://www.diedrichdrill.com",
+   "evidence_row": 12313,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-diedrich-la-porte-in:tier",
+   "source_url": "https://www.diedrichdrill.com/",
+   "ledger_value": "OEM",
+   "evidence_row": 12314,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-diedrich-la-porte-in:relationship",
+   "source_url": "https://www.diedrichdrill.com/",
+   "ledger_value": "new",
+   "evidence_row": 12315,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-diedrich-la-porte-in:welder_postings",
+   "source_url": "https://www.diedrichdrill.com/careers",
+   "ledger_value": "none found on own careers page 2026-11-16 (2 roles: machinist, parts puller)",
+   "evidence_row": 12316,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Careers page opened 2026-11-16 (text grepped for weld/fitter/fabricat): only 'Experienced CNC/Manual Machinist' and 'Inventory Parts Puller & Cycle Counter' listed; 'fabrication' appears only in the page's intro sentence. 'none found' correct."
+  },
+  {
+   "claim_id": "p-wetland-equipment-thibodaux-la:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110070514852&output=JSON",
+   "ledger_value": "EPA FRS 110070514852: WETLAND EQUIPMENT CO",
+   "evidence_row": 12634,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityName on the page as quoted; the value only restates the EPA record."
+  },
+  {
+   "claim_id": "p-wetland-equipment-thibodaux-la:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110070514852&output=JSON",
+   "ledger_value": "118 W MAIN ST, THIBODAUX LA 70301 (EPA FRS 110070514852)",
+   "evidence_row": 12635,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-wetland-equipment-thibodaux-la:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110070514852&output=JSON",
+   "ledger_value": "29.7769",
+   "evidence_row": 12636,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-wetland-equipment-thibodaux-la:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110070514852&output=JSON",
+   "ledger_value": "-90.81765",
+   "evidence_row": 12637,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-wetland-equipment-thibodaux-la:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110070514852&output=JSON",
+   "ledger_value": "22057",
+   "evidence_row": 12638,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityFipsCode on the page equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-wetland-equipment-thibodaux-la:products",
+   "source_url": "https://www.wetlandequipment.com/",
+   "ledger_value": "amphibious excavator manufacturer; customized buggies",
+   "evidence_row": 12639,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-wetland-equipment-thibodaux-la:name",
+   "source_url": "https://www.wetlandequipment.com/",
+   "ledger_value": "Wetland Equipment, amphibious excavator manufacturer, Thibodaux LA",
+   "evidence_row": 12640,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-wetland-equipment-thibodaux-la:address",
+   "source_url": "https://www.wetlandequipment.com/",
+   "ledger_value": "Thibodaux, LA 70301 (company site)",
+   "evidence_row": 12641,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Company site (copyright 2025, blog dated Feb 20, 2026) shows '118 West Main Street | Thibodaux, LA 70301'; the site is live, so the record's address is the company's own address. Whether welding happens at this downtown address is not shown (prospect_test is inferred)."
+  },
+  {
+   "claim_id": "p-wetland-equipment-thibodaux-la:parent_company",
+   "source_url": "https://www.wetlandequipment.com/",
+   "ledger_value": "Wetland Equipment Company (independent)",
+   "evidence_row": 12642,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row: no parent named on the cited page; tag inferred is correct."
+  },
+  {
+   "claim_id": "p-wetland-equipment-thibodaux-la:website",
+   "source_url": "https://www.wetlandequipment.com/",
+   "ledger_value": "https://www.wetlandequipment.com",
+   "evidence_row": 12643,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-wetland-equipment-thibodaux-la:tier",
+   "source_url": "https://www.wetlandequipment.com/",
+   "ledger_value": "OEM",
+   "evidence_row": 12644,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-wetland-equipment-thibodaux-la:tier_secondary",
+   "source_url": "https://www.wetlandequipment.com/",
+   "ledger_value": "Tier 1",
+   "evidence_row": 12645,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-wetland-equipment-thibodaux-la:relationship",
+   "source_url": "https://www.wetlandequipment.com/",
+   "ledger_value": "new",
+   "evidence_row": 12646,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'new' is defensible (amphibious excavator OEM), but the site's product menu lists 'Excavator Attachments' and 'Custom Builds'; under the clarified rule an OEM that also sells attachments as products (Cat Victoria precedent) can be a Mine Rite lookalike. RULING QUESTION, not counted as an error."
+  },
+  {
+   "claim_id": "p-wetland-equipment-thibodaux-la:welder_postings",
+   "source_url": "https://www.wetlandequipment.com/",
+   "ledger_value": "unknown: no job board on the company site",
+   "evidence_row": 12647,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "No careers section on wetlandequipment.com 2026-11-16; unknown is correct."
+  },
+  {
+   "claim_id": "p-vince-hagan-sunnyvale-tx:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110014366024&output=JSON",
+   "ledger_value": "EPA FRS 110014366024: VINCE HAGAN CLAY ROAD FACILITY",
+   "evidence_row": 12460,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityName on the page as quoted; the value only restates the EPA record."
+  },
+  {
+   "claim_id": "p-vince-hagan-sunnyvale-tx:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110014366024&output=JSON",
+   "ledger_value": "330 CLAY RD BLDG 458, SUNNYVALE TX 75182 (EPA FRS 110014366024)",
+   "evidence_row": 12461,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-vince-hagan-sunnyvale-tx:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110014366024&output=JSON",
+   "ledger_value": "32.785874",
+   "evidence_row": 12462,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-vince-hagan-sunnyvale-tx:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110014366024&output=JSON",
+   "ledger_value": "-96.570592",
+   "evidence_row": 12463,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-vince-hagan-sunnyvale-tx:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110014366024&output=JSON",
+   "ledger_value": "48113",
+   "evidence_row": 12464,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityFipsCode on the page equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-vince-hagan-sunnyvale-tx:address",
+   "source_url": "https://www.vincehagan.com/careers/",
+   "ledger_value": "330 Clay Road, Building 530 (corporate office) and Building 458 (parts department), Sunnyvale TX 75182",
+   "evidence_row": 12465,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Careers page footer: 'Corporate Office 330 Clay Road, Building 530 ... Parts Department 330 Clay Road, Building 458'; on the page."
+  },
+  {
+   "claim_id": "p-vince-hagan-sunnyvale-tx:products",
+   "source_url": "https://www.vincehagan.com/about-us/",
+   "ledger_value": "designs and manufactures dry batch and central mix batch plants",
+   "evidence_row": 12466,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-vince-hagan-sunnyvale-tx:name",
+   "source_url": "https://www.vincehagan.com/careers/",
+   "ledger_value": "Vince Hagan Company",
+   "evidence_row": 12467,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-vince-hagan-sunnyvale-tx:parent_company",
+   "source_url": "https://www.vincehagan.com/careers/",
+   "ledger_value": "Vince Hagan Company (independent)",
+   "evidence_row": 12468,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row: no parent named on the cited page; tag inferred is correct."
+  },
+  {
+   "claim_id": "p-vince-hagan-sunnyvale-tx:website",
+   "source_url": "https://www.vincehagan.com/careers/",
+   "ledger_value": "https://www.vincehagan.com",
+   "evidence_row": 12469,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-vince-hagan-sunnyvale-tx:tier",
+   "source_url": "https://www.vincehagan.com/about-us/",
+   "ledger_value": "OEM",
+   "evidence_row": 12470,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-vince-hagan-sunnyvale-tx:relationship",
+   "source_url": "https://www.vincehagan.com/about-us/",
+   "ledger_value": "new",
+   "evidence_row": 12471,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-vince-hagan-sunnyvale-tx:welder_postings",
+   "source_url": "https://www.vincehagan.com/careers/",
+   "ledger_value": "current list 2026-11-16: Field Service Technician only",
+   "evidence_row": 12472,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Careers page (dateModified 2026-03-26) lists one opening, Field Service Technician. The /careers/welder-fitter/ page is reachable with an Apply Now button but is not linked from the current list; its JSON-LD shows datePublished 2021-07-19, dateModified 2023-07-31 (the ledger calls 2023-07-31 its date). Not counting it is defensible (orphan page, not on the current applicant list); RULING QUESTION under the standing-ad rule."
+  },
+  {
+   "claim_id": "p-morbark-winn-mi:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001299318&output=JSON",
+   "ledger_value": "EPA FRS 110001299318: MORBARK HOLDINGS GROUP, LLC",
+   "evidence_row": 12224,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityName on the page as quoted; the value only restates the EPA record."
+  },
+  {
+   "claim_id": "p-morbark-winn-mi:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001299318&output=JSON",
+   "ledger_value": "8507 S WINN RD, WINN MI 48896 (EPA FRS 110001299318)",
+   "evidence_row": 12225,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-morbark-winn-mi:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001299318&output=JSON",
+   "ledger_value": "43.51494",
+   "evidence_row": 12226,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-morbark-winn-mi:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001299318&output=JSON",
+   "ledger_value": "-84.90582",
+   "evidence_row": 12227,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-morbark-winn-mi:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001299318&output=JSON",
+   "ledger_value": "26073",
+   "evidence_row": 12228,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityFipsCode on the page equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-morbark-winn-mi:name",
+   "source_url": "https://talents.vaia.com/companies/morbark/welder-226544948/",
+   "ledger_value": "Morbark LLC, Winn, Michigan",
+   "evidence_row": 12229,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Vaia aggregator copy (JSON-LD datePosted 2026-10-24, validThrough 2027-01-22): 'Morbark LLC located in Winn, Michigan is looking for a Welder.' Supports the name and city."
+  },
+  {
+   "claim_id": "p-morbark-winn-mi:products",
+   "source_url": "https://www.morbark.com/",
+   "ledger_value": "horizontal grinders, whole-tree drum chippers (company site); whole-tree drum chippers",
+   "evidence_row": 12230,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Both fragments on morbark.com ('Horizontal Grinders', '40/36 Whole Tree Drum Chipper'); company-level product names for the Winn complex (the company's only Winn production site in the ledger)."
+  },
+  {
+   "claim_id": "p-morbark-winn-mi:parent_company",
+   "source_url": "https://recruiting.adp.com/srccar/public/RTI.home?c=1054041&d=MorbarkCareerCenter",
+   "ledger_value": "Alamo Group (career site client)",
+   "evidence_row": 12232,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "note": "The quote (an EEO footer on Morbark's ADP career center) shows Alamo Group as the employer of record on the board, not that Alamo owns Morbark. Morbark's ownership by Alamo Group is well known (2019) but no cited page states it. Syntron's parent row on the same kind of evidence (Kadant careers EEO line, row 13094) is tagged inferred; retag this one inferred for consistency. Reasoning: 'Morbark's careers link goes to an ADP board whose EEO line names Alamo Group as the employer; parent inferred.' Value and plants field unchanged.",
+   "corrected_value": "Alamo Group (career site client)",
+   "corrected_quote": "Alamo Group is proud to be an Equal Employment Opportunity",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Alamo Group"
+  },
+  {
+   "claim_id": "p-morbark-winn-mi:website",
+   "source_url": "https://www.morbark.com/",
+   "ledger_value": "https://www.morbark.com",
+   "evidence_row": 12233,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-morbark-winn-mi:tier",
+   "source_url": "https://www.morbark.com/",
+   "ledger_value": "OEM",
+   "evidence_row": 12234,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-morbark-winn-mi:relationship",
+   "source_url": "https://www.morbark.com/",
+   "ledger_value": "new",
+   "evidence_row": 12235,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-morbark-winn-mi:welder_postings",
+   "source_url": "https://myjobs.adp.com/morbark/cx/job-listing?keyword=weld",
+   "ledger_value": "none found on own ADP board 2026-11-16 (keyword 'weld': 4 non-welding Winn roles)",
+   "evidence_row": 12236,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Own Alamo/Morbark ADP board rendered in a browser 2026-11-16 (keyword 'weld'): 'Search results loaded. 4 jobs found', all Winn, Michigan (Manufacturing Engineer, Design Engineer, EHS Manager, Production Supervisor). The Vaia Welder copy is not on the own board, so 'none found' on the own board is correct and the aggregator copy earns no labor."
+  },
+  {
+   "claim_id": "p-jarraff-st-peter-mn:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110003924193&output=JSON",
+   "ledger_value": "EPA FRS 110003924193: JARRAFF INDUSTRIES LLC",
+   "evidence_row": 12809,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityName on the page as quoted; the value only restates the EPA record."
+  },
+  {
+   "claim_id": "p-jarraff-st-peter-mn:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110003924193&output=JSON",
+   "ledger_value": "1730 GAULT ST, SAINT PETER MN 56082 (EPA FRS 110003924193)",
+   "evidence_row": 12810,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-jarraff-st-peter-mn:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110003924193&output=JSON",
+   "ledger_value": "44.34776",
+   "evidence_row": 12811,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-jarraff-st-peter-mn:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110003924193&output=JSON",
+   "ledger_value": "-93.95691",
+   "evidence_row": 12812,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-jarraff-st-peter-mn:products",
+   "source_url": "https://www.internationalrentalnews.com/news/Prinoth-to-acquire-Jarraff-Industries/8015265.article",
+   "ledger_value": "right-of-way maintenance equipment such as the T4 tree trimmer",
+   "evidence_row": 12813,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "International Rental News, Oct 4, 2021: quote on the page."
+  },
+  {
+   "claim_id": "p-jarraff-st-peter-mn:name",
+   "source_url": "https://www.internationalrentalnews.com/news/Prinoth-to-acquire-Jarraff-Industries/8015265.article",
+   "ledger_value": "Jarraff Industries, founded 1979 in St. Peter",
+   "evidence_row": 12815,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Same article: 'Jarraff Industries was founded in 1979 in St. Peter, Minn., by George Boyum.'"
+  },
+  {
+   "claim_id": "p-jarraff-st-peter-mn:parent_company",
+   "source_url": "https://www.internationalrentalnews.com/news/Prinoth-to-acquire-Jarraff-Industries/8015265.article",
+   "ledger_value": "Prinoth (acquisition agreed 2021)",
+   "evidence_row": 12816,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Article says Prinoth 'has agreed to acquire' (Oct 2021); value says 'acquisition agreed 2021', which matches. The plants.csv parent field says 'acquired ... 2021' (completion is on the jarraff.com Prinoth branding and in search results, not on this row) - field note only."
+  },
+  {
+   "claim_id": "p-jarraff-st-peter-mn:website",
+   "source_url": "https://www.jarraff.com/",
+   "ledger_value": "https://www.jarraff.com",
+   "evidence_row": 12817,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-jarraff-st-peter-mn:tier",
+   "source_url": "https://www.internationalrentalnews.com/news/Prinoth-to-acquire-Jarraff-Industries/8015265.article",
+   "ledger_value": "OEM",
+   "evidence_row": 12818,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-jarraff-st-peter-mn:relationship",
+   "source_url": "https://www.internationalrentalnews.com/news/Prinoth-to-acquire-Jarraff-Industries/8015265.article",
+   "ledger_value": "new",
+   "evidence_row": 12819,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-jarraff-st-peter-mn:welder_postings",
+   "source_url": "https://www.jarraff.com/",
+   "ledger_value": "unknown: group careers site; no St. Peter list read",
+   "evidence_row": 12820,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "jarraff.com links to Prinoth group careers; no St. Peter requisition list readable. Unknown is correct (a Paylocity job URL surfaced in search did not render)."
+  },
+  {
+   "claim_id": "p-ppi-pella-ia:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=300%20SE%2014th%20St%2C%20Pella%2C%20IA%2050219&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "19125",
+   "evidence_row": 13137,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Census geocoder JSON re-run 2026-11-16: matchedAddress as quoted; coordinates/county match the value (rounded to 6 dp)."
+  },
+  {
+   "claim_id": "p-ppi-pella-ia:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=300%20SE%2014th%20St%2C%20Pella%2C%20IA%2050219&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "41.393637",
+   "evidence_row": 13138,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Census geocoder JSON re-run 2026-11-16: matchedAddress as quoted; coordinates/county match the value (rounded to 6 dp)."
+  },
+  {
+   "claim_id": "p-ppi-pella-ia:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=300%20SE%2014th%20St%2C%20Pella%2C%20IA%2050219&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-92.897589",
+   "evidence_row": 13139,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Census geocoder JSON re-run 2026-11-16: matchedAddress as quoted; coordinates/county match the value (rounded to 6 dp)."
+  },
+  {
+   "claim_id": "p-ppi-pella-ia:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000412857&output=JSON",
+   "ledger_value": "Precision Pulley & Idler (PPI) - Pella",
+   "evidence_row": 13140,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityName 'PRECISION PULLEY & IDLER INC-PELLA' on the page; the value is the record name."
+  },
+  {
+   "claim_id": "p-ppi-pella-ia:parent_company",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000412857&output=JSON",
+   "ledger_value": "Precision, Inc. (Precision Pulley & Idler division)",
+   "evidence_row": 13141,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA record opened 2026-11-16; quote on the page."
+  },
+  {
+   "claim_id": "p-ppi-pella-ia:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000412857&output=JSON",
+   "ledger_value": "300 SE 14th St, Pella, IA 50219",
+   "evidence_row": 13142,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA lists '300 SOUTHEAST 14TH STREET' (and '300 SE 14TH ST') for PPI-Pella; matches."
+  },
+  {
+   "claim_id": "p-ppi-pella-ia:website",
+   "source_url": "https://www.ppi-global.com/about/",
+   "ledger_value": "https://www.ppi-global.com",
+   "evidence_row": 13143,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "ppi-global.com/about opened 2026-11-16; website value supported."
+  },
+  {
+   "claim_id": "p-ppi-pella-ia:products",
+   "source_url": "https://www.ppi-global.com/about/",
+   "ledger_value": "company-level: conveyor components (pulleys, idlers) for bulk handling incl. mining and aggregate; site product split not stated beyond the name and postings",
+   "evidence_row": 13144,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'PPI is a proven industry leader in conveyor components' on the About page; value is explicitly labelled company-level, not placed at the site."
+  },
+  {
+   "claim_id": "p-ppi-pella-ia:products",
+   "source_url": "https://www.ppi-global.com/product-lines/pulleys/",
+   "ledger_value": "company-level: conveyor pulleys",
+   "evidence_row": 13145,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'PPI produces pulleys for all conveyor applications.' on the pulleys page; labelled company-level."
+  },
+  {
+   "claim_id": "p-ppi-pella-ia:tier",
+   "source_url": "https://www.ppi-global.com/about/",
+   "ledger_value": "OEM",
+   "evidence_row": 13146,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-ppi-pella-ia:relationship",
+   "source_url": "https://www.ppi-global.com/industries/mining-and-mineral-processing/",
+   "ledger_value": "lookalike",
+   "evidence_row": 13147,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-ppi-pella-ia:lookalike_of",
+   "source_url": "https://www.ppi-global.com/industries/mining-and-mineral-processing/",
+   "ledger_value": "Schenck Process",
+   "evidence_row": 13148,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-ppi-pella-ia:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/422016665_1?cid=92057b43-7f0c-467f-9a9e-ea36a626e97e&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "2 open on PPI's own ADP board (2026-11-16) located \"Pella, IA\": Welding Technician (2nd shift), posted 2026-10-01, and Welding Technician (Drums) (2nd shift), posted 2026-04-30 (open about 200 days); home department PELLA - DRUMS. Not counted for this record: PPI lists several Pella locations (PELLA 1, PELLA 2, PELLA 4, PELLA OTHER, PELLA TECH CENTER) with no addresses, so the city-only attribution is inferred (mining rule 3)",
+   "evidence_row": 13150,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "ADP requisition 422016665_1 opened 2026-11-16: 'Welding Technician (2nd shift)', postDate 2026-10-01, location Pella, IA, home department PELLA - DRUMS; still on the board list today. The 'not counted' clause and the list of Pella locations (PELLA 1, 2, 4, OTHER, TECH CENTER) are carried by the board list page (sibling row 13152, location facet read today). Shared-city handling is correct: counted 0."
+  },
+  {
+   "claim_id": "p-ppi-pella-ia:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/191558805_1?cid=92057b43-7f0c-467f-9a9e-ea36a626e97e&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "2 open on PPI's own ADP board (2026-11-16) located \"Pella, IA\": Welding Technician (2nd shift), posted 2026-10-01, and Welding Technician (Drums) (2nd shift), posted 2026-04-30 (open about 200 days); home department PELLA - DRUMS. Not counted for this record: PPI lists several Pella locations (PELLA 1, PELLA 2, PELLA 4, PELLA OTHER, PELLA TECH CENTER) with no addresses, so the city-only attribution is inferred (mining rule 3)",
+   "evidence_row": 13151,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "ADP requisition 191558805_1 opened 2026-11-16: 'Welding Technician (Drums) (2nd shift)', postDate 2026-04-30, Pella, IA, PELLA - DRUMS; still on the board (page 2 of the list). About 200 days is right."
+  },
+  {
+   "claim_id": "p-ppi-pella-ia:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=92057b43-7f0c-467f-9a9e-ea36a626e97e&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US&$top=20",
+   "ledger_value": "2 open on PPI's own ADP board (2026-11-16) located \"Pella, IA\": Welding Technician (2nd shift), posted 2026-10-01, and Welding Technician (Drums) (2nd shift), posted 2026-04-30 (open about 200 days); home department PELLA - DRUMS. Not counted for this record: PPI lists several Pella locations (PELLA 1, PELLA 2, PELLA 4, PELLA OTHER, PELLA TECH CENTER) with no addresses, so the city-only attribution is inferred (mining rule 3)",
+   "evidence_row": 13152,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Board list (34 openings) read by API 2026-11-16; location facet lists PELLA 1, PELLA 2, PELLA 4, PELLA OTHER, PELLA TECH CENTER and CORPORATE HEADQUARTERS in Pella with no street addresses. Supports the shared-city ruling."
+  },
+  {
+   "claim_id": "p-intercon-riverside-mo:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110017992804&output=JSON",
+   "ledger_value": "EPA FRS 110017992804: INTERCONTINENTAL ENGRG MFG",
+   "evidence_row": 12319,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityName on the page as quoted; the value only restates the EPA record."
+  },
+  {
+   "claim_id": "p-intercon-riverside-mo:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110017992804&output=JSON",
+   "ledger_value": "1000 NORTHWEST INTERCON DRIVE, RIVERSIDE MO 64150 (EPA FRS 110017992804)",
+   "evidence_row": 12320,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-intercon-riverside-mo:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110017992804&output=JSON",
+   "ledger_value": "39.17145",
+   "evidence_row": 12321,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-intercon-riverside-mo:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110017992804&output=JSON",
+   "ledger_value": "-94.65042",
+   "evidence_row": 12322,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-intercon-riverside-mo:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110017992804&output=JSON",
+   "ledger_value": "29165",
+   "evidence_row": 12323,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityFipsCode on the page equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-intercon-riverside-mo:name",
+   "source_url": "https://jobs.workable.com/companies/8Vbv1a1sGYe1UUf2deV72n.md",
+   "ledger_value": "Intercontinental Engineering-Manufacturing Corp. (Intercon)",
+   "evidence_row": 12324,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Workable company page: quote on the page. The same page also gives 'Website: http://www.intercon.com', which the record leaves as unknown (lead)."
+  },
+  {
+   "claim_id": "p-intercon-riverside-mo:address",
+   "source_url": "https://jobs.workable.com/jobs/5049201e-8f2e-459c-b9cf-2cbba541fc6a.md",
+   "ledger_value": "Riverside, MO (Kansas City Metro)",
+   "evidence_row": 12325,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Workable posting: 'Location: Riverside, United States' and 'Riverside, MO (Kansas City Metro)'; Intercon has one Riverside site in the ledger."
+  },
+  {
+   "claim_id": "p-intercon-riverside-mo:products",
+   "source_url": "https://jobs.workable.com/companies/8Vbv1a1sGYe1UUf2deV72n.md",
+   "ledger_value": "heavy machinery for defense, commercial marine and mining; 10-50 ton propulsion components; tug-barge couplings; marine winches",
+   "evidence_row": 12326,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Company page: '(10 - 50 ton) propulsion system components' (en dash normalised); ATB couplings and winches also on the page."
+  },
+  {
+   "claim_id": "p-intercon-riverside-mo:products",
+   "source_url": "https://jobs.workable.com/jobs/5049201e-8f2e-459c-b9cf-2cbba541fc6a.md",
+   "ledger_value": "plate is burned, fitted, welded and machined into components of 40,000 lb and up for marine, defense and mining",
+   "evidence_row": 12327,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Posting text on the page: 'Steel plate comes in the door, and we burn it, fit it, weld it, and machine it into finished components weighing 40,000 pounds and up ...'."
+  },
+  {
+   "claim_id": "p-intercon-riverside-mo:headcount",
+   "source_url": "https://jobs.workable.com/jobs/5049201e-8f2e-459c-b9cf-2cbba541fc6a.md",
+   "ledger_value": "approximately 125",
+   "evidence_row": 12329,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'approximately 125 people' is on the live posting (no posting date on the Workable page; the posting is live 2026-11-16, so the figure is current for the 36-month rule). The plants field's '(2026 posting)' means live in 2026."
+  },
+  {
+   "claim_id": "p-intercon-riverside-mo:parent_company",
+   "source_url": "https://jobs.workable.com/companies/8Vbv1a1sGYe1UUf2deV72n.md",
+   "ledger_value": "Intercontinental Engineering-Manufacturing Corp. (independent)",
+   "evidence_row": 12330,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row: no parent named on the cited page; tag inferred is correct."
+  },
+  {
+   "claim_id": "p-intercon-riverside-mo:tier",
+   "source_url": "https://jobs.workable.com/companies/8Vbv1a1sGYe1UUf2deV72n.md",
+   "ledger_value": "OEM",
+   "evidence_row": 12331,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-intercon-riverside-mo:tier_secondary",
+   "source_url": "https://jobs.workable.com/companies/8Vbv1a1sGYe1UUf2deV72n.md",
+   "ledger_value": "Tier 1",
+   "evidence_row": 12332,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-intercon-riverside-mo:relationship",
+   "source_url": "https://jobs.workable.com/companies/8Vbv1a1sGYe1UUf2deV72n.md",
+   "ledger_value": "new",
+   "evidence_row": 12333,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-intercon-riverside-mo:welder_postings",
+   "source_url": "https://jobs.workable.com/jobs/5049201e-8f2e-459c-b9cf-2cbba541fc6a.md",
+   "ledger_value": "unknown: own board unreadable 2026-11-16; one live Manufacturing Engineer (machining) posting",
+   "evidence_row": 12334,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Intercon's Workable board (apply.workable.com) was not readable; the public jobs.workable.com company search returned 0 jobs although a Manufacturing Engineer posting is live, so the board could not be listed. 'unknown' (not 'none found') is the correct value."
+  },
+  {
+   "claim_id": "p-syntron-saltillo-ms:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000375898&output=JSON",
+   "ledger_value": "Syntron Material Handling, LLC (EPA registration also under FMC Technologies, Highway 145 North, Tupelo)",
+   "evidence_row": 13089,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA DFR page carries both 'SYNTRON MATERIAL HANDLING, LLC' and the FRS name 'FMC TECHNOLOGIES, INC' at 'HIGHWAY 145 NORTH', TUPELO; the parenthetical is on the page."
+  },
+  {
+   "claim_id": "p-syntron-saltillo-ms:address",
+   "source_url": "https://syntronmh.com/en/contact",
+   "ledger_value": "2730 Hwy 145 South, Saltillo, MS 38866 (company contact page)",
+   "evidence_row": 13090,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Syntron contact page: 'Syntron Material Handling | Corporate Offices | 2730 Hwy 145 South | Saltillo, Mississippi 38866'."
+  },
+  {
+   "claim_id": "p-syntron-saltillo-ms:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000375898&output=JSON",
+   "ledger_value": "EPA ECHO 110000375898 at 2730 Hwy 145 S (listed under city Tupelo in the NAICS 333922 pull)",
+   "evidence_row": 13091,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "TRI record on the page: '2730 HWY 145 S', SALTILLO; ICIS records give '2730 HIGHWAY 145 NORTH', SALTILLO 38866. Same site."
+  },
+  {
+   "claim_id": "p-syntron-saltillo-ms:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000375898&output=JSON",
+   "ledger_value": "28081",
+   "evidence_row": 13092,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityFipsCode on the page equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-syntron-saltillo-ms:parent_company",
+   "source_url": "https://careers.kadant.com/api/jobs?keywords=welder&limit=100",
+   "ledger_value": "Kadant Inc. (Syntron postings are on the Kadant careers board)",
+   "evidence_row": 13093,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Kadant careers API: hiring_organization 'Syntron Material Handling', apply URL careers-syntronmh.icims.com. Inferred tag correct."
+  },
+  {
+   "claim_id": "p-syntron-saltillo-ms:parent_company",
+   "source_url": "https://careers.kadant.com/syntron-material-handling",
+   "ledger_value": "Kadant Inc.",
+   "evidence_row": 13094,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row: no parent named on the cited page; tag inferred is correct."
+  },
+  {
+   "claim_id": "p-syntron-saltillo-ms:website",
+   "source_url": "https://syntronmh.com/en/company",
+   "ledger_value": "https://www.syntronmh.com",
+   "evidence_row": 13095,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'Syntron Material Handling, headquartered in Tupelo, Mississippi' on the company page; website value supported (the company's own Saltillo address is on the contact page)."
+  },
+  {
+   "claim_id": "p-syntron-saltillo-ms:products",
+   "source_url": "https://syntronmh.com/en/company",
+   "ledger_value": "company-level product line (site split not stated)",
+   "evidence_row": 13096,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Company-level product sentence on the page; value labelled '(site split not stated)'."
+  },
+  {
+   "claim_id": "p-syntron-saltillo-ms:tier",
+   "source_url": "https://syntronmh.com/en/company",
+   "ledger_value": "OEM",
+   "evidence_row": 13097,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-syntron-saltillo-ms:relationship",
+   "source_url": "https://syntronmh.com/en/company",
+   "ledger_value": "lookalike",
+   "evidence_row": 13098,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-syntron-saltillo-ms:lookalike_of",
+   "source_url": "https://syntronmh.com/en/company",
+   "ledger_value": "Schenck Process",
+   "evidence_row": 13099,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-syntron-saltillo-ms:welder_postings",
+   "source_url": "https://careers.kadant.com/api/jobs?keywords=welder&limit=100",
+   "ledger_value": "2 open on Kadant's own careers board (2026-11-16): Welder B (req 2053) and Welder B (req 2101), both posted 2026-11-02, Syntron Material Handling, 2730 Hwy 145 South, Saltillo MS; \"Welding of heavy assemblies\"; process not named",
+   "evidence_row": 13101,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Kadant careers API read 2026-11-16: req 2053 and req 2101, both 'Welder B', posted_date 2026-11-02, full_location Saltillo, Mississippi, street_address '2730 Hwy 145 South', 'Welding of heavy assemblies.'; applyable on Syntron's iCIMS. Site named; 2 open counted correctly (dated, under 60 days)."
+  },
+  {
+   "claim_id": "p-allen-engineering-paragould-ar:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001699840&output=JSON",
+   "ledger_value": "EPA FRS 110001699840: ALLEN ENGINEERING",
+   "evidence_row": 12475,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityName on the page as quoted; the value only restates the EPA record."
+  },
+  {
+   "claim_id": "p-allen-engineering-paragould-ar:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001699840&output=JSON",
+   "ledger_value": "819 S 5TH ST, PARAGOULD AR 72450 (EPA FRS 110001699840)",
+   "evidence_row": 12476,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-allen-engineering-paragould-ar:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001699840&output=JSON",
+   "ledger_value": "36.035556",
+   "evidence_row": 12477,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-allen-engineering-paragould-ar:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001699840&output=JSON",
+   "ledger_value": "-90.490833",
+   "evidence_row": 12478,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-allen-engineering-paragould-ar:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001699840&output=JSON",
+   "ledger_value": "05055",
+   "evidence_row": 12479,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityFipsCode on the page equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-allen-engineering-paragould-ar:products",
+   "source_url": "https://www.alleneng.com/careers",
+   "ledger_value": "concrete placing, finishing, polishing and paving equipment; HQ Paragould",
+   "evidence_row": 12480,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Careers page: quote on the page (Allen Engineering Corp. ... headquartered in Paragould, Arkansas)."
+  },
+  {
+   "claim_id": "p-allen-engineering-paragould-ar:products",
+   "source_url": "https://www.alleneng.com/contract-manufacturing",
+   "ledger_value": "contract manufacturing with spare capacity; 2 sheet lasers; MIG and TIG welding",
+   "evidence_row": 12481,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Contract-manufacturing page: 'WELDING CAPACITY We can WELD!', 'we have 2 sheet lasers at our disposal', 'MIG & TIG welding - All metals'; value carried."
+  },
+  {
+   "claim_id": "p-allen-engineering-paragould-ar:name",
+   "source_url": "https://www.alleneng.com/careers",
+   "ledger_value": "Allen Engineering Corp. (AEC)",
+   "evidence_row": 12482,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-allen-engineering-paragould-ar:parent_company",
+   "source_url": "https://www.alleneng.com/contract-manufacturing",
+   "ledger_value": "family-owned",
+   "evidence_row": 12483,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'family-owned, family-operated ... based in Paragould, Arkansas' on the page."
+  },
+  {
+   "claim_id": "p-allen-engineering-paragould-ar:website",
+   "source_url": "https://www.alleneng.com/careers",
+   "ledger_value": "https://www.alleneng.com",
+   "evidence_row": 12484,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-allen-engineering-paragould-ar:tier",
+   "source_url": "https://www.alleneng.com/careers",
+   "ledger_value": "OEM",
+   "evidence_row": 12485,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-allen-engineering-paragould-ar:tier_secondary",
+   "source_url": "https://www.alleneng.com/contract-manufacturing",
+   "ledger_value": "Contract fabricator",
+   "evidence_row": 12486,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-allen-engineering-paragould-ar:relationship",
+   "source_url": "https://www.alleneng.com/careers",
+   "ledger_value": "new",
+   "evidence_row": 12487,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-allen-engineering-paragould-ar:welder_postings",
+   "source_url": "https://www.alleneng.com/careers",
+   "ledger_value": "none found: open positions 2026-11-16 were Logistics and 1st Shift Assembly",
+   "evidence_row": 12488,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Careers page rendered in headless Chromium 2026-11-16: OPEN POSITIONS shows one role, Logistics (Full-time 1st shift); 'Factory: Welding' is only a department filter. 1st Shift Assembly (in the ledger value) is no longer listed. No welder role: 'none found' correct."
+  },
+  {
+   "claim_id": "p-vermeer-freeman-sd:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110008058948&output=JSON",
+   "ledger_value": "EPA FRS 110008058948: WILDCAT MANUFACTURIN COMPANY INCORPORATED",
+   "evidence_row": 12779,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityName on the page as quoted; the value only restates the EPA record."
+  },
+  {
+   "claim_id": "p-vermeer-freeman-sd:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110008058948&output=JSON",
+   "ledger_value": "420 SOUTH HIGHWAY 81, FREEMAN SD 57029 (EPA FRS 110008058948)",
+   "evidence_row": 12780,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-vermeer-freeman-sd:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110008058948&output=JSON",
+   "ledger_value": "43.34877",
+   "evidence_row": 12781,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-vermeer-freeman-sd:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110008058948&output=JSON",
+   "ledger_value": "-97.420451",
+   "evidence_row": 12782,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-vermeer-freeman-sd:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110008058948&output=JSON",
+   "ledger_value": "46067",
+   "evidence_row": 12783,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityFipsCode on the page equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-vermeer-freeman-sd:products",
+   "source_url": "https://www.cdrecycler.com/news/vermeer-cages-wildcat",
+   "ledger_value": "trommel screens and compost turners, Freeman SD",
+   "evidence_row": 12784,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "cdrecycler.com article: 'a maker of trommel screens and compost turners based in Freeman, S.D.' on the page."
+  },
+  {
+   "claim_id": "p-vermeer-freeman-sd:name",
+   "source_url": "https://www.cdrecycler.com/news/vermeer-cages-wildcat",
+   "ledger_value": "Wildcat manufacturing staff remain in Freeman under the Wildcat brand",
+   "evidence_row": 12786,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Same article; quote on the page. The Freeman plant is live today (Vermeer Welder posting at 420 South US Hwy 81, posted Nov 13, 2026, Tallo)."
+  },
+  {
+   "claim_id": "p-vermeer-freeman-sd:parent_company",
+   "source_url": "https://www.cdrecycler.com/news/vermeer-cages-wildcat",
+   "ledger_value": "Vermeer Corporation",
+   "evidence_row": 12787,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'Vermeer now owns all of screen and trommel company Wildcat Mfg.' on the page."
+  },
+  {
+   "claim_id": "p-vermeer-freeman-sd:tier",
+   "source_url": "https://www.cdrecycler.com/news/vermeer-cages-wildcat",
+   "ledger_value": "OEM",
+   "evidence_row": 12789,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-vermeer-freeman-sd:relationship",
+   "source_url": "https://www.cdrecycler.com/news/vermeer-cages-wildcat",
+   "ledger_value": "new",
+   "evidence_row": 12790,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "corrected",
+   "note": "Relationship rule (mining rule in the delegation and consultation 9): 'lookalike of Schenck Process for bulk-material equipment (crushers, screens, conveyors, feeders)'. Wildcat/Vermeer Freeman is 'a maker of trommel screens and compost turners' (row 12784); trommel screens are screens, and the products row itself says 'trommel screens for aggregate/soil processing are in (screens)'. Every profiled screen and crusher OEM (Astec Sterling mobile screens, Deister, Terex Durand, Lippmann, Screen Machine, iRock) is a Schenck Process lookalike. The Masaba precedent cited in the reasoning is a plant with no quoted product list. Correct to lookalike, lookalike_of Schenck Process (inferred). The coordinator must add a p-vermeer-freeman-sd:lookalike_of row 'Schenck Process' (no row exists, so apply_factcheck cannot set it). Ranking effect: relationship is the first sort key, so this record moves up; it has no counted posting (aggregator only). Reasoning: 'Trommel screens (bulk-material screening) map to Path customer Schenck Process under the mining relationship rule.' Caveat: the 'screens for aggregate/soil processing are in' premise is the ledger's own inferred row 12785; the cited article says only 'trommel screens and compost turners' with no quoted aggregate use. The correction rests on the written rule (screens -> Schenck Process lookalike), not on a stated aggregate market.",
+   "corrected_value": "lookalike",
+   "corrected_quote": "Vermeer now owns all of screen and trommel company Wildcat Mfg.",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "plants_csv_value": "lookalike"
+  },
+  {
+   "claim_id": "p-vermeer-freeman-sd:welder_postings",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/sd/freeman/welder-09f75534",
+   "ledger_value": "aggregator copy: Vermeer Corporation Welder, 420 South Us Hwy 81 Freeman, posted Nov 13 2026",
+   "evidence_row": 12791,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Tallo page (browser) 2026-11-16: 'Posted Nov 13, 2026 (Updated Nov 14, 2026)', '420 South Us Hwy 81, Freeman, SD 57029 ... Vermeer equips customers ...'; the page names the employer as 'Vermeer' (not 'Vermeer Corporation' verbatim; not additive). Posting text names GMAW-P and FCAW. Aggregator only, not counted - correct."
+  },
+  {
+   "claim_id": "p-vermeer-freeman-sd:welder_postings",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110008058948&output=JSON",
+   "ledger_value": "own board unreachable; aggregator posting not counted",
+   "evidence_row": 12792,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Own board not reachable; aggregator posting not counted. Consistent with the undated/aggregator rule."
+  },
+  {
+   "claim_id": "p-csi-union-grove-nc:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001502160&output=JSON",
+   "ledger_value": "EPA FRS 110001502160: CUTTING SYSTEMS INC",
+   "evidence_row": 12795,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityName on the page as quoted; the value only restates the EPA record."
+  },
+  {
+   "claim_id": "p-csi-union-grove-nc:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001502160&output=JSON",
+   "ledger_value": "774 ZEB ROAD, UNION GROVE NC 28689 (EPA FRS 110001502160)",
+   "evidence_row": 12796,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-csi-union-grove-nc:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001502160&output=JSON",
+   "ledger_value": "36.05361",
+   "evidence_row": 12797,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-csi-union-grove-nc:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001502160&output=JSON",
+   "ledger_value": "-80.9584",
+   "evidence_row": 12798,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-csi-union-grove-nc:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001502160&output=JSON",
+   "ledger_value": "37097",
+   "evidence_row": 12799,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityFipsCode on the page equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-csi-union-grove-nc:products",
+   "source_url": "https://www.environmental-expert.com/companies/cutting-systems-inc-csi-60802",
+   "ledger_value": "slasher saws and pull-through delimbers; logging and house-moving equipment",
+   "evidence_row": 12800,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Directory page: 'CSI pioneered the early days of slasher saws and pull through delimbers ... wherever logging equipment and manufactured house-moving equipment is sold and used.' The same text is on CSI's own live site cuttingsys.com (copyright 2026, 774 Zeb Road, Union Grove)."
+  },
+  {
+   "claim_id": "p-csi-union-grove-nc:name",
+   "source_url": "https://www.environmental-expert.com/companies/cutting-systems-inc-csi-60802",
+   "ledger_value": "Cutting Systems, Inc. (CSI), manufacturer, Union Grove",
+   "evidence_row": 12802,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Directory 'Company details | 774 Zeb Road, | Union Grove, | North Carolina | 28689' carries the name and city."
+  },
+  {
+   "claim_id": "p-csi-union-grove-nc:parent_company",
+   "source_url": "https://www.environmental-expert.com/companies/cutting-systems-inc-csi-60802",
+   "ledger_value": "Cutting Systems, Inc. (independent)",
+   "evidence_row": 12803,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row: no parent named on the cited page; tag inferred is correct."
+  },
+  {
+   "claim_id": "p-csi-union-grove-nc:tier",
+   "source_url": "https://www.environmental-expert.com/companies/cutting-systems-inc-csi-60802",
+   "ledger_value": "OEM",
+   "evidence_row": 12804,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-csi-union-grove-nc:relationship",
+   "source_url": "https://www.environmental-expert.com/companies/cutting-systems-inc-csi-60802",
+   "ledger_value": "new",
+   "evidence_row": 12805,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Forestry attachments set to new. RULING QUESTION: forestry-only plants are boundary, but no written rule exempts forestry attachments from the Mine Rite attachment-seller lookalike; not counted as an error."
+  },
+  {
+   "claim_id": "p-csi-union-grove-nc:welder_postings",
+   "source_url": "https://www.environmental-expert.com/companies/cutting-systems-inc-csi-60802",
+   "ledger_value": "none found: no job board; directory-only web presence",
+   "evidence_row": 12806,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'No company website' in the reasoning is wrong: cuttingsys.com is live (no careers page seen). 'none found' stands. Lead: website field."
+  },
+  {
+   "claim_id": "p-timberpro-shawano-wi:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110020120046&output=JSON",
+   "ledger_value": "EPA FRS 110020120046: TIMBERPRO INC",
+   "evidence_row": 12257,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityName on the page as quoted; the value only restates the EPA record."
+  },
+  {
+   "claim_id": "p-timberpro-shawano-wi:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110020120046&output=JSON",
+   "ledger_value": "1407 INDUSTRIAL DR, SHAWANO WI 54166 (EPA FRS 110020120046)",
+   "evidence_row": 12258,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-timberpro-shawano-wi:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110020120046&output=JSON",
+   "ledger_value": "44.76391",
+   "evidence_row": 12259,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-timberpro-shawano-wi:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110020120046&output=JSON",
+   "ledger_value": "-88.57424",
+   "evidence_row": 12260,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-timberpro-shawano-wi:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110020120046&output=JSON",
+   "ledger_value": "55115",
+   "evidence_row": 12261,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityFipsCode on the page equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-timberpro-shawano-wi:products",
+   "source_url": "https://www.komatsu.com/en-us/newsroom/2023/timberpro-celebrates-expanded-forestry-manufacturing-facility",
+   "ledger_value": "tracked feller bunchers and harvesters, forwarders, wheeled harvesters, felling heads",
+   "evidence_row": 12262,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Komatsu newsroom, August 28, 2023: product sentence on the page."
+  },
+  {
+   "claim_id": "p-timberpro-shawano-wi:name",
+   "source_url": "https://www.komatsu.com/en-us/newsroom/2023/timberpro-celebrates-expanded-forestry-manufacturing-facility",
+   "ledger_value": "TimberPro manufacturing facility in Shawano, WI",
+   "evidence_row": 12264,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'TimberPro's manufacturing facility in Shawano, WI' on the page; EPA TIMBERPRO INC at 1407 Industrial Dr; one Shawano site in the ledger."
+  },
+  {
+   "claim_id": "p-timberpro-shawano-wi:parent_company",
+   "source_url": "https://www.komatsu.com/en-us/newsroom/2023/timberpro-celebrates-expanded-forestry-manufacturing-facility",
+   "ledger_value": "Komatsu (acquired 2019)",
+   "evidence_row": 12265,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'TimberPro was acquired by Komatsu in 2019.' on the page."
+  },
+  {
+   "claim_id": "p-timberpro-shawano-wi:tier",
+   "source_url": "https://www.komatsu.com/en-us/newsroom/2023/timberpro-celebrates-expanded-forestry-manufacturing-facility",
+   "ledger_value": "OEM",
+   "evidence_row": 12267,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-timberpro-shawano-wi:relationship",
+   "source_url": "https://www.komatsu.com/en-us/newsroom/2023/timberpro-celebrates-expanded-forestry-manufacturing-facility",
+   "ledger_value": "new",
+   "evidence_row": 12268,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-timberpro-shawano-wi:welder_postings",
+   "source_url": "https://komatsu.jobs/search/?q=&locationsearch=Shawano",
+   "ledger_value": "none found on Komatsu's own board for Shawano (3 roles, none welding) 2026-11-16",
+   "evidence_row": 12269,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "komatsu.jobs location search (browser) 2026-11-16: Quality Tech I, Assembler I, Plant Manager - TimberPro, all 'Shawano, Wisconsin, USA, 54166'. No welder. Correct."
+  },
+  {
+   "claim_id": "p-risever-jonesboro-ar:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110070832344&output=JSON",
+   "ledger_value": "EPA FRS 110070832344: RISEVER MACHINERY, LLC",
+   "evidence_row": 13041,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityName on the page as quoted; the value only restates the EPA record."
+  },
+  {
+   "claim_id": "p-risever-jonesboro-ar:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110070832344&output=JSON",
+   "ledger_value": "9602 C.W. POST ROAD, JONESBORO AR 72401 (EPA FRS 110070832344)",
+   "evidence_row": 13042,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-risever-jonesboro-ar:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110070832344&output=JSON",
+   "ledger_value": "35.807778",
+   "evidence_row": 13043,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-risever-jonesboro-ar:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110070832344&output=JSON",
+   "ledger_value": "-90.554861",
+   "evidence_row": 13044,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-risever-jonesboro-ar:products",
+   "source_url": "https://talkbusiness.net/2019/10/risever-to-begin-trial-operations-in-jonesboro/",
+   "ledger_value": "steel machine parts for heavy construction equipment: counterweights, excavator boom arms",
+   "evidence_row": 13045,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Talk Business, Oct 2019: quote on the page."
+  },
+  {
+   "claim_id": "p-risever-jonesboro-ar:name",
+   "source_url": "https://talkbusiness.net/2019/10/risever-to-begin-trial-operations-in-jonesboro/",
+   "ledger_value": "Hefei Risever Machinery, Jonesboro facility ($20M, 125,000 sq ft; trial production Oct 2019)",
+   "evidence_row": 13046,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Same article: Hefei Risever quote on the page; '125,000-square-foot plant' and 'trial operations' (title) on the page; '$20 million facility' in the quote."
+  },
+  {
+   "claim_id": "p-risever-jonesboro-ar:address",
+   "source_url": "https://talkbusiness.net/2019/10/risever-to-begin-trial-operations-in-jonesboro/",
+   "ledger_value": "Craighead Technology Park on C.W. Post Road",
+   "evidence_row": 13047,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'The plant is located in the Craighead Technology Park on C.W. Post Road.' on the page."
+  },
+  {
+   "claim_id": "p-risever-jonesboro-ar:parent_company",
+   "source_url": "https://talkbusiness.net/2019/10/risever-to-begin-trial-operations-in-jonesboro/",
+   "ledger_value": "Hefei Risever Machinery (China)",
+   "evidence_row": 13048,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page."
+  },
+  {
+   "claim_id": "p-risever-jonesboro-ar:tier",
+   "source_url": "https://talkbusiness.net/2019/10/risever-to-begin-trial-operations-in-jonesboro/",
+   "ledger_value": "Tier 1",
+   "evidence_row": 13049,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-risever-jonesboro-ar:relationship",
+   "source_url": "https://talkbusiness.net/2019/10/risever-to-begin-trial-operations-in-jonesboro/",
+   "ledger_value": "new",
+   "evidence_row": 13050,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-risever-jonesboro-ar:welder_postings",
+   "source_url": "https://talkbusiness.net/2019/10/risever-to-begin-trial-operations-in-jonesboro/",
+   "ledger_value": "unknown: no job board found",
+   "evidence_row": 13051,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "No Risever careers page found; a 2026-11-16 search found only 2017-2019 coverage. Unknown correct. Operation after 2019 not verified (see status_problems)."
+  },
+  {
+   "claim_id": "p-mack-theodore-al:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110002105702&output=JSON",
+   "ledger_value": "EPA FRS 110002105702: MACK MFG INC",
+   "evidence_row": 12937,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityName on the page as quoted; the value only restates the EPA record."
+  },
+  {
+   "claim_id": "p-mack-theodore-al:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110002105702&output=JSON",
+   "ledger_value": "7205 BELLINGRATH RD., THEODORE AL 36582 (EPA FRS 110002105702)",
+   "evidence_row": 12938,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-mack-theodore-al:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110002105702&output=JSON",
+   "ledger_value": "30.54138",
+   "evidence_row": 12939,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-mack-theodore-al:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110002105702&output=JSON",
+   "ledger_value": "-88.17077",
+   "evidence_row": 12940,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-mack-theodore-al:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110002105702&output=JSON",
+   "ledger_value": "01097",
+   "evidence_row": 12941,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityFipsCode on the page equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-mack-theodore-al:products",
+   "source_url": "https://www.mackmfg.com/",
+   "ledger_value": "crane grapples and clamshell buckets; custom clamshell buckets built from drawings to finishing under one roof",
+   "evidence_row": 12942,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Mack home page: both fragments on the page."
+  },
+  {
+   "claim_id": "p-mack-theodore-al:products",
+   "source_url": "https://mackmfg.com/about/employment/",
+   "ledger_value": "industries served include aggregate and ore processing, dredging, stevedoring, cement",
+   "evidence_row": 12943,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'Aggregate &#038; Ore Processing' on the employment page industries menu (also Stevedoring, Dredging, Cement, Steel Mills)."
+  },
+  {
+   "claim_id": "p-mack-theodore-al:address",
+   "source_url": "https://www.mackmfg.com/",
+   "ledger_value": "7205 Bellingrath Road, Theodore, Alabama 36582",
+   "evidence_row": 12944,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-mack-theodore-al:name",
+   "source_url": "https://www.mackmfg.com/",
+   "ledger_value": "Mack Manufacturing",
+   "evidence_row": 12945,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-mack-theodore-al:parent_company",
+   "source_url": "https://www.mackmfg.com/",
+   "ledger_value": "Mack Manufacturing (four generations, since 1942)",
+   "evidence_row": 12946,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Home page: 'DELIVERING QUALITY FIRST SINCE 1942' and 'Now in our fourth generation as a family business'; value carried."
+  },
+  {
+   "claim_id": "p-mack-theodore-al:website",
+   "source_url": "https://www.mackmfg.com/",
+   "ledger_value": "https://www.mackmfg.com",
+   "evidence_row": 12947,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-mack-theodore-al:tier",
+   "source_url": "https://www.mackmfg.com/",
+   "ledger_value": "OEM",
+   "evidence_row": 12948,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-mack-theodore-al:relationship",
+   "source_url": "https://www.mackmfg.com/",
+   "ledger_value": "lookalike",
+   "evidence_row": 12949,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-mack-theodore-al:lookalike_of",
+   "source_url": "https://www.mackmfg.com/",
+   "ledger_value": "Mine Rite",
+   "evidence_row": 12950,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-mack-theodore-al:welder_postings",
+   "source_url": "https://mackmfg.com/about/employment/",
+   "ledger_value": "none found: employment page lists Manual Machinist only",
+   "evidence_row": 12951,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Employment page opened 2026-11-16 (grepped for weld/fitter): 'Available Job Postings | Manual Machinist' only ($28.10/hr). Correct."
+  },
+  {
+   "claim_id": "p-gr-manufacturing-trussville-al:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001713487&output=JSON",
+   "ledger_value": "EPA FRS 110001713487: G. R. MANUFACTURING, INC.",
+   "evidence_row": 12891,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityName on the page as quoted; the value only restates the EPA record."
+  },
+  {
+   "claim_id": "p-gr-manufacturing-trussville-al:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001713487&output=JSON",
+   "ledger_value": "4800 COMMERCE DRIVE, TRUSSVILLE AL 35173 (EPA FRS 110001713487)",
+   "evidence_row": 12892,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-gr-manufacturing-trussville-al:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001713487&output=JSON",
+   "ledger_value": "33.644217",
+   "evidence_row": 12893,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-gr-manufacturing-trussville-al:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001713487&output=JSON",
+   "ledger_value": "-86.566773",
+   "evidence_row": 12894,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-gr-manufacturing-trussville-al:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001713487&output=JSON",
+   "ledger_value": "01073",
+   "evidence_row": 12895,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityFipsCode on the page equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-gr-manufacturing-trussville-al:products",
+   "source_url": "https://g-r-manufacturing-inc.careerplug.com/jobs/3562124",
+   "ledger_value": "outfits John Deere construction equipment for specialized applications; 30-year John Deere relationship",
+   "evidence_row": 12896,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "CareerPlug posting: both fragments on the page."
+  },
+  {
+   "claim_id": "p-gr-manufacturing-trussville-al:name",
+   "source_url": "https://g-r-manufacturing-inc.careerplug.com/jobs/3562124",
+   "ledger_value": "G.R. Manufacturing, Trussville",
+   "evidence_row": 12897,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'Full Time • Trussville' on the page."
+  },
+  {
+   "claim_id": "p-gr-manufacturing-trussville-al:parent_company",
+   "source_url": "https://g-r-manufacturing-inc.careerplug.com/jobs/3562124",
+   "ledger_value": "G.R. Manufacturing, Inc. (independent)",
+   "evidence_row": 12898,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row: no parent named on the cited page; tag inferred is correct."
+  },
+  {
+   "claim_id": "p-gr-manufacturing-trussville-al:tier",
+   "source_url": "https://g-r-manufacturing-inc.careerplug.com/jobs/3562124",
+   "ledger_value": "Tier 1",
+   "evidence_row": 12899,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-gr-manufacturing-trussville-al:tier_secondary",
+   "source_url": "https://g-r-manufacturing-inc.careerplug.com/jobs/3562124",
+   "ledger_value": "Contract fabricator",
+   "evidence_row": 12900,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-gr-manufacturing-trussville-al:relationship",
+   "source_url": "https://g-r-manufacturing-inc.careerplug.com/jobs/3562124",
+   "ledger_value": "new",
+   "evidence_row": 12901,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-gr-manufacturing-trussville-al:welder_postings",
+   "source_url": "https://g-r-manufacturing-inc.careerplug.com/jobs/3562124",
+   "ledger_value": "MIG Welder, Trussville (job 3562124), open 2026-11-16, undated; MIG welding on steel",
+   "evidence_row": 12902,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "note": "The value says 'undated', but the page's JSON-LD carries datePosted 2026-08-24T16:02:31 (job 3562124); job 3562149 carries 2026-08-24T16:11:56 (row 12903's page). Both are live on G.R.'s own CareerPlug board today and name Trussville, so both are open about 84 days (60+). Same pattern as round 1 (e): JSON-LD posting dates missed and the posting called undated. G.R. is in profiler H's wave: under the rubric two welder postings open 60+ days earn labor 20, not 12; the dates (Aug 24, 2026) are not old enough to be a standing ad.",
+   "corrected_value": "MIG Welder, Trussville (job 3562124), open 2026-11-16, posted 2026-08-24 (JSON-LD datePosted; about 84 days); MIG welding on steel",
+   "corrected_quote": "\"datePosted\":\"2026-08-24T16:02:31+00:00\" ... Perform high-quality MIG welding on steel and fabricated metal components.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "2 open on own CareerPlug board 2026-11-16, both posted 2026-08-24 (JSON-LD datePosted; open about 84 days): MIG Welder (Welder 1st Shift, job 3562124) and Welder 2nd Shift (job 3562149), both Trussville; MIG on steel; overtime opportunities (some Saturdays), not mandatory"
+  },
+  {
+   "claim_id": "p-gr-manufacturing-trussville-al:welder_postings",
+   "source_url": "https://g-r-manufacturing-inc.careerplug.com/jobs/3562149",
+   "ledger_value": "second Welder requisition (job 3562149, 2nd shift), Trussville",
+   "evidence_row": 12903,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Job 3562149 page: title 'Welder  2nd Shift', 'Full Time • Trussville', 'MIG Welder - Top Pay, Overtime'. Its JSON-LD datePosted is 2026-08-24T16:11:56 (the plants field's 'undated' is corrected on row 12902)."
+  },
+  {
+   "claim_id": "p-gr-manufacturing-trussville-al:welder_postings",
+   "source_url": "https://g-r-manufacturing-inc.careerplug.com/jobs",
+   "ledger_value": "board lists Welder 1st Shift and Welder 2nd Shift at AL-Trussville",
+   "evidence_row": 12904,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Board list 2026-11-16: 'Welder 1st Shift | Location: | AL-Trussville-35713' and 'Welder  2nd Shift | Location: | AL-Trussville-35713' (plus an Assembler). Site named; G.R. has one Trussville site in the ledger."
+  },
+  {
+   "claim_id": "p-gr-manufacturing-trussville-al:welder_postings",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001713487&output=JSON",
+   "ledger_value": "overtime is optional ('opportunities'), not mandatory",
+   "evidence_row": 12905,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Schedule line 'Monday-Friday, with overtime opportunities available (Some Saturdays)' on the posting; conditional overtime is not mandatory (rule). Correct."
+  },
+  {
+   "claim_id": "p-bergkamp-salina-ks:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110070003770&output=JSON",
+   "ledger_value": "EPA FRS 110070003770: BERGKAMP, INC.",
+   "evidence_row": 12606,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityName on the page as quoted; the value only restates the EPA record."
+  },
+  {
+   "claim_id": "p-bergkamp-salina-ks:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110070003770&output=JSON",
+   "ledger_value": "3040 EMULSION DR., SALINA KS 67401 (EPA FRS 110070003770)",
+   "evidence_row": 12607,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-bergkamp-salina-ks:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110070003770&output=JSON",
+   "ledger_value": "38.780795",
+   "evidence_row": 12608,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-bergkamp-salina-ks:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110070003770&output=JSON",
+   "ledger_value": "-97.604978",
+   "evidence_row": 12609,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-bergkamp-salina-ks:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110070003770&output=JSON",
+   "ledger_value": "20169",
+   "evidence_row": 12610,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityFipsCode on the page equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-bergkamp-salina-ks:products",
+   "source_url": "https://www.bergkampinc.com/",
+   "ledger_value": "slurry seal and micro surfacing pavers, pothole patchers, live bottom trucks; designers and builders of asphalt and pavement maintenance equipment, Salina",
+   "evidence_row": 12611,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Bergkamp home page: both fragments on the page."
+  },
+  {
+   "claim_id": "p-bergkamp-salina-ks:name",
+   "source_url": "https://www.bergkampinc.com/",
+   "ledger_value": "Bergkamp Inc., Salina KS",
+   "evidence_row": 12613,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-bergkamp-salina-ks:parent_company",
+   "source_url": "https://www.bergkampinc.com/careers",
+   "ledger_value": "Bergkamp, Inc. (independent)",
+   "evidence_row": 12614,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row: no parent named on the cited page; tag inferred is correct."
+  },
+  {
+   "claim_id": "p-bergkamp-salina-ks:website",
+   "source_url": "https://www.bergkampinc.com/",
+   "ledger_value": "https://www.bergkampinc.com",
+   "evidence_row": 12615,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-bergkamp-salina-ks:tier",
+   "source_url": "https://www.bergkampinc.com/",
+   "ledger_value": "OEM",
+   "evidence_row": 12616,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-bergkamp-salina-ks:relationship",
+   "source_url": "https://www.bergkampinc.com/",
+   "ledger_value": "new",
+   "evidence_row": 12617,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-bergkamp-salina-ks:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=20f1756a-ab1b-4e7d-b2c9-2c5086f1c8d1&lang=en_US&locale=en_US&$top=100",
+   "ledger_value": "ADP board: Painter I (2026-09-30), Truck Mechanic Lead, Technical Representative I, Mechanical Assembler; all Salina; no welder",
+   "evidence_row": 12618,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "ADP board API 2026-11-16: 4 requisitions (Painter I 2026-09-30, Truck Mechanic Lead, Technical Representative I, Mechanical Assembler), all Salina; no welder. Correct."
+  },
+  {
+   "claim_id": "p-hercules-fort-wayne-in:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110071081599&output=JSON",
+   "ledger_value": "EPA FRS 110071081599: HERCULES MACHINERY CORPORATION",
+   "evidence_row": 12430,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityName on the page as quoted; the value only restates the EPA record."
+  },
+  {
+   "claim_id": "p-hercules-fort-wayne-in:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110071081599&output=JSON",
+   "ledger_value": "5025 NEW HAVEN AVE, FORT WAYNE IN 46803 (EPA FRS 110071081599)",
+   "evidence_row": 12431,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-hercules-fort-wayne-in:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110071081599&output=JSON",
+   "ledger_value": "41.06905",
+   "evidence_row": 12432,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-hercules-fort-wayne-in:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110071081599&output=JSON",
+   "ledger_value": "-85.07317",
+   "evidence_row": 12433,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-hercules-fort-wayne-in:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110071069879&output=JSON",
+   "ledger_value": "campus: Titan Metal Worx registration 5225 NEW HAVEN AVE is 0.2 km away",
+   "evidence_row": 12434,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "note": "The EPA page states only that TITAN METAL WORX is registered at 5225 New Haven Ave (NAICS 333120). '0.2 km away' is a computed distance (EPA coordinates 41.06905,-85.07317 vs 41.07051,-85.07191 = 0.19 km, correct) and 'campus' is a judgement: no cited page says HMC and Titan are one plant. Titan is a separate business (contract machining and fabrication, The Fabricator 2021) while HMC is a 'manufacturer and dealer'; whether they do 'the same production' (campus rule) is not shown. Retag inferred, value unchanged. Reasoning for the row: 'EPA FRS gives Titan Metal Worx at 5225 New Haven Ave, 0.19 km from HMC's 5025 (EPA coordinates); same owner since July 2021 (The Fabricator); treated as one campus by judgement.' plants_csv_value is the current address field, verbatim (it does not change).",
+   "corrected_value": "campus: Titan Metal Worx registration 5225 NEW HAVEN AVE is 0.2 km away",
+   "corrected_quote": "\"FacilityStreet\":\"5225 NEW HAVEN AVE\"",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "5025 New Haven Ave, Fort Wayne, IN 46803"
+  },
+  {
+   "claim_id": "p-hercules-fort-wayne-in:products",
+   "source_url": "https://hmc-us.com/our-company",
+   "ledger_value": "pile driving and foundation equipment; Sonic SideGrip vibratory pile driver",
+   "evidence_row": 12435,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "HMC Our Company page: 'Established in Fort Wayne in 1964, Hercules Machinery Corporation is a manufacturer and dealer...' and 'Sonic SideGrip® vibratory pile driver' both on the page; footer 5025 New Haven Ave."
+  },
+  {
+   "claim_id": "p-hercules-fort-wayne-in:products",
+   "source_url": "https://www.thefabricator.com/thefabricator/news/shopmanagement/entegra-attachments-acquires-hercules-machinery-titan-metal-worx",
+   "ledger_value": "HMC: pile-driving and drilling equipment attachments; Titan Metal Worx: machining and fabrication",
+   "evidence_row": 12436,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "The Fabricator, July 26, 2021: quote on the page."
+  },
+  {
+   "claim_id": "p-hercules-fort-wayne-in:parent_company",
+   "source_url": "https://www.thefabricator.com/thefabricator/news/shopmanagement/entegra-attachments-acquires-hercules-machinery-titan-metal-worx",
+   "ledger_value": "Entegra Attachments LLC (2021)",
+   "evidence_row": 12437,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Same article: Entegra Attachments LLC acquired the two Fort Wayne companies (July 2021)."
+  },
+  {
+   "claim_id": "p-hercules-fort-wayne-in:name",
+   "source_url": "https://hmc-us.com/our-company",
+   "ledger_value": "Hercules Machinery Corporation, Fort Wayne",
+   "evidence_row": 12438,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-hercules-fort-wayne-in:website",
+   "source_url": "https://hmc-us.com/careers",
+   "ledger_value": "https://hmc-us.com",
+   "evidence_row": 12439,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-hercules-fort-wayne-in:tier",
+   "source_url": "https://hmc-us.com/our-company",
+   "ledger_value": "OEM",
+   "evidence_row": 12440,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-hercules-fort-wayne-in:relationship",
+   "source_url": "https://www.thefabricator.com/thefabricator/news/shopmanagement/entegra-attachments-acquires-hercules-machinery-titan-metal-worx",
+   "ledger_value": "lookalike",
+   "evidence_row": 12441,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-hercules-fort-wayne-in:lookalike_of",
+   "source_url": "https://www.thefabricator.com/thefabricator/news/shopmanagement/entegra-attachments-acquires-hercules-machinery-titan-metal-worx",
+   "ledger_value": "Mine Rite",
+   "evidence_row": 12442,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-hercules-fort-wayne-in:welder_postings",
+   "source_url": "https://hmc-us.com/careers",
+   "ledger_value": "none found on own careers page 2026-11-16 (one role: Material Handler/Inventory Control)",
+   "evidence_row": 12443,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "hmc-us.com/careers opened 2026-11-16 (grepped for weld/fitter): one role, Material Handler/Inventory Control, applications via Indeed. Correct for HMC; Titan Metal Worx's board not readable."
+  },
+  {
+   "claim_id": "p-ppi-lenox-ia:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110002119733&output=JSON",
+   "ledger_value": "Precision Pulley & Idler (PPI) - Lenox (idler division)",
+   "evidence_row": 13171,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA DFR lists 'PRECISION INC - IDLER DIVISION' (also 'PRECISION PULLEY & IDLER INC-LENOX', 'PRECISION IDLER COMPANY') at 700 S Walnut St."
+  },
+  {
+   "claim_id": "p-ppi-lenox-ia:parent_company",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110002119733&output=JSON",
+   "ledger_value": "Precision, Inc. (Precision Pulley & Idler division)",
+   "evidence_row": 13172,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA record opened 2026-11-16; quote on the page."
+  },
+  {
+   "claim_id": "p-ppi-lenox-ia:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110002119733&output=JSON",
+   "ledger_value": "700 S Walnut St, Lenox, IA 50851",
+   "evidence_row": 13173,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-ppi-lenox-ia:website",
+   "source_url": "https://www.ppi-global.com/about/",
+   "ledger_value": "https://www.ppi-global.com",
+   "evidence_row": 13174,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "ppi-global.com/about opened 2026-11-16; website value supported."
+  },
+  {
+   "claim_id": "p-ppi-lenox-ia:products",
+   "source_url": "https://www.ppi-global.com/about/",
+   "ledger_value": "company-level: conveyor components (pulleys, idlers) for bulk handling incl. mining and aggregate; site product split not stated beyond the name and postings",
+   "evidence_row": 13175,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'PPI is a proven industry leader in conveyor components' on the About page; value is explicitly labelled company-level, not placed at the site."
+  },
+  {
+   "claim_id": "p-ppi-lenox-ia:products",
+   "source_url": "https://www.ppi-global.com/product-lines/pulleys/",
+   "ledger_value": "company-level: conveyor pulleys",
+   "evidence_row": 13176,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'PPI produces pulleys for all conveyor applications.' on the pulleys page; labelled company-level."
+  },
+  {
+   "claim_id": "p-ppi-lenox-ia:tier",
+   "source_url": "https://www.ppi-global.com/about/",
+   "ledger_value": "OEM",
+   "evidence_row": 13177,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-ppi-lenox-ia:relationship",
+   "source_url": "https://www.ppi-global.com/industries/mining-and-mineral-processing/",
+   "ledger_value": "lookalike",
+   "evidence_row": 13178,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-ppi-lenox-ia:lookalike_of",
+   "source_url": "https://www.ppi-global.com/industries/mining-and-mineral-processing/",
+   "ledger_value": "Schenck Process",
+   "evidence_row": 13179,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-ppi-lenox-ia:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/458494391_1?cid=92057b43-7f0c-467f-9a9e-ea36a626e97e&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "1 open on PPI's own ADP board (2026-11-16): Welding Technician (Special Frames) (2nd shift), posted 2026-10-21, location Lenox IA (home department LENOX - GEN'L FACTORY; PPI's only Lenox location); \"Operate a wire welder\" (MIG/FCAW not named)",
+   "evidence_row": 13181,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "ADP requisition 458494391_1 opened 2026-11-16: title 'Welding Technician (Special Frames) (2nd shift)', postDate 2026-10-21, Lenox, IA, home department LENOX - GEN'L FACTORY, 'Operate a wire welder'. The clause 'PPI's only Lenox location' is not on this page but is carried by PPI's board list read today (location facet lists one Lenox location, 'LENOX, Lenox, IA, US'), so the site tie holds (one-premise ruling, see decision_rule). Posting under 60 days; 1 open counted correctly; process not named."
+  },
+  {
+   "claim_id": "p-ppi-lenox-ia:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110002119733&output=JSON",
+   "ledger_value": "19173",
+   "evidence_row": 13216,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityFipsCode on the page equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-ppi-lenox-ia:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110002119733&output=JSON",
+   "ledger_value": "40.874451",
+   "evidence_row": 13217,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-ppi-lenox-ia:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110002119733&output=JSON",
+   "ledger_value": "-94.560486",
+   "evidence_row": 13218,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-west-river-oakwood-va:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=8936%20Dismal%20River%20Rd%2C%20Oakwood%2C%20VA%2024631&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "51027",
+   "evidence_row": 13104,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Census geocoder JSON re-run 2026-11-16: matchedAddress as quoted; coordinates/county match the value (rounded to 6 dp)."
+  },
+  {
+   "claim_id": "p-west-river-oakwood-va:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=8936%20Dismal%20River%20Rd%2C%20Oakwood%2C%20VA%2024631&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "37.257038",
+   "evidence_row": 13105,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Census geocoder JSON re-run 2026-11-16: matchedAddress as quoted; coordinates/county match the value (rounded to 6 dp)."
+  },
+  {
+   "claim_id": "p-west-river-oakwood-va:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=8936%20Dismal%20River%20Rd%2C%20Oakwood%2C%20VA%2024631&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-81.953618",
+   "evidence_row": 13106,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Census geocoder JSON re-run 2026-11-16: matchedAddress as quoted; coordinates/county match the value (rounded to 6 dp)."
+  },
+  {
+   "claim_id": "p-west-river-oakwood-va:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110072345186&output=JSON",
+   "ledger_value": "West River Conveyors & Machinery Company",
+   "evidence_row": 13107,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityName on the page."
+  },
+  {
+   "claim_id": "p-west-river-oakwood-va:address",
+   "source_url": "https://www.westriverconveyors.com/contact-us/",
+   "ledger_value": "8936 Dismal River Road, Oakwood, VA 24631",
+   "evidence_row": 13108,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Contact page footer '8936 Dismal River Road' on the page."
+  },
+  {
+   "claim_id": "p-west-river-oakwood-va:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110072345186&output=JSON",
+   "ledger_value": "EPA ECHO 110072345186, 8936 Dismal River Road",
+   "evidence_row": 13109,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-west-river-oakwood-va:parent_company",
+   "source_url": "https://www.westriverconveyors.com/about-us/",
+   "ledger_value": "family-owned, independent (no parent stated)",
+   "evidence_row": 13110,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "About page: 'second-generation, family-owned business'; 'independent (no parent stated)' is a limiting gloss."
+  },
+  {
+   "claim_id": "p-west-river-oakwood-va:website",
+   "source_url": "https://www.westriverconveyors.com/about-us/",
+   "ledger_value": "https://www.westriverconveyors.com",
+   "evidence_row": 13111,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "About page: 'We serve customers internationally from our facility in Oakwood, Virginia.'"
+  },
+  {
+   "claim_id": "p-west-river-oakwood-va:products",
+   "source_url": "https://www.westriverconveyors.com/",
+   "ledger_value": "overland, stacker, portable and underground mining conveyors",
+   "evidence_row": 13112,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Home page product sentence on the page."
+  },
+  {
+   "claim_id": "p-west-river-oakwood-va:products",
+   "source_url": "https://westriverconveyors.applicantstack.com/x/detail/a21esnfucsxa",
+   "ledger_value": "conveyor framework and structure welded at the facility",
+   "evidence_row": 13113,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "ApplicantStack detail page: 'Performs welding to create conveyor framework and structure.'"
+  },
+  {
+   "claim_id": "p-west-river-oakwood-va:tier",
+   "source_url": "https://www.westriverconveyors.com/about-us/",
+   "ledger_value": "OEM",
+   "evidence_row": 13114,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-west-river-oakwood-va:relationship",
+   "source_url": "https://www.westriverconveyors.com/",
+   "ledger_value": "lookalike",
+   "evidence_row": 13115,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-west-river-oakwood-va:lookalike_of",
+   "source_url": "https://www.westriverconveyors.com/",
+   "ledger_value": "Schenck Process",
+   "evidence_row": 13116,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-west-river-oakwood-va:welder_postings",
+   "source_url": "https://westriverconveyors.applicantstack.com/x/openings",
+   "ledger_value": "1 open on the company's own ApplicantStack board (2026-11-16): Welder/Fabricator (ID 1001), Oakwood, VA (the company's only facility); \"Performs welding to create conveyor framework and structure\"; JSON-LD datePosted 2022-10-07 (still listed about 4 years later, likely evergreen); process not named",
+   "evidence_row": 13118,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "ApplicantStack list 2026-11-16: General Laborer and Welder/Fabricator, both Oakwood, VA ('Showing 1 - 2 of 2')."
+  },
+  {
+   "claim_id": "p-west-river-oakwood-va:welder_postings",
+   "source_url": "https://westriverconveyors.applicantstack.com/x/detail/a21esnfucsxa",
+   "ledger_value": "1 open on the company's own ApplicantStack board (2026-11-16): Welder/Fabricator (ID 1001), Oakwood, VA (the company's only facility); \"Performs welding to create conveyor framework and structure\"; JSON-LD datePosted 2022-10-07 (still listed about 4 years later, likely evergreen); process not named",
+   "evidence_row": 13119,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Detail page: 'Location: Oakwood, VA', JSON-LD datePosted 2022-10-07, Apply Now to applicantstack apply flow; both description fragments on the page. 'the company's only facility' rests on the About page 'our facility in Oakwood, Virginia' (row 13111, opened today). Under the standing-ad rule: open (12), never 60+ (likely evergreen). Correct."
+  },
+  {
+   "claim_id": "p-hem-paving-grundy-center-ia:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110046100704&output=JSON",
+   "ledger_value": "EPA FRS 110046100704: HEAVY EQUIPMENT MFG",
+   "evidence_row": 12877,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA name 'HEAVY EQUIPMENT MFG' on the page. No cited page ties it to HEM Paving, but hempaving.com (opened 2026-11-16) states 'Heavy Equipment Manufacturing (HEM)' and 'P.O. Box 97 - 601 E First Street, Grundy Center, Iowa 50638', so the tie is true; lead: add that row (and website https://www.hempaving.com, recorded unknown)."
+  },
+  {
+   "claim_id": "p-hem-paving-grundy-center-ia:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110046100704&output=JSON",
+   "ledger_value": "601 E 1ST ST, GRUNDY CENTER IA 50638 (EPA FRS 110046100704)",
+   "evidence_row": 12878,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA street on the page; hempaving.com gives the same street (601 E First Street) - lead row."
+  },
+  {
+   "claim_id": "p-hem-paving-grundy-center-ia:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110046100704&output=JSON",
+   "ledger_value": "42.36351",
+   "evidence_row": 12879,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-hem-paving-grundy-center-ia:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110046100704&output=JSON",
+   "ledger_value": "-92.76139",
+   "evidence_row": 12880,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-hem-paving-grundy-center-ia:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110046100704&output=JSON",
+   "ledger_value": "19075",
+   "evidence_row": 12881,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityFipsCode on the page equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-hem-paving-grundy-center-ia:products",
+   "source_url": "https://hempaving.hireclick.com/jb/welder-fabricator/view/112503",
+   "ledger_value": "leading manufacturer of concrete paving equipment",
+   "evidence_row": 12882,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "HireClick posting: quote on the page."
+  },
+  {
+   "claim_id": "p-hem-paving-grundy-center-ia:name",
+   "source_url": "https://hempaving.hireclick.com/jb/welder-fabricator/view/112503",
+   "ledger_value": "HEM Paving, Grundy Center IA",
+   "evidence_row": 12883,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'Join Our Team at HEM Paving in Grundy Center, IA!' on the page."
+  },
+  {
+   "claim_id": "p-hem-paving-grundy-center-ia:parent_company",
+   "source_url": "https://hempaving.hireclick.com/jb/welder-fabricator/view/112503",
+   "ledger_value": "HEM Paving (independent; none named)",
+   "evidence_row": 12884,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row: no parent named on the cited page; tag inferred is correct."
+  },
+  {
+   "claim_id": "p-hem-paving-grundy-center-ia:tier",
+   "source_url": "https://hempaving.hireclick.com/jb/welder-fabricator/view/112503",
+   "ledger_value": "OEM",
+   "evidence_row": 12885,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-hem-paving-grundy-center-ia:relationship",
+   "source_url": "https://hempaving.hireclick.com/jb/welder-fabricator/view/112503",
+   "ledger_value": "new",
+   "evidence_row": 12886,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-hem-paving-grundy-center-ia:welder_postings",
+   "source_url": "https://hempaving.hireclick.com/jb/welder-fabricator/view/112503",
+   "ledger_value": "Welder Fabricator, Grundy Center IA (own HireClick board, open 2026-11-16, undated)",
+   "evidence_row": 12887,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "note": "The value says 'undated', but the posting page's JSON-LD carries datePosted '3/16/2026 11:51:17 AM'. The posting is live on HEM's own HireClick board today and names Grundy Center (HEM's one site). Open about 245 days. Whether this is a real 60+ day opening (labor 20) or a standing ad (12) is for the coordinator under the consultation 12 standing-ad rule; HEM is in profiler H's wave.",
+   "corrected_value": "Welder Fabricator, Grundy Center IA (own HireClick board, open 2026-11-16; JSON-LD datePosted 2026-03-16, about 245 days)",
+   "corrected_quote": "Welder Fabricator Grundy Center, IA ... \"datePosted\":\"3/16/2026 11:51:17 AM\"",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "1 open: Welder Fabricator, Grundy Center IA, on own HireClick board 2026-11-16, posted 2026-03-16 (JSON-LD datePosted; about 245 days; standing-ad status for the coordinator) ('HEM PAVING IS ACTIVELY HIRING QUALIFIED WELDERS!'); process not named"
+  },
+  {
+   "claim_id": "p-hem-paving-grundy-center-ia:welder_postings",
+   "source_url": "https://hempaving.hireclick.com/",
+   "ledger_value": "board banner: actively hiring qualified welders",
+   "evidence_row": 12888,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "HireClick board banner 'HEM PAVING IS ACTIVELY HIRING QUALIFIED WELDERS!' on the board page next to the Welder Fabricator listing."
+  },
+  {
+   "claim_id": "p-calder-taylors-sc:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110031216002&output=JSON",
+   "ledger_value": "EPA FRS 110031216002: CALDER BROTHERS CORP",
+   "evidence_row": 12621,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityName on the page as quoted; the value only restates the EPA record."
+  },
+  {
+   "claim_id": "p-calder-taylors-sc:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110031216002&output=JSON",
+   "ledger_value": "250 E WAREHOUSE CT, TAYLORS SC 29687 (EPA FRS 110031216002)",
+   "evidence_row": 12622,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-calder-taylors-sc:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110031216002&output=JSON",
+   "ledger_value": "34.91086",
+   "evidence_row": 12623,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-calder-taylors-sc:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110031216002&output=JSON",
+   "ledger_value": "-82.3343",
+   "evidence_row": 12624,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-calder-taylors-sc:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110031216002&output=JSON",
+   "ledger_value": "45045",
+   "evidence_row": 12625,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityFipsCode on the page equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-calder-taylors-sc:products",
+   "source_url": "https://www.constructionequipmentguide.com/calder-brothers-transform-mauldin-paving-into-top-ranked-maker/50670?markdown=1",
+   "ledger_value": "Mauldin pavers; motor graders and asphalt distributors added; new 1860 heavy paver and 1560 commercial paver (2019)",
+   "evidence_row": 12626,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Construction Equipment Guide, published 2020-12-10: both fragments on the page. The same article also states 'The factory and headquarters for Mauldin Paving Products is at 450 East Warehouse Ct., Taylors, S.C.' (EPA has 250 E Warehouse Ct; see plant_status_notes)."
+  },
+  {
+   "claim_id": "p-calder-taylors-sc:name",
+   "source_url": "https://www.constructionequipmentguide.com/calder-brothers-transform-mauldin-paving-into-top-ranked-maker/50670?markdown=1",
+   "ledger_value": "Calder Brothers / Mauldin Paving Products, South Carolina manufacturer",
+   "evidence_row": 12627,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Article opening sentence on the page; title names Calder Brothers / Mauldin Paving."
+  },
+  {
+   "claim_id": "p-calder-taylors-sc:parent_company",
+   "source_url": "https://www.constructionequipmentguide.com/calder-brothers-transform-mauldin-paving-into-top-ranked-maker/50670?markdown=1",
+   "ledger_value": "Calder Brothers (family; vice presidents of design, operations, manufacturing engineering)",
+   "evidence_row": 12628,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page; 'the family company changed its name to Calder Brothers Corporation' also on the page."
+  },
+  {
+   "claim_id": "p-calder-taylors-sc:tier",
+   "source_url": "https://www.constructionequipmentguide.com/calder-brothers-transform-mauldin-paving-into-top-ranked-maker/50670?markdown=1",
+   "ledger_value": "OEM",
+   "evidence_row": 12629,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-calder-taylors-sc:relationship",
+   "source_url": "https://www.constructionequipmentguide.com/calder-brothers-transform-mauldin-paving-into-top-ranked-maker/50670?markdown=1",
+   "ledger_value": "new",
+   "evidence_row": 12630,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-calder-taylors-sc:welder_postings",
+   "source_url": "https://www.constructionequipmentguide.com/calder-brothers-transform-mauldin-paving-into-top-ranked-maker/50670?markdown=1",
+   "ledger_value": "unknown: company site unreachable",
+   "evidence_row": 12631,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "mauldinpaving.com unreachable; unknown correct."
+  },
+  {
+   "claim_id": "p-voeller-port-washington-wi:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000416728&output=JSON",
+   "ledger_value": "EPA FRS 110000416728: VOELLER MIXERS",
+   "evidence_row": 12983,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityName on the page as quoted; the value only restates the EPA record."
+  },
+  {
+   "claim_id": "p-voeller-port-washington-wi:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000416728&output=JSON",
+   "ledger_value": "369 W WESTERN AVE, PORT WASHINGTON WI 53074 (EPA FRS 110000416728)",
+   "evidence_row": 12984,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-voeller-port-washington-wi:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000416728&output=JSON",
+   "ledger_value": "43.38111",
+   "evidence_row": 12985,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-voeller-port-washington-wi:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000416728&output=JSON",
+   "ledger_value": "-87.87752",
+   "evidence_row": 12986,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-voeller-port-washington-wi:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000416728&output=JSON",
+   "ledger_value": "55089",
+   "evidence_row": 12987,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityFipsCode on the page equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-voeller-port-washington-wi:products",
+   "source_url": "https://gmic.org/voeller-mixers",
+   "ledger_value": "mixing, batching and aggregate heating equipment for concrete, masonry, glass",
+   "evidence_row": 12988,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "GMIC member page: quote on the page."
+  },
+  {
+   "claim_id": "p-voeller-port-washington-wi:address",
+   "source_url": "https://gmic.org/voeller-mixers",
+   "ledger_value": "369 W Western Avenue, Port Washington, WI 53074",
+   "evidence_row": 12989,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'369 W Western Avenue, Port Washington, WI 53074' on the page; matches EPA."
+  },
+  {
+   "claim_id": "p-voeller-port-washington-wi:name",
+   "source_url": "https://gmic.org/voeller-mixers",
+   "ledger_value": "Voeller Mixers",
+   "evidence_row": 12990,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-voeller-port-washington-wi:parent_company",
+   "source_url": "https://gmic.org/voeller-mixers",
+   "ledger_value": "Voeller Mixers, Inc. (recapitalized by Morgenthaler Private Equity per search; not quoted)",
+   "evidence_row": 12991,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Ownership from a search snippet only; correctly inferred and not quoted."
+  },
+  {
+   "claim_id": "p-voeller-port-washington-wi:tier",
+   "source_url": "https://gmic.org/voeller-mixers",
+   "ledger_value": "OEM",
+   "evidence_row": 12992,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-voeller-port-washington-wi:relationship",
+   "source_url": "https://gmic.org/voeller-mixers",
+   "ledger_value": "new",
+   "evidence_row": 12993,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-voeller-port-washington-wi:welder_postings",
+   "source_url": "https://gmic.org/voeller-mixers",
+   "ledger_value": "unknown: no job board found",
+   "evidence_row": 12994,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "No careers page found; unknown correct."
+  },
+  {
+   "claim_id": "p-big-gun-robotics-newberry-sc:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110071140190&output=JSON",
+   "ledger_value": "EPA FRS 110071140190: BIG GUN ROBOTICS",
+   "evidence_row": 12835,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityName on the page as quoted; the value only restates the EPA record."
+  },
+  {
+   "claim_id": "p-big-gun-robotics-newberry-sc:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110071140190&output=JSON",
+   "ledger_value": "114 MAWSONS WAY, NEWBERRY SC 29108 (EPA FRS 110071140190)",
+   "evidence_row": 12836,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-big-gun-robotics-newberry-sc:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110071140190&output=JSON",
+   "ledger_value": "34.290127",
+   "evidence_row": 12837,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-big-gun-robotics-newberry-sc:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110071140190&output=JSON",
+   "ledger_value": "-81.547292",
+   "evidence_row": 12838,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-big-gun-robotics-newberry-sc:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110071140190&output=JSON",
+   "ledger_value": "45071",
+   "evidence_row": 12839,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityFipsCode on the page equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-big-gun-robotics-newberry-sc:products",
+   "source_url": "https://www.areadevelopment.com/newsItems/8-29-2019/big-gun-robotics-newberry-county-south-carolina.shtml",
+   "ledger_value": "robotic welding company supplying heavy equipment manufacturers",
+   "evidence_row": 12840,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Area Development, Aug 29, 2019: quote on the page. Big Gun's own site (biggunrobotics.com, copyright 2022) repeats the 2019 article, says 'High-volume welded assemblies', robotic cells and '20 manual weld stations', 114 Mawsons Way (lead: website and part-mix evidence)."
+  },
+  {
+   "claim_id": "p-big-gun-robotics-newberry-sc:address",
+   "source_url": "https://www.areadevelopment.com/newsItems/8-29-2019/big-gun-robotics-newberry-county-south-carolina.shtml",
+   "ledger_value": "114 Mawsons Way, Newberry County; property purchase plus 20,000 sq ft expansion (Aug 2019)",
+   "evidence_row": 12841,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page."
+  },
+  {
+   "claim_id": "p-big-gun-robotics-newberry-sc:name",
+   "source_url": "https://www.areadevelopment.com/newsItems/8-29-2019/big-gun-robotics-newberry-county-south-carolina.shtml",
+   "ledger_value": "Big Gun Robotics LLC",
+   "evidence_row": 12842,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-big-gun-robotics-newberry-sc:parent_company",
+   "source_url": "https://www.areadevelopment.com/newsItems/8-29-2019/big-gun-robotics-newberry-county-south-carolina.shtml",
+   "ledger_value": "Big Gun Robotics LLC (owner-operated)",
+   "evidence_row": 12843,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row: no parent named on the cited page; tag inferred is correct."
+  },
+  {
+   "claim_id": "p-big-gun-robotics-newberry-sc:tier",
+   "source_url": "https://www.areadevelopment.com/newsItems/8-29-2019/big-gun-robotics-newberry-county-south-carolina.shtml",
+   "ledger_value": "Tier 1",
+   "evidence_row": 12844,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-big-gun-robotics-newberry-sc:tier_secondary",
+   "source_url": "https://www.areadevelopment.com/newsItems/8-29-2019/big-gun-robotics-newberry-county-south-carolina.shtml",
+   "ledger_value": "Contract fabricator",
+   "evidence_row": 12845,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-big-gun-robotics-newberry-sc:relationship",
+   "source_url": "https://www.areadevelopment.com/newsItems/8-29-2019/big-gun-robotics-newberry-county-south-carolina.shtml",
+   "ledger_value": "new",
+   "evidence_row": 12846,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-big-gun-robotics-newberry-sc:welder_postings",
+   "source_url": "https://www.areadevelopment.com/newsItems/8-29-2019/big-gun-robotics-newberry-county-south-carolina.shtml",
+   "ledger_value": "none found",
+   "evidence_row": 12847,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'none found' stands, but biggunrobotics.com exists with an 'Employment Opportunities' form (welding, fabrication) and no listed role; 'No company website' in the reasoning is wrong (lead)."
+  },
+  {
+   "claim_id": "p-allied-systems-sherwood-or:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000904932&output=JSON",
+   "ledger_value": "EPA FRS 110000904932: ALLIED SYSTEMS",
+   "evidence_row": 12559,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityName on the page as quoted; the value only restates the EPA record."
+  },
+  {
+   "claim_id": "p-allied-systems-sherwood-or:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000904932&output=JSON",
+   "ledger_value": "21433 SW OREGON ST, SHERWOOD OR 97140 (EPA FRS 110000904932)",
+   "evidence_row": 12560,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-16; FacilityStreet as quoted and city/ZIP match the value."
+  },
+  {
+   "claim_id": "p-allied-systems-sherwood-or:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000904932&output=JSON",
+   "ledger_value": "45.364973",
+   "evidence_row": 12561,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Latitude on the page equals the value and the plants.csv lat."
+  },
+  {
+   "claim_id": "p-allied-systems-sherwood-or:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000904932&output=JSON",
+   "ledger_value": "-122.819348",
+   "evidence_row": 12562,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA Longitude on the page equals the value and the plants.csv lon."
+  },
+  {
+   "claim_id": "p-allied-systems-sherwood-or:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000904932&output=JSON",
+   "ledger_value": "41067",
+   "evidence_row": 12563,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA FacilityFipsCode on the page equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-allied-systems-sherwood-or:products",
+   "source_url": "https://www.alliedsystems.com/about/about-us.aspx",
+   "ledger_value": "Allied Marine Crane, Allied Winch, Wagner Chip-Dozer, Coal Dozer, Lumberjack, Steel Handler, Long Reach Attachments",
+   "evidence_row": 12564,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "About page product-line sentence on the page."
+  },
+  {
+   "claim_id": "p-allied-systems-sherwood-or:products",
+   "source_url": "https://www.alliedsystems.com/",
+   "ledger_value": "winches by dozer model (PTO and hydraulic)",
+   "evidence_row": 12565,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Home page menu lists 'PTO Winches' and 'Hydraulic Winches' and 'Winches By Dozer'; value carried."
+  },
+  {
+   "claim_id": "p-allied-systems-sherwood-or:products",
+   "source_url": "https://www.alliedsystems.com/contract/contract.aspx",
+   "ledger_value": "contract fabrication: burning, cutting, bending, rolling and welding very large structural components for OEMs",
+   "evidence_row": 12566,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Contract page quote on the page."
+  },
+  {
+   "claim_id": "p-allied-systems-sherwood-or:name",
+   "source_url": "https://www.alliedsystems.com/about/about-us.aspx",
+   "ledger_value": "Allied Systems Company",
+   "evidence_row": 12567,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-allied-systems-sherwood-or:parent_company",
+   "source_url": "https://www.alliedsystems.com/about/about-us.aspx",
+   "ledger_value": "Allied Systems Company (independent)",
+   "evidence_row": 12568,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row: no parent named on the cited page; tag inferred is correct."
+  },
+  {
+   "claim_id": "p-allied-systems-sherwood-or:website",
+   "source_url": "https://www.alliedsystems.com/",
+   "ledger_value": "https://www.alliedsystems.com",
+   "evidence_row": 12569,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-16 and supports the value."
+  },
+  {
+   "claim_id": "p-allied-systems-sherwood-or:tier",
+   "source_url": "https://www.alliedsystems.com/",
+   "ledger_value": "OEM",
+   "evidence_row": 12570,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-allied-systems-sherwood-or:tier_secondary",
+   "source_url": "https://www.alliedsystems.com/contract/contract.aspx",
+   "ledger_value": "Contract fabricator",
+   "evidence_row": 12571,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-allied-systems-sherwood-or:relationship",
+   "source_url": "https://www.alliedsystems.com/",
+   "ledger_value": "lookalike",
+   "evidence_row": 12572,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-allied-systems-sherwood-or:lookalike_of",
+   "source_url": "https://www.alliedsystems.com/about/about-us.aspx",
+   "ledger_value": "Mine Rite",
+   "evidence_row": 12573,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-allied-systems-sherwood-or:welder_postings",
+   "source_url": "https://www.alliedsystems.com/career/career.aspx",
+   "ledger_value": "Welder Fitters listed on own careers page 2026-11-16 (undated); site: postings state the company is located in Sherwood, Oregon",
+   "evidence_row": 12574,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Careers page 2026-11-16: the Welder Fitters block is live (outside the HTML blocks marked 'Removed on 11/10/2026' etc.), with Apply Now to the resume form; 'located in Sherwood, Oregon' on the page. Undated live own-board posting: open (12). Correct."
+  },
+  {
+   "claim_id": "p-allied-systems-sherwood-or:welder_postings",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000904932&output=JSON",
+   "ledger_value": "undated; process not named ('all manual and semi-automatic welding processes'); extra hours expected",
+   "evidence_row": 12575,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'all manual and semi-automatic welding processes' and 'willing to work extra hours' on the page; process not named and extra hours are not mandatory overtime. Correct."
+  },
+  {
+   "claim_id": "p-ppi-humboldt-ia:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2512%20Lincoln%20Ave%2C%20Humboldt%2C%20IA%2050548&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "19091",
+   "evidence_row": 13184,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Census geocoder JSON re-run 2026-11-16: matchedAddress as quoted; coordinates/county match the value (rounded to 6 dp)."
+  },
+  {
+   "claim_id": "p-ppi-humboldt-ia:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2512%20Lincoln%20Ave%2C%20Humboldt%2C%20IA%2050548&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "42.686462",
+   "evidence_row": 13185,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Census geocoder JSON re-run 2026-11-16: matchedAddress as quoted; coordinates/county match the value (rounded to 6 dp)."
+  },
+  {
+   "claim_id": "p-ppi-humboldt-ia:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2512%20Lincoln%20Ave%2C%20Humboldt%2C%20IA%2050548&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-94.226474",
+   "evidence_row": 13186,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Census geocoder JSON re-run 2026-11-16: matchedAddress as quoted; coordinates/county match the value (rounded to 6 dp)."
+  },
+  {
+   "claim_id": "p-ppi-humboldt-ia:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001754691&output=JSON",
+   "ledger_value": "Precision Pulley & Idler (PPI) - Humboldt",
+   "evidence_row": 13187,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA DFR name on the page ('PRECISION PULLEY AND IDLER - HUMBOLDT')."
+  },
+  {
+   "claim_id": "p-ppi-humboldt-ia:parent_company",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001754691&output=JSON",
+   "ledger_value": "Precision, Inc. (Precision Pulley & Idler division)",
+   "evidence_row": 13188,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA record opened 2026-11-16; quote on the page."
+  },
+  {
+   "claim_id": "p-ppi-humboldt-ia:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001754691&output=JSON",
+   "ledger_value": "2512 Lincoln Ave, Humboldt, IA 50548",
+   "evidence_row": 13189,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA '2512 LINCOLN AVENUE' on the page."
+  },
+  {
+   "claim_id": "p-ppi-humboldt-ia:website",
+   "source_url": "https://www.ppi-global.com/about/",
+   "ledger_value": "https://www.ppi-global.com",
+   "evidence_row": 13190,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "ppi-global.com/about opened 2026-11-16; website value supported."
+  },
+  {
+   "claim_id": "p-ppi-humboldt-ia:products",
+   "source_url": "https://www.ppi-global.com/about/",
+   "ledger_value": "company-level: conveyor components (pulleys, idlers) for bulk handling incl. mining and aggregate; site product split not stated beyond the name and postings",
+   "evidence_row": 13191,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'PPI is a proven industry leader in conveyor components' on the About page; value is explicitly labelled company-level, not placed at the site."
+  },
+  {
+   "claim_id": "p-ppi-humboldt-ia:products",
+   "source_url": "https://www.ppi-global.com/product-lines/pulleys/",
+   "ledger_value": "company-level: conveyor pulleys",
+   "evidence_row": 13192,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'PPI produces pulleys for all conveyor applications.' on the pulleys page; labelled company-level."
+  },
+  {
+   "claim_id": "p-ppi-humboldt-ia:tier",
+   "source_url": "https://www.ppi-global.com/about/",
+   "ledger_value": "OEM",
+   "evidence_row": 13193,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked for rules: tier follows from the quoted products (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-ppi-humboldt-ia:relationship",
+   "source_url": "https://www.ppi-global.com/industries/mining-and-mineral-processing/",
+   "ledger_value": "lookalike",
+   "evidence_row": 13194,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-ppi-humboldt-ia:lookalike_of",
+   "source_url": "https://www.ppi-global.com/industries/mining-and-mineral-processing/",
+   "ledger_value": "Schenck Process",
+   "evidence_row": 13195,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the mining relationship rules (Mine Rite lookalike for attachment/bucket/body/tank sellers or mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs new); consistent."
+  },
+  {
+   "claim_id": "p-ppi-humboldt-ia:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=92057b43-7f0c-467f-9a9e-ea36a626e97e&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US&$top=20",
+   "ledger_value": "none found: PPI's own ADP board (2026-11-16) lists CNC Machine Operator, CI Technician, Utility and Maintenance Technician at Humboldt, no welding role",
+   "evidence_row": 13197,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Full PPI board (34 requisitions, both pages) read 2026-11-16: Humboldt roles are CNC Machine Operator (2nd shift), CI Technician, Utility, Maintenance Technician (2nd shift), Utility (2nd shift); no welding role. Correct."
+  }
+ ],
+ "score_problems": [
+  "not applicable: base records carry no scores"
+ ],
+ "opening_line_problems": [
+  "not applicable: base records carry no opening lines"
+ ],
+ "score_notes": []
+}

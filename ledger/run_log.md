@@ -948,3 +948,24 @@ Coordinator decisions applied now (mechanical):
   - **closure-4B:** one new source type each for the 88 researched-but-unverified registry rows.
   - **Two blind list auditors** on methods other than ECHO by NAICS.
   - **One fact-checker** on an independent sample of closure-3 base records.
+
+### 2026-11-16: mining push-to-done wave merged (workflow mining-push-to-done)
+
+- **Profilers G and H (12 plants), merged** after 22 evidence removals; 0 rejected, 0 coverage gaps.
+  - Scores: G.R. Trussville 63, Exodus 53, Allied 47, Pierce Pacific 43, Syntron 41, Construction Attachments 36, PPI Lenox 33, HEM 28, West River 23 (after ruling), PPI Pella 21, Quality Urbandale 16, DCL 16.
+  - Accepted profiler calls: Quality Urbandale postings not attributed (a second Quality Manufacturing air source at 5701 Park Ave, Des Moines); PPI Pella campus test fails (2103 Washington St and Van Gorp are 3-4 km away); Exodus demand 8 (expansion completed 2024-07-16, before the 24-month window); HEM labor 12 (JSON-LD date matches another requisition to the second: a re-list stamp, not a proven 60+ day opening).
+- **Coordinator rulings** (`ledger/inbox/coordinator-mining-R2-rulings.json`):
+  - **West River labor 12 -> 0.** Its employment page states that listed openings "does not mean that we are currently hiring for the position". An explicit disclaimer overrides the consultation 12 standing-ad default. Total 35 -> 23.
+  - **G.R. postings dated.** A coordinator re-fetch found JSON-LD datePosted 2026-08-24 on job 3562124 (the job URL redirects to /apps/new, which the profiler's fetch missed), confirming the CS fact-check. Labor stays 20 (two at once; now also 60+ days).
+  - **Six crusher and screen makers re-tagged lookalike of Schenck Process** under the written relationship rule: Astec Eugene, Gundlach Belleville, Superior Belen, Fab-Tec Moscow, RD Olson Kelso, Vermeer Freeman (flagged by the CS fact-check).
+- **Closure pass 4, merged:** 4A (67 unresearched NAICS 333922 rows): 14 new base, 2 resolved, 27 unverified, 24 skipped. 4B (88 unsettled rows): 14 new base, 9 excluded, 3 resolved, 53 unverified. Quotes all found on the agents' dry runs.
+  - New base with counted postings: Thomas Conveyor Burleson TX (Martin Sprocket; 4 dated welder postings, oldest about 97 days), Orthman Cleburne TX (1 dated), Tread Roanoke VA (1 dated).
+  - Not counted: Process Barron Pelham (site not settled), ASGCO Nazareth (maintenance duties), Screw Conveyor Winona ("We are hiring!" with no specific opening), Douglas Pell City (2011 ad, no site).
+- **CS base-sample fact-check (closure-3 records, 25 plants, reported separately): 5 / 325 = 1.5%** (stated rows only 4/224 = 1.8%). Applied.
+- **Vertical now:** 407 plants: 59 profiled, 247 base, 101 excluded.
+- **Re-rank:** four unprofiled base plants are now in the top 40: Thomas Conveyor (9), Astec Eugene (17), Tread Roanoke (32), Orthman Cleburne (37).
+- **Blind re-audit (R2-A: CONEXPO-CON/AGG 2026 exhibitor directory, AEM members, Curlie, 10-K property lists; R2-B: OEM supplier/dealer lists, job searches by product, plant news 2023-26):**
+  - 225 in-definition auditor plants; 125 ledger plants matched; 72 unmatched candidates.
+  - Of those, 7 are unconfirmed sites (HQ/office/brand) and 1 is already in the ledger; 64 remain (45 core, 17 boundary, 2 earlier-unverified leads).
+  - **Unverified miss rate about 64 / 190 = 33.7%; 26.2% even counting core only.** To get under 20%, 33 of the 64 would have to fail verification; both auditors quote-checked their rows, so that is implausible.
+  - Neither auditor reached a dry point. Where the misses are: CONEXPO exhibitors our EPA/NAICS-based closure passes never touched: small attachment and bucket makers (Wain-Roy, Berlon, B&D, Leading Edge, Dymax, Digga, Worksaver, Danuser, Lowe), aggregate and bulk equipment (Fisher, Midwestern, Smico, JVI, Mule, Redline, DEMI, Oquamax, iSC), asphalt and concrete plant makers (ADM, ALmix, CEMCO Olney, JEL, MERTS, Aesco Madsen), and weldment suppliers (Superior Mfg Winston-Salem, ATACO, Amerequip, C-I-T, Custom Products).
