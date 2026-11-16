@@ -881,3 +881,42 @@ Coordinator decisions applied now (mechanical):
 - **Proposed sweeps not run** (round 2 is under 10%, so they are logged as limits for a later pass): EPA-name identity rows across all base records; thin rows where a field clause sits on no row.
 - **Leads:** Super Steel Mequon expansion (Jun 30 2026, aggregator snippet only; demand 15 if a primary source confirms); Bobcat Bismarck's three FRS addresses within about 0.5 km (labor 12 if shown to be one campus); Ground Force Idaho postings on idahoworks.gov (no welder role).
 - **Counts:** 370 plants, 279 included (47 profiled, 232 base), 91 excluded. Profiled tiers High 3 / Medium 30 / Low 14. Summary rewritten (`ledger/audit/summary-v-mining-heavy-equipment.json`); verticals.csv status partial.
+
+### Advisor consultation 11 (2026-11-16): marking mining partial after round 2
+
+- **Advice:**
+  - Partial is right and round 2 (3.3%) clears the 10% limit.
+  - The round-2 part-mix rulings contradicted the standing session-2 rule 1 (a company-level part mix earns points but no confidence). Pick one rule for all 47.
+  - Script the two new confidence rulings across all 47 profiles.
+  - Read checker E on Process Machinery and every report's field_drift_notes.
+  - Recompute the limits from the inbox tables.
+  - Fix the ranking reads of closure-3 fields and state how many base plants outrank profiled ones.
+  - Rerun the duplicate check on the 68 new records.
+  - Run the new smoke assertions.
+- **Done:**
+  1. **One part-mix rule, the standing one.** Mellott back to 15 (53 to 60) and Coperion Whitewater back to 8 (32 to 40). Both earn no confidence for part mix (Mellott listed in `no-confidence-claims.csv`; Whitewater's production_type is inferred only).
+     - Tabor Princeton stays 0 on a different, written ground: the product list is a brand listing, and the plant's identity as that brand's maker rests only on the EPA facility name. With the plant-to-brand tie itself inferred, no product list is attributable to the plant.
+     - Werk-Brau, Rockland, L&H and Ground Force were already scored under the standing rule.
+  2. **Confidence sweep across all 47:**
+     - Stated headcounts dated before Nov 2023 that a scale score cites: Werk-Brau (Apr 2022, company-level) and Bobcat Litchfield (Apr 2021) added to the list. Werk-Brau confidence 4 to 3, Litchfield 3 to 2.
+     - Komatsu Milwaukee also has an Oct 2024 stated row, so it is unchanged.
+     - Part mix 15 resting on an inferred row with only a weaker stated row: Rockland and Mellott, both listed.
+  3. **Process Machinery confirmed by checker E**, component by component (90 High).
+     - The Columbus "Ohio Branch" is not shown to be a production site: every manufacturing statement names Shelbyville, and the 2025 post presents PMI as a dealer for Ohio. Its company-level rows stand.
+     - The 50,000 lb part weight (Structural Fitter posting, Shelbyville) and the $11.5M expansion (Oct 2025 groundbreaking; construction under way on 2026-10-28) are confirmed.
+  4. **Field drift fixed** (ground rule 1), 11 fields:
+     - Yankton name ("KPI-JCI" dropped).
+     - Products trimmed to their rows: General Kinematics, Derrick, Etnyre, Schwing, Mellott and L&H.
+     - The three Metalcraft products rows widened to checker R2-B's verified text from mtlcraft.com/industries (company-level).
+     - A Komatsu Peoria address row added for ZIP 61639 (checker R2-C's suggested row; quote re-checked).
+  5. **Ranking:**
+     - PPI Pella's field now says "site not named", so it counts 0.
+     - Quality Urbandale's "2 listed" is "2 open (undated)" under the Nello rule.
+     - **Nine base plants rank inside the top 47** by the documented key, **six with a counted open posting:** M-B New Holstein (3), Syntron (2), West River, Allied, PPI Lenox and Exodus.
+     - G.R. Trussville and HEM rank lower because their relationship is "new" (relationship is the first sort key).
+  6. **Limits recomputed from the closure tables:**
+     - About 155 registry rows and leads are unverified: 17 from 333131 (after closure 2B), 55 from 333120 (17 researched in 2C plus 38 in 3A) and 83 from 333922. 67 of the 333922 rows were not researched.
+     - Nine closure-3 base plants have an open own-board welder posting naming the site: four dated, five undated.
+     - The closure-3 base records (1,009 rows) had only the finders' own quote checks.
+  7. **Duplicate check on the 68 new records:** coordinate and name matches within 1 km or the same city found only different companies (e.g. PPI Corning vs Brown Bear, 60 m apart). No merges.
+- **Status:** v-mining-heavy-equipment stays **partial**. Further mining work waits on the user.
