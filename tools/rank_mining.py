@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Rank a vertical's base and profiled plants by the coordinator's documented key
-(relationship, tier, stated welder_postings rows capped at 3, headcount, number of sources)
+(relationship, tier, open welder postings from the plant's welder_postings field ("N open ...",
+capped at 3; "none found", "not counted" and listed-only roles count 0), headcount, number of sources)
 and show where given plant ids fall.
 
 Usage: python3 tools/rank_mining.py v-mining-heavy-equipment [--top N] [--mark id1,id2] [--base-only]
@@ -14,10 +15,12 @@ mark = set(args[args.index("--mark") + 1].split(",")) if "--mark" in args else s
 pl = [r for r in csv.DictReader(open("ledger/plants.csv")) if vert in r["verticals"]]
 ev = list(csv.DictReader(open("ledger/evidence.csv")))
 post, src = defaultdict(int), defaultdict(set)
+for p in pl:
+    m = re.match(r"\s*(\d+)\s+open", p["welder_postings"] or "")
+    unattributed = re.search(r"plant not stated|site not named", p["welder_postings"] or "", re.I)
+    post[p["id"]] = int(m.group(1)) if m and not unattributed else 0
 for r in ev:
     pid = r["claim_id"].split(":")[0]
-    if r["claim_id"].endswith(":welder_postings") and r["tag"] == "stated":
-        post[pid] += 1
     if r["source_url"]:
         src[pid].add(r["source_url"])
 REL = {"known_customer": 0, "customer_other_plant": 1, "lookalike": 2, "new": 3}

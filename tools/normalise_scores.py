@@ -133,6 +133,23 @@ for p in plants:
                     r["value"] = str(pts)
                     r["reasoning"] = (r["reasoning"] or "") + f" | Coordinator override {TODAY}: {why}"
 
+# Keep every score evidence row in step with plants.csv (consultation 10: stale score_total,
+# score_tier and confidence rows broke ground rule 1).
+synced = 0
+for p in plants:
+    if p.get("status") != "profiled":
+        continue
+    want = {f"score_{c}": p.get("score_" + c, "") for c in COMP}
+    want.update(score_total=p.get("score_total", ""), score_tier=p.get("score_tier", ""),
+                confidence=p.get("confidence", ""))
+    for field, val in want.items():
+        for r in by_claim.get(f"{p['id']}:{field}", []):
+            if val != "" and str(r["value"]).strip() != str(val):
+                r["reasoning"] = (r["reasoning"] or "") + f" | Synced {TODAY} to plants.csv: was {r['value']}"
+                r["value"] = str(val)
+                synced += 1
+print(f"# score rows synced to plants.csv: {synced}")
+
 for pid, diff in changes:
     print(pid, {k: f"{a}->{b}" for k, (a, b) in diff.items()})
 print(f"# {len(changes)} plants changed")

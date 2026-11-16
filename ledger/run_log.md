@@ -794,3 +794,56 @@ Coordinator decisions applied now (mechanical):
 - **Convergence:** closure 2 puts 6 more plants inside the top 40 under the ranking key (Mellott, Werk-Brau 4000, DCL, Cogar, Supreme, Virnig Fort Madison). Etnyre and Schwing have 2 and 5 open welder postings but rank about 105th because their relationship is new. Not converged.
 - **Advisor checkpoint:** fact error rate over 10%, and the list has not converged.
 - **Tool:** `tools/rank_mining.py` prints the documented ranking key for any vertical.
+
+### Advisor consultation 10 (2026-11-16): fact error rate 11.4% and no convergence
+
+- **Advice:**
+  - The 11.4% is a labelling problem, not a research problem; keep it as the round-1 headline.
+  - Before anything else:
+    1. Run the normaliser after the merges and make it rewrite stale score rows.
+    2. Re-rank on counted open postings: `rank_mining.py` was counting "none found", inspector and maintenance rows.
+    3. Finish checker B's hand edits.
+    4. Rerun the address and coordinate duplicate check.
+  - Decide the score-moving rulings together:
+    - one shared-city test for Austin, McLanahan, Werk-Brau, Bobcat Bismarck and Curry;
+    - a written distinction between Deere's recall and Valmont Tulsa;
+    - the Komatsu Peoria, Mine Rite, ESCO, PHIL and Liebherr calls;
+    - whether Etnyre and Schwing are in the vertical.
+  - Sweep by pattern across all 42 profiles: script the mechanical patterns and use one agent for company-level facts and thin rows. Then run a confirming round with the checkers rotated, including Process Machinery.
+  - **Convergence:** the done rule is failing (closure added 14, then 24). Run one bounded final pass (the 102 triaged 333120 rows, the named leads, and NAICS 333922 by script or as a limit). Mark done only if it yields a handful of base plants and none with a counted open welder posting. Otherwise ship as partial with limits and ask the user before going further.
+- **Done:**
+  1. **Normaliser:** it now rewrites every profiled plant's score_*, score_total, score_tier and confidence rows to match plants.csv; 35 stale rows synced. Profiler E's scores normalise unchanged (Process Machinery 90, iRock 48).
+  2. **Ranking:** `rank_mining.py` now counts open welder postings from the plant's welder_postings field ("N open", capped at 3). A posting whose plant is not stated counts 0: Eagle Crusher's one careers-page Welder is claimed by both its Bucyrus and Galion records.
+     - **Corrected count of closure-2 entrants with a counted open posting inside the top 40: two,** Mellott Warfordsburg (23rd) and Derrick Buffalo (30th). It is not six.
+     - Supreme Stoneboro (undated own-board "New Opening" roles) and Schwing and Etnyre (5 and 2 open; new relationship) also have postings.
+  3. **Shared-city test (one rule, written):** a fact that names only a city counts for a plant when the company has no other production site in that city. It also counts when the company's other buildings there are within about 1 km doing the same kind of production: that is one campus, recorded as one plant. Otherwise the attribution is inferred and earns no points.
+     - **Werk-Brau:** 2800, 4000 and 2500 Fostoria Ave are within about 0.6 km (Census geocodes, interpolated), and 2800/4000 form one 2022 NLRB production unit. So it is one campus: material 20, total **88 High**. The 4000 record is folded in as a duplicate.
+     - **McLanahan:** 900 Beaver St is 540 m from 200 Wall St, so one campus; 61 stands.
+     - **Austin Mills:** the "newly leased facility close to our main facility" has no address, so distance is unknown and labor stays 0.
+     - **Bobcat Bismarck:** three EPA addresses and no site address on the record, so labor stays 0.
+     - **Curry Hollidaysburg:** the second site is Curry Rail Services, a separate business that recruits through its own form. Curry Supply's board posts no rail roles, so the postings count by board (Bollinger precedent); 61 stands.
+     - **Duplicate check by coordinates**, campus rule applied:
+       - Rockland Bedford 172 Friendship Village Rd (0.56 km) is folded into 152 Weber Lane;
+       - Superior Morris Components (319) and Crushing (305 Highway 28) are folded into 315;
+       - MEC Neillsville 1506 is folded into 1515 Industrial Park Dr.
+       - Ken Garner Victoria sits 20 m from Caterpillar Victoria but is a different company (a supplier), so it stays separate.
+  4. **Demand:** a hiring event is labor evidence. It is a demand trigger only when the source states a plant-level production increase as its cause.
+     - Deere Davenport's recall ("increased production demand", Jan 2026) keeps 15, so it stays 72 High.
+     - Valmont Tulsa's state hiring event stated no cause (8 stands).
+     - A trigger must be a dated event (expansion, building, contract, acquisition, or a recall or hire tied to stated production growth). Komatsu Peoria's $28M office HQ that "won't add new jobs" goes to 8 (65 to 58).
+     - Mine Rite's founder quote ("more demand coming our way than we can handle") is a statement, not an event, so it stays 8, the same standard as iRock's "aggressive growth phase".
+  5. **Smaller calls:**
+     - ESCO Elko part mix 15 to 8: the posting names repairs, rebuilds and modifications but not custom or high-mix (60 to 53).
+     - PHIL scale 0 to 5: its own history page states production at Peoria and "the Dallas, TX location", recorded as c-philippi-hagenbuch:multi_plant (63 to 68). PHIL Dallas is a list lead.
+     - Liebherr scale 0 to 5: Liebherr USA states "manufacturing facilities" (plural), recorded as c-liebherr:multi_plant (23 to 28).
+     - Etnyre (asphalt distributors and chip spreaders: road-construction equipment) and Schwing (welded concrete boom pumps) are in the vertical, relationship new. Their truck-mounted and trailer lines are noted for v-truck-bodies and v-trailers.
+  6. **Mechanical sweeps:**
+     - 114 stated prospect_test "pass" rows retagged inferred.
+     - Workday startDate written as "start date": 4 evidence rows and the Durand and Mount Vernon plant fields now say "posted".
+     - Masaba's "undated" Vaia row reworded.
+     - **Ruling 7 wording corrected:** the Coperion Vaia postings are dated in their JSON-LD (Kansas City 2025-12-11, Sabetha 2026-02-03, Whitewater 2026-05-15). The outcome stands: none is on Hillenbrand's own board today, so they set process as a standing fact but earn no labor points.
+- **Next (workflow mining-sweep-profile-close):**
+  - one sweep agent for company-level facts tagged stated at a site, thin rows, legal suffixes and old figures shown as current, across all 42 profiles;
+  - profiler F on Mellott, Derrick, Supreme, Schwing and Etnyre;
+  - the bounded final closure pass (3A: the 102 triaged 333120 rows plus the named leads; 3B: NAICS 333922 by script).
+  - Then a rotated confirming fact-check round, including Process Machinery and iRock.
