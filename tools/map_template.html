@@ -1164,10 +1164,29 @@ function currentCsv(){
   if (v === 'method') return ['path-prospect-plants-all', plantCsv(P)];
   return ['path-prospect-plant-map', plantCsv(INCL.filter(p => passes(p)))];
 }
-function download(){
+/* In the claude.ai viewer, files can only be offered through the `downloads` capability (the viewer
+   confirms each save). Opened as a plain file, the page falls back to an ordinary download link. */
+let DL = null;
+const DL_READY = (window.claude && typeof window.claude.use === 'function')
+  ? window.claude.use('downloads').then(d => { DL = d; return d; }).catch(() => null)
+  : Promise.resolve(null);
+function csvNote(msg){ const b = $('#csv'); b.title = msg; b.dataset.note = msg; }
+async function download(){
   const [name, text] = currentCsv();
+  const filename = name + '-' + (M.last || 'ledger') + '.csv';
   const blob = new Blob(['﻿' + text], {type: 'text/csv;charset=utf-8'});
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name + '-' + (M.last || 'ledger') + '.csv';
+  if (window.claude && typeof window.claude.use === 'function'){
+    const d = DL || await DL_READY;
+    if (!d){ csvNote('Saving files is not available in this view.'); return; }
+    try { await d.save({filename, data: blob}); }
+    catch (e){
+      const code = e && e.code;
+      if (code === 'declined') return;
+      csvNote(code === 'rate_limited' ? 'A save prompt is already open; try again in a moment.' : 'The CSV could not be saved in this view.');
+    }
+    return;
+  }
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = filename;
   document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
 
