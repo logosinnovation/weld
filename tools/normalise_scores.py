@@ -28,7 +28,7 @@ import sys
 
 L = "ledger/"
 COMP = ["process", "material_part", "part_mix", "labor", "demand", "scale"]
-DIM = re.compile(r"\d[\d,\.]*\s*(?:-|to)?\s*\d*[\d,\.]*\s*(?:ft|feet|foot|in\b|inch|inches|\"|”|″|lb|lbs|pound|ton|tons|mm|meter|m\b|'|’|′)", re.I)
+DIM = re.compile(r"\d[\d,\.]*\s*(?:-|to)?\s*\d*[\d,\.]*\s*(?:ft|feet|foot|in\b|inch|inches|\"|”|″|lb|lbs|pound|tons?(?![\s-]*(?:truck|haul|payload|class|capacity|rating|press|crane|lift|per|a |of payload))|mm|meter|m\b|'|’|′)", re.I)
 CID = re.compile(r"\b([pcv]-[a-z0-9-]+:[a-z_]+)")
 TODAY = "2026-11-13"
 
@@ -67,13 +67,20 @@ for p in plants:
              for r in by_claim.get(c, [])]
     size_rows = [r for r in by_claim.get(f"{pid}:part_size_fit", []) if r["quote"] and r["tag"] != "unknown"]
     city = p["city"].lower()
-    PROD = re.compile(r"pole|mast|tower|sign|monopole|substation|structure|hull|barge|vessel|ship|boat|module|block|unit|panel|foundation|deck|tank|section", re.I)
+    PROD = re.compile(r"pole|mast|tower|sign|monopole|substation|structure|hull|barge|vessel|ship|boat|module|block|unit|panel|foundation|deck|tank|section|bucket|boom|arm|frame|body|bodies|crusher|screen|conveyor|feeder|attachment|blade|dipper", re.I)
     line_at_plant = any(r["tag"] == "stated" and PROD.search(r["quote"] or "")
                         for f in ("products", "weld_processes", "materials", "welder_postings", "production_type")
                         for r in by_claim.get(f"{pid}:{f}", []))
     def plant_level(r):
         return city in (r["quote"] or "").lower() or "company-level" not in (r["reasoning"] or "")
-    has_dim = any(DIM.search(r["quote"] or "") and (plant_level(r) or line_at_plant) for r in size_rows)
+    def part_dim(q):
+        ms = [m.group(0) for m in DIM.finditer(q or "")]
+        if not ms:
+            return False
+        tons_only = all(re.search(r"ton", m, re.I) for m in ms)
+        # a tonnage that is a payload, capacity or rating is not a welded part's weight (mining rule, 2026-11-16)
+        return not (tons_only and re.search(r"payload|capacit|rated|rating|class", q or "", re.I))
+    has_dim = any(part_dim(r["quote"]) and (plant_level(r) or line_at_plant) for r in size_rows)
     cited_m = set()
     for r in by_claim.get(f"{pid}:score_material_part", []):
         cited_m |= set(CID.findall(r["reasoning"] or ""))

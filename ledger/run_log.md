@@ -678,3 +678,31 @@ Coordinator decisions applied now (mechanical):
 - **Vertical now:** 237 plants (203 base, 34 excluded). Not yet profiled.
 - **Where the misses are:** small attachment and bucket makers (Amulet, Genesis, Skid Pro, Virnig, East, Steel Unlimited, Construction Attachments, Craig), roadbuilding and paving machine makers (GOMACO, Weiler, LeeBoy, CMI), aggregate equipment (Stedman, REMco, TCI, General Kinematics), mining service fabricators (L&H Industrial, Phillips, Ground Force, Klein), and weldment suppliers (Weldall, Hol-Mac, Alliance, Warren).
   - Running the audit in parallel caught these **before** profiling was chosen, which was the point of the remedy.
+
+### Advisor consultation 9 (2026-11-16): mining miss rate 30.2% before profiling
+
+- **Advice:** 30.2% does not block profiling, because the audit ran first and all 38 misses are in the pool. But the list has not converged, so the vertical stays partial. Before ranking, by script:
+  1. check matched pairs by eye;
+  2. print the in/out disagreements;
+  3. compute the auditor overlap;
+  4. settle the relationship rule that decides the top 40, and confirm the Mine Rite and Schenck records;
+  5. run a duplicate check by address and coordinates;
+  6. fix the tools (mining product words; tonnage that is payload or capacity);
+  7. put the rules in the profiler brief.
+  - Then launch the profilers on the top 40 together with one closure finder.
+  - **Done rule as on ships:** closure adds no top-40 plant and only a handful overall, and the confirming fact-check is at or under 10%.
+- **Done:**
+  1. **Matched pairs:** 5 of 164 share no distinctive name token. Two are false matches: Roadtec/Carlson was paired with Komatsu Chattanooga, Heatec with Astec Jerome Ave. Both have their own ledger records, so no miss is hidden. The other three match correctly. Multi-name groups are all the same plant.
+  2. **Disagreements and rules:**
+     - Asphalt and concrete plant equipment is **in** (construction equipment built from heavy welded steel: drums, silos, frames): Astec Chattanooga, Heatec, Astec Blair, Rexcon Burlington.
+     - Wood, organics and recycling grinders (Terex Newton, Peterson Eugene) are **boundary**, kept and noted like forestry-only plants.
+     - Telehandlers are lifting equipment, so Manitou Yankton goes to the closure finder to set out of vertical.
+     - Komatsu Franklin, Komatsu Chattanooga, Caterpillar Clayton and Joy Lebanon (auditor B: assembly, machining or repair evidence only) and Hensley Dallas (a foundry; buckets are made at Mansfield) go to the closure finder to confirm welding or exclude.
+     - Auditor plants the ledger excludes (Takeuchi, SANY, LBX, Terramac, Sakai, Bomag, Fairchild, CNH Burlington, Cat Wamego and Elkader) each carry a quoted reason.
+  3. **Overlap:** auditor A found 93 and auditor B 94 of the ledger's included plants, with 66 in common. The Chapman estimate of the auditor-reachable population is about 132. The ledger includes 203, holding every auditor plant plus suppliers and fabricators. (The advisor's 240-290 used pre-merge numbers.)
+  4. **Relationship rule (written):** a plant whose stated products include mining-machine structures (haul or mining trucks, shovels, draglines, continuous miners, underground mining vehicles, roof bolters) is a lookalike of Mine Rite, which makes heavy mining weldments. 15 plants flipped from new, with inferred relationship rows. Komatsu Chattanooga (articulated haul trucks are construction equipment) and Masaba (aggregate) are not flipped. Construction-machine plants stay new.
+     - Mine Rite Buffalo WY is the known_customer.
+     - Schenck Process's US business is now Coperion (Hillenbrand). Sabetha KS and Whitewater WI are customer_other_plant; the 2021 reference names no site.
+     - Mechanical top 40 printed. It includes Komatsu Milwaukee (2nd), Cat South Milwaukee (6th), Komatsu Peoria (7th) and Cat Decatur (8th).
+  5. **Duplicates:** none new. Telsmith/Super Steel Mequon share an address because Super Steel runs the old Telsmith plant (Telsmith excluded). Superior Morris has three adjacent Highway 28 records, for the profilers to confirm.
+  6. **Tools:** `normalise_scores.py` now has mining product words, and a tonnage that is a payload, capacity, rating or class no longer counts as a part weight; no poles or ships score changed. `write_summary.py` has mining round labels. Summary and verticals.csv updated.
