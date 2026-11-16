@@ -658,3 +658,10 @@ Coordinator decisions applied now (mechanical):
   3. Rank, with postings searched per plant (the finders already did this for their plants), and profile the top 40.
   4. Fact-check all profiles.
   5. Advisor checkpoints: miss rate (likely over 20%) and done.
+
+### 2026-11-16: mining resumed (agents available again before the Nov 19 reset)
+
+- A probe agent ran, so the limit had lifted for agent work.
+- **Auditor B finished** (resumed blind from its own partial file): 145 rows, 108 in definition, 76 discovery searches; dry after about 61.
+- **Auditor A's 36 candidates verified** (two plant-finders): 24 new base records, 6 excluded (e.g. Superior Pekin is an office; LBX Lexington is HQ and distribution), 2 resolved to existing, 4 unverified (TerraSource Duncan, Blue Diamond and others). Merged: 30 plants, 446 rows; 0 rejected. Quotes: 305 found, 6 not found, 4 unreachable (EPA outage). 3 coverage gaps to fix.
+- **Comparison with both auditors complete:** 177 in-definition auditor plants (deduplicated), 117 ledger plants matched, 31 still unmatched. 7 of the 31 are auditor A candidates already decided; 24 are new from auditor B and are being verified (workflow mining-verify-b).
