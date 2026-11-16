@@ -969,3 +969,16 @@ Coordinator decisions applied now (mechanical):
   - Of those, 7 are unconfirmed sites (HQ/office/brand) and 1 is already in the ledger; 64 remain (45 core, 17 boundary, 2 earlier-unverified leads).
   - **Unverified miss rate about 64 / 190 = 33.7%; 26.2% even counting core only.** To get under 20%, 33 of the 64 would have to fail verification; both auditors quote-checked their rows, so that is implausible.
   - Neither auditor reached a dry point. Where the misses are: CONEXPO exhibitors our EPA/NAICS-based closure passes never touched: small attachment and bucket makers (Wain-Roy, Berlon, B&D, Leading Edge, Dymax, Digga, Worksaver, Danuser, Lowe), aggregate and bulk equipment (Fisher, Midwestern, Smico, JVI, Mule, Redline, DEMI, Oquamax, iSC), asphalt and concrete plant makers (ADM, ALmix, CEMCO Olney, JEL, MERTS, Aesco Madsen), and weldment suppliers (Superior Mfg Winston-Salem, ATACO, Amerequip, C-I-T, Custom Products).
+
+### Advisor consultation 13 (2026-11-16): re-audit miss rate over 20%
+
+- **Verdict:** mining stays partial. Verification cannot bring the rate under 20% (33 of 64 candidates would have to fail). No closure pass 5. One bounded last wave, then the user is asked.
+- **Relationship sweep (blocking for the wave):** the written rule was applied by script to every non-excluded `new` mining row, not only the six the checker named. 12 flipped (`ledger/inbox/coordinator-mining-relationship-sweep.json`):
+  - lookalike of Mine Rite: Paladin Dexter and Delhi, LaBounty, Pengo Laurens and Cokato, Genesis, NPK (attachments sold as products); Kress (coal haulers); Brookville (underground mining vehicles); Komatsu Homer City and Duffield (continuous miners, Komatsu Lebanon precedent);
+  - lookalike of Schenck Process: American Pulverizer (crushers).
+  - Kept new under earlier rulings: Tier 1 weldment suppliers (MEC, Morton, Matcor, Metalcraft, Hol-Mac), machine OEMs (Deere Davenport, Bobcat Bismarck, Komatsu Chattanooga), batch- and asphalt-plant makers, Broce (sweepers first).
+- **Top 40 after the sweep:** seven unprofiled base plants: Thomas Conveyor (9), Brookville (11), Astec Eugene (18), Kress (21), NPK (26), Tread (35), Paladin Dexter (40). Orthman drops to 41.
+- **Standing-ad rule, amended:** a live standing ad counts as open (12) unless the company states that listed openings do not mean it is hiring (West River, labor 0). Vince Hagan's 2023 Welder/Fitter page is not on its current list, so it was never counted; no change.
+- **G.R.:** both posting dates now have their own quoted rows (2026-08-24); labor reasoning rewritten.
+- **Last wave:** verify the 64 candidate misses (ledger checked by name first; dated postings on each plant's own board); fact-check the 12 G/H profiles; profile the seven top-40 base plants. After the merge, re-rank once; any miss-derived plant that lands in the top 40 is listed as a stated limit, not profiled.
+- **Reporting:** the miss rate reported is this audit's verified figure; merging the misses does not lower it. Coverage by segment and auditor B's scratchpad file-name exposure are stated.
