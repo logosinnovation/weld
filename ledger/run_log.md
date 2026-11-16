@@ -920,3 +920,31 @@ Coordinator decisions applied now (mechanical):
      - The closure-3 base records (1,009 rows) had only the finders' own quote checks.
   7. **Duplicate check on the 68 new records:** coordinate and name matches within 1 km or the same city found only different companies (e.g. PPI Corning vs Brown Bear, 60 m apart). No merges.
 - **Status:** v-mining-heavy-equipment stays **partial**. Further mining work waits on the user.
+
+## 2026-11-16: user asked to keep pushing mining toward done
+
+### Advisor consultation 12 (2026-11-16): plan and done test for the push to done
+
+- **Advice:**
+  - Write the done test before launching, or closure repeats (14, then 24, then 46).
+  - Keep the blind re-audit truly blind and on different methods from the ECHO-by-NAICS closure passes.
+  - Rule on West River, M-B New Holstein and PPI Pella first.
+  - Full effort on the 67 unresearched 333922 rows; cap the already-researched unverified rows at one new source type each.
+  - Profile now, re-rank once after the audit, run one follow-up profile wave with the fact-check, then go to the done checkpoint. No loop.
+- **Done test (replaces consultation 10's test, fixed before any result is seen):**
+  1. **Frame:** plants in EPA NAICS 333131, 333120 and 333922, plus Tier 1s reached through OEM supplier links. Fabricators outside that frame are a stated limit, not misses.
+  2. **Miss rate:** the blind re-audit's verified miss rate is 20% or less against the list as it stands after this wave, and no verified miss would rank in the top 40 by the profiling key with a counted open welder posting.
+  3. **Profiles:** every plant in the top 40 by the key is profiled, and the fact-check of the new profiles is 10% or less. The independent sample of closure-3 base records is reported separately (as in ships).
+  4. **Stop:** if the re-audit's verified miss rate is over 20%, mining is partial again and the user is asked. There is no closure pass 5.
+- **Rulings:**
+  - **Standing-ad rule:** a welder posting live today on a real applicant board (an ATS or careers board with an apply flow) counts as open (labor 12) whatever its date, and never as open 60+ days when its date shows it is a standing ad (West River, JSON-LD 2022-10-07). A static web-page line that links to a dated notice (Mine Rite's 2019 PDF) is not a posting.
+  - **M-B New Holstein: excluded** (mostly sweeping and snow attachments; same ruling as its Chilton sister plant). Kept as a lead for a municipal/snow equipment vertical.
+  - **PPI Pella:** the profiler settles the campus question from the addresses of PPI's Pella sites. Until then its postings count 0.
+- **Ranking after the exclusion:** six base plants in the top 40 (Syntron 17, West River 28, Allied 32, PPI Lenox 33, Exodus 35, DCL 38).
+- **Wave (workflow mining-push-to-done):**
+  - **profiler G:** the six top-40 base plants.
+  - **profiler H:** the next three by rank (Pierce Pacific 41, PPI Pella 44, Construction Attachments 47), plus three lower-ranked plants with counted postings (G.R. Trussville, HEM Grundy Center, Quality Urbandale).
+  - **closure-4A:** the 67 unresearched ECHO 333922 rows.
+  - **closure-4B:** one new source type each for the 88 researched-but-unverified registry rows.
+  - **Two blind list auditors** on methods other than ECHO by NAICS.
+  - **One fact-checker** on an independent sample of closure-3 base records.
