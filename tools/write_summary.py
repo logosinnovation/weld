@@ -28,7 +28,9 @@ LABELS_BY_VERT = {}
 LABELS_BY_VERT["v-shipbuilding-naval"] = {1: "Round 1: all 39 profiled plants (three checkers), after profiling",
                                           2: "Round 2: closure pass (new profiles, fill-ins and new base records)"}
 LABELS_BY_VERT["v-mining-heavy-equipment"] = {1: "Round 1: the 40 profiled plants (after the parallel list audit)",
-                                              2: "Round 2: confirming round, all 47 profiled plants, checkers rotated (after the sweep)"}
+                                              2: "Round 2: confirming round, all 47 profiled plants, checkers rotated (after the sweep)",
+                                              3: "Round 3: the 19 profiles added in the last wave (profilers G, H and I)",
+                                              9: "Base-record sample: 25 closure-3 base records (reported separately; not a profile round)"}
 LABELS = {1: "Round 1: designed sample of 30 plants (all High, all customer plants, then by score), before repairs",
           2: "Round 2: 10 unsampled plants from multi-plant parents, after the first repair pass",
           3: "Round 3: all 23 plants no checker had seen, after the attribution clean-up",
@@ -39,7 +41,7 @@ rounds = {}
 for f in sorted(glob.glob(f"ledger/audit/fact-check-{vert}-*.json")):
     base = os.path.basename(f)
     m = re.search(r"round(\d)", base) or re.search(r"-R(\d)-", base)
-    rnd = int(m.group(1)) if m else 1
+    rnd = int(m.group(1)) if m else (9 if "-CS-" in base else 1)  # -CS- = base-record sample, kept out of round 1
     d = json.load(open(f))
     r = rounds.setdefault(rnd, {"round": rnd, "label": LABELS.get(rnd, f"Round {rnd}"), "checked": 0, "corrected": 0,
                                 "unreachable": 0, "checkers": []})
