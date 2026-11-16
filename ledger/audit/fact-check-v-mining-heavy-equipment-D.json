@@ -1,0 +1,2421 @@
+{
+ "checker": "fact-checker D (round 1)",
+ "vertical": "v-mining-heavy-equipment",
+ "date": "2026-11-16",
+ "plants": [
+  "p-getman-bangor-mi",
+  "p-super-steel-mequon-wi",
+  "p-lh-industrial-gillette-wy",
+  "p-jh-fletcher-huntington-wv",
+  "p-metalcraft-mayville-wi",
+  "p-metalcraft-beaver-dam-wi",
+  "p-metalcraft-fall-river-wi",
+  "p-klein-jacksonville-tx",
+  "p-klein-ontario-ca",
+  "p-ground-force-post-falls-id"
+ ],
+ "decision_rule": "As in poles rounds 3-5, ships and mining checkers A/B. Corrected: the value (or the plants.csv field that rests only on it) adds a fact the cited page does not show, tags a judgement or a company/brand-level fact as stated at the plant of a multi-site company, ties a posting to the plant through a location shared by several sites, misapplies a coordinator counting rule, restates an announced agreement as completed, or the quote is not on the page (raw source checked before calling a JSON-LD quote missing). Confirmed: the cited page, or for a multi-row claim a sibling row's page opened 2026-11-16, carries every additive clause. Opening lines: every clause carried by a stated row of a claim named in the reasoning or that row's page; closing question in the second person ('you'); no pitch language. Scope (headline denominator): every stated row of the 10 plants in name, address, city, state, parent_company, products, weld_processes, materials, certifications, part_size_fit, production_type, existing_robots, welder_postings, triggers, headcount, relationship; every row of any tag of a claim cited by a score_* row (weld_processes, part_size_fit, production_type, welder_postings, triggers, headcount, parent_company); and the 10 opening_line rows.",
+ "claims_checked": 166,
+ "claims_corrected": 13,
+ "claims_unreachable": 0,
+ "error_rate": 0.078,
+ "error_rate_note": "13/166 = 7.8%. Denominator: 110 stated, 33 unknown and 13 inferred evidence rows plus 10 opening lines. All 171 quoted rows (in scope and wider set) matched their pages (0 missing, 0 unreachable). Substantive (a fact misplaced or a rule misapplied): 3 (Ground Force parent rests on a 2021 agreement-signing release; Mayville count ignores ruling 5; Klein Jacksonville line presupposes plant-level tank builds). The other 10 are attribution: 8 company-level product rows tagged stated at plants of multi-site companies and 1 product row quoting posting boilerplate, plus 1 form-only line fix (closing question without 'you'). No score component changes. Wider set (out of headline): 1/57 corrected (Ground Force tier tagged stated).",
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 11,
+  "invented fact": 0,
+  "other": 2
+ },
+ "repeated_kinds": [
+  "quote does not support value (11). SWEEP: 9 of them are product rows taken from company-wide or brand-wide pages (about, careers, product menus, owner's brand page, posting About-Us boilerplate) and tagged stated at one plant of a multi-site company: Getman 7490 (Bangor + Kalamazoo), L&H 9698 (Gillette, Sheridan, Tempe, MX, CL), Klein 9890/9891/9892 and 9904/9905 (Jacksonville + Ontario), Ground Force 10177/10178 (network of facilities; Mega Albuquerque). Run over every v-mining-heavy-equipment products row tagged stated: if the page names no plant and the company has more than one site, retag inferred and label the plants.csv field company-level; also re-check any opening line that rests on such a row (Klein Jacksonville 11033 was one). The other two: Ground Force parent 10175 (2021 agreement, not completion) and the Klein line.",
+  "other (2): Mayville robotic-welder counting (ruling 5 not applied; check every Metalcraft and other 'Robotic Welder' row in the vertical) and Fletcher's closing question without 'you' (run a closer check over all mining opening lines)."
+ ],
+ "worst_errors": [
+  "p-klein-jacksonville-tx and p-klein-ontario-ca:products (rows 9890-9892, 9904-9905) and the Jacksonville opening line (11033): all five product rows come from Klein's company-wide careers, about and innovations pages and are tagged stated at each of two plants. Row 9904's own reasoning says the plant split is not stated. The Jacksonville line then asks about 'tank builds' at Jacksonville, which no plant-level source shows. Replacement line asks about production.",
+  "p-metalcraft-mayville-wi:welder_postings (10964): the 2nd and 3rd Shift Robotic Welder postings (4 openings each) are excluded as 'robot operators', but both require basic MIG (and TIG) and tack welding. Under ruling 5 they count, as Fall River's near-identical postings do. The plant has 4 counted postings and 12 openings, not 2 and 4. No score change.",
+  "p-ground-force-post-falls-id:parent_company (10175) and products (10177, 10178): the parent rests on the 2021 8-K, which announces only a signed agreement expected to close in Q4 2021 (re-sourced to Federal Signal's Jan 16, 2026 release: 'our existing Ground Force and TowHaul businesses'). The products field is the brand portfolio of a company with a 'network of manufacturing facilities' (now including Ground Force (Mega) Albuquerque), and it adds clauses no products row's page carries."
+ ],
+ "score_problems": [
+  "No component changes because of a corrected row. Scores verified against the rubric and rules: Getman 45, Super Steel 40, L&H 68, Fletcher 43, Metalcraft Mayville, Beaver Dam and Fall River 53 each, Klein Jacksonville 41, Klein Ontario 21, Ground Force 28. Every counted posting is open today and dated as stated.",
+  "p-jh-fletcher-huntington-wv score_part_mix 15: a rubric call. The page states 'custom engineered and manufactured underground mining equipment' plus 'established product lines and the ability to build specialty equipment'. Getman's similar 'customer-specific solutions ... standardized design' scored 8. Sensitivity: 8 (total 36, Low either way).",
+  "p-lh-industrial-gillette-wy score_process 20: the Gillette line card lists GTAW among shop welding processes, but the shop welder postings name only dual shield. Rule 2 counts TIG only in production postings, so 20 holds. Sensitivity: 12 (total 60, Medium either way)."
+ ],
+ "opening_line_problems": [
+  "p-jh-fletcher-huntington-wv (10931): the closing question has no 'you'. Replacement: '...how long are welding seats taking you to fill at Huntington?'",
+  "p-klein-jacksonville-tx (11033): 'tank builds' rests on company-level product rows. The replacement asks about production.",
+  "The other 8 lines are confirmed. Every clause is on a cited stated row's page: Getman $27.45 and 2026-10-19 on the requisition; Super Steel createdOn 2026-11-03 and the 140 ft AGT robot; L&H dual shield on both postings; Mayville Genesis 2013; Beaver Dam mandatory overtime; Fall River 3rd shift Oct 20 with 4 openings and the bonus; Klein Ontario history and careers; Ground Force 'In and out of tanks' on the expired posting, framed as past. Each ends in a 'you' question with no pitch language."
+ ],
+ "plants_closed_or_moved": [],
+ "plant_status_notes": "All 10 operate at the recorded city.\n- Live requisitions today at 8 of 10:\n  - Getman Bangor: 7 on ADP.\n  - Super Steel Mequon: Rippling, including Welder.\n  - L&H Gillette: ADP shop welders and CNC machinist.\n  - Fletcher Huntington: 2 on ADP.\n  - Metalcraft Mayville, Beaver Dam and Fall River: iCIMS.\n  - Klein Jacksonville: betterteam, 3 positions.\n- Klein Ontario: its current site lists 1080 E Ontario Blvd as the Western Region address. EPA FRS also lists an older 816 S Cucamonga Way record. No postings.\n- Ground Force Post Falls: none of Federal Signal's 154 postings is in Post Falls. Federal Signal's 2026 page still says 'Ground Force is headquartered in Post Falls, ID'. One WebSearch (discovery only) found no closure or relocation; it found the Jan 2026 Mega purchase, which put a 'Ground Force (Mega) - Albuquerque, NM' location on the board. Flag for watch, not closed.\n- Shared-city test, EPA FRS records printed today:\n  - Fletcher: a second Huntington record (707 W 7th St) last filed TRI in 1990, so it is not current.\n  - Getman: Bangor and Kalamazoo are separate cities.\n  - L&H: Gillette and Sheridan.\n  - Metalcraft: one record per city.\n  - Klein TX: all records are the one Hwy 79 site.\n  - Super Steel: only one current Mequon record.\n  - No posting is tied through a shared city.",
+ "field_drift_notes": [
+  "p-getman-bangor-mi products: 'utility and service vehicles' has no page (fixed via 7490 plants_csv_value).",
+  "p-ground-force-post-falls-id products: 'rigid-frame and articulated' and 'built on haul-truck chassis' not on any products row page (fixed via 10177/10178).",
+  "p-metalcraft-mayville-wi welder_postings: counts updated via 10964.",
+  "p-klein-jacksonville-tx certifications: 'ISO 9001:2015 (renewed 2026)' and 'NTEA MVP' have no certifications row but are on row 11027's page (quality page), so confirmed; a coordinator may add rows."
+ ],
+ "method": "Fetched today with tools/fetch_page.py (plain request plus raw source, browser fallback): all 63 distinct source URLs behind the 223 rows of the 10 plants (166 in scope, 57 wider). Every quote was matched against normalised text plus raw source, with '...' fragments checked separately: all found.\n- jofdav returns HTTP 404, but the browser body carries the expired listing; curl of the raw source found no datePosted.\n- Boards read today through their own data:\n  - ADP job-requisitions API for Getman, Fletcher and L&H (titles, postDate, cityName).\n  - Metalcraft iCIMS search, 15 weld postings, plus each cited posting and the Mayville robotic postings 5026 and 5030 and the Fall River lead 4974.\n  - Super Steel Rippling board and posting (createdOn in raw JSON).\n  - Klein betterteam board and both postings (JSON-LD datePosted and streetAddress).\n  - Federal Signal UltiPro LoadSearchResults by POST (154 postings).\n- Extra pages opened: getman.com home and products; Federal Signal's Jan 16, 2026 Mega release; ECHO get_dfr for Fletcher 110002098168 and 110000344529; Envirofacts tri_facility and tri_reporting_form for 25702JHFLT707WE and 25705JHFLT402HI.\n- The four stated v-mining-heavy-equipment:demand_outlook rows (7573, 7813, 8776, 9431) were checked with --check: all found. They are shared and not counted.\n- One WebSearch was used for discovery (Ground Force open or closed); no search text was used as a quote. One EDGAR full-text search returned no hits.\n- Every corrected_quote was re-checked with --check today.\n- evidence_row = 0-based CSV record index + 2.",
+ "apply_note": "Every corrected row carries plants_csv_value with the full field value, because apply_factcheck.py otherwise copies corrected_value into plants.csv. 10175's plants_csv_value equals the current field (unchanged). The five Klein rows carry the same full products value, and the two Ground Force products rows carry the same value. 10175 moves to corrected_source_url. Score changes: none.",
+ "shared_claims_checked": [
+  {
+   "claim_id": "v-mining-heavy-equipment:demand_outlook",
+   "evidence_rows": [
+    7573,
+    7813,
+    8776,
+    9431
+   ],
+   "verdict": "confirmed",
+   "in_scope": false,
+   "note": "Quotes on the SEC 10-K/10-Q pages and the IM Mining page today; demand 8 for all ten plants rests on them. Not counted."
+  }
+ ],
+ "wider_set": {
+  "rows": [
+   {
+    "claim_id": "p-jh-fletcher-huntington-wv:website",
+    "source_url": "https://www.jhfletcher.com/",
+    "ledger_value": "https://www.jhfletcher.com",
+    "evidence_row": 7482,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-jh-fletcher-huntington-wv:tier",
+    "source_url": "https://www.jhfletcher.com/",
+    "ledger_value": "OEM",
+    "evidence_row": 7484,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-jh-fletcher-huntington-wv:relationship",
+    "source_url": "https://www.jhfletcher.com/",
+    "ledger_value": "lookalike",
+    "evidence_row": 7485,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-getman-bangor-mi:website",
+    "source_url": "https://www.getman.com/contact/",
+    "ledger_value": "https://getman.com",
+    "evidence_row": 7489,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-getman-bangor-mi:tier",
+    "source_url": "https://getman.com/about/",
+    "ledger_value": "OEM",
+    "evidence_row": 7491,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-getman-bangor-mi:relationship",
+    "source_url": "https://getman.com/about/",
+    "ledger_value": "lookalike",
+    "evidence_row": 7492,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-super-steel-mequon-wi:website",
+    "source_url": "https://www.supersteel.com/",
+    "ledger_value": "https://www.supersteel.com",
+    "evidence_row": 8983,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-super-steel-mequon-wi:tier",
+    "source_url": "https://www.supersteel.com/",
+    "ledger_value": "Tier 1",
+    "evidence_row": 8987,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Super Steel calls itself 'tier one' on the cited page; kept stated as the company's own words."
+   },
+   {
+    "claim_id": "p-super-steel-mequon-wi:tier_secondary",
+    "source_url": "https://www.supersteel.com/",
+    "ledger_value": "Contract fabricator",
+    "evidence_row": 8988,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-super-steel-mequon-wi:relationship",
+    "source_url": "https://supersteel.com/industries/construction/",
+    "ledger_value": "lookalike",
+    "evidence_row": 8989,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-metalcraft-mayville-wi:website",
+    "source_url": "https://www.mtlcraft.com/contact-us/",
+    "ledger_value": "https://www.mtlcraft.com",
+    "evidence_row": 8995,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-metalcraft-mayville-wi:tier",
+    "source_url": "https://www.mtlcraft.com/industries/",
+    "ledger_value": "Tier 1",
+    "evidence_row": 8997,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-metalcraft-mayville-wi:tier_secondary",
+    "source_url": "https://www.mtlcraft.com/about-us/",
+    "ledger_value": "OEM",
+    "evidence_row": 8998,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-metalcraft-mayville-wi:relationship",
+    "source_url": "https://www.mtlcraft.com/industries/",
+    "ledger_value": "lookalike",
+    "evidence_row": 8999,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-metalcraft-mayville-wi:lookalike_of",
+    "source_url": "https://www.mtlcraft.com/industries/",
+    "ledger_value": "Mine Rite",
+    "evidence_row": 9000,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-metalcraft-beaver-dam-wi:website",
+    "source_url": "https://www.mtlcraft.com/contact-us/",
+    "ledger_value": "https://www.mtlcraft.com",
+    "evidence_row": 9016,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-metalcraft-beaver-dam-wi:tier",
+    "source_url": "https://www.mtlcraft.com/industries/",
+    "ledger_value": "Tier 1",
+    "evidence_row": 9018,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-metalcraft-beaver-dam-wi:tier_secondary",
+    "source_url": "https://www.mtlcraft.com/about-us/",
+    "ledger_value": "OEM",
+    "evidence_row": 9019,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-metalcraft-beaver-dam-wi:relationship",
+    "source_url": "https://www.mtlcraft.com/industries/",
+    "ledger_value": "lookalike",
+    "evidence_row": 9020,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-metalcraft-beaver-dam-wi:lookalike_of",
+    "source_url": "https://www.mtlcraft.com/industries/",
+    "ledger_value": "Mine Rite",
+    "evidence_row": 9021,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-metalcraft-fall-river-wi:website",
+    "source_url": "https://www.mtlcraft.com/contact-us/",
+    "ledger_value": "https://www.mtlcraft.com",
+    "evidence_row": 9026,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-metalcraft-fall-river-wi:tier",
+    "source_url": "https://www.mtlcraft.com/industries/",
+    "ledger_value": "Tier 1",
+    "evidence_row": 9028,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-metalcraft-fall-river-wi:tier_secondary",
+    "source_url": "https://www.mtlcraft.com/about-us/",
+    "ledger_value": "OEM",
+    "evidence_row": 9029,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-metalcraft-fall-river-wi:relationship",
+    "source_url": "https://www.mtlcraft.com/industries/",
+    "ledger_value": "lookalike",
+    "evidence_row": 9030,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-metalcraft-fall-river-wi:lookalike_of",
+    "source_url": "https://www.mtlcraft.com/industries/",
+    "ledger_value": "Mine Rite",
+    "evidence_row": 9031,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-lh-industrial-gillette-wy:website",
+    "source_url": "https://www.lnh.net/locations/",
+    "ledger_value": "https://www.lnh.net",
+    "evidence_row": 9697,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-lh-industrial-gillette-wy:tier",
+    "source_url": "https://www.lnh.net/?p=9337",
+    "ledger_value": "OEM; secondary Contract fabricator",
+    "evidence_row": 9700,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-lh-industrial-gillette-wy:relationship",
+    "source_url": "https://www.lnh.net/products/mining-shovels/",
+    "ledger_value": "lookalike",
+    "evidence_row": 9701,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-lh-industrial-gillette-wy:lookalike_of",
+    "source_url": "https://www.lnh.net/?p=9337",
+    "ledger_value": "Mine Rite",
+    "evidence_row": 9702,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-lh-industrial-gillette-wy:county_fips",
+    "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=913%20L%26J%20Court%2C%20Gillette%2C%20WY%2082718&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+    "ledger_value": "56005",
+    "evidence_row": 9705,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-lh-industrial-gillette-wy:lat",
+    "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=913%20L%26J%20Court%2C%20Gillette%2C%20WY%2082718&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+    "ledger_value": "44.263944",
+    "evidence_row": 9706,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-lh-industrial-gillette-wy:lon",
+    "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=913%20L%26J%20Court%2C%20Gillette%2C%20WY%2082718&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+    "ledger_value": "-105.491862",
+    "evidence_row": 9707,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-lh-industrial-gillette-wy:tier_secondary",
+    "source_url": "",
+    "ledger_value": "Contract fabricator",
+    "evidence_row": 9879,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred judgement; consistent with the run-log rules."
+   },
+   {
+    "claim_id": "p-klein-jacksonville-tx:county_fips",
+    "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=16576%20US-79%2C%20Jacksonville%2C%20TX%2075766&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+    "ledger_value": "48073",
+    "evidence_row": 9886,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-klein-jacksonville-tx:lat",
+    "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=16576%20US-79%2C%20Jacksonville%2C%20TX%2075766&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+    "ledger_value": "31.975688",
+    "evidence_row": 9887,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-klein-jacksonville-tx:lon",
+    "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=16576%20US-79%2C%20Jacksonville%2C%20TX%2075766&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+    "ledger_value": "-95.169604",
+    "evidence_row": 9888,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-klein-jacksonville-tx:website",
+    "source_url": "https://www.kleinproducts.com/about/",
+    "ledger_value": "https://www.kleinproducts.com",
+    "evidence_row": 9889,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-klein-jacksonville-tx:relationship",
+    "source_url": "https://www.kleinproducts.com/innovations/",
+    "ledger_value": "lookalike",
+    "evidence_row": 9893,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-klein-jacksonville-tx:lookalike_of",
+    "source_url": "https://www.kleinproducts.com/innovations/",
+    "ledger_value": "Mine Rite",
+    "evidence_row": 9894,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-klein-ontario-ca:county_fips",
+    "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1080%20E%20Ontario%20Blvd%2C%20Ontario%2C%20CA%2091761&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+    "ledger_value": "06071",
+    "evidence_row": 9900,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-klein-ontario-ca:lat",
+    "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1080%20E%20Ontario%20Blvd%2C%20Ontario%2C%20CA%2091761&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+    "ledger_value": "34.057125",
+    "evidence_row": 9901,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-klein-ontario-ca:lon",
+    "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1080%20E%20Ontario%20Blvd%2C%20Ontario%2C%20CA%2091761&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+    "ledger_value": "-117.632425",
+    "evidence_row": 9902,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-klein-ontario-ca:website",
+    "source_url": "https://www.kleinproducts.com/about/",
+    "ledger_value": "https://www.kleinproducts.com",
+    "evidence_row": 9903,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-klein-ontario-ca:relationship",
+    "source_url": "https://www.kleinproducts.com/innovations/",
+    "ledger_value": "lookalike",
+    "evidence_row": 9906,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-klein-ontario-ca:lookalike_of",
+    "source_url": "https://www.kleinproducts.com/innovations/",
+    "ledger_value": "Mine Rite",
+    "evidence_row": 9907,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-ground-force-post-falls-id:lat",
+    "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=5650%20E%20Seltice%20Way%2C%20Post%20Falls%2C%20ID%2083854&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+    "ledger_value": "47.705083",
+    "evidence_row": 10172,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-ground-force-post-falls-id:lon",
+    "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=5650%20E%20Seltice%20Way%2C%20Post%20Falls%2C%20ID%2083854&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+    "ledger_value": "-116.872473",
+    "evidence_row": 10173,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-ground-force-post-falls-id:county_fips",
+    "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=5650%20E%20Seltice%20Way%2C%20Post%20Falls%2C%20ID%2083854&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+    "ledger_value": "16055",
+    "evidence_row": 10174,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-ground-force-post-falls-id:website",
+    "source_url": "https://jofdav.com/jobs/53613659-welder-fabricator",
+    "ledger_value": "https://www.gfworldwide.com",
+    "evidence_row": 10176,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-ground-force-post-falls-id:tier",
+    "source_url": "https://jofdav.com/jobs/53613659-welder-fabricator",
+    "ledger_value": "OEM",
+    "evidence_row": 10179,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "corrected",
+    "corrected_value": "OEM",
+    "corrected_quote": "At Ground Force Worldwide we design, engineer and manufacture the World’s Finest Mine Support Equipment.",
+    "corrected_tag": "inferred",
+    "error_kind": "quote does not support value",
+    "plants_csv_value": "OEM",
+    "note": "Tier is a judgement (ships precedent: 36 tier rows retagged inferred). Value unchanged."
+   },
+   {
+    "claim_id": "p-ground-force-post-falls-id:relationship",
+    "source_url": "https://federalsignal.com/metal-and-mineral-extraction-support",
+    "ledger_value": "lookalike",
+    "evidence_row": 10180,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-ground-force-post-falls-id:lookalike_of",
+    "source_url": "https://federalsignal.com/metal-and-mineral-extraction-support",
+    "ledger_value": "Mine Rite",
+    "evidence_row": 10181,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-jh-fletcher-huntington-wv:lookalike_of",
+    "source_url": "",
+    "ledger_value": "Mine Rite",
+    "evidence_row": 10186,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-getman-bangor-mi:lookalike_of",
+    "source_url": "",
+    "ledger_value": "Mine Rite",
+    "evidence_row": 10187,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-super-steel-mequon-wi:lookalike_of",
+    "source_url": "",
+    "ledger_value": "Mine Rite",
+    "evidence_row": 10196,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Inferred; lookalike of Mine Rite fits consultation 9 (tanks, buckets, bodies or mining-machine structures as products)."
+   },
+   {
+    "claim_id": "p-klein-jacksonville-tx:tier",
+    "source_url": "https://www.kleinproducts.com/careers/",
+    "ledger_value": "OEM",
+    "evidence_row": 11017,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   },
+   {
+    "claim_id": "p-klein-ontario-ca:tier",
+    "source_url": "https://www.kleinproducts.com/careers/",
+    "ledger_value": "OEM",
+    "evidence_row": 11025,
+    "tag": "inferred",
+    "in_scope": false,
+    "verdict": "confirmed",
+    "note": "Quote on the page today."
+   }
+  ],
+  "claims_checked": 57,
+  "claims_corrected": 1
+ },
+ "rows": [
+  {
+   "claim_id": "p-jh-fletcher-huntington-wv:name",
+   "source_url": "https://www.jhfletcher.com/",
+   "ledger_value": "J.H. Fletcher & Co.",
+   "evidence_row": 7478,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-jh-fletcher-huntington-wv:address",
+   "source_url": "https://www.jhfletcher.com/contact-7",
+   "ledger_value": "402 High St, Huntington WV 25705",
+   "evidence_row": 7479,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-jh-fletcher-huntington-wv:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=FLETCHER&state_abbr=WV&output=JSON",
+   "ledger_value": "EPA FRS 110000344529 at 402 High St",
+   "evidence_row": 7480,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-jh-fletcher-huntington-wv:address",
+   "source_url": "https://www.jhfletcher.com/careers",
+   "ledger_value": "main manufacturing facility in Huntington",
+   "evidence_row": 7481,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-jh-fletcher-huntington-wv:products",
+   "source_url": "https://www.jhfletcher.com/",
+   "ledger_value": "custom underground mining equipment and specialty equipment",
+   "evidence_row": 7483,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-jh-fletcher-huntington-wv:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=50712173-7dfc-4013-8040-9d74d1595d56&lang=en_US&locale=en_US&$top=100",
+   "ledger_value": "Welder Assembler, Huntington WV, posted 2026-08-08, $15-20/hr",
+   "evidence_row": 7486,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today. Open today: Fletcher ADP board lists Welder Assembler, Huntington, postDate 2026-08-08 (100 days), $15-20. EPA FRS has a second Fletcher Huntington record (707 W 7th St, TRI ID 25702JHFLT707WE) but its last TRI report is 1990; 402 High St reports through 2024, so Huntington is not a shared city today."
+  },
+  {
+   "claim_id": "p-getman-bangor-mi:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=GETMAN&state_abbr=MI&output=JSON",
+   "ledger_value": "Getman Corporation",
+   "evidence_row": 7487,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-getman-bangor-mi:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=GETMAN&state_abbr=MI&output=JSON",
+   "ledger_value": "59750 34th Ave, Bangor, MI 49013",
+   "evidence_row": 7488,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-getman-bangor-mi:products",
+   "source_url": "https://getman.com/about/",
+   "ledger_value": "underground mining equipment (company-level)",
+   "evidence_row": 7490,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "underground mining equipment for every stage of the underground mining cycle (company-level; Getman also runs a Kalamazoo facility, so Bangor's share is not stated)",
+   "corrected_quote": "With over 70 years of experience, Getman designs and manufactures reliable equipment that supports every stage of the underground mining cycle.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Underground mining equipment for every stage of the underground mining cycle (company-level; Bangor's share not stated)",
+   "note": "The about page is company-wide and Getman has two sites (contact page: Bangor HQ and 3030 Kersten Ct, Kalamazoo; EPA FRS lists both). The value itself says '(company-level)' but is tagged stated, and the plants.csv field drops the qualifier and adds 'utility and service vehicles', which neither this page nor getman.com/products ('explosive chargers, ground support machines, material transport vehicles, and production support equipment') carries. Relationship (lookalike, inferred) is unaffected."
+  },
+  {
+   "claim_id": "p-getman-bangor-mi:address",
+   "source_url": "https://getman.com/about/company-history/",
+   "ledger_value": "Bangor headquarters since 1980",
+   "evidence_row": 7500,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-getman-bangor-mi:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=592d8b2a-2867-42c8-80d3-7c4958e4fd2e&lang=en_US&locale=en_US&$top=100",
+   "ledger_value": "1 counted (28 days old on 2026-11-16). Counting rule: production fitter-welder counted; Production Technician II, Production Machinist, Production Planning Specialist and engineering roles not counted",
+   "evidence_row": 7501,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today. Board read today: 7 requisitions, all Bangor; only Fitter/Welder I is a production welding role. Judgement correct."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:name",
+   "source_url": "https://supersteel.com/industries/construction/",
+   "ledger_value": "Super Steel",
+   "evidence_row": 8979,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:address",
+   "source_url": "https://supersteel.com/industries/construction/",
+   "ledger_value": "10910 North Industrial Drive, Mequon, WI 53092",
+   "evidence_row": 8980,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=SUPER%20STEEL&state_abbr=WI&output=JSON",
+   "ledger_value": "10910 N Industrial Dr, Mequon WI (EPA FRS 110064228919)",
+   "evidence_row": 8981,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:parent_company",
+   "source_url": "https://www.supersteel.com/",
+   "ledger_value": "Super Steel, LLC; family-owned",
+   "evidence_row": 8982,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:products",
+   "source_url": "https://supersteel.com/industries/construction/",
+   "ledger_value": "complex structural weldments; heavy equipment bases",
+   "evidence_row": 8984,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:products",
+   "source_url": "https://supersteel.com/industries/mining/",
+   "ledger_value": "components for mining machines",
+   "evidence_row": 8985,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:products",
+   "source_url": "https://www.supersteel.com/",
+   "ledger_value": "large locomotive structures",
+   "evidence_row": 8986,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-mayville-wi:name",
+   "source_url": "https://www.mtlcraft.com/contact-us/",
+   "ledger_value": "Metalcraft of Mayville - Mayville",
+   "evidence_row": 8991,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-mayville-wi:address",
+   "source_url": "https://www.mtlcraft.com/contact-us/",
+   "ledger_value": "1000 Metalcraft Drive, Mayville, WI 53050",
+   "evidence_row": 8992,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-mayville-wi:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=METALCRAFT&state_abbr=WI&output=JSON",
+   "ledger_value": "1000 Metalcraft Drive, Mayville, WI 53050 (EPA FRS)",
+   "evidence_row": 8993,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-mayville-wi:parent_company",
+   "source_url": "https://careers-mtlcraft.icims.com/jobs/search?ss=1&searchKeyword=weld&in_iframe=1",
+   "ledger_value": "Metalcraft of Mayville, Inc.",
+   "evidence_row": 8994,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-beaver-dam-wi:name",
+   "source_url": "https://www.mtlcraft.com/contact-us/",
+   "ledger_value": "Metalcraft of Mayville - Beaver Dam",
+   "evidence_row": 9012,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-beaver-dam-wi:address",
+   "source_url": "https://www.mtlcraft.com/contact-us/",
+   "ledger_value": "2020 N. Spring St., Beaver Dam, WI 53916",
+   "evidence_row": 9013,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-beaver-dam-wi:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=METALCRAFT&state_abbr=WI&output=JSON",
+   "ledger_value": "2020 N. Spring St., Beaver Dam, WI 53916 (EPA FRS)",
+   "evidence_row": 9014,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-beaver-dam-wi:parent_company",
+   "source_url": "https://careers-mtlcraft.icims.com/jobs/search?ss=1&searchKeyword=weld&in_iframe=1",
+   "ledger_value": "Metalcraft of Mayville, Inc.",
+   "evidence_row": 9015,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-fall-river-wi:name",
+   "source_url": "https://www.mtlcraft.com/contact-us/",
+   "ledger_value": "Metalcraft of Mayville - Fall River",
+   "evidence_row": 9023,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-fall-river-wi:address",
+   "source_url": "https://www.mtlcraft.com/contact-us/",
+   "ledger_value": "200 Steel Rd., Fall River, WI 53932",
+   "evidence_row": 9024,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-fall-river-wi:parent_company",
+   "source_url": "https://careers-mtlcraft.icims.com/jobs/search?ss=1&searchKeyword=weld&in_iframe=1",
+   "ledger_value": "Metalcraft of Mayville, Inc.",
+   "evidence_row": 9025,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-lh-industrial-gillette-wy:name",
+   "source_url": "https://www.lnh.net/locations/",
+   "ledger_value": "L&H Industrial, Gillette",
+   "evidence_row": 9693,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-lh-industrial-gillette-wy:address",
+   "source_url": "https://www.lnh.net/locations/",
+   "ledger_value": "913 L&J Court, Gillette, WY 82718",
+   "evidence_row": 9694,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-lh-industrial-gillette-wy:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=L%26H%20INDUSTRIAL&state_abbr=WY&output=JSON",
+   "ledger_value": "913 L&J Court, Gillette, WY",
+   "evidence_row": 9695,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-lh-industrial-gillette-wy:parent_company",
+   "source_url": "https://www.lnh.net/locations/",
+   "ledger_value": "L&H Industrial, Inc.; multi-site (Gillette, Sheridan, Tempe manufacturing and repair facilities, Hermosa repair, plus Mexico and Chile)",
+   "evidence_row": 9696,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-lh-industrial-gillette-wy:products",
+   "source_url": "https://www.lnh.net/?p=9337",
+   "ledger_value": "mining equipment components, structures, cylinders, rebuilds",
+   "evidence_row": 9698,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "company-level: mining equipment components, structures, cylinders, rebuilds (L&H runs manufacturing sites at Gillette, Sheridan, Tempe, Mexico and Chile)",
+   "corrected_quote": "From cylinders to structures and propel and drive systems, L&H can help you with mining equipment solutions you won’t find on the shelf.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Company-level: custom replacement components, structures, cylinders and rebuilds for mining shovels, draglines and heavy mobile mining equipment; Gillette: component repairs, rebuilds and custom machine builds; 135,000 sq ft, 170-ton crane",
+   "note": "The ?p=9337 mining page names no plant, and the locations page (row 9699's page) lists three US manufacturing and repair facilities plus Cananea MX and Antofagasta CL. A company-level product list is placed at Gillette as stated. The Gillette line card (row 10900's page) carries 'component repairs, rebuilds, and custom machine builds' for Gillette, so the replacement field keeps that clause as Gillette-specific. No score effect (part mix rests on 10900)."
+  },
+  {
+   "claim_id": "p-lh-industrial-gillette-wy:products",
+   "source_url": "https://www.lnh.net/locations/",
+   "ledger_value": "135,000 sq ft, 170-ton crane",
+   "evidence_row": 9699,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-lh-industrial-gillette-wy:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=21feaf24-8a1e-48ef-a5de-900779ac141a&ccId=19000101_000001&lang=en_US&locale=en_US&$top=100",
+   "ledger_value": "2 shop welder postings open at Gillette (ADP board read 2026-11-16): Nightshift Shop Welder Tech 2 (posted 2026-01-20) and Shop Welder - Dayshift (2026-06-03), both 60+ days. Listed, not counted: Field Service Welder Tech II - Sign On Bonus (2026-09-21; field service role)",
+   "evidence_row": 9703,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today. Board read today: 13 requisitions; Gillette shop welder postings 2026-01-20 and 2026-06-03 open; Field Service Welder Tech II - Sign On Bonus (2026-09-21) listed, not counted. Judgement correct."
+  },
+  {
+   "claim_id": "p-klein-jacksonville-tx:name",
+   "source_url": "https://www.kleinproducts.com/quality-assurances/",
+   "ledger_value": "Klein Products of Texas",
+   "evidence_row": 9882,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-klein-jacksonville-tx:address",
+   "source_url": "https://www.kleinproducts.com/about/",
+   "ledger_value": "16576 US-79, Jacksonville, TX 75766",
+   "evidence_row": 9883,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-klein-jacksonville-tx:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=KLEIN%20PRODUCTS&state_abbr=TX&output=JSON",
+   "ledger_value": "16576 Highway U.S. 79, Jacksonville TX (EPA FRS)",
+   "evidence_row": 9884,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-klein-jacksonville-tx:parent_company",
+   "source_url": "https://www.kleinproducts.com/about/",
+   "ledger_value": "Klein Products, Inc.",
+   "evidence_row": 9885,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-klein-jacksonville-tx:products",
+   "source_url": "https://www.kleinproducts.com/careers/",
+   "ledger_value": "liquid distributing machinery for construction, mining, aggregate and municipal",
+   "evidence_row": 9890,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "company-level: liquid distributing machinery for construction, mining, aggregate and municipal (two plants; split not stated)",
+   "corrected_quote": "Klein Products is a global leader in the design, manufacture and distribution of premium-quality, liquid distributing machinery used in the construction, mining, aggregate and municipal industries.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Water tank (liquid distributor) systems for off-highway articulated and rigid haul trucks and tractor scrapers for construction and mining; also on/off-highway water trucks (boundary) and towers (company-level; split between the Jacksonville and Ontario plants not stated)",
+   "note": "Careers page describes Klein Products company-wide; Klein has two plants (Jacksonville TX and Ontario CA, about and history pages). Company-level fact tagged stated at the plant. No score effect (part mix already rests on an inferred row)."
+  },
+  {
+   "claim_id": "p-klein-jacksonville-tx:products",
+   "source_url": "https://www.kleinproducts.com/about/",
+   "ledger_value": "off-highway articulated, rigid truck tanks, tractor scraper tankers",
+   "evidence_row": 9891,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "company-level: off-highway articulated, rigid truck tanks, tractor scraper tankers (product menu; plant split not stated)",
+   "corrected_quote": "OFF HIGHWAY ARTICULATED OFF HIGHWAY TRUCK TANK, RIGID ON/OFF HIGHWAY SPECIAL PURPOSE TRACTOR SCRAPER TANKER",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Water tank (liquid distributor) systems for off-highway articulated and rigid haul trucks and tractor scrapers for construction and mining; also on/off-highway water trucks (boundary) and towers (company-level; split between the Jacksonville and Ontario plants not stated)",
+   "note": "The about page's product menu is company-wide and the same page lists both the Eastern Region (Jacksonville) and Western Region (Ontario) addresses. Same quote is tagged stated for both plants (rows 9891 and 9905)."
+  },
+  {
+   "claim_id": "p-klein-jacksonville-tx:products",
+   "source_url": "https://www.kleinproducts.com/innovations/",
+   "ledger_value": "mining truck tank systems",
+   "evidence_row": 9892,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "company-level: mining truck water tank systems",
+   "corrected_quote": "Off-road mining trucks continue to get bigger and bigger in size and capacity. Our water tank distributor systems continue to get bigger in size and capacity to keep pace with the truck prime mover chassis’ payload capacity.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Water tank (liquid distributor) systems for off-highway articulated and rigid haul trucks and tractor scrapers for construction and mining; also on/off-highway water trucks (boundary) and towers (company-level; split between the Jacksonville and Ontario plants not stated)",
+   "note": "The innovations page names no plant (the ledger already treats the same page as company-level for materials, rows 11010/11018)."
+  },
+  {
+   "claim_id": "p-klein-ontario-ca:name",
+   "source_url": "https://www.kleinproducts.com/history/",
+   "ledger_value": "Klein Products, Ontario CA Plant",
+   "evidence_row": 9896,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-klein-ontario-ca:address",
+   "source_url": "https://www.kleinproducts.com/about/",
+   "ledger_value": "1080 E Ontario Blvd, Ontario, CA 91761",
+   "evidence_row": 9897,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-klein-ontario-ca:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=KLEIN%20PRODUCTS&state_abbr=CA&output=JSON",
+   "ledger_value": "1080 E Ontario Blvd (EPA FRS)",
+   "evidence_row": 9898,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-klein-ontario-ca:parent_company",
+   "source_url": "https://www.kleinproducts.com/about/",
+   "ledger_value": "Klein Products, Inc.",
+   "evidence_row": 9899,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-klein-ontario-ca:products",
+   "source_url": "https://www.kleinproducts.com/careers/",
+   "ledger_value": "liquid distributing machinery for construction, mining, aggregate and municipal",
+   "evidence_row": 9904,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "company-level: liquid distributing machinery for construction, mining, aggregate and municipal (split between Texas and Ontario not stated)",
+   "corrected_quote": "Klein Products is a global leader in the design, manufacture and distribution of premium-quality, liquid distributing machinery used in the construction, mining, aggregate and municipal industries.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Water tank (liquid distributor) systems for off-highway articulated and rigid haul trucks and tractor scrapers for construction and mining; also on/off-highway water trucks (boundary) and towers (company-level; split between the Jacksonville and Ontario plants not stated)",
+   "note": "The row's own reasoning says 'Company-level product line; the split of products between the Texas and Ontario plants is not stated', yet it is tagged stated. The 1995 history statement says the Texas plant did all manufacturing in-house; nothing states what Ontario builds."
+  },
+  {
+   "claim_id": "p-klein-ontario-ca:products",
+   "source_url": "https://www.kleinproducts.com/about/",
+   "ledger_value": "off-highway articulated, rigid truck tanks, tractor scraper tankers",
+   "evidence_row": 9905,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "company-level: off-highway articulated, rigid truck tanks, tractor scraper tankers (product menu; plant split not stated)",
+   "corrected_quote": "OFF HIGHWAY ARTICULATED OFF HIGHWAY TRUCK TANK, RIGID ON/OFF HIGHWAY SPECIAL PURPOSE TRACTOR SCRAPER TANKER",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Water tank (liquid distributor) systems for off-highway articulated and rigid haul trucks and tractor scrapers for construction and mining; also on/off-highway water trucks (boundary) and towers (company-level; split between the Jacksonville and Ontario plants not stated)",
+   "note": "Company-wide product menu tagged stated at Ontario, which has no stated product of its own (prospect_test row 11047 already flags this as boundary)."
+  },
+  {
+   "claim_id": "p-ground-force-post-falls-id:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=GROUND%20FORCE&state_abbr=ID&output=JSON",
+   "ledger_value": "Ground Force Manufacturing",
+   "evidence_row": 10169,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-ground-force-post-falls-id:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=GROUND%20FORCE&state_abbr=ID&output=JSON",
+   "ledger_value": "5650 E Seltice Way, Post Falls ID",
+   "evidence_row": 10170,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-ground-force-post-falls-id:address",
+   "source_url": "https://federalsignal.com/metal-and-mineral-extraction-support",
+   "ledger_value": "headquartered in Post Falls",
+   "evidence_row": 10171,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-ground-force-post-falls-id:parent_company",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/277509/000027750921000033/groundforceworldwideanno.htm",
+   "ledger_value": "Federal Signal Corporation",
+   "evidence_row": 10175,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "Federal Signal Corporation",
+   "corrected_quote": "The combination of Mega with our existing Ground Force and TowHaul businesses strengthens our specialty vehicle platform",
+   "corrected_source_url": "https://www.federalsignal.com/fs-news/federal-signal-completes-acquisition-of-mega-corp",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Federal Signal Corporation",
+   "note": "The cited 8-K exhibit (Sept 8, 2021) announces only 'the signing of a definitive agreement' and says the Company 'anticipates completing the transaction during the fourth quarter of 2021'; it does not show completed ownership. Federal Signal's Jan 16, 2026 release (checked today) calls Ground Force one of 'our existing ... businesses'. Value and plants.csv field unchanged; source moves."
+  },
+  {
+   "claim_id": "p-ground-force-post-falls-id:products",
+   "source_url": "https://federalsignal.com/metal-and-mineral-extraction-support",
+   "ledger_value": "fuel and lube trucks, water trucks, cable handling, dump bodies, rock spreaders",
+   "evidence_row": 10177,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "company-level (Ground Force brand): fuel and lube trucks, water trucks, cable handling, dump bodies, rock spreaders",
+   "corrected_quote": "Ground Force is a leading manufacturer of specialty material handling vehicles that support metal and mineral extraction, with a product portfolio that includes fuel and lube trucks, water trucks, cable handling, dump bodies, and rock spreaders.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Mine support vehicles (Ground Force brand, company-level; Post Falls share not stated): fuel and lube trucks, water trucks, cable handling, dump bodies and rock spreaders for surface and underground mining; a past, undated Post Falls posting names welded tanks",
+   "note": "Brand portfolio on Federal Signal's page; Ground Force's own about page says its Idaho HQ anchors 'a network of manufacturing facilities that span across the Americas, Europe, Asia, and Australia', and Federal Signal's board now has a 'Ground Force (Mega) - Albuquerque, NM' location. The plants.csv field also adds 'rigid-frame and articulated' (only on gfworldwide.com/about-us, row 11066's page, another claim) and '(tanks and bodies built on haul-truck chassis)', which no products row's page carries."
+  },
+  {
+   "claim_id": "p-ground-force-post-falls-id:products",
+   "source_url": "https://jofdav.com/jobs/53613659-welder-fabricator",
+   "ledger_value": "mine support equipment for surface and underground mining",
+   "evidence_row": 10178,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "welded tanks (a past, undated Post Falls Welder/Fabricator posting; the posting's 'About Us' product line text is company boilerplate)",
+   "corrected_quote": "Welder/Fabricator at Ground Force in Post Falls, Idaho ... our world class tanks require skilled welders with the ability to weld-wire feed in multiple positions.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Mine support vehicles (Ground Force brand, company-level; Post Falls share not stated): fuel and lube trucks, water trucks, cable handling, dump bodies and rock spreaders for surface and underground mining; a past, undated Post Falls posting names welded tanks",
+   "note": "The quoted sentence ('We offer a diverse product line for surface & underground mining and have trucks working in over 60+ countries') is the posting's company About-Us boilerplate, the same company-level kind as row 10177. The plant-specific fact on this page is that the Post Falls job welds tanks. jofdav returns HTTP 404 but the body still renders the expired listing; no datePosted in raw source, so 'undated' is right."
+  },
+  {
+   "claim_id": "p-getman-bangor-mi:weld_processes",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201309829189_1?cid=592d8b2a-2867-42c8-80d3-7c4958e4fd2e&lang=en_US&locale=en_US",
+   "ledger_value": "GTAW, MCAW, GMAW, FCAW and SMAW named in the Bangor Fitter/Welder I posting (semi-automatic welding equipment)",
+   "evidence_row": 10847,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-getman-bangor-mi:certifications",
+   "source_url": "https://getman.com/about/careers/",
+   "ledger_value": "CWB W47.1 certified weld company",
+   "evidence_row": 10849,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-getman-bangor-mi:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown (no stated dimension or weight of a welded part)",
+   "evidence_row": 10850,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-getman-bangor-mi:production_type",
+   "source_url": "https://getman.com/about/",
+   "ledger_value": "mixed: customer-specific production and production-support underground mining vehicles across several product lines, with a standardized design (company-level)",
+   "evidence_row": 10851,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-getman-bangor-mi:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201309829189_1?cid=592d8b2a-2867-42c8-80d3-7c4958e4fd2e&lang=en_US&locale=en_US",
+   "ledger_value": "Fitter/Welder I posting requires CWB welding certificates",
+   "evidence_row": 10853,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today. Open today: Getman ADP board lists Fitter/Welder I, Bangor, postDate 2026-10-19; requisition shows 'STARTING RATE: $27.45'. Bangor and Kalamazoo are separate cities."
+  },
+  {
+   "claim_id": "p-getman-bangor-mi:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "evidence_row": 10854,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-getman-bangor-mi:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10855,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-getman-bangor-mi:parent_company",
+   "source_url": "https://getman.com/about/company-history/",
+   "ledger_value": "Getman Corporation; multi-site (Bangor headquarters and a Kalamazoo facility opened 2013)",
+   "evidence_row": 10856,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-getman-bangor-mi:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Bangor board posted a Fitter/Welder I on Oct 19, 2026 at $27.45 an hour, with CWB welding certificates a strict requirement and GTAW, MCAW, GMAW, FCAW and SMAW all named; how many certified fitter-welders are you trying to add at Bangor?",
+   "evidence_row": 10859,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by a stated row named in the reasoning or by that row's page (checked today); ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:weld_processes",
+   "source_url": "https://ats.rippling.com/super-steel/jobs/08f9d399-6f19-495c-b292-eab6217b115d",
+   "ledger_value": "Welder posting names MIG, TIG, Stick and Flux-Core",
+   "evidence_row": 10869,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:weld_processes",
+   "source_url": "https://supersteel.com/capabilities/fabrication/",
+   "ledger_value": "GMAW short circuit and GMAW pulse welders",
+   "evidence_row": 10870,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:materials",
+   "source_url": "https://ats.rippling.com/super-steel/jobs/08f9d399-6f19-495c-b292-eab6217b115d",
+   "ledger_value": "carbon steel (welder posting); stainless steel and aluminum also welded (welding page)",
+   "evidence_row": 10871,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:materials",
+   "source_url": "https://supersteel.com/capabilities/welding/",
+   "ledger_value": "stainless steel and aluminum welding",
+   "evidence_row": 10872,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:certifications",
+   "source_url": "https://ats.rippling.com/super-steel/jobs/08f9d399-6f19-495c-b292-eab6217b115d",
+   "ledger_value": "ISO 9001:2015",
+   "evidence_row": 10873,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:certifications",
+   "source_url": "https://supersteel.com/capabilities/welding/",
+   "ledger_value": "welders tested and qualified to AWS D1.1 (personnel qualification, not a company certification)",
+   "evidence_row": 10874,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown (no stated dimension or weight of a welded part; the 112 ft x 13 ft x 6 ft AGT robot envelope and 24,000 lb positioners are equipment capacities)",
+   "evidence_row": 10875,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:production_type",
+   "source_url": "https://supersteel.com/capabilities/welding/",
+   "ledger_value": "mixed: serial production for OEMs with automated and robotic welding for high-volume work, plus custom work and large structural weldments",
+   "evidence_row": 10876,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:production_type",
+   "source_url": "https://ats.rippling.com/super-steel/jobs/08f9d399-6f19-495c-b292-eab6217b115d",
+   "ledger_value": "manual welders work on complex weldments rather than repetitive single-product welding",
+   "evidence_row": 10877,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:existing_robots",
+   "source_url": "https://supersteel.com/capabilities/welding/",
+   "ledger_value": "yes: Miller Electric PA 1100 Performarc twin-station robot; AGT Robotics BLOK 500 nine-axis welding gantry (112 ft x-axis)",
+   "evidence_row": 10878,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:existing_robots",
+   "source_url": "https://supersteel.com/capabilities/fabrication/",
+   "ledger_value": "140 ft AGT large-format welding robot",
+   "evidence_row": 10879,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:welder_postings",
+   "source_url": "https://ats.rippling.com/super-steel/jobs/08f9d399-6f19-495c-b292-eab6217b115d",
+   "ledger_value": "Welder posting created 2026-11-03 (Rippling job JSON in page source)",
+   "evidence_row": 10880,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today. Open today: Rippling board lists Welder, Mequon WI; createdOn 2026-11-03 in raw JSON. Single Mequon site."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:parent_company",
+   "source_url": "https://supersteel.com/explore/company/",
+   "ledger_value": "Super Steel, LLC; operations consolidated at one Mequon campus in 2021",
+   "evidence_row": 10881,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (Mequon consolidation was 2021; an undated statement that expansion plans are 'in the works' is not scored)",
+   "evidence_row": 10882,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10883,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-super-steel-mequon-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Mequon board opened a Welder role on Nov 3, 2026 for welding carbon steel components and weldments on 1st and 2nd shift, at a plant that already runs robotic cells including a 140-foot AGT large-format welding robot; which weldments are you still keeping on manual welders?",
+   "evidence_row": 10885,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by a stated row named in the reasoning or by that row's page (checked today); ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-lh-industrial-gillette-wy:weld_processes",
+   "source_url": "https://www.lnh.net/wp-content/uploads/2025/02/gillette-linecard-capabilities-web.pdf",
+   "ledger_value": "Gillette multi-process field and shop welding: SMAW, GMAW, GTAW, 'submersible' (submerged) arc and pulse arc (Gillette line card)",
+   "evidence_row": 10895,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-lh-industrial-gillette-wy:weld_processes",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201406669897_1?cid=21feaf24-8a1e-48ef-a5de-900779ac141a&ccId=19000101_000001&lang=en_US&locale=en_US",
+   "ledger_value": "Gillette shop welder postings: dual shield welding, 1/16 and 3/32",
+   "evidence_row": 10896,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-lh-industrial-gillette-wy:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown (no stated dimension or weight of a welded part; 170-ton crane, stress-relief oven 14 x 16 x 12.5 ft and machining envelopes are equipment capacities)",
+   "evidence_row": 10899,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-lh-industrial-gillette-wy:production_type",
+   "source_url": "https://www.lnh.net/wp-content/uploads/2025/02/gillette-linecard-capabilities-web.pdf",
+   "ledger_value": "custom: component repairs, rebuilds and custom machine builds for heavy equipment (Gillette line card)",
+   "evidence_row": 10900,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-lh-industrial-gillette-wy:existing_robots",
+   "source_url": "https://www.lnh.net/news/inside-lh-a-shop-tour-of-gillette-wyoming/",
+   "ledger_value": "Gillette's 9-axis robotic welder runs up to 40 lbs per hour deposition; automated bore welding to 120 in (shop tour, May 19, 2026)",
+   "evidence_row": 10901,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-lh-industrial-gillette-wy:existing_robots",
+   "source_url": "https://www.lnh.net/wp-content/uploads/2025/02/gillette-linecard-capabilities-web.pdf",
+   "ledger_value": "yes: 9-axis robotic welding, single and dual head; automated flange and bore welding (brand not stated)",
+   "evidence_row": 10902,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-lh-industrial-gillette-wy:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201406669897_1?cid=21feaf24-8a1e-48ef-a5de-900779ac141a&ccId=19000101_000001&lang=en_US&locale=en_US",
+   "ledger_value": "Shop Welder - Dayshift, Gillette WY, posted 2026-06-03, open 2026-11-16: air arcing, torch work, crack repair, buildup, welding and fabrication",
+   "evidence_row": 10903,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today. Open today: L&H ADP API lists SHOP WELDER - DAYSHIFT, Gillette 82718, postDate 2026-06-03 (166 days)."
+  },
+  {
+   "claim_id": "p-lh-industrial-gillette-wy:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201361143830_1?cid=21feaf24-8a1e-48ef-a5de-900779ac141a&ccId=19000101_000001&lang=en_US&locale=en_US",
+   "ledger_value": "Nightshift Shop Welder Tech 2, Gillette WY, posted 2026-01-20, open 2026-11-16; dual shield welding; shop welders may also go to the field",
+   "evidence_row": 10904,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today. Open today: ADP API lists NIGHTSHIFT SHOP WELDER TECH 2, Gillette, postDate 2026-01-20 (300 days)."
+  },
+  {
+   "claim_id": "p-lh-industrial-gillette-wy:welder_postings",
+   "source_url": "https://www.lnh.net/locations/",
+   "ledger_value": "site named: Gillette is L&H's only listed site in Gillette (other US sites Sheridan WY, Tempe AZ, Hermosa SD)",
+   "evidence_row": 10905,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today. Locations page lists one Gillette site (913 L&J Court); EPA FRS WY lists Gillette and Sheridan only. Not a shared city."
+  },
+  {
+   "claim_id": "p-lh-industrial-gillette-wy:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "evidence_row": 10906,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-lh-industrial-gillette-wy:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10907,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-lh-industrial-gillette-wy:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Gillette board has had a nightshift Shop Welder Tech 2 open since Jan 20, 2026 and a dayshift Shop Welder since June 3, both calling for dual shield welding, at a shop that also runs 9-axis robotic welding; how are you covering shop welding hours while those seats stay open?",
+   "evidence_row": 10910,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by a stated row named in the reasoning or by that row's page (checked today); ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-jh-fletcher-huntington-wv:weld_processes",
+   "source_url": "",
+   "ledger_value": "unknown (welding stated, process not named)",
+   "evidence_row": 10920,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-jh-fletcher-huntington-wv:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown (no stated dimension or weight of a welded part)",
+   "evidence_row": 10923,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-jh-fletcher-huntington-wv:production_type",
+   "source_url": "https://www.jhfletcher.com/",
+   "ledger_value": "custom: custom-engineered underground mining machines on established product lines plus specialty builds",
+   "evidence_row": 10924,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-jh-fletcher-huntington-wv:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9200581689568_1?cid=50712173-7dfc-4013-8040-9d74d1595d56&lang=en_US&locale=en_US",
+   "ledger_value": "posting names Huntington as the work site",
+   "evidence_row": 10926,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-jh-fletcher-huntington-wv:parent_company",
+   "source_url": "https://www.jhfletcher.com/careers",
+   "ledger_value": "J.H. Fletcher & Co.; most employees work at the main manufacturing facility in Huntington",
+   "evidence_row": 10927,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-jh-fletcher-huntington-wv:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (Cannon Mining acquisition, which moved Cannon's domestic machine assembly to Huntington, is dated June 2022)",
+   "evidence_row": 10928,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-jh-fletcher-huntington-wv:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10929,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-jh-fletcher-huntington-wv:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Welder/Assembler opening in Huntington has been posted since Aug 8, 2026, at the main manufacturing facility where you build custom-engineered underground mining machines and specialty equipment; how long are welding seats taking to fill at Huntington?",
+   "evidence_row": 10931,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "Your Welder/Assembler opening in Huntington has been posted since Aug 8, 2026, at the main manufacturing facility where you build custom-engineered underground mining machines and specialty equipment; how long are welding seats taking you to fill at Huntington?",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "plants_csv_value": "Your Welder/Assembler opening in Huntington has been posted since Aug 8, 2026, at the main manufacturing facility where you build custom-engineered underground mining machines and specialty equipment; how long are welding seats taking you to fill at Huntington?",
+   "note": "Closing question is not second-person ('how long are welding seats taking to fill at Huntington?'); poles round-5 line-check counted this form as a correction ('closing question not second-person'). Every fact is carried: postDate 2026-08-08 and Huntington on the ADP requisition (rows 7486/10926), 'main manufacturing facility in Huntington' (row 10927), 'custom engineered and manufactured underground mining equipment ... ability to build specialty equipment' (row 10924). Form-only fix."
+  },
+  {
+   "claim_id": "p-metalcraft-mayville-wi:production_type",
+   "source_url": "https://www.mtlcraft.com/strategy-and-engineering/",
+   "ledger_value": "mixed: prototypes through high-volume production runs for OEM customers (company-level)",
+   "evidence_row": 10941,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-mayville-wi:parent_company",
+   "source_url": "https://www.mtlcraft.com/about-us/",
+   "ledger_value": "Metalcraft of Mayville, Inc.; multi-plant (four ISO 9001:2015-registered facilities); over 1,000 factory and office personnel company-wide",
+   "evidence_row": 10942,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-mayville-wi:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown (no stated dimension or weight of a welded part; robotic cell envelopes (up to 186 in tool length, 2.5 ton) and 40 ft track robots are equipment capacities)",
+   "evidence_row": 10943,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-metalcraft-mayville-wi:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "evidence_row": 10944,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-metalcraft-mayville-wi:headcount",
+   "source_url": "",
+   "ledger_value": "unknown (company-wide over 1,000 personnel across four ISO facilities; site share not stated)",
+   "evidence_row": 10945,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-metalcraft-beaver-dam-wi:production_type",
+   "source_url": "https://www.mtlcraft.com/strategy-and-engineering/",
+   "ledger_value": "mixed: prototypes through high-volume production runs for OEM customers (company-level)",
+   "evidence_row": 10946,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-beaver-dam-wi:parent_company",
+   "source_url": "https://www.mtlcraft.com/about-us/",
+   "ledger_value": "Metalcraft of Mayville, Inc.; multi-plant (four ISO 9001:2015-registered facilities); over 1,000 factory and office personnel company-wide",
+   "evidence_row": 10947,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-beaver-dam-wi:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown (no stated dimension or weight of a welded part; robotic cell envelopes (up to 186 in tool length, 2.5 ton) and 40 ft track robots are equipment capacities)",
+   "evidence_row": 10948,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-metalcraft-beaver-dam-wi:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "evidence_row": 10949,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-metalcraft-beaver-dam-wi:headcount",
+   "source_url": "",
+   "ledger_value": "unknown (company-wide over 1,000 personnel across four ISO facilities; site share not stated)",
+   "evidence_row": 10950,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-metalcraft-fall-river-wi:production_type",
+   "source_url": "https://www.mtlcraft.com/strategy-and-engineering/",
+   "ledger_value": "mixed: prototypes through high-volume production runs for OEM customers (company-level)",
+   "evidence_row": 10951,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-fall-river-wi:parent_company",
+   "source_url": "https://www.mtlcraft.com/about-us/",
+   "ledger_value": "Metalcraft of Mayville, Inc.; multi-plant (four ISO 9001:2015-registered facilities); over 1,000 factory and office personnel company-wide",
+   "evidence_row": 10952,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-fall-river-wi:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown (no stated dimension or weight of a welded part; robotic cell envelopes (up to 186 in tool length, 2.5 ton) and 40 ft track robots are equipment capacities)",
+   "evidence_row": 10953,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-metalcraft-fall-river-wi:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "evidence_row": 10954,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-metalcraft-fall-river-wi:headcount",
+   "source_url": "",
+   "ledger_value": "unknown (company-wide over 1,000 personnel across four ISO facilities; site share not stated)",
+   "evidence_row": 10955,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-metalcraft-mayville-wi:weld_processes",
+   "source_url": "https://careers-mtlcraft.icims.com/jobs/5023/2nd-shift-manual-welder-%28mayville%29/job?in_iframe=1",
+   "ledger_value": "MIG, TIG and aluminum welding (2nd Shift Manual Welder, Mayville)",
+   "evidence_row": 10956,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-mayville-wi:weld_processes",
+   "source_url": "https://careers-mtlcraft.icims.com/jobs/5029/3rd-shift-manual-welder-%28mayville%29/job?in_iframe=1",
+   "ledger_value": "MIG welding (3rd Shift Manual Welder, Mayville)",
+   "evidence_row": 10957,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-mayville-wi:materials",
+   "source_url": "https://careers-mtlcraft.icims.com/jobs/5023/2nd-shift-manual-welder-%28mayville%29/job?in_iframe=1",
+   "ledger_value": "aluminum welding named in a Mayville welder posting; steel not stated at plant level",
+   "evidence_row": 10958,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-mayville-wi:certifications",
+   "source_url": "https://www.mtlcraft.com/Quality-Certificates/",
+   "ledger_value": "ISO 9001:2015 and AS9100D (Mayville)",
+   "evidence_row": 10959,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-mayville-wi:existing_robots",
+   "source_url": "https://www.mtlcraft.com/about-us/",
+   "ledger_value": "yes: one of the largest robotic-welding units built by Genesis Systems, bought for the Mayville plant in 2013; Mayville also posts robotic welder roles",
+   "evidence_row": 10960,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-mayville-wi:existing_robots",
+   "source_url": "https://careers-mtlcraft.icims.com/jobs/search?ss=1&searchKeyword=weld&in_iframe=1",
+   "ledger_value": "Mayville robotic welder roles report to a Robotic Welding Manager",
+   "evidence_row": 10961,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-mayville-wi:welder_postings",
+   "source_url": "https://careers-mtlcraft.icims.com/jobs/5023/2nd-shift-manual-welder-%28mayville%29/job?in_iframe=1",
+   "ledger_value": "2nd Shift Manual Welder (Mayville), posted 2026-10-08, 2 openings",
+   "evidence_row": 10962,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today. Open today on iCIMS (US-WI-Mayville, 10/8/2026, 2 openings)."
+  },
+  {
+   "claim_id": "p-metalcraft-mayville-wi:welder_postings",
+   "source_url": "https://careers-mtlcraft.icims.com/jobs/5029/3rd-shift-manual-welder-%28mayville%29/job?in_iframe=1",
+   "ledger_value": "3rd Shift Manual Welder (Mayville), posted 2026-10-09, 2 openings",
+   "evidence_row": 10963,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today. Open today on iCIMS (US-WI-Mayville, 10/9/2026, 2 openings)."
+  },
+  {
+   "claim_id": "p-metalcraft-mayville-wi:welder_postings",
+   "source_url": "https://careers-mtlcraft.icims.com/jobs/search?ss=1&searchKeyword=weld&in_iframe=1",
+   "ledger_value": "2 manual welder postings counted (4 openings), iCIMS board read 2026-11-16. Listed, not counted: 2nd and 3rd Shift Robotic Welder (robot operators), 1st Shift Spot Welder (resistance spot/seam machine operator), Weld Supervisor",
+   "evidence_row": 10964,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "4 welder postings counted (12 openings), iCIMS board read 2026-11-16, all Mayville: 2nd Shift Manual Welder (posted 2026-10-08, 2 openings), 3rd Shift Manual Welder (2026-10-09, 2), 2nd Shift Robotic Welder (2026-10-09, 4) and 3rd Shift Robotic Welder (2026-10-09, 4); the robotic roles require basic MIG/TIG and tack welding, so they count (coordinator ruling 5). Listed, not counted: 1st Shift Spot Welder, Weld Supervisor",
+   "corrected_quote": "(10/9/2026 10:50 AM) Job Title 2nd Shift Robotic Welder (Mayville) ... (10/9/2026 5:26 PM) Job Title 3rd Shift Robotic Welder (Mayville)",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "plants_csv_value": "4 open (12 openings): 2nd Shift Manual Welder (posted 2026-10-08, 2) and 3rd Shift Manual Welder (2026-10-09, 2), MIG/TIG; 2nd and 3rd Shift Robotic Welder (2026-10-09, 4 each), basic MIG/TIG and tack welding required; spot welder and weld supervisor listed, not counted; iCIMS read 2026-11-16",
+   "note": "Counting-rule finding. Posting 5026 says 'Perform basic MIG and TIG welding as needed' and 'Clamp, hold, tack weld, grind'; posting 5030 says 'Perform basic MIG welding as needed' and 'Clamp, tack-weld, grind'. Under ruling 5 (robot-titled postings count when their text requires manual welding: Virnig, Metalcraft Beaver Dam and Fall River) these count, as the near-identical Fall River 'Welders' postings already do. Labor stays 20 (already several at once); the field understated demand by 8 openings."
+  },
+  {
+   "claim_id": "p-metalcraft-mayville-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Mayville board posted 2nd- and 3rd-shift Manual Welder roles on Oct 8 and 9, 2026, two openings each, for MIG work at the plant that bought one of Genesis Systems' largest robotic-welding units in 2013; which parts are you still welding by hand at Mayville?",
+   "evidence_row": 10966,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by a stated row named in the reasoning or by that row's page (checked today); ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-metalcraft-beaver-dam-wi:weld_processes",
+   "source_url": "https://careers-mtlcraft.icims.com/jobs/5049/welder-%28beaver-dam%29/job?in_iframe=1",
+   "ledger_value": "basic MIG, TIG and aluminum welding (Beaver Dam Welder posting)",
+   "evidence_row": 10976,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-beaver-dam-wi:materials",
+   "source_url": "https://careers-mtlcraft.icims.com/jobs/5049/welder-%28beaver-dam%29/job?in_iframe=1",
+   "ledger_value": "aluminum welding named; steel not stated at plant level",
+   "evidence_row": 10977,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-beaver-dam-wi:certifications",
+   "source_url": "https://www.mtlcraft.com/Quality-Certificates/",
+   "ledger_value": "ISO 9001:2015 and AS9100D (Beaver Dam)",
+   "evidence_row": 10978,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-beaver-dam-wi:existing_robots",
+   "source_url": "https://careers-mtlcraft.icims.com/jobs/5049/welder-%28beaver-dam%29/job?in_iframe=1",
+   "ledger_value": "yes: robotic and manual welding department; welders unload parts from robotic welders (brand not stated)",
+   "evidence_row": 10979,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-beaver-dam-wi:existing_robots",
+   "source_url": "https://www.mtlcraft.com/about-us/",
+   "ledger_value": "Beaver Dam departments include Robotic & Manual Welding (200,000 sq ft)",
+   "evidence_row": 10980,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-beaver-dam-wi:welder_postings",
+   "source_url": "https://careers-mtlcraft.icims.com/jobs/5049/welder-%28beaver-dam%29/job?in_iframe=1",
+   "ledger_value": "Beaver Dam posting states the site is on mandatory overtime",
+   "evidence_row": 10981,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today. Open today: Welder (Beaver Dam), US-WI-Beaver Dam, posted 10/16/2026, 3 openings, 'Currently we are on mandatory overtime'."
+  },
+  {
+   "claim_id": "p-metalcraft-beaver-dam-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Beaver Dam welder posting from Oct 16, 2026 lists three openings across three shifts and says the plant is currently on mandatory overtime; how much of that overtime are you carrying in the weld department?",
+   "evidence_row": 10983,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by a stated row named in the reasoning or by that row's page (checked today); ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-metalcraft-fall-river-wi:weld_processes",
+   "source_url": "https://careers-mtlcraft.icims.com/jobs/4973/welders---2nd-shift/job?in_iframe=1",
+   "ledger_value": "basic MIG and TIG welding (Fall River welder postings)",
+   "evidence_row": 10993,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-fall-river-wi:certifications",
+   "source_url": "https://www.mtlcraft.com/Quality-Certificates/",
+   "ledger_value": "ISO 9001 (Fall River)",
+   "evidence_row": 10995,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-fall-river-wi:existing_robots",
+   "source_url": "https://careers-mtlcraft.icims.com/jobs/4973/welders---2nd-shift/job?in_iframe=1",
+   "ledger_value": "FANUC robotic certification desired in Fall River welder postings",
+   "evidence_row": 10996,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-metalcraft-fall-river-wi:welder_postings",
+   "source_url": "https://careers-mtlcraft.icims.com/jobs/4973/welders---2nd-shift/job?in_iframe=1",
+   "ledger_value": "Welders - 2nd Shift, Fall River, posted 2026-09-21, 4 openings",
+   "evidence_row": 10997,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today. Open today (US-WI-Fall River, 9/21/2026, 4 openings, 56 days)."
+  },
+  {
+   "claim_id": "p-metalcraft-fall-river-wi:welder_postings",
+   "source_url": "https://careers-mtlcraft.icims.com/jobs/5062/welders--3rd-shift/job?in_iframe=1",
+   "ledger_value": "Fall River welder postings offer a $1000 signing bonus",
+   "evidence_row": 10998,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today. Open today: Welders -3rd Shift, US-WI-Fall River, 10/20/2026, 4 openings; '$1000 Signing Bonus' on both Fall River welder postings."
+  },
+  {
+   "claim_id": "p-metalcraft-fall-river-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Fall River board has 3rd- and 2nd-shift welder postings from Oct 20 and Sep 21, 2026, four openings each, with a $1000 signing bonus and FANUC robotic certification desired; how are you staffing the weld cells on off shifts while those seats stay open?",
+   "evidence_row": 11000,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by a stated row named in the reasoning or by that row's page (checked today); ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-klein-jacksonville-tx:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown (tank capacities in gallons and truck classes are not part sizes)",
+   "evidence_row": 11011,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-klein-jacksonville-tx:production_type",
+   "source_url": "https://www.kleinproducts.com/about/",
+   "ledger_value": "mixed: tank systems across articulated, rigid off-highway and scraper models, municipal and on/off-highway trucks, towers and valves (company-level product list)",
+   "evidence_row": 11012,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-klein-jacksonville-tx:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "evidence_row": 11014,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-klein-jacksonville-tx:headcount",
+   "source_url": "",
+   "ledger_value": "unknown (company-wide 'more than 150 people', undated; site share not stated)",
+   "evidence_row": 11015,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-klein-jacksonville-tx:parent_company",
+   "source_url": "https://www.kleinproducts.com/history/",
+   "ledger_value": "Klein Products, Inc.; two plants (Texas factory and West Coast facility at Ontario CA)",
+   "evidence_row": 11016,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-klein-ontario-ca:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown (tank capacities in gallons and truck classes are not part sizes)",
+   "evidence_row": 11019,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-klein-ontario-ca:production_type",
+   "source_url": "https://www.kleinproducts.com/about/",
+   "ledger_value": "mixed: tank systems across articulated, rigid off-highway and scraper models, municipal and on/off-highway trucks, towers and valves (company-level product list)",
+   "evidence_row": 11020,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-klein-ontario-ca:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "evidence_row": 11022,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-klein-ontario-ca:headcount",
+   "source_url": "",
+   "ledger_value": "unknown (company-wide 'more than 150 people', undated; site share not stated)",
+   "evidence_row": 11023,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-klein-ontario-ca:parent_company",
+   "source_url": "https://www.kleinproducts.com/history/",
+   "ledger_value": "Klein Products, Inc.; two plants (Texas factory and West Coast facility at Ontario CA)",
+   "evidence_row": 11024,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-klein-jacksonville-tx:weld_processes",
+   "source_url": "",
+   "ledger_value": "unknown (all-position welding and a 7-step weld test stated; process not named)",
+   "evidence_row": 11026,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-klein-jacksonville-tx:certifications",
+   "source_url": "https://www.kleinproducts.com/quality-assurances/",
+   "ledger_value": "welding procedures qualified to AWS; welders tested under staff AWS CWI",
+   "evidence_row": 11027,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-klein-jacksonville-tx:welder_postings",
+   "source_url": "https://kleinproducts.betterteam.com/welder-2",
+   "ledger_value": "Klein welder postings require a 7-step weld test",
+   "evidence_row": 11028,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today. Open today: 'Welder' (1st shift Welder/Fitter), JSON-LD datePosted 2026-02-13, streetAddress 16576 US-79."
+  },
+  {
+   "claim_id": "p-klein-jacksonville-tx:welder_postings",
+   "source_url": "https://kleinproducts.betterteam.com/welder-fitter-2nd-shift",
+   "ledger_value": "Welder/Fitter - 2nd Shift posting date 2026-02-17 (JobPosting JSON-LD in page source)",
+   "evidence_row": 11029,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today. Open today: betterteam board lists Welder/Fitter - 2nd Shift, Jacksonville; JSON-LD datePosted 2026-02-17, streetAddress '16576 Hwy 79 East'."
+  },
+  {
+   "claim_id": "p-klein-jacksonville-tx:welder_postings",
+   "source_url": "https://kleinproducts.betterteam.com/",
+   "ledger_value": "2 counted, open at once on Klein's own board (betterteam, read 2026-11-16 plain and in a browser), both Jacksonville TX, both 60+ days (posted 2026-02-13 and 2026-02-17); Utility Helper listed, not counted",
+   "evidence_row": 11030,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today. Board read today: Utility Helper, Welder/Fitter - 2nd Shift, Welder, all Jacksonville. Klein's EPA TX records are all the one Hwy 79 site. Judgement correct."
+  },
+  {
+   "claim_id": "p-klein-jacksonville-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Jacksonville board has had a 1st-shift Welder/Fitter and a 2nd-shift Welder/Fitter posted since February 2026, both requiring a 7-step weld test; how are you keeping tank builds on schedule with those welding seats open?",
+   "evidence_row": 11033,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "Your Jacksonville board has had a 1st-shift Welder/Fitter and a 2nd-shift Welder/Fitter posted since February 2026, both requiring a 7-step weld test; how are you keeping production on schedule with those welding seats open?",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Your Jacksonville board has had a 1st-shift Welder/Fitter and a 2nd-shift Welder/Fitter posted since February 2026, both requiring a 7-step weld test; how are you keeping production on schedule with those welding seats open?",
+   "note": "'tank builds' rests on p-klein-jacksonville-tx:products, whose three rows are company-level pages (corrected to inferred here: 9890-9892). No Jacksonville-specific page names what the plant welds. The postings (datePosted 2026-02-13 and 2026-02-17, both '7-Step Weld Test', 1st shift 'Welder/Fitter' and 2nd shift) carry the rest. Replacement drops the product presupposition."
+  },
+  {
+   "claim_id": "p-klein-ontario-ca:weld_processes",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 11043,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-klein-ontario-ca:welder_postings",
+   "source_url": "https://kleinproducts.betterteam.com/",
+   "ledger_value": "none counted: Klein's job board (read 2026-11-16) lists only Jacksonville TX roles; the careers page's California list naming welders and fitters is an undated position list, not live openings",
+   "evidence_row": 11045,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today. Board read today: three positions, all Jacksonville TX."
+  },
+  {
+   "claim_id": "p-klein-ontario-ca:welder_postings",
+   "source_url": "https://www.kleinproducts.com/careers/",
+   "ledger_value": "undated position list names production welders and fitters in California (not counted)",
+   "evidence_row": 11046,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-klein-ontario-ca:opening_line",
+   "source_url": "",
+   "ledger_value": "Your history page calls Ontario the new West Coast factory built in 2016 to expand operations, and your careers page lists production welders and fitters in California; are you welding tank systems in Ontario today, and if so, how are you staffing that work?",
+   "evidence_row": 11049,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by a stated row named in the reasoning or by that row's page (checked today); ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-ground-force-post-falls-id:weld_processes",
+   "source_url": "https://jofdav.com/jobs/53613659-welder-fabricator",
+   "ledger_value": "wire-feed welding of tanks in multiple positions (MIG or flux-core not named; undated, now-expired aggregator posting)",
+   "evidence_row": 11059,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today. jofdav returns HTTP 404 but renders the expired listing ('This job listing has expired'); raw source has no datePosted, so 'undated, expired' is right. 'wire feed' without MIG/FCAW named: process 0 per ruling 6."
+  },
+  {
+   "claim_id": "p-ground-force-post-falls-id:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown (truck classes, 320-ton body class and gallon capacities are not part sizes)",
+   "evidence_row": 11062,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-ground-force-post-falls-id:production_type",
+   "source_url": "https://gfworldwide.com/engineering/",
+   "ledger_value": "custom: each product designed for the demands of its destined mine site; purpose-built dump bodies (company-level)",
+   "evidence_row": 11063,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-ground-force-post-falls-id:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/FED1002FSC/JobBoard/d5675b81-d6f5-4226-9f8c-be296cda2308/JobBoardView/LoadSearchResults",
+   "ledger_value": "none found: Federal Signal's UltiPro board (linked from gfworldwide.com 'View Current Post Falls, ID Openings') had 154 postings on 2026-11-16, none located in Post Falls; the older Welder/Fabricator aggregator posting is expired and undated",
+   "evidence_row": 11065,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "No quote (inferred judgement); checked against the board/pages read today. Federal Signal UltiPro board read today by POST to LoadSearchResults: 154 postings, none in Post Falls or Idaho (the 7 'Ground Force (Mega) - Albuquerque, NM' postings are the Mega plant)."
+  },
+  {
+   "claim_id": "p-ground-force-post-falls-id:parent_company",
+   "source_url": "https://gfworldwide.com/about-us/",
+   "ledger_value": "Ground Force headquarters in Northern Idaho anchors a network of manufacturing facilities across the Americas, Europe, Asia and Australia (parent Federal Signal per the existing SEC row)",
+   "evidence_row": 11066,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-16 (text plus raw source); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-ground-force-post-falls-id:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (Federal Signal's Mega Corp acquisition, completed Jan 2026, is company-level and adds an Albuquerque plant, not Post Falls work)",
+   "evidence_row": 11067,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-ground-force-post-falls-id:headcount",
+   "source_url": "",
+   "ledger_value": "unknown (a 2021 local report said more than 100 employees; older than 36 months, not used)",
+   "evidence_row": 11068,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Unknown row: no source on the pages opened today states the field (pages listed in method); nothing found that contradicts 'unknown'."
+  },
+  {
+   "claim_id": "p-ground-force-post-falls-id:opening_line",
+   "source_url": "",
+   "ledger_value": "Ground Force is headquartered in Post Falls, and a past Post Falls posting said its tanks need welders who can wire-feed weld in multiple positions, in and out of the tanks; how are you staffing tank welding at Post Falls today?",
+   "evidence_row": 11071,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by a stated row named in the reasoning or by that row's page (checked today); ends in a 'you' question; no pitch language."
+  }
+ ],
+ "score_notes": [
+  {
+   "plant": "p-jh-fletcher-huntington-wv",
+   "component": "score_part_mix",
+   "ledger_points": 15,
+   "should_be": "15 (8 if 'established product lines and the ability to build specialty equipment' is read as mixed, the Getman reading)",
+   "why": "Rubric call. 'Custom engineered and manufactured underground mining equipment' is stated by a single-plant company, so 15 is defensible under rule 4. It is inconsistent with Getman (8) on similar wording. Total 43 to 36 if changed; Low either way."
+  },
+  {
+   "plant": "p-lh-industrial-gillette-wy",
+   "component": "score_process",
+   "ledger_points": 20,
+   "should_be": "20 (12 if a plant line card naming GTAW counts as 'mixed with TIG')",
+   "why": "Rule 2 is about production postings. Both Gillette shop welder postings name only dual shield (FCAW), and the line card lists 'SMAW, GMAW, GTAW, submersible arc and pulse arc' as general multi-process capability. Total 68 to 60 if changed; Medium either way."
+  },
+  {
+   "plant": "p-metalcraft-mayville-wi",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "After row 10964: 4 counted postings (12 openings) open at once. 20 already; the labor reasoning should cite 4, not 2."
+  },
+  {
+   "plant": "p-klein-jacksonville-tx",
+   "component": "confidence",
+   "ledger_points": 2,
+   "should_be": 2,
+   "why": "The products correction touches no scored component. Part mix 8 already rests on an inferred company-level row; labor and scale rest on stated rows."
+  },
+  {
+   "plant": "p-ground-force-post-falls-id",
+   "component": "score_scale",
+   "ledger_points": 5,
+   "should_be": 5,
+   "why": "The multi-plant parent is stated (11066: network of manufacturing facilities; parent re-sourced to the 2026 Federal Signal release). Headcount unknown; the 2021 figure is outside 36 months."
+  }
+ ]
+}

@@ -38,6 +38,11 @@ const { chromium } = require('playwright');
   for (const f of p.frames()) {
     try { t += '\n' + await f.evaluate(() => document.body ? document.body.innerText : ''); } catch (e) {}
   }
+  if (process.argv[4] === 'raw') {
+    for (const f of p.frames()) {
+      try { t += '\n__RAW_SOURCE__\n' + (await f.content()).replace(/\\\//g, '/').replace(/&quot;/g, '"').replace(/&amp;/g, '&'); } catch (e) {}
+    }
+  }
   console.log('__STATUS__ ' + status);
   console.log(t);
   await b.close();
@@ -80,11 +85,11 @@ def plain(url, with_raw=False):
     return r.status_code, html_to_text(r.text) + (raw_tail(r.text) if with_raw else "")
 
 
-def browser(url):
+def browser(url, with_raw=False):
     with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as f:
         f.write(PW_JS)
         js = f.name
-    out = subprocess.run(["node", js, url, UA], capture_output=True, text=True, timeout=150)
+    out = subprocess.run(["node", js, url, UA] + (["raw"] if with_raw else []), capture_output=True, text=True, timeout=150)
     m = re.search(r"__STATUS__ (\d+)", out.stdout)
     status = int(m.group(1)) if m else 0
     text = out.stdout.split("\n", 1)[1] if m else out.stdout
@@ -101,7 +106,7 @@ def fetch(url, force_browser=False, with_raw=False):
                 return status, text, "plain"
         except Exception as e:  # noqa: BLE001
             print(f"# plain fetch failed: {e}", file=sys.stderr)
-    status, text = browser(url)
+    status, text = browser(url, with_raw)
     return status, text, "browser"
 
 

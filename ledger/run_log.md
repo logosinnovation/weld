@@ -746,3 +746,51 @@ Coordinator decisions applied now (mechanical):
   - Process Machinery Shelbyville KY (rank 34).
   - Closure 1 added 14 base plants, which is not a handful. **The list has not converged.**
   - Next: profile those two; run closure pass 2 on the 25 unverified leads, the 36 ECHO 333131 unverified facilities, and the profilers' leads (Werk-Brau 2500 and 4000 Fostoria, Virnig Fort Madison, Rockland Claysburg, Curry's other sites); run the round-1 fact-check over all 40 profiles in parallel.
+
+### 2026-11-16: mining round-1 fact-check, profiler E and closure pass 2
+
+- **Profiler E** (the two closure-1 plants that ranked inside the top 40):
+  - Process Machinery Shelbyville KY: **90 High**, confidence 5. A Structural Fitter posting gives parts from 200 to 50,000 lb (fits the 2026 analyst cell limit); MIG required; three welder/fitter roles open; $11.5M expansion with 30 jobs (Oct 2025). Scale 0 (Kentucky headcount 90).
+  - iRock Valley View OH: 48 Medium. GMAW/FCAW Welder/Fabricator open; part mix 8.
+  - 53 rows, 4 retired; 25 quotes found.
+- **Closure pass 2** (three finders): 44 plants, 649 rows, 0 rejected, 0 coverage gaps, 0 duplicates.
+  - **2A (leads):** 8 base, 9 excluded, 2 resolved, 12 unverified.
+    - Werk-Brau: the NLRB unit covers production at 2800 and 4000 Fostoria, and a 4000 inspector posting checks "welded products", so both sites weld. No source places the bucket line at 2800, so material stays 0. 4000 Fostoria is a new base record (p-werk-brau-findlay-oh-2).
+    - Matcor: Morton West, Morton East, Independence KS and Welcome NC, all Tier 1, new.
+    - Mellott Warfordsburg: Fabricator posting open 150 days.
+    - Bauer/GEFCO Conroe: boundary, drill rigs.
+    - Virnig Fort Madison: pre-production.
+    - Excluded: Caterpillar Houston PA (closed 2016), the old P&H site in West Milwaukee (demolition from Nov 2025), Paladin CustomWorks Dubuque and Davenport (installation sites), Gainwell/CAI Hico (repair), Rockland Claysburg (steel prep), Curry East Freedom (cylinder machining) and Curry Curryville (trucking center), Johnson Machine Works (water gates).
+    - WOTCO resolves to Austin Mills; GreyStone to Superior Columbus.
+  - **2B (36 unresolved EPA 333131 sites):** 8 base and 2 more found along the way, 11 excluded, 17 unverified.
+    - Base: Cogar Pearisburg (the former Bucyrus/Caterpillar site), Derrick Buffalo (Welder posting, tied to the site by ZIP), Excel Amarillo, MGL Lakeland, Pierce Pacific Portland, Supreme Stoneboro (undated postings), Vroom Tucson (boundary), Williams Bonne Terre and St. Louis, DCL Charlevoix.
+    - Excluded: Sandvik Bristol, Goodman Chicago and Universal Cedar Rapids (closed); DBT Norris City (service); Metso Manchester (test center); and others out of the vertical.
+  - **2C (EPA 333120 construction machinery, 599 active facilities reconciled by script):** 127 matched, 6 new base, 12 resolved to existing, 15 unverified, 102 triaged only, 346 skipped.
+    - Base: Gencor Orlando, Marquette and Chambersburg; Etnyre Oregon IL (2 MIG Welder postings, Oct 20); Schwing St. Paul (5 Welder postings, oldest about 168 days); Erie Strayer.
+    - Not yet researched: forestry grinders (Morbark, Bandit), Caterpillar LaGrange and York, Bomag Kewanee, M-B Companies, Allen Engineering and others.
+- **Quote checks:** every miss was a JSON-LD date on a page that only loads in a browser.
+  - **Tool fix:** the Playwright fallback in `fetch_page.py` now also returns the page source when raw text is asked for (`--check` asks for it).
+  - All 6 misses re-checked and found; Erie Strayer's 403 pages load in the browser.
+- **Round-1 fact-check (4 checkers, all 40 profiles): 71 corrected of 623 claims = 11.4%, 0 unreachable.**
+
+  | Checker | Corrected / checked | Rate |
+  |---|---|---|
+  | A | 12/155 | 7.7% |
+  | B | 17/147 | 11.6% |
+  | C | 29/155 | 18.7% |
+  | D | 13/166 | 7.8% |
+
+  - **Kinds:** quote does not support value 56, other 13, wrong plant or location 2; wrong process, wrong tier, closed business and invented fact 0. No corrected row changed a score component.
+  - **Repeated patterns:**
+    - (a) company- or brand-level product, parent and robot facts tagged stated at one site of a multi-site company (Klein, Werk-Brau, Getman, L&H, Ground Force, Tabor, McLanahan, Coperion);
+    - (b) legal suffixes and group names not on the cited page;
+    - (c) thin rows: the cited page carries the fact but the row value does not (Mega, Werk-Brau, Virnig, Rockland);
+    - (d) Workday `startDate` (the posting date) written as the job's "start date";
+    - (e) Vaia aggregator postings called "undated" although their JSON-LD dates them;
+    - (f) stated prospect_test "pass" rows that are judgements;
+    - (g) old figures shown as current (Litchfield's 2021 "250+").
+  - **Applied** with `apply_factcheck.py`: 552 confirmed, 71 corrected, 0 unmatched. Checker C's 18 rows whose plant field must not change were marked keep in a scratch copy. 41 plant fields changed, all intended.
+- **Status:** 302 plants (196 base, 42 profiled, 64 excluded). Profiled: 2 High, 26 Medium, 14 Low.
+- **Convergence:** closure 2 puts 6 more plants inside the top 40 under the ranking key (Mellott, Werk-Brau 4000, DCL, Cogar, Supreme, Virnig Fort Madison). Etnyre and Schwing have 2 and 5 open welder postings but rank about 105th because their relationship is new. Not converged.
+- **Advisor checkpoint:** fact error rate over 10%, and the list has not converged.
+- **Tool:** `tools/rank_mining.py` prints the documented ranking key for any vertical.
