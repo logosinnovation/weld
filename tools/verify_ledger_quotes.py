@@ -17,7 +17,7 @@ def ok(q, t):
     return bool(fr) and all(f in t for f in fr)
 urls = sorted({e["source_url"] for e in ev})
 def get(u):
-    try: st, t, how = fetch(u); return u, (st, norm(t))
+    try: st, t, how = fetch(u, with_raw=True); return u, (st, norm(t))
     except Exception: return u, (0, "")
 with ThreadPoolExecutor(10) as ex: pages = dict(ex.map(get, urls))
 res, retry = [], set()

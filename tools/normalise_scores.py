@@ -30,7 +30,8 @@ L = "ledger/"
 COMP = ["process", "material_part", "part_mix", "labor", "demand", "scale"]
 DIM = re.compile(r"\d[\d,\.]*\s*(?:-|to)?\s*\d*[\d,\.]*\s*(?:ft|feet|foot|in\b|inch|inches|\"|”|″|lb|lbs|pound|tons?(?![\s-]*(?:truck|haul|payload|class|capacity|rating|press|crane|lift|per|a |of payload))|mm|meter|m\b|'|’|′)", re.I)
 CID = re.compile(r"\b([pcv]-[a-z0-9-]+:[a-z_]+)")
-TODAY = "2026-11-13"
+import datetime
+TODAY = datetime.date.today().isoformat()
 
 
 def tier(t):

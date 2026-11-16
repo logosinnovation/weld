@@ -120,7 +120,7 @@ def verify_quotes(ev, label):
 
     def get(u):
         try:
-            st, txt, how = fetch(u)
+            st, txt, how = fetch(u, with_raw=True)
             return u, (st, norm(txt), how)
         except Exception as ex:  # noqa: BLE001
             return u, (0, "", f"error {ex}")

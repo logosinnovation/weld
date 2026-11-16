@@ -59,7 +59,14 @@ def html_to_text(html):
     return "\n".join(l.strip() for l in text.splitlines() if l.strip())
 
 
-def plain(url):
+def raw_tail(html):
+    """Raw page source with JSON/HTML escapes undone, so quotes taken from
+    JSON-LD (datePosted, streetAddress) or itemprop attributes can be checked."""
+    h = html.replace("\\/", "/").replace("&quot;", '"').replace("&amp;", "&").replace("&#39;", "'")
+    return "\n__RAW_SOURCE__\n" + h
+
+
+def plain(url, with_raw=False):
     ua = SEC_UA if "sec.gov" in url else UA
     r = requests.get(url, headers={"User-Agent": ua, "Accept-Language": "en-US,en;q=0.9"},
                      timeout=45, allow_redirects=True)
@@ -70,7 +77,7 @@ def plain(url):
             f.flush()
             out = subprocess.run(["pdftotext", "-layout", f.name, "-"], capture_output=True, text=True)
             return r.status_code, out.stdout
-    return r.status_code, html_to_text(r.text)
+    return r.status_code, html_to_text(r.text) + (raw_tail(r.text) if with_raw else "")
 
 
 def browser(url):
@@ -84,13 +91,13 @@ def browser(url):
     return status, text
 
 
-def fetch(url, force_browser=False):
+def fetch(url, force_browser=False, with_raw=False):
     if not force_browser:
         try:
-            status, text = plain(url)
+            status, text = plain(url, with_raw)
             blocked = status in (401, 403, 406, 429, 503) or "just a moment" in text[:400].lower() \
                 or "enable javascript" in text[:600].lower()
-            if not blocked and status < 400 and len(text) > 300:
+            if not blocked and status < 400 and len(text.split("\n__RAW_SOURCE__\n")[0]) > 300:
                 return status, text, "plain"
         except Exception as e:  # noqa: BLE001
             print(f"# plain fetch failed: {e}", file=sys.stderr)

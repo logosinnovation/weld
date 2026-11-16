@@ -706,3 +706,43 @@ Coordinator decisions applied now (mechanical):
      - Mechanical top 40 printed. It includes Komatsu Milwaukee (2nd), Cat South Milwaukee (6th), Komatsu Peoria (7th) and Cat Decatur (8th).
   5. **Duplicates:** none new. Telsmith/Super Steel Mequon share an address because Super Steel runs the old Telsmith plant (Telsmith excluded). Superior Morris has three adjacent Highway 28 records, for the profilers to confirm.
   6. **Tools:** `normalise_scores.py` now has mining product words, and a tonnage that is a payload, capacity, rating or class no longer counts as a part weight; no poles or ships score changed. `write_summary.py` has mining round labels. Summary and verticals.csv updated.
+
+### 2026-11-16: mining Stages D-E merged (four profilers, closure pass 1)
+
+- **Merged** (`apply_removals` first, then `merge_inbox --verify-quotes`):
+  - **Profilers A-D:** 40 plants profiled, none excluded; 880 evidence rows added, 48 retired.
+  - **Closure 1:** 21 new plants (14 base, 7 excluded) and 5 updated; 317 rows; 1 link; 7 rows retired. 0 rejected, 0 coverage gaps, 0 duplicates.
+- **Quote check:** 448 found, 22 not found, 3 unreachable.
+  - 16 of the not-found quotes are posting dates and street addresses that sit only in the page's JSON-LD or itemprop attributes (Astec, Paycom, Paylocity, Doosan, UltiPro, Rippling, Betterteam). All 16 were confirmed by curl against the raw page source.
+  - **Tool fix:** `fetch_page.fetch(..., with_raw=True)` now appends the unescaped raw source, and `merge_inbox` and `verify_ledger_quotes` use it, so such quotes verify from now on.
+  - The rest are on pages that 404 now (an expired Ground Force posting) or are duplicate rows; they go to the fact-check.
+- **Closure status changes applied:**
+  - Excluded: Hensley Dallas (foundry), Komatsu Franklin (engineering and product hub, inferred and reversible), Paladin Akron (customer center).
+  - Kept: Komatsu Chattanooga (welding robots and booms, July 2026), Komatsu Lebanon (continuous miners welded on site), Manitou Yankton (telehandlers and articulated loaders; no split stated).
+  - Caterpillar Clayton stays base with prospect_test unknown and is not to be profiled until welding is shown.
+  - The consultation 9 boundary note was meant for Peterson Eugene (grinders), not p-astec-eugene-or (JCI crushers); the closure finder applied it to Peterson.
+- **Coordinator rulings on the profilers' questions:**
+  1. **Headcount older than 36 months earns no scale points** (extends the Sabre Bossier 2017 precedent).
+     - Terex Durand's Aug 2023 "over 100" falls outside, so scale goes 10 to 5 (total 53).
+     - Austin Mills (Mar 2024), Deere Davenport (Oct 2024), Komatsu Peoria (Jun 2026) and Bobcat Bismarck (Oct 2025) are inside.
+  2. **Relationship rule, clarified:**
+     - An OEM plant whose stated products are the machines themselves stays **new**, even if it fabricates its own buckets.
+     - Lookalike of Mine Rite is for plants that sell attachments, buckets, bodies or tanks as products, or (consultation 9) build mining-machine structures.
+     - Applying this: Deere Davenport and Bobcat Bismarck go to new. Cat Victoria stays a lookalike (it sells attachments for Cat machines). Komatsu Lebanon goes to a lookalike (continuous miners).
+     - Construction-attachment makers (Paladin, Werk-Brau, Virnig, Rockland, Bobcat Litchfield, TAG) stay lookalikes: buckets and attachments are products under rule 6.
+     - Coperion Kansas City is customer_other_plant (same parent as the Schenck successor); its stale lookalike_of was cleared.
+  3. **Werk-Brau material 0** (normaliser): the bucket sizes are attributed to "made in Findlay" and Werk-Brau has three Fostoria Ave sites, so this is a shared-city attribution, the same as rule 3 for postings. It would be 88 High if a source places the buckets at 2800 Fostoria. Lead: the other two sites.
+  4. **Conditional overtime is not mandatory overtime.** "Potential for mandatory OT" and "Fridays as needed" earn labor 12, not 20 (Bobcat Litchfield, Virnig).
+  5. **A welder posting with a robot in the title counts when its text requires manual welding** (Virnig Robotic Welder; Metalcraft Beaver Dam and Fall River). Pure robot-operator roles are still listed but not counted.
+  6. **"Wire feed" without MIG or flux-core named earns process 0** (Ground Force), the same as the stated rule.
+  7. **Undated aggregator Welder postings** set process as a standing fact (Claremore precedent) but earn no labor points (Coperion Whitewater and Kansas City).
+- **Normaliser:** 13 plants changed. Werk-Brau 88 to 68; Durand 58 to 53. Eleven plants lost confidence points because their score rows cite unknown fields: a component resting on an unknown headcount or part size earns no confidence. `normalise_scores.py` now stamps overrides with today's date instead of a fixed one.
+- **Scores (40 profiled):** 1 High, 25 Medium, 14 Low.
+  - Material is 0 on 38 of 40: mining and construction sources almost never state a welded part's size or weight. Payloads, bucket capacities and machine classes are not part sizes under mining rule 1.
+  - So the mining ceiling without a stated part size is 80, and most strong plants land at 53-68.
+  - Mine Rite (the known customer) scores 23: Path's own case-study pages now 404 and it has no dated posting, the same missing-data pattern as the Low pole customers.
+- **Convergence check (done rule):** under the documented ranking key (relationship, tier, stated posting rows, headcount, sources), two closure plants would have ranked inside the top 40:
+  - iRock Valley View OH (rank 25, open Welder/Fabricator posting);
+  - Process Machinery Shelbyville KY (rank 34).
+  - Closure 1 added 14 base plants, which is not a handful. **The list has not converged.**
+  - Next: profile those two; run closure pass 2 on the 25 unverified leads, the 36 ECHO 333131 unverified facilities, and the profilers' leads (Werk-Brau 2500 and 4000 Fostoria, Virnig Fort Madison, Rockland Claysburg, Curry's other sites); run the round-1 fact-check over all 40 profiles in parallel.
