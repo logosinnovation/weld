@@ -847,3 +847,17 @@ Coordinator decisions applied now (mechanical):
   - profiler F on Mellott, Derrick, Supreme, Schwing and Etnyre;
   - the bounded final closure pass (3A: the 102 triaged 333120 rows plus the named leads; 3B: NAICS 333922 by script).
   - Then a rotated confirming fact-check round, including Process Machinery and iRock.
+
+## 2026-11-16: mining sweep, profiler F and closure pass 3 merged (Stages D-E, closure)
+
+- **Merged** (0 rows rejected, 0 coverage gaps, 0 duplicates in every file; each agent's dry run found every stated quote on its page):
+  - **mining-sweep-1 and mining-sweep-2:** the attribution sweep across all 42 profiles. 122 evidence rows replaced under their existing keys and 4 added, 37 plants updated, 21 opening lines replaced. No score points moved; the normaliser changed only Werk-Brau's confidence, 5 to 4 (its production_type rows are now inferred, company-level).
+  - **mining-profiler-F:** Etnyre Oregon IL 68, Schwing St. Paul MN 61, Mellott Warfordsburg PA 60, Supreme Stoneboro PA 55, Derrick Buffalo NY 48 (all Medium). 115 rows added, 6 retired to ledger/audit/retired-evidence.csv.
+  - **mining-closure-3A** (the 102 not-attempted ECHO 333120 rows plus 5 named leads): 57 plants (36 base, 7 of them boundary; 21 excluded), 835 rows. 38 left unverified, 11 skipped with a reason.
+  - **mining-closure-3B** (ECHO 333922, 612 active facilities, reconciled by script): 11 plants (10 base, 1 excluded), 174 rows. 25 matched, 83 unverified (67 not attempted), 492 skipped with a reason.
+- **Counts:** 370 mining plants: 47 profiled, 232 base, 91 excluded (279 included). Profiled tiers: 3 High (Process Machinery 90, Werk-Brau 88, Deere Davenport 72), 30 Medium, 14 Low.
+- **Consultation 10 done test: failed.** The bounded final pass yielded 46 new base plants, not a handful. Four new base plants have a dated welder posting on the company's own board that names the site: Exodus Superior WI (2026-10-02), PPI Lenox IA (2026-10-21), Syntron Saltillo MS (two, 2026-11-02) and West River Oakwood VA (JSON-LD 2022-10-07, probably evergreen). Six more have undated own-board postings naming the site (M-B New Holstein, G.R. Trussville, HEM Grundy Center, Allied Sherwood, Quality Urbandale, Bandit Remus). Mining therefore ships as **partial**, and the user is asked before any further mining research.
+- **Open limits for the partial label:** 38 unverified 333120 rows and 83 unverified 333922 rows (67 not attempted); Arcosa Shoring Union City MI (two dated Fitter/Welder postings, site not settled); PPI Pella (postings name only "Pella, IA", several PPI sites there); Vermeer Freeman SD (aggregator posting only, own board unreachable).
+- **Leads for other verticals:** Kloeckner Paton IA (agricultural), Intercontinental Engineering Riverside MO (shipbuilding-naval), Etnyre and Schwing trailer and truck lines (trailers, truck bodies).
+- **Sweep notes for the record:** TAG's two Discovery Dr facilities treated as one campus (about 15 m apart, interpolated geocodes), to be confirmed in round 2. Process Machinery's careers page lists an "Ohio Branch" in Columbus; if it produces, its company-level rows must become inferred (round 2 checks).
+- **Next:** round-2 confirming fact-check, rotated (workflow mining-factcheck-round-2): checker A takes round-1 B's plants, B takes D's, C takes A's, D takes C's, and E takes the seven never-checked plants (Process Machinery, iRock and profiler F's five).
