@@ -1,0 +1,1239 @@
+{
+ "vertical": "v-enclosures-battery-generator",
+ "auditor": "list-auditor-B",
+ "angle": "registries and geography: EPA ECHO by NAICS 335312/332420/332322/332313 (FRS REST down), state economic-development and governor releases 2023-26 (NC, AZ, ID, FL, GA, KY, IN, WI, IL), welder/fabricator job postings naming generator enclosures or fuel tanks by city, UL/STI tank listings, DOE/SEIA/ACP storage manufacturing announcements",
+ "searches_run": 66,
+ "searches_until_dry": 66,
+ "notes": "Independent list built without opening ledger/plants.csv, evidence.csv, links.csv, ledger/inbox, the scratchpad of other agents, or any ledger/audit file about this vertical; an ls of ledger/audit showed file names only, and one unrelated audit file (shipbuilding list-audit B) was opened only to copy the JSON shape. Registry angle: EPA FRS REST returned a maintenance message, so EPA ECHO get_facilities was used instead (active facilities, NAICS 335312: 625 of 710 rows paged; 332420: 308; 332322: 1,166; 332313: 604). ECHO rows were keyword-filtered and cross-matched by name and city to web finds; ECHO contributed Freeman Enclosure Systems (Batavia OH), Tramont (two Milwaukee addresses), Chillicothe Metal (4507 E Rome Rd), Fidelity (Ocala), Taylor Power (Richland MS), Robinson (De Pere), Koontz-Wagner Caldwell, Generac and Kohler/Discovery Energy sites, MTU/Rolls-Royce Mankato, Cummins Fridley, Blue Star. UL Product iQ needs a sign-in, so UL sub-base tank listings were not queried directly (logged as failed source); a UL certificate on modweldco.com was used for Modern Welding. Pages that blocked or failed: chillicothemetal.com and com-fab.com (proxy 502), manufacturing-today.com, azcommerce.com, yanceybros.com, ir.fluenceenergy.com, energy-storage.news, thomasnet news (Cloudflare 403), wardtank.com and speedytanks.com (TLS), nvent.com subdomains (502), web.archive.org (429 under parallel load; Generac Eagle quote confirmed FOUND in a single manual --check). Classification: announced or ramping plants (Fidelity McGregor TX, Generac Belvidere IL opening Q1 2027, Rehlko Kenosha WI late 2026, Yancey Cordele GA, AVL Charlotte NC, Phoenix Products new Zoo Parkway building) are kept as in_definition rows with status in products. Genset OEM plants are in only where a source ties enclosure/tank/frame fabrication to that plant (Generac Eagle, Rehlko Mosel, Cummins Fridley - unverified); engine plants and genset assembly plants without such a source are out (rule 2). BESS cell/module and container-assembly plants with no stated welding are out (rule 5) except Tesla (hiring welders) and GTI (welding stated). Fluence's Goodyear AZ enclosure plant is a contract-manufacturing site; GTI Energy opened a BESS enclosure plant in Goodyear on the same date (May 20, 2025), but no source read here names GTI as Fluence's operator, so Fluence is not listed separately. Lectrus.com now redirects to nVent; Harvard Integrations (Hill Companies) operates in Tea SD, where Lectrus had a plant. Dryness: 66 web searches. The last 8 searches yielded 3 new plants (Coastline Power Solutions, Yancey Cordele, Harvard Integrations), the last 5 yielded 1, the last 2 yielded 0. Treat the list as near-dry for generator-enclosure/tank fabricators; BESS enclosure contract fabrication remains thinly documented publicly. Dates: retrieved 2026-11-16.",
+ "search_log": [
+  {
+   "n": 1,
+   "query": "generator sub-base fuel tank manufacturer UL 142 USA plant",
+   "new_plants": 3
+  },
+  {
+   "n": 2,
+   "query": "sound attenuated generator enclosure manufacturer facility welding",
+   "new_plants": 1
+  },
+  {
+   "n": 3,
+   "query": "BESS enclosure manufacturing facility US steel enclosures announced",
+   "new_plants": 2
+  },
+  {
+   "n": 4,
+   "query": "Phoenix Products plant location",
+   "new_plants": 0
+  },
+  {
+   "n": 5,
+   "query": "generator enclosures manufacturer expansion new facility jobs 2025",
+   "new_plants": 6
+  },
+  {
+   "n": 6,
+   "query": "sub-base tanks enclosures manufacturer Texas packager",
+   "new_plants": 4
+  },
+  {
+   "n": 7,
+   "query": "BESS container enclosure contract manufacturer welding",
+   "new_plants": 2
+  },
+  {
+   "n": 8,
+   "query": "Tesla Megapack Brookshire Lathrop",
+   "new_plants": 2
+  },
+  {
+   "n": 9,
+   "query": "SEIA storage manufacturing facilities list",
+   "new_plants": 0
+  },
+  {
+   "n": 10,
+   "query": "Pritchard Brown Baltimore",
+   "new_plants": 0
+  },
+  {
+   "n": 11,
+   "query": "Tramont Pryco subbase tank",
+   "new_plants": 0
+  },
+  {
+   "n": 12,
+   "query": "welder job generator enclosures MIG",
+   "new_plants": 2
+  },
+  {
+   "n": 13,
+   "query": "Northwest Enclosures (posting employer)",
+   "new_plants": 0
+  },
+  {
+   "n": 14,
+   "query": "Hennig plant locations",
+   "new_plants": 0
+  },
+  {
+   "n": 15,
+   "query": "Fidelity Manufacturing Waco",
+   "new_plants": 1
+  },
+  {
+   "n": 16,
+   "query": "Mission Critical Group JTS Idaho",
+   "new_plants": 2
+  },
+  {
+   "n": 17,
+   "query": "AVL Manufacturing Charlotte",
+   "new_plants": 0
+  },
+  {
+   "n": 18,
+   "query": "Caterpillar genset enclosure plant Griffin",
+   "new_plants": 2
+  },
+  {
+   "n": 19,
+   "query": "Cat dealer enclosure/tank fabrication shops",
+   "new_plants": 0
+  },
+  {
+   "n": 20,
+   "query": "generator enclosures fuel tanks OH/PA/IN/MI",
+   "new_plants": 2
+  },
+  {
+   "n": 21,
+   "query": "governor-announced energy storage enclosure plants 2025-26",
+   "new_plants": 1
+  },
+  {
+   "n": 22,
+   "query": "South Korean ESS supplier Indiana 2026",
+   "new_plants": 0
+  },
+  {
+   "n": 23,
+   "query": "LG ES Vertech container assembly IL/AZ",
+   "new_plants": 1
+  },
+  {
+   "n": 24,
+   "query": "Fluence Goodyear contract manufacturer",
+   "new_plants": 0
+  },
+  {
+   "n": 25,
+   "query": "GTI Fabrication ISO container factory",
+   "new_plants": 2
+  },
+  {
+   "n": 26,
+   "query": "BESS enclosures Texas made in USA",
+   "new_plants": 1
+  },
+  {
+   "n": 27,
+   "query": "Generac enclosure plants Wisconsin",
+   "new_plants": 3
+  },
+  {
+   "n": 28,
+   "query": "Rehlko eFRAME Wisconsin facility",
+   "new_plants": 2
+  },
+  {
+   "n": 29,
+   "query": "Cummins Fridley / Cat Lafayette enclosures",
+   "new_plants": 1
+  },
+  {
+   "n": 30,
+   "query": "Enercon East Peoria Generac",
+   "new_plants": 0
+  },
+  {
+   "n": 31,
+   "query": "genset day tank manufacturers UL 142",
+   "new_plants": 1
+  },
+  {
+   "n": 32,
+   "query": "generator base tanks UL 142 manufacturers",
+   "new_plants": 1
+  },
+  {
+   "n": 33,
+   "query": "container modifiers BESS/genset enclosures",
+   "new_plants": 3
+  },
+  {
+   "n": 34,
+   "query": "genset packagers fabricating base frames/enclosures",
+   "new_plants": 3
+  },
+  {
+   "n": 35,
+   "query": "HOLT CAT packaging Waco/San Antonio",
+   "new_plants": 0
+  },
+  {
+   "n": 36,
+   "query": "Koontz-Wagner Caldwell",
+   "new_plants": 1
+  },
+  {
+   "n": 37,
+   "query": "BESS plants Powin/FlexGen/Prevalon/Wartsila",
+   "new_plants": 1
+  },
+  {
+   "n": 38,
+   "query": "welder postings sub-base/base tanks 2026",
+   "new_plants": 1
+  },
+  {
+   "n": 39,
+   "query": "Cat dealers Carolina/Thompson/Foley/Ziegler/Altorfer",
+   "new_plants": 0
+  },
+  {
+   "n": 40,
+   "query": "generator enclosures MN/TN/GA/AL",
+   "new_plants": 3
+  },
+  {
+   "n": 41,
+   "query": "generator enclosures CA/WA/OR/CO/UT",
+   "new_plants": 0
+  },
+  {
+   "n": 42,
+   "query": "BESS assembly plants TX/GA/TN 2025-26",
+   "new_plants": 3
+  },
+  {
+   "n": 43,
+   "query": "Lectrus plants",
+   "new_plants": 2
+  },
+  {
+   "n": 44,
+   "query": "Stewart & Stevenson Houston packaging",
+   "new_plants": 1
+  },
+  {
+   "n": 45,
+   "query": "Falcon/BMarko locations",
+   "new_plants": 0
+  },
+  {
+   "n": 46,
+   "query": "Generac Eagle base tanks",
+   "new_plants": 0
+  },
+  {
+   "n": 47,
+   "query": "mtu Mankato enclosures/tanks",
+   "new_plants": 1
+  },
+  {
+   "n": 48,
+   "query": "Cat Lafayette/Corinth gensets",
+   "new_plants": 1
+  },
+  {
+   "n": 49,
+   "query": "PSI enclosures Wisconsin",
+   "new_plants": 3
+  },
+  {
+   "n": 50,
+   "query": "EGSA enclosure/tank members",
+   "new_plants": 1
+  },
+  {
+   "n": 51,
+   "query": "Superior Manufacturing / Freeman",
+   "new_plants": 1
+  },
+  {
+   "n": 52,
+   "query": "nVent Trachte BESS",
+   "new_plants": 1
+  },
+  {
+   "n": 53,
+   "query": "Itasca IL enclosure-builder postings",
+   "new_plants": 0
+  },
+  {
+   "n": 54,
+   "query": "Magnolia TX generator enclosures/tanks",
+   "new_plants": 3
+  },
+  {
+   "n": 55,
+   "query": "Canadian Solar Shelbyville / Gotion Manteno",
+   "new_plants": 1
+  },
+  {
+   "n": 56,
+   "query": "new US BESS enclosure plant 2026",
+   "new_plants": 0
+  },
+  {
+   "n": 57,
+   "query": "LG ES container site locations",
+   "new_plants": 0
+  },
+  {
+   "n": 58,
+   "query": "Pryco / Simplex day tanks",
+   "new_plants": 2
+  },
+  {
+   "n": 59,
+   "query": "generator enclosures NJ/NY/PA/MA",
+   "new_plants": 0
+  },
+  {
+   "n": 60,
+   "query": "sub-base tank fabricators OK/LA/MO/KS",
+   "new_plants": 0
+  },
+  {
+   "n": 61,
+   "query": "generator enclosures/tanks FL/GA/Carolinas",
+   "new_plants": 1
+  },
+  {
+   "n": 62,
+   "query": "BESS skid contract fabricators OH/MI/IN/PA",
+   "new_plants": 0
+  },
+  {
+   "n": 63,
+   "query": "Yancey Engineered Solutions Griffin",
+   "new_plants": 1
+  },
+  {
+   "n": 64,
+   "query": "generator enclosures IA/NE/MO/KY",
+   "new_plants": 1
+  },
+  {
+   "n": 65,
+   "query": "BESS enclosure fabricators MN/IA/MO/Carolinas",
+   "new_plants": 0
+  },
+  {
+   "n": 66,
+   "query": "Cat dealer packaging West/Rockies",
+   "new_plants": 0
+  }
+ ],
+ "plants": [
+  {
+   "name": "Hennig Power Protection",
+   "parent_company": "Hennig Inc.",
+   "city": "Machesney Park",
+   "state": "IL",
+   "products": "custom generator enclosures (data center), fuel tanks with secondary containment, switchgear housings",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://hennigpower.com/",
+   "quote": "Hennig Power Protection's experience, customer commitment, quality, 1,000,000+ sq ft of capacity, and service are just some of the reasons to make Hennig your sole supplier of backup power generator enclosures.",
+   "quote_verified": true
+  },
+  {
+   "name": "Phoenix Products",
+   "parent_company": "Ring Power Corporation (Cat dealer)",
+   "city": "Jacksonville",
+   "state": "FL",
+   "products": "custom generator enclosures, fuel tanks, day tanks; relocating from 89,000 sq ft plant to new 231,000 sq ft plant at 1511 Zoo Parkway (completion expected May 2026; treated as one plant)",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://jaxusa.org/news/phoenix-products-announces-ambitious-expansion-in-jacksonville/",
+   "quote": "relocate from its current 89,000 square-foot facility to a new 231,000 square-foot state-of-the-art manufacturing facility at 1511 Zoo Parkway Building 600, Jacksonville, FL 32218.",
+   "quote_verified": true
+  },
+  {
+   "name": "Tramont Manufacturing",
+   "parent_company": "Tramont Manufacturing LLC",
+   "city": "Milwaukee",
+   "state": "WI",
+   "products": "genset enclosures (sound attenuated, weather protected), sub-base tanks, day tanks, main tanks; ECHO lists two Milwaukee sites (326 E Keefe Ave; 3637 N Holton St)",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.tramont.com/",
+   "quote": "Tramont | Custom Fuel tanks and enclosures for power systems",
+   "quote_verified": true
+  },
+  {
+   "name": "Fidelity Manufacturing",
+   "parent_company": "Fidelity Manufacturing LLC (employee-owned)",
+   "city": "Ocala",
+   "state": "FL",
+   "products": "generator packages: enclosures, fuel tanks, subbase tanks, stairs and platforms",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://fidelitymfg.com/",
+   "quote": "Our goal is to be the top team in the generator packaging industry, providing superior solutions, high quality products, and exceptional customer service.",
+   "quote_verified": true
+  },
+  {
+   "name": "Fidelity Manufacturing Texas plant",
+   "parent_company": "Fidelity Manufacturing LLC",
+   "city": "McGregor",
+   "state": "TX",
+   "products": "new 200,000 sq ft plant (Waco/McGregor) for generator enclosures and fuel tanks; opening 2026, status not confirmed",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "",
+   "quote": "",
+   "quote_verified": false
+  },
+  {
+   "name": "AVL Manufacturing (AVL USA)",
+   "parent_company": "AVL Manufacturing Inc. (Canada)",
+   "city": "Charlotte",
+   "state": "NC",
+   "products": "enclosures for industrial/standby power generators (data centers); new plant announced May 2025",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://governor.nc.gov/news/press-releases/2025/05/22/governor-stein-announces-industrial-manufacturer-will-create-more-325-jobs-charlotte",
+   "quote": "AVL Manufacturing (AVL USA, Inc.) will establish a new production facility in Charlotte to build enclosures for industrial power generators, creating more than 325 jobs.",
+   "quote_verified": true
+  },
+  {
+   "name": "Robinson Inc.",
+   "parent_company": "Robinson Inc. (employee-owned)",
+   "city": "De Pere",
+   "state": "WI",
+   "products": "contract fabricator: acoustically engineered generator enclosures, BESS enclosures, modular skids, switchgear enclosures",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.robinsoninc.com/battery-energy-storage-system/",
+   "quote": "Robinson delivers fully equipped battery energy storage systems (BESS) with performance capabilities that go beyond the ISO containers of the past.",
+   "quote_verified": true
+  },
+  {
+   "name": "Pritchard Brown",
+   "parent_company": "Pritchard Brown LLC",
+   "city": "Baltimore",
+   "state": "MD",
+   "products": "custom genset enclosures (weatherproof, sound attenuated, walk-in), fuel tank bases",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.pritchardbrown.com/",
+   "quote": "We lead the industry and set the standards in quality and innovation for custom designed protective enclosures, fuel tank bases, and sound attenuation.",
+   "quote_verified": true
+  },
+  {
+   "name": "Global Power Components",
+   "parent_company": "Global Power Components (GPC)",
+   "city": "Milwaukee",
+   "state": "WI",
+   "products": "UL 142/2085 fuel tanks, large generator enclosures, trailers, containers, modular equipment centers",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.globalpowercomponents.com/about-gpc/",
+   "quote": "Whether you have the need for a modular equipment building, a large generator enclosure, fuel tank, trailer or silencer, our professional staff of engineers, electricians, and metal fabricators will meet or exceed your project\u2019s needs.",
+   "quote_verified": true
+  },
+  {
+   "name": "Chillicothe Metal Co.",
+   "parent_company": "Chillicothe Metal Co. Inc.",
+   "city": "Chillicothe",
+   "state": "IL",
+   "products": "environmental (generator) enclosures, packaged generator sets, trailers, fuel tank bases (ECHO NAICS 332322 at 4507 E. Rome Rd.)",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.agriculture-xprt.com/companies/chillicothe-metal-co-inc-57322/",
+   "quote": "Since 1963, Chillicothe Metal Company (CMCO) has been the world\u2019s leading manufacturer of environmental enclosures, packaged generator sets, trailers, fuel tank bases, electrical controls, and other products",
+   "quote_verified": true
+  },
+  {
+   "name": "Com-Fab Inc.",
+   "parent_company": "Com-Fab Inc.",
+   "city": "Plain City",
+   "state": "OH",
+   "products": "generator subbase tanks, generator enclosures, generator trailers",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://phoenix.aws.mapquest.com/us/ohio/com-fab-352212979",
+   "quote": "Com-Fab, located in Plain City, OH, specializes in manufacturing products for the standby generator industry.",
+   "quote_verified": true
+  },
+  {
+   "name": "HOLT Manufacturing",
+   "parent_company": "HOLT CAT (Cat dealer)",
+   "city": "Waco",
+   "state": "TX",
+   "products": "enclosures for generator packages, oilfield engine skids, Spray King water tanks",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.constructionequipmentguide.com/holt-produces-full-line-of-spray-king-suite-of-tank-solutions-in-waco/49855?markdown=1",
+   "quote": "HOLT Manufacturing is based in a 100,000 sq. ft. fabrication facility in Waco, Texas.",
+   "quote_verified": true
+  },
+  {
+   "name": "Enercon Engineering",
+   "parent_company": "Generac Holdings (acquisition agreed Feb 2026)",
+   "city": "East Peoria",
+   "state": "IL",
+   "products": "generator enclosures, switchgear, power distribution; 160,000 sq ft plant",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.generac.com/about/news/generac-signs-agreement-to-acquire-enercon-accelerating-growth-in-data-center-and-switchgear-markets/",
+   "quote": "Founded in 1975 and headquartered in East Peoria, Illinois, Enercon designs and manufactures custom power equipment and industrial enclosures for demanding, high-reliability applications.",
+   "quote_verified": true
+  },
+  {
+   "name": "Generac Belvidere facility",
+   "parent_company": "Generac Holdings",
+   "city": "Belvidere",
+   "state": "IL",
+   "products": "enclosure assembly and final packaging for large-MW generators; opens Q1 2027 (not yet operating)",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://finviz.com/news/361594/generac-acquires-belvidere-illinois-facility-to-expand-large-megawatt-generator-packaging-capacity",
+   "quote": "the new facility will complement Enercon's operations by expanding capacity for enclosure assembly and final packaging, delivering shipment-ready units to customers.",
+   "quote_verified": true
+  },
+  {
+   "name": "Rehlko Kenosha facility",
+   "parent_company": "Rehlko (formerly Kohler Energy)",
+   "city": "Kenosha",
+   "state": "WI",
+   "products": "assembly of eFRAME generator enclosures up to 4 MW; initial production late 2026 (assembly; welding not confirmed)",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://biztimes.com/rehlko-capitalizing-on-data-center-growth-with-new-kenosha-facility/",
+   "quote": "Rehlko is planning to occupy a facility on 128th Avenue in Kenosha, just west of highway I-41 near the Kenosha Regional Airport.",
+   "quote_verified": true
+  },
+  {
+   "name": "JTS Abilene",
+   "parent_company": "JTS / Mission Critical Group",
+   "city": "Abilene",
+   "state": "TX",
+   "products": "large diesel fuel tanks (up to 60 ft, 3,000-10,000 gal) for generator packages",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://swooped.co/job-postings/tank-welder-abilene-jts-857cf",
+   "quote": "This role involves fabricating large fuel tanks\u2014up to 60 feet long and 13 feet wide\u2014designed to hold 3,000 to 10,000 gallons of diesel fuel.",
+   "quote_verified": true
+  },
+  {
+   "name": "JTS Nampa 1",
+   "parent_company": "JTS / Mission Critical Group",
+   "city": "Nampa",
+   "state": "ID",
+   "products": "integrated generator enclosures and modular power systems; 172,000 sq ft plant opened 2025",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.areadevelopment.com/newsitems/6-12-2025/johnson-thermal-systems-nampa-idaho.shtml",
+   "quote": "The investment includes the construction of a new 172,000-square-foot manufacturing facility located in the Adler Midland Industrial Park.",
+   "quote_verified": true
+  },
+  {
+   "name": "JTS Caldwell (Johnson Thermal Systems)",
+   "parent_company": "JTS / Mission Critical Group",
+   "city": "Caldwell",
+   "state": "ID",
+   "products": "generator packaging: frames and enclosures for power generation equipment",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.petersonholding.com/sites/holdings/files/peterson-anniversary/files/basic-html/page132.html",
+   "quote": "Johnson Thermal Systems is one of Peterson",
+   "quote_verified": true
+  },
+  {
+   "name": "GTI Energy Goodyear",
+   "parent_company": "GTI Fabrication",
+   "city": "Goodyear",
+   "state": "AZ",
+   "products": "BESS steel enclosures: raw steel processing, welding, electrical integration, battery installation; 530,000 sq ft",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.gpec.org/news/press-releases/gti-energy-announces-manufacturing-expansion-in-goodyear/",
+   "quote": "from raw steel processing and welding to electrical integration, battery installation, and end-of-line testing.",
+   "quote_verified": true
+  },
+  {
+   "name": "GTI Energy Phoenix",
+   "parent_company": "GTI Fabrication",
+   "city": "Phoenix",
+   "state": "AZ",
+   "products": "energy storage system fabrication and prototype development",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.gpec.org/news/press-releases/gti-energy-announces-manufacturing-expansion-in-goodyear/",
+   "quote": "It complements the company\u2019s existing Phoenix facility, which remains focused on energy storage system fabrication and prototype development.",
+   "quote_verified": true
+  },
+  {
+   "name": "Sea Box",
+   "parent_company": "Sea Box Inc.",
+   "city": "Cinnaminson",
+   "state": "NJ",
+   "products": "boundary: ISO container modifier with stated battery storage enclosure line and generator containers",
+   "in_definition": true,
+   "boundary": true,
+   "why_not": "",
+   "url": "https://seabox.com/news/detail/batteries-in-a-box",
+   "quote": "The versatile nature and practicality of an ISO shipping container translates seamlessly as a battery storage enclosure.",
+   "quote_verified": true
+  },
+  {
+   "name": "Maysteel Industries",
+   "parent_company": "Maysteel",
+   "city": "Menomonee Falls",
+   "state": "WI",
+   "products": "boundary: thin-sheet NEMA enclosures and cabinets for energy storage and generators; plants in WI, VA, TX, CO (which plant builds BESS not stated)",
+   "in_definition": true,
+   "boundary": true,
+   "why_not": "",
+   "url": "https://maysteel.com/battery-storage-enclosures",
+   "quote": "With in-house welding, forming, stamping and finishing capabilities, you can count on Maysteel to deliver the precise solution for your energy storage needs.",
+   "quote_verified": true
+  },
+  {
+   "name": "Modern Welding Company of Owensboro",
+   "parent_company": "Modern Welding Company Inc.",
+   "city": "Owensboro",
+   "state": "KY",
+   "products": "UL-142 generator base tanks and rectangular tanks for backup power",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.modweldco.com/projects/ul-142-modern-rectank",
+   "quote": "Modern Welding Company of Owensboro offered to build the double wall rectangular test tank that would be subjected to two tests (top load and hydrostatic), witnessed by Underwriters Laboratories and the Steel Tank Institute.",
+   "quote_verified": true
+  },
+  {
+   "name": "Taylor Power Systems",
+   "parent_company": "Taylor Power Systems Inc.",
+   "city": "Richland",
+   "state": "MS",
+   "products": "towable and stationary diesel gensets with sound-attenuated enclosures and dual-containment fuel cells (ECHO NAICS 332322)",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.taylorpower.com/",
+   "quote": "Towable, Tier 4 Final diesel power from 25 kW\u20131250 kW\u2014with sound-attenuated enclosures, dual-containment fuel cells, multi-voltage switching, and 24/7 nationwide support",
+   "quote_verified": true
+  },
+  {
+   "name": "Western Power Products (WPP)",
+   "parent_company": "Western Power Products",
+   "city": "unknown",
+   "state": "unknown",
+   "products": "custom genset packaging, ISO container power modules, skids, enclosures, fuel tanks",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.wpowerproducts.com/custom-packaging/",
+   "quote": "With our experienced engineering staff, extensive workshops and fabrication facilities, skilled technicians and reliable product support team, WPP has the capabilities to help you get the most out of your power investment.",
+   "quote_verified": true
+  },
+  {
+   "name": "Generac Eagle plant",
+   "parent_company": "Generac Holdings",
+   "city": "Eagle",
+   "state": "WI",
+   "products": "metal fabrication: base tanks and weather-resistant enclosures; liquid-cooled genset production; expanding fabrication",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://web.archive.org/web/20220622125235/https://www.generac.com/specialpages/archive/careers/facility-locations",
+   "quote": "Production of base tanks & weather-resistant enclosures, test facilities for gensets and low voltage switchgear.",
+   "quote_verified": true
+  },
+  {
+   "name": "Generac Oshkosh plant",
+   "parent_company": "Generac Holdings",
+   "city": "Oshkosh",
+   "state": "WI",
+   "products": "liquid-cooled industrial/commercial generator production, large-MW data center units",
+   "in_definition": false,
+   "boundary": false,
+   "why_not": "assembly-only: plant stated as genset production; base tanks and enclosures are stated for Eagle, not Oshkosh",
+   "url": "https://biztimes.com/?p=617038",
+   "quote": "its plant in Oshkosh, which can now focus on larger megawatt units to serve the growing data center market",
+   "quote_verified": true
+  },
+  {
+   "name": "Generac Beaver Dam plant",
+   "parent_company": "Generac Holdings",
+   "city": "Beaver Dam",
+   "state": "WI",
+   "products": "assembly of 48 kW-1 MW C&I generators (subassembly, tanking, painting, test cells)",
+   "in_definition": false,
+   "boundary": false,
+   "why_not": "assembly-only: final assembly and test; no stated enclosure or tank fabrication",
+   "url": "https://biztimes.com/?p=617038",
+   "quote": "The Beaver Dam facility includes 17 test cells, where generators are tested through various conditions and elements, subassembly areas, tanking areas (where final assembly takes place), a painting area and a boxing area.",
+   "quote_verified": true
+  },
+  {
+   "name": "Generac Whitewater plant",
+   "parent_company": "Generac Holdings",
+   "city": "Whitewater",
+   "state": "WI",
+   "products": "air-cooled engines and home standby generators",
+   "in_definition": false,
+   "boundary": false,
+   "why_not": "engine/alternator-only: air-cooled engines and residential standby units",
+   "url": "https://web.archive.org/web/20220622125235/https://www.generac.com/specialpages/archive/careers/facility-locations",
+   "quote": "300,000 square foot manufacturing facility, production of Generac\u2019s OHVI\u00ae air-cooled engines, and air-cooled home standby generators.",
+   "quote_verified": true
+  },
+  {
+   "name": "Power Solutions International enclosure plant Darien",
+   "parent_company": "Power Solutions International (PSI)",
+   "city": "Darien",
+   "state": "WI",
+   "products": "standard and custom genset enclosures up to 5 MW, UL 142 fuel tanks",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://psiengines.com/enclosures/",
+   "quote": "PSI's standard enclosures and custom power generation packages are designed, engineered, fabricated, and assembled in our facilities in Beloit and Darien, Wis., totaling more than 300,000 square feet.",
+   "quote_verified": true
+  },
+  {
+   "name": "Power Solutions International enclosure plant Beloit",
+   "parent_company": "Power Solutions International (PSI)",
+   "city": "Beloit",
+   "state": "WI",
+   "products": "standard and custom genset enclosures, packaging",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://psiengines.com/enclosures/",
+   "quote": "PSI's standard enclosures and custom power generation packages are designed, engineered, fabricated, and assembled in our facilities in Beloit and Darien, Wis., totaling more than 300,000 square feet.",
+   "quote_verified": true
+  },
+  {
+   "name": "MTL Manufacturing & Equipment",
+   "parent_company": "Power Solutions International (acquired March 2026)",
+   "city": "Beloit",
+   "state": "WI",
+   "products": "UL142/UL2085 fuel tanks for large power generation, switchgear subbases, electrical enclosure assemblies; two Beloit locations",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://finviz.com/news/327591/power-solutions-international-inc-acquires-mtl-manufacturing-equipment-inc",
+   "quote": "MTL specializes in the welding and fabrication of steel components ranging from large switchgear subbases, electrical enclosure assemblies for data centers, as well as various size fuel tanks used in power generation.",
+   "quote_verified": true
+  },
+  {
+   "name": "Freeman Enclosure Systems",
+   "parent_company": "IES Holdings",
+   "city": "Batavia",
+   "state": "OH",
+   "products": "weather-protective and sound-attenuated genset enclosures, UL fuel supply tanks, packaging 20 kW-4 MW (4160 Half Acre Rd per ECHO)",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.energy-xprt.com/companies/freeman-enclosure-systems-152380",
+   "quote": "Offering UL listed fuel supply tanks, weather protective and sound attenuated enclosures, electrical integration, PLC management systems and more",
+   "quote_verified": true
+  },
+  {
+   "name": "EK Machine Co. (EK Power Products)",
+   "parent_company": "EK Machine Co. Inc.",
+   "city": "unknown",
+   "state": "unknown",
+   "products": "heavy-gauge steel generator enclosures, UL142/UL2085 fuel tanks, ISO containers, trailers",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.energy-xprt.com/companies/ek-machine-co-inc-152379/products",
+   "quote": "EK Power Products division excels in designing and constructing custom weatherproof and sound-attenuated generator enclosures, addressing both noise pollution and environmental protection.",
+   "quote_verified": true
+  },
+  {
+   "name": "Stateline Power Corp.",
+   "parent_company": "Stateline Power Corp.",
+   "city": "Greenville",
+   "state": "OH",
+   "products": "boundary: aluminum-first genset enclosures; custom generator sets (ag, military)",
+   "in_definition": true,
+   "boundary": true,
+   "why_not": "",
+   "url": "https://sdiesel.com/quick-custom-turnarounds/",
+   "quote": "Stateline fabricates and powder-coats many of their own metal parts, including their all-aluminum weather enclosures.",
+   "quote_verified": true
+  },
+  {
+   "name": "Panel Built Power Products",
+   "parent_company": "Panel Built Inc.",
+   "city": "Blue Ridge",
+   "state": "GA",
+   "products": "boundary: aluminum-first welded generator enclosures and sub-base tanks; modular BESS buildings",
+   "in_definition": true,
+   "boundary": true,
+   "why_not": "",
+   "url": "https://www.newswire.com/news/panel-built-inc-introduces-new-line-of-aluminum-generator-enclosures-20711945",
+   "quote": "The new line of power products will be manufactured in a whole new Panel Built facility located in Blue Ridge, Georgia.",
+   "quote_verified": true
+  },
+  {
+   "name": "WINCO generator plant",
+   "parent_company": "WINCO Inc.",
+   "city": "Le Center",
+   "state": "MN",
+   "products": "generator sets with in-house fabricated housings",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.wincogen.com/wp-content/uploads/PD/Spec_Sheets/Accessories/SP-229_Housing-Submittal.pdf",
+   "quote": "we design, fabricate and assemble our own housing",
+   "quote_verified": true
+  },
+  {
+   "name": "Lectrus Chattanooga",
+   "parent_company": "nVent (Lectrus brand; acquisition not confirmed here)",
+   "city": "Chattanooga",
+   "state": "TN",
+   "products": "sound-attenuated generator enclosures, sub-base fuel tanks up to 10,000 gal, electrical equipment centers (2010 source)",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.industrialinfo.com/news/article/sound-attenuated-generator-enclosures-by-lectrus-a-feature-of-industry-today-on-industrialinfocom--166462",
+   "quote": "Lectrus offers a full line of premium sound-attenuated generator enclosures, electrical equipment centers and other custom metal enclosures",
+   "quote_verified": true
+  },
+  {
+   "name": "Harvard Integrations",
+   "parent_company": "The Hill Companies",
+   "city": "Tea",
+   "state": "SD",
+   "products": "generator enclosures, sub-base fuel tanks, power distribution centers / modular electrical enclosures (27157 470th Ave); Lectrus also listed a Tea, SD plant in 2010, relationship not confirmed",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://hillcompanies.com/our-companies/harvard-integrations",
+   "quote": "Harvard Integrations offers a product line that includes power distribution centers, generator enclosures, and sub-base fuel tanks, providing both protection and flexibility for any project.",
+   "quote_verified": true
+  },
+  {
+   "name": "Lectrus Houston",
+   "parent_company": "nVent (Lectrus brand)",
+   "city": "Houston",
+   "state": "TX",
+   "products": "electrical equipment centers; generator enclosure work at this plant not confirmed",
+   "in_definition": false,
+   "boundary": false,
+   "why_not": "other vertical (v-datacenter-grid-prefab): equipment centers / e-houses; genset enclosure line not confirmed at this plant",
+   "url": "https://www.industrialinfo.com/news/article/sound-attenuated-generator-enclosures-by-lectrus-a-feature-of-industry-today-on-industrialinfocom--166462",
+   "quote": "Lectrus operates from three of the highest-capacity manufacturing facilities in the industry, located strategically in Chattanooga, Tennessee; Houston, Texas; and Tea, South Dakota",
+   "quote_verified": true
+  },
+  {
+   "name": "Tesla Megafactory Brookshire",
+   "parent_company": "Tesla Inc.",
+   "city": "Brookshire",
+   "state": "TX",
+   "products": "Megapack 3 BESS units; hiring welders",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.fox26houston.com/news/tesla-begins-hiring-new-200-million-megafactory-near-houston",
+   "quote": "The facility will produce Megapack batteries for grid energy storage, mirroring a successful plant in California.",
+   "quote_verified": true
+  },
+  {
+   "name": "Tesla Megafactory Lathrop",
+   "parent_company": "Tesla Inc.",
+   "city": "Lathrop",
+   "state": "CA",
+   "products": "Megapack BESS units",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.fox26houston.com/news/tesla-begins-hiring-new-200-million-megafactory-near-houston",
+   "quote": "The Brookshire facility, about 35 miles west of Houston, is modeled after Tesla\u2019s Megafactory in Lathrop, California, where the company produces its large-scale \"Megapack\" batteries used for grid energy storage.",
+   "quote_verified": true
+  },
+  {
+   "name": "Tomball Controls Von Ormy (HQ plant)",
+   "parent_company": "Tomball Controls LLC",
+   "city": "Von Ormy",
+   "state": "TX",
+   "products": "sound-attenuated generator enclosures, UL 142/2085 generator fuel tanks, access platforms; one of three production facilities (10310 Fischer Rd)",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.tomballcontrols.com/",
+   "quote": "Founded in 2022 and headquartered in Von Ormy, Texas, we operate three production facilities and employ more than 400 team members.",
+   "quote_verified": true
+  },
+  {
+   "name": "Tomball Controls Seguin",
+   "parent_company": "Tomball Controls LLC",
+   "city": "Seguin",
+   "state": "TX",
+   "products": "production facility (4545 FM 775) for generator enclosures/fuel tanks/platforms; product split per site not stated",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.tomballcontrols.com/",
+   "quote": "Seguin Facility",
+   "quote_verified": true
+  },
+  {
+   "name": "Tomball Controls Pleasanton",
+   "parent_company": "Tomball Controls LLC",
+   "city": "Pleasanton",
+   "state": "TX",
+   "products": "production facility (716 Eagle Ford Dr) for generator enclosures/fuel tanks/platforms; product split per site not stated",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.tomballcontrols.com/",
+   "quote": "Pleasanton Facility",
+   "quote_verified": true
+  },
+  {
+   "name": "Rehlko Mosel plant",
+   "parent_company": "Rehlko (formerly Kohler Energy)",
+   "city": "Mosel",
+   "state": "WI",
+   "products": "industrial gensets 250-4,000 kW with factory-built enclosures (eFRAME), switchgear, subbase tanks",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.achrnews.com/articles/161408-kohler-power-systems-announces-plant-expansion-to-increase-generator-production-capacity",
+   "quote": "Kohler is the only generator set manufacturer to provide factory-built enclosures in this range and supply a completely integrated system from a single facility.",
+   "quote_verified": true
+  },
+  {
+   "name": "Yancey Engineered Solutions Griffin",
+   "parent_company": "Yancey Bros. Co. (Cat dealer)",
+   "city": "Griffin",
+   "state": "GA",
+   "products": "sound-attenuated and weather-resistant generator enclosures, fuel tanks, containerization (96 Etheridge Mill Rd)",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.plantservices.com/industry-news/news/55387137/yancey-engineered-solutions-to-build-57-million-georgia-plant",
+   "quote": "The division has an existing factory, testing and service center in Griffin, Georgia.",
+   "quote_verified": true
+  },
+  {
+   "name": "Yancey Engineered Solutions Cordele",
+   "parent_company": "Yancey Bros. Co. (Cat dealer)",
+   "city": "Cordele",
+   "state": "GA",
+   "products": "new power generation packaging plant in former Big Tex factory, announced June 2026 (not yet operating)",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.plantservices.com/industry-news/news/55387137/yancey-engineered-solutions-to-build-57-million-georgia-plant",
+   "quote": "The factory, which will produce power generation packaging systems, is expected to employ 300 once fully operational, according to the June 25 release.",
+   "quote_verified": true
+  },
+  {
+   "name": "Coastline Power Solutions",
+   "parent_company": "Coastline Power Solutions",
+   "city": "Longwood",
+   "state": "FL",
+   "products": "generator enclosures, fuel tanks, trailers, integrated power systems",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.chamberorganizer.com/delandcc/mem_CoastlinePS",
+   "quote": "From rugged generator enclosures to precision-built fuel tanks, trailers, and integrated power systems, we specialize in creating turnkey solutions tailored to your exact needs.",
+   "quote_verified": true
+  },
+  {
+   "name": "Fabcon",
+   "parent_company": "Fabcon",
+   "city": "unknown (Southern California)",
+   "state": "CA",
+   "products": "boundary: thin-sheet precision fabricated energy storage enclosures, manual welding; single 118,000 sq ft facility",
+   "in_definition": true,
+   "boundary": true,
+   "why_not": "",
+   "url": "https://fabcon.com/articles/?p=965",
+   "quote": "Fabcon operates about 118,000 square feet of vertically integrated manufacturing at one Southern California facility.",
+   "quote_verified": true
+  },
+  {
+   "name": "Simplex Inc.",
+   "parent_company": "Simplex Inc.",
+   "city": "Springfield",
+   "state": "IL",
+   "products": "genset diesel day tanks and fuel systems (5300 Rising Moon Rd)",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "",
+   "quote": "",
+   "quote_verified": false
+  },
+  {
+   "name": "Pryco Inc.",
+   "parent_company": "Pryco Inc.",
+   "city": "Mechanicsburg",
+   "state": "IL",
+   "products": "generator day tanks and sub-base fuel tanks (location from directory only)",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "",
+   "quote": "",
+   "quote_verified": false
+  },
+  {
+   "name": "Cummins Power Generation Fridley",
+   "parent_company": "Cummins Inc.",
+   "city": "Fridley",
+   "state": "MN",
+   "products": "genset assembly; undated Cummins release (page blocked) said factory enclosures 230-500 kW were made at Fridley",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "",
+   "quote": "",
+   "quote_verified": false
+  },
+  {
+   "name": "Caterpillar custom enclosure center (East Peoria area)",
+   "parent_company": "Caterpillar Inc.",
+   "city": "East Peoria",
+   "state": "IL",
+   "products": "custom genset enclosures and containerized solutions 200 kW-4 MW (from Enercon IP purchase; date and current status unclear)",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.powerprogress.com/news/cat-expands-power-generation-capabilities/5020040.article",
+   "quote": "Caterpillar will operate manufacturing and testing centers near its production facilities for power solutions in East Peoria, Ill., and Griffin, Ga.",
+   "quote_verified": true
+  },
+  {
+   "name": "Caterpillar Griffin Engine Center",
+   "parent_company": "Caterpillar Inc.",
+   "city": "Griffin",
+   "state": "GA",
+   "products": "engines and generator set assembly",
+   "in_definition": false,
+   "boundary": false,
+   "why_not": "engine/alternator-only and genset assembly; enclosure fabrication attributed to separate centers 'near' the plant, not this plant",
+   "url": "https://nathandeal.georgia.gov/press-releases/2011-06-29/deal-caterpillar-create-200-jobs-spalding-county-leading-engine",
+   "quote": "The Caterpillar Griffin Engine Center assembles engines and generator sets for more than six different engine models.",
+   "quote_verified": true
+  },
+  {
+   "name": "Caterpillar Lafayette Engine Center",
+   "parent_company": "Caterpillar Inc.",
+   "city": "Lafayette",
+   "state": "IN",
+   "products": "large engines (C175, 3500) for gensets; 2024 expansion for data center market",
+   "in_definition": false,
+   "boundary": false,
+   "why_not": "engine/alternator-only: engine plant",
+   "url": "",
+   "quote": "",
+   "quote_verified": false
+  },
+  {
+   "name": "Rolls-Royce Solutions America (mtu) Mankato",
+   "parent_company": "Rolls-Royce Power Systems",
+   "city": "Mankato",
+   "state": "MN",
+   "products": "mtu genset assembly; enclosures and sub-base tanks offered but fabrication site not stated (some custom tanks/enclosures by contractor partners)",
+   "in_definition": false,
+   "boundary": false,
+   "why_not": "assembly-only: no source shows the Mankato plant welds enclosures, frames or tanks",
+   "url": "",
+   "quote": "",
+   "quote_verified": false
+  },
+  {
+   "name": "Blue Star Power Systems",
+   "parent_company": "Blue Star Power Systems",
+   "city": "North Mankato",
+   "state": "MN",
+   "products": "hand-built gaseous/diesel gensets 20-2000 kW, mobile gensets with Level 3 enclosures",
+   "in_definition": false,
+   "boundary": false,
+   "why_not": "assembly-only: genset building stated; in-house enclosure/tank welding not stated",
+   "url": "https://bluestarps.com/products/",
+   "quote": "Blue Star Power Systems offers diesel generator sets ranging from 20 - 2000 kWe powered by a wide variety of engines to suit our customers\u2019 most unique requirements.",
+   "quote_verified": true
+  },
+  {
+   "name": "Gillette Generators",
+   "parent_company": "Gillette Generators",
+   "city": "Elkhart",
+   "state": "IN",
+   "products": "standby and prime gensets 25 kW-1 MW",
+   "in_definition": false,
+   "boundary": false,
+   "why_not": "assembly-only: genset maker; enclosure/tank welding not stated",
+   "url": "https://www.gillettegenerators.com/",
+   "quote": "Commercial Standby Natural Gas Generators | 25 kW to 1 MW",
+   "quote_verified": true
+  },
+  {
+   "name": "Stewart & Stevenson Power Products",
+   "parent_company": "Kirby Corporation",
+   "city": "Houston",
+   "state": "TX",
+   "products": "genset packaging, containerized power generation, skids; fabrication before FAT (8631 East Freeway)",
+   "in_definition": true,
+   "boundary": false,
+   "why_not": "",
+   "url": "https://www.stewartandstevenson.com/industry/power-generation",
+   "quote": "Review technical drawings and finalize design before fabrication begins.",
+   "quote_verified": true
+  },
+  {
+   "name": "Hithium Texas BESS plant",
+   "parent_company": "Hithium",
+   "city": "Mesquite",
+   "state": "TX",
+   "products": "BESS modules and systems assembly",
+   "in_definition": false,
+   "boundary": false,
+   "why_not": "assembly-only: cell/module and system assembly; in-house welding of steel containers not stated",
+   "url": "",
+   "quote": "",
+   "quote_verified": false
+  },
+  {
+   "name": "NeoVolta/PotisEdge/LONGi JV plant",
+   "parent_company": "NeoVolta Inc. JV",
+   "city": "Pendergrass",
+   "state": "GA",
+   "products": "prismatic-cell pack assembly and DC container integration (mid-2026 start)",
+   "in_definition": false,
+   "boundary": false,
+   "why_not": "assembly-only: pack assembly and container integration; container fabrication not stated",
+   "url": "",
+   "quote": "",
+   "quote_verified": false
+  },
+  {
+   "name": "Shelbyville Battery Manufacturing",
+   "parent_company": "Canadian Solar e-Storage",
+   "city": "Shelbyville",
+   "state": "KY",
+   "products": "battery cells, modules and containerized BESS packaging",
+   "in_definition": false,
+   "boundary": false,
+   "why_not": "battery cell/module maker; container welding not stated",
+   "url": "https://kyelectric.coop/2025/01/28/shelbyville-battery-manufacturing-to-produce-utility-scale-batteries/",
+   "quote": "we are thrilled to announce our investment in a new, state-of-the-art industrial battery cell, module and packaging plant",
+   "quote_verified": true
+  },
+  {
+   "name": "LG Energy Solution Vertech container assembly (Chicago area)",
+   "parent_company": "LG Energy Solution",
+   "city": "unknown (Chicago area)",
+   "state": "IL",
+   "products": "BESS pack and container system assembly line",
+   "in_definition": false,
+   "boundary": false,
+   "why_not": "assembly-only: container system assembly; welding not stated",
+   "url": "",
+   "quote": "",
+   "quote_verified": false
+  },
+  {
+   "name": "Hanjung America",
+   "parent_company": "Hanjung NCS",
+   "city": "Huntington",
+   "state": "IN",
+   "products": "cooling systems and fire extinguishers for container ESS (Samsung SDI supplier)",
+   "in_definition": false,
+   "boundary": false,
+   "why_not": "other component: ESS cooling and fire suppression, not enclosures",
+   "url": "https://www.areadevelopment.com/newsitems/3-2-2026/hanjung-america-huntington-indiana.shtml",
+   "quote": "",
+   "quote_verified": false
+  },
+  {
+   "name": "Shoals Technologies BESS components plant",
+   "parent_company": "Shoals Technologies",
+   "city": "Portland",
+   "state": "TN",
+   "products": "BESS balance-of-system electrical components",
+   "in_definition": false,
+   "boundary": false,
+   "why_not": "other vertical: electrical balance-of-system, not enclosures",
+   "url": "https://www.ess-news.com/2026/05/06/shoals-now-making-battery-energy-storage-components-in-new-factory-in-tennessee/",
+   "quote": "now produces components for battery energy storage projects, along with its well-known solar production",
+   "quote_verified": true
+  },
+  {
+   "name": "Koontz-Wagner Caldwell",
+   "parent_company": "Koontz-Wagner (bankrupt)",
+   "city": "Caldwell",
+   "state": "ID",
+   "products": "former generator packaging operation",
+   "in_definition": false,
+   "boundary": false,
+   "why_not": "closed: Koontz-Wagner bankruptcy; JTS resumed operations separately",
+   "url": "https://www.petersonholding.com/sites/holdings/files/peterson-anniversary/files/basic-html/page132.html",
+   "quote": "Ironically, JTS had sold their business to Koontz-Wagner six years earlier and was just two days away from their non-compete agreement expiring when",
+   "quote_verified": true
+  },
+  {
+   "name": "Falcon Structures",
+   "parent_company": "Falcon Structures",
+   "city": "Manor",
+   "state": "TX",
+   "products": "boundary: ISO container modifier with stated BESS and generator enclosure lines (built Taylor Power Systems genset containers); address Manor, TX 78653 per contact page",
+   "in_definition": true,
+   "boundary": true,
+   "why_not": "",
+   "url": "https://www.falconstructures.com/case-study-custom-generator-enclosures",
+   "quote": "We leveraged our streamlined manufacturing process to produce the containers at the quality, volume, and speed Taylor Power Systems needed.",
+   "quote_verified": true
+  },
+  {
+   "name": "nVent TRACHTE",
+   "parent_company": "nVent Electric",
+   "city": "Madison",
+   "state": "WI",
+   "products": "boundary: prefabricated buildings incl. substation control buildings and BESS enclosures/skids (BESS plant location not confirmed; Texas facility built BESS prototype)",
+   "in_definition": true,
+   "boundary": true,
+   "why_not": "",
+   "url": "https://www.lectrus.com/",
+   "quote": "From substation control buildings and BESS enclosures to modular data centers and pump houses, nVent provides scalable solutions tailored to the unique demands of each project.",
+   "quote_verified": true
+  }
+ ]
+}
