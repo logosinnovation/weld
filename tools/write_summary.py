@@ -29,7 +29,7 @@ LABELS_BY_VERT["v-shipbuilding-naval"] = {1: "Round 1: all 39 profiled plants (t
                                           2: "Round 2: closure pass (new profiles, fill-ins and new base records)"}
 LABELS_BY_VERT["v-mining-heavy-equipment"] = {1: "Round 1: the 40 profiled plants (after the parallel list audit)",
                                               2: "Round 2: confirming round, all 47 profiled plants, checkers rotated (after the sweep)",
-                                              3: "Round 3: the 19 profiles added in the last wave (profilers G, H and I)",
+                                              3: "Round 3: the 21 profiles added in the last waves (profilers G, H, I and J)",
                                               9: "Base-record sample: 25 closure-3 base records (reported separately; not a profile round)"}
 LABELS = {1: "Round 1: designed sample of 30 plants (all High, all customer plants, then by score), before repairs",
           2: "Round 2: 10 unsampled plants from multi-plant parents, after the first repair pass",
