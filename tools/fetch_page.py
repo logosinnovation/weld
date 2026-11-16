@@ -112,7 +112,11 @@ def main():
         sys.exit(2)
     url = args[0]
     force = "--browser" in args
-    status, text, how = fetch(url, force)
+    # --check always also searches the raw page source (JSON-LD, itemprop attributes);
+    # --raw prints it too.
+    status, text, how = fetch(url, force, with_raw=("--check" in args or "--raw" in args))
+    if "--raw" not in args and "--check" not in args:
+        text = text.split("\n__RAW_SOURCE__\n")[0]
     print(f"# status={status} via={how} chars={len(text)}", file=sys.stderr)
     if "--check" in args:
         q = args[args.index("--check") + 1]
