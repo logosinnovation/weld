@@ -15,10 +15,11 @@ function csvRows(f){ // minimal RFC4180 parser
 }
 const plants = csvRows(path.join(ROOT, 'ledger/plants.csv'));
 const verts = csvRows(path.join(ROOT, 'ledger/verticals.csv'));
-const PV = 'v-poles-substation', SV = 'v-shipbuilding-naval';
+const PV = 'v-poles-substation', SV = 'v-shipbuilding-naval', MV = 'v-mining-heavy-equipment';
 const profiledOf = v => plants.filter(p => p.status === 'profiled' && p.verticals.split(/\s*[;,|]\s*/).includes(v)).length;
 const sumOf = v => JSON.parse(fs.readFileSync(path.join(ROOT, `ledger/audit/summary-${v}.json`), 'utf8'));
-const shipsProfiled = profiledOf(SV), polesProfiled = profiledOf(PV);
+const shipsProfiled = profiledOf(SV), polesProfiled = profiledOf(PV), miningProfiled = profiledOf(MV);
+const M_R2 = process.env.M_R2 || ''; // round-2 mining rate, e.g. '6.0%'
 const fails = [];
 const check = (ok, msg) => { if (!ok) { fails.push(msg); console.log('FAIL', msg); } else console.log('ok  ', msg); };
 
@@ -41,6 +42,8 @@ async function run(label, ctxOpts, full) {
   check(sc.includes('done') && sc.includes(String(shipsProfiled)) && !/13\.8%|11\.8%|19\.4%/.test(sc), `${label}: ships card (done, ${shipsProfiled} profiled, no poles figures)`);
   check(/Latest audit summary \(ledger\/audit\/summary-v-poles-substation\.json\)/.test(pc) && /13\.8%/.test(pc), `${label}: poles card audit line`);
   check(/Latest audit summary \(ledger\/audit\/summary-v-shipbuilding-naval\.json\)/.test(sc) && /29\.4%/.test(sc) && /7\.3%/.test(sc) && /6\.1%/.test(sc), `${label}: ships card audit line`);
+  const mc = await text('#vc-' + MV);
+  check(mc.includes('partial') && mc.includes(String(miningProfiled)) && /summary-v-mining-heavy-equipment\.json/.test(mc) && /30\.2%/.test(mc) && /11\.4%/.test(mc), `${label}: mining card (partial, ${miningProfiled} profiled, miss 30.2%, round 1 11.4%)`);
   await shot('ranking');
 
   // map: vertical filter, tier filter, state click, search
@@ -156,6 +159,9 @@ async function run(label, ctxOpts, full) {
   check(shipsPerChecker >= 4, `${label}: ships round table has 3 checkers + total (${shipsPerChecker} rows)`);
   const stale = ['every included plant is profiled', '27.5%', '5/64', 'ledger/audit/summary.json', 'Pole makers rarely'].filter(s => (mt + head + callTxt).includes(s));
   check(stale.length === 0, `${label}: no stale text ${JSON.stringify(stale)}`);
+  const ms = await text('#audit-' + MV), M_ = sumOf(MV);
+  check(M_.status === 'partial' && ms.includes('partial') && ms.includes(String(miningProfiled)) && ms.includes('11.4%') && ms.includes('30.2%') && (!M_R2 || ms.includes(M_R2)), `${label}: mining section (partial, ${miningProfiled} profiled, round 1 11.4%, miss 30.2%${M_R2 ? ', round 2 ' + M_R2 : ''})`);
+  check(!/29\.4%|13\.8%|fact-check-v-poles|fact-check-v-shipbuilding/.test(ms), `${label}: mining section has no poles or ships figures`);
   await shot('method-ships');
   check(errs.length === 0, `${label}: no console errors or runtime requests ${JSON.stringify(errs.slice(0, 3))}`);
   await b.close();
