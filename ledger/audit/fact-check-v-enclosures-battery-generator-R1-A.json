@@ -1,0 +1,3719 @@
+{
+ "checker": "fact-checker R1-A",
+ "vertical": "v-enclosures-battery-generator",
+ "date": "2026-11-16",
+ "plants": [
+  "p-ek-machine-fall-river-wi",
+  "p-ek-machine-madison-wi",
+  "p-generac-eagle-wi",
+  "p-generac-belvidere-il",
+  "p-enercon-east-peoria-il",
+  "p-rehlko-mosel-wi",
+  "p-rehlko-kenosha-wi",
+  "p-blue-star-north-mankato-mn",
+  "p-hennig-power-machesney-park-il",
+  "p-harvard-integrations-tea-sd"
+ ],
+ "decision_rule": "Corrected = the value adds a fact the cited page does not show, tags a judgement as stated, places a company-level fact at the plant, ties a posting through a shared city, misdates a posting, or the quote is not on the page (raw source checked first); Confirmed otherwise. Unreachable only if the source cannot be reached at all (not confirmed, not in the rate).",
+ "claims_checked": 199,
+ "claims_corrected": 7,
+ "claims_unreachable": 2,
+ "error_rate": 0.0352,
+ "error_rate_note": "Headline basis (rows flagged r2_basis: every stated row, every row of a claim that a score row cites, and the 10 opening lines), unreachable rows excluded: 7/199 = 3.5% (2 unreachable: the archived Generac Eagle facility page behind p-generac-eagle-wi:products and the Eagle opening line). Stated rows only: 6/163 = 3.7%. All 355 rows written (adds inferred tier, relationship, lookalike_of, prospect_test, welder_postings and score rows): 8/351 = 2.3% (4 unreachable). Every quote on a reachable page was found on a fresh fetch (visible text or raw source). The corrections are context or attribution: an electrical-enclosure spec read as the plant's enclosure materials (and the opening line built on it), small clauses not on the page, a company-level product page stated at Mosel, and a site judgement tagged stated. Out of basis: Harvard confidence 4 -> 3. Score RULINGS (not counted): EK Fall River material, Hennig campus, Hennig confidence.",
+ "claims_checked_all_rows": 351,
+ "claims_corrected_all_rows": 8,
+ "error_rate_all_rows": 0.0228,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 6,
+  "invented fact": 0,
+  "other": 1
+ },
+ "error_kind_counts_all_rows": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 6,
+  "invented fact": 0,
+  "other": 2
+ },
+ "repeated_kinds": [
+  "quote does not support value (6 in basis) - one pattern: a value or opening line carries context the cited page does not give it: Enercon's NEMA 3R/4X materials come from a 400-4000A electrical-enclosure (UL 50) spec block yet are presented as the plant's enclosure materials and welded in the opening line; Enercon 'panel' machining; '(Rehlko Power Systems)' added to an EPA name; '(assembly)' added to Kenosha's eFRAME operation; Rehlko's site-less eFRAME product page stated at Mosel. SWEEP: for battery profiles, read each spec or product-page quote in its block (which product does the spec describe? does the page name a site?) and drop parenthetical clauses not on the page; company product pages for multi-plant genset OEMs (Rehlko, Generac, Cummins, Caterpillar, Kohler) are company-level and inferred at a plant unless the page or a posting names the site."
+ ],
+ "worst_errors": [
+  "p-enercon-east-peoria-il:materials and :opening_line - the NEMA 3R (5052 aluminum or carbon steel) / 4X (300 stainless) line describes a 400-4000A, 65kA, UL 50 electrical enclosure, not Enercon's generator enclosures, and Enercon buys and modifies Rittal electrical enclosures; the opening line tells the prospect its East Peoria shop 'runs MIG, TIG and arc welding on carbon steel, aluminum and stainless enclosures', a fact no page states. Materials and line corrected; prospect_test reasoning carries the same conflation.",
+  "p-rehlko-mosel-wi:products (eFRAME row) - a site-less company product page ('UL 142/ULC-compliant subbase tanks') stated as a Mosel product, while Rehlko's own posting puts 'the eFRAME manufacturing operation' at Kenosha; it feeds the Mosel products field and the sub-base-tank premise of its lookalike/opening line. Retagged inferred, company level. Together with the Mosel posting's 'Large Enclosures Assembly - the final stage of the assembly process', nothing shown places welding at Mosel (status_problems).",
+  "p-harvard-integrations-tea-sd:confidence (and material RULING) - the High 88 counts material 20 as stated evidence although the trailer frame's welded status and the trailer's in-scope status are inferred; confidence 4 -> 3. Material 20 is kept as a RULING (Werk-Brau precedent); at 0 Harvard is 68 Medium."
+ ],
+ "score_problems": [
+  {
+   "plant_id": "p-harvard-integrations-tea-sd",
+   "component": "confidence",
+   "ledger_points": 4,
+   "correct_points": 3,
+   "why": "Material 20 rests on part_size_fit, whose site tie is stated (single facility) but whose welded status ('structural tube frame construction', welded not stated) and in-scope status (generator transport trailer, a boundary product under rule 3) are inferred. Werk-Brau / Brookville precedent: points may stand, no confidence. The profiler applied this test to EK Fall River but not here. Add p-harvard-integrations-tea-sd:part_size_fit to no-confidence-claims.csv."
+  },
+  {
+   "plant_id": "p-harvard-integrations-tea-sd",
+   "component": "score_material_part",
+   "ledger_points": 20,
+   "correct_points": 20,
+   "why": "RULING (kept as written, Werk-Brau welded-not-stated precedent): a steel trailer bed 4-6 ft x 8-18 ft with a structural tube frame fits both cell limits, Harvard has one production facility (about-us), and the trailer carries fuel features. Case for 0: the welded status is inferred and generator transport trailers without enclosures are v-trailers-chassis-mobile-power (boundary rule 3); 88 -> 68 Medium. The enclosures and sub-base tanks, the in-scope welded parts, have no stated size."
+  },
+  {
+   "plant_id": "p-ek-machine-fall-river-wi",
+   "component": "score_material_part",
+   "ledger_points": 20,
+   "correct_points": 4,
+   "why": "RULING. As written (consultation 10/14 campus reading, Brookville): no page says where the 20/40/45 ft containers are built; the Fall River tie is arithmetic (55,000 + 51,000 sq ft = 106,000 sq ft, 'built ... to meet the growing demand for our ... ISO containers') and EK has a second Power Products facility in Madison, so the attribution is inferred and the container size earns 0. What remains attributable to the Fall River campus is the 14GA Galvaneal enclosure wall (enclosure components made at Complete Manufacturing 'just down the road' and finished at Power Products), a thin-sheet main welded part = 4; no tank size is stated. Total 87 -> 71 (still High); 67 Medium if thin sheet also needs a site-stated row. Case for 20: the history page ties the container demand to the Fall River addition, Madison is a weldment/tank shop with no container line on any page, and an ISO container is a welded steel structure under EK's in-house welding. Confidence unaffected (material already earns none)."
+  },
+  {
+   "plant_id": "p-hennig-power-machesney-park-il",
+   "component": "score_labor (and score_process)",
+   "ledger_points": 20,
+   "correct_points": 20,
+   "why": "RULING (kept as written). Six panel and two sub-welder requisitions name only 'Hennig Power', Machesney Park (no street address); the two Tank Welder requisitions name 9904 N Alpine Rd. Hennig Power also uses 4920 Marlin Dr and '10601 N Second Street & 4950 Marlin Drive' (the record's own address, which no geocoder locates). Campus rule: ECHO DFR puts 9904 N Alpine 0.83 km from 4950 Marlin (both NAICS 332322 Hennig records), so as written the buildings are one campus and city-only postings count. Census interpolation gives 1.61 km. Under the strict Brookville / General Steel reading (tie unproven), labor 20 -> 0 and process 20 -> 0: 72 -> 32 Low if both fall; 52 Medium if the Tank Welder postings (which name a Hennig Power address) are kept for process and labor 12. The record should probably carry the production addresses (Marlin Dr / N Alpine Rd) rather than the office address."
+  },
+  {
+   "plant_id": "p-hennig-power-machesney-park-il",
+   "component": "confidence",
+   "ledger_points": 4,
+   "correct_points": 5,
+   "why": "RULING, consistency. Process (counted) and labor (not counted) rest on the same ten postings and the same campus attribution. Under the consultation-11/Werk-Brau test (a component resting on a passed one-campus ruling counts), labor counts too: 5. If the coordinator instead treats the campus tie as inferred, both process and labor lose confidence: 3. 4 matches neither test."
+  }
+ ],
+ "score_notes": [
+  "All 60 components (10 plants x 6) re-derived from the cited claims; sums and tiers correct as written: Harvard 88 High, EK Fall River 87 High, Hennig 72 High, Eagle 60 Medium, EK Madison 52 Medium, Enercon 38 Low, Belvidere 28 Low, Kenosha 28 Low, Mosel 21 Low, Blue Star 16 Low. None of the ten is in no-confidence-claims.csv.",
+  "TIG rule applied correctly: EK Fall River and Madison production welder postings name GTAW with GMAW-P/GMAW-S (12); Eagle's MIG Welder posting names TIG with MIG (12); Enercon's fabrication page states MIG, TIG and arc together (12); Hennig and Harvard postings name MIG only (20).",
+  "Labor: EK Fall River 20 (sign-on bonus on night and weekend requisitions, four counted at once, undated standing ads); EK Madison 12 (one requisition with '# of Openings: 3'; requisitions, not openings, are counted); Eagle 20 (two production welder requisitions open at once, Nov 5 and Nov 11, overtime conditional; JamesBuilt/Gunderson precedent: two = several); Harvard 20 (three at once); Hennig 20 (ten, RULING on campus); Enercon, Mosel, Kenosha, Belvidere, Blue Star 0 (company boards checked through their APIs).",
+  "Demand: Eagle 15 rests on BizTimes Jul 24, 2025 'its Eagle plant, which is expanding fabrication capabilities' - a dated, plant-named expansion with no amount or completion; it reads as an expansion event under the rule (kept); at 8 Eagle is 53 Medium. EK Fall River 15: the Aug 31, 2026 release names only the village of Fall River; EK's production sites in Fall River are all in this campus record, so as written the shared-city rule counts it; Plants 5-7 may lie more than 1 km away (address unstated); at 8 EK is 80 High. Hennig 8: the Mar 2025 hiring/unit-goal statements are demand news, the Feb 2024 850,000 sq ft plan predates the window and its completion is undated; the ECHO building addition at 5950 Marlin Dr has no start date. Belvidere 15 and Kenosha 15: dated site events (Jun 15 and Jun 7, 2026).",
+  "Scale: Enercon 10 (Generac multi-plant stated; 'more than 120 employees operate a 160,000-square-foot manufacturing facility', Feb 19, 2026); Hennig 5 (north of 900 'here', Mar 2025; no stated multi-plant parent); Harvard 5 (300+ on a page dated 2024+ by 'Since its founding in 1979' and '45+ years'; no confidence); Blue Star 0 (2020 headcount past 36 months; no fetched Deutz multi-plant line); others 5 on a stated multi-plant parent.",
+  "Part mix: Enercon 8 (custom 'built to your specs' with 'repeat builds' for multi-unit programs = mixed) is defensible; 15 would make it 45 Medium. EK Madison 15 on the company-level Power Products custom statement earns no confidence (session-2 rule 1), as the profiler recorded.",
+  "Material: Hennig 4 on stated thin-sheet panels (D1.3 14/11 gauge; 14-gauge enclosures) is the battery rule as written; tanks have no stated size. Enercon's 11.8 x 7.5 ft figure is a machining capacity, 0 is right."
+ ],
+ "opening_line_problems": [
+  "p-enercon-east-peoria-il:opening_line - corrected (see rows): drop the materials clause. Suggested: \"Generac bought a Belvidere building in June 2026 for the large-megawatt generator enclosures Enercon makes, and your fabrication page lists MIG, TIG and arc welding in the shop that builds your generator enclosures and power modules; which enclosure work do you plan to keep in East Peoria?\"",
+  "p-generac-eagle-wi:opening_line - 'how are you staffing welding of base tanks and enclosures' rests on the archived facility page, unreachable this run. If it stays unreachable, use: \"Your Eagle board posted MIG Welder roles for 3rd shift on Nov 11 and 2nd shift on Nov 5, and BizTimes reported in July 2025 that Eagle is expanding fabrication capabilities; how are you staffing welding on the off shifts?\"",
+  "p-rehlko-kenosha-wi:opening_line (optional) - 'is starting up' reads more than BizTimes' 'moving forward with plans'; safer: \"Rehlko is moving forward with a 160,000-square-foot Kenosha plant for its eFRAME enclosure operation and posted a Quality and EHS Engineer for it on Nov 10, 2026; will you weld the enclosure frames in Kenosha or bring them in for assembly?\"",
+  "p-blue-star-north-mankato-mn:opening_line (optional) - 'Blue Star said it fabricates its own skids, tanks and enclosures' attributes the reporter's sentence to the company; safer: 'Power Progress reported in 2020 that Blue Star fabricates its own skids, tanks and enclosures, and Blue Star said about 75% of its business was standard gen-sets'."
+ ],
+ "plants_closed_or_moved": [],
+ "status_problems": [
+  "p-rehlko-mosel-wi: boundary rule 2 (a genset OEM plant is in only when it welds enclosures, base frames or tanks) is not met on any source. The 2026-11-02 posting calls Large Enclosures Assembly 'the final stage of the assembly process'; the only tank-welder ads found name Kohler, WI; the eFRAME sub-base-tank page names no site. Recommend holding Mosel as base (Caterpillar Clayton precedent) until welding at the site is shown; lead: a Rehlko Kohler WI plant with tank welders.",
+  "p-rehlko-kenosha-wi and p-generac-belvidere-il: pre-production; profiled under the rule, but neither source shows welding (Kenosha: 'eFRAME manufacturing operation'; Belvidere: 'enclosure assembly and final packaging'). Prospect tests are provisional and correctly inferred.",
+  "p-generac-eagle-wi: welding stated (MIG, TIG, aluminum, robotic); steel at the site is inferred (company spec sheet), and the base-tank/enclosure product row is unreachable this run. Prospect test stays inferred and provisional on steel.",
+  "p-enercon-east-peoria-il: welding is stated (fabrication page, single site); the steel material is not (see materials correction). Prospect test reasoning should drop the material clause; the plant is switchgear-heavy (boundary noted).",
+  "p-hennig-power-machesney-park-il: record address 10601 N 2nd St is unlocated and the coordinates are city-level, while the welding postings point to 9904 N Alpine Rd and Marlin Dr. All Hennig sites are operating (board live, 70+ roles)."
+ ],
+ "plant_status_notes": "All ten plants are operating or (Belvidere, Kenosha) under preparation: live own-board postings for EK (Fall River, Madison), Generac (Eagle, Belvidere), Enercon, Rehlko (Mosel, Kenosha), Hennig, Harvard; Blue Star's board is empty but the site is live and Deutz described it as integrated in 2026 (search used for open/closed only). Addresses match ECHO or company pages; Kenosha's exact address is still undisclosed (128th Ave).",
+ "field_drift_notes": [
+  "After the corrections, plants.csv takes plants_csv_value for Enercon materials, existing_robots and opening_line, Rehlko Mosel products and Rehlko Kenosha products, and Harvard confidence.",
+  "p-rehlko-kenosha-wi products in plants.csv also says 'Assembly of' and 'production expected late 2026'; no fetched page shows either (BizTimes is paywalled past two paragraphs). Trim or add a row.",
+  "p-ek-machine-madison-wi production_type in plants.csv starts 'weldments and fuel tanks', which no production_type row carries (it is on the products row from the same posting). Add a row or trim.",
+  "p-enercon-east-peoria-il prospect_test (inbox row) reasoning repeats the materials conflation; p-enercon-east-peoria-il:weld_processes plants value '(company fabrication page; single production site)' carries the single-site judgement, which is correctly in its own inferred row.",
+  "p-rehlko-kenosha-wi: posting R04516 is now titled 'Quality Engineer (Relocation and Sign On Bonus Eligible)'; the body still says 'The Quality and EHS Engineer'. welder_postings and the opening line may keep the body's name."
+ ],
+ "leads": [
+  "Rehlko Kohler WI plant (tank-welder ads) - decides whether Rehlko welds sub-base tanks in Wisconsin and where.",
+  "Hennig: locate 10601 N Second St (county assessor parcel or Hennig contact map) to settle the campus RULING; ECHO 5950 Marlin Dr building addition (stormwater ILR10ZCEZ) start date.",
+  "EK Plants 5-7 street address (former trucking property) to settle the demand and campus questions; any EK page naming where containers are built.",
+  "Generac Eagle: re-fetch https://web.archive.org/web/20220622125235/https://www.generac.com/specialpages/archive/careers/facility-locations when Wayback is reachable."
+ ],
+ "method": "Fresh fetch of every cited URL into a new cache (tools/fetch_page.fetch with_raw=True; browser for Workday and UKG); each quote fragment checked against visible text plus raw source (JSON-LD datePosted, jobLocation streetAddress, Paylocity pageData JSON); value clauses then read against the page text around the quote. Job boards read through their APIs on 2026-11-16/17: Generac and Rehlko Workday CXS search, Enercon UKG job-requisitions, Hennig and Harvard Paylocity board JSON, EK Paycor CareerHome. EPA ECHO DFR and get_facilities for Hennig sites; Census geocoder and one Nominatim query for distances. web.archive.org unreachable (fetch_page plain and browser, curl https and http/1.1); availability API confirms the snapshot. One web search, for Blue Star open/closed only. No ledger file edited.",
+ "apply_note": "Apply after the coordinator merges ledger/inbox/battery-profiler-A.json (rows keyed to that file's claim_id + source_url, including the '#site-tie' URL and both ECHO parameter orderings as written; ledger-origin rows marked in 'origin'). Rows flagged sibling_of_corrected are confirmed but their reasoning should be synced. Unreachable rows are neither confirmed nor corrected: re-check them in the next round. Rule on EK Fall River material, Harvard material and the Hennig campus and confidence (score_problems). Candidates for ledger/audit/no-confidence-claims.csv: p-harvard-integrations-tea-sd:part_size_fit (and p-ek-machine-fall-river-wi:part_size_fit if its 20 is kept, matching the profiler's own no-confidence note).",
+ "rows": [
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:weld_processes",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a7887ac9e6b0bf7019ea7a6fd94341c&source=&lang=en",
+   "ledger_value": "GMAW-P, GMAW-S and GTAW (Fall River production welder postings)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[0]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:weld_processes",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a78839f9db1e847019dbb0e3d2e5f23&source=&lang=en",
+   "ledger_value": "GMAW-P, GMAW-S and GTAW (Path Lead Welder posting, Fall River)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[1]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:materials",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a7887ac9e6b0bf7019ea7a6fd94341c&source=&lang=en",
+   "ledger_value": "carbon steel, galvanized steel, stainless steel and aluminum (Fall River welder postings)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[2]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:materials",
+   "source_url": "https://www.ekmachine.com/power-products/enclosures/",
+   "ledger_value": "heavy-gauge steel generator enclosures; 14GA Galvaneal wall construction standard (.100 aluminum optional)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[3]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:materials",
+   "source_url": "https://www.ekmachine.com/power-products/fuel-tanks/",
+   "ledger_value": "heavy-gauge steel fuel tanks",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[4]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:certifications",
+   "source_url": "https://www.ekmachine.com/about/iso-9001/",
+   "ledger_value": "ISO 9001:2015 (company)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[5]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:certifications",
+   "source_url": "https://www.ekmachine.com/manual-welding/",
+   "ledger_value": "manual welders qualified to AWS D1.1 (company welding page)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[6]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:certifications",
+   "source_url": "https://www.ekmachine.com/power-products/fuel-tanks/",
+   "ledger_value": "UL 142 and ULC fuel tanks",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[7]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:certifications",
+   "source_url": "https://www.ekmachine.com/contact-us/",
+   "ledger_value": "company-level certifications applied to the Fall River campus",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[8]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:part_size_fit",
+   "source_url": "https://www.ekmachine.com/containers-trailers/",
+   "ledger_value": "20 ft, 40 ft and 45 ft ISO containers built by EK",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[9]",
+   "verdict": "confirmed",
+   "note": "Containers page: 'Our in-house machining, fabrication, welding, powder coating, and assembly capabilities ensure the structural integrity of our containers' and '20', 40', and 45' Containers available'. The row names no site, correctly; the Fall River tie is in the inferred row. See score_problems (material RULING).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:part_size_fit",
+   "source_url": "https://www.ekmachine.com/about/our-history/",
+   "ledger_value": "Power Products facility addition (2019) for enclosures, trailers, fuel tanks and ISO containers",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[10]",
+   "verdict": "confirmed",
+   "note": "History page: 'By 2019, we completed a 51,000 sq. ft. addition to our Power Products facility to meet the growing demand for our generator enclosures, trailers, fuel tanks, and ISO containers.' Supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:part_size_fit",
+   "source_url": "https://www.ekmachine.com/power-products/",
+   "ledger_value": "the 106,000 sq ft Power Products facility is in Fall River and built for the largest enclosures",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[11]",
+   "verdict": "confirmed",
+   "note": "Page: 'construction of our new, state-of-the-art production facilities in Fall River. Our 106,000 sq. ft. Power Products facility was built to accommodate the largest, most heavy-duty power generation equipment enclosures'. Value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:part_size_fit",
+   "source_url": "https://www.ekmachine.com/about/our-history/#site-tie",
+   "ledger_value": "cell fit (2026 analyst limits); site tie to Fall River inferred; enclosure skins are thin sheet",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[12]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:production_type",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a7883a8a0abfc6b01a0f2f02d534530&source=&lang=en",
+   "ledger_value": "custom, prototype and low-volume components (Fall River laser welding)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[13]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:production_type",
+   "source_url": "https://www.ekmachine.com/power-products/",
+   "ledger_value": "custom-designed single and multi-unit power projects (Power Products division)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[14]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:existing_robots",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a78839f9db1e847019dbb0e3d2e5f23&source=&lang=en",
+   "ledger_value": "Path Robotic welding group at Fall River",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[15]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:existing_robots",
+   "source_url": "https://www.ekmachine.com/power-products/",
+   "ledger_value": "robotic welding centers in the Fall River Power Products facility",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[16]",
+   "verdict": "confirmed",
+   "note": "'Advanced robotic welding centers' is listed under 'Our Facilities Include' for the 106,000 sq ft Power Products facility, which the same page places in Fall River. Supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:existing_robots",
+   "source_url": "https://www.ekmachine.com/robotic/",
+   "ledger_value": "IGM and Genesis Systems/Fanuc robotic welding systems (company page, site not named)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[17]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:welder_postings",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a7887ac9e6b0bf7019ea7a6fd94341c&source=&lang=en",
+   "ledger_value": "Welder - 1st Shift, 5 openings, Fall River (Monday-Thursday 4:00AM-2:00PM)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[18]",
+   "verdict": "confirmed",
+   "note": "Page: 'Welder - 1st Shift Location: Fall River, WI Job Id: 538 # of Openings: 5 Monday-Thursday (04:00AM to 02:00PM)'. Live on EK's Paycor board 2026-11-16; no date on page or in source.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:welder_postings",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a7887ac9f8b9449019fad85b66f6072&source=&lang=en",
+   "ledger_value": "Welder - Night Shift, 6 openings, sign-on bonus, 20% premium, overtime as needed",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[19]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:welder_postings",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a7885ac9f8b9423019fc8bcaac97f67&source=&lang=en",
+   "ledger_value": "Welder/Saw Operator (saw role; listed, not counted)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[20]",
+   "verdict": "confirmed",
+   "note": "Welder/Saw Operator body describes saw set-up and operation only (no welding duty in the text); not counting it is right.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:welder_postings",
+   "source_url": "https://recruitingbypaycor.com/career/CareerHome.action?clientId=8a7883d085589a5e01857e41e4bf2a93",
+   "ledger_value": "4 counted (14 openings), undated; Laser Welder and Welder/Saw Operator listed, not counted",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[21]",
+   "verdict": "confirmed",
+   "note": "EK Paycor board (CareerHome) read 2026-11-16: Welding section lists Laser Welder, Material Handler, Path Lead Welder - Weekend Shift, Welder - 1st Shift, Welder - Night Shift - 20% Shift Premium, Welder - Weekend Shift (Full-time + 20% Shift Premium), Welder/Saw Operator (Fall River) and WELDER 1st Shift Madison. Counts correct; no dates in pages or raw source. Laser Welder (sets up and operates laser welding equipment) not counted; counting it would not change labor.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:triggers",
+   "source_url": "https://www.ekmachine.com/ek-purchases-real-estate-of-former-trucking-company-to-expand-manufacturing-capacity/",
+   "ledger_value": "Aug 31, 2026: closed on a former trucking company's real estate in Fall River to expand manufacturing capacity; Plant 5 to be a manufacturing facility with fabrication equipment and a powder coat line",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[22]",
+   "verdict": "confirmed",
+   "note": "Release dated August 31, 2026; three buildings, ~230,000 sq ft, $22M; Plant 5 fabrication and powder coat. Location given only as Fall River (see score_notes on demand).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:triggers",
+   "source_url": "https://www.ekmachine.com/contact-us/",
+   "ledger_value": "trigger attributed to the Fall River campus record",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[23]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual weld capacity on nights and weekends: night and weekend welder requisitions (9 openings) carry a sign-on bonus and a 20% premium alongside 5 day-shift openings, while EK expands capacity with Plant 5.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[24]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "EK announced Plant 5 in Fall River on Aug 31, 2026 for fabrication and powder coating, and your Fall River board lists night and weekend welder openings with a sign-on bonus and 20% premium plus a Path Lead Welder for tank welding; how are you dividing tank work between the Path Robotic welding group and manual welders?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[25]",
+   "verdict": "confirmed",
+   "note": "Clauses stated: release Aug 31, 2026 (Plant 5 fabrication and powder coat); night and weekend postings (sign-on bonus, 20% premium); Path Lead Welder ('Leads tank welders on Path Robotics projects'; 'Path Robotic welding group'). Account-expansion framing, no deployment claim beyond the posting. Acceptable.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:score_process",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[26]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:score_material_part",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[27]",
+   "verdict": "confirmed",
+   "note": "See score_problems: material RULING.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[28]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[29]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[30]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[31]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:score_total",
+   "source_url": "",
+   "ledger_value": "87",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[32]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[33]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:confidence",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[34]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:weld_processes",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a7885aca0abfc6901a0cf771b622b53&source=&lang=en",
+   "ledger_value": "GMAW-P, GMAW-S and GTAW (Madison welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[35]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:materials",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a7885aca0abfc6901a0cf771b622b53&source=&lang=en",
+   "ledger_value": "carbon steel, galvanized steel, stainless steel and aluminum (Madison welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[36]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:production_type",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a7885aca0abfc6901a0cf771b622b53&source=&lang=en",
+   "ledger_value": "welders adapt to the product mix at each facility (Madison posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[37]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:production_type",
+   "source_url": "https://www.ekmachine.com/power-products/",
+   "ledger_value": "custom single and multi-unit power projects (Power Products division, company level)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[38]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:welder_postings",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a7885aca0abfc6901a0cf771b622b53&source=&lang=en",
+   "ledger_value": "WELDER 1st Shift Madison, Job Id 632, 3 openings (undated)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[39]",
+   "verdict": "confirmed",
+   "note": "Board lists 'WELDER 1st Shift Madison' (Madison, WI); posting Job Id 632, 3 openings; no date in page or source. One requisition = one counted posting (labor 12).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:welder_postings",
+   "source_url": "https://recruitingbypaycor.com/career/CareerHome.action?clientId=8a7883d085589a5e01857e41e4bf2a93",
+   "ledger_value": "1 counted requisition (3 openings), undated; Painter/Blaster Madison listed, not counted",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[40]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:triggers",
+   "source_url": "https://www.ekmachine.com/news/",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[41]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly tank-welding labor: Madison's only posted production welding role seeks three welders for weldments and fuel tanks that are pressure-tested on site.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[42]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Madison board lists a 1st-shift welder requisition with three openings for welding weldments and fuel tanks with GMAW-P, GMAW-S and GTAW, with pressure testing of the tanks on site; how are you staffing tank welding at Madison?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[43]",
+   "verdict": "confirmed",
+   "note": "Clauses stated on the Madison posting (Job Id 632, 3 openings, GMAW-P/GMAW-S/GTAW, weldments and tanks, pressure testing fuel tanks). 'on site' reads the role's location; acceptable.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:score_process",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[44]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[45]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[46]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[47]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[48]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[49]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:score_total",
+   "source_url": "",
+   "ledger_value": "52",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[50]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[51]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:confidence",
+   "source_url": "",
+   "ledger_value": "3",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[52]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:weld_processes",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/en-US/External/job/Eagle-WI---USA/MIG-Welder---3rd-Shift_JR18431",
+   "ledger_value": "MIG, aluminum, TIG, electric (stick) and robotic welding (Eagle MIG Welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[53]",
+   "verdict": "confirmed",
+   "note": "Posting body: 'perform Mig welding, Aluminum welding, TIG Welding, electric or robotic welding in the fabrication of parts, to be used in the assembly of product lines'. TIG named in the production welder posting alongside MIG -> process 12 (TIG rule).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:weld_processes",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/en-US/External/job/Eagle-WI---USA/MIG-Welder---2nd-Shift_JR18255",
+   "ledger_value": "MIG (GMAW) and stick (SMAW) at Welder II; MIG, TIG and stick at Welder III",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[54]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:materials",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/en-US/External/job/Eagle-WI---USA/MIG-Welder---2nd-Shift_JR18255",
+   "ledger_value": "aluminum (Eagle welder postings)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[55]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:materials",
+   "source_url": "https://generac.com/globalassets/products/business/stationary-generators/diesel-industrial-generators/spec-sheets/sd050-50kw-diesel-generator-specsheet.pdf",
+   "ledger_value": "steel inferred: Generac offers steel or aluminum enclosures and stainless steel tanks (company spec sheet)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[56]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:production_type",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/en-US/External/job/Eagle-WI---USA/MIG-Welder---2nd-Shift_JR18255",
+   "ledger_value": "components standardized or customized (Eagle welder postings)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[57]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:existing_robots",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/en-US/External/job/Eagle-WI---USA/MIG-Welder---2nd-Shift_JR18255",
+   "ledger_value": "yes: robotic welders at Eagle (welders assist with and operate them); brand unknown",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[58]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:welder_postings",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/en-US/External/job/Eagle-WI---USA/MIG-Welder---2nd-Shift_JR18255",
+   "ledger_value": "MIG Welder - 2nd Shift, Eagle, datePosted 2026-11-05; Saturday overtime based on business needs; 13% shift premium",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[59]",
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2026-11-05, addressLocality Eagle; '***Saturday Overtime based on business needs***'; 'Welder I - $21.25/hr + 13% shift premium'. Workday API 2026-11-17: 'Posted 11 Days Ago', Eagle, WI. All clauses on page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:welder_postings",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/en-US/External/job/Eagle-WI---USA/MIG-Welder---3rd-Shift_JR18431",
+   "ledger_value": "MIG Welder - 3rd Shift, Eagle, datePosted 2026-11-11; Friday overtime based on business needs; 11% shift premium",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[60]",
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2026-11-11, addressLocality Eagle; Friday overtime based on business needs; 11% shift premium. Live on Generac Workday (API: Posted 5 Days Ago).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:welder_postings",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/en-US/External?q=welder",
+   "ledger_value": "2 counted open (2026-11-05 and 2026-11-11); overtime conditional",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[61]",
+   "verdict": "confirmed",
+   "note": "Generac Workday API search 'welder' 2026-11-17: 7 results (Holdrege x2, Oshkosh x2, Eagle x2, Berlin). Two Eagle production welder roles at once; overtime conditional. Count correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:triggers",
+   "source_url": "https://biztimes.com/generac-opens-its-largest-north-american-facility-in-beaver-dam/",
+   "ledger_value": "Jul 24, 2025 (BizTimes): Eagle plant is expanding fabrication capabilities, as Beaver Dam opens",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[62]",
+   "verdict": "confirmed",
+   "note": "BizTimes Jul 24, 2025: 'Beaver Dam unlocks growth at other Generac facilities including its plant in Oshkosh, ... and its Eagle plant, which is expanding fabrication capabilities.' Quote correct; whether this is a plant-level event is a RULING (score_notes).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:parent_company",
+   "source_url": "https://biztimes.com/generac-opens-its-largest-north-american-facility-in-beaver-dam/",
+   "ledger_value": "Generac Holdings Inc. (multi-plant: Beaver Dam, Oshkosh, Eagle and others)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[63]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely off-shift manual weld capacity as Eagle expands fabrication: 2nd- and 3rd-shift MIG welder roles were posted within a week of each other in November 2026.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[64]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Eagle board posted MIG Welder roles for 3rd shift on Nov 11 and 2nd shift on Nov 5, and BizTimes reported in July 2025 that Eagle is expanding fabrication capabilities; how are you staffing welding of base tanks and enclosures on the off shifts?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[65]",
+   "verdict": "unreachable",
+   "note": "Every clause is stated except 'base tanks and enclosures', which rests on the unreachable archived facility page (products). Verdict held as unreachable; see opening_line_problems.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:score_process",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[66]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[67]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[68]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[69]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[70]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[71]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:score_total",
+   "source_url": "",
+   "ledger_value": "60",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[72]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[73]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:confidence",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[74]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:triggers",
+   "source_url": "https://biztimes.com/generac-acquires-illinois-facility-for-subsidiary-enercons-production/",
+   "ledger_value": "Jun 15, 2026: Generac acquired the 221,884 sq ft Belvidere facility for large-megawatt generator enclosures",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[75]",
+   "verdict": "confirmed",
+   "note": "BizTimes 'Jun 15, 2026 12:08 pm'; Generac release (Finviz, PR Newswire June 15, 2026). Supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:triggers",
+   "source_url": "https://finviz.com/news/361594/generac-acquires-belvidere-illinois-facility-to-expand-large-megawatt-generator-packaging-capacity",
+   "ledger_value": "more than 100 new jobs when it opens in Q1 2027",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[76]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:production_type",
+   "source_url": "https://finviz.com/news/361594/generac-acquires-belvidere-illinois-facility-to-expand-large-megawatt-generator-packaging-capacity",
+   "ledger_value": "enclosure assembly and final packaging of large-megawatt generators (product list)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[77]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:parent_company",
+   "source_url": "https://biztimes.com/generac-opens-its-largest-north-american-facility-in-beaver-dam/",
+   "ledger_value": "Generac Holdings Inc. (multi-plant)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[78]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:welder_postings",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/en-US/External/job/Belvidere-IL---USA/Manager-Value-Stream_JR16531",
+   "ledger_value": "none found (Generac board, Belvidere)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[79]",
+   "verdict": "confirmed",
+   "note": "Generac Workday API 2026-11-17: 'Belvidere' 27 results (supervisors, managers, engineers, trainer, production assistant); 'welder' 7 results, none in Belvidere. Correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:prospect_test",
+   "source_url": "https://biztimes.com/generac-acquires-illinois-facility-for-subsidiary-enercons-production/",
+   "ledger_value": "pass (pre-production; in-house welding not shown)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[80]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-A.json evidence[81]",
+   "verdict": "confirmed",
+   "note": "Unknown row; nothing to verify beyond the search described.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:opening_line",
+   "source_url": "",
+   "ledger_value": "Generac bought the 221,884-square-foot Belvidere building in June 2026 to expand enclosure assembly and final packaging for large-megawatt generators, with more than 100 jobs when it opens in Q1 2027; will you weld enclosures in Belvidere or bring them in for assembly?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[82]",
+   "verdict": "confirmed",
+   "note": "Clauses stated (BizTimes and Generac release, Jun 15, 2026). Acceptable.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[83]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[84]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[85]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[86]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[87]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[88]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:score_total",
+   "source_url": "",
+   "ledger_value": "28",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[89]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[90]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:confidence",
+   "source_url": "",
+   "ledger_value": "3",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[91]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:weld_processes",
+   "source_url": "https://www.enerconpower.com/fabrication",
+   "ledger_value": "MIG, TIG and arc welding (company fabrication page)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[92]",
+   "verdict": "confirmed",
+   "note": "Fabrication page: 'Capabilites Include: MIG, TIG & Arc Welding'. Single-site attribution is in the inferred row (ECHO), correctly.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:weld_processes",
+   "source_url": "https://echodata.epa.gov/echo/echo_rest_services.get_facilities?output=JSON&p_fn=ENERCON&p_st=IL",
+   "ledger_value": "company fabrication attributed to East Peoria (single production site)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[93]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:materials",
+   "source_url": "https://www.enerconpower.com/data-center-genset-packaging",
+   "ledger_value": "carbon steel or 5052 aluminum (NEMA 3R) and 300-series stainless steel (NEMA 4X) enclosures",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[94]",
+   "verdict": "corrected",
+   "corrected_value": "carbon steel or 5052 aluminum (NEMA 3R) and 300-series stainless steel (NEMA 4X) for a 400-4000A electrical-equipment enclosure (UL 50 spec block on the data-center genset packaging page); generator-enclosure material not stated",
+   "corrected_quote": "Amperage Range From 400A to 4000A ... Interrupting Rating: 65kA ... Enclosure Construction NEMA Type 3R (5052 aluminum or carbon steel) NEMA Type 4X (300 series stainless steel) ... UL 50 (or equivalent by design)",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Quote is on the page, but it sits in a spec block for an electrical product (amperage 400A-4000A, 600V, 65kA interrupting rating, enclosure sizes by amperage, UL 50 = enclosures for electrical equipment), not in the generator-enclosure text. The value and the plants.csv field present it as the plant's enclosure materials generally, and the opening line turns it into welding of carbon steel, aluminum and stainless enclosures. Enercon's custom-enclosure-modification page says it sources and modifies Rittal electrical enclosures, so these may not be welded at all. No Enercon page fetched states the material of its generator enclosures. Score unaffected (material already 0).",
+   "plants_csv_value": "carbon steel or 5052 aluminum (NEMA 3R) and 300-series stainless steel (NEMA 4X) for a 400-4000A electrical enclosure (UL 50); generator-enclosure material not stated",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:certifications",
+   "source_url": "https://www.enerconpower.com/capabilities",
+   "ledger_value": "ISO 9001:2015 (TUV Rheinland); UL 891, UL 508A, UL 1558 listings",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[95]",
+   "verdict": "confirmed",
+   "note": "Capabilities page lists 'Quality Certifications UL 891 - Dead Front Switchboards UL 508A - Industrial Control Panels UL 1558 ...' and the ISO 9001:2015 TUV Rheinland line; all clauses on the cited page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:production_type",
+   "source_url": "https://www.enerconpower.com/fabrication",
+   "ledger_value": "custom fabrication built to customer specs",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[96]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:production_type",
+   "source_url": "https://www.enerconpower.com/data-center-genset-packaging",
+   "ledger_value": "repeat builds for large data-center generator programs",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[97]",
+   "verdict": "confirmed",
+   "note": "Page: 'consistent documentation across repeat builds ... during large multi-unit programs'. Supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:prospect_test",
+   "source_url": "https://www.enerconpower.com/fabrication",
+   "ledger_value": "pass: in-house MIG, TIG and arc welding of enclosures and power modules (single site)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[98]",
+   "verdict": "confirmed",
+   "note": "Inferred; its reasoning repeats the materials conflation (generator enclosures 'from carbon steel, aluminum and stainless'), which the cited pages do not show. Verdict stands (welding is stated on /fabrication) but the reasoning should drop the material clause.",
+   "sibling_of_corrected": "p-enercon-east-peoria-il:materials",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:existing_robots",
+   "source_url": "https://www.enerconpower.com/custom-enclosure-modification",
+   "ledger_value": "unknown for welding; enclosure door and panel machining is automated",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[99]",
+   "verdict": "corrected",
+   "corrected_value": "unknown for welding; drilling, tapping and milling of enclosure doors (enclosure modification) is automated with a Rittal Perforex",
+   "corrected_quote": "Our Rittal Perforex eliminates manual drilling, tapping, milling, and rework ... like drilling, tapping, and milling an enclosure door—are now completed in just 15 minutes with automated precision",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The page shows automated drilling, tapping and milling of an enclosure door (Rittal electrical-enclosure modification); it does not mention panel machining. 'and panel' dropped. No score effect.",
+   "plants_csv_value": "unknown for welding; drilling, tapping and milling of enclosure doors (enclosure modification) is automated (Rittal Perforex)",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:welder_postings",
+   "source_url": "https://secure6.saashr.com/ta/6194038.careers?CareersSearch",
+   "ledger_value": "none counted: no welder role on Enercon's own UKG board; Mechanical Assembler 'welding tasks (if applicable)' listed, not counted",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[100]",
+   "verdict": "confirmed",
+   "note": "UKG job-requisitions API (company |6194038) 2026-11-17: 26 requisitions, all East Peoria, none a welder or fabricator; Mechanical Assembler (705045973) says 'Perform welding tasks (if applicable)' and 'Welding experience is a plus (if applicable)'. Not counted is right.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:triggers",
+   "source_url": "https://biztimes.com/generac-acquires-illinois-facility-for-subsidiary-enercons-production/",
+   "ledger_value": "none at East Peoria within 24 months",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[101]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:parent_company",
+   "source_url": "https://biztimes.com/generac-opens-its-largest-north-american-facility-in-beaver-dam/",
+   "ledger_value": "Generac Holdings Inc. (multi-plant)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[102]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly enclosure fabrication capacity for data-center programs: Generac is adding a separate Belvidere building for Enercon's large-megawatt enclosures while East Peoria posts no welder roles.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[103]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:opening_line",
+   "source_url": "",
+   "ledger_value": "Generac bought a Belvidere building in June 2026 for the large-megawatt generator enclosures Enercon makes, and your East Peoria fabrication shop runs MIG, TIG and arc welding on carbon steel, aluminum and stainless enclosures; which enclosure work do you plan to keep in East Peoria?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[104]",
+   "verdict": "corrected",
+   "corrected_value": "Generac bought a Belvidere building in June 2026 for the large-megawatt generator enclosures Enercon makes, and your fabrication page lists MIG, TIG and arc welding in the shop that builds your generator enclosures and power modules; which enclosure work do you plan to keep in East Peoria?",
+   "corrected_quote": "Enercon Engineering specializes in custom fabrication for critical power infrastructure—including power modules, generator enclosures, and mobile packaged units. ... MIG, TIG & Arc Welding",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "The line says the East Peoria shop 'runs MIG, TIG and arc welding on carbon steel, aluminum and stainless enclosures'. No page says that: the welding processes are on /fabrication; the three materials are on a 400-4000A electrical-enclosure spec block (see materials). Joining them asserts a fact neither page states. Suggested line keeps only stated clauses.",
+   "plants_csv_value": "Generac bought a Belvidere building in June 2026 for the large-megawatt generator enclosures Enercon makes, and your fabrication page lists MIG, TIG and arc welding in the shop that builds your generator enclosures and power modules; which enclosure work do you plan to keep in East Peoria?",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:score_process",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[105]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[106]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[107]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[108]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[109]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[110]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:score_total",
+   "source_url": "",
+   "ledger_value": "38",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[111]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[112]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:confidence",
+   "source_url": "",
+   "ledger_value": "3",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[113]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:production_type",
+   "source_url": "https://khl.com/news/kohler-completes-expansion-in-mosel/8024697.article",
+   "ledger_value": "assembly, testing and enclosing of large generator sets 250 kW to 4 MW (product list)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[114]",
+   "verdict": "confirmed",
+   "note": "KHL page says '250 kW to 4000 MW' (a typo); The Fabricator (Nov 17, 2022) gives 'from 250 to 4,000 kW', so '4 MW' is supported by a sibling source. Kept.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:production_type",
+   "source_url": "https://rehlko.wd12.myworkdayjobs.com/en-US/Reh/job/SheboyganWI/roduction-Supervisor---1st-Shift--Large-Enclosures-_R05047",
+   "ledger_value": "Large Enclosures Assembly line (Production Supervisor posting, datePosted 2026-11-02, Lakeshore Road location)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[115]",
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2026-11-02, addressLocality 'US_WI_Sheboygan_Lakeshore Road'. The posting also says Large Enclosures Assembly is 'the final stage of the assembly process' (see status_problems).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:parent_company",
+   "source_url": "https://rehlko.wd12.myworkdayjobs.com/en-US/Reh/job/SheboyganWI/Senior-Maintenance-Planner_R05122",
+   "ledger_value": "Rehlko (three Wisconsin plants: Mosel, Kohler, Kenosha)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[116]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:welder_postings",
+   "source_url": "https://rehlko.wd12.myworkdayjobs.com/en-US/Reh",
+   "ledger_value": "none found on Rehlko's own board; aggregator tank-welder ads are closed and name Kohler WI",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[117]",
+   "verdict": "confirmed",
+   "note": "Rehlko Workday API 2026-11-17: 'Mosel' 23 and 'tank' 8 results, all salaried or overseas; no welder in Wisconsin. Correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:triggers",
+   "source_url": "https://khl.com/news/kohler-completes-expansion-in-mosel/8024697.article",
+   "ledger_value": "none within 24 months (last Mosel expansion completed Nov 2022)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[118]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:prospect_test",
+   "source_url": "https://khl.com/news/kohler-completes-expansion-in-mosel/8024697.article",
+   "ledger_value": "pass (provisional): enclosures factory-built at Mosel; in-house welding not shown",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[119]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-A.json evidence[120]",
+   "verdict": "confirmed",
+   "note": "Unknown row; nothing to verify beyond the search described.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Rehlko posted a 1st-shift supervisor for Large Enclosures Assembly at the Lakeshore Road plant on Nov 2, 2026, and its 2022 expansion was built around assembling, testing and enclosing generators from 250 kW up; do you weld the enclosure frames and sub-base tanks at Mosel or buy them in?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[121]",
+   "verdict": "confirmed",
+   "note": "Clauses stated (R05047 datePosted 2026-11-02, Lakeshore Road; KHL/Fabricator 2022). 'sub-base tanks' appears only in the question. Acceptable.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[122]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[123]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[124]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[125]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[126]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[127]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:score_total",
+   "source_url": "",
+   "ledger_value": "21",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[128]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[129]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:confidence",
+   "source_url": "",
+   "ledger_value": "2",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[130]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:triggers",
+   "source_url": "https://biztimes.com/rehlko-capitalizing-on-data-center-growth-with-new-kenosha-facility/",
+   "ledger_value": "Jun 7, 2026: new 160,000 sq ft Kenosha manufacturing facility to increase production capacity",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[131]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:production_type",
+   "source_url": "https://rehlko.wd12.myworkdayjobs.com/en-US/Reh/job/Kenosha-WI/Quality-and-EHS-Engineer_R04516",
+   "ledger_value": "eFRAME enclosure manufacturing operation (product list; Quality and EHS Engineer posting, datePosted 2026-11-10)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[132]",
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2026-11-10, addressLocality Kenosha 128 Ave; body says 'The Quality and EHS Engineer will play a critical role in supporting ... the eFRAME manufacturing operation'. Note: the posting title is now 'Quality Engineer (Relocation and Sign On Bonus Eligible)'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:parent_company",
+   "source_url": "https://rehlko.wd12.myworkdayjobs.com/en-US/Reh/job/SheboyganWI/Senior-Maintenance-Planner_R05122",
+   "ledger_value": "Rehlko (three Wisconsin plants: Mosel, Kohler, Kenosha)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[133]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:welder_postings",
+   "source_url": "https://rehlko.wd12.myworkdayjobs.com/en-US/Reh",
+   "ledger_value": "none found (Rehlko board, Kenosha)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[134]",
+   "verdict": "confirmed",
+   "note": "Rehlko Workday API 2026-11-17: 'Kenosha' 4 results (Quality Engineer R04516 and shared engineering/co-op/planner roles); 'weld' 25 results, none a welder in Wisconsin. Correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:prospect_test",
+   "source_url": "https://rehlko.wd12.myworkdayjobs.com/en-US/Reh/job/Kenosha-WI/Quality-and-EHS-Engineer_R04516",
+   "ledger_value": "pass (pre-production; welding at the site not shown)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[135]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-A.json evidence[136]",
+   "verdict": "confirmed",
+   "note": "Unknown row; nothing to verify beyond the search described.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Rehlko is starting up a 160,000-square-foot Kenosha plant for eFRAME enclosures and posted a Quality and EHS Engineer for it on Nov 10, 2026; will you weld the enclosure frames in Kenosha or bring them in for assembly?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[137]",
+   "verdict": "confirmed",
+   "note": "Clauses stated (BizTimes Jun 7, 2026; R04516 datePosted 2026-11-10). 'is starting up' is a mild reading of 'moving forward with plans' plus the posting; see opening_line_problems (optional).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[138]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[139]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[140]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[141]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[142]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[143]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:score_total",
+   "source_url": "",
+   "ledger_value": "28",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[144]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[145]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:confidence",
+   "source_url": "",
+   "ledger_value": "3",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[146]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:parent_company",
+   "source_url": "https://rermag.com/mergers-acquisitions/manufacturers/article/55132257/deutz-completes-blue-star-power-systems-acquisition-growing-in-power-generation-market",
+   "ledger_value": "Deutz (completed purchase of all shares in Blue Star Power Systems Inc.; reported Aug 11, 2024)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[147]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:production_type",
+   "source_url": "https://www.powerprogress.com/news/blue-star-on-the-rise/5031929.article",
+   "ledger_value": "mixed: about 75% standard product, the rest customized (2020)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[148]",
+   "verdict": "confirmed",
+   "note": "Power Progress, 17 April 2020: Fahrforth: 'We have a standard product offering and probably 75% of our business is the standard product offering', and customized units. Supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/5c749e2a-c85a-41c8-997a-e140b9305744/Blue-Star-Power-Systems",
+   "ledger_value": "none found: the company's Paylocity board shows no open jobs",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[149]",
+   "verdict": "confirmed",
+   "note": "Paylocity board raw JSON shows \"Jobs\":[] on 2026-11-16. Blue Star is operating (Deutz describes it as integrated and a growth driver in 2026; careers page live).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:triggers",
+   "source_url": "https://rermag.com/mergers-acquisitions/manufacturers/article/55132257/deutz-completes-blue-star-power-systems-acquisition-growing-in-power-generation-market",
+   "ledger_value": "none within 24 months",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[150]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-A.json evidence[151]",
+   "verdict": "confirmed",
+   "note": "Unknown row; nothing to verify beyond the search described.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:opening_line",
+   "source_url": "",
+   "ledger_value": "Deutz completed its purchase of Blue Star in August 2024, and in 2020 Blue Star said it fabricates its own skids, tanks and enclosures, with about 75% of its business in standard gen-sets; how do you split that fabrication between standard and custom units today?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[152]",
+   "verdict": "confirmed",
+   "note": "Clauses stated (Deutz completion Aug 11, 2024; Power Progress Apr 2020). The 'fabricates its own skids, tanks and enclosures' sentence is the reporter's, not a Blue Star quote; see opening_line_problems (optional wording).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[153]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[154]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[155]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[156]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[157]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:score_scale",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[158]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:score_total",
+   "source_url": "",
+   "ledger_value": "16",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[159]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[160]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:confidence",
+   "source_url": "",
+   "ledger_value": "1",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[161]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4520556",
+   "ledger_value": "MIG required (Panel Welder II posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[162]",
+   "verdict": "confirmed",
+   "note": "Panel Welder II: '3-5 years' experience as a MIG welder ... required'. Tank Welder III also requires '5+ years experience as a MIG welder'. Supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4523133",
+   "ledger_value": "MIG; fillet and short vertical-down welds (Sub Welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[163]",
+   "verdict": "confirmed",
+   "note": "Sub Welder posting: 'Perform common welding applications, including fillet welds and short vertical-down welds' plus MIG experience required. All clauses on the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4519304",
+   "ledger_value": "watertight long fillet, vertical-down and butt welds on tanks (Tank Welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[164]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:materials",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4520556",
+   "ledger_value": "galvanized and mild steel (Panel Welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[165]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:materials",
+   "source_url": "https://hennigpower.com/generator-enclosures",
+   "ledger_value": "enclosures in 14-gauge galvannealed steel, 0.125 aluminum or 14-gauge stainless steel",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[166]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:materials",
+   "source_url": "https://www.thefabricator.com/thefabricator/article/shopmanagement/how-a-fabricator-helps-to-keep-data-flowing-for-all-of-us",
+   "ledger_value": "laser-cut blanks 14 ga to 0.75 in thick (Feb 2024)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[167]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:certifications",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4520556",
+   "ledger_value": "AWS D1.3 14-gauge and 11-gauge welder certifications required (panel welders)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[168]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:certifications",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4519304",
+   "ledger_value": "AWS D1.1 structural and D1.3 11-gauge (tank welders)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[169]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:certifications",
+   "source_url": "https://hennigpower.com/fuel-tanks",
+   "ledger_value": "UL 142, UL 2085 and ULC S601 tank certification options",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[170]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:part_size_fit",
+   "source_url": "https://www.thefabricator.com/thefabricator/article/shopmanagement/how-a-fabricator-helps-to-keep-data-flowing-for-all-of-us",
+   "ledger_value": "double-walled fuel tanks are large and bulky (Feb 2024); no dimension stated",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[171]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:part_size_fit",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4520556",
+   "ledger_value": "weak fit for panels: panel welding is thin sheet (D1.3 14- and 11-gauge)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[172]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:production_type",
+   "source_url": "https://hennigpower.com/generator-enclosures",
+   "ledger_value": "fully customized generator enclosure builds",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[173]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:production_type",
+   "source_url": "https://hennigpower.com/fuel-tanks",
+   "ledger_value": "fuel tanks always manufactured to the customer's requirements",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[174]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:existing_robots",
+   "source_url": "https://www.thefabricator.com/thefabricator/article/shopmanagement/how-a-fabricator-helps-to-keep-data-flowing-for-all-of-us",
+   "ledger_value": "no robotic welding stated: CEO said robotics aren't much help for large double-walled tanks (Feb 2024); laser cutting is automated",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[175]",
+   "verdict": "confirmed",
+   "note": "Fabricator Feb 1, 2024: 'Goellner said that robotics aren't much help for Hennig. For something like the double-walled fuel tanks ...' and 'automation has made a major impact on Hennig's shop floor in the laser cutting area'. Supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:headcount",
+   "source_url": "https://www.yahoo.com/news/hennig-manufacturing-company-continues-grow-131628968.html",
+   "ledger_value": "north of 900 working at Machesney Park (Mar 14, 2025)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[176]",
+   "verdict": "confirmed",
+   "note": "WTVO via Yahoo, Fri March 14, 2025: Goellner: 'Right now Hennig has probably north of 900 working here'. Supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:triggers",
+   "source_url": "https://www.yahoo.com/news/hennig-manufacturing-company-continues-grow-131628968.html",
+   "ledger_value": "Mar 14, 2025 (WTVO): plan to hire about 200 more by end of 2025; unit goals 650 (2025), 800-900 (2026), 1,200 for 2027 orders: hiring and output statements, not counted as a plant event",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[177]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4519304",
+   "ledger_value": "Welder III - Tank Welder (day), datePosted 2026-11-12",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[178]",
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2026-11-12T19:21:43; board PublishedDate 2026-11-12 on all Hennig Power roles (board-wide refresh; JobId 4519304 predates), so the date is a re-list stamp, not the opening date; nothing is claimed as 60+ days.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4520556",
+   "ledger_value": "Panel Welder II - Day Shift, Machesney Park",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[179]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4523133",
+   "ledger_value": "Welder I - Sub Welder - Day Shift, Machesney Park",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[180]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/7c9660d3-9839-4b9b-af6a-d4681d6b24d8/Hennig?location=All%20Locations&department=All%20Departments",
+   "ledger_value": "10 counted open on the 'Hennig Power' location, one campus (consultation 10 rule)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[181]",
+   "verdict": "confirmed",
+   "note": "Hennig Paylocity board JSON 2026-11-16: ten welder requisitions under 'Hennig Power' (Panel Welder I/II/III day and night; Welder I Sub Welder day and night; Welder III Tank Welder day and night). Both Tank Welder requisitions carry JobLocation Address '9904 N Alpine Rd'; the panel and sub-welder ones carry no street address. Stacks Welder is under 'Hennig, Inc. - Alpine'. Count correct; campus attribution is a RULING (score_problems).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:address",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/7c9660d3-9839-4b9b-af6a-d4681d6b24d8/Hennig?location=All%20Locations&department=All%20Departments",
+   "ledger_value": "Hennig Power buildings form one campus: 9904 N Alpine Rd is about 0.8 km from 4950 Marlin Dr; 10601 N Second St is paired with 4950 Marlin Dr",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[182]",
+   "verdict": "confirmed",
+   "note": "ECHO DFR re-read: 9904 N Alpine Rd at 42.3722, -89.02591; 4950 Marlin Dr at 42.378992, -89.021612 = 0.83 km. Census interpolates 9904 N Alpine at 42.36449, -89.02925 (1.61 km). 10601 N Second St (the record's own address) still does not geocode (Census, three spellings; Nominatim returns only the street). Board location 4920 Marlin Drive also used for 'Hennig Power'. Correctly tagged inferred; see score_problems.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:triggers",
+   "source_url": "https://www.thefabricator.com/thefabricator/article/shopmanagement/how-a-fabricator-helps-to-keep-data-flowing-for-all-of-us",
+   "ledger_value": "none dated within 24 months: Feb 2024 plan to grow to 850,000 sq ft by end of 2024 (before the window); ECHO construction stormwater permit for a building addition at 5950 Marlin Dr, start date not shown",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[183]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual welding labor for large double-walled fuel tanks and panels: ten welder requisitions are open while output goals rise (650 units in 2025, 800-900 in 2026), and the CEO said in Feb 2024 that robots are not much help on large, bulky tanks.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[184]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Machesney Park board lists ten welder openings across the panel, sub-weld and tank lines; in March 2025 your CEO set goals of 650 units that year and 800 to 900 the next, and in February 2024 he said large double-walled fuel tanks take about as long to fixture for a robot as to weld by hand; is that still how you see tank welding at those volumes?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[185]",
+   "verdict": "confirmed",
+   "note": "Clauses stated: ten welder requisitions (board), Goellner's unit goals (WTVO Mar 14, 2025), Feb 2024 tank-fixturing remark (The Fabricator, reported speech after 'Goellner said'). Acceptable.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[186]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:score_material_part",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[187]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[188]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[189]",
+   "verdict": "confirmed",
+   "note": "See score_problems: campus RULING.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[190]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[191]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:score_total",
+   "source_url": "",
+   "ledger_value": "72",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[192]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[193]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:confidence",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[194]",
+   "verdict": "confirmed",
+   "note": "See score_problems: confidence consistency RULING (4 as written vs 5).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4601018",
+   "ledger_value": "MIG, gas welding and arc welding (Tea welder and fabricator postings)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[195]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4600973",
+   "ledger_value": "MIG welding required (Fabricator)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[196]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:materials",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4601018",
+   "ledger_value": "structural steel, flat and formed sheet metal and plate on bases",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[197]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:materials",
+   "source_url": "https://www.harvardintegrations.com/generator-enclosures",
+   "ledger_value": "enclosures of formed C-channel steel or aluminum, welded",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[198]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:materials",
+   "source_url": "https://www.harvardintegrations.com/sub-base-fuel-tanks",
+   "ledger_value": "sub-base tanks of formed C-channel structural steel",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[199]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:certifications",
+   "source_url": "https://www.harvardintegrations.com/sub-base-fuel-tanks",
+   "ledger_value": "UL 142 sub-base fuel tanks",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[200]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:part_size_fit",
+   "source_url": "https://www.harvardintegrations.com/services",
+   "ledger_value": "generator transport trailer beds 4-6 ft wide by 8-18 ft long, full-length structural tube frame, ten-gauge steel bed top",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[201]",
+   "verdict": "confirmed",
+   "note": "Services page: 'Generator Transport Trailers STANDARD TRAILER CONSTRUCTION FEATURES: • Full-length structural tube frame construction • Ten-gauge steel bed top • Bed sizes from 4-6 ft wide by 8-18 ft long'. Supported; 'welded' is not on the page (in the inferred row).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:part_size_fit",
+   "source_url": "https://www.harvardintegrations.com/about-us",
+   "ledger_value": "cell fit (2026 analyst limits); single production site; trailers are a boundary product",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[202]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:production_type",
+   "source_url": "https://www.harvardintegrations.com/about-us",
+   "ledger_value": "custom engineered to each customer's requirements",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[203]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:headcount",
+   "source_url": "https://hillcompanies.com/our-companies/harvard-integrations",
+   "ledger_value": "300+ employees (Hill Companies page, undated; 45+ years in business)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[204]",
+   "verdict": "confirmed",
+   "note": "Hill Companies page: '45+ years in business 300+ employees' and 'Since its founding in 1979', so the page dates to 2024 or later; the date is still an inference (points, no confidence).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4601018",
+   "ledger_value": "Structural Welder - Evening Shift, Tea, datePosted 2026-10-20; overtime opportunities",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[205]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4600973",
+   "ledger_value": "Fabricator (day and evening shifts), Tea, datePosted 2026-10-20; lays out, assembles and welds bases and enclosures; MIG required",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[206]",
+   "verdict": "confirmed",
+   "note": "Fabricator posting: 'Available Shifts: Day Shift- 6:00-4:30pm Evening Shift- 4:30pm-3:00am'; JSON-LD datePosted 2026-10-20; 'lay-out, assemble and weld base or enclosure'; 'MIG welding.' All clauses on page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4553714",
+   "ledger_value": "Fabricator- Evening Shift, Tea, datePosted 2026-10-16",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-A.json evidence[207]",
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2026-10-16 (board PublishedDate 2026-10-14). Body: 'lay-out, assemble and weld base or enclosure', MIG. Supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/fa0ad364-b3c8-407c-86c7-6473eef64ce8/Harvard-Integrations-LP",
+   "ledger_value": "3 counted open at once on the company's own board, all Main Campus, Tea",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[208]",
+   "verdict": "confirmed",
+   "note": "Harvard Paylocity board JSON 2026-11-16: 27 roles, all 'Main Campus', Address 27157 470th Ave. Three counted roles open at once; oldest about 31 days. Correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:prospect_test",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4601018",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[209]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:relationship",
+   "source_url": "https://hillcompanies.com/our-companies/harvard-integrations",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[210]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:triggers",
+   "source_url": "https://hillcompanies.com/our-companies/harvard-integrations",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[211]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely evening-shift weld and fit-up capacity for custom bases and enclosures: a Structural Welder and two Fabricator roles, two of them on evenings, have been open since mid-October 2026.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[212]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Tea board has carried a Structural Welder for the evening shift and two Fabricator roles since mid-October 2026, each laying out and MIG-welding bases and enclosures to customer drawings; how are you keeping evening weld capacity in step with custom orders?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[213]",
+   "verdict": "confirmed",
+   "note": "Clauses stated: Structural Welder (2026-10-20), Fabricator (2026-10-20), Fabricator- Evening Shift (2026-10-16), each 'lay-out, assemble and weld base or enclosure' with MIG, 'Follow customer specifications and engineering drawings'. Acceptable.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[214]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:score_material_part",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[215]",
+   "verdict": "confirmed",
+   "note": "Points stand as a RULING (welded status inferred, boundary product); confidence corrected separately.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[216]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[217]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[218]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[219]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:score_total",
+   "source_url": "",
+   "ledger_value": "88",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[220]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[221]",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:confidence",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-A.json evidence[222]",
+   "verdict": "corrected",
+   "corrected_value": "3",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "Material 20 rests on the trailer-bed dimensions, but the frame's welded status and the in-scope status of the trailer (boundary product) are inferred (row p-harvard-integrations-tea-sd:part_size_fit, about-us). Under the Werk-Brau / Brookville precedent a material score resting on an inferred welded status earns points but no confidence, the same test the profiler applied to EK Fall River. Confidence 4 -> 3 (process, part mix, labor). Add p-harvard-integrations-tea-sd:part_size_fit to no-confidence-claims.csv.",
+   "plants_csv_value": "3",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110005866580&output=JSON",
+   "ledger_value": "Enercon Engineering Inc",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15237",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110005866580&output=JSON",
+   "ledger_value": "201 Altorfer Ln, East Peoria, IL 61611",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15238",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:parent_company",
+   "source_url": "https://www.enerconpower.com/",
+   "ledger_value": "Generac, April 2026",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15239",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:website",
+   "source_url": "https://www.enerconpower.com/",
+   "ledger_value": "https://www.enerconpower.com",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15240",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:products",
+   "source_url": "https://www.enerconpower.com/",
+   "ledger_value": "power packaging, generator docking stations, switchgear",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15241",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:products",
+   "source_url": "https://www.enerconpower.com/about-us/",
+   "ledger_value": "in-house sheet metal fabrication shop",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15242",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:tier",
+   "source_url": "https://www.enerconpower.com/",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15244",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:tier_secondary",
+   "source_url": "https://www.enerconpower.com/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15245",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:relationship",
+   "source_url": "https://www.enerconpower.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15246",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:lookalike_of",
+   "source_url": "https://www.enerconpower.com/",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15247",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:prospect_test",
+   "source_url": "https://www.enerconpower.com/about-us/",
+   "ledger_value": "pass (provisional; sheet-metal enclosures, switchgear-heavy)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15249",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:name",
+   "source_url": "https://hennigpower.com/news-and-events/2026/01/28/hennig-power-protection-wins-supplier-award-from-rolls-royce-power-systems/",
+   "ledger_value": "Hennig Power Protection",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15270",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:address",
+   "source_url": "https://hennigpower.com/contact-us",
+   "ledger_value": "10601 N 2nd St, Machesney Park, IL 61115",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15271",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:address",
+   "source_url": "https://hennigpower.com/news-and-events/2026/01/28/hennig-power-protection-wins-supplier-award-from-rolls-royce-power-systems/",
+   "ledger_value": "hundreds of thousands of sq ft in Machesney Park",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15272",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:address",
+   "source_url": "",
+   "ledger_value": "coordinates city-level",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15273",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:parent_company",
+   "source_url": "https://hennigpower.com/news-and-events/2026/01/28/hennig-power-protection-wins-supplier-award-from-rolls-royce-power-systems/",
+   "ledger_value": "Hennig, Inc.",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15274",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:website",
+   "source_url": "https://hennigpower.com/contact-us",
+   "ledger_value": "https://hennigpower.com",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15275",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:products",
+   "source_url": "https://hennigpower.com/news-and-events/2026/01/28/hennig-power-protection-wins-supplier-award-from-rolls-royce-power-systems/",
+   "ledger_value": "custom generator enclosures",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15276",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:products",
+   "source_url": "https://hennigpower.com/",
+   "ledger_value": "enclosure fuel tanks with secondary containment; switchgear enclosures (boundary)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15277",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:products",
+   "source_url": "https://hennigpower.com/company/",
+   "ledger_value": "1 million sq ft facility space",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15278",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:tier",
+   "source_url": "https://hennigpower.com/news-and-events/2026/01/28/hennig-power-protection-wins-supplier-award-from-rolls-royce-power-systems/",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15279",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:relationship",
+   "source_url": "https://hennigpower.com/news-and-events/2026/01/28/hennig-power-protection-wins-supplier-award-from-rolls-royce-power-systems/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15280",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:lookalike_of",
+   "source_url": "https://hennigpower.com/news-and-events/2026/01/28/hennig-power-protection-wins-supplier-award-from-rolls-royce-power-systems/",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15281",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:prospect_test",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4520556",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15284",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:supplies:c-rolls-royce-power-systems",
+   "source_url": "https://hennigpower.com/news-and-events/2026/01/28/hennig-power-protection-wins-supplier-award-from-rolls-royce-power-systems/",
+   "ledger_value": "generator enclosures (Rolls-Royce Power Systems supplier award, Stationary Power Solutions category, 2024 symposium)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15285",
+   "verdict": "confirmed",
+   "note": "Page: 'The recognition came during the 2024 Supplier Symposium' and the Stationary Power Solutions category. Supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:name",
+   "source_url": "https://www.ekmachine.com/contact-us/",
+   "ledger_value": "EK Machine - Fall River",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15299",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:address",
+   "source_url": "https://www.ekmachine.com/contact-us/",
+   "ledger_value": "671 S Main St, Fall River, WI 53932 (campus also: 465 Quality Ct / 465 EK Way, 500, 165 and 181 Quality Ct); 165 and 181 Quality Ct also listed",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15300",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110071095277&output=JSON",
+   "ledger_value": "465 Quality Ct (EPA name for the Power Products building)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15301",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:address",
+   "source_url": "https://www.ekmachine.com/power-products/enclosures/",
+   "ledger_value": "one campus record (all Fall River buildings)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15302",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:parent_company",
+   "source_url": "https://topworkplaces.com/company/ek-machine/",
+   "ledger_value": "EK Machine Co., Inc., headquartered in Fall River",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15303",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:website",
+   "source_url": "https://www.ekmachine.com/contact-us/",
+   "ledger_value": "https://www.ekmachine.com",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15304",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:products",
+   "source_url": "https://www.ekmachine.com/power-products/enclosures/",
+   "ledger_value": "generator enclosures (weatherproof, sound attenuated)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15305",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:products",
+   "source_url": "https://www.ekmachine.com/power-products/fuel-tanks/",
+   "ledger_value": "sub-base, day and primary fuel tanks (UL 142, UL 2085); sub-base, day and primary fuel tanks",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15306",
+   "verdict": "confirmed",
+   "note": "Fuel-tanks page also says 'designed, manufactured, and finished to meet UL142, UL2085, and ULC standards', so the UL 2085 clause is on the cited page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:products",
+   "source_url": "https://www.ekmachine.com/power-products/",
+   "ledger_value": "enclosures, fuel tanks, containers and trailers for power generation equipment",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15307",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:products",
+   "source_url": "https://www.ekmachine.com/contact-us/",
+   "ledger_value": "generator package assembly",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15308",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:products",
+   "source_url": "https://topworkplaces.com/company/ek-machine/",
+   "ledger_value": "contract machining, fabrication, welding, assembly, powder coating",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15309",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:tier",
+   "source_url": "https://www.ekmachine.com/",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15310",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:tier_secondary",
+   "source_url": "https://topworkplaces.com/company/ek-machine/",
+   "ledger_value": "Contract fabricator",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15311",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:relationship",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a78839f9db1e847019dbb0e3d2e5f23&source=&lang=en",
+   "ledger_value": "known_customer",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15312",
+   "verdict": "confirmed",
+   "note": "Path Lead Welder posting (Fall River, Job Id 487): 'Leads tank welders on Path Robotics projects'. Shipbuilding precedent (Saronic relationship, stated, confirmed): a source naming Path work at the site supports a stated known_customer row.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:relationship",
+   "source_url": "",
+   "ledger_value": "known_customer (site named)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15313",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:welder_postings",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a7887ac9f8b9449019fad83d1596062&source=&lang=en",
+   "ledger_value": "Welder Weekend Shift, 3 openings, sign-on bonus",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15318",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:welder_postings",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a78839f9db1e847019dbb0e3d2e5f23&source=&lang=en",
+   "ledger_value": "Path Lead Welder Weekend Shift, 1 opening",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15319",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:welder_postings",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a7883a8a0abfc6b01a0f2f02d534530&source=&lang=en",
+   "ledger_value": "Laser Welder, 1 opening",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15320",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:prospect_test",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a7887ac9e6b0bf7019ea7a6fd94341c&source=&lang=en",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15321",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:lookalike_of",
+   "source_url": "",
+   "ledger_value": "",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15322",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:name",
+   "source_url": "https://www.ekmachine.com/contact-us/",
+   "ledger_value": "EK Power Products, Madison",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15323",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:address",
+   "source_url": "https://www.ekmachine.com/contact-us/",
+   "ledger_value": "2701 S Stoughton Rd, Madison, WI 53716",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15324",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:parent_company",
+   "source_url": "https://www.ekmachine.com/contact-us/",
+   "ledger_value": "EK Machine Co., Inc.",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15325",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:website",
+   "source_url": "https://www.ekmachine.com/contact-us/",
+   "ledger_value": "https://www.ekmachine.com",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15326",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:products",
+   "source_url": "https://www.ekmachine.com/contact-us/",
+   "ledger_value": "Power Products facility",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15327",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:products",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a7885aca0abfc6901a0cf771b622b53&source=&lang=en",
+   "ledger_value": "welding weldments and fuel tanks; pressure testing fuel tanks; fuel tanks pressure tested at Madison",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15328",
+   "verdict": "confirmed",
+   "note": "Posting located Madison, WI lists 'Pressure testing fuel tanks and hydro testing glycol tanks' and 'Minimal traveling between plants'. 'at Madison' is the role's location; acceptable.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:tier",
+   "source_url": "https://www.ekmachine.com/contact-us/",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15329",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:relationship",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a78839f9db1e847019dbb0e3d2e5f23&source=&lang=en",
+   "ledger_value": "customer_other_plant",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15330",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:prospect_test",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d085589a5e01857e41e4bf2a93&id=8a7885aca0abfc6901a0cf771b622b53&source=&lang=en",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15333",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110005418431",
+   "ledger_value": "Generac Power Systems Inc - Eagle",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15334",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110005418431",
+   "ledger_value": "211 MURPHY DR, EAGLE, WI 53119",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15335",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:parent_company",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1474735/000143774926004568/gnrc20251231_10k.htm",
+   "ledger_value": "Generac Holdings Inc.",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15336",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:products",
+   "source_url": "https://web.archive.org/web/20220622125235/https://www.generac.com/specialpages/archive/careers/facility-locations",
+   "ledger_value": "Generator base tanks and weather-resistant enclosures; liquid-cooled generator production (company facility page, archived 2022-06-22)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15337",
+   "verdict": "unreachable",
+   "note": "web.archive.org snapshot unreachable 2026-11-16/17: fetch_page plain (connection reset) and browser (502), curl https and http/1.1 (tunnel closed mid-exchange); the Wayback availability API confirms the 2022-06-22 snapshot exists. Not confirmed, not corrected; the live generac.com page is gone.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:products",
+   "source_url": "https://biztimes.com/generac-opens-its-largest-north-american-facility-in-beaver-dam/",
+   "ledger_value": "Fabrication capabilities expanding (2025)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15338",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:tier",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1474735/000143774926004568/gnrc20251231_10k.htm",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15339",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:relationship",
+   "source_url": "https://web.archive.org/web/20220622125235/https://www.generac.com/specialpages/archive/careers/facility-locations",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15340",
+   "verdict": "unreachable",
+   "note": "Rests on the archived Generac facility page, unreachable 2026-11-16/17 (web.archive.org 502 and tunnel resets; availability API confirms the 2022-06-22 snapshot exists). Not re-verified.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:lookalike_of",
+   "source_url": "https://web.archive.org/web/20220622125235/https://www.generac.com/specialpages/archive/careers/facility-locations",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15341",
+   "verdict": "unreachable",
+   "note": "Rests on the archived Generac facility page, unreachable this run. Not re-verified.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:prospect_test",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/en-US/External/job/Eagle-WI---USA/MIG-Welder---2nd-Shift_JR18255",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15344",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:address",
+   "source_url": "https://biztimes.com/generac-acquires-illinois-facility-for-subsidiary-enercons-production/",
+   "ledger_value": "675 Corporate Parkway, Belvidere, Illinois",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15355",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:name",
+   "source_url": "https://finviz.com/news/361594/generac-acquires-belvidere-illinois-facility-to-expand-large-megawatt-generator-packaging-capacity",
+   "ledger_value": "Generac Belvidere facility",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15356",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:parent_company",
+   "source_url": "https://biztimes.com/generac-acquires-illinois-facility-for-subsidiary-enercons-production/",
+   "ledger_value": "Generac Holdings Inc.",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15357",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:products",
+   "source_url": "https://finviz.com/news/361594/generac-acquires-belvidere-illinois-facility-to-expand-large-megawatt-generator-packaging-capacity",
+   "ledger_value": "Large-megawatt generator enclosures and final packaging",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15358",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:products",
+   "source_url": "https://biztimes.com/generac-acquires-illinois-facility-for-subsidiary-enercons-production/",
+   "ledger_value": "Large-megawatt generator enclosures",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15359",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:status",
+   "source_url": "https://finviz.com/news/361594/generac-acquires-belvidere-illinois-facility-to-expand-large-megawatt-generator-packaging-capacity",
+   "ledger_value": "base (pre-production prospect; opens Q1 2027)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15360",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:tier",
+   "source_url": "https://finviz.com/news/361594/generac-acquires-belvidere-illinois-facility-to-expand-large-megawatt-generator-packaging-capacity",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15361",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:relationship",
+   "source_url": "https://biztimes.com/generac-acquires-illinois-facility-for-subsidiary-enercons-production/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15362",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:lookalike_of",
+   "source_url": "https://biztimes.com/generac-acquires-illinois-facility-for-subsidiary-enercons-production/",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15363",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110005866580",
+   "ledger_value": "Enercon Engineering Inc",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15366",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110005866580",
+   "ledger_value": "201 ALTORFER LN, EAST PEORIA, IL 61611",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15367",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:parent_company",
+   "source_url": "https://finviz.com/news/361594/generac-acquires-belvidere-illinois-facility-to-expand-large-megawatt-generator-packaging-capacity",
+   "ledger_value": "Generac Holdings Inc. (acquired Feb 2026)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15368",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:products",
+   "source_url": "https://www.nacleanenergy.com/energy-storage/generac-signs-agreement-to-acquire-enercon-accelerating-growth-in-data-center-and-switchgear-markets",
+   "ledger_value": "Generator enclosures and switchgear",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15369",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:headcount",
+   "source_url": "https://www.nacleanenergy.com/energy-storage/generac-signs-agreement-to-acquire-enercon-accelerating-growth-in-data-center-and-switchgear-markets",
+   "ledger_value": "more than 120 (Feb 2026)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15370",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:tier",
+   "source_url": "https://www.nacleanenergy.com/energy-storage/generac-signs-agreement-to-acquire-enercon-accelerating-growth-in-data-center-and-switchgear-markets",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15371",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:tier_secondary",
+   "source_url": "https://www.nacleanenergy.com/energy-storage/generac-signs-agreement-to-acquire-enercon-accelerating-growth-in-data-center-and-switchgear-markets",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15372",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:relationship",
+   "source_url": "https://www.nacleanenergy.com/energy-storage/generac-signs-agreement-to-acquire-enercon-accelerating-growth-in-data-center-and-switchgear-markets",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15373",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:lookalike_of",
+   "source_url": "https://www.nacleanenergy.com/energy-storage/generac-signs-agreement-to-acquire-enercon-accelerating-growth-in-data-center-and-switchgear-markets",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15374",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:welder_postings",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/en-US/External/job/USA---IL-East-Peoria/Mechanical-Design-Engineer_JR15956",
+   "ledger_value": "none found (Generac board, East Peoria)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15375",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:prospect_test",
+   "source_url": "https://www.nacleanenergy.com/energy-storage/generac-signs-agreement-to-acquire-enercon-accelerating-growth-in-data-center-and-switchgear-markets",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15376",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110007332822",
+   "ledger_value": "Kohler Co - Town of Mosel Plant (Rehlko Power Systems)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15427",
+   "verdict": "corrected",
+   "corrected_value": "Kohler Co - Town of Mosel Plant",
+   "corrected_quote": "\"FacilityName\":\"KOHLER CO - TOWN OF MOSEL PLANT\", \"FacilityStreet\":\"N7650 LAKESHORE RD\", \"FacilityCity\":\"SHEBOYGAN\"",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The ECHO DFR record names KOHLER CO - TOWN OF MOSEL PLANT only; '(Rehlko Power Systems)' is not on it. The Rehlko identity is carried by the Rehlko posting rows (parent_company, address). No score effect; plants.csv name unaffected.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110007332822",
+   "ledger_value": "N7650 LAKESHORE RD, SHEBOYGAN, WI 53083",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15428",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:parent_company",
+   "source_url": "https://rehlko.wd12.myworkdayjobs.com/en-US/Reh/job/SheboyganWI/roduction-Supervisor---1st-Shift--Large-Enclosures-_R05047",
+   "ledger_value": "Rehlko",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15429",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:address",
+   "source_url": "https://rehlko.wd12.myworkdayjobs.com/en-US/Reh/job/SheboyganWI/Manufacturing-Engineering---NPI-Manager_R04420",
+   "ledger_value": "Mosel site of the Sheboygan-labelled Rehlko postings",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15430",
+   "verdict": "corrected",
+   "corrected_value": "Mosel site of the Sheboygan-labelled Rehlko postings",
+   "corrected_quote": "This role is fully onsite, Mon-Fri, based in Mosel, WI.",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "Quote is on the page (R04420), but the value is a site-attribution judgement (that the board's 'Sheboygan,WI' / 'US_WI_Sheboygan_Lakeshore Road' location is the Mosel plant). Under the fact-check lessons a site-attribution judgement goes in an inferred row; retag inferred and add reasoning. The judgement itself is sound (the posting says based in Mosel; ECHO puts the plant at N7650 Lakeshore Rd, Sheboygan).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:products",
+   "source_url": "https://www.thefabricator.com/thefabricator/news/shopmanagement/kohler-power-systems-expands-generator-plant-in-wisconsin",
+   "ledger_value": "Large diesel industrial generators; assembly, testing and enclosing of 250-4,000 kW gensets",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15431",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:products",
+   "source_url": "https://khl.com/news/kohler-completes-expansion-in-mosel/8024697.article",
+   "ledger_value": "Factory-built enclosures from a single facility",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15432",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:products",
+   "source_url": "https://rehlko.wd12.myworkdayjobs.com/en-US/Reh/job/SheboyganWI/roduction-Supervisor---1st-Shift--Large-Enclosures-_R05047",
+   "ledger_value": "Large Enclosures Assembly line (2026)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15433",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:products",
+   "source_url": "https://www.powersystems.rehlko.com/eframe-enclosures",
+   "ledger_value": "eFRAME enclosures with UL 142 sub-base tanks",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15434",
+   "verdict": "corrected",
+   "corrected_value": "eFRAME enclosures with UL 142 sub-base tanks (company product page; no site named)",
+   "corrected_quote": "UL 142/ULC-compliant subbase tanks mean faster permitting and smoother installations",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "The eFRAME product page names no plant (no Mosel, Kenosha, Sheboygan or Wisconsin anywhere on it). Rehlko's own Kenosha posting ties 'the eFRAME manufacturing operation' to Kenosha, so placing eFRAME sub-base tanks at Mosel is a company-level fact at the plant, tagged stated. Retag inferred (company level); the plants.csv products clause 'UL 142 sub-base tanks on eFRAME enclosures' must be marked company-level. No score effect (part mix 8 rests on the KHL and posting rows).",
+   "plants_csv_value": "Large diesel industrial generators 250-4,000 kW with factory-built enclosures (Large Enclosures Assembly line), switchgear; eFRAME enclosures with UL 142 sub-base tanks at company level (site not named)",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:tier",
+   "source_url": "https://www.thefabricator.com/thefabricator/news/shopmanagement/kohler-power-systems-expands-generator-plant-in-wisconsin",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15435",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:relationship",
+   "source_url": "https://khl.com/news/kohler-completes-expansion-in-mosel/8024697.article",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15436",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:lookalike_of",
+   "source_url": "https://khl.com/news/kohler-completes-expansion-in-mosel/8024697.article",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15437",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:address",
+   "source_url": "https://biztimes.com/rehlko-capitalizing-on-data-center-growth-with-new-kenosha-facility/",
+   "ledger_value": "128th Avenue, Kenosha (exact address not disclosed)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15439",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:name",
+   "source_url": "https://biztimes.com/rehlko-capitalizing-on-data-center-growth-with-new-kenosha-facility/",
+   "ledger_value": "Rehlko Kenosha facility",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15440",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:products",
+   "source_url": "https://rehlko.wd12.myworkdayjobs.com/en-US/Reh/job/Kenosha-WI/Quality-and-EHS-Engineer_R04516",
+   "ledger_value": "eFRAME enclosure manufacturing operation (assembly)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15441",
+   "verdict": "corrected",
+   "corrected_value": "eFRAME enclosure manufacturing operation",
+   "corrected_quote": "supporting the safety, environmental, quality, and continuous improvement objectives of the eFRAME manufacturing operation",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The posting says 'eFRAME manufacturing operation'; '(assembly)' is not on it. The status row's 'Rehlko calls it assembly capacity' is not visible on the fetched BizTimes page (paywalled after two paragraphs), so 'assembly' has no visible source. plants.csv products also carries 'Assembly of ...' and 'production expected late 2026', neither on a fetched page (field drift).",
+   "plants_csv_value": "eFRAME generator enclosure manufacturing operation (eFRAME enclosures fit KD Series generators 2,000-4,000 kW); 160,000 sq ft manufacturing facility; pre-production",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:products",
+   "source_url": "https://biztimes.com/rehlko-capitalizing-on-data-center-growth-with-new-kenosha-facility/",
+   "ledger_value": "160,000 sq ft manufacturing facility",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15442",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:products",
+   "source_url": "https://www.powersystems.rehlko.com/eframe-enclosures",
+   "ledger_value": "eFRAME enclosures for 2,000-4,000 kW generators",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15443",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:status",
+   "source_url": "https://biztimes.com/rehlko-capitalizing-on-data-center-growth-with-new-kenosha-facility/",
+   "ledger_value": "base (pre-production prospect)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15444",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:tier",
+   "source_url": "https://biztimes.com/rehlko-capitalizing-on-data-center-growth-with-new-kenosha-facility/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15445",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:relationship",
+   "source_url": "https://rehlko.wd12.myworkdayjobs.com/en-US/Reh/job/Kenosha-WI/Quality-and-EHS-Engineer_R04516",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15446",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:lookalike_of",
+   "source_url": "https://rehlko.wd12.myworkdayjobs.com/en-US/Reh/job/Kenosha-WI/Quality-and-EHS-Engineer_R04516",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15447",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:address",
+   "source_url": "https://www.bluestarps.com/careers/",
+   "ledger_value": "2250 Carlson Drive, North Mankato, MN 56003",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15492",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110070664964",
+   "ledger_value": "2250 Carlson Dr, North Mankato, MN 56003",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15493",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:products",
+   "source_url": "https://www.powerprogress.com/news/blue-star-on-the-rise/5031929.article",
+   "ledger_value": "Gen-sets 20 kW to 2.0 MW",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15494",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:name",
+   "source_url": "https://www.bluestarps.com/careers/",
+   "ledger_value": "Blue Star Power Systems, Inc.",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15495",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:tier",
+   "source_url": "https://www.powerprogress.com/news/blue-star-on-the-rise/5031929.article",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15496",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:relationship",
+   "source_url": "https://www.powerprogress.com/news/blue-star-on-the-rise/5031929.article",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15497",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:lookalike_of",
+   "source_url": "https://www.powerprogress.com/news/blue-star-on-the-rise/5031929.article",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15498",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:prospect_test",
+   "source_url": "https://www.powerprogress.com/news/blue-star-on-the-rise/5031929.article",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15499",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:website",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1474735/000143774926004568/gnrc20251231_10k.htm",
+   "ledger_value": "https://www.generac.com/",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15547",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-belvidere-il:website",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1474735/000143774926004568/gnrc20251231_10k.htm",
+   "ledger_value": "https://www.generac.com/",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15549",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-mosel-wi:website",
+   "source_url": "https://www.rehlko.com/",
+   "ledger_value": "https://www.rehlko.com/",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15557",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:website",
+   "source_url": "https://www.rehlko.com/",
+   "ledger_value": "https://www.rehlko.com/",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15558",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:website",
+   "source_url": "https://www.bluestarps.com/careers/",
+   "ledger_value": "https://www.bluestarps.com/",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15563",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-rehlko-kenosha-wi:parent_company",
+   "source_url": "https://biztimes.com/rehlko-capitalizing-on-data-center-growth-with-new-kenosha-facility/",
+   "ledger_value": "Rehlko",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15577",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:name",
+   "source_url": "https://hillcompanies.com/our-companies/harvard-integrations",
+   "ledger_value": "Harvard Integrations LP",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16152",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:parent_company",
+   "source_url": "https://hillcompanies.com/our-companies/harvard-integrations",
+   "ledger_value": "The Hill Companies",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16153",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:address",
+   "source_url": "https://hillcompanies.com/our-companies/harvard-integrations",
+   "ledger_value": "27157 470th Ave, Tea, SD 57064",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16154",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=27157+470th+Ave+Tea+SD+57064&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "43.451945",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16155",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=27157+470th+Ave+Tea+SD+57064&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-96.806471",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16156",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=27157+470th+Ave+Tea+SD+57064&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "46083",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16157",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:website",
+   "source_url": "https://hillcompanies.com/our-companies/harvard-integrations",
+   "ledger_value": "https://hillcompanies.com/our-companies/harvard-integrations",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16158",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:products",
+   "source_url": "https://hillcompanies.com/our-companies/harvard-integrations",
+   "ledger_value": "power distribution centers, generator enclosures, sub-base fuel tanks",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16159",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:tier",
+   "source_url": "https://hillcompanies.com/our-companies/harvard-integrations",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16160",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-harvard-integrations-tea-sd:lookalike_of",
+   "source_url": "https://hillcompanies.com/our-companies/harvard-integrations",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16162",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "c-ek-machine:scale",
+   "source_url": "https://www.ekmachine.com/",
+   "ledger_value": "200+ team members, three shifts, three Wisconsin facilities",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 33",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "v-enclosures-battery-generator:demand_outlook",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/102729/000010272926000050/vmi-20260926x10q.htm",
+   "ledger_value": "Strong (inferred from data-center and grid load growth)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 81",
+   "verdict": "confirmed",
+   "note": "Inferred row; reasoning read against the cited facts and the session rules; tagged inferred as it should be.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-ek-machine:headcount",
+   "source_url": "https://topworkplaces.com/company/ek-machine/",
+   "ledger_value": "nearly 300 employees across six facilities (Fall River and Madison)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15314",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "v-enclosures-battery-generator:demand_outlook",
+   "source_url": "https://www.eia.gov/todayinenergy/detail.php?id=65964",
+   "ledger_value": "Strong: 2025 on course for record US battery-storage additions (Texas 7.0 GW planned)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15838",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "v-enclosures-battery-generator:demand_outlook",
+   "source_url": "https://www.nasdaq.com/press-release/generac-reports-third-quarter-2025-results-2025-10-29",
+   "ledger_value": "Strong: generator demand from data centers (Generac Q3 2025, 2025-10-29)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15839",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-16 (visible text or raw source); value clauses read against the cited page, none missing.",
+   "r2_basis": true
+  }
+ ]
+}
