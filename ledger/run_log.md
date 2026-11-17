@@ -1109,3 +1109,14 @@ Coordinator decisions applied now (mechanical):
 - Generac Oshkosh air permit: not determined (DNR documents timed out); stays held.
 - Leads not merged: PSI 1901 Gateway Blvd Beloit (UL tanks), MTL Manufacturing (PSI subsidiary, Beloit), GPC Burnham 4101 W Burnham St; PSI Beloit products value needs rewording (tanks moved to Gateway Blvd).
 - Counts: 114 found, 80 included, 46 profiled (High 14, Medium 21, Low 11), 34 excluded. Miss rate 11/60 = 18.3% (upper bound 22.2%).
+
+## 2026-11-17 Advisor consultation 17 (battery done-or-partial; line check over 10%)
+- Advice: not done on this state. Consultation 16 made done conditional on a clean line check, and R3 came back at 28.6%; its 20 rewritten lines are unchecked. Run a confirming pass by other checkers (rewritten lines, profiler-H lines, the 22 lines of the 11 Low plants R3 did not cover, the hand-reworded posting fields) plus a sweep of R2-H's repeated kind (company Overview text stated as one site's products); done only if under 10% and no score moves, else partial.
+- Done before the pass:
+  - Drift script: its URL filter was always true, but all 23 reworded rows are UKG (ultipro) rows, so nothing to revert.
+  - Generac Eagle opening line: the unsourced "base tanks and enclosures" clause dropped (checker's fallback line); row set to not_checked. Eagle's membership rests on the archived 2022 Generac page, read once by the profiler and unreachable since: a known limit.
+  - Seguin opening line: UKG date given as "listed". Pritchard bottleneck: "each" corrected (the floor is optional in Spec 2130). PSI name descriptor trimmed.
+  - The 28 corrected verdicts of R2-H and R3 all landed on rows with their exact source URL.
+  - UKG sweep, all verticals: 26 plants carry ultipro evidence; 18 outside battery (poles 10, ships 3, mining 5) still say "posted" for UKG dates. A UKG stamp is later than the first posting, so it understates how long a role has been open and cannot inflate a 60+ day labor score; left for the next refresh, noted here.
+  - GPC scale 10 kept: Fidelity's 5 rests on an unknown headcount, GPC's 10 on an inferred one (1,200+ employees, most operations at 51st St); consistent rule, no confidence from either.
+- Confirming pass launched: R4-A and R4-B (45 lines), R4-C (9 posting fields, 25 job-posting product rows).
