@@ -1,0 +1,181 @@
+{
+ "checker": "fact-checker R5-P3",
+ "vertical": "cross (permits-3: state air-permit search over 20 profiled plants; 13 evidence rows written for 6 plants in v-mining-heavy-equipment, v-shipbuilding-naval and v-poles-substation)",
+ "date": "2026-11-17",
+ "plants": [
+  "p-syntron-saltillo-ms",
+  "p-bollinger-pascagoula-ms",
+  "p-jamesbuilt-calvert-city-ky",
+  "p-quality-mfg-urbandale-ia",
+  "p-ppi-pella-ia",
+  "p-musco-muscatine-ia"
+ ],
+ "decision_rule": "Corrected = the value adds a fact the cited page does not show, tags a judgement as stated, places a company-level fact at the plant, ties a posting through a shared city, misdates a posting, or the quote is not on the page (raw source checked first); Confirmed otherwise. Unreachable only if the source cannot be reached at all. For scanned permits the page image is the document; an OCR misreading carried into a value is corrected.",
+ "claims_checked": 13,
+ "claims_corrected": 1,
+ "claims_unreachable": 0,
+ "error_rate": 0.0769,
+ "error_rate_note": "1/13 = 7.7% (all rows). Stated rows only: 1/12 = 8.3%. The one correction is an OCR misreading in a scanned Iowa construction permit (PPI Pella unit range 'EU 2a to EU 21' should be 'EU 2a to EU 2l', twelve units); no plant, address, date, process, material or score is affected. Every quote is on its page (case-sensitive, whitespace-normalised, OCR layer for the two Iowa scans); the inferred Kentucky eSearch row was re-run through its POST JSON API. No score_* rows, no evidence_remove key in the inbox file.",
+ "claims_checked_all_rows": 13,
+ "claims_corrected_all_rows": 1,
+ "error_rate_all_rows": 0.0769,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 0,
+  "invented fact": 0,
+  "other": 1
+ },
+ "repeated_kinds": [],
+ "worst_errors": [
+  "p-ppi-pella-ia:prospect_test (Iowa DNR 08-A-455) - value gives the welding units as 'EU 2a to EU 21' from the OCR layer; the scan reads 'EU 2a to EU 2l (12 units)'. Corrected to 'EU 2a to EU 2l'; quote kept as the OCR text. Minor; no score effect.",
+  "None other. Nearest boundary: p-syntron-saltillo-ms:materials names the laser cutting system but its quote carries only the plasma line (laser is on the same page, AA-032; confirmed, fuller quote offered in the note).",
+  "Boundary (not an error): p-syntron-saltillo-ms:address states '2730 Highway 145 North' while plants.csv has '2730 Hwy 145 South'; ECHO ties both to one facility (FRS 110000375898 carries ICIS-Air MS0000002808100099 at 2730 HIGHWAY 145 NORTH)."
+ ],
+ "score_problems": [],
+ "score_notes": [
+  "No score_* rows in permits-3.json, so no score_labor row to check. Score changes written by the inbox: none. Score changes from this check: none.",
+  "Coordinator rulings the merge opens (not errors): (1) p-jamesbuilt-calvert-city-ky score_process 0: weld_processes is now stated GMAW and SMAW for the James Built operation (Title V insignificant activities, revised 2026-06-26). GMAW is MIG; SMAW is not TIG, so the 'mixed with TIG' 12 does not apply; whether insignificant-activity GMAW counts as 'MIG on production weldments' (20) is a ruling. Site tie to 390 Riverside Ln is inferred (separate row), so any points earned that rest on it may earn no confidence. (2) p-musco-muscatine-ia score_process 0 and score_material_part 0: stated GMAW on aluminum at the site (2013, 13 years old): process rule gives 20 for MIG on production weldments, but the welded parts are aluminum and steel-pole welding at Muscatine is unstated; material and part fit may be the aluminum-first 4. (3) p-syntron-saltillo-ms: welding now stated at the site (2025 permit) and stainless steel weldments stated; process still unknown ('automatic welder and portable welding units' names no process), so process stays 0; material_part needs a part-size fact. (4) Quality Mfg, PPI, Bollinger: welding stated as of the document date only; no score component changes on prospect_test alone."
+ ],
+ "opening_line_problems": [],
+ "plants_closed_or_moved": [],
+ "status_problems": [],
+ "plant_status_notes": "All six permits name the ledger plant's address except Syntron (North vs South, one ECHO facility) and JamesBuilt (permit source location 476 vs ledger 390 Riverside Lane; one Kentucky Agency Interest 2938 filed at 390). Current-status evidence in the permits: Syntron SMOP in force to 2027-04-30; JamesBuilt Title V revised 2026-06-26, in force to 2027-02-11; Bollinger Title V face expiry 2026-01-31 (renewal reported pending, not re-read); Quality Mfg Title V expired 2025-05-04 and 'Archived' per the inbox notes (current permit status not checked; a WebSearch discovery shows 2026 Urbandale hiring, not a quote); PPI 2008 and Musco 2013 construction permits carry no current status. No closure found.",
+ "field_drift_notes": [
+  "The inbox has no evidence_remove list. At merge, retire or sync the superseded rows: p-syntron-saltillo-ms:materials (inferred company-level elevator-bucket row, value differs from the new plants.materials); p-jamesbuilt-calvert-city-ky:weld_processes (inferred 'unknown' row, jamesmarine.com jobs page); p-musco-muscatine-ia:weld_processes (unknown row by review-fix-coverage). Otherwise apply_factcheck / build_map will show the old 'unknown' values beside the new stated ones.",
+  "p-quality-mfg-urbandale-ia:materials and p-musco-muscatine-ia:materials: new stated rows differ from plants.materials by design (plants values not replaced; inbox notes propose wording). The coordinator should set plants.materials or accept the drift.",
+  "p-syntron-saltillo-ms:address and p-jamesbuilt-calvert-city-ky:prospect_test name addresses that differ from plants.address (see plant_status_notes); plants.address is unchanged by the inbox."
+ ],
+ "leads": [
+  "Syntron: AA-018 'automatic welder' (not called a robot) could inform existing_robots only with a ruling; the inbox writes no row.",
+  "Quality Mfg: the permit's 'Raw Material/Fuel: steel beams' lines (two emission units) could strengthen the steel materials row.",
+  "Master Boat Builders Coden AL ADEM 2025-11-05 inspection memo (image-only, from inbox notes): second-shift welders and ~315 workers; needs OCR before any row. Not checked here (no row written)."
+ ],
+ "method": "Fresh curl of every cited URL into a new scratch directory (6 PDFs, HTTP 200); pdftotext -layout and -raw; scripted fragment check of every quote (split on '...', whitespace-normalised, case-sensitive). Iowa scans: pages rendered with pdftoppm and read visually to check the OCR (PPI unit range, Musco date and 'GMAW'). Kentucky eSearch inferred row re-run as its public POST JSON search. EPA ECHO DFR 110000375898 fetched to tie the Syntron permit to the ledger facility. Negative clauses ('process not named', 'material not named') checked by grep on each document. web.archive.org reset in the proxy, so the two archive_urls were not re-verified (sources themselves were fetched, so nothing is unreachable). One WebSearch for discovery (Quality Mfg status), not quoted. No ledger or inbox file edited.",
+ "apply_note": "Apply when the coordinator merges ledger/inbox/permits-3.json: rows are keyed by claim_id + source_url as written in the inbox. Set verified = confirmed on 12 rows; on p-ppi-pella-ia:prospect_test replace the value with corrected_value (quote unchanged), verified = corrected. No plants.csv field changes from this check (prospect_test is not a plants.csv column). Retire the superseded rows listed in field_drift_notes.",
+ "rows": [
+  {
+   "claim_id": "p-syntron-saltillo-ms:prospect_test",
+   "source_url": "https://opc.deq.state.ms.us/get_doc.aspx?dt=finalp&id=1787444",
+   "ledger_value": "welds in-house at 2730 Highway 145 North, Saltillo, MS (state air permit 1540-00099, synthetic minor operating permit issued 2022-05-09, modified 2025-06-04): emission point AA-018 Welding Operations, an automatic welder and portable welding units; what is welded is not named on that line",
+   "tag": "stated",
+   "origin": "inbox permits-3.json evidence[0]",
+   "verdict": "confirmed",
+   "note": "Fresh curl 2026-11-17 (HTTP 200, PDF); pdftotext layout and raw; every quote fragment found case-sensitive after whitespace normalisation. MDEQ Air SMOP 1540-00099 (19 pp): face page 'Syntron Material Handling, LLC / 2730 Highway 145 North / Saltillo, Lee County, Mississippi', Issued May 9, 2022, Modified June 4, 2025, Expires April 30, 2027, AI 2184. AA-018 'Welding Operations [consists of an automatic welder and portable welding units; automatic welder exhausts to a vented hood]'. No process or welded material on that line. Present tense supported (permit in force to 2027). Facility tie: EPA ECHO DFR 110000375898 (the record the ledger cites for '2730 HWY 145 S') carries ICIS-Air MS0000002808100099 'SYNTRON MATERIAL HANDLING LLC' at '2730 HIGHWAY 145 NORTH', so the permit and the ledger plant are one registry facility; the North/South wording is an address-direction conflict, not a second site."
+  },
+  {
+   "claim_id": "p-syntron-saltillo-ms:materials",
+   "source_url": "https://opc.deq.state.ms.us/get_doc.aspx?dt=finalp&id=1787444",
+   "ledger_value": "steel: steel sheets cut on the plasma and laser cutting systems; stainless steel weldments blast-cleaned on site (MDEQ air permit 1540-00099, modified 2025-06-04)",
+   "tag": "stated",
+   "origin": "inbox permits-3.json evidence[1]",
+   "verdict": "confirmed",
+   "note": "Fresh curl 2026-11-17 (HTTP 200, PDF); pdftotext layout and raw; every quote fragment found case-sensitive after whitespace normalisation. AA-016 'Plasma Torch Cutting System [used to cut steel sheets to desired specifications; equipped with a dust collector]', AA-032 'Laser Cutting System [used to cut steel sheets to desired specifications; equipped with a cartridge dust collector]', AA-035 'Glass Bead Shot-Blasting Operations [utilizes a sealed blast cabinet to clean discoloration on stainless steel weldments; equipped with a dust collector]'. Every clause is on the page; the laser clause is on the page (AA-032) but not in the quote. Optional fuller quote (under 300 chars): 'Plasma Torch Cutting System [used to cut steel sheets to desired specifications ... Laser Cutting System [used to cut steel sheets to desired specifications ... Glass Bead Shot-Blasting Operations [utilizes a sealed blast cabinet to clean discoloration on stainless ... steel weldments'. The value does not claim carbon-steel welding (only stainless weldments are stated as welded), which is right."
+  },
+  {
+   "claim_id": "p-syntron-saltillo-ms:address",
+   "source_url": "https://opc.deq.state.ms.us/get_doc.aspx?dt=finalp&id=1787444",
+   "ledger_value": "2730 Highway 145 North, Saltillo, Lee County, MS (MDEQ air permit 1540-00099, modified 2025-06-04)",
+   "tag": "stated",
+   "origin": "inbox permits-3.json evidence[2]",
+   "verdict": "confirmed",
+   "note": "Fresh curl 2026-11-17 (HTTP 200, PDF); pdftotext layout and raw; every quote fragment found case-sensitive after whitespace normalisation. Face page carries the address exactly as quoted. Conflicts with plants.csv '2730 Hwy 145 South' (company contact page; ECHO FRS); see the prospect_test note: ECHO ties both to one facility (ICIS-Air MS0000002808100099 at 2730 HIGHWAY 145 NORTH under FRS 110000375898). Coordinator chooses the display address; both are stated."
+  },
+  {
+   "claim_id": "p-bollinger-pascagoula-ms:prospect_test",
+   "source_url": "https://opc.deq.state.ms.us/get_doc.aspx?dt=finalp&id=1610088",
+   "ledger_value": "welded in-house as of the document date, at 900 Bayou Casotte Parkway, Pascagoula, MS (state Title V air permit 1280-00008, issued 2021-02-09, modified 2022-11-14 for the name change to Bollinger Mississippi Shipbuilding): emission point AA-004 Facility-Wide Welding Operations; process and material not named",
+   "tag": "stated",
+   "origin": "inbox permits-3.json evidence[3]",
+   "verdict": "confirmed",
+   "note": "Fresh curl 2026-11-17 (HTTP 200, PDF); pdftotext layout and raw; every quote fragment found case-sensitive after whitespace normalisation. MDEQ Title V 1280-00008 (41 pp): face page 'Bollinger Mississippi Shipbuilding, LLC / 900 Bayou Casotte Parkway / Pascagoula, Jackson County, Mississippi', Permit Issued February 9, 2021, Modified November 14, 2022 (name change), Expires January 31, 2026, AI 6292. Section 2 table: 'AA-004 Facility-Wide Welding Operations'. No weld process, steel or aluminum named for welding anywhere (only 'Weld-through precon. primer' and 'thermal spray aluminum' coating lines in an appendix), so 'process and material not named' holds. Address matches plants.csv. 'As of the document date' wording is right (face expiry passed; renewal status from the inbox notes was not re-read and is not in the row). archive_url not re-verified: web.archive.org connections reset in the agent proxy."
+  },
+  {
+   "claim_id": "p-jamesbuilt-calvert-city-ky:prospect_test",
+   "source_url": "https://dep.gateway.ky.gov/eSearch.WebApi/api/documentGenerate/getDocument/14460961",
+   "ledger_value": "welds in-house at 476 Riverside Lane, Calvert City, KY (state Title V air permit V-21-019 R1 for James Marine Inc. / Paducah River Painting / James Composites LLC, issued 2022-02-11, revised 2026-06-26): a James Built Operation is listed with EU06 gas metal arc welding and EU07 shielded metal arc welding, both as insignificant activities; what is welded is not named",
+   "tag": "stated",
+   "origin": "inbox permits-3.json evidence[4]",
+   "verdict": "confirmed",
+   "note": "Fresh curl 2026-11-17 (HTTP 200, PDF); pdftotext layout and raw; every quote fragment found case-sensitive after whitespace normalisation. Kentucky DAQ permit V-21-019 R1 (51 pp): Source Name 'James Marine Inc. / Paducah River Painting / James Composites LLC', Source Location '476 Riverside Lane', Agency Interest 2938, Review Type 'Title V, Construction/Operating', Issuance Date February 11, 2022, Revision Date June 26, 2026, Expiration February 11, 2027. Section C Insignificant Activities: heading 'James Built Operation' over '2. EU06 Gas Metal Arc Welding', '3. EU07 Shielded Metal Arc Welding', '4. EU10 Thermal cutting of metal (oxyfuel cutting torches)'; next heading 'James Composites Operation'. No welded material named (steel appears only as 'steel grit abrasive' for barge blasting). Stating 476 Riverside Lane in this row is the permit's own text; the tie to the ledger plant at 390 is kept in the separate inferred address row, as the row rules require."
+  },
+  {
+   "claim_id": "p-jamesbuilt-calvert-city-ky:weld_processes",
+   "source_url": "https://dep.gateway.ky.gov/eSearch.WebApi/api/documentGenerate/getDocument/14460961",
+   "ledger_value": "GMAW and SMAW (James Built operation; Kentucky Title V permit V-21-019 R1, revised 2026-06-26, insignificant activities EU06 and EU07)",
+   "tag": "stated",
+   "origin": "inbox permits-3.json evidence[5]",
+   "verdict": "confirmed",
+   "note": "Fresh curl 2026-11-17 (HTTP 200, PDF); pdftotext layout and raw; every quote fragment found case-sensitive after whitespace normalisation. Section C lists EU06 Gas Metal Arc Welding and EU07 Shielded Metal Arc Welding under the 'James Built Operation' heading, as insignificant activities. Value is exactly what the page carries; present tense supported (revised 2026-06-26, in force to 2027)."
+  },
+  {
+   "claim_id": "p-jamesbuilt-calvert-city-ky:address",
+   "source_url": "https://dep.gateway.ky.gov/eSearch.WebApi/api/SearchDocuments/Search",
+   "ledger_value": "390 Riverside Ln, Calvert City, KY 42029 (the Kentucky eSearch document index files Title V permit V-21-019 R1, Agency Interest 2938, under facility address 390 Riverside Ln; the permit itself gives source location 476 Riverside Lane)",
+   "tag": "inferred",
+   "origin": "inbox permits-3.json evidence[6]",
+   "verdict": "confirmed",
+   "note": "Inferred row. Re-ran the public eSearch JSON search (POST eSearch.WebApi/api/SearchDocuments/Search, body {\"AgencyName\":\"Paducah River Painting\"}, HTTP 200, 2026-11-17): rows for 'Permit V-21-019 R1 Final 6-26-2026.pdf' (IntDocId 14460961), 'Executive Summary.pdf' and 'Statement of Basis and Summary.pdf' all give FacilityAddress '390 Riverside Ln', AgencyId '2938', Municipality Calvert City. A GET on the cited URL returns 405 (POST-only, as the reasoning says). Quote fragments present in the JSON. The 390/476 tie is correctly tagged inferred with reasoning. (A water-program record for the same name lists 290 Riverside Ln; not material.)"
+  },
+  {
+   "claim_id": "p-quality-mfg-urbandale-ia:prospect_test",
+   "source_url": "https://www.iowadnr.gov/media/2706/download",
+   "ledger_value": "welded in-house as of the document date, at 4300 NW Urbandale Drive, Urbandale, IA (Title V operating permit 14-TV-013R1, 2020-05-05, expiration date 2025-05-04): emission unit 13.00 Production Welding, raw material welding wire, rated 5 pounds per hour per welder; process not named",
+   "tag": "stated",
+   "origin": "inbox permits-3.json evidence[7]",
+   "verdict": "confirmed",
+   "note": "Fresh curl 2026-11-17 (HTTP 200, PDF); pdftotext layout and raw; every quote fragment found case-sensitive after whitespace normalisation. Iowa DNR Title V 14-TV-013R1: 'Facility Location: 4300 NW Urbandale Drive / Urbandale, Iowa 50322', 'Expiration Date: May 4, 2025', signed May 5, 2020. EP 13.00F: 'Emission Unit Description: Production Welding / Raw Material/Fuel: Welding Wire / Rated Capacity: 5 pounds per hour, per welder'. Only one facility location appears in the permit (the 'all locations combined' line refers to the rod-usage limit; no second street address or building is named), so the address is the permit's own. GMAW/MIG appear only in quoted NESHAP 6X rule text, so 'process not named' holds. Address matches plants.csv. archive_url not re-verified (web.archive.org reset in the proxy). Company still shows 2026 Urbandale hiring in search results (discovery only)."
+  },
+  {
+   "claim_id": "p-quality-mfg-urbandale-ia:materials",
+   "source_url": "https://www.iowadnr.gov/media/2706/download",
+   "ledger_value": "steel (facility description: custom steel fabrication; Title V permit 14-TV-013R1, 2020-05-05, as of the document date)",
+   "tag": "stated",
+   "origin": "inbox permits-3.json evidence[8]",
+   "verdict": "confirmed",
+   "note": "Fresh curl 2026-11-17 (HTTP 200, PDF); pdftotext layout and raw; every quote fragment found case-sensitive after whitespace normalisation. 'Facility Description: Custom Steel Fabrication (SIC 3499); Misc. Fabricated Metal Product / Manufacturing (NAICS 332999)'. Value 'steel (facility description: custom steel fabrication ...)' does not go beyond the page. The permit also lists 'Raw Material/Fuel: steel beams' at two other emission units (could be added to the quote). plants.materials is not replaced (company-level value kept), so the new stated row and plants.csv differ by design; see field_drift_notes."
+  },
+  {
+   "claim_id": "p-ppi-pella-ia:prospect_test",
+   "source_url": "https://idnraqrr.iowadnr.gov/ConPermitSearch/DownloadFile?dataString=%7B%22permitNumber%22%3A%2208-A-455%22,%22permitNumber2%22%3A%2208-A-455%22,%22projectNumber%22%3A%2208-398%22,%22emissionPointID%22%3A%22EP-W-2%22,%22emissionPointDescription%22%3A%22WELDING%22,%22issueDate%22%3A%222008-08-13T00%3A00%3A00%22,%22fileName%22%3A%2208-A-455.pdf%22,%22rescissionDate%22%3Anull,%22easyAirPermitID%22%3Anull,%22documentType%22%3Anull,%22facilityNumber%22%3A%2263-02-016%22,%22documentID%22%3A0%7D&type=PERMIT_FILLED_OBJECT",
+   "ledger_value": "welded in-house as of the document date, at 300 South East 14th Street, Pella, IA (Iowa DNR air construction permit 08-A-455, 2008-08-13, permit holder Precision Pulley and Idler Inc.): 12 welding units, EU 2a to EU 21, venting through dust collector CE W-2; process and material not named",
+   "tag": "stated",
+   "origin": "inbox permits-3.json evidence[9]",
+   "verdict": "corrected",
+   "note": "Fresh curl 2026-11-17 (HTTP 200, PDF, 8 pp, CCITT scan with OCR text layer). Every quote fragment is in the OCR text layer exactly as quoted. Page 1 rendered and read visually at 150 and 400 dpi: Firm 'Precision Pulley and Idler Inc.' (mailing address 2251 Avenue of Industries, Corning, Iowa), Emission Unit(s) 'Welding EU 2a to EU 2l (12 units)', Control Equipment 'Dust Collector CE W-2', Emission Point 'EP W-2', Equipment Location '300 South East 14th Street / Pella, Iowa 50219', Plant Number 63-02-016, '08-A-455 | 03-398 | Original Permit | 8/13/08'. The unit range on the scan is 'EU 2l' (lower-case L: twelve units 2a to 2l, matching '(12 units)'); the OCR layer misreads it as '21', and the value repeats the misreading as a fact ('EU 2a to EU 21' would be about 20 units). Value corrected to 'EU 2a to EU 2l'; the quote stays as the OCR text (exact text-layer string), with this note. Everything else is right: holder, location (matches plants.csv), date, dust collector, no process or material named (no steel/stainless in the text). Construction permit worded 'as of the document date' (2008), per the pilot precedent.",
+   "corrected_value": "welded in-house as of the document date, at 300 South East 14th Street, Pella, IA (Iowa DNR air construction permit 08-A-455, 2008-08-13, permit holder Precision Pulley and Idler Inc.): 12 welding units, EU 2a to EU 2l, venting through dust collector CE W-2; process and material not named",
+   "corrected_quote": "Firm: Precision Pulley and Idler Inc. ... Welding EU 2a to EU 21 (12 units) ... Equipment Location: 300 South East 14th Street ... 08-A-455 03-398 Original Permit 8/13/08",
+   "corrected_tag": "stated",
+   "error_kind": "other"
+  },
+  {
+   "claim_id": "p-musco-muscatine-ia:prospect_test",
+   "source_url": "https://idnraqrr.iowadnr.gov/ConPermitSearch/DownloadFile?dataString=%7B%22permitNumber%22%3A%2203-A-1161-S2%22,%22permitNumber2%22%3A%2203-A-1161-S2%22,%22projectNumber%22%3A%2213-278%22,%22emissionPointID%22%3A%22EP-2%22,%22emissionPointDescription%22%3A%22WELDERS%20(8%20ALUMINUM)%22,%22issueDate%22%3A%222013-09-10T00%3A00%3A00%22,%22fileName%22%3A%2203-A-1161-S2_Welders.pdf%22,%22rescissionDate%22%3Anull,%22easyAirPermitID%22%3Anull,%22documentType%22%3Anull,%22facilityNumber%22%3A%2270-01-083%22,%22documentID%22%3A0%7D&type=PERMIT_FILLED_OBJECT",
+   "ledger_value": "welded in-house as of the document date, at 2107 Stewart Road, Muscatine, IA (Iowa DNR air construction permit 03-A-1161-S2, 2013-09-10; the posted file is a scanned rendition with OCR text): 8 aluminum GMAW welders, EU-2 through EU-9; steel welding is not named in this permit",
+   "tag": "stated",
+   "origin": "inbox permits-3.json evidence[10]",
+   "verdict": "confirmed",
+   "note": "Fresh curl 2026-11-17 (HTTP 200, PDF, 7 pp, scanned with OCR text layer); every quote fragment is in the OCR layer exactly as quoted. Page 1 rendered and read: 'Firm: Musco Sports Lighting', '8 Aluminum GMAW Welders, EU-2 through EU-9, Max capacity 4.3 lb/hr each of welding wire.', 'Dust Collector, CS-1', 'EP-2', Equipment Location '2107 Stewart Road / Muscatine, Iowa 52761', Plant Number 70-01-083, '03-A-1161-S2 | 13-278 | Modify equipment list, add control equipment | 09/10/2013' (the OCR reads '09110/2013'; the scan confirms 2013-09-10, so the date rests on the document, not only on the URL's issueDate). Steel is not named, as the value says. Address matches plants.csv."
+  },
+  {
+   "claim_id": "p-musco-muscatine-ia:weld_processes",
+   "source_url": "https://idnraqrr.iowadnr.gov/ConPermitSearch/DownloadFile?dataString=%7B%22permitNumber%22%3A%2203-A-1161-S2%22,%22permitNumber2%22%3A%2203-A-1161-S2%22,%22projectNumber%22%3A%2213-278%22,%22emissionPointID%22%3A%22EP-2%22,%22emissionPointDescription%22%3A%22WELDERS%20(8%20ALUMINUM)%22,%22issueDate%22%3A%222013-09-10T00%3A00%3A00%22,%22fileName%22%3A%2203-A-1161-S2_Welders.pdf%22,%22rescissionDate%22%3Anull,%22easyAirPermitID%22%3Anull,%22documentType%22%3Anull,%22facilityNumber%22%3A%2270-01-083%22,%22documentID%22%3A0%7D&type=PERMIT_FILLED_OBJECT",
+   "ledger_value": "GMAW (aluminum; 8 aluminum GMAW welders, Iowa DNR permit 03-A-1161-S2, 2013-09-10, as of the document date)",
+   "tag": "stated",
+   "origin": "inbox permits-3.json evidence[11]",
+   "verdict": "confirmed",
+   "note": "Same document; scan reads 'Aluminum GMAW Welders' (OCR 'GMA W'). GMAW and aluminum both stated; 'as of the document date' (2013) is in the value. Confirmed."
+  },
+  {
+   "claim_id": "p-musco-muscatine-ia:materials",
+   "source_url": "https://idnraqrr.iowadnr.gov/ConPermitSearch/DownloadFile?dataString=%7B%22permitNumber%22%3A%2203-A-1161-S2%22,%22permitNumber2%22%3A%2203-A-1161-S2%22,%22projectNumber%22%3A%2213-278%22,%22emissionPointID%22%3A%22EP-2%22,%22emissionPointDescription%22%3A%22WELDERS%20(8%20ALUMINUM)%22,%22issueDate%22%3A%222013-09-10T00%3A00%3A00%22,%22fileName%22%3A%2203-A-1161-S2_Welders.pdf%22,%22rescissionDate%22%3Anull,%22easyAirPermitID%22%3Anull,%22documentType%22%3Anull,%22facilityNumber%22%3A%2270-01-083%22,%22documentID%22%3A0%7D&type=PERMIT_FILLED_OBJECT",
+   "ledger_value": "aluminum welded at the site (8 aluminum GMAW welders; Iowa DNR permit 03-A-1161-S2, 2013-09-10, as of the document date)",
+   "tag": "stated",
+   "origin": "inbox permits-3.json evidence[12]",
+   "verdict": "confirmed",
+   "note": "Same document; 'aluminum welded at the site' is stated by '8 Aluminum GMAW Welders' at Equipment Location 2107 Stewart Road. Value dated to the 2013 permit. Confirmed. plants.materials is not replaced (coordinator proposal); see field_drift_notes."
+  }
+ ]
+}

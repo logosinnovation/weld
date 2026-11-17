@@ -1,0 +1,60 @@
+{
+ "checker": "fact-checker R5-P1",
+ "vertical": "cross (permits-1: state air-permit search over 21 plants; one evidence row written, for v-shipbuilding-naval plant p-nns-goose-creek-sc)",
+ "date": "2026-11-17",
+ "plants": [
+  "p-nns-goose-creek-sc"
+ ],
+ "decision_rule": "Corrected = the value adds a fact the cited page does not show, tags a judgement as stated, places a company-level fact at the plant, ties a posting through a shared city, misdates a posting, or the quote is not on the page (raw source checked first); Confirmed otherwise. Unreachable only if the source cannot be reached at all.",
+ "claims_checked": 1,
+ "claims_corrected": 1,
+ "claims_unreachable": 0,
+ "error_rate": 1.0,
+ "error_rate_note": "1/1 = 100% with n=1. The one correction trims a document-type label (permit type and category) that is true but carried only by the SC DES listing export, not by the cited PDF. No plant fact, address, date or score is affected; no repeated kind. The inbox file has no plants updates, no evidence_remove key and no score_* rows, so nothing else was in scope.",
+ "claims_checked_all_rows": 1,
+ "claims_corrected_all_rows": 1,
+ "error_rate_all_rows": 1.0,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 1,
+  "invented fact": 0,
+  "other": 0
+ },
+ "repeated_kinds": [],
+ "worst_errors": [
+  "p-nns-goose-creek-sc:prospect_test (SC DES GOP-0420-0180 PDF) - value names the permit as a 'general state operating permit for surface finishing', which the cited Permitted Equipment Summary PDF does not say (true per the SC DES export). Trimmed to 'air permit GOP-0420-0180'. Minor; no score effect."
+ ],
+ "score_problems": [],
+ "score_notes": [
+  "No score_* rows in permits-1.json (no score_labor rows to check). prospect_test is not a score input. Score changes: none."
+ ],
+ "opening_line_problems": [],
+ "plants_closed_or_moved": [],
+ "status_problems": [],
+ "plant_status_notes": "p-nns-goose-creek-sc: SC DES export lists the permit as current (effective 04/08/2025) at 2040 Bushy Park Road, Goose Creek SC 29445, matching plants.csv; facility operating under HII (ledger parent_company row). No closure or move.",
+ "field_drift_notes": [],
+ "leads": [
+  "SC DES Permit Coverage export https://apps.des.sc.gov/PermitCoverage/Home/ExportData?permitNumber=GOP-0420-0180 (public CSV, works without a session cookie, checked 2026-11-17) carries 'GOP-0420-0180,AIR-GOP-Surface Finishing,AIR-General State Operating Permit,06/23/2022,04/08/2025' (permit number, type, category, issued date, effective date). A second stated row citing it could restore the permit-type clause. The export also holds a named contact with email and phone: do not quote those columns (business-facts-only rule)."
+ ],
+ "method": "Fresh curl of the cited SC DES attachmentPDF URL; pdftotext (layout and raw) and a fragment-by-fragment check of the quote after whitespace normalisation; re-request with garbage permitCategory/permitType parameters (cmp: identical PDF); SC DES SubmitSearch (returned a database null-value error) and ExportData CSV for the permit's listing fields. No web search used. No ledger or inbox file edited.",
+ "apply_note": "Apply when the coordinator merges ledger/inbox/permits-1.json: replace the value of the one evidence row (claim_id + source_url as in rows[0]) with corrected_value; verified = corrected. No plants.csv change.",
+ "rows": [
+  {
+   "claim_id": "p-nns-goose-creek-sc:prospect_test",
+   "source_url": "https://apps.des.sc.gov/PermitCoverage/Home/attachmentPDF?permitNumber=GOP-0420-0180&permitCategory=AIR-General%20State%20Operating%20Permit&permitType=AIR-GOP-Surface%20Finishing&airAgencyNumber=0420-0180",
+   "ledger_value": "welds in-house at 2040 Bushy Park Rd, Goose Creek, SC 29445 (SC DES general state operating permit for surface finishing GOP-0420-0180, Permitted Equipment Summary v1.2: coverage date 2022-06-23, last revised 2025-04-08): electric arc welding, equipment 03-WO, welding operations in the welding training room and facility wide; process and material not named",
+   "tag": "stated",
+   "origin": "inbox permits-1.json evidence[0]",
+   "verdict": "corrected",
+   "corrected_value": "welds in-house at 2040 Bushy Park Rd, Goose Creek, SC 29445 (SC DES air permit GOP-0420-0180, Permitted Equipment Summary v1.2: coverage date 2022-06-23, last revised 2025-04-08): electric arc welding, equipment 03-WO, welding operations in the welding training room and facility wide; process and material not named",
+   "corrected_quote": "Permit Number: GOP-0420-0180 v1.2 ... COVERAGE DATE June 23, 2022 ... 2040 Bushy Park Road ... ELECTRIC ARC WELDING ... Welding Operations – Welding Training Room ... and Facility WIde ... RECORD OF REVISIONS FOR PERMITTED EQUIPMENT SUMMARY ... 04-08-2025 ... Facility Name Change from",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "PDF re-fetched 2026-11-17 (HTTP 200, application/pdf, 2 pages, 28,463 bytes); pdftotext layout and raw both checked. Every quote fragment is on it: 'Permit Number: GOP-0420-0180 v1.2', 'COVERAGE DATE June 23, 2022', '2040 Bushy Park Road' (Goose Creek, SC 29445, Berkeley; facility name Newport News Shipbuilding - Charleston Operations), 'ELECTRIC ARC WELDING', equipment 03-WO 'Welding Operations - Welding Training Room and Facility WIde' (Subpart 6X Yes, Prism fume extraction collector), revision record 12-20-2024 (transfer of ownership / name change from W International SC LLC) and 04-08-2025 (facility name change). Facility, address (matches plants.csv), dates, 03-WO description and 'process and material not named' are all correct; the PDF names no process, steel or MIG/GMAW. One clause is not on the cited page: 'general state operating permit for surface finishing'. The PDF text has no 'General', 'Operating Permit' or 'Surface'; the server returns a byte-identical PDF when permitCategory and permitType are replaced by garbage, so the URL query string is not evidence either. The clause is true: SC DES's own export (see leads) gives Permit Type 'AIR-GOP-Surface Finishing', Permit Category 'AIR-General State Operating Permit'. Trimmed to 'air permit GOP-0420-0180' (the PDF carries 'Agency Air Number' and 'Permit Number'); everything else unchanged. Dating: 'welds in-house' as of v1.2 (last revised 2025-04-08) is supported, but both revisions are name/ownership changes, so 2025-04-08 dates the document, not a fresh equipment inventory; the equipment list may date from 2022 coverage. Value wording matches the ledger's existing stated permit rows (Generac Oshkosh, Rehlko Mosel, FWT Fort Worth). No plants.csv field changes (prospect_test is not a plants.csv column; the existing inferred 'pass' row stays).",
+   "r2_basis": true
+  }
+ ]
+}

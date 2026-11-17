@@ -1,0 +1,217 @@
+{
+ "checker": "fact-checker R5-P2",
+ "vertical": "cross (permits-2: state air-permit search over 20 plants; evidence rows for v-shipbuilding-naval p-corn-island-grandview-in, v-poles-substation p-nucor-crawfordsville-in and p-valmont-plymouth-in, v-mining-heavy-equipment p-construction-attachments-lenoir-nc)",
+ "date": "2026-11-17",
+ "plants": [
+  "p-corn-island-grandview-in",
+  "p-nucor-crawfordsville-in",
+  "p-valmont-plymouth-in",
+  "p-construction-attachments-lenoir-nc"
+ ],
+ "decision_rule": "Corrected = the value must change before it ships: it adds a fact the cited document does not show, places the fact at the wrong site, misdates it, names the wrong speaker or document, tags a judgement as stated, or the quote is not in the document (pdftotext of a fresh download, layout and raw modes, whitespace normalised, each '...' fragment checked by script). A clause on the same document but outside the quote is confirmed with a note. A permit is read as stating welding at the address as of its date, not the process or material unless named. Unreachable only if the source cannot be reached at all.",
+ "claims_checked": 15,
+ "claims_corrected": 1,
+ "claims_unreachable": 0,
+ "error_rate": 0.0667,
+ "error_rate_note": "Denominator: the 15 evidence rows in the inbox file (all stated). 15/15 quotes found by script on fresh downloads. The 4 plants updates are not written as rows (mirrors; see field_drift_notes for the two that are not verbatim mirrors). The inbox has no evidence_remove key (its retire list is prose in notes) and writes no score, score_labor, tier or opening_line rows, so none were checked. Stated rows only: 1/15 = 6.7%. Retire list (notes) checked against evidence.csv: each named old row exists (weld_processes unknown for Corn Island, Valmont, Construction Attachments; Nucor weld_processes unknown job-posting row and inferred company-level SAW row; Nucor address inferred row; Corn Island materials unknown) and each is superseded by a stated row confirmed here, except Corn Island materials, superseded by the corrected row.",
+ "claims_checked_all_rows": 15,
+ "claims_corrected_all_rows": 1,
+ "error_rate_all_rows": 0.0667,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 1,
+  "invented fact": 0,
+  "other": 0
+ },
+ "repeated_kinds": [],
+ "worst_errors": [
+  "p-corn-island-grandview-in:materials - 'mild steel' rests on a grinding-wheel removal rating the permit attributes to the wheel manufacturer, not on a statement of what the yard works; corrected to 'steel' citing the permit's 0.5 in plate-steel cutting and steel-hull blasting lines. No score effect."
+ ],
+ "score_problems": [],
+ "score_notes": [
+  "No score rows in the inbox; the profiler says the coordinator re-scores. Process moves implied by the new stated rows, pending the coordinator ruling (process component only; all other components as in plants.csv today). Session-2 process rule: MIG or flux-core stated by the plant = 20; a permit naming the process at the address counts as stated by the plant (FWT precedent, 2026-11-17).",
+  "p-corn-island-grandview-in: process 0 -> 20 (95 FCAW stations, FCAW dominant) gives 30 -> 50, Low -> Medium, confidence 2 -> 3. RULING: 45 SMAW (stick) stations sit beside the FCAW; the CLAUDE.md rubric has no stick tier (20 MIG/flux-core, 12 mixed with TIG, 4 mostly TIG or spot), so 20 reads as written. Station counts are permit capacity (units constructed 1990). Material stays 0: steel is now stated but no part size (ships rule 2).",
+  "p-construction-attachments-lenoir-nc: process 0 -> 20 (ES-3 MIG welding operations, inspection 2026-07-02) gives 36 -> 56, Low -> Medium, confidence 2 -> 3.",
+  "p-nucor-crawfordsville-in: process 0 -> 20 (MCAW and FCAW alongside SAW in the pole building, August 2026 application; poles rule: MIG/flux-core stated in production = 20 even with SAW seams; FWT permit precedent, GMAW and SAW 0 -> 20) gives 45 -> 65, Medium, confidence 3 -> 4.",
+  "p-valmont-plymouth-in: process 0 -> 20 (47 MIG stations at Plant 1 as of 2023-03-27; 2025 6X report confirms welding stations still in use) gives 21 -> 41, Low, confidence 0 -> 1. Same-property campus: Plant 1 and Plant 2 are one IDEM source on one piece of property, so the fact counts for the ledger record."
+ ],
+ "opening_line_problems": [
+  "p-nucor-crawfordsville-in:opening_line (not in this inbox) says 'your Crawfordsville plant'; the company's application places the plant at 4129 East Ladoga Road, New Ross, 'near Crawfordsville'. Nucor's own announcement wording may support Crawfordsville; coordinator to check wording when the city is ruled."
+ ],
+ "plants_closed_or_moved": [],
+ "status_problems": [],
+ "plant_status_notes": "All four operating on the documents: Construction Attachments inspection 2026-07-02 'Operating'; Nucor application August 2026 (as-built); Valmont 6X report for 2025 (received 2026-01-23); Corn Island FESOP 2024-05-22 with VFC filings through 2026-07-30.",
+ "field_drift_notes": [
+  "p-nucor-crawfordsville-in: the plants update sets address to 4129 East Ladoga Road, New Ross, IN 47968 but city stays Crawfordsville and lat/lon (40.0408627, -86.8997385) are a Crawfordsville point. City should become New Ross and the point re-geocoded; Census returns no match for the address (three spellings tried 2026-11-17), so a registry or approximate point is needed. Coordinator ruling (profiler flagged the same).",
+  "p-nucor-crawfordsville-in: plants weld_processes 'SAW, metal-cored arc (MCAW, GMAW) and flux-cored arc (FCAW) welding in the pole building (Title V application, August 2026; IDEM permit ...)' merges evidence[6] and evidence[7]; every clause is carried by one of them ('GMAW' only by the 2024 permit). Acceptable; the two evidence rows keep their own values.",
+  "p-valmont-plymouth-in: plants weld_processes adds 'at 1200 N Oak Rd' to evidence[12]'s value; carried by the same permit (A.2, A.3 'located in Plant 1'). Acceptable. The ledger address 1545 Pidco Drive is the office and storage plant per the permit; welding is at Plant 1, 1200 N. Oak Road, on the same property. Coordinator may move the address to 1200 N Oak Road (permit spelling 'Road'; the 2025 6X report says '1200 North Oak Street').",
+  "p-corn-island-grandview-in: plants materials takes plants_csv_value from the corrected row."
+ ],
+ "leads": [
+  "p-valmont-plymouth-in materials: permit 099-46320-00054 Appendix A (emission calculations, 1200 N Oak Road) lists the welding as 'Metal Inert Gas (MIG)(carbon steel)', which would support a stated carbon-steel materials row.",
+  "p-nucor-crawfordsville-in: the application's welding form lists unit WT&S as 50 electric-arc stations (SAW, MCAW, FCAW) at 120 lb/hr; the 2026 equipment table shows new plasma/laser cutting, galvanizing and blasting units installed Jan-Sep 2026 (possible trigger support beside the existing October 2026 expansion).",
+  "p-construction-attachments-lenoir-nc: the NC report notes a new Mitsubishi ML402NX laser cutter awaiting training (not in service, 2026-07-02)."
+ ],
+ "method": "Fresh curl download of every cited document 2026-11-17 into a new scratch directory; pdftotext in layout and raw modes; each quote split on '...' and checked by script against whitespace-normalised text (15/15 found). IDEM VFC search API (xSourceID 107-00088, 099-00054, 147-00047) read for document dates; page 1 of the Nucor application rendered to read the received stamp, and the 9/9/2026 email copy (dID 84008702) opened. Census geocoder tried for the New Ross address. No web search used. No ledger file edited.",
+ "apply_note": "Apply after the coordinator merges ledger/inbox/permits-2.json (rows keyed to that file's claim_id + source_url). One row changes: p-corn-island-grandview-in:materials (47106f.pdf) takes corrected_value, corrected_quote and tag stated; plants.csv materials takes plants_csv_value. Rule on the Nucor city/geocode and the Valmont address (field_drift_notes), and on the four implied process re-scores (score_notes; Corn Island SMAW is a RULING).",
+ "rows": [
+  {
+   "claim_id": "p-corn-island-grandview-in:prospect_test",
+   "source_url": "https://permits.air.idem.in.gov/47106f.pdf",
+   "ledger_value": "welds in-house at 9447 E SR 66, Grandview, IN (IDEM FESOP renewal F147-47106-00047, issued 2024-05-22): welding operation 00400 with 45 SMAW, 95 FCAW and 2 SAW stations at the shipyard",
+   "tag": "stated",
+   "origin": "inbox permits-2.json evidence[0]",
+   "verdict": "confirmed",
+   "note": "Fresh download 2026-11-17 (curl, pdftotext): IDEM FESOP Renewal F147-47106-00047, Corn Island Shipyard, Inc, 9447 E. SR 66, Grandview, Indiana 47615, Issuance Date May 22, 2024 (expires May 22, 2034); SIC 3731 Shipbuilding and Repair. Quote found (A.3(d), insignificant activities): welding operation 00400, constructed July 1990: 45 SMAW, 95 FCAW, 2 SAW stations, exhausting indoors. Value matches; the permit states welding at the address as of 2024-05-22.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-corn-island-grandview-in:address",
+   "source_url": "https://permits.air.idem.in.gov/47106f.pdf",
+   "ledger_value": "9447 E SR 66, Grandview, IN 47615 (IDEM FESOP renewal F147-47106-00047, 2024-05-22)",
+   "tag": "stated",
+   "origin": "inbox permits-2.json evidence[1]",
+   "verdict": "confirmed",
+   "note": "Fresh download 2026-11-17 (curl, pdftotext): IDEM FESOP Renewal F147-47106-00047, Corn Island Shipyard, Inc, 9447 E. SR 66, Grandview, Indiana 47615, Issuance Date May 22, 2024 (expires May 22, 2034); SIC 3731 Shipbuilding and Repair. Quote found (A.1 General Information), contiguous after whitespace normalisation. Ledger address '9447 E State Hwy 66' is the same site. VFC index shows filings for source 147-00047 through 2026-07-30, so the yard is still reporting.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-corn-island-grandview-in:weld_processes",
+   "source_url": "https://permits.air.idem.in.gov/47106f.pdf",
+   "ledger_value": "FCAW (95 stations), SMAW (45 stations) and SAW (2 stations) (IDEM FESOP renewal F147-47106-00047, 2024-05-22)",
+   "tag": "stated",
+   "origin": "inbox permits-2.json evidence[2]",
+   "verdict": "confirmed",
+   "note": "Fresh download 2026-11-17 (curl, pdftotext): IDEM FESOP Renewal F147-47106-00047, Corn Island Shipyard, Inc, 9447 E. SR 66, Grandview, Indiana 47615, Issuance Date May 22, 2024 (expires May 22, 2034); SIC 3731 Shipbuilding and Repair. Quote found; the SMAW (45) and SAW (2) counts in the value are on the same page in the same list (A.3(d)(1) and (3)), outside this quote but inside evidence[0]'s quote. Confirmed. Process named by the permit, so a stated process row is valid.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-corn-island-grandview-in:materials",
+   "source_url": "https://permits.air.idem.in.gov/47106f.pdf",
+   "ledger_value": "mild steel (the yard's handheld grinding operation is rated in pounds of mild steel removed; IDEM FESOP renewal F147-47106-00047, 2024-05-22)",
+   "tag": "stated",
+   "origin": "inbox permits-2.json evidence[3]",
+   "verdict": "corrected",
+   "note": "Fresh download 2026-11-17 (curl, pdftotext): IDEM FESOP Renewal F147-47106-00047, Corn Island Shipyard, Inc, 9447 E. SR 66, Grandview, Indiana 47615, Issuance Date May 22, 2024 (expires May 22, 2034); SIC 3731 Shipbuilding and Repair. The quote is on the page (A.2(b)), but the 'mild steel' figure is a grinding-wheel capacity rating, which the permit's own calculation attributes to the wheel maker: 'Emission Factor based on manufacturer of 1.7 lbs of mild steel per 4.5 inch wheel and 4.2 lbs mild steel per 7 inch wheel.' It does not state that the yard works mild steel. The same permit does state steel: A.3(c)(1) wet plasma cutting of '0.5 inch thick plate steel' and the 326 IAC 6-3 table footnote '4000 lb/hr of steel hull being blasted'. Value set to steel with those quotes. No score effect (material points need a part size; Corn Island part_size_fit is unknown).",
+   "r2_basis": true,
+   "corrected_value": "steel (0.5 inch thick plate steel cut by the wet plasma arc flame cutting operation; steel hulls blasted; grade not stated) (IDEM FESOP renewal F147-47106-00047, 2024-05-22)",
+   "corrected_quote": "One (1) Wet Plasma Arc Flame Cutting, no identification, constructed in July 1990 and converted in 2013 to a wet cutting system, with a maximum capacity of 78.97 inches per minute of 0.5 inch thick plate steel ... 4000 lb/hr of steel hull being blasted",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "steel (0.5 inch thick plate steel cut by the wet plasma arc flame cutting operation; steel hulls blasted; grade not stated) (IDEM FESOP renewal F147-47106-00047, 2024-05-22)"
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:prospect_test",
+   "source_url": "https://ecm.idem.in.gov/cs/idcplg?IdcService=GET_FILE&dID=84027070&Rendition=web",
+   "ledger_value": "welds in-house at 4129 East Ladoga Road, New Ross, IN (the company's own Title V application and as-built reconciliation dated August 2026, in IDEM's file for source 107-00088; filed 2026-09-09 per IDEM's file index): the existing pole building houses submerged arc welding (SAW) among its fabrication equipment",
+   "tag": "stated",
+   "origin": "inbox permits-2.json evidence[4]",
+   "verdict": "confirmed",
+   "note": "Fresh download 2026-11-17 of dID 84027070 (pdftotext; OCR text, 22 MB): SOLA Environmental, Title V Application and As-Built Reconciliation prepared for Nucor Towers and Structures, 4129 East Ladoga Road, New Ross, IN 47968, dated August 2026; page 1 stamped Received State of Indiana OCT 28 2026 (hard copy). The same application (dID 84008702, read here) is stamped 'Received by State of Indiana IDEM-OAQ via email September 09, 2026'; IDEM's VFC index gives both a document date of 9/9/2026 (permit 50753), so 'filed 2026-09-09' holds. Both fragments found (section 1 Introduction and 1.1 Process Description). Value matches: the company's application (by its consultant) states the existing pole building houses SAW among its fabrication equipment at 4129 East Ladoga Road.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:address",
+   "source_url": "https://ecm.idem.in.gov/cs/idcplg?IdcService=GET_FILE&dID=84027070&Rendition=web",
+   "ledger_value": "4129 East Ladoga Road, New Ross, IN 47968 (Nucor Towers and Structures' Title V application, August 2026, in IDEM's record; IDEM source 107-00088)",
+   "tag": "stated",
+   "origin": "inbox permits-2.json evidence[5]",
+   "verdict": "confirmed",
+   "note": "Fresh download 2026-11-17 of dID 84027070 (pdftotext; OCR text, 22 MB): SOLA Environmental, Title V Application and As-Built Reconciliation prepared for Nucor Towers and Structures, 4129 East Ladoga Road, New Ross, IN 47968, dated August 2026; page 1 stamped Received State of Indiana OCT 28 2026 (hard copy). The same application (dID 84008702, read here) is stamped 'Received by State of Indiana IDEM-OAQ via email September 09, 2026'; IDEM's VFC index gives both a document date of 9/9/2026 (permit 50753), so 'filed 2026-09-09' holds. Quote found. Address also on application forms (Location Address 4129 East Ladoga Road, New Ross 47968). Site tie to the ledger's Crawfordsville record is stated in the same PDF: 'NTS, located in New Ross, Indiana near Crawfordsville, currently operates underTitle V Permit No. 107-47704-00038'. See field_drift_notes: city and lat/lon still say Crawfordsville.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:weld_processes",
+   "source_url": "https://ecm.idem.in.gov/cs/idcplg?IdcService=GET_FILE&dID=84027070&Rendition=web",
+   "ledger_value": "submerged arc (SAW), metal-cored arc (MCAW) and flux-cored arc (FCAW) welding in the pole building (Title V application, August 2026)",
+   "tag": "stated",
+   "origin": "inbox permits-2.json evidence[6]",
+   "verdict": "confirmed",
+   "note": "Fresh download 2026-11-17 of dID 84027070 (pdftotext; OCR text, 22 MB): SOLA Environmental, Title V Application and As-Built Reconciliation prepared for Nucor Towers and Structures, 4129 East Ladoga Road, New Ross, IN 47968, dated August 2026; page 1 stamped Received State of Indiana OCT 28 2026 (hard copy). The same application (dID 84008702, read here) is stamped 'Received by State of Indiana IDEM-OAQ via email September 09, 2026'; IDEM's VFC index gives both a document date of 9/9/2026 (permit 50753), so 'filed 2026-09-09' holds. Quote found (em dash OCR 'metal—cored' as printed). The application's form for unit WT&S also lists 50 electric-arc stations using SAW, MCAW, FCAW (installation 7/15/2024).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:weld_processes",
+   "source_url": "https://permits.air.idem.in.gov/47704f.pdf",
+   "ledger_value": "SAW and MCAW (GMAW) (IDEM permit 107-47704-00038, 2024-07-15, welding operation WT&S approved for construction)",
+   "tag": "stated",
+   "origin": "inbox permits-2.json evidence[7]",
+   "verdict": "confirmed",
+   "note": "Fresh download 2026-11-17: IDEM Significant Permit Modification 107-47704-00038 to Nucor Steel Indiana's Title V T107-45287-00038, Issuance Date July 15, 2024. Quote found verbatim in D.38 Towers and Structures Operations (e). Value matches ('approved for construction', date). Note: the permit's Source Address is Nucor Steel Indiana's 4537 S. Nucor Road, Crawfordsville; it does not name 4129 East Ladoga Road. The tie of WT&S to the NTS plant is stated in the August 2026 application (dID 84027070: NTS 'currently operates under' this permit; WT&S listed as its welding unit), so no site clause is added by this row.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:materials",
+   "source_url": "https://ecm.idem.in.gov/cs/idcplg?IdcService=GET_FILE&dID=84027070&Rendition=web",
+   "ledger_value": "steel plate and steel coil (Title V application, August 2026)",
+   "tag": "stated",
+   "origin": "inbox permits-2.json evidence[8]",
+   "verdict": "confirmed",
+   "note": "Fresh download 2026-11-17 of dID 84027070 (pdftotext; OCR text, 22 MB): SOLA Environmental, Title V Application and As-Built Reconciliation prepared for Nucor Towers and Structures, 4129 East Ladoga Road, New Ross, IN 47968, dated August 2026; page 1 stamped Received State of Indiana OCT 28 2026 (hard copy). The same application (dID 84008702, read here) is stamped 'Received by State of Indiana IDEM-OAQ via email September 09, 2026'; IDEM's VFC index gives both a document date of 9/9/2026 (permit 50753), so 'filed 2026-09-09' holds. Quote found (1.1 Pole Manufacturing). Value matches.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-valmont-plymouth-in:prospect_test",
+   "source_url": "https://ecm.idem.in.gov/cs/idcplg?IdcService=GET_FILE&dID=83915750&Rendition=web",
+   "ledger_value": "welds in-house at Plant 1, the manufacturing building at 1200 North Oak Street, Plymouth, IN, adjacent to 1545 Pidco Drive (the company's own NESHAP 6X annual compliance report for 2025, submitted by its consultant and received by IDEM 2026-01-23 under MSOP M099-38395-00054)",
+   "tag": "stated",
+   "origin": "inbox permits-2.json evidence[9]",
+   "verdict": "confirmed",
+   "note": "Fresh download 2026-11-17 of dID 83915750: BCA Environmental Consultants letter dated January 22, 2026, stamped 'Received 1/23/2026 via OAQ Email', NESHAP 6X annual certification for reporting year 2025, Valmont Structures, Inc. dba PiRod, Inc., MSOP Renewal M099-38395-00054; VFC document date 1/23/2026. Quote found verbatim. The report's facility block gives 1545 Pidco Drive (Plant 2) and 1200 North Oak Street (Plant 1). Value matches (speaker = company's consultant on its behalf, as written).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-valmont-plymouth-in:prospect_test",
+   "source_url": "https://permits.air.idem.in.gov/46320f.pdf",
+   "ledger_value": "welded in-house as of the document date, at Plant 1, 1200 N Oak Rd, Plymouth, IN (IDEM MSOP minor permit revision 099-46320-00054, issued 2023-03-27): 47 MIG welding stations",
+   "tag": "stated",
+   "origin": "inbox permits-2.json evidence[10]",
+   "verdict": "confirmed",
+   "note": "Fresh download 2026-11-17: IDEM MSOP Minor Permit Revision 099-46320-00054 (under M099-38395-00054), Valmont Structures, Inc. d.b.a PiRod, Inc., Issuance Date March 27, 2023; Source Location 1200 N. Oak Road, and 1545 Pidco Drive, Plymouth. Both quote fragments found (A.3 (d) and (d)(1)). All 47 stations are MIG (9 + 31 + 7). Value, worded 'as of the document date', matches.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-valmont-plymouth-in:address",
+   "source_url": "https://permits.air.idem.in.gov/46320f.pdf",
+   "ledger_value": "Plant 1 (manufacturing) at 1200 N Oak Rd, Plymouth, IN 46563; Plant 2 (office and storage) at 1545 Pidco Drive, on one property (IDEM MSOP revision 099-46320-00054, 2023-03-27)",
+   "tag": "stated",
+   "origin": "inbox permits-2.json evidence[11]",
+   "verdict": "confirmed",
+   "note": "Fresh download 2026-11-17: IDEM MSOP Minor Permit Revision 099-46320-00054 (under M099-38395-00054), Valmont Structures, Inc. d.b.a PiRod, Inc., Issuance Date March 27, 2023; Source Location 1200 N. Oak Road, and 1545 Pidco Drive, Plymouth. Quote found (A.2 Source Definition), including 'and' after the first address on the next line. Value matches. See field_drift_notes: ledger address 1545 Pidco Drive is the office and storage plant.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-valmont-plymouth-in:weld_processes",
+   "source_url": "https://permits.air.idem.in.gov/46320f.pdf",
+   "ledger_value": "MIG: 47 MIG welding stations in Plant 1 (IDEM MSOP revision 099-46320-00054, 2023-03-27)",
+   "tag": "stated",
+   "origin": "inbox permits-2.json evidence[12]",
+   "verdict": "confirmed",
+   "note": "Fresh download 2026-11-17: IDEM MSOP Minor Permit Revision 099-46320-00054 (under M099-38395-00054), Valmont Structures, Inc. d.b.a PiRod, Inc., Issuance Date March 27, 2023; Source Location 1200 N. Oak Road, and 1545 Pidco Drive, Plymouth. Quote found (A.3 (d)(2)); the other 16 MIG stations (MIG 1-9, MIG 69-75) are in the same list on the same page, so '47 MIG welding stations in Plant 1' is carried by the page. Confirmed. As of 2023-03-27; the 2025 6X report confirms multiple welding stations still in use in Plant 1 but names no process.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-construction-attachments-lenoir-nc:prospect_test",
+   "source_url": "https://edocs.deq.nc.gov/AirQuality/ElectronicFile.aspx?docid=658184&dbid=0&repo=AirQuality",
+   "ledger_value": "welds in-house at 1160 Cal Court, Lenoir, NC (NC DAQ compliance assurance visit report, NC facility ID 1400214, inspection 2026-07-02): emission source ES-3 is MIG welding operations; metal sheets are cut, cleaned and welded together into parts for buckets, forklifts and other machinery",
+   "tag": "stated",
+   "origin": "inbox permits-2.json evidence[13]",
+   "verdict": "confirmed",
+   "note": "Fresh download 2026-11-17 (pdftotext, 4 pages): NC DAQ Asheville Regional Office Compliance Assurance Visit, Construction Attachments, Inc., NC Facility ID 1400214, 1160 Cal Court, Lenoir, NC 28645; Inspection Date 07/02/2026; Operating Status Operating; Permit Exempt (10099R01 expired 2023-12-31). Quote found (Process Description). ES-3 'MIG welding operations' in the source table. Value matches.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-construction-attachments-lenoir-nc:weld_processes",
+   "source_url": "https://edocs.deq.nc.gov/AirQuality/ElectronicFile.aspx?docid=658184&dbid=0&repo=AirQuality",
+   "ledger_value": "MIG (NC DAQ compliance assurance visit report, inspection 2026-07-02)",
+   "tag": "stated",
+   "origin": "inbox permits-2.json evidence[14]",
+   "verdict": "confirmed",
+   "note": "Same NC DAQ report (inspection 2026-07-02). Quote found verbatim. Value MIG matches. The report does not say manual or robotic.",
+   "r2_basis": true
+  }
+ ]
+}
