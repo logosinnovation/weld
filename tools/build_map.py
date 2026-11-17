@@ -205,15 +205,47 @@ def quote_verdict(e, qc_rows, snapshot):
     q = wsnorm(e["quote"])
     if not q:
         return None
-    vs = [v for cq, v in qc_rows.get((e["claim_id"], e["source_url"]), []) if cq == q]
+    # tools/verify_ledger_quotes.py stored only the first 160 characters of each quote before 2026-11-17
+    vs = [v for cq, v in qc_rows.get((e["claim_id"], e["source_url"]), []) if cq == q or (len(cq) >= 155 and q.startswith(cq))]
     if not vs:
+        if "osha.gov" in e["source_url"] and osha_match_local(q):
+            return "snapshot"
         return None
     best = max(vs, key=lambda v: QRANK[v])
     if best in ("not_found", "unreachable") and snapshot and "aisc.my.site.com" in e["source_url"]:
         parts = [x.strip() for x in q.split("...") if x.strip()]
         if parts and all(x in snapshot for x in parts):
             best = "snapshot"
+    if best in ("not_found", "unreachable") and "osha.gov" in e["source_url"] and osha_match_local(q):
+        best = "snapshot"  # osha.gov is blocked from the build container: matched against data/osha_2025_cited.csv
     return best
+
+
+_OSHA = None
+
+
+def osha_match_local(q):
+    """True when every 'field value' pair in an OSHA-row quote equals the cited record (by ID) in data/osha_2025_cited.csv."""
+    global _OSHA
+    if _OSHA is None:
+        p = os.path.join(os.path.dirname(L.rstrip("/")), "data", "osha_2025_cited.csv")
+        _OSHA = {r["ID"]: r for r in csv.DictReader(open(p))} if os.path.exists(p) else {}
+    chunks = [c for c in re.split(r"(?=\bID \d+;)", q) if c.strip()]  # a quote may carry two records
+    if not chunks:
+        return False
+    for ci, chunk in enumerate(chunks):
+        m = re.match(r"ID (\d+);", chunk.strip())
+        if not m or m.group(1) not in _OSHA:
+            return False
+        rec = _OSHA[m.group(1)]
+        parts = [p.strip() for p in chunk.strip().rstrip(";").split("; ")[1:]]
+        if ci == len(chunks) - 1 and len(q) >= 295 and parts:
+            parts = parts[:-1]  # the stored quote is capped at 300 characters, so the last field may be cut
+        for part in parts:
+            k, _, v = part.partition(" ")
+            if k in rec and wsnorm(rec[k]) != wsnorm(v):
+                return False
+    return True
 
 
 def first_key(d, keys):

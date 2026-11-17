@@ -34,7 +34,7 @@ for r in res:
     if r[1] == "miss":
         t = bp.get(r[0]["source_url"], "")
         r[1] = "found_browser" if t and ok(r[0]["quote"], t) else ("unreachable" if not t and not pages[r[0]["source_url"]][1] else "not_found")
-out = [{"claim_id": e["claim_id"], "source_url": e["source_url"], "verdict": v, "quote": e["quote"][:160]} for e, v in res]
+out = [{"claim_id": e["claim_id"], "source_url": e["source_url"], "verdict": v, "quote": e["quote"]} for e, v in res]
 summ = {k: sum(1 for o in out if o["verdict"] == k) for k in ("found", "found_browser", "aisc_snapshot", "not_found", "unreachable")}
 json.dump({"summary": summ, "rows": out}, open("ledger/audit/quote-check-ledger.json", "w"), indent=1)
 print(summ)
