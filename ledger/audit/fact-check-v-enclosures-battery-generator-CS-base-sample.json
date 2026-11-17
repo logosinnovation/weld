@@ -1,0 +1,2372 @@
+{
+ "checker": "fact-checker CS-battery (independent random sample of battery base and excluded records)",
+ "vertical": "v-enclosures-battery-generator",
+ "date": "2026-11-17",
+ "plants": [
+  "p-fidelity-ocala-fl-2",
+  "p-chillicothe-metal-chillicothe-il",
+  "p-gti-goodyear-az",
+  "p-global-power-components-milwaukee-wi",
+  "p-gti-buffalo-ny",
+  "p-maysteel-allenton-wi",
+  "p-jts-nampa-id",
+  "p-robinson-manitowoc-wi",
+  "p-maysteel-garland-tx",
+  "p-simplex-springfield-il",
+  "p-tramont-milwaukee-wi",
+  "p-avl-charlotte-nc",
+  "p-maysteel-germantown-wi",
+  "p-girtz-monticello-in",
+  "p-winco-le-center-mn",
+  "p-maysteel-lynchburg-va",
+  "p-generac-whitewater-wi",
+  "p-newberry-west-memphis-ar",
+  "p-caterpillar-griffin-ga",
+  "p-gillette-elkhart-in",
+  "p-nvent-trachte-chattanooga-tn",
+  "p-generac-sussex-wi"
+ ],
+ "sample_method": "Drawn by the coordinator with random.Random(20261117): 16 base records (excluding six already checked in R1) and 6 excluded records. Scope by script from ledger/evidence.csv: every stated row of the 22 records plus every inferred row of relationship, lookalike_of, tier, tier_secondary, welder_postings, parent_company and exclusion_reason (213 rows: 134 stated, 79 inferred). Extended (in_scope false): the six unknown-tagged welder_postings rows of these records, checked because their plants.csv field asserts 'none found' or 'unknown'.",
+ "decision_rule": "Corrected = the value adds a fact the cited page does not show, tags a judgement as stated, places a company-level fact at the plant, ties a posting through a city shared by several sites (campus rule), misdates a posting, the quote is not on the page (raw source incl. JSON-LD checked first), or an inferred relationship breaks the written battery rule (lookalike of EK Machine when a stated product, company-level enough, is generator enclosures, sub-base or day tanks, or BESS enclosures or skids). A 'none found'/'unknown' posting value is corrected when the employer's own board, linked from its site, shows a site-named welder posting that was open on the finder's read date. Confirmed otherwise. Unreachable only when the source cannot be reached at all (not confirmed, not in the rate).",
+ "claims_checked": 212,
+ "claims_corrected": 7,
+ "claims_unreachable": 1,
+ "error_rate": 0.033,
+ "error_rate_note": "7/212 = 3.3% over the delegated scope (213 rows less 1 unreachable). Including the 6 extended unknown-tagged welder_postings rows: 9/218 = 4.1%. On stated rows only (in scope): 4/133 = 3.0% (nVent name, nVent parent, nVent exclusion_reason, Winco tier_secondary). By plant: 5 of 22 records carry a correction (GPC, Simplex, Winco, nVent Chattanooga; plus Maysteel Garland and Lynchburg in the extended set). Score-moving: GPC, Garland, Lynchburg labor 0 -> 12 (open welder posting under 60 days); Simplex relationship new -> lookalike (first ranking key). No closed business, wrong plant, wrong process, wrong tier or invented fact.",
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 4,
+  "invented fact": 0,
+  "other": 3
+ },
+ "error_kind_counts_all_rows": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 4,
+  "invented fact": 0,
+  "other": 5
+ },
+ "repeated_kinds": [
+  "other: 3 in scope, 5 with the extended rows - two roots. (a) MISSED OR PART-READ OWN JOB BOARD (3: GPC Milwaukee, Maysteel Garland, Maysteel Lynchburg). GPC's company page links an own Workday board ('Careers' -> globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC) that the finder called 'no job board found'; it has a MIG Welder at '51st Street' posted 2026-11-10. Maysteel's Dayforce board was read as 11 openings when it holds 18 (lazy-loaded list); Welder II Garland (posted 2026-11-01) and Welder I Lynchburg (posted 2026-10-21) were missed though both predate the read. SWEEP: every battery base/profiled record whose welder_postings is 'none found' or 'unknown' - open the company site's careers href in raw source (Workday/UKG/Dayforce/ADP/Paylocity/Lever/SmartRecruiters links) and read the full list through its JSON API or a scrolled browser render (Workday CXS jobs POST, Dayforce full render, UKG LoadSearchResults, ADP job-requisitions, Lever/SmartRecruiters postings APIs). Named first: the other Maysteel records if any, GPC's other EPA sites (4101 W Burnham St has its own board location 'Burnham'), and every finder row that says 'no job board found'. (b) RELATIONSHIP RULE MISREAD (2: Simplex, nVent): Simplex's reasoning lists the rule without 'day tanks'; nVent's says no BESS line though nVent's own BESS page states one. SWEEP (cheap): every battery record with relationship 'new' whose products row names day tanks, sub-base tanks, generator enclosures or BESS enclosures/skids at company level.",
+  "quote does not support value: 4 in scope, but 3 are one record (nVent TRACHTE Chattanooga, finder batch 'battery-misses': '(former Lectrus site)' in a stated name from a page without 'Lectrus'; 'plc' parent from a page without it; a rule judgement tagged stated with a false premise). SWEEP the sibling records p-nvent-trachte-oregon-wi and p-nvent-trachte-houston-tx (Houston's name row 16180 carries the same '(former Lectrus site)' on the same homepage quote) and their exclusion_reason rows. The fourth is Winco's tier_secondary tagged stated (judgement tagged stated); no other stated tier row in the sample."
+ ],
+ "worst_errors": [
+  "p-global-power-components-milwaukee-wi:welder_postings (row 15251; plants field): 'unknown: no job board found on the company page' - the cited company page's own Careers menu links GPC's Workday board (93 openings, 70 at the '51st Street' site). MIG Welder JR100145 at 51st Street, datePosted 2026-11-10 (welding I-beam frames and fuel tanks, 1st/2nd shift), plus Weld Lead and Weld Supervisor posted 2026-10-05. Labor 0 -> 12; strong prospect signal for a sub-base-tank and enclosure maker. Website field should also become www.globalpowercomponents.com (named in the posting).",
+  "p-nvent-trachte-chattanooga-tn:exclusion_reason + relationship (rows 16159, 16158): excluded under rule 3 because 'no ... BESS container line is stated' and the BESS menu page 'was not retrievable' - it fetches with a plain request (200) and states 'nVent TRACHTE BESS enclosures support long-term energy storage needs with enclosure and skid-based platforms'. Boundary rule 1 puts BESS enclosures and skids in; the company-level line makes all three nVent TRACHTE records lookalikes of EK Machine if re-admitted. Status is the coordinator's call (site attribution open across nine nVent TRACHTE facilities).",
+  "p-maysteel-garland-tx and p-maysteel-lynchburg-va:welder_postings (rows 15732, 15743; extended, tagged unknown): 'none found' after reading 11 of 18 Dayforce openings; Welder II Garland (posted 2026-11-01, MIG and TIG) and Welder I - 2nd shift Lynchburg (posted 2026-10-21, MIG) were open on the read date. Runner-up: p-simplex-springfield-il:relationship (row 15837) 'new' although genset day tanks are on the written lookalike list."
+ ],
+ "status_problems": [
+  {
+   "plant": "p-nvent-trachte-chattanooga-tn",
+   "problem": "exclusion premise false (possible wrong exclusion)",
+   "detail": "nVent TRACHTE states BESS enclosures and skid-based platforms (company BESS page). Rule 1 puts BESS enclosures/skids in. Re-decide status for Chattanooga, Oregon WI and Houston TX; no source ties BESS work to a site. Power-conversion skids on the same page are rule-3 (power-distribution skids)."
+  },
+  {
+   "plant": "p-winco-le-center-mn",
+   "problem": "boundary rule 2 not shown (possible wrong vertical)",
+   "detail": "Genset OEM plant kept as base on 'MIG welding booths' and 'metal fabrication'. The capabilities PDF names no enclosure, frame or tank welding; its own prospect_test row reads 'fabrication of its generator units' into rule 2. Under the written rule (plant itself welds enclosures, frames or tanks) this should be excluded unless a page shows frame/enclosure/tank welding; also note the welding cell is 3 booths plus a spot welder (small)."
+  },
+  {
+   "plant": "p-maysteel-germantown-wi",
+   "problem": "site labelled 'Data Center Manufacturing Hub' (rule 3 risk)",
+   "detail": "Maysteel's locations page: 'Germantown, WI / Data Center Manufacturing Hub / 43,000 sq. ft.'. Products field attributes the company's BESS/generator enclosure line to the site by inference; the stated site role points to v-datacenter-grid-prefab. Keep base only with that caveat, or move."
+  },
+  {
+   "plant": "p-chillicothe-metal-chillicothe-il",
+   "problem": "operation not verified by a source dated 2024 or later",
+   "detail": "Only an undated Energy XPRT directory profile is cited; cmcousa.com answers 403 (bot challenge) to plain and browser fetches, so the domain is live but unread. EPA ECHO has CHILLICOTHE METAL CO INC at 4507 E. ROME RD. (FRS 110008059313) with last inspection 02/10/2023. Not shown closed; keep base, do not profile until a current source reads."
+  },
+  {
+   "plant": "p-gti-goodyear-az / p-maysteel-germantown-wi / p-jts-nampa-id",
+   "problem": "blank lat/lon",
+   "detail": "Map cannot place them. JTS Nampa: EPA DFR 110071992684 gives 43.628446, -116.587165 for 17645 N Gable Ave (cited page). Goodyear and Germantown need a geocode."
+  }
+ ],
+ "plants_closed_or_moved": [],
+ "plant_status_notes": "21 of 22 records have a live own site, an own-board posting at the site or a 2024+ source read 2026-11-17: Fidelity (site copyright 2026, Plant 2 listed), GTI Goodyear and Buffalo (Lever postings at both), GPC (Workday postings at 51st Street), Maysteel Allenton/Garland/Germantown/Lynchburg (Dayforce postings at all four), JTS Nampa (SmartRecruiters postings at 17645 N Gable Ave), Robinson Manitowoc (UKG posting at 2121 S 30th St), Simplex (Paylocity, EPA 'Operating'), Tramont (site live), AVL Charlotte (13 ADP requisitions; plant ramping), Girtz (Legrand release June 2026), Winco (site copyright 2026, 225 South Cordova Ave), Generac Whitewater and Sussex (Workday postings at both), Newberry West Memphis (ITN Hire postings at 205 N Walker Ave), Caterpillar Griffin (careers postings in Griffin), Gillette (site live with Elkhart address), nVent Chattanooga (locations page lists the facility). Chillicothe: see status_problems.",
+ "field_drift_notes": [
+  "p-global-power-components-milwaukee-wi: website should be https://www.globalpowercomponents.com (named in GPC's own postings; returns 200) rather than gpcwordpress.azurewebsites.net; products field's 'modular equipment centers' has no row (the posting text 'modular metal enclosures for housing fully-equipped electrical distribution and control equipment' could carry it). welder_postings takes plants_csv_value.",
+  "p-maysteel-garland-tx, p-maysteel-lynchburg-va: welder_postings take plants_csv_value (apply_factcheck sets them).",
+  "p-simplex-springfield-il: relationship -> lookalike via apply_factcheck; lookalike_of stays blank until the coordinator adds p-simplex-springfield-il:lookalike_of 'EK Machine' (inferred). Same for p-nvent-trachte-chattanooga-tn if its exclusion is lifted.",
+  "p-jts-nampa-id and p-avl-charlotte-nc: lookalike_of in plants.csv carries a sentence ('EK Machine: builds integrated generator enclosures, as EK Machine does') while the evidence rows say 'EK Machine'; normalise to 'EK Machine'.",
+  "p-generac-whitewater-wi: address 'N Newcomb St' in plants.csv vs 'NORTH NEWCOMB ROAD' in its EPA row.",
+  "p-newberry-west-memphis-ar: address 'N Walker Ave' in plants.csv vs 'North Walker Street' in the homepage row (the ITN board says 'Avenue'); pick one with its row.",
+  "p-caterpillar-griffin-ga:welder_postings (row 15618) cites the EPA DFR page and an EPA quote for a careers-search fact; source_url should be the Caterpillar careers search.",
+  "p-tramont-milwaukee-wi address: '(HR: 3637 N Holton St, same block)' - 'same block' is on no row.",
+  "p-fidelity-ocala-fl-2 products: 'day tanks' is on no row (fuel-tanks page lists 'Day tank, transfer pump, and control systems' - add a row or trim).",
+  "p-winco-le-center-mn products: 'Generators (portable, PTO, standby)' is on no row; headcount blank (not 'unknown').",
+  "p-gti-buffalo-ny / p-gti-goodyear-az parent_company: plants value '(founded 2015, Buffalo NY)' is fine; GTI's homepage also lists a Phoenix site (3380 W Durango St) already in the ledger as p-gti-phoenix-az.",
+  "All 22 records: county_fips/lat/lon had no evidence rows when this sample was read; run_log (2026-11-17) shows the coordinator's tools/geo_evidence.py pass now writing inferred geocoder rows for all verticals - no separate action from this check."
+ ],
+ "leads": [
+  "GPC: own Workday board at globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC - 51st Street has MIG Welder, Weld Lead, Weld Supervisor, Weld Expediter, Certified Welding Inspector, Weld Test Coordinator; Burnham site (4101 W Burnham St) runs a welding training academy (MIG Welding Trainer, Academy Trainee - Welding). Posting text: 'manufacturer of UL heavy gauge steel fuel tanks, trailers, large generator enclosures, and modular metal enclosures'; 'Welding I-Beam Frame and Fuel Tanks'; '10 gauge up to 1/2 inch' - process (MIG), materials and part evidence for a profile. The Burnham and Elkhorn locations may be separate plants worth records.",
+  "Robinson: UKG board also lists Altoona, IA weld roles (Production Welder/Fabricator, Weld Supervisor, Quality Specialist - Weld) for p-robinson-altoona-ia, and a De Pere Welder/Fabricator at DP1 (1740 Eisenhower Rd) and DP3 (2121 American Blvd) for p-robinson-de-pere-wi.",
+  "Newberry Memphis (p-newberry-memphis-tn): 'Skilled Production Welder', 3109 Fontaine Road, posted 2026-10-01, $25-$46/hr on the ITN Hire board.",
+  "Chillicothe Metal: EPA FRS 110008059313 (4507 E. ROME RD., CAA/RCRA records, last inspection 2023-02-10) can carry name/address rows.",
+  "Maysteel Garland Welder II posting names MIG and TIG (process mixed); Lynchburg Welder I names MIG.",
+  "Girtz: aggregator copies (jobleads, vaia) of a Girtz Welder/Fabricator listing in Monticello - not countable; Legrand's own board not found.",
+  "nVent TRACHTE BESS page also offers 'skid-mounted power conversion systems' (rule 3) - separate from the BESS enclosure line."
+ ],
+ "ruling_questions": [
+  "Unknown-tagged welder_postings rows ('none found') sit outside the delegated tag scope but set the labor score to 0. Should fact-checks always include them? Two of nine corrections here are such rows.",
+  "Newberry West Memphis relationship: the finder required a plant-level generator-tank product for lookalike while the written rule says company-level is enough. Moot while excluded; confirm the rule for excluded records."
+ ],
+ "method": "Scope by script from evidence.csv (213 rows, 63 distinct URLs). Every URL fetched fresh on 2026-11-17 with tools/fetch_page.fetch(with_raw=True) into a private scratchpad cache; 62 returned 200 (browser for Workday, Dayforce, ITN Hire, UKG, ADP, city news, Barchart 202 challenge resolved); the Wayback snapshot for Generac's 2022 facility page returned 502/connection reset on three tries (unreachable). Every '...'-joined quote fragment was matched against normalised visible text plus raw source: 206 of 206 quoted rows found; 7 rows have no URL (inferred posting rows), checked against the boards directly. Boards read today through their APIs or full browser renders: GTI Lever postings API (70 openings), GPC Workday CXS (93, all pages, posting detail incl. JSON-LD datePosted), Maysteel Dayforce (18), MCG SmartRecruiters API (82), Robinson UKG LoadSearchResults (73), AVL ADP job-requisitions (13), Simplex Paylocity page JSON (10), Generac Workday CXS ('welder', 'weld', 'Whitewater', 'Sussex'), Caterpillar careers search (browser), Newberry ITN Hire (7), Tramont/Winco/Gillette careers pages. Corrected quotes re-checked with tools/fetch_page.py --check at the corrected URL (all FOUND). EPA DFR coordinates compared numerically with plants.csv. Open/closed: one WebSearch (Chillicothe) and one for Girtz postings, discovery only; ECHO facility search used for Chillicothe. No ledger file was edited. Wayback retried a fourth time before writing: still no response.",
+ "apply_note": "apply_factcheck.py --apply run on a scratch copy of ledger/ and tools/: 209 confirmed, 9 corrected, 1 unreachable, 0 unmatched; no score component cites a corrected claim. plants.csv diff shows exactly seven changed fields: GPC, Maysteel Garland and Maysteel Lynchburg welder_postings; Simplex relationship new -> lookalike; nVent Chattanooga name (drops '(former Lectrus site)'), relationship new -> lookalike and exclusion_reason ('Under review ...'). Winco tier_secondary and nVent parent_company are tag/source-only fixes (plants_csv_value equals the current field). Not set by the script: lookalike_of for Simplex and nVent (no rows exist; coordinator adds 'EK Machine', inferred); nVent status (coordinator's call - the record stays 'excluded' with an 'Under review' reason until decided); GPC website change; field drift, leads and status problems. evidence_row = csv record index + 2 (records with embedded newlines make it differ from the physical file line). The real ledger was not edited.",
+ "rows": [
+  {
+   "claim_id": "p-tramont-milwaukee-wi:name",
+   "source_url": "https://www.tramont.com/aboutus/",
+   "ledger_value": "Tramont Manufacturing",
+   "evidence_row": 14955,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-tramont-milwaukee-wi:address",
+   "source_url": "https://www.tramont.com/",
+   "ledger_value": "326 E Keefe Ave, Milwaukee, WI 53212",
+   "evidence_row": 14956,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-tramont-milwaukee-wi:address",
+   "source_url": "https://www.tramont.com/aboutus/",
+   "ledger_value": "HQ and manufacturing plant in Milwaukee, 175,000 sq ft",
+   "evidence_row": 14957,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-tramont-milwaukee-wi:address",
+   "source_url": "https://www.tramont.com/careers/",
+   "ledger_value": "HR mailing address 3637 N Holton St",
+   "evidence_row": 14958,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-tramont-milwaukee-wi:parent_company",
+   "source_url": "https://www.tramont.com/history/",
+   "ledger_value": "UCA Group",
+   "evidence_row": 14959,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch) and supports the parent value."
+  },
+  {
+   "claim_id": "p-tramont-milwaukee-wi:website",
+   "source_url": "https://www.tramont.com/",
+   "ledger_value": "https://www.tramont.com",
+   "evidence_row": 14960,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-tramont-milwaukee-wi:products",
+   "source_url": "https://www.tramont.com/aboutus/",
+   "ledger_value": "day tanks, sub-base tanks, genset enclosures in steel, galvaneal and aluminum",
+   "evidence_row": 14961,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "About page line continues 'Our product line includes steel, galvaneal and aluminum weather-protected and sound-i[nsulated]...' - the materials are on the cited page."
+  },
+  {
+   "claim_id": "p-tramont-milwaukee-wi:products",
+   "source_url": "https://www.tramont.com/genset/",
+   "ledger_value": "enclosures in steel, stainless, galvaneal, aluminum",
+   "evidence_row": 14962,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-tramont-milwaukee-wi:products",
+   "source_url": "https://www.tramont.com/history/",
+   "ledger_value": "genset packaging (Load and Go); mobile power trailers; heavy lift facility for large enclosure packages",
+   "evidence_row": 14963,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-tramont-milwaukee-wi:tier",
+   "source_url": "https://www.tramont.com/history/",
+   "ledger_value": "Tier 1",
+   "evidence_row": 14964,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-tramont-milwaukee-wi:tier_secondary",
+   "source_url": "https://www.tramont.com/",
+   "ledger_value": "OEM",
+   "evidence_row": 14965,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-tramont-milwaukee-wi:relationship",
+   "source_url": "https://www.tramont.com/aboutus/",
+   "ledger_value": "lookalike",
+   "evidence_row": 14966,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-tramont-milwaukee-wi:lookalike_of",
+   "source_url": "https://www.tramont.com/aboutus/",
+   "ledger_value": "EK Machine",
+   "evidence_row": 14967,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-tramont-milwaukee-wi:welder_postings",
+   "source_url": "https://www.tramont.com/careers/",
+   "ledger_value": "none listed; welding named as a hiring area",
+   "evidence_row": 14968,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Tramont careers page: no listed openings; welding named among possible openings. Holds."
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:name",
+   "source_url": "https://www.girtzindustries.com/about/",
+   "ledger_value": "Girtz Industries, Inc.",
+   "evidence_row": 15080,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:address",
+   "source_url": "https://www.girtzindustries.com/about/",
+   "ledger_value": "5262 N East Shafer Dr, Monticello, IN 47960",
+   "evidence_row": 15081,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:parent_company",
+   "source_url": "https://www.legrand.us/about-us/newsroom/press/legrand-acquires-girtz-industries",
+   "ledger_value": "Legrand, acquired June 2026; based in Monticello, Indiana",
+   "evidence_row": 15082,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Legrand release dated 'WEST HARTFORD, CT (June 10, 2026)' on the page; quote present."
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:website",
+   "source_url": "https://www.girtzindustries.com/about/",
+   "ledger_value": "https://www.girtzindustries.com",
+   "evidence_row": 15083,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:products",
+   "source_url": "https://www.girtz.com/",
+   "ledger_value": "power modules and enclosures for gensets; skid bases",
+   "evidence_row": 15084,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:products",
+   "source_url": "https://www.girtzindustries.com/about/",
+   "ledger_value": "weather tight housings for diesel gensets",
+   "evidence_row": 15085,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:tier",
+   "source_url": "https://www.girtzindustries.com/about/",
+   "ledger_value": "Tier 1",
+   "evidence_row": 15087,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:relationship",
+   "source_url": "https://www.girtz.com/",
+   "ledger_value": "lookalike",
+   "evidence_row": 15088,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:lookalike_of",
+   "source_url": "https://www.girtz.com/",
+   "ledger_value": "EK Machine",
+   "evidence_row": 15089,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:welder_postings",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 15090,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "career.girtzindustries.com does not resolve (NXDOMAIN, 2026-11-17); search found only aggregator copies of a Girtz Welder/Fabricator listing (not counted). Holds."
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:name",
+   "source_url": "https://fidelitymfg.com/",
+   "ledger_value": "Fidelity Mfg. Plant 2",
+   "evidence_row": 15117,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:address",
+   "source_url": "https://fidelitymfg.com/",
+   "ledger_value": "1101 SW 37th Ave, Ocala, FL 34474",
+   "evidence_row": 15118,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:products",
+   "source_url": "https://fidelitymfg.com/about/",
+   "ledger_value": "Plant 2: four enclosure lines",
+   "evidence_row": 15119,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "About page: Plant 2 in Ocala, 100,000 sq ft, 4 enclosure lines. Homepage (copyright 2026) lists 'Fidelity Mfg. Plant 2'."
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:parent_company",
+   "source_url": "https://fidelitymfg.com/about/",
+   "ledger_value": "Fidelity Manufacturing",
+   "evidence_row": 15121,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch) and supports the parent value."
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:website",
+   "source_url": "https://fidelitymfg.com/",
+   "ledger_value": "https://fidelitymfg.com",
+   "evidence_row": 15122,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:tier",
+   "source_url": "https://fidelitymfg.com/products/fuel-tanks/",
+   "ledger_value": "Tier 1",
+   "evidence_row": 15123,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:relationship",
+   "source_url": "https://fidelitymfg.com/",
+   "ledger_value": "lookalike",
+   "evidence_row": 15124,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:lookalike_of",
+   "source_url": "https://fidelitymfg.com/",
+   "ledger_value": "EK Machine",
+   "evidence_row": 15125,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:welder_postings",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 15126,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fidelity homepage 'Jobs' link opens an Indeed keyword search (href checked); no own board. Holds."
+  },
+  {
+   "claim_id": "p-newberry-west-memphis-ar:name",
+   "source_url": "https://newberrytanks.com/",
+   "ledger_value": "Newberry, West Memphis",
+   "evidence_row": 15139,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-newberry-west-memphis-ar:address",
+   "source_url": "https://newberrytanks.com/",
+   "ledger_value": "205 N Walker St, West Memphis, AR 72301",
+   "evidence_row": 15140,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-newberry-west-memphis-ar:parent_company",
+   "source_url": "https://newberrytanks.com/",
+   "ledger_value": "Newberry Tanks & Equipment, LLC",
+   "evidence_row": 15141,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch) and supports the parent value."
+  },
+  {
+   "claim_id": "p-newberry-west-memphis-ar:website",
+   "source_url": "https://newberrytanks.com/",
+   "ledger_value": "https://newberrytanks.com",
+   "evidence_row": 15142,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-newberry-west-memphis-ar:tier",
+   "source_url": "https://newberrytanks.com/",
+   "ledger_value": "OEM",
+   "evidence_row": 15144,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-newberry-west-memphis-ar:welder_postings",
+   "source_url": "https://newberrytanks.itnhire.com/jobs/",
+   "ledger_value": "none open: the company board lists only non-welding West Memphis roles (fiberglass, finishing lead, material handler, painter, maintenance, shot blast)",
+   "evidence_row": 15146,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "ITN Hire board re-read 2026-11-17 (browser): 7 openings, six at 205 North Walker Avenue, West Memphis (fiberglass, finishing lead, material handler, painter, maintenance, shot blast); the only welder role (Skilled Production Welder, posted 2026-10-01) is at 3109 Fontaine Road, Memphis - the separate p-newberry-memphis-tn record. Value holds."
+  },
+  {
+   "claim_id": "p-robinson-manitowoc-wi:name",
+   "source_url": "https://www.robinsoninc.com/contact-us/",
+   "ledger_value": "Robinson Manitowoc Campus",
+   "evidence_row": 15204,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-robinson-manitowoc-wi:address",
+   "source_url": "https://www.robinsoninc.com/contact-us/",
+   "ledger_value": "2121 S 30th St, Manitowoc, WI 54220",
+   "evidence_row": 15205,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-robinson-manitowoc-wi:parent_company",
+   "source_url": "https://www.robinsoninc.com/",
+   "ledger_value": "Robinson, Inc., employee-owned, HQ De Pere; employee-owned",
+   "evidence_row": 15207,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch) and supports the parent value."
+  },
+  {
+   "claim_id": "p-robinson-manitowoc-wi:website",
+   "source_url": "https://www.robinsoninc.com/",
+   "ledger_value": "https://www.robinsoninc.com",
+   "evidence_row": 15208,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-robinson-manitowoc-wi:tier",
+   "source_url": "https://www.robinsoninc.com/",
+   "ledger_value": "Contract fabricator",
+   "evidence_row": 15210,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-robinson-manitowoc-wi:tier_secondary",
+   "source_url": "https://www.robinsoninc.com/industries-served/power-generation/",
+   "ledger_value": "Tier 1",
+   "evidence_row": 15211,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-robinson-manitowoc-wi:relationship",
+   "source_url": "https://www.robinsoninc.com/industries-served/power-generation/",
+   "ledger_value": "lookalike",
+   "evidence_row": 15212,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-robinson-manitowoc-wi:lookalike_of",
+   "source_url": "https://www.robinsoninc.com/industries-served/power-generation/",
+   "ledger_value": "EK Machine",
+   "evidence_row": 15213,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-robinson-manitowoc-wi:welder_postings",
+   "source_url": "https://robinsoninc.rec.pro.ukg.net/ROB1013ROBI/JobBoard/c967b48b-927e-406b-a9ad-385e05b3af06/OpportunityDetail?opportunityId=3661d70f-db46-4cb1-a8f0-778d67a74b5e",
+   "ledger_value": "Welder/Fabricator Manitowoc posted 2026-10-27; retention bonus",
+   "evidence_row": 15215,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "UKG detail page (browser) shows 'Posted on October 27, 2026', 'Manitowoc, WI 54220' and the $5,000 retention bonus; the UKG search API (73 openings) lists exactly one Manitowoc welder requisition (3661d70f, 2121 S 30th Street). Robinson has one Manitowoc site (contact page: 'Manitowoc Campus')."
+  },
+  {
+   "claim_id": "p-robinson-manitowoc-wi:welder_postings",
+   "source_url": "",
+   "ledger_value": "posting location 2121 S 30th Street",
+   "evidence_row": 15216,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "No URL on the row; checked against the UKG LoadSearchResults API today: requisition 3661d70f 'Welder/Fabricator - Manitowoc - Multiple Shifts' at 'Wisconsin MTC', 2121 S 30th Street."
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000857699&output=JSON",
+   "ledger_value": "BHP Inc. d.b.a. Global Power Components",
+   "evidence_row": 15242,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000857699&output=JSON",
+   "ledger_value": "2300 S 51st St, Milwaukee, WI 53219",
+   "evidence_row": 15243,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:address",
+   "source_url": "https://gpcwordpress.azurewebsites.net/?p=6",
+   "ledger_value": "company page address Milwaukee 53219",
+   "evidence_row": 15244,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Company page footer: 'Our Address: 2300 S 51st St Milwaukee, WI 53219'."
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:parent_company",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000857699&output=JSON",
+   "ledger_value": "BHP Inc. dba Global Power Components",
+   "evidence_row": 15245,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch) and supports the parent value."
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:website",
+   "source_url": "https://gpcwordpress.azurewebsites.net/?p=6",
+   "ledger_value": "company page",
+   "evidence_row": 15246,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:products",
+   "source_url": "https://gpcwordpress.azurewebsites.net/?p=6",
+   "ledger_value": "tank, trailer and enclosure manufacturer; welded UL 142/2085 sub-base tanks",
+   "evidence_row": 15247,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:tier",
+   "source_url": "https://gpcwordpress.azurewebsites.net/?p=6",
+   "ledger_value": "Tier 1",
+   "evidence_row": 15248,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:relationship",
+   "source_url": "https://gpcwordpress.azurewebsites.net/?p=6",
+   "ledger_value": "lookalike",
+   "evidence_row": 15249,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:lookalike_of",
+   "source_url": "https://gpcwordpress.azurewebsites.net/?p=6",
+   "ledger_value": "EK Machine",
+   "evidence_row": 15250,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:welder_postings",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 15251,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "corrected",
+   "note": "The company page cited by the finder has a Careers menu that links to an own Workday board (href https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC; 93 openings on 2026-11-17, 70 at '51st Street'). The reasoning 'phone contact only; no job board found' is wrong. MIG Welder JR100145: location '51st Street', JSON-LD datePosted 2026-11-10, 'Location: Milwaukee, WI', 'Welding I-Beam Frame and Fuel Tanks in flat/vertical overhead positions'. The board names the site ('51st Street' vs 'Burnham', 4101 W Burnham St ~1.3 km away, a separate EPA facility), so the posting ties to 2300 S 51st St without the campus rule. Labor component would move from 0 to 12 (posting under 60 days). The board's own posting text also names www.globalpowercomponents.com as the company site (live, 200): the website field (gpcwordpress.azurewebsites.net) should change - see field_drift_notes.",
+   "corrected_value": "1 open (posted 2026-11-10): MIG Welder, location '51st Street' (2300 S 51st St), own Workday board linked from the company page's Careers menu; MIG; 1st and 2nd shift; temp-to-hire; welding I-beam frames and fuel tanks 10 ga to 1/2 in. Also open at 51st Street: Weld Lead and Weld Supervisor (both posted 2026-10-05), Weld Expediter, Tester - Weld; at the Burnham site: welding trainer and academy trainee roles (not counted here).",
+   "corrected_quote": "We are seeking MIG Welders ... Welding I-Beam Frame and Fuel Tanks in flat/vertical overhead positions",
+   "corrected_source_url": "https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC/job/51st-Street/MIG-Welder_JR100145",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "plants_csv_value": "1 open (posted 2026-11-10): MIG Welder at the 51st Street site, own Workday board (globalpowercomponents.wd115.myworkdayjobs.com); MIG; 1st and 2nd shift; temp-to-hire. Also Weld Lead and Weld Supervisor (posted 2026-10-05) at 51st Street"
+  },
+  {
+   "claim_id": "p-chillicothe-metal-chillicothe-il:name",
+   "source_url": "https://www.energy-xprt.com/companies/chillicothe-metal-co-inc-57322",
+   "ledger_value": "Chillicothe Metal Co Inc.",
+   "evidence_row": 15278,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-chillicothe-metal-chillicothe-il:address",
+   "source_url": "https://www.energy-xprt.com/companies/chillicothe-metal-co-inc-57322",
+   "ledger_value": "4507 E Rome Rd, Chillicothe",
+   "evidence_row": 15279,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-chillicothe-metal-chillicothe-il:address",
+   "source_url": "https://www.energy-xprt.com/products/fuel-tanks-423914",
+   "ledger_value": "sub-base tanks made at the central Illinois factory",
+   "evidence_row": 15280,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-chillicothe-metal-chillicothe-il:parent_company",
+   "source_url": "https://www.energy-xprt.com/companies/chillicothe-metal-co-inc-57322",
+   "ledger_value": "Chillicothe Metal Company (CMCO)",
+   "evidence_row": 15281,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch) and supports the parent value."
+  },
+  {
+   "claim_id": "p-chillicothe-metal-chillicothe-il:products",
+   "source_url": "https://www.energy-xprt.com/companies/chillicothe-metal-co-inc-57322",
+   "ledger_value": "enclosures, packaged gensets, trailers, fuel tank bases",
+   "evidence_row": 15283,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-chillicothe-metal-chillicothe-il:products",
+   "source_url": "https://www.energy-xprt.com/products/fuel-tanks-423914",
+   "ledger_value": "UL 142 / UL 2085 sub-base fuel tanks",
+   "evidence_row": 15284,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-chillicothe-metal-chillicothe-il:tier",
+   "source_url": "https://www.energy-xprt.com/companies/chillicothe-metal-co-inc-57322",
+   "ledger_value": "Tier 1",
+   "evidence_row": 15285,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-chillicothe-metal-chillicothe-il:tier_secondary",
+   "source_url": "https://www.energy-xprt.com/companies/chillicothe-metal-co-inc-57322",
+   "ledger_value": "OEM",
+   "evidence_row": 15286,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-chillicothe-metal-chillicothe-il:relationship",
+   "source_url": "https://www.energy-xprt.com/products/fuel-tanks-423914",
+   "ledger_value": "lookalike",
+   "evidence_row": 15287,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-chillicothe-metal-chillicothe-il:lookalike_of",
+   "source_url": "https://www.energy-xprt.com/products/fuel-tanks-423914",
+   "ledger_value": "EK Machine",
+   "evidence_row": 15288,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-chillicothe-metal-chillicothe-il:welder_postings",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 15289,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "cmcousa.com returned 403 to a headless browser on 2026-11-17 (bot challenge). Value holds as unknown."
+  },
+  {
+   "claim_id": "p-generac-sussex-wi:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110072172769",
+   "ledger_value": "Generac Power Systems Inc. - Sussex",
+   "evidence_row": 15392,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-generac-sussex-wi:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110072172769",
+   "ledger_value": "N64W23110 MAIN ST, SUSSEX, WI 53089",
+   "evidence_row": 15393,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-generac-sussex-wi:products",
+   "source_url": "https://www.barchart.com/story/news/36883171/generac-expands-its-commercial-industrial-manufacturing-footprint-with-new-facility-in-sussex-wisconsin",
+   "ledger_value": "C&I generator manufacturing capacity, opening Q4 2026",
+   "evidence_row": 15394,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Barchart copy of the Generac release (202 challenge resolved in browser); quote present. Sussex now has 57 openings on Generac's board."
+  },
+  {
+   "claim_id": "p-generac-sussex-wi:exclusion_reason",
+   "source_url": "https://www.barchart.com/story/news/36883171/generac-expands-its-commercial-industrial-manufacturing-footprint-with-new-facility-in-sussex-wisconsin",
+   "ledger_value": "Welding not shown (rule 2); lead",
+   "evidence_row": 15395,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Exclusion rests on a quoted reason that fits boundary rule 2 (genset OEM plant with no site-level enclosure, frame or tank welding shown) and was re-tested: no welder posting at the site on the employer's board today."
+  },
+  {
+   "claim_id": "p-generac-sussex-wi:welder_postings",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/en-US/External/job/Sussex-WI---USA/Maintenance-Electrician-II---Journeyman_JR14912",
+   "ledger_value": "none found (Generac board, Sussex)",
+   "evidence_row": 15396,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Generac Workday CXS API re-run 2026-11-17: 'welder' 7 hits (Holdrege, Oshkosh, Eagle, Berlin) and 'weld' 172 hits, none at Whitewater or Sussex; Whitewater 19 and Sussex 57 openings, none welding. Holds."
+  },
+  {
+   "claim_id": "p-generac-whitewater-wi:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110012603986",
+   "ledger_value": "Generac Power Systems - Whitewater plant",
+   "evidence_row": 15397,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-generac-whitewater-wi:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110012603986",
+   "ledger_value": "757 NORTH NEWCOMB ROAD, WHITEWATER, WI 53190",
+   "evidence_row": 15398,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-generac-whitewater-wi:parent_company",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1474735/000143774926004568/gnrc20251231_10k.htm",
+   "ledger_value": "Generac Holdings Inc.",
+   "evidence_row": 15399,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch) and supports the parent value."
+  },
+  {
+   "claim_id": "p-generac-whitewater-wi:exclusion_reason",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/en-US/External/job/Whitewater-WI---USA/Painter-I---1st-Shift_JR16615",
+   "ledger_value": "Welding not shown (rule 2); lead",
+   "evidence_row": 15400,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Exclusion rests on a quoted reason that fits boundary rule 2 (genset OEM plant with no site-level enclosure, frame or tank welding shown) and was re-tested: no welder posting at the site on the employer's board today."
+  },
+  {
+   "claim_id": "p-generac-whitewater-wi:welder_postings",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/en-US/External/job/Whitewater-WI---USA/Painter-I---1st-Shift_JR16615",
+   "ledger_value": "none found (Generac board)",
+   "evidence_row": 15401,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Generac Workday CXS API re-run 2026-11-17: 'welder' 7 hits (Holdrege, Oshkosh, Eagle, Berlin) and 'weld' 172 hits, none at Whitewater or Sussex; Whitewater 19 and Sussex 57 openings, none welding. Holds."
+  },
+  {
+   "claim_id": "p-generac-whitewater-wi:products",
+   "source_url": "https://web.archive.org/web/20220622125235/https://www.generac.com/specialpages/archive/careers/facility-locations",
+   "ledger_value": "Air-cooled engines and home standby generators (company page archived 2022-06-22)",
+   "evidence_row": 15412,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "unreachable",
+   "note": "Wayback snapshot 20220622125235 (availability API confirms it exists) returned 502 / connection reset on 2026-11-17 (plain, curl id_ form and headless Chromium, three tries); the live generac.com URL no longer carries the facility list. Not confirmed; out of the rate."
+  },
+  {
+   "claim_id": "p-caterpillar-griffin-ga:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110000492850",
+   "ledger_value": "Caterpillar Inc Griffin Power Systems",
+   "evidence_row": 15456,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-caterpillar-griffin-ga:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110000492850",
+   "ledger_value": "560 REHOBOTH RD, GRIFFIN, GA 30224",
+   "evidence_row": 15457,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-caterpillar-griffin-ga:products",
+   "source_url": "https://www.powerprogress.com/news/cat-expands-power-generation-capabilities/5020040.article",
+   "ledger_value": "Custom enclosures and containerized genset solutions, center near Griffin (2017-10-24)",
+   "evidence_row": 15458,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Power Progress article dated 24 October 2017; 'custom enclosures and containerized solutions' and the 'near ... Griffin' sentence are on the page. Old but used only for the exclusion's lead, not a current claim."
+  },
+  {
+   "claim_id": "p-caterpillar-griffin-ga:exclusion_reason",
+   "source_url": "https://www.powerprogress.com/news/cat-expands-power-generation-capabilities/5020040.article",
+   "ledger_value": "Enclosure center not tied to this address (rule 2); lead",
+   "evidence_row": 15459,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Exclusion rests on a quoted reason that fits boundary rule 2 (genset OEM plant with no site-level enclosure, frame or tank welding shown) and was re-tested: no welder posting at the site on the employer's board today."
+  },
+  {
+   "claim_id": "p-winco-le-center-mn:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110000426842",
+   "ledger_value": "Winco Inc",
+   "evidence_row": 15491,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-winco-le-center-mn:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110000426842",
+   "ledger_value": "225 S CORDOVA AVE., LE CENTER, MN 56057",
+   "evidence_row": 15492,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-winco-le-center-mn:products",
+   "source_url": "https://www.wincogen.com/wp-content/uploads/PD/Literature/WINCO_Manufacturing_Capabilities.pdf",
+   "ledger_value": "MIG welding cell",
+   "evidence_row": 15493,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-winco-le-center-mn:tier",
+   "source_url": "https://www.wincogen.com/wp-content/uploads/PD/Literature/WINCO_Manufacturing_Capabilities.pdf",
+   "ledger_value": "OEM",
+   "evidence_row": 15494,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-winco-le-center-mn:tier_secondary",
+   "source_url": "https://www.wincogen.com/wp-content/uploads/PD/Literature/WINCO_Manufacturing_Capabilities.pdf",
+   "ledger_value": "Contract fabricator",
+   "evidence_row": 15495,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "note": "A tier is a classification, not page text; every other tier row in the sample is inferred. The quote as cut ('Today, we want to partner with you to help') does not even carry the contract offer. The PDF does support the judgement ('produce your custom products and components', 'We offer machining, metal fabrication, painting, wiring, and assembly services'). Tag-only fix; plants field unchanged. Reasoning: 'Winco offers custom contract production (machining, fabrication, painting, wiring, assembly) to outside customers.'",
+   "corrected_value": "Contract fabricator",
+   "corrected_quote": "Today, we want to partner with you to help ... produce your custom products and components.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Contract fabricator"
+  },
+  {
+   "claim_id": "p-winco-le-center-mn:relationship",
+   "source_url": "https://www.wincogen.com/wp-content/uploads/PD/Literature/WINCO_Manufacturing_Capabilities.pdf",
+   "ledger_value": "new",
+   "evidence_row": 15496,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "No enclosure, sub-base/day tank or BESS product is named on the cited PDF; 'new' follows the rule."
+  },
+  {
+   "claim_id": "p-gillette-elkhart-in:address",
+   "source_url": "https://www.gillettegenerators.com/contact",
+   "ledger_value": "2921 Thorne Drive, Elkhart, IN",
+   "evidence_row": 15527,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-gillette-elkhart-in:products",
+   "source_url": "https://www.gillettegenerators.com/about-us",
+   "ledger_value": "UL 2200 standby generators built in Indiana",
+   "evidence_row": 15528,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-gillette-elkhart-in:exclusion_reason",
+   "source_url": "https://www.gillettegenerators.com/about-us",
+   "ledger_value": "Welding not shown (rule 2); lead",
+   "evidence_row": 15529,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Exclusion rests on a quoted reason that fits boundary rule 2 (genset OEM plant with no site-level enclosure, frame or tank welding shown) and was re-tested: no welder posting at the site on the employer's board today."
+  },
+  {
+   "claim_id": "p-generac-sussex-wi:website",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1474735/000143774926004568/gnrc20251231_10k.htm",
+   "ledger_value": "https://www.generac.com/",
+   "evidence_row": 15542,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-generac-whitewater-wi:website",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1474735/000143774926004568/gnrc20251231_10k.htm",
+   "ledger_value": "https://www.generac.com/",
+   "evidence_row": 15543,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-winco-le-center-mn:website",
+   "source_url": "https://www.wincogen.com/wp-content/uploads/PD/Literature/WINCO_Manufacturing_Capabilities.pdf",
+   "ledger_value": "https://www.wincogen.com/",
+   "evidence_row": 15554,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-gillette-elkhart-in:website",
+   "source_url": "https://www.gillettegenerators.com/",
+   "ledger_value": "https://www.gillettegenerators.com/",
+   "evidence_row": 15555,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-gillette-elkhart-in:name",
+   "source_url": "https://www.gillettegenerators.com/",
+   "ledger_value": "Gillette Generators, Inc.",
+   "evidence_row": 15559,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-generac-sussex-wi:parent_company",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1474735/000143774926004568/gnrc20251231_10k.htm",
+   "ledger_value": "Generac Holdings Inc.",
+   "evidence_row": 15564,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch) and supports the parent value."
+  },
+  {
+   "claim_id": "p-caterpillar-griffin-ga:parent_company",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110000492850",
+   "ledger_value": "Caterpillar Inc.",
+   "evidence_row": 15573,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch) and supports the parent value."
+  },
+  {
+   "claim_id": "p-winco-le-center-mn:parent_company",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110000426842",
+   "ledger_value": "Winco, Inc.",
+   "evidence_row": 15576,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch) and supports the parent value."
+  },
+  {
+   "claim_id": "p-gillette-elkhart-in:parent_company",
+   "source_url": "https://www.gillettegenerators.com/",
+   "ledger_value": "Gillette Generators, Inc.",
+   "evidence_row": 15578,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch) and supports the parent value."
+  },
+  {
+   "claim_id": "p-generac-sussex-wi:tier",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110072172769",
+   "ledger_value": "OEM",
+   "evidence_row": 15586,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-generac-sussex-wi:relationship",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110072172769",
+   "ledger_value": "new",
+   "evidence_row": 15587,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Excluded genset OEM plant; no stated enclosure, sub-base/day-tank or BESS product for the company on the cited pages; 'new' follows the rule."
+  },
+  {
+   "claim_id": "p-generac-whitewater-wi:tier",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110012603986",
+   "ledger_value": "OEM",
+   "evidence_row": 15588,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-generac-whitewater-wi:relationship",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110012603986",
+   "ledger_value": "new",
+   "evidence_row": 15589,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Excluded genset OEM plant; no stated enclosure, sub-base/day-tank or BESS product for the company on the cited pages; 'new' follows the rule."
+  },
+  {
+   "claim_id": "p-caterpillar-griffin-ga:tier",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110000492850",
+   "ledger_value": "OEM",
+   "evidence_row": 15604,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-caterpillar-griffin-ga:relationship",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110000492850",
+   "ledger_value": "new",
+   "evidence_row": 15605,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Excluded genset OEM plant; no stated enclosure, sub-base/day-tank or BESS product for the company on the cited pages; 'new' follows the rule."
+  },
+  {
+   "claim_id": "p-gillette-elkhart-in:tier",
+   "source_url": "https://www.gillettegenerators.com/contact",
+   "ledger_value": "OEM",
+   "evidence_row": 15610,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-gillette-elkhart-in:relationship",
+   "source_url": "https://www.gillettegenerators.com/contact",
+   "ledger_value": "new",
+   "evidence_row": 15611,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Excluded genset OEM plant; no stated enclosure, sub-base/day-tank or BESS product for the company on the cited pages; 'new' follows the rule."
+  },
+  {
+   "claim_id": "p-caterpillar-griffin-ga:welder_postings",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110000492850",
+   "ledger_value": "none found: https://careers.caterpillar.com/en/jobs/?search=welder+griffin (Griffin postings are test-cell and repair te",
+   "evidence_row": 15618,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Caterpillar careers re-read in a browser 2026-11-17: 'welder griffin' returns welder roles only in other cities; 'griffin' returns assembler, repair/test-cell technicians, managers. Value holds. Provenance: the row cites the EPA DFR page and an EPA quote for a careers-search fact (see field_drift_notes)."
+  },
+  {
+   "claim_id": "p-gti-buffalo-ny:parent_company",
+   "source_url": "https://www.gpec.org/news/press-releases/gti-energy-announces-manufacturing-expansion-in-goodyear/",
+   "ledger_value": "GTI Fabrication (founded 2015, Buffalo NY)",
+   "evidence_row": 15653,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch) and supports the parent value."
+  },
+  {
+   "claim_id": "p-gti-buffalo-ny:website",
+   "source_url": "https://gtifabrication.com",
+   "ledger_value": "https://gtifabrication.com",
+   "evidence_row": 15654,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-gti-buffalo-ny:tier",
+   "source_url": "https://www.gpec.org/news/press-releases/gti-energy-announces-manufacturing-expansion-in-goodyear/",
+   "ledger_value": "Contract fabricator",
+   "evidence_row": 15655,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-gti-buffalo-ny:tier_secondary",
+   "source_url": "https://jobs.lever.co/gtifabrication/eab3c789-71cc-48ba-8d20-d650ebee1727",
+   "ledger_value": "Tier 1",
+   "evidence_row": 15656,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-gti-buffalo-ny:relationship",
+   "source_url": "https://gtifabrication.com/industries/energy-storage-industry",
+   "ledger_value": "lookalike",
+   "evidence_row": 15657,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-gti-buffalo-ny:lookalike_of",
+   "source_url": "https://gtifabrication.com/industries/energy-storage-industry",
+   "ledger_value": "EK Machine",
+   "evidence_row": 15658,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-gti-buffalo-ny:name",
+   "source_url": "https://gtifabrication.com",
+   "ledger_value": "GTI Fabrication, Buffalo",
+   "evidence_row": 15659,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-gti-buffalo-ny:address",
+   "source_url": "https://gtifabrication.com",
+   "ledger_value": "3100 Lake Shore Rd, Buffalo, NY 14219",
+   "evidence_row": 15660,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Homepage and contact page: '3100 Lake Shore Road Buffalo, NY 14219'."
+  },
+  {
+   "claim_id": "p-gti-buffalo-ny:products",
+   "source_url": "https://gtifabrication.com",
+   "ledger_value": "defense, modular systems and containerized solutions at Buffalo",
+   "evidence_row": 15661,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Homepage 'Buffalo, NY Headquarters' block carries the quote - site-level."
+  },
+  {
+   "claim_id": "p-gti-buffalo-ny:welder_postings",
+   "source_url": "https://jobs.lever.co/gtifabrication/eab3c789-71cc-48ba-8d20-d650ebee1727",
+   "ledger_value": "site not named: 6 welder roles + Welding Engineer, Buffalo NY (Lever)",
+   "evidence_row": 15663,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Lever postings API re-read 2026-11-17: Buffalo, NY welder roles Welder x4 (createdAt 2026-11-02), Welder (2026-05-15), Welder Working Lead - 2nd Shift (2026-06-24) and Welding Engineer (2026-05-15); a separate 'BF-3 (Seneca)' location exists on the board, so the shared-city caveat in the value is correct. Quote on the 2026-05-15 Welder posting."
+  },
+  {
+   "claim_id": "p-gti-buffalo-ny:welder_postings",
+   "source_url": "https://api.lever.co/v0/postings/gtifabrication?mode=json",
+   "ledger_value": "posting list (dates)",
+   "evidence_row": 15664,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Lever postings API re-read 2026-11-17: Buffalo, NY welder roles Welder x4 (createdAt 2026-11-02), Welder (2026-05-15), Welder Working Lead - 2nd Shift (2026-06-24) and Welding Engineer (2026-05-15); a separate 'BF-3 (Seneca)' location exists on the board, so the shared-city caveat in the value is correct. Quote on the 2026-05-15 Welder posting."
+  },
+  {
+   "claim_id": "p-gti-goodyear-az:parent_company",
+   "source_url": "https://www.gpec.org/news/press-releases/gti-energy-announces-manufacturing-expansion-in-goodyear/",
+   "ledger_value": "GTI Fabrication (founded 2015, Buffalo NY)",
+   "evidence_row": 15677,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch) and supports the parent value."
+  },
+  {
+   "claim_id": "p-gti-goodyear-az:website",
+   "source_url": "https://gtifabrication.com",
+   "ledger_value": "https://gtifabrication.com",
+   "evidence_row": 15678,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-gti-goodyear-az:tier",
+   "source_url": "https://www.gpec.org/news/press-releases/gti-energy-announces-manufacturing-expansion-in-goodyear/",
+   "ledger_value": "Contract fabricator",
+   "evidence_row": 15679,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-gti-goodyear-az:tier_secondary",
+   "source_url": "https://jobs.lever.co/gtifabrication/eab3c789-71cc-48ba-8d20-d650ebee1727",
+   "ledger_value": "Tier 1",
+   "evidence_row": 15680,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-gti-goodyear-az:relationship",
+   "source_url": "https://gtifabrication.com/industries/energy-storage-industry",
+   "ledger_value": "lookalike",
+   "evidence_row": 15681,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-gti-goodyear-az:lookalike_of",
+   "source_url": "https://gtifabrication.com/industries/energy-storage-industry",
+   "ledger_value": "EK Machine",
+   "evidence_row": 15682,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-gti-goodyear-az:name",
+   "source_url": "https://www.gpec.org/news/press-releases/gti-energy-announces-manufacturing-expansion-in-goodyear/",
+   "ledger_value": "GTI Energy Goodyear",
+   "evidence_row": 15683,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-gti-goodyear-az:address",
+   "source_url": "https://gtifabrication.com/contact-us",
+   "ledger_value": "17505 W MC 85, Goodyear, AZ 85338",
+   "evidence_row": 15684,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Contact page lists 'Goodyear, AZ 17505 W MC 85 Goodyear, AZ 85338'."
+  },
+  {
+   "claim_id": "p-gti-goodyear-az:products",
+   "source_url": "https://gtifabrication.com/industries/energy-storage-industry",
+   "ledger_value": "over 10,000 steel enclosures per year for energy storage",
+   "evidence_row": 15685,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Energy-storage page names 'our Goodyear, AZ location'; 'steel' is on the same page ('weatherproof steel enclosures')."
+  },
+  {
+   "claim_id": "p-gti-goodyear-az:products",
+   "source_url": "https://gtifabrication.com",
+   "ledger_value": "full enclosure fabrication, battery integration",
+   "evidence_row": 15686,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Homepage 'Goodyear, AZ' block: 'Dedicated to high-volume energy storage & data center manufacturing' / 'Full enclosure fabrication, battery integration, and turnkey assembly' - site-level."
+  },
+  {
+   "claim_id": "p-gti-goodyear-az:headcount",
+   "source_url": "https://www.gpec.org/news/press-releases/gti-energy-announces-manufacturing-expansion-in-goodyear/",
+   "ledger_value": "250 initial jobs planned, up to 600 (announcement)",
+   "evidence_row": 15687,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "GPEC release dated May 20, 2025; plant operating: 16 Goodyear openings on GTI's Lever board today."
+  },
+  {
+   "claim_id": "p-maysteel-allenton-wi:parent_company",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000593894&output=JSON",
+   "ledger_value": "Maysteel LLC",
+   "evidence_row": 15690,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch) and supports the parent value."
+  },
+  {
+   "claim_id": "p-maysteel-allenton-wi:website",
+   "source_url": "https://maysteel.com/battery-storage-enclosures",
+   "ledger_value": "https://maysteel.com",
+   "evidence_row": 15691,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-maysteel-allenton-wi:products",
+   "source_url": "https://maysteel.com/capabilities/",
+   "ledger_value": "capabilities mirrored across plants",
+   "evidence_row": 15693,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-maysteel-allenton-wi:tier",
+   "source_url": "https://maysteel.com/battery-storage-enclosures",
+   "ledger_value": "Contract fabricator",
+   "evidence_row": 15694,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-maysteel-allenton-wi:relationship",
+   "source_url": "https://maysteel.com/battery-storage-enclosures",
+   "ledger_value": "lookalike",
+   "evidence_row": 15695,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-maysteel-allenton-wi:lookalike_of",
+   "source_url": "https://maysteel.com/battery-storage-enclosures",
+   "ledger_value": "EK Machine",
+   "evidence_row": 15696,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-maysteel-allenton-wi:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000593894&output=JSON",
+   "ledger_value": "Maysteel Allenton",
+   "evidence_row": 15697,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-maysteel-allenton-wi:address",
+   "source_url": "https://maysteel.com/locations/",
+   "ledger_value": "6199 County Rd W, Allenton, WI 53002",
+   "evidence_row": 15698,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Locations page: 'Allenton, Wisconsin / Maysteel Corporate Headquarters / 6199 County Rd W'."
+  },
+  {
+   "claim_id": "p-maysteel-allenton-wi:welder_postings",
+   "source_url": "https://jobs.dayforcehcm.com/en-US/maysteel/CANDIDATEPORTAL",
+   "ledger_value": "1 open (posted 2026-11-12), MIG",
+   "evidence_row": 15699,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Dayforce board (browser, 2026-11-17): 'Welder - 1st and 2nd shifts', Allenton, WI 53002, Posted Thursday, November 12, 2026; the MIG sentence is in that posting's text. One Maysteel site in Allenton."
+  },
+  {
+   "claim_id": "p-maysteel-germantown-wi:parent_company",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000593894&output=JSON",
+   "ledger_value": "Maysteel LLC",
+   "evidence_row": 15701,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch) and supports the parent value."
+  },
+  {
+   "claim_id": "p-maysteel-germantown-wi:website",
+   "source_url": "https://maysteel.com/battery-storage-enclosures",
+   "ledger_value": "https://maysteel.com",
+   "evidence_row": 15702,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-maysteel-germantown-wi:products",
+   "source_url": "https://maysteel.com/capabilities/",
+   "ledger_value": "capabilities mirrored across plants",
+   "evidence_row": 15704,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-maysteel-germantown-wi:tier",
+   "source_url": "https://maysteel.com/battery-storage-enclosures",
+   "ledger_value": "Contract fabricator",
+   "evidence_row": 15705,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-maysteel-germantown-wi:relationship",
+   "source_url": "https://maysteel.com/battery-storage-enclosures",
+   "ledger_value": "lookalike",
+   "evidence_row": 15706,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-maysteel-germantown-wi:lookalike_of",
+   "source_url": "https://maysteel.com/battery-storage-enclosures",
+   "ledger_value": "EK Machine",
+   "evidence_row": 15707,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-maysteel-germantown-wi:name",
+   "source_url": "https://jobs.dayforcehcm.com/en-US/maysteel/CANDIDATEPORTAL",
+   "ledger_value": "Maysteel Germantown",
+   "evidence_row": 15708,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-maysteel-germantown-wi:address",
+   "source_url": "https://maysteel.com/contact-us/",
+   "ledger_value": "W210 N12975 Gateway Crossing (Germantown/Richfield, WI)",
+   "evidence_row": 15709,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Contact and locations pages: 'W210 N12975 Gateway Crossing Germantown, WI 53076' (locations page labels it 'Data Center Manufacturing Hub' - see status_problems)."
+  },
+  {
+   "claim_id": "p-maysteel-germantown-wi:welder_postings",
+   "source_url": "https://jobs.dayforcehcm.com/en-US/maysteel/CANDIDATEPORTAL",
+   "ledger_value": "1 open (posted 2026-11-13)",
+   "evidence_row": 15710,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Dayforce: 'Welder - 2nd shift - Germantown', location Richfield, WI, posted Friday, November 13, 2026. Maysteel's only site in the Germantown/Richfield area is W210 N12975 Gateway Crossing, Germantown WI 53076 (locations page); Allenton is about 20 km away. Campus rule satisfied."
+  },
+  {
+   "claim_id": "p-maysteel-garland-tx:parent_company",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000593894&output=JSON",
+   "ledger_value": "Maysteel LLC",
+   "evidence_row": 15723,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch) and supports the parent value."
+  },
+  {
+   "claim_id": "p-maysteel-garland-tx:website",
+   "source_url": "https://maysteel.com/battery-storage-enclosures",
+   "ledger_value": "https://maysteel.com",
+   "evidence_row": 15724,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-maysteel-garland-tx:products",
+   "source_url": "https://maysteel.com/capabilities/",
+   "ledger_value": "capabilities mirrored across plants",
+   "evidence_row": 15726,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-maysteel-garland-tx:tier",
+   "source_url": "https://maysteel.com/battery-storage-enclosures",
+   "ledger_value": "Contract fabricator",
+   "evidence_row": 15727,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-maysteel-garland-tx:relationship",
+   "source_url": "https://maysteel.com/battery-storage-enclosures",
+   "ledger_value": "lookalike",
+   "evidence_row": 15728,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-maysteel-garland-tx:lookalike_of",
+   "source_url": "https://maysteel.com/battery-storage-enclosures",
+   "ledger_value": "EK Machine",
+   "evidence_row": 15729,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-maysteel-garland-tx:name",
+   "source_url": "https://maysteel.com/contact-us/",
+   "ledger_value": "Maysteel (Garland plant)",
+   "evidence_row": 15730,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Contact page block 'Garland, Texas / 701 S. International Road / Garland, TX 75042'."
+  },
+  {
+   "claim_id": "p-maysteel-garland-tx:address",
+   "source_url": "https://maysteel.com/contact-us/",
+   "ledger_value": "701 S International Rd, Garland, TX 75042",
+   "evidence_row": 15731,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-maysteel-lynchburg-va:parent_company",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000593894&output=JSON",
+   "ledger_value": "Maysteel LLC",
+   "evidence_row": 15734,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch) and supports the parent value."
+  },
+  {
+   "claim_id": "p-maysteel-lynchburg-va:website",
+   "source_url": "https://maysteel.com/battery-storage-enclosures",
+   "ledger_value": "https://maysteel.com",
+   "evidence_row": 15735,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-maysteel-lynchburg-va:products",
+   "source_url": "https://maysteel.com/capabilities/",
+   "ledger_value": "capabilities mirrored across plants",
+   "evidence_row": 15737,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-maysteel-lynchburg-va:tier",
+   "source_url": "https://maysteel.com/battery-storage-enclosures",
+   "ledger_value": "Contract fabricator",
+   "evidence_row": 15738,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-maysteel-lynchburg-va:relationship",
+   "source_url": "https://maysteel.com/battery-storage-enclosures",
+   "ledger_value": "lookalike",
+   "evidence_row": 15739,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-maysteel-lynchburg-va:lookalike_of",
+   "source_url": "https://maysteel.com/battery-storage-enclosures",
+   "ledger_value": "EK Machine",
+   "evidence_row": 15740,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-maysteel-lynchburg-va:name",
+   "source_url": "https://maysteel.com/locations/",
+   "ledger_value": "Maysteel (Lynchburg plant)",
+   "evidence_row": 15741,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Locations page block 'Lynchburg, Virginia / 130,000 sq. ft / 3726 Cohen Place'."
+  },
+  {
+   "claim_id": "p-maysteel-lynchburg-va:address",
+   "source_url": "https://maysteel.com/locations/",
+   "ledger_value": "3726 Cohen Pl, Lynchburg, VA 24501",
+   "evidence_row": 15742,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:name",
+   "source_url": "https://www.simplexdirect.com/",
+   "ledger_value": "Simplex, Inc.",
+   "evidence_row": 15828,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110027155307&output=JSON",
+   "ledger_value": "SIMPLEX INC (EPA facility record at 5300 Rising Moon Rd)",
+   "evidence_row": 15829,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:address",
+   "source_url": "https://www.simplexdirect.com/about/facility/",
+   "ledger_value": "5300 Rising Moon Rd, Springfield, IL 62711",
+   "evidence_row": 15830,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110027155307&output=JSON",
+   "ledger_value": "5300 Rising Moon Rd (EPA record)",
+   "evidence_row": 15831,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:address",
+   "source_url": "https://www.simplexdirect.com/",
+   "ledger_value": "5300 Rising Moon Rd, Springfield, IL 62711",
+   "evidence_row": 15832,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:website",
+   "source_url": "https://www.simplexdirect.com/",
+   "ledger_value": "https://www.simplexdirect.com",
+   "evidence_row": 15833,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:products",
+   "source_url": "https://www.simplexdirect.com/fuel-supply/fuel-supply-fundamentals/",
+   "ledger_value": "fuel day tanks for generator sets",
+   "evidence_row": 15834,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:products",
+   "source_url": "https://www.simplexdirect.com/about/facility/",
+   "ledger_value": "enclosures for fuel supply and load bank products made in-house",
+   "evidence_row": 15835,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:tier",
+   "source_url": "https://www.simplexdirect.com/",
+   "ledger_value": "OEM",
+   "evidence_row": 15836,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:relationship",
+   "source_url": "https://www.simplexdirect.com/fuel-supply/fuel-supply-fundamentals/",
+   "ledger_value": "new",
+   "evidence_row": 15837,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "corrected",
+   "note": "The written rule makes a plant a lookalike of EK Machine when a stated product is 'generator enclosures, sub-base or day tanks, or BESS enclosures or skids'. Simplex's stated product is genset fuel day tanks (row 15834) and the reasoning drops day tanks from the rule's list. Reasoning: 'Genset fuel day tanks are a stated Simplex product; day tanks are on the vertical's lookalike list (EK Machine).' Ranking effect: relationship is the first ranking key. apply_factcheck cannot set lookalike_of: no p-simplex-springfield-il:lookalike_of row exists; the coordinator must add one ('EK Machine', inferred).",
+   "corrected_value": "lookalike",
+   "corrected_quote": "Day Tanks are generally used to keep generators running",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "plants_csv_value": "lookalike"
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/9339bad0-634f-4a59-87db-73989726d04d/Simplex-Inc",
+   "ledger_value": "none found (10 open roles, none welder; 2026-11-16)",
+   "evidence_row": 15838,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Paylocity page JSON: 10 Springfield, IL jobs, PublishedDate 2026-09-15 to 2026-11-10, incl. 'Metal Fabrication - Machine Operator' 2026-11-03; no welder. Holds."
+  },
+  {
+   "claim_id": "p-avl-charlotte-nc:name",
+   "source_url": "https://www.charlottenc.gov/City-News/Canadian-based-AVL-Manufacturing-Chooses-Charlotte",
+   "ledger_value": "AVL USA, Inc. (AVL Charlotte)",
+   "evidence_row": 15875,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-avl-charlotte-nc:parent_company",
+   "source_url": "https://www.charlottenc.gov/City-News/Canadian-based-AVL-Manufacturing-Chooses-Charlotte",
+   "ledger_value": "AVL Manufacturing, Hamilton, Ontario",
+   "evidence_row": 15876,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch) and supports the parent value."
+  },
+  {
+   "claim_id": "p-avl-charlotte-nc:address",
+   "source_url": "https://www.charlottenc.gov/City-News/Canadian-based-AVL-Manufacturing-Chooses-Charlotte",
+   "ledger_value": "13006 Sam Neely Rd, Charlotte, NC 28273",
+   "evidence_row": 15877,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-avl-charlotte-nc:address",
+   "source_url": "https://avlmfg.com/careers/",
+   "ledger_value": "13006 Sam Neely Rd, Charlotte, NC 28273",
+   "evidence_row": 15878,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-avl-charlotte-nc:website",
+   "source_url": "https://avlmfg.com/careers/",
+   "ledger_value": "https://avlmfg.com",
+   "evidence_row": 15879,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-avl-charlotte-nc:products",
+   "source_url": "https://www.charlottenc.gov/City-News/Canadian-based-AVL-Manufacturing-Chooses-Charlotte",
+   "ledger_value": "generator enclosures produced and assembled in Charlotte",
+   "evidence_row": 15880,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-avl-charlotte-nc:tier",
+   "source_url": "https://www.charlottenc.gov/City-News/Canadian-based-AVL-Manufacturing-Chooses-Charlotte",
+   "ledger_value": "Tier 1",
+   "evidence_row": 15881,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-avl-charlotte-nc:relationship",
+   "source_url": "https://www.charlottenc.gov/City-News/Canadian-based-AVL-Manufacturing-Chooses-Charlotte",
+   "ledger_value": "lookalike",
+   "evidence_row": 15882,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-avl-charlotte-nc:lookalike_of",
+   "source_url": "https://www.charlottenc.gov/City-News/Canadian-based-AVL-Manufacturing-Chooses-Charlotte",
+   "ledger_value": "EK Machine",
+   "evidence_row": 15883,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-avl-charlotte-nc:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=ad4d096f-a7bf-4f1b-ab4c-de3169aa03bf&ccId=19000101_000001&lang=en_US",
+   "ledger_value": "none found (13 open roles, none welder)",
+   "evidence_row": 15884,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "ADP requisitions API for the AVL board: 13 Charlotte roles, postDate 2026-09-14 to 2026-11-12, none welder or fitter. Holds."
+  },
+  {
+   "claim_id": "p-avl-charlotte-nc:triggers",
+   "source_url": "https://www.charlottenc.gov/City-News/Canadian-based-AVL-Manufacturing-Chooses-Charlotte",
+   "ledger_value": "new US plant, 325+ jobs, $56M+ (announced 2025-05-23)",
+   "evidence_row": 15886,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "City release 'Published on May 23, 2025' (inside RECENCY_MONTHS). Plant now hiring: 13 Charlotte requisitions on AVL's ADP board."
+  },
+  {
+   "claim_id": "p-jts-nampa-id:products",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "integrated generator enclosures and modular power systems",
+   "evidence_row": 15892,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-jts-nampa-id:tier",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "Tier 1",
+   "evidence_row": 15893,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-jts-nampa-id:relationship",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "lookalike",
+   "evidence_row": 15894,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-jts-nampa-id:lookalike_of",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "EK Machine",
+   "evidence_row": 15895,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Written rule met: a stated (company-level is enough) generator enclosure, sub-base/day tank or BESS enclosure/skid product on the cited page; lookalike of EK Machine."
+  },
+  {
+   "claim_id": "p-jts-nampa-id:website",
+   "source_url": "https://jobs.smartrecruiters.com/MissionCriticalGroup/3743990015989206-tank-welder",
+   "ledger_value": "https://missioncriticalgroup.com",
+   "evidence_row": 15896,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-jts-nampa-id:name",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "JTS Nampa 1",
+   "evidence_row": 15907,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-jts-nampa-id:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110071992684&output=JSON",
+   "ledger_value": "JOHNSON THERMAL SYSTEMS INC NAMPA (EPA record)",
+   "evidence_row": 15908,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-jts-nampa-id:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110071992684&output=JSON",
+   "ledger_value": "17645 N Gable Ave, Nampa, ID",
+   "evidence_row": 15909,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-jts-nampa-id:parent_company",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "Mission Critical Group",
+   "evidence_row": 15910,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "The page reads 'JTS, a Mission Critical Group (MCG) Company'; the quote begins mid-sentence but the parent name precedes it on the page. Confirmed."
+  },
+  {
+   "claim_id": "p-jts-nampa-id:welder_postings",
+   "source_url": "https://careers.smartrecruiters.com/MissionCriticalGroup",
+   "ledger_value": "none found",
+   "evidence_row": 15911,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "SmartRecruiters API (MissionCriticalGroup, 82 postings) re-read 2026-11-17: Nampa roles at 17645 N Gable Ave are Material Handler Lead (2026-11-12) and Production Manager - 2nd Shift (2026-10-12); no welder. The tank-welder posting cited on the website row is at Abilene (2631 FM 3034). Holds."
+  },
+  {
+   "claim_id": "p-jts-nampa-id:triggers",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "new 172,000 sq ft plant, $55M, 140 jobs (opened 2025-06-02)",
+   "evidence_row": 15913,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "GlobeNewswire copy dated June 02, 2025 (inside RECENCY_MONTHS); $55M, 140 jobs and 172,000 sq ft on the page."
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:name",
+   "source_url": "https://www.nvent.com/en-us/trachte",
+   "ledger_value": "nVent TRACHTE - Chattanooga (former Lectrus site)",
+   "evidence_row": 16149,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "note": "'(former Lectrus site)' is not on the cited page (no 'Lectrus' in visible text or raw source). The Lectrus link lives on the inferred found_by row 16179, whose own reasoning says the Lectrus-to-1919 W Polymer Dr tie comes from search-result directory listings, not a fetched page. Parenthetical-not-on-page pattern (R1-A). Keep the Lectrus history in found_by/notes, not in the stated name.",
+   "corrected_value": "nVent TRACHTE - Chattanooga",
+   "corrected_quote": "Chattanooga, Tennessee Facility 1919 W. Polymer Drive",
+   "corrected_source_url": "https://www.nvent.com/en-us/trachte/trachte-locations",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "nVent TRACHTE - Chattanooga"
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:parent_company",
+   "source_url": "https://www.nvent.com/en-us/trachte/trachte-locations",
+   "ledger_value": "nVent Electric plc (nVent TRACHTE)",
+   "evidence_row": 16150,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "note": "The cited locations page carries only 'Trachte Locations | nVent TRACHTE'; 'nVent Electric plc' is not on it (0 hits, raw source included). The nVent TRACHTE homepage JSON-LD carries 'legalName': 'nVent Electric plc'. Value unchanged; source and quote move to the homepage.",
+   "corrected_value": "nVent Electric plc (nVent TRACHTE)",
+   "corrected_quote": "\"legalName\": \"nVent Electric plc\"",
+   "corrected_source_url": "https://www.nvent.com/en-us/trachte",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "nVent Electric plc (nVent TRACHTE)"
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:address",
+   "source_url": "https://www.nvent.com/en-us/trachte/trachte-locations",
+   "ledger_value": "1919 W Polymer Dr, Chattanooga, TN 37421",
+   "evidence_row": 16151,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Locations page 'Chattanooga, Tennessee Facility 1919 W. Polymer Drive Chattanooga, TN 37421'."
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:website",
+   "source_url": "https://www.nvent.com/en-us/trachte",
+   "ledger_value": "https://www.nvent.com/en-us/trachte",
+   "evidence_row": 16155,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:products",
+   "source_url": "https://www.nvent.com/en-us/trachte",
+   "ledger_value": "substation control buildings, e-houses, modular data centers, energy storage solutions, enclosures",
+   "evidence_row": 16156,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Homepage quote present; note the same sentence lists 'energy storage solutions' (see exclusion correction)."
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:tier",
+   "source_url": "https://www.nvent.com/en-us/trachte",
+   "ledger_value": "OEM",
+   "evidence_row": 16157,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred tier follows from the quoted product and customer text; consistent with the tier definitions."
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:relationship",
+   "source_url": "https://www.nvent.com/en-us/trachte",
+   "ledger_value": "new",
+   "evidence_row": 16158,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "corrected",
+   "note": "Same root as the exclusion_reason correction. The written rule (company-level is enough) makes a stated BESS enclosure/skid line a lookalike of EK Machine; the reasoning 'no ... BESS container line stated' is contradicted by nVent's BESS page. Coordinator must add a p-nvent-trachte-chattanooga-tn:lookalike_of row ('EK Machine', inferred). Only matters if the exclusion is lifted.",
+   "corrected_value": "lookalike",
+   "corrected_quote": "nVent TRACHTE BESS enclosures support long-term energy storage needs with enclosure and skid-based platforms",
+   "corrected_source_url": "https://www.nvent.com/en-us/trachte/battery-energy-storage-system-bess",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "plants_csv_value": "lookalike"
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:exclusion_reason",
+   "source_url": "https://www.nvent.com/en-us/trachte",
+   "ledger_value": "Energy storage appears only as a substation-interconnection application of control buildings; Rule 3 (e-houses / substation buildings)",
+   "evidence_row": 16159,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "note": "Two faults. (1) A rule judgement tagged stated. (2) Its premise is false: the cited homepage itself lists 'energy storage solutions' as a specialization and links a 'Battery Energy Storage (BESS)' menu page (/en-us/trachte/battery-energy-storage-system-bess), which fetched with a plain request on 2026-11-17 (status 200) and states 'nVent TRACHTE BESS enclosures support long-term energy storage needs with enclosure and skid-based platforms'. Under boundary rule 1 BESS enclosures and skids are in. Company-level only: nVent TRACHTE lists nine US facilities, so site attribution is open. Status is the coordinator's call; same root applies to p-nvent-trachte-oregon-wi and p-nvent-trachte-houston-tx.",
+   "corrected_value": "Under review: nVent TRACHTE states a BESS enclosure line ('BESS enclosures ... enclosure and skid-based platforms', company-level BESS page); no source ties BESS work to Chattanooga. Rule 3 applies only to the substation building, e-house, modular data-center and power-conversion-skid lines.",
+   "corrected_quote": "nVent TRACHTE BESS enclosures support long-term energy storage needs with enclosure and skid-based platforms",
+   "corrected_source_url": "https://www.nvent.com/en-us/trachte/battery-energy-storage-system-bess",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Under review (fact-check CS 2026-11-17): the rule-3 exclusion rested on 'no BESS container line stated', but nVent TRACHTE's BESS page states 'BESS enclosures ... enclosure and skid-based platforms' (company-level; no source ties BESS work to Chattanooga). Substation control buildings, e-houses, modular data centers and power-conversion skids are v-datacenter-grid-prefab. Coordinator to decide status (base/lookalike vs excluded)."
+  },
+  {
+   "claim_id": "p-newberry-west-memphis-ar:status",
+   "source_url": "https://old.businessviewmagazine.com/?p=24403",
+   "ledger_value": "2019 site split: West Memphis cylindrical, Memphis rectangular",
+   "evidence_row": 16382,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-newberry-west-memphis-ar:exclusion_reason",
+   "source_url": "https://old.businessviewmagazine.com/?p=45766",
+   "ledger_value": "v-enclosures-battery-generator rule 3: general fuel-storage tanks with no genset line at this plant. The West Memphis plant makes cylindrical petroleum tanks ('its main facility in West Memphis that manufactures cylindrical, or round, tanks for petroleum storage', Jan 2023); Newberry's rectangular Gen-Tank generator base tanks fit the Memphis rectangular-tank shop (inferred). Kept as a lead for v-pressure-vessels-tanks.",
+   "evidence_row": 16383,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Exclusion rests on a quoted reason that fits boundary rule 2 (genset OEM plant with no site-level enclosure, frame or tank welding shown) and was re-tested: no welder posting at the site on the employer's board today."
+  },
+  {
+   "claim_id": "p-newberry-west-memphis-ar:products",
+   "source_url": "https://old.businessviewmagazine.com/?p=45766",
+   "ledger_value": "cylindrical (round) steel tanks for petroleum storage (Jan 2023)",
+   "evidence_row": 16384,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-newberry-west-memphis-ar:relationship",
+   "source_url": "",
+   "ledger_value": "new",
+   "evidence_row": 16385,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Confirmed as an excluded record (rule 3, stated site split; R1-B confirmed the same row). Note: the reasoning's 'needed a stated generator-tank product at this plant' is stricter than the written rule ('company-level is enough'); it matters only if the plant re-enters the vertical, when it would be a lookalike like p-newberry-memphis-tn."
+  },
+  {
+   "claim_id": "p-winco-le-center-mn:welder_postings",
+   "source_url": "",
+   "ledger_value": "unknown: company job board not located",
+   "evidence_row": 15626,
+   "tag": "unknown",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Re-read on the employer's own board today; value holds."
+  },
+  {
+   "claim_id": "p-gillette-elkhart-in:welder_postings",
+   "source_url": "",
+   "ledger_value": "unknown: company job board not located",
+   "evidence_row": 15629,
+   "tag": "unknown",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Re-read on the employer's own board today; value holds."
+  },
+  {
+   "claim_id": "p-gti-goodyear-az:welder_postings",
+   "source_url": "https://jobs.lever.co/gtifabrication",
+   "ledger_value": "none found",
+   "evidence_row": 15688,
+   "tag": "unknown",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Lever API 2026-11-17: 16 Goodyear, AZ openings (coating, CI, EHSQ, electrical, electrician, maintenance, manufacturing/quality engineers, QC tech, security, warehouse, waste) and no welder. Holds."
+  },
+  {
+   "claim_id": "p-maysteel-garland-tx:welder_postings",
+   "source_url": "https://jobs.dayforcehcm.com/en-US/maysteel/CANDIDATEPORTAL",
+   "ledger_value": "none found",
+   "evidence_row": 15732,
+   "tag": "unknown",
+   "in_scope": false,
+   "verdict": "corrected",
+   "note": "Row is tagged unknown (outside the delegated tag scope) but the plants field asserts 'none found', so it was checked. The Dayforce board read in a headless browser on 2026-11-17 lists 18 openings, not 11; 'Welder II' at Garland, TX was posted 2026-11-01, i.e. before the finder's 2026-11-16 read, so the finder saw a truncated list. Maysteel has one Garland site (701 S International Rd). Labor 0 -> 12.",
+   "corrected_value": "1 open (posted 2026-11-01): Welder II, Garland, TX; MIG and TIG (own Dayforce board)",
+   "corrected_quote": "Welder II Garland, TX, USA Posted Sunday, November 1, 2026 ... May Perform both MIG and TIG weld processes based on project needs",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "plants_csv_value": "1 open (posted 2026-11-01): Welder II, Garland TX; MIG and TIG (own Dayforce board)"
+  },
+  {
+   "claim_id": "p-maysteel-lynchburg-va:welder_postings",
+   "source_url": "https://jobs.dayforcehcm.com/en-US/maysteel/CANDIDATEPORTAL",
+   "ledger_value": "none found",
+   "evidence_row": 15743,
+   "tag": "unknown",
+   "in_scope": false,
+   "verdict": "corrected",
+   "note": "Same root as Garland: unknown-tagged row checked because the plants field asserts 'none found'. 'Welder I - 2nd shift', Lynchburg, VA, posted 2026-10-21 (27 days before the finder's read), MIG. One Maysteel site in Lynchburg (3726 Cohen Pl). Labor 0 -> 12.",
+   "corrected_value": "1 open (posted 2026-10-21): Welder I - 2nd shift, Lynchburg, VA; MIG (own Dayforce board)",
+   "corrected_quote": "Welder I - 2nd shift Lynchburg, VA, USA Posted Wednesday, October 21, 2026 ... Perform MIG weld processes based on project needs",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "plants_csv_value": "1 open (posted 2026-10-21): Welder I - 2nd shift, Lynchburg VA; MIG (own Dayforce board)"
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:welder_postings",
+   "source_url": "https://www.nvent.com/en-us/trachte/trachte-locations",
+   "ledger_value": "unknown",
+   "evidence_row": 16160,
+   "tag": "unknown",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Re-read on the employer's own board today; value holds."
+  }
+ ],
+ "score_problems": [
+  "not applicable: base and excluded records carry no scores"
+ ],
+ "opening_line_problems": [
+  "not applicable: base and excluded records carry no opening lines"
+ ],
+ "score_notes": [
+  "If profiled: GPC, Maysteel Garland and Maysteel Lynchburg labor component 12 (open welder posting under 60 days; no bonus or overtime stated - GPC 'OT is always available but not mandatory')."
+ ]
+}

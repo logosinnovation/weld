@@ -99,6 +99,10 @@ print(f"rows to add: {len(new)}; flagged: {len(report)}")
 if "--json" in sys.argv:
     json.dump(report, open(sys.argv[sys.argv.index("--json") + 1], "w"), indent=1)
 if "--apply" in sys.argv:
+    cur = list(csv.DictReader(open(L + "evidence.csv")))  # re-read: other merges may have landed meanwhile
+    now = {e["claim_id"] for e in cur}
+    add = [r for r in new if r["claim_id"] not in now]
     w = csv.DictWriter(open(L + "evidence.csv", "w", newline=""), fieldnames=EC)
-    w.writeheader(); w.writerows(ev + new)
+    w.writeheader(); w.writerows(cur + add)
+    print(f"appended {len(add)}")
     print("applied")
