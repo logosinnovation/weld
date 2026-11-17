@@ -22,16 +22,18 @@ TIER = {"OEM": 0, "Tier 1": 0}
 
 
 def postings(v):
+    # "<n> open" / "<n> counted" is the count; dates and requisition numbers are not
     v = (v or "").lower()
-    if not v or "none" in v or v == "unknown":
+    if not v or re.match(r"(none|unknown|not |no )", v) or "none found" in v or "none open" in v:
         return 0
-    m = re.search(r"(\d+)", v)
+    m = re.search(r"\b(\d{1,2})\s+(?:counted\s+)?(?:open|counted)\b", v)
     return int(m.group(1)) if m else 1
 
 
 def headcount(v):
-    nums = [int(x.replace(",", "")) for x in re.findall(r"\d[\d,]*", v or "")]
-    return max(nums) if nums else 0
+    # the first number is the count; later numbers are years, form numbers or notes ("318 (OSHA 300A, 2025 ...)")
+    m = re.match(r"\D*?(\d[\d,]*)", v or "")
+    return int(m.group(1).replace(",", "")) if m and not (v or "").lower().startswith("unknown") else 0
 
 
 rows = [r for r in csv.DictReader(open(os.path.join(ROOT, "ledger", "plants.csv")))
