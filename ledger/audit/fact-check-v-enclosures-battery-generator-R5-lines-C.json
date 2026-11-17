@@ -1,0 +1,97 @@
+{
+ "checker": "line-checker R5-C",
+ "vertical": "v-enclosures-battery-generator",
+ "date": "2026-11-17",
+ "plants": [
+  "p-ek-machine-madison-wi",
+  "p-freeman-abilene-tx"
+ ],
+ "decision_rule": "R3/R4 definitions (as in R5-lines-A/B): a line is corrected if any fact is not on a stated row of that plant (or a company row worded company-wide), is attributed to the wrong site, is misdated (a job-board re-post stamp written as a posting date; an aggregator or expired copy written as live; a date the row does not carry), is a plan written as progress or a superseded figure, uses a live count of postings, leads with an older fact, lacks the closing 'you' question (opening lines), or the bottleneck guess is not hedged; a clause on the source page but on no row is corrected. 'read November 2026' is accepted where the cited rows' retrieved_date carries that month. Shared-city rule applied for city-only facts. Unreachable only if a source cannot be reached at all.",
+ "scope": "ledger/inbox/battery-lines-L5.json (EK Madison opening_line and bottleneck_guess; both text lines) plus the two Freeman Abilene lines already in ledger/evidence.csv (fallback lines from R5-lines-A, never checked). 4 text lines; no unknown lines in scope (the ledger's current EK Madison 'unknown' rows are being replaced by L5, not checked).",
+ "lines_checked": 4,
+ "lines_corrected": 0,
+ "lines_unreachable": 0,
+ "lines_confirmed": 4,
+ "unknown_lines": 0,
+ "claims_checked": 4,
+ "claims_corrected": 0,
+ "claims_unreachable": 0,
+ "error_rate": 0.0,
+ "substantive_corrections": 0,
+ "substantive_error_rate": 0.0,
+ "error_rate_note": "0/4 = 0.0% on text lines (EK Madison 0/2 from L5; Freeman Abilene 0/2 from the ledger). Both plants Medium (EK 52, Freeman 47), so High/Medium is also 0/4. No unreachable lines; no unknown lines in scope. No score moves.",
+ "validator": "python3 tools/validate_lines.py --inbox ledger/inbox/battery-lines-L5.json -> '# 2 text lines checked, 0 failing' (exit 0). Freeman lines (in the ledger) covered by python3 tools/validate_lines.py --vertical v-enclosures-battery-generator --tiers High,Medium -> '# 76 text lines checked, 0 failing'.",
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 0,
+  "invented fact": 0,
+  "other": 0
+ },
+ "error_sub_kind_counts": {},
+ "repeated_kinds": [],
+ "score_problems": [],
+ "opening_line_problems": [],
+ "plants_closed_or_moved": [],
+ "status_problems": [],
+ "worst_errors": [],
+ "field_drift_notes": [
+  "L5 plants[] text equals evidence[] value for both EK lines (checked). plants.csv EK Madison opening_line/bottleneck_guess are still 'unknown' until L5 merges. Freeman Abilene plants.csv lines equal their evidence rows. The Freeman line rows carry produced_by 'line-writer L1' though the text is the R5-lines-A checker's fallback (reasoning says so); score_total 47 (not R3's 59) after the labor override."
+ ],
+ "leads": [
+  "Add 'wholly-owned subsidiary, Broadwind Heavy Fabrications, Inc.' to a Freeman Abilene triggers row quote so the 'its Heavy Fabrications subsidiary' wording is on a row.",
+  "IES API 2026-11-17: req 25359 Purchasing Agent, hiring org Freeman Enclosure Systems, location 'Freeman West', 1126 Arnold Blvd, posted 2026-11-11: today's evidence the site is open at that address (the name and address rows cite the 404'd req 24792). Not a welder role; on no row, so it does not affect line ordering.",
+  "No welder or fitter role at Freeman West on the IES board today (labor 0 stands).",
+  "EK Madison 'WELDER 1st Shift Madison' still listed 2026-11-17; page and raw source carry no posting date."
+ ],
+ "method": "Read CLAUDE.md, AGENT_BRIEF, run_log (consultation 20, R5 entry), R3-lines, R4-A and R5-lines-A/B decision rules. Re-read 2026-11-17: EK Paycor CareerHome board (Madison roles) and the WELDER 1st Shift Madison job page (tools/fetch_page.py --check on all five posting quotes, raw source searched for a date); EK contact page (Madison addresses); barchart Broadwind 2026-05-05 release (--check on dateline and sale quotes); IES joinus req 24792 (HTTP 404) and jobs API (keywords Abilene, Welder; brand tags). validate_lines.py --inbox on L5 and --vertical on battery High/Medium. No web search used as a quote. No ledger or inbox file edited.",
+ "apply_note": "Nothing to apply: all four lines confirmed. Line rows have blank source_url (key (claim_id, '')). EK rows can merge from L5 with verified=confirmed; Freeman rows in evidence.csv can be set to confirmed.",
+ "rows": [
+  {
+   "claim_id": "p-ek-machine-madison-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "EK's Paycor board, read November 2026, lists a WELDER 1st Shift Madison role whose posting asks for GMAW-P, GMAW-S and GTAW to weld weldments, tanks and metal parts on carbon steel, galvanized steel, stainless steel and aluminum; how do you decide which of your Madison welds run GMAW and which need GTAW?",
+   "tag": "inferred",
+   "origin": "ledger/inbox/battery-lines-L5.json",
+   "score_tier": "Medium",
+   "score_total": "52",
+   "verdict": "confirmed",
+   "note": "EK Paycor board (CareerHome) re-read 2026-11-17: 'WELDER 1st Shift Madison' (Madison, WI) still listed, with 'Painter/ Blaster Madison' the only other Madison role. Job page (id 8a7885aca0abfc6901a0cf771b622b53) re-read: 'Using GMAW-P, GMAW-S, and GTAW to effectively weld weldments, tanks, and metal parts together per the weld process specification sheet.' and 'Performing welding on a wide variety of metals and alloys, including carbon steel, galvanized steel, stainless steel, and aluminum.' FOUND (rows weld_processes and materials, both stated). No datePosted in the page or raw source, so 'read November 2026' (rows retrieved 2026-11-16) is the right dating; no live count, no Job Id. The line joins two separate duty bullets of the same posting (processes and parts; metals) into one phrase; both are on stated rows, nothing off-row, so confirmed. Site: EK's contact page lists one Madison address (2701 S Stoughton Rd; the other four are Fall River), so the city-only posting counts for this plant (shared-city rule). Question asks 'how do you decide'; no older fact leads (all facts undated, from one posting)."
+  },
+  {
+   "claim_id": "p-ek-machine-madison-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly manual welding staffing for weldments and tanks: EK's Paycor board, read November 2026, lists a WELDER 1st Shift Madison role whose posting asks for GMAW-P, GMAW-S and GTAW to weld weldments, tanks and metal parts, pressure testing of fuel tanks and hydro testing of glycol tanks, and minimal traveling between plants and adapting to the product mix requirements at each facility.",
+   "tag": "inferred",
+   "origin": "ledger/inbox/battery-lines-L5.json",
+   "score_tier": "Medium",
+   "score_total": "52",
+   "verdict": "confirmed",
+   "note": "Hedged ('Possibly'). Same posting re-read 2026-11-17 and still listed: GMAW-P/GMAW-S/GTAW sentence, 'Pressure testing fuel tanks and hydro testing glycol tanks.' and 'Minimal traveling between plants and adapting to the product mix requirements at each facility.' FOUND; these clauses are on the stated products row (posting duties, corrected 2026-11-17) and the stated production_type row. 'manual welding staffing' is the inferred guess itself (the role is a manual welder requisition). Dated 'read November 2026' per the rows' retrieved_date."
+  },
+  {
+   "claim_id": "p-freeman-abilene-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Broadwind announced on May 5, 2026 that its Heavy Fabrications subsidiary had sold its Abilene production facility, including real property, equipment and machinery, to IES Infrastructure for up to $19.5 million; what are you planning to build in Abilene?",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (produced_by line-writer L1; text is the R5-lines-A fallback, applied by the coordinator 2026-11-17)",
+   "score_tier": "Medium",
+   "score_total": "47",
+   "verdict": "confirmed",
+   "note": "barchart Broadwind release re-read 2026-11-17: dateline 'May 05, 2026'; 'Heavy Fabrications has sold its production facility in Abilene, Texas' and 'including real property, equipment, machinery and other items, to IES Infrastructure for an aggregate purchase price of up to $19.5 million' FOUND (stated triggers row; the page adds 'in cash and non-cash consideration', the row carries 'up to $19.5M', so the figure is the row's). 'its Heavy Fabrications subsidiary': neither triggers row carries the word 'subsidiary' (rows name 'Broadwind Heavy Fabrications, Inc.' and 'Broadwind's short-term lease'); ruled confirmed because the seller is named on the rows as a Broadwind company and the page says 'wholly-owned subsidiary' (R5-lines-A passed the same wording); the R4 off-row precedents were a number and a date. Lead logged. Site: the line names only Abilene. The IES jobs API (keyword Abilene, 2026-11-17) returns 8 roles: 7 tagged 'IES Communications' with no street address (security, fiber, cabling, AV, safety, document control: field/office roles of another segment, not a production site) and 1 tagged 'Freeman Enclosure Systems' at 'Freeman West', 1126 Arnold Blvd; no other IES production site in Abilene, so the city-only fact counts (shared-city rule). Newest usable stated fact: the Sep 22, 2026 welder posting is closed (req 24792 404 today; no Abilene welder role in the API), so leading with the May 2026 sale is correct and no expired copy is written as live. 'had sold' keeps the release's completed sale; question has 'you'. validate_lines.py --vertical (High,Medium): 76 lines, 0 failing, this line included."
+  },
+  {
+   "claim_id": "p-freeman-abilene-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly staffing a newly acquired plant: Broadwind announced on May 5, 2026 that its Heavy Fabrications subsidiary had sold its Abilene production facility, including real property, equipment and machinery, to IES Infrastructure.",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (produced_by line-writer L1; text is the R5-lines-A fallback, applied by the coordinator 2026-11-17)",
+   "score_tier": "Medium",
+   "score_total": "47",
+   "verdict": "confirmed",
+   "note": "Hedged ('Possibly'). Same release re-read 2026-11-17; every clause on the stated triggers row (sale of the Abilene production facility incl. real property, equipment and machinery to IES Infrastructure; release dated May 5, 2026). 'newly acquired plant' is the inferred guess; the sale is stated as completed ('has sold'; 8-K agreement dated April 30, 2026). Same 'subsidiary' ruling as the opening line. No posting is asserted (req 24792 closed)."
+  }
+ ]
+}

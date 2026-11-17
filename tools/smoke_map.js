@@ -45,7 +45,7 @@ async function run(label, ctxOpts, full) {
   const mc = await text('#vc-' + MV);
   check(mc.includes('partial') && mc.includes(String(miningProfiled)) && /summary-v-mining-heavy-equipment\.json/.test(mc) && /27\.6%/.test(mc) && /11\.4%/.test(mc), `${label}: mining card (partial, ${miningProfiled} profiled, miss 27.6%, round 1 11.4%)`);
   const bc = await text('#vc-' + BV);
-  check(bc.includes(String(batteryProfiled)) && /summary-v-enclosures-battery-generator\.json/.test(bc) && /18\.3%/.test(bc) && /3\.6%/.test(bc) && /partial/i.test(bc) && !/27\.6%|11\.4%/.test(bc), `${label}: battery card (${batteryProfiled} profiled, miss 18.3%, round 1 3.6%, no mining figures)`);
+  check(bc.includes(String(batteryProfiled)) && /summary-v-enclosures-battery-generator\.json/.test(bc) && /18\.3%/.test(bc) && /3\.6%/.test(bc) && /done/i.test(bc) && !/27\.6%|11\.4%/.test(bc), `${label}: battery card (${batteryProfiled} profiled, miss 18.3%, round 1 3.6%, no mining figures)`);
   await shot('ranking');
 
   // map: vertical filter, tier filter, state click, search
@@ -176,7 +176,7 @@ async function run(label, ctxOpts, full) {
   check(M_.status === 'partial' && ms.includes('partial') && ms.includes(String(miningProfiled)) && ms.includes('11.4%') && ms.includes('27.6%') && (!M_R2 || ms.includes(M_R2)), `${label}: mining section (partial, ${miningProfiled} profiled, round 1 11.4%, miss 27.6%${M_R2 ? ', round 2 ' + M_R2 : ''})`);
   check(!/29\.4%|13\.8%|fact-check-v-poles|fact-check-v-shipbuilding/.test(ms), `${label}: mining section has no poles or ships figures`);
   const bs = await text('#audit-' + BV);
-  check(bs.includes(String(batteryProfiled)) && bs.includes('3.6%') && bs.includes('6.2%') && bs.includes('28.6%') && bs.includes('13.3%') && bs.includes('22.7%') && /partial/i.test(bs) && bs.includes('18.3%') && !/27\.6%|11\.4%|29\.4%|fact-check-v-mining/.test(bs), `${label}: battery section (${batteryProfiled} profiled, rounds 3.6%, 6.2% and 28.6%, miss 18.3%, no other vertical's figures)`);
+  check(bs.includes(String(batteryProfiled)) && bs.includes('3.6%') && bs.includes('6.2%') && bs.includes('28.6%') && bs.includes('13.3%') && bs.includes('22.7%') && bs.includes('1.1%') && /done/i.test(bs) && bs.includes('18.3%') && !/27\.6%|11\.4%|29\.4%|fact-check-v-mining/.test(bs), `${label}: battery section (${batteryProfiled} profiled, rounds 3.6%, 6.2% and 28.6%, miss 18.3%, no other vertical's figures)`);
   await shot('method-ships');
   check(errs.length === 0, `${label}: no console errors or runtime requests ${JSON.stringify(errs.slice(0, 3))}`);
   await b.close();

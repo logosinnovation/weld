@@ -232,7 +232,7 @@
   {
    "round": 5,
    "label": "Round 5: line check of all 48 profiled plants' lines after constrained rewriting (validator-gated), two checkers who did not write them",
-   "checked": 88,
+   "checked": 92,
    "corrected": 1,
    "unreachable": 2,
    "checkers": [
@@ -263,10 +263,24 @@
       "invented fact": 0,
       "other": 1
      }
+    },
+    {
+     "file": "fact-check-v-enclosures-battery-generator-R5-lines-C.json",
+     "checked": 4,
+     "corrected": 0,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 0,
+      "invented fact": 0,
+      "other": 0
+     }
     }
    ],
-   "rate": 0.0114,
-   "display": "1 / 88 = 1.1%"
+   "rate": 0.0109,
+   "display": "1 / 92 = 1.1%"
   },
   {
    "round": 8,
@@ -341,7 +355,7 @@
   ]
  },
  "known_limits": [
-  "Opening lines and bottleneck guesses failed two free rewrites (round 3: 20/70 = 28.6%; round 4: 10/44 = 22.7%). All 48 profiled plants' lines were then rebuilt under constrained composition (each clause from one stated row with that row's date; job-board dates as 'listed'; no live counts) and gated by tools/validate_lines.py; round 5 found 1/88 = 1.1% (0/76 on High and Medium plants), 2 unreachable (Freeman Abilene's closed posting; lines replaced), 8 lines left 'unknown' where no stated site fact supports one.",
+  "Opening lines and bottleneck guesses failed two free rewrites (round 3: 20/70 = 28.6%; round 4: 10/44 = 22.7%; both superseded). All 48 profiled plants' lines were then rebuilt under constrained composition (each clause from one stated row with that row's date; job-board dates as 'listed'; no live counts) and gated by tools/validate_lines.py; round 5 found 1/92 = 1.1% (0/80 on High and Medium plants). 6 lines are 'unknown' where no stated site fact supports one (Low plants' bottleneck guesses mostly).",
   "Main errors in the earlier lines: job-board re-post dates read as posting dates, expired aggregator postings written as live, announced expansions written as under way, company-wide facts written as the site's; the round-5 rules forbid each.",
   "Under the written profiling key (re-ranked 2026-11-17 after the OSHA headcounts, with Girtz Monticello and JTS Nampa then profiled), the only unprofiled plant in the top 40 is Generac Oshkosh, held: state air permits state welding there (2019), but no source names enclosure, base-frame or tank welding, and its 2025 emissions inventory reports zero welding throughput. Seven other held plants rank below the top 40.",
   "Miss rate upper bound is 22.2%, and the second list auditor did not run dry: more plants likely exist.",
@@ -351,6 +365,9 @@
   "Hennig Machesney Park (72 High): its 8 counted welder postings give no street address; the tie to this record is inferred from the board label, so labor and process earn points but no confidence (confidence 3). If the tie fails, Hennig is 32 Low.",
   "Phoenix Products Zoo Pkwy labor rests on Service Fabricator roles that weld.",
   "Generac Eagle's membership rests on an archived 2022 Generac page that the profiler read once and that no checker could reopen.",
-  "Pritchard Brown passes the prospect test on its own undated construction spec (welded steel floor and underframe) and a single facility; no source names welding in Baltimore."
+  "Pritchard Brown passes the prospect test on its own undated construction spec (welded steel floor and underframe) and a single facility; no source names welding in Baltimore.",
+  "Freeman Abilene: the round-5 line check found its only welder posting closed, so labor went 12 -> 0 (59 -> 47 Medium); a data refresh, not a line error. Its process 12 rests on that posting's text, now gone with no archive copy.",
+  "JTS Nampa is High (80) on JTS template tank text shared with the Abilene posting (material 20, the Abilene ruling); Girtz Monticello's demand 15 rests on a September 2026 permit approval.",
+  "Welder-posting counts are same-day snapshots of the companies' own boards (several boards re-stamp or re-list roles day to day); labor points rest on several roles open at once, not on an exact count."
  ]
 }
