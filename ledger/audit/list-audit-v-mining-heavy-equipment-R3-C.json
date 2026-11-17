@@ -5,7 +5,7 @@
  "searches_run": 25,
  "searches_until_dry": null,
  "notes": [
-  "Dry point NOT reached: stopped at the ~25 web-search budget. Searches 21-24 still produced new plants (Kubota Salina, Solesbee's, Construction Attachments Lenoir, Pierce Pacific), and the IAAP directory fetched after search 25 added Inertia, American Bin & Conveyor and Eagle Crusher.",
+  "Dry point NOT reached: stopped at the ~25 web-search budget. Late searches still produced new plants (Kubota Salina in #21, Solesbee's and Construction Attachments Lenoir in #24), and the IAAP directory fetched after search 25 added Inertia, American Bin & Conveyor and Eagle Crusher.",
   "Directory fetches do not count as searches. Directories used: web.indmaa.org categories (Processing Systems, Crushing Equipment, Conveyor Systems/Parts, Screens, Dredging, Mobile Mining Equipment Sales, Fabrication (empty)); IAAP associate members 06-18-2026 PDF. OAIMA (Ohio) directory PDF downloaded but its text layer was unusable. NSSGA M&S brochure has no member list. CEMA member directory is login-gated. ThomasNet returned 403.",
   "Seeded queries: searches 7 (Chattanooga), 13 (Peoria/Decatur), 14 (Hollidaysburg), 15 (Findlay/Galion), 17 (South Milwaukee/Lippmann), 19 (Bluefield/Huntington), 20 (Dubuque/Burlington/Pella) named cities or companies, so plants found only through them are labelled 'seeded' in found_via. That makes the method look stronger than a pure product-by-state search would.",
   "Frame compliance: no OSHA, ECHO/FRS or NAICS-coded lists were used. One search hit was a fastdol.com OSHA enforcement profile (Lippmann) and others were D&B NAICS directory pages; none of these was used as a source. The Lippmann address comes from Lippmann's own site.",
@@ -13,14 +13,15 @@
   "In/out rule: dealers, repair or service sites and component distributors are out (in_definition=false). borderline=true flags rows where the coordinator should decide: on-highway dump bodies (Crysteel, Rugby, Ox, Godwin), ag or compact loader attachments (MDS, Panova), mining vehicles (Brookville, Johnson Industries), dredges, forestry or scrap attachments (Pierce Pacific, Builtrite), Tier 1 tank/frame contract fabricators (United Alloy, Hol-Mac, Amerequip), compact loader assembly (Kubota, Bobcat) and Vermeer.",
   "Quotes come only from pages fetched in this run and checked with fetch_page.py --check. IAAP PDF quotes were checked against pdftotext output with whitespace normalised. Search-engine summaries were never used as quotes.",
   "Process note: early in the run this auditor created an empty subdirectory 'r3c' in the off-limits scratchpad. Nothing in the scratchpad was read or used.",
-  "Blind spots: (1) big OEM plants (Deere, Caterpillar, Komatsu, Vermeer, Bobcat, CNH) are found only by seeded or city searches, and corporate sites returned 404/502, so most stay unconfirmed; (2) Tier 1/Tier 2 weldment suppliers (booms, frames, tanks) almost never appear in directories or product searches; (3) Texas, Oklahoma, Colorado, Utah, Arizona, Nevada, Idaho, Montana, Washington, Nebraska and Iowa produced no single-site in-definition plant other than satellite plants of national firms; (4) aggregate-association directories are member-only and dealer-heavy; (5) the search tool returns summarised top results, so long-tail bucket and attachment shops are under-sampled."
+  "Blind spots: (1) big OEM plants (Deere, Caterpillar, Komatsu, Vermeer, Bobcat, CNH) are found only by seeded or city searches, and corporate sites returned 404/502, so most stay unconfirmed; (2) Tier 1/Tier 2 weldment suppliers (booms, frames, tanks) almost never appear in directories or product searches; (3) Texas, Oklahoma, Colorado, Utah, Arizona, Nevada, Idaho, Montana, Washington, Nebraska and Iowa produced no confirmed single-site in-definition plant (CMI Oklahoma City and the Iowa OEM plants are listed but unconfirmed; Superior's Columbus NE and Prescott Valley AZ satellite plants are confirmed only via Wikipedia); (4) aggregate-association directories are member-only and dealer-heavy; (5) the search tool returns summarised top results, so long-tail bucket and attachment shops are under-sampled.",
+  "Null url remains for Caterpillar Decatur, Kolberg-Pioneer Yankton, CAI, DSI Abingdon, Long-Airdox, Vermeer Pella, Panova, ACS Kent, Geith, KMW: the trade-press and company pages tried were blocked (403/404/502) or not retried within budget."
  ],
  "counts": {
   "rows": 70,
   "in_definition": 62,
-  "in_definition_plant_confirmed": 40,
-  "in_definition_confirmed_not_borderline": 25,
-  "quote_verified": 45
+  "in_definition_plant_confirmed": 37,
+  "in_definition_confirmed_not_borderline": 23,
+  "quote_verified": 47
  },
  "plants": [
   {
@@ -118,12 +119,12 @@
    "in_definition": true,
    "why_not": null,
    "borderline": false,
-   "plant_confirmed": true,
+   "plant_confirmed": false,
    "url": "https://www.mining.com/web/caterpillar-upgrades-room-and-pillar-mining-equipment-manufacturing-in-pennsylvania/",
    "quote": "Caterpillar is updating and upgrading room and pillar mining equipment manufacturing facilities in Houston, Penn.",
    "quote_verified": true,
    "found_via": "web search #10 (product-by-state PA/WV/KY)",
-   "note": "Article is old (post-2011 Bucyrus acquisition); current operation not re-checked."
+   "note": "Article is old (post-2011 Bucyrus acquisition); current operation not re-checked. Current operation not verified, so not confirmed."
   },
   {
    "name": "J.H. Fletcher & Co.",
@@ -179,7 +180,7 @@
   {
    "name": "CAI Industries",
    "parent_company": "CAI Industries",
-   "city": "unknown",
+   "city": null,
    "state": "WV",
    "street_address": null,
    "products": "continuous miners, scoops, bolters, feeder-breakers, conveyors (mfr and rebuilder)",
@@ -324,7 +325,7 @@
    "borderline": false,
    "plant_confirmed": true,
    "url": "https://www.constructionequipmentguide.com/johnson-crushers-celebrates-3000th-screen-shipment/20789",
-   "quote": "we have been able to create a state-of-the-art manufacturing facility that is poised to serve the needs of the mar",
+   "quote": "we have been able to create a state-of-the-art manufacturing facility",
    "quote_verified": true,
    "found_via": "web search #3 (product-by-state OR/NE/TN)",
    "note": "Article ties JCI to Oregon/Eugene; city from same article ('invented in Eugene, Ore.')."
@@ -339,12 +340,12 @@
    "in_definition": true,
    "why_not": null,
    "borderline": false,
-   "plant_confirmed": true,
+   "plant_confirmed": false,
    "url": "https://www.astecindustries.com/about",
    "quote": "Born in Chattanooga. Built for the World.",
    "quote_verified": true,
    "found_via": "web search #7 (seeded Chattanooga)",
-   "note": "Search summary cites a 440,000 sq ft Chattanooga manufacturing facility; fetched page gives address and slogan only."
+   "note": "Search summary cites a 440,000 sq ft Chattanooga manufacturing facility; fetched page gives address and slogan only. Multi-site company; HQ address and slogan only, so not confirmed under the stated rule."
   },
   {
    "name": "CMI Roadbuilding",
@@ -375,7 +376,7 @@
    "borderline": false,
    "plant_confirmed": true,
    "url": "https://www.admasphaltplants.com/",
-   "quote": "Customized Asphalt Plant Solutions for Every Need",
+   "quote": "Asphalt Drum Mixers LLC manufactures high-quality asphalt plants and components for contractors and asphalt producers worldwide.",
    "quote_verified": true,
    "found_via": "web search #7 (product)",
    "note": "Single-site company; address Huntertown, IN 46748 on site."
@@ -723,7 +724,7 @@
   {
    "name": "Solesbee's Equipment & Attachments",
    "parent_company": "Solesbee's Equipment & Attachments LLC",
-   "city": "Atlanta area (Winston)",
+   "city": "Atlanta",
    "state": "GA",
    "street_address": null,
    "products": "excavator thumbs, buckets, shears, grapples, root rakes",
@@ -735,7 +736,7 @@
    "quote": "manufacture heavy-duty excavator, skid steer, loader, and dozer attachments right here in Atlanta, Georgia.",
    "quote_verified": true,
    "found_via": "web search #12 (product); #24",
-   "note": "Search press release places it in Winston, GA."
+   "note": "Page says 'Atlanta, Georgia'; the search press release places it in Winston, GA."
   },
   {
    "name": "Construction Attachments, Inc.",
@@ -781,18 +782,18 @@
    "in_definition": true,
    "why_not": null,
    "borderline": false,
-   "plant_confirmed": true,
+   "plant_confirmed": false,
    "url": "https://www.steelunlimited.com/",
    "quote": "Steel Unlimited specializes in custom-fabricated heavy equipment attachments built to customer specifications.",
    "quote_verified": true,
    "found_via": "web search #6 (product); #11, #23",
-   "note": "Older CEG article said Rialto; current site lists Riverside addresses."
+   "note": "Older CEG article said Rialto; current site lists Riverside addresses. Two Riverside addresses on the page and none named as the plant."
   },
   {
    "name": "Rockland Manufacturing",
    "parent_company": "Rockland Manufacturing",
-   "city": "unknown",
-   "state": "unknown",
+   "city": null,
+   "state": "",
    "street_address": null,
    "products": "excavator/loader buckets, thumbs, attachments",
    "in_definition": true,
@@ -815,12 +816,12 @@
    "in_definition": true,
    "why_not": null,
    "borderline": true,
-   "plant_confirmed": true,
+   "plant_confirmed": false,
    "url": "https://www.mdsmfg.com/",
    "quote": "1301 S. South Dakota Hwy. 37 • Parkston, SD",
    "quote_verified": true,
    "found_via": "web search #8 (product-by-state)",
-   "note": "Borderline: ag/compact loader attachments."
+   "note": "Borderline: ag/compact loader attachments. Fetched page gives address only, with no statement of manufacturing at Parkston."
   },
   {
    "name": "Panova Attachments",
@@ -985,12 +986,12 @@
    "in_definition": true,
    "why_not": null,
    "borderline": false,
-   "plant_confirmed": false,
-   "url": null,
-   "quote": null,
-   "quote_verified": false,
+   "plant_confirmed": true,
+   "url": "https://quadcitiesbusiness.com/?p=137186",
+   "quote": "John Deere announced plans today to bolster its manufacturing workforces in Dubuque and Davenport to meet the increased demand in its construction and forestry markets.",
+   "quote_verified": true,
    "found_via": "web search #20 (seeded Dubuque)",
-   "note": "deere.com and farms.com fetches 404."
+   "note": "Article undated on fetch; Dubuque Works named as a manufacturing location."
   },
   {
    "name": "Vermeer - Pella",
@@ -1020,11 +1021,11 @@
    "why_not": null,
    "borderline": true,
    "plant_confirmed": false,
-   "url": null,
-   "quote": null,
-   "quote_verified": false,
+   "url": "https://www.constructionequipmentguide.com/bobcat-to-consolidate-operations-in-north-dakota/13334?markdown=1",
+   "quote": "all other Bobcat skid steer loaders, compact track loaders, and all-wheel steer loaders are manufactured in Gwinner.",
+   "quote_verified": true,
    "found_via": "web search #21 (product-by-state)",
-   "note": "Only a 2009 article; not re-checked."
+   "note": "2009 article; current operation not re-checked, so not confirmed."
   },
   {
    "name": "Crysteel Manufacturing",

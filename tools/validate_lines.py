@@ -5,7 +5,7 @@ For each line (from an inbox file's evidence rows, or from the ledger for a vert
   - its reasoning must cite at least one claim id (p-...:field or c-...:field)
   - every cited claim must exist in evidence.csv (or in the inbox file) with at least one STATED row
   - every number and date written in the line (digits, with , . / - kept) must appear in the value or quote of
-    some row of a cited claim, or in that row's retrieved/source date
+    some row of a cited claim; a cited row's retrieved date counts only inside a "read <Month> [<day>,] <year>" clause
   - the words "posted", "currently", "is hiring", "now hiring", "are open" are flagged (constrained wording uses
     "listed <date>" and dated facts)
   - an opening line must end with a question containing "you"
@@ -65,16 +65,26 @@ def main():
         cited = [c for c in ID_RE.findall(e.get("reasoning") or "") if not c.endswith((":opening_line", ":bottleneck_guess"))]
         if not cited:
             probs.append("cites no claim ids")
-        pool = ""
+        pool, reads = "", set()
         for c in cited:
             rows = by.get(c, [])
             if not rows:
                 probs.append(f"cited claim missing: {c}")
             elif not any(r["tag"] == "stated" for r in rows):
                 probs.append(f"cited claim has no stated row: {c}")
-            pool += " ".join((r["value"] or "") + " " + (r["quote"] or "") + " " + (r.get("retrieved_date") or "") for r in rows) + " "
+            pool += " ".join((r["value"] or "") + " " + (r["quote"] or "") for r in rows) + " "
+            reads |= {r.get("retrieved_date") or "" for r in rows}
         pool_n = norm_nums(pool)
-        for num in norm_nums(v):
+        # a cited row's retrieved date counts only inside a "read <Month> [<day>,] <year>" clause of the line
+        vv = v
+        for rd in reads:
+            m = re.match(r"(20\d\d)-(\d\d)-(\d\d)$", rd)
+            if not m:
+                continue
+            mon = MONTHS[int(m.group(2)) - 1]
+            for pat in (rf"\bread (?:on )?{mon[:3]}[a-z]*\.? {int(m.group(3))},? {m.group(1)}", rf"\bread (?:in )?{mon[:3]}[a-z]*\.? {m.group(1)}"):
+                vv = re.sub(pat, "read <date>", vv, flags=re.I)
+        for num in norm_nums(vv):
             if num not in pool_n and not (len(num) == 4 and num.startswith("20") and num in pool):
                 probs.append(f"number not on a cited row: {num}")
         if FLAG.search(v):
