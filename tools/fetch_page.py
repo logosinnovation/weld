@@ -125,6 +125,10 @@ def main():
     print(f"# status={status} via={how} chars={len(text)}", file=sys.stderr)
     if "--check" in args:
         q = args[args.index("--check") + 1]
+        if status >= 400:
+            # an error page can carry the string (list-auditor R3-D, 2026-11-17): never report FOUND on one
+            print(f"HTTP_ERROR {status}")
+            sys.exit(2)
         ok = norm(q) in norm(text)
         print("FOUND" if ok else "NOT_FOUND")
         sys.exit(0 if ok else 1)

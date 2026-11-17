@@ -23,7 +23,7 @@ with ThreadPoolExecutor(10) as ex: pages = dict(ex.map(get, urls))
 res, retry = [], set()
 for e in ev:
     st, t = pages[e["source_url"]]
-    v = "found" if t and ok(e["quote"], t) else ("aisc_snapshot" if "aisc.my.site.com" in e["source_url"] and ok(e["quote"], snap) else "miss")
+    v = "found" if t and st < 400 and ok(e["quote"], t) else ("aisc_snapshot" if "aisc.my.site.com" in e["source_url"] and ok(e["quote"], snap) else "miss")
     if v == "miss": retry.add(e["source_url"])
     res.append([e, v])
 def bget(u):
