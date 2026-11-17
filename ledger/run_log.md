@@ -1120,3 +1120,14 @@ Coordinator decisions applied now (mechanical):
   - UKG sweep, all verticals: 26 plants carry ultipro evidence; 18 outside battery (poles 10, ships 3, mining 5) still say "posted" for UKG dates. A UKG stamp is later than the first posting, so it understates how long a role has been open and cannot inflate a 60+ day labor score; left for the next refresh, noted here.
   - GPC scale 10 kept: Fidelity's 5 rests on an unknown headcount, GPC's 10 on an inferred one (1,200+ employees, most operations at 51st St); consistent rule, no confidence from either.
 - Confirming pass launched: R4-A and R4-B (45 lines), R4-C (9 posting fields, 25 job-posting product rows).
+
+## 2026-11-17 Confirming pass R4 merged; advisor consultation 18; battery storage marked PARTIAL
+- R4-A (23 lines) 4/23 = 17.4%; R4-B (21 lines) 6/21 = 28.6%; lines together 10/44 = 22.7%. R4-C (9 posting fields, 25 job-posting products rows) 4/61 = 6.6%. Round 4 pooled 14/105 = 13.3%. Corrections applied; none moved a score.
+- Correction to the earlier sweep and to the report sent to the user: Hennig's Welder I - Sub Welder - Day Shift is live (R4-C); the count is 8, not 7.
+- Advice (consultation 18): mark partial; another rewrite round will not fix it, since R4 corrected lines earlier checkers had rewritten and R3 had passed Union's "buildout" clause. Rulings:
+  - Hennig: the consultation-15 basis (postings at the board address naming this record) was false: the counted postings carry no street address. The ledger has one Hennig record, so the tie is an inferred reading of the "Hennig Power, Machesney Park" label: points stay (72 High), labor and process lose confidence (5 -> 3; welder_postings and weld_processes added to no-confidence-claims.csv). Downside if the tie fails: 32 Low. GPC keeps its tie: its board location field names "51st Street".
+  - Cordele labor stays 12: the raw 2026-06-30 date is only in a checker file, not on an evidence row (lead). Reasoning text fixed ("listed 2026-11-02, a UKG re-post stamp"). Confidence 5 -> 4 (products and production_type rows are division-level, R4-C).
+  - R4-B sweeps (aggregator sources, expansion wording) on lines no checker had seen: EK bottleneck tense fixed (Plant 5 "will expand"); ASC, Fidelity Ocala, Generac Eagle and Yancey Batesville lines read as supported by stated rows.
+  - Refresh lead: raw UKG first-posted dates can be earlier than the stamps, so they could raise labor scores (60+ days) in poles, ships and mining as well as lower nothing; check at the next refresh.
+- verticals.csv: v-enclosures-battery-generator status partial, with the reason and the steps to reach done.
+- Final battery counts: 114 found, 80 included, 46 profiled (High 14, Medium 21, Low 11), 34 excluded. Miss 18.3%.
