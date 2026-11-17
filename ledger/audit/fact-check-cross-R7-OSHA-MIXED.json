@@ -1,0 +1,1905 @@
+{
+ "checker": "fact-checker R7-OSHA-MIXED",
+ "vertical": "v-enclosures-battery-generator (Girtz Monticello, JTS Nampa); v-mining-heavy-equipment (Standard Iron Hartford x2)",
+ "date": "2026-11-17",
+ "plants": [
+  "p-girtz-monticello-in",
+  "p-jts-nampa-id",
+  "p-standard-iron-hartford-wi",
+  "p-standard-iron-hartford-wi-2"
+ ],
+ "decision_rule": "Corrected = the value adds a fact the cited page does not show, tags a judgement or a brand/company-level fact of a multi-site company as stated at one site, puts a site judgement inside a stated row, misdates a posting, or the quote is not on the page (raw source and JSON checked first); Confirmed otherwise. Single-site companies (Girtz: one location, one OSHA record, one ECHO site) keep company-level rows stated with the single-site judgement in its own inferred row; the JTS release names each of its three locations, so its products row stays stated. Unreachable only if the source cannot be reached at all.",
+ "claims_checked": 78,
+ "claims_corrected": 11,
+ "claims_unreachable": 0,
+ "error_rate": 0.141,
+ "error_rate_note": "Headline = stated rows: 11/78 = 14.1% (inbox rows written by profiler OSHA-MIXED 5/44 = 11.4%; untouched ledger base rows 6/34 = 17.6%). Every Standard Iron row exists twice (one per Hartford record); counting each duplicated error once: 6/65 = 9.2% (inbox 3/36 = 8.3%; ledger 3/29 = 10.3%). Lines (opening_line + bottleneck_guess): 2/8 = 25.0% (unique 1/7 = 14.3%: the identical Standard Iron bottleneck guess on both records). All 172 rows (adds inferred, unknown, score, confidence and coordinate rows): 15/172 = 8.7% (11 stated, 2 lines, 2 confidence rows). Every quote whose page was fetched was found (visible text or raw source/JSON-LD); OSHA rows checked against data/osha_2025.csv by record ID; geocoder rows by re-query; 0 unreachable. No error is a wrong plant, wrong process, wrong tier, closed business or invented fact; none of the 11 stated-row corrections moves a score point. Score-bearing: the Standard Iron attribution RULING (points) and two confidence corrections (Sumner 3 -> 2, Innovation Way 4 -> 3, under every reading; 0 and 1 recommended).",
+ "claims_checked_all_rows": 172,
+ "claims_corrected_all_rows": 15,
+ "error_rate_all_rows": 0.0872,
+ "lines_checked": 8,
+ "lines_corrected": 2,
+ "line_error_rate": 0.25,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 11,
+  "invented fact": 0,
+  "other": 4
+ },
+ "repeated_kinds": [
+  "quote does not support value (11 rows; 6 unique) - three patterns: (a) Standard Iron Helgesen brand-level rows tagged stated at each of two Hartford plants 1.9 km apart in a seven-facility company (products from std-iron.com and Power Progress, production_type from /leak-proof-reservoirs/: 6 rows, retagged inferred, values unchanged); (b) judgements or facts from other pages inside stated welder_postings rows (Mig Welder 'city shared by two plants about 1.9 km apart' x2; JTS JobTarget row 'not on JTS's JazzHR or MCG's board today'); (c) group name not on the cited page (Standard Iron name rows 'Helgesen' x2). SWEEP for the coordinator: on every multi-plant company in one city, retag brand- or company-level products/production_type rows stated at a site as inferred, and move any distance/campus or absence clause out of stated welder_postings rows into the site_attribution or an inferred row."
+ ],
+ "worst_errors": [
+  "p-standard-iron-hartford-wi and -2 (both records): labor 20, process 20, the part-mix product list and Innovation Way's prospect test all rest on ONE JazzHR Welder posting (0OC37FJv5b, datePosted 2026-10-01, 'Hiring Bonuses for this role') whose text says 'Location: Hartford, WI (1055 W Sumner St or 1720 Innovation Way)'. The two plants cannot be told apart: the board location field is Hartford WI 53027 only, the JazzHR feed carries no address, and every other Hartford role (Mig Welder, General Labor, Robotic Weld Engineer) gives only the city. Yet the score rows give 3 and 4 confidence points to components resting on that unattributed tie (normaliser counts them because the score rows do not cite the inferred site_attribution claim, while the same profiler's JTS rows do). Confidence corrected 3 -> 2 and 4 -> 3 under every reading (part mix cites a now-inferred claim), with 0 and 1 recommended (Hennig precedent); points are a RULING: as written 66/61 Medium; if the city-only Mig Welder is admitted on the same reasoning, process 12 gives 58/53; strict reading 26/21 Low.",
+  "p-standard-iron-hartford-wi(-2):production_type, :products (std-iron.com home and Power Progress) - Helgesen brand-level statements on pages that name no plant, tagged stated at each of two Hartford plants of a seven-facility company (the profiler's own site_attribution row says Hartford-only facts are inferred for either plant). Retagged inferred; the Power Progress row's quote also carried only 'two facilities in Hartford', not the reservoirs and markets clause in its value. Part mix keeps 8 on the posting's product list but loses confidence.",
+  "p-standard-iron-hartford-wi(-2):bottleneck_guess - 'while a Hartford-based engineer programs ABB weld robots' rests on an inferred existing_robots row and presents an open Robotic Weld Engineer requisition as an engineer at work; rewritten from stated rows."
+ ],
+ "score_problems": [
+  {
+   "plant_id": "p-standard-iron-hartford-wi",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "correct_points": 20,
+   "why": "RULING. The two Hartford plants cannot be told apart: the only site-naming welder posting (Welder 0OC37FJv5b, JSON-LD datePosted 2026-10-01 = JazzHR job code, 'Hiring Bonuses for this role') says 'Location: Hartford, WI (1055 W Sumner St or 1720 Innovation Way)' and never says where a hire works; the board location field is Hartford WI 53027, the JazzHR feed's internalcode is empty, and the Mig Welder (live; job code 2025-11-11, a standing ad), General Labor and Robotic Weld Engineer give only the city. Case for keeping (profiler): ships rule 3 counts a posting when its text names the site, and this text names each site. Consistency point if kept: 'Sumner or Innovation Way' carries the same plant information as the city-only Mig Welder (Hartford has exactly these two plants), so the same reading arguably admits the Mig Welder, whose 'Tig is a bonus' makes process 12 under the TIG rule ('even as a plus'). Case against: the retired base row's own reading ('attributed by inference, count once across both'), JamesBuilt (an inferred site tie earns process 0, not only labor 0) and, by analogy only, the Eagle Crusher ranking-key rule (one posting claimed by two records counts 0 in rank_mining.py; a ranking rule, not a scoring ruling). Then labor 0 and process 0; part mix 8 survives as a company-level product list (session-2 rule 1, Coperion Whitewater) with no confidence. The profiler's labor-only downside understates the strict case. Sumner totals: as written 66 Medium; Mig Welder admitted (process 12) 58 Medium; strict 0/0/8/0/8/10 = 26 Low."
+  },
+  {
+   "plant_id": "p-standard-iron-hartford-wi",
+   "component": "score_process",
+   "ledger_points": 20,
+   "correct_points": 20,
+   "why": "RULING, linked to score_labor: 20 as written; 12 if the Mig Welder is admitted on the same 'either plant' reading; 0 under the strict reading (JamesBuilt)."
+  },
+  {
+   "plant_id": "p-standard-iron-hartford-wi-2",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "correct_points": 20,
+   "why": "RULING. The two Hartford plants cannot be told apart: the only site-naming welder posting (Welder 0OC37FJv5b, JSON-LD datePosted 2026-10-01 = JazzHR job code, 'Hiring Bonuses for this role') says 'Location: Hartford, WI (1055 W Sumner St or 1720 Innovation Way)' and never says where a hire works; the board location field is Hartford WI 53027, the JazzHR feed's internalcode is empty, and the Mig Welder (live; job code 2025-11-11, a standing ad), General Labor and Robotic Weld Engineer give only the city. Case for keeping (profiler): ships rule 3 counts a posting when its text names the site, and this text names each site. Consistency point if kept: 'Sumner or Innovation Way' carries the same plant information as the city-only Mig Welder (Hartford has exactly these two plants), so the same reading arguably admits the Mig Welder, whose 'Tig is a bonus' makes process 12 under the TIG rule ('even as a plus'). Case against: the retired base row's own reading ('attributed by inference, count once across both'), JamesBuilt (an inferred site tie earns process 0, not only labor 0) and, by analogy only, the Eagle Crusher ranking-key rule (one posting claimed by two records counts 0 in rank_mining.py; a ranking rule, not a scoring ruling). Then labor 0 and process 0; part mix 8 survives as a company-level product list (session-2 rule 1, Coperion Whitewater) with no confidence. The profiler's labor-only downside understates the strict case. Innovation Way totals: as written 61 Medium; Mig Welder admitted 53 Medium; strict 0/0/8/0/8/5 = 21 Low, and its prospect test then rests on nothing stated at the site (status_problems)."
+  },
+  {
+   "plant_id": "p-standard-iron-hartford-wi-2",
+   "component": "score_process",
+   "ledger_points": 20,
+   "correct_points": 20,
+   "why": "RULING, linked to score_labor: 20 as written; 12 if the Mig Welder is admitted; 0 under the strict reading."
+  },
+  {
+   "plant_id": "p-standard-iron-hartford-wi",
+   "component": "confidence",
+   "ledger_points": 3,
+   "correct_points": 2,
+   "why": "3 -> 2 under every reading: score_part_mix cites p-standard-iron-hartford-wi:production_type, inferred-only after this check's correction. Recommended 0 (Hennig precedent, consultation 18): process, labor and the posting's product list rest on a posting whose plant of hire is not stated (the profiler's own inferred site_attribution row), and scale 10 rests on an inferred OSHA headcount (matcher grade review: odd hours; a second 36-employee 'Standard Iron' record at the same address). Mechanics: normalise_scores.py counts a component when every claim its score row cites has a stated row, and these score rows do not cite p-standard-iron-hartford-wi:site_attribution (the same profiler's JTS rows do). To reach 0, cite it in score_process, score_labor and score_part_mix, or add :welder_postings, :weld_processes and :products to ledger/audit/no-confidence-claims.csv."
+  },
+  {
+   "plant_id": "p-standard-iron-hartford-wi-2",
+   "component": "confidence",
+   "ledger_points": 4,
+   "correct_points": 3,
+   "why": "4 -> 3 under every reading (part mix cites the now-inferred production_type). Recommended 1: only scale 5 (c-standard-iron:multi_plant, stated 'seven advanced facilities') rests on stated evidence at the plant; same fix as Sumner."
+  }
+ ],
+ "score_notes": [
+  "All 24 components re-derived from the rubric, the vertical rules and the cited claims. As written, no score point moves; confidence moves only on the two Standard Iron records.",
+  "Girtz 12/0/15/12/15/10 = 64 Medium, confidence 5: correct as written. Process 12 is the plain reading of the TIG rule (its only production welder posting says 'either MIG or TIG'); upside RULING 20 (72 High) if 'Welder 1st Shift (TIG)' is read as a separate TIG specialty role, since the permit lists 7 TIG stations (W-2) separately from 40 MIG welders (W-1) (Valmont PiRod 47-MIG-station precedent). Demand 15 rests on the 2026-09-08 IDEM approval of higher paint-booth throughput (0.17 to 0.33 units/hr) and generator-test output (10,300 to 18,000 hp) at the address, worded as approved; downside 8 (57 Medium) if a permit approval is not an expansion event; lead: Legrand's acquisition (release June 10, 2026) is a dated event under consultation 10's list but sits on no triggers row. Labor 12: one counted production welder, undated (no WordPress REST route or feed exposes a publish date); the 26-role careers list has no second welder or fitter (Mechanic, Maintenance, Test Cell Technician and Quality Technician mention welding for repair or tests only). Material 0: Z-CUBE gives kW classes, no dimension. Part mix 15: stated custom, single-site company. Scale 10: Legrand multi-plant (Dec 8, 2025 release) and OSHA 225 (matcher auto).",
+  "JTS Nampa 20/20/15/0/15/10 = 80 High, confidence 2: correct as written. Material 20 is the flagged RULING: the 60 ft x 13 ft tank sentence is in the live JobTarget aggregator copy titled '(Nampa)', and the identical sentence is in MCG's own live Abilene Tank Welder (SmartRecruiters 3743990015989206), so it is JTS template text, not Nampa-specific; consistent with the JTS Abilene ruling (20 kept, no confidence); downside 0 gives 60 Medium. Labor 0 confirmed: JazzHR 'There are no open positions.'; MCG SmartRecruiters API (80 postings) has no Nampa welder; the JobTarget copy is an aggregator (rule 7: sets process, no labor) though still listed (validThrough 2027-01-09). Process 20: '.045 wire MIG preferred' in a welder posting (Grid Amite precedent); stick 7024 is not TIG. Demand 15: opening announced June 2, 2025. Scale 10: c-jts:multi_plant and OSHA 155 (matcher auto; the other record at the address is a NAICS 238110 concrete contractor). Part mix 15 on MCG's company-level custom statement, no confidence (Yancey precedent).",
+  "Standard Iron: material 0 (20 ga-1 in is plate thickness, not a part size) and demand 8 (acquisition closed Aug 2, 2024, outside the window; the Oct 2025 building sale is a property deal, not production) confirmed. Sumner scale 10 on an inferred headcount (GPC precedent) and Innovation Way scale 5 confirmed. Part mix 8 stands on the posting's product list under any reading (company-level at worst)."
+ ],
+ "opening_line_problems": [
+  "p-standard-iron-hartford-wi:bottleneck_guess and p-standard-iron-hartford-wi-2:bottleneck_guess - the robot clause rests on an inferred row and reads an open requisition as work under way. Suggested (both records): 'Possibly manual MIG welding capacity on hydraulic and fuel tanks: Standard Iron's October 1, 2026 Welder posting for its two Hartford plants offers hiring bonuses and shift premiums up to $5.'",
+  "Confirmed: Girtz opening line and bottleneck (permit worded as approved; CWI robotic welding worded as a plan; 40 MIG/7 TIG from the permit), JTS opening line (Oct 12, 2026 posting at 17645 N Gable Ave, then June 2, 2025 opening; newest first) and bottleneck (wording note: the May 2026 JobTarget copy is still listed, so 'last ad seen' means its posting date), both Standard Iron opening lines (Oct 1, 2026 is the raw first-posted date: JSON-LD equals the JazzHR job code; neither line claims which plant the hire joins)."
+ ],
+ "plants_closed_or_moved": [],
+ "status_problems": [
+  "p-standard-iron-hartford-wi-2 (Innovation Way): its prospect_test rests only on the two-address Welder posting. ECHO 110012180889 'HELGESEN INDUSTRIES IW PLANT' carries NAICS 332439 (other metal containers) and one program status 'Last Reported for 2021', and the Oct 2025 sale names its 127,000 sq ft building, so it is a production site, but welding at this address is stated only as 'or'. If the coordinator rules the posting unattributed, hold Innovation Way as base with prospect_test unknown (Caterpillar Clayton precedent) rather than profiled.",
+  "All four plants operating: Girtz (permit issued 2026-09-08; 26 live roles at the address), JTS Nampa (MCG postings at 17645 N Gable Ave released 2026-10-12 and 2026-11-12), Standard Iron Hartford (live postings 2026-11-17; OSHA 2025 records at Sumner)."
+ ],
+ "plant_status_notes": "Addresses confirmed: Girtz 5262 N East Shafer Drive (permit, careers page, OSHA, Census match to 6 decimals, FIPS 18181); JTS 17645 N Gable Ave (ECHO, SmartRecruiters raw itemprop, OSHA; FIPS 16027); Standard Iron 1055 W Sumner St and 1720 Innovation Way (contact page, FRS, ECHO; IW Census match equals the stored point; Sumner has no Census match and uses FRS registry 110040969039's point, FIPS 55131).",
+ "field_drift_notes": [
+  "p-jts-nampa-id:products in plants.csv adds '(power packaging)', which no JTS row carries; drop it or cite a page.",
+  "p-girtz-monticello-in:products in plants.csv includes 'dropovers' and 'ISO-container-based power packages', which sit on production_type rows (girtz.com, /z-cube/), not on products rows ('skid bases' is already on the permit products row); add products rows from those pages or trim.",
+  "p-standard-iron-hartford-wi(-2):name keeps 'Helgesen' and the '(Sumner Street)'/'(Innovation Way plant)' descriptors; the name rows were trimmed to 'Standard Iron - Hartford' with plants_csv_value keep, pending a name row citing /leak-proof-reservoirs/ ('Standard Iron Helgesen').",
+  "p-standard-iron-hartford-wi(-2):existing_robots rows say 'posted 2026-07-01'; that date comes from the JazzHR feed job code job_20260701130458, not the cited page (no date, no JSON-LD); add it to the reasoning.",
+  "p-standard-iron-hartford-wi(-2):bottleneck_guess corrected rows carry plants_csv_value, so the plants field takes the new text at apply."
+ ],
+ "leads": [
+  "Girtz: add a triggers row for the Legrand acquisition (June 10, 2026 release, legrand.us) so demand 15 does not hinge on the permit reading.",
+  "Standard Iron: OSHA record 3006590 ('Standard Iron', 36 employees, NAICS 332313, filed at 1055 W Sumner St) may be the Innovation Way plant filed under the Sumner address; not assignable from the file. WI DNR FID 267174050 (Innovation Way, 2006 .DOC registration) might state the IW process if it can be read.",
+  "JTS: MCG's live Abilene Tank Welder (SmartRecruiters 3743990015989206, released 2026-10-08, 2631 FM 3034) is on MCG's own board; relevant to p-jts-abilene-tx labor, not checked here."
+ ],
+ "method": "Fresh fetch of every cited URL (tools/fetch_page.fetch with_raw=True, browser fallback) into a scratch cache; every quote fragment checked against visible text plus raw source; Standard Iron postings re-read raw with JSON-LD parsed and the JazzHR XML feed (57 jobs) read for job codes, status and locations; MCG SmartRecruiters read through its postings API (list and details); Girtz careers list read with Playwright across all pages (26 roles); IDEM permit PDF and draft notice read in full for the cited units; EPA FRS and ECHO DFR JSON for both Hartford registry ids; Census geocoder re-queried; OSHA rows checked against data/osha_2025.csv by record ID and with tools/osha_match.py (run read-only in effect: it rewrote ledger/audit/osha-matches.json, which was restored with git checkout, so no ledger file changed). No web search used as a source. Girtz Welder date: /wp-json/wp/v2/types lists no route for the job post type, the direct route returns rest_no_route, no job feed exists, and the page carries only shortlink post id 2964, so 'undated' stands. JazzHR feed internalcode is empty for the Welder, Mig Welder, General Labor and Robotic Weld Engineer.",
+ "apply_note": "Apply after the coordinator merges ledger/inbox/profiler-OSHA-MIXED.json with its evidence_remove list (rows keyed by claim_id + source_url; 'origin' marks inbox vs ledger rows). Tag-only retags (Standard Iron products and production_type rows) carry an empty corrected_value on purpose, so apply_factcheck.py does not overwrite the plants.csv field; welder_postings and name corrections carry plants_csv_value 'keep'. Rule on the Standard Iron attribution (score_problems) before running normalise_scores.py, then fix the confidence mechanics as described there. The two confidence rows carry the every-reading values (2 and 3); 0 and 1 follow only if the no-confidence entries or site_attribution citations are added.",
+ "rows": [
+  {
+   "claim_id": "p-girtz-monticello-in:products",
+   "source_url": "https://permits.air.idem.in.gov/49985f.pdf",
+   "ledger_value": "metal enclosures and skid bases for power packaging; diesel generator quality assurance testing (IDEM FESOP renewal F181-49985-00038, issued 2026-09-08)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[0]",
+   "verdict": "confirmed",
+   "note": "A.1: \"The Permittee owns and operates a stationary source manufacturing metal enclosures and skid bases ...\"; permit number and issuance date September 8, 2026 confirmed on the cover page.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:prospect_test",
+   "source_url": "https://permits.air.idem.in.gov/49985f.pdf",
+   "ledger_value": "pass: welding stated at 5262 N. East Shafer Drive (40 MIG welders and 7 manual TIG stations in the 2026 state air permit, a source manufacturing metal enclosures and skid bases)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[1]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:weld_processes",
+   "source_url": "https://www.girtzindustries.com/archive-jobs/welder-2nd-shift/",
+   "ledger_value": "MIG and TIG: Girtz's own production Welder posting says \"either MIG or TIG\"",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[2]",
+   "verdict": "confirmed",
+   "note": "Page title is \"Welder 1st Shift (TIG)\" (URL slug welder-2nd-shift); body: \"Welds metal parts together using either MIG or TIG welding processes.\" Supports MIG and TIG.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:weld_processes",
+   "source_url": "https://permits.air.idem.in.gov/49985f.pdf",
+   "ledger_value": "40 MIG welders (25 installed 1990, 15 added 2024) and 7 manual TIG welding stations (IDEM FESOP F181-49985-00038, 2026-09-08)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[3]",
+   "verdict": "confirmed",
+   "note": "IDEM F181-49985-00038, issued September 8, 2026 (page 1 and cover): A.4(c) Laser Cutting and Welding Operation lists 25 MIG welders (1990) and 15 MIG welders (2024), W-1, and 7 TIG manually operated stations, W-2.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:materials",
+   "source_url": "https://www.girtzindustries.com/z-guard/",
+   "ledger_value": "carbon steel, aluminum and stainless (Z-GUARD enclosures); enclosures built on structural steel or fuel tank bases",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[4]",
+   "verdict": "confirmed",
+   "note": "Z-GUARD page: \"Enclosure built on structural steel or fuel tank base\"; \"Carbon steel, aluminum, and stainless materials\". Single-site company.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:site_attribution",
+   "source_url": "https://www.girtz.com/",
+   "ledger_value": "one production site: Girtz's company-level pages apply to 5262 N. East Shafer Drive, Monticello",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[5]",
+   "verdict": "confirmed",
+   "note": "Inferred single-site judgement: OSHA 2025 has one Girtz record (2942159); Girtz lists one location; Legrand: \"based in Monticello, Indiana\".",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:certifications",
+   "source_url": "https://www.girtzindustries.com/quality/",
+   "ledger_value": "ISO 9001:2015 registered",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[6]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:certifications",
+   "source_url": "https://www.girtzindustries.com/archive-jobs/certified-welding-inspector/",
+   "ledger_value": "welders certified in-house to AWS D1.1 by weld and bend test (a welder qualification, not a plant certification; CWI posting)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[7]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[8]",
+   "verdict": "confirmed",
+   "note": "Z-CUBE page gives three container sizes by kW (400-2250 kW) and no dimension; the permit's 2,000 lb is a powder-coating rate. Unknown confirmed; material 0.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:production_type",
+   "source_url": "https://www.legrand.us/about-us/newsroom/press/legrand-acquires-girtz-industries",
+   "ledger_value": "custom-engineered modular power enclosures (Legrand, 2026-06-10)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[9]",
+   "verdict": "confirmed",
+   "note": "Legrand release: \"custom-engineered modular power enclosures ... based in Monticello, Indiana\". Single-site company (site_attribution row), so kept stated.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:production_type",
+   "source_url": "https://www.girtz.com/",
+   "ledger_value": "projects range from ISO-container packages to structural skid bases and dropovers",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[10]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:production_type",
+   "source_url": "https://www.girtzindustries.com/z-cube/",
+   "ledger_value": "Z-CUBE container packages: custom turnkey systems built from a range of standardized package solutions",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[11]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:existing_robots",
+   "source_url": "https://www.girtzindustries.com/archive-jobs/certified-welding-inspector/",
+   "ledger_value": "robotic welding planned: the Certified Welding Inspector is to develop weld sequencing plans \"for future robotic welding\"",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[12]",
+   "verdict": "confirmed",
+   "note": "CWI posting: \"Develop Weld Procedure Specifications (WPS's) and weld sequencing plans for future robotic welding.\" Correctly worded as a plan.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:welder_postings",
+   "source_url": "https://www.girtzindustries.com/archive-jobs/welder-2nd-shift/",
+   "ledger_value": "1 open, counted: Welder 1st Shift (TIG) on Girtz's own careers page, Job Status Open, address 5262 N East Shafer Drive; MIG or TIG; undated",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[13]",
+   "verdict": "confirmed",
+   "note": "Live on girtzindustries.com/career (Playwright, 26 roles across the paginated list; this is the only production welder or fitter role). Page: Job Status Open; Address 5262 N East Shafer Drive; Job Sectors Production; no date on page or in raw source (sitemap lastmod 2026-11-06 only). Other roles with weld duties are maintenance, test-cell and quality roles (Mechanic, Maintenance, Test Cell Technician, Quality Technician), not production welders.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:welder_postings",
+   "source_url": "https://www.girtzindustries.com/archive-jobs/certified-welding-inspector/",
+   "ledger_value": "listed, not counted: Certified Welding Inspector (an inspector role)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[14]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:welder_postings",
+   "source_url": "https://www.girtzindustries.com/archive-jobs/supervisor-2nd-shift/",
+   "ledger_value": "listed, not counted: Supervisor 1st and 2nd shift (METAL FAB) (a supervisor role)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[15]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:welder_postings",
+   "source_url": "https://www.girtzindustries.com/wp-sitemap-posts-recruitly_addons_job-1.xml",
+   "ledger_value": "undated: no posting date on the page or in its source; the careers list (3 pages, about 26 roles) has no other production welder or fitter role",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[16]",
+   "verdict": "confirmed",
+   "note": "No date on the page or in its raw source; the job post type has no WordPress REST route (/wp-json/wp/v2/types lists none; the direct route returns rest_no_route) and no feed; shortlink post id 2964 only; sitemap lastmod 2026-11-06 is an edit stamp. Undated stands, so no 60+ day route (labor 12).",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:triggers",
+   "source_url": "https://permits.air.idem.in.gov/49985f.pdf",
+   "ledger_value": "IDEM approved on 2026-09-08 (FESOP renewal with significant new source review) modifications to raise spray-paint-booth throughput (now rated 0.33 metal skids per hour) and the generator testing station (combined 18,000 hp)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[17]",
+   "verdict": "confirmed",
+   "note": "Permit A.2(a): SB-1 \"approved in 2026 for modification to increase throughput ... 0.33 metal skids per hour\"; A.2(d) G-Test \"combined rated maximum output of 18,000 hp\", both test cells \"approved in 2026 for modification\". The 10,300 hp starting point is on row 18 (draft notice).",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:triggers",
+   "source_url": "https://ecm.idem.in.gov/cs/idcplg?IdcService=GET_FILE&dID=83993268&Rendition=web",
+   "ledger_value": "the application asked to raise paint-booth throughput from 0.17 to 0.33 units per hour and generator-test output from 10,300 hp to 18,000 hp (draft notice, 2026)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[18]",
+   "verdict": "confirmed",
+   "note": "Draft notice for FESOP Renewal No. F181-49985-00038: (1) paint booth 0.17 to 0.33 units per hour; (3) G-Test 10,300 hp to 18,000 hp. The notice page itself carries no date; \"2026\" in the value is the year of the final decision (permit issued 2026-09-08). Acceptable; wording note only.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "c-legrand:multi_plant",
+   "source_url": "https://www.legrand.ca/about-us/newsroom/press/legrand-announces-major-investments-in-people-processes-and-plants-for-cablofil-business",
+   "ledger_value": "Legrand operates several manufacturing facilities (e.g. Mascoutah IL and Monterey, Mexico; Dec 2025)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[19]",
+   "verdict": "confirmed",
+   "note": "legrand.ca release dated December 8, 2025: Mascoutah, Illinois and Monterey, Mexico facilities.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly welding and finishing throughput: IDEM approved higher paint-booth and generator-test capacity in September 2026 while Girtz is hiring a MIG/TIG welder and a weld inspector who would plan weld sequences for future robotic welding.",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[20]",
+   "verdict": "confirmed",
+   "note": "Facts on stated rows: permit approval September 2026 (rows 17/18), MIG/TIG welder opening (row 13), CWI opening and future robotic welding (rows 12/14).",
+   "row_class": "line"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:opening_line",
+   "source_url": "",
+   "ledger_value": "IDEM's September 8, 2026 permit approved raising your Monticello paint booth to 0.33 skids per hour and your generator test station to 18,000 hp, and your Certified Welding Inspector opening asks for weld sequencing plans for future robotic welding; how are you planning to keep your 40 MIG and 7 TIG stations ahead of that throughput?",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[21]",
+   "verdict": "confirmed",
+   "note": "Clauses: permit issued September 8, 2026 (rows 0/17), 0.33 skids/hr and 18,000 hp approved (rows 17/18), CWI \"future robotic welding\" (row 12, a plan, worded as asked-for), 40 MIG and 7 TIG (row 3). Permit worded as an approval, not achieved capacity. The CWI posting is undated, so its order relative to the permit cannot be checked; acceptable.",
+   "row_class": "line"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:score_process",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[22]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[23]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[24]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[25]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[26]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[27]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:score_total",
+   "source_url": "",
+   "ledger_value": "64",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[28]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[29]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:confidence",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[30]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:prospect_test",
+   "source_url": "https://www.jobtarget.com/jobs/jt-ngwudjqdvp/2nd-shift-tank-welder-nampa-nampa-idaho",
+   "ledger_value": "pass: a JTS Tank Welder posting titled \"(Nampa)\" (JobTarget copy, datePosted 2026-05-14) describes manual or semi-automatic welding of large fuel tanks",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[31]",
+   "verdict": "confirmed",
+   "note": "JobTarget page live (Apply Now; validThrough 2027-01-09): title \"Tank Welder 2nd Shift - (Nampa)\", Johnson Thermal Systems, Nampa ID 83651; manual or semi-automatic welding line present. Site tie is in the inferred site_attribution row.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:weld_processes",
+   "source_url": "https://www.jobtarget.com/jobs/jt-ngwudjqdvp/2nd-shift-tank-welder-nampa-nampa-idaho",
+   "ledger_value": "MIG (.045 wire) and stick (7024 rods) preferred; manual or semi-automatic welding in multiple positions (JTS Tank Welder 2nd Shift (Nampa), JobTarget copy dated 2026-05-14)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[32]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:materials",
+   "source_url": "https://www.jobtarget.com/jobs/jt-ngwudjqdvp/2nd-shift-tank-welder-nampa-nampa-idaho",
+   "ledger_value": "steel, aluminum and stainless steel (Nampa Tank Welder posting)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[33]",
+   "verdict": "confirmed",
+   "note": "JobTarget page: \"Work with various metals, including steel, aluminum, and stainless steel.\" (same sentence in the Abilene template). Steel stated; aluminum noted, not aluminum-first.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:part_size_fit",
+   "source_url": "https://www.jobtarget.com/jobs/jt-ngwudjqdvp/2nd-shift-tank-welder-nampa-nampa-idaho",
+   "ledger_value": "diesel fuel tanks up to 60 ft long and 13 ft wide, 3,000-10,000 gal (Nampa Tank Welder posting)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[34]",
+   "verdict": "confirmed",
+   "note": "Quote on the JobTarget page. The same sentence is in MCG's live Abilene Tank Welder (SmartRecruiters 3743990015989206, 2631 FM 3034, Abilene): JTS-wide template text, so the size is not Nampa-specific (see score_problems, material RULING).",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:part_size_fit",
+   "source_url": "",
+   "ledger_value": "fits the 2026 analyst cell limits (60 ft long, 15 ft wide) at the length limit; weight not stated; too wide for the older sheet's 72 in",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[35]",
+   "verdict": "confirmed",
+   "note": "Inferred row without a quote; reasoning checked against the pages and APIs read in this check.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:site_attribution",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "the \"(Nampa)\" Tank Welder posting is attributed to JTS Nampa 1 (17645 N Gable Ave): JTS has one production site in Nampa",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[36]",
+   "verdict": "confirmed",
+   "note": "Inferred: release names one Nampa location (\"JTS Nampa 1, located near the Caldwell facility\"); OSHA 2025 JTS records are Caldwell (2), Emmett and Nampa; posting ZIP 83651 is a Nampa city ZIP, plant ZIP 83687.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:production_type",
+   "source_url": "https://missioncriticalgroup.com/power-generation-systems/generator-enclosures/",
+   "ledger_value": "every generator enclosure custom-designed to site requirements (Mission Critical Group, parent, company-level)",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[37]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[38]",
+   "verdict": "confirmed",
+   "note": "Unknown confirmed: no stated value found on the cited or related pages read in this check.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[39]",
+   "verdict": "confirmed",
+   "note": "Unknown confirmed: no stated value found on the cited or related pages read in this check.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:welder_postings",
+   "source_url": "https://johnsonthermalsystems.applytojob.com/apply/jobs/",
+   "ledger_value": "0 counted: JTS's own JazzHR board shows no open positions (2026-11-17)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[40]",
+   "verdict": "confirmed",
+   "note": "johnsonthermalsystems.applytojob.com: \"There are no open positions.\"",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:welder_postings",
+   "source_url": "https://www.jobtarget.com/jobs/jt-ngwudjqdvp/2nd-shift-tank-welder-nampa-nampa-idaho",
+   "ledger_value": "listed, not counted: Tank Welder 2nd Shift - (Nampa), Johnson Thermal Systems, JobTarget aggregator copy, datePosted 2026-05-14; not on JTS's JazzHR board or MCG's SmartRecruiters board today (sets process; earns no labor, rule 7)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[41]",
+   "verdict": "corrected",
+   "corrected_value": "listed, not counted: Tank Welder 2nd Shift - (Nampa), Johnson Thermal Systems, JobTarget aggregator copy, datePosted 2026-05-14, validThrough 2027-01-09 (still listed on JobTarget 2026-11-17)",
+   "corrected_quote": "",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Quote is in the raw JSON-LD (datePosted 2026-05-14T16:28:00.000Z; validThrough 2027-01-09). The value adds \"not on JTS's JazzHR board or MCG's SmartRecruiters board today\" and the rule-7 counting note, which the JobTarget page does not carry. Both absences are true (JazzHR \"There are no open positions.\"; SmartRecruiters API 80 postings, Nampa = Material Handler Lead and Production Manager - 2nd Shift; the board's Tank Welder 3743990015989206 is Abilene, 2631 FM 3034) and sit on rows 40 and 44. Clause moved out; no score change (labor 0 stands).",
+   "plants_csv_value": "keep (multi-row field; the plants.csv welder_postings text is already right)",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:welder_postings",
+   "source_url": "https://jobs.smartrecruiters.com/MissionCriticalGroup/3743990016063866",
+   "ledger_value": "listed, not counted: Production Manager - 2nd Shift (management), MCG SmartRecruiters, 17645 N Gable Ave, released 2026-10-12; Monday-Thursday 3:30 pm-2:30 am",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[42]",
+   "verdict": "confirmed",
+   "note": "Raw source: itemprop streetAddress 17645 N Gable Ave, postalCode 83687, datePosted 2026-10-12T18:27:17.369Z; hours line visible. Management role, correctly listed only.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:welder_postings",
+   "source_url": "https://api.smartrecruiters.com/v1/companies/MissionCriticalGroup/postings/3743990016063866",
+   "ledger_value": "Production Manager - 2nd Shift released 2026-10-12 at 17645 N Gable Ave (SmartRecruiters API)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[43]",
+   "verdict": "confirmed",
+   "note": "API: releasedDate 2026-10-12T18:27:17.369Z, location 17645 N Gable Ave 83687, active. Posting id 3743990016063866 falls between Oct 8 (3743990015989206) and Oct 13 (3743990016096914) ids, consistent with a first release on Oct 12.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:welder_postings",
+   "source_url": "https://api.smartrecruiters.com/v1/companies/MissionCriticalGroup/postings?limit=100",
+   "ledger_value": "MCG SmartRecruiters board (80 postings read 2026-11-17): Nampa roles are Material Handler Lead (2026-11-12) and Production Manager - 2nd Shift (2026-10-12); no welder role",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[44]",
+   "verdict": "confirmed",
+   "note": "API re-read 2026-11-17: totalFound 80; Nampa postings are Material Handler Lead (2026-11-12) and Production Manager - 2nd Shift (2026-10-12) only; no welder role at Nampa.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely second-shift fabrication staffing at the plant built to double JTS capacity: the last Nampa tank welder ad seen (May 2026) was a 2nd-shift role, and a Production Manager - 2nd Shift is open now.",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[45]",
+   "verdict": "confirmed",
+   "note": "Facts on stated rows (rows 41/42, triggers). Note: the JobTarget Tank Welder copy is still listed (validThrough 2027-01-09), so \"the last Nampa tank welder ad seen (May 2026)\" means its posting date, not that it has closed; acceptable for an inferred guess.",
+   "row_class": "line"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Nampa plant posted a Production Manager - 2nd Shift role on Oct 12, 2026 for a Monday-Thursday 3:30 pm-2:30 am shift, and JTS Nampa 1 opened on June 2, 2025 to double JTS's production capacity; how many people are you running on that second shift today?",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[46]",
+   "verdict": "confirmed",
+   "note": "Clauses: Production Manager - 2nd Shift at 17645 N Gable Ave, datePosted/releasedDate 2026-10-12, Mon-Thu 3:30 pm-2:30 am (rows 42/43); JTS Nampa 1 opening announced June 2, 2025, \"doubles the company's production capacity\" (triggers row). Newest first; both dated.",
+   "row_class": "line"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[47]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:score_material_part",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[48]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[49]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[50]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[51]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[52]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:score_total",
+   "source_url": "",
+   "ledger_value": "80",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[53]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[54]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:confidence",
+   "source_url": "",
+   "ledger_value": "2",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[55]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:prospect_test",
+   "source_url": "https://stdiron.applytojob.com/apply/jobs/details/0OC37FJv5b",
+   "ledger_value": "pass: Standard Iron's Welder posting (datePosted 2026-10-01) names 1055 W Sumner St as one of two locations for MIG welding of mild steel tanks",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[56]",
+   "verdict": "confirmed",
+   "note": "Welder posting 0OC37FJv5b: \"Location: Hartford, WI (1055 W Sumner St or 1720 Innovation Way)\"; JSON-LD datePosted 2026-10-01, validThrough 2026-12-30; JazzHR feed status Open. Names this address as one of two; see score_problems.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:weld_processes",
+   "source_url": "https://stdiron.applytojob.com/apply/jobs/details/0OC37FJv5b",
+   "ledger_value": "MIG (GMAW) on mild steel, all positions; D1.1 GMAW and D1.3 GMAW welder qualifications (Welder posting naming both Hartford plants, 2026-10-01)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[57]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:materials",
+   "source_url": "https://stdiron.applytojob.com/apply/jobs/details/0OC37FJv5b",
+   "ledger_value": "mild steel, 20 gauge to 1 in plate (Welder posting naming both Hartford plants)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[58]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:products",
+   "source_url": "https://stdiron.applytojob.com/apply/jobs/details/0OC37FJv5b",
+   "ledger_value": "hydraulic tanks, fuel tanks, fenders, platforms and custom sheet metal designs (Welder posting naming both Hartford plants)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[59]",
+   "verdict": "confirmed",
+   "note": "Welder posting: \"Fabricate: Build hydraulic tanks, fuel tanks, fenders, platforms, and custom sheet metal designs.\"",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:production_type",
+   "source_url": "https://www.std-iron.com/leak-proof-reservoirs/",
+   "ledger_value": "Helgesen tanks: custom design and prototypes, then full-scale production (company page for the Helgesen line)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[60]",
+   "verdict": "corrected",
+   "corrected_value": "",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Quote on the page. The page is the Standard Iron Helgesen product-line page and names no plant; Standard Iron states seven facilities and Helgesen runs two Hartford plants about 1.9 km apart (ECHO), so the custom-design-to-production statement is brand-level and its tie to this plant is inferred (mining round-1 pattern a; the profiler's own site_attribution row says Hartford-only facts are inferred for either plant). Retagged inferred, value unchanged. Part mix 8 still stands on the posting's product list (stated row) under the rubric's product-list level, but score_part_mix cites this claim, so part mix no longer earns confidence (see score_problems).",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:site_attribution",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110012180889&output=JSON",
+   "ledger_value": "two Hartford production sites about 1.9 km apart (1055 W Sumner St and 1720 Innovation Way): not one campus; Hartford-only facts are inferred for either plant; the Welder posting names both addresses without saying which plant a hire joins",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[61]",
+   "verdict": "confirmed",
+   "note": "Inferred site judgement in its own row (FACT-CHECK LESSON); facts checked: ECHO 110000593929 carries both 1055 W Sumner St and 7261 STH 60 (43.322579, -88.402812) and 110012180889 is 1720 Innovation Way (43.336896, -88.416686), about 1.9 km apart; OSHA and registry claims re-checked.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[62]",
+   "verdict": "confirmed",
+   "note": "Unknown confirmed: no stated value found on the cited or related pages read in this check.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:certifications",
+   "source_url": "https://www.std-iron.com/contract-manufacturing/capabilities/welding/",
+   "ledger_value": "company-level: engineers, inspectors and welders hold ISO and AWS certifications (no plant certification stated for Hartford)",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[63]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:existing_robots",
+   "source_url": "https://stdiron.applytojob.com/apply/jobs/details/sb1pd5k9wV",
+   "ledger_value": "likely ABB robotic weld cells somewhere in Standard Iron: a Hartford-based Robotic Weld Engineer (posted 2026-07-01) programs \"multi-axis systems (primarily ABB)\" and travels to other plants; which Hartford plant has cells is not stated",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[64]",
+   "verdict": "confirmed",
+   "note": "Page: \"Location: Hartford Wiscosnin (With occasional travel to other plants)\", ABB multi-axis programming. The \"posted 2026-07-01\" in the value is from the JazzHR job code (job_20260701130458), not the page, which carries no date or JSON-LD; add that to the reasoning. Inferred tag right.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:welder_postings",
+   "source_url": "https://stdiron.applytojob.com/apply/jobs/details/0OC37FJv5b",
+   "ledger_value": "1 counted (names both Hartford plants; plant of hire not stated): Welder, MIG, datePosted 2026-10-01 (validThrough 2026-12-30), \"Hiring Bonuses for this role\", shift premiums up to $5; open on Standard Iron's own JazzHR board 2026-11-17",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[65]",
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2026-10-01 equals the JazzHR job code job_20261001191946 (raw first-posted date, not a re-stamp); validThrough 2026-12-30; \"Hiring Bonuses for this role\" and \"Shift Premiums up to $5\" in the text; feed status Open 2026-11-17. Board location field is only Hartford WI 53027; the text names both plants.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:welder_postings",
+   "source_url": "https://stdiron.applytojob.com/apply/jobs/details/2l13ewy1lh",
+   "ledger_value": "listed, not counted here: Mig Welder, location \"Hartford, WI\" only (plant not named; city shared by two plants about 1.9 km apart); MIG on mild steel 20 ga-1 in; \"Tig is a bonus\"",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[66]",
+   "verdict": "corrected",
+   "corrected_value": "listed, not counted here: Mig Welder, location \"Hartford, WI\" only (no street address on the page); MIG on mild steel 20 gauge to 1-inch; \"Tig is a bonus\"",
+   "corrected_quote": "",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Quote and the 20 ga-1 in clause are on the page (\"Perform MIG welding on mild steel materials ranging from 20 gauge to 1-inch thickness\"); the page and the JazzHR feed give only Hartford WI 53027 and no JSON-LD. The clause \"city shared by two plants about 1.9 km apart\" is an ECHO distance judgement inside a stated row (FACT-CHECK LESSON: site judgements go in their own inferred row; the site_attribution row already carries it). Trimmed; no score change.",
+   "plants_csv_value": "keep (multi-row field)",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:welder_postings",
+   "source_url": "https://app.jazz.co/feeds/export/jobs/stdiron",
+   "ledger_value": "Mig Welder job code job_20251111175939_GMJQ3GT43K4GFRDT (JazzHR feed): code timestamp 2025-11-11, over 12 months old, a standing ad",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[67]",
+   "verdict": "confirmed",
+   "note": "JazzHR feed: Mig Welder id job_20251111175939_GMJQ3GT43K4GFRDT, status Open. The code-to-date reading is borne out on this board: Welder code 20261001 = JSON-LD 2026-10-01; General Labor code 20260911 = JSON-LD 2026-09-11. Inferred tag right; standing ad.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:welder_postings",
+   "source_url": "https://stdiron.applytojob.com/apply/jobs/details/EMwJrWE65a",
+   "ledger_value": "listed, not counted: General Labor (Hartford, plant not named): leak testing with TIG touch-up repairs on leaking tanks, a repair and helper role",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[68]",
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2026-09-11, location Hartford only; TIG touch-up repair on leaking tanks; a repair/helper role, listed only. Correct.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:triggers",
+   "source_url": "",
+   "ledger_value": "none within 24 months",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[69]",
+   "verdict": "confirmed",
+   "note": "Inferred row without a quote; reasoning checked against the pages and APIs read in this check.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:triggers",
+   "source_url": "https://biztimes.com/former-helgesen-industries-hartford-facilities-sold-for-24-million/",
+   "ledger_value": "not a trigger: both Hartford buildings sold for $24 million (BizTimes, 2025-10-06): 211,000 sq ft at 1055 W. Sumner St and 127,000 sq ft at 1720 Innovation Way",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[70]",
+   "verdict": "confirmed",
+   "note": "BizTimes, Oct 6, 2025: both buildings, square footage and prices as quoted; the buyer is described as a REIT that focuses on sale-leaseback transactions. Correctly recorded as not a trigger.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:prospect_test",
+   "source_url": "https://stdiron.applytojob.com/apply/jobs/details/0OC37FJv5b",
+   "ledger_value": "pass: Standard Iron's Welder posting (datePosted 2026-10-01) names 1720 Innovation Way as one of two locations for MIG welding of mild steel tanks",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[71]",
+   "verdict": "confirmed",
+   "note": "Same posting; names 1720 Innovation Way as one of two locations. This is the only stated welding fact at Innovation Way (see status_problems).",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:weld_processes",
+   "source_url": "https://stdiron.applytojob.com/apply/jobs/details/0OC37FJv5b",
+   "ledger_value": "MIG (GMAW) on mild steel, all positions; D1.1 GMAW and D1.3 GMAW welder qualifications (Welder posting naming both Hartford plants, 2026-10-01)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[72]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:materials",
+   "source_url": "https://stdiron.applytojob.com/apply/jobs/details/0OC37FJv5b",
+   "ledger_value": "mild steel, 20 gauge to 1 in plate (Welder posting naming both Hartford plants)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[73]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:products",
+   "source_url": "https://stdiron.applytojob.com/apply/jobs/details/0OC37FJv5b",
+   "ledger_value": "hydraulic tanks, fuel tanks, fenders, platforms and custom sheet metal designs (Welder posting naming both Hartford plants)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[74]",
+   "verdict": "confirmed",
+   "note": "Welder posting: \"Fabricate: Build hydraulic tanks, fuel tanks, fenders, platforms, and custom sheet metal designs.\"",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:production_type",
+   "source_url": "https://www.std-iron.com/leak-proof-reservoirs/",
+   "ledger_value": "Helgesen tanks: custom design and prototypes, then full-scale production (company page for the Helgesen line)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[75]",
+   "verdict": "corrected",
+   "corrected_value": "",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Quote on the page. The page is the Standard Iron Helgesen product-line page and names no plant; Standard Iron states seven facilities and Helgesen runs two Hartford plants about 1.9 km apart (ECHO), so the custom-design-to-production statement is brand-level and its tie to this plant is inferred (mining round-1 pattern a; the profiler's own site_attribution row says Hartford-only facts are inferred for either plant). Retagged inferred, value unchanged. Part mix 8 still stands on the posting's product list (stated row) under the rubric's product-list level, but score_part_mix cites this claim, so part mix no longer earns confidence (see score_problems).",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:site_attribution",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110012180889&output=JSON",
+   "ledger_value": "two Hartford production sites about 1.9 km apart (1720 Innovation Way and 1055 W Sumner St): not one campus; Hartford-only facts are inferred for either plant; the Welder posting names both addresses without saying which plant a hire joins",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[76]",
+   "verdict": "confirmed",
+   "note": "Inferred site judgement in its own row (FACT-CHECK LESSON); facts checked: ECHO 110000593929 carries both 1055 W Sumner St and 7261 STH 60 (43.322579, -88.402812) and 110012180889 is 1720 Innovation Way (43.336896, -88.416686), about 1.9 km apart; OSHA and registry claims re-checked.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[77]",
+   "verdict": "confirmed",
+   "note": "Unknown confirmed: no stated value found on the cited or related pages read in this check.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:certifications",
+   "source_url": "https://www.std-iron.com/contract-manufacturing/capabilities/welding/",
+   "ledger_value": "company-level: engineers, inspectors and welders hold ISO and AWS certifications (no plant certification stated for Hartford)",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[78]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:existing_robots",
+   "source_url": "https://stdiron.applytojob.com/apply/jobs/details/sb1pd5k9wV",
+   "ledger_value": "likely ABB robotic weld cells somewhere in Standard Iron: a Hartford-based Robotic Weld Engineer (posted 2026-07-01) programs \"multi-axis systems (primarily ABB)\" and travels to other plants; which Hartford plant has cells is not stated",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[79]",
+   "verdict": "confirmed",
+   "note": "Page: \"Location: Hartford Wiscosnin (With occasional travel to other plants)\", ABB multi-axis programming. The \"posted 2026-07-01\" in the value is from the JazzHR job code (job_20260701130458), not the page, which carries no date or JSON-LD; add that to the reasoning. Inferred tag right.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:welder_postings",
+   "source_url": "https://stdiron.applytojob.com/apply/jobs/details/0OC37FJv5b",
+   "ledger_value": "1 counted (names both Hartford plants; plant of hire not stated): Welder, MIG, datePosted 2026-10-01 (validThrough 2026-12-30), \"Hiring Bonuses for this role\", shift premiums up to $5; open on Standard Iron's own JazzHR board 2026-11-17",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[80]",
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2026-10-01 equals the JazzHR job code job_20261001191946 (raw first-posted date, not a re-stamp); validThrough 2026-12-30; \"Hiring Bonuses for this role\" and \"Shift Premiums up to $5\" in the text; feed status Open 2026-11-17. Board location field is only Hartford WI 53027; the text names both plants.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:welder_postings",
+   "source_url": "https://stdiron.applytojob.com/apply/jobs/details/2l13ewy1lh",
+   "ledger_value": "listed, not counted here: Mig Welder, location \"Hartford, WI\" only (plant not named; city shared by two plants about 1.9 km apart); MIG on mild steel 20 ga-1 in; \"Tig is a bonus\"",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[81]",
+   "verdict": "corrected",
+   "corrected_value": "listed, not counted here: Mig Welder, location \"Hartford, WI\" only (no street address on the page); MIG on mild steel 20 gauge to 1-inch; \"Tig is a bonus\"",
+   "corrected_quote": "",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Quote and the 20 ga-1 in clause are on the page (\"Perform MIG welding on mild steel materials ranging from 20 gauge to 1-inch thickness\"); the page and the JazzHR feed give only Hartford WI 53027 and no JSON-LD. The clause \"city shared by two plants about 1.9 km apart\" is an ECHO distance judgement inside a stated row (FACT-CHECK LESSON: site judgements go in their own inferred row; the site_attribution row already carries it). Trimmed; no score change.",
+   "plants_csv_value": "keep (multi-row field)",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:welder_postings",
+   "source_url": "https://app.jazz.co/feeds/export/jobs/stdiron",
+   "ledger_value": "Mig Welder job code job_20251111175939_GMJQ3GT43K4GFRDT (JazzHR feed): code timestamp 2025-11-11, over 12 months old, a standing ad",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[82]",
+   "verdict": "confirmed",
+   "note": "JazzHR feed: Mig Welder id job_20251111175939_GMJQ3GT43K4GFRDT, status Open. The code-to-date reading is borne out on this board: Welder code 20261001 = JSON-LD 2026-10-01; General Labor code 20260911 = JSON-LD 2026-09-11. Inferred tag right; standing ad.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:welder_postings",
+   "source_url": "https://stdiron.applytojob.com/apply/jobs/details/EMwJrWE65a",
+   "ledger_value": "listed, not counted: General Labor (Hartford, plant not named): leak testing with TIG touch-up repairs on leaking tanks, a repair and helper role",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[83]",
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2026-09-11, location Hartford only; TIG touch-up repair on leaking tanks; a repair/helper role, listed only. Correct.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:triggers",
+   "source_url": "",
+   "ledger_value": "none within 24 months",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[84]",
+   "verdict": "confirmed",
+   "note": "Inferred row without a quote; reasoning checked against the pages and APIs read in this check.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:triggers",
+   "source_url": "https://biztimes.com/former-helgesen-industries-hartford-facilities-sold-for-24-million/",
+   "ledger_value": "not a trigger: both Hartford buildings sold for $24 million (BizTimes, 2025-10-06): 211,000 sq ft at 1055 W. Sumner St and 127,000 sq ft at 1720 Innovation Way",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[85]",
+   "verdict": "confirmed",
+   "note": "BizTimes, Oct 6, 2025: both buildings, square footage and prices as quoted; the buyer is described as a REIT that focuses on sale-leaseback transactions. Correctly recorded as not a trigger.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "c-standard-iron:multi_plant",
+   "source_url": "https://www.std-iron.com/",
+   "ledger_value": "Standard Iron: seven facilities across North America",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[86]",
+   "verdict": "confirmed",
+   "note": "Home page: \"seven advanced facilities across North America\".",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "150 (2025 annual average, OSHA Form 300A; establishment \"Standard Iron Sumner\", 1055 W Sumner St; matcher grade review: odd hours)",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[87]",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv by record ID: fields match the quote. tools/osha_match.py grade: review (odd hours: 30,077,350 h / 150; second record ID 3006590 \"Standard Iron\", 36 employees, same Sumner address); inferred tag right, scale 10 earns no confidence (GPC precedent). Run read-only; the matcher's audit file was restored.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[88]",
+   "verdict": "confirmed",
+   "note": "Unknown confirmed: no stated value found on the cited or related pages read in this check.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly manual MIG welding capacity on Helgesen hydraulic and fuel tanks: Standard Iron is offering hiring bonuses and shift premiums up to $5 for MIG welders across its two Hartford plants while a Hartford-based engineer programs ABB weld robots.",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[89]",
+   "verdict": "corrected",
+   "corrected_value": "Possibly manual MIG welding capacity on hydraulic and fuel tanks: Standard Iron's October 1, 2026 Welder posting for its two Hartford plants offers hiring bonuses and shift premiums up to $5.",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "The clause \"while a Hartford-based engineer programs ABB weld robots\" rests on existing_robots, an inferred row, and words an open requisition (Robotic Weld Engineer, live, location \"Hartford Wiscosnin (With occasional travel to other plants)\") as an engineer at work. \"Helgesen\" also rests on brand-level rows now inferred. Rewritten from stated rows only: the 2026-10-01 Welder posting (datePosted in JSON-LD = JazzHR job code job_20261001191946, so the raw first-posted date), \"Hiring Bonuses for this role\", \"Shift Premiums up to $5\", \"Build hydraulic tanks, fuel tanks\". If the coordinator wants the robot point, add a stated row for the posting text and word it as hiring.",
+   "plants_csv_value": "Possibly manual MIG welding capacity on hydraulic and fuel tanks: Standard Iron's October 1, 2026 Welder posting for its two Hartford plants offers hiring bonuses and shift premiums up to $5.",
+   "row_class": "line"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Oct 1, 2026 Welder posting offers hiring bonuses and shift premiums up to $5 for MIG welders building hydraulic and fuel tanks at 1055 W Sumner St or 1720 Innovation Way; how many of those openings are you trying to fill at the Sumner Street plant?",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[90]",
+   "verdict": "confirmed",
+   "note": "Every clause traced to a stated row of the plant; dated facts dated, newest first; no plan written as progress.",
+   "row_class": "line"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[91]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[92]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[93]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[94]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[95]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[96]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:score_total",
+   "source_url": "",
+   "ledger_value": "66",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[97]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[98]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:confidence",
+   "source_url": "",
+   "ledger_value": "3",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[99]",
+   "verdict": "corrected",
+   "corrected_value": "2",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "3 -> 2 under every reading: score_part_mix cites production_type, which is inferred-only after this check's correction. Further cut recommended to 0 (RULING, score_problems) (Hennig precedent, consultation 18): the Welder posting names \"1055 W Sumner St or 1720 Innovation Way\" and does not say which plant a hire joins (the profiler's own site_attribution row), so process, labor and the posting's product list are an inferred plant tie; scale rests on an inferred headcount. ",
+   "plants_csv_value": "2",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly manual MIG welding capacity on Helgesen hydraulic and fuel tanks: Standard Iron is offering hiring bonuses and shift premiums up to $5 for MIG welders across its two Hartford plants while a Hartford-based engineer programs ABB weld robots.",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[100]",
+   "verdict": "corrected",
+   "corrected_value": "Possibly manual MIG welding capacity on hydraulic and fuel tanks: Standard Iron's October 1, 2026 Welder posting for its two Hartford plants offers hiring bonuses and shift premiums up to $5.",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "The clause \"while a Hartford-based engineer programs ABB weld robots\" rests on existing_robots, an inferred row, and words an open requisition (Robotic Weld Engineer, live, location \"Hartford Wiscosnin (With occasional travel to other plants)\") as an engineer at work. \"Helgesen\" also rests on brand-level rows now inferred. Rewritten from stated rows only: the 2026-10-01 Welder posting (datePosted in JSON-LD = JazzHR job code job_20261001191946, so the raw first-posted date), \"Hiring Bonuses for this role\", \"Shift Premiums up to $5\", \"Build hydraulic tanks, fuel tanks\". If the coordinator wants the robot point, add a stated row for the posting text and word it as hiring.",
+   "plants_csv_value": "Possibly manual MIG welding capacity on hydraulic and fuel tanks: Standard Iron's October 1, 2026 Welder posting for its two Hartford plants offers hiring bonuses and shift premiums up to $5.",
+   "row_class": "line"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Oct 1, 2026 Welder posting offers hiring bonuses and shift premiums up to $5 for MIG welders building hydraulic and fuel tanks at 1055 W Sumner St or 1720 Innovation Way; how many of those openings are you trying to fill at Innovation Way?",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[101]",
+   "verdict": "confirmed",
+   "note": "Every clause traced to a stated row of the plant; dated facts dated, newest first; no plan written as progress.",
+   "row_class": "line"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[102]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[103]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[104]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[105]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[106]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[107]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:score_total",
+   "source_url": "",
+   "ledger_value": "61",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[108]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[109]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the rubric, the vertical's rules and the cited claims; see score_problems / score_notes.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:confidence",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-MIXED.json evidence[110]",
+   "verdict": "corrected",
+   "corrected_value": "3",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "4 -> 3 under every reading: score_part_mix cites production_type, now inferred-only. Further cut recommended to 1 (RULING, score_problems: only scale: c-standard-iron:multi_plant, stated). Process, labor and part mix rest on the two-address Welder posting with the plant of hire not stated (Hennig precedent). ",
+   "plants_csv_value": "3",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:name",
+   "source_url": "https://www.std-iron.com/contact/",
+   "ledger_value": "Standard Iron Helgesen - Hartford",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "corrected",
+   "corrected_value": "Standard Iron - Hartford",
+   "corrected_quote": "",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The contact page lists \"Hartford, WI\" with both addresses but never says \"Helgesen\" (grep of the fresh fetch). \"Standard Iron Helgesen\" is the product-line name on /leak-proof-reservoirs/; BizTimes (2025-10-06) says the Helgesen Industries brand was discontinued and folded into Standard Iron. Group name not on the cited page (mining round-1 pattern b).",
+   "plants_csv_value": "keep: add a name row citing https://www.std-iron.com/leak-proof-reservoirs/ (\"From specifications to solutions, Standard Iron Helgesen seamlessly delivers tanks\") if the plant name keeps \"Helgesen\"",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:address",
+   "source_url": "https://www.std-iron.com/contact/",
+   "ledger_value": "1055 W. Sumner Street, Hartford, WI 53027",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=HELGESEN&state_abbr=WI&output=JSON",
+   "ledger_value": "1055 W. Sumner Street, Hartford, WI 53027 (EPA FRS)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:parent_company",
+   "source_url": "https://www.powerprogress.com/news/standard-iron-acquires-helgesen/8038575.article",
+   "ledger_value": "Helgesen Industries acquired by Standard Iron (Aug 2024)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Power Progress, 06 August 2024; closed August 2.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:website",
+   "source_url": "https://www.std-iron.com/contact/",
+   "ledger_value": "https://www.std-iron.com",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:products",
+   "source_url": "https://www.std-iron.com/",
+   "ledger_value": "fuel, hydraulic, expansion, coolant and secondary containment tanks",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "corrected",
+   "corrected_value": "",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Quote on the home page, under the Helgesen paragraph (\"Now a Standard Iron company, Helgesen Industries ... Our product range includes ...\"). Brand-level product range of a seven-facility company whose Helgesen line runs at two Hartford plants; no site named, so the tie to this plant is inferred. Retagged inferred, value unchanged (plants.csv products clause stays, resting on an inferred row plus the stated posting row).",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:products",
+   "source_url": "https://www.std-iron.com/careers/",
+   "ledger_value": "company-level customers include John Deere, Caterpillar, Kawasaki and CNH",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:tier",
+   "source_url": "https://www.std-iron.com/careers/",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Inferred tier from a company customer list (Deere, Caterpillar, Kawasaki, CNH); consistent with Tier 1 tank supplier.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:tier_secondary",
+   "source_url": "https://www.std-iron.com/",
+   "ledger_value": "Contract fabricator",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:relationship",
+   "source_url": "https://www.std-iron.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Relationship lookalike of Mine Rite under the written rule (tanks sold as products; tank-supplier precedent named in the consultation-13 Quality Urbandale ruling).",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:lookalike_of",
+   "source_url": "https://www.std-iron.com/",
+   "ledger_value": "Mine Rite",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:products",
+   "source_url": "https://www.powerprogress.com/news/standard-iron-acquires-helgesen/8038575.article",
+   "ledger_value": "Helgesen hydraulic reservoirs for construction, agriculture, aerial lift and power generation markets; two Hartford facilities",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "corrected",
+   "corrected_value": "",
+   "corrected_quote": "Helgesen Industries, a manufacturer of hydraulic reservoirs and other fabrications serving a wide range of industrial markets, including construction, agriculture, aerial lift equipment and power generation. ... Helgesen primarily operates out of two facilities in Hartford, Wis., where it is based",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Power Progress, 06 August 2024. The quote carried only \"two facilities in Hartford\"; the reservoirs and markets clause of the value is in the article's first sentence, now added to the quote. It describes Helgesen as a company (two Hartford facilities plus operations elsewhere: \"has operations in ...\"), so it is brand-level at either plant: retagged inferred, value unchanged.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:found_by",
+   "source_url": "https://www.powerprogress.com/news/standard-iron-acquires-helgesen/8038575.article",
+   "ledger_value": "news;company site;EPA FRS;job posting",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:name",
+   "source_url": "https://www.std-iron.com/contact/",
+   "ledger_value": "Standard Iron Helgesen - Hartford",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "corrected",
+   "corrected_value": "Standard Iron - Hartford",
+   "corrected_quote": "",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The contact page lists \"Hartford, WI\" with both addresses but never says \"Helgesen\" (grep of the fresh fetch). \"Standard Iron Helgesen\" is the product-line name on /leak-proof-reservoirs/; BizTimes (2025-10-06) says the Helgesen Industries brand was discontinued and folded into Standard Iron. Group name not on the cited page (mining round-1 pattern b).",
+   "plants_csv_value": "keep: add a name row citing https://www.std-iron.com/leak-proof-reservoirs/ (\"From specifications to solutions, Standard Iron Helgesen seamlessly delivers tanks\") if the plant name keeps \"Helgesen\"",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:address",
+   "source_url": "https://www.std-iron.com/contact/",
+   "ledger_value": "1720 Innovation Way, Hartford, WI 53027",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=HELGESEN&state_abbr=WI&output=JSON",
+   "ledger_value": "1720 Innovation Way, Hartford, WI 53027 (EPA FRS)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:parent_company",
+   "source_url": "https://www.powerprogress.com/news/standard-iron-acquires-helgesen/8038575.article",
+   "ledger_value": "Helgesen Industries acquired by Standard Iron (Aug 2024)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Power Progress, 06 August 2024; closed August 2.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:website",
+   "source_url": "https://www.std-iron.com/contact/",
+   "ledger_value": "https://www.std-iron.com",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:products",
+   "source_url": "https://www.std-iron.com/",
+   "ledger_value": "fuel, hydraulic, expansion, coolant and secondary containment tanks",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "corrected",
+   "corrected_value": "",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Quote on the home page, under the Helgesen paragraph (\"Now a Standard Iron company, Helgesen Industries ... Our product range includes ...\"). Brand-level product range of a seven-facility company whose Helgesen line runs at two Hartford plants; no site named, so the tie to this plant is inferred. Retagged inferred, value unchanged (plants.csv products clause stays, resting on an inferred row plus the stated posting row).",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:products",
+   "source_url": "https://www.std-iron.com/careers/",
+   "ledger_value": "company-level customers include John Deere, Caterpillar, Kawasaki and CNH",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:tier",
+   "source_url": "https://www.std-iron.com/careers/",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:tier_secondary",
+   "source_url": "https://www.std-iron.com/",
+   "ledger_value": "Contract fabricator",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:relationship",
+   "source_url": "https://www.std-iron.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:lookalike_of",
+   "source_url": "https://www.std-iron.com/",
+   "ledger_value": "Mine Rite",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:products",
+   "source_url": "https://www.powerprogress.com/news/standard-iron-acquires-helgesen/8038575.article",
+   "ledger_value": "Helgesen hydraulic reservoirs for construction, agriculture, aerial lift and power generation markets; two Hartford facilities",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "corrected",
+   "corrected_value": "",
+   "corrected_quote": "Helgesen Industries, a manufacturer of hydraulic reservoirs and other fabrications serving a wide range of industrial markets, including construction, agriculture, aerial lift equipment and power generation. ... Helgesen primarily operates out of two facilities in Hartford, Wis., where it is based",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Power Progress, 06 August 2024. The quote carried only \"two facilities in Hartford\"; the reservoirs and markets clause of the value is in the article's first sentence, now added to the quote. It describes Helgesen as a company (two Hartford facilities plus operations elsewhere: \"has operations in ...\"), so it is brand-level at either plant: retagged inferred, value unchanged.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:found_by",
+   "source_url": "https://www.powerprogress.com/news/standard-iron-acquires-helgesen/8038575.article",
+   "ledger_value": "news;company site;EPA FRS;job posting",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:name",
+   "source_url": "https://www.girtzindustries.com/about/",
+   "ledger_value": "Girtz Industries, Inc.",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:address",
+   "source_url": "https://www.girtzindustries.com/about/",
+   "ledger_value": "5262 N East Shafer Dr, Monticello, IN 47960",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:parent_company",
+   "source_url": "https://www.legrand.us/about-us/newsroom/press/legrand-acquires-girtz-industries",
+   "ledger_value": "Legrand, acquired June 2026; based in Monticello, Indiana",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Legrand release dated June 10, 2026 (WEST HARTFORD, CT); \"based in Monticello, Indiana\".",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:website",
+   "source_url": "https://www.girtzindustries.com/about/",
+   "ledger_value": "https://www.girtzindustries.com",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:products",
+   "source_url": "https://www.girtz.com/",
+   "ledger_value": "power modules and enclosures for gensets; skid bases",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:products",
+   "source_url": "https://www.girtzindustries.com/about/",
+   "ledger_value": "weather tight housings for diesel gensets",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "c-girtz:headcount",
+   "source_url": "https://www.legrand.us/about-us/newsroom/press/legrand-acquires-girtz-industries",
+   "ledger_value": "hundreds of employees (company, 2026)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Legrand release: \"For our hundreds of employees\"; the same release also says \"300+ employees\" (company). OSHA 2025 annual average at the site is 225; no conflict for scale (10 either way).",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:tier",
+   "source_url": "https://www.girtzindustries.com/about/",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:relationship",
+   "source_url": "https://www.girtz.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Lookalike of EK Machine under the battery rule (stated generator enclosure product).",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:lookalike_of",
+   "source_url": "https://www.girtz.com/",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:products",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "integrated generator enclosures and modular power systems",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Release: \"JTS now operates three locations ... to support its growing customer base with fully integrated generator enclosures and modular power systems\": the sentence ties the product line to each of the three locations, Nampa included; kept stated (unlike the Standard Iron brand rows, the release names the site).",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:tier",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:relationship",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Lookalike of EK Machine under the battery rule (stated generator enclosure product).",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:lookalike_of",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "EK Machine: makes generator enclosures",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Lookalike of EK Machine under the battery rule (stated generator enclosure product).",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:website",
+   "source_url": "https://jobs.smartrecruiters.com/MissionCriticalGroup/3743990015989206-tank-welder",
+   "ledger_value": "https://missioncriticalgroup.com",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Website from MCG boilerplate on the Abilene Tank Welder page; supports the company website only.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:name",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "JTS Nampa 1",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110071992684&output=JSON",
+   "ledger_value": "JOHNSON THERMAL SYSTEMS INC NAMPA (EPA record)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110071992684&output=JSON",
+   "ledger_value": "17645 N Gable Ave, Nampa, ID",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:parent_company",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "Mission Critical Group",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:triggers",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "new 172,000 sq ft plant, $55M, 140 jobs (opened 2025-06-02)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Release June 02, 2025: $55 million, 140 jobs, doubles production capacity; inside the 24-month window.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "c-jts:multi_plant",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "JTS operates three locations: Caldwell ID, Nampa ID and Abilene TX (June 2025)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Release June 02, 2025.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1055%20W.%20Sumner%20Street%2C%20Hartford%2C%20WI%2053027&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "43.320094",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Census re-query 2026-11-17 returns no match for 1055 W. Sumner Street; stored point is EPA FRS registry 110040969039's point (43.320094, -88.397127; FIPS 55131), as the reasoning says.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1055%20W.%20Sumner%20Street%2C%20Hartford%2C%20WI%2053027&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-88.397127",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Census re-query 2026-11-17 returns no match for 1055 W. Sumner Street; stored point is EPA FRS registry 110040969039's point (43.320094, -88.397127; FIPS 55131), as the reasoning says.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1055%20W.%20Sumner%20Street%2C%20Hartford%2C%20WI%2053027&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "55131",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Census re-query 2026-11-17 returns no match for 1055 W. Sumner Street; stored point is EPA FRS registry 110040969039's point (43.320094, -88.397127; FIPS 55131), as the reasoning says.",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1720%20Innovation%20Way%2C%20Hartford%2C%20WI%2053027&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "43.336278",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Census response re-queried 2026-11-17: matched address, coordinates and county FIPS equal the stored values (the quote is a tool label, not page text).",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1720%20Innovation%20Way%2C%20Hartford%2C%20WI%2053027&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-88.415291",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Census response re-queried 2026-11-17: matched address, coordinates and county FIPS equal the stored values (the quote is a tool label, not page text).",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-standard-iron-hartford-wi-2:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1720%20Innovation%20Way%2C%20Hartford%2C%20WI%2053027&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "55131",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Census response re-queried 2026-11-17: matched address, coordinates and county FIPS equal the stored values (the quote is a tool label, not page text).",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=5262%20N%20East%20Shafer%20Dr%2C%20Monticello%2C%20IN%2047960&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "40.832241",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Census response re-queried 2026-11-17: matched address, coordinates and county FIPS equal the stored values (the quote is a tool label, not page text).",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=5262%20N%20East%20Shafer%20Dr%2C%20Monticello%2C%20IN%2047960&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-86.783661",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Census response re-queried 2026-11-17: matched address, coordinates and county FIPS equal the stored values (the quote is a tool label, not page text).",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=5262%20N%20East%20Shafer%20Dr%2C%20Monticello%2C%20IN%2047960&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "18181",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Census response re-queried 2026-11-17: matched address, coordinates and county FIPS equal the stored values (the quote is a tool label, not page text).",
+   "row_class": "inferred_or_unknown"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110071992684&output=JSON",
+   "ledger_value": "43.628446",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110071992684&output=JSON",
+   "ledger_value": "-116.587165",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110071992684&output=JSON",
+   "ledger_value": "16027",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source/JSON-LD) and supports the value.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "225 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Girtz Industries Inc.', 5262 N East Shafer Dr.)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv by record ID: fields match the quote. tools/osha_match.py grade: auto. Run read-only; the matcher's audit file was restored.",
+   "row_class": "stated"
+  },
+  {
+   "claim_id": "p-jts-nampa-id:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "155 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Johnson Thermal Systems, LLC', 17645 N. Gable Ave.)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv by record ID: fields match the quote. tools/osha_match.py grade: auto (the second record at 17645 N Gable Ave, ID 2943447 \"Johnson Thermal Supply\"/Adler, is a NAICS 238110 concrete contractor, 9 employees, gated out). Run read-only; the matcher's audit file was restored.",
+   "row_class": "stated"
+  }
+ ]
+}

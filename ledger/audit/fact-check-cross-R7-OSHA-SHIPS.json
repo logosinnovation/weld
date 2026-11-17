@@ -1,0 +1,1586 @@
+{
+ "checker": "fact-checker R7-OSHA-SHIPS",
+ "vertical": "v-shipbuilding-naval",
+ "date": "2026-11-17",
+ "plants": [
+  "p-bollinger-amelia-la",
+  "p-bollinger-lockport-la",
+  "p-bollinger-houma-la",
+  "p-sterling-shipyard-port-neches-tx"
+ ],
+ "decision_rule": "Corrected = the value adds a fact the cited page does not show, tags a judgement or a gate-failing attribution as stated, places a fact at the plant by inference, misdates a posting, an opening line carries a clause or premise not on a stated row, or a score component departs from the rubric/vertical rules as written; confirmed otherwise. Quotes checked against visible text and raw source on a fresh fetch. Unreachable only if the source cannot be reached at all.",
+ "claims_checked": 74,
+ "claims_corrected": 3,
+ "claims_unreachable": 0,
+ "error_rate": 0.0405,
+ "error_rate_note": "Stated rows (inbox rows plus the kept ledger rows of the four plants and c-bollinger:multi_plant, incl. the 4 OSHA headcount rows): 3/74 = 4.1% (Lockport products \"Sentinel-class\" clause; Houma Leaderman row carrying a \"supervisory\" counting judgement its quote does not show; Amelia OSHA headcount tagged stated against the name gate). Opening lines: 2/4 = 50% (Houma \"CEO said\", Amelia \"manual crews\" premise); bottleneck guesses 0/3. All rows written: 5/163 = 3.1% (the Amelia scale ruling and the Houma Leaderman sensitivity are pending rulings, encoded confirmed with \"RULING pending\" notes as in R3-I, not counted). Every quote was found on its page (0 unreachable; EPA FRS answered this time).",
+ "claims_checked_lines": 4,
+ "claims_corrected_lines": 2,
+ "error_rate_lines": 0.5,
+ "claims_checked_all_rows": 163,
+ "claims_corrected_all_rows": 5,
+ "error_rate_all_rows": 0.0307,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 2,
+  "invented fact": 0,
+  "other": 3
+ },
+ "repeated_kinds": [
+  "None at 3 or more. Pattern worth a targeted sweep anyway: OSHA headcount rows auto-graded where the establishment name carries an operating token the plant name lacks (here \"AMELIA OPERATIONS\" vs \"Marine Fabricators\"; Lockport and Sterling, where the record name is the yard's own name, are fine). tools/osha_match.py graded this auto because the parent token \"bollinger\" sits in the plant name."
+ ],
+ "worst_errors": [
+  "p-bollinger-amelia-la:headcount and score_scale - the 643 OSHA record is \"BOLLINGER AMELIA OPERATIONS\", not Marine Fabricators; the brief's name gate makes the row inferred, and the record likely spans the adjacent Morgan City repair yard (806 Bollinger Lane) and Amelia Repair, which file no records of their own. Retagged inferred; scale 10 -> 5 as written (RULING), total 45 -> 40, Medium -> Low.",
+  "p-bollinger-amelia-la:opening_line - asks how welding is split between the panel line and \"manual crews\", a premise no source states (NPK \"manual bays\" pattern); its only dated work fact is from Oct 2024.",
+  "p-bollinger-lockport-la:products - \"Sentinel-class\" is on neither cited page (it is on the Marine Log page cited for triggers). Trim or add a Marine Log products row. Also minor: Houma opening line says \"Bollinger's CEO said\"; USNI calls Bordelon \"Bollinger president\", and the attribution is not on a stated row."
+ ],
+ "score_problems": [
+  {
+   "plant_id": "p-bollinger-amelia-la",
+   "component": "score_scale",
+   "ledger_points": 10,
+   "correct_points": 5,
+   "why": "RULING pending (score_problems); not counted as a correction and not to be auto-applied. As written 5. The 643 rests on OSHA record 2973785, establishment \"BOLLINGER AMELIA OPERATIONS\", whose name is not the plant's operating name (Bollinger Marine Fabricators); the brief's OSHA gate makes such a row inferred or unused, and the inferred-attribution rule (shared-city/campus, JamesBuilt, Brookville) gives an inferred site attribution 0 points. The adjacent Morgan City yard (806 Bollinger Lane) does repair and conversion, not the same production, so the campus rule does not fold it in, and no separate record exists for it or Amelia Repair. Scale = multi-plant half only: 5. Case for 10 (coordinator call): the record sits at the plant's exact street address (not a city-only fact), and an 86-acre new-construction yard with 200,000 sq ft of fabrication buildings is very likely 100+ on its own; if kept, 10 earns no confidence (as the profiler wrote)."
+  },
+  {
+   "plant_id": "p-bollinger-amelia-la",
+   "component": "score_total / score_tier",
+   "ledger_points": "45 Medium",
+   "correct_points": "40 Low",
+   "why": "Consequential on the scale RULING; confidence stays 2."
+  },
+  {
+   "plant_id": "p-bollinger-houma-la",
+   "component": "score_labor",
+   "ledger_points": 0,
+   "correct_points": 0,
+   "why": "RULING pending, as written 0 (Round 4-C: a lead counts only when the text shows it welding; duties are directing, inspecting and coordinating with \"other supervisors\"). But the ExactHire overview calls the role \"A Pipe Working Leaderman\" and requires proficiency in fitting and welding piping. If counted as a working lead: one counted posting live on the own board at 301 Bollinger Ln., WordPress copy published 2026-05-19 (182 days) and ExactHire listing 2026-08-20 (89 days): open 60+ days, labor 20, total 52 -> 72 High, confidence 4 -> 5."
+  }
+ ],
+ "score_notes": [
+  "All 24 components (4 plants x 6) re-derived from the cited claims. Lockport 77 High (conf 6), Houma 52 Medium (conf 4), Sterling 40 Low (conf 4) correct as written; Amelia 45 Medium only if the coordinator keeps scale 10 (as written 40 Low). None of the four plants is in no-confidence-claims.csv.",
+  "Lockport process 12 (profiler rule call 1): stands under ships rule 1 \"even as a plus\" - the Aluminum Pulse Welder is a structural production posting (welds structural components; Lockport New Construction), not a pipe or specialty-trade role, and it lists aluminum heliarc beside short arc and flux core. 20 only if the coordinator reads aluminum structural welding as a specialty role. Lockport part mix 8 (call 2) stands: product list plus a series class, no stated custom/high-mix.",
+  "Part mix 15 at Houma and Amelia rests on the Conrad Morgan City precedent (p-conrad-morgan-city-la: \"a variety of small and medium-sized vessels\" = 15; production_type confirmed by ships round-1 checker B). Houma and Amelia pages say each yard \"specializes in new construction of a variety of ocean and inland rated vessels\", the same stated-variety wording, so 15 is consistent; Lockport gets 8 because its page lists past deliveries, not a stated variety. If the coordinator reads \"a variety\" as a product list (8): Houma 45 Medium, Amelia 38 Low (as written with scale 5).",
+  "Houma labor 0 (call 3) stands under the Round 4-C test (leads count only when the text shows them welding): the Leaderman (Pipe) duties are directing, interpreting drawings, coordinating with \"other supervisors\", monitoring and inspecting. But the ExactHire overview reads \"A Pipe Working Leaderman is responsible for directing the workforce...\", which the profiler rows omit. If the coordinator counts it as a working lead: one counted posting live on the own board, site named (301 Bollinger Ln.), with the WordPress copy published 2026-05-19 (182 days) and the ExactHire listing 2026-08-20 (89 days): open 60+ days, labor 20, Houma 72 High, confidence 5. Coordinator call; as written 0.",
+  "Houma relationship lookalike HII (call 4): correct under rule (a) (Navy T-ATS auxiliaries, Coast Guard ASCs)."
+ ],
+ "opening_line_problems": [
+  "p-bollinger-houma-la:opening_line - \"Bollinger's CEO said\" is not on a stated row and USNI calls Bordelon \"Bollinger president\". Suggested: In July 2026 Bollinger's president told USNI News that Bollinger Houma had cut steel in April for the first Arctic Security Cutter, under a December 2025 contract that bases work on four ASCs at your Houma yard, where the Navy's 263-ft Navajo-class T-ATS ships are also built; how are you planning steel welding capacity across both programs?",
+  "p-bollinger-amelia-la:opening_line - \"manual crews\" premise unstated. Suggested: Your Marine Fabricators yard in Amelia lists an Automated Panel Line, and as of October 2024 it was building ULA's 356-ft roll-on/roll-off rocket transport ship; which hull and block welding on ships that size still happens off the panel line?",
+  "p-bollinger-lockport-la:opening_line and p-sterling-shipyard-port-neches-tx:opening_line - confirmed: every clause on stated rows, dated, newest first, \"listed\" for board dates, no plan written as progress."
+ ],
+ "plants_closed_or_moved": [],
+ "status_problems": [
+  "None: all four yards open (location pages live; Lockport and Houma postings live 2026-11-17; Sterling delivered a tug Aug 2026 and took an order May 2026). Addresses match the company pages, EPA FRS (Sterling) and the OSHA records. Note: Bollinger's ExactHire board has a separate \"Bollinger Shipyards Lockport Repair\" location, but its postings use the same 8365 Hwy 308 address, so p-bollinger-lockport-la is one campus (the location page calls Lockport the hub of engineering, government programs, QMS and repair)."
+ ],
+ "plant_status_notes": "Bollinger Raceland (4535 LA-308) is the corporate headquarters per its location page (\"Operations Support\"), not a production lead.",
+ "field_drift_notes": [
+  "If the Lockport products correction is applied, both products rows (evidence[0] location page, evidence[1] July 2025 release) take the corrected value; plants.csv products takes plants_csv_value. Amelia: plants.csv score_scale 5, score_total 40, score_tier Low if the ruling is applied as written."
+ ],
+ "leads": [
+  "tools/osha_match.py: auto grade for Marine Fabricators although the establishment name (\"AMELIA OPERATIONS\") has an operating token the plant name lacks; check other auto matches for that pattern.",
+  "Houma: Pipe Working Leaderman wording (see score_problems).",
+  "Bollinger ExactHire re-stamps: WordPress datePublished on bollingershipyards.com/careers/<role>/ gives earlier dates (shipfitter roles 2024-08 to 2025-10); under the re-stamp rule these would be standing ads, not 60+ day evidence. No score effect here."
+ ],
+ "method": "Fresh fetch 2026-11-17 of every cited URL (tools/fetch_page.fetch with raw source; headless browser for ExactHire), each quote split on \"...\" and every fragment checked against visible text and raw source (all found). ExactHire JSON-LD read for title, datePosted and streetAddress; Bollinger WordPress careers pages read for Facility lines and datePublished; ExactHire board read by location in Playwright (Houma 12 results; full location list expanded). Bollinger location pages for Amelia Repair, Morgan City and Raceland read. OSHA rows checked against data/osha_2025.csv by record ID; EPA FRS and Census geocoder responses re-run. One web search (discovery only) for Sterling postings. No ledger file edited.",
+ "apply_note": "Apply after merging ledger/inbox/profiler-OSHA-SHIPS.json (rows keyed to that file's claim_id + source_url; ledger-origin rows marked in origin). Rule on Amelia scale (score_problems) and on the Houma Pipe Working Leaderman (score_notes).",
+ "rows": [
+  {
+   "claim_id": "p-bollinger-lockport-la:products",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-lockport/",
+   "ledger_value": "USCG Sentinel-class Fast Response Cutters (built in Lockport); has delivered USCG patrol boats, Navy patrol craft, oceangoing and docking tugs, offshore supply vessels, liftboats, derrick and deck barges and multi-purpose support vessels",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[0]",
+   "verdict": "confirmed",
+   "note": "Location page carries the \"has delivered\" clause verbatim. Value takes the corrected value of evidence[1] (sibling_of_corrected: drop \"Sentinel-class\").",
+   "sibling_of_corrected": true
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:products",
+   "source_url": "https://www.bollingershipyards.com/news/bollinger-shipyards-begins-contract-negotiations-for-construction-of-at-least-10-new-uscg-fast-response-cutters-frcs/",
+   "ledger_value": "USCG Sentinel-class Fast Response Cutters (built in Lockport); has delivered USCG patrol boats, Navy patrol craft, oceangoing and docking tugs, offshore supply vessels, liftboats, derrick and deck barges and multi-purpose support vessels",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[1]",
+   "verdict": "corrected",
+   "note": "\"Sentinel-class\" is on neither cited page (this July 28, 2025 release and the Lockport location page never say Sentinel). It is on Marine Log (bollinger-awarded-507m-option-for-10-more-frcs: \"The Sentinel-Class Fast Response Cutter is a proven...\"), which is cited only for production_type and triggers. Trim, or add a products row citing Marine Log to restore the clause. True in substance.",
+   "corrected_value": "USCG Fast Response Cutters (built in Lockport); has delivered USCG patrol boats, Navy patrol craft, oceangoing and docking tugs, offshore supply vessels, liftboats, derrick and deck barges and multi-purpose support vessels",
+   "corrected_quote": "This investment in the continuation of the FRC program will support the 650 skilled men and women that build these cutters in Lockport",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "USCG Fast Response Cutters (built in Lockport); has delivered USCG patrol boats, Navy patrol craft, oceangoing and docking tugs, offshore supply vessels, liftboats, derrick and deck barges and multi-purpose support vessels"
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:production_type",
+   "source_url": "https://www.marinelog.com/news/bollinger-awarded-507m-option-for-10-more-frcs/",
+   "ledger_value": "series construction of Fast Response Cutters: 60 delivered; the Sep 2025 option raised the program from 67 to 77 hulls, extending the line about three years; the location page lists many other vessel types delivered",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[2]",
+   "verdict": "confirmed",
+   "note": "Marine Log, September 11, 2025: \"delivered 60 FRCs\", 67 -> 77, \"extending the production line by approximately three years\" all on page; FRC built in Lockport (\"650 skilled shipbuilders in Lockport\")."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:production_type",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-lockport/",
+   "ledger_value": "series construction of Fast Response Cutters: 60 delivered; the Sep 2025 option raised the program from 67 to 77 hulls, extending the line about three years; the location page lists many other vessel types delivered",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[3]",
+   "verdict": "confirmed",
+   "note": "Location page carries the delivered-types clause."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:materials",
+   "source_url": "https://www.workboat.com/shipbuilding/bollinger-shipyards-delivers-frc",
+   "ledger_value": "steel and aluminum: FRC made of steel with an aluminum superstructure (WorkBoat, Feb 2017); 2026 Lockport postings for an aluminum pulse welder and an aluminum shipfitter",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[4]",
+   "verdict": "confirmed",
+   "note": "WorkBoat Feb 8, 2017: 22nd FRC from the Lockport shipyard, \"made of steel with an aluminum superstructure\"; dated in the value."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:materials",
+   "source_url": "https://bollingershipyards.exacthire.com/job/209132",
+   "ledger_value": "steel and aluminum: FRC made of steel with an aluminum superstructure (WorkBoat, Feb 2017); 2026 Lockport postings for an aluminum pulse welder and an aluminum shipfitter",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[5]",
+   "verdict": "confirmed",
+   "note": "JSON-LD title and Lockport address as quoted."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:materials",
+   "source_url": "https://bollingershipyards.exacthire.com/job/208475",
+   "ledger_value": "steel and aluminum: FRC made of steel with an aluminum superstructure (WorkBoat, Feb 2017); 2026 Lockport postings for an aluminum pulse welder and an aluminum shipfitter",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[6]",
+   "verdict": "confirmed",
+   "note": "JSON-LD title and Lockport address as quoted."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:part_size_fit",
+   "source_url": "https://www.bollingershipyards.com/news/bollinger-shipyards-begins-contract-negotiations-for-construction-of-at-least-10-new-uscg-fast-response-cutters-frcs/",
+   "ledger_value": "too big for a cell; suited to Rove: the Fast Response Cutters built in Lockport measure 154 ft; components not dimensioned",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[7]",
+   "verdict": "confirmed",
+   "note": "Release July 28, 2025: \"Measuring in at 154-feet\" and \"build these cutters in Lockport\" both on page. 154 ft exceeds every cell limit (ships rule 2)."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:weld_processes",
+   "source_url": "https://www.bollingershipyards.com/careers/1st-class-short-arc-welder/",
+   "ledger_value": "MIG (GMAW short-arc) required in the Lockport Short-Arc Welder and Short-Arc Tacker postings; GTAW named in a separate pipe welder posting; the Aluminum Pulse Welder posting lists flux core, short arc and aluminum heliarc (TIG) among preferred disciplines",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[8]",
+   "verdict": "confirmed",
+   "note": "Posting page (Facility: Bollinger Lockport New Construction; datePublished 2026-11-03) requires GMAW short-arc and a 3G/4G GMAW test. No TIG on this structural posting."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:weld_processes",
+   "source_url": "https://www.bollingershipyards.com/careers/1st-class-short-arc-tack-welder/",
+   "ledger_value": "MIG (GMAW short-arc) required in the Lockport Short-Arc Welder and Short-Arc Tacker postings; GTAW named in a separate pipe welder posting; the Aluminum Pulse Welder posting lists flux core, short arc and aluminum heliarc (TIG) among preferred disciplines",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[9]",
+   "verdict": "confirmed",
+   "note": "Tacker page: \"Must pass hands-on Short Arc (GMAW) Tacker T-join test\"; GMAW tack welding. Supports \"required\"."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:weld_processes",
+   "source_url": "https://bollingershipyards.exacthire.com/job/209132",
+   "ledger_value": "MIG (GMAW short-arc) required in the Lockport Short-Arc Welder and Short-Arc Tacker postings; GTAW named in a separate pipe welder posting; the Aluminum Pulse Welder posting lists flux core, short arc and aluminum heliarc (TIG) among preferred disciplines",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[10]",
+   "verdict": "confirmed",
+   "note": "Aluminum Pulse Welder (ExactHire 209132, Lockport New Construction): overview \"welds together structural metal components\"; heliarc listed among preferred disciplines. Gloss \"(TIG)\" for heliarc is fair."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:weld_processes",
+   "source_url": "https://bollingershipyards.exacthire.com/job/211102",
+   "ledger_value": "MIG (GMAW short-arc) required in the Lockport Short-Arc Welder and Short-Arc Tacker postings; GTAW named in a separate pipe welder posting; the Aluminum Pulse Welder posting lists flux core, short arc and aluminum heliarc (TIG) among preferred disciplines",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[11]",
+   "verdict": "confirmed",
+   "note": "GTAW Pipe Welder (ExactHire 211102) lists SMAW, GMAW, GTAW, FCAW, SAW; a separate pipe role."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:existing_robots",
+   "source_url": "https://www.marinelink.com/news/shipconstructor-automatic422855",
+   "ledger_value": "possibly yes (inferred, as of Mar 2017): Bollinger bought welding robots and overhead gantries for the NSRP robotic welding (CAR-W) project tied to Fast Response Cutter construction (Wolf Robotics); site not named; current use not stated",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[12]",
+   "verdict": "confirmed",
+   "note": "MarineLink Mar 6, 2017: Bollinger led NSRP CAR-W with Wolf Robotics, \"Bollinger bought the robots, got the overhead gantries into place\", tied to FRC building. Site not named; tagged inferred with as-of date. Holds."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:certifications",
+   "source_url": "https://www.bollingershipyards.com/locations/",
+   "ledger_value": "ISO 9001 (inferred from Bollinger's company-wide statement; yard not named)",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[13]",
+   "verdict": "confirmed",
+   "note": "Inferred ISO from the company-wide \"ten ISO 9001 certified shipyards\"; yard not named. Correctly inferred."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:welder_postings",
+   "source_url": "https://www.bollingershipyards.com/available-jobs/",
+   "ledger_value": "8 counted, all on Bollinger's own ExactHire board with JSON-LD address 8365 Hwy 308, Lockport (posting pages: 'Facility: Bollinger Lockport New Construction'), read 2026-11-17: 1st Class Short Arc Welder, Short Arc Tacker, Short Arc Tacker (Nights) and (GTAW) Pipe Welder (listed 2026-11-03), Aluminum Pulse Welder (listed 2026-10-02), Shipfitter, Shipfitter (Night Shift) and Aluminum Shipfitter (listed 2026-09-22); 6 counted without the two tackers. Listed, not counted: Pipe Leaderman (directs the pipe workforce), 1st Class Pipe Fitter (CuNi; cutting and bevelling, no welding duties). Night shifts; overtime 'as required' in the pipe welder posting (conditional); no sign-on bonus stated. Dates are board listing dates (several share one date), so no days-open claim",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[14]",
+   "verdict": "confirmed",
+   "note": "Recounted from bollingershipyards.com/available-jobs/ (Lockport titles) and the ExactHire board (location \"Bollinger Shipyards Lockport New Construction\"), 2026-11-17: the 8 welding/fitting titles are live. Lockport has a second ExactHire location, \"Bollinger Shipyards Lockport Repair\", but its postings (e.g. CNC Machinist, job 204773) carry the same JSON-LD address 8365 Hwy 308, so one campus; the counted posts all name New Construction. Tackers count (GMAW tack test, welding role); 6 without them, labor 20 either way. 1st Class Pipe Fitter (CuNi) listed only: its duties are layout, fabrication, installation and a cut/bevel test, no welding (not score-moving). Pipe Leaderman listed only (directs, inspects; Round 4-C test)."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:welder_postings",
+   "source_url": "https://bollingershipyards.exacthire.com/job/211094",
+   "ledger_value": "1st Class Short Arc Welder, listed 2026-11-03, 8365 Hwy 308, Lockport",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[15]",
+   "verdict": "confirmed",
+   "note": "ExactHire job page re-fetched 2026-11-17 (headless; raw source): JSON-LD title, datePosted and streetAddress 8365 Hwy 308 / addressLocality Lockport as quoted; posting live. Board location label \"Bollinger Shipyards Lockport New Construction\". datePosted written as \"listed\": correct. The ExactHire JSON-LD carries no first-posted field, and the WordPress copies of these roles on bollingershipyards.com/careers/ show ExactHire re-stamps: datePublished 1st Class Shipfitter 2024-08-15, Shipfitter (Night Shift) 2025-10-28, Aluminum Shipfitter 2025-01-29, Aluminum Pulse Welder 2026-10-05, the four Nov 3 roles 2026-11-03 (all modified Sep-Nov 2026). No score effect (labor is 20 on several postings at once)."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:welder_postings",
+   "source_url": "https://bollingershipyards.exacthire.com/job/211092",
+   "ledger_value": "1st Class Short Arc Tacker, listed 2026-11-03, 8365 Hwy 308, Lockport",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[16]",
+   "verdict": "confirmed",
+   "note": "ExactHire job page re-fetched 2026-11-17 (headless; raw source): JSON-LD title, datePosted and streetAddress 8365 Hwy 308 / addressLocality Lockport as quoted; posting live. Board location label \"Bollinger Shipyards Lockport New Construction\". datePosted written as \"listed\": correct. The ExactHire JSON-LD carries no first-posted field, and the WordPress copies of these roles on bollingershipyards.com/careers/ show ExactHire re-stamps: datePublished 1st Class Shipfitter 2024-08-15, Shipfitter (Night Shift) 2025-10-28, Aluminum Shipfitter 2025-01-29, Aluminum Pulse Welder 2026-10-05, the four Nov 3 roles 2026-11-03 (all modified Sep-Nov 2026). No score effect (labor is 20 on several postings at once)."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:welder_postings",
+   "source_url": "https://bollingershipyards.exacthire.com/job/211086",
+   "ledger_value": "1st Class Short Arc Tacker (Nights), listed 2026-11-03, 8365 Hwy 308, Lockport",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[17]",
+   "verdict": "confirmed",
+   "note": "ExactHire job page re-fetched 2026-11-17 (headless; raw source): JSON-LD title, datePosted and streetAddress 8365 Hwy 308 / addressLocality Lockport as quoted; posting live. Board location label \"Bollinger Shipyards Lockport New Construction\". datePosted written as \"listed\": correct. The ExactHire JSON-LD carries no first-posted field, and the WordPress copies of these roles on bollingershipyards.com/careers/ show ExactHire re-stamps: datePublished 1st Class Shipfitter 2024-08-15, Shipfitter (Night Shift) 2025-10-28, Aluminum Shipfitter 2025-01-29, Aluminum Pulse Welder 2026-10-05, the four Nov 3 roles 2026-11-03 (all modified Sep-Nov 2026). No score effect (labor is 20 on several postings at once)."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:welder_postings",
+   "source_url": "https://bollingershipyards.exacthire.com/job/211102",
+   "ledger_value": "1st Class (GTAW) Pipe Welder, listed 2026-11-03, 8365 Hwy 308, Lockport",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[18]",
+   "verdict": "confirmed",
+   "note": "ExactHire job page re-fetched 2026-11-17 (headless; raw source): JSON-LD title, datePosted and streetAddress 8365 Hwy 308 / addressLocality Lockport as quoted; posting live. Board location label \"Bollinger Shipyards Lockport New Construction\". datePosted written as \"listed\": correct. The ExactHire JSON-LD carries no first-posted field, and the WordPress copies of these roles on bollingershipyards.com/careers/ show ExactHire re-stamps: datePublished 1st Class Shipfitter 2024-08-15, Shipfitter (Night Shift) 2025-10-28, Aluminum Shipfitter 2025-01-29, Aluminum Pulse Welder 2026-10-05, the four Nov 3 roles 2026-11-03 (all modified Sep-Nov 2026). No score effect (labor is 20 on several postings at once)."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:welder_postings",
+   "source_url": "https://bollingershipyards.exacthire.com/job/209132",
+   "ledger_value": "1st Class Aluminum Pulse Welder, listed 2026-10-02, 8365 Hwy 308, Lockport",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[19]",
+   "verdict": "confirmed",
+   "note": "ExactHire job page re-fetched 2026-11-17 (headless; raw source): JSON-LD title, datePosted and streetAddress 8365 Hwy 308 / addressLocality Lockport as quoted; posting live. Board location label \"Bollinger Shipyards Lockport New Construction\". datePosted written as \"listed\": correct. The ExactHire JSON-LD carries no first-posted field, and the WordPress copies of these roles on bollingershipyards.com/careers/ show ExactHire re-stamps: datePublished 1st Class Shipfitter 2024-08-15, Shipfitter (Night Shift) 2025-10-28, Aluminum Shipfitter 2025-01-29, Aluminum Pulse Welder 2026-10-05, the four Nov 3 roles 2026-11-03 (all modified Sep-Nov 2026). No score effect (labor is 20 on several postings at once)."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:welder_postings",
+   "source_url": "https://bollingershipyards.exacthire.com/job/208463",
+   "ledger_value": "1st Class Shipfitter, listed 2026-09-22, 8365 Hwy 308, Lockport",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[20]",
+   "verdict": "confirmed",
+   "note": "ExactHire job page re-fetched 2026-11-17 (headless; raw source): JSON-LD title, datePosted and streetAddress 8365 Hwy 308 / addressLocality Lockport as quoted; posting live. Board location label \"Bollinger Shipyards Lockport New Construction\". datePosted written as \"listed\": correct. The ExactHire JSON-LD carries no first-posted field, and the WordPress copies of these roles on bollingershipyards.com/careers/ show ExactHire re-stamps: datePublished 1st Class Shipfitter 2024-08-15, Shipfitter (Night Shift) 2025-10-28, Aluminum Shipfitter 2025-01-29, Aluminum Pulse Welder 2026-10-05, the four Nov 3 roles 2026-11-03 (all modified Sep-Nov 2026). No score effect (labor is 20 on several postings at once)."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:welder_postings",
+   "source_url": "https://bollingershipyards.exacthire.com/job/208469",
+   "ledger_value": "1st Class Shipfitter (Night Shift), listed 2026-09-22, 8365 Hwy 308, Lockport",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[21]",
+   "verdict": "confirmed",
+   "note": "ExactHire job page re-fetched 2026-11-17 (headless; raw source): JSON-LD title, datePosted and streetAddress 8365 Hwy 308 / addressLocality Lockport as quoted; posting live. Board location label \"Bollinger Shipyards Lockport New Construction\". datePosted written as \"listed\": correct. The ExactHire JSON-LD carries no first-posted field, and the WordPress copies of these roles on bollingershipyards.com/careers/ show ExactHire re-stamps: datePublished 1st Class Shipfitter 2024-08-15, Shipfitter (Night Shift) 2025-10-28, Aluminum Shipfitter 2025-01-29, Aluminum Pulse Welder 2026-10-05, the four Nov 3 roles 2026-11-03 (all modified Sep-Nov 2026). No score effect (labor is 20 on several postings at once)."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:welder_postings",
+   "source_url": "https://bollingershipyards.exacthire.com/job/208475",
+   "ledger_value": "1st Class Aluminum Shipfitter, listed 2026-09-22, 8365 Hwy 308, Lockport; tack welds clips and brackets before permanent welding",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[22]",
+   "verdict": "confirmed",
+   "note": "ExactHire job page re-fetched 2026-11-17 (headless; raw source): JSON-LD title, datePosted and streetAddress 8365 Hwy 308 / addressLocality Lockport as quoted; posting live. Board location label \"Bollinger Shipyards Lockport New Construction\". datePosted written as \"listed\": correct. The ExactHire JSON-LD carries no first-posted field, and the WordPress copies of these roles on bollingershipyards.com/careers/ show ExactHire re-stamps: datePublished 1st Class Shipfitter 2024-08-15, Shipfitter (Night Shift) 2025-10-28, Aluminum Shipfitter 2025-01-29, Aluminum Pulse Welder 2026-10-05, the four Nov 3 roles 2026-11-03 (all modified Sep-Nov 2026). No score effect (labor is 20 on several postings at once)."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:welder_postings",
+   "source_url": "https://bollingershipyards.exacthire.com/job/208479",
+   "ledger_value": "Pipe Leaderman, listed 2026-09-22, Lockport: listed, not counted (directs the workforce)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[23]",
+   "verdict": "confirmed",
+   "note": "ExactHire job page re-fetched 2026-11-17 (headless; raw source): JSON-LD title, datePosted and streetAddress 8365 Hwy 308 / addressLocality Lockport as quoted; posting live. Board location label \"Bollinger Shipyards Lockport New Construction\". datePosted written as \"listed\": correct. The ExactHire JSON-LD carries no first-posted field, and the WordPress copies of these roles on bollingershipyards.com/careers/ show ExactHire re-stamps: datePublished 1st Class Shipfitter 2024-08-15, Shipfitter (Night Shift) 2025-10-28, Aluminum Shipfitter 2025-01-29, Aluminum Pulse Welder 2026-10-05, the four Nov 3 roles 2026-11-03 (all modified Sep-Nov 2026). No score effect (labor is 20 on several postings at once). Duties: direct the workforce, interpret drawings, monitor and inspect; no hands-on welding duty, so listed-only stands (Round 4-C precedent)."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:welder_postings",
+   "source_url": "https://bollingershipyards.exacthire.com/job/208481",
+   "ledger_value": "1st Class Pipe Fitter (CuNi), listed 2026-09-22, Lockport: listed, not counted (pipe fitting test is cutting and bevelling; no welding duties)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[24]",
+   "verdict": "confirmed",
+   "note": "ExactHire job page re-fetched 2026-11-17 (headless; raw source): JSON-LD title, datePosted and streetAddress 8365 Hwy 308 / addressLocality Lockport as quoted; posting live. Board location label \"Bollinger Shipyards Lockport New Construction\". datePosted written as \"listed\": correct. The ExactHire JSON-LD carries no first-posted field, and the WordPress copies of these roles on bollingershipyards.com/careers/ show ExactHire re-stamps: datePublished 1st Class Shipfitter 2024-08-15, Shipfitter (Night Shift) 2025-10-28, Aluminum Shipfitter 2025-01-29, Aluminum Pulse Welder 2026-10-05, the four Nov 3 roles 2026-11-03 (all modified Sep-Nov 2026). No score effect (labor is 20 on several postings at once). JSON-LD title is \"1st Class Pipefitter\" (board heading \"1st Class Pipe Fitter (CuNi)\"); no welding duties on the page."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:welder_postings",
+   "source_url": "https://www.bollingershipyards.com/careers/1st-class-short-arc-welder/",
+   "ledger_value": "Lockport welding postings name the facility 'Bollinger Lockport New Construction'",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[25]",
+   "verdict": "confirmed",
+   "note": "Posting page shows \"Facility:\" \"Bollinger Lockport New Construction\"."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:welder_postings",
+   "source_url": "https://www.bollingershipyards.com/careers/1st-class-short-arc-tack-welder/",
+   "ledger_value": "Short Arc Tacker: tack welds for ship fitters with a GMAW tack test (a production welding role)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[26]",
+   "verdict": "confirmed",
+   "note": "Tacker page as quoted; GMAW tack welding role."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:welder_postings",
+   "source_url": "https://www.bollingershipyards.com/careers/1st-class-gtaw-pipe-welder/",
+   "ledger_value": "Pipe welder overtime is conditional ('as required'), not mandatory",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[27]",
+   "verdict": "confirmed",
+   "note": "\"works overtime as required\" on the page: conditional, correctly not treated as mandatory."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:welder_postings",
+   "source_url": "https://www.bollingershipyards.com/careers/pipe-leaderman/",
+   "ledger_value": "Pipe Leaderman directs the pipe workforce (supervisory; listed, not counted)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[28]",
+   "verdict": "confirmed",
+   "note": "Lockport careers page (WordPress datePublished 2024-10-27, modified 2026-09-24): text as quoted. Listed only."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:triggers",
+   "source_url": "https://www.marinelog.com/news/bollinger-awarded-507m-option-for-10-more-frcs/",
+   "ledger_value": "Sep 9, 2025: the Coast Guard exercised an option for 10 more Fast Response Cutters built in Lockport (program 67 to 77 hulls; 650 shipbuilders in Lockport)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[29]",
+   "verdict": "confirmed",
+   "note": "Marine Log dated September 11, 2025; Sep 9 option with \"Bollinger Shipyards of Lockport, Louisiana\"; inside the window (on/after 2024-11-17)."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely structural welder and fitter staffing: Short-Arc welder, tacker and shipfitter openings are listed at once on day and night shifts while the FRC line runs to 77 hulls",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[30]",
+   "verdict": "confirmed",
+   "note": "Inferred guess; its facts (several welder/fitter listings day and night, FRC line to 77) are on stated rows."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:opening_line",
+   "source_url": "",
+   "ledger_value": "In November 2026 your Lockport new-construction yard listed Short-Arc (GMAW) welder and tacker openings, including night shifts, alongside shipfitter roles listed in September, after the Coast Guard's September 2025 option for 10 more Fast Response Cutters took the program to 77 hulls; how are you staffing structural welding for the longer FRC run?",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[31]",
+   "verdict": "confirmed",
+   "note": "Every clause on stated rows: Nov 3, 2026 short-arc welder and tacker listings incl. night tacker; Sep 22 shipfitter listings; Sep 9, 2025 option, 67 -> 77. \"listed\" used throughout; newest first. Confirmed."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:score_process",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[32]",
+   "verdict": "confirmed",
+   "note": "Process 12 confirmed under ships rule 1 (\"even as a plus\"): the structural Aluminum Pulse Welder posting (welds structural components, Lockport New Construction) lists aluminum heliarc among preferred disciplines beside short arc and flux core. Sensitivity 20 if the coordinator treats the aluminum role as a specialty role (85 High with part mix 15)."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:score_material_part",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[33]",
+   "verdict": "confirmed",
+   "note": "12 confirmed: 154-ft FRC exceeds every cell limit (rule 2); steel and aluminum stated."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[34]",
+   "verdict": "confirmed",
+   "note": "8 confirmed: production_type is a product list plus one series class, no stated custom/high-mix, no high-volume identical-parts line."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[35]",
+   "verdict": "confirmed",
+   "note": "20 confirmed: 8 counted postings live at once on Bollinger's own board, site named (JSON-LD 8365 Hwy 308; Facility Lockport New Construction). No 60+ claim needed."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[36]",
+   "verdict": "confirmed",
+   "note": "15 confirmed: Sep 9, 2025 option naming the Lockport yard, inside window."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[37]",
+   "verdict": "confirmed",
+   "note": "10 confirmed: OSHA 2973727 BOLLINGER SHIPYARDS LOCKPORT, 8365 HIGHWAY 308 SOUTH, 70374, 600 matches data/osha_2025.csv; c-bollinger:multi_plant stated."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:score_total",
+   "source_url": "",
+   "ledger_value": "77",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[38]",
+   "verdict": "confirmed",
+   "note": "77 = 12+12+8+20+15+10 correct."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[39]",
+   "verdict": "confirmed",
+   "note": "High correct."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:confidence",
+   "source_url": "",
+   "ledger_value": "6",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[40]",
+   "verdict": "confirmed",
+   "note": "6 correct: every component cites stated claims; none in no-confidence-claims.csv."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:products",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-houma/",
+   "ledger_value": "New construction: Navy Navajo-class T-ATS towing, salvage and rescue ships (T-ATS 9 keel laid Oct 17, 2025); Regional Class Research Vessels; four Arctic Security Cutters (Dec 2025 contract, work based at Houma); ocean-class tugs, OPA'90 tank barges, liftboats, platform supply vessels, multi-purpose support vessels",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[41]",
+   "verdict": "confirmed",
+   "note": "Houma location page carries the T-ATS program, Regional Class Research Vessels and the commercial vessel list verbatim."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:products",
+   "source_url": "https://www.bollingershipyards.com/news/bollinger-celebrates-construction-of-usns-lenni-lenape-t-ats-9-with-houma-keel-laying-ceremony/",
+   "ledger_value": "New construction: Navy Navajo-class T-ATS towing, salvage and rescue ships (T-ATS 9 keel laid Oct 17, 2025); Regional Class Research Vessels; four Arctic Security Cutters (Dec 2025 contract, work based at Houma); ocean-class tugs, OPA'90 tank barges, liftboats, platform supply vessels, multi-purpose support vessels",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[42]",
+   "verdict": "confirmed",
+   "note": "Bollinger release Oct 17, 2025: keel of T-ATS 9 laid at Bollinger Houma; \"the ninth Navajo-class Towing, Salvage, and Rescue Ship\" on the page, so \"Navajo-class\" is carried."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:products",
+   "source_url": "https://www.bollingershipyards.com/?p=3212",
+   "ledger_value": "New construction: Navy Navajo-class T-ATS towing, salvage and rescue ships (T-ATS 9 keel laid Oct 17, 2025); Regional Class Research Vessels; four Arctic Security Cutters (Dec 2025 contract, work based at Houma); ocean-class tugs, OPA'90 tank barges, liftboats, platform supply vessels, multi-purpose support vessels",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[43]",
+   "verdict": "confirmed",
+   "note": "Release dated December 29, 2025 (dateline LOCKPORT): four ASCs, work based at Houma. USNI (July 2, 2026) adds that module work is spread over a dozen Gulf facilities with final assembly at Houma: consistent."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:production_type",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-houma/",
+   "ledger_value": "new construction of a variety of ocean and inland rated vessels, including defense and commercial vessels",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[44]",
+   "verdict": "confirmed",
+   "note": "Houma page as quoted."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:materials",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-houma/",
+   "ledger_value": "steel",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[45]",
+   "verdict": "confirmed",
+   "note": "\"Automated Steel Processing, Fabrication and Welding Systems\" under SERVICES; supports steel."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:materials",
+   "source_url": "https://news.usni.org/?p=123577",
+   "ledger_value": "steel",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[46]",
+   "verdict": "confirmed",
+   "note": "USNI: Houma cut steel; supports steel."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:part_size_fit",
+   "source_url": "https://www.bairdmaritime.com/security/emergency-services/salvage/vessel-review-usns-navajo-usns-cherokee-nation-us-navy-places-new-towing-and-salvage-ship-class-into-service",
+   "ledger_value": "too big for a cell; suited to Rove: the Navajo-class T-ATS ships built at Houma are 263 ft long; modules and components not dimensioned",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[47]",
+   "verdict": "confirmed",
+   "note": "Baird Maritime: \"Each T-ATS has a length of 263 feet\"; class built by Bollinger in Louisiana. Houma tie on the Houma page and the T-ATS 9 keel page."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:part_size_fit",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-houma/",
+   "ledger_value": "too big for a cell; suited to Rove: the Navajo-class T-ATS ships built at Houma are 263 ft long; modules and components not dimensioned",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[48]",
+   "verdict": "confirmed",
+   "note": "Houma page carries the T-ATS program."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:existing_robots",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-houma/",
+   "ledger_value": "automated welding systems stated; robots and brand not stated",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[49]",
+   "verdict": "confirmed",
+   "note": "Houma page as quoted; robots not stated, value says so."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:certifications",
+   "source_url": "https://www.bollingershipyards.com/locations/",
+   "ledger_value": "ISO 9001 (inferred from Bollinger's company-wide statement; yard not named)",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[50]",
+   "verdict": "confirmed",
+   "note": "Same; correctly inferred."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:weld_processes",
+   "source_url": "https://www.bollingershipyards.com/available-jobs/",
+   "ledger_value": "unknown",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[51]",
+   "verdict": "confirmed",
+   "note": "unknown holds."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:welder_postings",
+   "source_url": "https://www.bollingershipyards.com/available-jobs/",
+   "ledger_value": "0 counted on Bollinger's own board (read 2026-11-17; 10 Houma listings): Leaderman (Pipe), listed 2026-08-20, is listed, not counted (it directs and inspects the pipe workforce); the other Houma listings are maintenance, crane, quality, scheduling, program, HSE and data-entry roles",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[52]",
+   "verdict": "confirmed",
+   "note": "Houma location on ExactHire (Bollinger_Houma_Shipyards, 12 results, 2026-11-17): Maintenance Electrician, ASC Program Coordinator, Crane Operator, Data Entry Associate (Quality), HSE Trainer, Leaderman (Pipe), Preventative Maintenance Working Leader, Production Program Coordinator, Production Program Manager (x2), Project Scheduler, Quality Control Specialist. No welder or fitter posting. Count 0 correct under the Round 4-C test, but note: the ExactHire overview reads \"A Pipe Working Leaderman is responsible for directing the workforce...\" (see score_notes)."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:welder_postings",
+   "source_url": "https://bollingershipyards.exacthire.com/job/206249",
+   "ledger_value": "Leaderman (Pipe), listed 2026-08-20, 301 Bollinger Ln., Houma: listed, not counted (supervisory)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[53]",
+   "verdict": "corrected",
+   "note": "The value adds the counting judgement \"listed, not counted (supervisory)\", which the quote does not carry and which the page itself complicates (its overview says \"A Pipe Working Leaderman\"). Keep the count judgement on the inferred welder_postings row (evidence[52]). ExactHire job page re-fetched 2026-11-17 (headless; raw source): JSON-LD title, datePosted and streetAddress 301 Bollinger Ln. / addressLocality Houma as quoted; posting live. Board location label \"Bollinger Shipyards Houma Shipyards\". datePosted written as \"listed\": correct. The ExactHire JSON-LD carries no first-posted field, and the WordPress copies of these roles on bollingershipyards.com/careers/ show ExactHire re-stamps: datePublished 1st Class Shipfitter 2024-08-15, Shipfitter (Night Shift) 2025-10-28, Aluminum Shipfitter 2025-01-29, Aluminum Pulse Welder 2026-10-05, the four Nov 3 roles 2026-11-03 (all modified Sep-Nov 2026). No score effect (labor is 20 on several postings at once). The WordPress copy (careers/pipe-leaderman-2/) has datePublished 2026-05-19, so the requisition is older than the 2026-08-20 listing; matters only if the role were counted.",
+   "corrected_value": "Leaderman (Pipe), listed 2026-08-20, 301 Bollinger Ln., Houma (the ExactHire overview calls the role \"A Pipe Working Leaderman\")",
+   "corrected_quote": "\"title\":\"Leaderman (Pipe)\" ... \"datePosted\":\"2026-08-20\" ... \"streetAddress\":\"301 Bollinger Ln.\",\"addressLocality\":\"Houma\" ... A Pipe Working Leaderman is responsible for directing the workforce in the successful fitting and welding of all piping components of assigned vessels.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:welder_postings",
+   "source_url": "https://www.bollingershipyards.com/careers/pipe-leaderman-2/",
+   "ledger_value": "Pipe Leaderman at Houma (facility Bollinger Houma) directs the pipe workforce and coordinates with 'other supervisors' (supervisory)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[54]",
+   "verdict": "confirmed",
+   "note": "Page carries \"Facility: Bollinger Houma\", the direct/communicate-with-other-supervisors duties and \"Monitor and inspect\". The overview on the ExactHire copy calls it a \"Pipe Working Leaderman\"; the posting lists no hands-on welding duty."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:triggers",
+   "source_url": "https://www.bollingershipyards.com/?p=3212",
+   "ledger_value": "Dec 29, 2025: Coast Guard contract for four Arctic Security Cutters, work based at Bollinger's Houma shipyard; steel cut at Bollinger Houma for the first ASC in April 2026 (reported July 2, 2026)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[55]",
+   "verdict": "confirmed",
+   "note": "Release December 29, 2025: contract and Houma base on page; inside window."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:triggers",
+   "source_url": "https://news.usni.org/?p=123577",
+   "ledger_value": "Dec 29, 2025: Coast Guard contract for four Arctic Security Cutters, work based at Bollinger's Houma shipyard; steel cut at Bollinger Houma for the first ASC in April 2026 (reported July 2, 2026)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[56]",
+   "verdict": "confirmed",
+   "note": "USNI July 2, 2026: \"Bollinger Houma cut steel for the first of six planned Arctic Security Cutters in April\" (Bordelon). \"First ASC\" is fair (the six include two Rauma hulls)."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly module fabrication and welding capacity as Arctic Security Cutter work (steel cut in April 2026) joins the Navajo-class T-ATS ships at Houma",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[57]",
+   "verdict": "confirmed",
+   "note": "Inferred guess; facts (ASC steel cut April 2026, T-ATS at Houma) on stated rows."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:opening_line",
+   "source_url": "",
+   "ledger_value": "In July 2026 Bollinger's CEO said Bollinger Houma had cut steel in April for the first Arctic Security Cutter, under a December 2025 contract that bases work on four ASCs at your Houma yard, where the Navy's 263-ft Navajo-class T-ATS ships are also built; how are you planning steel welding capacity across both programs?",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[58]",
+   "verdict": "corrected",
+   "note": "\"Bollinger's CEO said\" is not on a stated row: the triggers row quotes only the USNI date and sentence, and USNI names Ben Bordelon as \"Bollinger president\" (\"Bollinger president Ben Bordelon told USNI News this week\"), not CEO. Every other clause is on stated rows, dated, newest first. Minor wording; suggested line keeps the source's title. Add the \"Bordelon said\"/\"told USNI News\" fragment to the USNI triggers row quote if the attribution is kept.",
+   "corrected_value": "In July 2026 Bollinger's president told USNI News that Bollinger Houma had cut steel in April for the first Arctic Security Cutter, under a December 2025 contract that bases work on four ASCs at your Houma yard, where the Navy's 263-ft Navajo-class T-ATS ships are also built; how are you planning steel welding capacity across both programs?",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "plants_csv_value": "In July 2026 Bollinger's president told USNI News that Bollinger Houma had cut steel in April for the first Arctic Security Cutter, under a December 2025 contract that bases work on four ASCs at your Houma yard, where the Navy's 263-ft Navajo-class T-ATS ships are also built; how are you planning steel welding capacity across both programs?"
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:relationship",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-houma/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[59]",
+   "verdict": "confirmed",
+   "note": "Rule (a): the Houma page states the Navy T-ATS (auxiliary) new construction program; ASC (Coast Guard) work is based there. Rule (a) precedes (c). Correct."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:lookalike_of",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-houma/",
+   "ledger_value": "HII",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[60]",
+   "verdict": "confirmed",
+   "note": "HII under rule (a). Correct."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[61]",
+   "verdict": "confirmed",
+   "note": "0 correct: no Houma process stated (expired third-party FCAW listing unreachable and not on own board)."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:score_material_part",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[62]",
+   "verdict": "confirmed",
+   "note": "12 confirmed (263-ft T-ATS; steel)."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[63]",
+   "verdict": "confirmed",
+   "note": "15 confirmed under the Conrad Morgan City precedent (\"a variety of ocean and inland rated vessels\")."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[64]",
+   "verdict": "confirmed",
+   "note": "0 as written (Round 4-C: a lead counts only when the text shows it welding; the Leaderman (Pipe) directs, inspects and liaises with \"other supervisors\"). See score_notes on the \"Pipe Working Leaderman\" wording."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[65]",
+   "verdict": "confirmed",
+   "note": "15 confirmed (Dec 29, 2025 contract basing ASC work at Houma; steel cut April 2026)."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[66]",
+   "verdict": "confirmed",
+   "note": "10 confirmed: OSHA 2973575 BOLLINGER HOUMA SHIPYARDS, 301 BOLLINGER LANE, 70363, 384 matches."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:score_total",
+   "source_url": "",
+   "ledger_value": "52",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[67]",
+   "verdict": "confirmed",
+   "note": "52 correct."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[68]",
+   "verdict": "confirmed",
+   "note": "Medium correct."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:confidence",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[69]",
+   "verdict": "confirmed",
+   "note": "4 correct."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:products",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-marine-fabricators/",
+   "ledger_value": "New construction of ocean and inland rated vessels: ocean-class tugs, OPA'90 tank barges, liftboats, platform supply vessels, multi-purpose support vessels; ULA's 356-ft roll-on/roll-off rocket transport ship (under construction as of Oct 2024)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[70]",
+   "verdict": "confirmed",
+   "note": "Marine Fabricators page carries the vessel list verbatim."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:products",
+   "source_url": "https://oceannews.com/news/defense/bollinger-celebrates-construction-of-ula-r-s-spaceship-with-keel-laying-ceremony/",
+   "ledger_value": "New construction of ocean and inland rated vessels: ocean-class tugs, OPA'90 tank barges, liftboats, platform supply vessels, multi-purpose support vessels; ULA's 356-ft roll-on/roll-off rocket transport ship (under construction as of Oct 2024)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[71]",
+   "verdict": "confirmed",
+   "note": "Ocean News, 25 October 2024: \"second roll-on/roll-off vessel\", \"transport Vulcan rockets\", \"356-ft-long ship is taking place at Bollinger Marine Fabricators in Amelia\"; all clauses on the page, dated."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:production_type",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-marine-fabricators/",
+   "ledger_value": "new construction of a variety of ocean and inland rated vessels",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[72]",
+   "verdict": "confirmed",
+   "note": "Page as quoted."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:materials",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-marine-fabricators/",
+   "ledger_value": "steel",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[73]",
+   "verdict": "confirmed",
+   "note": "\"Automated Steel Unloading and Handling\" supports steel."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:part_size_fit",
+   "source_url": "https://oceannews.com/news/defense/bollinger-celebrates-construction-of-ula-r-s-spaceship-with-keel-laying-ceremony/",
+   "ledger_value": "too big for a cell; suited to Rove: ULA's 356-ft roll-on/roll-off ship was under construction at the yard as of Oct 2024; components not dimensioned",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[74]",
+   "verdict": "confirmed",
+   "note": "Ocean News 25 Oct 2024 as quoted; 356 ft exceeds every cell limit."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:existing_robots",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-marine-fabricators/",
+   "ledger_value": "Automated Panel Line stated; robots and brand not stated",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[75]",
+   "verdict": "confirmed",
+   "note": "\"Automated Panel Line\" under HIGHLIGHTS; the page does not say it welds. Value says so."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:certifications",
+   "source_url": "https://www.bollingershipyards.com/locations/",
+   "ledger_value": "ISO 9001 (inferred from Bollinger's company-wide statement; yard not named)",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[76]",
+   "verdict": "confirmed",
+   "note": "Same; correctly inferred."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:weld_processes",
+   "source_url": "https://www.bollingershipyards.com/available-jobs/",
+   "ledger_value": "unknown",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[77]",
+   "verdict": "confirmed",
+   "note": "unknown holds."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:welder_postings",
+   "source_url": "https://www.bollingershipyards.com/available-jobs/",
+   "ledger_value": "none found: Bollinger's own board (read 2026-11-17) lists no Amelia or Morgan City location; the Marine Fabricators page's careers link opens the unfiltered company list",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[78]",
+   "verdict": "confirmed",
+   "note": "ExactHire locations fully expanded (13 locations, \"End of Results\"): no Amelia, Morgan City or Marine Fabricators location; WordPress list has none either. The Marine Fabricators page's careers link goes to the unfiltered /available-jobs/ (Houma and Lockport pages link with a location filter). Confirmed."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:triggers",
+   "source_url": "https://oceannews.com/news/defense/bollinger-celebrates-construction-of-ula-r-s-spaceship-with-keel-laying-ceremony/",
+   "ledger_value": "none at this site within 24 months found; the ULA ship's keel was laid Oct 25, 2024, before the window (on or after 2024-11-17)",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[79]",
+   "verdict": "confirmed",
+   "note": "Keel laid 25 October 2024, before 2024-11-17. No later dated Amelia event found on the cited page."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:site_tie",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-marine-fabricators/",
+   "ledger_value": "The OSHA 2025 record at 816 Bollinger Lane is named 'Bollinger Amelia Operations', not Marine Fabricators; no separate 2025 record exists for Bollinger Morgan City (806 Bollinger Lane, adjacent) or Bollinger Amelia Repair (606 Ford Industrial Rd), while Bollinger's other yards file separately, so the 643 may include those repair yards",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[80]",
+   "verdict": "confirmed",
+   "note": "data/osha_2025.csv searched for BOLLINGER: separate records for Lockport (2973727), Quick Repair Harvey, Fourchon, Amelia Operations (2973785, 816 Bollinger Lane), Houma (2973575), Mississippi Repair, Mississippi Shipbuilding; none at 806 Bollinger Lane (Morgan City) or 606 Ford Industrial Rd (Amelia Repair). Bollinger's own pages put Morgan City at 806 Bollinger Lane (repair, dry docks) and Amelia Repair at 606 Ford Industrial Rd (repair/conversion). Correct and correctly inferred."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[81]",
+   "verdict": "confirmed",
+   "note": "Unknown: no basis stated. Fine."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Marine Fabricators yard in Amelia lists an Automated Panel Line, and as of October 2024 it was building ULA's 356-ft roll-on/roll-off rocket transport ship; how do you split welding between the panel line and manual crews on hulls that size?",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[82]",
+   "verdict": "corrected",
+   "note": "The question's premise \"manual crews\" is not on any stated row (the page lists an Automated Panel Line and says nothing on manual welding); same pattern as the NPK \"manual bays\" line (R3-I). Other clauses stated and dated. Note also: the only dated work fact is two years old and ULA's March 2026 post credits Lockport (profiler note), so the line is weak for a 2026 call.",
+   "corrected_value": "Your Marine Fabricators yard in Amelia lists an Automated Panel Line, and as of October 2024 it was building ULA's 356-ft roll-on/roll-off rocket transport ship; which hull and block welding on ships that size still happens off the panel line?",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "plants_csv_value": "Your Marine Fabricators yard in Amelia lists an Automated Panel Line, and as of October 2024 it was building ULA's 356-ft roll-on/roll-off rocket transport ship; which hull and block welding on ships that size still happens off the panel line?"
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[83]",
+   "verdict": "confirmed",
+   "note": "0 correct."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:score_material_part",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[84]",
+   "verdict": "confirmed",
+   "note": "12 confirmed (356-ft hull at the yard, Oct 2024; steel stated at the yard)."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[85]",
+   "verdict": "confirmed",
+   "note": "15 confirmed (Conrad precedent)."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[86]",
+   "verdict": "confirmed",
+   "note": "0 correct."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[87]",
+   "verdict": "confirmed",
+   "note": "8 correct: no dated plant-level event in window."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[88]",
+   "verdict": "confirmed",
+   "note": "RULING pending (score_problems); not counted as a correction and not to be auto-applied. As written 5. The 643 rests on OSHA record 2973785, establishment \"BOLLINGER AMELIA OPERATIONS\", whose name is not the plant's operating name (Bollinger Marine Fabricators); the brief's OSHA gate makes such a row inferred or unused, and the inferred-attribution rule (shared-city/campus, JamesBuilt, Brookville) gives an inferred site attribution 0 points. The adjacent Morgan City yard (806 Bollinger Lane) does repair and conversion, not the same production, so the campus rule does not fold it in, and no separate record exists for it or Amelia Repair. Scale = multi-plant half only: 5. Case for 10 (coordinator call): the record sits at the plant's exact street address (not a city-only fact), and an 86-acre new-construction yard with 200,000 sq ft of fabrication buildings is very likely 100+ on its own; if kept, 10 earns no confidence (as the profiler wrote).",
+   "ruling": true
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:score_total",
+   "source_url": "",
+   "ledger_value": "45",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[89]",
+   "verdict": "confirmed",
+   "note": "RULING pending (score_problems): as written 0+12+15+0+8+5 = 40.",
+   "ruling": true
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[90]",
+   "verdict": "confirmed",
+   "note": "RULING pending (score_problems): as written Low (40); Medium if scale 10 is kept.",
+   "ruling": true
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:confidence",
+   "source_url": "",
+   "ledger_value": "2",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[91]",
+   "verdict": "confirmed",
+   "note": "2 correct (scale already excluded via the inferred site_tie row; unchanged under the ruling)."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:materials",
+   "source_url": "https://maritime-executive.com/corporate/new-rastar-3200-w-tugs-to-be-built-at-sterling-shipyard",
+   "ledger_value": "steel",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[92]",
+   "verdict": "confirmed",
+   "note": "Maritime Executive 2024-02-12: \"production design package including steel parts\" for tugs built at Sterling."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:part_size_fit",
+   "source_url": "https://www.marinelog.com/inland-coastal/bay-towing-orders-z-tech-30-85-asd-tug-at-sterling-shipyard/",
+   "ledger_value": "too big for a cell; suited to Rove: tugs of 98.5 ft (Z-Tech 30-85, ordered May 2026) and 105 ft (RAstar 3200-W); components not dimensioned",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[93]",
+   "verdict": "confirmed",
+   "note": "Marine Log May 12, 2026: contract with Sterling Shipyard LLC in Port Neches; \"LOA: 98.5 feet (30 Meters)\"; \"ABS Escort Vessel\"."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:part_size_fit",
+   "source_url": "https://maritime-executive.com/corporate/new-rastar-3200-w-tugs-to-be-built-at-sterling-shipyard",
+   "ledger_value": "too big for a cell; suited to Rove: tugs of 98.5 ft (Z-Tech 30-85, ordered May 2026) and 105 ft (RAstar 3200-W); components not dimensioned",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[94]",
+   "verdict": "confirmed",
+   "note": "MarEx: \"the 105-foot long escort tug\" (RAstar 3200-W at Sterling)."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:production_type",
+   "source_url": "https://www.marinelog.com/?p=110875",
+   "ledger_value": "series tug construction to Robert Allan designs: delivery of the first of 13 tugs contracted for delivery through 2029 reported Aug 2026 (Z-Tech 30-80 Laguna Gulf)",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[95]",
+   "verdict": "confirmed",
+   "note": "Marine Log August 05, 2026: delivery of Laguna Gulf; \"first of an orderbook ... for a total of 13, contracted for delivery through 2029\"; same page: \"30-80 tractor tugboat series designed by Robert Allan Ltd.\" so \"series ... Robert Allan designs\" is carried."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:triggers",
+   "source_url": "https://www.marinelog.com/inland-coastal/bay-towing-orders-z-tech-30-85-asd-tug-at-sterling-shipyard/",
+   "ledger_value": "May 12, 2026: Bay Towing signed a contract with Sterling Shipyard in Port Neches for a Robert Allan Z-Tech 30-85 escort tug",
+   "tag": "stated",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[96]",
+   "verdict": "confirmed",
+   "note": "Dated May 12, 2026, names the Port Neches yard; inside window."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:weld_processes",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[97]",
+   "verdict": "confirmed",
+   "note": "unknown holds."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:welder_postings",
+   "source_url": "https://navalmarinearchive.com/sbh/shipyards/small/sterling.html",
+   "ledger_value": "none found: web search 2026-11-17 found no Sterling Shipyard posting; the company website named on a 2020 shipbuilding-history page (sterlingshipyard.net) does not resolve",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[98]",
+   "verdict": "confirmed",
+   "note": "Page carries the sterlingshipyard.net line. Check search 2026-11-17 (\"Sterling Shipyard\" Port Neches welder job) returned no Sterling posting (only CB&I Port Neches tank welder, other yards). None found holds."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[99]",
+   "verdict": "confirmed",
+   "note": "unknown holds."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[100]",
+   "verdict": "confirmed",
+   "note": "unknown holds."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:prospect_test",
+   "source_url": "https://maritime-executive.com/corporate/new-rastar-3200-w-tugs-to-be-built-at-sterling-shipyard",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[101]",
+   "verdict": "confirmed",
+   "note": "Inferred pass holds (13-tug steel orderbook, steel parts package). The ECHO SIC detail in reasoning was not re-read (inferred row, not score-bearing)."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly hull welding throughput: a 13-tug orderbook through 2029 plus a new escort tug order at a yard of 265 employees",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[102]",
+   "verdict": "confirmed",
+   "note": "Inferred guess; facts (13-tug orderbook, new order, 265 employees OSHA 2025) on stated rows."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "In August 2026 you reported delivering Laguna Gulf, the first of 13 tugs contracted for delivery through 2029, and in May 2026 Bay Towing ordered a 98.5-ft Z-Tech 30-85 escort tug from your Port Neches yard; how are you planning hull welding capacity across that orderbook?",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[103]",
+   "verdict": "confirmed",
+   "note": "Every clause on stated rows (production_type Aug 5, 2026; triggers and part_size_fit May 12, 2026); dated; newest first; \"escort\" is on the Marine Log page."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[104]",
+   "verdict": "confirmed",
+   "note": "0 correct."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:score_material_part",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[105]",
+   "verdict": "confirmed",
+   "note": "12 confirmed (98.5 and 105 ft steel tugs)."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[106]",
+   "verdict": "confirmed",
+   "note": "8 confirmed (series construction; product/design list only)."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[107]",
+   "verdict": "confirmed",
+   "note": "0 correct."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[108]",
+   "verdict": "confirmed",
+   "note": "15 confirmed (May 12, 2026 contract naming the yard)."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[109]",
+   "verdict": "confirmed",
+   "note": "5 confirmed: OSHA 3089480 Sterling Shipyard LLC, 906 Main St, 77651, 265 matches; no multi-plant parent stated."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:score_total",
+   "source_url": "",
+   "ledger_value": "40",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[110]",
+   "verdict": "confirmed",
+   "note": "40 correct."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[111]",
+   "verdict": "confirmed",
+   "note": "Low correct."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:confidence",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox profiler-OSHA-SHIPS.json evidence[112]",
+   "verdict": "confirmed",
+   "note": "4 correct."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:name",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-houma/",
+   "ledger_value": "Bollinger Houma Shipyards",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Houma location page title; open (page live, ASC and T-ATS work 2025-26)."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:address",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-houma/",
+   "ledger_value": "301 Bollinger Lane, Houma, LA 70363",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "301 Bollinger Lane, Houma, LA 70363 on the page; ExactHire JSON-LD 301 Bollinger Ln.; OSHA record same street."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:website",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-houma/",
+   "ledger_value": "https://www.bollingershipyards.com/locations/bollinger-houma/",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Fresh fetch 2026-11-17: every quote fragment found on the page (visible text or raw source) and the value carries no clause the page does not show."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:parent_company",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-houma/",
+   "ledger_value": "Bollinger Shipyards",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Fresh fetch 2026-11-17: every quote fragment found on the page (visible text or raw source) and the value carries no clause the page does not show."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:tier",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-houma/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Judgement re-derived from the cited claims and the vertical rules; tagged inferred, reasoning holds."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:prospect_test",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-houma/",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Judgement re-derived from the cited claims and the vertical rules; tagged inferred, reasoning holds."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:name",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-lockport/",
+   "ledger_value": "Bollinger Lockport",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Fresh fetch 2026-11-17: every quote fragment found on the page (visible text or raw source) and the value carries no clause the page does not show."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:address",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-lockport/",
+   "ledger_value": "8365 LA-308, Lockport, LA 70374",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "8365 LA-308, Lockport, LA 70374 on the page; OSHA 8365 HIGHWAY 308 SOUTH; ExactHire 8365 Hwy 308."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:website",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-lockport/",
+   "ledger_value": "https://www.bollingershipyards.com/locations/bollinger-lockport/",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Fresh fetch 2026-11-17: every quote fragment found on the page (visible text or raw source) and the value carries no clause the page does not show."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:parent_company",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-lockport/",
+   "ledger_value": "Bollinger Shipyards",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Fresh fetch 2026-11-17: every quote fragment found on the page (visible text or raw source) and the value carries no clause the page does not show."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:tier",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-lockport/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Judgement re-derived from the cited claims and the vertical rules; tagged inferred, reasoning holds."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:relationship",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-lockport/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by ships-repair-1)",
+   "verdict": "confirmed",
+   "note": "Rule (a): USCG patrol boats and Navy patrol craft delivered; FRC series. Correct."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:lookalike_of",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-lockport/",
+   "ledger_value": "HII",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by ships-repair-1)",
+   "verdict": "confirmed",
+   "note": "Judgement re-derived from the cited claims and the vertical rules; tagged inferred, reasoning holds."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:prospect_test",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-lockport/",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Judgement re-derived from the cited claims and the vertical rules; tagged inferred, reasoning holds."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:name",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-marine-fabricators/",
+   "ledger_value": "Bollinger Marine Fabricators",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Fresh fetch 2026-11-17: every quote fragment found on the page (visible text or raw source) and the value carries no clause the page does not show."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:address",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-marine-fabricators/",
+   "ledger_value": "816 Bollinger Lane, Amelia, LA 70340",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "816 Bollinger Lane, Amelia, LA 70340 on the Marine Fabricators page."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:website",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-marine-fabricators/",
+   "ledger_value": "https://www.bollingershipyards.com/locations/bollinger-marine-fabricators/",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Fresh fetch 2026-11-17: every quote fragment found on the page (visible text or raw source) and the value carries no clause the page does not show."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:parent_company",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-marine-fabricators/",
+   "ledger_value": "Bollinger Shipyards",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Fresh fetch 2026-11-17: every quote fragment found on the page (visible text or raw source) and the value carries no clause the page does not show."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:tier",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-marine-fabricators/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Judgement re-derived from the cited claims and the vertical rules; tagged inferred, reasoning holds."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:relationship",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-marine-fabricators/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by ships-repair-1)",
+   "verdict": "confirmed",
+   "note": "Rule (c): ocean-class tugs, OPA 90 tank barges. Correct."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:lookalike_of",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-marine-fabricators/",
+   "ledger_value": "LAD Services",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by ships-repair-1)",
+   "verdict": "confirmed",
+   "note": "Judgement re-derived from the cited claims and the vertical rules; tagged inferred, reasoning holds."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:prospect_test",
+   "source_url": "https://www.bollingershipyards.com/locations/bollinger-marine-fabricators/",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Judgement re-derived from the cited claims and the vertical rules; tagged inferred, reasoning holds."
+  },
+  {
+   "claim_id": "c-bollinger:multi_plant",
+   "source_url": "https://www.bollingershipyards.com/news/bollinger-shipyards-to-commence-full-production-on-u-s-coast-guard-polar-security-cutter/",
+   "ledger_value": "yes: 13 shipyards across Louisiana and Mississippi",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by plant-profiler)",
+   "verdict": "confirmed",
+   "note": "Quote on the Polar Security Cutter release; the locations page lists 15 named sites. Confirmed."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:name",
+   "source_url": "https://www.marinelog.com/?p=110875",
+   "ledger_value": "Sterling Shipyard LLC",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Fresh fetch 2026-11-17: every quote fragment found on the page (visible text or raw source) and the value carries no clause the page does not show."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:parent_company",
+   "source_url": "https://www.marinelog.com/?p=110875",
+   "ledger_value": "Sterling Shipyard LLC (independent; no parent stated)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Judgement re-derived from the cited claims and the vertical rules; tagged inferred, reasoning holds."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=STERLING%20SHIPYARD&state_abbr=TX&output=JSON",
+   "ledger_value": "906 Main St, Port Neches, TX 77651",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "EPA FRS reachable 2026-11-17 (was marked unreachable earlier): FacilityName STERLING SHIPYARD, LocationAddress 906 MAIN ST, Port Neches. OSHA 3089480 same street."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:city",
+   "source_url": "https://www.marinelog.com/?p=110875",
+   "ledger_value": "Port Neches",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Fresh fetch 2026-11-17: every quote fragment found on the page (visible text or raw source) and the value carries no clause the page does not show."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:state",
+   "source_url": "https://www.marinelog.com/?p=110875",
+   "ledger_value": "TX",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Fresh fetch 2026-11-17: every quote fragment found on the page (visible text or raw source) and the value carries no clause the page does not show."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:products",
+   "source_url": "https://www.marinelog.com/?p=110875",
+   "ledger_value": "New harbor, escort and LNG-terminal tugs (Z-Tech 30-80, RAstar 3200-W); 13 tugs contracted through 2029",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Already corrected 2026-11-13; current value on the page(s). Confirmed."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:products",
+   "source_url": "https://maritime-executive.com/corporate/new-rastar-3200-w-tugs-to-be-built-at-sterling-shipyard",
+   "ledger_value": "New harbor, escort and LNG-terminal tugs (Z-Tech 30-80, RAstar 3200-W); 13 tugs contracted through 2029",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Already corrected 2026-11-13; current value on the page(s). Confirmed."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:tier",
+   "source_url": "https://www.marinelog.com/?p=110875",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Judgement re-derived from the cited claims and the vertical rules; tagged inferred, reasoning holds."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:relationship",
+   "source_url": "https://www.marinelog.com/?p=110875",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Judgement re-derived from the cited claims and the vertical rules; tagged inferred, reasoning holds."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:lookalike_of",
+   "source_url": "https://www.marinelog.com/?p=110875",
+   "ledger_value": "LAD Services",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Judgement re-derived from the cited claims and the vertical rules; tagged inferred, reasoning holds."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=906%20Main%20St%2C%20Port%20Neches%2C%20TX%2077651&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "29.994004,-93.94736 (county 48245)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Census response 2026-11-17: 906 MAIN ST, PORT NECHES, TX, 77651; x -93.947360, y 29.994004; county 48245. Matches. (Quote is a summary of a JSON response; inferred row.)"
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=906%20Main%20St%2C%20Port%20Neches%2C%20TX%2077651&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "29.994004,-93.94736 (county 48245)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Same Census response; matches."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=906%20Main%20St%2C%20Port%20Neches%2C%20TX%2077651&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "48245 (Jefferson County)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "48245 matches the Census response."
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:verticals",
+   "source_url": "https://www.marinelog.com/?p=110875",
+   "ledger_value": "v-shipbuilding-naval",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by plant-finder)",
+   "verdict": "confirmed",
+   "note": "Judgement re-derived from the cited claims and the vertical rules; tagged inferred, reasoning holds."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=301%20Bollinger%20Lane%2C%20Houma%2C%20LA%2070363&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "29.542944",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by coordinator (geo_evidence))",
+   "verdict": "confirmed",
+   "note": "Census returns no match for 301 Bollinger Lane (re-run 2026-11-17); approximate point correctly inferred; county 22109 Terrebonne fits Houma."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=301%20Bollinger%20Lane%2C%20Houma%2C%20LA%2070363&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-90.71025",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by coordinator (geo_evidence))",
+   "verdict": "confirmed",
+   "note": "As lat."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=301%20Bollinger%20Lane%2C%20Houma%2C%20LA%2070363&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "22109",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by coordinator (geo_evidence))",
+   "verdict": "confirmed",
+   "note": "22109 Terrebonne; fits."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=8365%20LA-308%2C%20Lockport%2C%20LA%2070374&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "29.61303",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by coordinator (geo_evidence))",
+   "verdict": "confirmed",
+   "note": "Census no match for 8365 LA-308 (re-run); approximate; county 22057 Lafourche fits Lockport."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=8365%20LA-308%2C%20Lockport%2C%20LA%2070374&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-90.49093",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by coordinator (geo_evidence))",
+   "verdict": "confirmed",
+   "note": "As lat."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=8365%20LA-308%2C%20Lockport%2C%20LA%2070374&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "22057",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by coordinator (geo_evidence))",
+   "verdict": "confirmed",
+   "note": "22057 fits."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=816%20Bollinger%20Lane%2C%20Amelia%2C%20LA%2070340&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "29.6466",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by coordinator (geo_evidence))",
+   "verdict": "confirmed",
+   "note": "Census no match for 816 Bollinger Lane (re-run); approximate; county 22101 St. Mary fits Amelia."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=816%20Bollinger%20Lane%2C%20Amelia%2C%20LA%2070340&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-91.10614",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by coordinator (geo_evidence))",
+   "verdict": "confirmed",
+   "note": "As lat."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=816%20Bollinger%20Lane%2C%20Amelia%2C%20LA%2070340&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "22101",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv (kept; produced_by coordinator (geo_evidence))",
+   "verdict": "confirmed",
+   "note": "22101 fits."
+  },
+  {
+   "claim_id": "p-bollinger-houma-la:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "384 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'BOLLINGER HOUMA SHIPYARDS', 301 BOLLINGER LANE)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by coordinator (osha_apply))",
+   "verdict": "confirmed",
+   "note": "data/osha_2025.csv ID 2973575: BOLLINGER HOUMA SHIPYARDS, 301 BOLLINGER LANE, HOUMA 70363, NAICS 336611, 384, submitted 2026-01-28. Name matches the operating name. Confirmed."
+  },
+  {
+   "claim_id": "p-bollinger-lockport-la:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "600 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'BOLLINGER SHIPYARDS LOCKPORT', 8365 HIGHWAY 308 SOUTH)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by coordinator (osha_apply))",
+   "verdict": "confirmed",
+   "note": "ID 2973727: BOLLINGER SHIPYARDS LOCKPORT, 8365 HIGHWAY 308 SOUTH, 70374, 600, 2026-01-28. Operating name and street match; the Lockport Repair postings share 8365 Hwy 308 (one campus). Confirmed."
+  },
+  {
+   "claim_id": "p-bollinger-amelia-la:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "643 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'BOLLINGER AMELIA OPERATIONS', 816 BOLLINGER LANE)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by coordinator (osha_apply))",
+   "verdict": "corrected",
+   "note": "Record confirmed in data/osha_2025.csv (values exact), but it fails the brief's OSHA gate: the establishment name \"BOLLINGER AMELIA OPERATIONS\" is not the plant's operating name (Bollinger Marine Fabricators); the only overlap is the parent name \"Bollinger\" (consultation 19: parent-only overlap and a differently named establishment go to review; osha-matches.json shows own_overlap [\"bollinger\"] only, yet graded auto). The same record was the candidate for the excluded Morgan City (806 Bollinger Lane) and Amelia Repair records, neither of which files separately. Retag inferred (value and quote unchanged; reasoning: record at the yard's street address, may cover the adjacent repair yards). Drives the scale RULING.",
+   "corrected_value": "643 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'BOLLINGER AMELIA OPERATIONS', 816 BOLLINGER LANE)",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "corrected_quote": "ID 2973785; establishment_name BOLLINGER AMELIA OPERATIONS; company_name BOLLINGER AMELIA OPERATIONS, LLC; street_address 816 BOLLINGER LANE; city AMELIA; zip_code 70340; naics_code 336611; annual_average_employees 643; date_submitted 2026-01-28"
+  },
+  {
+   "claim_id": "p-sterling-shipyard-port-neches-tx:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "265 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Sterling Shipyard LLC', 906 Main St)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv (kept; produced_by coordinator (osha_apply))",
+   "verdict": "confirmed",
+   "note": "ID 3089480: Sterling Shipyard LLC, 906 Main St, Port Neches 77651, NAICS 336611, 265, 2026-02-18. Confirmed."
+  }
+ ]
+}
