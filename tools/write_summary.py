@@ -32,7 +32,8 @@ LABELS_BY_VERT["v-mining-heavy-equipment"] = {1: "Round 1: the 40 profiled plant
                                               3: "Round 3: the 21 profiles added in the last waves (profilers G, H, I and J)",
                                               9: "Base-record sample: 25 closure-3 base records (reported separately; not a profile round)"}
 LABELS_BY_VERT["v-enclosures-battery-generator"] = {1: "Round 1: the 40 top-ranked plants profiled (four checkers, one per profiler batch)",
-                                                    2: "Round 2: the 15 plants that entered the top 40 after the audit, leads and job-board sweeps",
+                                                    2: "Round 2: the 18 plants that entered the top 40 after the audit, leads and job-board sweeps, and the written-key re-rank",
+                                                    3: "Round 3: line check of every High and Medium plant's opening line and bottleneck guess (70 lines), after the rulings",
                                                     9: "Base-record sample: 16 base and 6 excluded records (reported separately; not a profile round)"}
 LABELS = {1: "Round 1: designed sample of 30 plants (all High, all customer plants, then by score), before repairs",
           2: "Round 2: 10 unsampled plants from multi-plant parents, after the first repair pass",

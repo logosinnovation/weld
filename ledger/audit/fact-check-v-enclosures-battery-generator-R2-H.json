@@ -1,0 +1,1510 @@
+{
+ "checker": "fact-checker R2-H",
+ "vertical": "v-enclosures-battery-generator",
+ "date": "2026-11-17",
+ "plants": [
+  "p-global-power-components-milwaukee-wi",
+  "p-psi-darien-wi",
+  "p-pritchard-brown-baltimore-md"
+ ],
+ "decision_rule": "Corrected = the value adds a fact the cited page does not show, tags a judgement as stated, places a company-level fact at the plant, ties a posting through a shared city, misdates a posting, or the quote is not on the page (raw source checked first); Confirmed otherwise. Unreachable only if the source cannot be reached at all. Line drawn: off-page descriptive facts inside a stated value are corrected; bookkeeping labels ('listed, not counted', 'none found', 'no dated plant-level event') are not.",
+ "claims_checked": 77,
+ "claims_corrected": 8,
+ "claims_unreachable": 0,
+ "error_rate": 0.1039,
+ "error_rate_note": "Headline on the R2 basis (rows flagged r2_basis: every stated row, every row of a claim a score row cites incl. its unknown/'none found'/inferred rows and the three v-enclosures-battery-generator:demand_outlook rows, and the 3 opening lines): 8/77 = 10.4%. Strict (also counting two borderline confirms: c-psi:bottleneck 'constraint is space' paraphrasing 'space-intensive', and GPC existing_robots resting on a two-location Robotics Technician requisition): 10/77 = 13.0%. Stated rows only: 7/62 = 11.3%. All 139 rows written: 8/139 = 5.8%. Every quote whose page was reachable was found on a fresh fetch (visible text or raw source); 0 unreachable. The 6 Census rows show synthetic query-summary quotes; re-queried and confirmed, not counted as quote failures. No correction changes a score component, a tier or a counted posting; all 8 are attribution or wording (two company overviews tagged stated at a five-facility company, two compound/judgement clauses from another page or a geocode, one plan written as current, one descriptive name label, one opening line overstating an optional spec item). Over 10% on the headline, but on a small basis (3 plants). Sensitivity: 7/77 = 9.1% if the two GPC products rows (one boilerplate pattern on two pages) count as one error.",
+ "claims_checked_all_rows": 139,
+ "claims_corrected_all_rows": 8,
+ "error_rate_all_rows": 0.0576,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 7,
+  "invented fact": 0,
+  "other": 1
+ },
+ "repeated_kinds": [
+  "quote does not support value (7) - same patterns as R2-G and R3-I: (a) company overview or company web page product lists tagged stated as a plant's products at a multi-site company (GPC MIG Welder requisition overview and gpcwordpress page; the overview text is repeated verbatim in every GPC requisition, including Burnham ones); (b) compound values carrying a clause from a sibling page (c-global-power-components:production_type UL 142 clause; PSI weld_processes 2026-04-02 clause); (c) a scoring/site judgement and a geocode distance inside a stated triggers row; (d) a hiring plan ('we are adding a CWI at each facility') written as current; (e) an opening line generalising an optional spec item to 'each enclosure'. SWEEP suggestion: for battery profiles whose products rows cite a job-posting 'Overview' paragraph (GPC style boilerplate), re-tag or prefix 'company-level'."
+ ],
+ "worst_errors": [
+  "p-global-power-components-milwaukee-wi:products (inbox MIG Welder row and ledger gpcwordpress row) - the company product list (fuel tanks, trailers, large generator enclosures, modular enclosures) is stated as what 2300 S 51st St makes, from boilerplate repeated in every GPC requisition and a company page, at a company with five Milwaukee-area facilities and a second production site 1.3 km away. Only 'Welding I-Beam Frame and Fuel Tanks' is site-level. Corrected to company-level; supersedes CS's earlier confirm of the ledger row. Lead: the live 51st Street Finisher requisition ('construct steel/metal enclosures') can restore a site-level enclosure clause. No score effect.",
+  "p-pritchard-brown-baltimore-md:opening_line - 'custom designs each enclosure and builds it on a welded steel floor and underframe': spec 2130 is an undated 'shall' document that makes the floor/underframe optional (drop-over enclosures use a tie-down frame instead). For a plant whose prospect test rests on this spec, the line overstates the welded content. Rewritten; bottleneck row repeats 'beneath each'.",
+  "p-global-power-components-milwaukee-wi:certifications - 'AWS welder certification program run by a CWI at each GPC manufacturing facility': the CWI requisition says GPC 'is adding' a CWI at each facility (an open hiring plan). Plan written as current; also a welder-qualification program, not a plant certification."
+ ],
+ "score_problems": [],
+ "score_notes": [
+  "All 18 components (3 plants x 6) re-derived from the cited claims; sums, tiers and confidence correct as written: GPC 65 Medium (20/0/15/12/8/10, c2), PSI Darien 40 Low (12/0/15/0/8/5, c2), Pritchard Brown 27 Low (0/4/15/0/8/0, c2). No corrected row moves a component. tools/normalise_scores.py recomputes only material and confidence; its confidence test (a claim counts as stated if any row is stated, minus no-confidence-claims.csv) gives the same 2/2/2. None of the three plants' claims is in no-confidence-claims.csv; the GPC headcount and production_type claims are inferred-only, so they need no listing.",
+  "GPC labor 12 (RULING offered by the profiler): one counted production posting (MIG Welder, 51st Street, posted 2026-11-10, live). The full 93-opening board was read: no other production welder title at 51st Street. Tester - Weld (posted 2026-11-12; pressure testing with 'minor weld repairs and leak corrections'; MIG required, welding competency test) is listed only under the Phoenix Service Welder precedent; if the coordinator counts it, two counted at once = 20 and GPC = 73 High. The Burnham Academy Trainee - Welding cannot count: Burnham is a named separate Workday location, in West Milwaukee, 1.30 km away (checker Census re-query), so the campus rule is not met.",
+  "GPC demand 8: correct. The June 2025 Burnham purchase and 230,000 sq ft expansion is at a separate site (other municipality, 1.30 km); the 2025 BizTimes articles say 51st St will 'remain in operation'. No dated 51st St event found in the cited sources.",
+  "GPC material 0: correct. The MIG Welder requisition gives thickness only (10 ga to 1/2 in); the 20/40/45 ft power containers are on a company page that says GPC 'packages gensets' and 'custom designs ... ISO containers' but never says GPC welds them or where, at a multi-site company. Upside 20 (40 ft fits the 2026 analyst 60 ft cell) only if a site-level source ties welded containers to 51st St.",
+  "GPC scale 10 (RULING): stated multi-plant (CWI at 'each of our manufacturing facilities') plus an inferred 100+ at the site from BizTimes 2025-05-14 (1,200+ employees, five facilities, 'Most of Global Power's operations' at 2300 S 51st St, most other facilities warehouses; 76 of 93 current openings at 51st Street). The inference is much stronger than Fidelity's (540 company-wide across three plants -> 5) and matches the Hughes precedent (inferred site headcount earns points, no confidence). The plants.csv headcount reads 'unknown at site ...'; the normaliser does not recompute scale, so as written it stays 10 (65). At 5: 60, Medium either way.",
+  "GPC part mix 15: company-level custom statements (enclosures to customer specifications; custom engineered UL 142 tanks; last-minute design changes) attributed by inference; points, no confidence (session-2 rule 1). Correct.",
+  "PSI process 12 (RULING offered): both MIG Welding Team Member requisitions at 448 West Madison Street say 'such as GMAW/MIG or GTAW/TIG' in the plant's own production welder role, which is the written 12 case (TIG named alongside MIG in the production posting). 20 would need TIG only in a separate specialty role. 12 stands.",
+  "PSI demand 8 (RULING offered): the 8-K (Q47) reports 'The overall Darien facility expansion is complete' on 2026-03-11 with no completion date; Q17's 'went online in April 2025 ... 110,000 sq ft added' names Wisconsin, not Darien. Under the written rule (a dated plant-level event within 24 months) 8 stands; 15 if the coordinator treats the dated report of completion as the event (47 Medium).",
+  "PSI part mix 15: stated at the site ('custom-designed integrated power generation packages', Darien facilities entry). The same 8-K says about 50-60% of each unit is standardized with panel variation; still per-unit custom, so 15 stands (not the 'one-offs or production runs' = 8 case). Noted for consistency.",
+  "PSI labor 0: PSI's Paycom board (36 titles via the portal job-titles API, 2026-11-17) has no welder or fitter title; MIG Welding Team Member copies are on aggregators only. Fabrication Manager (live, JSON-LD 2026-09-30) is a manager. Correct.",
+  "PSI scale 5, material 0: correct (10-K multi-plant; site headcount unknown; the 50+ ft x 10+ ft enclosure size is company-level and open-ended).",
+  "Pritchard: process 0 (no process stated), material 4 (aluminum-first stated: 'Corrosion resistant marine-grade aluminum construction', spec 2130 aluminum stressed-skin walls; the welded steel underframe has no stated size), part mix 15 ('Each enclosure is custom designed'), labor 0 (careers page links only to indeed.jobs home; checker web search found no posting), demand 8, scale 0 (single facility inferred; Fennell Holdings' other plants not shown). Material 4 and part mix rest on company pages tied to the site by the single-facility inference (about-us 'its current manufacturing facility'; ECHO name search: Baltimore operating, Tavares FL RCRA record only). Correct as written.",
+  "Confidence RULING: GPC process and labor confidence count although the 51st Street site tie sits in an inferred row (welder_postings, blank-quote board row). The task wording is 'cited claims all stated'; the normaliser counts a claim as stated when any row is stated. The tie is a reading of the Workday location field '51st Street' (ships rule 3: a requisition-location field that names a site counts), not a campus inference, so confidence 2 is kept; if the coordinator reads 'all rows stated', GPC confidence 2 -> 0 (process cites weld_processes rows from the same 51st Street requisitions)."
+ ],
+ "opening_line_problems": [
+  "p-pritchard-brown-baltimore-md:opening_line - corrected (see row). Suggested: \"Pritchard Brown custom designs each enclosure, and its Specification No. 2130 calls for a welded steel floor and underframe (where a floor is supplied) beneath aluminum stressed-skin walls; how do you handle the welded base and underframe work when every enclosure is a custom design?\"",
+  "p-global-power-components-milwaukee-wi:opening_line - acceptable; every clause stated (MIG Welder posted 2026-11-10 at 51st Street; I-beam frames and fuel tanks, 10 gauge to 1/2 in; Robotics Technician at 51st Street and Burnham running cobots and robotic welding cells).",
+  "p-psi-darien-wi:opening_line - acceptable; Fabrication Manager live on PSI's board (JSON-LD 2026-09-30, 448 West Madison Street); 'expansion is complete' is how the 8-K puts it."
+ ],
+ "plants_closed_or_moved": [],
+ "status_problems": [
+  "p-pritchard-brown-baltimore-md (coordinator call, raised by the profiler too): the prospect test rests on Pritchard Brown's own Specification No. 2130, an undated 'shall' document (2021/12 upload folder) whose floor/underframe is optional, plus a single-facility inference for the site tie. No source says Pritchard welds in Baltimore. For holding it as base with prospect_test unknown: the Stateline Greenville and Caterpillar Clayton holds (welding not shown at the site). For keeping it profiled: unlike those, the company's own product spec states welded steel (perimeter underframe, 1.25 in lift rings 'welded into the base'), the company states it manufactures ('Dedicated craftsmen and craftswomen translate concepts into exacting quality on our manufacturing floor'; 'In-house engineering and manufacturing of acoustic air handling devices and composite wall panels'), and it has one manufacturing facility (ECHO 332311/SIC 3448). If held, the score, opening-line and bottleneck rows are removed. Plant is open: ECHO status Operating at 6501 Erdman Ave; website live.",
+  "p-global-power-components-milwaukee-wi: operating at 2300 S 51st St (76 of 93 openings; ECHO Active, last reported 2024). The Burnham site (4101 W Burnham St, West Milwaukee) now has production-type openings (Paint Supervisor, Lead Carpenter, academy trainees, welding trainers, Janitor): a separate in-vertical site not in the ledger (lead, as the profiler says).",
+  "p-psi-darien-wi: operating at 448 W Madison St (live Darien requisitions). The 8-K says fabrication equipment is being moved to Beloit (1901 Gateway Blvd); welding at Darien is shown through Sept 2026 by the Fabrication Manager requisition, so membership holds today."
+ ],
+ "plant_status_notes": "All three plants exist and operate at the recorded addresses. Geocodes: GPC and PSI match the Census responses (re-queried 2026-11-17); Pritchard has no Census match (approximate point, as recorded).",
+ "field_drift_notes": [
+  "GPC plants.csv products carries 'MEC; e-house type' (no row quotes 'MEC'; the about page says 'modular equipment building') and '(UL 142 / UL 2085, sub-base and free-standing)', which is on the gpcwordpress row only; after the products correction use plants_csv_value.",
+  "GPC plants.csv certifications takes the corrected value (plan, not current).",
+  "PSI plants.csv lookalike_of reads 'EK Machine: fabricates generator enclosures and fuel tanks as stated products'; the field should be 'EK Machine' (normalised as on poles), the explanation belongs in the evidence reasoning.",
+  "Pritchard plants.csv name 'Pritchard Brown, LLC': 'LLC' is on ECHO ('PRICHARD BROWN LLC'), not on the cited company page; add an ECHO-cited name row or drop the suffix. Pritchard plants.csv materials says 'marine-grade aluminum'; neither materials row carries 'marine-grade' (it is on the products row L14947's page). Cosmetic.",
+  "PSI plants.csv name keeps 'Darien enclosure and packaging plant' as a display label; the ECHO name row is trimmed (see row)."
+ ],
+ "leads": [
+  "GPC Finisher requisition (51st Street, posted 2026-11-10): 'Working as a team to construct steel/metal enclosures (basically a large metal 'house')' - a site-level source for enclosure building at 51st St (https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC/job/51st-Street/Finisher_JR100156).",
+  "GPC Burnham, 4101 W Burnham St, West Milwaukee: separate production site with its own Workday location; not in the ledger.",
+  "PSI 1901 Gateway Blvd, Beloit (UL fuel tanks, enclosure component fabrication) and MTL (two Beloit sites, tanks and welding): in-vertical leads, as the profiler noted.",
+  "PSI Darien expansion: a dated completion source (press release or 10-K property note) would settle demand 8 vs 15."
+ ],
+ "method": "Fresh fetch of every cited URL (tools/fetch_page.fetch with_raw=True; Workday and Paycom through the browser fallback) into a new cache, each quote split on '...' and every fragment checked against visible text plus raw source; Workday board read through its CXS jobs and job-detail JSON APIs (all 93 openings; posting dates from startDate/JSON-LD); PSI Paycom board through its portal job-titles and job-posting-previews APIs (36 openings) and each cited requisition's JSON-LD; ECHO detail and name-search APIs; Census geocoder re-queried (Burnham to 51st St 1.30 km). One web search (Pritchard Brown welder postings; none) for an open/closed check only. Demand_outlook rows re-fetched (EIA, Valmont 10-Q, Nasdaq/Generac): all found. No ledger file edited.",
+ "apply_note": "Apply after the coordinator merges ledger/inbox/battery-profiler-H.json (rows keyed to that file's claim_id + source_url; ledger-origin rows marked in 'origin'). Corrected rows with plants_csv_value change GPC products and certifications and Pritchard opening_line. The Pritchard opening-line row has a blank source_url (claim_id + '' as in the inbox). Rule on Pritchard's status (status_problems) and on the offered GPC labor/scale and PSI process/demand calls (score_notes); none is a score error as written. Rows whose plant field must not change carry plants_csv_value starting 'keep' (GPC triggers, PSI weld_processes, PSI name); GPC products (both rows) and certifications and the Pritchard opening line carry full replacement values.",
+ "rows": [
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:products",
+   "source_url": "https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC/job/51st-Street/MIG-Welder_JR100145",
+   "ledger_value": "UL heavy gauge steel fuel tanks, trailers, large generator enclosures and modular metal enclosures (posting for the 51st Street location)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[0]",
+   "verdict": "corrected",
+   "corrected_value": "company-level (overview text in the 51st Street MIG Welder requisition): manufacturer of UL heavy gauge steel fuel tanks, trailers, large generator enclosures and modular metal enclosures; site-level in the same requisition: welding I-beam frames and fuel tanks",
+   "corrected_quote": "Global Power Components is a privately held, financially sound, growing manufacturer of UL heavy gauge steel fuel tanks, trailers, large generator enclosures, and modular metal enclosures ... Welding I-Beam Frame and Fuel Tanks in flat/vertical overhead positions.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Quote on the page (Workday job JSON and rendered page, 2026-11-17). The quoted sentence is the company overview repeated in every GPC requisition (also in Tester - Weld, Weld Lead, Academy Trainee at Burnham, etc.), not a statement of what 2300 S 51st St builds. GPC is multi-site (five Milwaukee-area facilities per BizTimes; the profile's own scale row relies on 'each of our manufacturing facilities'), so the list is a company-level fact placed at the plant. Only 'Welding I-Beam Frame and Fuel Tanks' is site-level in this requisition. Sibling: ledger row gpcwordpress ?p=6 (same pattern). Lead to restore a site-level enclosure clause: the live Finisher requisition (location 51st Street, startDate 2026-11-10) says 'Working as a team to construct steel/metal enclosures (basically a large metal 'house')'. No score effect (relationship uses company-level products; part mix rests on production_type).",
+   "plants_csv_value": "Welded I-beam frames and UL fuel tanks (51st Street MIG Welder requisition); company: UL heavy gauge steel fuel tanks (UL 142 / UL 2085, sub-base and free-standing), trailers, large generator enclosures, modular metal enclosures for electrical equipment (boundary v-datacenter-grid-prefab)",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:weld_processes",
+   "source_url": "https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC/job/51st-Street/MIG-Welder_JR100145",
+   "ledger_value": "MIG (GMAW): MIG Welder requisition at 51st Street",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[1]",
+   "verdict": "confirmed",
+   "note": "Workday job JSON 2026-11-17: location '51st Street', startDate (posting date) 2026-11-10, 'Welding I-Beam Frame and Fuel Tanks...' and 'GMAW (MIG/MAG) experience preferred'. No TIG on any GPC production posting.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:weld_processes",
+   "source_url": "https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC/job/51st-Street/Tester---Weld_JR100164",
+   "ledger_value": "MIG required in the Tester - Weld requisition at 51st Street",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[2]",
+   "verdict": "confirmed",
+   "note": "'MIG welding experience required.' on the Tester - Weld requisition (51st Street, posted 2026-11-12).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:materials",
+   "source_url": "https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC/job/51st-Street/MIG-Welder_JR100145",
+   "ledger_value": "steel: heavy gauge steel fuel tanks and I-beam frames, 10 gauge to 1/2 in (51st Street MIG Welder requisition)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[3]",
+   "verdict": "confirmed",
+   "note": "Both fragments on the requisition; thickness 10 gauge to 1/2 in, I-beam frames and fuel tanks, location 51st Street. The 'heavy gauge steel fuel tanks' part is the company overview, but the steel material itself is site-level (I-beam frames).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-global-power-components:materials",
+   "source_url": "https://www.globalpowercomponents.com/products/fuel-tanks/ul-142/",
+   "ledger_value": "UL 142 tanks made from structural steel (company product page)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[4]",
+   "verdict": "confirmed",
+   "note": "On the page; company-level row.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:certifications",
+   "source_url": "https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC/job/51st-Street/Certified-Welding-Inspector_JR100115",
+   "ledger_value": "AWS welder certification program, owned by a CWI at each GPC manufacturing facility (code not named); CWI requisition at 51st Street",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[5]",
+   "verdict": "corrected",
+   "corrected_value": "company AWS welder certification program (code not named); GPC is adding a CWI at each of its manufacturing facilities to own it at facility level (CWI requisition at 51st Street, posted 2026-10-20)",
+   "corrected_quote": "we are adding a Certified Welding Inspector (CWI) at each of our manufacturing facilities. Each CWI will serve as the facility-level owner of our AWS welder certification program",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Quote on the page. The value says the program is 'owned by a CWI at each GPC manufacturing facility'; the page says GPC 'is adding' a CWI at each facility (an open hiring plan; the 51st Street CWI role is the opening itself). A plan written as current, the R2-G pattern (Fidelity 'operations starting', Phoenix 'construction from'). Also a welder-qualification program, not a plant certification (the reasoning already says so). No score effect.",
+   "plants_csv_value": "AWS welder certification program (company program; GPC is adding a CWI at each manufacturing facility to own it; code not named)",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:part_size_fit",
+   "source_url": "https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC/job/51st-Street/MIG-Welder_JR100145",
+   "ledger_value": "unknown: no dimension or weight of a welded part stated; the 51st Street MIG Welder requisition gives material thickness only",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-H.json evidence[6]",
+   "verdict": "confirmed",
+   "note": "Unknown is right: thickness only; battery rule (kW, gallons and thickness are not part sizes).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-global-power-components:part_size_fit",
+   "source_url": "https://www.globalpowercomponents.com/products/containers/",
+   "ledger_value": "packages gensets in 20, 40 or 45 ft power containers (company page; welding of the container not stated)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[7]",
+   "verdict": "confirmed",
+   "note": "On the page. The page also says 'GPC custom designs fully engineered ISO containers' but never that GPC welds them or where; company-level with no site, so it earns no material points (multi-site company).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-global-power-components:production_type",
+   "source_url": "https://www.globalpowercomponents.com/products/enclosures/",
+   "ledger_value": "custom: enclosures built to customer specifications; custom engineered UL 142 tanks",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[8]",
+   "verdict": "corrected",
+   "corrected_value": "custom: enclosures built to customer specifications",
+   "corrected_quote": "we take great pride in providing a customized enclosure that meets customer specifications on every level",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Compound value: the enclosures page carries the customized-enclosure clause only; 'custom engineered UL 142 tanks' is on /products/fuel-tanks/ul-142/, which has its own row (confirmed). Clause dropped from this row; the claim keeps both clauses across its two rows. Part mix 15 unaffected.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-global-power-components:production_type",
+   "source_url": "https://www.globalpowercomponents.com/products/fuel-tanks/ul-142/",
+   "ledger_value": "custom engineered UL 142 fuel tanks",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[9]",
+   "verdict": "confirmed",
+   "note": "On the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-global-power-components:production_type",
+   "source_url": "https://www.globalpowercomponents.com/about-gpc/",
+   "ledger_value": "handles last-minute design changes",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[10]",
+   "verdict": "confirmed",
+   "note": "On the page ('the ability to flow with last minute design changes').",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:production_type",
+   "source_url": "https://biztimes.com/global-power-components-gets-initial-approval-for-west-milwaukee-plant/",
+   "ledger_value": "company-level (inferred at site): custom enclosures to customer specifications and custom engineered UL 142 tanks",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[11]",
+   "verdict": "confirmed",
+   "note": "Inferred, correctly tagged: company-level custom statements attributed to the main plant via BizTimes 'Most of Global Power's operations are based out of a facility at 2300 S. 51st St.' (on the page, 2025-05-14). Points, no confidence (session-2 rule 1).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:existing_robots",
+   "source_url": "https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC/job/51st-Street/Robotics-Technician_JR100037",
+   "ledger_value": "yes: cobots and robotic welding cells in production (Robotics Technician requisition listing the 51st Street and Burnham locations; brand not stated)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[12]",
+   "verdict": "confirmed",
+   "note": "On the page. Workday job JSON: location '51st Street', additionalLocations ['Burnham'], startDate 2026-09-24. The value names both locations, and the requisition's primary location field names this site (ships rule 3). Borderline: the posting also covers 'installation, startup, and commissioning of new robotic welding systems', which could be at Burnham; the value's two-location wording keeps it accurate.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:welder_postings",
+   "source_url": "https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC/job/51st-Street/MIG-Welder_JR100145",
+   "ledger_value": "counted: MIG Welder, JSON-LD datePosted 2026-11-10, Workday location '51st Street'; temp-to-hire; 1st and 2nd shift; OT available, not mandatory",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[13]",
+   "verdict": "confirmed",
+   "note": "Live on GPC's own Workday board 2026-11-17 ('Posted 6 Days Ago'; job JSON startDate 2026-11-10; JSON-LD datePosted/addressLocality in raw source). 'OT is always available but not mandatory' on the page; shifts list 'eligible for OT'. Full board read (93 openings, all titles): the only production welding title at 51st Street is MIG Welder; others are Tester - Weld, Weld Lead, Weld Supervisor, Weld Expediter, CWI, Weld Test Coordinator, Robotics Technician, plus non-welding Finisher, Machine Operator, Laser, Saw, Media Blaster. Count of 1 correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:welder_postings",
+   "source_url": "https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC/job/51st-Street/Tester---Weld_JR100164",
+   "ledger_value": "listed, not counted: Tester - Weld (JSON-LD 2026-11-12): pressure-tests welded fuel tanks, MIG required, minor weld repairs",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[14]",
+   "verdict": "confirmed",
+   "note": "Posted 2026-11-12, location 51st Street. Duties are pressure testing with 'minor weld repairs and leak corrections as needed'; listed, not counted, follows the Phoenix Service Welder precedent (RULING listed in score_notes).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:welder_postings",
+   "source_url": "https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC/job/51st-Street/Weld-Lead_JR100098",
+   "ledger_value": "listed, not counted: Weld Lead (JSON-LD 2026-10-05); coordinates MIG welders, CWI required",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[15]",
+   "verdict": "confirmed",
+   "note": "Posted 2026-10-05 (startDate), location 51st Street. Duties coordinate, delegate, train; CWI required; 'Assist with tasks as necessary' does not state welding. Not a working lead under the counting rule.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:welder_postings",
+   "source_url": "https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC/job/51st-Street/Weld-Supervisor_JR100099",
+   "ledger_value": "listed, not counted: Weld Supervisor (JSON-LD 2026-10-05)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[16]",
+   "verdict": "confirmed",
+   "note": "Posted 2026-10-05, 51st Street; supervisory.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:welder_postings",
+   "source_url": "https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC/job/Burnham/Academy-Trainee---Welding_JR100007",
+   "ledger_value": "listed, not counted (other site): Academy Trainee - Welding at the Workday location 'Burnham'",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[17]",
+   "verdict": "confirmed",
+   "note": "Live, location 'Burnham', posted 2026-09-23. Burnham (4101 W Burnham St, West Milwaukee) is a named separate site; Census re-query puts it 1.30 km from 2300 S 51st St, another municipality: not this plant. Listed only, correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:welder_postings",
+   "source_url": "https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC",
+   "ledger_value": "site tie (inferred): Workday location '51st Street' = 2300 S 51st St",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[18]",
+   "verdict": "confirmed",
+   "note": "Inferred site tie, correctly in its own inferred row. GPC's Workday locations are 51st Street, Burnham, Chase, Bays, Elkhorn; ECHO lists no other GPC site on 51st Street, so the label names this plant (ships rule 3). Does not block labor confidence (the claim has stated rows; the tie is a location-field reading, not a campus inference).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:triggers",
+   "source_url": "https://biztimes.com/global-power-buys-west-milwaukee-facility-for-expansion/",
+   "ledger_value": "none at this site within 24 months; company: bought the former Journal Sentinel printing plant at 4101 W Burnham St, West Milwaukee (BizTimes 2025-06-23) to expand it by 230,000 sq ft; a separate site 1.3 km away",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[19]",
+   "verdict": "corrected",
+   "corrected_value": "company: bought the former Journal Sentinel printing plant at 4101 W Burnham St, West Milwaukee, for $17.5 million to occupy it and expand it by 230,000 sq ft (BizTimes 2025-06-23); 2300 S 51st St is planned to remain in operation",
+   "corrected_quote": "The Burnham Street property was sold to Global Power for $17.5 million, according to state property records. ... plans to expand the existing facility at 4101 W. Burnham St. by 230,000 square feet. ... That facility is planned to remain in operation after the West Milwaukee facility opens.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Quote on the page (datePublished 2025-06-23). The value adds 'none at this site within 24 months' (a scoring judgement) and 'a separate site 1.3 km away' (a Census-geocode distance; checker re-query 1.30 km) that the article does not carry. Per the fact-check lessons the site judgement and distance belong in an inferred row; they already sit in the inferred address row (ECHO note, 'about 1.3 km away') and the score_demand reasoning. Demand 8 unaffected (Burnham is a separate site in another municipality, beyond the ~1 km campus distance).",
+   "r2_basis": true,
+   "plants_csv_value": "keep: plants.csv triggers value unchanged (its site judgement and 1.3 km distance rest on the inferred address row and score_demand reasoning)"
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:triggers",
+   "source_url": "https://biztimes.com/global-power-components-gets-initial-approval-for-west-milwaukee-plant/",
+   "ledger_value": "Burnham expansion plan: 230,000 sq ft addition; 51st St stays open (BizTimes 2025-05-14)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[20]",
+   "verdict": "confirmed",
+   "note": "On the page (2025-05-14): 230,000 sq ft expansion at 4101 W Burnham St; 51st St 'planned to remain in operation'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:headcount",
+   "source_url": "https://biztimes.com/global-power-components-gets-initial-approval-for-west-milwaukee-plant/",
+   "ledger_value": "unknown at site; 1,200+ employees company-wide across five Milwaukee-area facilities (May 2025), most operations at 2300 S 51st St (inferred 100+ at the site)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[21]",
+   "verdict": "confirmed",
+   "note": "Inferred, correctly tagged. Page: 'With more than 1,200 employees currently', 'five facilities in the Milwaukee area', most operations at 2300 S 51st St, 'Most of the company's other facilities are warehouses' (2025-05-14, within 36 months). The 100+ at site is a deduction; scale RULING in score_notes.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-global-power-components:multi_plant",
+   "source_url": "https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC/job/51st-Street/Certified-Welding-Inspector_JR100115",
+   "ledger_value": "several manufacturing facilities (CWI requisition: a CWI 'at each of our manufacturing facilities')",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[22]",
+   "verdict": "confirmed",
+   "note": "On the page ('each of our manufacturing facilities'). Burnham is 1.30 km away in West Milwaukee, so GPC has at least two production sites under the campus rule.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:bottleneck_guess",
+   "source_url": "https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC/job/51st-Street/Weld-Expediter_JR100124",
+   "ledger_value": "Likely manual MIG welding throughput on I-beam frames and fuel tanks at 51st Street: a temp-to-hire MIG Welder opening, a new Weld Expediter role to keep welders productive, an in-house welding academy, and cobot welding cells already in use.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[23]",
+   "verdict": "confirmed",
+   "note": "Inferred; quote on the Weld Expediter requisition (51st Street, startDate 2026-10-27). 'in-house welding academy' is at Burnham; wording acceptable for an inferred guess.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Your 51st Street MIG Welder opening (posted Nov 10, 2026) covers I-beam frames and fuel tanks from 10 gauge to 1/2 in, and your Robotics Technician role (51st Street and Burnham) runs cobots and robotic welding cells; how are you deciding which frame and tank welds go to the robot cells and which stay manual?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[24]",
+   "verdict": "confirmed",
+   "note": "Every clause rests on stated rows: MIG Welder posted 2026-11-10 at 51st Street, I-beam frames and fuel tanks 10 gauge to 1/2 in (same requisition), Robotics Technician listing 51st Street and Burnham with cobots and robotic welding cells. The question does not assert a fact. No change needed (the products correction does not touch it).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[25]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[26]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[27]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[28]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[29]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[30]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:score_total",
+   "source_url": "",
+   "ledger_value": "65",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[31]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[32]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:confidence",
+   "source_url": "",
+   "ledger_value": "2",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[33]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:status",
+   "source_url": "",
+   "ledger_value": "profiled",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[34]",
+   "verdict": "confirmed",
+   "note": "Profiled; plant operating (live 51st Street requisitions; ECHO 'Active', 'Last Reported for 2024').",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:prospect_test",
+   "source_url": "https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC/job/51st-Street/MIG-Welder_JR100145",
+   "ledger_value": "pass: welds steel tanks and I-beam frames in house (51st Street MIG Welder requisition)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[35]",
+   "verdict": "confirmed",
+   "note": "Inferred pass; the site's own requisition states welding of fuel tanks and I-beam frames.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:products",
+   "source_url": "https://psiengines.com/facilities/",
+   "ledger_value": "complete, custom-designed integrated power generation packages; fabrication, mechanical and electric controls assembly; 100-ton lifting (Darien facility entry)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[36]",
+   "verdict": "confirmed",
+   "note": "Quote on the page. The value's 'fabrication, mechanical and electric controls assembly; 100-ton lifting' is in the next sentence of the same Darien entry ('The facility has a 100-ton lifting capacity and includes fabrication, mechanical and electric controls assembly capabilities.'), so the page carries every clause; suggest extending the quote.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-psi-darien-wi:products",
+   "source_url": "https://psiengines.com/enclosures/",
+   "ledger_value": "company: standard enclosures and custom power generation packages designed, engineered, fabricated and assembled in Beloit and Darien",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[37]",
+   "verdict": "confirmed",
+   "note": "On the page; correctly prefixed 'company:' (two cities named).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-psi-darien-wi:weld_processes",
+   "source_url": "https://justjobs.com/career/13370403/Mig-Welding-Team-Member-1st-Shift-Wisconsin-Darien",
+   "ledger_value": "MIG (GMAW) with TIG (GTAW) named as an alternative: MIG Welding Team Member requisitions at 448 West Madison Street (aggregator copies dated 2025-07-22 and 2026-04-02; not on PSI's board today)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[38]",
+   "verdict": "corrected",
+   "corrected_value": "MIG (GMAW) with TIG (GTAW) named as an alternative: MIG Welding Team Member 1st Shift requisition at 448 West Madison Street (aggregator copy dated 2025-07-22; not on PSI's board today)",
+   "corrected_quote": "Skilled at all basic welding including GMAW/MIG welding techniques ... Demonstrated proficiency in various welding techniques such as GMAW/MIG or GTAW/TIG",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Quote on the page (Jul 22, 2025; 448 West Madison Street). Compound value: the '2026-04-02' 2nd Shift copy is on diversityjobs.com, which has its own row (confirmed). Trim to this page's requisition. Process 12 unaffected (both copies carry the same TIG wording).",
+   "r2_basis": true,
+   "plants_csv_value": "keep: plants.csv weld_processes value unchanged (both aggregator copies are carried across the justjobs and diversityjobs rows)"
+  },
+  {
+   "claim_id": "p-psi-darien-wi:weld_processes",
+   "source_url": "https://diversityjobs.com/career/16390503/Mig-Welding-Team-Member-2nd-Shift-Wisconsin-Darien",
+   "ledger_value": "MIG Welding Team Member 2nd Shift, 448 West Madison Street (aggregator copy dated 2026-04-02)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[39]",
+   "verdict": "confirmed",
+   "note": "On the page: 'Apr 02, 2026', 448 West Madison Street, GMAW/MIG and 'GMAW/MIG or GTAW/TIG'. No JSON-LD date on the page; the visible date is the only date.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-psi-darien-wi:materials",
+   "source_url": "https://biztimes.com/backup-power-generation-fuels-growth-for-darien-company/",
+   "ledger_value": "steel: 'raw steel into finished product' (2006 article on the Darien company; current material not restated)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[40]",
+   "verdict": "confirmed",
+   "note": "On the page; datePublished 2006-11-10; address 448 W. Madison St., Darien. The value flags the age.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-psi-darien-wi:certifications",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/39DCF574C16448FF09ADD3EF809F9EF2/jobs/383557",
+   "ledger_value": "ISO 9001:2015 quality system named in a quality requisition for the Darien and Beloit sites (certificate not seen)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[41]",
+   "verdict": "confirmed",
+   "note": "On the page; locations 'WI Darien; WI Beloit' (JSON-LD street 448 West Madison Street, datePosted 2026-09-03); the value says the certificate was not seen.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-psi-darien-wi:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown at site: PSI states its Wisconsin enclosures are 50+ ft long and 10+ ft wide (company-level; no site or welded part named)",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-H.json evidence[42]",
+   "verdict": "confirmed",
+   "note": "Unknown confirmed: nothing on the cited sources sets this value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-psi:part_size_fit",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1137091/000119312526106243/d101858dex991.htm",
+   "ledger_value": "Wisconsin enclosures 50+ ft long, 10+ ft wide (investor Q&A, 2026-03-11)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[43]",
+   "verdict": "confirmed",
+   "note": "On the page (Q40). Company-level, no site, open-ended; earns no material points.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-psi-darien-wi:production_type",
+   "source_url": "https://psiengines.com/facilities/",
+   "ledger_value": "custom-designed integrated power generation packages (Darien facility entry)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[44]",
+   "verdict": "confirmed",
+   "note": "On the page (Darien entry). Note for part mix: the 8-K (Q31/Q33) says about 50-60% of each unit is standardized; still custom per unit, 15 stands (score_notes).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-psi-darien-wi:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-H.json evidence[45]",
+   "verdict": "confirmed",
+   "note": "Unknown confirmed: nothing on the cited sources sets this value.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/39DCF574C16448FF09ADD3EF809F9EF2/jobs/392204",
+   "ledger_value": "listed, not counted: Fabrication Manager (JSON-LD 2026-09-30, street 448 West Madison Street): leads fabrication including welding; manages welders across all shifts",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[46]",
+   "verdict": "confirmed",
+   "note": "Live on PSI's own Paycom board 2026-11-17; JSON-LD datePosted 2026-09-30, streetAddress 448 West Madison Street; 'Lead, coach, and develop supervisors, team leaders, welders, machine operators, and support personnel across all shifts'. Manager: listed, not counted.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-psi-darien-wi:welder_postings",
+   "source_url": "https://justjobs.com/career/13370403/Mig-Welding-Team-Member-1st-Shift-Wisconsin-Darien",
+   "ledger_value": "closed, not counted: MIG Welding Team Member 1st Shift at 448 West Madison Street, aggregator copy dated 2025-07-22 with a $1,000 sign-on bonus",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[47]",
+   "verdict": "confirmed",
+   "note": "On the page (Jul 22, 2025; $1,000 sign-on; 448 West Madison Street). Board check: the 36 live PSI titles (portal job-titles API, 2026-11-17) include no welder title, so closed/not on own board; not counted.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-psi-darien-wi:welder_postings",
+   "source_url": "https://diversityjobs.com/career/16390503/Mig-Welding-Team-Member-2nd-Shift-Wisconsin-Darien",
+   "ledger_value": "closed, not counted: MIG Welding Team Member 2nd Shift, aggregator copy dated 2026-04-02",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[48]",
+   "verdict": "confirmed",
+   "note": "On the page; not on PSI's board today.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-psi-darien-wi:triggers",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1137091/000119312526106243/d101858dex991.htm",
+   "ledger_value": "no dated plant-level event: PSI said on 2026-03-11 that the overall Darien facility expansion is complete (completion date not given)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[49]",
+   "verdict": "confirmed",
+   "note": "On the page (Q47). 'no dated plant-level event' is a scoring label; the fact (completion reported 2026-03-11, completion date not given) is right. Demand RULING in score_notes.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-psi-darien-wi:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-H.json evidence[50]",
+   "verdict": "confirmed",
+   "note": "Unknown confirmed: nothing on the cited sources sets this value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-psi:headcount",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1137091/000162828026013207/psix-20251231.htm",
+   "ledger_value": "about 1,000 full-time employees company-wide (2025-12-31)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[51]",
+   "verdict": "confirmed",
+   "note": "On the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-psi:multi_plant",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1137091/000162828026013207/psix-20251231.htm",
+   "ledger_value": "multi-plant: primary facilities in suburban Chicago, Darien and Beloit (10-K 2025)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[52]",
+   "verdict": "confirmed",
+   "note": "On the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-psi:bottleneck",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1137091/000119312526106243/d101858dex991.htm",
+   "ledger_value": "PSI says its Wisconsin enclosure constraint is space, not manpower or engine supply (2026-03-11)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[53]",
+   "verdict": "confirmed",
+   "note": "On the page (Q40, answer to 'Are engines limiting factors to growth or is labor an issue?'). 'constraint is space' paraphrases 'enclosures are large ... and space-intensive'; acceptable, borderline (counted in the strict rate).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-psi:site_roles",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1137091/000119312526106243/d101858dex991.htm",
+   "ledger_value": "fabrication equipment being moved to the new Beloit facility (2026-03-11)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[54]",
+   "verdict": "confirmed",
+   "note": "On the page (Q1).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-psi:site_roles",
+   "source_url": "https://psiengines.com/facilities/",
+   "ledger_value": "1901 Gateway Blvd, Beloit: 500,000 sq ft; UL fuel tanks, enclosure component fabrication, warehouse",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[55]",
+   "verdict": "confirmed",
+   "note": "On the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-psi-darien-wi:prospect_test",
+   "source_url": "",
+   "ledger_value": "pass: welding at Darien (Fabrication Manager requisition with the Darien street address)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[56]",
+   "verdict": "confirmed",
+   "note": "Inferred pass. Supported also by the MIG Welding Team Member requisitions at 448 West Madison Street (2025-07-22, 2026-04-02) and the Darien facilities entry ('includes fabrication').",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:status",
+   "source_url": "",
+   "ledger_value": "profiled",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[57]",
+   "verdict": "confirmed",
+   "note": "Profiled; operating (live Darien requisitions; facilities page).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "PSI says floor space, not manpower, limits its Wisconsin enclosure output; at Darien the likely constraint is fabrication throughput, welding included, while fabrication equipment moves toward Beloit and the plant turns from a fab/weld shop into a vertically integrated line.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[58]",
+   "verdict": "confirmed",
+   "note": "Inferred guess; wording consistent with its cited claims (no fact asserted beyond them).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Darien is hiring a Fabrication Manager (posted Sept 30, 2026) to run laser cutting, press-brake forming and welding for its custom-designed power generation packages, after PSI reported in March 2026 that the Darien expansion is complete; how are you splitting fabrication work between Darien and the Beloit plants?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[59]",
+   "verdict": "confirmed",
+   "note": "Every clause stated: Fabrication Manager JSON-LD 2026-09-30 at 448 West Madison Street (live today) leading laser cutting, press-brake forming and welding; 8-K March 2026 'The overall Darien facility expansion is complete'; custom-designed packages (facilities page); Beloit fabrication (c-psi:site_roles).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-psi-darien-wi:score_process",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[60]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[61]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[62]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[63]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[64]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[65]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:score_total",
+   "source_url": "",
+   "ledger_value": "40",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[66]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[67]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:confidence",
+   "source_url": "",
+   "ledger_value": "2",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[68]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:weld_processes",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-H.json evidence[69]",
+   "verdict": "confirmed",
+   "note": "Unknown confirmed: nothing on the cited sources sets this value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:materials",
+   "source_url": "https://pritchardbrown.com/enclosures-by-type/",
+   "ledger_value": "aluminum-first enclosure skins (corrosion-resistant aluminum construction)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[70]",
+   "verdict": "confirmed",
+   "note": "On the page. The cited line sits under the 2120 weather-resistant (light duty) line; the general Standby Generators block says 'Corrosion resistant marine-grade aluminum construction', and spec 2130 states aluminum stressed-skin walls, so aluminum-first holds for the company.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:materials",
+   "source_url": "https://pritchardbrown.com/wp-content/uploads/2021/12/Shelterspec-2130-Main.doc",
+   "ledger_value": "welded steel floor/underframe perimeter and 1.25 in steel lift rings welded to the base; aluminum wall panels hard-riveted to aluminized steel framing (construction spec 2130)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[71]",
+   "verdict": "confirmed",
+   "note": "Both fragments on the document ('Pritchard Brown Sound Attenuating, Weatherproof Genset Enclosure Specification No. 2130'). 'aluminized steel framing' = 'fabricated aluminized steel Z section wall posts'. Note for siblings: the spec makes the floor/underframe optional ('optional floor/underframe'; '(if applicable)'), it is a 'shall' specification and undated; the value does not claim every enclosure has one, so confirmed; the opening line does (corrected).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown: no dimension or weight stated; aluminum-first enclosure skins (weak fit, boundary rule 4) on welded steel underframes",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-H.json evidence[72]",
+   "verdict": "confirmed",
+   "note": "Unknown confirmed: nothing on the cited sources sets this value.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:production_type",
+   "source_url": "https://pritchardbrown.com/about-us/",
+   "ledger_value": "custom: each enclosure is custom designed",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[73]",
+   "verdict": "confirmed",
+   "note": "On the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:production_type",
+   "source_url": "https://pritchardbrown.com/enclosures-by-type/",
+   "ledger_value": "truly customized total system solutions based on site requirements",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-H.json evidence[74]",
+   "verdict": "confirmed",
+   "note": "On the page (2130 line).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-H.json evidence[75]",
+   "verdict": "confirmed",
+   "note": "Unknown confirmed: nothing on the cited sources sets this value.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-H.json evidence[76]",
+   "verdict": "confirmed",
+   "note": "Unknown confirmed: nothing on the cited sources sets this value.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:welder_postings",
+   "source_url": "https://pritchardbrown.com/careers/",
+   "ledger_value": "none found: careers page lists no openings (read 2026-11-16); no Pritchard Brown welder posting found in a web search",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[77]",
+   "verdict": "confirmed",
+   "note": "On the page; the careers page lists no openings and its only button links to the generic https://www.indeed.jobs/ home page. Checker web search 2026-11-17 for Pritchard Brown welder jobs in Baltimore found none. Labor 0 stands.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:triggers",
+   "source_url": "",
+   "ledger_value": "none found",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-H.json evidence[78]",
+   "verdict": "confirmed",
+   "note": "Unknown confirmed: nothing on the cited sources sets this value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-H.json evidence[79]",
+   "verdict": "confirmed",
+   "note": "Unknown confirmed: nothing on the cited sources sets this value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:single_site",
+   "source_url": "https://echodata.epa.gov/echo/echo_rest_services.get_facilities?output=JSON&p_fn=PRITCHARD%20BROWN",
+   "ledger_value": "single manufacturing facility at 6501 Erdman Ave (inferred)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[80]",
+   "verdict": "confirmed",
+   "note": "Inferred. ECHO name search re-run: 2 rows, PRICHARD BROWN LLC 6501 ERDMAN AVENUE Baltimore and PRITCHARD BROWN INC 2950 CR 561 Tavares FL; about-us 'relocated to its current manufacturing facility' (singular).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:prospect_test",
+   "source_url": "",
+   "ledger_value": "pass (aluminum-first, kept and noted): welded steel underframes and bases in the company's construction spec",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[81]",
+   "verdict": "confirmed",
+   "note": "Inferred and honest about its basis; see status_problems (coordinator call).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:status",
+   "source_url": "",
+   "ledger_value": "profiled",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[82]",
+   "verdict": "confirmed",
+   "note": "See status_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly the welded steel underframe, base and fuel-tank-base work beneath each custom aluminum enclosure; no labor, robot or capacity data is public, so this rests on the construction spec alone.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[83]",
+   "verdict": "confirmed",
+   "note": "Inferred. Wording 'beneath each custom aluminum enclosure' repeats the opening-line overstatement (floor/underframe optional per spec 2130); suggest 'beneath custom aluminum enclosures that take a welded base'.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:opening_line",
+   "source_url": "",
+   "ledger_value": "Pritchard Brown custom designs each enclosure and builds it on a welded steel floor and underframe with aluminum skins; how do you handle the welded base and underframe work when every enclosure is a custom design?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[84]",
+   "verdict": "corrected",
+   "corrected_value": "Pritchard Brown custom designs each enclosure, and its Specification No. 2130 calls for a welded steel floor and underframe (where a floor is supplied) beneath aluminum stressed-skin walls; how do you handle the welded base and underframe work when every enclosure is a custom design?",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "The line says Pritchard Brown 'custom designs each enclosure and builds it on a welded steel floor and underframe'. Spec 2130 is a 'shall' specification (undated, 2021/12 upload) and makes the floor/underframe optional ('optional floor/underframe'; heading 'Floor/Underframe/Rupture Basin (if applicable)'; drop-over enclosures have no floor/underframe/tank and use a tie-down frame instead), so 'each ... builds it on a welded steel floor' is not supported. Both stated rows it cites (production_type, materials spec row) are on their pages. The inferred bottleneck row repeats 'beneath each'. Corrected line composed only from stated claims p-pritchard-brown-baltimore-md:production_type (about-us 'Each enclosure is custom designed') and p-pritchard-brown-baltimore-md:materials (spec 2130: 'an optional floor/underframe incorporating prepainted aluminum stressed-skin semi-monocoque construction'; 'The floor and underframe assembly shall consist of fabricated steel or structural steel welded to form the outer perimeter.').",
+   "plants_csv_value": "Pritchard Brown custom designs each enclosure, and its Specification No. 2130 calls for a welded steel floor and underframe (where a floor is supplied) beneath aluminum stressed-skin walls; how do you handle the welded base and underframe work when every enclosure is a custom design?",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[85]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:score_material_part",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[86]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[87]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[88]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[89]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:score_scale",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[90]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:score_total",
+   "source_url": "",
+   "ledger_value": "27",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[91]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[92]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:confidence",
+   "source_url": "",
+   "ledger_value": "2",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-H.json evidence[93]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and session rules; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:name",
+   "source_url": "https://pritchardbrown.com/",
+   "ledger_value": "Pritchard Brown",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 14942",
+   "verdict": "confirmed",
+   "note": "On the page. plants.csv name 'Pritchard Brown, LLC': 'LLC' is on ECHO (PRICHARD BROWN LLC), not on this page (field drift note).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:address",
+   "source_url": "https://pritchardbrown.com/",
+   "ledger_value": "6501 Erdman Ave, Baltimore, MD 21205",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 14943",
+   "verdict": "confirmed",
+   "note": "On the page; ECHO status 'Operating' at 6501 Erdman Ave.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:address",
+   "source_url": "https://pritchardbrown.com/about-us/",
+   "ledger_value": "current manufacturing facility, 70,000 sq ft",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 14944",
+   "verdict": "confirmed",
+   "note": "On the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001295722&output=JSON",
+   "ledger_value": "EPA facility record at same street",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 14945",
+   "verdict": "confirmed",
+   "note": "On the page; FacilityStatus Operating / Active.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:parent_company",
+   "source_url": "https://pritchardbrown.com/about-us/",
+   "ledger_value": "Fennell Holdings",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 14946",
+   "verdict": "confirmed",
+   "note": "On the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:website",
+   "source_url": "https://pritchardbrown.com/",
+   "ledger_value": "https://pritchardbrown.com",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 14947",
+   "verdict": "confirmed",
+   "note": "On the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:products",
+   "source_url": "https://pritchardbrown.com/",
+   "ledger_value": "genset enclosures, fuel tank bases, sound attenuation; genset enclosures by type",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 14948",
+   "verdict": "confirmed",
+   "note": "On the page; single-facility company, so the company product line is at this plant (single_site inferred row).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:products",
+   "source_url": "https://pritchardbrown.com/enclosures-by-type/",
+   "ledger_value": "UL listed fuel tank bases; boundary: aluminum construction",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 14949",
+   "verdict": "confirmed",
+   "note": "Both fragments on the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:tier",
+   "source_url": "https://pritchardbrown.com/about-us/",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 14950",
+   "verdict": "confirmed",
+   "note": "Inferred Tier 1 (enclosures and tank bases around customers' gensets), consistent with GPC and PSI in this vertical.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:relationship",
+   "source_url": "https://pritchardbrown.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 14951",
+   "verdict": "confirmed",
+   "note": "Lookalike under the written battery rule (generator enclosures and UL fuel tank bases stated).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:lookalike_of",
+   "source_url": "https://pritchardbrown.com/",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 14952",
+   "verdict": "confirmed",
+   "note": "EK Machine.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000857699&output=JSON",
+   "ledger_value": "BHP Inc. d.b.a. Global Power Components",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15240",
+   "verdict": "confirmed",
+   "note": "On the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000857699&output=JSON",
+   "ledger_value": "2300 S 51st St, Milwaukee, WI 53219",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15241",
+   "verdict": "confirmed",
+   "note": "On the page; FacilityStatus Active, last reported 2024.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:address",
+   "source_url": "https://gpcwordpress.azurewebsites.net/?p=6",
+   "ledger_value": "company page address Milwaukee 53219",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15242",
+   "verdict": "confirmed",
+   "note": "On the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:parent_company",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000857699&output=JSON",
+   "ledger_value": "BHP Inc. dba Global Power Components",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15243",
+   "verdict": "confirmed",
+   "note": "On the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:products",
+   "source_url": "https://gpcwordpress.azurewebsites.net/?p=6",
+   "ledger_value": "tank, trailer and enclosure manufacturer; welded UL 142/2085 sub-base tanks",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15244",
+   "verdict": "corrected",
+   "corrected_value": "company-level: tank, trailer and enclosure manufacturer; each tank it produces is welded (UL 142, UL 2085, sub-base or free-standing)",
+   "corrected_quote": "Far more than just a tank, trailer, and enclosure manufacturer, GPC takes pride in offering a total solution. ... each tank we produce is welded, painted, and tested to the highest standard. Whether it is a UL 142, UL 2085, sub base, or free standing tank you desire",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Quote on the page. Sibling of the inbox MIG Welder products row: a company web page (GPC's product overview) tagged stated as this plant's products at a five-facility company. Supersedes the CS base-sample 'confirmed' on this row under the R2 decision rule ('places a company-level fact at the plant'), consistent with R2-G's 'company products tagged stated at one site'. Value text otherwise matches the page. No score effect.",
+   "r2_basis": true,
+   "plants_csv_value": "Welded I-beam frames and UL fuel tanks (51st Street MIG Welder requisition); company: UL heavy gauge steel fuel tanks (UL 142 / UL 2085, sub-base and free-standing), trailers, large generator enclosures, modular metal enclosures for electrical equipment (boundary v-datacenter-grid-prefab)"
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:tier",
+   "source_url": "https://gpcwordpress.azurewebsites.net/?p=6",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15245",
+   "verdict": "confirmed",
+   "note": "Inferred Tier 1.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:relationship",
+   "source_url": "https://gpcwordpress.azurewebsites.net/?p=6",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15246",
+   "verdict": "confirmed",
+   "note": "Lookalike under the written battery rule (company-level generator enclosures and sub-base tanks are enough).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:lookalike_of",
+   "source_url": "https://gpcwordpress.azurewebsites.net/?p=6",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15247",
+   "verdict": "confirmed",
+   "note": "EK Machine.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:prospect_test",
+   "source_url": "https://gpcwordpress.azurewebsites.net/?p=6",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15249",
+   "verdict": "confirmed",
+   "note": "Inferred pass; company page; the site-level basis is the inbox MIG Welder prospect_test row.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:address",
+   "source_url": "",
+   "ledger_value": "other GPC sites not recorded",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15250",
+   "verdict": "confirmed",
+   "note": "Inferred note; Burnham distance re-checked 1.30 km by Census geocodes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110013289011",
+   "ledger_value": "Professional Power Products, Inc. (Power Solutions International) - Darien enclosure and packaging plant",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15468",
+   "verdict": "corrected",
+   "corrected_value": "Professional Power Products Inc (EPA records also list Power Solutions International, Inc. at 448 W Madison St, Darien)",
+   "corrected_quote": "\"FacilityName\":\"PROFESSIONAL POWER PRODUCTS INC\", \"FacilityStreet\":\"448 W MADISON ST\", \"FacilityCity\":\"DARIEN\"",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "note": "Quote on the page. The ECHO record carries 'PROFESSIONAL POWER PRODUCTS INC' and 'POWER SOLUTIONS INTERNATIONAL, INC.' at 448 W Madison St, but not 'Darien enclosure and packaging plant', which is a description (supported by psiengines.com/facilities/, not by this page). Line drawn: off-page descriptive facts in a stated value are corrected; bookkeeping labels ('listed, not counted', 'none found') are not. Cosmetic; the plants.csv name may keep the label as a display name if the coordinator prefers.",
+   "r2_basis": true,
+   "plants_csv_value": "keep: plants.csv name unchanged (display label; coordinator may trim)"
+  },
+  {
+   "claim_id": "p-psi-darien-wi:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110013289011",
+   "ledger_value": "448 W MADISON ST, DARIEN, WI 53114",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15469",
+   "verdict": "confirmed",
+   "note": "On the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-psi-darien-wi:tier",
+   "source_url": "https://psiengines.com/enclosures/",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15471",
+   "verdict": "confirmed",
+   "note": "Inferred Tier 1.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:tier_secondary",
+   "source_url": "https://psiengines.com/enclosures/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15472",
+   "verdict": "confirmed",
+   "note": "Inferred OEM.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:relationship",
+   "source_url": "https://psiengines.com/enclosures/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15473",
+   "verdict": "confirmed",
+   "note": "Lookalike under the written battery rule (enclosures fabricated in Beloit and Darien).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:lookalike_of",
+   "source_url": "https://psiengines.com/enclosures/",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15474",
+   "verdict": "confirmed",
+   "note": "EK Machine (plants.csv value carries an appended explanation; field drift note).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:parent_company",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1137091/000119312520169586/d937917d10ka.htm",
+   "ledger_value": "Power Solutions International (Professional Power Products, Inc. is a PSI subsidiary)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15476",
+   "verdict": "confirmed",
+   "note": "Inferred; quote on the 10-K/A; the 2025 10-K names Darien among PSI's facilities.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:products",
+   "source_url": "https://biztimes.com/backup-power-generation-fuels-growth-for-darien-company/",
+   "ledger_value": "In-house from raw steel (2006 article)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15477",
+   "verdict": "confirmed",
+   "note": "On the page (2006).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-psi-darien-wi:name",
+   "source_url": "https://biztimes.com/backup-power-generation-fuels-growth-for-darien-company/",
+   "ledger_value": "Professional Power Products Inc",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15478",
+   "verdict": "confirmed",
+   "note": "On the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-psi-darien-wi:website",
+   "source_url": "https://psiengines.com/enclosures/",
+   "ledger_value": "https://psiengines.com/",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15546",
+   "verdict": "confirmed",
+   "note": "On the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=6501%20Erdman%20Ave%2C%20Baltimore%2C%20MD%2021205&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "39.30144",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18098",
+   "verdict": "confirmed",
+   "note": "Census Geocoder re-queried 2026-11-17: same match / no-match as recorded (quote text is a query summary, not page text; not a quote check).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=6501%20Erdman%20Ave%2C%20Baltimore%2C%20MD%2021205&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-76.5383",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18099",
+   "verdict": "confirmed",
+   "note": "Census Geocoder re-queried 2026-11-17: same match / no-match as recorded (quote text is a query summary, not page text; not a quote check).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=6501%20Erdman%20Ave%2C%20Baltimore%2C%20MD%2021205&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "24510",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18100",
+   "verdict": "confirmed",
+   "note": "Census Geocoder re-queried 2026-11-17: same match / no-match as recorded (quote text is a query summary, not page text; not a quote check).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2300%20S%2051st%20St%2C%20Milwaukee%2C%20WI%2053219&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "43.00197",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18173",
+   "verdict": "confirmed",
+   "note": "Census Geocoder re-queried 2026-11-17: same match / no-match as recorded (quote text is a query summary, not page text; not a quote check).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2300%20S%2051st%20St%2C%20Milwaukee%2C%20WI%2053219&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-87.97695",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18174",
+   "verdict": "confirmed",
+   "note": "Census Geocoder re-queried 2026-11-17: same match / no-match as recorded (quote text is a query summary, not page text; not a quote check).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2300%20S%2051st%20St%2C%20Milwaukee%2C%20WI%2053219&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "55079",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18175",
+   "verdict": "confirmed",
+   "note": "Census Geocoder re-queried 2026-11-17: same match / no-match as recorded (quote text is a query summary, not page text; not a quote check).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=448%20W%20Madison%20St%2C%20Darien%2C%20WI%2053114&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "42.602748",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18249",
+   "verdict": "confirmed",
+   "note": "Census Geocoder re-queried 2026-11-17: same match / no-match as recorded (quote text is a query summary, not page text; not a quote check).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=448%20W%20Madison%20St%2C%20Darien%2C%20WI%2053114&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-88.718833",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18250",
+   "verdict": "confirmed",
+   "note": "Census Geocoder re-queried 2026-11-17: same match / no-match as recorded (quote text is a query summary, not page text; not a quote check).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=448%20W%20Madison%20St%2C%20Darien%2C%20WI%2053114&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "55127",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18251",
+   "verdict": "confirmed",
+   "note": "Census Geocoder re-queried 2026-11-17: same match / no-match as recorded (quote text is a query summary, not page text; not a quote check).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-psi-darien-wi:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/39DCF574C16448FF09ADD3EF809F9EF2/jobs/390493",
+   "ledger_value": "none found (36 postings read)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 18386",
+   "verdict": "confirmed",
+   "note": "On the page (Fabrication Team Member 2nd Shift, JSON-LD 2026-09-24, Darien and Beloit; brakes, rolls, shears, saws, presses). Board shows 36 results today, none a welder.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:website",
+   "source_url": "https://www.globalpowercomponents.com",
+   "ledger_value": "https://www.globalpowercomponents.com",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 18393",
+   "verdict": "confirmed",
+   "note": "On the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "v-enclosures-battery-generator:demand_outlook",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/102729/000010272926000050/vmi-20260926x10q.htm",
+   "ledger_value": "Strong (inferred from data-center and grid load growth)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 81",
+   "verdict": "confirmed",
+   "note": "Quote re-found on a fresh fetch 2026-11-17 (or row inferred). Vertical-level; demand 8 component only.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "v-enclosures-battery-generator:demand_outlook",
+   "source_url": "https://www.eia.gov/todayinenergy/detail.php?id=65964",
+   "ledger_value": "Strong: 2025 on course for record US battery-storage additions (Texas 7.0 GW planned)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15814",
+   "verdict": "confirmed",
+   "note": "Quote re-found on a fresh fetch 2026-11-17 (or row inferred). Vertical-level; demand 8 component only.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "v-enclosures-battery-generator:demand_outlook",
+   "source_url": "https://www.nasdaq.com/press-release/generac-reports-third-quarter-2025-results-2025-10-29",
+   "ledger_value": "Strong: generator demand from data centers (Generac Q3 2025, 2025-10-29)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15815",
+   "verdict": "confirmed",
+   "note": "Quote re-found on a fresh fetch 2026-11-17 (or row inferred). Vertical-level; demand 8 component only.",
+   "r2_basis": true
+  }
+ ]
+}

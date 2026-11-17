@@ -2,20 +2,20 @@
  "vertical": "v-enclosures-battery-generator",
  "status": "accepted",
  "plants": {
-  "found": 115,
-  "included": 82,
-  "profiled": 45,
-  "excluded": 33,
+  "found": 114,
+  "included": 80,
+  "profiled": 46,
+  "excluded": 34,
   "tiers": {
-   "Medium": 21,
    "High": 14,
-   "Low": 10
+   "Low": 11,
+   "Medium": 21
   },
-  "profiled_fact_checked": 44,
+  "profiled_fact_checked": 46,
   "material_unknown": 33
  },
  "links": 36,
- "evidence_rows": 18791,
+ "evidence_rows": 18871,
  "fact_check_rounds": [
   {
    "round": 1,
@@ -86,9 +86,9 @@
   },
   {
    "round": 2,
-   "label": "Round 2: the 15 plants that entered the top 40 after the audit, leads and job-board sweeps",
-   "checked": 341,
-   "corrected": 18,
+   "label": "Round 2: the 18 plants that entered the top 40 after the audit, leads and job-board sweeps, and the written-key re-rank",
+   "checked": 418,
+   "corrected": 26,
    "unreachable": 0,
    "checkers": [
     {
@@ -132,10 +132,49 @@
       "invented fact": 0,
       "other": 0
      }
+    },
+    {
+     "file": "fact-check-v-enclosures-battery-generator-R2-H.json",
+     "checked": 77,
+     "corrected": 8,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 7,
+      "invented fact": 0,
+      "other": 1
+     }
     }
    ],
-   "rate": 0.0528,
-   "display": "18 / 341 = 5.3%"
+   "rate": 0.0622,
+   "display": "26 / 418 = 6.2%"
+  },
+  {
+   "round": 3,
+   "label": "Round 3: line check of every High and Medium plant's opening line and bottleneck guess (70 lines), after the rulings",
+   "checked": 70,
+   "corrected": 20,
+   "unreachable": 1,
+   "checkers": [
+    {
+     "file": "fact-check-v-enclosures-battery-generator-R3-lines.json",
+     "checked": 70,
+     "corrected": 20,
+     "kinds": {
+      "wrong plant or location": 3,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 2,
+      "invented fact": 0,
+      "other": 15
+     }
+    }
+   ],
+   "rate": 0.2857,
+   "display": "20 / 70 = 28.6%"
   },
   {
    "round": 9,
@@ -164,12 +203,23 @@
   }
  ],
  "miss_rate": {
-  "value": "11/62 = 17.7%",
-  "note": "two blind auditors; 25 unmatched candidates verified: 11 real misses (10 by the miss verifier, Yancey Cordele by the leads finder), the rest already in the ledger, out of definition or not verifiable. Upper bound 14/65 = 21.5% if the three unverifiable candidates (Panel Built Blue Ridge GA, Epic Power Ocala FL, Hennig/AME Rockford IL) are real.",
+  "value": "11/60 = 18.3%",
+  "note": "Misses verified by the coordinator against two independent list audits; denominator = included plants matched to an audit list plus audit plants already in the ledger plus verified misses. Upper bound if three disputed records count as misses: 14/63 = 22.2%.",
   "history": [
-   "16.4% (10/61, before Cordele was verified)",
-   "17.7% (11/62)"
+   "16.4% (first verification)",
+   "17.7% (after the leads merge)",
+   "18.3% (consultation 16: a mining record removed from the denominator)"
   ]
  },
- "known_limits": []
+ "known_limits": [
+  "Eight held plants (welding or enclosure work not shown at the site) sit inside the top-40 ranks and are not profiled; Generac Oshkosh among them has live welder postings, and its air permit could not be downloaded.",
+  "Miss rate upper bound is 22.2%, and the second list auditor did not run dry: more plants likely exist.",
+  "Yancey Barnesville and Wedlake were found by neither the finders nor the auditors; they came from later sweeps.",
+  "Yancey Bros. plants: the enclosures are aluminum-framed and steel is not stated on a Yancey source, so material scores 4 (aluminum-first); Path's aluminum claim is unconfirmed.",
+  "Yancey Cordele and Fidelity McGregor were profiled while pre-production (fit-out or hiring shown, output not yet shown).",
+  "Phoenix Products Zoo Pkwy labor rests on Service Fabricator roles that weld.",
+  "Fact-check round 2 checker G found 12/131 = 9.2% (10.7% on a strict reading); checker H found 8/77 = 10.4%. All corrections were applied; none changed a score.",
+  "The line check found 20 of 70 opening lines and bottleneck guesses wrong (28.6%), mostly re-post dates read as posting dates on UKG boards; all 20 were rewritten and the posting fields reworded to 'listed'.",
+  "Pritchard Brown passes the prospect test on its own undated construction spec (welded steel floor and underframe) and a single facility; no source names welding in Baltimore."
+ ]
 }
