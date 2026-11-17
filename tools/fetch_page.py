@@ -76,7 +76,7 @@ def plain(url, with_raw=False):
     r = requests.get(url, headers={"User-Agent": ua, "Accept-Language": "en-US,en;q=0.9"},
                      timeout=45, allow_redirects=True)
     ctype = r.headers.get("content-type", "")
-    if "pdf" in ctype or url.lower().endswith(".pdf"):
+    if "pdf" in ctype or url.lower().endswith(".pdf") or r.content[:5] == b"%PDF-":
         with tempfile.NamedTemporaryFile(suffix=".pdf") as f:
             f.write(r.content)
             f.flush()
