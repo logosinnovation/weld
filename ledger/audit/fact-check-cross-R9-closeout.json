@@ -1,0 +1,326 @@
+{
+ "checker": "fact-checker R6-CLOSEOUT (cross R9 closeout)",
+ "vertical": "v-mining-heavy-equipment (plus v-enclosures-battery-generator: Fidelity triggers)",
+ "date": "2026-11-17",
+ "plants": [
+  "p-philippi-hagenbuch-peoria-il",
+  "p-werk-brau-findlay-oh",
+  "p-derrick-buffalo-ny",
+  "p-jh-fletcher-huntington-wv",
+  "p-irock-valley-view-oh",
+  "p-allied-systems-sherwood-or",
+  "p-rockland-bedford-pa",
+  "p-virnig-rice-mn",
+  "p-liebherr-newport-news-va",
+  "p-fidelity-ocala-fl",
+  "p-fidelity-ocala-fl-2",
+  "p-fidelity-mcgregor-tx"
+ ],
+ "decision_rule": "Posting age (coordinator ruling 2026-11-17, Mellott): a board date counts as a first-posted date unless the board shows a re-list or re-stamp (several requisitions stamped within minutes as old requisitions, 'Updated <older date>' text, a JSON date that differs from the list date, a requisition number older than siblings that were first posted earlier); a posting whose own requisition is older than 12 months is a standing ad (labor 12 unless several counted postings or a bonus). Apply flow (ruling 2026-11-17, Kafka): an own-page ad counts only with an ATS, an application form or an email/apply instruction for that job; a generic Indeed/LinkedIn company link does not. Lines: battery R5 rules (every fact and question premise on a stated row of the plant with its date; no live counts; 'listed' for board dates; plans not written as progress; opening lines end with a 'you' question; bottleneck guesses hedged). Corrected otherwise confirmed; unreachable only if a source cannot be reached at all.",
+ "claims_checked": 15,
+ "claims_corrected": 2,
+ "claims_unreachable": 0,
+ "error_rate": 0.1333,
+ "error_rate_note": "Headline on evidence rows other than score rows: 2/15 (JH Fletcher welder_postings misdated; Virnig opening line premise). All rows incl. score rows: 3/24. A targeted closeout, not a sample: the rows were picked because they carry a ruling risk, so the rate is not comparable with sampled rounds. Every page reached today (Wayback CDX timed out; not needed).",
+ "claims_checked_all_rows": 24,
+ "claims_corrected_all_rows": 3,
+ "error_rate_all_rows": 0.125,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 1,
+  "invented fact": 0,
+  "other": 1
+ },
+ "error_kind_counts_all_rows": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 1,
+  "invented fact": 0,
+  "other": 2
+ },
+ "repeated_kinds": [],
+ "worst_errors": [
+  "p-jh-fletcher-huntington-wv:welder_postings and :score_labor - labor 20 rested on 'posted 2026-08-08, open 100 days', but the ADP requisition is number 1000, older than requisition 1002 first posted 2025-01-08: a re-post stamp on a standing ad over 12 months old. Labor 20 -> 12; total 48 -> 40, Medium -> Low.",
+  "p-virnig-rice-mn:opening_line - the closing question presupposes that the new Fort Madison facility will weld attachments; the cited article never says what Fort Madison will make. Replaced with a premise-free question; no score effect.",
+  "No third error. Closest call: p-irock-valley-view-oh labor 12 rests on a blanket 'Send applications to ...' instruction under CURRENT JOB OPENINGS rather than a per-role apply path (coordinator call; 0 would make 48 -> 36, Low)."
+ ],
+ "score_problems": [
+  {
+   "plant_id": "p-jh-fletcher-huntington-wv",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "correct_points": 12,
+   "why": "The posting's date is a re-post stamp (requisition 1000 predates requisition 1002, first posted 2025-01-08): a standing ad over 12 months old, so it counts as open but earns 12. Total 48 -> 40 (Medium -> Low); confidence stays 3."
+  },
+  {
+   "plant_id": "p-irock-valley-view-oh",
+   "component": "score_labor",
+   "ledger_points": 12,
+   "correct_points": 12,
+   "why": "COORDINATOR CALL (no change recommended): the apply instruction ('Send applications to [company email] or IROCK Crushers LLC, 5531 Canal Rd., Valley View, OH 44125.') sits under CURRENT JOB OPENINGS and covers each listed role, including Welder/Fabricator; it is not a generic Indeed/LinkedIn link, so the Kafka rule is met as read. If a per-role instruction is required: 0, total 48 -> 36 (Low)."
+  },
+  {
+   "plant_id": "p-fidelity-ocala-fl",
+   "component": "score_demand",
+   "ledger_points": 15,
+   "correct_points": 15,
+   "why": "Sensitivity only: 15 rests solely on the IndustryWeek eight-acre Plant One expansion (a plan, kept by the coordinator's ruling). Company-level or plan-not-event reading: 8, total 75 -> 68 (High -> Medium). Plant 2 (8) and McGregor (15 on KXXV) do not depend on the row."
+  }
+ ],
+ "score_notes": [
+  "PHIL labor 20, Werk-Brau labor 20 and Derrick labor 20 stand: each date is a real first-posted date, 60 days to 12 months old (PHIL file stamp and job-ID order; Derrick requisition 1188 in sequence; Werk-Brau ID order, inferred bound). Allied labor 12 stands (per-role Apply Now to its own form)."
+ ],
+ "opening_line_problems": [
+  "p-virnig-rice-mn:opening_line corrected (question premise on no stated row). p-jh-fletcher-huntington-wv lines say 'listed Aug 8, 2026', which passes the R5 'listed' rule; leave as is."
+ ],
+ "plants_closed_or_moved": [],
+ "status_problems": [],
+ "plant_status_notes": "All twelve plants' cited postings or pages were live on 2026-11-17 (PHIL 1301020; Werk-Brau 556209; Derrick 9201442451558_1; JH Fletcher 9200581689568_1; IROCK and Allied careers pages; Rockland 4615184). Virnig's Robotic Welder and Rockland's Fitter Fabricator were already recorded closed.",
+ "field_drift_notes": [
+  "p-werk-brau-findlay-oh welder_postings: 'Not counted: Quality Weld Inspector (4000 Fostoria Ave)' is stale; job 608999 is gone from the board today. Remove the clause or mark it closed; the evidence row stays as history.",
+  "p-jh-fletcher-huntington-wv welder_postings: take plants_csv_value; the score_labor row value becomes 12; score_total 40, score_tier Low.",
+  "p-rockland-bedford-pa:bottleneck_guess reasoning: add p-rockland-bedford-pa:weld_processes as a composing claim."
+ ],
+ "leads": [
+  "Paycom boards expose no raw first-posted date beyond JSON-LD datePosted; when a Paycom posting is the only basis for 60+ days, check its job-ID order against siblings as done here for Werk-Brau.",
+  "ADP boards: compare clientRequisitionID order with postDate across the board; J.H. Fletcher re-lists old requisitions (1000, 1004, 1016). A sweep of other ADP-dated postings that hold labor 20 on one posting's age is worth running."
+ ],
+ "method": "Fresh reads on 2026-11-17: PHIL AAIM/Refer board via Playwright (jobs list JSON, job-details JSON, JSON-LD; description-file uniqid stamps decoded); Werk-Brau Paycom career page (job-posting-previews, job-map, filters JSON) and each job detail (JSON-LD, job-postings JSON); Derrick and J.H. Fletcher ADP job-requisitions list and detail JSON (postDate, PostingDate custom field, clientRequisitionID, ExternalJobID, itemID); IROCK and Allied careers pages (visible text and raw HTML for apply links; Allied resumesubmit.php form); Rockland Paylocity board pageData and detail; farm-equipment.com Virnig article; Liebherr Groundbreaking article; IndustryWeek Fidelity podcast page; KXXV quote --check. One web search for discovery only (Werk-Brau aggregator copy, 404). Wayback CDX timed out. No ledger file edited.",
+ "apply_note": "Apply: JH Fletcher welder_postings (plants.csv value and the list-URL evidence row), score_labor 12, score_total 40, score_tier Low; Virnig opening_line (plants.csv and evidence row). Everything else confirmed; IROCK labor and Fidelity Plant 1 demand are recorded coordinator calls with sensitivities.",
+ "rows": [
+  {
+   "claim_id": "p-philippi-hagenbuch-peoria-il:welder_postings",
+   "source_url": "https://philsystems.aaimtrack.com",
+   "ledger_value": "1 open: First Shift Welder (one Welder/Fitter), posted May 05, 2026, until filled, $23-26/hr; open 195 days on 2026-11-16; visible in browser",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Real first-posted date, not a re-stamp. Board list and JSON-LD datePosted both read 2026-05-05 for job 1301020 (First Shift Welder, Peoria, until filled, live today). Independent checks: (a) the attached description file is named 'Welder.69fa049c2b8e8.pdf', a PHP uniqid stamp that decodes to 2026-05-05 14:54 UTC, the same day; (b) the board's job IDs order with their file stamps (Sales Manager 1242015, file stamp Aug 22 2025; Welder 1301020; Senior Design Engineer 1314256, file stamp Jul 8 2026; Engineering Manager 1324680, Aug 26 2026), so 1301020 was created about May 2026. The board does re-set dates on other roles (Senior Design Engineer shows Oct 30 2026 though its file is from Jul 8 2026; Sales Manager Jan 1 2026 vs Aug 2025 file) but not on the welder. No 'Updated' text. Open 196 days today: 60 days to 12 months, labor 20 stands."
+  },
+  {
+   "claim_id": "p-philippi-hagenbuch-peoria-il:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. 20 stands: one counted Welder/Fitter posting on PHIL's own board, first posted 2026-05-05 (date corroborated by the description file stamp and job-ID order), live today, 196 days: open 60+ days and under 12 months."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/4B68B05D00AED00CE277D49A81F72B00/jobs/556209",
+   "ledger_value": "WB Welder, 2800 Fostoria Ave, Findlay OH, posted 2026-06-26; proficient MIG welder; $27.80-29.55/hr",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Live today on Werk-Brau's own Paycom board (job-posting-previews JSON: 4 jobs; job-map location 'Werk Brau Co Inc - Findlay, OH 45840'); JSON-LD datePosted 2026-06-26, streetAddress 2800 Fostoria Ave, MIG, $27.80-29.55. Paycom's preview JSON gives no postedOn and the posting JSON carries only a legalRevisionDate (2026-04-14, the board's legal text, not the job), so no other raw first-posted date exists to read. No batch re-list signs: no sibling shares the date, no 'Updated' text. The board's job IDs rise in date order (556209 Jun 26; 595738 Machinist Sep 8; 608999 Weld Inspector Oct 9 per the ledger; 612609 Oct 20; 617735 Nov 12), so 556209 is the oldest requisition but is in sequence with its own date. The bound 'not older than 12 months' is INFERRED from that ID sequence (the board creates about 220-530 IDs a day; reaching back past Nov 2025 would need under 140 a day), not read from a raw date. Even if the first post were somewhat earlier than Jun 26 it stays within 60 days to 12 months: labor 20 stands. Wording: Paycom is not named in the UKG/Paylocity re-stamp rule; 'posted' may stay, 'listed' is the safer house wording."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/4B68B05D00AED00CE277D49A81F72B00/career-page",
+   "ledger_value": "WB Welder still listed on the board 2026-11-16",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. 'WB Welder Hot Job Full Time Werk Brau Co Inc - Findlay, OH 45840' is on the board today."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. 20 stands (one counted posting, JSON-LD 2026-06-26, 144 days, 60 days to 12 months; ID-order bound inferred, see welder_postings row). Field drift: plants.csv welder_postings still lists 'Not counted: Quality Weld Inspector (4000 Fostoria Ave)'; job 608999 is no longer on the board today (4 jobs: Recruiting Coordinator, Warehouse Coordinator, Machinist A, WB Welder). Does not move labor."
+  },
+  {
+   "claim_id": "p-derrick-buffalo-ny:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=5ee9c264-80fb-452d-b3a3-576c59597485&ccId=19000101_000001&lang=en_US&locale=en_US&$top=100",
+   "ledger_value": "Welder open on Derrick's own ADP board on 2026-11-16; postDate 2026-07-03 (136 days); location Buffalo NY 14225",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Real first-posted date. Derrick's ADP board JSON today: Welder itemID 9201442451558_1, postDate 2026-07-03T00:52, detail customField PostingDate 2026-07-02T15:22Z, clientRequisitionID 1188, ExternalJobID 570337. The General Production Associate was stamped 7 minutes later (00:59), but this is not a batch re-list: the two are consecutive new requisitions (1188, 1189; 570337, 570339) in date order with the rest of the board (1178 Painter Feb 3 2026; 1194 Sep 3 2026; 1196 Oct 6 2026). The board's one re-list is the Mechanical Engineer Co-Op (requisition 1162, older than the Feb 2026 req 1178, re-posted Nov 5 2026), which shows what a re-stamp looks like here; the Welder is not one. The description also says '2026 marks our 75 th year'. No 'Updated' text. 137 days open: labor 20 stands."
+  },
+  {
+   "claim_id": "p-derrick-buffalo-ny:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. 20 stands: one counted Welder posting first posted 2026-07-03 (requisition 1188 in sequence), live today, 137 days."
+  },
+  {
+   "claim_id": "p-jh-fletcher-huntington-wv:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=50712173-7dfc-4013-8040-9d74d1595d56&lang=en_US&locale=en_US&$top=100",
+   "ledger_value": "Welder Assembler, Huntington WV, posted 2026-08-08, $15-20/hr",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "corrected",
+   "corrected_value": "Welder Assembler, Huntington WV, $15-20/hr: listed 2026-08-08 on the ADP board (postDate), a re-post stamp; requisition 1000 predates requisition 1002 (first posted 2025-01-08), so the ad is more than 12 months old: a standing ad",
+   "corrected_quote": "\"clientRequisitionID\":\"1000\" ... \"dateValue\":\"2026-08-07T18:57Z\",\"nameCode\":{\"codeValue\":\"PostingDate\"} ... \"postDate\":\"2026-08-08T04:27:00\" ... \"requisitionTitle\":\"Welder Assembler\"",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "plants_csv_value": "1 open, standing ad (listed 2026-08-08 on own ADP board, a re-post stamp; requisition 1000 predates requisition 1002, first posted 2025-01-08): Welder/Assembler, Huntington WV, $15-20/hr; ADP board read 2026-11-17",
+   "note": "read 2026-11-17. Misdated: a job-board re-post stamp written as a posting date. J.H. Fletcher's ADP board JSON today has 7 requisitions, all Huntington 25705. The Welder Assembler carries clientRequisitionID 1000 (the lowest on the board), itemID 9200581689568_1 and ExternalJobID 500858, all lower than the Field Service Representative (requisition 1002, itemID 9200729067378_1, ExternalJobID 551688), first posted 2025-01-08, and the Mechanical Engineer (1009, 2025-02-14). So requisition 1000 was opened before 2025-01-08, more than 22 months ago; its postDate 2026-08-08 is a re-post. The board re-lists other old requisitions too: Engineering Intern 1004 shows 2025-09-04 and Precision Parts Inspector 1016 shows 2026-11-06, both below Inventory Control Manager 1018 (2026-03-24). Under the 2026-11-17 rulings (Mellott; a raw first-posted date more than 12 months old marks a standing ad) the posting counts as open, labor 12, never 60+ days. The quote in the ledger row is still on the page (postDate unchanged). Sub-kind: misdated (re-post stamp). The plant's lines say 'listed Aug 8, 2026', which passes the R5 'listed' rule (the field still shows it); no line change needed."
+  },
+  {
+   "claim_id": "p-jh-fletcher-huntington-wv:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9200581689568_1?cid=50712173-7dfc-4013-8040-9d74d1595d56&lang=en_US&locale=en_US",
+   "ledger_value": "posting names Huntington as the work site",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. 'The job will be in Huntington, West Virginia.' is in the requisition detail today; still live."
+  },
+  {
+   "claim_id": "p-jh-fletcher-huntington-wv:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "corrected",
+   "corrected_value": "12",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "plants_csv_value": "12",
+   "note": "read 2026-11-17. Was 20 on 'open 60+ days (posted 2026-08-08)'. The date is a re-post stamp on requisition 1000, which predates a requisition first posted 2025-01-08: a standing ad over 12 months old. One counted posting, no sign-on bonus, no other counted welder posting (Precision Parts Inspector is an inspector, not counted): labor 12. Score 48 -> 40, Medium -> Low; confidence unchanged at 3 (labor still rests on a stated live posting)."
+  },
+  {
+   "claim_id": "p-irock-valley-view-oh:welder_postings",
+   "source_url": "https://www.irockcrushers.com/careers/",
+   "ledger_value": "1 open: Welder/Fabricator, listed under CURRENT JOB OPENINGS on the company careers page 2026-11-16 (posting date not shown); applications go to the Valley View plant",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Kafka apply-flow rule met, boundary: the careers page lists WELDER/FABRICATOR under 'CURRENT JOB OPENINGS', and the heading carries 'Send applications to [company email] or IROCK Crushers LLC, 5531 Canal Rd., Valley View, OH 44125.' That is an email/mail apply instruction for the listed openings, not a link to an Indeed or LinkedIn company page. It is a blanket instruction for all listed roles (no per-role button or form), so recorded as a coordinator call in score_problems. Role live today; posting date still not shown."
+  },
+  {
+   "claim_id": "p-irock-valley-view-oh:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. 12 stands under the apply-flow rule as read (email/mail apply instruction under CURRENT JOB OPENINGS covers the listed Welder/Fabricator). Sensitivity: if the coordinator requires a per-role instruction, labor 0 and total 48 -> 36 (Low)."
+  },
+  {
+   "claim_id": "p-allied-systems-sherwood-or:welder_postings",
+   "source_url": "https://www.alliedsystems.com/career/career.aspx",
+   "ledger_value": "1 open (undated) on own careers page with an Apply Now flow, 2026-11-16: Welder Fitters (2-5 years; all manual and semi-automatic processes; blueprints and weld symbols; 'willing to work extra hours' is conditional, not mandatory overtime); the company's postings state it is located in Sherwood, Oregon. Not counted: Final Assembly Mechanic and Lead, CNC Burner, Sawyer, machinists, painter, Field Service Representative",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Apply-flow rule met: the Welder Fitters entry on Allied's own careers page has its own 'Apply Now' button linking to alliedsystems.com/career/resumesubmit.php, Allied's own resume-submission form (name, address, email, phone, resume and cover-letter upload, comments, reCAPTCHA); the page also gives an HR email and fax instruction. No Indeed or LinkedIn link. The form has no job field (one form for all roles), but the per-role button makes it an application path for that role. Quote fragments are on the page today. Undated: standing-ad treatment (12, never 60+ days) unchanged."
+  },
+  {
+   "claim_id": "p-allied-systems-sherwood-or:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. 12 stands: one counted Welder Fitters ad with an own-site apply flow; undated; 'willing to work extra hours' conditional."
+  },
+  {
+   "claim_id": "p-rockland-bedford-pa:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely MIG weld capacity on attachments: Rockland's Paylocity board lists a Mig Welder-Second Shift role at 152 Weber Lane, listed Oct 26, 2026, for MIG welding on heavy equipment components and custom attachments.",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Every clause traced to a stated row and re-read today: Paylocity board JSON (JobId 4615184 'Mig Welder-Second Shift', PublishedDate 2026-10-26, JobLocation Address '152 WEBER LANE', live; welder_postings board row) and the detail page 'Performing MIG  welding operations on heavy equipment components and custom attachments'. That clause sits on the stated weld_processes row (same page), not on a welder_postings row; the line's composition note cites only welder_postings, so add p-rockland-bedford-pa:weld_processes to it. 'listed' used for the Paylocity date, no live count, hedged ('Likely'). Confirmed."
+  },
+  {
+   "claim_id": "p-virnig-rice-mn:opening_line",
+   "source_url": "",
+   "ledger_value": "Virnig announced on March 26, 2026 a new facility in Fort Madison, Iowa, which it said will support increasing demand for Virnig products; how will you divide attachment welding between Rice and Fort Madison?",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "corrected",
+   "corrected_value": "Virnig announced on March 26, 2026 a new facility in Fort Madison, Iowa, which it said will support increasing demand for Virnig products; what work do you expect Fort Madison to take on, and what stays at Rice?",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Virnig announced on March 26, 2026 a new facility in Fort Madison, Iowa, which it said will support increasing demand for Virnig products; what work do you expect Fort Madison to take on, and what stays at Rice?",
+   "note": "read 2026-11-17. The first clause is on the stated triggers row and the farm-equipment.com article (dated March 26, 2026; 'proud to announce the purchase of a new facility in Fort Madison, Iowa'; 'The Fort Madison facility will support increasing demand for Virnig products'), worded company-wide, no plan written as progress. But the closing question 'how will you divide attachment welding between Rice and Fort Madison?' presupposes that Fort Madison will weld attachments. The article says only that the facility will support demand and add operational capacity, and that it 'prepares to become operational'; it never says what Fort Madison will make or that it will weld. That premise is on no stated row (R6-lines-B precedent: a premise resting on no live stated row was dropped). Replacement question carries no premise. Low wording error on a Medium (46) plant; no score effect."
+  },
+  {
+   "claim_id": "p-derrick-buffalo-ny:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely skilled manual welder supply: Derrick's ADP board lists a Welder role in its Co 1- Welding department in Buffalo, listed July 3, 2026, that asks for the ability to pass a WQTR test, with a 47.5-hour standard week, daily overtime over 8 hours and a 15% night-shift differential.",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Every clause re-read in the ADP requisition 9201442451558_1 JSON today: HomeDepartment 'Co 1- Welding', Buffalo, postDate 2026-07-03 (a real first-posted date, see welder_postings row), 'Ability to pass WQTR', 'standard work week of 47.5 hours', 'paid overtime daily for anything over 8 hours', 'PLUS 15% pay differential' for night shift. 'listed' used, no live count, hedged ('Likely'). Confirmed."
+  },
+  {
+   "claim_id": "p-liebherr-newport-news-va:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly fabrication capacity for in-house truck parts: Liebherr said in a 2025 article that the Group will invest US$72.3 million to expand the Newport News factory, that the building is set to expand to produce side frames and upper and lower front crosses, and that it plans to deliver all 360 trucks to Fortescue by the end of the decade.",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Liebherr 'Groundbreaking' article ('Published March 2025') re-read today: 'the Liebherr Group will invest a total of US$72.3 million to expand the infrastructure, facilities and personnel at the Newport News factory'; 'The front of the manufacturing building is set to expand ... to produce medium-sized parts for our mining trucks like side frames and upper and lower front crosses'; 'to deliver all 360 trucks to Fortescue by the end of the decade'. All on the stated triggers and production_type rows. Future tense kept and dated as 'a 2025 article', so no plan is written as progress; hedged ('Possibly'). 'plans to deliver' is a fair reading of 'will ensure we have the capacity and resources to deliver'. Confirmed."
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:triggers",
+   "source_url": "https://www.industryweek.com/leadership/growth-strategies/podcast/55412005/podcast-what-happened-when-fidelity-manufacturing-changed-from-family-owned-to-employee-owned",
+   "ledger_value": "eight-acre expansion at Plant One in planning (stated 2026-10-15)",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. On the page (dated 'Oct. 15, 2026'): 'We're doing a big expansion, about an eight-acre expansion right here in Plant One. The plans are getting processed now while we're opening the Texas plant'. Plant-level: the CEO names Plant One, which the same page defines ('The original building ... we call that our Plant One') and Fidelity's own site ties to the address (stated name/address rows: 'Fidelity Mfg. Plant 1 Main Office 1900 NE 25th Ave.'). Dated by the publication (Oct 15, 2026), within 24 months. It is a planned expansion ('plans are getting processed'), not construction; the coordinator kept demand 15 on it (run log, battery profiling merge, 2026-11-17), so confirmed under that ruling. The plant's demand 15 rests on this row alone."
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:triggers",
+   "source_url": "https://www.industryweek.com/leadership/growth-strategies/podcast/55412005/podcast-what-happened-when-fidelity-manufacturing-changed-from-family-owned-to-employee-owned",
+   "ledger_value": "25,000 sq ft warehouse next to Plant Two just finished or completing (stated 2026-10-15); not a production-capacity event",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. On the page: 'We just finished or are just completing now a 25,000 square foot warehouse right next to Plant Two'. Plant-level and dated by the Oct 15, 2026 page, but a warehouse is storage, not a production event; demand is 8 and does not rest on this row."
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:triggers",
+   "source_url": "https://www.industryweek.com/leadership/growth-strategies/podcast/55412005/podcast-what-happened-when-fidelity-manufacturing-changed-from-family-owned-to-employee-owned",
+   "ledger_value": "start-up: leased 194,000 sq ft building ('the 200,000 square feet is actually 194,000'); hoping to produce by November 2026; 265,000 sq ft future facility planned on adjacent land (IndustryWeek, 2026-10-15)",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. On the page: 'the 200,000 square feet is actually 194,000. It's a leased building'; 'by ...  November we're hoping to be producing product in there'; 'we're building a 265,000 square foot future facility' on 124 adjacent acres. Plant-level (McGregor named), dated Oct 15, 2026; start-up wording ('hoping') kept as a plan. Demand 15 does not rest on this row alone: the KXXV row (2026-01-20) states the plant opening ('Fidelity Manufacturing is moving into more than 150,000 square feet in McGregor's former Ferguson Building'; 'Production is expected to begin by the end of the year'), both fragments FOUND on a fresh fetch today."
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. 15 stands under the coordinator's ruling (eight-acre Plant One expansion, IndustryWeek 2026-10-15, Plant One tied to 1900 NE 25th Ave by stated rows). It rests on the IndustryWeek row only. If that row were company-level (or a plan not counted as an event), demand 8 and total 75 -> 68 (High -> Medium)."
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. 8 stands; the warehouse row is storage and is not used for 15. Unaffected either way."
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. 15 stands on the KXXV plant-opening row (re-checked today) independently of the IndustryWeek row. If the IndustryWeek row were company-level, still 15."
+  }
+ ]
+}
