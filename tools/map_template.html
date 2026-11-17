@@ -291,7 +291,7 @@ footer strong{color:var(--text)}
   </div>
   <div class="tools">
    <div class="search"><label class="sr" for="q">Search plants by name</label><input id="q" type="search" placeholder="Search plant, company or city" autocomplete="off"></div>
-   <label class="chk" title="Hide every value tagged inferred. Values with no evidence row are never shown."><input type="checkbox" id="stated"> Stated facts only</label>
+   <label class="chk" title="Hide every value that is not quoted from a source: inferred facts, assessments and geocoded points. Values with no evidence row are never shown."><input type="checkbox" id="stated"> Stated facts only</label>
    <button class="btn" id="csv" type="button">Download CSV</button>
    <button class="btn" id="theme" type="button" aria-label="Switch colour theme">Theme: auto</button>
   </div>
@@ -450,7 +450,7 @@ function mini(p, field, fmt){
   const claim = p.id + ':' + field, info = claimInfo(claim, raw); if (!info) return '';
   const lbl = field.replace(/_/g, ' ');
   if (info.tag === 'inferred' && S.stated) return '<span class="hid">' + lbl + ' hidden (inferred)</span>';
-  return '<button type="button" class="val mini" data-claim="' + esc(claim) + '" data-shown="' + esc(raw) + '" aria-label="' + esc(lbl + ': ' + raw + (info.tag === 'inferred' ? ' (inferred)' : '') + '. Open evidence') + '">' + esc(fmt ? fmt(raw) : raw) + '</button>' + (info.tag === 'inferred' ? ' <span class="inf-m" title="Inferred: a guess to verify">' + (info.mixed ? 'partly inferred' : 'inferred') + '</span>' : '');
+  return '<button type="button" class="val mini" data-claim="' + esc(claim) + '" data-shown="' + esc(raw) + '" aria-label="' + esc(lbl + ': ' + raw + (info.tag === 'inferred' ? ' (' + (info.mixed ? 'partly inferred' : tagWord(info.row)) + ')' : '') + '. Open evidence') + '">' + esc(fmt ? fmt(raw) : raw) + '</button>' + (info.tag === 'inferred' ? ' <span class="inf-m" title="' + (info.mixed || !info.row.k ? 'Inferred: a guess to verify' : KT[info.row.k]) + '">' + (info.mixed ? 'partly inferred' : tagWord(info.row)) + '</span>' : '');
 }
 const relFmt = r => String(r).replace(/_/g, ' ');
 /* reasoning strings: the first " | " segment is the original reasoning; later segments are dated notes
@@ -478,9 +478,25 @@ function verState(row){
   return row.fc ? row.fc.status : (row.vf || 'not_checked');
 }
 const isComposed = r => !!(r && r.t === 'inferred' && /^composed from stated claims/i.test(r.r || ''));
+/* display class of an inferred row (set at build time; the ledger tag stays inferred):
+   a = assessment (a judgement the rules call for), g = geocoded point, x = approximate location, n = process note, none = inferred fact */
+const KW = {a: 'assessment', g: 'geocoded', x: 'approximate location', n: 'process note'};
+const KT = {a: 'Assessment: a judgement the project rules call for (tier, relationship, score, sales line, vertical membership), made from the evidence it cites. Not a fact any source states; check its basis.',
+  g: 'Geocoded: the map point comes from the Census Geocoder or a facility registry for the recorded street address. Not a quoted source.',
+  x: 'Approximate location: city-level point, no geocoder match, or a stored point the geocoder places elsewhere. The dot may not be on the building.',
+  n: 'Process note: how this record was found. Not a claim about the plant.'};
+const tagWord = r => (r && r.t === 'inferred' && r.k) ? KW[r.k] : 'inferred';
+/* basis of an assessment: the claims its reasoning cites. stated basis = every cited claim has a stated row */
+function asmBasis(row){
+  const ids = row && row.r ? claimIds(row.r).filter(i => EV[i]) : [];
+  if (!ids.length) return '';
+  return ids.every(i => EV[i].some(x => x.t === 'stated')) ? 'stated basis' : 'inferred basis';
+}
 function badgeTag(t, row){
   if (t === 'inferred' && isComposed(row)) return '<span class="badge b-inf" title="Inferred: composed from stated claims, a guess to verify">inferred &middot; composed</span>';
-  if (t === 'inferred') return '<span class="badge b-inf" title="Inferred: a guess to verify">inferred</span>';
+  if (t === 'inferred' && row && row.k === 'a') { const b = asmBasis(row); return '<span class="badge b-inf" title="' + KT.a + (b ? ' Cited claims: ' + (b === 'stated basis' ? 'all have stated evidence.' : 'at least one rests on inferred or unknown evidence.') : '') + '">assessment' + (b ? ' &middot; ' + b : '') + '</span>'; }
+  if (t === 'inferred' && row && row.k) return '<span class="badge b-inf" title="' + KT[row.k] + '">' + KW[row.k] + '</span>';
+  if (t === 'inferred') return '<span class="badge b-inf" title="Inferred fact: a guess to verify">inferred</span>';
   if (t === 'unknown') return '<span class="badge b-unknown">unknown</span>';
   return '';
 }
@@ -555,7 +571,7 @@ function renderChrome(){
   $('#tabs').innerHTML = VIEWS.map(v => '<button type="button" data-view="' + v[0] + '">' + esc(v[1]) + '</button>').join('');
   const d = M.dates;
   const range = d.length > 1 ? d[0] + ' to ' + d[d.length-1] : (d[0] || 'unknown');  // first and last session headings of run_log.md
-  $('#foot').innerHTML = '<p><strong>Inferred fields are guesses to verify.</strong> Values tagged inferred carry an &ldquo;inferred&rdquo; label; click any value for its quote, source and verified status.</p>' +
+  $('#foot').innerHTML = '<p><strong>Only values marked stated are quoted from a source.</strong> Everything else carries a label: <em>inferred</em> (a fact we reasoned to, a guess to verify), <em>assessment</em> (a judgement the rules call for, such as tier, relationship, score or sales line, which can be wrong even when its sources are right), <em>geocoded</em> or <em>approximate location</em> (how the map point was placed). Click any value for its quote, source and verified status.</p>' +
     '<p>Run dates: ' + esc(range) + ' &middot; ' + C.evidence_rows + ' evidence rows &middot; Path Prospect Map, an outside pitch to Path sales. Business-level facts only.</p>';
 }
 function setActiveTab(){
@@ -927,7 +943,8 @@ function vSection(v){
   const prof = P.filter(p => p.status === 'profiled' && vNames(p).includes(v.id));
   const ids = new Set(P.filter(p => vNames(p).includes(v.id)).map(p => p.id));
   const evRows = []; Object.keys(EV).forEach(k => { const pid = k.split(':')[0]; if (ids.has(pid)) EV[k].forEach(r => evRows.push(r)); });
-  const inferredV = evRows.filter(r => r.t === 'inferred').length;
+  const inferredV = evRows.filter(r => r.t === 'inferred').length, statedV = evRows.filter(r => r.t === 'stated').length, unkV = evRows.filter(r => r.t === 'unknown').length;
+  const kcV = k => evRows.filter(r => r.t === 'inferred' && (r.k || '') === k).length;
   const lks = LK.filter(l => ids.has(l.from_id) || ids.has(l.to_id));
   const tags = lks.map(l => { const i = claimInfo(l.claim_id, l.what_is_supplied); return i ? i.tag : 'none'; });
   const mat0 = prof.filter(p => +p.score_material_part === 0).length, lowConf = prof.filter(p => +p.confidence <= 2).length;
@@ -942,7 +959,7 @@ function vSection(v){
   h += '<h4>Reading the scores for this vertical</h4><p><strong>Data gap, not a poor fit:</strong> ' + mat0 + ' of ' + prof.length + ' profiled ' + esc(v.name) + ' plants score 0 on material and part fit because no source states the size or weight of the parts welded there. Their real fit is unknown, and a score of 0 reflects missing data.</p>';
   if (st.low_n != null && prof.length) h += '<p>The ' + st.low_n + ' Low plants have on average <strong>' + st.avg_unk_low + ' unknown components</strong> out of 6, against ' + st.avg_unk_high + ' for the ' + st.high_n + ' High plants (Medium: ' + st.avg_unk_medium + '). <strong>' + st.low_mat0 + ' of the ' + st.low_n + ' Low plants</strong> score 0 on material and part fit only because no source states their part size; <strong>' + st.low_ceil70 + '</strong> have a ceiling of 70 or more.</p>';
   h += '<h4>Known limits</h4><ul>' +
-    '<li><strong>' + inferredV + ' of ' + evRows.length + ' plant-level evidence rows for this vertical are inferred</strong> (guesses to verify, always labelled).</li>' +
+    '<li><strong>Plant-level evidence rows for this vertical (' + evRows.length + '):</strong> ' + statedV + ' stated, ' + kcV('') + ' inferred facts, ' + kcV('a') + ' assessments, ' + (kcV('g') + kcV('x')) + ' map points (' + kcV('g') + ' geocoded, ' + kcV('x') + ' approximate), ' + kcV('n') + ' process notes, ' + unkV + ' unknown. All ' + inferredV + ' non-stated, non-unknown rows are labelled with their class.</li>' +
     '<li><strong>Supply-chain data:</strong> ' + lks.length + ' supplier links touch this vertical&rsquo;s plants (' + tags.filter(t => t === 'stated').length + ' stated, ' + tags.filter(t => t === 'inferred').length + ' inferred). Some links end at a company, not a plant (shown as a company node on the Supply chain view).</li>' +
     '<li><strong>Coordinates:</strong> of ' + ad.n + ' included plants, ' + ad.no_street + (ad.no_street === 1 ? ' has' : ' have') + ' no street address and ' + ad.city_level + (ad.city_level === 1 ? ' is' : ' are') + ' placed at city level.</li>' +
     '<li><strong>Profile depth:</strong> ' + lowConf + ' of ' + prof.length + ' profiled plants have confidence of 2 or less.</li>' +
@@ -968,6 +985,7 @@ function renderMethod(){
   const custNow = P.filter(p => p.status === 'profiled' && pathStatus(p)).sort(cmpScore);
   const QCN = k => QC[k] || 0;
   const inferredN = Object.values(EV).reduce((n, rs) => n + rs.filter(r => r.t === 'inferred').length, 0);
+  const kcN = k => Object.values(EV).reduce((n, rs) => n + rs.filter(r => r.t === 'inferred' && (r.k || '') === k).length, 0);
   const totalEv = C.evidence_rows;
   const mat0 = P.filter(p => p.status === 'profiled' && +p.score_material_part === 0).length;
   const lowConf = P.filter(p => p.status === 'profiled' && +p.confidence <= 2).length;
@@ -1000,7 +1018,7 @@ function renderMethod(){
   (pcs && pcs.CITY_NOT_ON_PAGE != null ? '<li>Wrong-plant sweep of job postings: ' + pcs.city_on_page + ' pages show the plant’s city, ' + pcs.CITY_NOT_ON_PAGE + ' do not (flagged in the drawer), ' + pcs.unreachable + ' unreachable.</li>' : '') +
   '<li>Verified status per claim in the drawer: <em>not checked</em>, <em>confirmed</em>, <em>corrected</em> (a checker changed the value) or <em>unreachable</em>. Currently ' + Object.values(EV).reduce((n, rs) => n + rs.filter(r => r.vf === 'confirmed').length, 0) + ' evidence rows are confirmed and ' + Object.values(EV).reduce((n, rs) => n + rs.filter(r => r.vf === 'corrected').length, 0) + ' corrected, out of ' + totalEv + '.</li></ul>' +
   '<h3>Known limits (all verticals)</h3><ul>' +
-  '<li><strong>Inferred values are guesses to verify.</strong> Across the whole ledger ' + inferredN + ' of ' + totalEv + ' evidence rows are inferred, always labelled; tiers, bottlenecks and many process and material fields are inferred. Industry alone never sets a weld process. Per-vertical counts are in each vertical&rsquo;s section above.</li>' +
+  '<li><strong>What is quoted and what is not.</strong> Of ' + totalEv + ' evidence rows across the whole ledger: ' + Object.values(EV).reduce((n, rs) => n + rs.filter(r => r.t === 'stated').length, 0) + ' stated (quoted from a source); ' + kcN('') + ' inferred facts (reasoned to, guesses to verify); ' + kcN('a') + ' assessments (judgements the rules call for: tier, relationship, prospect-fit scores, opening lines, bottleneck guesses, vertical membership; an assessment can be wrong even when its sources are right, and the sales lines failed two checks in battery storage); ' + (kcN('g') + kcN('x')) + ' map points (' + kcN('g') + ' geocoded, ' + kcN('x') + ' approximate); ' + kcN('n') + ' process notes; ' + Object.values(EV).reduce((n, rs) => n + rs.filter(r => r.t === 'unknown').length, 0) + ' unknown. In the ledger file all ' + inferredN + ' non-stated, non-unknown rows carry the tag inferred; the class is a display label. Industry alone never sets a weld process. Per-vertical counts are in each vertical&rsquo;s section above.</li>' +
   '<li><strong>Dots show the town, not the building</strong> where a plant is recorded at city level; see each vertical&rsquo;s section for the counts.</li>' +
   '<li><strong>Headcount, part sizes and existing robots</strong> are mostly unknown; no OSHA data file was available.</li>' +
   '<li>Excluded plants stay in the ledger with the reason. Sites under construction or converting are kept as prospects and carry the &ldquo;Pre-production plant&rdquo; or &ldquo;New or converting plant&rdquo; badge.</li></ul>' + (Object.keys(SM).length ? '' : '<p class="small muted">Audit-derived limits: ' + NA + ' (no ledger/audit/summary-*.json file).</p>') +
@@ -1103,13 +1121,13 @@ function drawerHtml(claim, shown){
     const vcls = {confirmed:'b-ok', corrected:'b-warn', unreachable:'b-bad'}[vs] || 'b-grey';
     let host = ''; try { host = new URL(r.u).hostname.replace(/^www\./,''); } catch(e){ host = r.u; }
     h += '<div class="evrow' + (r === cur ? ' sel' : '') + '"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">' +
-      (r.t === 'inferred' && /^score_/.test(field) && byId[parts[0]] ? (compStated(byId[parts[0]], field) ? '<span class="badge b-rub-ok">rubric &middot; stated evidence</span>' : '<span class="badge b-rub-inf">rubric &middot; inferred evidence</span>') : r.t === 'inferred' ? '<span class="badge b-inf">' + (isComposed(r) ? 'inferred &middot; composed' : 'inferred') + '</span>' : r.t === 'stated' ? '<span class="badge b-stated">stated</span>' : '<span class="badge b-unknown">unknown</span>') +
+      (r.t === 'inferred' && /^score_/.test(field) && byId[parts[0]] ? (compStated(byId[parts[0]], field) ? '<span class="badge b-rub-ok">rubric &middot; stated evidence</span>' : '<span class="badge b-rub-inf">rubric &middot; inferred evidence</span>') : r.t === 'inferred' ? badgeTag('inferred', r) : r.t === 'stated' ? '<span class="badge b-stated">stated</span>' : '<span class="badge b-unknown">unknown</span>') +
       '<span class="badge ' + vcls + '">verified: ' + esc(String(vs).replace('_',' ')) + '</span>' + (r.st ? '<span class="badge b-st">' + esc(r.st) + '</span>' : '') +
       (r.qc === 'snapshot' ? '<span class="badge b-grey" title="This directory loads by script, so a plain fetch cannot see the row. The quote matches the directory snapshot saved in ledger/audit/' + esc(QC.snapshot_file || '') + '">quote matches saved directory snapshot</span>' : r.qc ? '<span class="badge b-bad" title="An automated re-fetch of the source did not find this quote on the page, or could not reach the page">quote check: ' + esc(r.qc.replace('_',' ')) + '</span>' : '') +
       (r.cc ? '<span class="badge b-warn" title="Wrong-plant sweep: this job-posting page does not show the plant’s city">city not on page</span>' : '') + '</div>' +
       '<div style="margin-top:6px"><strong>' + esc(r.v) + '</strong></div>' +
       (r.q ? '<blockquote>' + esc(r.q) + '</blockquote>' : '<p class="small muted">' + (isComposed(r) ? 'No quote of its own: this line is composed from the stated claims linked below, so it is a guess to verify.' : /^score_/.test(field) ? 'No quote of its own: the points are a rubric judgement. The quotes sit on the supporting claims linked below.' : 'No quote recorded.') + '</p>') +
-      (r.t === 'inferred' ? '<p class="small"><strong>Reasoning (why this is a guess):</strong> ' + (r.r ? linkClaims(esc(cleanR(r.r)), claim) : 'none recorded') + '</p>' : cleanR(r.r) ? '<p class="small"><strong>Reasoning:</strong> ' + linkClaims(esc(cleanR(r.r)), claim) + '</p>' : '') + notesHtml(r.r) +
+      (r.t === 'inferred' ? '<p class="small"><strong>' + (r.k === 'a' ? 'Reasoning (the judgement and what it rests on):' : r.k === 'g' || r.k === 'x' ? 'How the point was placed:' : r.k === 'n' ? 'Note:' : 'Reasoning (why this is a guess):') + '</strong> ' + (r.r ? linkClaims(esc(cleanR(r.r)), claim) : 'none recorded') + '</p>' : cleanR(r.r) ? '<p class="small"><strong>Reasoning:</strong> ' + linkClaims(esc(cleanR(r.r)), claim) + '</p>' : '') + notesHtml(r.r) +
       '<dl><dt>Source</dt><dd>' + (r.u ? '<a href="' + esc(r.u) + '" target="_blank" rel="noopener noreferrer">' + esc(host) + '</a> <span class="muted small">(opens the source page)</span>' : '<span class="muted">' + (isComposed(r) ? 'none: composed from other claims' : 'no source link') + '</span>') + '</dd>' +
       '<dt>Archive</dt><dd>' + (r.a ? '<a href="' + esc(r.a) + '" target="_blank" rel="noopener noreferrer">archived copy</a>' : '<span class="muted">no archive copy</span>') + '</dd>' +
       '<dt>Retrieved</dt><dd>' + esc(r.d || 'not recorded') + '</dd><dt>Produced by</dt><dd>' + esc(r.by) + '</dd>' +
@@ -1134,18 +1152,18 @@ function openEvidence(claim, shown, opener){
 function csvCell(s){ s = String(s == null ? '' : s); return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g,'""') + '"' : s; }
 function plantCsv(rows){
   const cols = Object.keys(P[0]).filter(c => !['lat','lon','county_fips'].includes(c));
-  const out = [cols.concat(['account','path_status','unknown_components','ceiling_calculated','new_or_converting_plant','inferred_fields']).map(csvCell).join(',')];
+  const out = [cols.concat(['account','path_status','unknown_components','ceiling_calculated','new_or_converting_plant','inferred_fields','assessment_fields']).map(csvCell).join(',')];
   rows.forEach(p => {
-    const inf = [];
+    const inf = [], asm = [];
     /* identity, bookkeeping and calculated columns are never blanked (the page shows them in stated-only mode too);
        a score component is listed as inferred when it does not rest on stated evidence */
     const vals = cols.map(c => {
-      if (/^score_(?!total|tier)/.test(c)) { if (p.status === 'profiled' && !compStated(p, c)) inf.push(c); return p[c]; }
+      if (/^score_(?!total|tier)/.test(c)) { if (p.status === 'profiled' && !compStated(p, c)) asm.push(c); return p[c]; }
       if (PEX.has(c)) return p[c];
-      const i = claimInfo(p.id + ':' + c, p[c]); if (i && i.tag === 'inferred'){ inf.push(c); if (S.stated && !(i.matched && composedStated(i.row))) return ''; } return p[c]; });
+      const i = claimInfo(p.id + ':' + c, p[c]); if (i && i.tag === 'inferred'){ (!i.mixed && i.row.k === 'a' ? asm : inf).push(c); if (S.stated && !(i.matched && composedStated(i.row))) return ''; } return p[c]; });
     const ps = pathStatus(p);
     const extra = [acctOf(p), ps ? ps.label : ''].concat(p.status === 'profiled' ? [unkOf(p).map(k => UNK_SHORT[k]).join(' '), ceilOf(p) == null ? '' : ceilOf(p), isPre(p) ? 'yes' : ''] : ['', '', isPre(p) ? 'yes' : '']);
-    out.push(vals.concat(extra, [inf.join(' ')]).map(csvCell).join(','));
+    out.push(vals.concat(extra, [inf.join(' '), asm.join(' ')]).map(csvCell).join(','));
   });
   return out.join('\r\n');
 }

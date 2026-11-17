@@ -10,6 +10,7 @@ Writes map/index.html (one self-contained page; d3 7.9.0 from cdnjs is the only 
 The script never edits the ledger and adds no data: it only reshapes what the ledger says.
 """
 import csv, glob, html, json, os, re, subprocess, sys, urllib.request
+from collections import Counter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 L = os.environ.get("LEDGER_DIR") or os.path.join(ROOT, "ledger")
@@ -417,6 +418,30 @@ def main():
         if isinstance(d, dict) and d.get("vertical"):
             summary[d["vertical"]] = d
 
+    # display class of an inferred row (the ledger tag stays stated | inferred | unknown):
+    #  a = assessment: a judgement the rules call for (tier, relationship lookalike/new, scores, sales lines, membership)
+    #  g = geocoded point (Census Geocoder or a facility registry); x = approximate location (city centroid, no match, kept far point)
+    #  n = process note (how the record was found); no class = an inferred fact
+    ASSESS = {"tier", "tier_secondary", "lookalike_of", "opening_line", "bottleneck_guess", "confidence", "exclusion_reason",
+              "part_size_fit", "verticals", "fit_test", "reason", "definition", "rank", "est_us_plants", "weld_intensity",
+              "part_variety", "hiring_pain", "demand_outlook", "path_presence"}
+    APPROX = re.compile(r"approximate|centroid|not confirmed|no match|did not match|stored point kept|campus-level|only the road|city-level|city level", re.I)
+    kcount = Counter()
+
+    def row_class(e):
+        if e["tag"] != "inferred" or ":" not in e["claim_id"]:
+            return ""
+        fld = e["claim_id"].split(":", 1)[1]
+        if fld in ("lat", "lon", "county_fips"):
+            return "x" if APPROX.search(e["reasoning"] or "") else "g"
+        if fld == "found_by":
+            return "n"
+        if fld == "relationship":
+            return "" if re.match(r"\s*(known_customer|customer_other_plant)", e["value"] or "") else "a"
+        if fld in ASSESS or fld.startswith("score_"):
+            return "a"
+        return ""
+
     # evidence indexed by claim_id, compact keys
     ev = {}
     snap_files = sorted(glob.glob(os.path.join(L, "audit", "source-snapshot-aisc-directory-*.txt")))
@@ -431,6 +456,10 @@ def main():
         row = {"v": e["value"], "t": e["tag"], "q": e["quote"], "u": e["source_url"], "st": e["source_type"],
                "d": e["retrieved_date"], "a": e["archive_url"], "r": e["reasoning"], "by": e["produced_by"],
                "vf": e["verified"]}
+        kc = row_class(e)
+        if kc:
+            row["k"] = kc
+            kcount[kc] += 1
         k = (e["claim_id"], e["source_url"])
         qv = quote_verdict(e, qc_rows, snapshot)
         qk = qv or ("no_quote" if not wsnorm(e["quote"]) else "unchecked")
@@ -466,6 +495,7 @@ def main():
     }
     qc.update(qstat)
     qc["by_tag"] = qsplit
+    qc["inferred_classes"] = dict(kcount)
     qc["snapshot_file"] = os.path.basename(snap_files[-1]) if snap_files else ""
     derived, dstats = derive(plants, evidence, vids)
     # address facts are counted here, on the raw ledger, because the page blanks fields that have no evidence row

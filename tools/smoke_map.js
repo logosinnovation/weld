@@ -145,9 +145,20 @@ async function run(label, ctxOpts, full) {
   check(csv.split('\n').length > 10 && /account,path_status/.test(csv.split('\n')[0]), `${label}: CSV download (${csv.split('\n').length - 1} lines)`);
   // stated-only toggle
   const st = p.locator('#stated'); if (await st.count()) { await st.check(); await p.waitForTimeout(300); await st.uncheck(); }
+  // display classes of inferred rows: assessments and map points are labelled apart from inferred facts; stated-only hides the same values as before
+  await tab('Call list'); await p.waitForTimeout(300);
+  const asmN = await p.locator('#v-calls .inf-m', {hasText: 'assessment'}).count().catch(() => 0) || await p.locator('.inf-m', {hasText: 'assessment'}).count();
+  check(asmN > 0, `${label}: assessment labels shown in the call list (${asmN})`);
+  await st.check(); await p.waitForTimeout(400);
+  const hidCalls = await p.locator('.hid:visible').count(); await st.uncheck(); await p.waitForTimeout(300);
+  check(hidCalls === Number(process.env.HID_CALLS || 212), `${label}: stated-only hides ${hidCalls} values on the call list (expected ${process.env.HID_CALLS || 212}, as before the labels)`);
+  const foot = await text('#foot');
+  check(/assessment/.test(foot) && /geocoded/.test(foot), `${label}: footer explains the assessment and map-point labels`);
 
   // method: per-vertical sections
   await tab('Method'); await shot('method-top');
+  const mtx = await text('#v-method').catch(() => '');
+  check(/inferred facts/.test(mtx) && /assessments/.test(mtx) && /geocoded/.test(mtx), `${label}: Method page counts inferred facts, assessments and map points side by side`);
   const mt = await text('#v-method');
   const ps = await text('#audit-' + PV), ss = await text('#audit-' + SV);
   const P_ = sumOf(PV), S_ = sumOf(SV);
