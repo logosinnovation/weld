@@ -1,0 +1,2676 @@
+{
+ "checker": "fact-checker R2-F",
+ "vertical": "v-enclosures-battery-generator",
+ "date": "2026-11-17",
+ "plants": [
+  "p-generac-oshkosh-wi",
+  "p-nvent-trachte-houston-tx",
+  "p-nvent-trachte-chattanooga-tn",
+  "p-nvent-trachte-oregon-wi",
+  "p-powersecure-durham-nc",
+  "p-simplex-springfield-il"
+ ],
+ "decision_rule": "Corrected = the value adds a fact the cited page does not show, tags a judgement as stated, places a company-level fact at the plant, ties a posting through a shared city, misdates a posting, or the quote is not on the page (raw source checked first); Confirmed otherwise. Unreachable only if the source cannot be reached at all.",
+ "claims_checked": 116,
+ "claims_corrected": 2,
+ "claims_unreachable": 0,
+ "error_rate": 0.0172,
+ "error_rate_note": "Headline on the R2 basis (rows flagged r2_basis: stated rows, every row of a claim a score row cites incl. unknown and inferred rows and the three v-enclosures-battery-generator:demand_outlook rows, and the 6 opening lines): 2/116 = 1.7%. Stated rows only: 1/80 = 1.2%. All 254 rows written (battery-profiler-F.json evidence after its evidence_remove list, the six plants' unreplaced ledger rows, and the demand_outlook rows): 4/254 = 1.6% (adds the Houston confidence row, corrected 2 -> 1 under either reading of the labor RULING; outside the basis). No untrimmed sibling copies of a corrected value exist (the other Generac welder_postings rows do not carry the painter clause and are not flagged as siblings), so there is no sibling recount. Every quote whose page was reachable was found on a fresh fetch (visible text or raw source), except the two rows citing the Southern Company search page, whose rendered list never loaded (first load stuck at 'Loading...', second hit an Incapsula/hCaptcha wall); they were confirmed through the page's own jobsyn search API, which returns exactly the two quoted jobs. 0 unreachable. Not counted as corrections: three score RULINGs (Houston labor, PowerSecure process and labor) where the as-written rows are accurate and the question is which reading of a written rule applies.",
+ "claims_checked_all_rows": 254,
+ "claims_corrected_all_rows": 4,
+ "error_rate_all_rows": 0.0157,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 2,
+  "invented fact": 0,
+  "other": 2
+ },
+ "repeated_kinds": [],
+ "worst_errors": [
+  "p-nvent-trachte-houston-tx:opening_line - the sales line says Central Electric Manufacturing has Welder openings 'on both day and night shift', but Welder R23879 names no shift (only R23880 is 'Night Shift'), and it calls 6100 Romona Blvd 'Houston plant' on an inferred employer tie. Rewritten from stated facts only.",
+  "p-generac-oshkosh-wi:welder_postings (Brake Press row) - the listed-not-counted value adds 'painter roles', which the cited Brake Press posting does not show. They are real on Generac's own board (four Painter roles at Oshkosh), so nothing is invented, but no row cites the board. No score effect.",
+  "p-nvent-trachte-houston-tx:products (BESS news row, inferred, outside the basis) - calls the nVent HOFFMAN + TRACHTE BESS prototype story 'undated'; the page is dated November 06, 2024 (before the 24-month window, so still no trigger)."
+ ],
+ "score_problems": [
+  {
+   "plant_id": "p-nvent-trachte-houston-tx",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "correct_points": 0,
+   "why": "RULING. As written the shared-city rule gives 0: both Welder postings (R23879, R23880, posted 2026-09-29, canApply true) name only 'Houston, TX, US'; nVent has a second Houston production site (ECHO: NVENT, 271 McCarty St, NAICS 335999; HOFFMAN ENCLOSURES, 247 McCarty St), about 23 km away doing molding and painting; and the tie to 6100 Romona Blvd runs through the posting's hiringOrganization 'Central Electric Manufacturing Company LLC' matched to an EPA facility name (the Tabor/Paladin EPA-name pattern), which is inferred attribution and earns 0 under the labor rule. Case for 20 (coordinator call): the employer named on the posting is a stated fact, ECHO lists CENTRAL ELECTRIC MANUFACTURING and AVAIL SWITCHGEAR SYSTEMS (TX) only at 6100 Romona Blvd, and nVent's board splits cleanly by employer (all 17 Houston postings re-read: Hoffman Enclosures, Inc. on Molder Lead R23941, Painter R24623 and a molding R&D engineer; CEMCO on both Welders, Assembly Operators, Electrical Installation Assembler, warehouse, HR and supervisor roles), so 'the company' in the rule can be read as the employer entity (Randleman/Generac single-site precedent). If 20 is kept, it should earn no confidence (site tie inferred; add p-nvent-trachte-houston-tx:welder_postings to no-confidence-claims.csv): confidence 2 -> 1. If 0: total 48 -> 28 Low, confidence 2 -> 1. If labor is 0, the plants.csv welder_postings field should read: '2 listed, not counted (site not settled): Welder R23879 and Welder - Night Shift R23880, Houston TX, both posted 2026-09-29, employer Central Electric Manufacturing Company LLC; the postings name only the city and nVent has a second Houston production site (McCarty St), so they are not attributed to 6100 Romona Blvd; listed, not counted: Fabrication Operator Lead - Night Shift (posted 2026-07-28)'."
+  },
+  {
+   "plant_id": "p-nvent-trachte-houston-tx",
+   "component": "confidence",
+   "ledger_points": 2,
+   "correct_points": 1,
+   "why": "Under either reading of the labor RULING: 0 points cannot count, and a kept 20 rests on an inferred employer-to-site tie, so no confidence (add p-nvent-trachte-houston-tx:welder_postings to ledger/audit/no-confidence-claims.csv; normalise_scores.py counts a claim as stated if any row is stated). Row corrected 2 -> 1."
+  },
+  {
+   "plant_id": "p-powersecure-durham-nc",
+   "component": "score_process",
+   "ledger_points": 20,
+   "correct_points": 20,
+   "why": "RULING (kept as written). MIG is required in the Durham Welder I posting, which names only 'Durham, NC' (jobsyn ZIP 27722, no street). PowerSecure's Durham records are 4001 Stirrup Creek Dr (NAICS 335312) and 4068 Stirrup Creek Drive (NAICS 33331), 0.67 km apart (Census geocoder re-run 2026-11-17), inside the campus distance, and PowerSecure says 'we fabricate and assemble key components right at our Durham campus' with 'Advanced welding'. No source shows what each building does, so the campus rule's 'same production' leg rests on the company's own 'Durham campus' wording. Strict reading (Brookville, consultation 14): attribution inferred, process 0, total 41 -> 21 Low, confidence 2 -> 1. Keeping 20 follows the Werk-Brau one-campus ruling (which kept confidence)."
+  },
+  {
+   "plant_id": "p-powersecure-durham-nc",
+   "component": "score_labor",
+   "ledger_points": 0,
+   "correct_points": 0,
+   "why": "RULING (kept as written, upside 12). The only Durham welder requisition (Welder I - 2nd Shift - (Conversion), WELDE003494, JSON-LD 2026-11-16) is live on a real applicant board, so by the letter of the standing-ad rule it counts 12 (total 53 Medium). The 0 can rest only on 'This is a conversion requisition for onboarding temp employees to FTE status' (a stated statement that the role is filled by existing temps, close to the West River disclaimer). It cannot rest on 'This position is not open to third parties': the Randleman Welder II carries the same boilerplate as 'not open to third party recruiters'. Row p-powersecure-durham-nc:welder_postings (ECHO URL) over-reads that line as 'closed to outside applicants'; reword its reasoning."
+  },
+  {
+   "plant_id": "p-nvent-trachte-oregon-wi",
+   "component": "confidence",
+   "ledger_points": 1,
+   "correct_points": 1,
+   "why": "Correct under session-2 rule 1 (part mix 15 rests on the company-level 'Every nVent TRACHTE building is custom engineered' row), but p-nvent-trachte-oregon-wi:production_type also has a stated site row (Continuous Improvement Engineer posting: fabrication, welding, paint, material handling and final assembly), so normalise_scores.py will count part mix and write 2. Add p-nvent-trachte-oregon-wi:production_type to ledger/audit/no-confidence-claims.csv before normalising (it affects no other plant)."
+  }
+ ],
+ "score_notes": [
+  "All 36 components (6 plants x 6) re-derived from the cited claims after fresh fetches; sums and tiers add up as written: Generac Oshkosh 60 Medium (12/0/8/20/15/5, c5), nVent Houston 48 Medium (0/0/15/20/8/5, c2; labor RULING, confidence 2 -> 1), PowerSecure Durham 41 Low (20/0/8/0/8/5, c2; process and labor RULINGs), nVent Chattanooga 40 Low (0/0/15/12/8/5, c2), nVent Oregon 28 Low (0/0/15/0/8/5, c1), Simplex 28 Low (0/0/15/0/8/5, c2). None of the six is on no-confidence-claims.csv today.",
+  "Generac process 12 and part mix 8 match the cited Generac Eagle precedent rows in evidence.csv (Eagle score_process 12 'TIG ... alongside MIG'; score_part_mix 8 'Components may be standardized or customized'). Labor 20: two counted Welder postings at once, each with jobRequisitionLocation 'Generac Oshkosh' (names the site, not only the city). Demand 15: BizTimes Apr 8, 2025 (new line, layout, cranes, test facilities at Oshkosh).",
+  "Chattanooga labor 12: one posting that says 'We are currently hiring Welders on multiple shifts'; several postings are needed for 20 (upside 48 Medium if the coordinator reads 'multiple shifts' as several openings). The requisition is a re-post (path R20540-1); the displayed 2026-11-05 date is kept (Yancey ruling).",
+  "Oregon labor 0: no welder or fitter on nVent's board for Oregon (18 roles). Builder R21691's up-to-$1,000 sign-on bonus is on a fastening role ('bolts, screws, clips, rivets'; 'fitting metal products' is assembly fit, not weld fit-up). The welding Youth Apprentice is a helper (preparation, positioning, grinding, finishing), not a trainee welder, so it is listed, not counted; if the coordinator counts it as a trainee, labor 12 and 40 Low.",
+  "Material 0 at all six: no stated dimension or weight of a welded part. nVent's building-construction page states 18-24-gauge wall panels and a 'Welded skid design' (company-level, no size), and Simplex's sheet-metal enclosures carry no gauge, so the thin-sheet 4 does not apply either.",
+  "Simplex scale 5 rests on 'We have manufacturing facilities at three locations in Springfield, Illinois' (stated, undated). See status_problems: if the three locations are stale or one campus (TAG Chattanooga precedent), scale 0 and total 23."
+ ],
+ "opening_line_problems": [
+  "p-nvent-trachte-houston-tx:opening_line - corrected (see rows): 'day' shift is not stated for Welder R23879. Suggested: \"Central Electric Manufacturing has had two Welder openings in Houston posted since Sept 29, 2026, one of them on night shift, for welding steel, aluminum and copper in multiple positions; how are you filling those welding roles, especially on nights?\" If the Houston labor RULING goes to 0 (posting not attributed), this line still holds because it names the employer and the city, not the plant.",
+  "p-nvent-trachte-chattanooga-tn:opening_line - acceptable. Optional: R20540-1 is a re-posted requisition, so 'listed ... as of Nov 5, 2026' avoids presenting a re-post stamp as a fresh opening.",
+  "p-generac-oshkosh-wi, p-nvent-trachte-oregon-wi, p-powersecure-durham-nc, p-simplex-springfield-il opening lines - every clause rests on stated rows; acceptable."
+ ],
+ "plants_closed_or_moved": [],
+ "status_problems": [
+  "p-generac-oshkosh-wi (vertical rule 2, coordinator call): no source shows Oshkosh welding generator enclosures, base frames or tanks. The Welder postings say only 'welding in the fabrication of parts, to be used in the assembly of product lines'; BizTimes (2026-06-15) puts Generac's 'large megawatt generator enclosures made by subsidiary Enercon Engineering' at Enercon (Belvidere expansion); Insight on Business (2025-07-25) says Eagle 'is expanding fabrication capabilities'. This is the Winco Le Center fact pattern (excluded under rule 2). If excluded, the exclusion text can quote the 'fabrication of parts' line and the Enercon enclosure line; the plant's facts stay accurate either way.",
+  "p-nvent-trachte-houston-tx (vertical rule 3): the site's own stated work is electrical installation of wireways, conduits and cable trays (Electrical Installation Assembler, CEMCO), and EPA names the address CENTRAL ELECTRIC MANUFACTURING and AVAIL SWITCHGEAR SYSTEMS: switchgear and e-house work, which rule 3 sends to v-datacenter-grid-prefab. It is in this vertical only through the company-level nVent TRACHTE BESS line (sweep ruling). The BESS prototype came from 'the nVent TRACHTE Texas facility' (news dated 2024-11-06), Houston or Hitchcock.",
+  "p-nvent-trachte-chattanooga-tn and p-nvent-trachte-oregon-wi (rule 3): site-level products are Trachte/EBS engineered steel buildings (Oregon: 'engineered steel buildings used to protect critical electrical and control equipment'); in the vertical only through the company-level BESS line (sweep ruling). No change proposed.",
+  "p-simplex-springfield-il (scale and single-site): the about page says 'We have manufacturing facilities at three locations in Springfield, Illinois', but the facility page says the 5300 Rising Moon Road headquarters 'houses the Simplex manufacturing plant', and ECHO still carries older SIMPLEX INC records at 1038, 1042 and 1100 N Amos St (no current NAICS on two of them). If the three-location line is stale or the sites are one campus (TAG Chattanooga precedent), Simplex is single-site: scale 0 (28 -> 23 Low), and its company-level ISO 9001:2015 and product facts become attributable to 5300 Rising Moon Rd."
+ ],
+ "plant_status_notes": "All six plants operate at the recorded address: Generac Oshkosh (ECHO 3815 Oregon St 'Operating'; two live Welder postings at 'Generac Oshkosh'); nVent Oregon WI (479 N Burr Oak 'Weld Shop', 422 N Burr Oak and 350 Braun Rd on nVent's locations page; 18 live roles), Chattanooga (1919 W Polymer Dr on the locations page; ECHO 'Operating'; live welding role) and Houston (6100 Romona Blvd on the locations page; live CEMCO roles); PowerSecure Durham (ECHO 4001 Stirrup Creek 'Effective', 4068 'Active'; live Durham requisitions); Simplex (5300 Rising Moon Rd on its site, ECHO 'Operating', live Paylocity board). Census geocoder re-run for all six addresses: lat, lon and county FIPS match the recorded values.",
+ "field_drift_notes": [
+  "p-powersecure-durham-nc products (plants.csv) carries 'company-level: PowerBlock gensets with integral fuel and DEF tanks and sound-attenuating enclosure', which no products row carries (it is on the how-we-build page, but only the production_type, relationship and lookalike_of rows quote it). Add a products row quoting the PowerBlock sentence (tag inferred, company-level) or trim the clause.",
+  "p-nvent-trachte-houston-tx products (plants.csv) carries '(EPA names Central Electric Manufacturing and Avail Switchgear Systems at the address)', which sits on the name rows, not on a products row. Trim it from products (the name field already carries it).",
+  "p-generac-oshkosh-wi welder_postings (plants.csv) 'listed, not counted: brake press, machine operator and painter roles': the painter clause has no cited row (see the corrected Brake Press row). Add a board row or trim.",
+  "p-nvent-trachte-houston-tx bottleneck_guess ('day and night Welder roles') and prospect_test ('day and night Welder roles') repeat the unstated 'day' shift; they are inferred rows, but reword them to match the corrected opening line.",
+  "p-powersecure-durham-nc:welder_postings (ECHO URL row) reasoning: replace 'closed to outside applicants' with the conversion sentence (score_problems)."
+ ],
+ "leads": [
+  "nVent Hitchcock TX (5235 Delaney Rd, on nVent's locations page): 'Welder - Night Shift' R23257 live on nVent's board; a candidate for 'the nVent TRACHTE Texas facility' that built the BESS prototype (news 2024-11-06).",
+  "nVent Eastanollee GA (Welder R24082-1; Fabricator R24492), Pittsburg KS (Fabricator R24447; Fabrication Operator Lead R24103), Millington MD (Fabrication Operator R22421-1, R24116) and Eleanor WV (Fabrication Machine Operator R22233): engineered-building plants with live production postings on nVent's board.",
+  "Central Electric Manufacturing, Fulton MO (ECHO 7900 US Hwy 54, NAICS 335313): '2nd Shift Welder' R23974-1 on nVent's board; switchgear, likely a rule-3 lead for v-datacenter-grid-prefab.",
+  "Generac Eagle WI: Insight on Business (2025-07-25) says the Eagle plant 'is expanding fabrication capabilities'; Generac's board shows 'MIG Welder - 2nd Shift' (posted 11 days ago) and 'MIG Welder - 3rd Shift' (5 days ago) at Eagle for the existing Eagle record.",
+  "PowerSecure Randleman (outside this check): the jobsyn search API gives Welder II (Resource DH Req) date_new 2026-09-24, while the ledger row says JSON-LD datePosted 2026-10-07; worth a re-read (labor 12 either way, 53 days vs 40).",
+  "nVent Houston and Chattanooga came to nVent through the Avail/Lectrus line, not Trachte; if that acquisition closed after 2024-11-06, 'the nVent TRACHTE Texas facility' that built the November 2024 BESS prototype was Hitchcock, not Houston. Date the deal from nVent's own release."
+ ],
+ "method": "Row set re-derived by script from ledger/inbox/battery-profiler-F.json (182 rows; 3 evidence_remove keys applied to the ledger) plus the six plants' 69 unreplaced ledger rows and the 3 v-enclosures-battery-generator:demand_outlook rows the demand scores cite (254 rows; (claim_id, source_url) keys unique). Every cited URL fetched fresh on 2026-11-17 with tools/fetch_page.fetch(with_raw=True) (browser fallback for Workday and Southern Company), and every quote fragment checked against visible text plus raw source. Job boards read through their APIs: Generac and nVent Workday cxs job JSON and jobs search (startDate, canApply, jobRequisitionLocation, hiringOrganization; nVent searches 'weld', 'Oregon', 'Chattanooga', 'Houston', 'fabricat'; every Houston posting's employer read), Southern Company via the jobsyn search API behind the board, Simplex via the Paylocity board JSON and JSON-LD. EPA ECHO get_facilities + get_qid for GENERAC (WI), NVENT (TN, TX, WI), TRACHTE, POWERSECURE, CENTRAL ELECTRIC, AVAIL (TX), HOFFMAN and SIMPLEX (IL); ECHO DFR JSON for the cited registry IDs. Census geocoder re-run for all six recorded addresses and for 4068/4062 Stirrup Creek Dr. No web search used. No ledger file edited.",
+ "apply_note": "Apply after the coordinator merges ledger/inbox/battery-profiler-F.json (rows keyed to that file's claim_id + source_url; ledger-origin rows marked in 'origin'). The two corrected multi-row claims carry plants_csv_value 'keep' so apply_factcheck.py leaves the plant field alone (Generac welder_postings, Houston products); the Houston opening_line and confidence corrections replace the plant fields. Rule on the Houston labor and PowerSecure process/labor RULINGs (score_problems), add p-nvent-trachte-oregon-wi:production_type to ledger/audit/no-confidence-claims.csv, and decide Generac Oshkosh under rule 2 (status_problems).",
+ "rows": [
+  {
+   "claim_id": "p-generac-oshkosh-wi:products",
+   "source_url": "https://biztimes.com/generac-generators-hyperscale-data-centers-oshkosh",
+   "ledger_value": "Five new 2.25-3.25 MW data-center generator models to be made at the Oshkosh plant (BizTimes, 2025-04-08)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[0]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. BizTimes Apr 8, 2025: 'Generac is introducing five new generator models intended to serve the largest data centers in the world and plans to make them at its plant in Oshkosh'; 2.25 to 3.25 megawatts.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:products",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/wday/cxs/generac/External/job/Oshkosh-WI---USA/Production-Planner-II_JR17055",
+   "ledger_value": "megawatt generators produced at the Oshkosh facility (Production Planner II posting, posted 2026-09-29)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[1]",
+   "verdict": "confirmed",
+   "note": "Workday cxs JSON re-read 2026-11-17: canApply true, posted true; startDate 2026-09-29, requisition location 'Generac Oshkosh'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:products",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/wday/cxs/generac/External/job/Oshkosh-WI---USA/Welder---2nd-Shift_JR18430",
+   "ledger_value": "welders fabricate parts used in the assembly of product lines (Oshkosh Welder postings)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[2]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:weld_processes",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/wday/cxs/generac/External/job/Oshkosh-WI---USA/Welder---2nd-Shift_JR18430",
+   "ledger_value": "MIG, aluminum, TIG, electric or robotic welding; basic knowledge of MIG equipment required (Oshkosh Welder - 2nd Shift JR18430)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[3]",
+   "verdict": "confirmed",
+   "note": "Workday cxs JSON re-read 2026-11-17: canApply true, posted true; MIG, aluminum, TIG, electric or robotic welding; 'Basic knowledge of Mig Welding Equipment' under Requirements.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:weld_processes",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/wday/cxs/generac/External/job/Oshkosh-WI---USA/Welder---1st-shift_JR18428",
+   "ledger_value": "same process list in Welder - 1st shift JR18428",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[4]",
+   "verdict": "confirmed",
+   "note": "Workday cxs JSON re-read 2026-11-17: canApply true, posted true; same process list as JR18430.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:materials",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/wday/cxs/generac/External/job/Oshkosh-WI---USA/Welder---2nd-Shift_JR18430",
+   "ledger_value": "aluminum welding named in the Oshkosh Welder postings",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[5]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Only aluminum is named; steel not stated (sibling unknown row correct).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:materials",
+   "source_url": "",
+   "ledger_value": "steel not stated at this site",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[6]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[7]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[8]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:production_type",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/wday/cxs/generac/External/job/Oshkosh-WI---USA/Welder---2nd-Shift_JR18430",
+   "ledger_value": "mixed: components may be standardized or customized (Oshkosh Welder posting JR18430)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[9]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Same sentence on JR18428; Generac Eagle precedent (score_part_mix 8 on this sentence) verified in evidence.csv.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:production_type",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/wday/cxs/generac/External/job/Oshkosh-WI---USA/Industrial-Engineering-Technician-III_JR18217",
+   "ledger_value": "mixed-model lines; high mix/low volume and high volume/low mix environments (Oshkosh IE Technician III posting, posted 2026-11-09)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[10]",
+   "verdict": "confirmed",
+   "note": "Workday cxs JSON re-read 2026-11-17: canApply true, posted true; startDate 2026-11-09; both fragments on the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:existing_robots",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/wday/cxs/generac/External/job/Oshkosh-WI---USA/Welder---2nd-Shift_JR18430",
+   "ledger_value": "yes: robotic welding named; welders assist with a robotic welder (brand not stated)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[11]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:welder_postings",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/wday/cxs/generac/External/job/Oshkosh-WI---USA/Welder---2nd-Shift_JR18430",
+   "ledger_value": "Welder - 2nd Shift JR18430 (Welder I & II), Oshkosh WI, posted 2026-11-11; Tue-Fri 5:00 PM-3:00 AM; $32.60-$33.85/h; MIG, aluminum, TIG, electric or robotic welding; no sign-on bonus",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[12]",
+   "verdict": "confirmed",
+   "note": "Same claim as the corrected Brake Press row, but this row does not carry the painter clause and keeps its own value. Workday cxs JSON re-read 2026-11-17: canApply true, posted true; title 'Welder - 2nd Shift', startDate 2026-11-11, jobRequisitionLocation 'Generac Oshkosh' (names the site), Welder I $32.60/h, Welder II $33.85/h, Tue-Fri 5 PM-3 AM; no sign-on bonus on the page. Also listed on Generac's board search 'weld' (172 results; Oshkosh has only these two Welder roles).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:welder_postings",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/wday/cxs/generac/External/job/Oshkosh-WI---USA/Welder---1st-shift_JR18428",
+   "ledger_value": "Welder - 1st shift JR18428 (Welder I), Oshkosh WI, posted 2026-11-11; Tue-Fri 5:00 AM-3:00 PM; $30.10/h",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[13]",
+   "verdict": "confirmed",
+   "note": "Same claim as the corrected Brake Press row, but this row does not carry the painter clause and keeps its own value. Workday cxs JSON re-read 2026-11-17: canApply true, posted true; title 'Welder - 1st shift', startDate 2026-11-11, jobRequisitionLocation 'Generac Oshkosh', Welder I $30.10/h, Tue-Fri 5 AM-3 PM.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:welder_postings",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/wday/cxs/generac/External/job/Oshkosh-WI---USA/Brake-Press-Operator-I---2nd-Shift_JR18374",
+   "ledger_value": "listed, not counted (non-welding): Brake Press Operator I - 2nd Shift (posted 2026-11-10) and other brake press, machine operator and painter roles at Oshkosh",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[14]",
+   "verdict": "corrected",
+   "corrected_value": "listed, not counted (non-welding): Brake Press Operator I - 2nd Shift (posted 2026-11-10); the page's similar-jobs list also shows Brake Press Operator I - Weekend Night Shift (2026-11-10), Brake Press Operator - Weekend Day Shift (2026-11-11) and Machine Operator I (2026-11-04) at Oshkosh",
+   "corrected_quote": "\"title\":\"Brake Press Operator I - 2nd Shift\" ... \"startDate\":\"2026-11-10\" ... \"title\":\"Brake Press Operator - Weekend Day Shift\" ... \"title\":\"Machine Operator I\"",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The value adds 'painter roles' at Oshkosh, which this Brake Press posting does not show (its similar-jobs list has brake press and machine operator roles only). Painter roles do exist on Generac's board (Workday search 'Oshkosh', 2026-11-17: Painter I - 1st Shift, Painter I - 2nd Shift, Painter I - Weekend Night Shift, Painter III - Paint Lead), so nothing is invented; the clause is on an uncited page. No score effect (listed, not counted).",
+   "plants_csv_value": "keep (multi-row claim; the plant field's 'painter roles' clause is true on Generac's own board: add a row citing the board search, e.g. Painter I - 1st Shift at Oshkosh, or trim the clause)",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:welder_postings",
+   "source_url": "https://echodata.epa.gov/echo/echo_rest_services.get_facilities?output=JSON&p_fn=GENERAC&p_st=WI",
+   "ledger_value": "both postings counted for this plant: 3815 Oregon St is Generac's only manufacturing site in Oshkosh",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[15]",
+   "verdict": "confirmed",
+   "note": "Same claim as the corrected Brake Press row, but this row does not carry the painter clause and keeps its own value. Inferred single-site row, kept separate from the stated rows as the lessons require. ECHO name search GENERAC (WI) re-run 2026-11-17 (QueryID 993): Oshkosh records only at 3815 Oregon St (GENERAC POWER SYSTEMS INC -OSHKOSH FACILITY, GENERAC INDUSTRIAL POWER, BALDOR ELECTRIC CO). 10-K lists the other Oshkosh property as 'Leased Storage, distribution'. Both postings also carry jobRequisitionLocation 'Generac Oshkosh', so the tie does not rest on the city alone.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:triggers",
+   "source_url": "https://biztimes.com/generac-generators-hyperscale-data-centers-oshkosh",
+   "ledger_value": "2025-04-08: Generac plans to make five new 2.25-3.25 MW data-center generator models at its Oshkosh plant and changed the factory layout, adding new cranes and new testing facilities",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[16]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Dated Apr 8, 2025 (inside 24 months): new model line to be made at Oshkosh plus a new factory layout, new cranes and new testing facilities = a dated plant-level event.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:triggers",
+   "source_url": "https://insightonbusiness.com/generac-unlocks-growth-in-oshkosh-with-new-beaver-dam-plant/",
+   "ledger_value": "2025-07-25: Beaver Dam plant lets Oshkosh focus on larger megawatt units for data centers",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[17]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Article dated July 25, 2025.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:triggers",
+   "source_url": "https://pulse2.com/generac-expands-commercial-and-industrial-manufacturing-footprint-with-new-sussex-wisconsin-facility",
+   "ledger_value": "2026-01-05: Generac cites expanded operations in Oshkosh alongside the new Sussex plant (no Oshkosh detail)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[18]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Article dated Jan 5, 2026; value correctly says no Oshkosh detail.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[19]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "c-generac:multi_plant",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1474735/000143774926004568/gnrc20251231_10k.htm",
+   "ledger_value": "Generac lists several owned US manufacturing sites (Eagle, Whitewater, Oshkosh, Berlin and others)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[20]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. 10-K property table lists owned manufacturing at Eagle, Whitewater, Oshkosh, Berlin, Jefferson and others.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:lookalike_of",
+   "source_url": "https://biztimes.com/generac-acquires-illinois-facility-for-subsidiary-enercons-production/",
+   "ledger_value": "EK Machine: Generac states large-megawatt generator enclosures (company-level, made by subsidiary Enercon)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[21]",
+   "verdict": "confirmed",
+   "note": "Inferred judgement under the written battery lookalike rule (a stated generator-enclosure, day-tank or BESS enclosure/skid product, company-level enough); cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:prospect_test",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/en-US/External/job/Oshkosh-WI---USA/Welder---2nd-Shift_JR18430",
+   "ledger_value": "pass on the generic test, with the vertical rule-2 question open: welds in-house (two production Welder roles, robotic welder) and welding is a production step; steel not stated (aluminum named); no source shows Oshkosh welding enclosures, base frames or tanks",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[22]",
+   "verdict": "confirmed",
+   "note": "Inferred judgement; cited quote found on a fresh fetch; the steel leg is flagged where not stated.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:status",
+   "source_url": "",
+   "ledger_value": "profiled",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[23]",
+   "verdict": "confirmed",
+   "note": "Inferred row; consistent with the stated rows and the checks above.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual welder capacity as Oshkosh shifts to megawatt data-center generators: it opened first- and second-shift Welder roles on the same day (2026-11-11) after re-laying out the plant for 2.25-3.25 MW units.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[24]",
+   "verdict": "confirmed",
+   "note": "Inferred row; consistent with the stated rows and the checks above.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Oshkosh plant posted Welder openings on both first and second shift on Nov 11, 2026, covering MIG, TIG, aluminum and robotic welding, after Generac said in April 2025 it would build its new 2.25-3.25 MW data-center generators there; how are you staffing welding as those megawatt units ramp up?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[25]",
+   "verdict": "confirmed",
+   "note": "Every clause stated: two Welder roles posted 2026-11-11 on 1st and 2nd shift (cxs JSON), MIG/TIG/aluminum/robotic (posting), April 2025 BizTimes plan to build the 2.25-3.25 MW models at Oshkosh. No enclosure claim used. Acceptable.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:score_process",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[26]",
+   "verdict": "confirmed",
+   "note": "12 confirmed: both Oshkosh production Welder postings name TIG alongside MIG (TIG rule, Generac Eagle precedent verified).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[27]",
+   "verdict": "confirmed",
+   "note": "0 confirmed: no dimension or weight of a welded part at Oshkosh; MW ratings are not part sizes; only aluminum named.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[28]",
+   "verdict": "confirmed",
+   "note": "8 confirmed: 'Components may be standardized or customized' and 'high mix, low volume and high volume, low mix' are mixed, stated at the site (Eagle precedent: 8).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[29]",
+   "verdict": "confirmed",
+   "note": "20 confirmed: two counted production Welder postings open at once on Generac's own board (canApply true), requisition location 'Generac Oshkosh', posted 2026-11-11.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[30]",
+   "verdict": "confirmed",
+   "note": "15 confirmed: dated plant-level event 2025-04-08 (new MW line at Oshkosh, new layout, cranes, test facilities), inside 24 months.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[31]",
+   "verdict": "confirmed",
+   "note": "5 confirmed: multi-plant parent stated (10-K); Oshkosh headcount unknown.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:score_total",
+   "source_url": "",
+   "ledger_value": "60",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[32]",
+   "verdict": "confirmed",
+   "note": "60 confirmed (12+0+8+20+15+5), subject to the rule-2 status question (status_problems).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[33]",
+   "verdict": "confirmed",
+   "note": "Tier re-derived from the total: Medium confirmed.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:confidence",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[34]",
+   "verdict": "confirmed",
+   "note": "5 confirmed: process, part mix, labor, demand 15 and scale all cite claims with stated rows; none on no-confidence-claims.csv.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:products",
+   "source_url": "https://www.nvent.com/en-us/trachte/battery-energy-storage-system-bess",
+   "ledger_value": "company-level: nVent TRACHTE BESS enclosures and skid-based platforms (site tie inferred)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[35]",
+   "verdict": "confirmed",
+   "note": "Inferred row correctly tagged; cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:products",
+   "source_url": "https://www.nvent.com/en-us/trachte",
+   "ledger_value": "company-level: substation control buildings, e-houses, modular data centers, energy storage solutions and large electrical equipment enclosures (nVent TRACHTE)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[36]",
+   "verdict": "confirmed",
+   "note": "Inferred row correctly tagged; cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:production_type",
+   "source_url": "https://www.nvent.com/en-us/trachte/building-construction",
+   "ledger_value": "company-level: every nVent TRACHTE building is custom engineered and prefabricated",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[37]",
+   "verdict": "confirmed",
+   "note": "Inferred row correctly tagged; cited quote found on a fresh fetch.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:materials",
+   "source_url": "https://www.nvent.com/en-us/trachte/building-construction",
+   "ledger_value": "company-level: 18-24 gauge galvanized wall panels on an internal steel channel framework, structural steel floor system and base frame",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[38]",
+   "verdict": "confirmed",
+   "note": "Inferred row correctly tagged; cited quote found on a fresh fetch.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[39]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[40]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[41]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:weld_processes",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[42]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[43]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[44]",
+   "verdict": "confirmed",
+   "note": "None found within 24 months: the June 2024 Trachte acquisition is a pre-window ownership change (not a plant event under the Enercon precedent); a 'newly created position' is not an event; Goodyear AZ is another site. Confirmed.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-nvent:multi_plant",
+   "source_url": "https://www.nvent.com/en-us/trachte/trachte-locations",
+   "ledger_value": "nVent lists multiple engineered-building manufacturing facilities (Eastanollee GA, Hitchcock TX, Eleanor WV, Oregon WI, Chattanooga TN, Houston TX, Millington MD, Pittsburg KS)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[45]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Page lists Eastanollee, Hitchcock, Eleanor, Oregon (Burr Oak and Braun Rd), Chattanooga, Houston, Millington, Pittsburg and Goodyear (coming soon).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:products",
+   "source_url": "https://nvent.wd5.myworkdayjobs.com/wday/cxs/nvent/nVent/job/Oregon-WI-US/Continuous-Improvement-Engineer_R24176",
+   "ledger_value": "engineered steel buildings that protect critical electrical and control equipment for utility, renewable energy, data center and industrial applications, made at the Oregon WI manufacturing facility (Continuous Improvement Engineer posting, employer Trachte LLC, posted 2026-10-26; a newly created position)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[46]",
+   "verdict": "confirmed",
+   "note": "Workday cxs JSON re-read 2026-11-17: canApply true, posted true; hiringOrganization 'Trachte LLC', startDate 2026-10-26, 'newly created position', location Oregon, WI.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:materials",
+   "source_url": "https://nvent.wd5.myworkdayjobs.com/wday/cxs/nvent/nVent/job/Oregon-WI-US/Continuous-Improvement-Engineer_R24176",
+   "ledger_value": "steel (engineered steel buildings; Oregon posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[47]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:production_type",
+   "source_url": "https://nvent.wd5.myworkdayjobs.com/wday/cxs/nvent/nVent/job/Oregon-WI-US/Continuous-Improvement-Engineer_R24176",
+   "ledger_value": "fabrication, welding, paint, material handling and final assembly operations at the Oregon WI facility",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[48]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. A site operations list, not a custom statement: part mix 15 rests on the company-level row only, so this claim must go on no-confidence-claims.csv (see score_problems).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:welder_postings",
+   "source_url": "https://nvent.wd5.myworkdayjobs.com/nVent",
+   "ledger_value": "none found, 0 counted: nVent Workday board read 2026-11-17 (search 'Oregon', 18 roles; 'weld'): no welder or fitter at Oregon WI",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[49]",
+   "verdict": "confirmed",
+   "note": "Board re-read through nVent's Workday jobs API 2026-11-17: search 'Oregon' = 18 roles (Builder x2, Builder Lead x2, Youth Apprentice, Journeyman Electrician, Sheet Metal Worker, Field Service Specialist, EHS Manager, Painter, Operations Supervisor, Electrical Assembler, Materials Runner, Electrical Lead, Continuous Improvement Engineer, Quality Inspector, plus two multi-location roles); search 'weld' (476) shows no Oregon welder or fitter. Builder R21691/R22479, Builder Lead and Sheet Metal Worker fasten with bolts, screws, clips and rivets. None found is correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:welder_postings",
+   "source_url": "https://nvent.wd5.myworkdayjobs.com/wday/cxs/nvent/nVent/job/Oregon-WI-US/Builder_R21691",
+   "ledger_value": "listed, not counted: Builder R21691, posted 2026-10-09, up to $1,000 sign-on bonus; fastening and fitting of metal products for modular buildings and enclosures (no welding)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[50]",
+   "verdict": "confirmed",
+   "note": "Workday cxs JSON re-read 2026-11-17: canApply true, posted true; hiringOrganization Trachte LLC, startDate 2026-10-09, '$1000 Sign-On Bonus Available!'; duties are 'handling, positioning, and fitting metal products' and fastening with bolts, screws, clips, rivets; no welding. Correctly listed, not counted (assembly fitting, not weld fit-up).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:welder_postings",
+   "source_url": "https://nvent.wd5.myworkdayjobs.com/wday/cxs/nvent/nVent/job/Oregon-WI-US/Youth-Apprentice_R21710",
+   "ledger_value": "listed, not counted: Youth Apprentice (welding department helper: material preparation, positioning, grinding, finishing)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[51]",
+   "verdict": "confirmed",
+   "note": "Workday cxs JSON re-read 2026-11-17: canApply true, posted true; startDate 2026-04-30; the welding-department apprentice assists 'with material preparation, positioning, grinding, or finishing tasks' (helper duties, no welding), so not counted under the helper rule.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:address",
+   "source_url": "https://echodata.epa.gov/echo/echo_rest_services.get_facilities?output=JSON&p_fn=TRACHTE",
+   "ledger_value": "Oregon WI sites form one campus: 479 N Burr Oak (weld shop), 422/490 N Burr Oak and 350 Braun Rd (Trachte Inc Plt 3) are within about 1 km",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[52]",
+   "verdict": "confirmed",
+   "note": "Inferred campus row. ECHO TRACHTE search re-run 2026-11-17 (QueryID 997): TRACHTE, INC. at 422, 479, 490 N Burr Oak Ave and TRACHTE INC - PLT 3 at 350 Braun Rd (NAICS 332311). 479 N Burr Oak to 350 Braun Rd computed at about 0.96 km from the Census points; within the campus distance.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[53]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Oregon, WI plant posted a newly created Continuous Improvement Engineer role on Oct 26, 2026 to lead improvement projects across fabrication, welding, paint and final assembly of engineered steel buildings; where does welding rank among the constraints you want that role to tackle?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[54]",
+   "verdict": "confirmed",
+   "note": "Every clause stated in R24176 (startDate 2026-10-26, 'newly created position', fabrication, welding, paint and final assembly of engineered steel buildings). Acceptable.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[55]",
+   "verdict": "confirmed",
+   "note": "0 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[56]",
+   "verdict": "confirmed",
+   "note": "0 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[57]",
+   "verdict": "confirmed",
+   "note": "15 confirmed on the company-level custom line (session-2 rule 1, points without confidence).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[58]",
+   "verdict": "confirmed",
+   "note": "0 confirmed: no welder or fitter role at Oregon on nVent's board; the sign-on bonus is on a fastening Builder role; Youth Apprentice is a helper.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[59]",
+   "verdict": "confirmed",
+   "note": "8 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[60]",
+   "verdict": "confirmed",
+   "note": "5 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:score_total",
+   "source_url": "",
+   "ledger_value": "28",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[61]",
+   "verdict": "confirmed",
+   "note": "Sum re-derived from the six components: 28 confirmed.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[62]",
+   "verdict": "confirmed",
+   "note": "Tier re-derived from the total: Low confirmed.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:confidence",
+   "source_url": "",
+   "ledger_value": "1",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[63]",
+   "verdict": "confirmed",
+   "note": "1 is the correct value, but normalise_scores.py will write 2 because p-nvent-trachte-oregon-wi:production_type has a stated site row (operations list) and part mix cites that claim. Add the claim to no-confidence-claims.csv (score_problems).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:products",
+   "source_url": "https://www.nvent.com/en-us/trachte/battery-energy-storage-system-bess",
+   "ledger_value": "company-level: nVent TRACHTE BESS enclosures and skid-based platforms (site tie inferred)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[64]",
+   "verdict": "confirmed",
+   "note": "Inferred row correctly tagged; cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:products",
+   "source_url": "https://www.nvent.com/en-us/trachte",
+   "ledger_value": "company-level: substation control buildings, e-houses, modular data centers, energy storage solutions and large electrical equipment enclosures (nVent TRACHTE)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[65]",
+   "verdict": "confirmed",
+   "note": "Inferred row correctly tagged; cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:production_type",
+   "source_url": "https://www.nvent.com/en-us/trachte/building-construction",
+   "ledger_value": "company-level: every nVent TRACHTE building is custom engineered and prefabricated",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[66]",
+   "verdict": "confirmed",
+   "note": "Inferred row correctly tagged; cited quote found on a fresh fetch.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:materials",
+   "source_url": "https://www.nvent.com/en-us/trachte/building-construction",
+   "ledger_value": "company-level: 18-24 gauge galvanized wall panels on an internal steel channel framework, structural steel floor system and base frame",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[67]",
+   "verdict": "confirmed",
+   "note": "Inferred row correctly tagged; cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[68]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[69]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[70]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:weld_processes",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[71]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[72]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[73]",
+   "verdict": "confirmed",
+   "note": "None found within 24 months stands, but the reasoning rules out only the June 2024 Trachte deal. This site came to nVent through a separate deal: the ledger's found_by rows tie it to Lectrus ('lectrus.com redirects to nvent.com/avail'), and EPA also names 6100 Romona Blvd 'AVAIL SWITCHGEAR SYSTEMS'. No row dates that acquisition, and this check did not date it. It does not change demand: a change of owner is not a plant-level event in this vertical (Enercon East Peoria precedent: the Feb 2026 Generac acquisition scored 8). Add a dated row for the Avail acquisition when one is found.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110000913539",
+   "ledger_value": "EPA registry lists facility name NVENT ENCLOSURE SYSTEMS - CHATTANOOGA LLC at 1919 W Polymer Dr",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[74]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. ECHO DFR FacilityStatus 'Operating'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:products",
+   "source_url": "https://nvent.wd5.myworkdayjobs.com/wday/cxs/nvent/nVent/job/Chattanooga-TN-US/Manager-of-Project-Management_R24343",
+   "ledger_value": "nVent Trachte / Engineered Building Solutions projects run from Chattanooga (Manager of Project Management posting, employer nVent Enclosure Systems - Chattanooga LLC, posted 2026-10-30)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[75]",
+   "verdict": "confirmed",
+   "note": "Workday cxs JSON re-read 2026-11-17: canApply true, posted true; hiringOrganization 'nVent Enclosure Systems - Chattanooga LLC', startDate 2026-10-30, location Chattanooga.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:materials",
+   "source_url": "https://nvent.wd5.myworkdayjobs.com/wday/cxs/nvent/nVent/job/Chattanooga-TN-US/Welder---Fabricator_R20540-1",
+   "ledger_value": "steel, aluminum, copper and other materials welded (Chattanooga welding posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[76]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:welder_postings",
+   "source_url": "https://nvent.wd5.myworkdayjobs.com/wday/cxs/nvent/nVent/job/Chattanooga-TN-US/Welder---Fabricator_R20540-1",
+   "ledger_value": "1 open, counted: Fabrication Operator – Welding R20540, posted 2026-11-05, 'a Welder at our Chattanooga facility', hiring welders on day (M-Th 7 am-5:30 pm) and night (M-Th 5 pm-3:30 am) shifts",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[77]",
+   "verdict": "confirmed",
+   "note": "Workday cxs JSON re-read 2026-11-17: canApply true, posted true; title 'Fabrication Operator – Welding', startDate 2026-11-05, 'As a Welder at our Chattanooga facility', 'We are currently hiring Welders on multiple shifts. Day: M-Th | 7 am - 530 pm. Night: M-Th | 5 pm - 330 am.' One posting, so labor 12 (several postings needed for 20). Note: the path ends R20540-1 (a re-posted requisition, number older than R21710 of 2026-04-30); 2026-11-05 is the displayed re-post date, kept under the Yancey displayed-date ruling; no 60+ day claim rests on it.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:welder_postings",
+   "source_url": "https://nvent.wd5.myworkdayjobs.com/wday/cxs/nvent/nVent/job/Chattanooga-TN-US/Plasma-Operator_R24555",
+   "ledger_value": "listed, not counted: Plasma Operator R24555 (CNC plasma, posted 2026-11-12), employer nVent Enclosure Systems - Chattanooga LLC",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[78]",
+   "verdict": "confirmed",
+   "note": "Workday cxs JSON re-read 2026-11-17: canApply true, posted true; startDate 2026-11-12, 'set up and operate CNC plasma equipment', employer nVent Enclosure Systems - Chattanooga LLC; not a welding role.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:welder_postings",
+   "source_url": "https://echodata.epa.gov/echo/echo_rest_services.get_facilities?output=JSON&p_fn=NVENT&p_st=TN",
+   "ledger_value": "posting counted for this plant: nVent's only production site in Chattanooga is 1919 W Polymer Dr",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[79]",
+   "verdict": "confirmed",
+   "note": "Inferred single-site row. ECHO NVENT (TN) re-run 2026-11-17 (QueryID 994): only NVENT ENCLOSURE SYSTEMS - CHATTANOOGA LLC at 1919 W Polymer Dr (two records, NAICS 332311); TRACHTE (TN) returns nothing; nVent's locations page lists one Chattanooga facility. Shared-city rule leg 1 met.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly welder coverage on two shifts: the Chattanooga facility is hiring welders on both day and night shifts under one current posting.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[80]",
+   "verdict": "confirmed",
+   "note": "Inferred row; consistent with the stated rows and the checks above.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Chattanooga facility posted a Fabrication Operator – Welding role on Nov 5, 2026, hiring welders on both day and night shifts to weld steel, aluminum and copper in multiple positions; how are you covering welding across those two shifts?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[81]",
+   "verdict": "confirmed",
+   "note": "Every clause stated (posting text gives day and night schedules and steel, aluminum, copper). Optional: the requisition is a re-post (R20540-1), so 'listed a Fabrication Operator – Welding role as of Nov 5, 2026' avoids presenting a re-post stamp as a new opening.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[82]",
+   "verdict": "confirmed",
+   "note": "0 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[83]",
+   "verdict": "confirmed",
+   "note": "0 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[84]",
+   "verdict": "confirmed",
+   "note": "15 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[85]",
+   "verdict": "confirmed",
+   "note": "12 confirmed: one counted posting (several needed for 20), site tie by nVent's single Chattanooga site.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[86]",
+   "verdict": "confirmed",
+   "note": "8 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[87]",
+   "verdict": "confirmed",
+   "note": "5 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:score_total",
+   "source_url": "",
+   "ledger_value": "40",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[88]",
+   "verdict": "confirmed",
+   "note": "Sum re-derived from the six components: 40 confirmed.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[89]",
+   "verdict": "confirmed",
+   "note": "Tier re-derived from the total: Low confirmed.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:confidence",
+   "source_url": "",
+   "ledger_value": "2",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[90]",
+   "verdict": "confirmed",
+   "note": "Confidence 2 re-derived: counts only components above 0 whose cited claims all have stated rows and are not on no-confidence-claims.csv; demand 8 never counts. Confirmed.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:products",
+   "source_url": "https://www.nvent.com/en-us/trachte/battery-energy-storage-system-bess",
+   "ledger_value": "company-level: nVent TRACHTE BESS enclosures and skid-based platforms (site tie inferred)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[91]",
+   "verdict": "confirmed",
+   "note": "Inferred row correctly tagged; cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:products",
+   "source_url": "https://www.nvent.com/en-us/trachte",
+   "ledger_value": "company-level: substation control buildings, e-houses, modular data centers, energy storage solutions and large electrical equipment enclosures (nVent TRACHTE)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[92]",
+   "verdict": "confirmed",
+   "note": "Inferred row correctly tagged; cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:production_type",
+   "source_url": "https://www.nvent.com/en-us/trachte/building-construction",
+   "ledger_value": "company-level: every nVent TRACHTE building is custom engineered and prefabricated",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[93]",
+   "verdict": "confirmed",
+   "note": "Inferred row correctly tagged; cited quote found on a fresh fetch.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:materials",
+   "source_url": "https://www.nvent.com/en-us/trachte/building-construction",
+   "ledger_value": "company-level: 18-24 gauge galvanized wall panels on an internal steel channel framework, structural steel floor system and base frame",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[94]",
+   "verdict": "confirmed",
+   "note": "Inferred row correctly tagged; cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[95]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[96]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[97]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:weld_processes",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[98]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[99]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[100]",
+   "verdict": "confirmed",
+   "note": "None found within 24 months stands, but the reasoning rules out only the June 2024 Trachte deal. This site came to nVent through a separate deal: the ledger's found_by rows tie it to Lectrus ('lectrus.com redirects to nvent.com/avail'), and EPA also names 6100 Romona Blvd 'AVAIL SWITCHGEAR SYSTEMS'. No row dates that acquisition, and this check did not date it. It does not change demand: a change of owner is not a plant-level event in this vertical (Enercon East Peoria precedent: the Feb 2026 Generac acquisition scored 8). Add a dated row for the Avail acquisition when one is found.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110072214904",
+   "ledger_value": "EPA registry lists facility name CENTRAL ELECTRIC MANUFACTURING at 6100 Romona Blvd (NAICS 332311)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[101]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. ECHO lists CENTRAL ELECTRIC MANUFACTURING at 6100 Romona Blvd, NAICS 332311.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110071435376",
+   "ledger_value": "EPA registry also lists facility name AVAIL SWITCHGEAR SYSTEMS at 6100 Romona Blvd",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[102]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:products",
+   "source_url": "https://nvent.wd5.myworkdayjobs.com/wday/cxs/nvent/nVent/job/Houston-TX-US/Electrical-Installation-Assembler---Day-Shift_R24546",
+   "ledger_value": "electrical installation of wireways, conduits and cable trays to NEC code (Houston Electrical Installation Assembler, employer Central Electric Manufacturing Company LLC, posted 2026-11-11)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[103]",
+   "verdict": "confirmed",
+   "note": "Workday cxs JSON re-read 2026-11-17: canApply true, posted true; hiringOrganization 'Central Electric Manufacturing Company LLC', startDate 2026-11-11.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:products",
+   "source_url": "https://www.nvent.com/en-us/trachte/resources/news/powerful-team-success-bess-customers",
+   "ledger_value": "BESS prototype delivered by 'the nVent TRACHTE Texas facility' (undated news; Houston or Hitchcock)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[104]",
+   "verdict": "corrected",
+   "corrected_value": "BESS prototype delivered by 'the nVent TRACHTE Texas facility' (news dated November 06, 2024; Houston or Hitchcock)",
+   "corrected_quote": "November 06, 2024 ... The nVent TRACHTE Texas facility delivered a functioning prototype within three weeks.",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "Misdated: the value calls the news 'undated', but the page shows 'November 06, 2024' under the headline. The date is before 2024-11-16, so it is not a demand trigger either way; the Houston-or-Hitchcock inference stands. Outside the headline basis (products is not cited by a score row).",
+   "plants_csv_value": "keep (the plant products field does not carry this clause)",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:materials",
+   "source_url": "https://nvent.wd5.myworkdayjobs.com/wday/cxs/nvent/nVent/job/Houston-TX-US/Welder_R23879",
+   "ledger_value": "steel, aluminum, copper and other materials welded (Houston Welder postings)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[105]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:welder_postings",
+   "source_url": "https://nvent.wd5.myworkdayjobs.com/wday/cxs/nvent/nVent/job/Houston-TX-US/Welder_R23879",
+   "ledger_value": "Welder R23879, Houston TX, posted 2026-09-29, employer Central Electric Manufacturing Company LLC",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[106]",
+   "verdict": "confirmed",
+   "note": "Workday cxs JSON re-read 2026-11-17: canApply true, posted true; title 'Welder', startDate 2026-09-29, location 'Houston, TX, US' only, hiringOrganization 'Central Electric Manufacturing Company LLC'. The page names no shift and no process. Date and employer correct; whether it counts for 6100 Romona Blvd is a RULING (score_problems).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:welder_postings",
+   "source_url": "https://nvent.wd5.myworkdayjobs.com/wday/cxs/nvent/nVent/job/Houston-TX-US/Welder---Night-Shift_R23880",
+   "ledger_value": "Welder - Night Shift R23880, Houston TX, posted 2026-09-29, employer Central Electric Manufacturing Company LLC",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[107]",
+   "verdict": "confirmed",
+   "note": "Workday cxs JSON re-read 2026-11-17: canApply true, posted true; title 'Welder - Night Shift', startDate 2026-09-29, location 'Houston, TX, US', hiringOrganization 'Central Electric Manufacturing Company LLC'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:welder_postings",
+   "source_url": "https://nvent.wd5.myworkdayjobs.com/wday/cxs/nvent/nVent/job/Houston-TX-US/Fabrication-Operator-Lead---Night-Shift_R22725",
+   "ledger_value": "listed, not counted: Fabrication Operator Lead - Night Shift R22725 (posted 2026-07-28; production lead, no welding named)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[108]",
+   "verdict": "confirmed",
+   "note": "Workday cxs JSON re-read 2026-11-17: canApply true, posted true; startDate 2026-07-28; leads the team, backs up the supervisor, names no welding; correctly not counted.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:welder_postings",
+   "source_url": "https://echodata.epa.gov/echo/echo_rest_services.get_facilities?output=JSON&p_fn=CENTRAL%20ELECTRIC%20MANUFACTURING",
+   "ledger_value": "both Welder postings counted for this plant: their employer, Central Electric Manufacturing Company LLC, has one Houston site (6100 Romona Blvd)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[109]",
+   "verdict": "confirmed",
+   "note": "Inferred employer single-site row (correctly tagged inferred). ECHO re-run 2026-11-17: CENTRAL ELECTRIC MANUFACTURING (TX) only at 6100 Romona Blvd; AVAIL (TX) only at 6100 Romona; but nVent itself has a second Houston production site, NVENT 271 McCarty St (NAICS 335999) and HOFFMAN ENCLOSURES 247 McCarty St. All 17 Houston postings re-read: Hoffman Enclosures, Inc. is the employer on Molder Lead R23941, Painter R24623 and Staff R&D Mechanical Engineer R21138 (molding); CEMCO on the Welders, Assembly Operators, Electrical Installation Assembler, warehouse and supervisor roles. The value is a fair inference; the scoring use is a RULING (score_problems).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely night-shift welder staffing: day and night Welder roles have both been open since 2026-09-29.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[110]",
+   "verdict": "confirmed",
+   "note": "Inferred row; consistent with the stated rows and the checks above.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Central Electric Manufacturing's Houston plant has had Welder openings on both day and night shift posted since Sept 29, 2026, for welding steel, aluminum and copper in multiple positions; how are you filling night-shift welding?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[111]",
+   "verdict": "corrected",
+   "corrected_value": "Central Electric Manufacturing has had two Welder openings in Houston posted since Sept 29, 2026, one of them on night shift, for welding steel, aluminum and copper in multiple positions; how are you filling those welding roles, especially on nights?",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "The line says 'Welder openings on both day and night shift', but Welder R23879 names no shift (its page has no schedule or shift text); only R23880 is 'Night Shift'. 'Day' is an inference placed in a line that must use stated facts only. The corrected line also drops 'Houston plant' as a possessive, since the posting names only 'Houston, TX, US' and the tie to 6100 Romona Blvd is the inferred employer row (score_problems RULING). The bottleneck_guess and prospect_test rows repeat 'day and night' as inference (allowed in inferred rows; reword for consistency).",
+   "plants_csv_value": "Central Electric Manufacturing has had two Welder openings in Houston posted since Sept 29, 2026, one of them on night shift, for welding steel, aluminum and copper in multiple positions; how are you filling those welding roles, especially on nights?",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[112]",
+   "verdict": "confirmed",
+   "note": "0 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[113]",
+   "verdict": "confirmed",
+   "note": "0 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[114]",
+   "verdict": "confirmed",
+   "note": "15 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[115]",
+   "verdict": "confirmed",
+   "note": "RULING pending (score_problems): as written under the shared-city rule labor is 0 (total 28, Low); the case for keeping 20 (48, Medium) is in score_problems. Not counted as a correction, as in R3-I (Brookville).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[116]",
+   "verdict": "confirmed",
+   "note": "8 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[117]",
+   "verdict": "confirmed",
+   "note": "5 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:score_total",
+   "source_url": "",
+   "ledger_value": "48",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[118]",
+   "verdict": "confirmed",
+   "note": "RULING pending (score_problems): as written under the shared-city rule labor is 0 (total 28, Low); the case for keeping 20 (48, Medium) is in score_problems. Not counted as a correction, as in R3-I (Brookville).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[119]",
+   "verdict": "confirmed",
+   "note": "RULING pending (score_problems): as written under the shared-city rule labor is 0 (total 28, Low); the case for keeping 20 (48, Medium) is in score_problems. Not counted as a correction, as in R3-I (Brookville).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:confidence",
+   "source_url": "",
+   "ledger_value": "2",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[120]",
+   "verdict": "corrected",
+   "note": "Confidence 2 -> 1 under either reading of the labor RULING (score_problems): if labor is 0 it cannot count; if the coordinator keeps 20, it rests on an inferred employer-to-site tie (the postings name only the city and nVent has a second Houston production site), so it should earn no confidence (Brookville/Werk-Brau handling): add p-nvent-trachte-houston-tx:welder_postings to ledger/audit/no-confidence-claims.csv. Scale (c-nvent:multi_plant) is the only component left.",
+   "r2_basis": false,
+   "corrected_value": "1",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "plants_csv_value": "1"
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:products",
+   "source_url": "https://powersecure.com/customer-solutions/how-we-build-your-solution",
+   "ledger_value": "key components fabricated and assembled at the Durham campus with advanced welding, powder coating and conduit bending; every system load-bank tested before leaving the floor",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[121]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. The load-bank clause is on the page ('Every system undergoes full load-bank testing before leaving our floor').",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:products",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110071528556",
+   "ledger_value": "EPA registry: 4001 Stirrup Creek Dr, NAICS 335312 (motor and generator manufacturing)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[122]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. NAICSDesc 'Motor and Generator Manufacturing' on the same record.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:weld_processes",
+   "source_url": "https://southerncompany.jobs/58C1A8B7AA774C599F9B2F4849F121F625",
+   "ledger_value": "MIG (Durham Welder I posting); plasma equipment and torches",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[123]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. 'Experience with MIG welding technique' is under Minimum Qualifications.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:materials",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[124]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[125]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[126]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:production_type",
+   "source_url": "https://powersecure.com/customer-solutions/how-we-build-your-solution",
+   "ledger_value": "product list (company-level): PowerBlock genset systems with integral fuel and DEF tanks and sound-attenuating enclosure, PowerBlock3 in ISO containers, NexGear switchgear, battery systems",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[127]",
+   "verdict": "confirmed",
+   "note": "Inferred row correctly tagged; cited quote found on a fresh fetch.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[128]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:welder_postings",
+   "source_url": "https://southerncompany.jobs/58C1A8B7AA774C599F9B2F4849F121F625",
+   "ledger_value": "1 listed, not counted: Welder I - 2nd Shift - (Conversion), Durham NC, posted 2026-11-16 (JSON-LD), a conversion requisition for onboarding temp employees to FTE status, not open to third parties; MIG required",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[129]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. JSON-LD datePosted 2026-11-16T14:53:17; jobsyn record date_new 2026-11-16, req WELDE003494, city Durham (all_locations: ZIP 27722, a generic Durham ZIP, no street). Exact text: 'This is a conversion requisition for onboarding temp employees to FTE status' and 'This position is not open to third parties'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:welder_postings",
+   "source_url": "https://southerncompany.jobs/jobs/?q=welder+powersecure",
+   "ledger_value": "Southern Company board search 'welder powersecure' read 2026-11-17: 2 jobs, Durham (conversion) and Randleman (Welder II)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[130]",
+   "verdict": "confirmed",
+   "note": "Confirmed through the page's own data source: the rendered search page never showed the list on this check (first browser load stuck at 'Loading...', a second hit an Incapsula/hCaptcha wall), so the quote could not be read off the rendered page. The jobsyn search API behind it (prod-search-api.jobsyn.org, x-origin southerncompany.jobs, q='welder powersecure') returns exactly two jobs: 'Welder I - 2nd Shift - (Conversion)' Durham NC (2026-11-16) and 'Welder II (Resource DH Req)' Randleman NC (2026-09-24). Value correct.",
+   "quote_on_rendered_page": false,
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:welder_postings",
+   "source_url": "https://echodata.epa.gov/echo/echo_rest_services.get_facilities?output=JSON&p_fn=POWERSECURE",
+   "ledger_value": "Durham-named postings belong to this record: 4001 and 4068 Stirrup Creek Dr are one campus",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[131]",
+   "verdict": "confirmed",
+   "note": "Inferred campus row. ECHO POWERSECURE re-run 2026-11-17 (QueryID 996): Durham records only at 4001 Stirrup Creek Dr (NAICS 335312) and 4068 Stirrup Creek Drive (NAICS 33331). Census geocoder re-run: 4001 (35.91861,-78.84935) and 4068 (35.92035,-78.84226), 0.67 km apart. The 'same production' leg is not shown by any source (see score_problems). Reasoning over-reads 'not open to third parties' as 'closed to outside applicants': the Randleman posting has the same boilerplate as 'not open to third party recruiters'; only the conversion sentence supports listing it uncounted.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[132]",
+   "verdict": "confirmed",
+   "note": "Inferred row; consistent with the stated rows and the checks above.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[133]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "c-powersecure:multi_plant",
+   "source_url": "https://southerncompany.jobs/jobs/?q=welder+powersecure",
+   "ledger_value": "PowerSecure welds at two NC production sites: Durham and Randleman (two current Welder requisitions)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[134]",
+   "verdict": "confirmed",
+   "note": "Confirmed through the page's data source (rendered list never loaded; see the sibling welder_postings row): the jobsyn API shows one Welder requisition located in Durham and one in Randleman. Verdict on stated-vs-judgement: the value restates what the page shows (welder requisitions at two NC locations); 'production sites' is a light reading of a Welder job's location, not a separate judgement, so stated stands. Scale 5 also stands on the ECHO PowerFab row alone.",
+   "quote_on_rendered_page": false,
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-powersecure:multi_plant",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110031395032",
+   "ledger_value": "EPA registry lists a second PowerSecure manufacturing site: POWERSECURE MANUFACTURING INC. - POWERFAB, 1410 Coltrane Mill Rd, Randleman NC (NAICS 335312)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[135]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. POWERSECURE MANUFACTURING INC. - POWERFAB, 1410 Coltrane Mill Rd, Randleman, NAICS 335312.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly welder headcount filled through temps: Durham posted a requisition on 2026-11-16 to convert temporary welders to full-time.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[136]",
+   "verdict": "confirmed",
+   "note": "Inferred row; consistent with the stated rows and the checks above.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Durham campus posted a second-shift Welder I requisition on Nov 16, 2026 to convert temporary welders to full-time, and PowerSecure says it fabricates key components there with advanced welding, powder coating and conduit bending; how much of your Durham welding still runs on temp labor?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[137]",
+   "verdict": "confirmed",
+   "note": "Every clause stated: conversion requisition posted 2026-11-16 (JSON-LD), 'onboarding temp employees to FTE status'; how-we-build page: Durham campus with advanced welding, powder coating and conduit bending. Acceptable.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[138]",
+   "verdict": "confirmed",
+   "note": "RULING (score_problems): 20 stands if 4001 and 4068 Stirrup Creek are one campus (0.67 km, re-verified; PowerSecure calls it 'our Durham campus' where it fabricates with 'advanced welding'), but no source shows the two buildings do the same production. Strict reading: 0 (21 Low).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[139]",
+   "verdict": "confirmed",
+   "note": "0 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[140]",
+   "verdict": "confirmed",
+   "note": "8 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[141]",
+   "verdict": "confirmed",
+   "note": "RULING (score_problems): 0 rests on the conversion sentence only; 'not open to third parties' is recruiter-style boilerplate (Randleman: 'not open to third party recruiters'). By the letter of the standing-ad rule a live welder posting is 12 (53 Medium).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[142]",
+   "verdict": "confirmed",
+   "note": "8 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[143]",
+   "verdict": "confirmed",
+   "note": "5 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:score_total",
+   "source_url": "",
+   "ledger_value": "41",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[144]",
+   "verdict": "confirmed",
+   "note": "Sum re-derived from the six components: 41 confirmed.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[145]",
+   "verdict": "confirmed",
+   "note": "Tier re-derived from the total: Low confirmed.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:confidence",
+   "source_url": "",
+   "ledger_value": "2",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[146]",
+   "verdict": "confirmed",
+   "note": "Confidence 2 re-derived: counts only components above 0 whose cited claims all have stated rows and are not on no-confidence-claims.csv; demand 8 never counts. Confirmed.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:weld_processes",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[147]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:materials",
+   "source_url": "https://www.simplexdirect.com/about/facility/",
+   "ledger_value": "sheet metal for product enclosures, fabricated then welded (HQ plant)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[148]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. The page describes the 5300 Rising Moon Road headquarters, which 'houses the Simplex manufacturing plant'; no gauge stated.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:materials",
+   "source_url": "https://www.simplexdirect.com/fuel-supply/fuel-supply-fundamentals/",
+   "ledger_value": "company-level: stainless-steel construction offered on fuel filtration systems",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[149]",
+   "verdict": "confirmed",
+   "note": "Inferred row correctly tagged; cited quote found on a fresh fetch.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:certifications",
+   "source_url": "https://www.simplexdirect.com/about/about-simplex/",
+   "ledger_value": "ISO 9001:2015 (company-level)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[150]",
+   "verdict": "confirmed",
+   "note": "Inferred row correctly tagged; cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[151]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:production_type",
+   "source_url": "https://www.simplexdirect.com/about/facility/",
+   "ledger_value": "custom: enclosures for fuel supply and load bank products custom manufactured in the HQ factory",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[152]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Site-level: the facility page is the HQ building page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:production_type",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/283287",
+   "ledger_value": "company-level: design and production of custom-built equipment (Metal Fabrication – Machine Operator posting)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[153]",
+   "verdict": "confirmed",
+   "note": "Inferred row correctly tagged; cited quote found on a fresh fetch.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[154]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/283287",
+   "ledger_value": "listed, not counted: Metal Fabrication – Machine Operator (JSON-LD datePosted 2026-01-08; board list date 11/3/2026): shear, press brake, turret punch and laser; no welding",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[155]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. JSON-LD datePosted 2026-01-08T21:51:28; board PublishedDate 2026-11-03 (re-publish). Shear, press brake, turret punch, laser; no welding.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[156]",
+   "verdict": "confirmed",
+   "note": "Inferred row; consistent with the stated rows and the checks above.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[157]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "c-simplex:headcount",
+   "source_url": "https://www.simplexdirect.com/about/about-simplex/",
+   "ledger_value": "over 250 employees (company, undated page)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[158]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Undated page; company-level, so not a site headcount.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-simplex:multi_plant",
+   "source_url": "https://www.simplexdirect.com/about/about-simplex/",
+   "ledger_value": "manufacturing facilities at three locations in Springfield IL",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-F.json evidence[159]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Same page: 'Simplex headquarters is located in Springfield'; the facility page says the HQ 'houses the Simplex manufacturing plant' (see status_problems on whether three locations is current).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:lookalike_of",
+   "source_url": "https://www.simplexdirect.com/fuel-supply/fuel-supply-fundamentals/",
+   "ledger_value": "EK Machine: genset day tanks (stated product)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[160]",
+   "verdict": "confirmed",
+   "note": "Inferred judgement under the written battery lookalike rule (a stated generator-enclosure, day-tank or BESS enclosure/skid product, company-level enough); cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-F.json evidence[161]",
+   "verdict": "confirmed",
+   "note": "Unknown: no page read in this check states the field (postings, company pages, ECHO and 10-K re-read); unknown is correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Springfield headquarters plant custom-manufactures the enclosures for your fuel supply and load bank products, fabricating the sheet metal and bringing each enclosure to final form in your own welding shop; how do you schedule that welding shop across fuel-supply and load-bank enclosures?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[162]",
+   "verdict": "confirmed",
+   "note": "Every clause stated on the facility page (HQ plant, custom-manufactured enclosures, sheet metal fabricated then welded in our welding shop). Acceptable.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[163]",
+   "verdict": "confirmed",
+   "note": "0 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[164]",
+   "verdict": "confirmed",
+   "note": "0 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[165]",
+   "verdict": "confirmed",
+   "note": "15 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[166]",
+   "verdict": "confirmed",
+   "note": "0 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[167]",
+   "verdict": "confirmed",
+   "note": "8 confirmed: follows the rubric and the session rules from the cited claims (re-derived 2026-11-17).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[168]",
+   "verdict": "confirmed",
+   "note": "5 as written on the stated three-locations line; see status_problems for the single-campus question (TAG precedent would give 0).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:score_total",
+   "source_url": "",
+   "ledger_value": "28",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[169]",
+   "verdict": "confirmed",
+   "note": "Sum re-derived from the six components: 28 confirmed.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[170]",
+   "verdict": "confirmed",
+   "note": "Tier re-derived from the total: Low confirmed.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:confidence",
+   "source_url": "",
+   "ledger_value": "2",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[171]",
+   "verdict": "confirmed",
+   "note": "Confidence 2 re-derived: counts only components above 0 whose cited claims all have stated rows and are not on no-confidence-claims.csv; demand 8 never counts. Confirmed.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:prospect_test",
+   "source_url": "https://nvent.wd5.myworkdayjobs.com/wday/cxs/nvent/nVent/job/Oregon-WI-US/Continuous-Improvement-Engineer_R24176",
+   "ledger_value": "pass: welds in-house (welding is one of the plant's operations alongside fabrication, paint and final assembly) on engineered steel buildings",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[172]",
+   "verdict": "confirmed",
+   "note": "Inferred judgement; cited quote found on a fresh fetch; the steel leg is flagged where not stated.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:prospect_test",
+   "source_url": "https://nvent.wd5.myworkdayjobs.com/wday/cxs/nvent/nVent/job/Chattanooga-TN-US/Welder---Fabricator_R20540-1",
+   "ledger_value": "pass: welds steel in-house (a welding role at 'our Chattanooga facility', multiple shifts) and runs CNC plasma cutting",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[173]",
+   "verdict": "confirmed",
+   "note": "Inferred judgement; cited quote found on a fresh fetch; the steel leg is flagged where not stated.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:prospect_test",
+   "source_url": "https://nvent.wd5.myworkdayjobs.com/wday/cxs/nvent/nVent/job/Houston-TX-US/Welder_R23879",
+   "ledger_value": "pass: welds steel in-house (day and night Welder roles under the site's employer, Central Electric Manufacturing Company LLC)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[174]",
+   "verdict": "confirmed",
+   "note": "Inferred judgement; cited quote found on a fresh fetch; the steel leg is flagged where not stated.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:prospect_test",
+   "source_url": "https://southerncompany.jobs/58C1A8B7AA774C599F9B2F4849F121F625",
+   "ledger_value": "pass (steel not stated): welds in-house with 'advanced welding' at the Durham campus and a MIG welder role; metal welded not stated",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[175]",
+   "verdict": "confirmed",
+   "note": "Inferred judgement; cited quote found on a fresh fetch; the steel leg is flagged where not stated.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:prospect_test",
+   "source_url": "https://www.simplexdirect.com/about/facility/",
+   "ledger_value": "pass (provisional): welds in-house in its own welding shop on sheet-metal product enclosures; steel grade not stated at the plant",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[176]",
+   "verdict": "confirmed",
+   "note": "Inferred judgement; cited quote found on a fresh fetch; the steel leg is flagged where not stated.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:status",
+   "source_url": "https://www.nvent.com/en-us/trachte/trachte-locations",
+   "ledger_value": "profiled",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[177]",
+   "verdict": "confirmed",
+   "note": "Inferred row; consistent with the stated rows and the checks above.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:status",
+   "source_url": "https://www.nvent.com/en-us/trachte/trachte-locations",
+   "ledger_value": "profiled",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[178]",
+   "verdict": "confirmed",
+   "note": "Inferred row; consistent with the stated rows and the checks above.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:status",
+   "source_url": "https://www.nvent.com/en-us/trachte/trachte-locations",
+   "ledger_value": "profiled",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[179]",
+   "verdict": "confirmed",
+   "note": "Inferred row; consistent with the stated rows and the checks above.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:status",
+   "source_url": "",
+   "ledger_value": "profiled",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[180]",
+   "verdict": "confirmed",
+   "note": "Inferred row; consistent with the stated rows and the checks above.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:status",
+   "source_url": "",
+   "ledger_value": "profiled",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-F.json evidence[181]",
+   "verdict": "confirmed",
+   "note": "Inferred row; consistent with the stated rows and the checks above.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110069469319",
+   "ledger_value": "Generac Power Systems Inc - Oshkosh Facility",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15333",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. ECHO DFR FacilityStatus 'Operating'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110069469319",
+   "ledger_value": "3815 OREGON ST, OSHKOSH, WI 54902",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15334",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110046278675",
+   "ledger_value": "Former Baldor Electric Co generator plant at the same address",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15335",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. ECHO lists BALDOR ELECTRIC CO at 3815 Oregon St, NAICS 335312.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:parent_company",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1474735/000143774926004568/gnrc20251231_10k.htm",
+   "ledger_value": "Generac Holdings Inc.",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15336",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. The page is Generac Holdings Inc.'s 10-K.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:tier",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1474735/000143774926004568/gnrc20251231_10k.htm",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15338",
+   "verdict": "confirmed",
+   "note": "OEM: sells finished products under its own name; inferred, quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:welder_postings",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/en-US/External/job/Oshkosh-WI---USA/Welder---2nd-Shift_JR18430",
+   "ledger_value": "Welder - 2nd Shift (posted 2026-11-11)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15339",
+   "verdict": "confirmed",
+   "note": "Same claim as the corrected Brake Press row, but this row does not carry the painter clause and keeps its own value. Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Browser render of the public posting page; date 2026-11-11 matches the cxs JSON.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:welder_postings",
+   "source_url": "https://generac.wd5.myworkdayjobs.com/en-US/External/job/Oshkosh-WI---USA/Welder---1st-shift_JR18428",
+   "ledger_value": "Welder - 1st shift (posted 2026-11-11)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15340",
+   "verdict": "confirmed",
+   "note": "Same claim as the corrected Brake Press row, but this row does not carry the painter clause and keeps its own value. Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Browser render of the public posting page; date 2026-11-11 matches the cxs JSON.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110071528556",
+   "ledger_value": "PowerSecure Distributed Infrastructure",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15509",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. ECHO FacilityStatus 'Effective' (stormwater permit to 2031).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110071528556",
+   "ledger_value": "4001 STIRRUP CREEK DR, DURHAM, NC 27703",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15510",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110071680144",
+   "ledger_value": "Second EPA record at 4068 Stirrup Creek Dr (same campus to be confirmed)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15511",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:parent_company",
+   "source_url": "https://southerncompany.jobs/58C1A8B7AA774C599F9B2F4849F121F625",
+   "ledger_value": "PowerSecure",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15512",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:tier",
+   "source_url": "https://southerncompany.jobs/58C1A8B7AA774C599F9B2F4849F121F625",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15515",
+   "verdict": "confirmed",
+   "note": "OEM: sells finished products under its own name; inferred, quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:website",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1474735/000143774926004568/gnrc20251231_10k.htm",
+   "ledger_value": "https://www.generac.com/",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15532",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:products",
+   "source_url": "https://southerncompany.jobs/58C1A8B7AA774C599F9B2F4849F121F625",
+   "ledger_value": "Welded fabrications to UL standards (site products not stated)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15577",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. The posting also says 'welds are being done by engineering drawings and meet quality and safety standards'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:name",
+   "source_url": "https://www.simplexdirect.com/",
+   "ledger_value": "Simplex, Inc.",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15818",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Footer 'Copyright © Simplex, Inc.'",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110027155307&output=JSON",
+   "ledger_value": "SIMPLEX INC (EPA facility record at 5300 Rising Moon Rd)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15819",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. ECHO FacilityStatus 'Operating'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:address",
+   "source_url": "https://www.simplexdirect.com/about/facility/",
+   "ledger_value": "5300 Rising Moon Rd, Springfield, IL 62711",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15820",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110027155307&output=JSON",
+   "ledger_value": "5300 Rising Moon Rd (EPA record)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15821",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:address",
+   "source_url": "https://www.simplexdirect.com/",
+   "ledger_value": "5300 Rising Moon Rd, Springfield, IL 62711",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15822",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:website",
+   "source_url": "https://www.simplexdirect.com/",
+   "ledger_value": "https://www.simplexdirect.com",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15823",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:products",
+   "source_url": "https://www.simplexdirect.com/fuel-supply/fuel-supply-fundamentals/",
+   "ledger_value": "fuel day tanks for generator sets",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15824",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:products",
+   "source_url": "https://www.simplexdirect.com/about/facility/",
+   "ledger_value": "enclosures for fuel supply and load bank products made in-house",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15825",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:tier",
+   "source_url": "https://www.simplexdirect.com/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15826",
+   "verdict": "confirmed",
+   "note": "OEM: sells finished products under its own name; inferred, quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:relationship",
+   "source_url": "https://www.simplexdirect.com/fuel-supply/fuel-supply-fundamentals/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15827",
+   "verdict": "confirmed",
+   "note": "Inferred judgement under the written battery lookalike rule (a stated generator-enclosure, day-tank or BESS enclosure/skid product, company-level enough); cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/9339bad0-634f-4a59-87db-73989726d04d/Simplex-Inc",
+   "ledger_value": "none found (10 open roles, none welder; 2026-11-16)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15828",
+   "verdict": "confirmed",
+   "note": "Paylocity board JSON re-read 2026-11-17: 10 roles, all Springfield IL (Quality Engineer, Desktop Support Specialist, Assembly Technician (Trays), Material Control, Wiring Technician, Production Manager, Material Control Supervisor, Inside Technical Sales Engineer, Metal Fabrication – Machine Operator 2026-11-03, Assembly Technician 2026-09-15). No welder or fitter. None found is correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:parent_company",
+   "source_url": "https://www.nvent.com/en-us/trachte/trachte-locations",
+   "ledger_value": "nVent (nVent TRACHTE)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16123",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:address",
+   "source_url": "https://www.nvent.com/en-us/trachte/trachte-locations",
+   "ledger_value": "479 N Burr Oak Ave, Oregon, WI 53575 (weld shop; office/receiving at 422 N Burr Oak; second site at 350 Braun Rd)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16124",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Page shows 422 N Burr Oak (Office/Receiving), 479 N Burr Oak (Weld Shop), Oregon, WI 53575, and the 350 Braun Road facility.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=479+N+Burr+Oak+Ave,+Oregon,+WI+53575&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "42.932964",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16125",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-17: matched '479 N BURR OAK AVE, OREGON, WI, 53575', 42.932964, -89.387599, county 55025; recorded value agrees.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=479+N+Burr+Oak+Ave,+Oregon,+WI+53575&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-89.387598",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16126",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-17: matched '479 N BURR OAK AVE, OREGON, WI, 53575', 42.932964, -89.387599, county 55025; recorded value agrees.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=479+N+Burr+Oak+Ave,+Oregon,+WI+53575&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "55025",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16127",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-17: matched '479 N BURR OAK AVE, OREGON, WI, 53575', 42.932964, -89.387599, county 55025; recorded value agrees.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:website",
+   "source_url": "https://www.nvent.com/en-us/trachte",
+   "ledger_value": "https://www.nvent.com/en-us/trachte",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16128",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:tier",
+   "source_url": "https://www.nvent.com/en-us/trachte",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16130",
+   "verdict": "confirmed",
+   "note": "OEM: sells finished products under its own name; inferred, quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:name",
+   "source_url": "https://www.nvent.com/en-us/trachte/trachte-locations",
+   "ledger_value": "nVent TRACHTE - Chattanooga",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16132",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:address",
+   "source_url": "https://www.nvent.com/en-us/trachte/trachte-locations",
+   "ledger_value": "1919 W Polymer Dr, Chattanooga, TN 37421",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16133",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1919+W+Polymer+Dr,+Chattanooga,+TN+37421&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "35.041210",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16134",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-17: matched '1919 W POLYMER DR, CHATTANOOGA, TN, 37421', 35.04121, -85.194828, county 47065; recorded value agrees.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1919+W+Polymer+Dr,+Chattanooga,+TN+37421&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-85.194828",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16135",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-17: matched '1919 W POLYMER DR, CHATTANOOGA, TN, 37421', 35.04121, -85.194828, county 47065; recorded value agrees.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1919+W+Polymer+Dr,+Chattanooga,+TN+37421&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "47065",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16136",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-17: matched '1919 W POLYMER DR, CHATTANOOGA, TN, 37421', 35.04121, -85.194828, county 47065; recorded value agrees.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:website",
+   "source_url": "https://www.nvent.com/en-us/trachte",
+   "ledger_value": "https://www.nvent.com/en-us/trachte",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16137",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:tier",
+   "source_url": "https://www.nvent.com/en-us/trachte",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16139",
+   "verdict": "confirmed",
+   "note": "OEM: sells finished products under its own name; inferred, quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:relationship",
+   "source_url": "https://www.nvent.com/en-us/trachte/battery-energy-storage-system-bess",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16140",
+   "verdict": "confirmed",
+   "note": "Inferred judgement under the written battery lookalike rule (a stated generator-enclosure, day-tank or BESS enclosure/skid product, company-level enough); cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:found_by",
+   "source_url": "https://www.industrialinfo.com/news/article/sound-attenuated-generator-enclosures-by-lectrus-a-feature-of-industry-today-on-industrialinfocom--166462",
+   "ledger_value": "Lectrus historic plant list names Chattanooga",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16142",
+   "verdict": "confirmed",
+   "note": "Inferred row; consistent with the stated rows and the checks above. Quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:parent_company",
+   "source_url": "https://www.nvent.com/en-us/trachte/trachte-locations",
+   "ledger_value": "nVent (nVent TRACHTE)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16143",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:address",
+   "source_url": "https://www.nvent.com/en-us/trachte/trachte-locations",
+   "ledger_value": "6100 Romona Blvd, Houston, TX 77086",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16144",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. 'Houston, Texas Facility 6100 Romona Blvd, Houston, TX 77086'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=6100+Romona+Blvd,+Houston,+TX+77086&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "29.908712",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16145",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-17: matched '6100 ROMONA BLVD, HOUSTON, TX, 77086', 29.908712, -95.480296, county 48201; recorded value agrees.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=6100+Romona+Blvd,+Houston,+TX+77086&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-95.480296",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16146",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-17: matched '6100 ROMONA BLVD, HOUSTON, TX, 77086', 29.908712, -95.480296, county 48201; recorded value agrees.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=6100+Romona+Blvd,+Houston,+TX+77086&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "48201",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16147",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-17: matched '6100 ROMONA BLVD, HOUSTON, TX, 77086', 29.908712, -95.480296, county 48201; recorded value agrees.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:website",
+   "source_url": "https://www.nvent.com/en-us/trachte",
+   "ledger_value": "https://www.nvent.com/en-us/trachte",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16148",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:tier",
+   "source_url": "https://www.nvent.com/en-us/trachte",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16150",
+   "verdict": "confirmed",
+   "note": "OEM: sells finished products under its own name; inferred, quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:found_by",
+   "source_url": "https://www.industrialinfo.com/news/article/sound-attenuated-generator-enclosures-by-lectrus-a-feature-of-industry-today-on-industrialinfocom--166462",
+   "ledger_value": "Lectrus historic plant list names Houston",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16152",
+   "verdict": "confirmed",
+   "note": "Inferred row; consistent with the stated rows and the checks above. Quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=3815%20Oregon%20St%2C%20Oshkosh%2C%20WI%2054902&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "43.967783",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18208",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-17: matched '3815 OREGON ST, OSHKOSH, WI, 54902', 43.967783, -88.54335, county 55139; recorded value agrees.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=3815%20Oregon%20St%2C%20Oshkosh%2C%20WI%2054902&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-88.54335",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18209",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-17: matched '3815 OREGON ST, OSHKOSH, WI, 54902', 43.967783, -88.54335, county 55139; recorded value agrees.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=3815%20Oregon%20St%2C%20Oshkosh%2C%20WI%2054902&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "55139",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18210",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-17: matched '3815 OREGON ST, OSHKOSH, WI, 54902', 43.967783, -88.54335, county 55139; recorded value agrees.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=4001%20Stirrup%20Creek%20Dr%2C%20Durham%2C%20NC%2027703&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "35.91861",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18278",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-17: matched '4001 STIRRUP CREEK DR, DURHAM, NC, 27703', 35.91861, -78.849348, county 37063; recorded value agrees.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=4001%20Stirrup%20Creek%20Dr%2C%20Durham%2C%20NC%2027703&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-78.849348",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18279",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-17: matched '4001 STIRRUP CREEK DR, DURHAM, NC, 27703', 35.91861, -78.849348, county 37063; recorded value agrees.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=4001%20Stirrup%20Creek%20Dr%2C%20Durham%2C%20NC%2027703&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "37063",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18280",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-17: matched '4001 STIRRUP CREEK DR, DURHAM, NC, 27703', 35.91861, -78.849348, county 37063; recorded value agrees.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=5300%20Rising%20Moon%20Rd%2C%20Springfield%2C%20IL%2062711&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "39.749797",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18339",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-17: matched '5300 RISING MOON RD, SPRINGFIELD, IL, 62711', 39.749797, -89.749961, county 17167; recorded value agrees.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=5300%20Rising%20Moon%20Rd%2C%20Springfield%2C%20IL%2062711&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-89.749961",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18340",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-17: matched '5300 RISING MOON RD, SPRINGFIELD, IL, 62711', 39.749797, -89.749961, county 17167; recorded value agrees.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=5300%20Rising%20Moon%20Rd%2C%20Springfield%2C%20IL%2062711&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "17167",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18341",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-17: matched '5300 RISING MOON RD, SPRINGFIELD, IL, 62711', 39.749797, -89.749961, county 17167; recorded value agrees.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-generac-oshkosh-wi:relationship",
+   "source_url": "https://biztimes.com/generac-acquires-illinois-facility-for-subsidiary-enercons-production/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18409",
+   "verdict": "confirmed",
+   "note": "Inferred judgement under the written battery lookalike rule (a stated generator-enclosure, day-tank or BESS enclosure/skid product, company-level enough); cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:relationship",
+   "source_url": "https://powersecure.com/customer-solutions/how-we-build-your-solution",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18411",
+   "verdict": "confirmed",
+   "note": "Inferred judgement under the written battery lookalike rule (a stated generator-enclosure, day-tank or BESS enclosure/skid product, company-level enough); cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:lookalike_of",
+   "source_url": "https://powersecure.com/customer-solutions/how-we-build-your-solution",
+   "ledger_value": "EK Machine: states genset enclosure and integral fuel tanks in its PowerBlock (company-level)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18412",
+   "verdict": "confirmed",
+   "note": "Inferred judgement under the written battery lookalike rule (a stated generator-enclosure, day-tank or BESS enclosure/skid product, company-level enough); cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:name",
+   "source_url": "https://www.nvent.com/en-us/trachte/trachte-locations",
+   "ledger_value": "nVent TRACHTE - Oregon, WI (Burr Oak facilities)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 18416",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:relationship",
+   "source_url": "https://www.nvent.com/en-us/trachte/battery-energy-storage-system-bess",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18418",
+   "verdict": "confirmed",
+   "note": "Inferred judgement under the written battery lookalike rule (a stated generator-enclosure, day-tank or BESS enclosure/skid product, company-level enough); cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-oregon-wi:lookalike_of",
+   "source_url": "https://www.nvent.com/en-us/trachte/battery-energy-storage-system-bess",
+   "ledger_value": "EK Machine: states BESS enclosures and skid-based platforms (company-level)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18419",
+   "verdict": "confirmed",
+   "note": "Inferred judgement under the written battery lookalike rule (a stated generator-enclosure, day-tank or BESS enclosure/skid product, company-level enough); cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:parent_company",
+   "source_url": "https://www.nvent.com/en-us/trachte/trachte-locations",
+   "ledger_value": "nVent (nVent TRACHTE)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 18421",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-chattanooga-tn:lookalike_of",
+   "source_url": "https://www.nvent.com/en-us/trachte/battery-energy-storage-system-bess",
+   "ledger_value": "EK Machine: states BESS enclosures and skid-based platforms (company-level)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18423",
+   "verdict": "confirmed",
+   "note": "Inferred judgement under the written battery lookalike rule (a stated generator-enclosure, day-tank or BESS enclosure/skid product, company-level enough); cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:name",
+   "source_url": "https://www.nvent.com/en-us/trachte/trachte-locations",
+   "ledger_value": "nVent TRACHTE - Houston",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 18425",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:relationship",
+   "source_url": "https://www.nvent.com/en-us/trachte/battery-energy-storage-system-bess",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18427",
+   "verdict": "confirmed",
+   "note": "Inferred judgement under the written battery lookalike rule (a stated generator-enclosure, day-tank or BESS enclosure/skid product, company-level enough); cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-nvent-trachte-houston-tx:lookalike_of",
+   "source_url": "https://www.nvent.com/en-us/trachte/battery-energy-storage-system-bess",
+   "ledger_value": "EK Machine: states BESS enclosures and skid-based platforms (company-level)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18428",
+   "verdict": "confirmed",
+   "note": "Inferred judgement under the written battery lookalike rule (a stated generator-enclosure, day-tank or BESS enclosure/skid product, company-level enough); cited quote found on a fresh fetch.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "v-enclosures-battery-generator:demand_outlook",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/102729/000010272926000050/vmi-20260926x10q.htm",
+   "ledger_value": "Strong (inferred from data-center and grid load growth)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 81",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Inferred vertical outlook; quote supports it.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "v-enclosures-battery-generator:demand_outlook",
+   "source_url": "https://www.eia.gov/todayinenergy/detail.php?id=65964",
+   "ledger_value": "Strong: 2025 on course for record US battery-storage additions (Texas 7.0 GW planned)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15815",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Page also gives 'Developers in Texas are expecting to bring 7.0 GW of battery storage capacity online in 2025'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "v-enclosures-battery-generator:demand_outlook",
+   "source_url": "https://www.nasdaq.com/press-release/generac-reports-third-quarter-2025-results-2025-10-29",
+   "ledger_value": "Strong: generator demand from data centers (Generac Q3 2025, 2025-10-29)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15816",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  }
+ ]
+}
