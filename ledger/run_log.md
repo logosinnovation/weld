@@ -1150,3 +1150,4 @@ Coordinator decisions applied now (mechanical):
   - Leads: KW East Bernard registry address CR 291 (ledger CR 1952); LSI Cincinnati permits at 10170 Alliance Rd (ledger 10000); DIS-TRAN plasma cutter permit 2026-02-13 (possible trigger); GARZO at ECA's Waller address.
 - tools/fetch_page.py: a response starting with %PDF- is read as a PDF (Wisconsin serves permits as octet-stream).
 - Decision: fan the permit search out to the other 61 targets (yield 7/20, every hit a stated welding-at-the-address row), with a checker per batch.
+- Fix: a stray write_summary call (meant as a usage probe) rewrote ledger/audit/summary-v-poles-substation.json without its miss rate and limits in a2c74bc; restored from the previous commit (poles tier counts unchanged by today's rescoring). Map rebuilt; smoke passed.
