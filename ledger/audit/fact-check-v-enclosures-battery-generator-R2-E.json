@@ -1,0 +1,1577 @@
+{
+ "checker": "fact-checker R2-E",
+ "vertical": "v-enclosures-battery-generator",
+ "date": "2026-11-17",
+ "plants": [
+  "p-yancey-barnesville-ga",
+  "p-wedlake-tulsa-ok",
+  "p-yancey-cordele-ga"
+ ],
+ "decision_rule": "Corrected = the value adds a fact the cited page does not show, tags a judgement as stated, places a company-level fact at the plant, ties a posting through a shared city, misdates a posting, or the quote is not on the page (raw source checked first); Confirmed otherwise. Unreachable only if the source cannot be reached at all.",
+ "claims_checked": 94,
+ "claims_corrected": 4,
+ "claims_unreachable": 0,
+ "error_rate": 0.0426,
+ "error_rate_note": "Headline on the R2 basis (rows flagged r2_basis: stated rows, every row of a claim a score row cites, and the 3 opening lines): 4/94 = 4.3%. Stated rows only: 4/75 = 5.3%. All 146 rows written (inbox battery-profiler-E.json evidence plus the plants' unreplaced ledger rows, c-yancey/c-ies/c-wedlake and the demand_outlook rows the scores cite): 4/146 = 2.7%. Every quote was found on a fresh fetch (37 URLs, all HTTP 200; UKG pages by headless browser with raw source; IES board via its JSON API; ECHO DFR JSON), so 0 unreachable. ALTERNATIVE COUNT (UKG dates): Yancey's UKG opportunity JSON carries a requisition PostedDate earlier than the displayed 'Posted on' date (= JobBoardMemberships ExternalPostedDate) on six counted welder rows: WELDE004838 2025-10-20 (shown 2026-10-27), 005301 and 005302 2026-03-12, 006151 and 006153 2026-10-08, Cordele 005744 2026-06-30 (shown 2026-11-02). Rows were confirmed on the displayed date because the page does not show the earlier date was a continuous public listing (006242/006245 show the same field one day before publication, i.e. requisition creation). If those six are read as misdated postings: 10/94 = 10.6%. No tier moves under either reading.",
+ "claims_checked_all_rows": 146,
+ "claims_corrected_all_rows": 4,
+ "error_rate_all_rows": 0.0274,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 3,
+  "invented fact": 0,
+  "other": 1
+ },
+ "repeated_kinds": [
+  "quote does not support value (3), one pattern on one plant: Cordele pre-production status rows overstating progress - 'is being refurbished' and 'Renovation under way' where both pages say the company 'will refurbish' / 'will include the renovation', and an Operations Manager requisition read as Cordele staffing although its body says 'Role is based in Batesville, MS'. With the 'other' (a 2009 Big Tex article dated 2010 and read as showing the building today), all four corrections are Cordele status rows. No score effect. SWEEP: re-read every pre-production status row (Generac Belvidere, Rehlko Kenosha, GTI Wilmington, Fidelity McGregor, Virnig, Robinson Altoona, Saronic, Master Boat, Anduril, Caterpillar Sanford, Deere Kernersville) for tense (planned vs under way) and for postings whose body names a different site.",
+  "Pattern to sweep (not counted as errors here): UltiPro/UKG 'Posted on' dates are external re-post stamps; the opportunity JSON PostedDate can be months older (Barnesville WELDE004838 first posted 2025-10-20). Applies to the Griffin and Batesville rows R1-D confirmed and to every UKG board read through LoadSearchResults; only wording (opening lines, 'oldest posted' clauses) and any 60+ days claim are affected."
+ ],
+ "worst_errors": [
+  "p-yancey-cordele-ga:status (OPERA005736 row) - 'Cordele site staffing up: Operations Manager posting ... for the site', but the posting body says 'Role is based in Batesville, MS'. Value corrected; the plants.csv welder_postings field still lists 'Operations Manager' among Cordele's roles (sibling). Cordele's operating-readiness case still stands on WELDE005744 and five other EP3-Cordele-YES roles.",
+  "p-yancey-cordele-ga:status (governor release and Area Development rows) - 'is being refurbished' / 'Renovation under way' where both June 2026 pages give only a plan ('will refurbish', 'will include the renovation'). The same claim feeds the bottleneck line 'Cordele is still being refurbished' (inferred row; suggest 'is being set up after the June 2026 announcement').",
+  "p-yancey-cordele-ga:status (tradeandindustrydev row) - article dated Mar 25, 2009 recorded as a 2010 announcement and read as showing 'the former Big Tex building exists'; it is a purchase announcement naming no street."
+ ],
+ "score_problems": [
+  {
+   "plant_id": "p-yancey-barnesville-ga",
+   "component": "confidence",
+   "ledger_points": 3,
+   "correct_points": 3,
+   "why": "Correct under session-2 rule 1 (company-level part mix earns points, no confidence), but c-yancey:production_type is tagged stated, so normalise_scores.py will count part mix and write 4 unless the coordinator adds c-yancey:production_type to ledger/audit/no-confidence-claims.csv. Adding it affects no other ledger plant (no ledger row cites it yet)."
+  },
+  {
+   "plant_id": "p-yancey-barnesville-ga",
+   "component": "score_part_mix",
+   "ledger_points": 15,
+   "correct_points": 15,
+   "why": "RULING (consistency). 15 follows the written rule on the company-level 'custom power generation solutions' line (Freeman Batavia precedent). Yancey Batesville scores 8 under the same rule (profiler D). Either Batesville goes to 15 (72 -> 79) or Barnesville to 8 (72 -> 65 Medium). This check sides with 15 for both: the rule is written and the Yancey custom line covers the division."
+  },
+  {
+   "plant_id": "p-yancey-cordele-ga",
+   "component": "score_labor",
+   "ledger_points": 12,
+   "correct_points": 12,
+   "why": "RULING. As written 12 (one counted Welder requisition live today at EP3-Cordele-YES). Its raw opportunity JSON shows 'PostedDate':'2026-06-30' (displayed 2026-11-02, updated 2026-11-11), i.e. 140 days. Not counted as 60+ days: the page does not show a continuous public listing (Tomball Von Ormy conflicting-dates ruling), and for a pre-production plant labor rests on stated facts only. Upside if read as open since June 30: 20, total 79 High. A Cordele 'Lead Welder' posted 2026-07-14 appears on the Caterpillar dealer job board (search result only, not on Yancey's own board today; not counted)."
+  },
+  {
+   "plant_id": "p-yancey-cordele-ga",
+   "component": "confidence",
+   "ledger_points": 5,
+   "correct_points": 5,
+   "why": "RULING. 5 holds if QUALI006164's 'custom fabricated fuel tanks and generator enclosures' is site-level (posting located at EP3-Cordele-YES; body names no other site). Risk: the Cordele Operations Manager posting at the same board location says 'Role is based in Batesville, MS', so Cordele-located texts can carry other sites' wording, and the profiler itself reads the same posting's ISO line as division-level. If the custom line is ruled division-level, retag p-yancey-cordele-ga:production_type inferred (and its sibling products row), part mix stays 15 (company-level rule), confidence 5 -> 4, and add the claim to no-confidence-claims.csv."
+  }
+ ],
+ "score_notes": [
+  "All 18 components (3 plants x 6) re-derived from the cited claims; sums and tiers correct: Yancey Barnesville 72 High (20/4/15/20/8/5, conf 3), Yancey Cordele 71 High (20/4/15/12/15/5, conf 5), Wedlake Tulsa 68 Medium (20/0/15/20/8/5, conf 2). None of the three plants' claims is in no-confidence-claims.csv.",
+  "Process 20 on all three (MIG required; flux core preferred or required; no TIG in any production welder posting).",
+  "Material: Yancey 4 under the battery rule (aluminum stud frames, light and medium gauge; no fuel-tank size); Wedlake 0 (carbon steel stated, no part size).",
+  "Wedlake labor 20 rests on the $2,500 sign-on bonus alone; the Assembler/Welder (24511, 'assists with welding, fit-up, and mechanical assembly', 0-3 years) reads as a helper/trainee - if a helper, the field should say '1 open, counted; Assembler/Welder listed'. No point change.",
+  "Barnesville labor 20: seven counted requisitions at once at 460 Industrial Road (confirmed live on the board, LoadSearchResults 2026-11-17); the four build roles alone suffice."
+ ],
+ "opening_line_problems": [
+  "p-yancey-barnesville-ga:opening_line - acceptable (every clause stated). Suggest 'listed between Oct 27 and Nov 9, 2026' or 're-posted' instead of 'posted': the raw opportunity JSON shows WELDE004838 first posted 2025-10-20 and 005301/005302 2026-03-12.",
+  "p-yancey-cordele-ga:opening_line - acceptable (every clause stated; it does not rely on the corrected refurbishment rows). Suggest 'listed a MIG Welder role on Nov 2, 2026' (requisition WELDE005744 created 2026-06-30, five days after the announcement).",
+  "p-wedlake-tulsa-ok:opening_line - confirmed as written; no posting age asserted."
+ ],
+ "plants_closed_or_moved": [],
+ "status_problems": [
+  "p-yancey-cordele-ga: profiled while pre-production. The delegation and rule 6 say pre-production plants stay base with a status row but are profiled; R1 held Rehlko Kenosha and Generac Belvidere base because welding was not shown. Cordele differs: a live MIG Welder requisition names the site (EP3-Cordele-YES, 502 S. Midway Road) plus QC, maintenance (2), shipping and safety roles. Coordinator to confirm status value 'profiled' vs 'base (pre-production, profiled)'. Production at Cordele is not yet shown by any source read.",
+  "p-yancey-barnesville-ga and p-yancey-cordele-ga: prospect test pass as aluminum-first (kept and noted per CLAUDE.md). As R1-D said for Griffin, no source for either site states steel; fuel-tank material is unstated. If a stated steel fact were required both would fail.",
+  "p-yancey-barnesville-ga: operating (seven live welder requisitions, PDI/finished-goods supervisor, two safety roles at 460 Industrial Road; ECHO YANCEY POWER SYSTEMS 490 Industrial Rd Operating). Three of seven welder roles are upfit/repair and the supervisor covers PDI and finished goods, so the site may be partly finishing/testing (profiler note 3); kept as a production plant (four build roles). Yancey's board also lists a second Barnesville location, EV3 Legacy-YES, 960 Legacy Park Dr (shipping and QC only); welder postings name 460 Industrial Road, so no shared-city issue.",
+  "p-wedlake-tulsa-ok: operating at 2121 N 161st E Ave (ECHO ICIS-Air Operating; RCRA Active as Wedlake Enclosure Systems; nine live IES board roles there). Other Wedlake records (3989 Osage Dr, 6041 N Yorktown) carry no active program; single-site tie remains inferred as the profiler says."
+ ],
+ "plant_status_notes": "All three plants exist and operate (or, for Cordele, are hiring) at the recorded addresses; coordinates within 92-347 m of the board/ECHO points with matching county FIPS.",
+ "field_drift_notes": [
+  "p-yancey-cordele-ga:welder_postings field - 'listed, not counted: Operations Manager, Quality Control Manager, Maintenance Technician (2), Shipping Technician, Safety Training Coordinator': only QC Manager and Operations Manager have rows, and Operations Manager is Batesville-based per its body. The others exist on the board today (MAINT005665 2026-11-12, MAINT006189 2026-10-21, SHIPP005740 2026-11-02, SAFET006323 2026-11-14, all EP3-Cordele-YES); add rows or trim the clause.",
+  "p-yancey-cordele-ga:bottleneck_guess - 'Cordele is still being refurbished' rests on the corrected status rows; suggest 'is being set up after the June 2026 announcement'.",
+  "p-yancey-barnesville-ga:welder_postings field - 'oldest posted 2026-10-27' is the oldest displayed date; the oldest requisition (WELDE004838) was first posted 2025-10-20 per the raw JSON. Suggest 'oldest listed 2026-10-27 (requisition from 2025-10-20)'.",
+  "Corrected status rows have no plants.csv field of their own; no plants_csv_value needed."
+ ],
+ "leads": [
+  "Cordele 'Lead Welder' (Yancey Bros., Cordele GA) posted 2026-07-14 on dealertechjobs.caterpillar.com/job/9495 (search result only, not fetched; not on Yancey's own board today). A working-lead role would count if live on Yancey's board.",
+  "Barnesville EV3 Legacy-YES, 960 Legacy Park Dr, and other 'EV' locations (EV1 Prince-YES Macon, EV2 Unified-YES Byron, E23 Milner-YES Milner) on Yancey's board: QC and shipping roles only; possibly contract-vendor sites ('multiple manufacturing operations including contract vendors' in DIREC005821)."
+ ],
+ "method": "Fresh fetch of all 37 cited URLs on 2026-11-17 into a new cache (tools/fetch_page.fetch with_raw=True; UKG/UltiPro and IES job pages by headless browser); every quote fragment checked against visible text plus raw source (all found). Yancey's UKG board read in full through its LoadSearchResults JSON (266 roles, two pages) and each cited requisition's raw opportunity JSON (PostedDate, ExternalPostedDate, OpportunityIsClosed, location address and coordinates). IES board read through its JSON API (location=Tulsa). EPA ECHO DFR JSON and a fresh ECHO name search (WEDLAKE). Census coordinates compared with board and ECHO points. Three web searches for open/closed and trigger discovery only (none used as a quote). No ledger file edited.",
+ "apply_note": "Apply after the coordinator merges ledger/inbox/battery-profiler-E.json (rows keyed to that file's claim_id + source_url; ledger-origin rows marked in 'origin'). Corrected rows are all p-yancey-cordele-ga:status (two inbox rows - governor release and OPERA005736 - and two ledger rows - Area Development and tradeandindustrydev). Rule on the four score_problems; add c-yancey:production_type to ledger/audit/no-confidence-claims.csv to keep Barnesville at confidence 3.",
+ "rows": [
+  {
+   "claim_id": "c-yancey:production_type",
+   "source_url": "https://www.areadevelopment.com/newsItems/6-26-2026/yancey-engineered-solutions-cordele-georgia.shtml",
+   "ledger_value": "company-level: Yancey Engineered Solutions' operations include engineering, manufacturing, assembly and integration of custom power generation solutions",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[0]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-yancey:multi_plant",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=9031f9d6-57b6-40b4-abe7-56ae0746ba5a",
+   "ledger_value": "Yancey Engineered Solutions runs an enterprise-wide QMS across multiple manufacturing facilities (Director of Quality posting, Oct 30 2026)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[1]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. DIREC005821 at Griffin YPS, displayed 2026-10-30 (PostedDate 2026-07-22).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-yancey:certifications",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=59222625-6a35-4e25-9e57-4fff0186f977",
+   "ledger_value": "company-level: a Cordele QC Manager posting asks the manager to maintain ISO 9001-2015 accreditation of the Yancey Engineered Solutions QMS",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[2]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-wedlake:production_type",
+   "source_url": "https://www.einpresswire.com/article/531062620/ies-holdings-acquires-wedlake-fabricating",
+   "ledger_value": "company-level: Wedlake (est. 1984) manufactures custom generator enclosures, primarily for data centers and large commercial and industrial facilities (IES release, Nov 19 2020)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[3]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:products",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=8c372b7a-2e1a-4d79-9140-11a9c6b0e5f3",
+   "ledger_value": "Generator enclosures and fuel tanks: welders weld fuel tanks and aluminum stud frames, walls and roof to create weatherproof or sound-attenuation enclosures (Barnesville Welder posting WELDE006151)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[4]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:products",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=46698d8d-cdc6-40ff-89ed-6ce30fd3d218",
+   "ledger_value": "Upfit and repair work on enclosures (Welder - Second Shift WELDE005301)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[5]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110012241421",
+   "ledger_value": "ECHO lists a YANCEY POWER SYSTEMS facility at 490 Industrial Rd, Barnesville",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[6]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. ECHO DFR 110012241421: YANCEY POWER SYSTEMS, 490 INDUSTRIAL RD, BARNESVILLE, Operating (CAA).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:address",
+   "source_url": "",
+   "ledger_value": "460 Industrial Road (Yancey board location) is used; ECHO's 490 Industrial Rd Yancey Power Systems record and the 490 Industrial Drive 'Lamar County Testing Facility' record sit on the same road, about 140 m away",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[7]",
+   "verdict": "confirmed",
+   "note": "Campus reading accepted. Note: Yancey's board also has a second Barnesville location, EV3 Legacy-YES, 960 Legacy Park Dr (Shipping Technician, Lead QC Technician only; \"EV\" sites look like contract-vendor locations). The welder requisitions name 460 Industrial Road in their own location field, so they count by board location (ships rule 3). The ~140 m distance to the 490 records was not re-measured (ECHO DFR carries no coordinates for 110012241421).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:weld_processes",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=8c372b7a-2e1a-4d79-9140-11a9c6b0e5f3",
+   "ledger_value": "MIG (Barnesville welder postings, required); certified flux-core welder preferred",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[8]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:materials",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=c22f7170-8eac-44fa-9003-6a76163eb549",
+   "ledger_value": "aluminum stud frames, walls and roof, and fuel tanks; light and medium gauge fabrication (Barnesville welder postings)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[9]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:materials",
+   "source_url": "",
+   "ledger_value": "aluminum-first: aluminum frames, walls and roof are the main welded parts; steel not stated at this site",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[10]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:part_size_fit",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=632ce280-2429-4d18-9e16-af34e558ed72",
+   "ledger_value": "no part dimension stated; Barnesville postings name aluminum stud frames, walls and roof, walls around fuel tanks, light and medium gauge fabrication",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[11]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:part_size_fit",
+   "source_url": "",
+   "ledger_value": "weak fit (aluminum-first); no steel part size stated",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[12]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:production_type",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=9ec3ba88-d396-4364-ad3a-2c56fbee17c2",
+   "ledger_value": "enclosure and fuel-tank welding (Welder - Second Shift WELDE004838)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[13]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:production_type",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=46698d8d-cdc6-40ff-89ed-6ce30fd3d218",
+   "ledger_value": "upfit and repair work on enclosures (Welder - Second Shift WELDE005301)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[14]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:production_type",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=37a559a8-a466-4e4f-9cb4-7160b1a5893c",
+   "ledger_value": "upfit and repair work on enclosures (Welder - Second Shift WELDE006153)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[15]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:production_type",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=be294e6a-7aaa-4c90-beae-c19d2958bb4e",
+   "ledger_value": "upfit and repair work on enclosures (Welder - Second Shift WELDE006245)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[16]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:production_type",
+   "source_url": "",
+   "ledger_value": "four of the seven welder requisitions build enclosures and fuel tanks; three are mainly upfit and repair",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[17]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:production_type",
+   "source_url": "https://www.areadevelopment.com/newsItems/6-26-2026/yancey-engineered-solutions-cordele-georgia.shtml",
+   "ledger_value": "company-level: custom power generation solutions (Yancey Engineered Solutions); not tied to Barnesville by any source",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[18]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-E.json evidence[19]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-E.json evidence[20]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-E.json evidence[21]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=8c372b7a-2e1a-4d79-9140-11a9c6b0e5f3",
+   "ledger_value": "Welder WELDE006151, posted 2026-11-09, Barnesville GA 30204, 460 Industrial Road; MIG required, flux-core certification preferred; individual bonus opportunities (not a sign-on bonus)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[22]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Live on Yancey's own UKG board 2026-11-17 (LoadSearchResults, 266 roles read; OpportunityIsClosed false), board location EN-Barnesville-YES, 460 Industrial Road. Displayed \"Posted on\" 2026-11-09 (= JobBoardMemberships ExternalPostedDate). Raw opportunity JSON also carries \"PostedDate\":\"2026-10-08\" (requisition first posted/created). Value confirmed as the board's displayed date; see error_rate_note and opening_line_problems for the re-post reading. No 60+ days claim is made.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=c22f7170-8eac-44fa-9003-6a76163eb549",
+   "ledger_value": "Welder WELDE006242, posted 2026-10-29, Barnesville GA 30204, 460 Industrial Road",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[23]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Live on Yancey's own UKG board 2026-11-17 (LoadSearchResults, 266 roles read; OpportunityIsClosed false), board location EN-Barnesville-YES, 460 Industrial Road. Displayed \"Posted on\" 2026-10-29 (= JobBoardMemberships ExternalPostedDate). Raw opportunity JSON also carries \"PostedDate\":\"2026-10-28\" (requisition first posted/created). Value confirmed as the board's displayed date; see error_rate_note and opening_line_problems for the re-post reading. No 60+ days claim is made.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=632ce280-2429-4d18-9e16-af34e558ed72",
+   "ledger_value": "Welder WELDE005302, posted 2026-10-27, Barnesville GA 30204, 460 Industrial Road",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[24]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Live on Yancey's own UKG board 2026-11-17 (LoadSearchResults, 266 roles read; OpportunityIsClosed false), board location EN-Barnesville-YES, 460 Industrial Road. Displayed \"Posted on\" 2026-10-27 (= JobBoardMemberships ExternalPostedDate). Raw opportunity JSON also carries \"PostedDate\":\"2026-03-12\" (requisition first posted/created). Value confirmed as the board's displayed date; see error_rate_note and opening_line_problems for the re-post reading. No 60+ days claim is made.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=9ec3ba88-d396-4364-ad3a-2c56fbee17c2",
+   "ledger_value": "Welder - Second Shift WELDE004838, posted 2026-10-27, Barnesville GA 30204, 460 Industrial Road",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[25]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Live on Yancey's own UKG board 2026-11-17 (LoadSearchResults, 266 roles read; OpportunityIsClosed false), board location EN-Barnesville-YES, 460 Industrial Road. Displayed \"Posted on\" 2026-10-27 (= JobBoardMemberships ExternalPostedDate). Raw opportunity JSON also carries \"PostedDate\":\"2025-10-20\" (requisition first posted/created). Value confirmed as the board's displayed date; see error_rate_note and opening_line_problems for the re-post reading. No 60+ days claim is made.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=46698d8d-cdc6-40ff-89ed-6ce30fd3d218",
+   "ledger_value": "Welder - Second Shift WELDE005301, posted 2026-11-09, 460 Industrial Road; primarily upfit and repair work on enclosures",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[26]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Live on Yancey's own UKG board 2026-11-17 (LoadSearchResults, 266 roles read; OpportunityIsClosed false), board location EN-Barnesville-YES, 460 Industrial Road. Displayed \"Posted on\" 2026-11-09 (= JobBoardMemberships ExternalPostedDate). Raw opportunity JSON also carries \"PostedDate\":\"2026-03-12\" (requisition first posted/created). Value confirmed as the board's displayed date; see error_rate_note and opening_line_problems for the re-post reading. No 60+ days claim is made.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=37a559a8-a466-4e4f-9cb4-7160b1a5893c",
+   "ledger_value": "Welder - Second Shift WELDE006153, posted 2026-11-09, 460 Industrial Road; primarily upfit and repair work on enclosures",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[27]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Live on Yancey's own UKG board 2026-11-17 (LoadSearchResults, 266 roles read; OpportunityIsClosed false), board location EN-Barnesville-YES, 460 Industrial Road. Displayed \"Posted on\" 2026-11-09 (= JobBoardMemberships ExternalPostedDate). Raw opportunity JSON also carries \"PostedDate\":\"2026-10-08\" (requisition first posted/created). Value confirmed as the board's displayed date; see error_rate_note and opening_line_problems for the re-post reading. No 60+ days claim is made.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=be294e6a-7aaa-4c90-beae-c19d2958bb4e",
+   "ledger_value": "Welder - Second Shift WELDE006245, posted 2026-10-29, 460 Industrial Road; primarily upfit and repair work on enclosures",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[28]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Live on Yancey's own UKG board 2026-11-17 (LoadSearchResults, 266 roles read; OpportunityIsClosed false), board location EN-Barnesville-YES, 460 Industrial Road. Displayed \"Posted on\" 2026-10-29 (= JobBoardMemberships ExternalPostedDate). Raw opportunity JSON also carries \"PostedDate\":\"2026-10-28\" (requisition first posted/created). Value confirmed as the board's displayed date; see error_rate_note and opening_line_problems for the re-post reading. No 60+ days claim is made.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:welder_postings",
+   "source_url": "",
+   "ledger_value": "split: four build roles (WELDE006151, 006242, 005302, 004838) and three Welder - Second Shift roles mainly on upfit and repair (WELDE005301, 006153, 006245); all seven counted",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[29]",
+   "verdict": "confirmed",
+   "note": "Count checked on the board: exactly seven Welder / Welder - Second Shift requisitions at EN-Barnesville-YES (460 Industrial Road), no others. The upfit/repair line appears only on 005301, 006153 and 006245; all seven are manual MIG production welding roles, so the count stands.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=bd89254d-e433-4952-b056-c257bf2fec77",
+   "ledger_value": "listed, not counted: Production Supervisor - Second Shift (PDI and finished goods supervisor), Barnesville",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[30]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. PRODU006125 displayed 2026-11-02, location 460 Industrial Road; a supervisor, correctly listed not counted.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[31]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:prospect_test",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=8c372b7a-2e1a-4d79-9140-11a9c6b0e5f3",
+   "ledger_value": "pass (aluminum-first noted): welds in-house (MIG) and welding is core to enclosure and fuel-tank production; three of seven welder roles are mainly upfit and repair; steel not stated at this site",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[32]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Pass as aluminum-first, kept and noted (CLAUDE.md). As R1-D noted for Griffin, no source for this site states steel: the welded items are aluminum stud frames, walls, roof and fuel tanks of unstated material. See status_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely MIG welder headcount: Barnesville has seven Welder requisitions open at once (four building enclosures and fuel tanks, three on second-shift upfit and repair), the oldest posted Oct 27, 2026.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[33]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Barnesville plant at 460 Industrial Road has seven Welder requisitions open, posted between Oct 27 and Nov 9, 2026, three of them second-shift roles focused on upfit and repair of enclosures; how are you splitting your MIG welders between new enclosure and fuel-tank builds and upfit work?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[34]",
+   "verdict": "confirmed",
+   "note": "Every clause rests on stated rows (seven requisitions, 460 Industrial Road, three second-shift upfit/repair roles, MIG, enclosures and fuel tanks). Wording suggestion in opening_line_problems (re-post dates).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[35]",
+   "verdict": "confirmed",
+   "note": "20 confirmed: MIG required in all seven Barnesville welder postings, flux core preferred, no TIG; \"complete spot welds where needed\" is incidental (R1-D).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:score_material_part",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[36]",
+   "verdict": "confirmed",
+   "note": "4 confirmed: aluminum stud frames, walls and roof are named; no tank or part dimension; battery rule gives 4 (Griffin, Batesville).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[37]",
+   "verdict": "confirmed",
+   "note": "15 follows the written rule (company-level custom statement earns points, no confidence; Freeman Batavia precedent). Inconsistent with Batesville 8 under the same rule: see score_problems (RULING).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[38]",
+   "verdict": "confirmed",
+   "note": "20 confirmed: seven counted welder requisitions live at once at 460 Industrial Road; \"Individual Bonus Opportunities\" is not a sign-on bonus; no 60+ days claimed.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[39]",
+   "verdict": "confirmed",
+   "note": "8 confirmed: no dated Barnesville event found (this check's searches also found none).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[40]",
+   "verdict": "confirmed",
+   "note": "5 confirmed: c-yancey:multi_plant stated (Director of Quality: \"multiple manufacturing facilities\"; Batesville \"next manufacturing facility\"); headcount unknown.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:score_total",
+   "source_url": "",
+   "ledger_value": "72",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[41]",
+   "verdict": "confirmed",
+   "note": "72 = 20+4+15+20+8+5.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[42]",
+   "verdict": "confirmed",
+   "note": "High (72).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:confidence",
+   "source_url": "",
+   "ledger_value": "3",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[43]",
+   "verdict": "confirmed",
+   "note": "3 is right under the rules only if c-yancey:production_type is added to ledger/audit/no-confidence-claims.csv (it is tagged stated, so normalise_scores.py would count part mix and give 4). Process, material, labor count; scale cites an unknown headcount; demand 8 never counts.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:status",
+   "source_url": "https://gov.georgia.gov/press-releases/2026-06-25/gov-kemp-yancey-engineered-solutions-bringing-300-new-jobs-crisp-co",
+   "ledger_value": "profiled as a pre-production prospect (rule 6): the former Big Tex plant is being refurbished and the company plans to hire welders",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[44]",
+   "verdict": "corrected",
+   "note": "The release says the company \"will refurbish\" the building (future); the value's \"is being refurbished\" adds a fact (work under way) the page does not show. No score effect.",
+   "r2_basis": true,
+   "corrected_value": "profiled as a pre-production prospect (rule 6): the company will refurbish the former Big Tex manufacturing facility at 502 South Midway Road and plans to hire welders (Jun 25 2026 release; refurbishment announced, not shown under way)",
+   "corrected_quote": "The company will refurbish the former Big Tex manufacturing facility and plans to hire welders, quality control technicians, assembly workers, and drivers.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:status",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=f0c3cf82-0a3d-4daa-8cf4-9faf2f76f97f",
+   "ledger_value": "Cordele site staffing up: Operations Manager posting (2026-11-03) for the site",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[45]",
+   "verdict": "corrected",
+   "note": "The value says the posting is \"for the site\"; the same page says \"Role is based in Batesville, MS\" (raw PostedDate 2026-06-30). Sibling: the plants.csv welder_postings field lists \"Operations Manager\" among Cordele's listed roles; drop it or mark it Batesville-based. Cordele staffing is still shown by WELDE005744, QUALI006164, SHIPP005740, MAINT005665, MAINT006189 and SAFET006323 at EP3-Cordele-YES.",
+   "r2_basis": true,
+   "corrected_value": "Operations Manager requisition OPERA005736 listed at board location EP3-Cordele-YES (502 S. Midway Road), displayed posted 2026-11-03; its body says the role is based in Batesville, MS, so it does not show Cordele staffing",
+   "corrected_quote": "Posted on November 3, 2026 ... Cordele, GA 31015, USA ... Requisition #: OPERA005736 ... Role is based in Batesville, MS",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=GAR000107466",
+   "ledger_value": "ECHO RCRA record named YANCEY ENGINEERED SOLUTIONS at 2202 E 13TH AVE, Cordele",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[46]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. ECHO RCRA GAR000107466 YANCEY ENGINEERED SOLUTIONS, 2202 E 13TH AVE, CORDELE, status Inactive, NAICS 332311.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:address",
+   "source_url": "",
+   "ledger_value": "502 South Midway Road is used, not ECHO's 2202 E 13th Ave",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[47]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:products",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=59222625-6a35-4e25-9e57-4fff0186f977",
+   "ledger_value": "Custom fabricated fuel tanks and generator enclosures (Cordele QC Manager posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[48]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. QUALI006164 sits at board location EP3-Cordele-YES (502 S. Midway Road) and its body names no other site, so the custom line counts for Cordele by board location (ships rule 3). Caution: the Cordele Operations Manager posting at the same location says \"Role is based in Batesville, MS\", so Cordele-located texts can carry other sites' wording; see score_problems (RULING on Cordele part-mix confidence).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:weld_processes",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=a7d98fc4-3a60-47fd-84a7-f3c3367e6ee3",
+   "ledger_value": "MIG (Cordele welder posting, required); certified flux-core welder preferred",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[49]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:materials",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=a7d98fc4-3a60-47fd-84a7-f3c3367e6ee3",
+   "ledger_value": "aluminum stud frames, walls and roof, and fuel tanks; light and medium gauge fabrication (Cordele welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[50]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:materials",
+   "source_url": "",
+   "ledger_value": "aluminum-first: aluminum frames, walls and roof are the main welded parts; steel not stated at this site",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[51]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:part_size_fit",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=a7d98fc4-3a60-47fd-84a7-f3c3367e6ee3",
+   "ledger_value": "no part dimension stated; the Cordele posting names aluminum stud frames, walls and roof, walls around fuel tanks, light and medium gauge fabrication",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[52]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:part_size_fit",
+   "source_url": "",
+   "ledger_value": "weak fit (aluminum-first); no steel part size stated",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[53]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:production_type",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=59222625-6a35-4e25-9e57-4fff0186f977",
+   "ledger_value": "custom fabricated fuel tanks and generator enclosures (Cordele QC Manager posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[54]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. QUALI006164 sits at board location EP3-Cordele-YES (502 S. Midway Road) and its body names no other site, so the custom line counts for Cordele by board location (ships rule 3). Caution: the Cordele Operations Manager posting at the same location says \"Role is based in Batesville, MS\", so Cordele-located texts can carry other sites' wording; see score_problems (RULING on Cordele part-mix confidence).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:certifications",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=59222625-6a35-4e25-9e57-4fff0186f977",
+   "ledger_value": "Cordele QC Manager posting: maintain ISO 9001-2015 accreditation of the Yancey Engineered Solutions QMS",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[55]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Value labels the accreditation as the YES division QMS, not a Cordele certificate; the inferred row says so. Confirmed.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:certifications",
+   "source_url": "",
+   "ledger_value": "the ISO 9001-2015 accreditation is the division's QMS; no Cordele site certificate is shown",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[56]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages. Value labels the accreditation as the YES division QMS, not a Cordele certificate; the inferred row says so. Confirmed.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-E.json evidence[57]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-E.json evidence[58]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=a7d98fc4-3a60-47fd-84a7-f3c3367e6ee3",
+   "ledger_value": "Welder WELDE005744, Yancey's own UKG board, posted 2026-11-02, Cordele GA 31015, 502 S. Midway Road; MIG required, flux-core certification preferred; individual bonus opportunities (not a sign-on bonus)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[59]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Live on Yancey's own UKG board 2026-11-17 (LoadSearchResults, 266 roles read; OpportunityIsClosed false), board location EP3-Cordele-YES, 502 S. Midway Road. Displayed \"Posted on\" 2026-11-02 (= JobBoardMemberships ExternalPostedDate). Raw opportunity JSON also carries \"PostedDate\":\"2026-06-30\" (requisition first posted/created). Value confirmed as the board's displayed date; see error_rate_note and opening_line_problems for the re-post reading. No 60+ days claim is made.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=59222625-6a35-4e25-9e57-4fff0186f977",
+   "ledger_value": "listed, not counted: Quality Control Manager (2026-11-10) for the Cordele site",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[60]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. QUALI006164 displayed 2026-11-10 (PostedDate 2026-10-09), EP3-Cordele-YES; not a welding role, correctly not counted.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:triggers",
+   "source_url": "https://gov.georgia.gov/press-releases/2026-06-25/gov-kemp-yancey-engineered-solutions-bringing-300-new-jobs-crisp-co",
+   "ledger_value": "2026-06-25: $5.7M new manufacturing facility in Cordele, 300 new jobs over the next several years",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[61]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Governor release dated June 25, 2026: \"will invest $5.7 million in a new manufacturing facility in Cordele, creating 300 new jobs over the next several years\". Dated plant-level event within 24 months.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely staffing a plant from scratch: Cordele is still being refurbished, has one Welder requisition open (posted Nov 2, 2026) alongside operations, quality and maintenance roles, and plans 300 jobs over several years.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[62]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Cordele plant at 502 South Midway Road posted a MIG Welder role on Nov 2, 2026, after the June 2026 announcement of a $5.7 million facility in the former Big Tex plant with 300 new jobs over several years; how are you planning to staff welding of custom fuel tanks and generator enclosures as Cordele ramps up?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[63]",
+   "verdict": "confirmed",
+   "note": "Every clause rests on stated rows (WELDE005744 displayed 2026-11-02, MIG; governor release $5.7M, 300 jobs; former Big Tex facility on South Midway Road; custom fuel tanks and generator enclosures from QUALI006164). Wording suggestion in opening_line_problems.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[64]",
+   "verdict": "confirmed",
+   "note": "20 confirmed: MIG required, flux core preferred, no TIG (WELDE005744).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:score_material_part",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[65]",
+   "verdict": "confirmed",
+   "note": "4 confirmed (aluminum stud frames; no part size).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[66]",
+   "verdict": "confirmed",
+   "note": "15 confirmed on the site-located QC Manager posting (\"custom fabricated fuel tanks and generator enclosures\"). See score_problems for the confidence RULING.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[67]",
+   "verdict": "confirmed",
+   "note": "12 confirmed as written: one counted Welder requisition live at EP3-Cordele-YES; no sign-on bonus. Upside RULING in score_problems (raw PostedDate 2026-06-30).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[68]",
+   "verdict": "confirmed",
+   "note": "15 confirmed: governor release 2026-06-25 names a $5.7M Cordele facility (dated plant-level event within 24 months).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[69]",
+   "verdict": "confirmed",
+   "note": "5 confirmed: multi-plant parent stated; 300 jobs is a target, not headcount.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:score_total",
+   "source_url": "",
+   "ledger_value": "71",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[70]",
+   "verdict": "confirmed",
+   "note": "71 = 20+4+15+12+15+5.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[71]",
+   "verdict": "confirmed",
+   "note": "High (71).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:confidence",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[72]",
+   "verdict": "confirmed",
+   "note": "5 confirmed as written (process, material, part mix, labor, demand 15 on stated rows; scale cites unknown headcount). 4 if the QC posting's custom line is ruled division-level (score_problems).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:website",
+   "source_url": "https://www.ies-co.com/CustomPowerSolutionsRR.html",
+   "ledger_value": "https://www.ies-co.com/CustomPowerSolutionsRR.html (IES Custom Power Solutions page)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[73]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. IES page does not name Wedlake or Tulsa; accepted as the parent's generator-enclosure page under the Freeman Batavia/Abilene precedent (R1-C confirmed); wedlake.net does not resolve.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:products",
+   "source_url": "https://www.einpresswire.com/article/531062620/ies-holdings-acquires-wedlake-fabricating",
+   "ledger_value": "Custom generator enclosures, primarily used by data centers and large commercial and industrial facilities (Wedlake, Tulsa; IES release Nov 19 2020)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[74]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. 2020 company-level sentence naming only Tulsa; the value labels its source. Confirmed as a labelled company-level row (same test as the Freeman rows); its tie to 2121 N 161st E Ave is inferred (see production_type registry-search rows), so it must not carry part-mix confidence.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110001989929",
+   "ledger_value": "EPA ECHO: Wedlake Fabricating air permit at 2121 N 161st Ave, Tulsa, status Operating (NAICS 335312)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[75]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. ECHO DFR 110001989929: ICIS-Air OK0000004013100147 WEDLAKE FABRICATING INC at 2121 N 161ST AVE, FacilityStatus Operating, NAICS 335312; RCRA OKR000004259 WEDLAKE FABRICATING, INC. (DBA) WEDLAKE ENCLOSURE SYSTEMS, Active. ECHO name search WEDLAKE also returns 3989 Osage Dr and 6041 N Yorktown (no active program), as the profiler states.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:weld_processes",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/24510",
+   "ledger_value": "MIG and flux core on carbon steel (Fitter/Welder posting, Wedlake, 2121 N 161st E Ave)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[76]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:materials",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/24510",
+   "ledger_value": "carbon steel components (Fitter/Welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[77]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:materials",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/24511",
+   "ledger_value": "metal enclosure components (Assembler/Welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[78]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-E.json evidence[79]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:production_type",
+   "source_url": "https://www.einpresswire.com/article/531062620/ies-holdings-acquires-wedlake-fabricating",
+   "ledger_value": "company-level: custom generator enclosures (Wedlake, Tulsa, 2020 release)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[80]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:production_type",
+   "source_url": "https://echodata.epa.gov/echo/echo_rest_services.get_facilities?output=JSON&p_fn=WEDLAKE",
+   "ledger_value": "site-attribution judgement: Wedlake's single production site is probably 2121 N 161st E Ave, but not proven",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[81]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:production_type",
+   "source_url": "https://joinus.ies-co.com/api/jobs?location=Tulsa&limit=100",
+   "ledger_value": "site-attribution judgement: IES's board places every Wedlake role at 2121 N 161st E Ave",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[82]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-E.json evidence[83]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-E.json evidence[84]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-E.json evidence[85]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:welder_postings",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/24510",
+   "ledger_value": "Fitter/Welder - 2nd Shift | $2,500 Sign-On Bonus (req 24510), IES own board, location Wedlake, 2121 N 161st E Ave, Tulsa; JSON-LD datePosted 2026-08-27T20:44; MIG and flux core on carbon steel; on-site weld test",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[86]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. IES board API (location=Tulsa, read 2026-11-17): reqs 24510, 24511, 24512 all posted_date 2026-08-27T20:44:00+0000 at \"Wedlake\", 2121 N 161st E Ave (24507 Industrial Painter 20:43); all live. 24511 text: \"This role assists with welding, fit-up, and mechanical assembly\" (0-3 years) - reads as a helper/trainee-level role; whether it counts does not move labor (20 rests on the $2,500 sign-on bonus).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:welder_postings",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/24511",
+   "ledger_value": "Assembler/Welder (req 24511), IES own board, Wedlake Tulsa; assists with welding and fit-up; multiple openings; JSON-LD datePosted 2026-08-27T20:44",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-E.json evidence[87]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. IES board API (location=Tulsa, read 2026-11-17): reqs 24510, 24511, 24512 all posted_date 2026-08-27T20:44:00+0000 at \"Wedlake\", 2121 N 161st E Ave (24507 Industrial Painter 20:43); all live. 24511 text: \"This role assists with welding, fit-up, and mechanical assembly\" (0-3 years) - reads as a helper/trainee-level role; whether it counts does not move labor (20 rests on the $2,500 sign-on bonus).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:welder_postings",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/24512",
+   "ledger_value": "the 2026-08-27T20:44 JSON-LD stamp is shared by reqs 24510, 24511 and 24512 (Assembler), so it is read as a batch or re-list stamp, not as proof of 60+ days open; listed, not counted: Assembler (Manufacturing) 24512, Industrial Painter ($1,000 sign-on), Brake Operator, Quality Inspector, Material Handler, Maintenance Technician",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[88]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Shared stamp confirmed in the IES API (24510/24511/24512 at 2026-08-27T20:44); no 60+ days claim. Listed roles confirmed on the API: Material Handler 25047, Brake Operator 25116, Maintenance Technician 25347, Industrial Painter 24507 ($1,000 sign-on), Quality Inspector 24762.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[89]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely experienced fitter/welder capacity on second shift: Wedlake is paying a $2,500 sign-on bonus for a MIG and flux-core 2nd-shift Fitter/Welder and has multiple Assembler/Welder openings.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[90]",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown judgement row); reasoning checked against the cited rows and fresh pages.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Tulsa plant at 2121 N 161st E Ave is offering a $2,500 sign-on bonus for a 2nd-shift Fitter/Welder to fit and weld carbon steel with MIG and flux core, alongside multiple Assembler/Welder openings; how are you keeping enclosure fit-up and welding on schedule while those seats are open?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[91]",
+   "verdict": "confirmed",
+   "note": "Every clause rests on stated rows (24510 $2,500 sign-on, 2nd shift, carbon steel, MIG and flux core; 24511 multiple openings, metal enclosure components; 2121 N 161st E Ave). No posting age asserted. Confirmed.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[92]",
+   "verdict": "confirmed",
+   "note": "20 confirmed: Fitter/Welder 24510 \"Fit and weld carbon steel components using MIG and Flux Core processes\"; no TIG.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[93]",
+   "verdict": "confirmed",
+   "note": "0 confirmed: carbon steel stated but no part dimension or weight found.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[94]",
+   "verdict": "confirmed",
+   "note": "15 confirmed under the company-level rule (2020 custom-enclosure line naming only Tulsa; site tie inferred; no confidence). Not 0: \"Consistent production work\" describes hours, not identical parts.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[95]",
+   "verdict": "confirmed",
+   "note": "20 confirmed: $2,500 sign-on bonus on 24510 (rubric 20 on its own). Assembler/Welder 24511 reads as a helper (\"assists with welding\"), so \"2 open, counted\" is arguably 1 counted + 1 listed; no point change.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[96]",
+   "verdict": "confirmed",
+   "note": "8 confirmed: no dated Wedlake event; the move to the former SPX Heat Transfer plant is undated in every source read (this check's search also found none).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[97]",
+   "verdict": "confirmed",
+   "note": "5 confirmed: IES Infrastructure Solutions \"15 locations\" (10-K FY2025); headcount unknown.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:score_total",
+   "source_url": "",
+   "ledger_value": "68",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[98]",
+   "verdict": "confirmed",
+   "note": "68 = 20+0+15+20+8+5.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[99]",
+   "verdict": "confirmed",
+   "note": "Medium (68).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:confidence",
+   "source_url": "",
+   "ledger_value": "2",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-E.json evidence[100]",
+   "verdict": "confirmed",
+   "note": "2 confirmed: process and labor on stated rows; part mix inferred tie; material 0; scale unknown headcount; demand 8.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "v-enclosures-battery-generator:demand_outlook",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/102729/000010272926000050/vmi-20260926x10q.htm",
+   "ledger_value": "Strong (inferred from data-center and grid load growth)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 81",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "v-enclosures-battery-generator:demand_outlook",
+   "source_url": "https://www.eia.gov/todayinenergy/detail.php?id=65964",
+   "ledger_value": "Strong: 2025 on course for record US battery-storage additions (Texas 7.0 GW planned)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15825",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "v-enclosures-battery-generator:demand_outlook",
+   "source_url": "https://www.nasdaq.com/press-release/generac-reports-third-quarter-2025-results-2025-10-29",
+   "ledger_value": "Strong: generator demand from data centers (Generac Q3 2025, 2025-10-29)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15826",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-ies:multi_plant",
+   "source_url": "https://joinus.ies-co.com/api/jobs?keywords=weld&limit=100",
+   "ledger_value": "IES Infrastructure / Freeman Enclosure Systems production postings at 4160 Half-Acre Rd, Batavia OH and 1126 Arnold Blvd, Abilene TX (and other IES plants)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16533",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-ies:production_type",
+   "source_url": "https://ies-co.com/CustomPowerSolutionsRR.html",
+   "ledger_value": "company-level: IES generator enclosure systems are custom designed and manufactured",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16534",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-ies:multi_plant",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1048268/000104826825000174/iesc-20250930.htm",
+   "ledger_value": "IES Infrastructure Solutions segment: 15 locations in ten states incl. Ohio and South Carolina",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16751",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-yancey:multi_plant",
+   "source_url": "https://www.plantservices.com/industry-news/news/55270725/yancey-engineered-solutions-invests-208m-to-locate-manufacturing-operations-in-mississippi",
+   "ledger_value": "Batesville is the 'next manufacturing facility' of Yancey Engineered Solutions (Feb 2025)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16899",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:name",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=8c372b7a-2e1a-4d79-9140-11a9c6b0e5f3",
+   "ledger_value": "Yancey Engineered Solutions - Barnesville",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16964",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:parent_company",
+   "source_url": "https://www.areadevelopment.com/newsItems/6-26-2026/yancey-engineered-solutions-cordele-georgia.shtml",
+   "ledger_value": "Yancey Bros. Co.",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16965",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:address",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=8c372b7a-2e1a-4d79-9140-11a9c6b0e5f3",
+   "ledger_value": "460 Industrial Road, Barnesville, GA 30204",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16966",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:website",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=8c372b7a-2e1a-4d79-9140-11a9c6b0e5f3",
+   "ledger_value": "https://www.yanceybros.com",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16968",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Board boilerplate names Yancey Bros. Co.; https://www.yanceybros.com accepted as the parent site (Batesville precedent).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:products",
+   "source_url": "https://www.plantservices.com/industry-news/news/55387137/yancey-engineered-solutions-to-build-57-million-georgia-plant",
+   "ledger_value": "Division makes sound-attenuated and weather-resistant generator enclosures",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16971",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Value labels itself division-level (\"Division makes\"); the quoted sentence names Griffin, not Barnesville. Confirmed as a labelled company-level row (same test as R1-D on Griffin); it must not be read as a Barnesville product statement.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:tier",
+   "source_url": "https://catmachines.yanceybros.com/yancey",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16972",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Tier 1 call matches the IES 10-K (\"generator enclosure products ... principally sold in partnership with an original equipment manufacturer\") for Wedlake and the Cat-generator enclosure line for Yancey; same call as Freeman, Technibus, Griffin and Batesville.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:relationship",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=8c372b7a-2e1a-4d79-9140-11a9c6b0e5f3",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16973",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Written lookalike rule (stated generator-enclosure or fuel-tank product, company-level enough) is met; EK Machine named.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:lookalike_of",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=8c372b7a-2e1a-4d79-9140-11a9c6b0e5f3",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16974",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Written lookalike rule (stated generator-enclosure or fuel-tank product, company-level enough) is met; EK Machine named.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=460%20Industrial%20Road%2C%20Barnesville%2C%20GA%2030204&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "33.083218",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16983",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Census geocoder point is 347 m (Barnesville) / 92 m (Cordele) from Yancey's UKG location coordinates and 181 m (Wedlake) from the ECHO ICIS-Air point; county matches.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=460%20Industrial%20Road%2C%20Barnesville%2C%20GA%2030204&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-84.198068",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16984",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Census geocoder point is 347 m (Barnesville) / 92 m (Cordele) from Yancey's UKG location coordinates and 181 m (Wedlake) from the ECHO ICIS-Air point; county matches.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=460%20Industrial%20Road%2C%20Barnesville%2C%20GA%2030204&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "13171",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16985",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Census geocoder point is 347 m (Barnesville) / 92 m (Cordele) from Yancey's UKG location coordinates and 181 m (Wedlake) from the ECHO ICIS-Air point; county matches.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:name",
+   "source_url": "https://www.areadevelopment.com/newsItems/6-26-2026/yancey-engineered-solutions-cordele-georgia.shtml",
+   "ledger_value": "Yancey Engineered Solutions - Cordele",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16986",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:parent_company",
+   "source_url": "https://www.areadevelopment.com/newsItems/6-26-2026/yancey-engineered-solutions-cordele-georgia.shtml",
+   "ledger_value": "Yancey Bros. Co.",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16987",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:address",
+   "source_url": "https://gov.georgia.gov/press-releases/2026-06-25/gov-kemp-yancey-engineered-solutions-bringing-300-new-jobs-crisp-co",
+   "ledger_value": "502 South Midway Road, Cordele, GA 31015",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16988",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Release: \"Yancey's new facility will be located at 502 South Midway Road in Cordele.\"",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:address",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=a7d98fc4-3a60-47fd-84a7-f3c3367e6ee3",
+   "ledger_value": "Same street address on the Yancey board for the Cordele welder posting",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16989",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:website",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=a7d98fc4-3a60-47fd-84a7-f3c3367e6ee3",
+   "ledger_value": "https://www.yanceybros.com",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16991",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Board boilerplate names Yancey Bros. Co.; https://www.yanceybros.com accepted as the parent site (Batesville precedent).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:products",
+   "source_url": "https://www.areadevelopment.com/newsItems/6-26-2026/yancey-engineered-solutions-cordele-georgia.shtml",
+   "ledger_value": "Power generation packaging systems and engineered equipment",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16992",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:products",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=a7d98fc4-3a60-47fd-84a7-f3c3367e6ee3",
+   "ledger_value": "Cordele welder posting: fuel tanks and aluminum stud frames for weatherproof or sound-attenuation enclosures",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16993",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:tier",
+   "source_url": "https://catmachines.yanceybros.com/yancey",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16994",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Tier 1 call matches the IES 10-K (\"generator enclosure products ... principally sold in partnership with an original equipment manufacturer\") for Wedlake and the Cat-generator enclosure line for Yancey; same call as Freeman, Technibus, Griffin and Batesville.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:relationship",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=a7d98fc4-3a60-47fd-84a7-f3c3367e6ee3",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16995",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Written lookalike rule (stated generator-enclosure or fuel-tank product, company-level enough) is met; EK Machine named.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:lookalike_of",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=a7d98fc4-3a60-47fd-84a7-f3c3367e6ee3",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 16996",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Written lookalike rule (stated generator-enclosure or fuel-tank product, company-level enough) is met; EK Machine named.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:status",
+   "source_url": "https://www.tradeandindustrydev.com/industry/logistics-warehousing-distribution/news/big-tex-trailer-mfg-open-new-facility-create-130-1665",
+   "ledger_value": "The former Big Tex building exists (2010 announcement: two buildings, 174,000 sq ft on 55 acres, Cordele)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 16999",
+   "verdict": "corrected",
+   "note": "Misdated source (the article is dated Mar 25, 2009, not 2010), and \"The former Big Tex building exists\" is not shown by a 2009 purchase announcement that names no street. The current tie of 502 S Midway Road to the former Big Tex building rests on the 2026 governor release and Area Development rows. No score effect.",
+   "r2_basis": true,
+   "corrected_value": "Big Tex Trailer Mfg. bought property adjacent to Interstate 75 in Cordele with two buildings totaling 174,000 sq ft on 55 acres for a new plant (announcement dated Mar 25, 2009); the page does not name South Midway Road or show the building today",
+   "corrected_quote": "Mar 25, 2009 ... Big Tex has purchased property adjacent to Interstate 75 in Cordele that includes two buildings totaling 174,000 square feet on 55 acres of land for the new plant and distribution center.",
+   "corrected_tag": "stated",
+   "error_kind": "other"
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:status",
+   "source_url": "https://www.areadevelopment.com/newsItems/6-26-2026/yancey-engineered-solutions-cordele-georgia.shtml",
+   "ledger_value": "Renovation under way per June 2026 coverage",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 17000",
+   "verdict": "corrected",
+   "note": "\"will include the renovation\" is a plan, not \"Renovation under way\". No source read by this check shows refurbishment in progress. No score effect.",
+   "r2_basis": true,
+   "corrected_value": "Renovation planned: the $5.7M investment will include the renovation of the former Big Tex facility on South Midway Road (Area Development, Jun 26 2026)",
+   "corrected_quote": "The investment will include the renovation of the former Big Tex manufacturing facility located on South Midway Road.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:prospect_test",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=a7d98fc4-3a60-47fd-84a7-f3c3367e6ee3",
+   "ledger_value": "pass provisional (aluminum-first noted; pre-production): the welder posting shows in-house MIG welding of fuel tanks and enclosure frames as the planned core work; steel not stated",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 17001",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Pass as aluminum-first, kept and noted (CLAUDE.md). As R1-D noted for Griffin, no source for this site states steel: the welded items are aluminum stud frames, walls, roof and fuel tanks of unstated material. See status_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=502%20S%20Midway%20Road%2C%20Cordele%2C%20GA%2031015&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "31.964404",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 17002",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Census geocoder point is 347 m (Barnesville) / 92 m (Cordele) from Yancey's UKG location coordinates and 181 m (Wedlake) from the ECHO ICIS-Air point; county matches.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=502%20S%20Midway%20Road%2C%20Cordele%2C%20GA%2031015&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-83.745894",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 17003",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Census geocoder point is 347 m (Barnesville) / 92 m (Cordele) from Yancey's UKG location coordinates and 181 m (Wedlake) from the ECHO ICIS-Air point; county matches.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=502%20S%20Midway%20Road%2C%20Cordele%2C%20GA%2031015&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "13081",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 17004",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Census geocoder point is 347 m (Barnesville) / 92 m (Cordele) from Yancey's UKG location coordinates and 181 m (Wedlake) from the ECHO ICIS-Air point; county matches.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:name",
+   "source_url": "https://www.einpresswire.com/article/531062620/ies-holdings-acquires-wedlake-fabricating",
+   "ledger_value": "Wedlake Fabricating - Tulsa",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 17005",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:parent_company",
+   "source_url": "https://www.einpresswire.com/article/531062620/ies-holdings-acquires-wedlake-fabricating",
+   "ledger_value": "IES Holdings (IES Infrastructure Solutions)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 17006",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:address",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/24510",
+   "ledger_value": "2121 N 161st E Ave, Tulsa, OK 74116",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 17007",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:products",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/24511",
+   "ledger_value": "Wedlake Enclosure Systems hiring assembler/welders for metal enclosure components",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 17010",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:tier",
+   "source_url": "https://www.einpresswire.com/article/531062620/ies-holdings-acquires-wedlake-fabricating",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 17011",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Tier 1 call matches the IES 10-K (\"generator enclosure products ... principally sold in partnership with an original equipment manufacturer\") for Wedlake and the Cat-generator enclosure line for Yancey; same call as Freeman, Technibus, Griffin and Batesville.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:relationship",
+   "source_url": "https://www.einpresswire.com/article/531062620/ies-holdings-acquires-wedlake-fabricating",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 17012",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Written lookalike rule (stated generator-enclosure or fuel-tank product, company-level enough) is met; EK Machine named.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:lookalike_of",
+   "source_url": "https://www.einpresswire.com/article/531062620/ies-holdings-acquires-wedlake-fabricating",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 17013",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Written lookalike rule (stated generator-enclosure or fuel-tank product, company-level enough) is met; EK Machine named.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:prospect_test",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/24510",
+   "ledger_value": "pass: welds carbon steel in-house with MIG and flux core; welding is core to enclosure production",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 17016",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2121%20N%20161st%20E%20Ave%2C%20Tulsa%2C%20OK%2074116&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "36.18711",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 17017",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Census geocoder point is 347 m (Barnesville) / 92 m (Cordele) from Yancey's UKG location coordinates and 181 m (Wedlake) from the ECHO ICIS-Air point; county matches.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2121%20N%20161st%20E%20Ave%2C%20Tulsa%2C%20OK%2074116&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-95.797269",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 17018",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Census geocoder point is 347 m (Barnesville) / 92 m (Cordele) from Yancey's UKG location coordinates and 181 m (Wedlake) from the ECHO ICIS-Air point; county matches.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-wedlake-tulsa-ok:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2121%20N%20161st%20E%20Ave%2C%20Tulsa%2C%20OK%2074116&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "40131",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 17019",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch 2026-11-17 (visible text or raw source); value matches the page. Census geocoder point is 347 m (Barnesville) / 92 m (Cordele) from Yancey's UKG location coordinates and 181 m (Wedlake) from the ECHO ICIS-Air point; county matches.",
+   "r2_basis": true
+  }
+ ]
+}
