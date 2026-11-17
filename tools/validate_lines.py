@@ -72,7 +72,7 @@ def main():
                 probs.append(f"cited claim missing: {c}")
             elif not any(r["tag"] == "stated" for r in rows):
                 probs.append(f"cited claim has no stated row: {c}")
-            pool += " ".join((r["value"] or "") + " " + (r["quote"] or "") for r in rows) + " "
+            pool += " ".join((r["value"] or "") + " " + (r["quote"] or "") + " " + (r.get("retrieved_date") or "") for r in rows) + " "
         pool_n = norm_nums(pool)
         for num in norm_nums(v):
             if num not in pool_n and not (len(num) == 4 and num.startswith("20") and num in pool):
