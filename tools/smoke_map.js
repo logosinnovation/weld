@@ -43,7 +43,7 @@ async function run(label, ctxOpts, full) {
   check(/Latest audit summary \(ledger\/audit\/summary-v-poles-substation\.json\)/.test(pc) && /13\.8%/.test(pc), `${label}: poles card audit line`);
   check(/Latest audit summary \(ledger\/audit\/summary-v-shipbuilding-naval\.json\)/.test(sc) && /29\.4%/.test(sc) && /7\.3%/.test(sc) && /6\.1%/.test(sc), `${label}: ships card audit line`);
   const mc = await text('#vc-' + MV);
-  check(mc.includes('partial') && mc.includes(String(miningProfiled)) && /summary-v-mining-heavy-equipment\.json/.test(mc) && /27\.6%/.test(mc) && /11\.4%/.test(mc), `${label}: mining card (partial, ${miningProfiled} profiled, miss 27.6%, round 1 11.4%)`);
+  check(/done/i.test(mc) && mc.includes(String(miningProfiled)) && /summary-v-mining-heavy-equipment\.json/.test(mc) && /16\.0%/.test(mc) && /11\.4%/.test(mc), `${label}: mining card (done, ${miningProfiled} profiled, miss 16.0%, round 1 11.4%)`);
   const bc = await text('#vc-' + BV);
   check(bc.includes(String(batteryProfiled)) && /summary-v-enclosures-battery-generator\.json/.test(bc) && /18\.3%/.test(bc) && /3\.6%/.test(bc) && /done/i.test(bc) && !/27\.6%|11\.4%/.test(bc), `${label}: battery card (${batteryProfiled} profiled, miss 18.3%, round 1 3.6%, no mining figures)`);
   await shot('ranking');
@@ -173,7 +173,7 @@ async function run(label, ctxOpts, full) {
   const stale = ['every included plant is profiled', '27.5%', '5/64', 'ledger/audit/summary.json', 'Pole makers rarely'].filter(s => (mt + head + callTxt).includes(s));
   check(stale.length === 0, `${label}: no stale text ${JSON.stringify(stale)}`);
   const ms = await text('#audit-' + MV), M_ = sumOf(MV);
-  check(M_.status === 'partial' && ms.includes('partial') && ms.includes(String(miningProfiled)) && ms.includes('11.4%') && ms.includes('27.6%') && (!M_R2 || ms.includes(M_R2)), `${label}: mining section (partial, ${miningProfiled} profiled, round 1 11.4%, miss 27.6%${M_R2 ? ', round 2 ' + M_R2 : ''})`);
+  check(M_.status === 'done' && /done/i.test(ms) && ms.includes(String(miningProfiled)) && ms.includes('11.4%') && ms.includes('16.0%') && ms.includes('27.6%') && ms.includes('1.5%') && (!M_R2 || ms.includes(M_R2)), `${label}: mining section (done, ${miningProfiled} profiled, round 1 11.4%, miss 16.0% (history 27.6%), lines 1.5%${M_R2 ? ', round 2 ' + M_R2 : ''})`);
   check(!/29\.4%|13\.8%|fact-check-v-poles|fact-check-v-shipbuilding/.test(ms), `${label}: mining section has no poles or ships figures`);
   const bs = await text('#audit-' + BV);
   check(bs.includes(String(batteryProfiled)) && bs.includes('3.6%') && bs.includes('6.2%') && bs.includes('28.6%') && bs.includes('13.3%') && bs.includes('22.7%') && bs.includes('1.1%') && /done/i.test(bs) && bs.includes('18.3%') && !/27\.6%|11\.4%|29\.4%|fact-check-v-mining/.test(bs), `${label}: battery section (${batteryProfiled} profiled, rounds 3.6%, 6.2% and 28.6%, miss 18.3%, no other vertical's figures)`);
