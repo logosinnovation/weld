@@ -30,6 +30,9 @@ LABELS_BY_VERT["v-shipbuilding-naval"] = {1: "Round 1: all 39 profiled plants (t
 LABELS_BY_VERT["v-mining-heavy-equipment"] = {1: "Round 1: the 40 profiled plants (after the parallel list audit)",
                                               2: "Round 2: confirming round, all 47 profiled plants, checkers rotated (after the sweep)",
                                               3: "Round 3: the 21 profiles added in the last waves (profilers G, H, I and J)",
+                                              4: "Round 4: the two OSHA-closure plants profiled into the top 40 after the R3 audit (Kafka Mosinee, Laidig Mishawaka)",
+                                              6: "Round 6: line check of all 71 profiled plants' lines after constrained rewriting (validator-gated), three checkers who did not write them",
+                                              7: "Targeted sweep, not a sample: 64 rows flagged by tools/sweep_company_level.py because they looked company-level (rate not comparable with the sampled rounds)",
                                               9: "Base-record sample: 25 closure-3 base records (reported separately; not a profile round)"}
 LABELS_BY_VERT["v-enclosures-battery-generator"] = {1: "Round 1: the 40 top-ranked plants profiled (four checkers, one per profiler batch)",
                                                     2: "Round 2: the 18 plants that entered the top 40 after the audit, leads and job-board sweeps, and the written-key re-rank",

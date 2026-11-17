@@ -2,20 +2,20 @@
  "vertical": "v-mining-heavy-equipment",
  "status": "partial",
  "plants": {
-  "found": 463,
-  "included": 352,
-  "profiled": 69,
-  "excluded": 111,
+  "found": 520,
+  "included": 403,
+  "profiled": 71,
+  "excluded": 117,
   "tiers": {
-   "Low": 19,
-   "Medium": 42,
-   "High": 8
+   "Low": 20,
+   "Medium": 44,
+   "High": 7
   },
-  "profiled_fact_checked": 69,
-  "material_unknown": 60
+  "profiled_fact_checked": 71,
+  "material_unknown": 62
  },
- "links": 34,
- "evidence_rows": 14940,
+ "links": 36,
+ "evidence_rows": 20300,
  "fact_check_rounds": [
   {
    "round": 1,
@@ -219,6 +219,109 @@
    "display": "16 / 417 = 3.8%"
   },
   {
+   "round": 4,
+   "label": "Round 4: the two OSHA-closure plants profiled into the top 40 after the R3 audit (Kafka Mosinee, Laidig Mishawaka)",
+   "checked": 22,
+   "corrected": 0,
+   "unreachable": 0,
+   "checkers": [
+    {
+     "file": "fact-check-v-mining-heavy-equipment-round4-entrants.json",
+     "checked": 22,
+     "corrected": 0,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 0,
+      "invented fact": 0,
+      "other": 1
+     }
+    }
+   ],
+   "rate": 0.0,
+   "display": "0 / 22 = 0.0%"
+  },
+  {
+   "round": 6,
+   "label": "Round 6: line check of all 71 profiled plants' lines after constrained rewriting (validator-gated), three checkers who did not write them",
+   "checked": 134,
+   "corrected": 2,
+   "unreachable": 3,
+   "checkers": [
+    {
+     "file": "fact-check-v-mining-heavy-equipment-R6-lines-A.json",
+     "checked": 46,
+     "corrected": 0,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 0,
+      "invented fact": 0,
+      "other": 0
+     }
+    },
+    {
+     "file": "fact-check-v-mining-heavy-equipment-R6-lines-B.json",
+     "checked": 45,
+     "corrected": 2,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 2,
+      "invented fact": 0,
+      "other": 0
+     }
+    },
+    {
+     "file": "fact-check-v-mining-heavy-equipment-R6-lines-C.json",
+     "checked": 43,
+     "corrected": 0,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 0,
+      "invented fact": 0,
+      "other": 0
+     }
+    }
+   ],
+   "rate": 0.0149,
+   "display": "2 / 134 = 1.5%"
+  },
+  {
+   "round": 7,
+   "label": "Targeted sweep, not a sample: 64 rows flagged by tools/sweep_company_level.py because they looked company-level (rate not comparable with the sampled rounds)",
+   "checked": 64,
+   "corrected": 42,
+   "unreachable": 0,
+   "checkers": [
+    {
+     "file": "fact-check-v-mining-heavy-equipment-round7-sweep.json",
+     "checked": 64,
+     "corrected": 42,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 42,
+      "invented fact": 0,
+      "other": 0
+     }
+    }
+   ],
+   "rate": 0.6562,
+   "display": "42 / 64 = 65.6%"
+  },
+  {
    "round": 8,
    "label": "Cross-vertical checks (state air permits, job-board dates, OSHA headcounts, profiles of OSHA top-40 entrants): rows for this vertical's plants",
    "checked": 157,
@@ -303,23 +406,28 @@
   }
  ],
  "miss_rate": {
-  "value": "45/163 = 27.6% (blind re-audit, verified); up to 61/179 = 34.1% if the 16 unsettled candidates are real",
-  "note": "Second blind audit (two independent auditors, 2026-11-16) against the list after three closure passes. The auditors' 225 in-definition rows: 153 matched 125 ledger plants (23 plants were found more than once), 72 did not match. Of the 125, 117 are included and 8 are excluded with sourced reasons (closed, office, distribution or assembly-only sites); the 8 leave the count. Of the 72, one was already in the ledger (Ashland, WI). Two plant-finders checked the other 71: 46 new base (45 in definition; Pemberton FL is unsettled), 10 excluded (out of vertical, offices, dealers, fabrication contracted out), 15 unverified. Miss rate = 45 / (117 + 1 + 45). All 46 are now in the ledger as base records; merging them does not lower the measured rate. Misses cluster in CONEXPO-CON/AGG exhibitors the EPA-registry closure passes never reached. Two verified misses rank inside the top 40 by the profiling key with counted welder postings (both profiled afterwards): Fecon, Lebanon OH (rank 11; three undated own-board welder postings; boundary, forestry mulching attachments) and General Steel & Supply (Fisher Industries), Dickinson ND (rank 23; two dated postings with a sign-on bonus; site tie inferred under the campus rule).",
+  "value": "14/94 = 14.9% (blind audit R3, verified); 19.2% counting five boundary makers ruled into other verticals; up to 26/106 = 24.5% if the 12 unverified candidates are real",
+  "note": "Third blind audit (two auditors, new methods, 2026-11-17) after closure pass 5 (OSHA 300A establishments in NAICS 333120, 333131, 333922, 332313, each verified by a sourced in-definition product at the site). Miss rate = verified misses / (included plants found + verified misses), as in R2; excluded plants found leave the count; plants in the ledger under another city or name count as found after verification. R3-C: 4 misses of 46; R3-D: 10 of 67; combined unique 14 of 94. All verified misses are now base records; merging them does not lower the measured rate.",
   "history": [
    "about 31% preliminary (Nov 14)",
    "30.2% verified (Nov 16, first audit)",
-   "27.6% verified (Nov 16, blind re-audit after closure)"
+   "27.6% verified (Nov 16, blind re-audit after closure)",
+   "14.9% verified (Nov 17, blind audit R3 after the OSHA closure)"
   ]
  },
  "known_limits": [
-  "Partial: the blind re-audit's verified miss rate is 27.6%, over the 20% done threshold. Crusher, screen and asphalt-plant makers look close to complete; small attachment and bucket makers, small conveyor and aggregate fabricators, and Tier 1 weldment shops are not.",
+  "Miss rate: the third blind audit (R3, two auditors with new methods: state directories and product search; dealer line cards, buyer's guides, supplier awards, trademarks, news) found 14 verified misses among 94 in-definition plants (14.9%); 19.2% if the five lifting- and tractor-led attachment makers ruled into other verticals were counted; 24.5% if all 12 unverifiable leads were real. Neither auditor reached a dry point (both stopped at their search budgets). Misses were small attachment makers (compact, excavator) and small underground-mining and aggregate shops.",
+  "16 OSHA-closure base records and 7 verified misses have prospect_test unknown (manufacturing of an in-definition product at the site is stated, welding is not); they are held as base, not profiled (Caterpillar Clayton precedent).",
   "The two verified misses that ranked in the top 40 with counted postings were profiled afterwards: Fecon, Lebanon OH, 76 High (three undated welder postings open at once; boundary, forestry mulching attachments) and General Steel & Supply (Fisher Industries), Dickinson ND, 28 Low under the strict campus rule (75 High if a 2021 source placing both fabrication facilities on its Energy Drive campus is accepted). The top 40 is now fully profiled.",
-  "About 155 EPA registry rows and named leads from closure remain unverified, plus 15 re-audit candidates and leads such as Tricon's other plants, Power Curbers' Cedar Falls and McHenry plants, HitchDoc's Kwik-Way Sioux Falls plant and Amerequip's New Holstein plants.",
+  "About 155 EPA registry rows and named leads from closure remain unverified, plus 15 re-audit candidates and leads such as Tricon's other plants, Power Curbers' Cedar Falls and McHenry plants, HitchDoc's Kwik-Way Sioux Falls plant and Amerequip's New Holstein plants. The R3 closure (OSHA 300A NAICS 333120, 333131, 333922, 332313) screened 776 establishments: 37 base records added, 2 excluded, the rest triaged out or already present; 42 remain unverified leads.",
   "Fact-check: round 1 11.4%; round 2 (all 47 profiles, rotated) 3.3%; round 3 (the 21 newest profiles) 16/417 = 3.8% overall, but 7.3% for profiler I's seven (12.8% counting untrimmed sibling rows). All corrections applied. The round-3 sweep of compound-value clauses was run only on the newest profiles. A separate sample of 25 closure base records found 1.5%.",
   "Brookville Equipment, Brookville PA scores 63 Medium under the written campus rule: the flat car's size is a company-level fact and a second Brookville site (service and rebuilds) is 1.3 km away. If the rebuild shop is ruled not a production site, it is 83 High.",
   "Material scores 0 on 59 of 68 profiled plants: mining and construction sources rarely state a welded part's size or weight, and payloads, bucket capacities and machine classes do not count as part sizes.",
   "Paladin Dexter MI is profiled as a boundary plant: no Paladin page says what it builds, and EPA's facility name (Sweepster-Harley Attachments) points to sweeper and broom attachments, which would exclude it under the M-B New Holstein ruling.",
-  "Only 68 of 352 included plants are profiled; base records carry no score.",
-  "Auditor B could see file names (not contents) in the shared scratchpad during the re-audit, so its blindness is slightly weaker than auditor A's."
+  "Auditor B could see file names (not contents) in the shared scratchpad during the re-audit, so its blindness is slightly weaker than auditor A's.",
+  "Opening lines and bottleneck guesses of all 71 profiled plants were rebuilt under constrained composition (each clause from one stated row with its date; postings 'listed'; no live counts) and gated by tools/validate_lines.py; the round-6 line check found 2/134 = 1.5% (1/100 on High and Medium). Three lines rested on postings that closed on 2026-11-17 and were replaced; the closures moved labor at Rockland Bedford (73 -> 65), Virnig Rice (58 -> 46); Mellott Warfordsburg's posting was re-read as a batch re-list standing ad (60 -> 52); Kafka Mosinee's careers-page ad has no apply flow of its own (55 -> 43).",
+  "The company-level sweep (round 7, targeted: 64 flagged rows) retagged 41 stated rows as inferred (company or two-site pages tagged stated at one plant); no score or confidence moved.",
+  "Cross-vertical checks (round 8: Standard Iron's entrant profile, permits, OSHA) are 12.1%, mostly Standard Iron's brand-level rows, now retagged; Standard Iron Sumner is 26 Low and Innovation Way is held as base because their welder posting names both Hartford plants.",
+  "Profiled: 71 plants; the rest of the included plants are base records with no score."
  ]
 }
