@@ -15,10 +15,10 @@ function csvRows(f){ // minimal RFC4180 parser
 }
 const plants = csvRows(path.join(ROOT, 'ledger/plants.csv'));
 const verts = csvRows(path.join(ROOT, 'ledger/verticals.csv'));
-const PV = 'v-poles-substation', SV = 'v-shipbuilding-naval', MV = 'v-mining-heavy-equipment';
+const PV = 'v-poles-substation', SV = 'v-shipbuilding-naval', MV = 'v-mining-heavy-equipment', BV = 'v-enclosures-battery-generator';
 const profiledOf = v => plants.filter(p => p.status === 'profiled' && p.verticals.split(/\s*[;,|]\s*/).includes(v)).length;
 const sumOf = v => JSON.parse(fs.readFileSync(path.join(ROOT, `ledger/audit/summary-${v}.json`), 'utf8'));
-const shipsProfiled = profiledOf(SV), polesProfiled = profiledOf(PV), miningProfiled = profiledOf(MV);
+const shipsProfiled = profiledOf(SV), polesProfiled = profiledOf(PV), miningProfiled = profiledOf(MV), batteryProfiled = profiledOf(BV);
 const M_R2 = process.env.M_R2 || ''; // round-2 mining rate, e.g. '6.0%'
 const fails = [];
 const check = (ok, msg) => { if (!ok) { fails.push(msg); console.log('FAIL', msg); } else console.log('ok  ', msg); };
@@ -44,6 +44,8 @@ async function run(label, ctxOpts, full) {
   check(/Latest audit summary \(ledger\/audit\/summary-v-shipbuilding-naval\.json\)/.test(sc) && /29\.4%/.test(sc) && /7\.3%/.test(sc) && /6\.1%/.test(sc), `${label}: ships card audit line`);
   const mc = await text('#vc-' + MV);
   check(mc.includes('partial') && mc.includes(String(miningProfiled)) && /summary-v-mining-heavy-equipment\.json/.test(mc) && /27\.6%/.test(mc) && /11\.4%/.test(mc), `${label}: mining card (partial, ${miningProfiled} profiled, miss 27.6%, round 1 11.4%)`);
+  const bc = await text('#vc-' + BV);
+  check(bc.includes(String(batteryProfiled)) && /summary-v-enclosures-battery-generator\.json/.test(bc) && /17\.7%/.test(bc) && /3\.6%/.test(bc) && !/27\.6%|11\.4%/.test(bc), `${label}: battery card (${batteryProfiled} profiled, miss 17.7%, round 1 3.6%, no mining figures)`);
   await shot('ranking');
 
   // map: vertical filter, tier filter, state click, search
@@ -162,6 +164,8 @@ async function run(label, ctxOpts, full) {
   const ms = await text('#audit-' + MV), M_ = sumOf(MV);
   check(M_.status === 'partial' && ms.includes('partial') && ms.includes(String(miningProfiled)) && ms.includes('11.4%') && ms.includes('27.6%') && (!M_R2 || ms.includes(M_R2)), `${label}: mining section (partial, ${miningProfiled} profiled, round 1 11.4%, miss 27.6%${M_R2 ? ', round 2 ' + M_R2 : ''})`);
   check(!/29\.4%|13\.8%|fact-check-v-poles|fact-check-v-shipbuilding/.test(ms), `${label}: mining section has no poles or ships figures`);
+  const bs = await text('#audit-' + BV);
+  check(bs.includes(String(batteryProfiled)) && bs.includes('3.6%') && bs.includes('5.3%') && bs.includes('17.7%') && !/27\.6%|11\.4%|29\.4%|fact-check-v-mining/.test(bs), `${label}: battery section (${batteryProfiled} profiled, rounds 3.6% and 5.3%, miss 17.7%, no other vertical's figures)`);
   await shot('method-ships');
   check(errs.length === 0, `${label}: no console errors or runtime requests ${JSON.stringify(errs.slice(0, 3))}`);
   await b.close();

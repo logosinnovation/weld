@@ -73,7 +73,8 @@ for r in rows:
             corrected_claims.add(r["claim_id"])
             pid_, field = r["claim_id"].split(":", 1)
             pv = (r.get("plants_csv_value") or "").strip()
-            if pid_ in pid and field in pcols:
+            # status rows describe a plant's operating state; the plants.csv status column (base|profiled|excluded) is set only by the coordinator
+            if pid_ in pid and field in pcols and field not in ("status", "id"):
                 if pv and (pv.lower().lstrip("( ").startswith("keep") or "identical to the current" in pv.lower()):
                     pass  # multi-row claim: this row is one fragment; the field keeps its value
                 elif pv and pv.lstrip("( ").lower().startswith("same as"):
