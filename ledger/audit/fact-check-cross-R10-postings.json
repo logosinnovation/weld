@@ -1,0 +1,534 @@
+{
+ "checker": "fact-checker R10-POSTINGS",
+ "vertical": "cross (v-poles-substation, v-shipbuilding-naval, v-enclosures-battery-generator)",
+ "date": "2026-11-17",
+ "plants": [
+  "p-meyer-hager-city-wi",
+  "p-maico-ellsworth-ks",
+  "p-universal-industrial-sales-lindon-ut",
+  "p-vs-schuler-canton-oh",
+  "p-gulf-island-houma-la",
+  "p-conrad-morgan-city-la",
+  "p-conrad-morgan-city-la-2",
+  "p-keel-ladson-sc",
+  "p-trident-newport-news-va",
+  "p-pelco-structural-claremore-ok",
+  "p-western-utility-telecom-salem-or",
+  "p-girtz-monticello-in"
+ ],
+ "decision_rule": "Targeted check (not a sample) under the coordinator rulings of 2026-11-17 (mining consultation 22, R9-closeout). Age plants: the date is a first-posted date only if the board's raw data shows it (raw JSON date, requisition/JobId order, no batch stamp); a raw date 60 days to 12 months old with the posting live today = 20; over 12 months = standing ad, 12 unless several counted postings, a sign-on bonus or mandatory overtime. Flow plants: a careers-page ad counts (12) only with an apply flow for that job (ATS, application form, or email/apply instruction covering it). Corrected = misdated (re-post stamp written as a posting date), a clause the cited page does not carry, or points that differ under the rule. Unreachable = page cannot be reached without sign-in.",
+ "claims_checked": 43,
+ "claims_corrected": 4,
+ "claims_unreachable": 1,
+ "error_rate": 0.093,
+ "error_rate_note": "4/43 rows corrected = 9.3% (all rows on the welder_postings and score_labor claims of the 12 plants; 1 unreachable row not counted as corrected or confirmed). By claim: 4 of 24 claims corrected (Maico welder_postings and score_labor, Gulf Island welder_postings, Western Utility Telecom welder_postings) = 16.7%. Score-moving errors: 1 (Maico labor 20 -> 12).",
+ "claims_checked_all_rows": 43,
+ "claims_corrected_all_rows": 4,
+ "error_rate_all_rows": 0.093,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 1,
+  "invented fact": 0,
+  "other": 3
+ },
+ "repeated_kinds": [
+  "other (3): misdated postings, a job-board re-post stamp read as a first-posted date (Maico welder_postings: KansasWorks 'Posted On Jul 29, 2026' for an ad on MaiCo's own Paycom board since 2023-01-05; Maico score_labor, its consequence; Gulf Island Welder 3962398, JSON-LD 2026-08-03 on a requisition older than a 2026-06-19 sibling). Pattern for the sweep: any posting date taken from a state job bank or aggregator (KansasWorks and similar), and any Paylocity date whose JobId is lower than siblings with earlier dates, must be re-read against the company's own board JSON (Paycom portal JSON-LD datePosted, Paylocity JobId bracket) before it supports 60+ days."
+ ],
+ "worst_errors": [
+  "p-maico-ellsworth-ks:welder_postings / score_labor - the High plant's labor 20 rested on a KansasWorks job-bank date (Posted On Jul 29, 2026); MaiCo's own Paycom board has carried the same Welder ad (job 54986) since 2023-01-05, with three sibling ads of the same date: a standing ad. Labor 20 -> 12, total 88 -> 80 (High unchanged). The opening line and bottleneck guess both say the posting has been live/open since July 29, 2026.",
+  "p-gulf-island-houma-la:welder_postings - the Welder (Manufacturing, MIG welding) date 2026-08-03 is a re-post stamp (JobId 3962398 predates the 2026-06-19 Assembler), and the plant field calls the Assembler the 'oldest, 150 days'; the board also re-listed all eight roles today (2026-11-17 07:04-07:06). Labor 20 unaffected (eight counted at once).",
+  "p-western-utility-telecom-salem-or:welder_postings - the careers-page row carries process, shift and expired-posting clauses the page does not show, and counts the Fernley NV role toward the Salem plant ('2 on careers page'); its only stated row (tallo) is now behind a sign-in wall. Labor 12 unaffected (per-role 'Apply here' ATS link)."
+ ],
+ "score_problems": [
+  {
+   "plant_id": "p-maico-ellsworth-ks",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "correct_points": 12,
+   "why": "Standing ad: JSON-LD datePosted 2023-01-05 on MaiCo's own Paycom board (job 54986), live today; one counted posting; no bonus or mandatory overtime. Total 88 -> 80, High unchanged; confidence 4 unchanged."
+  },
+  {
+   "plant_id": "p-vs-schuler-canton-oh",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "correct_points": 20,
+   "why": "COORDINATOR CALL (kept on the written rule). Posting 5716 / req 982 created 2026-07-31 15:34; the old requisition 778 (engineer) was posted two minutes later, a named re-list sign; but 982 and 983 are consecutive new requisitions and 988 follows on 2026-09-10, isEvergreen false, created = lastModified. The 12-month bound is inferred from requisition order (Werk-Brau precedent); Wayback unreachable. As written 20 (60 Medium); if the Jul 31 batch is read as a re-list of 982 and a first post before 2025-11-17 were shown, 12 (52 Medium). Medium either way."
+  },
+  {
+   "plant_id": "p-western-utility-telecom-salem-or",
+   "component": "score_labor",
+   "ledger_points": 12,
+   "correct_points": 12,
+   "why": "Apply flow met (12). Sensitivity: the recruiter ATS offer linked per role has a raw first-posted date 2026-04-24 (Recruitee created_at/published_at and JSON-LD), live today: 20 (total 68, Medium) if the coordinator accepts the recruiter's board as the company's apply route and the coordinator adds the row. Confidence: the stated tallo row is unreachable; keep labor in confidence only if the careers-page row is retagged stated (corrected row)."
+  }
+ ],
+ "score_notes": [
+  "Kept 20 on a real first-posted date (verified from board raw data, posting live today, 60 days to 12 months): Meyer Hager City (UKG PostedDate 2026-09-09, requisition in sequence, 69 days), Universal Industrial Sales (Paylocity JobId bracket Sep 1-10, 70 days), V&S Schuler Canton (Dayforce created 2026-07-31; coordinator call above), Conrad Morgan City (UKG 2026-05-18, 183 days), Conrad Deepwater South (UKG 2026-05-13, 188 days), Keel Ladson (Paylocity JobId bracket Jul 30-Aug 19, 102 days), Trident Hampton (ADP 2026-05-21 and 2026-01-21, requisitions in order; also two counted at once).",
+  "Kept 20 on several counted postings: Gulf Island Houma (eight live today).",
+  "Kept 12 on an apply flow: Pelco (application form on the careers page), Western Utility Telecom Salem (per-role 'Apply here' to an ATS), Girtz (Apply Now form on the role page).",
+  "Score changes: Maico 88 -> 80 (High -> High). No other total or tier changes. No plant gains from a sign-on bonus or mandatory overtime: UIS '8+ hours overtime each week' is listed as an offer, V&S and Trident overtime is conditional, Keel 'Overtime Potential', referral bonuses only."
+ ],
+ "opening_line_problems": [
+  "p-maico-ellsworth-ks:opening_line - 'a KansasWorks welder posting for Ellsworth has been live since July 29, 2026' presents a job-bank re-stamp as the opening's start; the Welder ad has been on MaiCo's own board since January 2023. Suggested: \"MaiCo's equipment page says you run more than 40 Lincoln DC600 MIG welding machines, and a Welder opening for Ellsworth has been on your own job board since January 2023; how are you keeping those stations staffed?\" bottleneck_guess also says 'a welder posting has been open since 2026-07-29': change to 'a Welder ad on the company's own board since 2023-01-05'.",
+  "p-gulf-island-houma-la:opening_line - acceptable ('listed Aug 31, 2026' matches the Tank Welder JSON-LD dates); the board list itself now shows 2026-11-17 for both roles, so 'listed' (not 'posted') is the right verb, as written.",
+  "p-vs-schuler-canton-oh:opening_line - 'posted since July 31, 2026' stands on the written rule; if the coordinator rules the Jul 31 batch a re-list, write 'listed since July 31, 2026'."
+ ],
+ "plants_closed_or_moved": [],
+ "status_problems": [],
+ "plant_status_notes": "All twelve plants still show their counted roles live today at the recorded sites (Gulf Island eight, Trident two, all others one). Addresses on the postings match plants.csv except Keel (see leads).",
+ "field_drift_notes": [
+  "Day counts and read dates in plants.csv welder_postings are stale (computed 2026-11-12/13): Meyer 69 days today, UIS 70, V&S 109, Keel 102, Trident 180 and 300, Conrad 183 and 188. Not corrections; refresh at merge if the field keeps day counts.",
+  "Maico, Gulf Island and Western Utility Telecom welder_postings take plants_csv_value at merge; sibling rows of the same claim are confirmed but carry the plant value only through plants_csv_value.",
+  "Universal Industrial Sales and Keel list quotes ('09/8/2026', '08/7/2026') render only in the browser (plain fetch carries the JSON pageData PublishedDate instead); quote_check tools that use plain fetch will miss them."
+ ],
+ "leads": [
+  "p-western-utility-telecom-salem-or: add a stated row citing https://jobs.yellowstonelocal.com/o/welderfitter-1 (Recruitee offer 2580055, Salem, created/published 2026-04-24, JSON-LD datePosted 2026-04-24; 'Day and weekend shifts available', 'Weekend shift differential', 'Perform GMAW spray transfer welding and FCAW welding applications', $22-$32/hr) to replace the unreachable tallo rows (welder_postings and weld_processes FCAW). Then rule on the 60+ day route (12 -> 20). The Fernley NV Welder/Fitter (offer 2683634, 2026-07-20) points to a Fernley site with no plants.csv record.",
+  "p-keel-ladson-sc: Paylocity JSON-LD streetAddress reads '8001 Commerce Center Dr.'; plants.csv says '8001 Commerce Center Rd'. Check the address row.",
+  "Sweep: other plants whose labor 20 rests on a state job bank or aggregator date (KansasWorks and similar) rather than the company's own board.",
+  "Paycom JSON-LD datePosted is readable from the portal URL https://www.paycomonline.net/v4/ats/web.php/portal/<clientkey>/jobs/<jobId> (plain fetch), even where the preview JSON gives postedOn ''."
+ ],
+ "method": "Fresh reads on 2026-11-17. UKG/UltiPro: POST JobBoardView/LoadSearchResults (Arcosa 310 postings, Conrad 14) plus detail-page job JSON (PostedDate/UpdatedDate/RequisitionNumber). Paylocity: board window.pageData (JobId, PublishedDate) and detail JSON-LD datePosted/streetAddress; JobId used as a cross-client sequence to bracket creation dates. Dayforce: rendered board and job pages, embedded job JSON (jobReqId, postingStartTimestampUTC, createdTimestampUTC, isEvergreen). ADP: job-requisitions JSON (clientRequisitionID, postDate, PostingDate). Paycom: MaiCo careers page link -> portal job-posting-previews and job-postings JSON, portal-page JSON-LD datePosted. Recruitee: /api/offers/ (created_at, published_at). Every welder_postings quote re-checked on its page (tools/fetch_page.fetch with raw source; browser for UKG and for Paylocity list dates). Careers pages for the flow plants rendered in Playwright to read forms and apply links. web.archive.org CDX unreachable from this session (logged once). No sign-ins, no forms submitted.",
+ "apply_note": "Apply after the coordinator reviews score_problems. Rows keyed to ledger/evidence.csv claim_id + source_url. For corrected welder_postings rows, set value/quote/source_url/tag from corrected_* (Maico's corrected row moves the citation to MaiCo's Paycom page; keep the KansasWorks row as a separate confirmed 'job-bank copy' row only if wanted). Write plants_csv_value to plants.csv welder_postings for Maico, Gulf Island and Western Utility Telecom. Maico: score_labor 12, score_total 80, tier High, confidence 4. Fix Maico opening_line and bottleneck_guess (opening_line_problems). Mark the tallo row unreachable (verified stays not 'confirmed').",
+ "rows": [
+  {
+   "claim_id": "p-pelco-structural-claremore-ok:welder_postings",
+   "source_url": "https://pelcostructural.com/careers",
+   "ledger_value": "Fitter/Welders listed under Available Positions on careers page 2026-11-12; count, date, process not shown",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "plants_csv_value": "Fitter/Welders listed on careers page; count/date/process not shown",
+   "note": "read 2026-11-17. Apply-flow rule met. The careers page lists 'Available Positions Fitter/Welders' and directly under it an 'Apply now.' application form on the company's own site (Gravity Forms gform_1: Full Name, Position applying for, Contact Email, Attach Resume, Submit). That is an application form covering the role, not a link to an Indeed or LinkedIn page (the only LinkedIn link is the footer company profile). Undated; count and process not shown."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:welder_postings",
+   "source_url": "https://www.kansasworks.com/jobs/13626472",
+   "ledger_value": "1 welder posting open at Maico Industries, Ellsworth KS (posted 2026-07-29, updated 2026-10-15; still live 2026-11-12, 106 days); AWS/AISC standards; processes not named",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "corrected",
+   "corrected_value": "Welder, Maico Industries - Ellsworth KS: on MaiCo's own Paycom board since 2023-01-05 (JSON-LD datePosted, job 54986), live 2026-11-17: a standing ad; the KansasWorks copy (Posted On Jul 29, 2026; Updated On Oct 15, 2026) is a job-bank re-stamp, not a first-posted date",
+   "corrected_quote": "\"@type\":\"JobPosting\",\"title\":\"Welder\",\"identifier\":\"J0AD2554986\" ... \"datePosted\":\"2023-01-05\",\"description\":\"Job Details: Job Location: Maico Industries - Ellsworth, KS",
+   "corrected_source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/75D12DC084A89F21BFFB2D659BC669D8/jobs/54986",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "plants_csv_value": "1 open, standing ad: Welder (Maico Industries - Ellsworth, KS) on MaiCo's own Paycom board, job 54986, JSON-LD datePosted 2023-01-05, live 2026-11-17; AWS/AISC standards; processes not named",
+   "note": "read 2026-11-17. Misdated: the 60+ day route rested on a state job-bank date. MaiCo's own careers page (maicoind.com/job-openings1, 'SEE ALL JOBS & APPLY ONLINE') links its Paycom board (clientkey 75D12DC0...). The board's job-posting-previews JSON lists 7 jobs today; the Welder is job 54986 (the oldest; Receptionist 330347, CWI 320159, Detailer 309987 are the new ones). Its detail page JSON-LD gives datePosted 2023-01-05 and the same description text as KansasWorks ('Fabrication of welded assemblies in compliance with contract/customer specifications ... AWS ... AISC'). Jobs 54966, 54974 and 54978 (CNC Machine Operator, Maintenance Technician, Painter) also read 2023-01-05: a block of evergreen ads (sibling dates and the KansasWorks copy are in this note, not in plants_csv_value, since no row carries them; the CWI on the board is an inspector, not counted). The KansasWorks quote 'Posted On: Jul 29, 2026' is on its page (so the quote is real) but it dates the job-bank copy, not the opening. Raw date over 12 months: standing ad, counts as open, labor 12."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "value": "20",
+   "note": "read 2026-11-17. 20 stands: one counted posting, raw first-posted date 2026-09-09 (board JSON PostedDate, requisition in sequence), live today, 69 days (60 days to 12 months). No sign-on bonus or mandatory overtime stated; no second counted posting."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "corrected",
+   "value": "12",
+   "corrected_value": "12",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "plants_csv_value": "12",
+   "note": "read 2026-11-17. Was 20 on 'open 60+ days (posted 2026-07-29)'. The Welder ad has been on MaiCo's own Paycom board since 2023-01-05 (JSON-LD), so it is a standing ad: open, labor 12. One counted posting only (the CWI is an inspector, not counted); no sign-on bonus or mandatory overtime on the posting. Score 88 -> 80, tier High unchanged; confidence 4 unchanged (labor still rests on a stated live posting)."
+  },
+  {
+   "claim_id": "p-universal-industrial-sales-lindon-ut:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/585cc089-4992-4eb6-871f-6a118fb0bb6b/UNIVERSAL-INDUSTRIAL-SALES-INC",
+   "ledger_value": "1 welder posting open: FCAW / GMAW / Arc Welder Days & Nights, posted 2026-09-08 (65 days at 2026-11-12); also CWI, CNC, machinist postings",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "plants_csv_value": "1 open (FCAW/GMAW/Arc Welder Days & Nights, posted 2026-09-08, 65 days)",
+   "note": "read 2026-11-17. Real first-posted date. Paylocity board pageData today: JobId 4487723 'FCAW / GMAW / Arc Welder Days & Nights *', PublishedDate 2026-09-08 16:44; detail JSON-LD datePosted 2026-09-08T21:44 (same day; list and JSON-LD agreeing is not itself proof). The first-posted reading rests on the JobId bracket (INFERRED: Paylocity JobIds appear to run in one sequence across clients, judged from the Keel, UIS and Gulf Island boards), and 4487723 sits between Keel's 4470054 (2026-09-01) and 4492809 (2026-09-10), so the requisition was created about Sep 1-10. Its sibling 4487717 (CNC Machine Operator, created the same moment) shows PublishedDate 2026-10-19, which is what a re-stamp looks like on this board; the welder was not re-stamped. List quote '09/8/2026' visible in the rendered board (plain fetch lacks it; browser has it). Live today, 70 days: 60 days to 12 months, labor 20. Posting also lists '8+ hours overtime each week' and 'bonuses and incentives' under What We Offer: neither is a sign-on bonus or a mandatory-overtime statement."
+  },
+  {
+   "claim_id": "p-universal-industrial-sales-lindon-ut:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "value": "20",
+   "note": "read 2026-11-17. 20 stands: one counted posting, first posted 2026-09-08 (JobId bracket Sep 1-10), live today, 70 days. CWI not counted."
+  },
+  {
+   "claim_id": "p-pelco-structural-claremore-ok:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "value": "12",
+   "note": "read 2026-11-17. 12 stands under the apply-flow rule: the listed Fitter/Welders role has an application form on the same page. No date, so no 60+ day route."
+  },
+  {
+   "claim_id": "p-western-utility-telecom-salem-or:welder_postings",
+   "source_url": "https://www.westernutilitytelecom.com/careers",
+   "ledger_value": "Careers page today lists Welder/Fitter openings at Salem OR and Fernley NV (undated); earlier Salem posting dated 2026-05-17 is expired on the job board; processes GMAW spray transfer, FCAW; day and weekend shifts, weekend shift differential; no sign-on bonus or mandatory overtime stated",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "corrected",
+   "corrected_value": "Careers page lists Welder/Fitter openings for Salem, Oregon and Fernley, Nevada under 'Current Open Positions' (undated), each with an 'Apply here' link to an applicant-tracking page (jobs.yellowstonelocal.com); only the Salem role is this plant's",
+   "corrected_quote": "Current Open Positions We are currently hiring for the following positions: ... Welder/Fitter Salem, Oregon Fabricate, fit, and weld steel components by reading blueprints, ensuring quality workmanship, and following safety standards. ... Apply here",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "1 counted: Welder/Fitter, Salem, Oregon, under 'Current Open Positions' on the company careers page (undated there; read 2026-11-17), with its own 'Apply here' link to an applicant-tracking page (jobs.yellowstonelocal.com); a Welder/Fitter for Fernley, Nevada is listed too, not counted for Salem",
+   "note": "read 2026-11-17. Apply-flow rule met: each listed role has its own 'Apply here' link to an applicant-tracking system (Recruitee site of the recruiter Yellowstone Local, which 'is proud to represent Western Utility Telecom'), plus a resume upload form and application PDFs on the same page; not a generic Indeed/LinkedIn company link. Corrected because the row's value carries clauses the cited careers page does not show: 'processes GMAW spray transfer, FCAW', 'day and weekend shifts, weekend shift differential' (those are on the ATS offer page, not here) and 'earlier Salem posting dated 2026-05-17 is expired on the job board' (no page cited; not re-verifiable). Also the Fernley role belongs to a Nevada site, so '2 on careers page' is not a count for this plant (only Salem counts; no Fernley record exists in plants.csv). The row's quote is on the page today. Tag: the opening itself is stated on the page; only the undated status is a judgement."
+  },
+  {
+   "claim_id": "p-western-utility-telecom-salem-or:welder_postings",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/or/salem/welderfitter-bfeac215",
+   "ledger_value": "Day and weekend shifts; weekend shift differential",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "unreachable",
+   "note": "read 2026-11-17. tallo.com now returns 403 to a plain fetch and a sign-in wall in the browser ('Sign in to explore jobs'); no sign-ins allowed, so not confirmed. The same clause 'Day and weekend shifts available' and 'Weekend shift differential' is on the recruiter's ATS offer for this role (https://jobs.yellowstonelocal.com/o/welderfitter-1), linked from the company careers page: re-cite there (lead).",
+   "plants_csv_value": "1 counted: Welder/Fitter, Salem, Oregon, under 'Current Open Positions' on the company careers page (undated there; read 2026-11-17), with its own 'Apply here' link to an applicant-tracking page (jobs.yellowstonelocal.com); a Welder/Fitter for Fernley, Nevada is listed too, not counted for Salem"
+  },
+  {
+   "claim_id": "p-western-utility-telecom-salem-or:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "value": "12",
+   "note": "read 2026-11-17. 12 stands under the apply-flow rule: one counted Welder/Fitter role for Salem on the company careers page with a per-role 'Apply here' link to an ATS. Not scored here: the ATS offer (Recruitee id 2580055) has created_at/published_at 2026-04-24 and JSON-LD datePosted 2026-04-24, live today (207 days), which would be the 60+ day route (labor 20, total 60 -> 68, Medium either way) if the coordinator accepts a recruiter's board linked as the company's own apply route; it is on no evidence row yet (coordinator rule: a raw-date reading scores only once on a fact-checked row). Confidence: the only stated welder_postings row (tallo) is now unreachable; the 12 still rests on a stated fact if the careers-page row is retagged stated as corrected above."
+  },
+  {
+   "claim_id": "p-vs-schuler-canton-oh:welder_postings",
+   "source_url": "https://jobs.dayforcehcm.com/en-US/hs/ClientCareersSiteVSSchuler/jobs/5716",
+   "ledger_value": "1 open: Fitter/Welder-Canton (Req 982), posted 2026-07-31 (105 days); MIG, TIG, stick, flux-core; M-Thu days or Sun-Wed nights; $26.01/hr plus $4/hr 3rd-shift differential; overtime 'may be required' (not mandatory); no sign-on bonus stated",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "plants_csv_value": "1 open: Fitter/Welder-Canton posted 2026-07-31 (105 days); MIG/TIG/stick/flux-core; $26.01/hr + $4/hr night differential; no sign-on bonus or mandatory overtime stated",
+   "note": "read 2026-11-17. Kept as a real date, with one re-list sign recorded (score_problems). Dayforce posting 5716 JSON: jobReqId 982 'Fitter/Welder-Canton', postingStartTimestampUTC 2026-07-31, createdTimestampUTC 2026-07-31T15:34:46Z = lastModifiedTimestampUTC, isEvergreen false; live today at 2240 Allen Ave SE. Board today has 4 postings: 5716 req 982 (Canton welder, created 15:34:46), 5718 req 778 (Steel Structural Engineer, created 15:36:22), 5721 req 983 (Middlefield Fitter/Welder-3rd shift, 17:45:28), 5808 req 988 (Middlefield Fitter/Welder 3rd Shift, 2026-09-10). Against: req 778 is ~200 requisitions older yet was posted two minutes after 982, a re-list sign for 778 (or a board launch on Jul 31). For: 982 and 983 are consecutive new requisitions and 988 follows on Sep 10, so 982 is in sequence with the welder requisitions (Derrick precedent, R9). The bound 'not over 12 months' is INFERRED from the requisition order, not read; web.archive.org was unreachable from this session (CDX returned no connection), so no earlier copy was checked. Either way the ad has been open since at least 2026-07-31 (109 days). All quote fragments on the page. 'Overtime or shift work may be required' is conditional; 'Referral bonus program' is not a sign-on bonus. Middlefield postings belong to another plant, not counted."
+  },
+  {
+   "claim_id": "p-vs-schuler-canton-oh:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "value": "20",
+   "note": "read 2026-11-17. 20 stands on the written rule: one counted posting first posted 2026-07-31 (posting record created that day; requisition 982 in sequence with 983 and 988), live, 109 days. Sensitivity (coordinator call): if the Jul 31 batch, which also re-posted the old requisition 778, is read as a re-list of 982 too, the first-posted date is unknown; only proof of a first post before 2025-11-17 would make it a standing ad (labor 12, total 60 -> 52, Medium either way)."
+  },
+  {
+   "claim_id": "p-keel-ladson-sc:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/9298c9b6-3bb4-4a0d-a877-d406414fb161/Keel-Platform",
+   "ledger_value": "Welder, Ladson Headquarters, posted 08/7/2026; Welding Instructor (11/2/2026) and Welding Engineer (09/1/2026) at Ladson: not counted",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "plants_csv_value": "1 counted, open on Keel's Paylocity board (read 2026-11-13): Welder, Ladson Headquarters (posted 08/7/2026, 98 days; 7 FCAW and pulsed/spray GMAW weld tests; NAVSEA and/or AWS D1.1; shift differentials, overtime potential). Not counted: Welding Instructor (11/2/2026, welding school), Welding Engineer (09/1/2026), NDT inspectors",
+   "note": "read 2026-11-17. Real first-posted date. Board pageData today: JobId 4401313 Welder, Ladson Headquarters, PublishedDate 2026-08-07 12:54; JSON-LD datePosted 2026-08-07 15:48. The first-posted reading rests on the JobId bracket (INFERRED from the Keel, UIS and Gulf Island boards), not on the list/JSON-LD agreement: 4401313 sits between 4376245 (Jul 30) and 4435116 (Aug 19) and below Gulf Island's 4429529 (Aug 18). Its near-neighbour 4401024 (Beveler I) shows 2026-11-10, a re-stamp, which the Welder did not get. List quote visible in the rendered board (browser). Live today, 102 days: labor 20. Welding Instructor (4633096, Nov 2) and Welding Engineer not counted."
+  },
+  {
+   "claim_id": "p-keel-ladson-sc:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4401313",
+   "ledger_value": "Weld tests FCAW, GMAW-pulsed, GMAW-spray; shift differentials and overtime potential",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Weld-test and benefits quote on the page today. 'Overtime Potential' is not mandatory overtime; 'Internal Referral Bonus Opportunities' is not a sign-on bonus."
+  },
+  {
+   "claim_id": "p-keel-ladson-sc:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "value": "20",
+   "note": "read 2026-11-17. 20 stands: one counted Welder posting first posted 2026-08-07 (JobId bracket Jul 30-Aug 19), live, 102 days."
+  },
+  {
+   "claim_id": "p-trident-newport-news-va:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201803764829_1?cid=64c575fd-f386-4283-8274-3c67631f5ee8&ccId=19000101_000001&lang=en_US&locale=en_US",
+   "ledger_value": "Welder - Class A, Hampton location (Newport News 23607), posted 2026-05-21; overtime as required",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "plants_csv_value": "2 open at the Hampton location (900 39th St area, Newport News 23607) on Trident ADP (read 2026-11-13): Welder - Class A (posted 2026-05-21, 176 days; FCAW/GMAW/GTAW; overtime as required; $38-44/hr) and Fitter (posted 2026-01-21, 296 days). Not counted: Burning Table Operator, Laborer; Welding Engineer is filed under \"Modules - Newport News\"",
+   "note": "read 2026-11-17. All fragments on the ADP JSON today. Real first-posted date: clientRequisitionID 1651 (ExternalJobID 634491), postDate 2026-05-21, PostingDate 2026-05-21T14:27Z; Trident's 17 requisitions run in strict date order (1613 Jan 21 ... 1698 Nov 3), no batch stamp. Live today, 180 days. 'Must be able to work overtime as required' is conditional, not mandatory overtime."
+  },
+  {
+   "claim_id": "p-trident-newport-news-va:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201763344058_1?cid=64c575fd-f386-4283-8274-3c67631f5ee8&ccId=19000101_000001&lang=en_US&locale=en_US",
+   "ledger_value": "Fitter, Hampton location, posted 2026-01-21",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. All fragments on the ADP JSON today. clientRequisitionID 1613 (lowest on the board, but in date order with 1620 Feb 11 and later), postDate 2026-01-21; live today, 300 days: under 12 months."
+  },
+  {
+   "claim_id": "p-trident-newport-news-va:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "value": "20",
+   "note": "read 2026-11-17. 20 stands on two routes: two counted postings (Welder - Class A and Fitter, Hampton location) open at once, and both first posted 60 days to 12 months ago (180 and 300 days), live today."
+  },
+  {
+   "claim_id": "p-conrad-morgan-city-la:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/CON1089COSP/JobBoard/6554dd3b-1e05-4c1c-9fbf-4c08b0376985/JobBoardView/LoadSearchResults",
+   "ledger_value": "Structural Fitter: fits plate and steel components, prepares joints for welding, supervises tackers",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "plants_csv_value": "1 counted: Structural Fitter STRUC001047 at 1501 Front Street on Conrad's UltiPro board, first posted 2026-05-18 (183 days on 2026-11-17; the job JSON's first-posted date equals the 'Posted on' stamp), live 2026-11-17. Not counted here: Structural Welder (Deepwater South), Tacker Trainee (Amelia), Structural Fitting and Welding Supervisors (three yards)",
+   "note": "read 2026-11-17. POST LoadSearchResults today (14 postings): STRUC001047 BriefDescription carries the quote verbatim. A GET on the URL returns 415 (POST-only endpoint), so the check used the POST."
+  },
+  {
+   "claim_id": "p-conrad-morgan-city-la:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "value": "20",
+   "note": "read 2026-11-17. 20 stands: one counted Structural Fitter posting at 1501 Front Street, first posted 2026-05-18, live, 183 days. Supervisors and the generic 'Open Opportunities' pool (OPENO001045) not counted."
+  },
+  {
+   "claim_id": "p-conrad-morgan-city-la-2:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/CON1089COSP/JobBoard/6554dd3b-1e05-4c1c-9fbf-4c08b0376985/?q=&o=postedDateDesc",
+   "ledger_value": "listed, not counted: Structural Fitting Supervisor and Structural Welding Supervisor (2026-06-08; Deepwater South, Morgan City and Amelia)",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "plants_csv_value": "1 counted on Conrad's UKG board (re-read 2026-11-17): Structural Welder STRUC001046, Deepwater South (995 Duhon Blvd), first posted 2026-05-13 (188 days; the job JSON's first-posted date equals the 'Posted on' stamp); Structural Fitting and Welding Supervisor roles listed, not counted",
+   "note": "read 2026-11-17. LoadSearchResults today: WELDI001049 Structural Welding Supervisor (2026-06-08 20:01) and STRUC001050 Structural Fitting Supervisor (2026-06-08 20:04), locations Deepwater South, Morgan City, Amelia. Supervisors, not counted."
+  },
+  {
+   "claim_id": "p-conrad-morgan-city-la-2:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "value": "20",
+   "note": "read 2026-11-17. 20 stands: one counted Structural Welder posting at Deepwater South, first posted 2026-05-13, live, 188 days."
+  },
+  {
+   "claim_id": "p-gulf-island-houma-la:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4466134",
+   "ledger_value": "Tank Welder (Day Shift), posted 2026-08-31, 567 Thompson Road",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "plants_csv_value": "8 counted open on Gulf Island's own Paylocity board, Fabrication Enclosures, 567 Thompson Road (dates are JSON-LD datePosted): Assembler (Mechanical, Tacker) 2026-06-19, Welder (Manufacturing, MIG welding) listed 2026-08-03 (a re-post stamp: its JobId 3962398 predates the June 19 requisition; first-posted date not read), Assembly Welder 2026-08-18, Assembly Fitter 2026-08-18, Assembly Fitter or Welder (Night Shift) 2026-08-19, Assembler/Tacker (Night Shift) 2026-08-27, Tank Welder (Day Shift) 2026-08-31, Tank Welder (Night Shift) 2026-08-31; offshore and Houston (Englobal) welder roles on the same board not counted",
+   "note": "read 2026-11-17. Quote on the page (JSON-LD unchanged today); Tank Welder (Day Shift) live today. JobId 4466134 is in sequence with its JSON-LD date (Paylocity JobIds: 4401313 Aug 7, 4435116 Aug 19, 4470054 Sep 1), so the date reads as a first-posted date (inferred from the cross-board JobId sequence). The board list now shows PublishedDate 2026-11-17 07:04-07:06 for all eight counted roles and most Houma roles: a batch re-list today, which leaves the JSON-LD date alone (recorded here only; no row carries the list stamp, so it is not in plants_csv_value)."
+  },
+  {
+   "claim_id": "p-gulf-island-houma-la:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4466161",
+   "ledger_value": "Tank Welder (Night Shift), posted 2026-08-31",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Quote on the page (JSON-LD unchanged today); Tank Welder (Night Shift) live today. JobId 4466161 is in sequence with its JSON-LD date (Paylocity JobIds: 4401313 Aug 7, 4435116 Aug 19, 4470054 Sep 1), so the date reads as a first-posted date (inferred from the cross-board JobId sequence). The board list now shows PublishedDate 2026-11-17 07:04-07:06 for all eight counted roles and most Houma roles: a batch re-list today, which leaves the JSON-LD date alone (recorded here only; no row carries the list stamp, so it is not in plants_csv_value).",
+   "plants_csv_value": "8 counted open on Gulf Island's own Paylocity board, Fabrication Enclosures, 567 Thompson Road (dates are JSON-LD datePosted): Assembler (Mechanical, Tacker) 2026-06-19, Welder (Manufacturing, MIG welding) listed 2026-08-03 (a re-post stamp: its JobId 3962398 predates the June 19 requisition; first-posted date not read), Assembly Welder 2026-08-18, Assembly Fitter 2026-08-18, Assembly Fitter or Welder (Night Shift) 2026-08-19, Assembler/Tacker (Night Shift) 2026-08-27, Tank Welder (Day Shift) 2026-08-31, Tank Welder (Night Shift) 2026-08-31; offshore and Houston (Englobal) welder roles on the same board not counted"
+  },
+  {
+   "claim_id": "p-gulf-island-houma-la:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3962398",
+   "ledger_value": "Welder (Manufacturing, MIG welding), posted 2026-08-03 (JSON-LD), Fabrication Enclosures, 567 Thompson Road",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "corrected",
+   "corrected_value": "Welder (Manufacturing, MIG welding), listed 2026-08-03 (JSON-LD datePosted, a re-post stamp: JobId 3962398 predates JobId 4268762, whose JSON-LD date is 2026-06-19; first-posted date not read), Fabrication Enclosures, 567 Thompson Road; live 2026-11-17",
+   "corrected_quote": "\"title\":\"Welder (Manufacturing, MIG welding)\",\"datePosted\":\"2026-08-03T19:59:57-05:00\"",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "plants_csv_value": "8 counted open on Gulf Island's own Paylocity board, Fabrication Enclosures, 567 Thompson Road (dates are JSON-LD datePosted): Assembler (Mechanical, Tacker) 2026-06-19, Welder (Manufacturing, MIG welding) listed 2026-08-03 (a re-post stamp: its JobId 3962398 predates the June 19 requisition; first-posted date not read), Assembly Welder 2026-08-18, Assembly Fitter 2026-08-18, Assembly Fitter or Welder (Night Shift) 2026-08-19, Assembler/Tacker (Night Shift) 2026-08-27, Tank Welder (Day Shift) 2026-08-31, Tank Welder (Night Shift) 2026-08-31; offshore and Houston (Englobal) welder roles on the same board not counted",
+   "note": "read 2026-11-17. Quote on the page and the role is live, but the date is a re-post stamp written as 'posted': JobId 3962398 is lower than its board siblings 3962444 (Assembly Technician) and 4268762 (Assembler, JSON-LD 2026-06-19), and near Universal Industrial Sales' 3965170 (listed 2026-03-03), so the requisition is months older than Aug 3. Nothing shows it is over 12 months old. Does not move labor (eight counted postings open at once). The plants.csv value's '(oldest, 150 days)' for the Assembler is therefore not shown: the Welder requisition is older, its first-posted date unknown."
+  },
+  {
+   "claim_id": "p-gulf-island-houma-la:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4429529",
+   "ledger_value": "Assembly Welder posted 2026-08-18",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Quote on the page (JSON-LD unchanged today); Assembly Welder live today. JobId 4429529 is in sequence with its JSON-LD date (Paylocity JobIds: 4401313 Aug 7, 4435116 Aug 19, 4470054 Sep 1), so the date reads as a first-posted date (inferred from the cross-board JobId sequence). The board list now shows PublishedDate 2026-11-17 07:04-07:06 for all eight counted roles and most Houma roles: a batch re-list today, which leaves the JSON-LD date alone (recorded here only; no row carries the list stamp, so it is not in plants_csv_value).",
+   "plants_csv_value": "8 counted open on Gulf Island's own Paylocity board, Fabrication Enclosures, 567 Thompson Road (dates are JSON-LD datePosted): Assembler (Mechanical, Tacker) 2026-06-19, Welder (Manufacturing, MIG welding) listed 2026-08-03 (a re-post stamp: its JobId 3962398 predates the June 19 requisition; first-posted date not read), Assembly Welder 2026-08-18, Assembly Fitter 2026-08-18, Assembly Fitter or Welder (Night Shift) 2026-08-19, Assembler/Tacker (Night Shift) 2026-08-27, Tank Welder (Day Shift) 2026-08-31, Tank Welder (Night Shift) 2026-08-31; offshore and Houston (Englobal) welder roles on the same board not counted"
+  },
+  {
+   "claim_id": "p-gulf-island-houma-la:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4431667",
+   "ledger_value": "Assembly Fitter or Welder (Night Shift) posted 2026-08-19",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Quote on the page (JSON-LD unchanged today); Assembly Fitter or Welder (Night Shift) live today. JobId 4431667 is in sequence with its JSON-LD date (Paylocity JobIds: 4401313 Aug 7, 4435116 Aug 19, 4470054 Sep 1), so the date reads as a first-posted date (inferred from the cross-board JobId sequence). The board list now shows PublishedDate 2026-11-17 07:04-07:06 for all eight counted roles and most Houma roles: a batch re-list today, which leaves the JSON-LD date alone (recorded here only; no row carries the list stamp, so it is not in plants_csv_value).",
+   "plants_csv_value": "8 counted open on Gulf Island's own Paylocity board, Fabrication Enclosures, 567 Thompson Road (dates are JSON-LD datePosted): Assembler (Mechanical, Tacker) 2026-06-19, Welder (Manufacturing, MIG welding) listed 2026-08-03 (a re-post stamp: its JobId 3962398 predates the June 19 requisition; first-posted date not read), Assembly Welder 2026-08-18, Assembly Fitter 2026-08-18, Assembly Fitter or Welder (Night Shift) 2026-08-19, Assembler/Tacker (Night Shift) 2026-08-27, Tank Welder (Day Shift) 2026-08-31, Tank Welder (Night Shift) 2026-08-31; offshore and Houston (Englobal) welder roles on the same board not counted"
+  },
+  {
+   "claim_id": "p-gulf-island-houma-la:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/48836b0d-545b-4f1d-b4bb-6f63e3bbdd8e/Gulf-Island",
+   "ledger_value": "board department 'Fabrication Enclosures' (roles listed in Houma, LA)",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. 'Fabrication Enclosures' department on the board today; 63 jobs; all eight counted roles listed under it, Houma, LA.",
+   "plants_csv_value": "8 counted open on Gulf Island's own Paylocity board, Fabrication Enclosures, 567 Thompson Road (dates are JSON-LD datePosted): Assembler (Mechanical, Tacker) 2026-06-19, Welder (Manufacturing, MIG welding) listed 2026-08-03 (a re-post stamp: its JobId 3962398 predates the June 19 requisition; first-posted date not read), Assembly Welder 2026-08-18, Assembly Fitter 2026-08-18, Assembly Fitter or Welder (Night Shift) 2026-08-19, Assembler/Tacker (Night Shift) 2026-08-27, Tank Welder (Day Shift) 2026-08-31, Tank Welder (Night Shift) 2026-08-31; offshore and Houston (Englobal) welder roles on the same board not counted"
+  },
+  {
+   "claim_id": "p-gulf-island-houma-la:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4429537",
+   "ledger_value": "Assembly Fitter, posted 2026-08-18 (JSON-LD), Fabrication Enclosures, 567 Thompson Road",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Quote on the page (JSON-LD unchanged today); Assembly Fitter live today. JobId 4429537 is in sequence with its JSON-LD date (Paylocity JobIds: 4401313 Aug 7, 4435116 Aug 19, 4470054 Sep 1), so the date reads as a first-posted date (inferred from the cross-board JobId sequence). The board list now shows PublishedDate 2026-11-17 07:04-07:06 for all eight counted roles and most Houma roles: a batch re-list today, which leaves the JSON-LD date alone (recorded here only; no row carries the list stamp, so it is not in plants_csv_value).",
+   "plants_csv_value": "8 counted open on Gulf Island's own Paylocity board, Fabrication Enclosures, 567 Thompson Road (dates are JSON-LD datePosted): Assembler (Mechanical, Tacker) 2026-06-19, Welder (Manufacturing, MIG welding) listed 2026-08-03 (a re-post stamp: its JobId 3962398 predates the June 19 requisition; first-posted date not read), Assembly Welder 2026-08-18, Assembly Fitter 2026-08-18, Assembly Fitter or Welder (Night Shift) 2026-08-19, Assembler/Tacker (Night Shift) 2026-08-27, Tank Welder (Day Shift) 2026-08-31, Tank Welder (Night Shift) 2026-08-31; offshore and Houston (Englobal) welder roles on the same board not counted"
+  },
+  {
+   "claim_id": "p-gulf-island-houma-la:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4456405",
+   "ledger_value": "Assembler/Tacker (Night Shift), posted 2026-08-27 (JSON-LD), Fabrication Enclosures, 567 Thompson Road",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Quote on the page (JSON-LD unchanged today); Assembler/Tacker (Night Shift) live today. JobId 4456405 is in sequence with its JSON-LD date (Paylocity JobIds: 4401313 Aug 7, 4435116 Aug 19, 4470054 Sep 1), so the date reads as a first-posted date (inferred from the cross-board JobId sequence). The board list now shows PublishedDate 2026-11-17 07:04-07:06 for all eight counted roles and most Houma roles: a batch re-list today, which leaves the JSON-LD date alone (recorded here only; no row carries the list stamp, so it is not in plants_csv_value).",
+   "plants_csv_value": "8 counted open on Gulf Island's own Paylocity board, Fabrication Enclosures, 567 Thompson Road (dates are JSON-LD datePosted): Assembler (Mechanical, Tacker) 2026-06-19, Welder (Manufacturing, MIG welding) listed 2026-08-03 (a re-post stamp: its JobId 3962398 predates the June 19 requisition; first-posted date not read), Assembly Welder 2026-08-18, Assembly Fitter 2026-08-18, Assembly Fitter or Welder (Night Shift) 2026-08-19, Assembler/Tacker (Night Shift) 2026-08-27, Tank Welder (Day Shift) 2026-08-31, Tank Welder (Night Shift) 2026-08-31; offshore and Houston (Englobal) welder roles on the same board not counted"
+  },
+  {
+   "claim_id": "p-gulf-island-houma-la:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4268762",
+   "ledger_value": "Assembler (Mechanical, Tacker), posted 2026-06-19 (JSON-LD), Fabrication Enclosures, 567 Thompson Road",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Quote on the page (JSON-LD unchanged today); Assembler (Mechanical, Tacker) live today. JobId 4268762 is in sequence with its JSON-LD date (Paylocity JobIds: 4401313 Aug 7, 4435116 Aug 19, 4470054 Sep 1), so the date reads as a first-posted date (inferred from the cross-board JobId sequence). The board list now shows PublishedDate 2026-11-17 07:04-07:06 for all eight counted roles and most Houma roles: a batch re-list today, which leaves the JSON-LD date alone (recorded here only; no row carries the list stamp, so it is not in plants_csv_value).",
+   "plants_csv_value": "8 counted open on Gulf Island's own Paylocity board, Fabrication Enclosures, 567 Thompson Road (dates are JSON-LD datePosted): Assembler (Mechanical, Tacker) 2026-06-19, Welder (Manufacturing, MIG welding) listed 2026-08-03 (a re-post stamp: its JobId 3962398 predates the June 19 requisition; first-posted date not read), Assembly Welder 2026-08-18, Assembly Fitter 2026-08-18, Assembly Fitter or Welder (Night Shift) 2026-08-19, Assembler/Tacker (Night Shift) 2026-08-27, Tank Welder (Day Shift) 2026-08-31, Tank Welder (Night Shift) 2026-08-31; offshore and Houston (Englobal) welder roles on the same board not counted"
+  },
+  {
+   "claim_id": "p-gulf-island-houma-la:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "value": "20",
+   "note": "read 2026-11-17. 20 stands on 'several counted postings open at once': all eight counted Fabrication Enclosures welding, fitting and tacking roles are live today. The age clause in the reasoning ('oldest JSON-LD date 150 days') is not needed and is not exact (see the Welder row); no score change."
+  },
+  {
+   "claim_id": "p-conrad-morgan-city-la:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/CON1089COSP/JobBoard/6554dd3b-1e05-4c1c-9fbf-4c08b0376985/OpportunityDetail?opportunityId=a1448e0d-e4fd-4c1a-ab4c-93b8dd79f1e7",
+   "ledger_value": "Structural Fitter (STRUC001047): first posted 2026-05-18 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-05-18, the same date; Morgan City LA, board location 1501 Front Street",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Real first-posted date. Detail JSON PostedDate 2026-05-18T14:39:22.624Z, UpdatedDate 2026-06-16 (later, an edit, not a re-post); 'Posted on May 18, 2026'; location 1501 Front Street; live today. Conrad's requisition numbers run in strict date order across the board (MARIN001019 Apr 13, OPENO001045 and STRUC001046 May 13, STRUC001047 May 18, WELDI001049/STRUC001050 Jun 8, ... CADOP001068 Oct 23), so 001047 is in sequence; no batch stamp. 183 days: 60 days to 12 months, labor 20."
+  },
+  {
+   "claim_id": "p-conrad-morgan-city-la-2:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/CON1089COSP/JobBoard/6554dd3b-1e05-4c1c-9fbf-4c08b0376985/OpportunityDetail?opportunityId=b6bbb219-ec7e-43b8-8dba-339a91f9723f",
+   "ledger_value": "Structural Welder (STRUC001046): first posted 2026-05-13 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-05-13, the same date; Morgan City LA, board location Deepwater South, 995 Duhon Blvd",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Real first-posted date. Detail JSON PostedDate 2026-05-13T16:32:26.491Z, UpdatedDate 2026-06-16 (later); location Deepwater South, 995 Duhon Blvd; live today; requisition 001046 in strict date sequence. 188 days: labor 20."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=af831e49-85b3-466e-b358-f5eefcf5e4c3",
+   "ledger_value": "Welders - All Experience Levels (WELDE014972): first posted 2026-09-09 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-09-09, the same date; 2nd shift Mon-Fri 2:45 pm-12:45 am; starting pay $25.89; flux or metal core welding experience highly preferred; Hager City WI plant (board location W8020 150th Ave)",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "plants_csv_value": "1 open welder posting for the Hager City plant (W8020 150th Ave) on Arcosa's UKG board, re-read 2026-11-17: 'Welders - All Experience Levels' WELDE014972 (2nd shift Mon-Fri 2:45 pm-12:45 am, starting pay $25.89; flux or metal core highly preferred; first posted 2026-09-09, equal to the 'Posted on' stamp; 69 days open); no sign-on bonus stated. Also a Welding Technician (listed 2026-09-18) and a Welding Instructor (listed 2026-10-12), not counted",
+   "note": "read 2026-11-17. Real first-posted date, not a re-stamp. Arcosa UKG LoadSearchResults (310 postings) today: WELDE014972 'Welders - All Experience Levels', Hager City, PostedDate 2026-09-09T18:13Z, live. Detail JSON PostedDate 2026-09-09T18:13:28.948Z, UpdatedDate 2026-09-03 (requisition set up with its Hager City siblings MACHI014970 and QUALI014971, both posted 2026-09-03 21:20-21:21). Requisition numbers rise with dates across the board (014966 Sep 9, 014989 Sep 8, 014994/014999 Sep 9, 015046 Sep 18), so 014972 is in sequence; no other posting shares its stamp; no 'Updated' text. All quote fragments on the page. 69 days today: 60 days to 12 months, labor 20."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=51321a99-8629-499e-8f2f-1aea4643be02",
+   "ledger_value": "listed, not counted: Welding Technician (WELDI015046), listed 2026-09-18; plant welding technician (W8020 150th Ave)",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Quote on the page; WELDI015046 live today (PostedDate 2026-09-18). Technician role, listed not counted."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=bd50fed7-5189-4970-9fde-fd914693738b",
+   "ledger_value": "listed, not counted: Welding Instructor (2nd Shift) (WELDI015179), listed 2026-10-12; welder training instructor (W8020 150th Ave)",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Quote on the page; WELDI015179 live today (2026-10-12). Instructor, not counted."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:welder_postings",
+   "source_url": "",
+   "ledger_value": "1 open welder posting for the Hager City plant (W8020 150th Ave) on Arcosa's UKG board, re-read 2026-11-17: 'Welders - All Experience Levels' WELDE014972 (2nd shift Mon-Fri 2:45 pm-12:45 am, starting pay $25.89; flux or metal core highly preferred; first posted 2026-09-09, equal to the 'Posted on' stamp; 69 days open); no sign-on bonus stated. Also a Welding Technician (listed 2026-09-18) and a Welding Instructor (listed 2026-10-12), not counted",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Board re-read via LoadSearchResults: 7 Hager City postings (NDT Quality Inspector, Welding Instructor, Project Manager, Welding Technician, Welders - All Experience Levels, Machine Operator, Quality Inspector Trainee); one counted welder posting. Count and first-posted date correct."
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:welder_postings",
+   "source_url": "https://www.girtzindustries.com/archive-jobs/welder-2nd-shift/",
+   "ledger_value": "1 open, counted: Welder 1st Shift (TIG) on Girtz's own careers page, Job Status Open, address 5262 N East Shafer Drive; MIG or TIG; undated",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "plants_csv_value": "1 open, counted (undated): Welder 1st Shift (TIG), MIG or TIG, on Girtz's own careers page, 5262 N East Shafer Drive; listed, not counted: Certified Welding Inspector, Supervisor 1st and 2nd shift (METAL FAB)",
+   "note": "read 2026-11-17. Apply-flow rule met: the role page carries its own 'Apply Now' form (Upload CV/Resume, GDPR agreement, SUBMIT; 'Your application has been submitted') and an HR email for the role; Job Status: Open. All quote fragments on the page. Undated: no datePosted or published time in the source."
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:welder_postings",
+   "source_url": "https://www.girtzindustries.com/archive-jobs/certified-welding-inspector/",
+   "ledger_value": "listed, not counted: Certified Welding Inspector (an inspector role)",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Quote on the page; inspector, not counted."
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:welder_postings",
+   "source_url": "https://www.girtzindustries.com/archive-jobs/supervisor-2nd-shift/",
+   "ledger_value": "listed, not counted: Supervisor 1st and 2nd shift (METAL FAB) (a supervisor role)",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Quote on the page; supervisor, not counted."
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:welder_postings",
+   "source_url": "https://www.girtzindustries.com/wp-sitemap-posts-recruitly_addons_job-1.xml",
+   "ledger_value": "undated: no posting date on the page or in its source; the careers list (3 pages, about 26 roles) has no other production welder or fitter role",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "read 2026-11-17. Sitemap still gives only lastmod 2026-11-06T15:09:52-04:00 for /archive-jobs/welder-2nd-shift/; the job post type is not exposed in the WP REST API, so no publish date is readable. Undated stands."
+  },
+  {
+   "claim_id": "p-girtz-monticello-in:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "value": "12",
+   "note": "read 2026-11-17. 12 stands under the apply-flow rule: one counted Welder 1st Shift (TIG) role with an Apply Now form on its own page. No date, so no 60+ day route."
+  }
+ ]
+}
