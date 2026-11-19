@@ -42,6 +42,7 @@ LABELS_BY_VERT["v-enclosures-battery-generator"] = {1: "Round 1: the 40 top-rank
                                                     4: "Round 4: confirming pass by other checkers: 44 rewritten and unchecked lines, 9 posting fields, 25 job-posting product rows",
                                                     5: "Round 5: line check of all 48 profiled plants' lines after constrained rewriting (validator-gated), two checkers who did not write them",
                                                     9: "Base-record sample: 16 base and 6 excluded records (reported separately; not a profile round)"}
+LABELS_BY_VERT["v-datacenter-grid-prefab"] = {1: "Round 1: the 40 profiled top-ranked plants (one checker per profiler batch, on the unmerged profiler files)"}
 LABELS = {1: "Round 1: designed sample of 30 plants (all High, all customer plants, then by score), before repairs",
           2: "Round 2: 10 unsampled plants from multi-plant parents, after the first repair pass",
           3: "Round 3: all 23 plants no checker had seen, after the attribution clean-up",
