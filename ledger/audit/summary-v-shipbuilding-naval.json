@@ -98,10 +98,16 @@
   {
    "round": 8,
    "label": "Cross-vertical checks (state air permits, job-board dates, OSHA headcounts, profiles of OSHA top-40 entrants): rows for this vertical's plants",
-   "checked": 205,
+   "checked": 217,
    "corrected": 11,
    "unreachable": 0,
    "checkers": [
+    {
+     "file": "fact-check-cross-R10-postings.json",
+     "checked": 12,
+     "corrected": 0,
+     "kinds": {}
+    },
     {
      "file": "fact-check-cross-R5-P1.json",
      "checked": 1,
@@ -155,8 +161,8 @@
      }
     }
    ],
-   "rate": 0.0537,
-   "display": "11 / 205 = 5.4%"
+   "rate": 0.0507,
+   "display": "11 / 217 = 5.1%"
   }
  ],
  "miss_rate": {
@@ -168,6 +174,7 @@
   ]
  },
  "known_limits": [
+  "Re-measuring (2026-11-19): ships was marked done on 2026-11-14 at a 29.4% miss rate. Mining and battery were then held to a 20% finish line, so ships is getting the same treatment (one OSHA-driven closure pass and one blind re-audit); its status stays as it is until that audit returns.",
   "Part size is unknown for most profiled plants, so material scores 0 there; a Low score usually means missing data, not a poor fit (see the Unknowns and ceiling columns).",
   "87 included plants are base records (not profiled); every plant in the top 40 by relationship, tier, open postings and headcount is profiled except LAD Stephensville (no source says which LAD yard builds new barges). Welder postings were not searched for most base records added from the audit, so their ranking is provisional.",
   "Base records are less checked than profiles: the round-2 base sample ran 13.0% (no score effect), and a drift check flags 73 ships rows for review (ledger/audit/field-drift-ships-2026-11-13.json).",

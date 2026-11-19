@@ -26,7 +26,8 @@ def opt(name, many=False):
 
 LABELS_BY_VERT = {}
 LABELS_BY_VERT["v-shipbuilding-naval"] = {1: "Round 1: all 39 profiled plants (three checkers), after profiling",
-                                          2: "Round 2: closure pass (new profiles, fill-ins and new base records)"}
+                                          2: "Round 2: closure pass (new profiles, fill-ins and new base records)",
+                                          7: "Round 7: line check of all 51 profiled plants' lines after constrained rewriting (validator-gated), checkers who did not write them"}
 LABELS_BY_VERT["v-mining-heavy-equipment"] = {1: "Round 1: the 40 profiled plants (after the parallel list audit)",
                                               2: "Round 2: confirming round, all 47 profiled plants, checkers rotated (after the sweep)",
                                               3: "Round 3: the 21 profiles added in the last waves (profilers G, H, I and J)",
@@ -44,7 +45,8 @@ LABELS = {1: "Round 1: designed sample of 30 plants (all High, all customer plan
           2: "Round 2: 10 unsampled plants from multi-plant parents, after the first repair pass",
           3: "Round 3: all 23 plants no checker had seen, after the attribution clean-up",
           4: "Round 4: 32 plants added or changed by the first higher-tier review, after the attribution clean-up",
-          5: "Round 5: 9 plants whose points changed in the final higher-tier review, plus 6 new addresses"}
+          5: "Round 5: 9 plants whose points changed in the final higher-tier review, plus 6 new addresses",
+          7: "Round 7: line check of all 81 profiled plants' lines after constrained rewriting (validator-gated), checkers who did not write them"}
 LABELS = LABELS_BY_VERT.get(vert, LABELS)
 rounds = {}
 for f in sorted(glob.glob(f"ledger/audit/fact-check-{vert}-*.json")):
