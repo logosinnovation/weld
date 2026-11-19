@@ -1,0 +1,1754 @@
+{
+ "vertical": "v-datacenter-grid-prefab",
+ "checker": "fact-checker DC-FB (round 1, datacenter-profiler-B inbox file)",
+ "date": "2026-11-19",
+ "plants": [
+  "p-chatsworth-simi-valley-ca",
+  "p-chatsworth-georgetown-tx",
+  "p-chatsworth-new-bern-nc",
+  "p-vertiv-anderson-sc",
+  "p-vertiv-ironton-oh",
+  "p-vertiv-pelzer-sc",
+  "p-rittal-urbana-oh",
+  "p-basx-redmond-or",
+  "p-crusoe-arvada-co"
+ ],
+ "decision_rule": "Corrected = the value adds a fact the cited page does not show, tags a judgement as stated, places a company-level fact at the plant, ties a posting to the plant through a location shared by several sites, or the quote is not on the page; Confirmed = the page carries every additive clause; Unreachable = the page could not be read. One test applied to all name and parent_company rows: any label, legal suffix or owner not on the cited record is corrected.",
+ "claims_checked": 177,
+ "claims_corrected": 14,
+ "claims_unreachable": 0,
+ "error_rate": 0.0791,
+ "error_rate_note": "14/177 = 7.9% over every non-score row checked: all inbox rows except score_*/score_total/score_tier/confidence and source-less 'unknown' rows, plus ledger base rows in name, address, parent_company, products, headcount and relationship for the nine plants (lookalike_of: none exist), minus ledger rows the inbox retires. Stated rows only: 13/132 = 9.8%. 0 unreachable. No wrong plant, wrong process, closed plant or invented fact; no posting tied through a shared location beyond the inferred rows already written as inferred. Score components are judged in score_notes, not counted as claims.",
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 13,
+  "invented fact": 0,
+  "other": 1
+ },
+ "repeated_kinds": [
+  "quote does not support value (13): 9 are name/parent_company base rows (plant-finder DC-CL2/DC-B/DC-MV2) that carry a board label ('Simi Valley Plant', 'Georgetown Plant', 'New Bern Plant', 'Urbana campus'), an owner ('Vertiv', 'E+I Engineering') or a legal name/suffix ('Vertiv Holdings Co', 'Inc.') that is not on the cited OSHA record, careers page or release. Sweep every name and parent_company row in this vertical with the same test. The other 4: a compound clause across two requisitions, a TIG-specific certification the page does not state, a search-result clause inside a stated ECHO address row, and a company-level product tagged stated at Crusoe Arvada."
+ ],
+ "worst_errors": [
+  "p-crusoe-arvada-co:products (ledger, stated) - company-level 'Crusoe Spark prefabricated modular AI factory' placed at Arvada; crusoe.ai/manufacturing names Arvada and Tulsa as build sites and Bisnow (2026-03-16) says the new Brighton plant will make Spark. Retag inferred, company-level.",
+  "p-vertiv-anderson-sc:parent_company and :name (ledger, stated) - 'E+I Engineering' and 'Vertiv' are each asserted on a source that does not carry them (the Vertiv requisition has no E+I string; the OSHA/ECHO records name E&I but not Vertiv). The ownership link is true but unsourced in the ledger.",
+  "p-vertiv-anderson-sc:address (inbox, stated) - the clause 'the only Vertiv/E&I record in Anderson in ECHO's SC search' is a search judgement inside a stated single-facility row; it carries the Anderson site tie and belongs in the inferred site_attribution row (re-run today: true)."
+ ],
+ "score_problems": [
+  {
+   "plant_id": "p-crusoe-arvada-co",
+   "component": "score_labor",
+   "ledger_points": "20 (Welder + Fabrication Lead counted; total 65 Medium)",
+   "correct_points": "RULING: 20 / 65 as profiled if the Lead is a working lead; 12 / 57 Medium if supervisory",
+   "why": "The Ashby page says 'hands-on leader, required to personally work on project tasks', 'backfill weld/fabrication team members when necessary' and D1.1 required, but also 'take charge of the daily coordination of our weld and fabrication team', 'prioritizing your management responsibilities' and 'prior management experience'. Rule it together with Vertiv Anderson's Team Coordinator - Welding (not counted)."
+  },
+  {
+   "plant_id": "p-vertiv-anderson-sc",
+   "component": "score_labor",
+   "ledger_points": "12 (Tig Welder only; total 61)",
+   "correct_points": "RULING: 12 / 61 as profiled; 20 / 69 Medium if the Team Coordinator - Welding (Weekend) counts",
+   "why": "The coordinator 'Learns all positions and fills in as needed' / 'filling in positions as needed' and 'assists the supervisor'; the same profiler counted Crusoe's Fabrication Lead on similar hands-on wording. One ruling for both."
+  },
+  {
+   "plant_id": "p-vertiv-ironton-oh",
+   "component": "score_part_mix",
+   "ledger_points": "8 (total 50)",
+   "correct_points": "RULING: 15 / 57 Medium for consistency with Anderson, or Anderson 15 -> 8 (61 -> 54)",
+   "why": "Both rest on Vertiv engineering postings at the city. Ironton's (20282512) says 'contribute to both custom and NPDI projects' and 'Provide input from custom orders and ETO projects into NPDI modules'; Anderson's (20283144) says 'create new engineered-to-order (ETO) solutions' but also 'activities leading up to mass production release'. Anderson got 15, Ironton 8. Neither change crosses a tier."
+  },
+  {
+   "plant_id": "p-vertiv-pelzer-sc",
+   "component": "score_process and score_labor",
+   "ledger_points": "20 and 12 (total 58, confidence 1)",
+   "correct_points": "RULING (as the profiler flagged): kept 58 under the campus reading; 26 Low if P1/P2 prove separate production sites over ~1 km apart",
+   "why": "Board titles name 'Pelzer Sites', 'P1', 'P2'; the only second Vertiv address found (1810 Easley Hwy, construction-stormwater permit to 03/16/2031) is 0.67-0.82 km from 170 Pelzer Point Rd, but its production is not stated, so the 'same production' limb of the campus rule is unproven. The Welder Level 4 short description carries boilerplate about 'volumetric steel modules and shipping containers' for commercial, healthcare and hospitality structures, which describes neither building."
+  }
+ ],
+ "score_notes": [
+  "p-chatsworth-simi-valley-ca (70 High): all six components stand. Labor 20: all 13 requisitions (7 Welder - 2nd Shift, 6 Welder 1) are listed today in CPI's Paycom job-map API under 'Simi Valley Plant', JSON-LD street 4175 Guardian Street, plus 'mandatory overtime during the week and weekends'. Process 20: MIG experience or a welding certificate (MIG is one of two alternatives; the process rule's 'named' test is met). Material 4 rests on the stated 'Welds sheet metal' row with an inferred thin-sheet classification (part_size_fit inferred): RULING whether material earns confidence (5 -> 4 if not). At material 0 the plant is 66 Medium.",
+  "p-chatsworth-georgetown-tx (50 Medium): stands. Process 0 is right: the three Georgetown requisitions, re-read in full, name only 'gas and electric welding equipment' (no MIG/FCAW/TIG). Labor 20: 1st/2nd/3rd Shift Welder all listed today (Hot Job) under Georgetown Plant, JSON-LD datePosted 2026-07-21: standing ads, counted open, no 60+ day claim made.",
+  "p-chatsworth-new-bern-nc (49 Medium): stands. Labor 12: one requisition (394641, validThrough 2026-11-27) recruiting several shifts; 'willing to work extended hours and/or weekends as production demands dictates' is conditional, not mandatory overtime. Demand 15: NC Governor 2025-02-18 ($11M, 45 jobs, New Bern facility) is inside the window; WITN 2026-02-11 ribbon-cutting confirms. WITN also says CPI makes 'all their products from raw sheet metal' (supports material 4 if wanted).",
+  "p-basx-redmond-or (73 High): points stand (all six Redmond welder requisitions live today on AAON's Workday CXS; MIG in titles; no TIG anywhere in the six descriptions). Confidence RULING: the postings' only location is the board label 'Redmond Facility' (no street) and OSHA has one BASX establishment in Redmond; under the Hennig/Oceaneering single-site precedent process and labor lose confidence (4 -> 2); under the GPC 'board location names the site' reading they keep it. score_scale reasoning cites 'AAON establishments in Tulsa and Longview' but c-aaon:multi_plant carries only the Tulsa posting; wording fix (Longview is in the OSHA file, ID 3166890).",
+  "p-rittal-urbana-oh (58 Medium): stands. Process 12 (MIG/TIG on 2nd and 3rd Shift), labor 20 (three own-board postings live today, undated), material 0 (base-frame material and size unstated; no sheet-metal statement, so not even 4). Confidence 4 holds: the shared-city test is met by Rittal's own (2021) statement that the second Urbana location is warehouse and distribution.",
+  "p-crusoe-arvada-co (65 Medium): see score_problems (Fabrication Lead). Confidence RULING: Ashby postings give only 'Arvada'; OSHA has one Crusoe Arvada record and FRS's Easter-Owens 6522 Fig St is 0.2 km away (campus), so the tie is a single-site registry reading; under the Oceaneering precedent process and labor lose confidence (3 -> 1). Process 12 (MIG and TIG; spot preferred) and part mix 15 (company-level, no confidence) are right.",
+  "p-vertiv-anderson-sc (61 Medium): see score_problems (Team Coordinator; part mix). Points kept with confidence 1 under the inferred site tie, consistent with the 'Anderson facilities' wording. Material 4 (aluminum parts and/or frames) is right.",
+  "p-vertiv-ironton-oh (50 Medium): see score_problems (part mix). Confidence RULING: every site fact rests on city-only Oracle postings ('Ironton, OH') tied by one OSHA establishment (NA Mfg Ironton): the Oceaneering single-site registry precedent gives process, part mix and labor no confidence (4 -> 1), the same treatment Anderson already has.",
+  "p-vertiv-pelzer-sc (58 Medium): see score_problems (campus). The new stated ECHO row puts 'VERTIV - PELZER POINT COMMERCE CENTER' at 170 Pelzer Point Rd, which matches OSHA ID 3125007 ('Vertiv Corp- Pelzer Point', same street and ZIP) on the brief's gates: the address and headcount rows can be retagged stated, so scale would earn confidence (1 -> 2). Demand 8 is right: the facility opened with the 2024-09-24 announcement (one web search found no later dated plant event). The map pin (Pelzer centroid) is 7.8 km from the ECHO point 34.675061, -82.53156."
+ ],
+ "opening_line_problems": [
+  "p-rittal-urbana-oh:opening_line - the 1st Shift clause carries no date (own board undated; JobTarget dates given for 2nd and 3rd only): rewritten with the board read date and all three JobTarget dates.",
+  "The other eight opening lines and all nine bottleneck guesses: every clause on a stated row of the plant with its date, company facts worded as company-level, newest fact first, no pitch, second-person question; guesses say 'Likely' or 'Possibly'."
+ ],
+ "plants_closed_or_moved": [],
+ "plant_status_notes": "All nine operating: live own-board production postings today at each plant (CPI Paycom job map: Simi Valley 13 welder reqs, Georgetown 3, New Bern 1; Vertiv Oracle: Anderson, Ironton, Pelzer; AAON Workday: Redmond 6; Rittal JazzHR: Urbana 3; Crusoe Ashby: Arvada Welder and Fabrication Lead).",
+ "field_drift_notes": [
+  "p-basx-redmond-or:products - plants field says 'custom air handlers'; rows carry 'CRAHs' (basx.com) and 'related custom HVAC products' (aaon.com). Trim or add a row.",
+  "p-vertiv-ironton-oh and p-vertiv-pelzer-sc:parent_company - plants field 'Vertiv Holdings Co' is on no row (see Pelzer correction).",
+  "p-vertiv-anderson-sc:products - base row 'busway work at Anderson' is confirmed: 'Mechanical Fitter - 1st shift (Busway)' (20276402, listed 2026-07-07) is in today's weld-keyword search response; the inbox products field no longer mentions busway."
+ ],
+ "leads": [
+  "Vertiv Corry PA: '3rd Shift MIG Welder' (20279419, listed 2026-08-12) and '3rd Shift Press Brake Fabricator' (20285850) on Vertiv's board; Corry is not a ledger plant in this check.",
+  "Vertiv Anderson: 'Regional Business Specialist - SWG SKID, Americas' (20283801) - switchgear skids at Anderson; not a stated product yet, but worth a relationship look against EK Machine's power skids.",
+  "Vertiv Greenville SC: several Steel Structural Design Engineer / Structural Engineer reqs (engineering office, probably not a plant).",
+  "Crusoe Tulsa (OSHA 3155296, 5404 S 122nd East Ave, 151; 3155938, 3995 N 125th E Ave, 220) and Ponchatoula LA (3156508): the multi-plant parent's other sites. Crusoe's Arvada Welder posting also asks for 'working with tube or channel to fabricate trailers'.",
+  "CPI's fourth site is Round Rock TX (OSHA 3131201, NAICS 334111, electronics assemblers on the board): not a welding site on current evidence."
+ ],
+ "method": "Fresh reads on 2026-11-19 of every cited page with tools/fetch_page.py (--raw; browser fallback): CPI Paycom pages (raw JSON-LD; empty renders re-fetched until the body loaded) and the Paycom job-map API captured in Playwright; Vertiv Oracle REST requisition details and keyword searches (weld, Busway, Anderson, Pelzer, Ironton) via curl; AAON Workday pages plus CXS search; Crusoe Ashby pages plus posting API; Rittal JazzHR pages and board list; JobTarget, Vertiv, CPI, NC Governor, WITN, AAON, EDCO, Bisnow, Anderson Observer, crusoe.ai, basx.com, rittal.com pages; EPA ECHO DFR and get_facilities searches; EPA FRS. OSHA rows checked against data/osha_2025.csv. Each quote fragment (split on '...') matched after whitespace/entity normalisation. 2 web searches (no second Anderson address; no later Pelzer opening event). No ledger file edited.",
+ "apply_note": "Apply corrected_value/corrected_quote/corrected_tag to the 14 corrected rows (match claim_id + source_url; origin says which file). For the Anderson parent_company and Pelzer parent_company corrections also set plants_csv_value. Add Paycom name rows for Simi Valley and Georgetown if the 'Plant' labels are kept. Rule on the four score_problems and the confidence rulings in score_notes before normalising.",
+ "rows": [
+  {
+   "claim_id": "c-chatsworth:multi_plant",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/395664",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "multi-plant: four sites in California, Texas and North Carolina",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "c-chatsworth:materials",
+   "source_url": "https://www.chatsworth.com/en-us/resources/press-releases/2023/chatsworth-products-launches-manufacturing-of-indu/",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "company product: ZetaFrame cabinet with a fully-welded steel frame (company-level; the release concerns Asia-Pacific manufacturing)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "c-vertiv:multi_plant",
+   "source_url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/vertiv-expands-north-american-production-capacity-with-new-infrastructure-solutions-manufacturing-facility/?Advocacy-Region=na",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "multi-plant: Pelzer facility plus a switchgear and busbar manufacturing facility in Anderson, SC (Sept 24, 2024)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "c-aaon:multi_plant",
+   "source_url": "https://aaon.wd108.myworkdayjobs.com/en-US/AAON/job/Tulsa-OK/Welder-I--Wednesday-Saturday-6am-6pm-_JR104119",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "multi-plant: AAON's own Workday board lists production welder roles at the Tulsa Main Office (Tulsa, OK) as well as at the BASX Redmond Facility",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (JSON-LD datePosted/addressLocality); listed today in AAON's Workday CXS search (searchText 'weld'); quote and value on the page."
+  },
+  {
+   "claim_id": "c-rittal:multi_plant",
+   "source_url": "https://rittal.applytojob.com/apply/nAMiyevA3V/Welder-1st-Shift",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "multi-plant parent: Friedhelm Loh Group, 18 production plants",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; listed today on rittal.applytojob.com/apply under Urbana, OH; no date in page text or raw source (undated, as written)."
+  },
+  {
+   "claim_id": "c-crusoe:multi_plant",
+   "source_url": "https://www.crusoe.ai/manufacturing",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "multi-plant: facilities in Arvada, CO and Tulsa, OK",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "c-crusoe:certifications",
+   "source_url": "https://www.crusoe.ai/manufacturing",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "company-level: ISO, UL, NEMA, ISNetworld, Interstate Industrialized Building Commission (standard numbers not given)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "c-crusoe:production_type",
+   "source_url": "https://www.crusoe.ai/manufacturing",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "company-level: components pre-fabricated and customizable for each delivery",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:weld_processes",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/399735",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "MIG (GMAW): MIG experience or a welding certificate required in the Simi Valley Welder 1 and Welder - 2nd Shift requisitions (listed 2026-11-17)",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "MIG (GMAW): Mig welding experience or a welding certificate required in the Simi Valley Welder 1 requisition (399735, listed 2026-11-17)",
+   "corrected_quote": "Must have Mig welding experience or a welding certificate.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Compound clause: the value names 'the Simi Valley Welder 1 and Welder - 2nd Shift requisitions', but this page (399735) is the Welder 1 requisition only; the 2nd Shift requirement is carried by its own row on 400044. One row per page (fact-check lesson). Re-read 2026-11-19: 'Must have Mig welding experience or a welding certificate.' is on the page; MIG is one of two alternatives (experience or a certificate), so 'MIG experience or a welding certificate' is the accurate wording. No score effect (process 20 stands on both rows)."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:weld_processes",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/400044",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "MIG required (Welder - 2nd Shift, Simi Valley Plant, listed 2026-11-17)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:materials",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/399735",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "sheet metal (metal cabinets); metal not named on the page",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:part_size_fit",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/399735",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "unknown: no welded part dimension or weight stated; thin sheet: the site's welder postings name sheet metal (cabinet sheet metal); classified thin sheet under the vertical rule (racks, cabinets: material 4) since no welded frame or part dimension is stated",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:production_type",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/399735",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "product list: metal cabinets and other related products (Welder 1 requisition)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/399735",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder 1 (399735), Simi Valley Plant, 4175 Guardian Street, listed 2026-11-17 on CPI's own Paycom board; first shift plus mandatory overtime during the week and weekends; read 2026-11-19",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/400044",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder - 2nd Shift (400044), Simi Valley Plant, 4175 Guardian Street, listed 2026-11-17; mandatory overtime during the week and weekends; 20% second shift differential",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:triggers",
+   "source_url": "https://www.chatsworth.com/en-us/resources/press-releases/2025/chatsworth-products-expands-manufacturing-capacity-to-support-hyperscale-ai-and-enterprise-infrastructure-growth/",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "none found within 24 months at Simi Valley; CPI's Aug 19, 2025 capacity release names no site (company-level)",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:opening_line",
+   "source_url": "",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "CPI's Paycom board lists Welder - 2nd Shift and Welder 1 roles at the Simi Valley Plant, listed Nov 17, 2026, that require MIG experience or a welding certificate and include mandatory overtime during the week and weekends; how do you keep sheet-metal cabinet welding on schedule while you fill those roles?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Composed line; every clause matched to a stated row of this plant with its date; newest fact first, no pitch, ends with a second-person question."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:bottleneck_guess",
+   "source_url": "",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Likely manual MIG welding capacity on sheet-metal cabinets at Simi Valley: CPI's board lists Welder - 2nd Shift and Welder 1 roles there, listed Nov 17, 2026, with mandatory overtime during the week and weekends.",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred guess worded 'Likely'/'Possibly'; each clause on a stated row of this plant with its date."
+  },
+  {
+   "claim_id": "p-chatsworth-georgetown-tx:weld_processes",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/369530",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "unknown process: gas and electric welding equipment named; MIG, flux-core or TIG not named in the Georgetown welder requisitions",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-georgetown-tx:materials",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/369530",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "sheet metal (metal cabinets); metal not named on the page",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-georgetown-tx:part_size_fit",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/369530",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "unknown: no welded part dimension or weight stated; thin sheet: the site's welder postings name sheet metal (cabinet sheet metal); classified thin sheet under the vertical rule (racks, cabinets: material 4) since no welded frame or part dimension is stated",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-georgetown-tx:production_type",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/369530",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "product list: metal cabinets and other related products (1st Shift Welder requisition)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-georgetown-tx:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/369530",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "1st Shift Welder (369530), Georgetown Plant, 3004 S Austin Ave, listed 2026-07-21 on CPI's own Paycom board; welding test required; read 2026-11-19",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-georgetown-tx:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/369453",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "2nd Shift Welder (369453), Georgetown Plant, 3004 S Austin Ave, listed 2026-07-21",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-georgetown-tx:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/369380",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "3rd Shift Welder (369380), Georgetown Plant, 3004 S Austin Ave, listed 2026-07-21",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-georgetown-tx:triggers",
+   "source_url": "https://www.chatsworth.com/en-us/resources/press-releases/2025/chatsworth-products-expands-manufacturing-capacity-to-support-hyperscale-ai-and-enterprise-infrastructure-growth/",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "none found within 24 months at Georgetown; CPI's Aug 19, 2025 capacity release names no site (company-level)",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-chatsworth-georgetown-tx:opening_line",
+   "source_url": "",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "CPI's Paycom board lists 1st Shift, 2nd Shift and 3rd Shift Welder roles at the Georgetown Plant, each listed July 21, 2026, for welding sheet metal on metal cabinets; how are you covering cabinet welding across all three shifts?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Composed line; every clause matched to a stated row of this plant with its date; newest fact first, no pitch, ends with a second-person question."
+  },
+  {
+   "claim_id": "p-chatsworth-georgetown-tx:bottleneck_guess",
+   "source_url": "",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Possibly welder staffing across shifts at Georgetown: CPI's board lists 1st Shift, 2nd Shift and 3rd Shift Welder roles there, each listed July 21, 2026, for sheet-metal cabinet welding.",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred guess worded 'Likely'/'Possibly'; each clause on a stated row of this plant with its date."
+  },
+  {
+   "claim_id": "p-chatsworth-new-bern-nc:weld_processes",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/394641",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "unknown process: gas and electric welding equipment named; MIG, flux-core or TIG not named in the New Bern Welder requisition",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-new-bern-nc:materials",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/394641",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "sheet metal (metal cabinets); metal not named on the page",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-new-bern-nc:part_size_fit",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/394641",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "unknown: no welded part dimension or weight stated; thin sheet: the site's welder postings name sheet metal (cabinet sheet metal); classified thin sheet under the vertical rule (racks, cabinets: material 4) since no welded frame or part dimension is stated",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-new-bern-nc:production_type",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/394641",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "product list: metal cabinets and other related products (New Bern Welder requisition)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-new-bern-nc:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/394641",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder (394641), New Bern Plant, 701 Industrial Drive, listed 2026-10-29 on CPI's own Paycom board; one requisition for welders across 1st, 2nd, 3rd and weekend (Fri, Sat, Sun) shifts; read 2026-11-19",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-new-bern-nc:triggers",
+   "source_url": "https://governor.nc.gov/news/press-releases/2025/02/18/it-infrastructure-manufacturer-invest-11-million-new-bern-expansion",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "announced 2025-02-18: CPI will invest $11 million to expand its facility in New Bern and add 45 new jobs (NC Governor)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-chatsworth-new-bern-nc:triggers",
+   "source_url": "https://www.witn.com/2026/02/12/ribbon-cutting-held-craven-county-manufacturing-investment/",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "reported 2026-02-11 (WITN): ribbon-cutting in New Bern; CPI's CEO said CPI is expanding now with the second building",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-chatsworth-new-bern-nc:opening_line",
+   "source_url": "",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "CPI's Paycom board lists a Welder role at the New Bern Plant, listed Oct 29, 2026, citing an immediate need for welders across 1st, 2nd, 3rd and weekend shifts, and WITN reported on Feb 11, 2026 that CPI's CEO said the company was expanding with the second building in New Bern; how do you plan cabinet welding capacity for the second building?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Composed line; every clause matched to a stated row of this plant with its date; newest fact first, no pitch, ends with a second-person question."
+  },
+  {
+   "claim_id": "p-chatsworth-new-bern-nc:bottleneck_guess",
+   "source_url": "",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Possibly welder staffing for cabinet production at New Bern: CPI's board lists a Welder role there, listed Oct 29, 2026, citing an immediate need across 1st, 2nd, 3rd and weekend shifts, and North Carolina's governor announced on Feb 18, 2025 that CPI would invest $11 million to expand its New Bern facility.",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred guess worded 'Likely'/'Possibly'; each clause on a stated row of this plant with its date."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:weld_processes",
+   "source_url": "https://aaon.wd108.myworkdayjobs.com/en-US/AAON/job/Redmond-OR/Welder-II--MIG_JR103334-1",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "MIG (GMAW): Welder II- MIG requisition at the Redmond Facility; tack, continuous and multi-pass welds",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (JSON-LD datePosted/addressLocality); listed today in AAON's Workday CXS search (searchText 'weld'); quote and value on the page."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:production_type",
+   "source_url": "https://www.aaon.com/news/basx-breaks-ground-on-a-new-weld-shop",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "custom: the Redmond weld shop supports welding of air handler base assemblies, fab cubes and related custom HVAC products (announced 2023-08-23)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:products",
+   "source_url": "https://www.aaon.com/news/basx-breaks-ground-on-a-new-weld-shop",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "welding of air handler base assemblies and fab cubes at the Redmond weld shop (announced 2023-08-23)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:welder_postings",
+   "source_url": "https://aaon.wd108.myworkdayjobs.com/en-US/AAON/job/Redmond-OR/Welder-II--MIG_JR103334-1",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder II- MIG (JR103334), Redmond Facility, listed 2026-08-24 on AAON's own Workday board; read 2026-11-19",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (JSON-LD datePosted/addressLocality); listed today in AAON's Workday CXS search (searchText 'weld'); quote and value on the page."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:welder_postings",
+   "source_url": "https://aaon.wd108.myworkdayjobs.com/en-US/AAON/job/Redmond-OR/Welder-I--MIG_JR102783",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder I- MIG (JR102783), Redmond Facility, listed 2026-10-02",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (JSON-LD datePosted/addressLocality); listed today in AAON's Workday CXS search (searchText 'weld'); quote and value on the page."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:welder_postings",
+   "source_url": "https://aaon.wd108.myworkdayjobs.com/en-US/AAON/job/Redmond-OR/Welder---RDM---D-Shift--Fri-Sun-5PM-5AM-_JR103605",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder - RDM | D Shift (Fri-Sun 5PM-5AM) (JR103605), Redmond Facility, listed 2026-10-09; base wage $21.50",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (JSON-LD datePosted/addressLocality); listed today in AAON's Workday CXS search (searchText 'weld'); quote and value on the page."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:site_attribution",
+   "source_url": "https://www.aaon.com/news/basx-breaks-ground-on-a-new-weld-shop",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "one Redmond campus: postings name only Redmond, OR; BASX describes its Redmond plant as one campus (weld shop on the north side of our campus); OSHA 2025 lists one BASX establishment in Redmond; the Sisters site is a different city",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:triggers",
+   "source_url": "https://edcoinfo.com/blog/basx-solutions-expands-in-redmond",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "none within 24 months: the 36,000 sq ft weld shop was announced 2023-08-23 and completed September 2024 (EDCO, 2024-10-10), before 2024-11-19",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:opening_line",
+   "source_url": "",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "AAON's Workday board lists Welder I- MIG and Welder - RDM D Shift roles in Redmond, listed Oct 2 and Oct 9, 2026, and BASX said on Aug 23, 2023 that its Redmond weld shop would support welding of air handler base assemblies, fab cubes and related custom HVAC products; how do you schedule MIG welders across custom base assemblies?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Composed line; every clause matched to a stated row of this plant with its date; newest fact first, no pitch, ends with a second-person question."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:bottleneck_guess",
+   "source_url": "",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Likely MIG welding capacity on air handler base assemblies at Redmond: AAON's Workday board lists a Welder II- MIG role there, listed Aug 24, 2026, alongside Welder I- MIG roles, and BASX said on Aug 23, 2023 that the weld shop would support welding of air handler base assemblies.",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred guess worded 'Likely'/'Possibly'; each clause on a stated row of this plant with its date."
+  },
+  {
+   "claim_id": "p-rittal-urbana-oh:weld_processes",
+   "source_url": "https://rittal.applytojob.com/apply/B0ThCVLXnN/Welder-2nd-Shift",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "MIG and TIG: Welder - 1st Shift names MIG; Welder - 2nd and 3rd Shift name MIG/TIG (Rittal's own board, Urbana)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; listed today on rittal.applytojob.com/apply under Urbana, OH; no date in page text or raw source (undated, as written)."
+  },
+  {
+   "claim_id": "p-rittal-urbana-oh:weld_processes",
+   "source_url": "https://rittal.applytojob.com/apply/nAMiyevA3V/Welder-1st-Shift",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "MIG (Welder - 1st Shift, Urbana)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; listed today on rittal.applytojob.com/apply under Urbana, OH; no date in page text or raw source (undated, as written)."
+  },
+  {
+   "claim_id": "p-rittal-urbana-oh:production_type",
+   "source_url": "https://www.rittal.com/us-en_US/Company/Rittal-Stories/Rittals-Urbana-Campus-a-Pillar-of-US-Production",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "product list with in-house modification services: TS 8 freestanding enclosures, wallmount enclosures, TS IT Pro server racks; in-house engineering and modification services on the Urbana campus (story dated 2021-03-25)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-rittal-urbana-oh:site_attribution",
+   "source_url": "https://www.rittal.com/us-en_US/Company/Rittal-Stories/Rittals-Urbana-Campus-a-Pillar-of-US-Production",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "one production campus in Urbana: the second Urbana location is warehouse and distribution, not production",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-rittal-urbana-oh:welder_postings",
+   "source_url": "https://rittal.applytojob.com/apply/nAMiyevA3V/Welder-1st-Shift",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder - 1st Shift, Urbana, OH, on Rittal's own job board (rittal.applytojob.com), read 2026-11-19; MIG; weld base frames and other metal components; $23-27/hr; page undated",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; listed today on rittal.applytojob.com/apply under Urbana, OH; no date in page text or raw source (undated, as written)."
+  },
+  {
+   "claim_id": "p-rittal-urbana-oh:welder_postings",
+   "source_url": "https://rittal.applytojob.com/apply/B0ThCVLXnN/Welder-2nd-Shift",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder - 2nd Shift, Urbana, OH, on Rittal's own job board; MIG/TIG; $1.00 shift differential; page undated",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; listed today on rittal.applytojob.com/apply under Urbana, OH; no date in page text or raw source (undated, as written)."
+  },
+  {
+   "claim_id": "p-rittal-urbana-oh:welder_postings",
+   "source_url": "https://rittal.applytojob.com/apply/C8kguNnP10/Welder-3rd-Shift",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder - 3rd Shift, Urbana, OH, on Rittal's own job board; MIG/TIG; page undated",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; listed today on rittal.applytojob.com/apply under Urbana, OH; no date in page text or raw source (undated, as written)."
+  },
+  {
+   "claim_id": "p-rittal-urbana-oh:welder_postings",
+   "source_url": "https://www.jobtarget.com/jobs/jt-ckdcp246u3/welder-1st-shift-urbana-ohio",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder - 1st Shift, Urbana, listed 2025-11-14 on JobTarget (aggregator date; own-board copy undated)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19: 'Posted on' date and Urbana location on the page; written as an aggregator 'listed' date, no age claimed."
+  },
+  {
+   "claim_id": "p-rittal-urbana-oh:welder_postings",
+   "source_url": "https://www.jobtarget.com/jobs/jt-cx7x8o46u3/welder-2nd-shift-urbana-ohio",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder - 2nd Shift, Urbana, listed 2026-06-05 on JobTarget (aggregator date)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19: 'Posted on' date and Urbana location on the page; written as an aggregator 'listed' date, no age claimed."
+  },
+  {
+   "claim_id": "p-rittal-urbana-oh:welder_postings",
+   "source_url": "https://www.jobtarget.com/jobs/jt-8jqpnqrtp7/welder-3rd-shift-urbana-ohio",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder - 3rd Shift, Urbana, listed 2026-06-06 on JobTarget (aggregator date)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19: 'Posted on' date and Urbana location on the page; written as an aggregator 'listed' date, no age claimed."
+  },
+  {
+   "claim_id": "p-rittal-urbana-oh:opening_line",
+   "source_url": "",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Rittal's job board lists Welder - 1st Shift, Welder - 2nd Shift and Welder - 3rd Shift roles in Urbana to weld base frames and other metal components, with JobTarget copies listed June 5, 2026 and June 6, 2026 for the 2nd and 3rd Shift; how do you staff base-frame welding across three shifts?",
+   "tag": "inferred",
+   "verdict": "corrected",
+   "corrected_value": "Rittal's own job board, read Nov 19, 2026, lists Welder - 1st, 2nd and 3rd Shift roles in Urbana to weld base frames and other metal components, with JobTarget copies listed Nov 14, 2025, June 5, 2026 and June 6, 2026; how do you staff base-frame welding across three shifts?",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "The 1st Shift clause carries no date: the own-board pages are undated (no JSON-LD datePosted in the raw JazzHR source) and the line gives JobTarget dates for the 2nd and 3rd Shift only. Under the 'read <date>' convention for undated pages the board clause takes its read date, and the 1st Shift JobTarget date (Nov 14, 2025) belongs with the other two. All three roles re-read live today on rittal.applytojob.com/apply.",
+   "plants_csv_value": "Rittal's own job board, read Nov 19, 2026, lists Welder - 1st, 2nd and 3rd Shift roles in Urbana to weld base frames and other metal components, with JobTarget copies listed Nov 14, 2025, June 5, 2026 and June 6, 2026; how do you staff base-frame welding across three shifts?"
+  },
+  {
+   "claim_id": "p-rittal-urbana-oh:bottleneck_guess",
+   "source_url": "",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Likely MIG/TIG welding capacity on base frames at Urbana: Rittal's board lists Welder - 1st, 2nd and 3rd Shift roles there, with JobTarget copies listed Nov 14, 2025, June 5, 2026 and June 6, 2026.",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred guess worded 'Likely'/'Possibly'; each clause on a stated row of this plant with its date."
+  },
+  {
+   "claim_id": "p-crusoe-arvada-co:weld_processes",
+   "source_url": "https://jobs.ashbyhq.com/Crusoe/5f36fd00-133e-4df2-98b7-49aba8f84a16",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "MIG and TIG (Arvada Welder posting); spot welding listed as preferred",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; listed today in Crusoe's Ashby posting API under Arvada, CO; quote and value on the page."
+  },
+  {
+   "claim_id": "p-crusoe-arvada-co:materials",
+   "source_url": "https://jobs.ashbyhq.com/Crusoe/5f36fd00-133e-4df2-98b7-49aba8f84a16",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "steel, aluminum and stainless steel components; familiarity with stainless and mild steel required (Arvada Welder)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; listed today in Crusoe's Ashby posting API under Arvada, CO; quote and value on the page."
+  },
+  {
+   "claim_id": "p-crusoe-arvada-co:products",
+   "source_url": "https://jobs.ashbyhq.com/Crusoe/4fb2d1b1-8fe6-40b1-b399-49e5d89b1abc",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "inspection of products from small metal-only enclosures to industrialized modular buildings (Arvada Mechanical Quality Inspector)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; listed today in Crusoe's Ashby posting API under Arvada, CO; quote and value on the page."
+  },
+  {
+   "claim_id": "p-crusoe-arvada-co:production_type",
+   "source_url": "https://www.crusoe.ai/manufacturing",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "company-level (Arvada and Tulsa): pre-fabricated components customizable for each delivery",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-crusoe-arvada-co:certifications",
+   "source_url": "https://jobs.ashbyhq.com/Crusoe/e0165fad-5bc6-4453-bf9e-50497f15cb9b",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "D1.1 structural certification required of the Arvada Fabrication Lead (personnel certification; plant certification not stated)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; listed today in Crusoe's Ashby posting API under Arvada, CO; quote and value on the page."
+  },
+  {
+   "claim_id": "p-crusoe-arvada-co:existing_robots",
+   "source_url": "https://jobs.ashbyhq.com/Crusoe/5f36fd00-133e-4df2-98b7-49aba8f84a16",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "unknown: no welding robot stated; the Arvada Welder posting lists experience with automated welding equipment as a bonus point",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; listed today in Crusoe's Ashby posting API under Arvada, CO; quote and value on the page."
+  },
+  {
+   "claim_id": "p-crusoe-arvada-co:welder_postings",
+   "source_url": "https://jobs.ashbyhq.com/Crusoe/5f36fd00-133e-4df2-98b7-49aba8f84a16",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder, Arvada, CO, listed 2026-09-16 on Crusoe's own Ashby board; MIG and TIG; day shift Mon-Thu; read 2026-11-19",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; listed today in Crusoe's Ashby posting API under Arvada, CO; quote and value on the page."
+  },
+  {
+   "claim_id": "p-crusoe-arvada-co:welder_postings",
+   "source_url": "https://jobs.ashbyhq.com/Crusoe/e0165fad-5bc6-4453-bf9e-50497f15cb9b",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Fabrication Lead, Arvada, CO, listed 2026-11-18: counted as a working lead (personally works on project tasks)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Confirmed on the page (Ashby API 2026-11-19: live, Arvada, publishedAt 2026-11-18): 'You will serve as a hands-on leader, required to personally work on project tasks while prioritizing your management responsibilities' and 'act as a resource to backfill weld/fabrication team members when necessary'; D1.1 required. Whether it is counted is a RULING (see score_notes): the same text also says 'take charge of the daily coordination', 'prioritizing your management responsibilities' and asks for prior management experience."
+  },
+  {
+   "claim_id": "p-crusoe-arvada-co:triggers",
+   "source_url": "https://www.bisnow.com/news/denver/data-center/200m-data-center-factory-coming-to-brighton-133672",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "none at Arvada within 24 months found; Crusoe's $200M factory (2026) is in Brighton, CO, a different city (campus rule not met)",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-crusoe-arvada-co:opening_line",
+   "source_url": "",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Crusoe's board lists a Fabrication Lead role in Arvada, listed Nov 18, 2026, that requires a D1.1 structural certification, and a Welder role there, listed Sept 16, 2026, to MIG and TIG weld steel, aluminum and stainless steel components; how do you split steel and aluminum work across your weld team?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Composed line; every clause matched to a stated row of this plant with its date; newest fact first, no pitch, ends with a second-person question."
+  },
+  {
+   "claim_id": "p-crusoe-arvada-co:bottleneck_guess",
+   "source_url": "",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Possibly weld and fabrication team coverage at Arvada: Crusoe's board lists a Fabrication Lead role there, listed Nov 18, 2026, that personally works on project tasks, alongside a Welder role listed Sept 16, 2026.",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred guess worded 'Likely'/'Possibly'; each clause on a stated row of this plant with its date."
+  },
+  {
+   "claim_id": "p-vertiv-anderson-sc:weld_processes",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2220286607%22",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "MIG and TIG: Tig Welder - 1st Shift (Anderson) performs MIG and/or TIG welding; TIG certification or 5+ years TIG required",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "MIG and TIG: Tig Welder - 1st Shift (Anderson) performs MIG and/or TIG welding; welding certification or 5+ years of relevant TIG welding experience required",
+   "corrected_quote": "Perform MIG and/or TIG welding along adjoining edges of workpieces using appropriate welding equipment and techniques. ... Welding Certification or 5+ Years Relevant Tig Welding Experience",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The value says 'TIG certification or 5+ years TIG required'; the page (re-read via Oracle REST 2026-11-19) says 'Welding Certification or 5+ Years Relevant Tig Welding Experience' - the certification is not TIG-specific. Process 12 unchanged."
+  },
+  {
+   "claim_id": "p-vertiv-anderson-sc:materials",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2220286607%22",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "aluminum parts and/or frames (Tig Welder - 1st Shift); steel welding not shown at the site",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 via Vertiv's Oracle REST endpoint; requisition is listed today in the board's keyword search under the same city; quote and value on the page."
+  },
+  {
+   "claim_id": "p-vertiv-anderson-sc:production_type",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2220283144%22",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "engineered-to-order: custom busbar assemblies and tap-off boxes for data centers; new ETO solutions (Anderson Mechanical Engineer, listed 2026-11-18)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 via Vertiv's Oracle REST endpoint; requisition is listed today in the board's keyword search under the same city; quote and value on the page."
+  },
+  {
+   "claim_id": "p-vertiv-anderson-sc:products",
+   "source_url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/vertiv-expands-north-american-production-capacity-with-new-infrastructure-solutions-manufacturing-facility/?Advocacy-Region=na",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "switchgear and busbar manufacturing facility in Anderson (Vertiv, 2024-09-24)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-vertiv-anderson-sc:welder_postings",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2220286607%22",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Tig Welder - 1st Shift (req 20286607), Anderson, SC, listed 2026-11-13 on Vertiv's own Oracle board (site CX_1), read 2026-11-19",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 via Vertiv's Oracle REST endpoint; requisition is listed today in the board's keyword search under the same city; quote and value on the page."
+  },
+  {
+   "claim_id": "p-vertiv-anderson-sc:welder_postings",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2220282492%22",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Team Coordinator - Welding (Weekend) (req 20282492), Anderson, SC, listed 2026-09-21: listed, not counted (assists the supervisor)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Confirmed: live on Vertiv's Oracle board (weld keyword search 2026-11-19), ExternalPostedStartDate 2026-09-21, Anderson. 'Not counted' is a RULING (score_notes): the page also says 'Learns all positions and fills in as needed' and 'filling in positions as needed', which reads close to the Crusoe Fabrication Lead the same profiler counted."
+  },
+  {
+   "claim_id": "p-vertiv-anderson-sc:site_attribution",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2220282492%22",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "postings name only Anderson, SC; OSHA 2025 and EPA ECHO each list one Vertiv/E&I establishment in Anderson (400 Supreme Industrial Dr); the Team Coordinator text mentions 'the Anderson facilities' (no second address found)",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row, correctly tagged. Quote on the page ('...may be used in other departments for the Anderson facilities.'). OSHA 2025 has one Anderson establishment (ID 3124995) and ECHO's SC searches (VERTIV, E&I) return one Anderson record; one web search found no second Anderson street address. The plural 'facilities' and the Anderson Observer's county-wide 'cluster of new manufacturing facilities' leave the tie inferred, as written."
+  },
+  {
+   "claim_id": "p-vertiv-anderson-sc:triggers",
+   "source_url": "https://www.andersonobserver.com/news/vertiv-to-create-another-800-jobs-in-anderson-county",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "no plant-level event dated within 24 months: the Anderson Observer reported 2026-03-25 a cluster of new Vertiv facilities in Anderson County (560,000 sq ft, up to 800 jobs) without naming sites",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-vertiv-anderson-sc:opening_line",
+   "source_url": "",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Vertiv's board lists a Mechanical Engineer role in Anderson, listed Nov 18, 2026, to design custom busbar assemblies and new engineered-to-order solutions, and a Tig Welder - 1st Shift role there, listed Nov 13, 2026, for assembling and welding aluminum parts and/or frames; how do you plan welding for engineered-to-order busbar work?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Composed line; every clause matched to a stated row of this plant with its date; newest fact first, no pitch, ends with a second-person question."
+  },
+  {
+   "claim_id": "p-vertiv-anderson-sc:bottleneck_guess",
+   "source_url": "",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Possibly TIG welding capacity on aluminum parts and frames at Anderson: Vertiv's board lists a Tig Welder - 1st Shift role there, listed Nov 13, 2026.",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred guess worded 'Likely'/'Possibly'; each clause on a stated row of this plant with its date."
+  },
+  {
+   "claim_id": "p-vertiv-ironton-oh:weld_processes",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2220283495%22",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "TIG required (must pass a TIG weld test); MIG or TIG named in duties (TIG Welder (Solar/Luna), Ironton)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 via Vertiv's Oracle REST endpoint; requisition is listed today in the board's keyword search under the same city; quote and value on the page."
+  },
+  {
+   "claim_id": "p-vertiv-ironton-oh:production_type",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2220282512%22",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "product line: liquid cooling distribution solutions (Mechanical Engineering Supervisor – Liquid Cooling, Ironton, listed 2026-11-11: custom and NPDI projects); production mix not stated",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 via Vertiv's Oracle REST endpoint; requisition is listed today in the board's keyword search under the same city; quote and value on the page."
+  },
+  {
+   "claim_id": "p-vertiv-ironton-oh:welder_postings",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2220283495%22",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "TIG Welder (Solar/Luna) (req 20283495), Ironton, OH, listed 2026-10-05 on Vertiv's own Oracle board (site CX_1), read 2026-11-19; assembles and welds parts and/or frames; WIN shift pattern",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 via Vertiv's Oracle REST endpoint; requisition is listed today in the board's keyword search under the same city; quote and value on the page."
+  },
+  {
+   "claim_id": "p-vertiv-ironton-oh:opening_line",
+   "source_url": "",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Vertiv's board lists a Mechanical Engineering Supervisor – Liquid Cooling role in Ironton, listed Nov 11, 2026, for custom and NPDI projects, and a TIG Welder (Solar/Luna) role there, listed Oct 5, 2026, to assemble and weld parts and/or frames; how do you staff TIG welding on the WIN shift pattern?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Composed line; every clause matched to a stated row of this plant with its date; newest fact first, no pitch, ends with a second-person question."
+  },
+  {
+   "claim_id": "p-vertiv-ironton-oh:bottleneck_guess",
+   "source_url": "",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Possibly TIG welder staffing at Ironton: Vertiv's board lists a TIG Welder (Solar/Luna) role there, listed Oct 5, 2026, that requires passing a TIG weld test.",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred guess worded 'Likely'/'Possibly'; each clause on a stated row of this plant with its date."
+  },
+  {
+   "claim_id": "p-vertiv-pelzer-sc:weld_processes",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2220277051%22",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "MIG, flux-core (FCAW) and stick: Welder Level 4 (structural welder), Pelzer",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 via Vertiv's Oracle REST endpoint; requisition is listed today in the board's keyword search under the same city; quote and value on the page."
+  },
+  {
+   "claim_id": "p-vertiv-pelzer-sc:materials",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2220277051%22",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "structural steel components for modular and prefabricated building projects (Welder Level 4, Pelzer)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 via Vertiv's Oracle REST endpoint; requisition is listed today in the board's keyword search under the same city; quote and value on the page."
+  },
+  {
+   "claim_id": "p-vertiv-pelzer-sc:production_type",
+   "source_url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/vertiv-expands-north-american-production-capacity-with-new-infrastructure-solutions-manufacturing-facility/?Advocacy-Region=na",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "product list at announcement (2024-09-24): integrated modular solutions, modular power systems and other integrated systems; prefabricated and pre-engineered",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-vertiv-pelzer-sc:welder_postings",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2220277051%22",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder Level 4 (req 20277051), Pelzer, SC, listed 2026-07-16 on Vertiv's own Oracle board (site CX_1), read 2026-11-19; temp-to-hire, first shift, interview and weld test",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 via Vertiv's Oracle REST endpoint; requisition is listed today in the board's keyword search under the same city; quote and value on the page."
+  },
+  {
+   "claim_id": "p-vertiv-pelzer-sc:welder_postings",
+   "source_url": "https://jobs.factoryfix.com/jobs/welder-level-4--pelzer--sc--3573613764--V3",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "FactoryFix copy of Welder Level 4, datePosted 2026-11-13 (aggregator re-stamp of the same requisition; not counted separately)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-vertiv-pelzer-sc:site_attribution",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2220270526%22",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "campus reading: Vertiv's board names 'Pelzer Sites', P1 and P2; EPA ECHO lists Vertiv at 170 Pelzer Point Rd (34.675061, -82.53156) and a construction-stormwater site 'Vertiv Improvements - Easley Highway' at 1810 Easley Highway, Piedmont (34.6766289, -82.538685), about 0.8 km apart; read as one Pelzer campus",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row, correctly tagged. Quote on the page (EHS Technician - P2 - Weekend Shift, live). Board titles 'Pelzer Sites', 'P1', 'P2' confirmed on the Pelzer keyword search today. Distance: 0.67 km between the ECHO points as quoted (34.675061,-82.53156 vs 34.6766289,-82.538685), 0.82 km to ECHO's second point for 1810 Easley Hwy (34.67667,-82.54027): within ~1 km either way. Note for the 'same production' limb: the counted Welder Level 4 ShortDescriptionStr says 'Vertiv is a leading modular construction company manufacturing volumetric steel modules and shipping containers as permanent structures in the commercial, healthcare, hospitality, and industrial space' - boilerplate apparently carried from another firm's ad, not a statement about either Pelzer building."
+  },
+  {
+   "claim_id": "p-vertiv-pelzer-sc:triggers",
+   "source_url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/vertiv-expands-north-american-production-capacity-with-new-infrastructure-solutions-manufacturing-facility/?Advocacy-Region=na",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "no plant-level event within 24 months: the Pelzer facility was announced 2024-09-24 (before 2024-11-19); the Anderson Observer reported 2026-03-25 a cluster of new Vertiv facilities in Anderson County without naming sites",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-vertiv-pelzer-sc:opening_line",
+   "source_url": "",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Vertiv's board lists a Welder Level 4 role in Pelzer, listed July 16, 2026, for MIG, flux core and stick welding on structural steel components for modular and prefabricated building projects, and Vertiv announced on Sept 24, 2024 that the Pelzer facility would produce integrated modular solutions and modular power systems; how do you plan structural welding for those modules?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Composed line; every clause matched to a stated row of this plant with its date; newest fact first, no pitch, ends with a second-person question."
+  },
+  {
+   "claim_id": "p-vertiv-pelzer-sc:bottleneck_guess",
+   "source_url": "",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Possibly structural steel welding staffing at Pelzer: Vertiv's board lists a Welder Level 4 role there, listed July 16, 2026, as a temp-to-hire first-shift role with a weld test.",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred guess worded 'Likely'/'Possibly'; each clause on a stated row of this plant with its date."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/399995",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder - 2nd Shift (399995), Simi Valley Plant, 4175 Guardian Street, listed 2026-11-17",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/399950",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder - 2nd Shift (399950), Simi Valley Plant, 4175 Guardian Street, listed 2026-11-17",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/399908",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder - 2nd Shift (399908), Simi Valley Plant, 4175 Guardian Street, listed 2026-11-17",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/399871",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder - 2nd Shift (399871), Simi Valley Plant, 4175 Guardian Street, listed 2026-11-17",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/399838",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder - 2nd Shift (399838), Simi Valley Plant, 4175 Guardian Street, listed 2026-11-17",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/399809",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder - 2nd Shift (399809), Simi Valley Plant, 4175 Guardian Street, listed 2026-11-17",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/399714",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder 1 (399714), Simi Valley Plant, 4175 Guardian Street, listed 2026-11-17",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/399696",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder 1 (399696), Simi Valley Plant, 4175 Guardian Street, listed 2026-11-17",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/399673",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder 1 (399673), Simi Valley Plant, 4175 Guardian Street, listed 2026-11-17",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/399659",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder 1 (399659), Simi Valley Plant, 4175 Guardian Street, listed 2026-11-17",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/399653",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder 1 (399653), Simi Valley Plant, 4175 Guardian Street, listed 2026-11-17",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:weld_processes",
+   "source_url": "https://aaon.wd108.myworkdayjobs.com/en-US/AAON/job/Redmond-OR/Welder-I--MIG_JR102783",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "MIG (GMAW): Welder I- MIG requisition at the Redmond Facility",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (JSON-LD datePosted/addressLocality); listed today in AAON's Workday CXS search (searchText 'weld'); quote and value on the page."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:welder_postings",
+   "source_url": "https://aaon.wd108.myworkdayjobs.com/en-US/AAON/job/Redmond-OR/Welder-I---MIG---B-Shift-2_JR102784",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder I - MIG - B-Shift-2 (JR102784), Redmond Facility, listed 2026-09-14",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (JSON-LD datePosted/addressLocality); listed today in AAON's Workday CXS search (searchText 'weld'); quote and value on the page."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:welder_postings",
+   "source_url": "https://aaon.wd108.myworkdayjobs.com/en-US/AAON/job/Redmond-OR/Welder-I---MIG---C-Shift--Fri-Sun-5AM---5PM_JR103592",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder I - MIG - C-Shift (Fri-Sun 5AM - 5PM (JR103592), Redmond Facility, listed 2026-09-14",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (JSON-LD datePosted/addressLocality); listed today in AAON's Workday CXS search (searchText 'weld'); quote and value on the page."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:welder_postings",
+   "source_url": "https://aaon.wd108.myworkdayjobs.com/en-US/AAON/job/Redmond-OR/Welder---Redmond--OR_JR103604",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "Welder - Redmond, OR (JR103604), Redmond Facility, listed 2026-09-15",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (JSON-LD datePosted/addressLocality); listed today in AAON's Workday CXS search (searchText 'weld'); quote and value on the page."
+  },
+  {
+   "claim_id": "p-vertiv-anderson-sc:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110070261146",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "ECHO: E&I Engineering USA Corp, 400 Supreme Industrial Dr, Anderson (the only Vertiv/E&I record in Anderson in ECHO's SC search)",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "ECHO: E&I Engineering USA Corp, 400 Supreme Industrial Dr, Anderson",
+   "corrected_quote": "\"FacilityName\":\"E&I ENGINEERING USA CORP\" ... \"FacilityStreet\":\"400 SUPREME INDUSTRIAL DR\"",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The clause '(the only Vertiv/E&I record in Anderson in ECHO's SC search)' is not on the cited DFR page (a single-facility report). It is a search result, true on a re-run today (ECHO get_facilities p_st=SC p_fn=VERTIV: 3 rows, Anderson only 400 Supreme Industrial Dr; p_fn=E&I: same single Anderson record), but it belongs in the inferred p-vertiv-anderson-sc:site_attribution row, not in a stated address row."
+  },
+  {
+   "claim_id": "p-vertiv-pelzer-sc:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110072186682",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "170 Pelzer Point Road, Pelzer, SC 29669 (ECHO: Vertiv - Pelzer Point Commerce Center; FRS point 34.675061, -82.53156)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (JSON); every field in the value is in the response."
+  },
+  {
+   "claim_id": "p-vertiv-pelzer-sc:site_tie",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110072163023",
+   "origin": "ledger/inbox/datacenter-profiler-B.json",
+   "ledger_value": "ECHO: Vertiv Improvements - Easley Highway, 1810 Easley Highway, Piedmont (construction stormwater permit to 03/16/2031; NPDES point 34.6766289, -82.538685)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (JSON); every field in the value is in the response."
+  },
+  {
+   "claim_id": "p-vertiv-pelzer-sc:name",
+   "source_url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/vertiv-expands-north-american-production-capacity-with-new-infrastructure-solutions-manufacturing-facility/?Advocacy-Region=na",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "Vertiv Pelzer",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-vertiv-pelzer-sc:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "170 Pelzer Point Road, Pelzer, SC 29669",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-vertiv-pelzer-sc:parent_company",
+   "source_url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/vertiv-expands-north-american-production-capacity-with-new-infrastructure-solutions-manufacturing-facility/?Advocacy-Region=na",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "Vertiv Holdings Co",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Vertiv (NYSE: VRT)",
+   "corrected_quote": "(NYSE: VRT), a global provider of critical digital infrastructure and continuity solutions, today announced a major expansion of its North American manufacturing operations with a new facility in Pelzer, South Carolina.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The legal name 'Vertiv Holdings Co' is not on the release (grep for 'Holdings' finds nothing); the page names 'Vertiv (NYSE: VRT)'. Legal-suffix/legal-name precedent (poles round 4). Cite an SEC filing if the holding-company name is wanted.",
+   "plants_csv_value": "Vertiv (NYSE: VRT)"
+  },
+  {
+   "claim_id": "p-vertiv-pelzer-sc:products",
+   "source_url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/vertiv-expands-north-american-production-capacity-with-new-infrastructure-solutions-manufacturing-facility/?Advocacy-Region=na",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "integrated modular solutions, modular power systems",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-vertiv-pelzer-sc:relationship",
+   "source_url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/vertiv-expands-north-american-production-capacity-with-new-infrastructure-solutions-manufacturing-facility/?Advocacy-Region=na",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-vertiv-pelzer-sc:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "195 (OSHA 300A, 2025 annual average)",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-crusoe-arvada-co:name",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "Crusoe (Arvada)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-crusoe-arvada-co:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "6692 Fig Street, Arvada, CO 80004",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-crusoe-arvada-co:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=EASTER%20OWENS&state_abbr=CO&output=JSON",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "campus: Easter-Owens Electric at 6522 Fig St",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (JSON); every field in the value is in the response."
+  },
+  {
+   "claim_id": "p-crusoe-arvada-co:parent_company",
+   "source_url": "https://www.bisnow.com/news/denver/data-center/200m-data-center-factory-coming-to-brighton-133672",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "Crusoe",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-crusoe-arvada-co:products",
+   "source_url": "https://www.crusoe.ai/manufacturing",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "Crusoe Spark prefabricated modular AI factory",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "company-level: Crusoe Spark prefabricated modular AI factory (Crusoe builds data center systems at Arvada and Tulsa; Spark not tied to Arvada on this page)",
+   "corrected_quote": "Deploy a turnkey prefabricated modular AI factory anywhere. ... We design, build, and assemble our data center systems in-house, at our facilities in Arvada, CO and Tulsa, OK.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Company-level product tagged stated at the plant: the page names two build sites (Arvada and Tulsa) and does not say where Spark is built; Bisnow (2026-03-16) says the new Brighton facility 'will manufacture ... the Crusoe Spark'. Site-level Arvada products are shown by the inbox Mechanical Quality Inspector row ('small metal-only enclosures to industrialized modular buildings')."
+  },
+  {
+   "claim_id": "p-crusoe-arvada-co:relationship",
+   "source_url": "https://www.crusoe.ai/manufacturing",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-crusoe-arvada-co:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "148 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-vertiv-pelzer-sc:products",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2220277051%22",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "site fabricates steel components for modular and prefabricated building projects",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 via Vertiv's Oracle REST endpoint; requisition is listed today in the board's keyword search under the same city; quote and value on the page."
+  },
+  {
+   "claim_id": "p-vertiv-ironton-oh:name",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "NA Mfg Ironton (Vertiv Corporation)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-vertiv-ironton-oh:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "3040 S 9th St, Ironton, OH 45638",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-vertiv-ironton-oh:parent_company",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2220283495%22",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "Vertiv",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 via Vertiv's Oracle REST endpoint; requisition is listed today in the board's keyword search under the same city; quote and value on the page."
+  },
+  {
+   "claim_id": "p-vertiv-ironton-oh:products",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "thermal-equipment plant (OSHA industry code 333415)",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-vertiv-ironton-oh:products",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2220282512%22",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "liquid-cooling engineering at Ironton",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 via Vertiv's Oracle REST endpoint; requisition is listed today in the board's keyword search under the same city; quote and value on the page."
+  },
+  {
+   "claim_id": "p-vertiv-ironton-oh:products",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2220283495%22",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "site welds parts and/or frames",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 via Vertiv's Oracle REST endpoint; requisition is listed today in the board's keyword search under the same city; quote and value on the page."
+  },
+  {
+   "claim_id": "p-vertiv-ironton-oh:relationship",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-vertiv-ironton-oh:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "503 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-vertiv-anderson-sc:name",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "NA Mfg Anderson (EandI Engineering, Vertiv)",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "NA Mfg Anderson (EandI Engineering)",
+   "corrected_quote": "ID 3124995; establishment_name NA Mfg Anderson; company_name EandI Engineering; street_address 400 Supreme Industrial Drive; city Anderson; state SC; zip_code 29621",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "'Vertiv' is not in the OSHA record (company_name EandI Engineering); the name row adds an owner from another source. Same test applied to all nine name and parent_company rows."
+  },
+  {
+   "claim_id": "p-vertiv-anderson-sc:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "400 Supreme Industrial Drive, Anderson, SC 29621",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-vertiv-anderson-sc:parent_company",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2220286607%22",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "Vertiv (E+I Engineering)",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Vertiv",
+   "corrected_quote": "Vertiv is seeking a skilled and safety-focused Tig Welder/Fabricator to join our manufacturing team.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "'E+I Engineering' is not on the Tig Welder requisition (no E+I/E&I string; LegalEmployer null). The E&I link rests on the OSHA record (company_name EandI Engineering) and ECHO (E&I ENGINEERING USA CORP), neither of which names Vertiv; Vertiv's ownership of E&I needs its own row from a Vertiv source (a web search shows Vertiv bought E&I in Nov 2021; not usable as a quote).",
+   "plants_csv_value": "Vertiv (E&I Engineering per OSHA/ECHO records; ownership link needs its own row)"
+  },
+  {
+   "claim_id": "p-vertiv-anderson-sc:products",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "switchgear (OSHA industry code 335313)",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-vertiv-anderson-sc:products",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1,keyword=weld,limit=200",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "busway work at Anderson",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 via Vertiv's Oracle REST endpoint; requisition is listed today in the board's keyword search under the same city; quote and value on the page."
+  },
+  {
+   "claim_id": "p-vertiv-anderson-sc:products",
+   "source_url": "https://egup.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2220286607%22",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "site welds aluminum parts and/or frames",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 via Vertiv's Oracle REST endpoint; requisition is listed today in the board's keyword search under the same city; quote and value on the page."
+  },
+  {
+   "claim_id": "p-vertiv-anderson-sc:relationship",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-vertiv-anderson-sc:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "1141 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:name",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "BASX",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "3500 SW 21st Place, Redmond, OR 97756",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:parent_company",
+   "source_url": "https://www.aaon.com/news/basx-breaks-ground-on-a-new-weld-shop",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "AAON, Inc. (BASX)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:products",
+   "source_url": "https://www.basx.com/computer-room-air-handlers",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "CRAHs for data centers (company line)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:relationship",
+   "source_url": "https://www.aaon.com/news/basx-breaks-ground-on-a-new-weld-shop",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-basx-redmond-or:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "813 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-chatsworth-georgetown-tx:name",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "Chatsworth Products (CPI) - Georgetown Plant",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Chatsworth Products Company, Georgetown, TX (OSHA establishment name); board label Georgetown Plant needs its own Paycom row",
+   "corrected_quote": "ID 3131136; establishment_name Chatsworth Products Company, Georgetown, TX; company_name Chatsworth Products Company; street_address 3004 S. Austin Ave.; city Georgetown; state TX",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "'(CPI) - Georgetown Plant' is not in the OSHA record; 'Georgetown Plant - Georgetown, TX 78626' is on the Paycom pages (369530 etc.). Add a Paycom name row."
+  },
+  {
+   "claim_id": "p-chatsworth-georgetown-tx:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "3004 S. Austin Ave., Georgetown, TX 78626",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-chatsworth-georgetown-tx:parent_company",
+   "source_url": "https://www.chatsworth.com/en-us/about-cpi/careers/",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "Chatsworth Products, Inc.",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Chatsworth Products (CPI), employee-owned",
+   "corrected_quote": "Chatsworth Products (CPI), we build the racks",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Same as Simi Valley: 'Inc.' not on the careers page and the quote names no company."
+  },
+  {
+   "claim_id": "p-chatsworth-georgetown-tx:products",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/369530",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "welds metal cabinets",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-georgetown-tx:products",
+   "source_url": "https://www.chatsworth.com/en-us/about-cpi/careers/",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "data-center storage and cable pathway (company line)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-chatsworth-georgetown-tx:relationship",
+   "source_url": "https://www.chatsworth.com/en-us/about-cpi/careers/",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-chatsworth-georgetown-tx:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "243 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:name",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "Chatsworth Products (CPI) - Simi Valley Plant",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Chatsworth Products Co, CA (OSHA establishment name); board label Simi Valley Plant needs its own Paycom row",
+   "corrected_quote": "ID 3131299; establishment_name Chatsworth Products Co, CA; company_name Chatsworth Products Co,; street_address 4175 Guardian St; city Simi Valley; state CA",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "'(CPI) - Simi Valley Plant' is not in the OSHA record; it is the Paycom board label ('Simi Valley Plant - SImi Valley, CA 93063', jobs/399735). Add a stated name row on the Paycom page, as New Bern has (row 'New Bern Plant')."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "4175 Guardian Street, Simi Valley, CA 93063",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:parent_company",
+   "source_url": "https://www.chatsworth.com/en-us/about-cpi/careers/",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "Chatsworth Products, Inc.",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Chatsworth Products (CPI), employee-owned",
+   "corrected_quote": "Chatsworth Products (CPI), we build the racks",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The legal suffix 'Inc.' is not on the CPI careers page (it names 'Chatsworth Products' and 'Employee-Owned Company'); the quoted sentence names no company at all. 'CHATSWORTH PRODUCTS INC' is in the Paycom JSON-LD hiringOrganization, which the New Bern row cites."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:products",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/399735",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "welds metal cabinets; MIG welding required",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:products",
+   "source_url": "https://www.chatsworth.com/en-us/about-cpi/careers/",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "data-center storage and cable pathway (company line)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:relationship",
+   "source_url": "https://www.chatsworth.com/en-us/about-cpi/careers/",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-chatsworth-simi-valley-ca:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "174 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-rittal-urbana-oh:name",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "Rittal - Urbana campus (Rittal North America LLC)",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Rittal North America LLC (Rittal), Urbana",
+   "corrected_quote": "ID 3016418; establishment_name Rittal North America LLC; company_name Rittal; street_address 1 Rittal Place; city Urbana; state OH; zip_code 43078",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "'Urbana campus' is not in the OSHA record (same test as the CPI 'Plant' labels). The 2021 Rittal story calls it 'Rittal's Urbana campus'; cite that page in its own name row if the label is wanted."
+  },
+  {
+   "claim_id": "p-rittal-urbana-oh:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "1 Rittal Place, Urbana, OH 43078",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-rittal-urbana-oh:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "686 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-rittal-urbana-oh:parent_company",
+   "source_url": "https://www.jobtarget.com/jobs/jt-ckdcp246u3/welder-1st-shift-urbana-ohio",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "Friedhelm Loh Group",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19: 'Posted on' date and Urbana location on the page; written as an aggregator 'listed' date, no age claimed."
+  },
+  {
+   "claim_id": "p-rittal-urbana-oh:products",
+   "source_url": "https://www.rittal.com/us-en_US/Company/Rittal-Stories/Rittals-Urbana-Campus-a-Pillar-of-US-Production",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "IT server racks (TS IT Pro) and enclosures made at Urbana",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-rittal-urbana-oh:products",
+   "source_url": "https://www.jobtarget.com/jobs/jt-ckdcp246u3/welder-1st-shift-urbana-ohio",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "MIG welding of base frames at Urbana",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19: 'Posted on' date and Urbana location on the page; written as an aggregator 'listed' date, no age claimed."
+  },
+  {
+   "claim_id": "p-rittal-urbana-oh:relationship",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-chatsworth-new-bern-nc:name",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "Chatsworth Products (CPI) - New Bern Plant",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Chatsworth Products Company, New Bern, NC (OSHA establishment name)",
+   "corrected_quote": "ID 3244332; establishment_name Chatsworth Products Company, New Bern, NC; company_name Chatsworth Products Company; street_address 701 Industrial Dr.; city New Bern; zip_code 28562",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "'(CPI) - New Bern Plant' is not in the OSHA record; 'New Bern Plant' is already carried by the separate Paycom name row (confirmed), so the plants.csv name stands on the two rows together."
+  },
+  {
+   "claim_id": "p-chatsworth-new-bern-nc:name",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/394641",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "New Bern Plant",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-new-bern-nc:parent_company",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/394641",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "Chatsworth Products, Inc. (employee-owned)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-new-bern-nc:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "701 Industrial Dr, New Bern, NC 28562",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  },
+  {
+   "claim_id": "p-chatsworth-new-bern-nc:products",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/A0EC44FF0B0DFB12FBD46DE2D6CD7840/jobs/394641",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "welds metal cabinets (site); welds sheet metal",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19 (browser render plus raw JSON-LD; renders that showed 'We Couldn't Find This Job' were re-fetched and loaded); requisition is listed today in CPI's Paycom job-map API under the same plant; quote and value on the page."
+  },
+  {
+   "claim_id": "p-chatsworth-new-bern-nc:products",
+   "source_url": "https://www.chatsworth.com/en-us/about-cpi/careers/",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "data-center storage and cable pathway (company line)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-chatsworth-new-bern-nc:relationship",
+   "source_url": "https://www.chatsworth.com/en-us/about-cpi/careers/",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-19; quote on the page and the value adds nothing the page does not carry."
+  },
+  {
+   "claim_id": "p-chatsworth-new-bern-nc:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "origin": "ledger/evidence.csv",
+   "ledger_value": "205 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Matched to the record in data/osha_2025.csv (osha.gov blocked): ID, street number and name, ZIP and operating name agree; value carries nothing beyond the record."
+  }
+ ]
+}

@@ -94,8 +94,9 @@ for p in plants:
     cited_m |= {f"{pid}:part_size_fit", f"{pid}:materials"}
     path_stmt = line_at_plant and any("path-robotics.com" in (r["source_url"] or "").lower()
                     for c in cited_m for r in by_claim.get(c, []))
-    # 4 = aluminum-first or thin sheet (battery vertical, 2026-11-17: a stated gauge such as "14ga" counts as thin sheet)
-    alum = any(r["quote"] and r["tag"] != "unknown" and re.search(r"alumin|thin[- ]sheet|\b1[0-9] ?(ga|gauge|gage)\b|\b1[0-9]ga\b", (r["value"] or "") + (r["quote"] or ""), re.I)
+    # 4 = aluminum-first or thin sheet (battery vertical, 2026-11-17: a stated gauge such as "14ga" counts as thin sheet;
+    # data-center 2026-11-19: a stated "sheet metal" part or weldment counts as thin sheet)
+    alum = any(r["quote"] and r["tag"] != "unknown" and re.search(r"alumin|thin[- ]sheet|sheet[- ]metal|\b1[0-9] ?(ga|gauge|gage)\b|\b1[0-9]ga\b", (r["value"] or "") + (r["quote"] or ""), re.I)
                for c in ("materials", "part_size_fit") for r in by_claim.get(f"{pid}:{c}", []))
     if sc["material_part"] in (20, 12) and not (has_dim or path_stmt):
         sc["material_part"] = 0
