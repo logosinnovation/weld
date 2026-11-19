@@ -41,7 +41,7 @@ async function run(label, ctxOpts, full) {
   check(pc.includes('done') && pc.includes(String(polesProfiled)) && !/29\.4%|7\.3%/.test(pc), `${label}: poles card (done, ${polesProfiled} profiled, no ships figures)`);
   check(sc.includes('done') && sc.includes(String(shipsProfiled)) && !/13\.8%|11\.8%|19\.4%/.test(sc), `${label}: ships card (done, ${shipsProfiled} profiled, no poles figures)`);
   check(/Latest audit summary \(ledger\/audit\/summary-v-poles-substation\.json\)/.test(pc) && /13\.8%/.test(pc), `${label}: poles card audit line`);
-  check(/Latest audit summary \(ledger\/audit\/summary-v-shipbuilding-naval\.json\)/.test(sc) && /29\.4%/.test(sc) && /7\.3%/.test(sc) && /6\.1%/.test(sc), `${label}: ships card audit line`);
+  check(/Latest audit summary \(ledger\/audit\/summary-v-shipbuilding-naval\.json\)/.test(sc) && /4\.8%/.test(sc) && /7\.3%/.test(sc) && /6\.1%/.test(sc), `${label}: ships card audit line`);
   const mc = await text('#vc-' + MV);
   check(/done/i.test(mc) && mc.includes(String(miningProfiled)) && /summary-v-mining-heavy-equipment\.json/.test(mc) && /16\.0%/.test(mc) && /11\.4%/.test(mc), `${label}: mining card (done, ${miningProfiled} profiled, miss 16.0%, round 1 11.4%)`);
   const bc = await text('#vc-' + BV);
@@ -165,7 +165,7 @@ async function run(label, ctxOpts, full) {
   check(P_.status === 'done' && S_.status === 'done', `${label}: summary files status done / done`);
   check(['11.8%', '19.4%', '8.2%', '8.9%', '13.8%', '4.5%'].every(x => ps.includes(x)) && ps.includes('done') && ps.includes(String(polesProfiled)), `${label}: poles section shows rounds 11.8/19.4/8.2/8.9, lines 4.5, miss 13.8, done, ${polesProfiled} profiled`);
   check(!/29\.4%|7\.3%|Electric Boat|v-shipbuilding/.test(ps), `${label}: poles section has no ships figures`);
-  check(ss.includes('7.3%') && ss.includes('29.4%') && ss.includes('6.1%') && ss.includes('done') && ss.includes(String(shipsProfiled)), `${label}: ships section shows round 1 7.3%, miss 29.4%, round 2 6.1%, done, ${shipsProfiled} profiled`);
+  check(ss.includes('7.3%') && ss.includes('4.8%') && ss.includes('29.4%') && ss.includes('6.1%') && ss.includes('6.2%') && ss.includes('done') && ss.includes(String(shipsProfiled)), `${label}: ships section shows round 1 7.3%, miss 4.8% (history 29.4%), round 2 6.1%, lines 6.2%, done, ${shipsProfiled} profiled`);
   check(!/11\.8%|19\.4%|8\.9%|13\.8%|fact-check-v-poles/.test(ss), `${label}: ships section has no poles figures or poles checker files`);
   check(/fact-check-v-shipbuilding-naval|-A|-B|-C/.test(ss) && /v-shipbuilding-naval-A|\bA\b/.test(ss), `${label}: ships per-checker detail present`);
   const shipsPerChecker = await p.locator('#audit-' + SV + ' table tbody tr').count();

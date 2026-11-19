@@ -27,7 +27,8 @@ def opt(name, many=False):
 LABELS_BY_VERT = {}
 LABELS_BY_VERT["v-shipbuilding-naval"] = {1: "Round 1: all 39 profiled plants (three checkers), after profiling",
                                           2: "Round 2: closure pass (new profiles, fill-ins and new base records)",
-                                          7: "Round 7: line check of all 51 profiled plants' lines after constrained rewriting (validator-gated), checkers who did not write them"}
+                                          7: "Round 7: line check of all 51 profiled plants' lines after constrained rewriting (validator-gated), checkers who did not write them",
+                                          9: "Base-record sample: 25 of 83 base records, seeded (reported separately; not a profile round)"}
 LABELS_BY_VERT["v-mining-heavy-equipment"] = {1: "Round 1: the 40 profiled plants (after the parallel list audit)",
                                               2: "Round 2: confirming round, all 47 profiled plants, checkers rotated (after the sweep)",
                                               3: "Round 3: the 21 profiles added in the last waves (profilers G, H, I and J)",
