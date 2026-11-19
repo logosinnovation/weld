@@ -319,6 +319,8 @@ footer strong{color:var(--text)}
 const D = JSON.parse(document.getElementById('data').textContent);
 const GEO = JSON.parse(document.getElementById('geo').textContent);
 const EV = D.ev, M = D.meta, C = M.counts;
+// restore the compacted evidence rows (build_map.py drops empty keys and interns source URLs)
+for (const rows of Object.values(EV)) for (const r of rows) { for (const k of ['v','t','q','st','d','a','r','by','vf']) if (r[k] === undefined) r[k] = ''; r.u = (typeof r.u === 'number') ? D.urls[r.u] : (r.u || ''); }
 const P = D.plants, V = D.verticals, LK = D.links, QC = D.qc || {};
 /* Ground rule 1: a value with no evidence row is omitted (shown as "not sourced").
    Exempt: identity and location (name, city, state, lat/lon used only to place dots), the record's status and vertical,

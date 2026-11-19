@@ -1,0 +1,130 @@
+{
+ "vertical": "v-datacenter-grid-prefab",
+ "status": "accepted",
+ "plants": {
+  "found": 212,
+  "included": 118,
+  "profiled": 42,
+  "excluded": 94,
+  "tiers": {
+   "Medium": 26,
+   "Low": 9,
+   "High": 7
+  },
+  "profiled_fact_checked": 42,
+  "material_unknown": 26
+ },
+ "links": 39,
+ "evidence_rows": 24821,
+ "fact_check_rounds": [
+  {
+   "round": 1,
+   "label": "Round 1: the 40 profiled top-ranked plants (one checker per profiler batch, on the unmerged profiler files)",
+   "checked": 765,
+   "corrected": 49,
+   "unreachable": 1,
+   "checkers": [
+    {
+     "file": "fact-check-v-datacenter-grid-prefab-A.json",
+     "checked": 140,
+     "corrected": 7,
+     "kinds": {
+      "quote does not support value": 6,
+      "wrong plant or location": 1
+     }
+    },
+    {
+     "file": "fact-check-v-datacenter-grid-prefab-B.json",
+     "checked": 177,
+     "corrected": 14,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 13,
+      "invented fact": 0,
+      "other": 1
+     }
+    },
+    {
+     "file": "fact-check-v-datacenter-grid-prefab-C.json",
+     "checked": 181,
+     "corrected": 7,
+     "kinds": {
+      "wrong plant or location": 4,
+      "quote does not support value": 3
+     }
+    },
+    {
+     "file": "fact-check-v-datacenter-grid-prefab-D.json",
+     "checked": 181,
+     "corrected": 17,
+     "kinds": {
+      "quote does not support value": 10,
+      "other": 4,
+      "wrong plant or location": 3
+     }
+    },
+    {
+     "file": "fact-check-v-datacenter-grid-prefab-E.json",
+     "checked": 86,
+     "corrected": 4,
+     "kinds": {
+      "other": 1,
+      "quote does not support value": 3
+     }
+    }
+   ],
+   "rate": 0.0641,
+   "display": "49 / 765 = 6.4%"
+  },
+  {
+   "round": 8,
+   "label": "Cross-vertical checks (state air permits, job-board dates, OSHA headcounts, profiles of OSHA top-40 entrants): rows for this vertical's plants",
+   "checked": 55,
+   "corrected": 0,
+   "unreachable": 0,
+   "checkers": [
+    {
+     "file": "fact-check-cross-R10-postings.json",
+     "checked": 5,
+     "corrected": 0,
+     "kinds": {}
+    },
+    {
+     "file": "fact-check-cross-R6-OSHA.json",
+     "checked": 7,
+     "corrected": 0,
+     "kinds": {}
+    },
+    {
+     "file": "fact-check-cross-R7-OSHA-MIXED.json",
+     "checked": 43,
+     "corrected": 0,
+     "kinds": {}
+    }
+   ],
+   "rate": 0.0,
+   "display": "0 / 55 = 0.0%"
+  }
+ ],
+ "miss_rate": {
+  "value": "5/35 = 14.3%",
+  "note": "R2 blind audit after closure 3: 5 verified misses / (30 included plants the auditors found + 5). Auditors: job postings (C) and project records, supplier awards and MBI lists (D); neither reached a dry point. Against the list before closure 3: 7/35 = 20.0%. Upper bound counting 5 company-level or city-less candidates as misses: 10/40 = 25.0%.",
+  "history": [
+   "58.7% (finder snapshot, R1 blind audit)",
+   "45.7% (R1 after closures 1-2 and miss verification)",
+   "14.3% (R2 blind audit after closure 3, 2026-11-19)"
+  ]
+ },
+ "known_limits": [
+  "Neither blind audit reached a dry point in either round; the R2 upper bound is 25.0%.",
+  "The large-switchgear rule first existed only in a verifier brief written after the R1 candidate names were known; rubric R1-R6 was written down (consultation 27) before closure 3 and the R2 audit.",
+  "Closure 3 screened 1,030 OSHA and sister-site rows; the 616 with no in-scope evidence are logged in ledger/audit/dc-closure3-screen-*.json rather than as excluded records, and about 63 switchgear rows could not be read (sites unreachable or nearly empty).",
+  "Sister sites of the largest parents (Eaton, Siemens, ABB, Schneider, Flex, Hubbell, Legrand, Mitsubishi) were mostly screened from the OSHA record alone.",
+  "Weld process scores 0 at the nVent sites and several switchgear plants because their postings say 'weld' without naming MIG or flux-core: unknown, not absent.",
+  "Several scores rest on city-only posting ties to the only registry record (nVent Houston, Vertiv Pelzer and Anderson, FTI Olathe, Vertiv Ironton, Crusoe Arvada, BASX Redmond): points kept, no confidence. Eaton Greenwood's five welder postings earn 0 because Eaton runs other buildings in the same ZIP.",
+  "Steel is not shown at some rack, cooling and switchgear plants (Vertiv Anderson's welding evidence is aluminum; Rittal Urbana and Vertiv Ironton do not state the metal)."
+ ]
+}

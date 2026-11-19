@@ -539,11 +539,23 @@ def main():
     dstats["addr_all"] = addr_stats(plants)
     for vid in vids:
         dstats["v"][vid]["addr_included"] = addr_stats([p for p in included if vid in re.split(r"\s*[;,|]\s*", p.get("verticals", ""))])
+    # size: the page must stay under the 16 MB artifact limit (2026-11-19). Evidence rows drop empty-string keys
+    # and source URLs are interned in a table; the page restores both right after parsing.
+    urls, uix = [], {}
+    for rows in ev.values():
+        for i, r in enumerate(rows):
+            u = r.get("u")
+            if u:
+                if u not in uix:
+                    uix[u] = len(urls)
+                    urls.append(u)
+                r["u"] = uix[u]
+            rows[i] = {k: v for k, v in r.items() if v != ""}
     data = {
         "derived": derived, "dstats": dstats,
         "meta": {"counts": counts, "dates": dates, "first": dates[0] if dates else "", "last": dates[-1] if dates else "",
                  "state_abbr": STATE_ABBR},
-        "verticals": verticals, "plants": plants, "links": links, "ev": ev,
+        "verticals": verticals, "plants": plants, "links": links, "ev": ev, "urls": urls,
         "audit": audit, "qc": qc,
         "posting_check": pcheck.get("summary", {}),
         "log": {"sections": secs, "bullets": bullets},

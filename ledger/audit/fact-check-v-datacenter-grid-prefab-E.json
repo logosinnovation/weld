@@ -1,0 +1,1393 @@
+{
+ "vertical": "v-datacenter-grid-prefab",
+ "checker": "fact-checker DC-FE (round 1, profiler E batch)",
+ "date": "2026-11-19",
+ "plants": 4,
+ "claims_checked": 86,
+ "claims_corrected": 4,
+ "claims_unreachable": 0,
+ "fact_error_rate": 4.7,
+ "rates": {
+  "all_rows": {
+   "checked": 86,
+   "corrected": 4
+  },
+  "inbox_rows": {
+   "checked": 63,
+   "corrected": 1
+  },
+  "ledger_rows": {
+   "checked": 23,
+   "corrected": 3
+  },
+  "lines": {
+   "checked": 8,
+   "corrected": 1
+  },
+  "score_rows_not_in_rate": {
+   "checked": 36,
+   "corrected": 2
+  }
+ },
+ "error_kind_counts": {
+  "other": 1,
+  "quote does not support value": 3
+ },
+ "repeated_kind_flag": "'quote does not support value' x3, one pattern: Powell base rows (plant-finder DC-A) that cite Global-Services-Overview-June-2026.pdf for labels the PDF does not carry ('Jacintoport' in the name; 'Powell Industries, Inc.' as parent). Sweep every ledger row citing that PDF: checker C confirmed the parent rows at p-powell-northlake-il and p-powell-north-canton-oh on the same PDF, which carries no 'Powell Industries, Inc.' (only 'Powell Canada Inc.' and 'Powell Industries Asia Pte. Ltd.'); the 10-K cover line is the fix.",
+ "method": "Every cited page re-read 2026-11-19: Powell's Oracle CX_1 board by requisition (expand=all) and the full findReqs list with work locations (231 reqs); FY2026 10-K, buy-american and integrated-package-solutions pages, Custom-Engineered-Modules.pdf, E-Houses-PCR-R.pdf and Global-Services-Overview-June-2026.pdf with tools/fetch_page.py --check; careers.se.com API (keywords=fabrication and weld, El Paso); se.com 2023 release and $140M release; gov.texas.gov March 10, 2025 release; EPA FRS (Powell, Schneider Plant 2) and ECHO (Schneider El Paso); WM news (Nov 19, 2026), celebrates and solutions pages; WM UKG opportunity JSON via curl of the page source; Census coordinates lookup; Valmont 10-Q for the demand outlook; data/osha_2025.csv (no record at 8550 Mosley, 16535 Jacintoport or 1190 Tradeplex). Scope counted: inbox rows in the named fields (stated, inferred, unknown-with-quote) incl. prospect_test, site_attribution and multi_plant rows and the 8 lines; ledger base rows the file does not replace (name, address, city, parent_company, products, triggers, relationship) and the company/vertical rows the score rows cite. Score rows are checked in score_rows and score_notes but kept out of the fact rate (as checker D did); status, website, tier, found_by, coordinates and quote-less unknown rows not counted (WM lat/lon/county re-checked and right). 0 web searches.",
+ "rows": [
+  {
+   "claim_id": "p-powell-houston-tx-3:welder_postings",
+   "source_url": "https://ekcf.fa.us6.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;Id=%227906%22,siteNumber=CX_1",
+   "ledger_value": "Welder (7906), work location Houston TX Mosley (EDH), 8550 Mosley Road, listed 2026-10-01 on Powell's own Oracle board; schedule Monday-Thursday 4:00am-2:30pm, OT as needed",
+   "tag": "stated",
+   "row_ref": "inbox[0]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "Oracle CX_1 requisition 7906 re-read (expand=all): Title Welder, ExternalPostedStartDate 2026-10-01T16:48:42, workLocation 'Houston TX Mosley (EDH)' 8550 Mosley Road, schedule line on the page; live today in findReqs (231 reqs)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:welder_postings",
+   "source_url": "https://ekcf.fa.us6.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;Id=%227810%22,siteNumber=CX_1",
+   "ledger_value": "Senior Welder (7810), work location 8550 Mosley Road, listed 2026-09-16; schedule Monday-Thursday 5:00am-3:30pm, OT as needed",
+   "tag": "stated",
+   "row_ref": "inbox[1]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "Requisition 7810 re-read: Senior Welder, posted 2026-09-16T16:19:19, 8550 Mosley Road, schedule 5:00am-3:30pm on the page; live in findReqs."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:welder_postings",
+   "source_url": "https://ekcf.fa.us6.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;Id=%227624%22,siteNumber=CX_1",
+   "ledger_value": "Welder (7624), work location 8550 Mosley Road, listed 2026-08-12",
+   "tag": "stated",
+   "row_ref": "inbox[2]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "Requisition 7624 re-read: Welder, posted 2026-08-12T14:21:11, 8550 Mosley Road; live in findReqs."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:welder_postings",
+   "source_url": "https://ekcf.fa.us6.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;Id=%227854%22,siteNumber=CX_1",
+   "ledger_value": "Leadperson Fab Operations (7854), 1st Shift Steel Fab Department, work location 8550 Mosley Road, listed 2026-09-24; duties include giving direction to all hourly employees in the department",
+   "tag": "stated",
+   "row_ref": "inbox[3]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "Requisition 7854 re-read: Leadperson Fab Operations, 8550 Mosley Road, posted 2026-09-24; duties are direction, training, scheduling and work orders, no hands-on welding stated, so listed-not-counted is right. (The posting's schedule reads 10:00pm-6:30am despite '1st Shift'; the value makes no shift claim.)"
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:weld_processes",
+   "source_url": "https://ekcf.fa.us6.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;Id=%227906%22,siteNumber=CX_1",
+   "ledger_value": "MIG on mild and stainless steel incl. spray transfer; flux core knowledge listed (Welder 7906)",
+   "tag": "stated",
+   "row_ref": "inbox[4]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "7906 text carries MIG mild, MIG stainless, spray transfer and 'Knowledge of flux core, shielded wire'."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:weld_processes",
+   "source_url": "https://ekcf.fa.us6.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;Id=%227810%22,siteNumber=CX_1",
+   "ledger_value": "MIG, TIG and stick named as welding techniques; 2 years of short-circuit GMAW (MIG) on sheet metal required (Senior Welder 7810)",
+   "tag": "stated",
+   "row_ref": "inbox[5]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "7810 text carries 'MIG, TIG, and stick welding' and the 2-year short-circuit GMAW (MIG) HRPO sheet requirement."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:materials",
+   "source_url": "https://ekcf.fa.us6.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;Id=%227906%22,siteNumber=CX_1",
+   "ledger_value": "mild steel and stainless steel (MIG)",
+   "tag": "stated",
+   "row_ref": "inbox[6]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch 2026-11-19 with tools/fetch_page.py or the board/registry JSON API); value carries no clause beyond the page."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:materials",
+   "source_url": "https://ekcf.fa.us6.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;Id=%227810%22,siteNumber=CX_1",
+   "ledger_value": "hot-rolled, pickled and oiled (HRPO) sheet steel, 16 gauge to 7 gauge",
+   "tag": "stated",
+   "row_ref": "inbox[7]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch 2026-11-19 with tools/fetch_page.py or the board/registry JSON API); value carries no clause beyond the page."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:part_size_fit",
+   "source_url": "https://ekcf.fa.us6.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;Id=%227906%22,siteNumber=CX_1",
+   "ledger_value": "the Welder posting produces Sheet Metal weldments; no part dimension given",
+   "tag": "stated",
+   "row_ref": "inbox[8]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch 2026-11-19 with tools/fetch_page.py or the board/registry JSON API); value carries no clause beyond the page."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:part_size_fit",
+   "source_url": "https://ekcf.fa.us6.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;Id=%227810%22,siteNumber=CX_1",
+   "ledger_value": "HRPO sheet metal 16 gauge to 7 gauge (Senior Welder posting)",
+   "tag": "stated",
+   "row_ref": "inbox[9]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "Quote on the page (fresh fetch 2026-11-19 with tools/fetch_page.py or the board/registry JSON API); value carries no clause beyond the page."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:certifications",
+   "source_url": "https://ekcf.fa.us6.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;Id=%227810%22,siteNumber=CX_1",
+   "ledger_value": "Senior Welder applicants must be able to pass an AWS D1.3 Structural Sheet Metal Welding Test using short-circuit GMAW (MIG)",
+   "tag": "stated",
+   "row_ref": "inbox[10]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "7810 carries the AWS D1.3 test line; value correctly calls it an applicant test, not a plant certification."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:certifications",
+   "source_url": "https://www.powellind.com/buy-american",
+   "ledger_value": "plant certification unknown: Powell says its Texas facilities are ISO-certified (standard and site not named)",
+   "tag": "inferred",
+   "row_ref": "inbox[11]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "buy-american page: 'engineered and assembled in ISO-certified facilities right here in Texas' (company statement, several sites); inferred tag right."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:production_type",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/80420/000008042026000143/powl-20260930.htm",
+   "ledger_value": "company-wide: Powell develops, designs and manufactures custom-engineered equipment and systems (FY2026 10-K); not stated for the site",
+   "tag": "inferred",
+   "row_ref": "inbox[12]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "10-K Item 1 line on the page; inferred company-level tag right."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:production_type",
+   "source_url": "https://ekcf.fa.us6.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;Id=%227810%22,siteNumber=CX_1",
+   "ledger_value": "site Senior Welder posting: produce a variety of sheet-metal weldments to engineered drawings",
+   "tag": "stated",
+   "row_ref": "inbox[13]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "7810: 'You will be required to produce a variety of Weldments ...' on the page; the posting calls them Sheet Metal Weldments."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:products",
+   "source_url": "https://ekcf.fa.us6.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;Id=%227854%22,siteNumber=CX_1",
+   "ledger_value": "site Steel Fab Department (Leadperson Fab Operations posting, Mosley Drive facility)",
+   "tag": "stated",
+   "row_ref": "inbox[14]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "7854 carries '1st Shift Steel Fab Department for the Mosley Drive facility'. The row is fine; the plants.csv products fragment 'site Steel Fab Department welds sheet-metal weldments' splices this page with the Welder pages (7854 names no welding; the Welder pages do not name the Steel Fab Department).",
+   "plants_csv_value": "boundary: ANSI metal-clad and metal-enclosed switchgear (Houston headquarters); site Steel Fab Department (Mosley Drive facility); company line: modular electrical buildings (e-Houses) and integrated power centers"
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:triggers",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/80420/000008042026000143/powl-20260930.htm",
+   "ledger_value": "none found within 24 months at the site (leads: Powell says it leased about 50,000 sq ft in the Houston area in fiscal 2026 and its board authorized leasing a new 275,000 sq ft Houston-area facility; neither names this site)",
+   "tag": "inferred",
+   "row_ref": "inbox[16]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "10-K carries both Houston-area lease lines (50,000 sq ft leased; 275,000 sq ft new manufacturing facility authorized); neither names a site. Leads, not a trigger: inferred and demand 8 are right."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:prospect_test",
+   "source_url": "https://ekcf.fa.us6.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;Id=%227906%22,siteNumber=CX_1",
+   "ledger_value": "pass (boundary: sheet-metal switchgear maker; manual MIG welding of mild and stainless sheet-metal weldments at 8550 Mosley Road)",
+   "tag": "inferred",
+   "row_ref": "inbox[17]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "Judgement follows from the three 8550 Mosley Road welder requisitions; inferred tag right."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:site_attribution",
+   "source_url": "https://ekcf.fa.us6.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;Id=%227906%22,siteNumber=CX_1",
+   "ledger_value": "the three Houston welder postings belong to this plant: Welder 7906, Senior Welder 7810 and Welder 7624 each carry work location 'Houston TX Mosley (EDH)', 8550 Mosley Road",
+   "tag": "inferred",
+   "row_ref": "inbox[18]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "All three requisitions carry LocationName 'Houston TX Mosley (EDH)', AddressLine1 '8550 Mosley Road' (re-read). The tie is in fact stated on each requisition row; this summary row is inferred only because it spans pages."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:opening_line",
+   "source_url": "",
+   "ledger_value": "Powell's board lists a Welder role at 8550 Mosley Road in Houston, listed Oct 1, 2026, for MIG welding of mild and stainless steel sheet-metal weldments; how do you keep sheet-metal weldment output on schedule while you staff MIG welding?",
+   "tag": "inferred",
+   "row_ref": "inbox[20]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "Every clause (Welder, 8550 Mosley Road, listed Oct 1, 2026, MIG mild and stainless, sheet-metal weldments) is on requisition 7906; question presumes nothing unsourced."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual MIG welding of sheet-metal weldments: Powell's board lists Welder roles at 8550 Mosley Road listed Oct 1 and Aug 12, 2026, and a Senior Welder role listed Sep 16, 2026.",
+   "tag": "inferred",
+   "row_ref": "inbox[21]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "Clauses on 7906, 7624 (Welder, Oct 1 and Aug 12) and 7810 (Senior Welder, Sep 16); 'Likely ... manual MIG welding' is the inferred guess."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:products",
+   "source_url": "https://www.powellind.com/integrated-package-solutions",
+   "ledger_value": "custom engineered offshore power modules constructed at Powell's 64-acre Jacintoport facility",
+   "tag": "stated",
+   "row_ref": "inbox[31]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx",
+   "verdict": "confirmed",
+   "note": "integrated-package-solutions page: Custom Engineered Modules section carries both fragments."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:products",
+   "source_url": "https://d2g0qum68t5ct7.cloudfront.net/files/Custom-Engineered-Modules.pdf",
+   "ledger_value": "custom engineered modules (electrical buildings, control rooms, custom skids, living quarters and helidecks) with one site for fabrication, testing and commissioning, the 64 acre Houston Ship Channel facility",
+   "tag": "stated",
+   "row_ref": "inbox[32]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx",
+   "verdict": "confirmed",
+   "note": "Custom-Engineered-Modules.pdf carries the product list, 'One site for fabrication, testing, and commissioning' and the 64 acre facility with direct access to the Houston Ship Channel. The sheet never names Jacintoport; the tie is the inferred site_attribution row (same acreage and waterfront)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:products",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/80420/000008042026000143/powl-20260930.htm",
+   "ledger_value": "the Jacintoport facility includes a production yard and a fabrication facility; its expansion adds power control room laydown area (FY2026 10-K)",
+   "tag": "stated",
+   "row_ref": "inbox[33]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx",
+   "verdict": "confirmed",
+   "note": "10-K carries the remeasured Jacintoport facility (production yard, fabrication facility) and the laydown expansion."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:part_size_fit",
+   "source_url": "https://d2g0qum68t5ct7.cloudfront.net/files/E-Houses-PCR-R.pdf",
+   "ledger_value": "unknown at the site: Powell's E-House specification describes a skid that is the base and a primary member of the structure, with purlins bolted to the welded flange on the primary members (product-level; where the frame is welded is not stated, and no part size is given)",
+   "tag": "inferred",
+   "row_ref": "inbox[36]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx",
+   "verdict": "confirmed",
+   "note": "E-Houses-PCR-R.pdf carries the skid and welded-flange fragments; product-level, inferred tag right; material 0 right."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:production_type",
+   "source_url": "https://www.powellind.com/integrated-package-solutions",
+   "ledger_value": "custom engineered modules: custom solutions for any need or environment (the section that names the Jacintoport facility)",
+   "tag": "stated",
+   "row_ref": "inbox[38]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx",
+   "verdict": "confirmed",
+   "note": "Product page: 'Custom solutions for any need or environment' sits in the Custom Engineered Modules section directly under the Jacintoport line."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:production_type",
+   "source_url": "https://d2g0qum68t5ct7.cloudfront.net/files/Custom-Engineered-Modules.pdf",
+   "ledger_value": "a completely custom-engineered, integrated and tested solution (Custom Engineered Modules sheet, 64 acre facility)",
+   "tag": "stated",
+   "row_ref": "inbox[39]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx",
+   "verdict": "confirmed",
+   "note": "Fragments on the Custom Engineered Modules sheet (64 acre facility; tie inferred via site_attribution)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:welder_postings",
+   "source_url": "https://ekcf.fa.us6.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;Id=%228092%22,siteNumber=CX_1",
+   "ledger_value": "none found: Powell's own Oracle board (read 2026-11-19) lists Jacintoport requisitions for Safety & Health Technician, Senior Buyer, Manufacturing Supervisor, Senior Material Handler (Offshore) and Quality Inspector (Offshore), and no welder, fitter or fabricator role there; its three Houston welder postings carry 8550 Mosley Road",
+   "tag": "inferred",
+   "row_ref": "inbox[41]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx",
+   "verdict": "confirmed",
+   "note": "Re-read Powell's whole CX_1 board (findReqs, 231 reqs with workLocation): Jacintoport reqs 7821, 7929, 8092, 7940, 8047 (Safety & Health Technician, Senior Buyer, Manufacturing Supervisor, Senior Material Handler, Quality Inspector); none is welding. 8092 shows 16535 Jacintoport Boulevard. Houston welder reqs are all 8550 Mosley Road."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:triggers",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/80420/000008042026000143/powl-20260930.htm",
+   "ledger_value": "Powell says that following fiscal year-end 2026 it substantially completed the production capacity expansion at its Jacintoport manufacturing facility, adding 335,000 sq ft of productive capacity for power control room laydown area (a 62% increase), and that it decided to add approximately 80,000 sq ft more",
+   "tag": "stated",
+   "row_ref": "inbox[42]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx",
+   "verdict": "confirmed",
+   "note": "10-K: 'Following fiscal year-end 2026, we substantially completed ...' (FY ends 2026-09-30; 10-K filed 2026-11-17), 335,000 sq ft laydown, 62% increase, and 'we decided to further expand the facility by adding approximately 80,000 square feet of additional production capacity'. Dated plant-level trigger inside 24 months."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:prospect_test",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/80420/000008042026000143/powl-20260930.htm",
+   "ledger_value": "unknown: a fabrication facility, production yard and custom skids are stated at the site, but welding is not (the Houston welder postings carry 8550 Mosley Road)",
+   "tag": "inferred",
+   "row_ref": "inbox[43]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx",
+   "verdict": "confirmed",
+   "note": "10-K remeasurement line on the page; prospect test unknown is the right reading (no site welding fact)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:site_attribution",
+   "source_url": "https://www.powellind.com/integrated-package-solutions",
+   "ledger_value": "the 64-acre Houston Ship Channel facility named in the Custom Engineered Modules sheet is the Jacintoport facility",
+   "tag": "inferred",
+   "row_ref": "inbox[44]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx",
+   "verdict": "confirmed",
+   "note": "Product page names the 64-acre Jacintoport facility on the Houston Ship Channel; the sheet names a 64 acre Houston facility on the Ship Channel. Inferred cross-document tie, correctly tagged."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Powell said in its fiscal 2026 10-K that following fiscal year-end 2026 it substantially completed the Jacintoport expansion, adding 335,000 sq ft of productive capacity for power control room laydown area; how do you plan fabrication of skids and module structures for the added yard capacity?",
+   "tag": "inferred",
+   "row_ref": "inbox[46]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx",
+   "verdict": "corrected",
+   "note": "Statement clause confirmed on the 10-K. The question's 'skids and module structures' rests on the Custom Engineered Modules sheet, which never names Jacintoport (tie only through the inferred site_attribution row); neither the product page section that names Jacintoport nor the 10-K says skids. A line must use stated facts only: reworded to 'power control rooms and custom modules' (product page: 'custom engineered ... power modules and control rooms', 'Constructed at Powell's 64-acre Jacintoport facility'). No score effect.",
+   "corrected_value": "Powell said in its fiscal 2026 10-K that following fiscal year-end 2026 it substantially completed the Jacintoport expansion, adding 335,000 sq ft of productive capacity for power control room laydown area; how do you plan fabrication of power control rooms and custom modules for the added yard capacity?",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "other"
+  },
+  {
+   "claim_id": "p-powell-houston-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly fabrication capacity for power control rooms and custom modules: Powell said in its fiscal 2026 10-K that following fiscal year-end 2026 it substantially completed a 335,000 sq ft laydown expansion at Jacintoport.",
+   "tag": "inferred",
+   "row_ref": "inbox[47]",
+   "row_kind": "evidence",
+   "plant": "p-powell-houston-tx",
+   "verdict": "confirmed",
+   "note": "'custom modules' and 'power control room laydown area' both rest on rows that name Jacintoport (product page; 10-K); 'Possibly' marks the guess."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:welder_postings",
+   "source_url": "https://careers.se.com/api/jobs?keywords=fabrication&location=El%20Paso%2C%20TX&limit=50",
+   "ledger_value": "Fabrication Associate I - Welder (req 135318), El Paso, listed 2026-11-09 on Schneider's careers board; its text describes operating automated machinery within the production cell and names no manual welding. Also listed: Operator I, Automatic Cell - Fabrication Associate I (142110, listed 2026-11-11) and Fabrication Associate II (132405, listed 2026-09-01)",
+   "tag": "stated",
+   "row_ref": "inbox[57]",
+   "row_kind": "evidence",
+   "plant": "p-schneider-el-paso-tx",
+   "verdict": "confirmed",
+   "note": "careers.se.com API (keywords=fabrication, El Paso): 135318 'Fabrication Associate I - Welder' posted November 9, 2026; 142110 November 11, 2026; 132405 September 1, 2026; 135318's text is automated-machine operation ('operating automated machinery within the production cell') with no manual welding. Location is city-only (United States-Texas-El Paso). A fourth req, 134416 Fabrication Plant General Manager (El Paso 6), is supervisory and not a welder role."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:existing_robots",
+   "source_url": "https://careers.se.com/api/jobs?keywords=weld&location=El%20Paso%2C%20TX&limit=50",
+   "ledger_value": "likely yes: the El Paso Welder-titled role (req 135318) sets up and monitors automated machinery in a production cell; brand unknown",
+   "tag": "inferred",
+   "row_ref": "inbox[59]",
+   "row_kind": "evidence",
+   "plant": "p-schneider-el-paso-tx",
+   "verdict": "confirmed",
+   "note": "keywords=weld payload carries 135318 with 'Set up and adjust automated machinery ...'; inferred robot reading tagged inferred."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:part_size_fit",
+   "source_url": "https://careers.se.com/api/jobs?keywords=fabrication&location=El%20Paso%2C%20TX&limit=50",
+   "ledger_value": "unknown for the campus: Schneider's 'El Paso 6' fabrication facility does stamping, plating, tool and die and other sheet metal and copper fabrication (thin sheet), but El Paso 6 has no address on any source read",
+   "tag": "inferred",
+   "row_ref": "inbox[61]",
+   "row_kind": "evidence",
+   "plant": "p-schneider-el-paso-tx",
+   "verdict": "confirmed",
+   "note": "134416 (Plant Manager) carries the stamping/plating/sheet metal and 'at our EL PASO 6 Facility' fragments; El Paso 6 is in no EPA ECHO record read (six Schneider El Paso records: 1601 Northwestern x2, 1600, 1701 Northwestern, 7801 Northern Pass, 1790 Commerce Park); inferred tag right."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:products",
+   "source_url": "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-unveils-latest-texas-manufacturing-plant-as-part-of-a-300-million-investment-in-u-s-manufacturing-650368ccd03d75ce2a01cca0",
+   "ledger_value": "custom designed low voltage and medium voltage electrical products, made at the new El Paso plant in the Northwest Corporate Center (first products shipped to data center customers)",
+   "tag": "stated",
+   "row_ref": "inbox[62]",
+   "row_kind": "evidence",
+   "plant": "p-schneider-el-paso-tx",
+   "verdict": "confirmed",
+   "note": "2023 plant-opening release carries both fragments (Northwest Corporate Center; first products shipped to data center customers)."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:products",
+   "source_url": "https://careers.se.com/api/jobs?keywords=fabrication&location=El%20Paso%2C%20TX&limit=50",
+   "ledger_value": "El Paso 6 fabrication facility (not located): stamping, plating, tool and die and other sheet metal and copper fabrication",
+   "tag": "inferred",
+   "row_ref": "inbox[63]",
+   "row_kind": "evidence",
+   "plant": "p-schneider-el-paso-tx",
+   "verdict": "confirmed",
+   "note": "Same 134416 fragments; inferred tag right."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:production_type",
+   "source_url": "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-unveils-latest-texas-manufacturing-plant-as-part-of-a-300-million-investment-in-u-s-manufacturing-650368ccd03d75ce2a01cca0",
+   "ledger_value": "custom designed low and medium voltage electrical products (the new El Paso plant, Northwest Corporate Center)",
+   "tag": "stated",
+   "row_ref": "inbox[64]",
+   "row_kind": "evidence",
+   "plant": "p-schneider-el-paso-tx",
+   "verdict": "confirmed",
+   "note": "Release carries 'the new facility produces custom designed low voltage and medium voltage electrical products'."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:production_type",
+   "source_url": "https://careers.se.com/api/jobs?keywords=fabrication&location=El%20Paso%2C%20TX&limit=50",
+   "ledger_value": "El Paso 6 fabrication facility delivers engineered-to-order products (site not located)",
+   "tag": "inferred",
+   "row_ref": "inbox[65]",
+   "row_kind": "evidence",
+   "plant": "p-schneider-el-paso-tx",
+   "verdict": "confirmed",
+   "note": "134416 carries 'engineered-to-order products'; inferred (El Paso 6 not located)."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:triggers",
+   "source_url": "https://gov.texas.gov/news/post/governor-abbott-announces-schneider-electric-expansion-in-el-paso",
+   "ledger_value": "Texas Governor announced on March 10, 2025 that Schneider Electric USA will modernize and expand its electric equipment manufacturing facilities on its El Paso campus; the multi-million-dollar project will create 300 new jobs (Texas Enterprise Fund grant of $1.5 million)",
+   "tag": "stated",
+   "row_ref": "inbox[67]",
+   "row_kind": "evidence",
+   "plant": "p-schneider-el-paso-tx",
+   "verdict": "confirmed",
+   "note": "gov.texas.gov release dated March 10, 2025 carries the full quote; TEF $1.5 million; 300 jobs. Inside 24 months."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:headcount",
+   "source_url": "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-unveils-latest-texas-manufacturing-plant-as-part-of-a-300-million-investment-in-u-s-manufacturing-650368ccd03d75ce2a01cca0",
+   "ledger_value": "about 1,500 in El Paso (company projection for the end of the year in its plant-opening release)",
+   "tag": "stated",
+   "row_ref": "inbox[68]",
+   "row_kind": "evidence",
+   "plant": "p-schneider-el-paso-tx",
+   "verdict": "confirmed",
+   "note": "Release carries the 1,500 projection. The page shows no date; its URL ends in the object id 650368cc..., whose leading timestamp decodes to 2023-09-14, matching the governor's September 2023 ribbon-cutting. Fact confirmed; see score_notes for the 36-month scale rule."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:headcount",
+   "source_url": "https://gov.texas.gov/news/post/governor-abbott-announces-schneider-electric-expansion-in-el-paso",
+   "ledger_value": "the 1,500 projection likely dates from September 2023 (the governor says he attended a ribbon-cutting for one of Schneider's El Paso campus plants then)",
+   "tag": "inferred",
+   "row_ref": "inbox[69]",
+   "row_kind": "evidence",
+   "plant": "p-schneider-el-paso-tx",
+   "verdict": "confirmed",
+   "note": "Governor page carries the September 2023 ribbon-cutting line; the release URL's object-id timestamp (2023-09-14) supports the dating. Inferred tag right."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:site_attribution",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?registry_id=110070375950&output=JSON",
+   "ledger_value": "city-only facts (careers postings name only El Paso; the 1,500 figure is 'in El Paso'): Schneider's registry buildings in El Paso lie within about 0.9 km of 1601 Northwestern Dr (1600 and 1701 Northwestern Dr about 0.3 km, Plant 2 at 7801 Northern Pass Dr about 0.4 km, the annex at 1790 Commerce Park Dr about 0.9 km); the El Paso 6 fabrication facility is not located, so the campus test is not settled for postings",
+   "tag": "inferred",
+   "row_ref": "inbox[70]",
+   "row_kind": "evidence",
+   "plant": "p-schneider-el-paso-tx",
+   "verdict": "confirmed",
+   "note": "FRS registry 110070375950 returns Plant 2 at 7801 Northern Pass Dr (lat 31.88972, lon -106.57317); ECHO lists the six records. Distances plausible; inferred tag right."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:prospect_test",
+   "source_url": "https://careers.se.com/api/jobs?keywords=weld&location=El%20Paso%2C%20TX&limit=50",
+   "ledger_value": "pass (low confidence; boundary: switchgear campus whose only welding evidence is a Welder-titled automated-cell role)",
+   "tag": "inferred",
+   "row_ref": "inbox[71]",
+   "row_kind": "evidence",
+   "plant": "p-schneider-el-paso-tx",
+   "verdict": "confirmed",
+   "note": "Judgement flagged correctly (see score_notes on R3)."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Texas Governor Abbott announced on March 10, 2025 that Schneider Electric will expand its El Paso campus to add medium voltage switchgear capacity for the data center market, creating 300 new jobs; how do you plan fabrication capacity for that switchgear growth?",
+   "tag": "inferred",
+   "row_ref": "inbox[73]",
+   "row_kind": "evidence",
+   "plant": "p-schneider-el-paso-tx",
+   "verdict": "confirmed",
+   "note": "Every clause on the governor's March 10, 2025 page: Schneider Electric USA expands its El Paso campus; 'will increase manufacturing capacity for medium voltage switchgear critical to the data center market'; 300 new jobs. Question presumes nothing unsourced."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly fabrication capacity for medium voltage switchgear: the Texas governor announced on March 10, 2025 an El Paso campus expansion for data center switchgear with 300 new jobs.",
+   "tag": "inferred",
+   "row_ref": "inbox[74]",
+   "row_kind": "evidence",
+   "plant": "p-schneider-el-paso-tx",
+   "verdict": "confirmed",
+   "note": "Same page; 'Possibly' marks the guess."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:address",
+   "source_url": "https://www.wmeng.com/news-events/wunderlich-malec-hosts-first-coast-manufacturers-association-at-its-baldwin-florida-e-house-fabrication-shop/",
+   "ledger_value": "1190 Baldwin Tradeplex Drive, Baldwin, FL",
+   "tag": "stated",
+   "row_ref": "inbox[84]",
+   "row_kind": "evidence",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "WM news page dated November 19, 2026 carries '1190 Baldwin Tradeplex Drive'."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:address",
+   "source_url": "https://recruiting2.ultipro.com/WUN1002WND/JobBoard/cf373efc-2fad-42c7-b3ea-efbff4360573/OpportunityDetail?opportunityId=7e9f019e-c297-4ce7-bff2-6336f0355aba",
+   "ledger_value": "1190 Tradeplex Drive, Baldwin, FL 32234 (work location of the Welder Structural Fabricator posting)",
+   "tag": "stated",
+   "row_ref": "inbox[85]",
+   "row_kind": "evidence",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "UKG opportunity JSON (curl of the page source) carries Locations[0] Line1 '1190 Tradeplex Drive', City Baldwin, PostalCode 32234 (LocalizedDescription '2900 FL Baldwin')."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:products",
+   "source_url": "https://www.wmeng.com/news-events/wunderlich-malec-hosts-first-coast-manufacturers-association-at-its-baldwin-florida-e-house-fabrication-shop/",
+   "ledger_value": "modular e-houses for utilities, data centers and industrial customers, built at the Baldwin e-house fabrication facility (WM news, November 19, 2026); the facility supports WM's modular electrical enclosure and skid fabrication business",
+   "tag": "stated",
+   "row_ref": "inbox[89]",
+   "row_kind": "evidence",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "News page dated November 19, 2026 carries both fragments."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:products",
+   "source_url": "https://recruiting2.ultipro.com/WUN1002WND/JobBoard/cf373efc-2fad-42c7-b3ea-efbff4360573/OpportunityDetail?opportunityId=7e9f019e-c297-4ce7-bff2-6336f0355aba",
+   "ledger_value": "modular building assembly, skidded control system fabrication; modular control buildings fabricated from custom steel bases (Welder Structural Fabricator posting, Baldwin)",
+   "tag": "stated",
+   "row_ref": "inbox[90]",
+   "row_kind": "evidence",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "UKG posting text carries both fragments."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:weld_processes",
+   "source_url": "https://recruiting2.ultipro.com/WUN1002WND/JobBoard/cf373efc-2fad-42c7-b3ea-efbff4360573/OpportunityDetail?opportunityId=7e9f019e-c297-4ce7-bff2-6336f0355aba",
+   "ledger_value": "unknown (the Baldwin welder posting names welders and AWS welding but no process)",
+   "tag": "inferred",
+   "row_ref": "inbox[91]",
+   "row_kind": "evidence",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "Posting names welders and AWS welding but no process; unknown/inferred right."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:materials",
+   "source_url": "https://recruiting2.ultipro.com/WUN1002WND/JobBoard/cf373efc-2fad-42c7-b3ea-efbff4360573/OpportunityDetail?opportunityId=7e9f019e-c297-4ce7-bff2-6336f0355aba",
+   "ledger_value": "steel (custom steel bases)",
+   "tag": "stated",
+   "row_ref": "inbox[92]",
+   "row_kind": "evidence",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "Posting carries 'custom steel bases'."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown: no dimension or weight of a welded part stated",
+   "tag": "inferred",
+   "row_ref": "inbox[93]",
+   "row_kind": "evidence",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "No Baldwin source read gives a welded-part size; judgement consistent."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:certifications",
+   "source_url": "https://www.wmeng.com/news-events/wunderlich-malec-celebrates-new-facility-in-baldwin-florida/",
+   "ledger_value": "unknown at Baldwin; WM's ISO-9001-2015 statement names its Winslow, Maine facility",
+   "tag": "inferred",
+   "row_ref": "inbox[94]",
+   "row_kind": "evidence",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "Celebrates page carries the Winslow ISO-9001-2015 line; not transferred, inferred right."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:production_type",
+   "source_url": "https://recruiting2.ultipro.com/WUN1002WND/JobBoard/cf373efc-2fad-42c7-b3ea-efbff4360573/OpportunityDetail?opportunityId=7e9f019e-c297-4ce7-bff2-6336f0355aba",
+   "ledger_value": "modular control buildings fabricated from custom steel bases; equipment assembled per WM standards and engineered drawings (Baldwin Welder Structural Fabricator posting)",
+   "tag": "stated",
+   "row_ref": "inbox[95]",
+   "row_kind": "evidence",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "Posting carries both fragments. The row is fine; the plants.csv production_type 'modular control buildings from custom steel bases to engineered drawings' misreads the page: 'from custom steel bases to wall/roof assembly' is the build sequence, and 'per WM standards and engineered drawings' applies to mechanical equipment assembly. Part mix 15 still holds on 'custom steel bases'.",
+   "plants_csv_value": "custom: modular control buildings fabricated from custom steel bases; mechanical equipment assembled per WM standards and engineered drawings"
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/WUN1002WND/JobBoard/cf373efc-2fad-42c7-b3ea-efbff4360573/OpportunityDetail?opportunityId=7e9f019e-c297-4ce7-bff2-6336f0355aba",
+   "ledger_value": "Welder Structural Fabricator on WM's own UKG board, work location 1190 Tradeplex Drive, Baldwin, listed 2026-10-13; strong preference for AWS welding experience and certifications",
+   "tag": "stated",
+   "row_ref": "inbox[97]",
+   "row_kind": "evidence",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "UKG JSON: Title 'Welder Structural Fabricator', PostedDate 2026-10-13T17:48:53.105Z (UpdatedDate 2026-10-20), RequisitionNumber WELDE003963; page live today. The posting carries a second location, 'Jacksonville, FL' (city only), but its text says 'position available in our Baldwin, FL facility', so the Baldwin tie is stated and the count stands. plants.csv adds 'CWI certification preferred': it is on the page ('Strong preference for CWI certification') but not in this row's value or quote. Live check: WELDE003963 is in the UKG board's own search list (LoadSearchResults, 97 open, PostedDate 2026-10-13T17:48:53, Locations Baldwin and Jacksonville). If the CWI clause stays in plants.csv, add 'Strong preference for CWI certification' to this row's quote.",
+   "plants_csv_value": "1 open, counted: Welder Structural Fabricator (listed 2026-10-13), WM's own UKG board, work location 1190 Tradeplex Drive, Baldwin (also lists Jacksonville, FL, city only; text names the Baldwin facility); AWS welding experience preferred"
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:triggers",
+   "source_url": "https://www.wmeng.com/news-events/wunderlich-malec-celebrates-new-facility-in-baldwin-florida/",
+   "ledger_value": "WM announced the grand opening of its new 61,000 sq ft Baldwin manufacturing facility on May 29, 2025, with its first order received and production scheduled to begin mid-June",
+   "tag": "stated",
+   "row_ref": "inbox[98]",
+   "row_kind": "evidence",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "Celebrates page carries the May 29, 2025 date and the grand opening / first order / mid-June fragment. Inside 24 months."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:prospect_test",
+   "source_url": "https://recruiting2.ultipro.com/WUN1002WND/JobBoard/cf373efc-2fad-42c7-b3ea-efbff4360573/OpportunityDetail?opportunityId=7e9f019e-c297-4ce7-bff2-6336f0355aba",
+   "ledger_value": "pass: a Welder Structural Fabricator at 1190 Tradeplex Drive fabricates modular control buildings from custom steel bases using welders, with AWS welding preferred",
+   "tag": "inferred",
+   "row_ref": "inbox[99]",
+   "row_kind": "evidence",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "Posting carries the welders tools line and 'position available in our Baldwin, FL facility'; inferred tag right."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:relationship",
+   "source_url": "",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "inbox[100]",
+   "row_kind": "evidence",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "EK Machine rows state generator enclosures, fuel tanks, containers and trailers (no skids); Forgent precedent (checker C). 'new' follows the written rule."
+  },
+  {
+   "claim_id": "c-wunderlich-malec:multi_plant",
+   "source_url": "https://www.wmeng.com/solutions/prefabricated-electrical-buildings-control-panels/",
+   "ledger_value": "multi-plant parent: WM says it supplies prefabricated electrical products from its two manufacturing facilities",
+   "tag": "stated",
+   "row_ref": "inbox[101]",
+   "row_kind": "evidence",
+   "plant": "c-wunderlich-malec",
+   "verdict": "confirmed",
+   "note": "Solutions page carries 'from its two high quality manufacturing facilities'. (The same page later says custom panels come 'from three locations', incl. Minnesota; multi-plant either way.)"
+  },
+  {
+   "claim_id": "c-wunderlich-malec:multi_plant",
+   "source_url": "https://www.wmeng.com/news-events/wunderlich-malec-celebrates-new-facility-in-baldwin-florida/",
+   "ledger_value": "Baldwin complements WM's 105,000 sq ft facility in Winslow, Maine",
+   "tag": "stated",
+   "row_ref": "inbox[102]",
+   "row_kind": "evidence",
+   "plant": "c-wunderlich-malec",
+   "verdict": "confirmed",
+   "note": "Celebrates page carries the Winslow line."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:opening_line",
+   "source_url": "",
+   "ledger_value": "Wunderlich-Malec said on November 19, 2026 that it builds modular e-houses for utilities, data centers and industrial customers at its Baldwin facility, and its board lists a Welder Structural Fabricator role there, listed Oct 13, 2026; how do you staff welding on the custom steel bases?",
+   "tag": "inferred",
+   "row_ref": "inbox[104]",
+   "row_kind": "evidence",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "Every clause on the WM news page (Nov 19, 2026; modular e-houses for utilities, data centers and industrial customers at Baldwin) and the UKG posting (Welder Structural Fabricator, posted Oct 13, 2026, custom steel bases). Question presumes welding on the steel bases: the posting places welders and AWS welding in the job that fabricates the steel bases."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly welding and fit-up of custom steel bases: WM's board lists a Welder Structural Fabricator role at 1190 Tradeplex Drive, Baldwin, listed Oct 13, 2026, to fabricate modular control buildings from custom steel bases.",
+   "tag": "inferred",
+   "row_ref": "inbox[105]",
+   "row_kind": "evidence",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "Clauses on the UKG posting; 'Possibly' marks the guess."
+  },
+  {
+   "claim_id": "v-datacenter-grid-prefab:demand_outlook",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/102729/000010272926000050/vmi-20260926x10q.htm",
+   "ledger_value": "Strong: data-center load growth",
+   "tag": "stated",
+   "row_ref": "ledger[69]",
+   "row_kind": "ledger company/vertical row (cited by a score row)",
+   "plant": "v-datacenter-grid-prefab",
+   "verdict": "confirmed",
+   "note": "Valmont 10-Q (2026-09-26) carries the quote; cited by Mosley's demand 8."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:name",
+   "source_url": "https://d2g0qum68t5ct7.cloudfront.net/Global-Services-Overview-June-2026.pdf",
+   "ledger_value": "Powell Industries - Jacintoport fabrication yard, Houston",
+   "tag": "stated",
+   "row_ref": "ledger[20635]",
+   "row_kind": "ledger base row",
+   "plant": "p-powell-houston-tx",
+   "verdict": "corrected",
+   "note": "The cited PDF never names Jacintoport: its location list reads 'Electrical Division Houston Fabrication' / 'Yard - Houston, TX' (two-column layout), with no street. The label stays; quote and source move to the FY2026 10-K, which names the Jacintoport manufacturing facility in Houston and its production yard and fabrication facility. (That the PDF's 'Houston Fabrication Yard' is Jacintoport is a reasonable cross-document tie, but it belongs in an inferred row.)",
+   "corrected_value": "Powell Industries - Jacintoport fabrication yard, Houston",
+   "corrected_quote": "Following fiscal year-end 2026, we substantially completed the production capacity expansion project at our Jacintoport manufacturing facility in Houston, Texas. ... The Jacintoport facility square footage was remeasured during Fiscal 2026 to include production yard, fabrication facility",
+   "corrected_source_url": "https://www.sec.gov/Archives/edgar/data/80420/000008042026000143/powl-20260930.htm",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "keep (plants.csv name unchanged; only the quote and source move)"
+  },
+  {
+   "claim_id": "p-powell-houston-tx:parent_company",
+   "source_url": "https://d2g0qum68t5ct7.cloudfront.net/Global-Services-Overview-June-2026.pdf",
+   "ledger_value": "Powell Industries, Inc.",
+   "tag": "stated",
+   "row_ref": "ledger[20636]",
+   "row_kind": "ledger base row",
+   "plant": "p-powell-houston-tx",
+   "verdict": "corrected",
+   "note": "The cited quote 'Corporate Headquarters - Electrical Division Houston' does not carry the parent name, and the PDF has no 'Powell Industries, Inc.' anywhere (only 'Powell Canada Inc.' and 'Powell Industries Asia Pte. Ltd.'). The 10-K cover page does ('Powell Industries, Inc. (Exact name of registrant ...)', principal executive offices 8550 Mosley Road). Value unchanged. Checker C confirmed the same PDF-cited parent row at Northlake (and North Canton): same defect, sweep target.",
+   "corrected_value": "Powell Industries, Inc.",
+   "corrected_quote": "Powell Industries, Inc. (Exact name of registrant as specified in its charter)",
+   "corrected_source_url": "https://www.sec.gov/Archives/edgar/data/80420/000008042026000143/powl-20260930.htm",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-powell-houston-tx:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=POWELL%20ELECTRICAL%20SYSTEMS&state_abbr=TX&output=JSON",
+   "ledger_value": "16535 JACINTOPORT BLVD, HOUSTON, TX",
+   "tag": "stated",
+   "row_ref": "ledger[20637]",
+   "row_kind": "ledger base row",
+   "plant": "p-powell-houston-tx",
+   "verdict": "confirmed",
+   "note": "EPA FRS re-read: POWELL ELECTRICAL SYSTEMS, 16535 JACINTOPORT BLVD, HOUSTON, ZIP 77015-6540 (registry 110070366410); requisition 8092 also carries 16535 Jacintoport Boulevard."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:relationship",
+   "source_url": "https://www.powellind.com/integrated-package-solutions",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger[20642]",
+   "row_kind": "ledger base row",
+   "plant": "p-powell-houston-tx",
+   "verdict": "confirmed",
+   "note": "Offshore modules, PCRs and custom skids: EK Machine's rows state no skids (Forgent precedent); 'new' follows the rule."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:name",
+   "source_url": "https://d2g0qum68t5ct7.cloudfront.net/Global-Services-Overview-June-2026.pdf",
+   "ledger_value": "Powell Industries - headquarters and Electrical Division Houston, Mosley Road",
+   "tag": "stated",
+   "row_ref": "ledger[20655]",
+   "row_kind": "ledger base row",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "Global-Services-Overview-June-2026.pdf, POWELL LOCATIONS: 'Corporate Headquarters - Electrical Division Houston' followed by '8550 Mosley Road, Houston, Texas, USA 77075'; the label follows the page (the 'Powell Industries -' prefix is the record's company label, as at checker C's North Canton row)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:parent_company",
+   "source_url": "https://d2g0qum68t5ct7.cloudfront.net/Global-Services-Overview-June-2026.pdf",
+   "ledger_value": "Powell Industries, Inc.",
+   "tag": "stated",
+   "row_ref": "ledger[20656]",
+   "row_kind": "ledger base row",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "corrected",
+   "note": "The cited quote 'Corporate Headquarters - Electrical Division Houston' does not carry the parent name, and the PDF has no 'Powell Industries, Inc.' anywhere (only 'Powell Canada Inc.' and 'Powell Industries Asia Pte. Ltd.'). The 10-K cover page does ('Powell Industries, Inc. (Exact name of registrant ...)', principal executive offices 8550 Mosley Road). Value unchanged. Checker C confirmed the same PDF-cited parent row at Northlake (and North Canton): same defect, sweep target.",
+   "corrected_value": "Powell Industries, Inc.",
+   "corrected_quote": "Powell Industries, Inc. (Exact name of registrant as specified in its charter)",
+   "corrected_source_url": "https://www.sec.gov/Archives/edgar/data/80420/000008042026000143/powl-20260930.htm",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:address",
+   "source_url": "https://d2g0qum68t5ct7.cloudfront.net/Global-Services-Overview-June-2026.pdf",
+   "ledger_value": "8550 Mosley Road, Houston, TX 77075",
+   "tag": "stated",
+   "row_ref": "ledger[20657]",
+   "row_kind": "ledger base row",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "PDF carries '8550 Mosley Road, Houston, Texas, USA 77075'; the 10-K cover page gives the same address; every Mosley requisition carries it."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:products",
+   "source_url": "https://www.powellind.com/buy-american",
+   "ledger_value": "boundary: Houston headquarters manufactures ANSI metal-clad and metal-enclosed switchgear; company line: modular electrical buildings (e-Houses) and integrated power centers, designed, assembled and tested in-house",
+   "tag": "stated",
+   "row_ref": "ledger[20659]",
+   "row_kind": "ledger base row",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "buy-american page carries both fragments; plants.csv's 'designed, assembled and tested in-house' is on the same page ('Fully designed, assembled, and tested in-house')."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:relationship",
+   "source_url": "https://www.powellind.com/buy-american",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger[20661]",
+   "row_kind": "ledger base row",
+   "plant": "p-powell-houston-tx-3",
+   "verdict": "confirmed",
+   "note": "Switchgear and e-houses are not a stated product of EK Machine, Millerbernd, Nello or Valmont; 'new' follows the rule."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:name",
+   "source_url": "https://www.wmeng.com/news-events/wunderlich-malec-celebrates-new-facility-in-baldwin-florida/",
+   "ledger_value": "Wunderlich-Malec - Baldwin manufacturing facility",
+   "tag": "stated",
+   "row_ref": "ledger[21979]",
+   "row_kind": "ledger base row",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "Celebrates page carries the grand-opening line."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:parent_company",
+   "source_url": "https://www.wmeng.com/news-events/wunderlich-malec-celebrates-new-facility-in-baldwin-florida/",
+   "ledger_value": "Wunderlich-Malec Engineering, Inc.",
+   "tag": "stated",
+   "row_ref": "ledger[21980]",
+   "row_kind": "ledger base row",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "Celebrates page footer carries 'Copyright © 2026 Wunderlich-Malec Engineering, Inc.'. plants.csv adds '(employee-owned)', which this page does not carry ('employee-owned' fails --check); it is on the solutions page ('Wunderlich-Malec, as an employee-owned engineering company') and the UKG posting ('100% employee-owned'): add a row citing one of them, or drop the clause. Suggested fix (not applied by this confirmed row): plants.csv parent_company 'Wunderlich-Malec Engineering, Inc.', or keep '(employee-owned)' with a new row citing the solutions page.",
+   "plants_csv_value": "Wunderlich-Malec Engineering, Inc."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:city",
+   "source_url": "https://www.wmeng.com/news-events/wunderlich-malec-celebrates-new-facility-in-baldwin-florida/",
+   "ledger_value": "Baldwin",
+   "tag": "stated",
+   "row_ref": "ledger[21982]",
+   "row_kind": "ledger base row",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "Celebrates page carries 'Baldwin, Florida'."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:products",
+   "source_url": "https://www.wmeng.com/solutions/prefabricated-electrical-buildings-control-panels/",
+   "ledger_value": "modular control enclosures and skids",
+   "tag": "stated",
+   "row_ref": "ledger[21985]",
+   "row_kind": "ledger base row",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "Solutions page: the sentence sits in the 'Baldwin, Florida Manufacturing Facility' section."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:triggers",
+   "source_url": "https://www.wmeng.com/solutions/prefabricated-electrical-buildings-control-panels/",
+   "ledger_value": "New plant June 2025",
+   "tag": "stated",
+   "row_ref": "ledger[21989]",
+   "row_kind": "ledger base row",
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "verdict": "confirmed",
+   "note": "Solutions page carries the June 2025 line (Baldwin section)."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:name",
+   "source_url": "https://gov.texas.gov/news/post/governor-abbott-announces-schneider-electric-expansion-in-el-paso",
+   "ledger_value": "Schneider Electric El Paso campus",
+   "tag": "stated",
+   "row_ref": "ledger[22345]",
+   "row_kind": "ledger base row",
+   "plant": "p-schneider-el-paso-tx",
+   "verdict": "confirmed",
+   "note": "Governor page carries 'their El Paso campus'."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:parent_company",
+   "source_url": "https://gov.texas.gov/news/post/governor-abbott-announces-schneider-electric-expansion-in-el-paso",
+   "ledger_value": "Schneider Electric",
+   "tag": "stated",
+   "row_ref": "ledger[22346]",
+   "row_kind": "ledger base row",
+   "plant": "p-schneider-el-paso-tx",
+   "verdict": "confirmed",
+   "note": "Governor page carries 'Schneider Electric USA, Inc. ... a wholly owned subsidiary of Schneider Electric SE'."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:address",
+   "source_url": "https://echodata.epa.gov/echo/echo_rest_services.get_facility_info?output=JSON&p_fn=SCHNEIDER&p_ct=EL%20PASO&p_st=TX",
+   "ledger_value": "1601 Northwestern Dr, El Paso, TX 79912 (campus)",
+   "tag": "stated",
+   "row_ref": "ledger[22347]",
+   "row_kind": "ledger base row",
+   "plant": "p-schneider-el-paso-tx",
+   "verdict": "confirmed",
+   "note": "ECHO re-read: six Schneider El Paso records, two at 1601 NORTHWESTERN DR, all FacZip 79912."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:products",
+   "source_url": "https://gov.texas.gov/news/post/governor-abbott-announces-schneider-electric-expansion-in-el-paso",
+   "ledger_value": "MV switchgear for data centers",
+   "tag": "stated",
+   "row_ref": "ledger[22349]",
+   "row_kind": "ledger base row",
+   "plant": "p-schneider-el-paso-tx",
+   "verdict": "confirmed",
+   "note": "Governor page carries the MV switchgear line."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:relationship",
+   "source_url": "https://gov.texas.gov/news/post/governor-abbott-announces-schneider-electric-expansion-in-el-paso",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger[22352]",
+   "row_kind": "ledger base row",
+   "plant": "p-schneider-el-paso-tx",
+   "verdict": "confirmed",
+   "note": "Switchgear is not a stated product of a confirmed customer; 'new' follows the rule."
+  },
+  {
+   "claim_id": "c-schneider:multi_plant",
+   "source_url": "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-to-invest-140-million-in-2024-to-expand-u-s-manufacturing-presence-to-support-critical-infrastructure-industries-and-data-center-demand-65f2ad239603ba49d50853af",
+   "ledger_value": "multi-plant parent: Mt. Juliet and Smyrna, Tennessee both manufacture switchgear",
+   "tag": "stated",
+   "row_ref": "ledger[24306]",
+   "row_kind": "ledger company/vertical row (cited by a score row)",
+   "plant": "c-schneider",
+   "verdict": "confirmed",
+   "note": "se.com $140M release carries the Smyrna / Mt. Juliet line."
+  },
+  {
+   "claim_id": "c-powell:multi_plant",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/80420/000008042026000143/powl-20260930.htm",
+   "ledger_value": "multi-plant parent: Powell's FY2026 10-K lists office and manufacturing facilities in North Canton OH and Northlake IL, among others",
+   "tag": "stated",
+   "row_ref": "ledger[24309]",
+   "row_kind": "ledger company/vertical row (cited by a score row)",
+   "plant": "c-powell",
+   "verdict": "confirmed",
+   "note": "10-K properties table carries North Canton, OH and Northlake, IL office and manufacturing facilities."
+  },
+  {
+   "claim_id": "c-powell:production_type",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/80420/000008042026000143/powl-20260930.htm",
+   "ledger_value": "custom-engineered equipment and systems (company-wide, FY2026 10-K filed 2026-11-17)",
+   "tag": "stated",
+   "row_ref": "ledger[24310]",
+   "row_kind": "ledger company/vertical row (cited by a score row)",
+   "plant": "c-powell",
+   "verdict": "confirmed",
+   "note": "10-K Item 1 line on the page."
+  }
+ ],
+ "score_rows": [
+  {
+   "claim_id": "p-powell-houston-tx-3:score_process",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "row_ref": "inbox[22]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:score_material_part",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "row_ref": "inbox[23]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "row_ref": "inbox[24]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "row_ref": "inbox[25]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[26]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "row_ref": "inbox[27]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:score_total",
+   "source_url": "",
+   "ledger_value": "64",
+   "tag": "inferred",
+   "row_ref": "inbox[28]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "row_ref": "inbox[29]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx-3:confidence",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "row_ref": "inbox[30]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[48]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[49]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "row_ref": "inbox[50]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[51]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "row_ref": "inbox[52]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "row_ref": "inbox[53]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:score_total",
+   "source_url": "",
+   "ledger_value": "35",
+   "tag": "inferred",
+   "row_ref": "inbox[54]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "row_ref": "inbox[55]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-powell-houston-tx:confidence",
+   "source_url": "",
+   "ledger_value": "3",
+   "tag": "inferred",
+   "row_ref": "inbox[56]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[75]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[76]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "row_ref": "inbox[77]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[78]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "row_ref": "inbox[79]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "row_ref": "inbox[80]",
+   "verdict": "corrected",
+   "corrected_value": "5",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "Rule error: the only headcount is 'By the end of the year, the company will have approximately 1,500 employees in El Paso', a projection in a release dated 2023-09-14 (URL object-id timestamp; governor's September 2023 ribbon-cutting). Headcount older than 36 months earns no scale points (ruling 1 after consultation 10; Terex Durand Aug 2023 precedent; Astec Yankton in no-confidence-claims.csv); cut-off today is 2023-11-19. Two readings: dated by the statement (Sept 2023, the Durand convention) it is outside 36 months -> scale 5 on c-schneider:multi_plant alone (this correction); dated by the period it describes (year-end 2023) it would fall just inside -> profiler's 10 and total 40. 5 is the correction under the written convention."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:score_total",
+   "source_url": "",
+   "ledger_value": "40",
+   "tag": "inferred",
+   "row_ref": "inbox[81]",
+   "verdict": "corrected",
+   "corrected_value": "35",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "Derived: 0+0+15+0+15+5 = 35 (Low either way)."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "row_ref": "inbox[82]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-schneider-el-paso-tx:confidence",
+   "source_url": "",
+   "ledger_value": "2",
+   "tag": "inferred",
+   "row_ref": "inbox[83]",
+   "verdict": "confirmed",
+   "note": "Confirmed at 2, following the Yankton/Durand precedent (run log: a headcount past the 36-month limit supports no confidence; both went 3 -> 2). Coordinator question: if score_scale is rewritten to cite only c-schneider:multi_plant (stated), tools/normalise_scores.py would count scale and give 3, as it does for Mosley, Jacintoport and WM (scale 5 on a stated multi-plant row). One ruling needed."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[106]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[107]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "row_ref": "inbox[108]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "row_ref": "inbox[109]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "row_ref": "inbox[110]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "row_ref": "inbox[111]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:score_total",
+   "source_url": "",
+   "ledger_value": "47",
+   "tag": "inferred",
+   "row_ref": "inbox[112]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "row_ref": "inbox[113]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  },
+  {
+   "claim_id": "p-wunderlich-malec-baldwin-fl:confidence",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "row_ref": "inbox[114]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric and the cited rows (see score_notes)."
+  }
+ ],
+ "plants_csv_fixes": [
+  {
+   "plant": "p-powell-houston-tx-3",
+   "field": "products",
+   "issue": "'site Steel Fab Department welds sheet-metal weldments' splices the Leadperson page (Steel Fab Department, no welding) with the Welder pages (sheet-metal weldments, no department)",
+   "plants_csv_value": "boundary: ANSI metal-clad and metal-enclosed switchgear (Houston headquarters); site Steel Fab Department (Mosley Drive facility); company line: modular electrical buildings (e-Houses) and integrated power centers"
+  },
+  {
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "field": "production_type",
+   "issue": "'from custom steel bases to engineered drawings' misreads the page ('from custom steel bases to wall/roof assembly'; drawings apply to mechanical equipment assembly)",
+   "plants_csv_value": "custom: modular control buildings fabricated from custom steel bases; mechanical equipment assembled per WM standards and engineered drawings"
+  },
+  {
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "field": "parent_company",
+   "issue": "'(employee-owned)' not on the cited page; no row carries it",
+   "plants_csv_value": "Wunderlich-Malec Engineering, Inc."
+  },
+  {
+   "plant": "p-wunderlich-malec-baldwin-fl",
+   "field": "welder_postings",
+   "issue": "'CWI certification preferred' is on the posting but in no row's value or quote; the posting's second location (Jacksonville, FL) is not mentioned",
+   "plants_csv_value": "1 open, counted: Welder Structural Fabricator (listed 2026-10-13), WM's own UKG board, work location 1190 Tradeplex Drive, Baldwin (also lists Jacksonville, FL, city only; text names the Baldwin facility); AWS welding experience preferred"
+  },
+  {
+   "plant": "p-schneider-el-paso-tx",
+   "field": "score_scale/score_total/confidence",
+   "issue": "36-month headcount rule",
+   "plants_csv_value": "score_scale 5, score_total 35, score_tier Low, confidence 2 (3 if the coordinator rules scale 5 on c-schneider:multi_plant earns confidence)"
+  },
+  {
+   "plant": "p-powell-houston-tx",
+   "field": "opening_line",
+   "issue": "question used an inferred site tie (skids)",
+   "plants_csv_value": "Powell said in its fiscal 2026 10-K that following fiscal year-end 2026 it substantially completed the Jacintoport expansion, adding 335,000 sq ft of productive capacity for power control room laydown area; how do you plan fabrication of power control rooms and custom modules for the added yard capacity?"
+  }
+ ],
+ "score_notes": {
+  "p-powell-houston-tx-3": "No point change: 64 Medium (12/4/15/20/8/5). Process 12: the site's own Senior Welder 7810 names 'MIG, TIG, and stick' alongside the Welder postings' MIG and flux core, so the TIG rule gives 12 (upside 20 -> 72 High is a coordinator call; 7810's requirement and D1.3 test are short-circuit GMAW only). Material 4: sheet-metal weldments, HRPO 16-7 gauge, no part size. Part mix 15 on the company-level 10-K line (points, no confidence); the site posting's 'a variety of Weldments' is not a custom statement. Labor 20: three counted welder requisitions (7906, 7810, 7624) live today on Powell's own Oracle board, each with work location 8550 Mosley Road; Leadperson 7854 directs and schedules, not counted; no day counts from listing dates. Demand 8: the Houston-area leases name no site. Scale 5: multi-plant stated, no OSHA record at 8550 Mosley. CONFIDENCE MECHANICS (stated value 4 is right, but tools/normalise_scores.py would reach 4 by the wrong components): score_labor cites p-powell-houston-tx-3:site_attribution, which has only an inferred row, so the normaliser denies labor confidence; score_part_mix cites p-powell-houston-tx-3:production_type, which has a stated row (7810 'variety of Weldments'), so the normaliser grants part-mix confidence. Fix: drop site_attribution from score_labor's supporting claims (each stated welder_postings row carries 8550 Mosley Road) and add p-powell-houston-tx-3:production_type to no-confidence-claims.csv (company-level part mix, as at North Canton and Northlake, whose production_type rows are inferred only).",
+  "p-powell-houston-tx": "No point change: 35 Low (0/0/15/0/15/5), confidence 3. Prospect test unknown is the right reading: no welder, fitter or fabricator requisition at 16535 Jacintoport on the 231-req board (5 Jacintoport reqs, none welding); process, material and labor 0. Part mix 15 on 'Custom solutions for any need or environment' in the product-page section that names the Jacintoport facility (stated, site-level). Demand 15: the 10-K says the Jacintoport expansion was substantially completed following fiscal year-end 2026 (after 2026-09-30; filed 2026-11-17) and a further ~80,000 sq ft was decided: dated plant-level event in the window. Scale 5: multi-plant, no OSHA record. Only fix: the opening line's question (skids rested on the inferred sheet tie).",
+  "p-schneider-el-paso-tx": "SCORE CORRECTED: scale 10 -> 5, total 40 -> 35 (Low either way); confidence stays 2 under the Yankton/Durand precedent (3 if scale 5 on the stated multi-plant row is allowed to count, as the normaliser does for the other three plants: coordinator ruling). The 1,500 figure is a projection in a release dated 2023-09-14 (URL object-id timestamp; governor's September 2023 ribbon-cutting), older than 36 months, so it earns no scale points (ruling 1 after consultation 10; Durand precedent); scale rests on c-schneider:multi_plant alone. The alternate reading (projection dated by the year-end 2023 period it describes) would keep 10 and 40. Other components confirmed: process 0 and labor 0 (135318 'Fabrication Associate I - Welder' is automated-machine operation with no manual welding: robot-titled rule; 142110 and 132405 are operator roles; 134416 is a plant manager), material 0 (the only part fact is El Paso 6 sheet metal, not located; upside 4), part mix 15 ('custom designed low voltage and medium voltage electrical products' at the new campus plant, stated), demand 15 (governor's March 10, 2025 TEF campus expansion, 300 jobs, MV switchgear for data centers). R3 QUESTION FOR THE COORDINATOR: the plant was admitted under R3 on 'a welder posting at that site'; that posting turns out to describe automated-cell operation with no welding named, and the postings are city-only. Read literally, R3 now has no site-level welding evidence (the Eaton Greenwood reading), which points to excluded; the profiler kept it profiled and flagged it. Lines confirmed.",
+  "p-wunderlich-malec-baldwin-fl": "No change: 47 Medium (0/0/15/12/15/5), confidence 4. Labor 12: one Welder Structural Fabricator live on WM's own UKG board (PostedDate 2026-10-13), location 1190 Tradeplex Drive, text 'position available in our Baldwin, FL facility'; it fabricates modular control buildings from custom steel bases with welders and prefers AWS welding and CWI, so it is a production welding role. The posting also lists Jacksonville, FL (city only), which does not weaken the stated Baldwin tie. Process 0 (no process named), material 0 (steel stated, no welded-part size), part mix 15 ('custom steel bases', site posting), demand 15 (grand opening May 29, 2025, production from mid-June 2025), scale 5 (two/three manufacturing facilities stated; no OSHA record). Relationship new (no skids in EK Machine's stated rows; Forgent precedent). Lines confirmed.",
+  "all": "Score components: 1 component correction across 24 checked (Schneider scale; total follows). No row correction moves a point. Web searches used: 0. Unreachable: none. Reworded Jacintoport line passes tools/validate_lines.py (8 lines, 0 failing). Global-Services PDF re-checked with --check 'Powell Industries, Inc.': not on the page."
+ },
+ "plant_ids": [
+  "p-powell-houston-tx",
+  "p-schneider-el-paso-tx",
+  "p-powell-houston-tx-3",
+  "p-wunderlich-malec-baldwin-fl"
+ ]
+}

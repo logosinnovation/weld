@@ -34,7 +34,8 @@ pid = {p["id"]: p for p in pl}
 idx = {}
 for i, e in enumerate(ev):
     idx.setdefault((e["claim_id"], e["source_url"]), []).append(i)
-    idx.setdefault((e["claim_id"], ""), []).append(i)
+    if e["source_url"]:  # rows with no source_url are already indexed under (claim_id, "")
+        idx.setdefault((e["claim_id"], ""), []).append(i)
 
 unmatched, corrected_claims, counts = [], set(), {"confirmed": 0, "corrected": 0, "unreachable": 0}
 for r in rows:
@@ -42,7 +43,10 @@ for r in rows:
     if v not in counts:
         continue
     counts[v] += 1
-    hits = idx.get((r["claim_id"], r.get("source_url", ""))) or idx.get((r["claim_id"], ""), [])
+    hits = idx.get((r["claim_id"], r.get("source_url", "")))
+    if not hits:  # fallback by claim id only when the claim has exactly one row (2026-11-19: a multi-row fallback rewrote every row)
+        allrows = idx.get((r["claim_id"], ""), [])
+        hits = allrows if len(allrows) == 1 else []
     if not hits:
         unmatched.append((r["claim_id"], r.get("source_url", "")[:80]))
         continue
@@ -82,8 +86,10 @@ for r in rows:
                         pid[pid_][field] = cv
                 elif pv:
                     pid[pid_][field] = pv
-                elif cv:
+                elif cv and len(idx.get((r["claim_id"], ""), [])) <= 1:
                     pid[pid_][field] = cv
+                elif cv:  # multi-row field and no plants_csv_value: do not overwrite the field with one fragment (2026-11-19 sweep finding)
+                    print("  plants.csv not changed (multi-row claim, no plants_csv_value):", r["claim_id"])
         if len(hits) > 1 and r.get("source_url"):
             break
 
