@@ -2,20 +2,20 @@
  "vertical": "v-shipbuilding-naval",
  "status": "done",
  "plants": {
-  "found": 217,
-  "included": 134,
-  "profiled": 51,
-  "excluded": 83,
+  "found": 233,
+  "included": 144,
+  "profiled": 52,
+  "excluded": 89,
   "tiers": {
-   "High": 22,
+   "High": 23,
    "Medium": 14,
    "Low": 15
   },
-  "profiled_fact_checked": 51,
-  "material_unknown": 40
+  "profiled_fact_checked": 52,
+  "material_unknown": 41
  },
- "links": 24,
- "evidence_rows": 7365,
+ "links": 36,
+ "evidence_rows": 20655,
  "fact_check_rounds": [
   {
    "round": 1,
@@ -96,10 +96,49 @@
    "display": "22 / 360 = 6.1%"
   },
   {
+   "round": 7,
+   "label": "Round 7: line check of all 51 profiled plants' lines after constrained rewriting (validator-gated), checkers who did not write them",
+   "checked": 97,
+   "corrected": 6,
+   "unreachable": 2,
+   "checkers": [
+    {
+     "file": "fact-check-v-shipbuilding-naval-R7-lines-SA.json",
+     "checked": 64,
+     "corrected": 3,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 0,
+      "invented fact": 0,
+      "other": 3
+     }
+    },
+    {
+     "file": "fact-check-v-shipbuilding-naval-R7-lines-SB.json",
+     "checked": 33,
+     "corrected": 3,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 3,
+      "invented fact": 0,
+      "other": 0
+     }
+    }
+   ],
+   "rate": 0.0619,
+   "display": "6 / 97 = 6.2%"
+  },
+  {
    "round": 8,
    "label": "Cross-vertical checks (state air permits, job-board dates, OSHA headcounts, profiles of OSHA top-40 entrants): rows for this vertical's plants",
-   "checked": 254,
-   "corrected": 22,
+   "checked": 518,
+   "corrected": 32,
    "unreachable": 0,
    "checkers": [
     {
@@ -115,6 +154,15 @@
      "kinds": {
       "quote does not support value": 9,
       "other": 1
+     }
+    },
+    {
+     "file": "fact-check-cross-R12-ships-finish.json",
+     "checked": 264,
+     "corrected": 10,
+     "kinds": {
+      "other": 7,
+      "quote does not support value": 3
      }
     },
     {
@@ -178,25 +226,52 @@
      }
     }
    ],
-   "rate": 0.0866,
-   "display": "22 / 254 = 8.7%"
+   "rate": 0.0618,
+   "display": "32 / 518 = 6.2%"
+  },
+  {
+   "round": 9,
+   "label": "Base-record sample: 25 of 83 base records, seeded (reported separately; not a profile round)",
+   "checked": 254,
+   "corrected": 16,
+   "unreachable": 1,
+   "checkers": [
+    {
+     "file": "fact-check-v-shipbuilding-naval-CS-r2-sample.json",
+     "checked": 254,
+     "corrected": 16,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 15,
+      "invented fact": 0,
+      "other": 1
+     }
+    }
+   ],
+   "rate": 0.063,
+   "display": "16 / 254 = 6.3%"
   }
  ],
  "miss_rate": {
-  "value": "32/109 = 29.4% (auditor-measured); up to 47/124 = 37.9% if all 15 unverified candidates are real",
-  "note": "Two blind list auditors found 109 in-definition plants that exist; 77 were in the ledger at the audit and 32 were not (30 verified at once, 2 more in the closure pass). All are now in the ledger. Mostly small inland towboat, barge and dredge builders, plus Navy structure suppliers (Fairlead, Colonna's Steel America, Hadrian Cherokee, NNS Norfolk). The closure pass (auditors' unchecked names, all 93 MARAD Small Shipyard Grant recipients FY2023-26, open leads) added 7 included plants; one (Accurity Owensboro) proved top-40 once its posting was found and is profiled.",
+  "value": "4/84 = 4.8% (blind audit R2, two auditors with new methods, written boundary reading); up to 12/92 = 13.0% if all 8 unverified candidates are misses; alternative boundary reading about 10/105 = 9.5% at worst",
+  "note": "Blind audit R2 (2026-11-19): two list auditors who did not see the ledger built lists by methods round 1 did not use (C: port and state directories; D: WorkBoat Show exhibitors, AWO members, Sea-Air-Space, Navy supplier records, owner fleets): 189 rows, 119 in definition under the boundary reading written before any result (repair-only yards out unless a new hull in the last five years; aluminum-only and fiberglass out; dredge, tow, tug, barge and steel-yacht builders and Tier 1/2 module suppliers in). Every matched pair was read (two wrong pairs found and re-verified). 4 verified misses (Diversified Marine Bourg, Burger Boat Manitowoc, Master Marine Bayou La Batre, DM Pushboats Holland MI), now base records; 8 candidates unverified (Sneed, Spartan Marine, Gulf County Shipbuilding, EBI, Big River, Channel Shipyard, SPI/Mobile Pulley, Galliano Marine). The alternative reading counts repair yards with any new construction and aluminum-hull workboat builders in. Neither auditor reached a dry point. Round 1 (2026-11-14) measured 32/109 = 29.4%; those 32 were merged, then closure 2 screened the OSHA 2025 shipbuilding records (NAICS 336611: 172; 336612: 153) and added 7 base records and 5 excluded boundary yards before R2.",
   "history": [
    "28.0% (round 1 audit)",
-   "29.4% after closure confirmations"
+   "29.4% (round 1 after closure confirmations, 2026-11-14)",
+   "4.8% (blind audit R2, 2026-11-19)"
   ]
  },
  "known_limits": [
-  "Re-measuring (2026-11-19): ships was marked done on 2026-11-14 at a 29.4% miss rate. Mining and battery were then held to a 20% finish line, so ships is getting the same treatment (one OSHA-driven closure pass and one blind re-audit); its status stays as it is until that audit returns.",
-  "Part size is unknown for most profiled plants, so material scores 0 there; a Low score usually means missing data, not a poor fit (see the Unknowns and ceiling columns).",
-  "87 included plants are base records (not profiled); every plant in the top 40 by relationship, tier, open postings and headcount is profiled except LAD Stephensville (no source says which LAD yard builds new barges). Welder postings were not searched for most base records added from the audit, so their ranking is provisional.",
-  "Base records are less checked than profiles: the round-2 base sample ran 13.0% (no score effect), and a drift check flags 73 ships rows for review (ledger/audit/field-drift-ships-2026-11-13.json).",
-  "Welder-posting counts are a snapshot of 2026-11-13 job boards (confirmed that day by the fact-checkers through each board's API or a browser); some postings close daily (e.g. a Valmont Brenham posting closed by 2026-11-14).",
-  "EPA ECHO lists about 1,030 active NAICS 336611 facilities; that list has not been reconciled row by row against the ledger. EPA FRS was down (503) during the final quote re-check, so 237 registry quotes were re-checked only at merge time.",
-  "NNS Norfolk campus: no source confirms operation after 2023; its recorded address is also Fairlead's Norfolk address."
+  "Part size is unknown for 41 of 52 profiled plants, so material scores 0 there; a Low score usually means missing data, not a poor fit (see the Unknowns and ceiling columns).",
+  "92 included plants are base records (not profiled). Re-ranked 2026-11-19 by relationship, tier, open postings, headcount and sources: every plant in the top 40 is profiled. Welder postings were not searched for most base records added from the audits, so their ranking is provisional; LAD Stephensville stays base (no source says which LAD yard builds new barges).",
+  "Base records are less checked than profiles: a seeded sample of 25 base records ran 16/254 = 6.3% on 2026-11-19 (round 1 base sample 13.0%). The 85 fields flagged by the 2026-11-13 drift check were reviewed: 18 trimmed, 62 rows extended or added, no score effect. Southwest Shipyard Brady West was excluded as a duplicate of Brady Island (one EPA facility, 0.46 km).",
+  "Welder postings were re-read on the companies' own boards on 2026-11-17/19 for the top plants (BAE Jacksonville, Bollinger Pascagoula, Keel Alma and Hollywood, NABRICO Ashland City, DSC Poplarville, Oceaneering Chesapeake); counts are a snapshot and postings close daily. Tallo job copies went behind a sign-in wall on 2026-11-18 (source failure): Accurity Owensboro's process rests on a Tallo copy that can no longer be re-read (it earns no labor points).",
+  "Judgement calls on today's scores: Bollinger Pascagoula's process 20 rests on its Structural Welder Trainee and Pipe Welder Trainee postings naming SMAW, GMAW and FCAW (53 Medium if a training list is not accepted); Oceaneering Chesapeake's Welder II/III support shipboard operations with up to 75% travel but also fabricate structural and piping components in the shop (40 Low if read as shipboard crews; its city-only facts reach the site through a single-site registry reading, so confidence is 1); DSC Poplarville's Fitter III counts as open 60+ days from the careers page's 'Added: May 18th, 2026' (67 Medium if not).",
+  "Opening lines and bottleneck guesses of all 52 profiled plants were rebuilt under constrained composition (each clause from one stated row with its date; postings 'listed'; no live counts) and gated by tools/validate_lines.py; the round-7 line check found 6/97 = 6.2% (High and Medium 3/72 = 4.2%), a non-author check of the lines changed afterwards found 1/21, and the 5 Oceaneering lines and 7 kept lines re-read on 2026-11-19 found none. 5 Low bottleneck guesses are 'unknown' (no stated site fact fits).",
+  "EPA ECHO lists about 1,030 active NAICS 336611 facilities; that list has not been reconciled row by row against the ledger (the OSHA 2025 shipbuilding records were screened instead). EPA FRS was down (503) during the final quote re-check, so 237 registry quotes were re-checked only at merge time.",
+  "NNS Norfolk campus: no source confirms operation after 2023; its recorded address is also Fairlead's Norfolk address. Westport Orange is operating (OSHA 2025 record, EPA air permit); AmFELS Brownsville was sold on 2026-01-30 and is not confirmed building now."
  ]
 }
