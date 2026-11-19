@@ -43,7 +43,7 @@ for p in sys.argv[2:]:
 # combine A and B on name+city+state
 comb = {}
 for r in audit:
-    k = (r.get("state", "").upper(), city(r.get("city")), " ".join(sorted(toks(r.get("name")))))
+    k = ((r.get("state") or "").upper(), city(r.get("city")), " ".join(sorted(toks(r.get("name")))))
     if k in comb:
         comb[k]["_auditor"] += "+" + r["_auditor"]
         comb[k]["in_definition"] = comb[k].get("in_definition") or r.get("in_definition")
@@ -55,7 +55,7 @@ for r in comb.values():
     if not r.get("in_definition"):
         out_def.append(r)
         continue
-    st = r.get("state", "").upper()
+    st = (r.get("state") or "").upper()
     at = (toks(r.get("name")) | toks(r.get("parent_company"))) - toks(r.get("city"))
     best = None
     for p in plants:
