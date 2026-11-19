@@ -265,8 +265,8 @@
   {
    "round": 8,
    "label": "Cross-vertical checks (state air permits, job-board dates, OSHA headcounts, profiles of OSHA top-40 entrants): rows for this vertical's plants",
-   "checked": 166,
-   "corrected": 4,
+   "checked": 281,
+   "corrected": 20,
    "unreachable": 1,
    "checkers": [
     {
@@ -275,6 +275,24 @@
      "corrected": 3,
      "kinds": {
       "other": 2,
+      "quote does not support value": 1
+     }
+    },
+    {
+     "file": "fact-check-cross-R11-ownboard.json",
+     "checked": 110,
+     "corrected": 15,
+     "kinds": {
+      "wrong plant or location": 1,
+      "other": 4,
+      "quote does not support value": 10
+     }
+    },
+    {
+     "file": "fact-check-cross-R11-sweep.json",
+     "checked": 5,
+     "corrected": 1,
+     "kinds": {
       "quote does not support value": 1
      }
     },
@@ -317,13 +335,13 @@
      "kinds": {}
     }
    ],
-   "rate": 0.0241,
-   "display": "4 / 166 = 2.4%"
+   "rate": 0.0712,
+   "display": "20 / 281 = 7.1%"
   }
  ],
  "miss_rate": {
   "value": "Auditor-measured 8/58 = 13.8% (6 never found, 2 found but wrongly excluded); finder first pass 32/90 = 35.6% (23 never found = 25.6%; 9 found but wrongly excluded = 10.0%)",
-  "note": "Auditor-measured: of the 58 in-definition plants the two list auditors found (now included), 8 were not on the plant-finder's included list; a lower bound, since the auditors used the finder's kinds of sources. First pass: of all 90 plants now included, 32 were not on the finder's included list: 23 it never found (7 auditors, 2 follow-up research, 14 higher-tier reviews and lead close-out) and 9 it found but excluded although the inclusion rule includes them. All are in the ledger now. The last three passes found one plant each. Open lead: MICA Steelworks postings at Rhome TX (not checked). 6 leads unverified with what was tried.",
+  "note": "Auditor-measured: of the 58 in-definition plants the two list auditors found (now included), 8 were not on the plant-finder's included list; a lower bound, since the auditors used the finder's kinds of sources. First pass: of all 90 plants now included, 32 were not on the finder's included list: 23 it never found (7 auditors, 2 follow-up research, 14 higher-tier reviews and lead close-out) and 9 it found but excluded although the inclusion rule includes them. All are in the ledger now. The last three passes found one plant each. Open lead: MICA Steelworks postings at Rhome TX (not checked). 6 leads unverified with what was tried. Matched pairs re-read 2026-11-19: two unverified directory rows (Arcosa Telecom Structures Tulsa, Lyte Poles Warren MI) would make it 10/60 = 16.7% if both were real in-definition plants; under 20% either way.",
   "history": [
    "9.5%",
    "9.2%",
@@ -339,7 +357,8 @@
   "9 plants included by the DOT-listing rule or the lead close-out are base records, not profiled or scored.",
   "Fact-check error rates are per claim checked; on a strict page-only reading (every clause on the one cited page) round 4 would be higher (checker A: 16.0% vs 6.4%).",
   "Opening lines and bottleneck guesses of all 81 profiled plants were rebuilt on 2026-11-17/19 under constrained composition (each clause from one stated row with its date; postings 'listed'; no live counts) and gated by tools/validate_lines.py; the round-7 line check found 6/133 = 4.5% (High and Medium 1/83 = 1.2%), and a non-author check of the 13 poles lines changed afterwards found none. 29 lines are 'unknown' where no stated site fact fits (Low bottleneck guess 27, Low opening line 1, Medium bottleneck guess 1).",
-  "Welder postings re-read 2026-11-17/19. Sabre's six plants, FWT and Millerbernd now rest on rows from the companies' own boards (Tallo copies went behind a sign-in wall on 2026-11-18: source failure); Sabre's board shows no dates, so their labor 20 rests on several postings open at once. Postings moved labor at MaiCo Ellsworth (standing ad since 2023; 88 -> 80), Nucor Brigham City (filled; 32 -> 20), PennFab Morrisville (listing names two plants; 55 -> 43), Arcosa Sumterville (closed; 68 -> 48). Judgement calls: Valmont Columbus counts a robot-titled role that requires hands-on welding (58 if not); Millerbernd's Plant 2 posting tie (80 if rejected); V&S Schuler Canton's requisition order (52 if a re-list); Western Utility's recruiter-board date not applied (68 if it were).",
-  "OSHA 300A 2025 headcounts (user-supplied file) raised scale at many plants; a record covering one building of a campus or another business at the address is not used (tools/osha_match.py gates and the R6-OSHA review)."
+  "Welder postings re-read 2026-11-17/19. Sabre's six plants, FWT and Millerbernd now rest on rows from the companies' own boards (Tallo copies went behind a sign-in wall on 2026-11-18: source failure); Sabre's board shows no dates, so their labor 20 rests on several postings open at once. Postings moved labor at MaiCo Ellsworth (standing ad since 2023; 88 -> 80), Nucor Brigham City (filled; 32 -> 20), PennFab Morrisville (listing names two plants; 55 -> 43), Arcosa Sumterville (closed; 68 -> 48). Judgement calls: Valmont Columbus counts a robot-titled role that requires hands-on welding (58 if not); Millerbernd's two postings tie to its Winsted pole campus only by inference (one names 'Plant 2', a building with no published address; the other only Winsted): points stay under the campus rule, confidence 4 -> 2 (Hennig rule); 80 if Plant 2 were a separate site, 68 on a strict shared-city reading; V&S Schuler Canton's requisition order (52 if a re-list); Western Utility's recruiter-board date not applied (68 if it were). Valmont's five pole plants were re-read on Valmont's Workday board on 2026-11-19 and every gone requisition removed; all five keep labor 20. At Tulsa, a Fitter I that names both Tulsa and Claremore is listed but not counted, and a Robotic Welder that requires hands-on GMAW is counted (still 3 counted). Sabre/FWT, Millerbernd and Valmont posting rows were then re-checked by a non-author: 3/98 = 3.1% corrected, all at Tulsa and all fixed.",
+  "OSHA 300A 2025 headcounts (user-supplied file) raised scale at many plants; a record covering one building of a campus or another business at the address is not used (tools/osha_match.py gates and the R6-OSHA review).",
+  "Company-level sweep (2026-11-19): stated rows whose page is cited by several plants were re-read; rows the page states only for the company were retagged inferred (counted in the cross-vertical round). Confidence fell where a component then rested only on inferred rows."
  ]
 }
