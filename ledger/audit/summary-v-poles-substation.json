@@ -14,8 +14,8 @@
   "profiled_fact_checked": 81,
   "material_unknown": 69
  },
- "links": 7,
- "evidence_rows": 3681,
+ "links": 36,
+ "evidence_rows": 20349,
  "fact_check_rounds": [
   {
    "round": 1,
@@ -224,9 +224,48 @@
    "display": "14 / 170 = 8.2%"
   },
   {
+   "round": 7,
+   "label": "Round 7: line check of all 81 profiled plants' lines after constrained rewriting (validator-gated), checkers who did not write them",
+   "checked": 133,
+   "corrected": 6,
+   "unreachable": 7,
+   "checkers": [
+    {
+     "file": "fact-check-v-poles-substation-R7-lines-PA.json",
+     "checked": 56,
+     "corrected": 0,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 0,
+      "invented fact": 0,
+      "other": 0
+     }
+    },
+    {
+     "file": "fact-check-v-poles-substation-R7-lines-PB.json",
+     "checked": 77,
+     "corrected": 6,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 6,
+      "invented fact": 0,
+      "other": 0
+     }
+    }
+   ],
+   "rate": 0.0451,
+   "display": "6 / 133 = 4.5%"
+  },
+  {
    "round": 8,
    "label": "Cross-vertical checks (state air permits, job-board dates, OSHA headcounts, profiles of OSHA top-40 entrants): rows for this vertical's plants",
-   "checked": 153,
+   "checked": 166,
    "corrected": 4,
    "unreachable": 1,
    "checkers": [
@@ -270,10 +309,16 @@
      "kinds": {
       "other": 1
      }
+    },
+    {
+     "file": "fact-check-cross-R8-changed-lines.json",
+     "checked": 13,
+     "corrected": 0,
+     "kinds": {}
     }
    ],
-   "rate": 0.0261,
-   "display": "4 / 153 = 2.6%"
+   "rate": 0.0241,
+   "display": "4 / 166 = 2.4%"
   }
  ],
  "miss_rate": {
@@ -290,10 +335,11 @@
  },
  "known_limits": [
   "Part size is unknown for 69 of 81 profiled plants, so material scores 0 there; a Low score usually means missing data, not a poor fit (see the Unknowns and ceiling columns).",
-  "Welder-posting counts are a snapshot of 2026-11-13 job boards. Sabre's board files every requisition in a city under one address with several site codes, so Sabre postings are tied to a plant only where EPA lists one Sabre fabrication site in that city; FWT Fort Worth's are not counted.",
   "Pre-production plants (Nucor Brigham City ramping, Hapco Oklahoma City under construction) are scored on stated plans; Nucor's Indiana pole plant (Crawfordsville) is operating.",
   "9 plants included by the DOT-listing rule or the lead close-out are base records, not profiled or scored.",
-  "Opening lines are composed from stated claims; the round-5 line check corrected 16 of 98 lines (9 for a fact, 7 for the closing question), and a scripted check of all 81 fixed 6 more.",
-  "Fact-check error rates are per claim checked; on a strict page-only reading (every clause on the one cited page) round 4 would be higher (checker A: 16.0% vs 6.4%)."
+  "Fact-check error rates are per claim checked; on a strict page-only reading (every clause on the one cited page) round 4 would be higher (checker A: 16.0% vs 6.4%).",
+  "Opening lines and bottleneck guesses of all 81 profiled plants were rebuilt on 2026-11-17/19 under constrained composition (each clause from one stated row with its date; postings 'listed'; no live counts) and gated by tools/validate_lines.py; the round-7 line check found 6/133 = 4.5% (High and Medium 1/83 = 1.2%), and a non-author check of the 13 poles lines changed afterwards found none. 29 lines are 'unknown' where no stated site fact fits (Low bottleneck guess 27, Low opening line 1, Medium bottleneck guess 1).",
+  "Welder postings re-read 2026-11-17/19. Sabre's six plants, FWT and Millerbernd now rest on rows from the companies' own boards (Tallo copies went behind a sign-in wall on 2026-11-18: source failure); Sabre's board shows no dates, so their labor 20 rests on several postings open at once. Postings moved labor at MaiCo Ellsworth (standing ad since 2023; 88 -> 80), Nucor Brigham City (filled; 32 -> 20), PennFab Morrisville (listing names two plants; 55 -> 43), Arcosa Sumterville (closed; 68 -> 48). Judgement calls: Valmont Columbus counts a robot-titled role that requires hands-on welding (58 if not); Millerbernd's Plant 2 posting tie (80 if rejected); V&S Schuler Canton's requisition order (52 if a re-list); Western Utility's recruiter-board date not applied (68 if it were).",
+  "OSHA 300A 2025 headcounts (user-supplied file) raised scale at many plants; a record covering one building of a campus or another business at the address is not used (tools/osha_match.py gates and the R6-OSHA review)."
  ]
 }

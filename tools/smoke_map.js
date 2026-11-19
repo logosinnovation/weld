@@ -163,7 +163,7 @@ async function run(label, ctxOpts, full) {
   const ps = await text('#audit-' + PV), ss = await text('#audit-' + SV);
   const P_ = sumOf(PV), S_ = sumOf(SV);
   check(P_.status === 'done' && S_.status === 'done', `${label}: summary files status done / done`);
-  check(['11.8%', '19.4%', '8.2%', '8.9%', '13.8%'].every(x => ps.includes(x)) && ps.includes('done') && ps.includes(String(polesProfiled)), `${label}: poles section shows rounds 11.8/19.4/8.2/8.9, miss 13.8, done, ${polesProfiled} profiled`);
+  check(['11.8%', '19.4%', '8.2%', '8.9%', '13.8%', '4.5%'].every(x => ps.includes(x)) && ps.includes('done') && ps.includes(String(polesProfiled)), `${label}: poles section shows rounds 11.8/19.4/8.2/8.9, lines 4.5, miss 13.8, done, ${polesProfiled} profiled`);
   check(!/29\.4%|7\.3%|Electric Boat|v-shipbuilding/.test(ps), `${label}: poles section has no ships figures`);
   check(ss.includes('7.3%') && ss.includes('29.4%') && ss.includes('6.1%') && ss.includes('done') && ss.includes(String(shipsProfiled)), `${label}: ships section shows round 1 7.3%, miss 29.4%, round 2 6.1%, done, ${shipsProfiled} profiled`);
   check(!/11\.8%|19\.4%|8\.9%|13\.8%|fact-check-v-poles/.test(ss), `${label}: ships section has no poles figures or poles checker files`);
