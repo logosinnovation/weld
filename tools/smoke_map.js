@@ -178,7 +178,7 @@ async function run(label, ctxOpts, full) {
   const bs = await text('#audit-' + BV);
   check(bs.includes(String(batteryProfiled)) && bs.includes('3.6%') && bs.includes('6.2%') && bs.includes('28.6%') && bs.includes('13.3%') && bs.includes('22.7%') && bs.includes('1.1%') && /done/i.test(bs) && bs.includes('18.3%') && !/27\.6%|11\.4%|29\.4%|fact-check-v-mining/.test(bs), `${label}: battery section (${batteryProfiled} profiled, rounds 3.6%, 6.2% and 28.6%, miss 18.3%, no other vertical's figures)`);
   const ds = await text('#audit-v-datacenter-grid-prefab');
-  check(ds.includes('6.4%') && ds.includes('14.3%') && ds.includes('45.7%') && ds.includes('58.7%') && !/29\.4%|27\.6%|fact-check-v-mining|fact-check-v-poles/.test(ds), `${label}: data-center section (round 1 6.4%, miss 14.3%, history 45.7% and 58.7%, no other vertical's figures)`);
+  check(ds.includes('6.1%') && ds.includes('5.5%') && ds.includes('16.0%') && ds.includes('14.3%') && ds.includes('45.7%') && ds.includes('58.7%') && !/29\.4%|27\.6%|fact-check-v-mining|fact-check-v-poles/.test(ds), `${label}: data-center section (round 1 6.1%, base sample 5.5%, confirmed-only 16.0%, miss 14.3%, history 45.7% and 58.7%, no other vertical's figures)`);
   await shot('method-ships');
   check(errs.length === 0, `${label}: no console errors or runtime requests ${JSON.stringify(errs.slice(0, 3))}`);
   await b.close();
