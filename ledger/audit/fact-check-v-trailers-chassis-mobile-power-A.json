@@ -1,0 +1,3335 @@
+{
+ "vertical": "v-trailers-chassis-mobile-power",
+ "checker": "fact-checker TR-FA (round 1, profiler A batch)",
+ "date": "2026-11-20",
+ "plants": [
+  "p-hendrickson-navarre-oh",
+  "p-hendrickson-elizabethtown-ky",
+  "p-hendrickson-lebanon-in",
+  "p-reyco-granning-mount-vernon-mo",
+  "p-hendrickson-clarksville-tn",
+  "p-hutchens-mansfield-mo",
+  "p-hutchens-seymour-mo",
+  "p-ridewell-springfield-mo",
+  "p-cush-nixa-mo",
+  "p-axn-louisville-ky"
+ ],
+ "claims_checked": 222,
+ "claims_corrected": 9,
+ "claims_unreachable": 0,
+ "fact_error_rate": 4.1,
+ "rates": {
+  "all_rows": {
+   "checked": 222,
+   "corrected": 9
+  },
+  "stated_rows": {
+   "checked": 118,
+   "corrected": 9
+  },
+  "inbox_rows": {
+   "checked": 129,
+   "corrected": 3
+  },
+  "ledger_rows": {
+   "checked": 93,
+   "corrected": 6
+  },
+  "lines": {
+   "checked": 20,
+   "corrected": 0
+  },
+  "score_rows_not_in_rate": {
+   "checked": 90,
+   "corrected": 0,
+   "score_questions": 1
+  },
+  "outside_field_list_not_in_rate": {
+   "checked": 1,
+   "corrected": 1
+  }
+ },
+ "error_kind_counts": {
+  "quote does not support value": 7,
+  "wrong plant or location": 2
+ },
+ "repeated_kind_flag": "'quote does not support value' appears 7 times, in two patterns. (A) Name labels taken from another page: 5 plant-finder TR-C base name rows (Hendrickson Navarre, Elizabethtown, Lebanon, Clarksville: '(trailer commercial vehicle systems)'; Reyco Granning: 'Suspensions (Hendrickson Specialty Products Group)') cite an ADP posting that shows only the company and city. The values are true (global-operations page, OSHA company_name), so this is a citation fix, but it is likely vertical-wide in TR-C's base records: sweep every v-trailers name and parent_company row for words not on the cited page. (B) Multi-posting rows citing one page: Navarre and Lebanon 'listed, not counted' rows each name roles from other requisitions; in Navarre's case one of them (Machine Operator - Afternoons) is described wrongly. Sweep every welder_postings row that names more than one requisition. Also 2 'wrong plant or location' (Ridewell company-level page rows not worded company-level).",
+ "fields_in_rate": [
+  "address",
+  "bottleneck_guess",
+  "certifications",
+  "demand_outlook",
+  "existing_robots",
+  "headcount",
+  "lookalike_of",
+  "materials",
+  "multi_plant",
+  "name",
+  "opening_line",
+  "parent_company",
+  "part_size_fit",
+  "production_type",
+  "products",
+  "relationship",
+  "site_attribution",
+  "triggers",
+  "weld_processes",
+  "welder_postings"
+ ],
+ "fields_not_checked": "website, tier, tier_secondary, status, prospect_test, found_by, lat/lon/county (outside the delegated field list; quotes on those rows were nevertheless found on their pages). The AXN tier row was checked because it is a judgement tagged stated (reported in rows_outside_rate).",
+ "method": "Every cited page re-read 2026-11-20 by this checker (no cached copies from earlier sessions used). Hendrickson ADP: each of the 19 cited requisitions rendered one by one in Playwright (job title, req number, company, street address and full text), and the whole board (191 requisitions) read through the public apply-custom-filters JSON: every counted posting is live today at the street address recorded (Navarre 26-989, 26-858; Elizabethtown 26-1079, 26-1464; Lebanon 26-1199; Mount Vernon 26-1126, 26-1289, 26-1288, 26-1113, 26-947; Clarksville 26-1164), and the board carries no posting date (postDate empty in search-meta), so 'board shows no posting date' stands. No other welding-titled requisition at these five addresses was missed. Also rendered: Machine Operator - Afternoons (26-1345) and Fabricator / Machinist (26-1400). Other pages via tools/fetch_page.py (Hendrickson home and global operations, Hutchens about-us, careers, both AWA role pages, 9800 Series, employment-application; Ridewell why-ridewell and contact; Bulk Transporter article and gallery; Cush home, about, partner, contact; AXN home; Kentucky Cabinet for Economic Development release; FreightWaves; ttnews; automation.com; Randoncorp; EPA FRS 110012607287 and 110018006076; Fleet Equipment ACT outlook). Every quote split on '...' and each fragment checked by normalised substring against the page text and raw source: 182 of 182 quoted rows FOUND (incl. the vertical demand_outlook row). Hutchens role pages: JSON-LD datePublished 2021-05-14, dateModified 2023-05-31 (AWA Operator) and 2022-07-26 (Slider). OSHA rows checked against data/osha_2025.csv (IDs 3072398, 3072298, 3072048, 2911378, 2910511, 3262099 match ZIP, street number and name; 3072303 'Sterrllite' and 3072405 ZIP 46502 fail the gate as recorded; 2923704 'Falcon Crest' vs 'Falconcrest'). Open status: every Hendrickson site has live postings today; Hutchens, Ridewell (Jul/Aug 2026 article), Cush (site live) and AXN (opened 2026-03-26) show current operation. Web searches used: 0 of 8. Value-level reading: each value compared with its own cited page only (one row per page).",
+ "rows": [
+  {
+   "claim_id": "c-hendrickson:multi_plant",
+   "source_url": "https://www.hendrickson-intl.com/company/global-operations",
+   "ledger_value": "multi-plant: Hendrickson's Global Operations & Manufacturing Facilities page lists several US sites, including Kendallville IN, Clarksville TN and Navarre OH",
+   "tag": "stated",
+   "row_ref": "inbox[0]",
+   "row_kind": "inbox",
+   "plant": "c-hendrickson",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "c-hendrickson:products",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "company-level: medium and heavy-duty mechanical, elastomeric and air suspensions; axle and brake systems; tire pressure control; auxiliary lift axles; springs; stabilizers; bumpers",
+   "tag": "stated",
+   "row_ref": "inbox[1]",
+   "row_kind": "inbox",
+   "plant": "c-hendrickson",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "c-hutchens-industries:multi_plant",
+   "source_url": "https://www.hutchensindustries.com/about-us/",
+   "ledger_value": "multi-plant: two manufacturing facilities (Seymour MO, Mansfield MO) plus Springfield headquarters",
+   "tag": "stated",
+   "row_ref": "inbox[2]",
+   "row_kind": "inbox",
+   "plant": "c-hutchens-industries",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "c-hutchens-industries:production_type",
+   "source_url": "https://www.hutchensindustries.com/about-us/",
+   "ledger_value": "company-level: trailer suspensions for van, flatbed, chassis and specialty trailer applications, plus fabrication services (laser cutting, stamping, press braking and welding) for projects outside its suspension work",
+   "tag": "stated",
+   "row_ref": "inbox[3]",
+   "row_kind": "inbox",
+   "plant": "c-hutchens-industries",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "c-ridewell:multi_plant",
+   "source_url": "https://www.bulktransporter.com/whats-in-print/article/55380977/engineered-for-longevity-old-school-service-is-ridewells-edge",
+   "ledger_value": "two locations: 200,000 sq ft main manufacturing facility and headquarters in Springfield and a 45,000 sq ft secondary facility nearby that builds auxiliary suspensions (Bulk Transporter, July/August 2026)",
+   "tag": "stated",
+   "row_ref": "inbox[4]",
+   "row_kind": "inbox",
+   "plant": "c-ridewell",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "c-randoncorp:multi_plant",
+   "source_url": "https://www.randoncorp.com/en",
+   "ledger_value": "multi-plant parent: Randoncorp states 34 industrial units",
+   "tag": "stated",
+   "row_ref": "inbox[5]",
+   "row_kind": "inbox",
+   "plant": "c-randoncorp",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001216054306",
+   "ledger_value": "counted: Welder - Nights (req 26-989), Hendrickson ADP board, 4500 Sterilite St NE, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+   "tag": "stated",
+   "row_ref": "inbox[6]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001209943906",
+   "ledger_value": "counted: Welder - Afternoons (req 26-858), Hendrickson ADP board, 4500 Sterilite St NE, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+   "tag": "stated",
+   "row_ref": "inbox[7]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:weld_processes",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001216054306",
+   "ledger_value": "MIG (manual and robotic) welding of production parts; welding certification test required (2G MIG)",
+   "tag": "stated",
+   "row_ref": "inbox[8]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:existing_robots",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001216054306",
+   "ledger_value": "yes: robotic welding named in the site's welder postings (brand not stated)",
+   "tag": "stated",
+   "row_ref": "inbox[9]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:materials",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[10]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[11]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[12]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:production_type",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "company-level product list: medium and heavy-duty mechanical, elastomeric and air suspensions, axle and brake systems, lift axles, springs and components (Hendrickson home page); no site split stated",
+   "tag": "inferred",
+   "row_ref": "inbox[13]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "row_ref": "inbox[14]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001220202906",
+   "ledger_value": "counted: Welder - 1st Shift (req 26-1079), Hendrickson ADP board, 940 North Black Branch Road, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+   "tag": "stated",
+   "row_ref": "inbox[15]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001236383006",
+   "ledger_value": "counted: Welder - 3rd Shift (req 26-1464), Hendrickson ADP board, 940 North Black Branch Road, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+   "tag": "stated",
+   "row_ref": "inbox[16]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:weld_processes",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001220202906",
+   "ledger_value": "MIG (manual and robotic) welding of production parts; welding certification test required",
+   "tag": "stated",
+   "row_ref": "inbox[17]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:existing_robots",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001220202906",
+   "ledger_value": "yes: robotic welding named in the site's welder postings (brand not stated)",
+   "tag": "stated",
+   "row_ref": "inbox[18]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:materials",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[19]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[20]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[21]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:production_type",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "company-level product list: medium and heavy-duty mechanical, elastomeric and air suspensions, axle and brake systems, lift axles, springs and components (Hendrickson home page); no site split stated",
+   "tag": "inferred",
+   "row_ref": "inbox[22]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "row_ref": "inbox[23]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001224130906",
+   "ledger_value": "counted: Welder (Nights) (req 26-1199), Hendrickson ADP board, 180 Mt. Zion Road, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+   "tag": "stated",
+   "row_ref": "inbox[24]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:weld_processes",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001224130906",
+   "ledger_value": "MIG (manual and robotic) welding of production parts; welding certification test required",
+   "tag": "stated",
+   "row_ref": "inbox[25]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:existing_robots",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001224130906",
+   "ledger_value": "yes: robotic welding named in the site's welder postings (brand not stated)",
+   "tag": "stated",
+   "row_ref": "inbox[26]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:materials",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[27]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[28]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[29]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:production_type",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "company-level product list: medium and heavy-duty mechanical, elastomeric and air suspensions, axle and brake systems, lift axles, springs and components (Hendrickson home page); no site split stated",
+   "tag": "inferred",
+   "row_ref": "inbox[30]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "row_ref": "inbox[31]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001221793506",
+   "ledger_value": "counted: Welder (req 26-1126), Hendrickson ADP board, 1205 Industrial Park Drive, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+   "tag": "stated",
+   "row_ref": "inbox[32]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001228260706",
+   "ledger_value": "counted: Welder (req 26-1289), Hendrickson ADP board, 1205 Industrial Park Drive, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+   "tag": "stated",
+   "row_ref": "inbox[33]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001228256206",
+   "ledger_value": "counted: 3rd shift Welder (req 26-1288), Hendrickson ADP board, 1205 Industrial Park Drive, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+   "tag": "stated",
+   "row_ref": "inbox[34]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001221610706",
+   "ledger_value": "counted: Welder (req 26-1113), Hendrickson ADP board, 1205 Industrial Park Drive, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+   "tag": "stated",
+   "row_ref": "inbox[35]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001214262106",
+   "ledger_value": "counted: Welder (req 26-947), Hendrickson ADP board, 1205 Industrial Park Drive, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+   "tag": "stated",
+   "row_ref": "inbox[36]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:weld_processes",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001221793506",
+   "ledger_value": "MIG (manual and robotic) welding of production parts; welding certification test required",
+   "tag": "stated",
+   "row_ref": "inbox[37]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:existing_robots",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001221793506",
+   "ledger_value": "yes: robotic welding named in the site's welder postings (brand not stated)",
+   "tag": "stated",
+   "row_ref": "inbox[38]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:materials",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[39]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[40]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:production_type",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "company-level product list: medium and heavy-duty mechanical, elastomeric and air suspensions, axle and brake systems, lift axles, springs and components (Hendrickson home page); no site split stated",
+   "tag": "inferred",
+   "row_ref": "inbox[41]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "row_ref": "inbox[42]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:products",
+   "source_url": "https://www.hendrickson-intl.com/company/global-operations",
+   "ledger_value": "listed by Hendrickson under Trailer Commercial Vehicle Systems",
+   "tag": "stated",
+   "row_ref": "inbox[43]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:products",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001233002306",
+   "ledger_value": "semi-trailer suspension components assembled, packaged and painted at Navarre (Assembler - Nights posting)",
+   "tag": "stated",
+   "row_ref": "inbox[44]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:products",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001230821006",
+   "ledger_value": "axle production area with non-MIG welding machinery (Machine Operator - Nights posting)",
+   "tag": "stated",
+   "row_ref": "inbox[45]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:existing_robots",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001232395306",
+   "ledger_value": "FANUC welding robots (Manufacturing Engineering Technician - Afternoons posting, Navarre)",
+   "tag": "stated",
+   "row_ref": "inbox[46]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001230821006",
+   "ledger_value": "listed, not counted: Manufacturing Engineering Technician - Afternoons (robot programming), Machine Operator - Nights and - Afternoons (non-MIG welding machinery in the axle area)",
+   "tag": "stated",
+   "row_ref": "inbox[47]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "corrected",
+   "corrected_value": "listed, not counted: Machine Operator - Nights (req 26-1344), 4500 Sterilite St NE: operates the non-MIG welding machinery in the axle area",
+   "corrected_quote": "Operating all of the non-MIG welding machinery in the axle area.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "2 counted, open on Hendrickson's ADP board (read 2026-11-20; board shows no posting dates): Welder - Nights (26-989), Welder - Afternoons (26-858), 4500 Sterilite St NE; MIG, hand and robotic welding; 2G MIG test; listed, not counted: Manufacturing Engineering Technician - Afternoons, Machine Operator - Nights",
+   "note": "The cited page is Machine Operator - Nights only. The row also lists Manufacturing Engineering Technician - Afternoons (another page, reqId 5001232395306, already its own existing_robots row) and says Machine Operator - Afternoons runs 'non-MIG welding machinery in the axle area'. That is false: Machine Operator - Afternoons (#26-1345, reqId 5001230824006, rendered 2026-11-20, 4500 Sterilite St NE) is an assembly role ('Use required pneumatic/hand tools to assemble product per Company and customer specifications.'); its text has no welding and no axle area. Drop it from the not-counted welder list (it is not a welding role) or give it its own assembly row. One row per page; the plants.csv value above drops the Afternoons machine operator."
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:products",
+   "source_url": "https://www.hendrickson-intl.com/company/global-operations",
+   "ledger_value": "listed by Hendrickson under Trailer Commercial Vehicle Systems",
+   "tag": "stated",
+   "row_ref": "inbox[48]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:products",
+   "source_url": "https://www.hendrickson-intl.com/company/global-operations",
+   "ledger_value": "listed by Hendrickson under Trailer Commercial Vehicle Systems",
+   "tag": "stated",
+   "row_ref": "inbox[49]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001208926906",
+   "ledger_value": "listed, not counted: Manufacturing Engineering Technician (3rd Shift) (hand MIG experience desired; engineering role); Fabricator / Machinist (2nd Shift) (burning, grinding, press brake, CNC; no welding)",
+   "tag": "stated",
+   "row_ref": "inbox[50]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "corrected",
+   "corrected_value": "listed, not counted: Manufacturing Engineering Technician (3rd Shift) (req 26-844), 180 Mt. Zion Road: engineering role; two years of hand MIG welding experience desired",
+   "corrected_quote": "Two years of experience performing MIG welding by hand desired.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "1 counted, open on Hendrickson's ADP board (read 2026-11-20; board shows no posting dates): Welder (Nights) (26-1199), 180 Mt. Zion Road; MIG, hand and robotic welding; listed, not counted: Manufacturing Engineering Technician (3rd Shift), Fabricator / Machinist (2nd Shift, no welding)",
+   "note": "The Fabricator / Machinist (2nd Shift) clause is true but sits on another page (reqId 5001233457006, #26-1400, 180 Mt. Zion Road; read 2026-11-20). Proposed own row: value 'listed, not counted: Fabricator / Machinist (2nd Shift) (req 26-1400): burning, grinding, shearing, sawing, turning and press brake; no welding named', quote 'Performing burning, grinding, shearing, sawing, turning and press brake operations to produce a quality product.' plants.csv text unchanged."
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:products",
+   "source_url": "https://www.hendrickson-intl.com/company/global-operations",
+   "ledger_value": "listed by Hendrickson under Trailer Commercial Vehicle Systems",
+   "tag": "stated",
+   "row_ref": "inbox[51]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:products",
+   "source_url": "https://www.hendrickson-intl.com/company/global-operations",
+   "ledger_value": "Reyco Granning Suspensions, listed by Hendrickson in its Commercial Vehicle Specialty Products Group at 1205 Industrial Park Dr",
+   "tag": "stated",
+   "row_ref": "inbox[52]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:certifications",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001217407706",
+   "ledger_value": "IATF 16949 and ISO 9001 registration (Quality Manager posting, Mount Vernon)",
+   "tag": "stated",
+   "row_ref": "inbox[53]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001218276806",
+   "ledger_value": "listed, not counted: Weld Engineer (engineering role; maintains all WPS for W&C Suspensions)",
+   "tag": "stated",
+   "row_ref": "inbox[54]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001222989506",
+   "ledger_value": "counted: Robotic Welder-2nd Shift (req 26-1164), Hendrickson ADP board, 151 International Blvd, read 2026-11-20 (board shows no posting date); robotic and hand welding, 2G welding test, overtime as production demands require",
+   "tag": "stated",
+   "row_ref": "inbox[55]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:weld_processes",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001222989506",
+   "ledger_value": "robotic and hand welding (process not named; 2G welding test)",
+   "tag": "stated",
+   "row_ref": "inbox[56]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:products",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001233808006",
+   "ledger_value": "assembly of product with parts such as beams, air springs, axles, hubs and frame brackets (Assembler- 3rd Shift posting)",
+   "tag": "stated",
+   "row_ref": "inbox[57]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:existing_robots",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001222989506",
+   "ledger_value": "yes: robotic welders operated at the site (brand not stated)",
+   "tag": "stated",
+   "row_ref": "inbox[58]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:materials",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[59]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[60]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[61]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:production_type",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "company-level product list: medium and heavy-duty mechanical, elastomeric and air suspensions, axle and brake systems, lift axles, springs and components (Hendrickson home page); no site split stated",
+   "tag": "inferred",
+   "row_ref": "inbox[62]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "row_ref": "inbox[63]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:welder_postings",
+   "source_url": "https://www.hutchensindustries.com/careers/",
+   "ledger_value": "listed, not counted: Automatic Weld & Assembly Operator; Automatic Weld & Assembly Slider Operator; Automatic Weld & Assembly Finish Operator (paint line) - all Mansfield, Missouri, on hutchensindustries.com/careers, read 2026-11-20",
+   "tag": "stated",
+   "row_ref": "inbox[64]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:welder_postings",
+   "source_url": "",
+   "ledger_value": "not counted (Kafka apply-flow precedent): the careers page's APPLY NOW opens a generic employment application (free-text 'Position Applied For' field, skill checkboxes), not a per-role applicant board; role pages carry 2022-07-26 and 2023-05-31 timestamps and no posting date",
+   "tag": "inferred",
+   "row_ref": "inbox[65]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed",
+   "score_question": "Rubric reading, not a fact error: the APPLY NOW link goes to Hutchens' own 4-step employment application (hutchensindustries.com/employment-application/, 'Position Applied For' field, no disclaimer that listings do not mean hiring). That matches the Allied precedent (own apply form, counted, R9-closeout) and IROCK (blanket instruction, counted), not Kafka (Apply Now to a generic Indeed company page). Coordinator ruling needed; see score_notes."
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:weld_processes",
+   "source_url": "https://www.hutchensindustries.com/careers/awa-slider-operator/",
+   "ledger_value": "manual electric arc welding with wire speed and voltage adjustment, in flat, horizontal, vertical and overhead positions (AWA Slider Operator page); process (MIG/FCAW) not named",
+   "tag": "stated",
+   "row_ref": "inbox[66]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:existing_robots",
+   "source_url": "https://www.hutchensindustries.com/careers/awa-operator/",
+   "ledger_value": "yes: hub welders, robots, washer welders and a bearing block welder named at Mansfield (AWA Operator page, modified 2023-05-31)",
+   "tag": "stated",
+   "row_ref": "inbox[67]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:existing_robots",
+   "source_url": "https://www.automation.com/en-us/products/september-2023/path-robotics-autonomous-manufacturing-systems",
+   "ledger_value": "company-level: Hutchens was an early Path partner during AF-1 development (2023 coverage; plant not named)",
+   "tag": "inferred",
+   "row_ref": "inbox[68]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:materials",
+   "source_url": "https://www.hutchensindustries.com/9800-series/",
+   "ledger_value": "company-level: high-strength low-alloy steel slider side rails (Hutch 9800 Series); Mansfield welds trailer suspension parts and movable subframes",
+   "tag": "inferred",
+   "row_ref": "inbox[69]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[70]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[71]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:production_type",
+   "source_url": "https://www.hutchensindustries.com/about-us/",
+   "ledger_value": "company-level product list: trailer suspensions and sliding subframes for van, flatbed, chassis and specialty trailer applications; fabrication services for outside projects",
+   "tag": "inferred",
+   "row_ref": "inbox[72]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "row_ref": "inbox[73]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:weld_processes",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[74]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:materials",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[75]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[76]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[77]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[78]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:production_type",
+   "source_url": "https://www.hutchensindustries.com/about-us/",
+   "ledger_value": "company-level product list: trailer suspensions and sliding subframes for van, flatbed, chassis and specialty trailer applications; Seymour product split not stated",
+   "tag": "inferred",
+   "row_ref": "inbox[79]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "row_ref": "inbox[80]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:opening_line",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[81]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[82]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:products",
+   "source_url": "https://www.bulktransporter.com/whats-in-print/article/55380977/engineered-for-longevity-old-school-service-is-ridewells-edge",
+   "ledger_value": "two locations stated: main 200,000 sq ft facility and HQ in Springfield; 45,000 sq ft secondary facility nearby builds auxiliary suspensions (address not found; list lead)",
+   "tag": "stated",
+   "row_ref": "inbox[83]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:existing_robots",
+   "source_url": "https://www.bulktransporter.com/equipment/media-gallery/55399206/gallery-inside-ridewells-air-ride-suspension-operations",
+   "ledger_value": "yes: roughly 30 automated systems including robotic welding cells in the 200,000 sq ft main facility (Bulk Transporter, July/August 2026); brand not stated",
+   "tag": "stated",
+   "row_ref": "inbox[84]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:site_attribution",
+   "source_url": "https://www.ridewellcorp.com/contact-us/",
+   "ledger_value": "main facility and headquarters = 3715 E Farm Road 94 (contact page street address; only Ridewell OSHA 2025 record)",
+   "tag": "inferred",
+   "row_ref": "inbox[85]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:weld_processes",
+   "source_url": "https://www.ridewellcorp.com/why-ridewell/",
+   "ledger_value": "robotic welding with coordinated robots and fixtures (process not named)",
+   "tag": "stated",
+   "row_ref": "inbox[86]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "corrected",
+   "corrected_value": "company-level: robotic welding with coordinated robots and fixtures (process not named)",
+   "corrected_quote": "Coordinated motion of robots and fixtures optimizes weld angles, resulting in unsurpassed weld quality.",
+   "corrected_tag": "stated",
+   "error_kind": "wrong plant or location",
+   "plants_csv_value": "company-level: robotic welding with coordinated robots and fixtures (process not named)",
+   "note": "why-ridewell is a company-level page and Ridewell has two Springfield production sites (Bulk Transporter, Jul/Aug 2026: main facility and a 45,000 sq ft secondary facility that builds auxiliary suspensions). The sibling materials and certifications rows from the same page are worded company-level; this one is not. Robotic welding at the main facility is separately carried by the existing_robots gallery row. No score effect (process 0 either way)."
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:materials",
+   "source_url": "https://www.ridewellcorp.com/why-ridewell/",
+   "ledger_value": "company-level: high-strength, low-alloy steel, laser cut",
+   "tag": "stated",
+   "row_ref": "inbox[87]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:certifications",
+   "source_url": "https://www.ridewellcorp.com/why-ridewell/",
+   "ledger_value": "company-level: ISO 9001:2015",
+   "tag": "stated",
+   "row_ref": "inbox[88]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[89]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:production_type",
+   "source_url": "https://www.ridewellcorp.com/why-ridewell/",
+   "ledger_value": "company-level: suspension systems custom crafted according to customer needs",
+   "tag": "inferred",
+   "row_ref": "inbox[90]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "row_ref": "inbox[92]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:production_type",
+   "source_url": "https://www.cushcorp.com/partner-with-cush",
+   "ledger_value": "engineered-to-order heavy-duty truck and trailer suspensions, manufactured at the Nixa facility",
+   "tag": "stated",
+   "row_ref": "inbox[93]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:production_type",
+   "source_url": "https://www.cushcorp.com/about",
+   "ledger_value": "engineered to order",
+   "tag": "stated",
+   "row_ref": "inbox[94]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:materials",
+   "source_url": "https://www.cushcorp.com/about",
+   "ledger_value": "steel (cut, shaped and welded at Nixa)",
+   "tag": "stated",
+   "row_ref": "inbox[95]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:weld_processes",
+   "source_url": "https://www.cushcorp.com/about",
+   "ledger_value": "welding stated at Nixa; process not named",
+   "tag": "stated",
+   "row_ref": "inbox[96]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[97]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[98]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[99]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:welder_postings",
+   "source_url": "",
+   "ledger_value": "none found",
+   "tag": "unknown",
+   "row_ref": "inbox[100]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "row_ref": "inbox[101]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:triggers",
+   "source_url": "https://newkentuckyhome.ky.gov/Newsroom/NewsPage/20260326_AXNAuto",
+   "ledger_value": "2026-03-26 grand opening of AXN's relocated Louisville facility at 6001 National Turnpike: nearly $15 million investment, robotic welding cells, 10 new full-time positions (Kentucky release)",
+   "tag": "stated",
+   "row_ref": "inbox[102]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:headcount",
+   "source_url": "https://www.freightwaves.com/news/axn-expands-kentucky-axle-plant-targeting-heavy-duty-truck-oems",
+   "ledger_value": "about 55 (FreightWaves, 2026-03-26; expected to grow to around 100 once fully staffed)",
+   "tag": "stated",
+   "row_ref": "inbox[103]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:existing_robots",
+   "source_url": "https://newkentuckyhome.ky.gov/Newsroom/NewsPage/20260326_AXNAuto",
+   "ledger_value": "yes: robotic welding cells installed for axle components (Kentucky release, 2026-03-26); brand not stated",
+   "tag": "stated",
+   "row_ref": "inbox[104]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:production_type",
+   "source_url": "https://www.freightwaves.com/news/axn-expands-kentucky-axle-plant-targeting-heavy-duty-truck-oems",
+   "ledger_value": "trailer axles for dry van, refrigerated and flatbed trailers plus a new suspension line; target up to 100,000 axles a year (FreightWaves, 2026-03-26); no identical-parts line quoted",
+   "tag": "stated",
+   "row_ref": "inbox[105]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:products",
+   "source_url": "https://newkentuckyhome.ky.gov/Newsroom/NewsPage/20260326_AXNAuto",
+   "ledger_value": "relocated Louisville facility at 6001 National Turnpike opened 2026-03-26 with robotic welding cells for axle components and a new paint booth (Kentucky release)",
+   "tag": "stated",
+   "row_ref": "inbox[106]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:weld_processes",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[107]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:materials",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[108]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[109]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[110]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:welder_postings",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[111]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:opening_line",
+   "source_url": "",
+   "ledger_value": "Hendrickson's job board, read Nov 20, 2026, lists Welder - Nights and Welder - Afternoons roles at 4500 Sterilite St NE in Navarre for MIG, hand and robotic welding, and the Welder - Nights posting requires a 2G MIG welding certification test; how do you staff manual MIG welding on those shifts?",
+   "tag": "inferred",
+   "row_ref": "inbox[175]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely staffing manual MIG welders on nights and afternoons alongside FANUC welding robots: Hendrickson's board, read Nov 20, 2026, lists Welder - Nights and Welder - Afternoons roles at Navarre and a Manufacturing Engineering Technician role that operates FANUC welding robots.",
+   "tag": "inferred",
+   "row_ref": "inbox[176]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:opening_line",
+   "source_url": "",
+   "ledger_value": "Hendrickson's job board, read Nov 20, 2026, lists Welder - 1st Shift and Welder - 3rd Shift roles at 940 North Black Branch Road in Elizabethtown for MIG, hand and robotic welding; how do you cover manual MIG welding across those shifts?",
+   "tag": "inferred",
+   "row_ref": "inbox[181]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely keeping manual MIG welders staffed on first and third shifts: Hendrickson's board, read Nov 20, 2026, lists Welder - 1st Shift and Welder - 3rd Shift roles at Elizabethtown for MIG, hand and robotic welding, and the Welder - 1st Shift posting requires passing a welding certification test.",
+   "tag": "inferred",
+   "row_ref": "inbox[182]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:opening_line",
+   "source_url": "",
+   "ledger_value": "Hendrickson's job board, read Nov 20, 2026, lists a Welder (Nights) role at 180 Mt. Zion Road in Lebanon for MIG, hand and robotic welding; how do you staff manual MIG welding on the night shift?",
+   "tag": "inferred",
+   "row_ref": "inbox[187]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly night-shift manual MIG welding: Hendrickson's board, read Nov 20, 2026, lists a Welder (Nights) role at Lebanon for MIG, hand and robotic welding that requires passing a welding certification test.",
+   "tag": "inferred",
+   "row_ref": "inbox[188]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:opening_line",
+   "source_url": "",
+   "ledger_value": "Hendrickson's job board, read Nov 20, 2026, lists Welder and 3rd shift Welder roles at Reyco Granning Suspensions, 1205 Industrial Park Drive in Mount Vernon, for MIG, hand and robotic welding; how do you staff manual MIG welding there?",
+   "tag": "inferred",
+   "row_ref": "inbox[193]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely staffing manual MIG welders, including on third shift: Hendrickson's board, read Nov 20, 2026, lists Welder and 3rd shift Welder roles at Mount Vernon for MIG, hand and robotic welding, and a Welder posting requires passing a welding certification test.",
+   "tag": "inferred",
+   "row_ref": "inbox[194]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:opening_line",
+   "source_url": "",
+   "ledger_value": "Hendrickson's job board, read Nov 20, 2026, lists a Robotic Welder-2nd Shift role at 151 International Blvd in Clarksville that uses robotic and hand welding skills and requires a 2G welding test; how do you split work between the robots and hand welding on second shift?",
+   "tag": "inferred",
+   "row_ref": "inbox[199]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly hand welding around the robotic welders: Hendrickson's board, read Nov 20, 2026, lists a Robotic Welder-2nd Shift role at Clarksville that uses robotic and hand welding skills and asks for overtime as production demands require.",
+   "tag": "inferred",
+   "row_ref": "inbox[200]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:opening_line",
+   "source_url": "",
+   "ledger_value": "Hutchens' careers page, read Nov 20, 2026, lists Automatic Weld & Assembly Operator and Slider Operator roles at Mansfield that tack and weld trailer suspension parts and movable subframes; how do you train operators for the manual welding in those roles?",
+   "tag": "inferred",
+   "row_ref": "inbox[205]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly manual tack-and-weld work around the automatics: Hutchens' AWA Operator page, modified May 31, 2023, names hub welders, robots and washer welders in the Mansfield department, and the AWA Slider Operator page, read Nov 20, 2026, describes manually guiding the gun along the weld line.",
+   "tag": "inferred",
+   "row_ref": "inbox[206]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:opening_line",
+   "source_url": "",
+   "ledger_value": "Bulk Transporter reported in its July/August 2026 issue that Ridewell's 200,000-sq.-ft. main facility has roughly 30 automated systems, including robotic welding cells; how do you decide which suspension welds go to those cells?",
+   "tag": "inferred",
+   "row_ref": "inbox[215]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly programming and fixturing time on its robotic welding cells: Bulk Transporter reported in its July/August 2026 issue that the 200,000-sq.-ft. main facility has roughly 30 automated systems, including robotic welding cells.",
+   "tag": "inferred",
+   "row_ref": "inbox[216]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:opening_line",
+   "source_url": "",
+   "ledger_value": "Cush's site, read Nov 20, 2026, says it manufactures engineered-to-order suspensions at its Nixa facility and that almost all of the work, from cutting and shaping steel to welding and final assembly, happens on its property; how do you schedule welding across custom orders?",
+   "tag": "inferred",
+   "row_ref": "inbox[221]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly welding capacity across engineered-to-order work: Cush's site, read Nov 20, 2026, says it engineers suspensions to order and welds them in-house at Nixa.",
+   "tag": "inferred",
+   "row_ref": "inbox[222]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:opening_line",
+   "source_url": "",
+   "ledger_value": "Kentucky's economic development office announced on March 26, 2026 the grand opening of AXN's relocated Louisville facility at 6001 National Turnpike, a nearly $15 million project that included robotic welding cells; how are you staffing welding as the plant works toward its 100,000-axle target?",
+   "tag": "inferred",
+   "row_ref": "inbox[227]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely ramping staff on the new line: FreightWaves reported on March 26, 2026 that the plant employed about 55 workers and was expected to grow to around 100 employees once fully staffed and to produce up to 100,000 axles annually.",
+   "tag": "inferred",
+   "row_ref": "inbox[228]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "v-trailers-chassis-mobile-power:demand_outlook",
+   "source_url": "https://www.fleetequipmentmag.com/act-commercial-vehicle-outlook-class-8-trailers/",
+   "ledger_value": "Rising: ACT Research (Oct 2026) reports US trailer net orders up 40% year to date through August 2026 and a \"rising demand environment\"",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 95",
+   "row_kind": "ledger",
+   "plant": "v-trailers-chassis-mobile-power",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:name",
+   "source_url": "https://www.hutchensindustries.com/about-us/",
+   "ledger_value": "Hutchens Industries - Mansfield",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25559",
+   "row_kind": "ledger",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_dtl.disp_program_facility?p_registry_id=110012607287",
+   "ledger_value": "898 E Commercial St, Mansfield, MO 65704",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25560",
+   "row_kind": "ledger",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:parent_company",
+   "source_url": "https://www.hutchensindustries.com/about-us/",
+   "ledger_value": "Hutchens Industries, Inc. (family-owned)",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25562",
+   "row_kind": "ledger",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:products",
+   "source_url": "https://www.hutchensindustries.com/careers/awa-slider-operator/",
+   "ledger_value": "Trailer suspension parts and movable subframes welded at Mansfield",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25563",
+   "row_kind": "ledger",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:products",
+   "source_url": "https://www.hutchensindustries.com/careers/awa-operator/",
+   "ledger_value": "Trailer suspension weldments (Mansfield)",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25564",
+   "row_kind": "ledger",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:relationship",
+   "source_url": "https://www.automation.com/en-us/products/september-2023/path-robotics-autonomous-manufacturing-systems",
+   "ledger_value": "customer_other_plant",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25566",
+   "row_kind": "ledger",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "325",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25567",
+   "row_kind": "ledger",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:welder_postings",
+   "source_url": "https://www.hutchensindustries.com/careers/",
+   "ledger_value": "Automatic Weld & Assembly Operator; Automatic Weld & Assembly Slider Operator (Mansfield)",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25568",
+   "row_kind": "ledger",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:welder_postings",
+   "source_url": "",
+   "ledger_value": "pages published 2021 (evergreen)",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25569",
+   "row_kind": "ledger",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:name",
+   "source_url": "https://www.hutchensindustries.com/about-us/",
+   "ledger_value": "Hutchens Industries - Seymour",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25573",
+   "row_kind": "ledger",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_dtl.disp_program_facility?p_registry_id=110018006076",
+   "ledger_value": "626 E Steel St, Seymour, MO 65746",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25574",
+   "row_kind": "ledger",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:parent_company",
+   "source_url": "https://www.hutchensindustries.com/about-us/",
+   "ledger_value": "Hutchens Industries, Inc. (family-owned)",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25576",
+   "row_kind": "ledger",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:products",
+   "source_url": "https://www.hutchensindustries.com/about-us/",
+   "ledger_value": "company-level: spring suspensions and sliding subframes; Seymour named as a manufacturing facility",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25577",
+   "row_kind": "ledger",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:relationship",
+   "source_url": "https://www.automation.com/en-us/products/september-2023/path-robotics-autonomous-manufacturing-systems",
+   "ledger_value": "customer_other_plant",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25579",
+   "row_kind": "ledger",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "138",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25580",
+   "row_kind": "ledger",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:welder_postings",
+   "source_url": "",
+   "ledger_value": "none found",
+   "tag": "unknown",
+   "row_ref": "evidence.csv line 25581",
+   "row_kind": "ledger",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:headcount",
+   "source_url": "",
+   "ledger_value": "310",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25598",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:name",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001224130906",
+   "ledger_value": "Hendrickson - Lebanon IN plant (trailer commercial vehicle systems)",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25599",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "corrected",
+   "corrected_value": "Hendrickson - Lebanon IN plant",
+   "corrected_quote": "Lebanon, Indiana, United States",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Hendrickson - Lebanon IN plant (trailer commercial vehicle systems)",
+   "note": "Base row (plant-finder TR-C). The cited ADP posting shows only 'Company Hendrickson' and the city; the label 'trailer commercial vehicle systems' is not on that page (checked: no 'Trailer Commercial' or 'trailer' in the rendered text). The label is carried by the Hendrickson global-operations page (section heading 'Hendrickson Trailer Commercial Vehicle Systems' above this address) and by the OSHA company_name. Proposed: add a name row citing https://www.hendrickson-intl.com/company/global-operations with quote 'Hendrickson Trailer Commercial Vehicle Systems ... Lebanon, IN 180 Mount Zion Road'. plants.csv name unchanged (true)."
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:address",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001224130906",
+   "ledger_value": "180 Mt. Zion Road, Lebanon, IN 46052",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25600",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:parent_company",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001224130906",
+   "ledger_value": "Hendrickson",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25602",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:products",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001224130906",
+   "ledger_value": "Production welding of parts at this site (posting)",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25603",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:products",
+   "source_url": "",
+   "ledger_value": "OSHA classification",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25604",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:relationship",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25606",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:lookalike_of",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "Hutchens Industries",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25607",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001224130906",
+   "ledger_value": "Welder (Nights) (Lebanon IN), undated",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25608",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "111",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25612",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:name",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001220202906",
+   "ledger_value": "Hendrickson - Elizabethtown KY plant (trailer commercial vehicle systems)",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25613",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "corrected",
+   "corrected_value": "Hendrickson - Elizabethtown KY plant",
+   "corrected_quote": "Elizabethtown, Kentucky, United States",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Hendrickson - Elizabethtown KY plant (trailer commercial vehicle systems)",
+   "note": "Base row (plant-finder TR-C). The cited ADP posting shows only 'Company Hendrickson' and the city; the label 'trailer commercial vehicle systems' is not on that page (checked: no 'Trailer Commercial' or 'trailer' in the rendered text). The label is carried by the Hendrickson global-operations page (section heading 'Hendrickson Trailer Commercial Vehicle Systems' above this address) and by the OSHA company_name. Proposed: add a name row citing https://www.hendrickson-intl.com/company/global-operations with quote 'Hendrickson Trailer Commercial Vehicle Systems ... Elizabethtown, KY 940 North Black Branch Road'. plants.csv name unchanged (true)."
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:address",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001220202906",
+   "ledger_value": "940 North Black Branch Road, Elizabethtown, KY 42701",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25614",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:parent_company",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001220202906",
+   "ledger_value": "Hendrickson",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25616",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:products",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001220202906",
+   "ledger_value": "Production welding of parts at this site (posting)",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25617",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:products",
+   "source_url": "",
+   "ledger_value": "OSHA classification",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25618",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:relationship",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25620",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:lookalike_of",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "Hutchens Industries",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25621",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001220202906",
+   "ledger_value": "Welder - 1st Shift (Elizabethtown KY), undated",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25622",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001236383006",
+   "ledger_value": "Welder - 3rd Shift (Elizabethtown KY), undated",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25623",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:headcount",
+   "source_url": "",
+   "ledger_value": "236",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25627",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:name",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001216054306",
+   "ledger_value": "Hendrickson - Navarre OH plant (trailer commercial vehicle systems)",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25628",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "corrected",
+   "corrected_value": "Hendrickson - Navarre OH plant",
+   "corrected_quote": "Navarre, Ohio, United States",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Hendrickson - Navarre OH plant (trailer commercial vehicle systems)",
+   "note": "Base row (plant-finder TR-C). The cited ADP posting shows only 'Company Hendrickson' and the city; the label 'trailer commercial vehicle systems' is not on that page (checked: no 'Trailer Commercial' or 'trailer' in the rendered text). The label is carried by the Hendrickson global-operations page (section heading 'Hendrickson Trailer Commercial Vehicle Systems' above this address) and by the OSHA company_name. Proposed: add a name row citing https://www.hendrickson-intl.com/company/global-operations with quote 'Hendrickson Trailer Commercial Vehicle Systems ... Navarre, OH 4500 Sterilite St. NE'. plants.csv name unchanged (true)."
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:address",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001216054306",
+   "ledger_value": "4500 Sterilite St NE, Navarre, OH 44662",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25629",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:parent_company",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001216054306",
+   "ledger_value": "Hendrickson",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25631",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:products",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001216054306",
+   "ledger_value": "Production welding of parts at this site (posting)",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25632",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:products",
+   "source_url": "",
+   "ledger_value": "OSHA classification",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25633",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:relationship",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25635",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:lookalike_of",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "Hutchens Industries",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25636",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001216054306",
+   "ledger_value": "Welder - Nights (Navarre OH), undated",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25637",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001209943906",
+   "ledger_value": "Welder - Afternoons (Navarre OH), undated",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25638",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "296",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25642",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:name",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001222989506",
+   "ledger_value": "Hendrickson - Clarksville TN plant (trailer commercial vehicle systems)",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25643",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "corrected",
+   "corrected_value": "Hendrickson - Clarksville TN plant",
+   "corrected_quote": "Clarksville, Tennessee, United States",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Hendrickson - Clarksville TN plant (trailer commercial vehicle systems)",
+   "note": "Base row (plant-finder TR-C). The cited ADP posting shows only 'Company Hendrickson' and the city; the label 'trailer commercial vehicle systems' is not on that page (checked: no 'Trailer Commercial' or 'trailer' in the rendered text). The label is carried by the Hendrickson global-operations page (section heading 'Hendrickson Trailer Commercial Vehicle Systems' above this address) and by the OSHA company_name. Proposed: add a name row citing https://www.hendrickson-intl.com/company/global-operations with quote 'Hendrickson Trailer Commercial Vehicle Systems ... Clarksville, TN 151 International Boulevard'. plants.csv name unchanged (true)."
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:address",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001222989506",
+   "ledger_value": "151 International Blvd, Clarksville, TN 37040",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25644",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:parent_company",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001222989506",
+   "ledger_value": "Hendrickson",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25646",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:products",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001222989506",
+   "ledger_value": "Production welding of parts at this site (posting)",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25647",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:products",
+   "source_url": "",
+   "ledger_value": "OSHA classification",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25648",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:relationship",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25650",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:lookalike_of",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "Hutchens Industries",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25651",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001222989506",
+   "ledger_value": "Robotic Welder-2nd Shift (Clarksville TN), undated",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25652",
+   "row_kind": "ledger",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "91",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25696",
+   "row_kind": "ledger",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:name",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001221793506",
+   "ledger_value": "Reyco Granning Suspensions (Hendrickson Specialty Products Group) - Mount Vernon MO",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25697",
+   "row_kind": "ledger",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "corrected",
+   "corrected_value": "Reyco Granning - Mount Vernon MO",
+   "corrected_quote": "Company Reyco Granning ... Mount Vernon, Missouri, United States",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Reyco Granning Suspensions (Hendrickson Specialty Products Group) - Mount Vernon MO",
+   "note": "Base row (plant-finder TR-C). The cited Welder posting shows 'Company Reyco Granning' and the city; 'Suspensions' and 'Hendrickson Specialty Products Group' are not on it. 'Reyco Granning Suspensions' is on the global-operations page (under 'Hendrickson Commercial Vehicle Specialty Products Group': 'Reyco Granning Suspensions 1205 Industrial Park Dr Mt. Vernon, MO 65712') and 'Hendrickson Specialty Products Group in Mt. Vernon, MO' is on the EHS Representative posting (reqId 5001211119306, the parent_company row). Proposed: a name row on the global-operations page. plants.csv name unchanged (true)."
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:address",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001221793506",
+   "ledger_value": "1205 Industrial Park Drive, Mount Vernon, MO 65712",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25698",
+   "row_kind": "ledger",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:parent_company",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001211119306",
+   "ledger_value": "Hendrickson (Specialty Products Group)",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25700",
+   "row_kind": "ledger",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:products",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001218276806",
+   "ledger_value": "Production welding of parts at this site (posting)",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25701",
+   "row_kind": "ledger",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:products",
+   "source_url": "",
+   "ledger_value": "OSHA classification",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25702",
+   "row_kind": "ledger",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:relationship",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001218276806",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25704",
+   "row_kind": "ledger",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001221793506",
+   "ledger_value": "Welder (Mount Vernon MO), undated",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25705",
+   "row_kind": "ledger",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001228260706",
+   "ledger_value": "Welder (Mount Vernon MO), undated",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25706",
+   "row_kind": "ledger",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001228256206",
+   "ledger_value": "3rd shift Welder (Mount Vernon MO), undated",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25707",
+   "row_kind": "ledger",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001221610706",
+   "ledger_value": "Welder (Mount Vernon MO), undated",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25708",
+   "row_kind": "ledger",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001214262106",
+   "ledger_value": "Welder (Mount Vernon MO), undated",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25709",
+   "row_kind": "ledger",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001218276806",
+   "ledger_value": "Weld Engineer (Mount Vernon MO), undated",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25710",
+   "row_kind": "ledger",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:headcount",
+   "source_url": "",
+   "ledger_value": "30",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25803",
+   "row_kind": "ledger",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:name",
+   "source_url": "https://www.cushcorp.com/contact",
+   "ledger_value": "Cush Suspensions",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25804",
+   "row_kind": "ledger",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:address",
+   "source_url": "https://www.cushcorp.com/contact",
+   "ledger_value": "1001 Falconcrest Ct, Nixa, MO 65714",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25805",
+   "row_kind": "ledger",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:parent_company",
+   "source_url": "",
+   "ledger_value": "Cush Corp",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25807",
+   "row_kind": "ledger",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:products",
+   "source_url": "https://www.cushcorp.com",
+   "ledger_value": "Truck and trailer suspensions",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25808",
+   "row_kind": "ledger",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:products",
+   "source_url": "https://www.cushcorp.com/about",
+   "ledger_value": "Made and welded at Nixa",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25809",
+   "row_kind": "ledger",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:relationship",
+   "source_url": "https://www.cushcorp.com",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25811",
+   "row_kind": "ledger",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:lookalike_of",
+   "source_url": "https://www.cushcorp.com",
+   "ledger_value": "Hutchens Industries",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25812",
+   "row_kind": "ledger",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:welder_postings",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "evidence.csv line 25813",
+   "row_kind": "ledger",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "161",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25817",
+   "row_kind": "ledger",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:name",
+   "source_url": "https://www.ridewellcorp.com/why-ridewell/",
+   "ledger_value": "Ridewell Corporation",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25818",
+   "row_kind": "ledger",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:address",
+   "source_url": "https://www.ridewellcorp.com/contact-us/",
+   "ledger_value": "3715 E Farm Road 94, Springfield, MO 65803",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25819",
+   "row_kind": "ledger",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:parent_company",
+   "source_url": "https://www.ridewellcorp.com/why-ridewell/",
+   "ledger_value": "Ridewell Corporation",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25821",
+   "row_kind": "ledger",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:products",
+   "source_url": "https://www.ridewellcorp.com/why-ridewell/",
+   "ledger_value": "Truck and trailer suspensions; robot welding",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 25822",
+   "row_kind": "ledger",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "corrected",
+   "corrected_value": "company-level: truck and trailer suspensions; robot welding",
+   "corrected_quote": "design and manufacturing of heavy duty truck and trailer suspensions. ... Coordinated motion of robots and fixtures optimizes weld angles, resulting in unsurpassed weld quality.",
+   "corrected_tag": "stated",
+   "error_kind": "wrong plant or location",
+   "plants_csv_value": "Heavy-duty truck and trailer suspensions (company-level, company site); laser-cut HSLA steel parts robot-welded in cellular lean manufacturing (company-level, company site); main 200,000 sq ft facility and HQ; a 45,000 sq ft secondary facility nearby builds auxiliary suspensions (Bulk Transporter, July/August 2026)",
+   "note": "Base row (plant-finder TR-C) written when Springfield was thought to be the only site. Same company-level page, two Springfield sites: word it company-level. The plants.csv 'laser-cut HSLA ... cellular lean manufacturing' clause is on why-ridewell ('our cellular lean manufacturing environment') but no products row carries 'cellular lean'; add it to this row's quote or drop the clause."
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:relationship",
+   "source_url": "https://www.ridewellcorp.com/why-ridewell/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25824",
+   "row_kind": "ledger",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:lookalike_of",
+   "source_url": "https://www.ridewellcorp.com/why-ridewell/",
+   "ledger_value": "Hutchens Industries",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 25825",
+   "row_kind": "ledger",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:welder_postings",
+   "source_url": "",
+   "ledger_value": "none found",
+   "tag": "unknown",
+   "row_ref": "evidence.csv line 25826",
+   "row_kind": "ledger",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:name",
+   "source_url": "https://axnheavyduty.com",
+   "ledger_value": "AXN Automotive Systems",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 26554",
+   "row_kind": "ledger",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:parent_company",
+   "source_url": "https://www.ttnews.com/articles/axn-expands-kentucky-trailer",
+   "ledger_value": "Randoncorp",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 26555",
+   "row_kind": "ledger",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:address",
+   "source_url": "https://axnheavyduty.com",
+   "ledger_value": "6001 National Turnpike, Louisville, KY 40214",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 26556",
+   "row_kind": "ledger",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:products",
+   "source_url": "https://axnheavyduty.com",
+   "ledger_value": "Axles and undercarriages",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 26559",
+   "row_kind": "ledger",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:relationship",
+   "source_url": "https://www.ttnews.com/articles/axn-expands-kentucky-trailer",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 26561",
+   "row_kind": "ledger",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:lookalike_of",
+   "source_url": "https://www.ttnews.com/articles/axn-expands-kentucky-trailer",
+   "ledger_value": "Hutchens Industries",
+   "tag": "inferred",
+   "row_ref": "evidence.csv line 26562",
+   "row_kind": "ledger",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:headcount",
+   "source_url": "https://www.freightwaves.com/news/axn-expands-kentucky-axle-plant-targeting-heavy-duty-truck-oems",
+   "ledger_value": "about 55",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 26563",
+   "row_kind": "ledger",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:welder_postings",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "evidence.csv line 26564",
+   "row_kind": "ledger",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  }
+ ],
+ "rows_outside_rate": [
+  {
+   "claim_id": "p-axn-louisville-ky:tier",
+   "source_url": "https://www.freightwaves.com/news/axn-expands-kentucky-axle-plant-targeting-heavy-duty-truck-oems",
+   "ledger_value": "Tier 1",
+   "tag": "stated",
+   "row_ref": "evidence.csv line 26560",
+   "row_kind": "ledger",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "corrected",
+   "corrected_value": "Tier 1",
+   "corrected_quote": "will also manufacture a new line of suspensions, supplying OEM trailer manufacturers and the aftermarket sector.",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "Outside the delegated field list (reported separately, not in the rate). The tier is a rubric judgement from 'supplying OEM trailer manufacturers and the aftermarket sector'; tag inferred with reasoning (every other tier row in this batch is inferred). The quote is on the FreightWaves page."
+  }
+ ],
+ "score_rows": [
+  {
+   "claim_id": "p-hendrickson-navarre-oh:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "row_ref": "inbox[112]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[113]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[114]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "row_ref": "inbox[115]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[116]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "row_ref": "inbox[117]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "row_ref": "inbox[118]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[119]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[120]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "row_ref": "inbox[121]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[122]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "row_ref": "inbox[123]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "row_ref": "inbox[124]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[125]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[126]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "row_ref": "inbox[127]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[128]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "row_ref": "inbox[129]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "row_ref": "inbox[130]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[131]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[132]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "row_ref": "inbox[133]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[134]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "row_ref": "inbox[135]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[136]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[137]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[138]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "row_ref": "inbox[139]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[140]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "row_ref": "inbox[141]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[142]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[143]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[144]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[145]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed",
+   "score_question": "20 under the Allied/IROCK apply-flow precedent (see score_notes); 0 under the profiler reading of Kafka. Not counted as a fact correction."
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[146]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "row_ref": "inbox[147]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[148]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[149]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[150]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[151]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[152]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "row_ref": "inbox[153]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[154]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[155]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "row_ref": "inbox[156]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[157]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[158]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "row_ref": "inbox[159]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[160]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[161]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "row_ref": "inbox[162]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[163]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[164]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:score_scale",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[165]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[166]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[167]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[168]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[169]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "row_ref": "inbox[170]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "row_ref": "inbox[171]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:score_total",
+   "source_url": "",
+   "ledger_value": "66",
+   "tag": "inferred",
+   "row_ref": "inbox[172]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "row_ref": "inbox[173]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:confidence",
+   "source_url": "",
+   "ledger_value": "2",
+   "tag": "inferred",
+   "row_ref": "inbox[174]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-navarre-oh",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:score_total",
+   "source_url": "",
+   "ledger_value": "66",
+   "tag": "inferred",
+   "row_ref": "inbox[178]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "row_ref": "inbox[179]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:confidence",
+   "source_url": "",
+   "ledger_value": "3",
+   "tag": "inferred",
+   "row_ref": "inbox[180]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-elizabethtown-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:score_total",
+   "source_url": "",
+   "ledger_value": "58",
+   "tag": "inferred",
+   "row_ref": "inbox[184]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "row_ref": "inbox[185]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:confidence",
+   "source_url": "",
+   "ledger_value": "2",
+   "tag": "inferred",
+   "row_ref": "inbox[186]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-lebanon-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:score_total",
+   "source_url": "",
+   "ledger_value": "61",
+   "tag": "inferred",
+   "row_ref": "inbox[190]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "row_ref": "inbox[191]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:confidence",
+   "source_url": "",
+   "ledger_value": "3",
+   "tag": "inferred",
+   "row_ref": "inbox[192]",
+   "row_kind": "inbox",
+   "plant": "p-reyco-granning-mount-vernon-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:score_total",
+   "source_url": "",
+   "ledger_value": "38",
+   "tag": "inferred",
+   "row_ref": "inbox[196]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "row_ref": "inbox[197]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-clarksville-tn:confidence",
+   "source_url": "",
+   "ledger_value": "2",
+   "tag": "inferred",
+   "row_ref": "inbox[198]",
+   "row_kind": "inbox",
+   "plant": "p-hendrickson-clarksville-tn",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:score_total",
+   "source_url": "",
+   "ledger_value": "26",
+   "tag": "inferred",
+   "row_ref": "inbox[202]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "row_ref": "inbox[203]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:confidence",
+   "source_url": "",
+   "ledger_value": "1",
+   "tag": "inferred",
+   "row_ref": "inbox[204]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-mansfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:score_total",
+   "source_url": "",
+   "ledger_value": "26",
+   "tag": "inferred",
+   "row_ref": "inbox[208]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "row_ref": "inbox[209]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hutchens-seymour-mo:confidence",
+   "source_url": "",
+   "ledger_value": "1",
+   "tag": "inferred",
+   "row_ref": "inbox[210]",
+   "row_kind": "inbox",
+   "plant": "p-hutchens-seymour-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:score_total",
+   "source_url": "",
+   "ledger_value": "33",
+   "tag": "inferred",
+   "row_ref": "inbox[212]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "row_ref": "inbox[213]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ridewell-springfield-mo:confidence",
+   "source_url": "",
+   "ledger_value": "1",
+   "tag": "inferred",
+   "row_ref": "inbox[214]",
+   "row_kind": "inbox",
+   "plant": "p-ridewell-springfield-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:score_total",
+   "source_url": "",
+   "ledger_value": "23",
+   "tag": "inferred",
+   "row_ref": "inbox[218]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "row_ref": "inbox[219]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cush-nixa-mo:confidence",
+   "source_url": "",
+   "ledger_value": "1",
+   "tag": "inferred",
+   "row_ref": "inbox[220]",
+   "row_kind": "inbox",
+   "plant": "p-cush-nixa-mo",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:score_total",
+   "source_url": "",
+   "ledger_value": "28",
+   "tag": "inferred",
+   "row_ref": "inbox[224]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "row_ref": "inbox[225]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-axn-louisville-ky:confidence",
+   "source_url": "",
+   "ledger_value": "3",
+   "tag": "inferred",
+   "row_ref": "inbox[226]",
+   "row_kind": "inbox",
+   "plant": "p-axn-louisville-ky",
+   "verdict": "confirmed"
+  }
+ ],
+ "proposed_rows": [
+  {
+   "claim_id": "p-hendrickson-lebanon-in:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001233457006",
+   "value": "listed, not counted: Fabricator / Machinist (2nd Shift) (req 26-1400), 180 Mt. Zion Road: burning, grinding, shearing, sawing, turning and press brake; no welding named",
+   "tag": "stated",
+   "quote": "Performing burning, grinding, shearing, sawing, turning and press brake operations to produce a quality product.",
+   "source_type": "job posting"
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:products",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-listing",
+   "value": "Hendrickson's board lists a second Elizabethtown address, 950 N Black Branch Rd ('Elizabethtown KY Plant 2'; Machine Operator - 2nd Shift, req 26-1404)",
+   "tag": "stated",
+   "quote": "(ADP apply-custom-filters JSON: requisitionLocations lineOne \"950 N Black Branch Rd\", nameCode \"Elizabethtown KY Plant 2\")",
+   "source_type": "job posting",
+   "note": "The plants.csv products clause \"Plant 2 at 950 N Black Branch Rd on the same road\" has no evidence row; the coordinator should cite the Plant 2 requisition page (reqId 5001233693906) after reading it."
+  }
+ ],
+ "plants_csv_fixes": [
+  {
+   "plant": "p-hendrickson-navarre-oh",
+   "field": "welder_postings",
+   "value": "2 counted, open on Hendrickson's ADP board (read 2026-11-20; board shows no posting dates): Welder - Nights (26-989), Welder - Afternoons (26-858), 4500 Sterilite St NE; MIG, hand and robotic welding; 2G MIG test; listed, not counted: Manufacturing Engineering Technician - Afternoons, Machine Operator - Nights",
+   "why": "Machine Operator - Afternoons (26-1345) is an assembly role with no welding."
+  },
+  {
+   "plant": "p-axn-louisville-ky",
+   "field": "products",
+   "value": "(coordinator)",
+   "why": "The base clause '$15M expansion of the Louisville facility opened 2026-03-26 with an automated welding cell, paint line and assembly lines (target 100,000 axles a year)' loses its products row when the ttnews 'Site tie' row is removed (evidence_remove). Rebuild it from the stated Kentucky release products row (relocated facility at 6001 National Turnpike, robotic welding cells, paint booth) and the FreightWaves production_type row (100,000 axles)."
+  },
+  {
+   "plant": "p-ridewell-springfield-mo",
+   "field": "products",
+   "value": "Heavy-duty truck and trailer suspensions (company-level, company site); laser-cut HSLA steel parts robot-welded in cellular lean manufacturing (company-level, company site); main 200,000 sq ft facility and HQ; a 45,000 sq ft secondary facility nearby builds auxiliary suspensions (Bulk Transporter, July/August 2026)",
+   "why": "Company-level wording; 'cellular lean manufacturing' needs a row (it is on why-ridewell)."
+  },
+  {
+   "plant": "p-ridewell-springfield-mo",
+   "field": "weld_processes",
+   "value": "company-level: robotic welding with coordinated robots and fixtures (process not named)",
+   "why": "Company-level page, two Springfield sites."
+  }
+ ],
+ "score_notes": {
+  "p-hendrickson-navarre-oh": "66 Medium (20/0/8/20/8/10, conf 2) confirmed. Two counted Welder postings live today at 4500 Sterilite St NE (labor 20, several at once; no age claimed). Scale 10 on an inferred OSHA headcount (street 'Sterrllite'), points kept, no confidence (GPC precedent): add to no-confidence-claims.csv as the profiler asked.",
+  "p-hendrickson-elizabethtown-ky": "66 Medium (20/0/8/20/8/10, conf 3) confirmed. Both counted postings name 940 North Black Branch Road; the Plant 2 address (950 N Black Branch Rd) carries only a Machine Operator role, so no site-tie question.",
+  "p-hendrickson-lebanon-in": "58 Medium (20/0/8/12/8/10, conf 2) confirmed. Wording fix only: the OSHA gate failure on record 3072405 is the ZIP (46502 vs 46052), not the street spelling. The score_scale reasoning and the profiler's flag (5) ('the gate may now be met' because Hendrickson spells 'Mount Zion Road') are wrong: the gate is still not met, so the headcount stays inferred, scale 10 with no confidence.",
+  "p-reyco-granning-mount-vernon-mo": "61 Medium (20/0/8/20/8/5, conf 3) confirmed (five counted Welder postings at 1205 Industrial Park Drive, all live; OSHA 91 < 100 gives 5). Relationship question, no score effect: the record stays 'new' while its four Hendrickson siblings are lookalikes of Hutchens on the company line ('Heavy-Duty Truck & Trailer Suspension Systems | Hendrickson'). Rule 2 says a company-level product line decides relationship, and Reyco Granning is a Hendrickson business on the same global-operations page. The finder's 'new' reasoning is boilerplate ('auxiliary axles, axle production, truck/general suspension components or not stated'). T8 froze the finders' calls; the coordinator should confirm or apply rule 2 consistently, because lookalike ranks first for profiling.",
+  "p-hendrickson-clarksville-tn": "38 Low (0/0/8/12/8/10, conf 2) confirmed. Process 0 is correct: no Clarksville posting names MIG or flux-core ('robotic and hand welding skills', 2G test). The Robotic Welder-2nd Shift counts under the robot-titled rule ('Assist in welding process utilizing robotic and hand welding skills' plus 'Ability to pass 2G welding test'); a stricter reading (robot operator) would give labor 0, 26 Low.",
+  "p-hutchens-mansfield-mo": "Score question (not a fact correction): labor 0 -> 20 under the written precedents, total 26 Low -> 46 Medium, confidence 1 -> 2 (welder_postings rests on the stated careers-page row I64). The careers page lists AWA Operator ('Tack and weld component parts together for trailer suspensions with electric arc welding equipment') and AWA Slider Operator ('Manually guides gun along weld line'), both production roles with manual welding (robot-titled rule met; the Finish Operator is paint line, not counted). APPLY NOW opens Hutchens' own employment application (4-step form with a 'Position Applied For' field; no 'listings do not mean hiring' disclaimer, so West River does not apply). That is the Allied precedent (own apply form, counted, R9-closeout) and IROCK (blanket apply instruction, counted), not Kafka (Apply Now to a generic Indeed company page). Role pages are dateModified 2022-07-26 and 2023-05-31 (standing ads): never 60+ days, but two counted at once earn 20 (Fecon precedent). Process 0 stands (Ground Force ruling: wire feed without MIG or flux-core named = 0); material 0 stands (HSLA stated for 7-gauge side rails, no welded part size tied to Mansfield); part mix 8 stands.",
+  "p-hutchens-seymour-mo": "26 Low (0/0/8/0/8/10, conf 1) confirmed. Part mix 8 and the prospect test rest only on the company line (Seymour's own work not shown). Lines 'unknown' are correct.",
+  "p-ridewell-springfield-mo": "33 Low (0/0/15/0/8/10, conf 1) as scored, with a scale question. Bulk Transporter (Jul/Aug 2026) says Ridewell 'employs 170 people at two locations' (main facility plus a 45,000 sq ft secondary facility nearby). OSHA 2025 has one Ridewell record (3262099, 161, at 3715 E Farm Road 94). Either 161 is the main site alone (consistent with a secondary site under 20 employees that need not file) or the record covers both. Under the PPI Pella ruling (no site use of a record that may cover several sites) the headcount is inferred, gives no points and no confidence: scale 5 on the stated multi-plant row, total 28 Low, confidence 1. If the secondary facility is within about 1 km (address not found), it is one campus, the multi-plant half fails, and scale is 5 again (on the 161 headcount): 28 Low. So scale 10 holds only if both the separate-count and the over-1-km readings hold; the coordinator should rule. Part mix 15 (company-level 'custom crafted according to customer needs'): points, no confidence, as recorded.",
+  "p-cush-nixa-mo": "23 Low (0/0/15/0/8/0, conf 1) confirmed. Part mix 15 rests on site-level stated rows ('engineered to order' plus 'We manufacture your suspension at our facility in Nixa, Missouri'). Scale 0: single site, OSHA 30 (inferred, 'Falcon Crest' vs 'Falconcrest').",
+  "p-axn-louisville-ky": "28 Low (0/0/8/0/15/5, conf 3) confirmed. Demand 15 rests on the Kentucky Cabinet for Economic Development release dated 2026-03-26 naming 6001 National Turnpike (within 24 months). Part mix 8: a product list with a 100,000-axle target; no identical-parts line is quoted, so it stays 8, not 0. Scale 5: Randoncorp '34 industrial units', about 55 employees. The base products clause needs rebuilding after the ttnews row is removed (plants_csv_fixes)."
+ }
+}

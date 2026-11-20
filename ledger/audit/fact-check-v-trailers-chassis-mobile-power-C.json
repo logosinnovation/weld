@@ -1,0 +1,3697 @@
+{
+ "vertical": "v-trailers-chassis-mobile-power",
+ "checker": "fact-checker TR-FC (round 1, batch C)",
+ "date": "2026-11-20",
+ "plants": [
+  "p-utility-trailer-atkins-va",
+  "p-utility-trailer-paragould-ar",
+  "p-stoughton-stoughton-wi",
+  "p-stoughton-evansville-wi",
+  "p-jost-grand-haven-mi",
+  "p-lippert-middlebury-in",
+  "p-lippert-goshen-in",
+  "p-pj-trailers-sumner-tx",
+  "p-big-tex-mount-pleasant-tx",
+  "p-wilson-yankton-sd"
+ ],
+ "claims_checked": 239,
+ "claims_corrected": 15,
+ "claims_unreachable": 0,
+ "fact_error_rate": 0.0628,
+ "error_kind_counts": {
+  "quote does not support value": 10,
+  "other": 5
+ },
+ "repeated_kind_flag": "'quote does not support value' 10: five rows carry a clause or posting name from a sibling page (Atkins weld_processes, Paragould products, Big Tex weld_processes and products, Stoughton and Evansville existing_robots); two put a judgement in a stated row (Paragould 'mixed:', Goshen 'one Plant 19 complex'); one adds a legal suffix and one a city the cited record lacks. 'other' 5: Lippert base rows from closure TR-H quote the Jibe list API or a sibling posting instead of the cited job page. Both are 3 or more: sweep multi-posting compound rows and careers.lippert.com-cited base rows across the vertical.",
+ "fields_in_rate": [
+  "address",
+  "bottleneck_guess",
+  "certifications",
+  "existing_robots",
+  "headcount",
+  "materials",
+  "multi_plant",
+  "name",
+  "opening_line",
+  "parent_company",
+  "part_size_fit",
+  "production_type",
+  "products",
+  "relationship",
+  "site_attribution",
+  "triggers",
+  "weld_processes",
+  "welder_postings"
+ ],
+ "fields_not_checked": [
+  "tier",
+  "found_by",
+  "website",
+  "lat",
+  "lon",
+  "county_fips",
+  "verticals",
+  "prospect_test (listed in rows_outside_rate; 4 Lippert tier/found_by quotes are not on the cited page)"
+ ],
+ "method": "Inbox rows (trailers-profiler-C.json) plus ledger base rows not superseded by the inbox or evidence_remove; 56 source pages fetched 2026-11-20 with tools/fetch_page.py --raw (all HTTP 200), every quote fragment checked against the visible text and the raw source; UKG board JSON (LoadSearchResults) for Utility Atkins/Paragould, Stoughton and Wilson; Lippert Jibe /api/jobs (300 jobs); Paylocity board JSON for JOST; Paycom career pages (browser) for Big Tex and PJ; OSHA rows checked in data/osha_2025.csv; Census geocoder distances rechecked; EPA FRS JSON for Lippert coordinates; 1 web search (Big Tex Mount Pleasant sites). Plus a scripted sweep: every number, amount and capitalised name in each stated value checked against the cited page text.",
+ "rows": [
+  {
+   "claim_id": "p-utility-trailer-atkins-va:welder_postings",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/fb1e6b32-45ce-4818-a45b-e96432ef87fb/OpportunityDetail?opportunityId=090a1938-cd3e-4302-8050-b94f677168f1",
+   "ledger_value": "Welder - Steel MIG - Day Shift (WELDE001011, Atkins, VA 24311; listed 2026-04-01; Monday-Friday 6am-2:30pm)",
+   "tag": "stated",
+   "row_ref": "inbox[0]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed",
+   "note": "Live on Atkins UKG board JSON 2026-11-20."
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:welder_postings",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/fb1e6b32-45ce-4818-a45b-e96432ef87fb/OpportunityDetail?opportunityId=37b5a9d4-52b6-42a3-832d-f0b191d30c55",
+   "ledger_value": "Welder - Steel MIG - Night Shift (WELDE001012, Atkins; listed 2026-04-01; $3.00/hour night premium)",
+   "tag": "stated",
+   "row_ref": "inbox[1]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed",
+   "note": "Live on board 2026-11-20."
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:welder_postings",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/fb1e6b32-45ce-4818-a45b-e96432ef87fb/OpportunityDetail?opportunityId=752c04be-9740-42cf-b7ac-cc4d673cad0c",
+   "ledger_value": "Welder - Aluminum TIG - Day Shift (WELDE001013, Atkins; listed 2026-04-01)",
+   "tag": "stated",
+   "row_ref": "inbox[2]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed",
+   "note": "Live on board 2026-11-20."
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:welder_postings",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/fb1e6b32-45ce-4818-a45b-e96432ef87fb/OpportunityDetail?opportunityId=9375db1e-380f-4943-93b8-1f0db7abc493",
+   "ledger_value": "Welder - Aluminum TIG - Night Shift (WELDE001014, Atkins; listed 2026-04-01)",
+   "tag": "stated",
+   "row_ref": "inbox[3]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed",
+   "note": "Live on board 2026-11-20."
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:welder_postings",
+   "source_url": "",
+   "ledger_value": "4 counted, all listed 2026-04-01 on Utility's Atkins UKG board (read 2026-11-20; 6 requisitions, the other 2 Production Assembler); no days-open age claimed",
+   "tag": "inferred",
+   "row_ref": "inbox[4]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:site_attribution",
+   "source_url": "",
+   "ledger_value": "postings tied to the Atkins plant by city (site-tie test a)",
+   "tag": "inferred",
+   "row_ref": "inbox[5]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:weld_processes",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/fb1e6b32-45ce-4818-a45b-e96432ef87fb/OpportunityDetail?opportunityId=090a1938-cd3e-4302-8050-b94f677168f1",
+   "ledger_value": "Steel MIG and aluminum TIG welding (Atkins welder postings)",
+   "tag": "stated",
+   "row_ref": "inbox[6]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "corrected",
+   "corrected_value": "Steel MIG welding (Atkins Steel MIG posting)",
+   "corrected_quote": "Our Atkins, Virginia plant is currently accepting applications for Steel MIG Welders.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Steel MIG and aluminum TIG welding (Atkins welder postings)",
+   "note": "Cited page is Welder - Steel MIG - Day Shift (WELDE001011) only; it names no TIG or aluminum (read 2026-11-20). The aluminum TIG clause is on the Aluminum TIG page, already its own row (inbox[7]). The plants.csv field stays as written, supported by the two rows together. One row per page."
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:weld_processes",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/fb1e6b32-45ce-4818-a45b-e96432ef87fb/OpportunityDetail?opportunityId=752c04be-9740-42cf-b7ac-cc4d673cad0c",
+   "ledger_value": "Aluminum TIG welding (Atkins posting)",
+   "tag": "stated",
+   "row_ref": "inbox[7]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:materials",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/fb1e6b32-45ce-4818-a45b-e96432ef87fb/OpportunityDetail?opportunityId=37b5a9d4-52b6-42a3-832d-f0b191d30c55",
+   "ledger_value": "mild steel (Steel MIG posting)",
+   "tag": "stated",
+   "row_ref": "inbox[8]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:materials",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/fb1e6b32-45ce-4818-a45b-e96432ef87fb/OpportunityDetail?opportunityId=9375db1e-380f-4943-93b8-1f0db7abc493",
+   "ledger_value": "aluminum (Aluminum TIG posting)",
+   "tag": "stated",
+   "row_ref": "inbox[9]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:products",
+   "source_url": "https://www.utilitytrailer.com/discover-utility/news/utility-trailer-leads-a-year-of-nationwide-dealer-expansion/",
+   "ledger_value": "3000R refrigerated trailers (Utility release, March 16, 2026)",
+   "tag": "stated",
+   "row_ref": "inbox[10]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:production_type",
+   "source_url": "",
+   "ledger_value": "builds the Utility 3000R refrigerated trailer line (release, March 16, 2026); no custom or identical-parts statement for the site",
+   "tag": "inferred",
+   "row_ref": "inbox[11]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[12]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[13]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[14]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (one news search and the company pages read 2026-11-20)",
+   "tag": "inferred",
+   "row_ref": "inbox[15]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "c-utility-trailer:multi_plant",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/fb1e6b32-45ce-4818-a45b-e96432ef87fb/OpportunityDetail?opportunityId=090a1938-cd3e-4302-8050-b94f677168f1",
+   "ledger_value": "multi-plant: 5 manufacturing factories in the United States and 1 in Mexico",
+   "tag": "stated",
+   "row_ref": "inbox[16]",
+   "plant": "c-utility-trailer",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:products",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/fb1e6b32-45ce-4818-a45b-e96432ef87fb/OpportunityDetail?opportunityId=090a1938-cd3e-4302-8050-b94f677168f1",
+   "ledger_value": "Trailer plant: steel MIG welding of mild steel at the Atkins plant (site posting)",
+   "tag": "stated",
+   "row_ref": "inbox[17]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:opening_line",
+   "source_url": "",
+   "ledger_value": "Utility's Atkins board lists Welder - Steel MIG and Welder - Aluminum TIG roles for day and night shifts, listed Apr 1, 2026; Utility said in a Mar 16, 2026 release that Atkins is where it builds its 3000R refrigerated trailers; how do you staff steel MIG and aluminum TIG welding on the 3000R line?",
+   "tag": "inferred",
+   "row_ref": "inbox[27]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder hiring across both steel and aluminum work: Utility's Atkins board lists Welder - Steel MIG and Welder - Aluminum TIG roles for day and night shifts, listed Apr 1, 2026.",
+   "tag": "inferred",
+   "row_ref": "inbox[28]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:welder_postings",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/0db28eaf-ada3-42fe-aad6-e5a49de9dd2b/OpportunityDetail?opportunityId=eb3636c2-0335-4c25-af90-05211b5e8138",
+   "ledger_value": "Welder (WELDE001086, Paragould, AR 72450; listed 2026-02-26)",
+   "tag": "stated",
+   "row_ref": "inbox[29]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed",
+   "note": "Live on Paragould UKG board JSON 2026-11-20."
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:welder_postings",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/0db28eaf-ada3-42fe-aad6-e5a49de9dd2b/OpportunityDetail?opportunityId=b2796daf-4764-425b-ad23-4e17ceacb03f",
+   "ledger_value": "Fabricator (FABRI001092, listed 2026-03-18): punch presses, press brakes, shears and lasers; no welding named",
+   "tag": "stated",
+   "row_ref": "inbox[30]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:welder_postings",
+   "source_url": "",
+   "ledger_value": "1 counted (Welder, listed 2026-02-26); Fabricator listed, not counted; Paragould UKG board read 2026-11-20 (4 requisitions: Engineer, Fabricator, Assembler, Welder)",
+   "tag": "inferred",
+   "row_ref": "inbox[31]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:site_attribution",
+   "source_url": "",
+   "ledger_value": "postings tied to the Paragould plant by city (site-tie test a)",
+   "tag": "inferred",
+   "row_ref": "inbox[32]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:weld_processes",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[33]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:materials",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/0db28eaf-ada3-42fe-aad6-e5a49de9dd2b/OpportunityDetail?opportunityId=eb3636c2-0335-4c25-af90-05211b5e8138",
+   "ledger_value": "mild steel, stainless (SST) and aluminum (Welder posting)",
+   "tag": "stated",
+   "row_ref": "inbox[34]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:products",
+   "source_url": "https://vehicleservicepros.com/home/press-release/10779550/utility-trailer-manufacturing-company-utility-expands-dry-van-manufacturing-plant-in-paragould-ar",
+   "ledger_value": "dry van manufacturing plant with a modification center for customized trailers (Utility release, 2012-09-17)",
+   "tag": "stated",
+   "row_ref": "inbox[35]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:production_type",
+   "source_url": "https://vehicleservicepros.com/home/press-release/10779550/utility-trailer-manufacturing-company-utility-expands-dry-van-manufacturing-plant-in-paragould-ar",
+   "ledger_value": "mixed: standard dry vans plus a modification center for customized, high-option trailers (2012 release)",
+   "tag": "stated",
+   "row_ref": "inbox[36]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "corrected",
+   "corrected_value": "standard dry vans plus a modification center for customized trailers with complex or multiple options (2012 release)",
+   "corrected_quote": "manufacture more high option trailers while continuing to increase production of standard type trailers",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "standard dry vans plus a modification center for customized, high-option trailers (2012 release)",
+   "note": "'mixed:' is the rubric reading (part mix 8), not page text; move it to the score_part_mix reasoning. The rest is on the Sept. 17, 2012 release. Part mix 8 unchanged."
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[37]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[38]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[39]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (one news search and the company pages read 2026-11-20)",
+   "tag": "inferred",
+   "row_ref": "inbox[40]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "c-utility-trailer:multi_plant",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/0db28eaf-ada3-42fe-aad6-e5a49de9dd2b/OpportunityDetail?opportunityId=eb3636c2-0335-4c25-af90-05211b5e8138",
+   "ledger_value": "multi-plant: 5 manufacturing factories in the United States and 1 in Mexico",
+   "tag": "stated",
+   "row_ref": "inbox[41]",
+   "plant": "c-utility-trailer",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:opening_line",
+   "source_url": "",
+   "ledger_value": "Utility's Paragould board lists a Welder role, listed Feb 26, 2026, for welding mild steel, SST and aluminum; how do you set up welders who move among the three metals?",
+   "tag": "inferred",
+   "row_ref": "inbox[51]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly welder hiring for mixed-metal work: Utility's Paragould board lists a Welder role, listed Feb 26, 2026, that welds mild steel, SST and aluminum.",
+   "tag": "inferred",
+   "row_ref": "inbox[52]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/STO1011SGTR/JobBoard/4cd343b0-a5ca-4cb8-aa9a-988cce862052/OpportunityDetail?opportunityId=35439739-c9e9-4ffd-b156-71ffe3fb2421",
+   "ledger_value": "Welder (2NDSH003339, Plant 5, Stoughton; listed 2026-05-21; 1st, 2nd and weekend shifts; overtime required as business needs)",
+   "tag": "stated",
+   "row_ref": "inbox[53]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed",
+   "note": "Live on Stoughton UKG board 2026-11-20 (Plant 5)."
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/STO1011SGTR/JobBoard/4cd343b0-a5ca-4cb8-aa9a-988cce862052/OpportunityDetail?opportunityId=c451ab4b-ff7a-48bb-8c27-d7b8eb03feff",
+   "ledger_value": "Weld School - Stoughton (WELDS003473, Plant 5; listed 2026-08-05): paid welder trainees, $18.00/hour in training, $22.00/hour as Welder",
+   "tag": "stated",
+   "row_ref": "inbox[54]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed",
+   "note": "Live 2026-11-20; trainee counts."
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/STO1011SGTR/JobBoard/4cd343b0-a5ca-4cb8-aa9a-988cce862052/OpportunityDetail?opportunityId=b823aafe-036f-47fe-890d-7ab2cffe37c1",
+   "ledger_value": "2nd Shift Team Lead Welder (TEAML003586, Plant 5; listed 2026-10-14): answers technical welding questions in the work area",
+   "tag": "stated",
+   "row_ref": "inbox[55]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/STO1011SGTR/JobBoard/4cd343b0-a5ca-4cb8-aa9a-988cce862052/OpportunityDetail?opportunityId=7743bf65-7edf-4302-906b-a245a49e23f6",
+   "ledger_value": "Tool & Die Welder (TOOLD003617, Plant 5; listed 2026-10-28): MIG welding, fabrication and machining on tooling and equipment",
+   "tag": "stated",
+   "row_ref": "inbox[56]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/STO1011SGTR/JobBoard/4cd343b0-a5ca-4cb8-aa9a-988cce862052/OpportunityDetail?opportunityId=09f0b5b0-f69a-42cc-91d3-ee5f76452d85",
+   "ledger_value": "Robotic Weld Technician (1STSH003417, Plant 5; listed 2026-07-08): robotic welding programming and fault clearing",
+   "tag": "stated",
+   "row_ref": "inbox[57]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/STO1011SGTR/JobBoard/4cd343b0-a5ca-4cb8-aa9a-988cce862052/OpportunityDetail?opportunityId=bfc9542e-de2f-44fc-8d68-f833c19f9392",
+   "ledger_value": "Team Lead Robot Weld Tech (TEAML003247, Plant 5; listed 2026-04-28): manages the robotic weld area",
+   "tag": "stated",
+   "row_ref": "inbox[58]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:welder_postings",
+   "source_url": "",
+   "ledger_value": "2 counted at Plant 5 (Welder listed 2026-05-21; Weld School trainee listed 2026-08-05); 4 listed, not counted; Stoughton UKG board read 2026-11-20 (103 requisitions)",
+   "tag": "inferred",
+   "row_ref": "inbox[59]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:site_attribution",
+   "source_url": "https://www.stoughtontrailers.com/contact",
+   "ledger_value": "Stoughton's contact page lists Stoughton Manufacturing (Plant 5 & 6, HR) at 1111 Veterans Rd., Stoughton",
+   "tag": "stated",
+   "row_ref": "inbox[60]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:site_attribution",
+   "source_url": "",
+   "ledger_value": "city-level Stoughton facts (Transport Topics; chassis page) tied to this record under site-tie test (b)",
+   "tag": "inferred",
+   "row_ref": "inbox[61]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed",
+   "note": "416 S Academy St to 1111 Veterans Rd = 0.73 km (Census geocodes rechecked 2026-11-20): test (b)."
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:weld_processes",
+   "source_url": "https://recruiting2.ultipro.com/STO1011SGTR/JobBoard/4cd343b0-a5ca-4cb8-aa9a-988cce862052/OpportunityDetail?opportunityId=35439739-c9e9-4ffd-b156-71ffe3fb2421",
+   "ledger_value": "wire-feed welding and robotic weld equipment (Plant 5 Welder posting)",
+   "tag": "stated",
+   "row_ref": "inbox[62]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:materials",
+   "source_url": "https://recruiting2.ultipro.com/STO1011SGTR/JobBoard/4cd343b0-a5ca-4cb8-aa9a-988cce862052/OpportunityDetail?opportunityId=35439739-c9e9-4ffd-b156-71ffe3fb2421",
+   "ledger_value": "carbon and stainless steel of various gauges (Plant 5 Welder posting)",
+   "tag": "stated",
+   "row_ref": "inbox[63]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:materials",
+   "source_url": "https://www.stoughtontrailers.com/chassis",
+   "ledger_value": "company chassis line: High Strength GR80 & GR50 ASTM A572 steel",
+   "tag": "stated",
+   "row_ref": "inbox[64]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:part_size_fit",
+   "source_url": "https://www.stoughtontrailers.com/chassis",
+   "ledger_value": "intermodal chassis: 53' gooseneck tandem slider, tare 7,000 lbs; 40' chassis tare 6,420 lbs; GR80/GR50 A572 steel (company chassis page); chassis line in Stoughton",
+   "tag": "stated",
+   "row_ref": "inbox[65]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed",
+   "note": "Chassis page: 40' tare 6,420 lbs, 53' tare 7,000 lbs, GR80/GR50 A572; three lines in Stoughton, Evansville, Waco."
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:part_size_fit",
+   "source_url": "",
+   "ledger_value": "fits the 2026 analyst-report cell (up to 60 ft long, 55,000 lb) on stated length and tare weight; city-level tie",
+   "tag": "inferred",
+   "row_ref": "inbox[66]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:production_type",
+   "source_url": "https://www.stoughtontrailers.com/chassis",
+   "ledger_value": "company-level: Stoughton builds intermodal chassis to customer specifications, with additional models and lengths; site also assembles dry vans",
+   "tag": "inferred",
+   "row_ref": "inbox[67]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:existing_robots",
+   "source_url": "https://recruiting2.ultipro.com/STO1011SGTR/JobBoard/4cd343b0-a5ca-4cb8-aa9a-988cce862052/OpportunityDetail?opportunityId=09f0b5b0-f69a-42cc-91d3-ee5f76452d85",
+   "ledger_value": "yes: robotic weld cells at Plant 5 (Robotic Weld Technician and Team Lead Robot Weld Tech postings); brand not stated",
+   "tag": "stated",
+   "row_ref": "inbox[68]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "corrected",
+   "corrected_value": "yes: robotic weld cells at Plant 5 (Robotic Weld Technician posting); brand not stated",
+   "corrected_quote": "Understanding and application of robotic welding including but not limited to basic programming, clearing faults, troubleshooting faults, basic computer programming for robotic weld cells",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "yes: robotic weld cells at Plant 5 (Robotic Weld Technician and Team Lead Robot Weld Tech postings); brand not stated",
+   "note": "Checker A's standard (Hendrickson Navarre): the value names the Team Lead Robot Weld Tech posting, which is a different page (TEAML003247, live). Proposed own row. The quoted 'weld cells' sentence is on the page but does not say robotic; the corrected quote does. plants.csv unchanged."
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[69]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:triggers",
+   "source_url": "https://www.ttnews.com/articles/stoughton-production-staff",
+   "ledger_value": "Transport Topics reported 2026-11-10: Stoughton hired 450 employees in the second half of 2026, all at its Stoughton, Evansville and Brodhead plants, mostly for van trailer production, with its backlog up from three to four months to around 6½ months; it plans to add 700 mostly production workers in 2027",
+   "tag": "stated",
+   "row_ref": "inbox[70]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed",
+   "note": "TTNews Nov 10, 2026 carries every clause (450 H2 hires, three WI plants, van production, backlog 3-4 to 6.5 months, 700 in 2027)."
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "380 (Plant 6) and 204 (Plant 5): two OSHA 2025 records at 1111 Veterans Road, not summed",
+   "tag": "stated",
+   "row_ref": "inbox[71]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed",
+   "note": "OSHA 2959244 (Plant 6, 380) and 2969426 (Plant 5, 204) at 1111 Veterans Road confirmed in data/osha_2025.csv."
+  },
+  {
+   "claim_id": "c-stoughton:multi_plant",
+   "source_url": "https://www.ttnews.com/articles/stoughton-production-staff",
+   "ledger_value": "multi-plant: Stoughton, Evansville and Brodhead manufacturing plants in Wisconsin (and Waco, Texas)",
+   "tag": "stated",
+   "row_ref": "inbox[72]",
+   "plant": "c-stoughton",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Stoughton told Transport Topics (reported Nov 10, 2026) it plans to add 700 mostly production workers in 2027 after hiring 450 in the second half of 2026 at its Stoughton, Evansville and Brodhead plants; its board lists a Weld School role at Plant 5, listed Aug 5, 2026; how will you train enough welders for that ramp?",
+   "tag": "inferred",
+   "row_ref": "inbox[82]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder supply for a hiring ramp: Stoughton told Transport Topics (reported Nov 10, 2026) it plans to add 700 mostly production workers in 2027, and its board lists Welder (listed May 21, 2026) and Weld School (listed Aug 5, 2026) roles at Plant 5.",
+   "tag": "inferred",
+   "row_ref": "inbox[83]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/STO1011SGTR/JobBoard/4cd343b0-a5ca-4cb8-aa9a-988cce862052/OpportunityDetail?opportunityId=f56c45e9-641f-4dd0-8367-5110f0d71154",
+   "ledger_value": "Welder (WELDE003631, Plant 7, Evansville; listed 2026-11-11): welds in all positions",
+   "tag": "stated",
+   "row_ref": "inbox[84]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed",
+   "note": "Live 2026-11-20 (Plant 7)."
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/STO1011SGTR/JobBoard/4cd343b0-a5ca-4cb8-aa9a-988cce862052/OpportunityDetail?opportunityId=a09efa53-8f76-4564-83c8-b833ee8f27ca",
+   "ledger_value": "Robotic Weld Operator (ROBOT003656, Plant 7; listed 2026-11-18)",
+   "tag": "stated",
+   "row_ref": "inbox[85]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/STO1011SGTR/JobBoard/4cd343b0-a5ca-4cb8-aa9a-988cce862052/OpportunityDetail?opportunityId=b3c42db5-7683-4cc8-9935-d94a0f7991a8",
+   "ledger_value": "Robotic Weld Programmer (ROBOT003655, Plant 7; listed 2026-11-18): develops programs for robots and parts",
+   "tag": "stated",
+   "row_ref": "inbox[86]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:welder_postings",
+   "source_url": "",
+   "ledger_value": "1 counted (Welder, listed 2026-11-11); 2 robotic roles listed, not counted; Stoughton UKG board read 2026-11-20",
+   "tag": "inferred",
+   "row_ref": "inbox[87]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:site_attribution",
+   "source_url": "https://www.stoughtontrailers.com/contact",
+   "ledger_value": "Stoughton's contact page lists Evansville (Plant 7) at 101 County Road M, Evansville",
+   "tag": "stated",
+   "row_ref": "inbox[88]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:site_attribution",
+   "source_url": "",
+   "ledger_value": "city-level Evansville facts (Truck Parts & Service, Transport Topics, chassis page) tied under site-tie test (a)",
+   "tag": "inferred",
+   "row_ref": "inbox[89]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:weld_processes",
+   "source_url": "https://recruiting2.ultipro.com/STO1011SGTR/JobBoard/4cd343b0-a5ca-4cb8-aa9a-988cce862052/OpportunityDetail?opportunityId=f56c45e9-641f-4dd0-8367-5110f0d71154",
+   "ledger_value": "wire-feed welding and robotic weld equipment (Plant 7 Welder posting)",
+   "tag": "stated",
+   "row_ref": "inbox[90]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:materials",
+   "source_url": "https://recruiting2.ultipro.com/STO1011SGTR/JobBoard/4cd343b0-a5ca-4cb8-aa9a-988cce862052/OpportunityDetail?opportunityId=f56c45e9-641f-4dd0-8367-5110f0d71154",
+   "ledger_value": "carbon and stainless steel of various gauges (Plant 7 Welder posting)",
+   "tag": "stated",
+   "row_ref": "inbox[91]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:materials",
+   "source_url": "https://www.stoughtontrailers.com/chassis",
+   "ledger_value": "company chassis line: High Strength GR80 & GR50 ASTM A572 steel",
+   "tag": "stated",
+   "row_ref": "inbox[92]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:part_size_fit",
+   "source_url": "https://www.stoughtontrailers.com/chassis",
+   "ledger_value": "intermodal chassis: 53' gooseneck tandem slider, tare 7,000 lbs; 40' chassis tare 6,420 lbs; GR80/GR50 A572 steel (company chassis page); chassis line in Evansville",
+   "tag": "stated",
+   "row_ref": "inbox[93]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed",
+   "note": "Same chassis page; confirmed."
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:part_size_fit",
+   "source_url": "",
+   "ledger_value": "fits the 2026 analyst-report cell (up to 60 ft long, 55,000 lb) on stated length and tare weight; city-level tie",
+   "tag": "inferred",
+   "row_ref": "inbox[94]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:production_type",
+   "source_url": "https://www.truckpartsandservice.com/trucks-trailers/trailers/article/15819871/stoughton-trailers-increases-evansville-production-capacity-by-87",
+   "ledger_value": "reported Mar 17, 2026: Evansville reconfiguration added parallel production paths to accommodate more complex trailer designs",
+   "tag": "stated",
+   "row_ref": "inbox[95]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:production_type",
+   "source_url": "https://www.stoughtontrailers.com/chassis",
+   "ledger_value": "company-level: Stoughton builds intermodal chassis to customer specifications, with additional models and lengths",
+   "tag": "inferred",
+   "row_ref": "inbox[96]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:existing_robots",
+   "source_url": "https://recruiting2.ultipro.com/STO1011SGTR/JobBoard/4cd343b0-a5ca-4cb8-aa9a-988cce862052/OpportunityDetail?opportunityId=a09efa53-8f76-4564-83c8-b833ee8f27ca",
+   "ledger_value": "yes: robotic weld cells at Plant 7 (Robotic Weld Operator and Robotic Weld Programmer postings); brand not stated",
+   "tag": "stated",
+   "row_ref": "inbox[97]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "corrected",
+   "corrected_value": "yes: robotic weld cells at Plant 7 (Robotic Weld Operator posting); brand not stated",
+   "corrected_quote": "Understanding and application of robotic welding including but not limited to: basic programming, clearing faults, troubleshooting faults, basic computer programming for robotic weld cells",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "yes: robotic weld cells at Plant 7 (Robotic Weld Operator and Robotic Weld Programmer postings); brand not stated",
+   "note": "The value names the Robotic Weld Programmer posting, a different page (ROBOT003655, live). Proposed own row. plants.csv unchanged."
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[98]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:triggers",
+   "source_url": "https://www.truckpartsandservice.com/trucks-trailers/trailers/article/15819871/stoughton-trailers-increases-evansville-production-capacity-by-87",
+   "ledger_value": "Truck Parts & Service reported 2026-03-17: Stoughton recently completed a total reconfiguration of its Evansville facility, increasing floor space dedicated to refrigerated units by 87% and adding parallel production paths",
+   "tag": "stated",
+   "row_ref": "inbox[99]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed",
+   "note": "Truck Parts & Service dated Mar 17, 2026; clause on page."
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:triggers",
+   "source_url": "https://www.ttnews.com/articles/stoughton-production-staff",
+   "ledger_value": "Transport Topics reported 2026-11-10: Stoughton's 450 hires in the second half of 2026 were all at its Stoughton, Evansville and Brodhead plants; Evansville builds refrigerated trailers and intermodal chassis",
+   "tag": "stated",
+   "row_ref": "inbox[100]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "c-stoughton:multi_plant",
+   "source_url": "https://www.stoughtontrailers.com/chassis",
+   "ledger_value": "multi-plant: three dedicated chassis lines in Stoughton and Evansville, Wisconsin, and Waco, Texas",
+   "tag": "stated",
+   "row_ref": "inbox[101]",
+   "plant": "c-stoughton",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Stoughton's board lists Robotic Weld Operator and Robotic Weld Programmer roles at Plant 7 in Evansville, listed Nov 18, 2026; Truck Parts & Service reported Mar 17, 2026 that Stoughton had completed a reconfiguration of its Evansville facility that increased floor space for refrigerated units by 87%; how are you staffing welding on the reconfigured lines?",
+   "tag": "inferred",
+   "row_ref": "inbox[111]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly keeping manual welders alongside the robot cells: Stoughton's board lists Robotic Weld Operator and Robotic Weld Programmer roles at Plant 7, listed Nov 18, 2026, and a Welder role listed Nov 11, 2026.",
+   "tag": "inferred",
+   "row_ref": "inbox[112]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4655618",
+   "ledger_value": "Welder Robot Welder MI, 3rd shift 10pm-6am (job 4655618; $19/hr base + $3/hr shift premium): robotic welding of parts for production",
+   "tag": "stated",
+   "row_ref": "inbox[113]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4495335",
+   "ledger_value": "Welder Robot Welder MI, 1st shift 6am-2pm (job 4495335): robotic welding of parts for production",
+   "tag": "stated",
+   "row_ref": "inbox[114]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4391745",
+   "ledger_value": "Welder Robot Welder MI, 1st shift 6am-2pm (job 4391745): robotic welding of parts for production",
+   "tag": "stated",
+   "row_ref": "inbox[115]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4391787",
+   "ledger_value": "Welder Robot Welder MI, 1st shift 6am-2pm (job 4391787): robotic welding of parts for production",
+   "tag": "stated",
+   "row_ref": "inbox[116]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/4b15de15-e41e-4534-8350-66274788ca92/JOST-International",
+   "ledger_value": "board dates: 3rd shift role listed 2026-11-10; 1st shift roles listed 2026-09-13, 2026-08-06 and 2026-08-05; all at 1770 Hayes Street, Grand Haven",
+   "tag": "stated",
+   "row_ref": "inbox[117]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed",
+   "note": "Paylocity board JSON 2026-11-20: all four at JobLocation 'Hayes', 1770 Hayes Street; dates match."
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:welder_postings",
+   "source_url": "",
+   "ledger_value": "0 counted: 4 Welder Robot Welder roles listed (robotic welding, MIG experience preferred, no manual welding required); none counted",
+   "tag": "inferred",
+   "row_ref": "inbox[118]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:site_attribution",
+   "source_url": "",
+   "ledger_value": "postings placed at 1770 Hayes Street by the board's JobLocation; JOST's second Grand Haven site (14000 172nd Ave, assembly) is 1.16 km away",
+   "tag": "inferred",
+   "row_ref": "inbox[119]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed",
+   "note": "1770 Hayes St to 14000 172nd Ave = 1.16 km (rechecked): test (c) for city-only facts holds."
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4655618",
+   "ledger_value": "robotic welding of production parts; MIG welding experience preferred (Robot Welder postings)",
+   "tag": "stated",
+   "row_ref": "inbox[120]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:existing_robots",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4495335",
+   "ledger_value": "yes: robotic welding of production parts at 1770 Hayes Street (Robot Welder postings); brand not stated",
+   "tag": "stated",
+   "row_ref": "inbox[121]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:materials",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[122]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:certifications",
+   "source_url": "https://jostinternational.com/about",
+   "ledger_value": "ISO 9001 listed for JOST International Corporation, Grand Haven, MI (about page; which Grand Haven building not stated)",
+   "tag": "stated",
+   "row_ref": "inbox[123]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:products",
+   "source_url": "https://jostinternational.com/about#lines",
+   "ledger_value": "Grand Haven: Landing Gear & Kingpin Product Lines (about page, city-level)",
+   "tag": "stated",
+   "row_ref": "inbox[124]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[125]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:production_type",
+   "source_url": "https://jostinternational.com/about",
+   "ledger_value": "company-level product list: fifth wheels, landing gear, kingpins and turntables from two US plants",
+   "tag": "inferred",
+   "row_ref": "inbox[126]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (one news search and the company pages read 2026-11-20)",
+   "tag": "inferred",
+   "row_ref": "inbox[127]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "c-jost:multi_plant",
+   "source_url": "https://jostinternational.com/about",
+   "ledger_value": "multi-plant: two US manufacturing plants (Grand Haven MI, Greeneville TN)",
+   "tag": "stated",
+   "row_ref": "inbox[128]",
+   "plant": "c-jost",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[138]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:opening_line",
+   "source_url": "",
+   "ledger_value": "JOST's board lists a Welder Robot Welder role on 3rd shift at 1770 Hayes Street, listed Nov 10, 2026, after 1st-shift Robot Welder roles listed Aug 5, Aug 6 and Sep 13, 2026; how do you staff robot welding across shifts?",
+   "tag": "inferred",
+   "row_ref": "inbox[139]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly robot-cell staffing on nights: JOST's board lists a Welder Robot Welder role on 3rd shift at 1770 Hayes Street, listed Nov 10, 2026, with a $3/hr shift premium.",
+   "tag": "inferred",
+   "row_ref": "inbox[140]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:welder_postings",
+   "source_url": "https://careers.lippert.com/jobs/17564?lang=en-us",
+   "ledger_value": "Chassis Fab Upper Deck (req 17564, Plant 28, 51040 Greenfield Pkwy; listed 2026-08-12): welding the upper deck and pin box",
+   "tag": "stated",
+   "row_ref": "inbox[141]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed",
+   "note": "Live in Lippert Jibe API (300 jobs) 2026-11-20."
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:welder_postings",
+   "source_url": "https://careers.lippert.com/jobs/17623?lang=en-us",
+   "ledger_value": "Small Parts Cell Welder (req 17623, Plant 28, 51040 Greenfield Pkwy; listed 2026-08-20): measuring, plasma cutting and welding of chassis sub-assemblies",
+   "tag": "stated",
+   "row_ref": "inbox[142]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed",
+   "note": "Live 2026-11-20."
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:welder_postings",
+   "source_url": "https://careers.lippert.com/jobs/18017?lang=en-us",
+   "ledger_value": "Chassis Fab Finish (req 18017, Plant 28, 51040 Greenfield Pkwy; listed 2026-10-13): welding hitches, jack and slide-out brackets and 'anything that jig was unable to weld'",
+   "tag": "stated",
+   "row_ref": "inbox[143]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed",
+   "note": "Live 2026-11-20."
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:welder_postings",
+   "source_url": "",
+   "ledger_value": "3 counted at Plant 28 (listed 2026-08-12, 2026-08-20, 2026-10-13); Lippert careers API read 2026-11-20 (300 jobs; Plant 28 also lists Plant Manager, Plant Manager - Non-RV, Laser, Cut House Saw, Small Parts Assembly and support roles, not counted)",
+   "tag": "inferred",
+   "row_ref": "inbox[144]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:weld_processes",
+   "source_url": "https://careers.lippert.com/jobs/17623?lang=en-us",
+   "ledger_value": "MIG welding and plasma cutting (Small Parts Cell Welder, Plant 28)",
+   "tag": "stated",
+   "row_ref": "inbox[145]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:production_type",
+   "source_url": "https://careers.lippert.com/jobs/18017?lang=en-us",
+   "ledger_value": "frames vary day to day based on schedules and blueprints (Plant 28 chassis postings)",
+   "tag": "stated",
+   "row_ref": "inbox[146]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[147]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:materials",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[148]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[149]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[150]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (one news search and the company pages read 2026-11-20)",
+   "tag": "inferred",
+   "row_ref": "inbox[151]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "c-lippert:multi_plant",
+   "source_url": "https://corporate.lippert.com/about/locations",
+   "ledger_value": "multi-plant: Lippert lists RV Chassis Plant #28 in Middlebury and Chassis Plants #19-A to #19-D in Goshen among its locations",
+   "tag": "stated",
+   "row_ref": "inbox[152]",
+   "plant": "c-lippert",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:opening_line",
+   "source_url": "",
+   "ledger_value": "Lippert's board lists a Chassis Fab Finish role at Plant 28, 51040 Greenfield Pkwy, listed Oct 13, 2026, to weld hitches, brackets and anything the jig could not weld, and a Small Parts Cell Welder role listed Aug 20, 2026 that runs MIG welders; how do you keep manual finish welding in step with the jig line?",
+   "tag": "inferred",
+   "row_ref": "inbox[162]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual finish welding after the jig: Lippert's Chassis Fab Finish role at Plant 28, listed Oct 13, 2026, welds 'anything that jig was unable to weld', and the postings say frames vary day to day based on schedules and blueprints.",
+   "tag": "inferred",
+   "row_ref": "inbox[163]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:welder_postings",
+   "source_url": "https://careers.lippert.com/jobs/17751?lang=en-us",
+   "ledger_value": "Welder 1st Shift (req 17751, 3152 Skyview Rd; listed 2026-09-03): welding hitches onto frames, brackets for jacks and slide-outs, and 'anything that jig was unable to weld'",
+   "tag": "stated",
+   "row_ref": "inbox[164]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed",
+   "note": "Live 2026-11-20."
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:welder_postings",
+   "source_url": "https://careers.lippert.com/jobs/17823?lang=en-us",
+   "ledger_value": "Welder 2nd Shift (req 17823, 3152 Skyview Rd; listed 2026-09-14): welding hitches onto frames and 'anything that jig was unable to weld'",
+   "tag": "stated",
+   "row_ref": "inbox[165]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed",
+   "note": "Live 2026-11-20."
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:welder_postings",
+   "source_url": "",
+   "ledger_value": "2 counted at 3152 Skyview Rd (listed 2026-09-03, 2026-09-14); Lippert careers API read 2026-11-20 (Plant 19-A also lists team leader, inventory, quality and office roles, not counted)",
+   "tag": "inferred",
+   "row_ref": "inbox[166]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:weld_processes",
+   "source_url": "https://careers.lippert.com/jobs/17823?lang=en-us",
+   "ledger_value": "manual welding of chassis frames after jig welding ('Welding anything that jig was unable to weld'); process not named",
+   "tag": "stated",
+   "row_ref": "inbox[167]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:production_type",
+   "source_url": "https://careers.lippert.com/jobs/17751?lang=en-us",
+   "ledger_value": "frames vary day to day based on schedules and blueprints (Plant 19 Welder postings)",
+   "tag": "stated",
+   "row_ref": "inbox[168]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:existing_robots",
+   "source_url": "https://careers.lippert.com/jobs/17945?lang=en-us",
+   "ledger_value": "unknown (robotic production equipment at 19-B; welding not stated)",
+   "tag": "inferred",
+   "row_ref": "inbox[169]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:materials",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[170]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[171]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[172]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (one news search and the company pages read 2026-11-20)",
+   "tag": "inferred",
+   "row_ref": "inbox[173]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:opening_line",
+   "source_url": "",
+   "ledger_value": "Lippert's board lists Welder 2nd Shift (listed Sep 14, 2026) and Welder 1st Shift (listed Sep 3, 2026) roles at 3152 Skyview Rd that weld hitches onto frames and anything the jig could not weld; with frames varying day to day by schedule and blueprint, how do you keep frame finishing in step with the jig?",
+   "tag": "inferred",
+   "row_ref": "inbox[183]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely finish-welding labor on a jig line: Lippert's Welder roles at 3152 Skyview Rd (listed Sep 3 and Sep 14, 2026) weld 'anything that jig was unable to weld', and frames vary day to day based on schedules and blueprints.",
+   "tag": "inferred",
+   "row_ref": "inbox[184]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/25A5157638037D5232F8DC4E874FC78C/jobs/358167",
+   "ledger_value": "Welder (job 358167, PJ Texas Mfg Facility, 1807 FM 2352, Sumner; listed 2026-10-15; hours 530am to 4pm, Monday through Saturday; Sign-on/Retention Bonus available)",
+   "tag": "stated",
+   "row_ref": "inbox[185]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed",
+   "note": "Live on PJ Paycom career page 2026-11-20; sign-on/retention bonus on page."
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/25A5157638037D5232F8DC4E874FC78C/jobs/360012",
+   "ledger_value": "Weld Fabrication Lead (job 360012, PJ Texas Mfg Facility, Sumner; listed 2026-10-06): leads and trains the team toward production goals",
+   "tag": "stated",
+   "row_ref": "inbox[186]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:welder_postings",
+   "source_url": "",
+   "ledger_value": "1 counted (Welder, listed 2026-10-15, sign-on/retention bonus); Weld Fabrication Lead listed, not counted; PJ's own Paycom board read 2026-11-20 (13 jobs, all PJ Texas Mfg Facility - Sumner)",
+   "tag": "inferred",
+   "row_ref": "inbox[187]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:weld_processes",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/25A5157638037D5232F8DC4E874FC78C/jobs/358167",
+   "ledger_value": "manual or semi-automatic welding in vertical, horizontal and overhead positions (Welder posting); process not named",
+   "tag": "stated",
+   "row_ref": "inbox[188]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:materials",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/25A5157638037D5232F8DC4E874FC78C/jobs/358167",
+   "ledger_value": "metal/steel trailer components (Welder posting)",
+   "tag": "stated",
+   "row_ref": "inbox[189]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:production_type",
+   "source_url": "https://www.pjtrailers.com/about-us",
+   "ledger_value": "company-level product list: dump, tilt and utility trailers in multiple lengths and configurations",
+   "tag": "inferred",
+   "row_ref": "inbox[190]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[191]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[192]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[193]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (one news search and the company pages read 2026-11-20)",
+   "tag": "inferred",
+   "row_ref": "inbox[194]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "PJ Trailers' board lists a Welder role at its Sumner, TX facility, listed Oct 15, 2026, with a sign-on/retention bonus and 530am to 4pm hours Monday through Saturday; how are you covering six-day welding shifts?",
+   "tag": "inferred",
+   "row_ref": "inbox[204]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder retention: PJ Trailers' board lists a Welder role at 1807 FM 2352, Sumner, listed Oct 15, 2026, offering a sign-on/retention bonus and Monday-through-Saturday hours.",
+   "tag": "inferred",
+   "row_ref": "inbox[205]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/96B4F6F5DA7BCED92975702561BB84AD/jobs/355262",
+   "ledger_value": "Welder (job 355262, Big Tex Mt. Pleasant; listed 2026-09-30; Sign-on/Retention Bonus available)",
+   "tag": "stated",
+   "row_ref": "inbox[206]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed",
+   "note": "Live on Big Tex Paycom career page 2026-11-20; JSON-LD streetAddress 850 I-30 East."
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/96B4F6F5DA7BCED92975702561BB84AD/jobs/218768",
+   "ledger_value": "Welder 1 (2nd shift 4:00 pm -2:40 a.m.) (job 218768, Big Tex Mt. Pleasant; listed 2025-09-04; on the board 2026-11-20)",
+   "tag": "stated",
+   "row_ref": "inbox[207]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed",
+   "note": "Live 2026-11-20; JSON-LD datePosted 2025-09-04 (standing ad, open, not 60+)."
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:welder_postings",
+   "source_url": "",
+   "ledger_value": "2 counted at Big Tex Mt. Pleasant (listed 2026-09-30 and 2025-09-04); Big Tex's own Paycom board read 2026-11-20 (50 jobs)",
+   "tag": "inferred",
+   "row_ref": "inbox[208]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:site_attribution",
+   "source_url": "",
+   "ledger_value": "postings placed at the Mount Pleasant plant by the board label 'Big Tex Mt. Pleasant'; their JSON-LD street is 850 I-30 East while the OSHA record and ledger address are 950 I-30 East (test b)",
+   "tag": "inferred",
+   "row_ref": "inbox[209]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed",
+   "note": "No second Big Tex production site in Mount Pleasant found (OSHA 2025 has one Big Tex Mt Pleasant record; one search: all sources give 950 I-30 East). 850 vs 950 on the same frontage: test (b) reading accepted."
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:weld_processes",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/96B4F6F5DA7BCED92975702561BB84AD/jobs/355262",
+   "ledger_value": "manual or semi-automatic welding in various positions; structural welds (Welder postings); process not named",
+   "tag": "stated",
+   "row_ref": "inbox[210]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "corrected",
+   "corrected_value": "manual or semi-automatic welding in various positions (vertical, horizontal or overhead) (Welder posting 355262); process not named",
+   "corrected_quote": "Weld components using manual or semi-automatic welding equipment in various positions (vertical, horizontal or overhead)",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "manual or semi-automatic welding in various positions; structural welds (Welder postings); process not named",
+   "note": "'structural welds' is not on job 355262 (read 2026-11-20); it is on job 218768 ('set-up/run structural welds'). Proposed own row on 218768 (proposed_rows). Process 0 unchanged."
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:materials",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/96B4F6F5DA7BCED92975702561BB84AD/jobs/355262",
+   "ledger_value": "metal/steel trailer components (Welder posting)",
+   "tag": "stated",
+   "row_ref": "inbox[211]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:production_type",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/96B4F6F5DA7BCED92975702561BB84AD/jobs/218768",
+   "ledger_value": "site product list: utility, cargo, gooseneck, flatbed and dump trailers (Welder 1 posting)",
+   "tag": "stated",
+   "row_ref": "inbox[212]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[213]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[214]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[215]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (one news search and the company pages read 2026-11-20)",
+   "tag": "inferred",
+   "row_ref": "inbox[216]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "c-big-tex:multi_plant",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/96B4F6F5DA7BCED92975702561BB84AD/jobs/355205",
+   "ledger_value": "multi-plant: Big Tex also hires MIG welders at Big Tex Ohio, Batavia OH",
+   "tag": "stated",
+   "row_ref": "inbox[217]",
+   "plant": "c-big-tex",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Big Tex's board lists a Welder role at Big Tex Mt. Pleasant, listed Sep 30, 2026, with a sign-on/retention bonus, alongside a 2nd-shift Welder 1 role listed Sep 4, 2025; how are you keeping welders on the line?",
+   "tag": "inferred",
+   "row_ref": "inbox[227]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly welder retention: Big Tex's board lists a Welder role at Big Tex Mt. Pleasant, listed Sep 30, 2026, with a sign-on/retention bonus, and a 2nd-shift Welder 1 role listed Sep 4, 2025.",
+   "tag": "inferred",
+   "row_ref": "inbox[228]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/WIL1024WTCO/JobBoard/3683fa73-7c98-485d-98c4-76da583bb17c/OpportunityDetail?opportunityId=35691985-569a-444b-b43d-3e0dd70d5e48",
+   "ledger_value": "Night Shift Welder/Assemblers-Yankton, SD (NIGHT001536; listed 2026-11-04; 3:30 pm to 3:00 am Monday-Thursday, $1.75/hour shift differential)",
+   "tag": "stated",
+   "row_ref": "inbox[229]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed",
+   "note": "Live on Wilson UKG board 2026-11-20."
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/WIL1024WTCO/JobBoard/3683fa73-7c98-485d-98c4-76da583bb17c/OpportunityDetail?opportunityId=06e9f58f-6519-41a7-92a9-f6ae13bc5e86",
+   "ledger_value": "Day Shift Assemblers/Welders-Yankton, SD (DAYSH001530; listed 2026-09-29; 6:00am to 3:30pm Monday-Friday)",
+   "tag": "stated",
+   "row_ref": "inbox[230]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed",
+   "note": "Live 2026-11-20."
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:welder_postings",
+   "source_url": "",
+   "ledger_value": "2 counted at Yankton (listed 2026-11-04 and 2026-09-29); Welding Engineer (listed 2026-10-22, all plants) listed, not counted; Wilson UKG board read 2026-11-20",
+   "tag": "inferred",
+   "row_ref": "inbox[231]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:site_attribution",
+   "source_url": "",
+   "ledger_value": "postings tied to the Yankton plant by city (site-tie test a)",
+   "tag": "inferred",
+   "row_ref": "inbox[232]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:weld_processes",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[233]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:materials",
+   "source_url": "https://www.wilsontrailer.com/locations",
+   "ledger_value": "company line mainly aluminum (aluminum grain trailers, all-aluminum flatbeds), with steel subframes and combination steel-aluminum flatbeds (company-level)",
+   "tag": "inferred",
+   "row_ref": "inbox[234]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[235]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:production_type",
+   "source_url": "https://www.wilsontrailer.com/locations",
+   "ledger_value": "company-level product list: grain, frac sand, livestock and flatbed/drop-deck trailers",
+   "tag": "inferred",
+   "row_ref": "inbox[236]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[237]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "inbox[238]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (one news search and the company pages read 2026-11-20)",
+   "tag": "inferred",
+   "row_ref": "inbox[239]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "c-wilson:multi_plant",
+   "source_url": "https://recruiting2.ultipro.com/WIL1024WTCO/JobBoard/3683fa73-7c98-485d-98c4-76da583bb17c/OpportunityDetail?opportunityId=d9411fd8-30f9-403c-835e-d2f7acafd2f5",
+   "ledger_value": "multi-plant: Wilson plants in Sioux City IA, Yankton SD and Lennox SD (Welding Engineer posting)",
+   "tag": "stated",
+   "row_ref": "inbox[240]",
+   "plant": "c-wilson",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:opening_line",
+   "source_url": "",
+   "ledger_value": "Wilson's board lists Night Shift Welder/Assemblers in Yankton, listed Nov 4, 2026, and Day Shift Assemblers/Welders, listed Sep 29, 2026; how do you train new welder/assemblers for both shifts?",
+   "tag": "inferred",
+   "row_ref": "inbox[250]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly welder/assembler hiring on two shifts: Wilson's board lists Night Shift Welder/Assemblers (listed Nov 4, 2026) and Day Shift Assemblers/Welders (listed Sep 29, 2026) in Yankton.",
+   "tag": "inferred",
+   "row_ref": "inbox[251]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:name",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/96B4F6F5DA7BCED92975702561BB84AD/jobs/355262",
+   "ledger_value": "Big Tex Trailers - Mount Pleasant",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:parent_company",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "Big Tex Trailer Manufacturing, LLC",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "corrected",
+   "corrected_value": "Big Tex Trailer Manufacturing",
+   "corrected_quote": "company_name Big Tex Trailer Manufacturing",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Big Tex Trailer Manufacturing",
+   "note": "Base row. OSHA record 3218048 (data/osha_2025.csv) carries 'Big Tex Trailer Manufacturing' with no legal suffix; ', LLC' is on no cited page. Drop the suffix or cite a page that carries it."
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "950 I-30 East, Mount Pleasant, TX 75455",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:products",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/96B4F6F5DA7BCED92975702561BB84AD/jobs/355262",
+   "ledger_value": "Welds metal components of utility, cargo, gooseneck, flatbed and dump trailers (site welder posting)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "corrected",
+   "corrected_value": "Welds metal/steel components on various trailers (site welder posting 355262)",
+   "corrected_quote": "This position fabricates, assembles, and welds metal/steel components on various trailers to SOP’s/Blueprints/Knowledge /Foreman and/or Lead Instructions.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Base row. Job 355262 says only 'various trailers'; the utility, cargo, gooseneck, flatbed and dump list is on job 218768 (its own row, ledger, confirmed). plants.csv products unchanged (carried by the 218768 row).",
+   "plants_csv_value": "Welds metal components of utility, cargo, gooseneck, flatbed and dump trailers (site welder posting)"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:products",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/96B4F6F5DA7BCED92975702561BB84AD/jobs/218768",
+   "ledger_value": "Welds metal components of utility, cargo, gooseneck, flatbed and dump trailers (site welder posting)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:relationship",
+   "source_url": "https://bigtextrailers.com/about-us",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "332 (2025 annual average, OSHA Form 300A)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed",
+   "note": "OSHA 3218048, 332 confirmed."
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:name",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/25A5157638037D5232F8DC4E874FC78C/jobs/358167",
+   "ledger_value": "PJ Trailers - Texas manufacturing facility (Sumner)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:parent_company",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "PJ Trailers",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "1807 FM 2352, Sumner, TX 75486",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "corrected",
+   "corrected_value": "1807 FM 2352, Sumner, TX 75486",
+   "corrected_quote": "\"streetAddress\":\"1807 FM 2352\" ... \"addressLocality\":\"Sumner\"",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "corrected_source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/25A5157638037D5232F8DC4E874FC78C/jobs/358167",
+   "note": "Base row. The cited OSHA record gives city Honey Grove, not Sumner; the value's city is not on it. The PJ Welder posting's JSON-LD carries street and locality Sumner (raw source, read 2026-11-20). Re-cite to that page; value unchanged. (corrected_source_url is read by tools/apply_factcheck.py.)"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:products",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/25A5157638037D5232F8DC4E874FC78C/jobs/358167",
+   "ledger_value": "Welds metal/steel trailer components at this site",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:products",
+   "source_url": "https://www.pjtrailers.com",
+   "ledger_value": "company-level: steel flatbed trailers",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:relationship",
+   "source_url": "https://www.pjtrailers.com",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "397 (OSHA 2025 record, tie inferred)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:name",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "Wilson Trailer - Yankton",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:parent_company",
+   "source_url": "https://recruiting2.ultipro.com/WIL1024WTCO/JobBoard/3683fa73-7c98-485d-98c4-76da583bb17c/OpportunityDetail?opportunityId=d9411fd8-30f9-403c-835e-d2f7acafd2f5",
+   "ledger_value": "Wilson Trailer Company",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "3602 Broadway Ave, Yankton, SD 57078",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:products",
+   "source_url": "https://www.wilsontrailer.com/locations",
+   "ledger_value": "company-level: aluminum grain trailers (aluminum-first); company-level: combination steel and aluminum flatbeds and drop decks",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:products",
+   "source_url": "https://recruiting2.ultipro.com/WIL1024WTCO/JobBoard/3683fa73-7c98-485d-98c4-76da583bb17c/OpportunityDetail?opportunityId=35691985-569a-444b-b43d-3e0dd70d5e48",
+   "ledger_value": "Welding at the site",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:relationship",
+   "source_url": "https://www.wilsontrailer.com/locations",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "340 (2025 annual average, OSHA Form 300A)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed",
+   "note": "OSHA 2910911, 340 confirmed."
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:name",
+   "source_url": "https://www.stoughtontrailers.com/contact",
+   "ledger_value": "Stoughton Trailers - Stoughton Manufacturing (Plants 5 & 6)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:address",
+   "source_url": "https://www.stoughtontrailers.com/contact",
+   "ledger_value": "1111 Veterans Rd, Stoughton, WI 53589",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:parent_company",
+   "source_url": "",
+   "ledger_value": "Stoughton Trailers, LLC",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:products",
+   "source_url": "https://www.ttnews.com/articles/stoughton-production-staff",
+   "ledger_value": "Component manufacturing for trailer and chassis subassemblies; dry van and chassis assembly lines",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:products",
+   "source_url": "",
+   "ledger_value": "boundary: robotic weld cells",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:products",
+   "source_url": "https://www.stoughtontrailers.com/chassis",
+   "ledger_value": "Intermodal chassis (company line)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:relationship",
+   "source_url": "https://www.ttnews.com/articles/stoughton-production-staff",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "240",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed",
+   "note": "OSHA 2960107, 240 confirmed."
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:name",
+   "source_url": "https://www.stoughtontrailers.com/contact",
+   "ledger_value": "Stoughton Trailers - Evansville (Plant 7)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:address",
+   "source_url": "https://www.stoughtontrailers.com/contact",
+   "ledger_value": "101 County Road M, Evansville, WI 53536",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:parent_company",
+   "source_url": "",
+   "ledger_value": "Stoughton Trailers, LLC",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:products",
+   "source_url": "https://www.ttnews.com/articles/stoughton-production-staff",
+   "ledger_value": "Refrigerated trailers and intermodal chassis",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:products",
+   "source_url": "",
+   "ledger_value": "boundary: robotic weld cells",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:products",
+   "source_url": "https://www.stoughtontrailers.com/chassis",
+   "ledger_value": "Intermodal chassis (company line)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:relationship",
+   "source_url": "https://www.ttnews.com/articles/stoughton-production-staff",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_dtl.disp_program_facility?p_registry_id=110054204455",
+   "ledger_value": "JOST International Corp. - Grand Haven MI plant",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_dtl.disp_program_facility?p_registry_id=110054204455",
+   "ledger_value": "1770 Hayes Rd, Grand Haven, MI 49417",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed",
+   "note": "EPA carries '1770 HAYES RD'; the JOST board and JSON-LD say '1770 Hayes Street' (same site; Census matched HAYES ST)."
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:parent_company",
+   "source_url": "https://jostinternational.com/careers",
+   "ledger_value": "JOST",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:products",
+   "source_url": "https://jostinternational.com/about",
+   "ledger_value": "Fifth wheels, landing gear, kingpins, turntables (two US plants)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:products",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4655618",
+   "ledger_value": "Production welding at the site",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:relationship",
+   "source_url": "https://jostinternational.com/about",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:products",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/0db28eaf-ada3-42fe-aad6-e5a49de9dd2b/OpportunityDetail?opportunityId=eb3636c2-0335-4c25-af90-05211b5e8138",
+   "ledger_value": "Welding of mild steel, SST and aluminum; trailer components fabricated (site postings)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "corrected",
+   "corrected_value": "Welding of mild steel, SST and aluminum (site Welder posting)",
+   "corrected_quote": "Our Paragould plant is currently accepting applications for Welders ... Able to weld mild steel, SST and aluminum.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Dry van manufacturing plant with a modification center for customized trailers (Utility release, 2012); welders weld mild steel, stainless and aluminum; fabricators make trailer components on punch presses, press brakes and lasers (site postings); company line: dry vans, reefers and flatbeds (company-level); boundary: high-volume trailer line",
+   "note": "Base row on the Welder page (WELDE001086). 'trailer components fabricated' is on the Fabricator page (FABRI001092), already its own row (ledger, confirmed). One row per page; plants.csv unchanged."
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:products",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/0db28eaf-ada3-42fe-aad6-e5a49de9dd2b/OpportunityDetail?opportunityId=b2796daf-4764-425b-ad23-4e17ceacb03f",
+   "ledger_value": "Trailer components fabricated at Paragould (site posting)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:products",
+   "source_url": "https://www.utilitytrailer.com/discover-utility/",
+   "ledger_value": "company line: dry vans, reefers, flatbeds (company-level)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:relationship",
+   "source_url": "https://www.utilitytrailer.com/discover-utility/",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=UTILITY%20TRAILER&state_abbr=AR&output=JSON",
+   "ledger_value": "2921 Highway 49 N, Paragould, AR 72450",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:name",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/0db28eaf-ada3-42fe-aad6-e5a49de9dd2b/OpportunityDetail?opportunityId=eb3636c2-0335-4c25-af90-05211b5e8138",
+   "ledger_value": "Utility Trailer Manufacturing Company",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:parent_company",
+   "source_url": "https://www.utilitytrailer.com/discover-utility/",
+   "ledger_value": "Utility Trailer Manufacturing Company, LLC",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "361 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed",
+   "note": "OSHA 2952476, 361 confirmed."
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:name",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/fb1e6b32-45ce-4818-a45b-e96432ef87fb/OpportunityDetail?opportunityId=090a1938-cd3e-4302-8050-b94f677168f1",
+   "ledger_value": "Utility Trailer Manufacturing Company - Atkins plant",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:parent_company",
+   "source_url": "https://www.utilitytrailer.com/discover-utility/",
+   "ledger_value": "Utility Trailer Manufacturing Company, LLC",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=UTILITY%20TRAILER&state_abbr=VA&output=JSON",
+   "ledger_value": "124 Mountain Empire Rd, Atkins, VA 24311",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:products",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/fb1e6b32-45ce-4818-a45b-e96432ef87fb/OpportunityDetail?opportunityId=752c04be-9740-42cf-b7ac-cc4d673cad0c",
+   "ledger_value": "Aluminum TIG welding also at the site (site postings)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:products",
+   "source_url": "https://www.utilitytrailer.com/discover-utility/",
+   "ledger_value": "company line: dry freight vans, refrigerated trailers and flatbeds (company-level)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:relationship",
+   "source_url": "https://www.utilitytrailer.com/discover-utility/",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "905 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed",
+   "note": "OSHA 2916442, 905 confirmed."
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:name",
+   "source_url": "https://careers.lippert.com/jobs/17751?lang=en-us",
+   "ledger_value": "Lippert - Chassis Plant 19 complex (3152 Skyview Rd)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "corrected",
+   "corrected_value": "Lippert - Chassis Plant 19 complex (3152 Skyview Rd)",
+   "corrected_quote": "Location Chassis Plant #19-A mi 3152 Skyview Rd Goshen, IN 46526",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "corrected_source_url": "https://corporate.lippert.com/about/locations",
+   "note": "Base row. The location_name JSON is not on the cited job page (visible text or raw source incl. JSON-LD, read 2026-11-20); it is on the Jibe list API (careers.lippert.com/api/jobs). Re-cite to the locations page, which carries 'Chassis Plant #19-A' at 3152 Skyview Rd ('complex' is the OSHA record name 'Lippert Components 19 Complex'). (corrected_source_url is read by tools/apply_factcheck.py.)"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:parent_company",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=LIPPERT&state_abbr=IN&output=JSON",
+   "ledger_value": "Lippert Components, Inc.",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:address",
+   "source_url": "https://careers.lippert.com/jobs/17751?lang=en-us",
+   "ledger_value": "3152 Skyview Rd, Goshen, IN 46526",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:products",
+   "source_url": "https://careers.lippert.com/jobs/17751?lang=en-us",
+   "ledger_value": "Frame fabrication: welders finish frames, weld hitches onto frames and brackets for jacks and slide-outs, check camber and square (site postings)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:products",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=LIPPERT&state_abbr=IN&output=JSON",
+   "ledger_value": "EPA FRS names a Lippert 'Indiana Frame Division' registration at the same coordinates on Skyview Dr",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed",
+   "note": "EPA FRS: Indiana Frame Division (16700 Skyview Dr) at 41.54352,-85.78325, the same point as the 3152 Skyview Rd records."
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:relationship",
+   "source_url": "https://careers.lippert.com/jobs/17751?lang=en-us",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "corrected",
+   "corrected_value": "new",
+   "corrected_quote": "Team Member is responsible for finishing the frame fabrication. Day to day frames may vary based on schedules and blueprints provided.",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "Base row. The quoted 'Lippert is a leading, global manufacturer...' sentence is not on job 17751 (its 'Who We Are' text differs); it is on 17623, 17945 and 18248. Value 'new' unchanged; re-quote from the cited page (or cite 17945, a Plant 19 page that carries the sentence)."
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "1034 (OSHA 300A, 2025 annual average; record named 'Lippert Components 19 Complex' at 3152 Skyview Rd, may cover more than one Plant 19 building)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed",
+   "note": "OSHA 3176948, 1034 confirmed."
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:name",
+   "source_url": "https://careers.lippert.com/jobs/17564?lang=en-us",
+   "ledger_value": "Lippert - Plant 28 RV Chassis",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "corrected",
+   "corrected_value": "Lippert - Plant 28 RV Chassis",
+   "corrected_quote": "Location RV Chassis Plant #28 mi 51040 Greenfield Pkwy Middlebury, IN 46540",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "corrected_source_url": "https://corporate.lippert.com/about/locations",
+   "note": "Base row. The location_name JSON is not on the cited job page (17564; raw source holds JSON-LD datePosted/streetAddress only); it is on the Jibe list API. Re-cite to the locations page. (corrected_source_url is read by tools/apply_factcheck.py.)"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:parent_company",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=LIPPERT&state_abbr=IN&output=JSON",
+   "ledger_value": "Lippert Components, Inc.",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:address",
+   "source_url": "https://careers.lippert.com/jobs/17564?lang=en-us",
+   "ledger_value": "51040 Greenfield Pkwy, Middlebury, IN 46540",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:products",
+   "source_url": "https://careers.lippert.com/jobs/17564?lang=en-us",
+   "ledger_value": "Fifth-wheel frames: welding the upper deck, squaring and welding the pin box, welding structural shapes (site posting); Site labelled RV Chassis on Lippert's board",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "corrected",
+   "corrected_value": "Fifth-wheel frames: welding the upper deck, squaring and welding the pin box, welding structural shapes (site posting)",
+   "corrected_quote": "Team Member is responsible for the fabrication of the upper deck on fifth wheel frames ... Welding the upper deck ... Squaring and welding the pin box ... Welding different structural shapes (ie: tube to plate)",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "note": "Base row. Every fragment is on job 17564 except '\"location_name\":\"028 LCI Plant RV Chassis\"', which is on the Jibe list API, not the page; drop the 'Site labelled RV Chassis on Lippert's board' clause here (the locations-page row inbox/ledger 'RV Chassis Plant #28' already carries it).",
+   "plants_csv_value": "Fifth-wheel and RV chassis frames: upper-deck and pin-box welding, frame finishing, small-parts cell welding of chassis sub-assemblies (site postings); Chassis Welding Operations department (plant manager posting titled Non-RV); boundary: jig-welded frame line with manual finish welding; Tier 1 chassis supplier (T4)"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:products",
+   "source_url": "https://careers.lippert.com/jobs/17623?lang=en-us",
+   "ledger_value": "Small-parts cell: plasma cutting and welding of chassis sub-assemblies incl. landing-gear brackets (site posting)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:products",
+   "source_url": "https://careers.lippert.com/jobs/18248?lang=en-us",
+   "ledger_value": "Chassis Welding Operations department (plant manager posting, non-RV)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:products",
+   "source_url": "https://careers.lippert.com/jobs/18017?lang=en-us",
+   "ledger_value": "boundary: jig-welded frame line with manual finish welding (frames vary day to day)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:relationship",
+   "source_url": "https://careers.lippert.com/jobs/17564?lang=en-us",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "corrected",
+   "corrected_value": "new",
+   "corrected_quote": "Team Member is responsible for the fabrication of the upper deck on fifth wheel frames.",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "Base row. The quoted sentence is not on job 17564; it is on 17623 and 18248 (same plant). Value 'new' unchanged; re-quote or re-cite to 17623."
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "294 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed",
+   "note": "OSHA 3183291, 294 confirmed."
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:products",
+   "source_url": "https://corporate.lippert.com/about/locations",
+   "ledger_value": "Lippert lists Chassis Plants #19-A (3152 Skyview Rd), #19-B (3340 Corrie Dr), #19-C (16685 Skyview Rd) and #19-D (3055 Skyview Rd): one Plant 19 chassis complex",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "corrected",
+   "corrected_value": "Lippert lists Chassis Plants #19-A (3152 Skyview Rd), #19-B (3340 Corrie Dr), #19-C (16685 Skyview Rd) and #19-D (3055 Skyview Rd)",
+   "corrected_quote": "Location Chassis Plant #19-A mi 3152 Skyview Rd Goshen, IN 46526 ... Location Chassis Plant #19-B mi 3340 Corrie Dr ... Location Chassis Plant #19-C mi 16685 Skyview Rd ... Location Chassis Plant #19-D mi 3055 Skyview Rd",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Towable RV chassis frames: frame fabrication, welding hitches onto frames and brackets for jacks and slide-outs (site postings; towable inferred); Lippert lists Chassis Plants #19-A to #19-D on Skyview Rd and Corrie Dr (one complex, within about 1 km); EPA FRS 'Indiana Frame Division' registration at the same point; frames vary day to day; boundary: jig-welded frame line with manual finish welding; Tier 1 chassis supplier (T4)",
+   "note": "'one Plant 19 chassis complex' is a site-tie judgement, not page text; move it to an inferred row (proposed_rows). The OSHA record name '19 Complex' supports it as an inference."
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:products",
+   "source_url": "https://corporate.lippert.com/about/locations",
+   "ledger_value": "RV Chassis Plant #28 (company locations page)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:products",
+   "source_url": "",
+   "ledger_value": "boundary: high-volume trailer line (T1)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:products",
+   "source_url": "",
+   "ledger_value": "Towable (travel-trailer and fifth-wheel) RV chassis frames; boundary: jig-welded frame line with manual finish welding (part mix: frames vary day to day)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  }
+ ],
+ "rows_outside_rate": [
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:lat",
+   "source_url": "",
+   "ledger_value": "33.157058,-94.969401",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:website",
+   "source_url": "https://bigtextrailers.com/about-us",
+   "ledger_value": "https://bigtextrailers.com",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:tier",
+   "source_url": "https://bigtextrailers.com/about-us",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:prospect_test",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/96B4F6F5DA7BCED92975702561BB84AD/jobs/355262",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:website",
+   "source_url": "https://www.pjtrailers.com",
+   "ledger_value": "https://pjtrailers.com",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:tier",
+   "source_url": "https://www.pjtrailers.com",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:prospect_test",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/25A5157638037D5232F8DC4E874FC78C/jobs/358167",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:website",
+   "source_url": "https://www.wilsontrailer.com/locations",
+   "ledger_value": "https://www.wilsontrailer.com",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:tier",
+   "source_url": "https://www.wilsontrailer.com/locations",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:prospect_test",
+   "source_url": "https://recruiting2.ultipro.com/WIL1024WTCO/JobBoard/3683fa73-7c98-485d-98c4-76da583bb17c/OpportunityDetail?opportunityId=35691985-569a-444b-b43d-3e0dd70d5e48",
+   "ledger_value": "pass (aluminum-first, kept and noted)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:website",
+   "source_url": "https://www.stoughtontrailers.com/chassis",
+   "ledger_value": "https://www.stoughtontrailers.com",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:tier",
+   "source_url": "https://www.stoughtontrailers.com/chassis",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:prospect_test",
+   "source_url": "https://recruiting2.ultipro.com/STO1011SGTR/JobBoard/4cd343b0-a5ca-4cb8-aa9a-988cce862052/OpportunityDetail?opportunityId=35439739-c9e9-4ffd-b156-71ffe3fb2421",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:found_by",
+   "source_url": "https://www.ttnews.com/articles/stoughton-production-staff",
+   "ledger_value": "government file;company site;news;job posting",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress",
+   "ledger_value": "42.91182,-89.203252 (county 55025)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:website",
+   "source_url": "https://www.stoughtontrailers.com/chassis",
+   "ledger_value": "https://www.stoughtontrailers.com",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:tier",
+   "source_url": "https://www.stoughtontrailers.com/chassis",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:prospect_test",
+   "source_url": "https://recruiting2.ultipro.com/STO1011SGTR/JobBoard/4cd343b0-a5ca-4cb8-aa9a-988cce862052/OpportunityDetail?opportunityId=f56c45e9-641f-4dd0-8367-5110f0d71154",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:found_by",
+   "source_url": "https://www.ttnews.com/articles/stoughton-production-staff",
+   "ledger_value": "government file;company site;news;job posting",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress",
+   "ledger_value": "42.779189,-89.2746 (county 55105)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress",
+   "ledger_value": "43.030182,-86.20299 (county 26139)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:website",
+   "source_url": "https://www.jostinternational.com",
+   "ledger_value": "https://jostinternational.com",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:tier",
+   "source_url": "https://jostinternational.com/about",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:prospect_test",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4655618",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:found_by",
+   "source_url": "https://jostinternational.com/about",
+   "ledger_value": "company site;job posting",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:tier",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/0db28eaf-ada3-42fe-aad6-e5a49de9dd2b/OpportunityDetail?opportunityId=eb3636c2-0335-4c25-af90-05211b5e8138",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:prospect_test",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/0db28eaf-ada3-42fe-aad6-e5a49de9dd2b/OpportunityDetail?opportunityId=eb3636c2-0335-4c25-af90-05211b5e8138",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:lat",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=UTILITY%20TRAILER&state_abbr=AR&output=JSON",
+   "ledger_value": "36.091771,-90.471216 (county 05055)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:lon",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=UTILITY%20TRAILER&state_abbr=AR&output=JSON",
+   "ledger_value": "36.091771,-90.471216 (county 05055)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:county_fips",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=UTILITY%20TRAILER&state_abbr=AR&output=JSON",
+   "ledger_value": "36.091771,-90.471216 (county 05055)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:website",
+   "source_url": "https://www.utilitytrailer.com/",
+   "ledger_value": "https://www.utilitytrailer.com",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress",
+   "ledger_value": "36.86245,-81.429052 (county 51173)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress",
+   "ledger_value": "36.86245,-81.429052 (county 51173)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress",
+   "ledger_value": "36.86245,-81.429052 (county 51173)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:website",
+   "source_url": "https://www.utilitytrailer.com/discover-utility/",
+   "ledger_value": "https://www.utilitytrailer.com",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:verticals",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/fb1e6b32-45ce-4818-a45b-e96432ef87fb/OpportunityDetail?opportunityId=090a1938-cd3e-4302-8050-b94f677168f1",
+   "ledger_value": "v-trailers-chassis-mobile-power",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:tier",
+   "source_url": "https://www.utilitytrailer.com/discover-utility/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:found_by",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=UTILITY%20TRAILER&state_abbr=VA&output=JSON",
+   "ledger_value": "job posting (UKG);government file (OSHA 2025);government file (EPA FRS)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:prospect_test",
+   "source_url": "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/fb1e6b32-45ce-4818-a45b-e96432ef87fb/OpportunityDetail?opportunityId=090a1938-cd3e-4302-8050-b94f677168f1",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress",
+   "ledger_value": "41.543461,-85.782955 (county 18039)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress",
+   "ledger_value": "41.543461,-85.782955 (county 18039)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress",
+   "ledger_value": "41.543461,-85.782955 (county 18039)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:website",
+   "source_url": "https://corporate.lippert.com/about/locations",
+   "ledger_value": "https://corporate.lippert.com",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:verticals",
+   "source_url": "https://careers.lippert.com/jobs/17751?lang=en-us",
+   "ledger_value": "v-trailers-chassis-mobile-power",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:tier",
+   "source_url": "https://careers.lippert.com/jobs/17751?lang=en-us",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "corrected",
+   "note": "Base tier row: quoted sentence not on job 17751 (on 17945, a Plant 19 page); value Tier 1 unchanged."
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:found_by",
+   "source_url": "https://careers.lippert.com/jobs/17751?lang=en-us",
+   "ledger_value": "job posting (Lippert careers);company site (Lippert locations page);government file (OSHA 2025);government file (EPA FRS)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "corrected",
+   "note": "Base found_by row: location_name JSON not on job page (Jibe list API)."
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:prospect_test",
+   "source_url": "https://careers.lippert.com/jobs/17751?lang=en-us",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress",
+   "ledger_value": "41.752131,-85.671807 (county 18039)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress",
+   "ledger_value": "41.752131,-85.671807 (county 18039)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress",
+   "ledger_value": "41.752131,-85.671807 (county 18039)",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:website",
+   "source_url": "https://corporate.lippert.com/about/locations",
+   "ledger_value": "https://corporate.lippert.com",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:verticals",
+   "source_url": "https://careers.lippert.com/jobs/17564?lang=en-us",
+   "ledger_value": "v-trailers-chassis-mobile-power",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:tier",
+   "source_url": "https://careers.lippert.com/jobs/17564?lang=en-us",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "corrected",
+   "note": "Base tier row: quoted sentence not on job 17564 (on 17623); value unchanged."
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:found_by",
+   "source_url": "https://careers.lippert.com/jobs/17564?lang=en-us",
+   "ledger_value": "job posting (Lippert careers);company site (Lippert locations page);government file (OSHA 2025);government file (EPA FRS)",
+   "tag": "stated",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "corrected",
+   "note": "Base found_by row: location_name JSON not on job page (Jibe list API)."
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:prospect_test",
+   "source_url": "https://careers.lippert.com/jobs/17564?lang=en-us",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "row_ref": "ledger/evidence.csv",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  }
+ ],
+ "score_notes": {
+  "p-stoughton-stoughton-wi": "80 High (0/20/15/20/15/10, conf 1) stands under the rules. Material 20 rests on the chassis page placing a line 'in Stoughton' (two Stoughton sites 0.73 km apart, test b: points, no confidence); 53' chassis tare 7,000 lb fits the 2026 report's 60 ft / 55,000 lb (verified on page). Demand 15: TTNews (Nov 10, 2026) states the 450 hires were at the Stoughton, Evansville and Brodhead plants and ties them to replacement demand and a backlog rising to 6.5 months, so it is a hire tied to stated production growth (consultation 10, ruling 4); it names three plants, not this one alone, so the coordinator's flag stands (downside demand 8, 73 High). Labor 20: Welder 2NDSH003339 and Weld School WELDS003473 both live at Plant 5 today. Process 0 correct ('wire feed welder', ruling 6; Tool & Die MIG is tooling).",
+  "p-stoughton-evansville-wi": "72 High (0/20/15/12/15/10, conf 2) stands. Demand 15 on a clean plant-level dated event (Evansville reconfiguration completed, reported Mar 17, 2026). Labor 12: one counted Welder (WELDE003631, live); 'Ability to work mandatory overtime' read as conditional per the Bobcat Litchfield/Virnig ruling. It is a judgement call: the posting states mandatory overtime exists, only its frequency is unstated. If the coordinator reads it as mandatory overtime, labor goes to 20 (80 High).",
+  "p-utility-trailer-atkins-va": "58 Medium (12/0/8/20/8/10, conf 1) stands. Four welder postings are live on the Atkins UKG board (JSON 2026-11-20). Process 12 under the TIG rule (Aluminum TIG production postings alongside Steel MIG). The weld_processes correction is wording only.",
+  "p-utility-trailer-paragould-ar": "38 Low stands. Welder WELDE001086 is live (labor 12); the Fabricator names no welding. 'rod size ... electrode' is boilerplate that also appears in the Atkins Steel MIG posting, so process stays unknown (0). The production_type correction is wording only (part mix 8 kept, no confidence).",
+  "p-jost-grand-haven-mi": "21 Low stands under the robot-title rule. Borderline: the postings say 'Weld parts to schedule' and require passing 'company visual and penetration standards', but no duty states manual welding, so not counted. Upside as flagged by the profiler (61 Medium).",
+  "p-lippert-middlebury-in": "66 Medium (20/0/8/20/8/10, conf 4) stands. All three counted postings are live in the Jibe API at 51040 Greenfield Pkwy; MIG is named in the plant's own Small Parts Cell Welder posting. Corrections are citation-only (name, products, relationship quotes not on the cited page) and move no points. Relationship question for the coordinator, not a correction: Lippert's company line includes towable axles and suspensions, and under rule 2 a company-level product line decides relationship. No Lippert record carries a row stating that line, so 'new' stands until one is written; the same applies to every Lippert record.",
+  "p-lippert-goshen-in": "46 Medium (0/0/8/20/8/10, conf 3) stands. Both Welder postings are live at 3152 Skyview Rd. Same relationship note as Middlebury.",
+  "p-pj-trailers-sumner-tx": "41 Low stands. Welder 358167 is live with a 'Sign-on/Retention Bonus available' line (labor 20). The Weld Fabrication Lead states no hands-on welding, so it is correctly not counted. Scale 5 on the inferred OSHA headcount (city Honey Grove), with no confidence.",
+  "p-big-tex-mount-pleasant-tx": "46 Medium stands. Both welder postings are live on the Paycom career page; 218768 is dated 2025-09-04, a standing ad (open, not 60+); the bonus is on 355262. Site tie by test (b), with no confidence: there is one OSHA record for Big Tex in Mount Pleasant and no second production site was found. The corrections (process, products, parent wording) move no points.",
+  "p-wilson-yankton-sd": "50 Medium stands. Both Yankton welder/assembler postings are live (UKG JSON); Wilson has one Yankton establishment in OSHA 2025 (test a). Material 4 rests on the inferred company-level aluminum-first row (points, no confidence); the company line also states steel subframes and steel-aluminum combo flatbeds, so this is a judgement for the coordinator, not an error. Both postings' full text read: they list huck gun and drill duties but require 'Current Certification to weld' and are titled Welder/Assembler production roles, so they are counted correctly (labor 20 stands)."
+ },
+ "score_rows": [
+  {
+   "claim_id": "p-utility-trailer-atkins-va:score_process",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "row_ref": "inbox[18]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[19]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[20]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "row_ref": "inbox[21]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[22]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "row_ref": "inbox[23]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:score_total",
+   "source_url": "",
+   "ledger_value": "58",
+   "tag": "inferred",
+   "row_ref": "inbox[24]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "row_ref": "inbox[25]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:confidence",
+   "source_url": "",
+   "ledger_value": "1",
+   "tag": "inferred",
+   "row_ref": "inbox[26]",
+   "plant": "p-utility-trailer-atkins-va",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[42]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[43]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[44]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "row_ref": "inbox[45]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[46]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "row_ref": "inbox[47]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:score_total",
+   "source_url": "",
+   "ledger_value": "38",
+   "tag": "inferred",
+   "row_ref": "inbox[48]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "row_ref": "inbox[49]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-utility-trailer-paragould-ar:confidence",
+   "source_url": "",
+   "ledger_value": "1",
+   "tag": "inferred",
+   "row_ref": "inbox[50]",
+   "plant": "p-utility-trailer-paragould-ar",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[73]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:score_material_part",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "row_ref": "inbox[74]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "row_ref": "inbox[75]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "row_ref": "inbox[76]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "row_ref": "inbox[77]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "row_ref": "inbox[78]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:score_total",
+   "source_url": "",
+   "ledger_value": "80",
+   "tag": "inferred",
+   "row_ref": "inbox[79]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "row_ref": "inbox[80]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:confidence",
+   "source_url": "",
+   "ledger_value": "1",
+   "tag": "inferred",
+   "row_ref": "inbox[81]",
+   "plant": "p-stoughton-stoughton-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[102]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:score_material_part",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "row_ref": "inbox[103]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "row_ref": "inbox[104]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "row_ref": "inbox[105]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "row_ref": "inbox[106]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "row_ref": "inbox[107]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:score_total",
+   "source_url": "",
+   "ledger_value": "72",
+   "tag": "inferred",
+   "row_ref": "inbox[108]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "row_ref": "inbox[109]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:confidence",
+   "source_url": "",
+   "ledger_value": "2",
+   "tag": "inferred",
+   "row_ref": "inbox[110]",
+   "plant": "p-stoughton-evansville-wi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[129]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[130]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[131]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[132]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[133]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "row_ref": "inbox[134]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:score_total",
+   "source_url": "",
+   "ledger_value": "21",
+   "tag": "inferred",
+   "row_ref": "inbox[135]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "row_ref": "inbox[136]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jost-grand-haven-mi:confidence",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[137]",
+   "plant": "p-jost-grand-haven-mi",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "row_ref": "inbox[153]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[154]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[155]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "row_ref": "inbox[156]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[157]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "row_ref": "inbox[158]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:score_total",
+   "source_url": "",
+   "ledger_value": "66",
+   "tag": "inferred",
+   "row_ref": "inbox[159]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "row_ref": "inbox[160]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:confidence",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "row_ref": "inbox[161]",
+   "plant": "p-lippert-middlebury-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[174]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[175]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[176]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "row_ref": "inbox[177]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[178]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "row_ref": "inbox[179]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:score_total",
+   "source_url": "",
+   "ledger_value": "46",
+   "tag": "inferred",
+   "row_ref": "inbox[180]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "row_ref": "inbox[181]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:confidence",
+   "source_url": "",
+   "ledger_value": "3",
+   "tag": "inferred",
+   "row_ref": "inbox[182]",
+   "plant": "p-lippert-goshen-in",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[195]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[196]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[197]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "row_ref": "inbox[198]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[199]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "row_ref": "inbox[200]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:score_total",
+   "source_url": "",
+   "ledger_value": "41",
+   "tag": "inferred",
+   "row_ref": "inbox[201]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "row_ref": "inbox[202]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-pj-trailers-sumner-tx:confidence",
+   "source_url": "",
+   "ledger_value": "1",
+   "tag": "inferred",
+   "row_ref": "inbox[203]",
+   "plant": "p-pj-trailers-sumner-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[218]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[219]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[220]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "row_ref": "inbox[221]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[222]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "row_ref": "inbox[223]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:score_total",
+   "source_url": "",
+   "ledger_value": "46",
+   "tag": "inferred",
+   "row_ref": "inbox[224]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "row_ref": "inbox[225]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:confidence",
+   "source_url": "",
+   "ledger_value": "1",
+   "tag": "inferred",
+   "row_ref": "inbox[226]",
+   "plant": "p-big-tex-mount-pleasant-tx",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "row_ref": "inbox[241]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:score_material_part",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "row_ref": "inbox[242]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[243]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "row_ref": "inbox[244]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "row_ref": "inbox[245]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "row_ref": "inbox[246]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:score_total",
+   "source_url": "",
+   "ledger_value": "50",
+   "tag": "inferred",
+   "row_ref": "inbox[247]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "row_ref": "inbox[248]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:confidence",
+   "source_url": "",
+   "ledger_value": "1",
+   "tag": "inferred",
+   "row_ref": "inbox[249]",
+   "plant": "p-wilson-yankton-sd",
+   "verdict": "confirmed"
+  }
+ ],
+ "proposed_rows": [
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:weld_processes",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/96B4F6F5DA7BCED92975702561BB84AD/jobs/218768",
+   "value": "structural welds (Welder 1 posting 218768); process not named",
+   "tag": "stated",
+   "quote": "set-up/run structural welds",
+   "source_type": "job posting"
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:existing_robots",
+   "source_url": "https://recruiting2.ultipro.com/STO1011SGTR/JobBoard/4cd343b0-a5ca-4cb8-aa9a-988cce862052/OpportunityDetail?opportunityId=bfc9542e-de2f-44fc-8d68-f833c19f9392",
+   "value": "robotic weld area at Plant 5 (Team Lead Robot Weld Tech, TEAML003247)",
+   "tag": "stated",
+   "quote": "Manage day-to-day operations in robotic weld area.",
+   "source_type": "job posting"
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:existing_robots",
+   "source_url": "https://recruiting2.ultipro.com/STO1011SGTR/JobBoard/4cd343b0-a5ca-4cb8-aa9a-988cce862052/OpportunityDetail?opportunityId=b3c42db5-7683-4cc8-9935-d94a0f7991a8",
+   "value": "robots at Plant 7 (Robotic Weld Programmer, ROBOT003655)",
+   "tag": "stated",
+   "quote": "Develop programs for new robots and parts and optimize programs for all existing robots and parts",
+   "source_type": "job posting"
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:site_attribution",
+   "source_url": "",
+   "value": "Chassis Plants #19-A to #19-D read as one Plant 19 chassis complex",
+   "tag": "inferred",
+   "quote": "",
+   "reasoning": "Lippert's locations page lists 19-A (3152 Skyview Rd), 19-B (3340 Corrie Dr), 19-C (16685 Skyview Rd) and 19-D (3055 Skyview Rd); OSHA record 3176948 is named 'Lippert Components 19 Complex'; EPA FRS places the Skyview records at one point.",
+   "source_type": "other"
+  }
+ ],
+ "score_rows_checked": 90,
+ "score_rows_corrected": 0,
+ "demand_outlook_note": "v-trailers-chassis-mobile-power:demand_outlook (cited by every demand-8 row) was checked and confirmed by batch A (fact-check-...-A.json); not re-counted here."
+}
