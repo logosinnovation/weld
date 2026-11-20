@@ -551,11 +551,38 @@ def main():
                     urls.append(u)
                 r["u"] = uix[u]
             rows[i] = {k: v for k, v in r.items() if v != ""}
+    # short repeated strings (agent names, source types, verified states, dates, tags, fact-check file, status and
+    # kind) are interned in a second table (2026-11-20, trailers pushed the page past 16 MB); the page restores them
+    strs, six = [], {}
+    def intern(v):
+        if v not in six:
+            six[v] = len(strs)
+            strs.append(v)
+        return six[v]
+    from collections import Counter as _C
+    rep = _C(r[k] for rows in ev.values() for r in rows for k in ("r", "q") if k in r)
+    rep.update(r["fc"]["note"] for rows in ev.values() for r in rows if r.get("fc", {}).get("note"))
+    for rows in ev.values():
+        for r in rows:
+            for k in ("r", "q"):  # long reasoning and quote strings only when repeated
+                if k in r and rep[r[k]] > 1:
+                    r[k] = intern(r[k])
+            if r.get("fc", {}).get("note") and rep[r["fc"]["note"]] > 1:
+                r["fc"]["note"] = intern(r["fc"]["note"])
+            for k in ("by", "st", "vf", "d", "t"):
+                if k in r:
+                    r[k] = intern(r[k])
+            if "fc" in r:
+                fc = {k: v for k, v in r["fc"].items() if v not in ("", None)}
+                for k in ("file", "status", "kind"):
+                    if k in fc:
+                        fc[k] = intern(fc[k])
+                r["fc"] = fc
     data = {
         "derived": derived, "dstats": dstats,
         "meta": {"counts": counts, "dates": dates, "first": dates[0] if dates else "", "last": dates[-1] if dates else "",
                  "state_abbr": STATE_ABBR},
-        "verticals": verticals, "plants": plants, "links": links, "ev": ev, "urls": urls,
+        "verticals": verticals, "plants": plants, "links": links, "ev": ev, "urls": urls, "strs": strs,
         "audit": audit, "qc": qc,
         "posting_check": pcheck.get("summary", {}),
         "log": {"sections": secs, "bullets": bullets},
