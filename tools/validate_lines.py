@@ -48,14 +48,20 @@ def main():
             by.setdefault(e["claim_id"], []).append(e)
         lines = [e for e in d.get("evidence", []) if e["claim_id"].endswith((":opening_line", ":bottleneck_guess"))]
     else:
+        sync_fails = 0
         vert = a[a.index("--vertical") + 1]
         tiers = (a[a.index("--tiers") + 1].split(",") if "--tiers" in a else ["High", "Medium", "Low"])
         pl = [p for p in csv.DictReader(open("ledger/plants.csv")) if vert in p["verticals"] and p["status"] == "profiled" and p["score_tier"] in tiers]
+        sync_fails = 0
         for p in pl:
             for f in ("opening_line", "bottleneck_guess"):
-                rows = [e for e in by.get(f"{p['id']}:{f}", []) if e["value"] == p[f]] or by.get(f"{p['id']}:{f}", [])[-1:]
-                lines += rows
-    fails, n = 0, 0
+                allrows = by.get(f"{p['id']}:{f}", [])
+                rows = [e for e in allrows if e["value"] == p[f]]
+                if allrows and not rows:  # 2026-11-20: the map shows plants.csv, so a blank or mismatched field is a failure
+                    sync_fails += 1
+                    print(f"FAIL {p['id']}:{f}: plants.csv value " + ("is blank" if not p[f].strip() else "matches no evidence row"))
+                lines += rows or allrows[-1:]
+    fails, n = (sync_fails if "--inbox" not in a else 0), 0
     for e in lines:
         v = e["value"] or ""
         if not v or v.lower().startswith("unknown"):
