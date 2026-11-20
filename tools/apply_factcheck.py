@@ -47,6 +47,16 @@ for r in rows:
     if not hits:  # fallback by claim id only when the claim has exactly one row (2026-11-19: a multi-row fallback rewrote every row)
         allrows = idx.get((r["claim_id"], ""), [])
         hits = allrows if len(allrows) == 1 else []
+    if hits and len(hits) > 1:  # several rows share claim and URL (or are all blank-URL): pick the row whose value is the verdict's ledger_value (2026-11-20)
+        lv = (r.get("ledger_value") or "").strip()
+        exact = [i for i in hits if ev[i]["value"].strip() == lv]
+        pref = [i for i in hits if lv and (ev[i]["value"].startswith(lv[:80]) or lv.startswith(ev[i]["value"][:80]))]
+        pick = exact or pref
+        if len(pick) == 1:
+            hits = pick
+        else:
+            unmatched.append((r["claim_id"], "ambiguous: %d rows share claim and URL" % len(hits)))
+            continue
     if not hits:
         unmatched.append((r["claim_id"], r.get("source_url", "")[:80]))
         continue
@@ -90,8 +100,7 @@ for r in rows:
                     pid[pid_][field] = cv
                 elif cv:  # multi-row field and no plants_csv_value: do not overwrite the field with one fragment (2026-11-19 sweep finding)
                     print("  plants.csv not changed (multi-row claim, no plants_csv_value):", r["claim_id"])
-        if len(hits) > 1 and r.get("source_url"):
-            break
+        break  # one verdict corrects one row
 
 cid = re.compile(r"\b([pcv]-[a-z0-9-]+:[a-z_]+)")
 affected = []
