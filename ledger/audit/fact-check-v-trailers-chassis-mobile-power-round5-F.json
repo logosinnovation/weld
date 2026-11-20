@@ -1,0 +1,431 @@
+{
+ "vertical": "v-trailers-chassis-mobile-power",
+ "checker": "fact-checker TR-FF (round 5)",
+ "checked_date": "2026-11-20",
+ "plants": [
+  "p-besser-pro-paris-tx"
+ ],
+ "claims_checked": 41,
+ "claims_corrected": 2,
+ "claims_unreachable": 0,
+ "fact_error_rate": 0.0488,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 2,
+  "invented fact": 0,
+  "other": 0
+ },
+ "plant_status": "site live 2026-11-20 (besserpro.com with the 1500 30th St NW address; 2023 copyright and an automatic hours widget), no closure found in checker searches, no OSHA 2025 record. Address 1500 30th St NW, Paris TX 75460 matches homepage, 22E-059, 22V-777 and the Census geocoder.",
+ "rows": [
+  {
+   "claim_id": "p-besser-pro-paris-tx:weld_processes",
+   "source_url": "https://static.nhtsa.gov/odi/rcl/2022/RCLRPT-22E059-9889.PDF",
+   "ledger_value": "auto-welding machine welds the spindle to the axle's main beam (Besser Pro Part 573 recall report filed Jul 18, 2022; machine since recalibrated)",
+   "tag": "stated",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "Part 573 22E-059 (Submission Date JUL 18, 2022) carries every fragment: the spindle-to-main-beam weld, the auto-welding machine's welding head misalignment, and the recalibration. No process named; value names none. Site tie: the report's manufacturer address is 1500 30th St NW, the firm's only address (T16 footing)."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:materials",
+   "source_url": "https://besserpro.com/",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "No material on the homepage, About us (browser read 2026-11-20) or 22E-059 ('7000 lb Tubular Straight Axle'). Unknown is right."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:certifications",
+   "source_url": "https://besserpro.com/",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "None on homepage, About us or 22E-059."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:part_size_fit",
+   "source_url": "https://besserpro.com/",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "3,500-8,000 lb are per-axle load capacities, not part dimensions or weights; unknown is right."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:production_type",
+   "source_url": "https://besserpro.com/",
+   "ledger_value": "product list: axles for utility, dump, flatbed, car-hauler and livestock trailers, 3,500-8,000 lb per axle",
+   "tag": "stated",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "Both fragments on https://besserpro.com/ (read 2026-11-20). Product list only; no custom or identical-parts line."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:existing_robots",
+   "source_url": "https://static.nhtsa.gov/odi/rcl/2022/RCLRPT-22E059-9889.PDF",
+   "ledger_value": "unknown (robots not named); automated welding stated: an auto-welding machine (2022 Part 573)",
+   "tag": "inferred",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "Quote on 22E-059 page 1; inferred tag right (auto-welding machine is not stated as a robot)."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:welder_postings",
+   "source_url": "https://besserpro.com/",
+   "ledger_value": "unknown: no careers page on besserpro.com (Home, About us, Warranty; read 2026-11-20); two job searches 2026-11-20 found no Besser Pro posting",
+   "tag": "unknown",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "Homepage nav and About us page show only Home, About us, Warranty; no careers link. Two checker searches 2026-11-20 ('Besser Pro' Paris Texas axle; 'Besser Pro' welder/welding job Paris TX) returned no Besser Pro posting (Turner Industries, American SpiralWeld, staffing agencies only)."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:triggers",
+   "source_url": "https://texasedc.org/news/member-news/2021-09-22/c67a0d0e-f63d-4a6b-9ca4-ba25ef29da90",
+   "ledger_value": "announced 2021-09-22: had purchased the former Winfield facility, a 30,000 sq ft building in the NW Industrial Park, Paris",
+   "tag": "stated",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "Stated row: TEDC page carries 'Paris, Texas – September 22, 2021' and the Winfield purchase / 30,000 square-foot building text. Inferred 'none found' row: checker search for Besser Pro 2025-2026 news found nothing newer. The page does not give the street address of the Winfield building; value does not claim it."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (newest expansion or hiring news announced 2021-09-22, outside the window)",
+   "tag": "inferred",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "Stated row: TEDC page carries 'Paris, Texas – September 22, 2021' and the Winfield purchase / 30,000 square-foot building text. Inferred 'none found' row: checker search for Besser Pro 2025-2026 news found nothing newer. The page does not give the street address of the Winfield building; value does not claim it."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:headcount",
+   "source_url": "https://texasedc.org/news/member-news/2021-09-22/c67a0d0e-f63d-4a6b-9ca4-ba25ef29da90",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "No Besser record in data/osha_2025.csv (name grep and 75460 + 30th St). The 30-employee figure is a 2021 projection; unknown is right."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:tier",
+   "source_url": "https://static.nhtsa.gov/odi/rcl/2022/RCLRPT-22E059-9889.PDF",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "Inferred Tier 1 consistent with the purchaser list (five Texas trailer makers) and 'trailer-manufacturer customers'. Note: 22E-059 also says Besser sells replacement axles to dealers and distributors under its Besser Pro brand; a secondary OEM tier could be argued, not an error."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:prospect_test",
+   "source_url": "https://static.nhtsa.gov/odi/rcl/2022/RCLRPT-22E059-9889.PDF",
+   "ledger_value": "pass (low confidence)",
+   "tag": "inferred",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "Inferred; steel leg rests on product type, low confidence kept. Acceptable."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Besser Pro's website, read November 20, 2026, says it manufactures axles for utility, dump, flatbed, car-hauler and livestock trailers in capacities from 3,500 to 8,000 lb per axle; how do you set up welding across that range of axle sizes?",
+   "tag": "inferred",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "corrected",
+   "corrected_value": "Besser Pro's website, read November 20, 2026, says it manufactures axles for utility, dump, flatbed, car-hauler and livestock trailers in capacities from 3,500 to 8,000 lb per axle; how do you set up welding across that range of axle capacities?",
+   "corrected_quote": "Our trailer axle capacities range from 3,500lbs to 8,000lbs per axle.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Facts clause is right and company-level worded, 'you' question, no pitch. But 'that range of axle sizes' recasts per-axle load capacities as part sizes, which the page does not state and which the profiler's own part_size_fit row rejects ('load ratings, not part weight or dimensions'); same fault class as the EZ Loader thickness-as-size correction in round 4."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly weld-placement consistency on spindle-to-beam axle welds: Besser Pro's recall report filed July 18, 2022 said a minute misalignment of the welding head of an auto-welding machine affected the weld joining the spindle to the axle's main beam, and that the machine was recalibrated.",
+   "tag": "inferred",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "Every clause is on 22E-059: filed JUL 18, 2022; 'Minute misalignment of the welding head of an auto-welding machine'; 'the weld joining the spindle to the main beam of axle'; 'has been recalibrated'. Hedged ('Possibly'), dated, inferred tag."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "Arithmetic and rubric re-checked against the cited claims; see score_notes."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "Arithmetic and rubric re-checked against the cited claims; see score_notes."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "Arithmetic and rubric re-checked against the cited claims; see score_notes."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "Arithmetic and rubric re-checked against the cited claims; see score_notes."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "Arithmetic and rubric re-checked against the cited claims; see score_notes."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:score_scale",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "Arithmetic and rubric re-checked against the cited claims; see score_notes."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:score_total",
+   "source_url": "",
+   "ledger_value": "16",
+   "tag": "inferred",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "Arithmetic and rubric re-checked against the cited claims; see score_notes."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "Arithmetic and rubric re-checked against the cited claims; see score_notes."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:confidence",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "checked_from": "inbox trailers-profiler-F.json",
+   "verdict": "confirmed",
+   "note": "Arithmetic and rubric re-checked against the cited claims; see score_notes."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:name",
+   "source_url": "https://www.besserpro.com/",
+   "ledger_value": "Besser Pro - Paris",
+   "tag": "stated",
+   "checked_from": "ledger/evidence.csv (base row)",
+   "verdict": "confirmed",
+   "note": "www.besserpro.com: 0 of 5 tries loaded today (curl https/http and fetch_page plain+browser: connection reset or 502). Content read at https://besserpro.com/ (plain fetch status 200, 2026-11-20), whose raw source declares og:url content=\"https://besserpro.com/\" (the site's canonical URL); the quote is on that page. Recommend re-pointing this row's source_url to https://besserpro.com/ as the profiler did for welder_postings."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:parent_company",
+   "source_url": "https://www.besserpro.com/",
+   "ledger_value": "Besser Pro LLC",
+   "tag": "stated",
+   "checked_from": "ledger/evidence.csv (base row)",
+   "verdict": "confirmed",
+   "note": "www.besserpro.com: 0 of 5 tries loaded today (curl https/http and fetch_page plain+browser: connection reset or 502). Content read at https://besserpro.com/ (plain fetch status 200, 2026-11-20), whose raw source declares og:url content=\"https://besserpro.com/\" (the site's canonical URL); the quote is on that page. Recommend re-pointing this row's source_url to https://besserpro.com/ as the profiler did for welder_postings."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:address",
+   "source_url": "https://www.besserpro.com/",
+   "ledger_value": "1500 30th St NW, Paris, TX 75460",
+   "tag": "stated",
+   "checked_from": "ledger/evidence.csv (base row)",
+   "verdict": "confirmed",
+   "note": "Quote on the homepage; About us footer '1500 NW 30TH ST'. www.besserpro.com: 0 of 5 tries loaded today (curl https/http and fetch_page plain+browser: connection reset or 502). Content read at https://besserpro.com/ (plain fetch status 200, 2026-11-20), whose raw source declares og:url content=\"https://besserpro.com/\" (the site's canonical URL); the quote is on that page. Recommend re-pointing this row's source_url to https://besserpro.com/ as the profiler did for welder_postings."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:address",
+   "source_url": "https://static.nhtsa.gov/odi/rcl/2022/RCLRPT-22V777-9155.PDF",
+   "ledger_value": "1500 30th St NW, Paris, TX 75460",
+   "tag": "stated",
+   "checked_from": "ledger/evidence.csv (base row)",
+   "verdict": "confirmed",
+   "note": "22V-777 Supplier Identification: '1500 30th St Nw / Paris Texas 75460'. 22E-059 manufacturer address also 1500 30th St NW Paris TX 75460."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:website",
+   "source_url": "https://www.besserpro.com/",
+   "ledger_value": "https://www.besserpro.com",
+   "tag": "stated",
+   "checked_from": "ledger/evidence.csv (base row)",
+   "verdict": "confirmed",
+   "note": "www.besserpro.com: 0 of 5 tries loaded today (curl https/http and fetch_page plain+browser: connection reset or 502). Content read at https://besserpro.com/ (plain fetch status 200, 2026-11-20), whose raw source declares og:url content=\"https://besserpro.com/\" (the site's canonical URL); the quote is on that page. Recommend re-pointing this row's source_url to https://besserpro.com/ as the profiler did for welder_postings. Value not corrected, but flagged: the canonical URL is https://besserpro.com/ and the www host never loaded today; the coordinator may change the website value to https://besserpro.com."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:products",
+   "source_url": "https://www.besserpro.com/",
+   "ledger_value": "Trailer axles for utility, dump, flatbed, car-hauler and livestock trailers, 3,500-8,000 lb per axle (one-plant firm)",
+   "tag": "stated",
+   "checked_from": "ledger/evidence.csv (base row)",
+   "verdict": "corrected",
+   "corrected_value": "Trailer axles for utility, dump, flatbed, car-hauler and livestock trailers, 3,500-8,000 lb per axle",
+   "corrected_quote": "We proudly manufacture axles for utility, dump, flatbed, car haulers and livestock trailers. ... Our trailer axle capacities range from 3,500lbs to 8,000lbs per axle.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The cited homepage does not say 'one-plant firm'; it gives one contact address. 'One-plant firm' is a site-attribution judgement and belongs in its own inferred row (reasoning: only address on besserpro.com, 22E-059 and 22V-777; no other site found). plants.csv: the clause 'made at the Paris TX address (one-plant firm)' rests on that same inference; plants_csv_value drops it (the Part 573 clause already places the firm at the address). www.besserpro.com: 0 of 5 tries loaded today (curl https/http and fetch_page plain+browser: connection reset or 502). Content read at https://besserpro.com/ (plain fetch status 200, 2026-11-20), whose raw source declares og:url content=\"https://besserpro.com/\" (the site's canonical URL); the quote is on that page. Recommend re-pointing this row's source_url to https://besserpro.com/ as the profiler did for welder_postings.",
+   "plants_csv_value": "Trailer axles (3,500-8,000 lb per axle) for utility, dump, flatbed, car-hauler and livestock trailers; 2022 Part 573 names Besser Pro at this address as maker of 7K axles with a defective spindle-to-tube weld"
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:products",
+   "source_url": "https://static.nhtsa.gov/odi/rcl/2022/RCLRPT-22V777-9155.PDF",
+   "ledger_value": "7K axles with a defective spindle-to-tube weld (2022 recall; component manufacturer at this address)",
+   "tag": "stated",
+   "checked_from": "ledger/evidence.csv (base row)",
+   "verdict": "confirmed",
+   "note": "22V-777 (submitted Oct 14, 2022) carries the quote and 'Component Manufacturer Name : Besser Pro Address : 1500 30th St Nw Paris Texas 75460'; every clause supported."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:tier",
+   "source_url": "https://static.nhtsa.gov/odi/rcl/2022/RCLRPT-22V777-9155.PDF",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "checked_from": "ledger/evidence.csv (base row)",
+   "verdict": "confirmed",
+   "note": "Inferred Tier 1 consistent with the purchaser list (five Texas trailer makers) and 'trailer-manufacturer customers'. Note: 22E-059 also says Besser sells replacement axles to dealers and distributors under its Besser Pro brand; a secondary OEM tier could be argued, not an error."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:relationship",
+   "source_url": "https://www.besserpro.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "checked_from": "ledger/evidence.csv (base row)",
+   "verdict": "confirmed",
+   "note": "www.besserpro.com: 0 of 5 tries loaded today (curl https/http and fetch_page plain+browser: connection reset or 502). Content read at https://besserpro.com/ (plain fetch status 200, 2026-11-20), whose raw source declares og:url content=\"https://besserpro.com/\" (the site's canonical URL); the quote is on that page. Recommend re-pointing this row's source_url to https://besserpro.com/ as the profiler did for welder_postings. Lookalike of Hutchens on a stated trailer-axle (running gear) line; same basis as the Dexter R2 ruling."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:lookalike_of",
+   "source_url": "",
+   "ledger_value": "Hutchens Industries",
+   "tag": "inferred",
+   "checked_from": "ledger/evidence.csv (base row)",
+   "verdict": "confirmed",
+   "note": "Inferred, no source; follows the relationship row."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "checked_from": "ledger/evidence.csv (base row)",
+   "verdict": "confirmed",
+   "note": "No Besser record in data/osha_2025.csv (name grep and 75460 + 30th St). The 30-employee figure is a 2021 projection; unknown is right."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:prospect_test",
+   "source_url": "https://static.nhtsa.gov/odi/rcl/2022/RCLRPT-22V777-9155.PDF",
+   "ledger_value": "pass (low confidence)",
+   "tag": "inferred",
+   "checked_from": "ledger/evidence.csv (base row)",
+   "verdict": "confirmed",
+   "note": "Inferred; steel leg rests on product type, low confidence kept. Acceptable."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress",
+   "ledger_value": "33.670589,-95.590131 (county 48277)",
+   "tag": "inferred",
+   "checked_from": "ledger/evidence.csv (base row)",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-20: 1500 30TH ST NW, PARIS, TX, 75460 -> y 33.67058920, x -95.59013123, county 48277."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress",
+   "ledger_value": "33.670589,-95.590131 (county 48277)",
+   "tag": "inferred",
+   "checked_from": "ledger/evidence.csv (base row)",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-20 matches."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress",
+   "ledger_value": "48277",
+   "tag": "inferred",
+   "checked_from": "ledger/evidence.csv (base row)",
+   "verdict": "confirmed",
+   "note": "Census geocoder re-run 2026-11-20: 48277."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:verticals",
+   "source_url": "",
+   "ledger_value": "v-trailers-chassis-mobile-power",
+   "tag": "inferred",
+   "checked_from": "ledger/evidence.csv (base row)",
+   "verdict": "confirmed",
+   "note": "Inferred; T16/T17 footing as stated (Part 573 site-level welding; current company page)."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:found_by",
+   "source_url": "https://static.nhtsa.gov/odi/rcl/2022/RCLRPT-22V777-9155.PDF",
+   "ledger_value": "list-auditor TR-AUD-C/D; miss verifier TR-MV-R3",
+   "tag": "inferred",
+   "checked_from": "ledger/evidence.csv (base row)",
+   "verdict": "confirmed",
+   "note": "Quote 'Name : Besser Pro' on 22V-777 (Supplier Identification)."
+  },
+  {
+   "claim_id": "p-besser-pro-paris-tx:supplies:c-hd-trailer",
+   "source_url": "https://static.nhtsa.gov/odi/rcl/2022/RCLRPT-22V777-9155.PDF",
+   "ledger_value": "7K trailer axles for HD Trailer MFG gooseneck trailers",
+   "tag": "stated",
+   "checked_from": "ledger/evidence.csv (base row)",
+   "verdict": "confirmed",
+   "note": "22V-777 (HD Trailer MFG, Oct 14, 2022) carries the quote, '7000lb axles 78HF 54sc' and '7K non CDL gooseneck trailers'; links.csv wording supported."
+  }
+ ],
+ "score_notes": {
+  "p-besser-pro-paris-tx": {
+   "score_process": "0 confirmed: auto-welding machine stated, no process named anywhere; no posting.",
+   "score_material_part": "0 confirmed: no material stated; 3,500-8,000 lb are load ratings, no part size, so no Path cell limit can be named.",
+   "score_part_mix": "8 confirmed: product list only (five trailer types, capacity range); no custom/ETO line, no identical-parts line. Company-level homepage line: points, no confidence. Add p-besser-pro-paris-tx:production_type to ledger/audit/no-confidence-claims.csv (profiler flag 1).",
+   "score_labor": "0 confirmed: no own board exists; checker searches found no Besser Pro posting.",
+   "score_demand": "8 confirmed: only dated event is the 2021-09-22 building purchase (outside 24 months); v-trailers-chassis-mobile-power:demand_outlook is stated and confirmed in the ledger.",
+   "score_scale": "0 confirmed: no multi-plant parent stated; no OSHA 2025 record; 2021 projection of 30 jobs is not a headcount.",
+   "score_total": "16 = 0+0+8+0+8+0, Low; confidence 0 correct. No component should change."
+  }
+ },
+ "other_notes": [
+  "Ledger base row p-besser-pro-paris-tx:welder_postings (www.besserpro.com) not separately checked: the inbox evidence_remove supersedes it with the besserpro.com row, which was checked.",
+  "www.besserpro.com and besserpro.com both reset intermittently through the agent proxy (ws_closed_mid_exchange); the homepage was read in full at besserpro.com once by plain fetch and About us once by browser. web.archive.org not tried (reported DNS failure by the profiler).",
+  "Web searches used: 3 of 8.",
+  "Site-attribution gap (no score effect; coordinator's T16 call): 22E-059 production dates are Oct 7-25, 2021; the TEDC release of Sep 22, 2021 announces the building purchase as an expansion/'launch this venture' and gives no street address; the Part 573 gives the manufacturer's address, not where those axles were welded. weld_processes stays confirmed because its value carries no site clause and is dated.",
+  "Base row p-besser-pro-paris-tx:products (www) quote also verified; Neville and Quality rows named in repeated_kind_3_or_more were read from evidence.csv only, not re-fetched."
+ ],
+ "rate_split": {
+  "profiler_F_rows": "1 corrected / 23 checked (opening_line)",
+  "base_rows": "1 corrected / 18 checked (products, R3 miss verifier)",
+  "note": "41 rows include 9 score/derived rows, 3 geocoder rows, verticals and found_by; excluding those 14, 2 / 27 = 7.4%."
+ },
+ "repeated_kind_3_or_more": "The added '(one-plant firm)' clause in a stated products row: Besser Pro (this check) plus the same clause in stated products rows of p-neville-built-kingman-ks ('Drop-deck, grain and livestock trailers (company-level; one-plant firm)', already marked confirmed) and p-quality-trailers-salem-oh ('Trailer manufacturer located in Salem OH since 1999 (one-plant firm)'), all written by the R2/R3 miss verifiers: 3 stated rows. Those two were not checked here (outside scope) but their quotes do not carry the clause. Sweep: grep 'one-plant firm' in stated rows (12 hits in evidence.csv; the prospect_test and verticals hits are inferred and fine).",
+ "worst_errors": [
+  "p-besser-pro-paris-tx:products (base, www.besserpro.com): stated value adds '(one-plant firm)', which the page does not carry; same clause sits in 2 other miss-verifier stated rows",
+  "p-besser-pro-paris-tx:opening_line: 'that range of axle sizes' recasts per-axle load capacities as part sizes (minor; fix: 'axle capacities')"
+ ],
+ "score_problems_summary": "No component changes: 0+0+8+0+8+0 = 16 Low, confidence 0. Add p-besser-pro-paris-tx:production_type to no-confidence-claims.csv."
+}
