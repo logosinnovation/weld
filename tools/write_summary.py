@@ -46,6 +46,10 @@ LABELS_BY_VERT["v-enclosures-battery-generator"] = {1: "Round 1: the 40 top-rank
 LABELS_BY_VERT["v-datacenter-grid-prefab"] = {1: "Round 1: every profiled plant (six checkers, one per profiler batch, on the unmerged profiler files)",
                                               2: "Round 2: line check of every High and Medium plant's opening line and bottleneck guess (72 lines, two checkers who did not write them); 7 of the 11 corrections were blank map fields whose evidence text was right: text errors 4 / 72 = 5.6%",
                                               9: "Base-record sample: 14 of 39 base and 8 of 61 excluded records from closure 3 and the miss verifications, 20 of the sweep's 144 rows and the coordinator's 9 ruling rows, seeded (reported separately; not a profile round)"}
+LABELS_BY_VERT["v-trailers-chassis-mobile-power"] = {1: "Round 1: the 30 top-ranked plants profiled (three checkers, one per profiler batch, on the unmerged profiler files)",
+                                                     2: "Round 2: the last 10 profiling slots, ranked after closure 2 (one checker on the unmerged profiler file)",
+                                                     3: "Round 3: line check of every High and Medium plant's opening line and bottleneck guess, by a checker who did not write them",
+                                                     9: "Base-record sample: 25 base and 8 excluded records drawn with a fixed seed after closure 2 and both miss verifications (reported separately; not a profile round)"}
 LABELS = {1: "Round 1: designed sample of 30 plants (all High, all customer plants, then by score), before repairs",
           2: "Round 2: 10 unsampled plants from multi-plant parents, after the first repair pass",
           3: "Round 3: all 23 plants no checker had seen, after the attribution clean-up",
