@@ -1,0 +1,678 @@
+{
+ "finder": "TR-D",
+ "screened": [
+  {
+   "name": "Philippi-Hagenbuch, Inc. (PHIL) / Welarco Fabrications, Inc.",
+   "city": "Peoria",
+   "state": "IL",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "p-philippi-hagenbuch-peoria-il",
+   "note": "ledger lead: Lowboy and bottom-dump trailers are on the company product list; PHIL has production at Peoria and Dallas, so the trailer line is company-level (site split not stated). Not added; flag."
+  },
+  {
+   "name": "MEGA Corp.",
+   "city": "Albuquerque",
+   "state": "NM",
+   "verdict": "base",
+   "ledger_id": "p-mega-albuquerque-nm",
+   "note": "ledger lead: Existing record; v-trailers added: equipment and bottom-dump trailers on the single-address company site (700 Osuna Rd NE)."
+  },
+  {
+   "name": "Brookville Equipment Corporation",
+   "city": "Brookville",
+   "state": "PA",
+   "verdict": "other_vertical",
+   "ledger_id": "p-brookville-equipment-brookville-pa",
+   "note": "ledger lead: \"Industrial chassis\" are rail/mining locomotive and vehicle chassis, not trailer or truck chassis. Not added."
+  },
+  {
+   "name": "Komatsu Peoria Manufacturing Operation",
+   "city": "Peoria",
+   "state": "IL",
+   "verdict": "other_vertical",
+   "ledger_id": "p-komatsu-peoria-il",
+   "note": "ledger lead: Chassis fabrication is for electric mining haul trucks (rule 4: v-mining-heavy-equipment). Not added."
+  },
+  {
+   "name": "Bobcat Statesville plant",
+   "city": "Statesville",
+   "state": "NC",
+   "verdict": "base",
+   "ledger_id": "p-bobcat-statesville-nc",
+   "note": "ledger lead: Existing record; v-trailers added: site-level news names Statesville as producing generators, light towers and air compressors (rule 1)."
+  },
+  {
+   "name": "GE-Fairchild LLC (former Fairchild International), Glen Lyn",
+   "city": "Glen Lyn",
+   "state": "VA",
+   "verdict": "lead",
+   "ledger_id": "p-fairchild-glen-lyn-va",
+   "note": "ledger lead: Closed mining plant; the building is now Interstate Group Glen Lyn Plant (OSHA 3054968, 200 Fairchild Ln, NAICS 336212, 116 employees). Left to the NAICS 336212 sweep (E/F); no record written by D."
+  },
+  {
+   "name": "Niece Equipment, Buda (HQ and manufacturing plant)",
+   "city": "Buda",
+   "state": "TX",
+   "verdict": "other_vertical",
+   "ledger_id": "p-niece-buda-tx",
+   "note": "ledger lead: Water and fuel trucks on haul-truck chassis (truck bodies / mining, rule 4). Not added."
+  },
+  {
+   "name": "Virnig Manufacturing, Rice plant",
+   "city": "Rice",
+   "state": "MN",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "p-virnig-rice-mn",
+   "note": "ledger lead: Trailers are a company-level line; Virnig also has a Fort Madison IA plant; site split not stated. Not added."
+  },
+  {
+   "name": "Rimpull Corporation (Rimpull/Dart Trucks), Olathe plant",
+   "city": "Olathe",
+   "state": "KS",
+   "verdict": "other_vertical",
+   "ledger_id": "p-rimpull-olathe-ks",
+   "note": "ledger lead: Trailer bodies and bottom-dump coal haulers for its own off-highway haul trucks (rule 4 mining). Not added; flag (off-highway haul trailers)."
+  },
+  {
+   "name": "Mertz Integration, LLC (formerly Mertz Manufacturing), Ponca City",
+   "city": "Ponca City",
+   "state": "OK",
+   "verdict": "base",
+   "ledger_id": "p-mertz-ponca-city-ok",
+   "note": "ledger lead: Excluded record moved to base here (history row): trailer- and skid-mounted mobilized equipment, DOT inspection and VIN-tag assignment; welds in-house."
+  },
+  {
+   "name": "Irwin Car and Equipment, Irwin (headquarters and main plant)",
+   "city": "Irwin",
+   "state": "PA",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "p-irwin-car-irwin-pa",
+   "note": "ledger lead: Industrial transfer cars, transporters and trailers from an MHI directory row (company-level, inferred). Not added."
+  },
+  {
+   "name": "Central Mine Equipment Company (CME), Earth City",
+   "city": "Earth City",
+   "state": "MO",
+   "verdict": "other_vertical",
+   "ledger_id": "p-central-mine-equipment-earth-city-mo",
+   "note": "ledger lead: Drill rigs mounted on trailers among other carriers; the product is the drill rig. Not added."
+  },
+  {
+   "name": "Matcor Metal Fabrication - Morton West (former Morton Metalcraft)",
+   "city": "Morton",
+   "state": "IL",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "p-matcor-morton-il",
+   "note": "ledger lead: \"Structural chassis\" is a company-level off-highway weldment line; not trailer or truck chassis at the site. Not added."
+  },
+  {
+   "name": "Matcor Metal Fabrication - Morton East",
+   "city": "Morton",
+   "state": "IL",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "p-matcor-morton-il-2",
+   "note": "ledger lead: As Matcor Morton West. Not added."
+  },
+  {
+   "name": "Matcor Metal Fabrication (Kansas) Inc., Independence",
+   "city": "Independence",
+   "state": "KS",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "p-matcor-independence-ks",
+   "note": "ledger lead: As Matcor Morton West. Not added."
+  },
+  {
+   "name": "Matcor Metal Fabrication (Welcome) Inc.",
+   "city": "Welcome",
+   "state": "NC",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "p-matcor-welcome-nc",
+   "note": "ledger lead: As Matcor Morton West. Not added."
+  },
+  {
+   "name": "E.D. Etnyre & Co. - Oregon plant",
+   "city": "Oregon",
+   "state": "IL",
+   "verdict": "in_ledger",
+   "ledger_id": "p-etnyre-oregon-il",
+   "note": "ledger lead: v-trailers already added by TR-A (Blackhawk lowboy trailers)."
+  },
+  {
+   "name": "Vermeer MV Solutions - Piedmont manufacturing facility",
+   "city": "Piedmont",
+   "state": "SC",
+   "verdict": "other_vertical",
+   "ledger_id": "p-vermeer-mv-piedmont-sc",
+   "note": "ledger lead: Site is the truck vac excavation centre (v-truck-bodies); trailer vacs not tied to Piedmont. Stays excluded. Not added."
+  },
+  {
+   "name": "Cutting Systems, Inc. (CSI) - Union Grove",
+   "city": "Union Grove",
+   "state": "NC",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "p-csi-union-grove-nc",
+   "note": "ledger lead: Delimber trailers are trailer-mounted forestry equipment; house-moving equipment not shown as trailers. Not added; flag."
+  },
+  {
+   "name": "General Equipment Company - Owatonna",
+   "city": "Owatonna",
+   "state": "MN",
+   "verdict": "other_vertical",
+   "ledger_id": "p-general-equipment-owatonna-mn",
+   "note": "ledger lead: Towable hole digger is light equipment, not a rule-1 product. Stays excluded."
+  },
+  {
+   "name": "Custom Truck One Source (former UCO Equipment) - Cabot",
+   "city": "Cabot",
+   "state": "AR",
+   "verdict": "excluded",
+   "ledger_id": "p-custom-truck-cabot-ar",
+   "note": "ledger lead: Existing excluded record kept: sales, rental and service office and shop (rule 5)."
+  },
+  {
+   "name": "UltraQuip International dba UQ-Power - Stockton",
+   "city": "Stockton",
+   "state": "CA",
+   "verdict": "excluded",
+   "ledger_id": "p-ultraquip-stockton-ca",
+   "note": "ledger lead: Existing excluded record kept: generators and light towers developed with global manufacturers; no in-house fabrication stated (rule 5)."
+  },
+  {
+   "name": "Cemen Tech - Indianola",
+   "city": "Indianola",
+   "state": "IA",
+   "verdict": "other_vertical",
+   "ledger_id": "p-cemen-tech-indianola-ia",
+   "note": "ledger lead: Truck-mounted volumetric mixers (v-truck-bodies); trailer mixers a secondary line not tied to the site. Not added."
+  },
+  {
+   "name": "Niece Products of Kansas, Inc. - Fort Scott plant",
+   "city": "Fort Scott",
+   "state": "KS",
+   "verdict": "other_vertical",
+   "ledger_id": "p-niece-fort-scott-ks",
+   "note": "ledger lead: As Niece Buda. Not added."
+  },
+  {
+   "name": "Asphalt Zipper, Inc. - Pleasant Grove",
+   "city": "Pleasant Grove",
+   "state": "UT",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "p-asphalt-zipper-pleasant-grove-ut",
+   "note": "ledger lead: Loader/backhoe attachments; no evidence row shows trailers built at the site. Not added."
+  },
+  {
+   "name": "REESCO Manufacturing and Sales - Coalville facility",
+   "city": "Coalville",
+   "state": "UT",
+   "verdict": "other_vertical",
+   "ledger_id": "p-reesco-coalville-ut",
+   "note": "ledger lead: Portable crushing-plant chassis belong to aggregate equipment (rule 4 mining). Not added; flag."
+  },
+  {
+   "name": "Tramont Manufacturing, LLC",
+   "city": "Milwaukee",
+   "state": "WI",
+   "verdict": "base",
+   "ledger_id": "p-tramont-milwaukee-wi",
+   "note": "ledger lead: Existing record; v-trailers added: POWERTRAK fuel tank trailers for gen-sets (boundary: bolt-together design)."
+  },
+  {
+   "name": "Pryco, Inc.",
+   "city": "Mechanicsburg",
+   "state": "IL",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "p-pryco-mechanicsburg-il",
+   "note": "ledger lead: \"Trailer tanks\" are fuel tanks for trailers; no trailer built. Not added."
+  },
+  {
+   "name": "United Alloy - Janesville (HQ plant)",
+   "city": "Janesville",
+   "state": "WI",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "p-united-alloy-janesville-wi",
+   "note": "ledger lead: Trailers and chassis are a company-level line (site attribution inferred). Not added; flag."
+  },
+  {
+   "name": "United Alloy - Seguin",
+   "city": "Seguin",
+   "state": "TX",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "p-united-alloy-seguin-tx",
+   "note": "ledger lead: As Janesville. Not added; flag."
+  },
+  {
+   "name": "Hardin Industries, LLC",
+   "city": "Lacon",
+   "state": "IL",
+   "verdict": "base",
+   "ledger_id": "p-hardin-lacon-il",
+   "note": "ledger lead: Existing record; v-trailers added: custom generator trailers with formed steel channel frames (single Lacon site)."
+  },
+  {
+   "name": "Coastline Power Solutions",
+   "city": "DeLand",
+   "state": "FL",
+   "verdict": "base",
+   "ledger_id": "p-coastline-power-deland-fl",
+   "note": "ledger lead: Existing record; v-trailers added: generator trailers made at DeLand."
+  },
+  {
+   "name": "Global Power Components (BHP, Inc.) - 51st St",
+   "city": "Milwaukee",
+   "state": "WI",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "p-global-power-components-milwaukee-wi",
+   "note": "ledger lead: Trailers are company-level; the 51st St posting shows I-beam frames and fuel tanks only, and GPC has other Milwaukee sites. Not added; flag."
+  },
+  {
+   "name": "Chillicothe Metal Co., Inc. (CMCO)",
+   "city": "Chillicothe",
+   "state": "IL",
+   "verdict": "base",
+   "ledger_id": "p-chillicothe-metal-chillicothe-il",
+   "note": "ledger lead: Existing record; v-trailers added on a third-party directory line (trailers) for a single-site company; weak source."
+  },
+  {
+   "name": "EK Machine - Fall River campus (Complete Manufacturing and Power Products)",
+   "city": "Fall River",
+   "state": "WI",
+   "verdict": "base",
+   "ledger_id": "p-ek-machine-fall-river-wi",
+   "note": "ledger lead: Existing record; v-trailers added: production bays for trailers at the Power Products facility."
+  },
+  {
+   "name": "Generac Mobile Products (Magnum Products LLC) - Berlin plant",
+   "city": "Berlin",
+   "state": "WI",
+   "verdict": "base",
+   "ledger_id": "p-generac-berlin-wi",
+   "note": "ledger lead: Excluded record moved to base here (history row): light towers and mobile generators (Magnum, Berlin); welder posting at Berlin."
+  },
+  {
+   "name": "Allmand Bros. (Allmand, a Generac Company) - Holdrege plant",
+   "city": "Holdrege",
+   "state": "NE",
+   "verdict": "base",
+   "ledger_id": "p-allmand-holdrege-ne",
+   "note": "ledger lead: Excluded record moved to base here (history row): light towers and towable generators; Holdrege welder postings; OSHA 168."
+  },
+  {
+   "name": "Atlas Copco Power Technique North America - Rock Hill plant",
+   "city": "Rock Hill",
+   "state": "SC",
+   "verdict": "excluded",
+   "ledger_id": "p-atlas-copco-rock-hill-sc",
+   "note": "ledger lead: Existing excluded record kept: portable compressor and generator production stated, but no towable or trailer product is stated for the site and no welding is shown; Atlas Copco Workday 422. Flag (same class as Sullair, which has a towable product page and a site assembly posting)."
+  },
+  {
+   "name": "Taylor Power Systems - Clinton plant",
+   "city": "Clinton",
+   "state": "MS",
+   "verdict": "excluded",
+   "ledger_id": "p-taylor-power-clinton-ms",
+   "note": "ledger lead: Existing excluded record kept: towable generators \"manufactured in Clinton\", but group welding is shown at the Richland fabrication shop (enclosures) and Louisville MS; no welding or trailer fabrication shown at Clinton. Flag."
+  },
+  {
+   "name": "Denyo Manufacturing Corporation - Danville",
+   "city": "Danville",
+   "state": "KY",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "p-denyo-danville-ky",
+   "note": "ledger lead: Portable generators and compressors with in-house sheet-metal housings; towable or trailer product and welding not stated. Not added; flag."
+  },
+  {
+   "name": "Com-Fab, Inc.",
+   "city": "Plain City",
+   "state": "OH",
+   "verdict": "base",
+   "ledger_id": "p-com-fab-plain-city-oh",
+   "note": "ledger lead: Existing record; v-trailers added on a third-party directory line (generator trailers); weak source, website did not resolve."
+  },
+  {
+   "name": "Stepp Manufacturing",
+   "city": "North Branch",
+   "state": "MN",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "p-stepp-north-branch-mn",
+   "note": "ledger lead: Hot box and crack-sealing trailers are trailer-mounted road equipment, not named in rule 1. Not added; flag."
+  },
+  {
+   "name": "Elgin Power Solutions (Mining Controls, LLC), Beaver",
+   "city": "Beaver",
+   "state": "WV",
+   "verdict": "other_vertical",
+   "ledger_id": "p-elgin-power-beaver-wv",
+   "note": "ledger lead: Mobile substations (rule 4: v-datacenter-grid-prefab). Not added."
+  },
+  {
+   "name": "Delta Star East, Lynchburg",
+   "city": "Lynchburg",
+   "state": "VA",
+   "verdict": "other_vertical",
+   "ledger_id": "p-delta-star-lynchburg-va",
+   "note": "ledger lead: Mobile substations (rule 4). Not added."
+  },
+  {
+   "name": "Strick Trailers, LLC",
+   "city": "Monroe",
+   "state": "IN",
+   "verdict": "excluded",
+   "ledger_id": "p-strick-monroe-in",
+   "note": "ledger lead: Existing excluded record kept (rule 5, Strick Monroe precedent: dry vans). Note: the record cites a Strick MIG Welder posting."
+  },
+  {
+   "name": "Electronic Power Design - Houston",
+   "city": "Houston",
+   "state": "TX",
+   "verdict": "other_vertical",
+   "ledger_id": "p-epd-houston-tx",
+   "note": "ledger lead: Switchgear; the 2020 trailer-mounted mobile substation is outside 24 months and not built as a trailer there. Not added."
+  },
+  {
+   "name": "Hitachi Global Air Power (Sullair)",
+   "city": "Michigan City",
+   "state": "IN",
+   "verdict": "base",
+   "ledger_id": "p-sullair-michigan-city-in",
+   "note": "OSHA 2997442 (649). New base record; prospect test unknown (assembly of portables shown, welding not shown).",
+   "naics": "333912"
+  },
+  {
+   "name": "Stewart & Stevenson Manufacturing Technologies (SSMT Telge)",
+   "city": "Houston",
+   "state": "TX",
+   "verdict": "base",
+   "ledger_id": "p-stewart-stevenson-houston-tx",
+   "note": "OSHA 3295223 (206). New base record; prospect test unknown; lookalike of TYCROP.",
+   "naics": "333132"
+  },
+  {
+   "name": "WANCO, Inc.",
+   "city": "Arvada",
+   "state": "CO",
+   "verdict": "base",
+   "ledger_id": "p-wanco-arvada-co",
+   "note": "OSHA 2908772 (320). New base record; products company-level; prospect test unknown.",
+   "naics": "334290"
+  },
+  {
+   "name": "Allmand",
+   "city": "Holdrege",
+   "state": "NE",
+   "verdict": "base",
+   "ledger_id": "p-allmand-holdrege-ne",
+   "note": "OSHA 2990936 (168).",
+   "naics": "335129"
+  },
+  {
+   "name": "Mertz Integration, LLC.",
+   "city": "Ponca City",
+   "state": "OK",
+   "verdict": "base",
+   "ledger_id": "p-mertz-ponca-city-ok",
+   "note": "OSHA 3201974 (237).",
+   "naics": "333120"
+  },
+  {
+   "name": "Generac Mobile Products (Magnum)",
+   "city": "Berlin",
+   "state": "WI",
+   "verdict": "base",
+   "ledger_id": "p-generac-berlin-wi",
+   "note": "No OSHA record by name or city; Generac Workday Berlin welder posting."
+  },
+  {
+   "name": "Doosan Bobcat portable power",
+   "city": "Statesville",
+   "state": "NC",
+   "verdict": "base",
+   "ledger_id": "p-bobcat-statesville-nc",
+   "note": "No OSHA record found in Statesville; existing record."
+  },
+  {
+   "name": "Power Technique NC LLC (Atlas Copco)",
+   "city": "Rock Hill",
+   "state": "SC",
+   "verdict": "excluded",
+   "ledger_id": "p-atlas-copco-rock-hill-sc",
+   "note": "OSHA 3202638 (393); existing excluded record kept; flag.",
+   "naics": "333912"
+  },
+  {
+   "name": "Taylor Power Systems Inc",
+   "city": "Clinton",
+   "state": "MS",
+   "verdict": "excluded",
+   "ledger_id": "p-taylor-power-clinton-ms",
+   "note": "OSHA 3051357 (128); existing excluded record kept.",
+   "naics": "335312"
+  },
+  {
+   "name": "Denyo Manufacturing Corporation",
+   "city": "Danville",
+   "state": "KY",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "p-denyo-danville-ky",
+   "note": "OSHA 3093047 (200); existing record, not added.",
+   "naics": "335312"
+  },
+  {
+   "name": "Wacker Neuson America Corporation",
+   "city": "Menomonee Falls",
+   "state": "WI",
+   "verdict": "other_vertical",
+   "ledger_id": "p-wacker-neuson-menomonee-falls-wi",
+   "note": "OSHA 2941573 (372); existing mining record; site products are compaction rollers, skid steers, excavators; no light towers or generators shown at the site.",
+   "naics": "333120"
+  },
+  {
+   "name": "Hitachi Global Air Power fabrication shop",
+   "city": "Farmington",
+   "state": "NM",
+   "verdict": "other_vertical",
+   "ledger_id": "",
+   "note": "Structural Welder and Fabricator postings: steel structures, skids, guards and piping for oilfield equipment (gas compression skids), not trailers. Lead for another vertical; street address not found."
+  },
+  {
+   "name": "Taylor Power Systems - Richland fabrication facility",
+   "city": "Richland",
+   "state": "MS",
+   "verdict": "other_vertical",
+   "ledger_id": "p-taylor-power-richland-ms",
+   "note": "Existing enclosures record; trailers not stated."
+  },
+  {
+   "name": "Multiquip / MQ Power",
+   "city": "Lewisville",
+   "state": "TX",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "",
+   "note": "No Multiquip or MQ Power establishment in OSHA 2025; a 2006 article (search result only, not opened) names a Lewisville portable generator assembly plant. Multiquip generators are built by Denyo Danville (in ledger)."
+  },
+  {
+   "name": "Aggreko",
+   "city": "",
+   "state": "",
+   "verdict": "not_a_plant",
+   "ledger_id": "",
+   "note": "Rental fleet (rule 5); no US build site found in OSHA 2025."
+  },
+  {
+   "name": "Solar Turbines Incorporated (Kearny Mesa, Harbor Dr San Diego; Mabank TX packaging; DeSoto TX overhaul; Broken Arrow OK)",
+   "city": "San Diego",
+   "state": "CA",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "",
+   "note": "OSHA rows 2996573, 2944793, 3031041, 2902910, 2940353; no source opened ties mobile power units or their trailers to a US site.",
+   "naics": "333611"
+  },
+  {
+   "name": "Stewart & Stevenson service branches (Houston East Fwy, San Antonio, Odessa, Dallas, Commerce City)",
+   "city": "Houston",
+   "state": "TX",
+   "verdict": "not_a_plant",
+   "ledger_id": "",
+   "note": "OSHA 3295220, 3295222, 3295221, 3295219, 3295218: repair shops (rule 5).",
+   "naics": "811111"
+  },
+  {
+   "name": "Stewart & Stevenson Manufacturing Technologies (EPA FRS 110070122892)",
+   "city": "Odessa",
+   "state": "TX",
+   "verdict": "lead",
+   "ledger_id": "",
+   "note": "EPA FRS manufacturing record at 4501 S County Road 1310; no OSHA record and no site product source opened."
+  },
+  {
+   "name": "ProFrac Services (Pleasanton, Midland)",
+   "city": "Midland",
+   "state": "TX",
+   "verdict": "not_a_plant",
+   "ledger_id": "",
+   "note": "OSHA 3205706, 3205233: frac service yards (rule 5). ProFrac manufacturing (Cisco, Aledo, Fort Worth) makes pumps, fluid ends and power ends per a search snippet (not opened): components, not trailers.",
+   "naics": "213112"
+  },
+  {
+   "name": "BJ Energy Solutions, LLC",
+   "city": "Spring",
+   "state": "TX",
+   "verdict": "not_a_plant",
+   "ledger_id": "",
+   "note": "OSHA 3281221: office/services; TITAN turbines supplied by Vericor; no BJ trailer build site found.",
+   "naics": "213112"
+  },
+  {
+   "name": "Evolution Well Services / Accelerated Mobile Power",
+   "city": "The Woodlands",
+   "state": "TX",
+   "verdict": "not_a_plant",
+   "ledger_id": "",
+   "note": "OSHA 3037344 and 3037343 are offices; a search snippet says Evolution manufactures power generation trailers (site not found) and Dynamis Power Solutions builds the DT17 hypermobile turbines (site not found): leads.",
+   "naics": "213112"
+  },
+  {
+   "name": "NRG Pressure Pumping Technologies",
+   "city": "Tomball",
+   "state": "TX",
+   "verdict": "lead",
+   "ledger_id": "",
+   "note": "Search snippet: designs and manufactures complete frac trailers; not opened; slice A (oilfield trailers)."
+  },
+  {
+   "name": "Mesa Power Solutions (new $70M facility)",
+   "city": "",
+   "state": "WY",
+   "verdict": "lead",
+   "ledger_id": "",
+   "note": "Search snippet: natural gas power generation equipment plant in Wyoming; mobile or trailer product not stated; not opened."
+  },
+  {
+   "name": "Global Power (as named in the brief)",
+   "city": "",
+   "state": "",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "",
+   "note": "Company not identified (name ambiguous); no OSHA or EPA row matched."
+  },
+  {
+   "name": "Dragon Products (LaPorte, Silsbee North and South, Center TX; Akron IN; Lamar CO; Lathrop CA)",
+   "city": "Silsbee",
+   "state": "TX",
+   "verdict": "lead",
+   "ledger_id": "",
+   "note": "OSHA 2940383, 2940891, 2945558, 2940311, 2940291, 2940374, 2940391: tank-trailer NAICS 336212; left to the 336212 sweep (E/F) and slice A.",
+   "naics": "336212"
+  },
+  {
+   "name": "Interstate Group L.L.C. (Kingman AZ, Conway AR, Nampa ID, Glen Lyn VA)",
+   "city": "Glen Lyn",
+   "state": "VA",
+   "verdict": "lead",
+   "ledger_id": "",
+   "note": "OSHA 3055053, 3055029, 3055040, 3054968: NAICS 336212; left to the 336212 sweep (E/F).",
+   "naics": "336212"
+  },
+  {
+   "name": "Vanair Manufacturing (North and South)",
+   "city": "Michigan City",
+   "state": "IN",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "",
+   "note": "OSHA 3054964, 3054982 (Lincoln Electric): truck-mounted air and power systems; no trailer product opened.",
+   "naics": "333912"
+  },
+  {
+   "name": "Solar Technology Inc.",
+   "city": "Allentown",
+   "state": "PA",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "",
+   "note": "OSHA 3190676: trailer-mounted traffic message and arrow boards (not named in rule 1); not opened. Flag.",
+   "naics": "334290"
+  },
+  {
+   "name": "TYCROP / Propell American",
+   "city": "Granbury",
+   "state": "TX",
+   "verdict": "in_ledger",
+   "ledger_id": "p-propell-granbury-tx",
+   "note": "Slice C record (TR-C inbox)."
+  },
+  {
+   "name": "Life Cycle Power",
+   "city": "",
+   "state": "",
+   "verdict": "screened_no_evidence",
+   "ledger_id": "",
+   "note": "Mobile gas turbine rental/supplier from a search result; no US build site found."
+  }
+ ],
+ "sources_opened": [
+  {
+   "source": "ledger leads file tr-ledger-leads.json (46 records)",
+   "entries_screened": 46,
+   "became_plants": 13
+  },
+  {
+   "source": "OSHA 2025 local file: name screen for slice-D makers (Sullair/Hitachi, Atlas Copco, Generac/Magnum, Allmand, Doosan Bobcat, Wacker, Multiquip, Wanco, Solar Turbines, Stewart & Stevenson, ProFrac, BJ, Evolution, Dragon, Interstate, Denyo, Taylor Power, Mertz) and city screens (Berlin WI, Michigan City IN, Statesville NC, Arvada CO, Richland MS)",
+   "entries_screened": 60,
+   "became_plants": 3
+  },
+  {
+   "source": "Generac Workday cxs API (searchText welder)",
+   "entries_screened": 7,
+   "became_plants": 2
+  },
+  {
+   "source": "Hitachi careers board (HITACHI GLOBAL AIR POWER US, LLC filter)",
+   "entries_screened": 46,
+   "became_plants": 1
+  },
+  {
+   "source": "EPA FRS REST (Stewart & Stevenson TX, Sullair IN, Hitachi IN, Wanco CO)",
+   "entries_screened": 35,
+   "became_plants": 0
+  },
+  {
+   "source": "Company sites (allmand.com, stewartandstevenson.com, wanco.com, sullair.com, mertzok.com, tramont.com, hardinindustries.com, megacorpinc.com, ekmachine.com)",
+   "entries_screened": 9,
+   "became_plants": 3
+  },
+  {
+   "source": "WebSearch (2 searches: mobile power trailer plants; frac turbine trailer builders)",
+   "entries_screened": 35,
+   "became_plants": 0
+  }
+ ],
+ "searches_run": 2,
+ "sources_failed": [
+  "Atlas Copco Workday cxs: HTTP 422",
+  "Kirby / Stewart & Stevenson Workday guesses: HTTP 422; S&S careers page links no board",
+  "stewartandstevenson.com/locations/: 404",
+  "Wanco careers: openings only via ZipRecruiter (not opened)",
+  "Mertz careers portal link not in page source",
+  "sullair.com about pages: 404",
+  "allmand.com/our-history: 404"
+ ]
+}
