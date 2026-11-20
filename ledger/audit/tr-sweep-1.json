@@ -1,0 +1,4328 @@
+{
+ "agent": "fact-checker TR-SWEEP",
+ "date": "2026-11-20",
+ "vertical": "v-trailers-chassis-mobile-power",
+ "fault_kinds": {
+  "1": "name/parent_company value carries a label not on the cited page",
+  "2": "welder_postings row naming several requisitions but citing/quoting one page",
+  "3": "welder_postings 'none found' / 'lists no openings' rows re-read with browser and board JSON",
+  "4": "base rows citing careers.lippert.com job pages whose quote is not on that page"
+ },
+ "summary": {
+  "1": {
+   "rows_checked": 444,
+   "plants_csv_values_checked": "name and parent_company of all 244 plants (488 values)",
+   "rows_corrected": 68,
+   "plant_updates": 67,
+   "method": "token screen of every stated name/parent_company row against a fresh fetch of its cited page (visible text; browser re-render for flagged rows; OSHA rows against data/osha_2025.csv by record ID), then a phrase test for company names and legal suffixes; parentheticals and descriptors read by hand. Abbreviations of words on the page (Inc./Incorporated, Mfg./Manufacturing, Corp./Corporation, Co./Company, L L C/LLC) and plurals accepted. Street tags in names accepted when the plant's own address row carries the street. Owner labels dropped from names where only the parent row carries them (DC-sweep precedent).",
+   "not_fixed_unreachable": "stated name/parent rows citing EPA FRS (frs-public.epa.gov timed out all day) whose value matches its quote were left as they are and not re-verified: Cozad, Smithco, Craftsmen x2, J.Q. Tex, Cronkhite x2, Shadow, Bloomer x2, Barrett x2, Hart, Merhow, SMC, Premier, Corn Pro, U-Dump, Cottrell, Pratt, JOST Grand Haven, Lippert Goshen/Middlebury parent, Trinity x2 parent, Wabash South, Bobcat Statesville, XL Specialized, Fairchild. FRS rows whose value added labels were re-cited to ECHO facility reports (echodata.epa.gov dfr_rest_services) instead.",
+   "rows_added": 86
+  },
+  "2": {
+   "rows_checked": 164,
+   "candidates_read": 34,
+   "rows_corrected": 21,
+   "rows_added": 55,
+   "plant_updates": 5,
+   "method": "every stated welder_postings row in the vertical screened for several named requisitions; candidates read; single-page rows naming several requisitions split one row per requisition (own URL, quote, 'listed <date>' where the page gives it); list-page rows kept as one row and re-quoted so every named role is on the quote; site-tie calls moved out of stated rows into inferred rows."
+  },
+  "3": {
+   "rows_checked": "152 plants whose welder_postings say none/unknown/not read (plus the 8 profiled ones first)",
+   "boards_reread": "about 75 careers pages and boards rendered in a browser, embedded boards found by vendor host in the raw source and read through their JSON (ADP WFN x9 clients, Wabash ADP CX, Paycom x8, UKG Pro x3, UKG Ready x4, Oracle, Paycor, Paylocity, HireClick x2, Workday blocked 429)",
+   "rows_corrected": 30,
+   "rows_added": 47,
+   "plant_updates": 28,
+   "plants_with_new_openings": 20
+  },
+  "4": {
+   "rows_checked": 32,
+   "rows_corrected": 2,
+   "note": "only Goshen and Middlebury (now profiled) cite careers.lippert.com for these fields; the two tier rows quoted a company sentence absent from their job pages and were re-cited to sibling Plant 19/28 postings that carry it. found_by rows quote the job JSON embedded in the page (FOUND); relationship rows were fixed in round 1.",
+   "plant_updates": 0,
+   "rows_added": 2
+  }
+ },
+ "postings_changed": [
+  {
+   "plant": "p-alcom-sioux-falls-sd",
+   "new_facts": "Welder, listed 2026-10-27 (ALCOM ADP board, city-only, rule 7a)"
+  },
+  {
+   "plant": "p-alcom-bonner-mt",
+   "new_facts": "Welder, listed 2026-10-27 (ALCOM ADP board, city-only, rule 7a)"
+  },
+  {
+   "plant": "p-sidumpr-columbus-ne",
+   "new_facts": "Welder, listed 2026-11-04 (own ADP board, city-only, rule 7a)"
+  },
+  {
+   "plant": "p-trailer-component-mentor-oh",
+   "new_facts": "Welder I at 8120 Tyler Blvd, listed 2025-10-31 (address on the requisition)"
+  },
+  {
+   "plant": "p-bwise-chambersburg-pa",
+   "new_facts": "Welder at 1002 Wayne Avenue, listed 2026-11-17, $1,500 retention bonus"
+  },
+  {
+   "plant": "p-mertz-ponca-city-ok",
+   "new_facts": "Welder at 2400 N. Waverly (0.9 km away, rule 7b), listed 2026-06-05"
+  },
+  {
+   "plant": "p-featherlite-cresco-ia",
+   "new_facts": "Welder I at 816 7th Street West (undated; open 2026-11-20)"
+  },
+  {
+   "plant": "p-load-trail-como-tx",
+   "new_facts": "Welder at 811 W Main St (undated; open 2026-11-20)"
+  },
+  {
+   "plant": "p-load-trail-sumner-tx",
+   "new_facts": "Welder 'Load Trail in Sumner' (undated; open 2026-11-20; rule 7a)"
+  },
+  {
+   "plant": "p-eby-ephrata-pa",
+   "new_facts": "Skilled Aluminum TIG Welder and Robotic Welding Operator at 502 Alexander Dr, both listed 2026-07-08 (aluminum)"
+  },
+  {
+   "plant": "p-wabash-cadiz-ky",
+   "new_facts": "Welder I #8947, Cadiz (postingDate 2026-07-30, rule 7a)"
+  },
+  {
+   "plant": "p-cimarron-chickasha-ok",
+   "new_facts": "MIG Welder, Chickasha, listed 2026-11-03 (own ADP board, rule 7a)"
+  },
+  {
+   "plant": "p-smithco-le-mars-ia",
+   "new_facts": "Evening Welder (2026-11-02, $2.50 premium) and Welder (2026-08-19), Le Mars, rule 7a"
+  },
+  {
+   "plant": "p-exiss-el-reno-ok",
+   "new_facts": "2 Welder I requisitions at 900 East Trail Blvd (undated; open 2026-11-20)"
+  },
+  {
+   "plant": "p-towmaster-litchfield-mn",
+   "new_facts": "2nd Shift Welder - Trailer and Trailer Welder (Towmaster, Litchfield; undated; rule 7a)"
+  },
+  {
+   "plant": "p-ledwell-texarkana-tx",
+   "new_facts": "WELDER on Paylocity (MIG/TIG/FCAW, undated, rule 7a)"
+  },
+  {
+   "plant": "p-doonan-great-bend-ks",
+   "new_facts": "Production Welder at 36 NE Hwy 156, listed 2026-03-25"
+  },
+  {
+   "plant": "p-nexhaul-rocky-mount-va",
+   "new_facts": "WELDER, Rocky Mount (company page, undated, rule 7a)"
+  },
+  {
+   "plant": "p-interstate-group-conway-ar",
+   "new_facts": "Welder - Utility Trailer manufacturing, Conway, listed 2026-09-19 (rule 7a)"
+  },
+  {
+   "plant": "p-interstate-group-nampa-id",
+   "new_facts": "Welder - Trailer Manufacturing, Nampa, listed 2026-05-26 (rule 7a)"
+  },
+  {
+   "plant": "p-mac-alliance-oh",
+   "new_facts": "fault-2 split also found Welder WELDE002281 (multi-site, listed 2026-08-12) not in the ledger; WELDE002324 re-stamped 2026-11-18 (was 2026-09-29)"
+  },
+  {
+   "plant": "p-mac-salem-oh",
+   "new_facts": "Welder WELDE002281 (multi-site, 2026-08-12) added; WELDE002324 re-stamped 2026-11-18"
+  },
+  {
+   "plant": "p-trailstar-alliance-oh",
+   "new_facts": "Fabricator FABRI002311 (2026-09-03) and Welder WELDE002281 (multi-site, 2026-08-12) added; WELDE002324 re-stamped 2026-11-18"
+  },
+  {
+   "plant": "p-hh-trailer-clarinda-ia",
+   "new_facts": "Welder, Clarinda (Novae ADP, listed 2026-11-12) found but not counted (rule 7c: Novae OSHA sites 2.1 and 3.1 km away)"
+  }
+ ],
+ "instances": {
+  "4": [
+   {
+    "plant": "p-lippert-goshen-in",
+    "kind": "corrected",
+    "note": "tier value unchanged; quote moved to a page that carries it",
+    "removed": [
+     [
+      "p-lippert-goshen-in:tier",
+      "https://careers.lippert.com/jobs/17751?lang=en-us",
+      "quote 'Lippert is a leading, global manufacturer...' is not on the cited job page (checked 2026-11-20 with fetch_page --check, raw source incl.); re-cited to a Lippert posting that carries it"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-lippert-goshen-in:tier",
+      "inferred",
+      "Tier 1",
+      "https://careers.lippert.com/jobs/17945?lang=en-us"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-lippert-middlebury-in",
+    "kind": "corrected",
+    "note": "tier value unchanged; quote moved to a page that carries it",
+    "removed": [
+     [
+      "p-lippert-middlebury-in:tier",
+      "https://careers.lippert.com/jobs/17564?lang=en-us",
+      "quote 'Lippert is a leading, global manufacturer...' is not on the cited job page (checked 2026-11-20 with fetch_page --check, raw source incl.); re-cited to a Lippert posting that carries it"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-lippert-middlebury-in:tier",
+      "inferred",
+      "Tier 1",
+      "https://careers.lippert.com/jobs/17623?lang=en-us"
+     ]
+    ],
+    "plant_updates": []
+   }
+  ],
+  "2": [
+   {
+    "plant": "p-wabash-lafayette-in",
+    "kind": "corrected",
+    "note": "7 Lafayette requisitions one row each; dates in reasoning (API), not on the job pages",
+    "removed": [
+     [
+      "p-wabash-lafayette-in:welder_postings",
+      "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001234697606",
+      "fault 2 (multi-requisition row citing one page): seven requisitions and a site-tie call in one stated row citing the #9346 page; split into one row per requisition plus an inferred site-tie row"
+     ],
+     [
+      "p-wabash-lafayette-in:welder_postings",
+      "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001235288106",
+      "superseded by the per-requisition row for #9356 (same page), written in the same format"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-wabash-lafayette-in:welder_postings",
+      "stated",
+      "3rd shift, Welder I, LNPB1 10HR Rear Frames (#9215), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+      "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001229083706"
+     ],
+     [
+      "p-wabash-lafayette-in:welder_postings",
+      "stated",
+      "3rd shift, Welder I, LNPB1 10HR Couplers (#9271), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+      "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001231706506"
+     ],
+     [
+      "p-wabash-lafayette-in:welder_postings",
+      "stated",
+      "2nd shift, Metal Fabricator, LNPB1 10HR Metal Fab (#9345), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+      "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001234696206"
+     ],
+     [
+      "p-wabash-lafayette-in:welder_postings",
+      "stated",
+      "1st shift, Welder I, LNPB1 10HR Rear Frames (#9346), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+      "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001234697606"
+     ],
+     [
+      "p-wabash-lafayette-in:welder_postings",
+      "stated",
+      "listed, not counted: 3rd shift, Weld Tech I, LAF 8HR Process Engineering (#9350), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+      "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001235222806"
+     ],
+     [
+      "p-wabash-lafayette-in:welder_postings",
+      "stated",
+      "listed, not counted: 2nd shift, Weld Tech I, LAF 8HR Process Engineering (#9351), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+      "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001235252006"
+     ],
+     [
+      "p-wabash-lafayette-in:welder_postings",
+      "stated",
+      "3rd shift, Welder I, LNPB1 10HR Couplers (#9356), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+      "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001235288106"
+     ],
+     [
+      "p-wabash-lafayette-in:welder_postings",
+      "inferred",
+      "Lafayette-only roles (#9346, #9215, #9356, #9271, #9345, #9350, #9351): none counted for this plant (rule 7c, T14)",
+      ""
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-wabash-lafayette-in-2",
+    "kind": "corrected",
+    "note": "7 Lafayette requisitions one row each; dates in reasoning (API), not on the job pages",
+    "removed": [
+     [
+      "p-wabash-lafayette-in-2:welder_postings",
+      "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001234697606",
+      "fault 2 (multi-requisition row citing one page): seven requisitions and a site-tie call in one stated row citing the #9346 page; split into one row per requisition plus an inferred site-tie row"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-wabash-lafayette-in-2:welder_postings",
+      "stated",
+      "3rd shift, Welder I, LNPB1 10HR Rear Frames (#9215), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+      "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001229083706"
+     ],
+     [
+      "p-wabash-lafayette-in-2:welder_postings",
+      "stated",
+      "3rd shift, Welder I, LNPB1 10HR Couplers (#9271), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+      "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001231706506"
+     ],
+     [
+      "p-wabash-lafayette-in-2:welder_postings",
+      "stated",
+      "2nd shift, Metal Fabricator, LNPB1 10HR Metal Fab (#9345), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+      "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001234696206"
+     ],
+     [
+      "p-wabash-lafayette-in-2:welder_postings",
+      "stated",
+      "1st shift, Welder I, LNPB1 10HR Rear Frames (#9346), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+      "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001234697606"
+     ],
+     [
+      "p-wabash-lafayette-in-2:welder_postings",
+      "stated",
+      "listed, not counted: 3rd shift, Weld Tech I, LAF 8HR Process Engineering (#9350), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+      "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001235222806"
+     ],
+     [
+      "p-wabash-lafayette-in-2:welder_postings",
+      "stated",
+      "listed, not counted: 2nd shift, Weld Tech I, LAF 8HR Process Engineering (#9351), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+      "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001235252006"
+     ],
+     [
+      "p-wabash-lafayette-in-2:welder_postings",
+      "stated",
+      "3rd shift, Welder I, LNPB1 10HR Couplers (#9356), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+      "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001235288106"
+     ],
+     [
+      "p-wabash-lafayette-in-2:welder_postings",
+      "inferred",
+      "Lafayette-only roles (#9346, #9215, #9356, #9271, #9345, #9350, #9351): none counted for this plant (rule 7c, T14)",
+      ""
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-trail-king-mitchell-sd",
+    "kind": "corrected",
+    "note": "4 Mitchell requisitions now one row each (395, 396, 541, 499); robot operator rows quote \"Ability to Weld proficiently.\"",
+    "removed": [
+     [
+      "p-trail-king-mitchell-sd:welder_postings",
+      "https://hcre.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?onlyData=true&finder=ById;Id=%22395%22,siteNumber=CX_1",
+      "fault 2 (multi-requisition row citing one page): value names several requisitions but the cited page carries one; split into one row per requisition, each citing its own page; the site-tie call moved to an inferred row"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-trail-king-mitchell-sd:welder_postings",
+      "stated",
+      "Welder I, 1st Shift (TKM163), Mitchell, SD, listed 2025-12-08 (Trail King Oracle board, read 2026-11-20)",
+      "https://hcre.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?onlyData=true&finder=ById;Id=%22395%22,siteNumber=CX_1"
+     ],
+     [
+      "p-trail-king-mitchell-sd:welder_postings",
+      "stated",
+      "Welder I, 2nd Shift (TKM164), Mitchell, SD, listed 2025-12-08 (Trail King Oracle board, read 2026-11-20)",
+      "https://hcre.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?onlyData=true&finder=ById;Id=%22396%22,siteNumber=CX_1"
+     ],
+     [
+      "p-trail-king-mitchell-sd:welder_postings",
+      "stated",
+      "Robot Operator, 1st Shift (TKM203), Mitchell, SD, listed 2026-11-17 (Trail King Oracle board, read 2026-11-20)",
+      "https://hcre.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?onlyData=true&finder=ById;Id=%22541%22,siteNumber=CX_1"
+     ],
+     [
+      "p-trail-king-mitchell-sd:welder_postings",
+      "stated",
+      "Robot Operator, 2nd Shift (TKM192), Mitchell, SD, listed 2026-09-15 (Trail King Oracle board, read 2026-11-20)",
+      "https://hcre.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?onlyData=true&finder=ById;Id=%22499%22,siteNumber=CX_1"
+     ],
+     [
+      "p-trail-king-mitchell-sd:welder_postings",
+      "inferred",
+      "Mitchell-only roles (TKM163, TKM164, TKM203, TKM192): none counted for this plant (rule 7c)",
+      ""
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-trail-king-mitchell-sd-2",
+    "kind": "corrected",
+    "note": "4 Mitchell requisitions now one row each (395, 396, 541, 499); robot operator rows quote \"Ability to Weld proficiently.\"",
+    "removed": [
+     [
+      "p-trail-king-mitchell-sd-2:welder_postings",
+      "https://hcre.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?onlyData=true&finder=ById;Id=%22395%22,siteNumber=CX_1",
+      "fault 2 (multi-requisition row citing one page): value names several requisitions but the cited page carries one; split into one row per requisition, each citing its own page; the site-tie call moved to an inferred row"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-trail-king-mitchell-sd-2:welder_postings",
+      "stated",
+      "Welder I, 1st Shift (TKM163), Mitchell, SD, listed 2025-12-08 (Trail King Oracle board, read 2026-11-20)",
+      "https://hcre.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?onlyData=true&finder=ById;Id=%22395%22,siteNumber=CX_1"
+     ],
+     [
+      "p-trail-king-mitchell-sd-2:welder_postings",
+      "stated",
+      "Welder I, 2nd Shift (TKM164), Mitchell, SD, listed 2025-12-08 (Trail King Oracle board, read 2026-11-20)",
+      "https://hcre.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?onlyData=true&finder=ById;Id=%22396%22,siteNumber=CX_1"
+     ],
+     [
+      "p-trail-king-mitchell-sd-2:welder_postings",
+      "stated",
+      "Robot Operator, 1st Shift (TKM203), Mitchell, SD, listed 2026-11-17 (Trail King Oracle board, read 2026-11-20)",
+      "https://hcre.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?onlyData=true&finder=ById;Id=%22541%22,siteNumber=CX_1"
+     ],
+     [
+      "p-trail-king-mitchell-sd-2:welder_postings",
+      "stated",
+      "Robot Operator, 2nd Shift (TKM192), Mitchell, SD, listed 2026-09-15 (Trail King Oracle board, read 2026-11-20)",
+      "https://hcre.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?onlyData=true&finder=ById;Id=%22499%22,siteNumber=CX_1"
+     ],
+     [
+      "p-trail-king-mitchell-sd-2:welder_postings",
+      "inferred",
+      "Mitchell-only roles (TKM163, TKM164, TKM203, TKM192): none counted for this plant (rule 7c)",
+      ""
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-trail-king-west-fargo-nd",
+    "kind": "corrected",
+    "note": "4 West Fargo requisitions one row each",
+    "removed": [
+     [
+      "p-trail-king-west-fargo-nd:welder_postings",
+      "https://hcre.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?onlyData=true&finder=ById;Id=%22535%22,siteNumber=CX_1",
+      "fault 2 (multi-requisition row citing one page): value names several requisitions but the cited page carries one; split into one row per requisition, each citing its own page"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-trail-king-west-fargo-nd:welder_postings",
+      "stated",
+      "Welder II, 1st Shift (TKF179), West Fargo, ND, listed 2026-11-12 (Trail King Oracle board, read 2026-11-20)",
+      "https://hcre.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?onlyData=true&finder=ById;Id=%22534%22,siteNumber=CX_1"
+     ],
+     [
+      "p-trail-king-west-fargo-nd:welder_postings",
+      "stated",
+      "Welder II, 2nd Shift (TKF180), West Fargo, ND, listed 2026-11-12 (Trail King Oracle board, read 2026-11-20)",
+      "https://hcre.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?onlyData=true&finder=ById;Id=%22535%22,siteNumber=CX_1"
+     ],
+     [
+      "p-trail-king-west-fargo-nd:welder_postings",
+      "stated",
+      "Welder I, 1st Shift (TKF160), West Fargo, ND, listed 2026-06-03 (Trail King Oracle board, read 2026-11-20)",
+      "https://hcre.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?onlyData=true&finder=ById;Id=%22467%22,siteNumber=CX_1"
+     ],
+     [
+      "p-trail-king-west-fargo-nd:welder_postings",
+      "stated",
+      "Welder I, 2nd Shift (TKF165), West Fargo, ND, listed 2026-08-17 (Trail King Oracle board, read 2026-11-20)",
+      "https://hcre.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?onlyData=true&finder=ById;Id=%22488%22,siteNumber=CX_1"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-trail-king-yankton-sd",
+    "kind": "corrected",
+    "note": "2 Yankton requisitions one row each",
+    "removed": [
+     [
+      "p-trail-king-yankton-sd:welder_postings",
+      "https://hcre.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?onlyData=true&finder=ById;Id=%22302%22,siteNumber=CX_1",
+      "fault 2 (multi-requisition row citing one page): value names several requisitions but the cited page carries one; split into one row per requisition, each citing its own page"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-trail-king-yankton-sd:welder_postings",
+      "stated",
+      "Welder I, 1st Shift (TKY41), Yankton, SD, listed 2025-11-13 (Trail King Oracle board, read 2026-11-20)",
+      "https://hcre.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?onlyData=true&finder=ById;Id=%22302%22,siteNumber=CX_1"
+     ],
+     [
+      "p-trail-king-yankton-sd:welder_postings",
+      "stated",
+      "Welder I, 2nd Shift (TKY45), Yankton, SD, listed 2025-07-02 (Trail King Oracle board, read 2026-11-20)",
+      "https://hcre.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?onlyData=true&finder=ById;Id=%22323%22,siteNumber=CX_1"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-kalyn-siebert-gatesville-tx",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-kalyn-siebert-gatesville-tx:welder_postings",
+      "https://recruiting2.ultipro.com/ENT1007/JobBoard/2ce7a727-3106-491f-aba2-cf0210a38776/OpportunityDetail?opportunityId=07cf0e25-e804-44d2-9a33-6e97134a40c6",
+      "fault 2 (multi-requisition row citing one page): value names several requisitions but the cited page carries one; split into one row per requisition, each citing its own page (Fabricator came from the board list JSON)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-kalyn-siebert-gatesville-tx:welder_postings",
+      "stated",
+      "Welder (WELDE002979), Gatesville TX 76528, listed 2026-09-02; flux core welding experience required",
+      "https://recruiting2.ultipro.com/ENT1007/JobBoard/2ce7a727-3106-491f-aba2-cf0210a38776/OpportunityDetail?opportunityId=07cf0e25-e804-44d2-9a33-6e97134a40c6"
+     ],
+     [
+      "p-kalyn-siebert-gatesville-tx:welder_postings",
+      "stated",
+      "Fabricator (FABRI003068), Gatesville TX 76528, listed 2026-10-06",
+      "https://recruiting2.ultipro.com/ENT1007/JobBoard/2ce7a727-3106-491f-aba2-cf0210a38776/OpportunityDetail?opportunityId=a3546479-43b9-4137-af80-5c88076eb4e6"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-big-tex-wills-point-tx",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-big-tex-wills-point-tx:welder_postings",
+      "https://www.paycomonline.net/v4/ats/web.php/portal/96B4F6F5DA7BCED92975702561BB84AD/jobs/364367",
+      "fault 2 (multi-requisition row citing one page): value names several requisitions but the cited page carries one; split into one row per requisition, each citing its own page"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-big-tex-wills-point-tx:welder_postings",
+      "stated",
+      "Welder 1 (job 364367), location 'Big Tex Wills Point - Wills Point, TX 75169', listed 2026-11-17 (Big Tex Paycom board, read 2026-11-20)",
+      "https://www.paycomonline.net/v4/ats/web.php/portal/96B4F6F5DA7BCED92975702561BB84AD/jobs/364367"
+     ],
+     [
+      "p-big-tex-wills-point-tx:welder_postings",
+      "stated",
+      "listed, not counted: Night Shift Weld Supervisor (job 364383), location 'Big Tex Wills Point - Wills Point, TX 75169', listed 2026-11-17; leads a team of welders",
+      "https://www.paycomonline.net/v4/ats/web.php/portal/96B4F6F5DA7BCED92975702561BB84AD/jobs/364383"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-big-tex-wills-point-tx",
+      "field": "welder_postings",
+      "value": "1 open on Big Tex's own Paycom board (read 2026-11-20), location 'Big Tex Wills Point - Wills Point, TX 75169': Welder 1 364367 (listed 2026-11-17); also Night Shift Weld Supervisor 364383 (listed 2026-11-17; supervisory, not counted)",
+      "why": "Weld Supervisor date now read from its own posting (was 'date not read')"
+     }
+    ]
+   },
+   {
+    "plant": "p-mac-alliance-oh",
+    "kind": "corrected",
+    "note": "WELDE002281 is a second multi-site Welder requisition (Mac Waste, Salem, Trailstar) not previously recorded",
+    "removed": [
+     [
+      "p-mac-alliance-oh:welder_postings",
+      "https://recruiting.ultipro.com/MAC1012MACT/JobBoard/c1bf9060-cc2a-41d6-9903-b2997377ff38/OpportunityDetail?opportunityId=c7efac44-8e01-4f17-8fc3-ba4cae041295",
+      "fault 2 (multi-requisition row citing one page): value names several requisitions but the cited page carries one; split into one row per requisition, each citing its own page"
+     ],
+     [
+      "p-mac-alliance-oh:welder_postings",
+      "https://recruiting.ultipro.com/MAC1012MACT/JobBoard/c1bf9060-cc2a-41d6-9903-b2997377ff38/OpportunityDetail?opportunityId=921acc90-e412-4079-8c04-93c24de15088",
+      "fault 2 (multi-requisition row citing one page): value names several requisitions but the cited page carries one; split into one row per requisition, each citing its own page"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-mac-alliance-oh:welder_postings",
+      "stated",
+      "Welder (WELDE002324), listed 2026-11-18; locations on MAC's UKG board: Mac Waste OH Local; MAC Manufacturing OH Loca; Trailstar (read 2026-11-20)",
+      "https://recruiting.ultipro.com/MAC1012MACT/JobBoard/c1bf9060-cc2a-41d6-9903-b2997377ff38/OpportunityDetail?opportunityId=c7efac44-8e01-4f17-8fc3-ba4cae041295"
+     ],
+     [
+      "p-mac-alliance-oh:welder_postings",
+      "stated",
+      "Welder (WELDE002281), listed 2026-08-12; locations on MAC's UKG board: Mac Waste OH Local; MAC Manufacturing OH Loca; Trailstar (read 2026-11-20)",
+      "https://recruiting.ultipro.com/MAC1012MACT/JobBoard/c1bf9060-cc2a-41d6-9903-b2997377ff38/OpportunityDetail?opportunityId=4ba7b49f-bbcc-47bd-a5e9-6739767a6500"
+     ],
+     [
+      "p-mac-alliance-oh:welder_postings",
+      "stated",
+      "Welder (3rd Shift) (WELDE002319), listed 2026-09-16; location on MAC's UKG board: Mac Waste OH Local (read 2026-11-20)",
+      "https://recruiting.ultipro.com/MAC1012MACT/JobBoard/c1bf9060-cc2a-41d6-9903-b2997377ff38/OpportunityDetail?opportunityId=ce8c51ae-7e77-49e5-8587-316a4e797596"
+     ],
+     [
+      "p-mac-alliance-oh:welder_postings",
+      "stated",
+      "Fabricator - 3rd Shift (FABRI002306), listed 2026-08-26; location on MAC's UKG board: Mac Waste OH Local (read 2026-11-20)",
+      "https://recruiting.ultipro.com/MAC1012MACT/JobBoard/c1bf9060-cc2a-41d6-9903-b2997377ff38/OpportunityDetail?opportunityId=8bbbf13b-e448-4f16-8ce7-d4a0692c7c2a"
+     ],
+     [
+      "p-mac-alliance-oh:welder_postings",
+      "stated",
+      "listed, not counted: Robotic Welding Programmer (ROBOT002316), listed 2026-09-14; location on MAC's UKG board: MAC Trailer RD OH Local (read 2026-11-20)",
+      "https://recruiting.ultipro.com/MAC1012MACT/JobBoard/c1bf9060-cc2a-41d6-9903-b2997377ff38/OpportunityDetail?opportunityId=921acc90-e412-4079-8c04-93c24de15088"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-mac-alliance-oh",
+      "field": "welder_postings",
+      "value": "MAC's own UKG board (read 2026-11-20), location 'Mac Waste OH Local' (2360 W Main St): Welder WELDE002324 (multi-site with Salem and Trailstar; Posted on 2026-11-18), Welder WELDE002281 (multi-site; 2026-08-12), Welder (3rd Shift) WELDE002319 (2026-09-16), Fabricator - 3rd Shift FABRI002306 (2026-08-26); not counted: Robotic Welding Programmer ROBOT002316 (2026-09-14) at MAC Trailer R&D, same address",
+      "why": "split per requisition; WELDE002324 now shows Posted on November 18, 2026 (was 2026-09-29); WELDE002281 (multi-site, 2026-08-12) was not in the ledger"
+     }
+    ]
+   },
+   {
+    "plant": "p-etnyre-oregon-il",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-etnyre-oregon-il:welder_postings",
+      "https://www.paycomonline.net/v4/ats/web.php/jobs?clientkey=FF8052485F6C103A2FEBD17D169C9F03",
+      "fault 2: value names several requisitions on a list page but the quote carries only one of them; re-quoted so every named role is on the quote"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-etnyre-oregon-il:welder_postings",
+      "stated",
+      "Welder - 1st Shift and Welder - 2nd Shift listed on Etnyre's own Paycom board (read 2026-11-20), Etnyre - Oregon, IL 61061, alongside a Welding Robot Programmer & Fixture Engineer (listed, not counted)",
+      "https://www.paycomonline.net/v4/ats/web.php/jobs?clientkey=FF8052485F6C103A2FEBD17D169C9F03"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-felling-sauk-centre-mn",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-felling-sauk-centre-mn:welder_postings",
+      "https://www.felling.com/careers/",
+      "fault 2: value names several requisitions on a list page but the quote carries only one of them; re-quoted so every named role is on the quote (Senior Welder was only in the reasoning)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-felling-sauk-centre-mn:welder_postings",
+      "stated",
+      "Beam Welder Operator and Senior Welder at Sauk Centre, each with a $2,500 hiring bonus (Felling careers list, read 2026-11-20; undated)",
+      "https://www.felling.com/careers/"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-alpha-hd-oelwein-ia",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-alpha-hd-oelwein-ia:welder_postings",
+      "https://alphahdtrailers.com/careers/",
+      "fault 2: value names several requisitions on a list page but the quote carries only one of them; re-quoted so every named role is on the quote (quote was the heading only)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-alpha-hd-oelwein-ia:welder_postings",
+      "stated",
+      "Welders (3rd Shift), Fabricators and Welders (1st shift) listed for the Oelwein, IA manufacturing plant on the company careers page (read 2026-11-20; undated)",
+      "https://alphahdtrailers.com/careers/"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-schutt-clintonville-wi",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-schutt-clintonville-wi:welder_postings",
+      "https://www.schuttindustries.com/About-Us/Careers",
+      "fault 2: value names several requisitions on a list page but the quote carries only one of them; re-quoted so every named role is on the quote"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-schutt-clintonville-wi:welder_postings",
+      "stated",
+      "Welding roles on the company careers page (read 2026-11-20), Clintonville WI: 2nd Shift Welder, Weld Supervisor, Weld Engineer; listing dates not shown",
+      "https://www.schuttindustries.com/About-Us/Careers"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-midwest-industries-ida-grove-ia",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-midwest-industries-ida-grove-ia:welder_postings",
+      "https://www.midwestindustries.com/culture-and-careers/available-positions/general-production",
+      "fault 2: row named two requisitions (General Production; Fabrication Technician) but cites the General Production page only; split"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-midwest-industries-ida-grove-ia:welder_postings",
+      "stated",
+      "General Production, Ida Grove IA (listed 2026-09-21): production roles \"may include\" welding; $5,000 sign-on bonus; no role titled welder",
+      "https://www.midwestindustries.com/culture-and-careers/available-positions/general-production"
+     ],
+     [
+      "p-midwest-industries-ida-grove-ia:welder_postings",
+      "stated",
+      "listed, not counted: Fabrication Technician, 122 IA-175, Ida Grove IA 51445 (listed 2026-07-12): operates fabrication equipment that cuts, shears, punches and bends metal; no welding named",
+      "https://www.midwestindustries.com/culture-and-careers/available-positions/fabrication-technician"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-cimarron-manhattan-ks",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-cimarron-manhattan-ks:welder_postings",
+      "https://jobs.factoryfix.com/jobs/welder-i--manhattan--ks--3882923499--V3",
+      "fault 2: value names both Cimarron requisitions (Welder I and MIG Welder) but the cited page carries one; value cut to this page's requisition"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-cimarron-manhattan-ks:welder_postings",
+      "stated",
+      "Welder I, Cimarron Trailers, Manhattan KS (posted 2026-10-23; FactoryFix copy of the company posting)",
+      "https://jobs.factoryfix.com/jobs/welder-i--manhattan--ks--3882923499--V3"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-cimarron-manhattan-ks",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-cimarron-manhattan-ks:welder_postings",
+      "https://jobs.factoryfix.com/jobs/mig-welder--manhattan--ks--853320651--V2",
+      "fault 2: value names both Cimarron requisitions (Welder I and MIG Welder) but the cited page carries one; value cut to this page's requisition"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-cimarron-manhattan-ks:welder_postings",
+      "stated",
+      "MIG Welder, Cimarron Trailers, Manhattan KS (posted 2026-09-16; FactoryFix copy of the company posting)",
+      "https://jobs.factoryfix.com/jobs/mig-welder--manhattan--ks--853320651--V2"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-timpte-david-city-ne",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-timpte-david-city-ne:welder_postings",
+      "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201230681382_1?cid=3240c29c-650c-44e9-be6f-3af7d653c5f9&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+      "fault 2: value adds 'also Assembler - Semi Trailer (listed 2026-11-20)', a second requisition not on the cited Welder page (and not on Timpte's ADP board when re-read 2026-11-20, 11 requisitions); clause dropped"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-timpte-david-city-ne:welder_postings",
+      "stated",
+      "1 open on Timpte's ADP board (read 2026-11-20): Welder, David City NE (listed 2026-10-01); fixtures and robotic welders; up to $5,000 annual bonus",
+      "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201230681382_1?cid=3240c29c-650c-44e9-be6f-3af7d653c5f9&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-timpte-david-city-ne",
+      "field": "welder_postings",
+      "value": "1 open on Timpte's ADP board (read 2026-11-20): Welder, David City NE (listed 2026-10-01); fixtures and robotic welders; up to $5,000 annual bonus",
+      "why": "dropped the Assembler clause: not on the cited page, not on the board when re-read"
+     }
+    ]
+   }
+  ],
+  "3": [
+   {
+    "plant": "p-trailer-component-mentor-oh-2",
+    "kind": "reworded",
+    "note": "",
+    "removed": [
+     [
+      "p-trailer-component-mentor-oh-2:welder_postings",
+      "https://www.jobtarget.com/jobs/jt-fqfeki1qz7/welder-i-mentor-ohio",
+      "superseded: Buyers' ADP board places the Welder I requisition at 8120 Tyler Blvd (the sibling record), not here"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-trailer-component-mentor-oh-2:welder_postings",
+      "inferred",
+      "none placed here: the Buyers Products Welder I requisition names 8120 Tyler Blvd (sibling record p-trailer-component-mentor-oh)",
+      ""
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-trailer-component-mentor-oh-2",
+      "field": "welder_postings",
+      "value": "none found: Buyers Products' ADP board (read 2026-11-20) places its Mentor Welder I requisition at 8120 Tyler Blvd, the sibling record",
+      "why": "reason updated from city-only rule 7c to the requisition address"
+     }
+    ]
+   },
+   {
+    "plant": "p-mertz-ponca-city-ok",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [
+     [
+      "p-mertz-ponca-city-ok:welder_postings",
+      "https://www.mertzok.com/",
+      "fault 3: 'portal link not in the page source; no board read' - the browser render carries the Paycom portal link; the board lists a Welder"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-mertz-ponca-city-ok:welder_postings",
+      "stated",
+      "Welder (Paycom job 300560), Department: Welding, 2400 N. Waverly, Ponca City OK, listed 2026-06-05 (Mertz Paycom board, read 2026-11-20)",
+      "https://www.paycomonline.net/v4/ats/web.php/portal/4C2FED5EBCF061E47CF5CD64D1EAC055/jobs/300560"
+     ],
+     [
+      "p-mertz-ponca-city-ok:welder_postings",
+      "inferred",
+      "posting attribution: Welder posting at 2400 N. Waverly placed at this record (1701 N Waverly) under rule 7b",
+      ""
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-mertz-ponca-city-ok",
+      "field": "welder_postings",
+      "value": "1 open on Mertz's own Paycom board (read 2026-11-20): Welder (Department: Welding) at 2400 N. Waverly, listed 2026-06-05; about 0.9 km from this record's 1701 N Waverly address (rule 7b)",
+      "why": "board re-read"
+     }
+    ]
+   },
+   {
+    "plant": "p-featherlite-cresco-ia",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [
+     [
+      "p-featherlite-cresco-ia:welder_postings",
+      "https://www.fthr.com/featherlite/careers/job-openings/",
+      "fault 3: openings list not read; the linked UKG Ready board (ein 118950020) lists a Welder I at 816 7th Street West, this plant"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-featherlite-cresco-ia:welder_postings",
+      "stated",
+      "Welder I (UKG Ready requisition 638051330), 816 7th Street West, Cresco IA; MIG welding of aluminum or steel components; open on the board 2026-11-20, no posting date shown",
+      "https://secure5.saashr.com/ta/rest/ui/recruitment/companies/%7C6206620/job-requisitions/638051330?lang=en-US"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-featherlite-cresco-ia",
+      "field": "welder_postings",
+      "value": "1 open on Featherlite's own UKG Ready board (read 2026-11-20): Welder I at 816 7th Street West, Cresco (MIG, aluminum or steel); no posting date shown",
+      "why": "board re-read"
+     }
+    ]
+   },
+   {
+    "plant": "p-featherlite-cresco-ia-2",
+    "kind": "reworded",
+    "note": "",
+    "removed": [
+     [
+      "p-featherlite-cresco-ia-2:welder_postings",
+      "https://www.fthr.com/featherlite/careers/job-openings/",
+      "superseded: both Featherlite UKG Ready boards were read; no welding role at 13380 US Hwy 63"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-featherlite-cresco-ia-2:welder_postings",
+      "inferred",
+      "none found: Featherlite UKG Ready boards (read 2026-11-20) list only an OTR Driver at 13380 US Hwy 63; the Welder I requisition names 816 7th Street West (sibling record)",
+      ""
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-featherlite-cresco-ia-2",
+      "field": "welder_postings",
+      "value": "none found: Featherlite's UKG Ready boards (read 2026-11-20) list no welding role at 13380 US Hwy 63; the Welder I names 816 7th Street West, the sibling record",
+      "why": "boards re-read"
+     }
+    ]
+   },
+   {
+    "plant": "p-look-middlebury-in",
+    "kind": "reworded",
+    "note": "",
+    "removed": [
+     [
+      "p-look-middlebury-in:welder_postings",
+      "https://www.novaecorp.com",
+      "superseded: the Novae ADP board (embedded on the brand careers pages) was read 2026-11-20; it lists no welding role in Middlebury"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-look-middlebury-in:welder_postings",
+      "inferred",
+      "none found: Novae ADP board (read 2026-11-20) lists welders only at Clarinda IA, Columbia City IN and Red Oak IA; none at Middlebury",
+      ""
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-look-middlebury-in",
+      "field": "welder_postings",
+      "value": "none found: Novae ADP board (read 2026-11-20) lists welders only at Clarinda IA, Columbia City IN and Red Oak IA",
+      "why": "board read (novaecorp.com 403, board reached via the brand careers page)"
+     }
+    ]
+   },
+   {
+    "plant": "p-midsota-avon-mn",
+    "kind": "reworded",
+    "note": "",
+    "removed": [
+     [
+      "p-midsota-avon-mn:welder_postings",
+      "",
+      "superseded: the Novae ADP board (embedded on the brand careers pages) was read 2026-11-20; it lists no welding role in Avon"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-midsota-avon-mn:welder_postings",
+      "inferred",
+      "none found: Novae ADP board (read 2026-11-20) lists welders only at Clarinda IA, Columbia City IN and Red Oak IA; none at Avon",
+      ""
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-midsota-avon-mn",
+      "field": "welder_postings",
+      "value": "none found: Novae ADP board (read 2026-11-20) lists welders only at Clarinda IA, Columbia City IN and Red Oak IA",
+      "why": "board read (novaecorp.com 403, board reached via the brand careers page)"
+     }
+    ]
+   },
+   {
+    "plant": "p-cam-superline-waynesboro-pa",
+    "kind": "reworded",
+    "note": "",
+    "removed": [
+     [
+      "p-cam-superline-waynesboro-pa:welder_postings",
+      "",
+      "superseded: the Novae ADP board (embedded on the brand careers pages) was read 2026-11-20; it lists no welding role in Waynesboro"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-cam-superline-waynesboro-pa:welder_postings",
+      "inferred",
+      "none found: Novae ADP board (read 2026-11-20) lists welders only at Clarinda IA, Columbia City IN and Red Oak IA; none at Waynesboro",
+      ""
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-cam-superline-waynesboro-pa",
+      "field": "welder_postings",
+      "value": "none found: Novae ADP board (read 2026-11-20) lists welders only at Clarinda IA, Columbia City IN and Red Oak IA",
+      "why": "board read (novaecorp.com 403, board reached via the brand careers page)"
+     }
+    ]
+   },
+   {
+    "plant": "p-novae-markle-in",
+    "kind": "reworded",
+    "note": "",
+    "removed": [
+     [
+      "p-novae-markle-in:welder_postings",
+      "",
+      "superseded: the Novae ADP board (embedded on the brand careers pages) was read 2026-11-20; it lists no welding role in Markle"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-novae-markle-in:welder_postings",
+      "inferred",
+      "none found: Novae ADP board (read 2026-11-20) lists welders only at Clarinda IA, Columbia City IN and Red Oak IA; none at Markle",
+      ""
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-novae-markle-in",
+      "field": "welder_postings",
+      "value": "none found: Novae ADP board (read 2026-11-20) lists welders only at Clarinda IA, Columbia City IN and Red Oak IA",
+      "why": "board read (novaecorp.com 403, board reached via the brand careers page)"
+     }
+    ]
+   },
+   {
+    "plant": "p-exiss-el-reno-ok",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [
+     [
+      "p-exiss-el-reno-ok:welder_postings",
+      "https://www.exiss.com/about",
+      "fault 3: the UKG Ready board linked from exiss.com/careers (ein 118960402) lists two Welder I requisitions at 900 East Trail Blvd"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-exiss-el-reno-ok:welder_postings",
+      "stated",
+      "Welder I (UKG Ready requisition 654777623), 900 East Trail Blvd., El Reno OK; MIG welding of aluminum or steel components; open on the board 2026-11-20, no posting date shown",
+      "https://secure5.saashr.com/ta/rest/ui/recruitment/companies/%7C6206620/job-requisitions/654777623?lang=en-US"
+     ],
+     [
+      "p-exiss-el-reno-ok:welder_postings",
+      "stated",
+      "Welder I (UKG Ready requisition 637994593), 900 East Trail Blvd., El Reno OK; MIG welding of aluminum or steel components; open on the board 2026-11-20, no posting date shown",
+      "https://secure5.saashr.com/ta/rest/ui/recruitment/companies/%7C6206620/job-requisitions/637994593?lang=en-US"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-exiss-el-reno-ok",
+      "field": "welder_postings",
+      "value": "2 Welder I requisitions open at once on the Exiss UKG Ready board (read 2026-11-20) at 900 East Trail Blvd., El Reno (MIG, aluminum or steel); no posting dates shown",
+      "why": "board read"
+     }
+    ]
+   },
+   {
+    "plant": "p-doonan-great-bend-ks",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [
+     [
+      "p-doonan-great-bend-ks:welder_postings",
+      "",
+      "fault 3: Doonan's Paycom board (embedded on doonan.com/careers) lists a Production Welder at Great Bend"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-doonan-great-bend-ks:welder_postings",
+      "stated",
+      "Production Welder (Paycom job 194020), 36 NE Hwy 156, Great Bend KS, listed 2026-03-25 (Doonan Paycom board, read 2026-11-20)",
+      "https://www.paycomonline.net/v4/ats/web.php/portal/13CF4FFB54DD02ABB2B695823F408F2B/jobs/194020"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-doonan-great-bend-ks",
+      "field": "welder_postings",
+      "value": "1 open on Doonan's own Paycom board (read 2026-11-20): Production Welder at 36 NE Hwy 156, Great Bend (listed 2026-03-25)",
+      "why": "board read"
+     }
+    ]
+   },
+   {
+    "plant": "p-interstate-group-kingman-az",
+    "kind": "reworded",
+    "note": "",
+    "removed": [
+     [
+      "p-interstate-group-kingman-az:welder_postings",
+      "https://www.trailersplus.com/careers",
+      "superseded: the ADP board behind trailersplus.com/careers was read; it lists welders at Conway and Nampa, none at Kingman"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-interstate-group-kingman-az:welder_postings",
+      "inferred",
+      "none found: the Interstate Group / TrailersPlus ADP board (read 2026-11-20) lists trailer-manufacturing welders at Conway AR and Nampa ID only",
+      ""
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-interstate-group-kingman-az",
+      "field": "welder_postings",
+      "value": "none found: Interstate Group / TrailersPlus ADP board (read 2026-11-20) lists welders at Conway AR and Nampa ID only",
+      "why": "board read"
+     }
+    ]
+   },
+   {
+    "plant": "p-bwise-chambersburg-pa",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [
+     [
+      "p-bwise-chambersburg-pa:welder_postings",
+      "https://bwisetrailers.com/careers/",
+      "fault 3: row said none found / not read; the company's own board, re-read 2026-11-20 with a browser and its JSON, lists a welding role placed at this site (Paycom widget on bwisetrailers.com/careers renders only in a browser)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-bwise-chambersburg-pa:welder_postings",
+      "stated",
+      "Welder (Paycom job 496300), Chambersburg PA 17201, 1002 Wayne Avenue, listed 2026-11-17; lay out, fit and weld; $1,500 retention bonus",
+      "https://www.paycomonline.net/v4/ats/web.php/portal/7B3B857C3FCA1E53147855272C86C8A8/jobs/496300"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-bwise-chambersburg-pa",
+      "field": "welder_postings",
+      "value": "1 open on BWISE's own Paycom board (read 2026-11-20): Welder, 1002 Wayne Avenue, Chambersburg (listed 2026-11-17); $1,500 retention bonus",
+      "why": "board re-read with a browser"
+     }
+    ]
+   },
+   {
+    "plant": "p-load-trail-como-tx",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [
+     [
+      "p-load-trail-como-tx:welder_postings",
+      "https://www.energyjobshop.com/job/welders-needed-in-tx-3000-bonus/",
+      "fault 3: 'none current' is wrong: Load Trail's own UKG Ready board lists a Welder at 811 W Main St, Como"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-load-trail-como-tx:welder_postings",
+      "stated",
+      "Welder (UKG Ready requisition 386231945), 811 W Main St, Como TX; MIG welding experience required; open on the board 2026-11-20, no posting date shown",
+      "https://secure5.entertimeonline.com/ta/rest/ui/recruitment/companies/%7CLoadTrail/job-requisitions/386231945?lang=en-US"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-load-trail-como-tx",
+      "field": "welder_postings",
+      "value": "1 open on Load Trail's own UKG Ready board (read 2026-11-20): Welder at 811 W Main St, Como (MIG experience required); no posting date shown",
+      "why": "board re-read"
+     }
+    ]
+   },
+   {
+    "plant": "p-trailer-component-mentor-oh",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [
+     [
+      "p-trailer-component-mentor-oh:welder_postings",
+      "https://www.jobtarget.com/jobs/jt-fqfeki1qz7/welder-i-mentor-ohio",
+      "fault 3: 'no posting is placed at this building' is wrong: Buyers' own ADP board gives the Welder I requisition the address 8120 Tyler Blvd, Mentor"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-trailer-component-mentor-oh:welder_postings",
+      "stated",
+      "Welder I (Buyers Products ADP requisition 9201463748861_1), 8120 Tyler Blvd, Mentor OH, listed 2025-10-31; MIG or TIG",
+      "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201463748861_1?cid=e892388c-a531-41a3-9f41-4dab8bc88c4f&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-trailer-component-mentor-oh",
+      "field": "welder_postings",
+      "value": "1 open on Buyers Products' own ADP board (read 2026-11-20): Welder I at 8120 Tyler Blvd, Mentor (listed 2025-10-31; MIG or TIG)",
+      "why": "posting now placed at this building by its address"
+     }
+    ]
+   },
+   {
+    "plant": "p-eby-ephrata-pa",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [
+     [
+      "p-eby-ephrata-pa:welder_postings",
+      "https://mhebyinc.hireclick.com/jb/skilled-aluminum-tig-welder/view/252576",
+      "fault 3: 'board shows no current openings' is wrong: the HireClick board (browser render) lists Robotic Welding Operator and Skilled Aluminum TIG Welder at Ephrata"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-eby-ephrata-pa:welder_postings",
+      "stated",
+      "Skilled Aluminum TIG Welder, 502 Alexander Dr, Ephrata PA, listed 2026-07-08; 1st and 2nd shift",
+      "https://mhebyinc.hireclick.com/jb/skilled-aluminum-tig-welder/view/252576"
+     ],
+     [
+      "p-eby-ephrata-pa:welder_postings",
+      "stated",
+      "Robotic Welding Operator, 502 Alexander Dr, Ephrata PA, listed 2026-07-08: robotic aluminum MIG cell for truck body decks and bulkheads, some manual MIG",
+      "https://mhebyinc.hireclick.com/jb/robotic-welding-operator/view/252575"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-eby-ephrata-pa",
+      "field": "welder_postings",
+      "value": "2 open on M.H. Eby's own HireClick board (read 2026-11-20) at 502 Alexander Dr, Ephrata: Skilled Aluminum TIG Welder and Robotic Welding Operator (robotic aluminum MIG cell for truck body decks; some manual MIG), both listed 2026-07-08",
+      "why": "board re-read with a browser"
+     }
+    ]
+   },
+   {
+    "plant": "p-alcom-sioux-falls-sd",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [
+     [
+      "p-alcom-sioux-falls-sd:welder_postings",
+      "https://www.alcomusa.com/careers/location/sioux-falls-sd",
+      "fault 3: row said none found / not read; the company's own board, re-read 2026-11-20 with a browser and its JSON, lists a welding role placed at this site (ALCOM's ADP Workforce Now board, linked from the location page, lists a Welder here)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-alcom-sioux-falls-sd:welder_postings",
+      "stated",
+      "Welder (ADP requisition 9201245989417_3), Sioux Falls, SD, listed 2026-10-27 on ALCOM's own ADP board (read 2026-11-20)",
+      "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201245989417_3?cid=e4cbd7a8-f1a2-482e-b1a5-fd60dd3d5d72&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US"
+     ],
+     [
+      "p-alcom-sioux-falls-sd:welder_postings",
+      "inferred",
+      "posting attribution: city-only Welder posting placed at this plant (rule 7a)",
+      ""
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-alcom-sioux-falls-sd",
+      "field": "welder_postings",
+      "value": "1 open on ALCOM's own ADP board (read 2026-11-20): Welder, Sioux Falls, SD (listed 2026-10-27); city-only, placed by rule 7a",
+      "why": "board re-read: was none found"
+     }
+    ]
+   },
+   {
+    "plant": "p-alcom-bonner-mt",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [
+     [
+      "p-alcom-bonner-mt:welder_postings",
+      "https://www.alcomusa.com/careers/location/bonner-mt",
+      "fault 3: row said none found / not read; the company's own board, re-read 2026-11-20 with a browser and its JSON, lists a welding role placed at this site (ALCOM's ADP Workforce Now board, linked from the location page, lists a Welder here)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-alcom-bonner-mt:welder_postings",
+      "stated",
+      "Welder (ADP requisition 9201245531060_54), Bonner-West Riverside, MT, listed 2026-10-27 on ALCOM's own ADP board (read 2026-11-20)",
+      "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201245531060_54?cid=e4cbd7a8-f1a2-482e-b1a5-fd60dd3d5d72&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US"
+     ],
+     [
+      "p-alcom-bonner-mt:welder_postings",
+      "inferred",
+      "posting attribution: city-only Welder posting placed at this plant (rule 7a)",
+      ""
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-alcom-bonner-mt",
+      "field": "welder_postings",
+      "value": "1 open on ALCOM's own ADP board (read 2026-11-20): Welder, Bonner-West Riverside, MT (listed 2026-10-27); city-only, placed by rule 7a",
+      "why": "board re-read: was none found"
+     }
+    ]
+   },
+   {
+    "plant": "p-load-trail-sumner-tx",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [
+     [
+      "p-load-trail-sumner-tx:welder_postings",
+      "",
+      "fault 3: Load Trail's own UKG Ready board lists a Welder for its Sumner plant"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-load-trail-sumner-tx:welder_postings",
+      "stated",
+      "Welder (UKG Ready requisition 369428161): 'Load Trail in Sumner is seeking an experienced Welder'; requisition address is the Paris TX office (30 Clarksville St.); MIG; open on the board 2026-11-20, no posting date shown",
+      "https://secure5.entertimeonline.com/ta/rest/ui/recruitment/companies/%7CLoadTrail/job-requisitions/369428161?lang=en-US"
+     ],
+     [
+      "p-load-trail-sumner-tx:welder_postings",
+      "inferred",
+      "posting attribution: the Sumner Welder requisition is placed at this plant (rule 7a)",
+      ""
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-load-trail-sumner-tx",
+      "field": "welder_postings",
+      "value": "1 open on Load Trail's own UKG Ready board (read 2026-11-20): Welder, text names Sumner (address field is the Paris office); no posting date shown; placed by rule 7a",
+      "why": "board re-read: was unknown"
+     }
+    ]
+   },
+   {
+    "plant": "p-cimarron-chickasha-ok",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [
+     [
+      "p-cimarron-chickasha-ok:welder_postings",
+      "",
+      "fault 3: Cimarron's own ADP board (embedded on cimarrontrailers.com/company/opportunities) lists a MIG Welder at Chickasha"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-cimarron-chickasha-ok:welder_postings",
+      "stated",
+      "MIG Welder (ADP requisition 9205251514753_14), Chickasha OK, listed 2026-11-03 (Cimarron ADP board, read 2026-11-20)",
+      "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9205251514753_14?cid=1e91abd5-1792-441f-a40a-9a4e07f3f772&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US"
+     ],
+     [
+      "p-cimarron-chickasha-ok:welder_postings",
+      "inferred",
+      "posting attribution: city-only posting placed at this plant (rule 7a)",
+      ""
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-cimarron-chickasha-ok",
+      "field": "welder_postings",
+      "value": "1 open on Cimarron's own ADP board (read 2026-11-20): MIG Welder, Chickasha OK (listed 2026-11-03); city-only, rule 7a",
+      "why": "board read"
+     }
+    ]
+   },
+   {
+    "plant": "p-smithco-le-mars-ia",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [
+     [
+      "p-smithco-le-mars-ia:welder_postings",
+      "",
+      "fault 3: the external board linked from sidedump.com/careers (SmithCo's ADP board) lists two welder roles at Le Mars"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-smithco-le-mars-ia:welder_postings",
+      "stated",
+      "Evening Welder - $2.50 shift premium! (ADP requisition 9207365516929_1), Le Mars IA, listed 2026-11-02",
+      "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9207365516929_1?cid=410a2523-a2fd-43b1-8595-1b360b7738c5&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US"
+     ],
+     [
+      "p-smithco-le-mars-ia:welder_postings",
+      "stated",
+      "Welder (ADP requisition 9206790678903_1), Le Mars IA, listed 2026-08-19",
+      "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9206790678903_1?cid=410a2523-a2fd-43b1-8595-1b360b7738c5&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US"
+     ],
+     [
+      "p-smithco-le-mars-ia:welder_postings",
+      "inferred",
+      "posting attribution: city-only posting placed at this plant (rule 7a)",
+      ""
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-smithco-le-mars-ia",
+      "field": "welder_postings",
+      "value": "2 open at once on SmithCo's own ADP board (read 2026-11-20), Le Mars IA: Evening Welder ($2.50 shift premium; listed 2026-11-02) and Welder (listed 2026-08-19); city-only, rule 7a",
+      "why": "board read"
+     }
+    ]
+   },
+   {
+    "plant": "p-towmaster-litchfield-mn",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [
+     [
+      "p-towmaster-litchfield-mn:welder_postings",
+      "",
+      "fault 3: the Paycor board embedded on towmaster.com/careers renders in a browser and lists two Towmaster welder roles"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-towmaster-litchfield-mn:welder_postings",
+      "stated",
+      "2nd Shift Welder - Trailer - Towmaster, Litchfield (Monroe/Towmaster Paycor board, read 2026-11-20; no posting date shown)",
+      "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883c66371563b016388ef241e5129&id=8a7883a89d02f872019d0762c66f11e5"
+     ],
+     [
+      "p-towmaster-litchfield-mn:welder_postings",
+      "stated",
+      "Trailer Welder - Towmaster, Litchfield MN (Monroe/Towmaster Paycor board, read 2026-11-20; no posting date shown)",
+      "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883c66371563b016388ef241e5129&id=8a7887a1a064211201a06d6766cb6e64"
+     ],
+     [
+      "p-towmaster-litchfield-mn:welder_postings",
+      "inferred",
+      "posting attribution: city-only posting placed at this plant (rule 7a)",
+      ""
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-towmaster-litchfield-mn",
+      "field": "welder_postings",
+      "value": "2 open at once on the Monroe/Towmaster Paycor board (read 2026-11-20): 2nd Shift Welder - Trailer - Towmaster and Trailer Welder - Towmaster, Litchfield; no posting dates shown; rule 7a",
+      "why": "board rendered in a browser"
+     }
+    ]
+   },
+   {
+    "plant": "p-ledwell-texarkana-tx",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [
+     [
+      "p-ledwell-texarkana-tx:welder_postings",
+      "",
+      "fault 3: Ledwell's Paylocity board (linked from ledwell.com/contact-us/careers) lists a WELDER opening"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-ledwell-texarkana-tx:welder_postings",
+      "stated",
+      "WELDER (Paylocity job 4422076), Ledwell; MIG, TIG, flux-core and aluminum welding on steel and aluminum; open on the board 2026-11-20 (no location or date on the job page)",
+      "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4422076"
+     ],
+     [
+      "p-ledwell-texarkana-tx:welder_postings",
+      "inferred",
+      "posting attribution: city-only posting placed at this plant (rule 7a)",
+      ""
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-ledwell-texarkana-tx",
+      "field": "welder_postings",
+      "value": "1 open on Ledwell's own Paylocity board (read 2026-11-20): WELDER (MIG, TIG, flux-core, aluminum); no location or date on the posting; rule 7a",
+      "why": "board read"
+     }
+    ]
+   },
+   {
+    "plant": "p-nexhaul-rocky-mount-va",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [
+     [
+      "p-nexhaul-rocky-mount-va:welder_postings",
+      "",
+      "fault 3: nexhaul.com/job-positions lists a WELDER opening at Rocky Mount"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-nexhaul-rocky-mount-va:welder_postings",
+      "stated",
+      "WELDER, Rocky Mount VA, on-site, full-time (company job-positions page, read 2026-11-20; undated)",
+      "https://www.nexhaul.com/job-positions/"
+     ],
+     [
+      "p-nexhaul-rocky-mount-va:welder_postings",
+      "inferred",
+      "posting attribution: city-only posting placed at this plant (rule 7a)",
+      ""
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-nexhaul-rocky-mount-va",
+      "field": "welder_postings",
+      "value": "1 listed on the company job-positions page (read 2026-11-20): WELDER, Rocky Mount VA, full-time; undated; rule 7a",
+      "why": "page read"
+     }
+    ]
+   },
+   {
+    "plant": "p-interstate-group-conway-ar",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [
+     [
+      "p-interstate-group-conway-ar:welder_postings",
+      "https://www.trailersplus.com/careers",
+      "fault 3: the ADP board embedded on trailersplus.com/careers (browser render) lists a trailer-manufacturing Welder at Conway, not only dealership roles"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-interstate-group-conway-ar:welder_postings",
+      "stated",
+      "Welder - Utility Trailer manufacturing (ADP requisition 9204284755872_1), Conway, listed 2026-09-19 (Interstate Group / TrailersPlus ADP board, read 2026-11-20)",
+      "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9204284755872_1?cid=3229b6ae-1303-4196-8e9b-2859075a98ba&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US"
+     ],
+     [
+      "p-interstate-group-conway-ar:welder_postings",
+      "inferred",
+      "posting attribution: city-only trailer-manufacturing Welder placed at this plant (rule 7a)",
+      ""
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-interstate-group-conway-ar",
+      "field": "welder_postings",
+      "value": "1 open on the Interstate Group / TrailersPlus ADP board (read 2026-11-20): Welder - Utility Trailer manufacturing, Conway (listed 2026-09-19); city-only, rule 7a",
+      "why": "board read"
+     }
+    ]
+   },
+   {
+    "plant": "p-interstate-group-nampa-id",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [
+     [
+      "p-interstate-group-nampa-id:welder_postings",
+      "https://www.trailersplus.com/careers",
+      "fault 3: the ADP board embedded on trailersplus.com/careers (browser render) lists a trailer-manufacturing Welder at Nampa, not only dealership roles"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-interstate-group-nampa-id:welder_postings",
+      "stated",
+      "Welder - Trailer Manufacturing (ADP requisition 9203796120202_1), Nampa, listed 2026-05-26 (Interstate Group / TrailersPlus ADP board, read 2026-11-20)",
+      "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9203796120202_1?cid=3229b6ae-1303-4196-8e9b-2859075a98ba&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US"
+     ],
+     [
+      "p-interstate-group-nampa-id:welder_postings",
+      "inferred",
+      "posting attribution: city-only trailer-manufacturing Welder placed at this plant (rule 7a)",
+      ""
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-interstate-group-nampa-id",
+      "field": "welder_postings",
+      "value": "1 open on the Interstate Group / TrailersPlus ADP board (read 2026-11-20): Welder - Trailer Manufacturing, Nampa (listed 2026-05-26); city-only, rule 7a",
+      "why": "board read"
+     }
+    ]
+   },
+   {
+    "plant": "p-wabash-cadiz-ky",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [
+     [
+      "p-wabash-cadiz-ky:welder_postings",
+      "",
+      "fault 3: Wabash's ADP board (read 2026-11-20) lists a Welder I at Cadiz"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-wabash-cadiz-ky:welder_postings",
+      "stated",
+      "Welder I (#8947), Cadiz, Kentucky (Wabash ADP board, read 2026-11-20)",
+      "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001215475906"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-wabash-cadiz-ky",
+      "field": "welder_postings",
+      "value": "1 open on Wabash's ADP board (read 2026-11-20): Welder I #8947, Cadiz KY (postingDate 2026-07-30 in the board API); city-only, rule 7a",
+      "why": "board read"
+     }
+    ]
+   },
+   {
+    "plant": "p-sidumpr-columbus-ne",
+    "kind": "postings_changed",
+    "note": "",
+    "removed": [],
+    "new_rows": [
+     [
+      "p-sidumpr-columbus-ne:welder_postings",
+      "stated",
+      "Welder (ADP requisition 9202610200804_2), Columbus NE, listed 2026-11-04 on SIDUMP'R's own ADP board (read 2026-11-20)",
+      "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9202610200804_2?cid=5e18ef23-2157-47f0-bf76-486c88165ebd&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-sidumpr-columbus-ne",
+      "field": "welder_postings",
+      "value": "1 open on SIDUMP'R's own ADP board (read 2026-11-20): Welder, Columbus NE (listed 2026-11-04); the careers page also invites Welders, Painters, General Production and Assembly",
+      "why": "dated posting found on the embedded ADP board"
+     }
+    ]
+   },
+   {
+    "plant": "p-hh-trailer-clarinda-ia",
+    "kind": "postings_changed_not_counted",
+    "note": "",
+    "removed": [
+     [
+      "p-hh-trailer-clarinda-ia:welder_postings",
+      "",
+      "fault 3: Novae's own ADP board (linked from hhtrailer.com/careers; novaecorp.com itself 403) lists a Welder at Clarinda"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-hh-trailer-clarinda-ia:welder_postings",
+      "stated",
+      "Welder (Novae ADP requisition 9201493203658_104), Clarinda IA, listed 2026-11-12 (Novae ADP board, read 2026-11-20)",
+      "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201493203658_104?cid=d16ba13d-474e-4326-b628-74c87f0b289a&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US"
+     ],
+     [
+      "p-hh-trailer-clarinda-ia:welder_postings",
+      "inferred",
+      "Clarinda-only Welder posting: none counted for this plant (rule 7c)",
+      ""
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-hh-trailer-clarinda-ia",
+      "field": "welder_postings",
+      "value": "Novae's own ADP board (read 2026-11-20) lists a Welder in Clarinda IA (listed 2026-11-12), city-only; Novae has other Clarinda establishments over 1 km away (OSHA), so none counted here (rule 7c)",
+      "why": "board read via the brand careers page; site tie fails 7c"
+     }
+    ]
+   },
+   {
+    "plant": "p-lippert-nampa-id",
+    "kind": "retagged",
+    "note": "",
+    "removed": [
+     [
+      "p-lippert-nampa-id:welder_postings",
+      "https://careers.lippert.com/jobs/18363?lang=en-us",
+      "stated 'none found' row names several roles from the careers API but quotes one job page; a none-found reading is a judgement: retagged inferred with the API read as reasoning"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-lippert-nampa-id:welder_postings",
+      "inferred",
+      "none found: Lippert careers API (300 postings read 2026-11-20) lists one posting at 1908 Industrial Rd (Laborer, board label 084 LCI Plant Axles, listed 2026-11-18), no welder",
+      "https://careers.lippert.com/jobs/18363?lang=en-us"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-lippert-waxahachie-tx",
+    "kind": "retagged",
+    "note": "",
+    "removed": [
+     [
+      "p-lippert-waxahachie-tx:welder_postings",
+      "https://careers.lippert.com/jobs/17164?lang=en-us",
+      "stated 'none found' row names several roles from the careers API but quotes one job page; a none-found reading is a judgement: retagged inferred with the API read as reasoning"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-lippert-waxahachie-tx:welder_postings",
+      "inferred",
+      "none found: Lippert careers API (300 postings read 2026-11-20): 101 Mushroom Rd (241) and 401 Mushroom Rd (241B) list assembly, axle-torsion assembly, receiving and maintenance roles; the maintenance posting (listed 2026-06-04) maintains production welders",
+      "https://careers.lippert.com/jobs/17164?lang=en-us"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-lippert-kimberly-id",
+    "kind": "retagged",
+    "note": "",
+    "removed": [
+     [
+      "p-lippert-kimberly-id:welder_postings",
+      "https://careers.lippert.com/jobs/18032?lang=en-us",
+      "stated 'none found' row names several roles from the careers API but quotes one job page; a none-found reading is a judgement: retagged inferred with the API read as reasoning"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-lippert-kimberly-id:welder_postings",
+      "inferred",
+      "none found (Plant Manager only, listed 2026-10-14)",
+      "https://careers.lippert.com/jobs/18032?lang=en-us"
+     ]
+    ],
+    "plant_updates": []
+   }
+  ],
+  "1": [
+   {
+    "plant": "p-etnyre-oregon-il",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-etnyre-oregon-il:parent_company",
+      "https://etnyreinternational.com/",
+      "fault 1 (label not on the cited page): 'family-owned' is not on etnyreinternational.com; moved to the Paycom row whose page carries it"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-etnyre-oregon-il:parent_company",
+      "stated",
+      "Etnyre International (Oregon IL), parent of E.D. Etnyre & Co., BearCat Manufacturing, SMF and Hendrick",
+      "https://etnyreinternational.com/"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-etnyre-oregon-il",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-etnyre-oregon-il:parent_company",
+      "https://www.paycomonline.net/v4/ats/web.php/jobs?clientkey=FF8052485F6C103A2FEBD17D169C9F03",
+      "fault 1 (label not on the cited page): re-quoted so 'family-owned' rests on page text"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-etnyre-oregon-il:parent_company",
+      "stated",
+      "Etnyre International (E.D. Etnyre & Co.); family-owned",
+      "https://www.paycomonline.net/v4/ats/web.php/jobs?clientkey=FF8052485F6C103A2FEBD17D169C9F03"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-ek-machine-fall-river-wi",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-ek-machine-fall-river-wi:parent_company",
+      "https://topworkplaces.com/company/ek-machine/",
+      "fault 1 (label not on the cited page): 'Co., Inc.' is not on topworkplaces.com; the legal name is on ekmachine.com (support row)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-ek-machine-fall-river-wi:parent_company",
+      "stated",
+      "EK Machine, headquartered in Fall River",
+      "https://topworkplaces.com/company/ek-machine/"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-ek-machine-fall-river-wi",
+    "kind": "support_row",
+    "note": "carries the legal name the plant parent value uses",
+    "removed": [],
+    "new_rows": [
+     [
+      "p-ek-machine-fall-river-wi:parent_company",
+      "stated",
+      "EK Machine Co., Inc.",
+      "https://www.ekmachine.com/contact-us/"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-ek-machine-fall-river-wi",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-ek-machine-fall-river-wi:name",
+      "https://www.ekmachine.com/contact-us/",
+      "fault 1 (label not on the cited page): plant name carries '(Complete Manufacturing and Power Products)' and 'campus' with no row; contact page carries the two business names, not 'campus'"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-ek-machine-fall-river-wi:name",
+      "stated",
+      "EK Machine - Fall River (Complete Manufacturing and Power Products)",
+      "https://www.ekmachine.com/contact-us/"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-ek-machine-fall-river-wi",
+      "field": "name",
+      "value": "EK Machine - Fall River (Complete Manufacturing and Power Products)",
+      "why": "dropped 'campus' (on no cited page)"
+     }
+    ]
+   },
+   {
+    "plant": "p-fontaine-specialized-springville-al",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-fontaine-specialized-springville-al:parent_company",
+      "https://www.fontainespecialized.com/about-us",
+      "fault 1 (label not on the cited page): 'Holdings' is not on the page ('a Marmon/Berkshire Hathaway business')"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-fontaine-specialized-springville-al:parent_company",
+      "stated",
+      "Marmon (Berkshire Hathaway)",
+      "https://www.fontainespecialized.com/about-us"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-fontaine-specialized-springville-al",
+      "field": "parent_company",
+      "value": "Marmon (Berkshire Hathaway)",
+      "why": "page says Marmon/Berkshire Hathaway"
+     },
+     {
+      "id": "p-fontaine-specialized-springville-al",
+      "field": "name",
+      "value": "Fontaine Specialized - Springville",
+      "why": "'(Fontaine Commercial Trailer)' is on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-trail-king-mitchell-sd",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-trail-king-mitchell-sd:name",
+      "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=TRAIL%20KING&state_abbr=SD&output=JSON",
+      "fault 1 (label not on the cited page): 'Trail King Industries - Mitchell, Norway Ave site (headquarters)' carries labels not on the EPA record ('headquarters', 'West plant', 'former Dakota Trailer Manufacturing'); FRS unreachable 2026-11-20, re-cited to the ECHO facility report"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-trail-king-mitchell-sd:name",
+      "stated",
+      "Trail King Industries - Mitchell, Norway Ave site",
+      "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000747194&output=JSON"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-trail-king-mitchell-sd",
+      "field": "name",
+      "value": "Trail King Industries - Mitchell, Norway Ave site",
+      "why": "labels on no cited page dropped"
+     }
+    ]
+   },
+   {
+    "plant": "p-trail-king-mitchell-sd-2",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-trail-king-mitchell-sd-2:name",
+      "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=TRAIL%20KING&state_abbr=SD&output=JSON",
+      "fault 1 (label not on the cited page): 'Trail King Industries - Mitchell West plant (Ohlman St)' carries labels not on the EPA record ('headquarters', 'West plant', 'former Dakota Trailer Manufacturing'); FRS unreachable 2026-11-20, re-cited to the ECHO facility report"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-trail-king-mitchell-sd-2:name",
+      "stated",
+      "Trail King Industries - Mitchell, Ohlman St site",
+      "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000427967&output=JSON"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-trail-king-mitchell-sd-2",
+      "field": "name",
+      "value": "Trail King Industries - Mitchell, Ohlman St site",
+      "why": "labels on no cited page dropped"
+     }
+    ]
+   },
+   {
+    "plant": "p-trail-king-yankton-sd",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-trail-king-yankton-sd:name",
+      "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=TRAIL%20KING&state_abbr=SD&output=JSON",
+      "fault 1 (label not on the cited page): 'Trail King Industries - Yankton plant (former Dakota Trailer Manufacturing)' carries labels not on the EPA record ('headquarters', 'West plant', 'former Dakota Trailer Manufacturing'); FRS unreachable 2026-11-20, re-cited to the ECHO facility report"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-trail-king-yankton-sd:name",
+      "stated",
+      "Trail King Industries - Yankton plant",
+      "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110067678187&output=JSON"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-trail-king-yankton-sd",
+      "field": "name",
+      "value": "Trail King Industries - Yankton plant",
+      "why": "labels on no cited page dropped"
+     }
+    ]
+   },
+   {
+    "plant": "p-pitts-pittsview-al",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-pitts-pittsview-al:name",
+      "https://pittstrailers.com/about-us-2/",
+      "fault 1 (label not on the cited page): 'Inc.' and 'DBA' are not on the page"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-pitts-pittsview-al:name",
+      "stated",
+      "Pitts Enterprises (Pitts Trailers) - Pittsview plant",
+      "https://pittstrailers.com/about-us-2/"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-pitts-pittsview-al",
+      "field": "name",
+      "value": "Pitts Enterprises (Pitts Trailers) - Pittsview plant",
+      "why": "dropped 'Inc.' (on no cited page)"
+     }
+    ]
+   },
+   {
+    "plant": "p-custom-truck-elk-point-sd",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-custom-truck-elk-point-sd:name",
+      "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=LOAD%20KING&state_abbr=SD&output=JSON",
+      "fault 1 (label not on the cited page): '(Custom Truck One Source - Elk Point)' is not on the EPA record (owner label; the parent row carries it); FRS unreachable, re-cited to ECHO"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-custom-truck-elk-point-sd:name",
+      "stated",
+      "Load King Trailers - Elk Point",
+      "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110071719223&output=JSON"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-custom-truck-elk-point-sd",
+      "field": "name",
+      "value": "Load King Trailers - Elk Point",
+      "why": "owner label dropped from the name (parent_company carries Custom Truck One Source)"
+     }
+    ]
+   },
+   {
+    "plant": "p-ledwell-texarkana-tx",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-ledwell-texarkana-tx:name",
+      "https://ledwell.com/about-us/",
+      "fault 1 (label not on the cited page): 'Enterprises, Inc.' is not on the page"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-ledwell-texarkana-tx:name",
+      "stated",
+      "Ledwell & Son - Texarkana",
+      "https://ledwell.com/about-us/"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-ledwell-texarkana-tx",
+      "field": "name",
+      "value": "Ledwell & Son - Texarkana",
+      "why": "'Enterprises, Inc.' on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-fontaine-haleyville-al",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-fontaine-haleyville-al:name",
+      "https://www.fontainetrailer.com",
+      "fault 1 (label not on the cited page): 'Trailer Company' is not on fontainetrailer.com (phrase absent)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-fontaine-haleyville-al:name",
+      "stated",
+      "Fontaine - Haleyville",
+      "https://www.fontainetrailer.com"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-fontaine-haleyville-al",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-fontaine-haleyville-al:parent_company",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): OSHA record 2897371 gives establishment and company name 'Fontaine' only"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-fontaine-haleyville-al:parent_company",
+      "stated",
+      "Fontaine",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-fontaine-haleyville-al",
+      "field": "name",
+      "value": "Fontaine - Haleyville",
+      "why": "'Trailer Company' on no cited page"
+     },
+     {
+      "id": "p-fontaine-haleyville-al",
+      "field": "parent_company",
+      "value": "Fontaine",
+      "why": "OSHA company_name"
+     }
+    ]
+   },
+   {
+    "plant": "p-big-tex-wills-point-tx",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-big-tex-wills-point-tx:parent_company",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): ', LLC' is not on the OSHA record (company_name Big Tex Trailer Manufacturing)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-big-tex-wills-point-tx:parent_company",
+      "stated",
+      "Big Tex Trailer Manufacturing",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-big-tex-wills-point-tx",
+      "field": "parent_company",
+      "value": "Big Tex Trailer Manufacturing",
+      "why": "legal suffix on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-big-tex-madill-ok",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-big-tex-madill-ok:parent_company",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): ', LLC' is not on the OSHA record (company_name Big Tex Trailer Manufacturing)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-big-tex-madill-ok:parent_company",
+      "stated",
+      "Big Tex Trailer Manufacturing",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-big-tex-madill-ok",
+      "field": "parent_company",
+      "value": "Big Tex Trailer Manufacturing",
+      "why": "legal suffix on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-big-tex-batavia-oh",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-big-tex-batavia-oh:parent_company",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): ', LLC' is not on the OSHA record (company_name Big Tex Trailer Manufacturing)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-big-tex-batavia-oh:parent_company",
+      "stated",
+      "Big Tex Trailer Manufacturing",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-big-tex-batavia-oh",
+      "field": "parent_company",
+      "value": "Big Tex Trailer Manufacturing",
+      "why": "legal suffix on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-mac-salem-oh",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-mac-salem-oh:parent_company",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): '(MAC Trailer Enterprises)' is not on the OSHA record; supported instead by a mactrailer.com row"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-mac-salem-oh:parent_company",
+      "stated",
+      "MAC Manufacturing, Inc.",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-mac-salem-oh",
+    "kind": "support_row",
+    "note": "carries the group name in the plant parent value",
+    "removed": [],
+    "new_rows": [
+     [
+      "p-mac-salem-oh:parent_company",
+      "stated",
+      "MAC Trailer Enterprises",
+      "https://www.mactrailer.com/careers"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-mac-davis-ok",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-mac-davis-ok:parent_company",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): '(MAC Trailer Enterprises)' is not on the OSHA record; supported instead by a mactrailer.com row"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-mac-davis-ok:parent_company",
+      "stated",
+      "MAC Trailer of Oklahoma, Inc.",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-mac-davis-ok",
+    "kind": "support_row",
+    "note": "carries the group name in the plant parent value",
+    "removed": [],
+    "new_rows": [
+     [
+      "p-mac-davis-ok:parent_company",
+      "stated",
+      "MAC Trailer Enterprises",
+      "https://www.mactrailer.com/careers"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-mac-rhome-tx",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-mac-rhome-tx:parent_company",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): '(MAC Trailer Enterprises)' is not on the OSHA record; supported instead by a mactrailer.com row"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-mac-rhome-tx:parent_company",
+      "stated",
+      "MAC Trailer Texas, Inc.",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-mac-rhome-tx",
+    "kind": "support_row",
+    "note": "carries the group name in the plant parent value",
+    "removed": [],
+    "new_rows": [
+     [
+      "p-mac-rhome-tx:parent_company",
+      "stated",
+      "MAC Trailer Enterprises",
+      "https://www.mactrailer.com/careers"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-mac-alliance-oh",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-mac-alliance-oh:parent_company",
+      "https://recruiting.ultipro.com/MAC1012MACT/JobBoard/c1bf9060-cc2a-41d6-9903-b2997377ff38/OpportunityDetail?opportunityId=921acc90-e412-4079-8c04-93c24de15088",
+      "fault 1 (label not on the cited page): 'MAC Trailer Enterprises, Inc.' is not on the UKG page; re-cited to mactrailer.com/careers (JSON-LD)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-mac-alliance-oh:parent_company",
+      "stated",
+      "MAC Trailer Enterprises, Inc.",
+      "https://www.mactrailer.com/careers"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-mac-alliance-oh-2",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-mac-alliance-oh-2:name",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): 'main plant' is not on the OSHA record"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-mac-alliance-oh-2:name",
+      "stated",
+      "MAC Trailer Manufacturing - Alliance (14599 Commerce St)",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-mac-alliance-oh-2",
+      "field": "name",
+      "value": "MAC Trailer Manufacturing - Alliance (14599 Commerce St)",
+      "why": "'main plant' on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-novae-markle-in",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-novae-markle-in:name",
+      "https://www.sure-trac.com/",
+      "fault 1 (label not on the cited page): 'campus' is not on the page"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-novae-markle-in:name",
+      "stated",
+      "Sure-Trac (Novae) - Markle",
+      "https://www.sure-trac.com/"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-novae-markle-in",
+      "field": "name",
+      "value": "Novae - Markle (Sure-Trac)",
+      "why": "unchanged words; campus dropped"
+     }
+    ]
+   },
+   {
+    "plant": "p-midsota-avon-mn",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-midsota-avon-mn:name",
+      "https://www.midsotamfg.com/",
+      "fault 1 (label not on the cited page): 'Manufacturing' is not on midsotamfg.com (domain only)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-midsota-avon-mn:name",
+      "stated",
+      "Midsota - Avon",
+      "https://www.midsotamfg.com/"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-midsota-avon-mn",
+      "field": "name",
+      "value": "Midsota - Avon",
+      "why": "'Manufacturing' on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-hendrickson-lebanon-in",
+    "kind": "support_row",
+    "note": "plants.csv name carries '(trailer commercial vehicle systems)', which round 1 left with no name row on a page that carries it",
+    "removed": [],
+    "new_rows": [
+     [
+      "p-hendrickson-lebanon-in:name",
+      "stated",
+      "Hendrickson - Lebanon IN plant (trailer commercial vehicle systems)",
+      "https://www.hendrickson-intl.com/company/global-operations"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-hendrickson-elizabethtown-ky",
+    "kind": "support_row",
+    "note": "plants.csv name carries '(trailer commercial vehicle systems)', which round 1 left with no name row on a page that carries it",
+    "removed": [],
+    "new_rows": [
+     [
+      "p-hendrickson-elizabethtown-ky:name",
+      "stated",
+      "Hendrickson - Elizabethtown KY plant (trailer commercial vehicle systems)",
+      "https://www.hendrickson-intl.com/company/global-operations"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-hendrickson-navarre-oh",
+    "kind": "support_row",
+    "note": "plants.csv name carries '(trailer commercial vehicle systems)', which round 1 left with no name row on a page that carries it",
+    "removed": [],
+    "new_rows": [
+     [
+      "p-hendrickson-navarre-oh:name",
+      "stated",
+      "Hendrickson - Navarre OH plant (trailer commercial vehicle systems)",
+      "https://www.hendrickson-intl.com/company/global-operations"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-hendrickson-clarksville-tn",
+    "kind": "support_row",
+    "note": "plants.csv name carries '(trailer commercial vehicle systems)', which round 1 left with no name row on a page that carries it",
+    "removed": [],
+    "new_rows": [
+     [
+      "p-hendrickson-clarksville-tn:name",
+      "stated",
+      "Hendrickson - Clarksville TN plant (trailer commercial vehicle systems)",
+      "https://www.hendrickson-intl.com/company/global-operations"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-hendrickson-somerset-ky",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-hendrickson-somerset-ky:name",
+      "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001214080506",
+      "fault 1 (label not on the cited page): '(commercial vehicle systems)' is not on the ADP posting; Hendrickson's global-operations page lists this address under Hendrickson Trailer Commercial Vehicle Systems"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-hendrickson-somerset-ky:name",
+      "stated",
+      "Hendrickson - Somerset KY plant (trailer commercial vehicle systems)",
+      "https://www.hendrickson-intl.com/company/global-operations"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-hendrickson-somerset-ky",
+      "field": "name",
+      "value": "Hendrickson - Somerset KY plant (trailer commercial vehicle systems)",
+      "why": "business unit as the global-operations page lists it"
+     }
+    ]
+   },
+   {
+    "plant": "p-hendrickson-lebanon-ky",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-hendrickson-lebanon-ky:name",
+      "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001166529406",
+      "fault 1 (label not on the cited page): '(commercial vehicle systems)' is not on the ADP posting; Hendrickson's global-operations page lists this address under Hendrickson Truck Commercial Vehicle Systems"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-hendrickson-lebanon-ky:name",
+      "stated",
+      "Hendrickson - Lebanon KY plant (truck commercial vehicle systems)",
+      "https://www.hendrickson-intl.com/company/global-operations"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-hendrickson-lebanon-ky",
+      "field": "name",
+      "value": "Hendrickson - Lebanon KY plant (truck commercial vehicle systems)",
+      "why": "business unit as the global-operations page lists it"
+     }
+    ]
+   },
+   {
+    "plant": "p-hendrickson-hebron-oh",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-hendrickson-hebron-oh:name",
+      "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001236315006",
+      "fault 1 (label not on the cited page): 'Auxiliary Axle Systems' is not on the ADP posting; re-cited to the global-operations page"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-hendrickson-hebron-oh:name",
+      "stated",
+      "Hendrickson Auxiliary Axle Systems - Hebron OH",
+      "https://www.hendrickson-intl.com/company/global-operations"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-reyco-granning-mount-vernon-mo",
+    "kind": "support_row",
+    "note": "plants.csv name label 'Suspensions (Hendrickson Specialty Products Group)' had no row on a page that carries it",
+    "removed": [],
+    "new_rows": [
+     [
+      "p-reyco-granning-mount-vernon-mo:name",
+      "stated",
+      "Reyco Granning Suspensions (Hendrickson Commercial Vehicle Specialty Products Group) - Mount Vernon MO",
+      "https://www.hendrickson-intl.com/company/global-operations"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-reyco-granning-mount-vernon-mo",
+    "kind": "plant_update",
+    "note": "",
+    "removed": [],
+    "new_rows": [],
+    "plant_updates": [
+     {
+      "id": "p-reyco-granning-mount-vernon-mo",
+      "field": "name",
+      "value": "Reyco Granning Suspensions (Hendrickson Commercial Vehicle Specialty Products Group) - Mount Vernon MO",
+      "why": "group name as the global-operations page gives it"
+     }
+    ]
+   },
+   {
+    "plant": "p-magic-tilt-clearwater-fl",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-magic-tilt-clearwater-fl:name",
+      "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=MAGIC%20TILT&state_abbr=FL&output=JSON",
+      "fault 1 (label not on the cited page): ', Inc.' is not on the EPA record; FRS unreachable, re-cited to ECHO"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-magic-tilt-clearwater-fl:name",
+      "stated",
+      "Magic Tilt Trailers - Clearwater",
+      "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110007477033&output=JSON"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-magic-tilt-clearwater-fl",
+      "field": "name",
+      "value": "Magic Tilt Trailers - Clearwater",
+      "why": "legal suffix on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-trinity-trailer-boise-id",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-trinity-trailer-boise-id:name",
+      "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=TRINITY%20TRAILER&state_abbr=ID&output=JSON",
+      "fault 1 (label not on the cited page): 'Mfg., Inc.' is not on this EPA record (facility name TRINITY TRAILER MANUFACTURING); FRS unreachable, re-cited to ECHO"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-trinity-trailer-boise-id:name",
+      "stated",
+      "Trinity Trailer Manufacturing - Eisenman Rd plant",
+      "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110037148333&output=JSON"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-trinity-trailer-boise-id",
+      "field": "name",
+      "value": "Trinity Trailer Manufacturing - Eisenman Rd plant",
+      "why": "name as the EPA facility record gives it"
+     }
+    ]
+   },
+   {
+    "plant": "p-trinity-trailer-boise-id-2",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-trinity-trailer-boise-id-2:name",
+      "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=TRINITY%20TRAILER&state_abbr=ID&output=JSON",
+      "fault 1 (label not on the cited page): 'Mfg., Inc.' is not on this EPA record (facility name TRINITY TRAILER - FEDERAL WAY); FRS unreachable, re-cited to ECHO"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-trinity-trailer-boise-id-2:name",
+      "stated",
+      "Trinity Trailer - Federal Way building",
+      "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110005783651&output=JSON"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-trinity-trailer-boise-id-2",
+      "field": "name",
+      "value": "Trinity Trailer - Federal Way building",
+      "why": "name as the EPA facility record gives it"
+     }
+    ]
+   },
+   {
+    "plant": "p-fruehauf-bowling-green-ky",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-fruehauf-bowling-green-ky:name",
+      "https://fruehaufinc.com/about-us/",
+      "fault 1 (label not on the cited page): 'Inc.' is not on the page"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-fruehauf-bowling-green-ky:name",
+      "stated",
+      "Fruehauf - Bowling Green plant",
+      "https://fruehaufinc.com/about-us/"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-fruehauf-bowling-green-ky",
+      "field": "name",
+      "value": "Fruehauf - Bowling Green plant",
+      "why": "'Inc.' on no cited page"
+     },
+     {
+      "id": "p-fruehauf-bowling-green-ky",
+      "field": "parent_company",
+      "value": "Fruehauf",
+      "why": "'Inc.' on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-fruehauf-bowling-green-ky",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-fruehauf-bowling-green-ky:parent_company",
+      "https://fruehaufinc.com/about-us/",
+      "fault 1 (label not on the cited page): 'Inc.' is not on the page"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-fruehauf-bowling-green-ky:parent_company",
+      "stated",
+      "Fruehauf",
+      "https://fruehaufinc.com/about-us/"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-timpte-david-city-ne",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-timpte-david-city-ne:name",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): 'Manufacturing Center' is not on the OSHA record (establishment_name Timpte DC Manufacturing); the Timpte welder posting carries it (support row)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-timpte-david-city-ne:name",
+      "stated",
+      "Timpte DC Manufacturing - David City",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-timpte-david-city-ne",
+    "kind": "support_row",
+    "note": "carries the plant name label",
+    "removed": [],
+    "new_rows": [
+     [
+      "p-timpte-david-city-ne:name",
+      "stated",
+      "Timpte - David City Manufacturing Center",
+      "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201230681382_1?cid=3240c29c-650c-44e9-be6f-3af7d653c5f9&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-aulick-scottsbluff-ne",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-aulick-scottsbluff-ne:name",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): 'Aulick Industries' and '(fab shop, trailer shop and box shop)' are not on the OSHA record (Aulick Manufacturing Inc)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-aulick-scottsbluff-ne:name",
+      "stated",
+      "Aulick Manufacturing Inc - Scottsbluff",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-aulick-scottsbluff-ne",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-aulick-scottsbluff-ne:parent_company",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): 'Aulick Industries' is not on the OSHA record; aulick.com carries it (support row)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-aulick-scottsbluff-ne:parent_company",
+      "stated",
+      "Aulick Manufacturing Inc",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-aulick-scottsbluff-ne",
+    "kind": "support_row",
+    "note": "carries the trade name",
+    "removed": [],
+    "new_rows": [
+     [
+      "p-aulick-scottsbluff-ne:name",
+      "stated",
+      "Aulick Industries - Scottsbluff",
+      "https://www.aulick.com/careers"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-aulick-scottsbluff-ne",
+    "kind": "support_row",
+    "note": "carries the trade name",
+    "removed": [],
+    "new_rows": [
+     [
+      "p-aulick-scottsbluff-ne:parent_company",
+      "stated",
+      "Aulick Industries",
+      "https://www.aulick.com/careers"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-aulick-scottsbluff-ne",
+    "kind": "plant_update",
+    "note": "",
+    "removed": [],
+    "new_rows": [],
+    "plant_updates": [
+     {
+      "id": "p-aulick-scottsbluff-ne",
+      "field": "name",
+      "value": "Aulick Industries - Scottsbluff",
+      "why": "'(fab shop, trailer shop and box shop)' on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-elite-oklahoma-city-ok",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-elite-oklahoma-city-ok:parent_company",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): 'MFG, LLC' is not on the OSHA record (company_name Elite Trailer Manufacturing)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-elite-oklahoma-city-ok:parent_company",
+      "stated",
+      "Elite Trailer Manufacturing",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-elite-oklahoma-city-ok",
+    "kind": "support_row",
+    "note": "carries the legal suffix",
+    "removed": [],
+    "new_rows": [
+     [
+      "p-elite-oklahoma-city-ok:parent_company",
+      "stated",
+      "Elite Trailer Manufacturing, LLC",
+      "https://elitetrailers.com/jobs/"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-elite-oklahoma-city-ok",
+    "kind": "plant_update",
+    "note": "",
+    "removed": [],
+    "new_rows": [],
+    "plant_updates": [
+     {
+      "id": "p-elite-oklahoma-city-ok",
+      "field": "parent_company",
+      "value": "Elite Trailer Manufacturing, LLC",
+      "why": "spelled as the company employment page gives it"
+     }
+    ]
+   },
+   {
+    "plant": "p-norstar-brookston-tx",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-norstar-brookston-tx:name",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): 'IronBull' is not on the OSHA record; the company careers page lists both brands (support row)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-norstar-brookston-tx:name",
+      "stated",
+      "Norstar Trailers LLC - Brookston",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-norstar-brookston-tx",
+    "kind": "support_row",
+    "note": "carries both brand names",
+    "removed": [],
+    "new_rows": [
+     [
+      "p-norstar-brookston-tx:name",
+      "stated",
+      "NorStar (Norstar and IronBull Trailers) - Brookston",
+      "https://www.norstarcompany.com/careers"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-hawk-manawa-wi",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-hawk-manawa-wi:parent_company",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): ', Inc.' is not on the OSHA record"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-hawk-manawa-wi:parent_company",
+      "stated",
+      "Hawk Trailers",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-hawk-manawa-wi",
+      "field": "parent_company",
+      "value": "Hawk Trailers",
+      "why": "legal suffix on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-sidumpr-columbus-ne",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-sidumpr-columbus-ne:name",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): 'Trailer' is not on the OSHA record (Douglas Holdings dba Sidump'r)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-sidumpr-columbus-ne:name",
+      "stated",
+      "SIDUMP'R - Columbus",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-sidumpr-columbus-ne",
+      "field": "name",
+      "value": "SIDUMP'R - Columbus",
+      "why": "'Trailer' on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-lippert-nampa-id",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-lippert-nampa-id:parent_company",
+      "https://corporate.lippert.com/about/locations/us/id/nampa/lippert-084a",
+      "fault 1 (label not on the cited page): 'Components, Inc.' is not on the location page"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-lippert-nampa-id:parent_company",
+      "stated",
+      "Lippert",
+      "https://corporate.lippert.com/about/locations/us/id/nampa/lippert-084a"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-lippert-waxahachie-tx",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-lippert-waxahachie-tx:parent_company",
+      "https://corporate.lippert.com/about/locations/us/tx/waxahachie/lippert-241a",
+      "fault 1 (label not on the cited page): 'Components, Inc.' is not on the location page"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-lippert-waxahachie-tx:parent_company",
+      "stated",
+      "Lippert",
+      "https://corporate.lippert.com/about/locations/us/tx/waxahachie/lippert-241a"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-lippert-waxahachie-tx",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-lippert-waxahachie-tx:name",
+      "https://corporate.lippert.com/about/locations/us/tx/waxahachie/lippert-241a",
+      "fault 1 (label not on the cited page): plants.csv name adds '(with companion 241-B)'; re-quoted so the page text carries it"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-lippert-waxahachie-tx:name",
+      "stated",
+      "Lippert - Plant #241-A (and Plant #241-B)",
+      "https://corporate.lippert.com/about/locations/us/tx/waxahachie/lippert-241a"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-lippert-waxahachie-tx",
+      "field": "name",
+      "value": "Lippert - Plant #241-A (and Plant #241-B)",
+      "why": "'companion' is not page text; the location page lists Plant #241-B as a nearby location"
+     },
+     {
+      "id": "p-lippert-waxahachie-tx",
+      "field": "parent_company",
+      "value": "Lippert",
+      "why": "legal name on no cited page for this site"
+     }
+    ]
+   },
+   {
+    "plant": "p-american-cargo-bristol-in",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-american-cargo-bristol-in:name",
+      "https://www.wellscargo.com/plant-locations.html",
+      "fault 1 (label not on the cited page): 'American Cargo Group' is not on wellscargo.com/plant-locations (owner label; parent_company carries it)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-american-cargo-bristol-in:name",
+      "stated",
+      "Wells Cargo plant location - Bristol",
+      "https://www.wellscargo.com/plant-locations.html"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-american-cargo-bristol-in",
+      "field": "name",
+      "value": "Wells Cargo plant location - Bristol",
+      "why": "owner label dropped from the name"
+     }
+    ]
+   },
+   {
+    "plant": "p-american-cargo-waco-tx",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-american-cargo-waco-tx:name",
+      "https://www.wellscargo.com/plant-locations.html",
+      "fault 1 (label not on the cited page): 'American Cargo Group' is not on wellscargo.com/plant-locations (owner label; parent_company carries it)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-american-cargo-waco-tx:name",
+      "stated",
+      "Wells Cargo plant location - Waco",
+      "https://www.wellscargo.com/plant-locations.html"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-american-cargo-waco-tx",
+      "field": "name",
+      "value": "Wells Cargo plant location - Waco",
+      "why": "owner label dropped from the name"
+     }
+    ]
+   },
+   {
+    "plant": "p-american-cargo-ogden-ut",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-american-cargo-ogden-ut:name",
+      "https://www.wellscargo.com/plant-locations.html",
+      "fault 1 (label not on the cited page): 'American Cargo Group' is not on wellscargo.com/plant-locations (owner label; parent_company carries it)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-american-cargo-ogden-ut:name",
+      "stated",
+      "Wells Cargo plant location - Ogden",
+      "https://www.wellscargo.com/plant-locations.html"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-american-cargo-ogden-ut",
+      "field": "name",
+      "value": "Wells Cargo plant location - Ogden",
+      "why": "owner label dropped from the name"
+     }
+    ]
+   },
+   {
+    "plant": "p-american-cargo-mcadoo-pa",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-american-cargo-mcadoo-pa:name",
+      "https://www.wellscargo.com/plant-locations.html",
+      "fault 1 (label not on the cited page): 'American Cargo Group' is not on wellscargo.com/plant-locations (owner label; parent_company carries it)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-american-cargo-mcadoo-pa:name",
+      "stated",
+      "Wells Cargo plant location - McAdoo",
+      "https://www.wellscargo.com/plant-locations.html"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-american-cargo-mcadoo-pa",
+      "field": "name",
+      "value": "Wells Cargo plant location - McAdoo",
+      "why": "owner label dropped from the name"
+     }
+    ]
+   },
+   {
+    "plant": "p-american-cargo-elkhart-in",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-american-cargo-elkhart-in:name",
+      "https://www.wellscargo.com/plant-locations.html",
+      "fault 1 (label not on the cited page): 'American Cargo Group' and 'group contact address' are not on the page"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-american-cargo-elkhart-in:name",
+      "stated",
+      "Wells Cargo plant location - Elkhart, McNaughton Ave",
+      "https://www.wellscargo.com/plant-locations.html"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-american-cargo-elkhart-in",
+      "field": "name",
+      "value": "Wells Cargo plant location - Elkhart, McNaughton Ave",
+      "why": "labels on no cited page dropped"
+     }
+    ]
+   },
+   {
+    "plant": "p-american-cargo-elkhart-in-2",
+    "kind": "plant_update",
+    "note": "",
+    "removed": [],
+    "new_rows": [],
+    "plant_updates": [
+     {
+      "id": "p-american-cargo-elkhart-in-2",
+      "field": "name",
+      "value": "American Hauler - Elkhart",
+      "why": "owner label '(American Cargo Group)' on no name row"
+     }
+    ]
+   },
+   {
+    "plant": "p-trailer-component-mentor-oh",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-trailer-component-mentor-oh:name",
+      "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=TRAILER%20COMPONENT&state_abbr=OH&output=JSON",
+      "fault 1 (label not on the cited page): 'Manufacturing' spelled out, 'Buyers Products' and the street are not on the cited EPA quote; FRS unreachable, re-cited to ECHO"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-trailer-component-mentor-oh:name",
+      "stated",
+      "Trailer Component Mfg., Inc. (TRACOM) - 8120 Tyler Blvd, Mentor",
+      "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110070337431&output=JSON"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-trailer-component-mentor-oh",
+      "field": "name",
+      "value": "Trailer Component Mfg., Inc. (TRACOM) - 8120 Tyler Blvd, Mentor",
+      "why": "name as the EPA record gives it; owner label dropped (parent_company carries Buyers Products)"
+     }
+    ]
+   },
+   {
+    "plant": "p-trailer-component-mentor-oh-2",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-trailer-component-mentor-oh-2:name",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): '(Buyers Products)' is not on the OSHA record"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-trailer-component-mentor-oh-2:name",
+      "stated",
+      "Trailer Component Manufacturing - 8200 Tyler Blvd, Mentor",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-trailer-component-mentor-oh-2",
+      "field": "name",
+      "value": "Trailer Component Manufacturing - 8200 Tyler Blvd, Mentor",
+      "why": "owner label dropped (parent_company carries it)"
+     }
+    ]
+   },
+   {
+    "plant": "p-travis-houston-tx",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-travis-houston-tx:name",
+      "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=TRAVIS%20BODY&state_abbr=TX&output=JSON",
+      "fault 1 (label not on the cited page): 'FM 529' is not on the cited EPA quote; FRS unreachable, re-cited to ECHO"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-travis-houston-tx:name",
+      "stated",
+      "Travis Body and Trailer - Houston (FM 529)",
+      "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110005191871&output=JSON"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-manac-oran-mo",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-manac-oran-mo:name",
+      "https://manac.com/us/en/company/about",
+      "fault 1 (label not on the cited page): 'Trailers USA' is not on the page"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-manac-oran-mo:name",
+      "stated",
+      "Manac - Oran plant",
+      "https://manac.com/us/en/company/about"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-manac-oran-mo",
+      "field": "name",
+      "value": "Manac - Oran plant",
+      "why": "'Trailers USA' on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-mtm-kewanee-il",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-mtm-kewanee-il:name",
+      "https://www.mtmtrailers.truckpaper.com/",
+      "fault 1 (label not on the cited page): 'Manufacturing LLC' is not on the page ('Midwest Trailer Mfg')"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-mtm-kewanee-il:name",
+      "stated",
+      "MTM Trailers (Midwest Trailer Mfg) - Kewanee",
+      "https://www.mtmtrailers.truckpaper.com/"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-mtm-kewanee-il",
+      "field": "name",
+      "value": "MTM Trailers (Midwest Trailer Mfg) - Kewanee",
+      "why": "as the page gives it"
+     }
+    ]
+   },
+   {
+    "plant": "p-cie-south-gate-ca",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-cie-south-gate-ca:name",
+      "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=CIE%20MANUFACTURING&state_abbr=CA&output=JSON",
+      "fault 1 (label not on the cited page): 'factory (SGVC)' is not on the EPA record; FRS unreachable, re-cited to ECHO (the contact-page row carries the plant label)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-cie-south-gate-ca:name",
+      "stated",
+      "CIE Manufacturing - South Gate",
+      "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110070090705&output=JSON"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-trails-west-preston-id",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-trails-west-preston-id:name",
+      "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=TRAILS%20WEST&state_abbr=ID&output=JSON",
+      "fault 1 (label not on the cited page): 'Trails West Trailers' is not on the EPA record; FRS unreachable, re-cited to ECHO"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-trails-west-preston-id:name",
+      "stated",
+      "Trails West Mfg of Idaho - Preston (Facility 1)",
+      "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110005791358&output=JSON"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-trails-west-preston-id",
+      "field": "name",
+      "value": "Trails West Mfg of Idaho - Preston (Facility 1)",
+      "why": "name as the EPA record gives it"
+     }
+    ]
+   },
+   {
+    "plant": "p-carry-on-missouri-valley-ia",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-carry-on-missouri-valley-ia:parent_company",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): '(American Trailer World)' is not on the OSHA record"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-carry-on-missouri-valley-ia:parent_company",
+      "stated",
+      "Carry-On Trailer Corp",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-carry-on-missouri-valley-ia",
+      "field": "parent_company",
+      "value": "Carry-On Trailer Corp",
+      "why": "owner label on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-carry-on-montross-va",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-carry-on-montross-va:parent_company",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): '(American Trailer World)' is not on the OSHA record"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-carry-on-montross-va:parent_company",
+      "stated",
+      "Carry-On Trailer Corp",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-carry-on-montross-va",
+      "field": "parent_company",
+      "value": "Carry-On Trailer Corp",
+      "why": "owner label on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-carry-on-callao-va",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-carry-on-callao-va:parent_company",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): '(American Trailer World)' is not on the OSHA record"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-carry-on-callao-va:parent_company",
+      "stated",
+      "Carry-On Trailer Corp",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-carry-on-callao-va",
+      "field": "parent_company",
+      "value": "Carry-On Trailer Corp",
+      "why": "owner label on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-carry-on-winnemucca-nv",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-carry-on-winnemucca-nv:parent_company",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): '(American Trailer World)' is not on the OSHA record"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-carry-on-winnemucca-nv:parent_company",
+      "stated",
+      "Carry-On Trailer Corp",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-carry-on-winnemucca-nv",
+      "field": "parent_company",
+      "value": "Carry-On Trailer Corp",
+      "why": "owner label on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-carry-on-coburg-or",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-carry-on-coburg-or:parent_company",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): '(American Trailer World)' is not on the OSHA record"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-carry-on-coburg-or:parent_company",
+      "stated",
+      "Carry-On Trailer Corp",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-carry-on-coburg-or",
+      "field": "parent_company",
+      "value": "Carry-On Trailer Corp",
+      "why": "owner label on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-pj-trailers-mount-orab-oh",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-pj-trailers-mount-orab-oh:parent_company",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): '(American Trailer World)' is not on the OSHA record"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-pj-trailers-mount-orab-oh:parent_company",
+      "stated",
+      "PJ Trailers",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-pj-trailers-mount-orab-oh",
+      "field": "parent_company",
+      "value": "PJ Trailers",
+      "why": "owner label on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-reitnouer-birdsboro-pa",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-reitnouer-birdsboro-pa:name",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+      "fault 1 (label not on the cited page): 'production facility' is not on the cited record"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-reitnouer-birdsboro-pa:name",
+      "stated",
+      "Reitnouer - Birdsboro",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-reitnouer-birdsboro-pa",
+      "field": "name",
+      "value": "Reitnouer - Birdsboro",
+      "why": "'production facility' on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-reitnouer-birdsboro-pa",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-reitnouer-birdsboro-pa:name",
+      "https://vpic.nhtsa.dot.gov/api/vehicles/GetManufacturerDetails/3579?format=json",
+      "fault 1 (label not on the cited page): 'production facility' is not on the cited record"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-reitnouer-birdsboro-pa:name",
+      "stated",
+      "Reitnouer - Birdsboro",
+      "https://vpic.nhtsa.dot.gov/api/vehicles/GetManufacturerDetails/3579?format=json"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-reitnouer-birdsboro-pa",
+      "field": "name",
+      "value": "Reitnouer - Birdsboro",
+      "why": "'production facility' on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-ez-loader-spokane-wa",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-ez-loader-spokane-wa:parent_company",
+      "https://www.ezloader.com/",
+      "fault 1 (label not on the cited page): ', Inc.' and 'Boat Trailers, Inc.' are not on ezloader.com as a name"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-ez-loader-spokane-wa:parent_company",
+      "stated",
+      "EZ Loader (family-owned)",
+      "https://www.ezloader.com/"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-ez-loader-spokane-wa",
+      "field": "parent_company",
+      "value": "EZ Loader (family-owned)",
+      "why": "legal name on no parent row page"
+     },
+     {
+      "id": "p-ez-loader-spokane-wa",
+      "field": "name",
+      "value": "EZ Loader Adjustable Boat Trailers - Spokane",
+      "why": "'(Hamilton Street campus)' on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-ameratrail-st-cloud-fl",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-ameratrail-st-cloud-fl:parent_company",
+      "https://ameratrail.betterteam.com/welder-4",
+      "fault 1 (label not on the cited page): 'Inc.' is not on the page"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-ameratrail-st-cloud-fl:parent_company",
+      "stated",
+      "AmeraTrail (Amera Trail)",
+      "https://ameratrail.betterteam.com/welder-4"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-ameratrail-st-cloud-fl",
+      "field": "parent_company",
+      "value": "AmeraTrail (Amera Trail)",
+      "why": "'Inc.' on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-propell-granbury-tx",
+    "kind": "plant_update",
+    "note": "",
+    "removed": [],
+    "new_rows": [],
+    "plant_updates": [
+     {
+      "id": "p-propell-granbury-tx",
+      "field": "name",
+      "value": "Propell - Granbury plant (4801 Glen Rose Hwy)",
+      "why": "'Propell American, LLC' rests only on an inferred OSHA row (ZIP mismatch) and on no page; '(TYCROP / Propell group)' is a parent label"
+     }
+    ]
+   },
+   {
+    "plant": "p-tramont-milwaukee-wi",
+    "kind": "plant_update",
+    "note": "",
+    "removed": [],
+    "new_rows": [],
+    "plant_updates": [
+     {
+      "id": "p-tramont-milwaukee-wi",
+      "field": "name",
+      "value": "Tramont Manufacturing",
+      "why": "', LLC' is on no name row page (only a Facebook link slug)"
+     }
+    ]
+   },
+   {
+    "plant": "p-atc-nappanee-in",
+    "kind": "plant_update",
+    "note": "",
+    "removed": [],
+    "new_rows": [],
+    "plant_updates": [
+     {
+      "id": "p-atc-nappanee-in",
+      "field": "name",
+      "value": "Aluminum Trailer Company (ATC) - Nappanee, 5225 E Market St",
+      "why": "'(Plant 4)' is on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-utility-trailer-glade-spring-va",
+    "kind": "support_row",
+    "note": "carries the company name in the plant name",
+    "removed": [],
+    "new_rows": [
+     [
+      "p-utility-trailer-glade-spring-va:name",
+      "stated",
+      "Utility Trailer Manufacturing Company - Glade Spring plant",
+      "https://www.utilitytrailer.com/discover-utility/"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-utility-trailer-clearfield-ut",
+    "kind": "support_row",
+    "note": "carries the company name in the plant name",
+    "removed": [],
+    "new_rows": [
+     [
+      "p-utility-trailer-clearfield-ut:name",
+      "stated",
+      "Utility Trailer Manufacturing Company - Clearfield plant",
+      "https://www.utilitytrailer.com/discover-utility/"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-allmand-holdrege-ne",
+    "kind": "plant_update",
+    "note": "",
+    "removed": [],
+    "new_rows": [],
+    "plant_updates": [
+     {
+      "id": "p-allmand-holdrege-ne",
+      "field": "name",
+      "value": "Allmand Brothers (Allmand, a Generac Company) - Holdrege plant",
+      "why": "fault 1 (plants.csv label with no supporting row): 'Bros.' shortened from the EPA name 'Allmand Brothers Inc'; '(Allmand, a Generac Company)' rests on the parent row's posting"
+     }
+    ]
+   },
+   {
+    "plant": "p-cornpro-elnora-in",
+    "kind": "plant_update",
+    "note": "",
+    "removed": [],
+    "new_rows": [],
+    "plant_updates": [
+     {
+      "id": "p-cornpro-elnora-in",
+      "field": "name",
+      "value": "Corn Pro, Inc. - Elnora",
+      "why": "fault 1 (plants.csv label with no supporting row): '(CornPro Trailers)' is on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-cush-nixa-mo",
+    "kind": "plant_update",
+    "note": "",
+    "removed": [],
+    "new_rows": [],
+    "plant_updates": [
+     {
+      "id": "p-cush-nixa-mo",
+      "field": "name",
+      "value": "Cush Suspensions - Nixa",
+      "why": "fault 1 (plants.csv label with no supporting row): '(Cush Corp)' is on no cited page (domain only)"
+     }
+    ]
+   },
+   {
+    "plant": "p-ek-machine-fall-river-wi",
+    "kind": "plant_update",
+    "note": "",
+    "removed": [],
+    "new_rows": [],
+    "plant_updates": [
+     {
+      "id": "p-ek-machine-fall-river-wi",
+      "field": "parent_company",
+      "value": "EK Machine Co., Inc. (headquartered in Fall River, WI)",
+      "why": "fault 1 (plants.csv label with no supporting row): 'independent' is on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-fairchild-glen-lyn-va",
+    "kind": "plant_update",
+    "note": "",
+    "removed": [],
+    "new_rows": [],
+    "plant_updates": [
+     {
+      "id": "p-fairchild-glen-lyn-va",
+      "field": "name",
+      "value": "Interstate Group - Glen Lyn plant (EPA: GE - Fairchild LLC)",
+      "why": "fault 1 (plants.csv label with no supporting row): 'former GE-Fairchild building' is a judgement; the EPA record name is GE - Fairchild LLC"
+     }
+    ]
+   },
+   {
+    "plant": "p-jost-greeneville-tn",
+    "kind": "plant_update",
+    "note": "",
+    "removed": [],
+    "new_rows": [],
+    "plant_updates": [
+     {
+      "id": "p-jost-greeneville-tn",
+      "field": "parent_company",
+      "value": "JOST International (JOST World)",
+      "why": "fault 1 (plants.csv label with no supporting row): 'Corp.' is on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-jost-grand-haven-mi",
+    "kind": "plant_update",
+    "note": "",
+    "removed": [],
+    "new_rows": [],
+    "plant_updates": [
+     {
+      "id": "p-jost-grand-haven-mi",
+      "field": "parent_company",
+      "value": "JOST International (JOST World)",
+      "why": "fault 1 (plants.csv label with no supporting row): 'Corp.' is on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-mertz-ponca-city-ok",
+    "kind": "plant_update",
+    "note": "",
+    "removed": [],
+    "new_rows": [],
+    "plant_updates": [
+     {
+      "id": "p-mertz-ponca-city-ok",
+      "field": "name",
+      "value": "Mertz Integration (Mertz Manufacturing), Ponca City",
+      "why": "fault 1 (plants.csv label with no supporting row): ', LLC' and 'formerly' are on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-top-hat-naples-tx",
+    "kind": "plant_update",
+    "note": "",
+    "removed": [],
+    "new_rows": [],
+    "plant_updates": [
+     {
+      "id": "p-top-hat-naples-tx",
+      "field": "name",
+      "value": "Top Hat Industries - Naples",
+      "why": "fault 1 (plants.csv label with no supporting row): '(headquarters plant)' is on no cited page"
+     }
+    ]
+   },
+   {
+    "plant": "p-bm-manufacturing-camdenton-mo",
+    "kind": "plant_update",
+    "note": "",
+    "removed": [],
+    "new_rows": [],
+    "plant_updates": [
+     {
+      "id": "p-bm-manufacturing-camdenton-mo",
+      "field": "name",
+      "value": "B & M Manufacturing Co. (Haul-Rite trailers) - Camdenton",
+      "why": "fault 1 (plants.csv label with no supporting row): 'boat' is not on the cited recall report"
+     }
+    ]
+   },
+   {
+    "plant": "p-utility-trailer-glade-spring-va",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-utility-trailer-glade-spring-va:name",
+      "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/22690244-3dba-468c-b1be-4447d9c264d2/OpportunityDetail?opportunityId=2b145715-3a40-4904-afb4-d6c5b4dd2500",
+      "fault 1 (label not on the cited page): 'Utility Trailer Manufacturing Company' is not on the UKG posting (it gives the city only); the company name is on utilitytrailer.com (support row)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-utility-trailer-glade-spring-va:name",
+      "stated",
+      "Glade Spring plant",
+      "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/22690244-3dba-468c-b1be-4447d9c264d2/OpportunityDetail?opportunityId=2b145715-3a40-4904-afb4-d6c5b4dd2500"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-utility-trailer-clearfield-ut",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-utility-trailer-clearfield-ut:name",
+      "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/ae4efb70-7ebf-40d6-95ef-627411dc1bed/OpportunityDetail?opportunityId=d782328e-c3ba-4de7-ab8a-fd97053f74cf",
+      "fault 1 (label not on the cited page): 'Utility Trailer Manufacturing Company' is not on the UKG posting (it gives the city only); the company name is on utilitytrailer.com (support row)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-utility-trailer-clearfield-ut:name",
+      "stated",
+      "Clearfield plant",
+      "https://utilitytrailer.rec.pro.ukg.net/UTI1500UTTM/JobBoard/ae4efb70-7ebf-40d6-95ef-627411dc1bed/OpportunityDetail?opportunityId=d782328e-c3ba-4de7-ab8a-fd97053f74cf"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-mac-alliance-oh",
+    "kind": "corrected",
+    "note": "",
+    "removed": [
+     [
+      "p-mac-alliance-oh:name",
+      "https://recruiting.ultipro.com/MAC1012MACT/JobBoard/c1bf9060-cc2a-41d6-9903-b2997377ff38/OpportunityDetail?opportunityId=c7efac44-8e01-4f17-8fc3-ba4cae041295",
+      "fault 1 (label not on the cited page): street and 'R&D' were not on the quote; re-quoted from the page's location data"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-mac-alliance-oh:name",
+      "stated",
+      "MAC Trailer - 2360 W Main St, Alliance (Mac Waste)",
+      "https://recruiting.ultipro.com/MAC1012MACT/JobBoard/c1bf9060-cc2a-41d6-9903-b2997377ff38/OpportunityDetail?opportunityId=c7efac44-8e01-4f17-8fc3-ba4cae041295"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-mac-alliance-oh",
+      "field": "name",
+      "value": "MAC Trailer - 2360 W Main St, Alliance (Mac Waste)",
+      "why": "'R&D' is not on the cited quote (MAC Trailer R&D is a separate board location at the same address, carried by the welder_postings row)"
+     }
+    ]
+   },
+   {
+    "plant": "p-trailstar-alliance-oh",
+    "kind": "corrected",
+    "note": "UKG row cut to the location label; OSHA record 2950885 carries Trailstar International Inc. (support row), so the plant name stays",
+    "removed": [
+     [
+      "p-trailstar-alliance-oh:name",
+      "https://recruiting.ultipro.com/MAC1012MACT/JobBoard/c1bf9060-cc2a-41d6-9903-b2997377ff38/OpportunityDetail?opportunityId=c7efac44-8e01-4f17-8fc3-ba4cae041295",
+      "fault 1 (label not on the cited page): 'International' is not on the UKG page (location label 'Trailstar'); the OSHA parent row carries 'Trailstar International Inc.'"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-trailstar-alliance-oh:name",
+      "stated",
+      "Trailstar - Alliance",
+      "https://recruiting.ultipro.com/MAC1012MACT/JobBoard/c1bf9060-cc2a-41d6-9903-b2997377ff38/OpportunityDetail?opportunityId=c7efac44-8e01-4f17-8fc3-ba4cae041295"
+     ],
+     [
+      "p-trailstar-alliance-oh:name",
+      "stated",
+      "Trailstar International - Alliance",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": []
+   },
+   {
+    "plant": "p-lippert-goshen-in",
+    "kind": "corrected",
+    "note": "locations-page row cut to 'Chassis Plant #19-A'; OSHA record 3176948 ('Lippert Components 19 Complex', 3152 Skyview Rd.) carries 'complex', so the plant name stays",
+    "removed": [
+     [
+      "p-lippert-goshen-in:name",
+      "https://corporate.lippert.com/about/locations",
+      "fault 1 (label not on the cited page): 'complex' is a site-tie judgement, not page text (the site_attribution row carries it)"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-lippert-goshen-in:name",
+      "stated",
+      "Lippert - Chassis Plant #19-A (3152 Skyview Rd)",
+      "https://corporate.lippert.com/about/locations"
+     ],
+     [
+      "p-lippert-goshen-in:name",
+      "stated",
+      "Lippert - Chassis Plant 19 complex (3152 Skyview Rd)",
+      "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data"
+     ]
+    ],
+    "plant_updates": []
+   }
+  ],
+  "2b": [
+   {
+    "plant": "p-mac-salem-oh",
+    "kind": "postings_changed",
+    "note": "sibling of the MAC Alliance split: board re-read shows WELDE002281 (multi-site Welder) and, at Trailstar, Fabricator FABRI002311 not in the ledger; WELDE002324 re-stamped 2026-11-18",
+    "removed": [
+     [
+      "p-mac-salem-oh:welder_postings",
+      "https://recruiting.ultipro.com/MAC1012MACT/JobBoard/c1bf9060-cc2a-41d6-9903-b2997377ff38/OpportunityDetail?opportunityId=c7efac44-8e01-4f17-8fc3-ba4cae041295",
+      "listed date changed on the board: Posted on November 18, 2026 (row said 2026-09-29); replaced by the re-read row"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-mac-salem-oh:welder_postings",
+      "stated",
+      "Welder (WELDE002324), listed 2026-11-18; locations on MAC's UKG board: Mac Waste OH Local; MAC Manufacturing OH Loca; Trailstar (read 2026-11-20)",
+      "https://recruiting.ultipro.com/MAC1012MACT/JobBoard/c1bf9060-cc2a-41d6-9903-b2997377ff38/OpportunityDetail?opportunityId=c7efac44-8e01-4f17-8fc3-ba4cae041295"
+     ],
+     [
+      "p-mac-salem-oh:welder_postings",
+      "stated",
+      "Welder (WELDE002281), listed 2026-08-12; locations on MAC's UKG board: Mac Waste OH Local; MAC Manufacturing OH Loca; Trailstar (read 2026-11-20)",
+      "https://recruiting.ultipro.com/MAC1012MACT/JobBoard/c1bf9060-cc2a-41d6-9903-b2997377ff38/OpportunityDetail?opportunityId=4ba7b49f-bbcc-47bd-a5e9-6739767a6500"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-mac-salem-oh",
+      "field": "welder_postings",
+      "value": "MAC's own UKG board (read 2026-11-20), location 'MAC Manufacturing OH Loca' (Salem): 2 multi-site Welder requisitions shared with Mac Waste and Trailstar: WELDE002324 (Posted on 2026-11-18) and WELDE002281 (2026-08-12)",
+      "why": "board re-read 2026-11-20: added requisitions not in the ledger; WELDE002324 re-stamped"
+     }
+    ]
+   },
+   {
+    "plant": "p-trailstar-alliance-oh",
+    "kind": "postings_changed",
+    "note": "sibling of the MAC Alliance split: board re-read shows WELDE002281 (multi-site Welder) and, at Trailstar, Fabricator FABRI002311 not in the ledger; WELDE002324 re-stamped 2026-11-18",
+    "removed": [
+     [
+      "p-trailstar-alliance-oh:welder_postings",
+      "https://recruiting.ultipro.com/MAC1012MACT/JobBoard/c1bf9060-cc2a-41d6-9903-b2997377ff38/OpportunityDetail?opportunityId=c7efac44-8e01-4f17-8fc3-ba4cae041295",
+      "listed date changed on the board: Posted on November 18, 2026 (row said 2026-09-29); replaced by the re-read row"
+     ]
+    ],
+    "new_rows": [
+     [
+      "p-trailstar-alliance-oh:welder_postings",
+      "stated",
+      "Welder (WELDE002324), listed 2026-11-18; locations on MAC's UKG board: Mac Waste OH Local; MAC Manufacturing OH Loca; Trailstar (read 2026-11-20)",
+      "https://recruiting.ultipro.com/MAC1012MACT/JobBoard/c1bf9060-cc2a-41d6-9903-b2997377ff38/OpportunityDetail?opportunityId=c7efac44-8e01-4f17-8fc3-ba4cae041295"
+     ],
+     [
+      "p-trailstar-alliance-oh:welder_postings",
+      "stated",
+      "Welder (WELDE002281), listed 2026-08-12; locations on MAC's UKG board: Mac Waste OH Local; MAC Manufacturing OH Loca; Trailstar (read 2026-11-20)",
+      "https://recruiting.ultipro.com/MAC1012MACT/JobBoard/c1bf9060-cc2a-41d6-9903-b2997377ff38/OpportunityDetail?opportunityId=4ba7b49f-bbcc-47bd-a5e9-6739767a6500"
+     ],
+     [
+      "p-trailstar-alliance-oh:welder_postings",
+      "stated",
+      "Fabricator (FABRI002311), listed 2026-09-03; location on MAC's UKG board: Trailstar (read 2026-11-20)",
+      "https://recruiting.ultipro.com/MAC1012MACT/JobBoard/c1bf9060-cc2a-41d6-9903-b2997377ff38/OpportunityDetail?opportunityId=c3f8afb4-0d14-4bca-9e35-b2288cdaba01"
+     ]
+    ],
+    "plant_updates": [
+     {
+      "id": "p-trailstar-alliance-oh",
+      "field": "welder_postings",
+      "value": "MAC's own UKG board (read 2026-11-20), location 'Trailstar': Fabricator FABRI002311 (2026-09-03); 2 multi-site Welder requisitions shared with Mac Waste and Salem: WELDE002324 (Posted on 2026-11-18) and WELDE002281 (2026-08-12)",
+      "why": "board re-read 2026-11-20: added requisitions not in the ledger; WELDE002324 re-stamped"
+     }
+    ]
+   }
+  ]
+ },
+ "not_fixed": [
+  "FRS-cited stated name/parent rows whose value matches the quote were not re-verified (frs-public.epa.gov down all day): Cozad, Smithco, Craftsmen x2, J.Q. Tex, Cronkhite x2, Shadow, Bloomer x2, Barrett x2, Hart, Merhow, SMC, Premier, Corn Pro, U-Dump, Cottrell, Pratt, JOST Grand Haven, Lippert Goshen/Middlebury parent, Trinity x2 parent, Wabash South, Bobcat Statesville, XL Specialized, Fairchild GE row",
+  "p-tramont-milwaukee-wi parent_company (Graycliff) row: streetinsider.com 403, not re-checked",
+  "p-ameratrail-st-cloud-fl parent_company quote does not itself name AmeraTrail (page does); left",
+  "Hendrickson ADP 'board shows no posting date' rows (outside the four faults)",
+  "fault 3 plants unreachable or with no board found (see fault3_breakdown)"
+ ],
+ "fault3_breakdown": {
+  "plants_in_scope": 152,
+  "new_openings_found_and_counted_by_site_tie": [
+   "p-alcom-bonner-mt",
+   "p-alcom-sioux-falls-sd",
+   "p-bwise-chambersburg-pa",
+   "p-cimarron-chickasha-ok",
+   "p-doonan-great-bend-ks",
+   "p-eby-ephrata-pa",
+   "p-exiss-el-reno-ok",
+   "p-featherlite-cresco-ia",
+   "p-interstate-group-conway-ar",
+   "p-interstate-group-nampa-id",
+   "p-ledwell-texarkana-tx",
+   "p-load-trail-como-tx",
+   "p-load-trail-sumner-tx",
+   "p-mertz-ponca-city-ok",
+   "p-nexhaul-rocky-mount-va",
+   "p-sidumpr-columbus-ne",
+   "p-smithco-le-mars-ia",
+   "p-towmaster-litchfield-mn",
+   "p-trailer-component-mentor-oh",
+   "p-wabash-cadiz-ky"
+  ],
+  "opening_found_not_counted_rule_7c": [
+   "p-hh-trailer-clarinda-ia"
+  ],
+  "reworded_or_retagged_after_board_read": [
+   "p-cam-superline-waynesboro-pa",
+   "p-featherlite-cresco-ia-2",
+   "p-interstate-group-kingman-az",
+   "p-lippert-kimberly-id",
+   "p-lippert-nampa-id",
+   "p-lippert-waxahachie-tx",
+   "p-look-middlebury-in",
+   "p-midsota-avon-mn",
+   "p-novae-markle-in",
+   "p-trailer-component-mentor-oh-2"
+  ],
+  "re_read_no_change": [
+   "p-alcom-deland-fl",
+   "p-alcom-winslow-me",
+   "p-american-cargo-bristol-in",
+   "p-american-cargo-elkhart-in",
+   "p-american-cargo-elkhart-in-2",
+   "p-american-cargo-mcadoo-pa",
+   "p-american-cargo-ogden-ut",
+   "p-american-cargo-waco-tx",
+   "p-atc-nappanee-in",
+   "p-aulick-scottsbluff-ne",
+   "p-axn-louisville-ky",
+   "p-bee-climax-ga",
+   "p-behnke-farley-ia",
+   "p-bison-milford-in",
+   "p-bloomer-salado-tx",
+   "p-boatmate-maryville-tn",
+   "p-carry-on-callao-va",
+   "p-carry-on-coburg-or",
+   "p-carry-on-missouri-valley-ia",
+   "p-carry-on-montross-va",
+   "p-carry-on-winnemucca-nv",
+   "p-cie-emporia-va",
+   "p-cie-south-gate-ca",
+   "p-clement-sibley-la",
+   "p-creative-fab-leesburg-oh",
+   "p-cross-braddyville-ia",
+   "p-cross-bristol-in",
+   "p-cush-nixa-mo",
+   "p-diamond-c-mount-pleasant-tx",
+   "p-dorsey-elba-al",
+   "p-east-randolph-oh",
+   "p-eby-story-city-ia",
+   "p-elite-oklahoma-city-ok",
+   "p-faymonville-little-rock-ar",
+   "p-globe-bradenton-fl",
+   "p-hardin-lacon-il",
+   "p-hart-chickasha-ok",
+   "p-hillsboro-hillsboro-ks",
+   "p-hutchens-seymour-mo",
+   "p-jet-humboldt-ia",
+   "p-karavan-fox-lake-wi",
+   "p-kinetic-waco-tx",
+   "p-lakota-bristol-in",
+   "p-lamar-sumner-tx",
+   "p-liberty-fillmore-in",
+   "p-liberty-sulphur-springs-tx",
+   "p-link-mfg-sioux-center-ia",
+   "p-lippert-goshen-in-2",
+   "p-lippert-mansfield-tx",
+   "p-lippert-pendleton-or",
+   "p-load-trail-sulphur-springs-tx",
+   "p-logan-coach-nibley-ut",
+   "p-mac-alliance-oh-2",
+   "p-marine-master-tullahoma-tn",
+   "p-midwest-industries-ida-grove-ia",
+   "p-moran-welding-troy-mo",
+   "p-nelson-ottawa-oh",
+   "p-norstar-brookston-tx",
+   "p-pj-trailers-mount-orab-oh",
+   "p-shadow-williston-fl",
+   "p-smc-bristol-in",
+   "p-stewart-stevenson-houston-tx",
+   "p-sullair-michigan-city-in",
+   "p-sundowner-coleman-ok",
+   "p-talbert-rensselaer-in",
+   "p-titan-waterville-ks",
+   "p-trail-eze-mitchell-sd",
+   "p-trail-king-mitchell-sd",
+   "p-trail-king-mitchell-sd-2",
+   "p-trails-west-preston-id",
+   "p-tramont-milwaukee-wi",
+   "p-trinity-trailer-boise-id",
+   "p-trinity-trailer-boise-id-2",
+   "p-w-w-madill-ok",
+   "p-wabash-lafayette-in",
+   "p-wabash-lafayette-in-2",
+   "p-wanco-arvada-co",
+   "p-western-trailer-boise-id",
+   "p-wilson-sioux-city-ia"
+  ],
+  "unreachable_not_re_read": [
+   "p-4-star-oklahoma-city-ok",
+   "p-covered-wagon-fitzgerald-ga",
+   "p-craftsmen-saint-charles-mo",
+   "p-cronkhite-danville-il",
+   "p-custom-truck-elk-point-sd",
+   "p-dalton-rural-retreat-va",
+   "p-homesteader-new-tazewell-tn",
+   "p-legend-alma-mi",
+   "p-merhow-white-pigeon-mi",
+   "p-pitts-pittsview-al",
+   "p-pratt-intermodal-niles-mi",
+   "p-premier-trailer-visalia-ca",
+   "p-ridewell-springfield-mo"
+  ],
+  "homepage_rendered_no_board_or_careers_listing_found": [
+   "p-bm-manufacturing-camdenton-mo",
+   "p-brazos-wills-point-tx",
+   "p-brown-industrial-botkins-oh",
+   "p-com-fab-plain-city-oh",
+   "p-cornpro-elnora-in",
+   "p-cozad-stockton-ca",
+   "p-eager-beaver-lake-wales-fl",
+   "p-econoline-double-springs-al",
+   "p-fairchild-glen-lyn-va",
+   "p-fontaine-haleyville-al",
+   "p-fontaine-specialized-springville-al",
+   "p-goldhofer-hickory-nc",
+   "p-gooseneck-bryan-tx",
+   "p-hawk-manawa-wi",
+   "p-interstate-trailers-mansfield-tx",
+   "p-jq-tex-mishawaka-in",
+   "p-kaufman-lexington-nc",
+   "p-load-rite-fairless-hills-pa",
+   "p-lucon-griffin-ga",
+   "p-magic-tilt-clearwater-fl",
+   "p-mtm-kewanee-il",
+   "p-reitnouer-birdsboro-pa",
+   "p-rogers-albion-pa",
+   "p-sh-distributing-burbank-oh",
+   "p-sun-country-trailers-phoenix-az",
+   "p-triple-crown-hickory-nc",
+   "p-triple-crown-ocala-fl",
+   "p-u-dump-ocala-fl",
+   "p-witzco-sarasota-fl"
+  ]
+ },
+ "postings_text_changed": [
+  {
+   "plant": "p-big-tex-wills-point-tx",
+   "change": "Night Shift Weld Supervisor 364383 now dated 2026-11-17 (supervisory, not counted)"
+  },
+  {
+   "plant": "p-timpte-david-city-ne",
+   "change": "'also Assembler - Semi Trailer' clause dropped"
+  },
+  {
+   "plant": "p-trailer-component-mentor-oh-2",
+   "change": "reason now: Buyers requisition names 8120 Tyler Blvd (sibling)"
+  },
+  {
+   "plant": "p-featherlite-cresco-ia-2",
+   "change": "both UKG Ready boards read: no welding role here"
+  },
+  {
+   "plant": "Novae LOOK, Midsota, CAM Superline, Sure-Trac; Interstate Kingman",
+   "change": "none found now rests on the board actually read"
+  },
+  {
+   "plant": "p-lippert-nampa-id, p-lippert-waxahachie-tx, p-lippert-kimberly-id",
+   "change": "stated none-found rows retagged inferred"
+  }
+ ],
+ "leads": [
+  "Novae ADP board lists Welders at Columbia City IN (2026-11-06) and Red Oak IA (2026-10-22): Novae sites not in the ledger",
+  "OSHA 2025 lists four Novae LLC establishments in Clarinda IA (222 N 1st St, 1322 E Washington St, 1518 S 16th St, 1951 Redwood Ave); only H&H 1400 E Washington is in the ledger",
+  "Trail King: ECHO lists a third Mitchell site (5751 Airport Rd); Hendrickson global-operations lists a Mitchell SD plant (5701 Airport Road)",
+  "Buyers Products / Trailer Component Mfg: ECHO lists Mentor sites at 7795 Division Dr, 7653 St Clair St and 7730 Tyler Blvd besides 8120 and 8200 Tyler",
+  "Load Trail UKG Ready lists a Welder and QC Tech Weld at 30 Clarksville St., Paris TX (office address; text of the Welder names Sumner)",
+  "MAC UKG board: Certified Cargo Tank Welder at 'Mac Trailer Service' (Alliance) and Welder III at Mount Pleasant (not traced)"
+ ],
+ "checked_ok": {
+  "fault3_confirmed_or_reworded": [
+   "p-hardin-lacon-il (own page: Assembler, Front Line Leaders, Electrical)",
+   "p-hutchens-seymour-mo (careers page: Mansfield roles only)",
+   "p-stewart-stevenson-houston-tx (iCIMS: keyword weld/fabricat/fitter and pages 1-2: no welder/fitter at Telge Rd)",
+   "p-tramont-milwaukee-wi (careers: no listed openings)",
+   "p-axn-louisville-ky, p-cush-nixa-mo (homepages carry no careers link)",
+   "Carry-On x5 (Paycom job map: Mexia and Lavonia only)",
+   "p-pj-trailers-mount-orab-oh (Paycom job map: Sumner only)",
+   "p-boatmate-maryville-tn, p-moran-welding-troy-mo (Paycom: General Application only)",
+   "Lippert Kimberly, Nampa, Waxahachie, Mansfield, Pendleton, Goshen-2 (full careers API, 300 of 300: no welder)",
+   "p-cross-bristol-in, p-cross-braddyville-ia (Load Trail UKG Ready: laborer / placeholder address)",
+   "p-featherlite-cresco-ia-2, p-trailer-component-mentor-oh-2, Novae LOOK/Midsota/CAM/Sure-Trac, Interstate Kingman (reworded to the board actually read)",
+   "p-link-mfg-sioux-center-ia (HireClick: no welder)",
+   "p-lakota-bristol-in (6-year-old listing)",
+   "p-logan-coach-nibley-ut, p-trinity x2, p-bloomer, p-atc, p-elite, p-norstar, p-w-w, p-talbert, p-dorsey (pages read: no welder listing)",
+   "p-trail-eze-mitchell-sd (UKG Ready: Painter only)",
+   "p-aulick-scottsbluff-ne, p-lamar-sumner-tx (ADP boards: no welding role)",
+   "p-wilson-sioux-city-ia (UKG: Welding Engineer only)",
+   "p-sullair-michigan-city-in (careers page: assembly/machinist; Workday API 429)"
+  ]
+ },
+ "source_failures": [
+  "frs-public.epa.gov: every request timed out / 502 on 2026-11-20 (FRS-cited name rows re-cited to echodata.epa.gov DFR where changed; others not re-verified)",
+  "osha.gov blocked (OSHA rows checked against data/osha_2025.csv; --verify-quotes reports them not_found by design)",
+  "ridewellcorp.com 502 (Ridewell careers not re-read)",
+  "Hitachi Workday cxs API 429 (Sullair Michigan City read from careers.hitachi.com only)",
+  "homesteadertrailer.com bot verification page",
+  "403/unreachable, not re-read: 4startrailers.com, coveredwagontrailers.com, merhow.com, premiertrailer.net, craftsmenind.com, loadkingmfg.com, novaecorp.com (Novae board read via brand pages), legendtrailers.com, adamtrailers.com, cronkhitetrailers.com",
+  "streetinsider.com 403 (Tramont Graycliff parent row not re-checked)",
+  "Indeed/ZipRecruiter-only boards not opened (Bison, Karavan, Liberty, Globe, Wanco)"
+ ],
+ "notes_for_coordinator": [
+  "Hendrickson ADP rows still say 'board shows no posting date' (Lebanon IN, Elizabethtown x2, Navarre x2, Clarksville, Reyco x5): wrong per checker B (search-meta timestampLastPosted); outside the four faults, not changed.",
+  "Trail King has a third Mitchell EPA record (5751 Airport Rd, ECHO 110002124166) and Hendrickson lists a Mitchell SD plant (5701 Airport Road): the rule-7c note 'two Mitchell plants' may be incomplete.",
+  "Wabash ADP job pages render slowly: --verify-quotes may report them not_found on a short render; fetch_page --browser --check finds them (checked 2026-11-20). Felling's list needs --browser.",
+  "Nexhaul page header gives 305 New Plant Road; ledger address is 205 New Plant Rd (not checked).",
+  "Mertz Welder posting is at 2400 N. Waverly, ~0.9 km from the record's 1701 N Waverly (rule 7b, no confidence).",
+  "Load Trail Sumner welder requisition carries the Paris TX office address; placed by its text ('Load Trail in Sumner') under rule 7a.",
+  "Cimarron Manhattan: its own ADP board also lists two Welder I requisitions (2026-10-23) and MIG Welder (2026-09-14); the ledger rows cite FactoryFix copies (not changed).",
+  "MAC: UKG re-stamps 'Posted on' (WELDE002324 now 2026-11-18); listed dates are re-post stamps, not ages.",
+  "UKG Ready boards (Featherlite, Exiss, Load Trail) carry no posting dates; those rows say 'open on the board 2026-11-20'.",
+  "Lippert Goshen keeps its 'Plant 19 complex' name through a new OSHA-cited name row (record 3176948); the locations-page row now names Chassis Plant #19-A only.",
+  "Trailstar: OSHA record 2950885 carries company_name MAC Trailer Enterprises, Inc., so its parent row was correct and is untouched; its name now rests on an OSHA-cited row.",
+  "Re-score the plants under postings_changed (all base; none of the 8 profiled none-found plants changed: Hardin, Hutchens Seymour, S&S, Tramont, AXN, Cush, Com-Fab confirmed; Ridewell unreachable)."
+ ]
+}
