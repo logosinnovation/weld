@@ -1,0 +1,2239 @@
+{
+ "vertical": "v-trailers-chassis-mobile-power",
+ "checker": "fact-checker TR-FD (round 2)",
+ "date": "2026-11-20",
+ "plants": [
+  "p-dexter-el-reno-ok",
+  "p-hendrickson-hebron-oh",
+  "p-towmaster-litchfield-mn",
+  "p-jost-greeneville-tn",
+  "p-eby-ephrata-pa",
+  "p-smithco-le-mars-ia",
+  "p-cimarron-manhattan-ks",
+  "p-dexter-fremont-in",
+  "p-wabash-lafayette-in",
+  "p-cottrell-gainesville-ga"
+ ],
+ "claims_checked": 212,
+ "claims_corrected": 4,
+ "claims_unreachable": 0,
+ "fact_error_rate": 0.0189,
+ "error_kind_counts": {
+  "other": 1,
+  "wrong plant or location": 1,
+  "quote does not support value": 2
+ },
+ "repeated_kind_flag": "none: no error kind appears 3 or more times",
+ "fields_in_rate": [
+  "address",
+  "bottleneck_guess",
+  "certifications",
+  "existing_robots",
+  "headcount",
+  "lookalike_of",
+  "materials",
+  "multi_plant",
+  "name",
+  "opening_line",
+  "parent_company",
+  "part_size_fit",
+  "production_type",
+  "products",
+  "relationship",
+  "site_attribution",
+  "sites",
+  "triggers",
+  "weld_processes",
+  "welder_postings"
+ ],
+ "method": "Rows taken from ledger/inbox/trailers-profiler-D.json, plus ledger/evidence.csv rows for the 10 plants (and c-dexter, c-hendrickson, c-jost, c-monroe-truck, c-eby, c-smithco, c-cimarron, c-cottrell, c-wabash) whose (claim_id, source_url) key the file does not carry and that evidence_remove does not retire (merge_inbox upserts on that key). Every stated source_url (65) re-fetched 2026-11-20 with tools/fetch_page.py (plain + raw source, browser fallback); Hendrickson and Wabash ADP myjobs pages rendered in Playwright with networkidle and the search-meta JSON captured (timestampLastPosted); DexKo ClearCompany careers API read in full (63 roles); SmithCo and Cimarron ADP WFN requisition lists read through the public job-requisitions API; Cottrell /apply checked with fetch_page --browser --check. OSHA rows checked against data/osha_2025.csv (osha.gov blocked). Each value checked clause by clause against its page. 3 web searches (Cottrell, Wabash Lafayette, Towmaster) for open status and triggers only; none used as a quote. Score rows (score_*, score_total, score_tier, confidence) assessed in score_notes, not in the rate; unknown-tag rows listed in rows_outside_rate. After an advisor review: a token-level clause sweep of every stated value against its cached page (value words missing from the page listed and read one by one), the Cottrell campus distance (ENR bridge line), the Cottrell /careers Apply Now hrefs, and the Eby HireClick board list were added.",
+ "rows": [
+  {
+   "claim_id": "c-dexter:multi_plant",
+   "source_url": "https://www.dexteraxle.com/about/locations/",
+   "ledger_value": "multi-plant: Dexter's locations page lists El Reno OK (Plant 15) and Fremont IN (Plant 12), each marked Manufacturing, among its sites",
+   "tag": "stated",
+   "row_ref": "file[0]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "c-dexter:certifications",
+   "source_url": "https://www.dextergroup.com/about/",
+   "ledger_value": "company-level: Dexter Axle completed ISO 9001:2008 certification (history page; year not shown in the text read)",
+   "tag": "stated",
+   "row_ref": "file[1]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:weld_processes",
+   "source_url": "https://applications.deq.ok.gov/permitspublic/storedpermits/8322.pdf",
+   "ledger_value": "GMAW welding, 200,000 lb/year annual electrode usage (OK DEQ permit memo dated November 2, 2022)",
+   "tag": "stated",
+   "row_ref": "file[2]",
+   "verdict": "confirmed",
+   "note": "Memo is the DEQ 'DRAFT PERMIT' memorandum dated November 2, 2022 (Permit 2011-845-O (M-1)); table: 'Welding GMAW 200,000' lb/year annual electrode usage; condition 10 caps GMAW electrode at 200,000 lb/year."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:certifications",
+   "source_url": "",
+   "ledger_value": "company-level only: Dexter Axle ISO 9001:2008 (c-dexter:certifications); no El Reno site certificate found",
+   "tag": "inferred",
+   "row_ref": "file[4]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:part_size_fit",
+   "source_url": "https://applications.deq.ok.gov/permitspublic/storedpermits/8322.pdf",
+   "ledger_value": "axles of 50 to 800 lb apiece (average 425 lb), up to 1,500-2,000 axles per day (OK DEQ memo, November 2, 2022)",
+   "tag": "stated",
+   "row_ref": "file[5]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:part_size_fit",
+   "source_url": "",
+   "ledger_value": "axle assemblies of 50-800 lb fit the older sheet's large cell (up to 10,500 lb) and the 2026 analyst-report limit (55,000 lb); the lightest fit the small cell (50 lb); material not stated",
+   "tag": "inferred",
+   "row_ref": "file[6]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:production_type",
+   "source_url": "",
+   "ledger_value": "running gear for RV, cargo, horse, utility and equipment trailers, 1,500-2,000 axles per day of varying weight (50-800 lb); no identical-parts line quoted",
+   "tag": "inferred",
+   "row_ref": "file[7]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:existing_robots",
+   "source_url": "https://applications.deq.ok.gov/permitspublic/storedpermits/8322.pdf",
+   "ledger_value": "automated axle lines: Spring Axle 1 (SA1) and Spring Axle 2 (SA2), on which axles are assembled",
+   "tag": "stated",
+   "row_ref": "file[8]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:existing_robots",
+   "source_url": "",
+   "ledger_value": "robotic welding not stated for El Reno",
+   "tag": "inferred",
+   "row_ref": "file[9]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:welder_postings",
+   "source_url": "https://dexkoglobal.clearcompany.com/careers/jobs",
+   "ledger_value": "none found: DexKo ClearCompany board, all 63 roles read 2026-11-20 (API totalCount 63); El Reno roles: General Production Openings, Maintenance Technician B (2nd Shift), OTR Driver and an Engineering Intern listing; none names welding; board shows no posting dates",
+   "tag": "inferred",
+   "row_ref": "file[10]",
+   "verdict": "confirmed",
+   "note": "ClearCompany API read 2026-11-20: El Reno roles are Maintenance Technician B, OTR Driver, General Production Openings (no welding in its text) and a multi-site intern listing. 'none found' confirmed."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (one news search 2026-11-20 and the company pages read; the only dated 2026 Dexter item is a WARN notice for Elkhart Plant 61, another site)",
+   "tag": "inferred",
+   "row_ref": "file[11]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:opening_line",
+   "source_url": "",
+   "ledger_value": "Dexter's El Reno plant reported a 2025 average of 157 employees to OSHA, and Oklahoma DEQ's Nov 2, 2022 permit memo describes up to 1,500-2,000 axles a day at the plant with GMAW welding; how do you staff welding for that axle volume?",
+   "tag": "inferred",
+   "row_ref": "file[21]",
+   "verdict": "confirmed",
+   "note": "Every clause traces to a stated row of a cited claim with its date (listed dates for postings, memo/release/OSHA year); company facts worded company-wide; closing \"you\" question; no pitch."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly welding throughput on the axle lines: Oklahoma DEQ's Nov 2, 2022 permit memo lists GMAW welding with 200,000 lb of electrode a year at El Reno, where the plant produces up to 1,500-2,000 axles per day.",
+   "tag": "inferred",
+   "row_ref": "file[22]",
+   "verdict": "confirmed",
+   "note": "Tagged inferred, hedged (Possibly/Likely); clauses trace to stated rows with dates."
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:welder_postings",
+   "source_url": "https://dexkoglobal.clearcompany.com/careers/jobs/b34b827f-031d-39af-a368-ec3e2bf3969e",
+   "ledger_value": "counted: Welder (ClearCompany job b34b827f), Fremont IN: MIG welding on production parts, runs robotic welding equipment; board shows no posting date (API and page source read 2026-11-20)",
+   "tag": "stated",
+   "row_ref": "file[23]",
+   "verdict": "confirmed",
+   "note": "ClearCompany API (pageSize 100) read 2026-11-20: totalCount 63; two 'Welder' jobs located Fremont IN, no date fields. Cached job pages and API carry no datePosted/datePublished: \"no posting date\" confirmed."
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:welder_postings",
+   "source_url": "https://dexkoglobal.clearcompany.com/careers/jobs/23c10f41-2f08-1847-3fa8-27f36f84c374",
+   "ledger_value": "counted: Welder (ClearCompany job 23c10f41), Fremont IN: MIG welding on production parts, runs robotic welding equipment; board shows no posting date (API and page source read 2026-11-20)",
+   "tag": "stated",
+   "row_ref": "file[24]",
+   "verdict": "confirmed",
+   "note": "ClearCompany API (pageSize 100) read 2026-11-20: totalCount 63; two 'Welder' jobs located Fremont IN, no date fields. Cached job pages and API carry no datePosted/datePublished: \"no posting date\" confirmed."
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:site_attribution",
+   "source_url": "",
+   "ledger_value": "city-only postings placed at Plant 12, 301 West Pearl Street (rule 7a; no confidence)",
+   "tag": "inferred",
+   "row_ref": "file[25]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:welder_postings",
+   "source_url": "",
+   "ledger_value": "2 counted at once (two Welder requisitions, b34b827f and 23c10f41, identical text), Fremont IN; no posting dates on the board; rule 7a",
+   "tag": "inferred",
+   "row_ref": "file[26]",
+   "verdict": "confirmed",
+   "note": "ClearCompany API (pageSize 100) read 2026-11-20: totalCount 63; two 'Welder' jobs located Fremont IN, no date fields."
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:weld_processes",
+   "source_url": "https://dexkoglobal.clearcompany.com/careers/jobs/b34b827f-031d-39af-a368-ec3e2bf3969e",
+   "ledger_value": "MIG welding on production parts; welders also run and monitor robotic welding equipment; 1 year of MIG welding experience required",
+   "tag": "stated",
+   "row_ref": "file[27]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:certifications",
+   "source_url": "",
+   "ledger_value": "company-level only: Dexter Axle ISO 9001:2008 (c-dexter:certifications); no Fremont site certificate found",
+   "tag": "inferred",
+   "row_ref": "file[29]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:production_type",
+   "source_url": "",
+   "ledger_value": "company-level product list: axles, accessories and towing components; Fremont's product split not stated",
+   "tag": "inferred",
+   "row_ref": "file[31]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:existing_robots",
+   "source_url": "https://dexkoglobal.clearcompany.com/careers/jobs/b34b827f-031d-39af-a368-ec3e2bf3969e",
+   "ledger_value": "yes: robotic welding equipment named in the Fremont Welder postings (brand not stated)",
+   "tag": "stated",
+   "row_ref": "file[32]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (one news search 2026-11-20 and the company pages read)",
+   "tag": "inferred",
+   "row_ref": "file[33]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:opening_line",
+   "source_url": "",
+   "ledger_value": "Dexter's board, read Nov 20, 2026, lists Welder roles in Fremont, IN that perform MIG welding on production parts and also run and monitor robotic welding equipment; how do you split work between manual MIG welding and the robots?",
+   "tag": "inferred",
+   "row_ref": "file[44]",
+   "verdict": "confirmed",
+   "note": "Every clause traces to a stated row of a cited claim with its date (listed dates for postings, memo/release/OSHA year); company facts worded company-wide; closing \"you\" question; no pitch."
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly staffing manual MIG welding alongside robotic welding: Dexter's board, read Nov 20, 2026, lists Welder roles in Fremont, IN that perform MIG welding on production parts and run and monitor robotic welding equipment.",
+   "tag": "inferred",
+   "row_ref": "file[45]",
+   "verdict": "confirmed",
+   "note": "Tagged inferred, hedged (Possibly/Likely); clauses trace to stated rows with dates."
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001236315006",
+   "ledger_value": "counted: Welding Fabrication Associate - 2nd Shift (#26-1462), 277 North High Street, Hebron OH; listed 2026-11-11 (ADP timestampLastPosted)",
+   "tag": "stated",
+   "row_ref": "file[46]",
+   "verdict": "confirmed",
+   "note": "Both requisitions rendered in Playwright 2026-11-20 (title, #26-1462 / #26-1307, 277 North High Street, tack-weld duty); search-meta timestampLastPosted 2026-11-11T20:06:46Z and 2026-09-30T17:54:11Z read in the same session: listing dates match."
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001228608906",
+   "ledger_value": "counted: Welding/Fabrication Associate - 3rd Shift (#26-1307), 277 North High Street, Hebron OH; listed 2026-09-30 (ADP timestampLastPosted)",
+   "tag": "stated",
+   "row_ref": "file[47]",
+   "verdict": "confirmed",
+   "note": "Both requisitions rendered in Playwright 2026-11-20 (title, #26-1462 / #26-1307, 277 North High Street, tack-weld duty); search-meta timestampLastPosted 2026-11-11T20:06:46Z and 2026-09-30T17:54:11Z read in the same session: listing dates match."
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:welder_postings",
+   "source_url": "",
+   "ledger_value": "2 counted at once (Welding Fabrication Associate 2nd Shift listed 2026-11-11; Welding/Fabrication Associate 3rd Shift listed 2026-09-30), both at 277 North High Street; Fabrication Co-Op listed, not counted",
+   "tag": "inferred",
+   "row_ref": "file[48]",
+   "verdict": "confirmed",
+   "note": "Both requisitions rendered in Playwright 2026-11-20 (title, #26-1462 / #26-1307, 277 North High Street, tack-weld duty); search-meta timestampLastPosted 2026-11-11T20:06:46Z and 2026-09-30T17:54:11Z read in the same session: listing dates match."
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:weld_processes",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001236315006",
+   "ledger_value": "welding systems (process not named) and manual tack welding; Hendrickson 2G weld test or welding certification required",
+   "tag": "stated",
+   "row_ref": "file[49]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:production_type",
+   "source_url": "",
+   "ledger_value": "company-level product list: Hendrickson suspensions, axle systems and auxiliary lift axle systems; the site is listed as Hendrickson Auxiliary Axle Systems",
+   "tag": "inferred",
+   "row_ref": "file[53]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (one news search 2026-11-20 and the company pages read)",
+   "tag": "inferred",
+   "row_ref": "file[55]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:relationship",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "row_ref": "file[56]",
+   "verdict": "confirmed",
+   "note": "Tag inferred is correct; reasoning matches the vertical relationship rule (see score_notes for the Dexter Fremont/Albion vs El Reno and Hendrickson company-line consistency question)."
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:lookalike_of",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "Hutchens Industries",
+   "tag": "inferred",
+   "row_ref": "file[57]",
+   "verdict": "confirmed",
+   "note": "Tag inferred is correct; reasoning matches the vertical relationship rule (see score_notes for the Dexter Fremont/Albion vs El Reno and Hendrickson company-line consistency question)."
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:opening_line",
+   "source_url": "",
+   "ledger_value": "Hendrickson's board lists Welding Fabrication Associate roles at 277 North High Street in Hebron for 2nd shift, listed Nov 11, 2026, and 3rd shift, listed Sep 30, 2026, that lay out, position and tack-weld parts for welding; how do you train new associates for those shifts?",
+   "tag": "inferred",
+   "row_ref": "file[67]",
+   "verdict": "confirmed",
+   "note": "Every clause traces to a stated row of a cited claim with its date (listed dates for postings, memo/release/OSHA year); company facts worded company-wide; closing \"you\" question; no pitch."
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely staffing fit-up and tack welding on 2nd and 3rd shift: Hendrickson's board lists Welding Fabrication Associate roles at Hebron, listed Nov 11, 2026 and Sep 30, 2026, that lay out, position and tack-weld parts for welding.",
+   "tag": "inferred",
+   "row_ref": "file[68]",
+   "verdict": "confirmed",
+   "note": "Tagged inferred, hedged (Possibly/Likely); clauses trace to stated rows with dates."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:welder_postings",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883c66371563b016388ef241e5129&id=8a7883a89d02f872019d0762c66f11e5",
+   "ledger_value": "counted: 2nd Shift Welder - Trailer - Towmaster (Job Id 2315), Litchfield MN; pulse MIG; $20-$24/hr; no posting date on the page (raw source read 2026-11-20)",
+   "tag": "stated",
+   "row_ref": "file[69]",
+   "verdict": "confirmed",
+   "note": "Both Paycor pages live ('Location: Litchfield, MN', Job Id 2315 / 2605); no date in page or raw source. The postings call Towmaster 'an Aebi Schmidt brand' (parent row stays: the careers page states the Monroe division)."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:welder_postings",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883c66371563b016388ef241e5129&id=8a7887a1a064211201a06d6766cb6e64",
+   "ledger_value": "counted: Trailer Welder - Towmaster (Job Id 2605), Litchfield MN; pulse MIG; $26-$30/hr; no posting date on the page (raw source read 2026-11-20)",
+   "tag": "stated",
+   "row_ref": "file[70]",
+   "verdict": "confirmed",
+   "note": "Both Paycor pages live ('Location: Litchfield, MN', Job Id 2315 / 2605); no date in page or raw source. The postings call Towmaster 'an Aebi Schmidt brand' (parent row stays: the careers page states the Monroe division)."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:welder_postings",
+   "source_url": "",
+   "ledger_value": "2 counted at once on the Monroe/Towmaster Paycor board (read 2026-11-20), Litchfield MN: 2nd Shift Welder - Trailer and Trailer Welder; no posting dates shown; rule 7a",
+   "tag": "inferred",
+   "row_ref": "file[71]",
+   "verdict": "confirmed",
+   "note": "Both Paycor pages live ('Location: Litchfield, MN', Job Id 2315 / 2605); no date in page or raw source. The postings call Towmaster 'an Aebi Schmidt brand' (parent row stays: the careers page states the Monroe division)."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:site_attribution",
+   "source_url": "",
+   "ledger_value": "Towmaster facts placed at 61381 US Hwy 12 by its single facility (rule 7a; no confidence)",
+   "tag": "inferred",
+   "row_ref": "file[72]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:weld_processes",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883c66371563b016388ef241e5129&id=8a7883a89d02f872019d0762c66f11e5",
+   "ledger_value": "pulse MIG welding (MIG experience required); manual wire-feed and automatic welders; all-position welding",
+   "tag": "stated",
+   "row_ref": "file[73]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:materials",
+   "source_url": "https://towmaster.com/about-2/",
+   "ledger_value": "American steel",
+   "tag": "stated",
+   "row_ref": "file[74]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:part_size_fit",
+   "source_url": "https://towmaster.com/wp-content/uploads/2023/12/Spec_T-50LP.pdf",
+   "ledger_value": "T-50LP deck-over trailer: 16 in I-beam main frame, 24 ft main deck, 102 in load width, 10,700 lb trailer weight (spec sheet)",
+   "tag": "stated",
+   "row_ref": "file[75]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:part_size_fit",
+   "source_url": "",
+   "ledger_value": "welded steel trailer frames such as the T-50LP's (24 ft main deck, 102 in wide, 10,700 lb whole trailer) fit the 2026 analyst-report cell (60 ft, 15 ft, 55,000 lb); the whole trailer is just over the older large cell's 10,500 lb",
+   "tag": "inferred",
+   "row_ref": "file[76]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:production_type",
+   "source_url": "",
+   "ledger_value": "several trailer lines in the Litchfield building; catalog of drop-deck, deck-over, tilt, rigid and detachable gooseneck, hydraulic tail and hydraulic dump models with customizable options; no identical-parts line quoted",
+   "tag": "inferred",
+   "row_ref": "file[78]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:existing_robots",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883c66371563b016388ef241e5129&id=8a7883a89d02f872019d0762c66f11e5",
+   "ledger_value": "automatic welders operated by the trailer welders (welder postings)",
+   "tag": "stated",
+   "row_ref": "file[79]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:existing_robots",
+   "source_url": "",
+   "ledger_value": "robots not named",
+   "tag": "inferred",
+   "row_ref": "file[80]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (one news search 2026-11-20 and Towmaster's news list)",
+   "tag": "inferred",
+   "row_ref": "file[81]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "c-monroe-truck:multi_plant",
+   "source_url": "https://recruitingbypaycor.com/career/CareerHome.action?clientId=8a7883c66371563b016388ef241e5129",
+   "ledger_value": "multi-plant: the Monroe/Towmaster board lists Manufacturing roles at Litchfield MN (Towmaster) and at Monroe WI (Assembly 1st Shift)",
+   "tag": "stated",
+   "row_ref": "file[82]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "c-monroe-truck:multi_plant",
+   "source_url": "https://www.monroetruck.com/locations/",
+   "ledger_value": "Monroe Truck Equipment states 9 facilities, Litchfield MN among them",
+   "tag": "stated",
+   "row_ref": "file[83]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:opening_line",
+   "source_url": "",
+   "ledger_value": "Towmaster's board, read Nov 20, 2026, lists a 2nd Shift Welder - Trailer role and a Trailer Welder role in Litchfield that weld parts with a pulse MIG welder; how do you staff pulse MIG welding across your trailer lines?",
+   "tag": "inferred",
+   "row_ref": "file[93]",
+   "verdict": "confirmed",
+   "note": "Every clause traces to a stated row of a cited claim with its date (listed dates for postings, memo/release/OSHA year); company facts worded company-wide; closing \"you\" question; no pitch."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly welder staffing on the trailer lines: Towmaster's board, read Nov 20, 2026, lists a 2nd Shift Welder - Trailer role and a Trailer Welder role in Litchfield that require MIG welding experience.",
+   "tag": "inferred",
+   "row_ref": "file[94]",
+   "verdict": "confirmed",
+   "note": "Tagged inferred, hedged (Possibly/Likely); clauses trace to stated rows with dates."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4509523",
+   "ledger_value": "counted: Welder TN-3rd Shift (job 4509523), Greeneville: welds parts for production, MIG experience preferred, JOST Welder Qualification Test",
+   "tag": "stated",
+   "row_ref": "file[95]",
+   "verdict": "confirmed",
+   "note": "Both detail pages live; JSON-LD title, datePosted (2026-11-03, 2026-10-15) and streetAddress 5080 W Andrew Johnson Hwy on each."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4505288",
+   "ledger_value": "counted: Welder TN-2nd Shift (job 4505288), Greeneville: welds parts for production, MIG experience preferred, JOST Welder Qualification Test",
+   "tag": "stated",
+   "row_ref": "file[96]",
+   "verdict": "confirmed",
+   "note": "Both detail pages live; JSON-LD title, datePosted (2026-11-03, 2026-10-15) and streetAddress 5080 W Andrew Johnson Hwy on each."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/4b15de15-e41e-4534-8350-66274788ca92/JOST-International",
+   "ledger_value": "board data: Welder TN-3rd Shift listed 2026-11-03 and Welder TN-2nd Shift listed 2026-10-15, both at 5080 W Andrew Johnson Hwy, Greeneville",
+   "tag": "stated",
+   "row_ref": "file[97]",
+   "verdict": "confirmed",
+   "note": "Both detail pages live; JSON-LD title, datePosted (2026-11-03, 2026-10-15) and streetAddress 5080 W Andrew Johnson Hwy on each."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:welder_postings",
+   "source_url": "",
+   "ledger_value": "2 counted at once (Welder TN-3rd Shift listed 2026-11-03; Welder TN-2nd Shift listed 2026-10-15) at 5080 W Andrew Johnson Hwy; Laser Fabrication Attendant x2 listed, not counted",
+   "tag": "inferred",
+   "row_ref": "file[98]",
+   "verdict": "confirmed",
+   "note": "Both detail pages live; JSON-LD title, datePosted (2026-11-03, 2026-10-15) and streetAddress 5080 W Andrew Johnson Hwy on each."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4509523",
+   "ledger_value": "MIG (welder postings: MIG welding experience preferred, semi-automatic MIG a plus); production welding of parts to print",
+   "tag": "stated",
+   "row_ref": "file[99]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:materials",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4563735",
+   "ledger_value": "steel beams and metal sheets cut on Laser/Ficept machines (Laser/Fabrication Attendant posting, Greeneville)",
+   "tag": "stated",
+   "row_ref": "file[100]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:certifications",
+   "source_url": "https://jostinternational.com/hubfs/Jost_International_April_2024/Pdf/TN-Jost-International-Corporation-IATF-exp-03_30_2024.pdf?hsLang=en",
+   "ledger_value": "IATF 16949:2016 (BSI) for design and manufacture of fifth wheels at 5080 W. Andrew Johnson Highway; the copy linked on JOST's site shows expiry date 2024-03-30",
+   "tag": "stated",
+   "row_ref": "file[101]",
+   "verdict": "confirmed",
+   "note": "Certificate PDF shows Expiry Date 2024-03-30; value says so."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:products",
+   "source_url": "https://jostinternational.com/hubfs/Jost_International_April_2024/Pdf/TN-Jost-International-Corporation-IATF-exp-03_30_2024.pdf?hsLang=en",
+   "ledger_value": "fifth wheels: design and manufacture; registered activities machining, welding, assembly and powder coating at 5080 W. Andrew Johnson Highway (IATF certificate)",
+   "tag": "stated",
+   "row_ref": "file[102]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:production_type",
+   "source_url": "",
+   "ledger_value": "site product line: fifth wheels (IATF scope and about page); no custom or identical-parts statement",
+   "tag": "inferred",
+   "row_ref": "file[104]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (one news search 2026-11-20 and the company pages read)",
+   "tag": "inferred",
+   "row_ref": "file[106]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:opening_line",
+   "source_url": "",
+   "ledger_value": "JOST's board lists Welder TN-3rd Shift, listed Nov 3, 2026, and Welder TN-2nd Shift, listed Oct 15, 2026, at 5080 W Andrew Johnson Hwy in Greeneville, roles that pull and weld parts to print and must pass the JOST Welder Qualification Test; how do you qualify new welders for fifth-wheel production?",
+   "tag": "inferred",
+   "row_ref": "file[116]",
+   "verdict": "confirmed",
+   "note": "Every clause traces to a stated row of a cited claim with its date (listed dates for postings, memo/release/OSHA year); company facts worded company-wide; closing \"you\" question; no pitch."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder hiring on 2nd and 3rd shift: JOST's board lists Welder TN-2nd Shift, listed Oct 15, 2026, and Welder TN-3rd Shift, listed Nov 3, 2026, at 5080 W Andrew Johnson Hwy, each requiring the JOST Welder Qualification Test.",
+   "tag": "inferred",
+   "row_ref": "file[117]",
+   "verdict": "confirmed",
+   "note": "Tagged inferred, hedged (Possibly/Likely); clauses trace to stated rows with dates."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:welder_postings",
+   "source_url": "",
+   "ledger_value": "2 counted at once on Eby's own HireClick board (read 2026-11-20), 502 Alexander Dr: Skilled Aluminum TIG Welder and Robotic Welding Operator (counted: some manual MIG welding required), both listed 2026-07-08",
+   "tag": "inferred",
+   "row_ref": "file[118]",
+   "verdict": "confirmed",
+   "note": "Both HireClick pages live; '502 Alexander Dr Ephrata, PA'; JSON-LD datePosted 7/8/2026 on both; 'First and Second Shift Positions Available!' on the TIG posting. HireClick board (/jobboard, browser render 2026-11-20) lists Robotic Welding Operator, Skilled Aluminum TIG Welder, Material Handler and Skilled CNC Machine Operator, all Ephrata: both counted roles live."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:weld_processes",
+   "source_url": "https://mhebyinc.hireclick.com/jb/skilled-aluminum-tig-welder/view/252576",
+   "ledger_value": "aluminum GTAW (TIG) welding (Skilled Aluminum TIG Welder posting)",
+   "tag": "stated",
+   "row_ref": "file[119]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:weld_processes",
+   "source_url": "https://mhebyinc.hireclick.com/jb/robotic-welding-operator/view/252575",
+   "ledger_value": "robotic aluminum MIG welding cell for truck body decks and bulkheads, with some manual MIG welding (Robotic Welding Operator posting)",
+   "tag": "stated",
+   "row_ref": "file[120]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:materials",
+   "source_url": "https://mhebyinc.hireclick.com/jb/skilled-aluminum-tig-welder/view/252576",
+   "ledger_value": "aluminum sheet metal and extruded components",
+   "tag": "stated",
+   "row_ref": "file[121]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:part_size_fit",
+   "source_url": "",
+   "ledger_value": "aluminum-first: no steel part; aluminum trailer and truck-body components (material 4 under the aluminum-first rule)",
+   "tag": "inferred",
+   "row_ref": "file[123]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "c-eby:production_type",
+   "source_url": "https://www.mheby.com/about",
+   "ledger_value": "company-level: standard and custom aluminum trailers, semi-trailers and truck bodies",
+   "tag": "stated",
+   "row_ref": "file[124]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:production_type",
+   "source_url": "",
+   "ledger_value": "company-level: standard and custom aluminum trailers, semi-trailers and truck bodies (about page); which work Ephrata builds is not stated",
+   "tag": "inferred",
+   "row_ref": "file[125]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:existing_robots",
+   "source_url": "https://mhebyinc.hireclick.com/jb/robotic-welding-operator/view/252575",
+   "ledger_value": "yes: robotic aluminum MIG welding cell (truck body decks and bulkheads); brand not stated",
+   "tag": "stated",
+   "row_ref": "file[126]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:triggers",
+   "source_url": "",
+   "ledger_value": "none found at Ephrata within 24 months; Eby's dated expansion is Plant 2 in Story City IA (100,000 sq ft, scheduled to complete summer 2024), another site",
+   "tag": "inferred",
+   "row_ref": "file[127]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "c-eby:multi_plant",
+   "source_url": "https://www.mheby.com/about",
+   "ledger_value": "multi-plant: manufacturing facilities in Lancaster County PA, West Jefferson OH and Story City IA",
+   "tag": "stated",
+   "row_ref": "file[128]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:opening_line",
+   "source_url": "",
+   "ledger_value": "M.H. Eby's board lists a Skilled Aluminum TIG Welder role and a Robotic Welding Operator role at 502 Alexander Dr in Ephrata, both listed Jul 8, 2026, the robot role running an aluminum MIG cell for truck body decks and bulkheads with some manual MIG welding; how do you split aluminum welding between TIG welders and the robot cell?",
+   "tag": "inferred",
+   "row_ref": "file[138]",
+   "verdict": "confirmed",
+   "note": "Every clause traces to a stated row of a cited claim with its date (listed dates for postings, memo/release/OSHA year); company facts worded company-wide; closing \"you\" question; no pitch."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely skilled aluminum TIG welder hiring: M.H. Eby's board lists a Skilled Aluminum TIG Welder role at 502 Alexander Dr, listed Jul 8, 2026, with first and second shift positions.",
+   "tag": "inferred",
+   "row_ref": "file[139]",
+   "verdict": "confirmed",
+   "note": "Tagged inferred, hedged (Possibly/Likely); clauses trace to stated rows with dates."
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:welder_postings",
+   "source_url": "",
+   "ledger_value": "2 counted at once on SmithCo's own ADP board (read 2026-11-20), Le Mars IA: Evening Welder ($2.50 shift premium; listed 2026-11-02) and Welder (listed 2026-08-19); city-only, rule 7a",
+   "tag": "inferred",
+   "row_ref": "file[140]",
+   "verdict": "confirmed",
+   "note": "Both requisitions live on SmithCo's ADP WFN board list today (cid 410a2523..., 3 requisitions: Evening Welder 2026-11-02, Maintenance Technician, Welder 2026-08-19), cityName Le Mars."
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:site_attribution",
+   "source_url": "",
+   "ledger_value": "city-only postings and single-plant company pages placed at 30902 C-38 (rule 7a; no confidence)",
+   "tag": "inferred",
+   "row_ref": "file[141]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:weld_processes",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9207365516929_1?cid=410a2523-a2fd-43b1-8595-1b360b7738c5&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "semi-automatic welding equipment (bug-o, sub-arc) run to Welding Procedure Specifications; pre-heat, post-heat and gouging (welder postings)",
+   "tag": "stated",
+   "row_ref": "file[142]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:materials",
+   "source_url": "https://sidedump.com/about-smithco/facility",
+   "ledger_value": "3/8 in AR450 plate, formed on a 500-ton press brake up to 20 ft long",
+   "tag": "stated",
+   "row_ref": "file[143]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:materials",
+   "source_url": "",
+   "ledger_value": "steel (AR450 abrasion-resistant steel plate)",
+   "tag": "inferred",
+   "row_ref": "file[144]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:part_size_fit",
+   "source_url": "",
+   "ledger_value": "formed AR450 tub parts up to 20 ft long fit the 2026 analyst-report cell (60 ft) and the older large cell's 65 ft length",
+   "tag": "inferred",
+   "row_ref": "file[145]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "c-smithco:production_type",
+   "source_url": "https://sidedump.com/",
+   "ledger_value": "company-level: custom trailers designed to the customer's operation; customized solutions",
+   "tag": "stated",
+   "row_ref": "file[147]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:production_type",
+   "source_url": "",
+   "ledger_value": "custom side dump trailers designed to the customer's operation (company home page); single 70,000 sq ft plant built exclusively for side dump trailers",
+   "tag": "inferred",
+   "row_ref": "file[148]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:parent_company",
+   "source_url": "https://www.constructionequipmentguide.com/smithco-conquers-new-markets-with-customized-solutions/51405",
+   "ledger_value": "Christensen Farms (owner since March 2019, per a Feb 25, 2021 article)",
+   "tag": "stated",
+   "row_ref": "file[150]",
+   "verdict": "confirmed",
+   "note": "Quote in the CEG article dated February 25, 2021; ownership after 2021 not re-confirmed by a newer page (value dates it correctly)."
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:triggers",
+   "source_url": "https://www.constructionequipmentguide.com/industry-news/smithco/",
+   "ledger_value": "contract win: SmithCo announced on Jan 5, 2026 a nationwide cooperative purchasing contract for Public Works Equipment from H-GAC (HGACBuy)",
+   "tag": "stated",
+   "row_ref": "file[151]",
+   "verdict": "corrected",
+   "note": "The 'contract win:' label is the profiler's trigger classification written into a stated row; the page describes joining a public-agency buying co-op (an award of a purchasing contract vehicle, no order or quantity). Use the source's wording; whether it is a plant-level trigger is decided in score_notes (recommend not: demand 8).",
+   "corrected_value": "SmithCo announced on Jan 5, 2026 that it was awarded a nationwide cooperative purchasing contract for Public Works Equipment by the Houston-Galveston Area Council (H-GAC) Cooperative Purchasing Program (CEG item headed 'SmithCo Side Dump Trailers to Join H-GAC Buying Co-op', Mar 2, 2026)",
+   "corrected_quote": "SmithCo Side Dump Trailers to Join H-GAC Buying Co-op SmithCo Mfg. Inc. , a side dump trailer designer and manufacturing company located in Le Mars, Iowa, announced on Jan. 5, 2026, that it was awarded a nationwide cooperative purchasing contract for Public Works Equipment by the Houston-Galveston Area Council (H-GAC)",
+   "corrected_tag": "stated",
+   "error_kind": "other"
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:opening_line",
+   "source_url": "",
+   "ledger_value": "SmithCo's board lists an Evening Welder role in Le Mars with a $2.50 shift premium, listed Nov 2, 2026, and SmithCo announced a nationwide H-GAC cooperative purchasing contract on Jan 5, 2026; how do you plan welding capacity across shifts?",
+   "tag": "inferred",
+   "row_ref": "file[161]",
+   "verdict": "confirmed",
+   "note": "Every clause traces to a stated row of a cited claim with its date (listed dates for postings, memo/release/OSHA year); company facts worded company-wide; closing \"you\" question; no pitch."
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly evening-shift welder staffing: SmithCo's board lists an Evening Welder role in Le Mars with a $2.50 shift premium, listed Nov 2, 2026.",
+   "tag": "inferred",
+   "row_ref": "file[162]",
+   "verdict": "confirmed",
+   "note": "Tagged inferred, hedged (Possibly/Likely); clauses trace to stated rows with dates."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201854031215_1?cid=1e91abd5-1792-441f-a40a-9a4e07f3f772&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "counted: Welder I (ADP requisition 9201854031215_1), Manhattan KS 66502, listed 2026-10-23 (Cimarron's ADP board, read 2026-11-20); aluminum MIG and/or TIG",
+   "tag": "stated",
+   "row_ref": "file[163]",
+   "verdict": "confirmed",
+   "note": "All three on Cimarron's ADP WFN board list today (13 requisitions); each requisition shows Manhattan 66502; Welder I texts: 'Using MIG and/or TIG welding equipment', aluminum trailer components."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201854030095_1?cid=1e91abd5-1792-441f-a40a-9a4e07f3f772&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "counted: Welder I (ADP requisition 9201854030095_1), Manhattan KS 66502, listed 2026-10-23 (Cimarron's ADP board, read 2026-11-20); aluminum MIG and/or TIG",
+   "tag": "stated",
+   "row_ref": "file[164]",
+   "verdict": "confirmed",
+   "note": "All three on Cimarron's ADP WFN board list today (13 requisitions); each requisition shows Manhattan 66502; Welder I texts: 'Using MIG and/or TIG welding equipment', aluminum trailer components."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201842979276_1?cid=1e91abd5-1792-441f-a40a-9a4e07f3f772&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "counted: MIG Welder (ADP requisition 9201842979276_1), Manhattan KS 66502, listed 2026-09-14 (Cimarron's ADP board, read 2026-11-20); aluminum MIG and/or TIG",
+   "tag": "stated",
+   "row_ref": "file[165]",
+   "verdict": "confirmed",
+   "note": "All three on Cimarron's ADP WFN board list today (13 requisitions); each requisition shows Manhattan 66502; Welder I texts: 'Using MIG and/or TIG welding equipment', aluminum trailer components."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:welder_postings",
+   "source_url": "",
+   "ledger_value": "3 counted at once on Cimarron's own ADP board (read 2026-11-20), Manhattan KS: Welder I x2 (listed 2026-10-23) and MIG Welder (listed 2026-09-14); city-only, rule 7a",
+   "tag": "inferred",
+   "row_ref": "file[166]",
+   "verdict": "confirmed",
+   "note": "All three on Cimarron's ADP WFN board list today (13 requisitions); each requisition shows Manhattan 66502; Welder I texts: 'Using MIG and/or TIG welding equipment', aluminum trailer components."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:site_attribution",
+   "source_url": "",
+   "ledger_value": "city-only postings placed at 8872 Green Valley Drive (rule 7a; no confidence)",
+   "tag": "inferred",
+   "row_ref": "file[167]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:weld_processes",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201842979276_1?cid=1e91abd5-1792-441f-a40a-9a4e07f3f772&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "MIG and/or aluminum TIG welding of trailer components (MIG Welder posting)",
+   "tag": "stated",
+   "row_ref": "file[168]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:materials",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201854031215_1?cid=1e91abd5-1792-441f-a40a-9a4e07f3f772&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "aluminum trailer components",
+   "tag": "stated",
+   "row_ref": "file[169]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:part_size_fit",
+   "source_url": "",
+   "ledger_value": "aluminum-first: no steel part size (material 4 under the aluminum-first rule)",
+   "tag": "inferred",
+   "row_ref": "file[170]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "c-cimarron:production_type",
+   "source_url": "https://www.cimarrontrailers.com/about-us",
+   "ledger_value": "company-level: custom-built, highly customizable aluminum trailers",
+   "tag": "stated",
+   "row_ref": "file[172]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:production_type",
+   "source_url": "",
+   "ledger_value": "company-level: custom-built, highly customizable aluminum livestock, horse and utility trailers; Manhattan's share not stated",
+   "tag": "inferred",
+   "row_ref": "file[173]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (Cimarron's Manhattan plant was acquired from TravAlum, announced Feb 16, 2022, outside the window)",
+   "tag": "inferred",
+   "row_ref": "file[175]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "c-cimarron:multi_plant",
+   "source_url": "https://cimarrontrailers.com/blog/cimarron-trailers-is-growing",
+   "ledger_value": "multi-plant: Chickasha OK facility plus the Manhattan KS location acquired from TravAlum (announced Feb 16, 2022)",
+   "tag": "stated",
+   "row_ref": "file[176]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:opening_line",
+   "source_url": "",
+   "ledger_value": "Cimarron's board lists Welder I build-line roles in Manhattan, KS, listed Oct 23, 2026, and a MIG Welder role, listed Sep 14, 2026, for aluminum trailer components; how do you staff aluminum MIG and TIG welding on the build line?",
+   "tag": "inferred",
+   "row_ref": "file[186]",
+   "verdict": "confirmed",
+   "note": "Every clause traces to a stated row of a cited claim with its date (listed dates for postings, memo/release/OSHA year); company facts worded company-wide; closing \"you\" question; no pitch."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely aluminum welder hiring for the build line: Cimarron's board lists Welder I roles in Manhattan, KS, listed Oct 23, 2026, that fabricate and assemble aluminum trailer components.",
+   "tag": "inferred",
+   "row_ref": "file[187]",
+   "verdict": "confirmed",
+   "note": "Tagged inferred, hedged (Possibly/Likely); clauses trace to stated rows with dates."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:welder_postings",
+   "source_url": "https://www.cottrelltrailers.com/careers",
+   "ledger_value": "counted: Welder (cottrelltrailers.com/careers): welding, grinding and torch cutting to fabricate parts; no posting date on the page (raw source read 2026-11-20)",
+   "tag": "stated",
+   "row_ref": "file[188]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page. /careers raw source: every 'Apply Now' (incl. the Welder card) has href=\"/apply\"; no datePosted in page or raw source."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:welder_postings",
+   "source_url": "https://www.cottrelltrailers.com/apply",
+   "ledger_value": "own apply form: the Welder 'Apply Now' button leads to Cottrell's own application form at /apply",
+   "tag": "stated",
+   "row_ref": "file[189]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page. /careers raw source: every 'Apply Now' (incl. the Welder card) has href=\"/apply\"; no datePosted in page or raw source."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:welder_postings",
+   "source_url": "",
+   "ledger_value": "1 counted (Welder, own careers page and apply form; undated); CNC Laser Operator listed, not counted; placed at the 2125 Candler Rd campus (rule 7b)",
+   "tag": "inferred",
+   "row_ref": "file[190]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:site_attribution",
+   "source_url": "",
+   "ledger_value": "company careers page and product pages placed at the 2125 Candler Rd campus (rule 7b: adjacent North and South campuses; no confidence)",
+   "tag": "inferred",
+   "row_ref": "file[191]",
+   "verdict": "confirmed",
+   "note": "Rule 7b tested: ENR's 2024 Southeast Best Projects write-up of the 545,000 sq ft plant says 'crews also installed a 600-ft-long bridge connecting two campuses', and the 2021 release calls the North Campus 'adjacent' to the South Campus and says to 'apply in person at 2125 Candler Road'. Campuses connected by a 600 ft bridge are well within about 1 km; tie holds, no confidence. Suggest adding the ENR line as a stated c-cottrell:sites row."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:weld_processes",
+   "source_url": "https://www.cottrelltrailers.com/careers",
+   "ledger_value": "welding with grinding and torch cutting; weld procedures followed (process not named)",
+   "tag": "stated",
+   "row_ref": "file[192]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:materials",
+   "source_url": "https://www.cottrelltrailers.com/about",
+   "ledger_value": "company-level: Cottrell dump body built of abrasion-resistant AR450 steel; car-hauler structure material not stated",
+   "tag": "stated",
+   "row_ref": "file[193]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:part_size_fit",
+   "source_url": "https://www.cottrelltrailers.com/apply",
+   "ledger_value": "C-5305LS car hauler: 53 ft trailer length, 19,000 lb empty weight (product page)",
+   "tag": "stated",
+   "row_ref": "file[194]",
+   "verdict": "confirmed",
+   "note": "Plain fetch shows the figures only inside the Next.js data; fetch_page --browser --check on /apply returned FOUND (the apply page renders the C-5305LS Wide Belly card). Value says '(product page)' while the URL is the apply page: suggest re-citing the C-5305LS product page; not a correction."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:part_size_fit",
+   "source_url": "",
+   "ledger_value": "whole car-hauler figures (53 ft, 19,000 lb) are within the 2026 analyst-report limits, but no welded steel part is stated for car haulers, so no material points",
+   "tag": "inferred",
+   "row_ref": "file[195]",
+   "verdict": "confirmed",
+   "note": "Plain fetch shows the figures only inside the Next.js data; fetch_page --browser --check on /apply returned FOUND (the apply page renders the C-5305LS Wide Belly card). Value says '(product page)' while the URL is the apply page: suggest re-citing the C-5305LS product page; not a correction."
+  },
+  {
+   "claim_id": "c-cottrell:production_type",
+   "source_url": "https://www.cottrelltrailers.com/about",
+   "ledger_value": "company-level: specialized and custom, built-to-order customer-specific work",
+   "tag": "stated",
+   "row_ref": "file[197]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:production_type",
+   "source_url": "",
+   "ledger_value": "specialized and custom built-to-order car haulers and units (company-level); every car hauler locally assembled",
+   "tag": "inferred",
+   "row_ref": "file[198]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:existing_robots",
+   "source_url": "https://gov.georgia.gov/press-releases/2021-02-16/cottrell-invest-125-million-gainesville-hall-county-expansion-0",
+   "ledger_value": "robot welder operator among the positions Cottrell was hiring for in Gainesville (Georgia governor's release, February 16, 2021); brand not stated",
+   "tag": "stated",
+   "row_ref": "file[199]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:weld_processes",
+   "source_url": "https://gov.georgia.gov/press-releases/2021-02-16/cottrell-invest-125-million-gainesville-hall-county-expansion-0",
+   "ledger_value": "MIG welder and aluminum welder among the positions Cottrell was hiring for at its Gainesville facility (Georgia governor's release, February 16, 2021)",
+   "tag": "stated",
+   "row_ref": "file[200]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "c-cottrell:sites",
+   "source_url": "https://gov.georgia.gov/press-releases/2021-02-16/cottrell-invest-125-million-gainesville-hall-county-expansion-0",
+   "ledger_value": "Cottrell's second Gainesville facility (North Campus) is adjacent to its existing South Campus (Georgia governor's release, February 16, 2021)",
+   "tag": "stated",
+   "row_ref": "file[201]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (one news search 2026-11-20; the about-page timeline's newest facility item is 1998)",
+   "tag": "inferred",
+   "row_ref": "file[202]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:parent_company",
+   "source_url": "https://www.cottrelltrailers.com/about",
+   "ledger_value": "Markel Ventures",
+   "tag": "stated",
+   "row_ref": "file[203]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:opening_line",
+   "source_url": "",
+   "ledger_value": "Cottrell reported a 2025 average of 1,161 employees at 2125 Candler Road to OSHA, and its careers page, read Nov 20, 2026, lists a Welder role that welds, grinds and torch-cuts parts to production requirements; how do you keep welding output steady across car-hauler models?",
+   "tag": "inferred",
+   "row_ref": "file[213]",
+   "verdict": "confirmed",
+   "note": "Every clause traces to a stated row of a cited claim with its date (listed dates for postings, memo/release/OSHA year); company facts worded company-wide; closing \"you\" question; no pitch."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly welder hiring for parts fabrication: Cottrell's careers page, read Nov 20, 2026, lists a Welder role that performs welding, grinding and torch cutting to assemble and fabricate parts.",
+   "tag": "inferred",
+   "row_ref": "file[214]",
+   "verdict": "confirmed",
+   "note": "Tagged inferred, hedged (Possibly/Likely); clauses trace to stated rows with dates."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:site_attribution",
+   "source_url": "",
+   "ledger_value": "Lafayette welder postings not placed at Lafayette North (rule 7c, T14): city-level only",
+   "tag": "inferred",
+   "row_ref": "file[215]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:weld_processes",
+   "source_url": "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001234697606",
+   "ledger_value": "Lafayette welder postings (city-level): carbon steel, aluminum and stainless steel MIG and/or TIG welding",
+   "tag": "stated",
+   "row_ref": "file[216]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:materials",
+   "source_url": "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001234697606",
+   "ledger_value": "Lafayette welder postings (city-level): carbon steel, aluminum and stainless steel products and subassemblies",
+   "tag": "stated",
+   "row_ref": "file[217]",
+   "verdict": "confirmed",
+   "note": "Quote is on the Lafayette Welder I page, but it is Wabash boilerplate that follows 'At Wabash, Welders perform a variety of tasks vary from location to location': company-wide text, not a Lafayette fact. Not corrected (value says it is from the Lafayette postings, and it scores nothing), but word it 'Wabash welder posting text (company boilerplate, on Lafayette postings)'. Same family as the round-1 Ridewell company-level wording."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:certifications",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/879526/000087952626000036/wnc-20251231.htm",
+   "ledger_value": "ISO 9001 at Wabash's Lafayette, Indiana facilities (10-K; city-level)",
+   "tag": "stated",
+   "row_ref": "file[218]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:production_type",
+   "source_url": "",
+   "ledger_value": "van trailer products (10-K: made at both Lafayette facilities); boundary high-volume dry-van line; no identical-parts line quoted",
+   "tag": "inferred",
+   "row_ref": "file[220]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:triggers",
+   "source_url": "",
+   "ledger_value": "none found at Lafayette North within 24 months (one news search 2026-11-20: Wabash opened its 2027 dry van order book early; Lafayette capacity coverage concerns the South plant line added in late 2023)",
+   "tag": "inferred",
+   "row_ref": "file[222]",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "c-wabash:multi_plant",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/879526/000087952626000036/wnc-20251231.htm",
+   "ledger_value": "multi-plant: two Lafayette van-trailer facilities, a Cadiz KY flatbed facility and other plants (10-K)",
+   "tag": "stated",
+   "row_ref": "file[223]",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:opening_line",
+   "source_url": "",
+   "ledger_value": "Wabash reported a 2025 average of 1,780 employees at its Lafayette North plant at 1000 Sagamore Parkway South to OSHA, and its 10-K says it makes van trailer products at two Lafayette facilities; how do you plan welding labor across the two Lafayette van-trailer plants?",
+   "tag": "inferred",
+   "row_ref": "file[233]",
+   "verdict": "confirmed",
+   "note": "Every clause traces to a stated row of a cited claim with its date (listed dates for postings, memo/release/OSHA year); company facts worded company-wide; closing \"you\" question; no pitch."
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "279",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "OSHA 2025 record matched in data/osha_2025.csv (ID, street, ZIP, name, employees as quoted); osha.gov blocked."
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:address",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001236315006",
+   "ledger_value": "277 North High Street, Hebron, OH 43025",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:parent_company",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001236315006",
+   "ledger_value": "Hendrickson",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:products",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001236315006",
+   "ledger_value": "Production welding of parts at this site (posting)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:products",
+   "source_url": "",
+   "ledger_value": "OSHA classification",
+   "tag": "inferred",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:name",
+   "source_url": "https://www.dexteraxle.com/about/locations/",
+   "ledger_value": "Dexter Fremont, Indiana (Plant 12)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:address",
+   "source_url": "https://www.dexteraxle.com/about/locations/",
+   "ledger_value": "301 West Pearl Street, Fremont, IN 46737",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:parent_company",
+   "source_url": "https://dexkoglobal.clearcompany.com/careers/jobs/b34b827f-031d-39af-a368-ec3e2bf3969e",
+   "ledger_value": "Dexter (DexKo Global)",
+   "tag": "inferred",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:products",
+   "source_url": "https://dexkoglobal.clearcompany.com/careers/jobs/b34b827f-031d-39af-a368-ec3e2bf3969e",
+   "ledger_value": "MIG/robotic production welding at Fremont",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:products",
+   "source_url": "https://dexkoglobal.clearcompany.com/careers/jobs/23c10f41-2f08-1847-3fa8-27f36f84c374",
+   "ledger_value": "company-level: axles and towing components",
+   "tag": "inferred",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:relationship",
+   "source_url": "https://dexkoglobal.clearcompany.com/careers/jobs/b34b827f-031d-39af-a368-ec3e2bf3969e",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Tag inferred is correct; reasoning matches the vertical relationship rule (see score_notes for the Dexter Fremont/Albion vs El Reno and Hendrickson company-line consistency question)."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "196",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "OSHA 2025 record matched in data/osha_2025.csv (ID, street, ZIP, name, employees as quoted); osha.gov blocked."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:name",
+   "source_url": "https://jostinternational.com/about",
+   "ledger_value": "JOST International Corp. - Greeneville TN plant",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:address",
+   "source_url": "https://jostinternational.com/contact",
+   "ledger_value": "5080 W Andrew Johnson Hwy, Greeneville, TN 37743",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:parent_company",
+   "source_url": "https://jostinternational.com/careers",
+   "ledger_value": "JOST",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:products",
+   "source_url": "https://jostinternational.com/about",
+   "ledger_value": "Fifth wheels, landing gear, kingpins, turntables (two US plants)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "corrected",
+   "corrected_value": "company-level: JOST makes fifth wheels, landing gear, kingpins and turntables at two US plants; the about page lists Greeneville TN for the Fifth Wheel Product Line (Grand Haven MI: Landing Gear & Kingpin Product Lines)",
+   "corrected_quote": "JOST designs and manufactures fifth wheels, landing gear, kingpins and turntables for the road transportation market from two manufacturing plants and distribution centers in the United States. ... JOST International Corporation, Greeneville, TN Fifth Wheel Product Line",
+   "corrected_tag": "stated",
+   "error_kind": "wrong plant or location",
+   "note": "Company-level product list written as this plant's products. The same page assigns Landing Gear & Kingpin Product Lines to Grand Haven and the Fifth Wheel Product Line to Greeneville (consistent with the IATF certificate row: 'Design and manufacture of fifth wheels' at 5080 W. Andrew Johnson Hwy). plants.csv products (not rewritten in the inbox file) still lists landing gear, kingpins and turntables first; rebuild as 'Fifth wheels (about page and IATF scope at this address); company also makes landing gear and kingpins at Grand Haven; production welding (MIG preferred) of parts at this site (postings)'. 'manual MIG' in the current plants value is also stronger than the postings ('MIG welding experience preferred').",
+   "plants_csv_value": "Fifth wheels, landing gear, kingpins and turntables (company makes them at two US plants); production welding (manual MIG) of parts at this site (postings)"
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:products",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4509523",
+   "ledger_value": "Production welding at the site",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:relationship",
+   "source_url": "https://jostinternational.com/about",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Tag inferred is correct; no stated product matches TYCROP or Hutchens."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:products",
+   "source_url": "https://www.cottrelltrailers.com/about",
+   "ledger_value": "Car haulers built locally; welders fabricate parts",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "corrected",
+   "corrected_value": "Car haulers locally assembled and built with American-sourced materials (about page)",
+   "corrected_quote": "Every car hauler is locally assembled and built with American-sourced materials",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The about page (re-read 2026-11-20, plain and browser) carries no welding or fabrication text; the clause 'welders fabricate parts' comes from the careers page, which already has its own row (p-cottrell-gainesville-ga:products, /careers). Drop the clause from this row. plants.csv products also says 'custom built at the single Gainesville plant': no page states a single plant (the 2021 governor's release names adjacent North and South campuses); reword to 'custom built at Gainesville (North and South campuses, adjacent)' or drop 'single'.",
+   "plants_csv_value": "Car-hauler trailers, custom built at the single Gainesville plant; welders weld, grind and torch-cut to fabricate parts (company careers page)"
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:products",
+   "source_url": "https://www.cottrelltrailers.com/careers",
+   "ledger_value": "Welder: welding, grinding and torch cutting to fabricate parts",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:relationship",
+   "source_url": "https://www.cottrelltrailers.com/about",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Tag inferred is correct; no stated product matches TYCROP or Hutchens."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:address",
+   "source_url": "https://www.cottrelltrailers.com/about",
+   "ledger_value": "2125 Candler Rd, Gainesville, GA 30507",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=COTTRELL&state_abbr=GA&output=JSON",
+   "ledger_value": "Cottrell, Inc.",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "1161 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "OSHA 2025 record matched in data/osha_2025.csv (ID, street, ZIP, name, employees as quoted); osha.gov blocked."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:products",
+   "source_url": "https://towmaster.com/about-2/",
+   "ledger_value": "Trailer lines at the Litchfield facility",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:products",
+   "source_url": "https://www.monroetowmaster.com/",
+   "ledger_value": "American steel trailers",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:relationship",
+   "source_url": "https://towmaster.com/about-2/",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Tag inferred is correct; no stated product matches TYCROP or Hutchens."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:address",
+   "source_url": "https://www.monroetowmaster.com/",
+   "ledger_value": "61381 US Hwy 12, Litchfield, MN 55355",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:name",
+   "source_url": "https://towmaster.com/careers/",
+   "ledger_value": "Towmaster",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:parent_company",
+   "source_url": "https://towmaster.com/careers/",
+   "ledger_value": "Monroe Truck Equipment",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "209 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "OSHA 2025 record matched in data/osha_2025.csv (ID, street, ZIP, name, employees as quoted); osha.gov blocked."
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:products",
+   "source_url": "https://sidedump.com/about-smithco/facility",
+   "ledger_value": "Welding of tubs and frames",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:relationship",
+   "source_url": "https://sidedump.com/about-smithco/facility",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Tag inferred is correct; no stated product matches TYCROP or Hutchens."
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:address",
+   "source_url": "https://sidedump.com/contact",
+   "ledger_value": "30902 C-38, Le Mars, IA 51031",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=SMITHCO&state_abbr=IA&output=JSON",
+   "ledger_value": "SmithCo Manufacturing, Inc.",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "123 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "OSHA 2025 record matched in data/osha_2025.csv (ID, street, ZIP, name, employees as quoted); osha.gov blocked."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:name",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "Wabash - Lafayette North plant",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "OSHA 2025 record matched in data/osha_2025.csv (ID, street, ZIP, name, employees as quoted); osha.gov blocked."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:parent_company",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "Wabash National Corporation",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "OSHA 2025 record matched in data/osha_2025.csv (ID, street, ZIP, name, employees as quoted); osha.gov blocked."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "1000 Sagamore Pkwy S, Lafayette, IN 47905",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "OSHA 2025 record matched in data/osha_2025.csv (ID, street, ZIP, name, employees as quoted); osha.gov blocked."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=WABASH%20NATIONAL&state_abbr=IN&output=JSON",
+   "ledger_value": "1000 Sagamore Pkwy S, Lafayette, IN 47905",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:products",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/879526/000087952626000036/wnc-20251231.htm",
+   "ledger_value": "Van trailer products at two Lafayette facilities",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:products",
+   "source_url": "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001234697606",
+   "ledger_value": "Lafayette welder postings: rear frames, couplers (board code LNPB1)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "corrected",
+   "note": "The cited requisition (#9346, rendered in Playwright 2026-11-20) is the Rear Frames role only; 'couplers' comes from other requisitions (#9271 reqId 5001231706506 and #9356 reqId 5001235288106), which already have their own welder_postings rows. One row per page: drop couplers here or add a second products row citing a Couplers requisition. Same fault as round 1 (one row naming several requisitions).",
+   "corrected_value": "Lafayette welder posting (city-level): rear frames (1st shift, Welder I, LNPB1 10HR Rear Frames, #9346)",
+   "corrected_quote": "1st shift, Welder I, LNPB1 10HR Rear Frames",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Van trailer products (10-K: one of two Lafayette van-trailer facilities); Lafayette welder postings for rear frames and couplers (city-level, T14); boundary: high-volume dry-van line (T1)"
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:products",
+   "source_url": "",
+   "ledger_value": "boundary: high-volume dry-van line (T1)",
+   "tag": "inferred",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:relationship",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/879526/000087952626000036/wnc-20251231.htm",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Tag inferred is correct; no stated product matches TYCROP or Hutchens."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "1780 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "OSHA 2025 record matched in data/osha_2025.csv (ID, street, ZIP, name, employees as quoted); osha.gov blocked."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:name",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "M.H. Eby - Ephrata",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "OSHA 2025 record matched in data/osha_2025.csv (ID, street, ZIP, name, employees as quoted); osha.gov blocked."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:parent_company",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "M.H. Eby, Inc.",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "OSHA 2025 record matched in data/osha_2025.csv (ID, street, ZIP, name, employees as quoted); osha.gov blocked."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:address",
+   "source_url": "https://mhebyinc.hireclick.com/jb/skilled-aluminum-tig-welder/view/252576",
+   "ledger_value": "502 Alexander Dr, Ephrata, PA 17522",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:products",
+   "source_url": "https://mhebyinc.hireclick.com/jb/skilled-aluminum-tig-welder/view/252576",
+   "ledger_value": "aluminum trailers and truck bodies; site aluminum TIG welding; aluminum livestock, grain and equipment trailers and truck bodies (company)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:products",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=EBY&state_abbr=PA&output=JSON",
+   "ledger_value": "EPA FRS trailer facility name on Alexander Drive",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:relationship",
+   "source_url": "https://mhebyinc.hireclick.com/jb/skilled-aluminum-tig-welder/view/252576",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Tag inferred is correct; no stated product matches TYCROP or Hutchens."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "181 (2025 annual average, OSHA Form 300A)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "OSHA 2025 record matched in data/osha_2025.csv (ID, street, ZIP, name, employees as quoted); osha.gov blocked."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:name",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "Cimarron Trailers - Manhattan (Cimarron Trailers K LLC)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "OSHA 2025 record matched in data/osha_2025.csv (ID, street, ZIP, name, employees as quoted); osha.gov blocked."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:parent_company",
+   "source_url": "https://jobs.factoryfix.com/jobs/welder-i--manhattan--ks--3882923499--V3",
+   "ledger_value": "Cimarron Trailers (headquartered in Chickasha, OK)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "8872 Green Valley Drive, Manhattan, KS 66502",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "OSHA 2025 record matched in data/osha_2025.csv (ID, street, ZIP, name, employees as quoted); osha.gov blocked."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:products",
+   "source_url": "https://jobs.factoryfix.com/jobs/welder-i--manhattan--ks--3882923499--V3",
+   "ledger_value": "Aluminum trailer components welded on the site build line",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:products",
+   "source_url": "https://jobs.factoryfix.com/jobs/mig-welder--manhattan--ks--853320651--V2",
+   "ledger_value": "Doors, floors, sidewalls, slats and other trailer components",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:relationship",
+   "source_url": "https://jobs.factoryfix.com/jobs/welder-i--manhattan--ks--3882923499--V3",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Tag inferred is correct; no stated product matches TYCROP or Hutchens."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "44 (2025 annual average, OSHA Form 300A)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "OSHA 2025 record matched in data/osha_2025.csv (ID, street, ZIP, name, employees as quoted); osha.gov blocked."
+  },
+  {
+   "claim_id": "c-hendrickson:multi_plant",
+   "source_url": "https://www.hendrickson-intl.com/company/global-operations",
+   "ledger_value": "multi-plant: Hendrickson's Global Operations & Manufacturing Facilities page lists several US sites, including Kendallville IN, Clarksville TN and Navarre OH",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "c-hendrickson:products",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "company-level: medium and heavy-duty mechanical, elastomeric and air suspensions; axle and brake systems; tire pressure control; auxiliary lift axles; springs; stabilizers; bumpers",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "c-hendrickson:multi_plant",
+   "source_url": "https://www.hendrickson-intl.com/about",
+   "ledger_value": "Hendrickson states sales and distribution facilities and/or manufacturing and R&D centers in the United States, Canada, Mexico and other countries",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "c-jost:multi_plant",
+   "source_url": "https://jostinternational.com/about",
+   "ledger_value": "multi-plant: two US manufacturing plants (Grand Haven MI, Greeneville TN)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:welder_postings",
+   "source_url": "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001229083706",
+   "ledger_value": "3rd shift, Welder I, LNPB1 10HR Rear Frames (#9215), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Rendered in Playwright 2026-11-20: title, number and \"Lafayette, Indiana, United States\" only (no street). Live today. Note: search-meta timestampLastPosted differs from the postingDate in the row reasoning for #9346 (2026-11-02 vs 2026-10-28) and #9345 (2026-11-02 vs 2026-10-28); values carry no date, so no correction."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:welder_postings",
+   "source_url": "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001231706506",
+   "ledger_value": "3rd shift, Welder I, LNPB1 10HR Couplers (#9271), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Rendered in Playwright 2026-11-20: title, number and \"Lafayette, Indiana, United States\" only (no street). Live today. Note: search-meta timestampLastPosted differs from the postingDate in the row reasoning for #9346 (2026-11-02 vs 2026-10-28) and #9345 (2026-11-02 vs 2026-10-28); values carry no date, so no correction."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:welder_postings",
+   "source_url": "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001234696206",
+   "ledger_value": "2nd shift, Metal Fabricator, LNPB1 10HR Metal Fab (#9345), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Rendered in Playwright 2026-11-20: title, number and \"Lafayette, Indiana, United States\" only (no street). Live today. Note: search-meta timestampLastPosted differs from the postingDate in the row reasoning for #9346 (2026-11-02 vs 2026-10-28) and #9345 (2026-11-02 vs 2026-10-28); values carry no date, so no correction."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:welder_postings",
+   "source_url": "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001234697606",
+   "ledger_value": "1st shift, Welder I, LNPB1 10HR Rear Frames (#9346), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Rendered in Playwright 2026-11-20: title, number and \"Lafayette, Indiana, United States\" only (no street). Live today. Note: search-meta timestampLastPosted differs from the postingDate in the row reasoning for #9346 (2026-11-02 vs 2026-10-28) and #9345 (2026-11-02 vs 2026-10-28); values carry no date, so no correction."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:welder_postings",
+   "source_url": "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001235222806",
+   "ledger_value": "listed, not counted: 3rd shift, Weld Tech I, LAF 8HR Process Engineering (#9350), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Rendered in Playwright 2026-11-20: title, number and \"Lafayette, Indiana, United States\" only (no street). Live today. Note: search-meta timestampLastPosted differs from the postingDate in the row reasoning for #9346 (2026-11-02 vs 2026-10-28) and #9345 (2026-11-02 vs 2026-10-28); values carry no date, so no correction."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:welder_postings",
+   "source_url": "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001235252006",
+   "ledger_value": "listed, not counted: 2nd shift, Weld Tech I, LAF 8HR Process Engineering (#9351), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Rendered in Playwright 2026-11-20: title, number and \"Lafayette, Indiana, United States\" only (no street). Live today. Note: search-meta timestampLastPosted differs from the postingDate in the row reasoning for #9346 (2026-11-02 vs 2026-10-28) and #9345 (2026-11-02 vs 2026-10-28); values carry no date, so no correction."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:welder_postings",
+   "source_url": "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001235288106",
+   "ledger_value": "3rd shift, Welder I, LNPB1 10HR Couplers (#9356), Lafayette, Indiana (Wabash ADP board, read 2026-11-20)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Rendered in Playwright 2026-11-20: title, number and \"Lafayette, Indiana, United States\" only (no street). Live today. Note: search-meta timestampLastPosted differs from the postingDate in the row reasoning for #9346 (2026-11-02 vs 2026-10-28) and #9345 (2026-11-02 vs 2026-10-28); values carry no date, so no correction."
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:welder_postings",
+   "source_url": "",
+   "ledger_value": "Lafayette-only roles (#9346, #9215, #9356, #9271, #9345, #9350, #9351): none counted for this plant (rule 7c, T14)",
+   "tag": "inferred",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Rendered in Playwright 2026-11-20: title, number and \"Lafayette, Indiana, United States\" only (no street). Live today. Note: search-meta timestampLastPosted differs from the postingDate in the row reasoning for #9346 (2026-11-02 vs 2026-10-28) and #9345 (2026-11-02 vs 2026-10-28); values carry no date, so no correction."
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:name",
+   "source_url": "https://www.hendrickson-intl.com/company/global-operations",
+   "ledger_value": "Hendrickson Auxiliary Axle Systems - Hebron OH",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:welder_postings",
+   "source_url": "https://mhebyinc.hireclick.com/jb/skilled-aluminum-tig-welder/view/252576",
+   "ledger_value": "Skilled Aluminum TIG Welder, 502 Alexander Dr, Ephrata PA, listed 2026-07-08; 1st and 2nd shift",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Both HireClick pages live; '502 Alexander Dr Ephrata, PA'; JSON-LD datePosted 7/8/2026 on both; 'First and Second Shift Positions Available!' on the TIG posting. HireClick board (/jobboard, browser render 2026-11-20) lists Robotic Welding Operator, Skilled Aluminum TIG Welder, Material Handler and Skilled CNC Machine Operator, all Ephrata: both counted roles live."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:welder_postings",
+   "source_url": "https://mhebyinc.hireclick.com/jb/robotic-welding-operator/view/252575",
+   "ledger_value": "Robotic Welding Operator, 502 Alexander Dr, Ephrata PA, listed 2026-07-08: robotic aluminum MIG cell for truck body decks and bulkheads, some manual MIG",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Both HireClick pages live; '502 Alexander Dr Ephrata, PA'; JSON-LD datePosted 7/8/2026 on both; 'First and Second Shift Positions Available!' on the TIG posting. HireClick board (/jobboard, browser render 2026-11-20) lists Robotic Welding Operator, Skilled Aluminum TIG Welder, Material Handler and Skilled CNC Machine Operator, all Ephrata: both counted roles live."
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9207365516929_1?cid=410a2523-a2fd-43b1-8595-1b360b7738c5&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "Evening Welder - $2.50 shift premium! (ADP requisition 9207365516929_1), Le Mars IA, listed 2026-11-02",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Both requisitions live on SmithCo's ADP WFN board list today (cid 410a2523..., 3 requisitions: Evening Welder 2026-11-02, Maintenance Technician, Welder 2026-08-19), cityName Le Mars."
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9206790678903_1?cid=410a2523-a2fd-43b1-8595-1b360b7738c5&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "Welder (ADP requisition 9206790678903_1), Le Mars IA, listed 2026-08-19",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Both requisitions live on SmithCo's ADP WFN board list today (cid 410a2523..., 3 requisitions: Evening Welder 2026-11-02, Maintenance Technician, Welder 2026-08-19), cityName Le Mars."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:name",
+   "source_url": "https://dextergroup.com/about/locations",
+   "ledger_value": "Dexter (DexKo) - El Reno OK Plant 15",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "'(DexKo)' is carried by the page ('Member of DexKo Global' logo text)."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:name",
+   "source_url": "https://applications.deq.ok.gov/permitspublic/storedpermits/8322.pdf",
+   "ledger_value": "Dexter Axle Company, Dexter Axle Division Plant 15",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "'(DexKo)' is carried by the page ('Member of DexKo Global' logo text)."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:parent_company",
+   "source_url": "https://www.dextergroup.com/about/",
+   "ledger_value": "Dexter (DexKo Global)",
+   "tag": "inferred",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:address",
+   "source_url": "https://dextergroup.com/about/locations",
+   "ledger_value": "500 SE 27th Street, El Reno, OK 73036",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:address",
+   "source_url": "https://applications.deq.ok.gov/permitspublic/storedpermits/8322.pdf",
+   "ledger_value": "500 SE 27th Street, El Reno, OK 73036",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:products",
+   "source_url": "https://applications.deq.ok.gov/permitspublic/storedpermits/8322.pdf",
+   "ledger_value": "running gear for RV, cargo, horse, utility and equipment trailers fabricated (cut, formed, welded, ground, assembled) and painted at the site; up to 1,500-2,000 axles per day (OK DEQ permit memo, 2022-11-02)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:products",
+   "source_url": "",
+   "ledger_value": "boundary: high-volume axle lines (weak fit); RV running gear is one of several trailer markets served",
+   "tag": "inferred",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Judgement row correctly tagged inferred; reasoning consistent with the stated rows it cites."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:relationship",
+   "source_url": "https://applications.deq.ok.gov/permitspublic/storedpermits/8322.pdf",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Tag inferred is correct; reasoning matches the vertical relationship rule (see score_notes for the Dexter Fremont/Albion vs El Reno and Hendrickson company-line consistency question)."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:lookalike_of",
+   "source_url": "https://applications.deq.ok.gov/permitspublic/storedpermits/8322.pdf",
+   "ledger_value": "Hutchens Industries",
+   "tag": "inferred",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Tag inferred is correct; reasoning matches the vertical relationship rule (see score_notes for the Dexter Fremont/Albion vs El Reno and Hendrickson company-line consistency question)."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "157 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "OSHA 2025 record matched in data/osha_2025.csv (ID, street, ZIP, name, employees as quoted); osha.gov blocked."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=DEXTER&state_abbr=OK&output=JSON",
+   "ledger_value": "500 SE 27th Street, El Reno, OK 73036 (EPA FRS DEXTER AXLES)",
+   "tag": "stated",
+   "row_ref": "ledger",
+   "verdict": "confirmed",
+   "note": "Quote found on the page re-read 2026-11-20 (plain fetch incl. raw source, or Playwright render for ADP myjobs); every clause of the value is on the page."
+  }
+ ],
+ "rows_outside_rate": [
+  {
+   "claim_id": "p-dexter-el-reno-ok:materials",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[3]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:materials",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[28]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[30]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[34]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:materials",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[50]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[51]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[52]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[54]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[77]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[103]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[105]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[122]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[146]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[149]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[171]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[174]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[196]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[219]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[221]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "row_ref": "file[234]",
+   "verdict": "confirmed",
+   "note": "unknown row; no contrary fact found on the pages read"
+  }
+ ],
+ "score_notes": {
+  "p-dexter-el-reno-ok": "46 Medium (20/0/8/0/8/10, conf 3) stands on the rows. Process 20 rests on the Oklahoma DEQ draft-permit memo (Nov 2, 2022) naming GMAW at 500 SE 27th St: a site-level government file, which meets 'stated by the plant' as well as a posting would; coordinator should confirm this basis (downside: process 0, 26 Low, conf 2). Part mix 8 correct (1,500-2,000 axles/day and varying 50-800 lb weights; no quoted identical-parts line). Labor 0 correct (no welding role on the 63-role board). Relationship: El Reno is lookalike of Hutchens on its site-level running-gear row, while Fremont and Albion stay new on 'site product not stated'; Hendrickson plants are lookalikes on the company line alone. Dexter's company line ('axles, accessories, and towing components primarily serving the commercial trailer...' market) is running gear, so under the Hendrickson company-line basis Fremont and Albion would also be lookalikes of Hutchens. Pick one basis for both companies.",
+  "p-hendrickson-hebron-oh": "46 Medium (0/0/8/20/8/10, conf 2) stands. Labor 20: both welding/fabrication associates live today at 277 North High Street (listed 2026-11-11, 2026-09-30); they lay out, tack-weld and run welding systems, so counted. Process 0 correct (no process named). Part mix 8 company-level, no confidence: correct.",
+  "p-towmaster-litchfield-mn": "86 High (20/20/8/20/8/10, conf 2) stands under the vertical rule, with one flag. Process 20 and labor 20 correct (two live Litchfield welder postings, MIG required; single Litchfield facility, rule 7a). Material 20: steel stated ('American steel') and a frame length stated (16 in I-beam main frame under a 24 ft main deck) on a company spec sheet; the 10,700 lb is the whole trailer, so the size basis is the deck/frame length, not the weight. That satisfies the vertical's 'trailer main frames ... when the source states length' rule; if the coordinator applies the DiHighway whole-assembly ruling strictly, material 0 and 66 Medium. Part mix 8: the about page's 'first off the line or last off the line, it's always the same' is a repeatability claim, not an identical-parts line, so 8 is right. Scale 10: Monroe's board lists manufacturing roles at Monroe WI (assembly, machine operators, tube laser) as well as Litchfield, so a stated multi-plant parent holds.",
+  "p-jost-greeneville-tn": "66 Medium (20/0/8/20/8/10, conf 4) stands. Process 20 is right under the session-2 clarified wording (MIG named 'required, desired or preferred' in a welder posting for this plant = 20); the preference is in the Welder posting itself. Labor 20: two live Welder postings at the street address (JSON-LD datePosted 2026-11-03 and 2026-10-15). Part mix 8 rests on the IATF certificate row (fifth wheels at this address), which is stated, though the certificate copy expired 2024-03-30; the about page also places the Fifth Wheel Product Line at Greeneville, so the confidence point holds. Fix the products row/plants value (corrected row).",
+  "p-eby-ephrata-pa": "69 Medium (12/4/15/20/8/10, conf 4) stands. Robotic Welding Operator counted correctly (text: some manual MIG welding is required). TIG rule 12 correct (aluminum GTAW alongside manual MIG). Aluminum-first material 4 correct. Part mix 15 company-level custom wording: points, no confidence (conf 4 already excludes it).",
+  "p-smithco-le-mars-ia": "75 High (0/20/15/20/15/5, conf 2) should change to 48 Medium (0/0/15/20/8/5, conf 1). Material 20 -> 0: the vertical rule needs 'a stated steel part whose size fits a named limit'; no SmithCo page read states steel (AR450 = steel is the profiler's inference, row tagged inferred), and the 20 ft figure is the press brake's forming capacity for plate ('forms 3/8\" AR450 plate up to 20 feet in length'), not a stated welded part or assembly size. Upside 20 if a SmithCo page states a steel tub or frame size. Demand 15 -> 8: the trigger is an award of a public-agency cooperative purchasing contract, headlined by CEG as 'SmithCo Side Dump Trailers to Join H-GAC Buying Co-op' - a sales channel with no order, quantity, capacity or hiring tied to the plant; the vertical outlook gives 8. Upside 15 (and confidence 2) if the coordinator counts co-op awards as contract wins. With only demand changed: 68 Medium; with only material changed: 55 Medium. Unchanged: labor 20 (Evening Welder, $2.50 shift premium, listed 2026-11-02, and Welder, listed 2026-08-19, both live on SmithCo's own ADP list in Le Mars; single site, rule 7a, no confidence); process 0 (bug-o and sub-arc only); part mix 15 company-level; scale 5 (single plant, 123 OSHA). Merge note: the inbox plant object has no parent_company key while the file retires the 'unknown' parent row and adds Christensen Farms, so plants.csv will still read 'unknown' unless the coordinator sets it.",
+  "p-cimarron-manhattan-ks": "64 Medium (12/4/15/20/8/5, conf 1) stands. All three welder requisitions are live on Cimarron's ADP list today in Manhattan 66502; the only Manhattan site, rule 7a. TIG rule 12 and aluminum-first 4 correct. Scale 5 (multi-plant stated, 44 employees).",
+  "p-dexter-fremont-in": "61 Medium (20/0/8/20/8/5, conf 1) stands on the rows. Scale 5 resting on the stated c-dexter:multi_plant row earns a confidence point (a component rests on stated evidence even when the other half is unknown); JOST Grand Haven giving 0 is the inconsistent one. Membership flag: Fremont's product is not stated (only 'MIG welding on production parts' at a multi-product axle, accessory and towing-component company also serving RV, marine and manufactured housing). Under T16 components count where welding is shown at the site (it is), but T21's wording ('welding of unnamed components at a multi-product firm is not enough') may apply by analogy; coordinator to confirm. Relationship consistency question as for El Reno.",
+  "p-wabash-lafayette-in": "26 Low (0/0/8/0/8/10, conf 2) stands under rule 7c/T14 (seven Lafayette requisitions, all live, city-only; two Lafayette plants about 4.6 km apart). Lead for the triggers row (search snippet only, not a quote): Wabash notified Indiana DWD on Jan 5 (2026) of up to 144 layoffs on March 6; the plant is not named in the snippet; a WARN notice is not a positive trigger, but it bears on the opening line's framing if it names Lafayette. Products row corrected (rear frames only on the cited page); plants.csv products clause 'rear frames and couplers' needs a second cited row or rewording.",
+  "p-cottrell-gainesville-ga": "60 Medium (20/0/15/12/8/5, conf 1). Process 20 rests on the Georgia governor's release of Feb 16, 2021 listing 'MIG welder' among positions Cottrell was hiring for at its Gainesville facility; the current Welder posting names no process. It is a dated, site-level statement, comparable to undated postings setting process, but it is almost six years old; coordinator to confirm (downside 40 Low). Labor 12 correct (rule 7b tested: ENR states a 600-ft bridge connects the two campuses): one Welder on Cottrell's own careers page with its own apply form (Allied/IROCK precedent), undated so no age; standing-ad rule makes it open, not 60+ days. Material 0 correct (whole-trailer 53 ft / 19,000 lb; no welded steel car-hauler part stated). Scale 5 consistent with the rule (Markel Ventures not stated as a multi-plant parent on a page read). Searches found no 2024-11-20-or-later plant-level event (North Campus announced 2021, ENR 2024 award for the completed plant), so demand 8 stands."
+ },
+ "score_rows_checked": 90,
+ "score_rows_corrected": 2,
+ "proposed_rows": [
+  {
+   "claim_id": "p-cottrell-gainesville-ga:products",
+   "value": "Car haulers locally assembled and built with American-sourced materials (about page)",
+   "tag": "stated",
+   "quote": "Every car hauler is locally assembled and built with American-sourced materials",
+   "source_url": "https://www.cottrelltrailers.com/about",
+   "source_type": "company site",
+   "retrieved_date": "2026-11-20",
+   "produced_by": "fact-checker TR-FD",
+   "verified": "corrected"
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:products",
+   "value": "company-level: JOST makes fifth wheels, landing gear, kingpins and turntables at two US plants; the about page lists Greeneville TN for the Fifth Wheel Product Line (Grand Haven MI: Landing Gear & Kingpin Product Lines)",
+   "tag": "stated",
+   "quote": "JOST designs and manufactures fifth wheels, landing gear, kingpins and turntables for the road transportation market from two manufacturing plants and distribution centers in the United States. ... JOST International Corporation, Greeneville, TN Fifth Wheel Product Line",
+   "source_url": "https://jostinternational.com/about",
+   "source_type": "company site",
+   "retrieved_date": "2026-11-20",
+   "produced_by": "fact-checker TR-FD",
+   "verified": "corrected"
+  },
+  {
+   "claim_id": "p-wabash-lafayette-in:products",
+   "value": "Lafayette welder posting (city-level): rear frames (1st shift, Welder I, LNPB1 10HR Rear Frames, #9346)",
+   "tag": "stated",
+   "quote": "1st shift, Welder I, LNPB1 10HR Rear Frames",
+   "source_url": "https://myjobs.adp.com/wabashcareers/cx/job-details?reqId=5001234697606",
+   "source_type": "job posting",
+   "retrieved_date": "2026-11-20",
+   "produced_by": "fact-checker TR-FD",
+   "verified": "corrected"
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:triggers",
+   "value": "SmithCo announced on Jan 5, 2026 that it was awarded a nationwide cooperative purchasing contract for Public Works Equipment by the Houston-Galveston Area Council (H-GAC) Cooperative Purchasing Program (CEG item headed 'SmithCo Side Dump Trailers to Join H-GAC Buying Co-op', Mar 2, 2026)",
+   "tag": "stated",
+   "quote": "SmithCo Side Dump Trailers to Join H-GAC Buying Co-op SmithCo Mfg. Inc. , a side dump trailer designer and manufacturing company located in Le Mars, Iowa, announced on Jan. 5, 2026, that it was awarded a nationwide cooperative purchasing contract for Public Works Equipment by the Houston-Galveston Area Council (H-GAC)",
+   "source_url": "https://www.constructionequipmentguide.com/industry-news/smithco/",
+   "source_type": "news",
+   "retrieved_date": "2026-11-20",
+   "produced_by": "fact-checker TR-FD",
+   "verified": "corrected"
+  },
+  {
+   "claim_id": "c-cottrell:sites",
+   "value": "Cottrell's two Gainesville campuses are connected by a 600-ft bridge (ENR 2024 Southeast Best Projects, 545,000 sq ft plant)",
+   "tag": "stated",
+   "quote": "As part of the first phase, crews also installed a 600-ft-long bridge connecting two campuses.",
+   "source_url": "https://www.enr.com/articles/59528-merit-manufacturing-cottrell-trailers-manufacturing-plant",
+   "source_type": "news",
+   "retrieved_date": "2026-11-20",
+   "produced_by": "fact-checker TR-FD",
+   "verified": "not_checked"
+  }
+ ],
+ "source_failures": [
+  "Plain fetch of ADP myjobs job pages returns an empty shell; Playwright with networkidle + 8 s wait renders them (all 9 found)."
+ ],
+ "score_rows_corrected_list": [
+  "p-smithco-le-mars-ia:score_material_part 20 -> 0",
+  "p-smithco-le-mars-ia:score_demand 15 -> 8 (total 75 High -> 48 Medium, confidence 2 -> 1)"
+ ]
+}
