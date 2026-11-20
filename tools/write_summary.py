@@ -50,6 +50,7 @@ LABELS_BY_VERT["v-trailers-chassis-mobile-power"] = {1: "Round 1: the 30 top-ran
                                                      2: "Round 2: the last 10 profiling slots, ranked after closure 2 (one checker on the unmerged profiler file)",
                                                      3: "Round 3: line check of every High and Medium plant's opening line and bottleneck guess, by a checker who did not write them",
                                                      4: "Round 4: the six base plants that entered the top 40 after the one-basis relationship ruling (consultation 31)",
+                                                     5: "Round 5: Besser Pro Paris TX, the one base plant that entered the top 40 after the R3 lead verification",
                                                      9: "Base-record sample: 25 base and 8 excluded records drawn with a fixed seed after closure 2 and both miss verifications (reported separately; not a profile round)"}
 LABELS = {1: "Round 1: designed sample of 30 plants (all High, all customer plants, then by score), before repairs",
           2: "Round 2: 10 unsampled plants from multi-plant parents, after the first repair pass",
