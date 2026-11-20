@@ -1,0 +1,636 @@
+{
+ "checker": "fact-checker TR-SWEEP-2",
+ "checked_date": "2026-11-20",
+ "vertical": "v-trailers-chassis-mobile-power",
+ "scope": "275 base plants in the vertical (plants.csv status base); fault 3 also covers the profiled Hendrickson and Reyco Granning rows it names. Inbox: ledger/inbox/trailers-sweep-2.json (merge dry run: 0 rejected, 0 coverage gaps, 0 duplicates; all evidence_remove keys match ledger rows).",
+ "method": "Prospect rows read in full; OSHA gates re-run by importing tools/osha_match.py functions against data/osha_2025.csv (script not run); EPA names read from EPA FRS (frs-public.epa.gov). Welder boards read through their JSON APIs (ADP Workforce Now with $skip paging, UKG Ready, Paycom JSON-LD, Workday cxs, WP Job Manager) or a headless browser (Dayforce, Eby, East, Faymonville, Goldhofer); 160 company sites scanned for careers links and ATS hosts. Hendrickson dates from the ADP search-meta XHR captured in a browser. New quotes checked with fetch_page logic (fragments, raw source); Hendrickson ADP pages and the MYCO employment list verify only in a single browser read.",
+ "faults": {
+  "1_prospect_pass_without_site_welding": {
+   "rows_checked": 168,
+   "plants_checked": 166,
+   "rows_corrected": 21,
+   "value_changed_product_inference": 12,
+   "value_changed_T14_shared_city": 2,
+   "basis_corrected_value_unchanged": 7,
+   "to_unknown": 6,
+   "to_pass_low_confidence": 8,
+   "prospect_changes": [
+    {
+     "plant": "p-talbert-rensselaer-in",
+     "old": "pass",
+     "new": "pass (low confidence)",
+     "kind": "value changed",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): plain pass with no welding shown; T15 footing holds, so pass (low confidence)"
+    },
+    {
+     "plant": "p-rogers-albion-pa",
+     "old": "pass (low confidence)",
+     "new": "unknown (site product shown; welding not shown)",
+     "kind": "value changed",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): pass (low confidence) without an OSHA 2025 record; T15 not met"
+    },
+    {
+     "plant": "p-midsota-avon-mn",
+     "old": "pass (low confidence)",
+     "new": "unknown (site product shown; welding not shown)",
+     "kind": "value changed",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): pass (low confidence) without a gate-passing OSHA record; T15 not met"
+    },
+    {
+     "plant": "p-cam-superline-waynesboro-pa",
+     "old": "pass (low confidence)",
+     "new": "unknown (site product shown; welding not shown)",
+     "kind": "value changed",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): pass (low confidence) without a gate-passing OSHA record; T15 not met"
+    },
+    {
+     "plant": "p-interstate-trailers-mansfield-tx",
+     "old": "pass (low confidence)",
+     "new": "unknown (site product shown; welding not shown)",
+     "kind": "value changed",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): pass (low confidence) without an OSHA 2025 record; T15 not met"
+    },
+    {
+     "plant": "p-hillsboro-hillsboro-ks",
+     "old": "pass (aluminum-first, kept and noted)",
+     "new": "pass (low confidence; aluminum-first)",
+     "kind": "value changed",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): pass (aluminum-first) with welding inferred; T15 holds (name gate trips only on the city-word name), so pass (low confidence; aluminum-first)"
+    },
+    {
+     "plant": "p-u-dump-ocala-fl",
+     "old": "pass",
+     "new": "unknown (site product shown; welding not shown)",
+     "kind": "value changed",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): plain pass inferred from steel product; no site welding; T15 gate fails on street number"
+    },
+    {
+     "plant": "p-sun-country-trailers-phoenix-az",
+     "old": "pass",
+     "new": "unknown (site product shown; welding not shown)",
+     "kind": "value changed",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): plain pass inferred from steel product; no site welding; no EPA name, T15 not met"
+    },
+    {
+     "plant": "p-western-trailer-boise-id",
+     "old": "pass",
+     "new": "pass (low confidence)",
+     "kind": "value changed",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): plain pass with welding inferred; T15 holds, so pass (low confidence)"
+    },
+    {
+     "plant": "p-trinity-trailer-boise-id",
+     "old": "pass",
+     "new": "pass (low confidence)",
+     "kind": "value changed",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): plain pass with welding inferred; T15 holds, so pass (low confidence)"
+    },
+    {
+     "plant": "p-eby-story-city-ia",
+     "old": "pass",
+     "new": "pass (low confidence; aluminum-first)",
+     "kind": "value changed",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): plain pass with welding and steel inferred; T15 holds, so pass (low confidence; aluminum-first)"
+    },
+    {
+     "plant": "p-cornpro-elnora-in",
+     "old": "pass",
+     "new": "pass (low confidence)",
+     "kind": "value changed",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): plain pass with welding inferred; T15 holds, so pass (low confidence)"
+    },
+    {
+     "plant": "p-trail-king-mitchell-sd",
+     "old": "pass",
+     "new": "pass (low confidence)",
+     "kind": "value changed (T14 shared-city)",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): plain pass on city-only Mitchell postings with two Trail King plants in the city; T14 gives pass (low confidence)"
+    },
+    {
+     "plant": "p-trail-king-mitchell-sd-2",
+     "old": "pass",
+     "new": "pass (low confidence)",
+     "kind": "value changed (T14 shared-city)",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): plain pass on city-only Mitchell postings with two Trail King plants in the city; T14 gives pass (low confidence)"
+    }
+   ],
+   "rebased_value_unchanged": [
+    {
+     "plant": "p-eager-beaver-lake-wales-fl",
+     "value": "pass (low confidence)",
+     "old_basis": "https://www.eagerbeavertrailers.com/",
+     "new_basis": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=GENERAL%20ENGINES&state_abbr=FL&output=JSON",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): value right but the row rested on product inference; rebased on the T15 records"
+    },
+    {
+     "plant": "p-lucon-griffin-ga",
+     "value": "pass (low confidence)",
+     "old_basis": "https://www.customheavyhaul.com/",
+     "new_basis": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=LUCON&state_abbr=GA&output=JSON",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): value right but the row rested on product inference; rebased on the T15 records"
+    },
+    {
+     "plant": "p-fontaine-haleyville-al",
+     "value": "pass (low confidence)",
+     "old_basis": "https://www.fontainetrailer.com",
+     "new_basis": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=FONTAINE&state_abbr=AL&output=JSON",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): value right but the row rested on product inference; rebased on the T15 records"
+    },
+    {
+     "plant": "p-diamond-c-mount-pleasant-tx",
+     "value": "pass (low confidence)",
+     "old_basis": "https://www.diamondc.com",
+     "new_basis": "https://workforcenow.cloud.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/495326835_1?cid=ffe40c22-a6de-40d8-88fc-a9a4cf084ae6&timeStamp=1795193775412&lang=en_US&ccId=223736817_3&locale=en_US",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): value right but the row rested on product inference; rebased on the Mount Pleasant welder posting"
+    },
+    {
+     "plant": "p-novae-markle-in",
+     "value": "pass (low confidence)",
+     "old_basis": "https://www.sure-trac.com/",
+     "new_basis": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201472121676_1?cid=d16ba13d-474e-4326-b628-74c87f0b289a&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): value right but no T15 footing (OSHA gates fail); rebased on the Markle weld postings (T14 pattern)"
+    },
+    {
+     "plant": "p-titan-waterville-ks",
+     "value": "pass (low confidence)",
+     "old_basis": "https://titantrailer.com/",
+     "new_basis": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=TITAN%20TRAILER&state_abbr=KS&output=JSON",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): value right but the row rested on product inference (steel inferred from an aluminum-line note); rebased on the T15 records"
+    },
+    {
+     "plant": "p-aulick-scottsbluff-ne",
+     "value": "pass",
+     "old_basis": "https://www.aulick.com/careers",
+     "new_basis": "https://www.aulick.com/careers",
+     "why": "prospect row inferred welding from the product (T2/T15 sweep): value right but the quote shows no welding; rebased on the careers page that names welding work at Aulick Industries"
+    }
+   ]
+  },
+  "2_welder_postings_without_own_board": {
+   "plants_checked": 190,
+   "rows_checked": 180,
+   "plants_corrected": 43,
+   "note": "Innovative Specialties (Nitro) was valued none found from a careers form; counted in plants_checked. Novae brand rows re-read against the full 45-requisition board: conclusions hold.",
+   "rows_retired": 32,
+   "rows_written": 47,
+   "by_outcome": {
+    "board looked for: still unknown": 11,
+    "board read: none found": 21,
+    "board read: postings found": 9,
+    "board read: still unknown": 2
+   },
+   "welder_postings_changes": [
+    {
+     "plant": "p-diamond-c-mount-pleasant-tx",
+     "old": "unknown: Diamond C careers page uses an ADP Workforce Now widget, not read",
+     "new": "1 open on Diamond C's own ADP board (read 2026-11-20): MIG Welder / Fabricator, Mount Pleasant TX, listed 2026-06-18 (city-level; site placement not resolved, several Mount Pleasant facilities on the board); also listed, not counted: Operator - Robot Weld (listed 2026-11-17)",
+     "outcome": "board read: postings found"
+    },
+    {
+     "plant": "p-novae-markle-in",
+     "old": "none found: Novae ADP board (read 2026-11-20) lists welders only at Clarinda IA, Columbia City IN and Red Oak IA; none at Markle",
+     "new": "2 open on Novae's own ADP board (read in full 2026-11-20, 45 requisitions): 1st shift Weld Opportunity (listed 2026-09-22) and 3rd Shift Weld Opportunity (listed 2026-08-08), Markle IN; city-level, several Novae establishments on Novae Pkwy (rule 7b, no confidence)",
+     "outcome": "board read: postings found"
+    },
+    {
+     "plant": "p-custom-truck-elk-point-sd",
+     "old": "unknown: loadkingmfg.com blocks fetches (403); CTOS job board not opened",
+     "new": "1 open on CTOS's own ADP board (read 2026-11-20): Welder I - 2nd Shift, Elk Point SD, listed 2026-10-14 (MIG, TIG, stick; rule 7a)",
+     "outcome": "board read: postings found"
+    },
+    {
+     "plant": "p-landoll-waterville-ks",
+     "old": "unknown: careers page lists no openings or board",
+     "new": "1 open on Landoll's own UKG Ready board (read 2026-11-20): Weld (Waterville) at 451 KS-9, undated; GMAW, steel (some aluminum)",
+     "outcome": "board read: postings found"
+    },
+    {
+     "plant": "p-load-trail-sulphur-springs-tx",
+     "old": "unknown",
+     "new": "1 open on Load Trail's own UKG Ready board (read 2026-11-20): General Laborer requisition at 200 Heritage Pkwy whose text seeks an experienced Welder; undated",
+     "outcome": "board read: postings found"
+    },
+    {
+     "plant": "p-alcom-deland-fl",
+     "old": "none found: ALCOM careers location page shows general Apply Today links, no listed openings",
+     "new": "1 open on ALCOM's own ADP board (read 2026-11-20): Welder, DeLand FL, listed 2026-07-08 (aluminum MIG; rule 7a)",
+     "outcome": "board read: postings found"
+    },
+    {
+     "plant": "p-alcom-winslow-me",
+     "old": "none found: ALCOM careers location page shows general Apply Today links, no listed openings",
+     "new": "none found: ALCOM's own ADP board (25 requisitions read 2026-11-20) lists Winslow ME roles (Cycle Counter, Warranty Support, Tool Maintenance, Forklift Operator - Material Handler, SR Accounts Payable Specialist), no welder",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-ez-loader-midway-ar",
+     "old": "(no evidence row; plants.csv value unknown)",
+     "new": "3 open on EZ Loader's own Paycom board (read 2026-11-20) at 6533 Hwy 126 N: Production Welder - Aluminum (listed 2026-08-13), Aluminum Welder (listed 2026-09-29), Production Welder (listed 2026-10-14)",
+     "outcome": "board read: postings found"
+    },
+    {
+     "plant": "p-ez-loader-spokane-wa",
+     "old": "(no evidence row; plants.csv value unknown)",
+     "new": "none found: EZ Loader's own Paycom board (9 postings read 2026-11-20) lists Spokane roles (Maintenance Supervisor, Parts Support Specialist, Manufacturing Quality Control Technician, Sales Representative), no welder",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-myco-bradenton-fl",
+     "old": "(no evidence row; plants.csv value unknown)",
+     "new": "Advanced MIG Welder listed on mycotrailers.com/employment (undated; read 2026-11-20)",
+     "outcome": "board read: postings found"
+    },
+    {
+     "plant": "p-fairchild-glen-lyn-va",
+     "old": "unknown",
+     "new": "none found: Interstate Group's own ADP board (28 requisitions read 2026-11-20) lists one Glen Lyn VA role, Production Worker - Trailer Manufacturing (wood, skin, prep, wire, paint or undercoat departments; listed 2026-02-27), no welder; its welder postings are at Conway AR and Nampa ID",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-trail-eze-mitchell-sd",
+     "old": "unknown: no careers board found on traileze.com (read 2026-11-20)",
+     "new": "none found: Trail-Eze's own UKG Ready board (linked from traileze.com/employment; read 2026-11-20) lists one opening, Painter - No Weekends or Overnights at 323 Quince Street, Mitchell; no welder",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-trail-eze-platte-sd",
+     "old": "unknown: traileze.com/employment links to an external listing that could not be read (2026-11-20); no Platte role seen",
+     "new": "none found: Trail-Eze's own UKG Ready board (linked from traileze.com/employment; read 2026-11-20) lists one opening, Painter - No Weekends or Overnights at 323 Quince Street, Mitchell; no welder",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-trail-eze-corsica-sd",
+     "old": "unknown: traileze.com/employment links to an external listing that could not be read (2026-11-20); no Corsica role seen",
+     "new": "none found: Trail-Eze's own UKG Ready board (linked from traileze.com/employment; read 2026-11-20) lists one opening, Painter - No Weekends or Overnights at 323 Quince Street, Mitchell; no welder",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-pine-hill-gap-pa",
+     "old": "unknown: careers page says a link leads to current openings, but no job board link resolved in plain or browser render (2026-11-20)",
+     "new": "none found: Pine Hill's own UKG Ready board (read 2026-11-20) lists 5 openings at 5140 Martin Drive (Blast Booth Operator, Design Engineer 1 and 2, Service Technician, Purchasing Manager), no welder",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-aulick-scottsbluff-ne",
+     "old": "unknown: careers page (https://www.aulick.com/careers) lists job areas incl. 'Welding & Fabrication' but no dated postings; no board read",
+     "new": "none found: Aulick's own ADP board (linked from aulick.com/careers; 3 requisitions read 2026-11-20: Vehicle Testing Specialist, Service Shop Mechanic, Truck Parts Associate, Scottsbluff), no welder",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-fontaine-haleyville-al",
+     "old": "unknown: careers page https://www.fontainetrailer.com/careers/ returned 404 on 2026-11-20; no board found",
+     "new": "none found: Marmon's Workday board (Fontaine's parent; searched 2026-11-20) lists one role at 430 Letson Road (Product Design Engineer, posted 2026-02-24), no welder",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-fontaine-specialized-springville-al",
+     "old": "unknown: no job board linked from fontainespecialized.com",
+     "new": "none found: Marmon's Workday board (Fontaine's parent; searched 2026-11-20) lists one Springville AL role (Director of Supply Chain, posted 2026-08-31), no welder",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-amst-university-park-il",
+     "old": "unknown: Marmon Workday board (AMST careers link) returned HTTP 429 on 2026-11-20; TR-H read it the same day and found no University Park posting",
+     "new": "none found: Marmon's Workday board (read 2026-11-20 through its jobs API; searches AMST and University Park) lists no University Park posting",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-eby-story-city-ia",
+     "old": "unknown",
+     "new": "none found: Eby's careers job list (browser render 2026-11-20; 9 roles at West Jefferson, Worthing, Blue Ball, Ephrata and Palmer) has no Story City role",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-east-randolph-oh",
+     "old": "unknown: careers page not read",
+     "new": "none found: eastmfg.com/jobs (browser render 2026-11-20) lists no openings; general application only",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-titan-waterville-ks",
+     "old": "unknown: careers page not read",
+     "new": "none found: titantrailer.com/apply-for-a-job.cfm offers a downloadable application only; no openings or board (read 2026-11-20)",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-hillsboro-hillsboro-ks",
+     "old": "unknown: careers page not read",
+     "new": "none found: hillsboroindustries.com/careers (read 2026-11-20) lists no openings and links no job board",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-globe-bradenton-fl",
+     "old": "none found: globetrailers.com/jobs (no roles listed)",
+     "new": "unknown: globetrailers.com/jobs sends applicants to Indeed for open positions; Indeed blocks this session (Cloudflare 403), so the openings cannot be read",
+     "outcome": "board read: still unknown"
+    },
+    {
+     "plant": "p-aspen-waco-tx",
+     "old": "unknown",
+     "new": "none found: Aspen's own Dayforce board (read 2026-11-20, 6 postings) lists one Waco TX role (Material Handler, posted 2026-11-10); its welder posting (Req 732) is limited to candidates near Leduc and Edmonton",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-goldhofer-hickory-nc",
+     "old": "unknown",
+     "new": "none found: Goldhofer job-vacancies board (browser render 2026-11-20) lists no US location; pre-production",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-faymonville-little-rock-ar",
+     "old": "unknown",
+     "new": "unknown: pre-production; jobs.faymonville.com (browser render 2026-11-20) names Little Rock, USA among its five plants but its openings list could not be filtered to the site",
+     "outcome": "board read: still unknown"
+    },
+    {
+     "plant": "p-pitts-pittsview-al",
+     "old": "unknown: no job board linked on pittstrailers.com",
+     "new": "none found: pittstrailers.com/join-our-team (read 2026-11-20) is an application form; it names welders among its team but lists no openings",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-sundowner-coleman-ok",
+     "old": "unknown",
+     "new": "none found: sundownertrailer.com/Careers.html (read 2026-11-20) lists no openings (contact email only)",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-trails-west-preston-id",
+     "old": "unknown",
+     "new": "none found: trailswesttrailers.com/employment (read 2026-11-20) is an application form with no listed openings",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-sdg-waycross-ga",
+     "old": "unknown: sdgtrailers.com has no careers page or job board link (2026-11-20)",
+     "new": "none found: sdgtrailers.com/careers (read 2026-11-20) links one open position (Sales Representative on app.jarvi.io); no welder",
+     "outcome": "board read: none found"
+    },
+    {
+     "plant": "p-top-hat-naples-tx",
+     "old": "(no evidence row; plants.csv value unknown)",
+     "new": "unknown: tophattrailers.com links no careers page or job board (home page links read in a browser 2026-11-20)",
+     "outcome": "board looked for: still unknown"
+    },
+    {
+     "plant": "p-top-hat-cookville-tx",
+     "old": "(no evidence row; plants.csv value unknown)",
+     "new": "unknown: tophattrailers.com links no careers page or job board (home page links read in a browser 2026-11-20)",
+     "outcome": "board looked for: still unknown"
+    },
+    {
+     "plant": "p-cargo-craft-ambrose-ga",
+     "old": "(no evidence row; plants.csv value unknown)",
+     "new": "unknown: cargocraftinc.com links no careers page or job board (home page links read in a browser 2026-11-20)",
+     "outcome": "board looked for: still unknown"
+    },
+    {
+     "plant": "p-heartland-trailer-sikeston-mo",
+     "old": "(no evidence row; plants.csv value unknown)",
+     "new": "unknown: heartlandtrailermfg.com links no careers page or job board (home page links read in a browser 2026-11-20)",
+     "outcome": "board looked for: still unknown"
+    },
+    {
+     "plant": "p-spartan-cargo-alma-ga",
+     "old": "(no evidence row; plants.csv value unknown)",
+     "new": "unknown: no website on record; spartancargo.com (names Alma, GA) links no careers page or job board (read 2026-11-20)",
+     "outcome": "board looked for: still unknown"
+    },
+    {
+     "plant": "p-diamond-cargo-douglas-ga",
+     "old": "(no evidence row; plants.csv value unknown)",
+     "new": "unknown: no website on record; diamondcargotrailers.com links no careers page or job board (read 2026-11-20)",
+     "outcome": "board looked for: still unknown"
+    },
+    {
+     "plant": "p-car-mate-leeper-pa",
+     "old": "(no evidence row; plants.csv value unknown)",
+     "new": "unknown: no company job board found; carmatetrailers.com redirects to a dealer site (2026-11-20)",
+     "outcome": "board looked for: still unknown"
+    },
+    {
+     "plant": "p-rc-trailers-middlebury-in",
+     "old": "(no evidence row; plants.csv value unknown)",
+     "new": "unknown: rctrailers.com returns 404 (2026-11-20); no company job board found",
+     "outcome": "board looked for: still unknown"
+    },
+    {
+     "plant": "p-sh-distributing-burbank-oh",
+     "old": "unknown: no company job board found",
+     "new": "unknown: no company job board found; shdistributing.com redirects to an unrelated flooring site (2026-11-20)",
+     "outcome": "board looked for: still unknown"
+    },
+    {
+     "plant": "p-legend-alma-mi",
+     "old": "unknown: legendtrailers.com did not load",
+     "new": "unknown: legendtrailers.com now redirects to a web-design firm (2026-11-20); no company job board found",
+     "outcome": "board looked for: still unknown"
+    },
+    {
+     "plant": "p-wanco-arvada-co",
+     "old": "unknown",
+     "new": "unknown: Wanco's careers page lists openings only through a ZipRecruiter widget, which blocks this session (Cloudflare challenge, 2026-11-20)",
+     "outcome": "board looked for: still unknown"
+    },
+    {
+     "plant": "p-innovative-specialties-pittsfield-me",
+     "old": "none found",
+     "new": "1 open on Nitro Trailers' own job board (read 2026-11-20): WELDERS at 140 Business Court, listed 2026-07-07 (MIG/TIG on aluminum trailer frames and parts)",
+     "outcome": "board read: postings found"
+    }
+   ]
+  },
+  "3_hendrickson_adp_no_posting_date": {
+   "rows_checked": 13,
+   "rows_corrected": 13,
+   "rows": [
+    {
+     "plant": "p-hendrickson-lebanon-in",
+     "old": "counted: Welder (Nights) (req 26-1199), Hendrickson ADP board, 180 Mt. Zion Road, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+     "new": "counted: Welder (Nights) (req 26-1199), Hendrickson ADP board, 180 Mt. Zion Road, read 2026-11-20; listed 2026-09-09 (ADP timestampLastPosted, a re-post stamp; no age claimed); MIG, hand and robotic welding"
+    },
+    {
+     "plant": "p-hendrickson-elizabethtown-ky",
+     "old": "counted: Welder - 1st Shift (req 26-1079), Hendrickson ADP board, 940 North Black Branch Road, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+     "new": "counted: Welder - 1st Shift (req 26-1079), Hendrickson ADP board, 940 North Black Branch Road, read 2026-11-20; listed 2026-08-20 (ADP timestampLastPosted, a re-post stamp; no age claimed); MIG, hand and robotic welding"
+    },
+    {
+     "plant": "p-hendrickson-elizabethtown-ky",
+     "old": "counted: Welder - 3rd Shift (req 26-1464), Hendrickson ADP board, 940 North Black Branch Road, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+     "new": "counted: Welder - 3rd Shift (req 26-1464), Hendrickson ADP board, 940 North Black Branch Road, read 2026-11-20; listed 2026-11-09 (ADP timestampLastPosted, a re-post stamp; no age claimed); MIG, hand and robotic welding"
+    },
+    {
+     "plant": "p-hendrickson-navarre-oh",
+     "old": "counted: Welder - Nights (req 26-989), Hendrickson ADP board, 4500 Sterilite St NE, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+     "new": "counted: Welder - Nights (req 26-989), Hendrickson ADP board, 4500 Sterilite St NE, read 2026-11-20; listed 2026-08-03 (ADP timestampLastPosted, a re-post stamp; no age claimed); MIG, hand and robotic welding"
+    },
+    {
+     "plant": "p-hendrickson-navarre-oh",
+     "old": "counted: Welder - Afternoons (req 26-858), Hendrickson ADP board, 4500 Sterilite St NE, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+     "new": "counted: Welder - Afternoons (req 26-858), Hendrickson ADP board, 4500 Sterilite St NE, read 2026-11-20; listed 2026-07-06 (ADP timestampLastPosted, a re-post stamp; no age claimed); MIG, hand and robotic welding"
+    },
+    {
+     "plant": "p-hendrickson-clarksville-tn",
+     "old": "counted: Robotic Welder-2nd Shift (req 26-1164), Hendrickson ADP board, 151 International Blvd, read 2026-11-20 (board shows no posting date); robotic and hand welding, 2G welding test, overtime as production demands require",
+     "new": "counted: Robotic Welder-2nd Shift (req 26-1164), Hendrickson ADP board, 151 International Blvd, read 2026-11-20; listed 2026-09-04 (ADP timestampLastPosted, a re-post stamp; no age claimed); robotic and hand welding, 2G welding test, overtime as production demands require"
+    },
+    {
+     "plant": "p-reyco-granning-mount-vernon-mo",
+     "old": "counted: Welder (req 26-1126), Hendrickson ADP board, 1205 Industrial Park Drive, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+     "new": "counted: Welder (req 26-1126), Hendrickson ADP board, 1205 Industrial Park Drive, read 2026-11-20; listed 2026-08-28 (ADP timestampLastPosted, a re-post stamp; no age claimed); MIG, hand and robotic welding"
+    },
+    {
+     "plant": "p-reyco-granning-mount-vernon-mo",
+     "old": "counted: Welder (req 26-1289), Hendrickson ADP board, 1205 Industrial Park Drive, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+     "new": "counted: Welder (req 26-1289), Hendrickson ADP board, 1205 Industrial Park Drive, read 2026-11-20; listed 2026-09-28 (ADP timestampLastPosted, a re-post stamp; no age claimed); MIG, hand and robotic welding"
+    },
+    {
+     "plant": "p-reyco-granning-mount-vernon-mo",
+     "old": "counted: 3rd shift Welder (req 26-1288), Hendrickson ADP board, 1205 Industrial Park Drive, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+     "new": "counted: 3rd shift Welder (req 26-1288), Hendrickson ADP board, 1205 Industrial Park Drive, read 2026-11-20; listed 2026-09-28 (ADP timestampLastPosted, a re-post stamp; no age claimed); MIG, hand and robotic welding"
+    },
+    {
+     "plant": "p-reyco-granning-mount-vernon-mo",
+     "old": "counted: Welder (req 26-1113), Hendrickson ADP board, 1205 Industrial Park Drive, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+     "new": "counted: Welder (req 26-1113), Hendrickson ADP board, 1205 Industrial Park Drive, read 2026-11-20; listed 2026-08-27 (ADP timestampLastPosted, a re-post stamp; no age claimed); MIG, hand and robotic welding"
+    },
+    {
+     "plant": "p-reyco-granning-mount-vernon-mo",
+     "old": "counted: Welder (req 26-947), Hendrickson ADP board, 1205 Industrial Park Drive, read 2026-11-20 (board shows no posting date); MIG, hand and robotic welding",
+     "new": "counted: Welder (req 26-947), Hendrickson ADP board, 1205 Industrial Park Drive, read 2026-11-20; listed 2026-07-28 (ADP timestampLastPosted, a re-post stamp; no age claimed); MIG, hand and robotic welding"
+    },
+    {
+     "plant": "p-hendrickson-lebanon-ky",
+     "old": "Welding Process Engineer II (Lebanon KY), undated",
+     "new": "Welding Process Engineer II (req 25-663), Hendrickson ADP board, 655 Hendrickson Drive, Lebanon KY; listed 2026-03-27 (ADP timestampLastPosted, a re-post stamp; no age claimed)"
+    },
+    {
+     "plant": "p-hendrickson-somerset-ky",
+     "old": "Fabricator - 3rd Shift (Somerset KY), undated",
+     "new": "Fabricator - 3rd Shift (req 26-942), Hendrickson ADP board, 565 Pin Oak Drive, Somerset KY; listed 2026-07-24 (ADP timestampLastPosted, a re-post stamp; no age claimed)"
+    }
+   ],
+   "welder_postings_changes": [
+    {
+     "plant": "p-hendrickson-lebanon-in",
+     "new": "1 counted, open on Hendrickson's ADP board (read 2026-11-20; listed dates are ADP timestampLastPosted re-post stamps): Welder (Nights) (26-1199, listed 2026-09-09), 180 Mt. Zion Road; MIG, hand and robotic welding; listed, not counted: Manufacturing Engineering Technician (3rd Shift), Fabricator / Machinist (2nd Shift, no welding)"
+    },
+    {
+     "plant": "p-hendrickson-elizabethtown-ky",
+     "new": "2 counted, open on Hendrickson's ADP board (read 2026-11-20; listed dates are ADP timestampLastPosted re-post stamps): Welder - 1st Shift (26-1079, listed 2026-08-20), Welder - 3rd Shift (26-1464, listed 2026-11-09), 940 North Black Branch Road; MIG, hand and robotic welding"
+    },
+    {
+     "plant": "p-hendrickson-navarre-oh",
+     "new": "2 counted, open on Hendrickson's ADP board (read 2026-11-20; listed dates are ADP timestampLastPosted re-post stamps): Welder - Nights (26-989, listed 2026-08-03), Welder - Afternoons (26-858, listed 2026-07-06), 4500 Sterilite St NE; MIG, hand and robotic welding; 2G MIG test; listed, not counted: Manufacturing Engineering Technician - Afternoons, Machine Operator - Nights"
+    },
+    {
+     "plant": "p-hendrickson-clarksville-tn",
+     "new": "1 counted, open on Hendrickson's ADP board (read 2026-11-20; listed dates are ADP timestampLastPosted re-post stamps): Robotic Welder-2nd Shift (26-1164, listed 2026-09-04), 151 International Blvd; robotic and hand welding, 2G welding test; overtime as production demands require"
+    },
+    {
+     "plant": "p-reyco-granning-mount-vernon-mo",
+     "new": "5 counted, open on Hendrickson's ADP board (read 2026-11-20; listed dates are ADP timestampLastPosted re-post stamps): Welder (26-1126 listed 2026-08-28, 26-1289 listed 2026-09-28, 26-1113 listed 2026-08-27, 26-947 listed 2026-07-28), 3rd shift Welder (26-1288, listed 2026-09-28), 1205 Industrial Park Drive; MIG, hand and robotic welding; listed, not counted: Weld Engineer"
+    },
+    {
+     "plant": "p-hendrickson-lebanon-ky",
+     "new": "1 open on Hendrickson's ADP board (Welding Process Engineer II, req 25-663), 655 Hendrickson Drive, Lebanon KY; listed 2026-03-27 (ADP timestampLastPosted re-post stamp)"
+    },
+    {
+     "plant": "p-hendrickson-somerset-ky",
+     "new": "1 open on Hendrickson's ADP board (Fabricator - 3rd Shift, req 26-942), 565 Pin Oak Drive, Somerset KY; listed 2026-07-24 (ADP timestampLastPosted re-post stamp)"
+    }
+   ],
+   "score_effect": "none: listed dates are ADP re-post stamps, so no posting age (60-day) claim; counts unchanged"
+  }
+ },
+ "totals": {
+  "rows_checked": 361,
+  "rows_corrected": 77,
+  "decisions": 77,
+  "evidence_rows_written": 81,
+  "evidence_rows_retired": 66,
+  "plant_updates": 50
+ },
+ "plants_prospect_changed": [
+  "p-talbert-rensselaer-in: pass -> pass (low confidence)",
+  "p-rogers-albion-pa: pass (low confidence) -> unknown (site product shown; welding not shown)",
+  "p-midsota-avon-mn: pass (low confidence) -> unknown (site product shown; welding not shown)",
+  "p-cam-superline-waynesboro-pa: pass (low confidence) -> unknown (site product shown; welding not shown)",
+  "p-interstate-trailers-mansfield-tx: pass (low confidence) -> unknown (site product shown; welding not shown)",
+  "p-hillsboro-hillsboro-ks: pass (aluminum-first, kept and noted) -> pass (low confidence; aluminum-first)",
+  "p-u-dump-ocala-fl: pass -> unknown (site product shown; welding not shown)",
+  "p-sun-country-trailers-phoenix-az: pass -> unknown (site product shown; welding not shown)",
+  "p-western-trailer-boise-id: pass -> pass (low confidence)",
+  "p-trinity-trailer-boise-id: pass -> pass (low confidence)",
+  "p-eby-story-city-ia: pass -> pass (low confidence; aluminum-first)",
+  "p-cornpro-elnora-in: pass -> pass (low confidence)",
+  "p-trail-king-mitchell-sd: pass -> pass (low confidence)",
+  "p-trail-king-mitchell-sd-2: pass -> pass (low confidence)"
+ ],
+ "plants_welder_postings_changed": [
+  "p-alcom-deland-fl",
+  "p-alcom-winslow-me",
+  "p-amst-university-park-il",
+  "p-aspen-waco-tx",
+  "p-aulick-scottsbluff-ne",
+  "p-car-mate-leeper-pa",
+  "p-cargo-craft-ambrose-ga",
+  "p-custom-truck-elk-point-sd",
+  "p-diamond-c-mount-pleasant-tx",
+  "p-diamond-cargo-douglas-ga",
+  "p-east-randolph-oh",
+  "p-eby-story-city-ia",
+  "p-ez-loader-midway-ar",
+  "p-ez-loader-spokane-wa",
+  "p-fairchild-glen-lyn-va",
+  "p-faymonville-little-rock-ar",
+  "p-fontaine-haleyville-al",
+  "p-fontaine-specialized-springville-al",
+  "p-globe-bradenton-fl",
+  "p-goldhofer-hickory-nc",
+  "p-heartland-trailer-sikeston-mo",
+  "p-hendrickson-clarksville-tn",
+  "p-hendrickson-elizabethtown-ky",
+  "p-hendrickson-lebanon-in",
+  "p-hendrickson-lebanon-ky",
+  "p-hendrickson-navarre-oh",
+  "p-hendrickson-somerset-ky",
+  "p-hillsboro-hillsboro-ks",
+  "p-innovative-specialties-pittsfield-me",
+  "p-landoll-waterville-ks",
+  "p-legend-alma-mi",
+  "p-load-trail-sulphur-springs-tx",
+  "p-myco-bradenton-fl",
+  "p-novae-markle-in",
+  "p-pine-hill-gap-pa",
+  "p-pitts-pittsview-al",
+  "p-rc-trailers-middlebury-in",
+  "p-reyco-granning-mount-vernon-mo",
+  "p-sdg-waycross-ga",
+  "p-sh-distributing-burbank-oh",
+  "p-spartan-cargo-alma-ga",
+  "p-sundowner-coleman-ok",
+  "p-titan-waterville-ks",
+  "p-top-hat-cookville-tx",
+  "p-top-hat-naples-tx",
+  "p-trail-eze-corsica-sd",
+  "p-trail-eze-mitchell-sd",
+  "p-trail-eze-platte-sd",
+  "p-trails-west-preston-id",
+  "p-wanco-arvada-co"
+ ],
+ "coordinator_flags": [
+  "Coordinator flags: (a) U-Dump: OSHA 2025 and EPA FRS both give 2610 NW 10th St, the company site 2656; if ruled the same site, T15 gives pass (low confidence). (b) Hillsboro and Liberty NC: the OSHA establishment name is the plant's operating name, but the name gate trips because that name is the city word; Hillsboro set to pass (low confidence; aluminum-first) on that reading, Liberty NC left as is (same reading); rule once for both. (c) Lucon files two OSHA records at 480 Aerodrome Way (336212 and 336214), so the uniqueness gate is shared; kept T15. (d) Trailer Component Mentor 8200 Tyler: EPA FRS names TCM only at 8120 Tyler (sibling); its T15 rests on the T15 ruling naming TCM; not changed. (e) Custom Truck Elk Point and Trail-Eze Mitchell OSHA records fail or share gates, but T7 rules them by name; not changed. (f) Stellar Hastings: its prospect row cites OSHA 2954818 ('357 Road 3468'), which fails the street-name gate; the record that passes (2955419, Stellar Nebraska LLC, 357 Road 3168) is described 'Tank trailer, liquid and dry bulk', which raises T20 (tank-trailer rule); row not changed. (g) Diamond C: the Mount Pleasant welder posting is city-level and the board names several Mount Pleasant facilities without addresses; rule 7 placement not resolved (7a if one campus, 7c if a facility is over 1 km away). (h) Alternative values if the coordinator reads the gates strictly: Hillsboro unknown (aluminum-first); Lucon unknown (site product shown; welding not shown).",
+  "Prospect 'unknown' or low-confidence plants where the board read now shows welding at the site (prospect rows NOT changed; for the coordinator): Nitro/Innovative Specialties Pittsfield (Welders posting at 140 Business Court; aluminum trailers; prospect unknown), Landoll Waterville (Weld posting at 451 KS-9, GMAW on steel; prospect unknown), ALCOM DeLand (aluminum MIG welder; prospect unknown (aluminum-first)), EZ Loader Midway (3 welder postings at 6533 Hwy 126 N; prospect pass (low confidence)), Custom Truck Elk Point (Welder I at Elk Point, rule 7a; pass (low confidence) under T7), Load Trail Sulphur Springs (welder text at 200 Heritage Pkwy; already pass), MYCO (Advanced MIG Welder, already pass).",
+  "REPEATED CAUSE for a ledger-wide sweep: the ADP Workforce Now public job-requisitions API returns about 20 rows per call whatever $top says; reads that did not page ($skip) saw only the first page (Novae: 19-20 of 45, which hid the two Markle weld postings). Every ADP WFN board with more than 20 requisitions should be re-read with paging, positive rows included. Boards re-paged here: Novae (45), ALCOM (25), Interstate Group (28; Kingman roles are wood, wire/prep/paint and skin shop staff, no welder), CTOS (95), Buyers Products/TCM (1)."
+ ],
+ "source_failures": [
+  "osha.gov blocked (OSHA facts from data/osha_2025.csv)",
+  "Indeed (globetrailers.com job board) and ZipRecruiter (Wanco widget): Cloudflare challenge, not readable",
+  "ADP my.adp.com search-meta endpoint refuses direct requests (Missing orgoid header); read through a browser session",
+  "Diamond C ADP board on workforcenow.cloud.adp.com: the plain API URL with the default timeStamp returned non-JSON; the browser-captured URL works",
+  "faymonville.com/en/jobs and goldhofer.com/en/career returned 404 (jobs.faymonville.com and goldhofer.com/en/careers/job-vacancies used)",
+  "rctrailers.com 404; legendtrailers.com and shdistributing.com redirect to unrelated sites; carmatetrailers.com redirects to a dealer site"
+ ],
+ "notes": "TR-SWEEP-2 (fact-checker, 2026-11-20). Scope: the 275 base plants in v-trailers-chassis-mobile-power, plus the profiled Hendrickson/Reyco rows for fault 3. Three faults swept; per-fault counts and changed plants are in ledger/audit/tr-sweep-2.json. merge_inbox does not read plant_updates: the coordinator applies them (50: 43 welder_postings values from fault 2 and 7 from fault 3). prospect_test is not a plants.csv column, so prospect changes are evidence rows only.\nFAULT 1 (prospect pass without site welding): 168 pass-type rows read (166 plants). 21 corrected: 14 value changes (12 product-inference cases plus Trail King Mitchell x2 under T14) (Talbert, Western, Trinity Eisenman, Eby Story City, Corn Pro, Hillsboro, Trail King Mitchell x2 -> pass (low confidence), Eby and Hillsboro with the aluminum-first note; Rogers, Midsota, CAM Superline, Interstate Trailers Mansfield, U-Dump, Sun Country -> unknown (site product shown; welding not shown)) and 7 rows whose value stands but whose basis was product inference, rebased (Eager Beaver, Lucon, Fontaine Haleyville, Titan -> T15 with an EPA FRS quote; Diamond C, Novae Markle -> city-level welder postings; Aulick -> careers page names Welding & Fabrication). OSHA gates were re-run (osha_match.py functions imported, the script not run) on every T15-labelled row; EPA names read from FRS (frs-public.epa.gov answered today).\nCoordinator flags: (a) U-Dump: OSHA 2025 and EPA FRS both give 2610 NW 10th St, the company site 2656; if ruled the same site, T15 gives pass (low confidence). (b) Hillsboro and Liberty NC: the OSHA establishment name is the plant's operating name, but the name gate trips because that name is the city word; Hillsboro set to pass (low confidence; aluminum-first) on that reading, Liberty NC left as is (same reading); rule once for both. (c) Lucon files two OSHA records at 480 Aerodrome Way (336212 and 336214), so the uniqueness gate is shared; kept T15. (d) Trailer Component Mentor 8200 Tyler: EPA FRS names TCM only at 8120 Tyler (sibling); its T15 rests on the T15 ruling naming TCM; not changed. (e) Custom Truck Elk Point and Trail-Eze Mitchell OSHA records fail or share gates, but T7 rules them by name; not changed. (f) Stellar Hastings: its prospect row cites OSHA 2954818 ('357 Road 3468'), which fails the street-name gate; the record that passes (2955419, Stellar Nebraska LLC, 357 Road 3168) is described 'Tank trailer, liquid and dry bulk', which raises T20 (tank-trailer rule); row not changed. (g) Diamond C: the Mount Pleasant welder posting is city-level and the board names several Mount Pleasant facilities without addresses; rule 7 placement not resolved (7a if one campus, 7c if a facility is over 1 km away). (h) Alternative values if the coordinator reads the gates strictly: Hillsboro unknown (aluminum-first); Lucon unknown (site product shown; welding not shown).\nProspect 'unknown' or low-confidence plants where the board read now shows welding at the site (prospect rows NOT changed; for the coordinator): Nitro/Innovative Specialties Pittsfield (Welders posting at 140 Business Court; aluminum trailers; prospect unknown), Landoll Waterville (Weld posting at 451 KS-9, GMAW on steel; prospect unknown), ALCOM DeLand (aluminum MIG welder; prospect unknown (aluminum-first)), EZ Loader Midway (3 welder postings at 6533 Hwy 126 N; prospect pass (low confidence)), Custom Truck Elk Point (Welder I at Elk Point, rule 7a; pass (low confidence) under T7), Load Trail Sulphur Springs (welder text at 200 Heritage Pkwy; already pass), MYCO (Advanced MIG Welder, already pass).\nFAULT 2 (welder_postings without the own board read): 190 plants valued unknown/none (180 evidence rows) screened; 160 company sites scanned for careers links and ATS hosts (plain HTML), hits and every 'not read' / bare-unknown row read with a browser or the board JSON. 43 plants corrected: 9 gained welder postings at or near the site (Diamond C (city-level, placement unresolved), Novae Markle (rule 7b, Census-geocoded buildings within about 1 km), CTOS Elk Point, Landoll Waterville, Load Trail Sulphur Springs, ALCOM DeLand, EZ Loader Midway, MYCO, Nitro/Innovative Specialties Pittsfield; Novae Markle's two postings had been missed because the earlier reads saw only the first page, 19-20 of 45 requisitions); 21 now none found on a board actually read; 13 still unknown with the reason now stated (11 with no findable board, Globe (board is Indeed, blocked), Faymonville pre-production). Novae's other brand rows were re-checked against the full board (45): conclusions hold (Avon, Waynesboro, Middlebury, Carbondale, Bristol, Mountain Top, Louisiana MO, El Mirage, Springville; Clarinda, Red Oak, McGregor and Columbia City match).\nFAULT 3 (Hendrickson ADP 'board shows no posting date'): 13 rows read through the search-meta XHR in a browser; all 13 now carry 'listed <date>' from timestampLastPosted (re-post stamps, no age claimed; Hebron precedent). No score changes: listed dates are re-post stamps, so no 60-day claim; profiled plants touched: Hendrickson Lebanon IN, Elizabethtown, Navarre, Clarksville, Reyco Granning Mount Vernon.\nQuote checks: every new quote checked with tools/fetch_page.py logic (fragments split on '...', raw source incl.); the Hendrickson ADP pages need a browser render, and the MYCO employment list renders only in a browser (plain fetch misses it; --browser --check FOUND).\n\nREPEATED CAUSE for a ledger-wide sweep: the ADP Workforce Now public job-requisitions API returns about 20 rows per call whatever $top says; reads that did not page ($skip) saw only the first page (Novae: 19-20 of 45, which hid the two Markle weld postings). Every ADP WFN board with more than 20 requisitions should be re-read with paging, positive rows included. Boards re-paged here: Novae (45), ALCOM (25), Interstate Group (28; Kingman roles are wood, wire/prep/paint and skin shop staff, no welder), CTOS (95), Buyers Products/TCM (1)."
+}
