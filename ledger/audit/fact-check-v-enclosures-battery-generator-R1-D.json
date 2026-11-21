@@ -1,0 +1,3379 @@
+{
+ "checker": "fact-checker R1-D",
+ "vertical": "v-enclosures-battery-generator",
+ "date": "2026-11-17",
+ "plants": [
+  "p-technibus-rock-hill-sc",
+  "p-technibus-canton-oh",
+  "p-jts-abilene-tx",
+  "p-tomball-controls-von-ormy-tx",
+  "p-tomball-controls-seguin-tx",
+  "p-tomball-controls-pleasanton-tx",
+  "p-powersecure-randleman-nc",
+  "p-yancey-griffin-ga",
+  "p-yancey-batesville-ms"
+ ],
+ "source_file": "ledger/inbox/battery-profiler-D.json (226 evidence rows, 5 evidence_remove applied) plus the plants' 87 surviving rows in ledger/evidence.csv",
+ "decision_rule": "Corrected = the value adds a fact the cited page does not show, tags a judgement as stated, places a company-level fact at the plant, ties a posting through a shared city, misdates a posting, or the quote is not on the page (raw source checked first); Confirmed otherwise. Unreachable only if the source cannot be reached at all.",
+ "claims_checked": 158,
+ "claims_corrected": 2,
+ "claims_unreachable": 0,
+ "error_rate": 0.0127,
+ "error_rate_note": "Headline on the R2/R3 basis (rows flagged r2_basis: stated rows, every row of a claim a score row cites, and the 9 opening lines): 2/158 = 1.3%. Stated rows only: 2/109 = 1.8%. All 313 rows written (adds tier, relationship, lookalike, prospect_test, lat/lon/county, bottleneck and score rows): 15/313 = 4.8%. 0 unreachable: all 41 cited URLs returned 200 on a fresh fetch, and 160 of 161 quotes were found verbatim (visible text or raw source); the one miss is an inferred prospect_test row whose sentence differs by four words on that requisition. The 2 basis corrections are clauses the cited quote does not carry: a judgement tagged stated (Batesville 'main welded parts') and a weld-test coupon read as production material (PowerSecure 'steel plate'). Neither moves a score point. Out of basis: the 9 confidence values (scale cites an unknown headcount; the normaliser reproduces these), Griffin's lat/lon/county (one finding: point 4.7 km off, Pike not Spalding) and the Griffin prospect_test quote/value.",
+ "claims_checked_all_rows": 313,
+ "claims_corrected_all_rows": 15,
+ "error_rate_all_rows": 0.0479,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 2,
+  "invented fact": 0,
+  "other": 0
+ },
+ "error_kind_counts_all_rows": {
+  "wrong plant or location": 3,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 3,
+  "invented fact": 0,
+  "other": 9
+ },
+ "repeated_kinds": [
+  "other (9, all rows; 0 in basis): one mechanical pattern - every confidence value is one too high because each score_scale row cites the plant's :headcount, which has only an unknown row. normalise_scores.py fixes it on merge; profilers should not count scale toward confidence when headcount is unknown.",
+  "wrong plant or location (3, all rows): ONE finding, not a pattern - Griffin's lat, lon and county_fips rows (a stand-in geocode for 1101 Ethridge Mill Rd). No sweep needed for this kind.",
+  "quote does not support value (2 in basis, 3 in all rows): clauses or judgements the cited quote does not carry (Batesville 'main', PowerSecure 'steel plate', Griffin prospect_test 'steel per the postings'). Below the 3-in-basis sweep trigger; the R3-I fact-check lesson (no clause beyond the cited quote) still applies."
+ ],
+ "worst_errors": [
+  "p-yancey-griffin-ga:lat / :lon / :county_fips (inferred, ledger rows) - the map point is the Census match for 1101 Ethridge Mill Rd, 4.7 km north of the plant, and the county is Spalding 13255; four ECHO records for Yancey at 96 Etheridge Mill put the site at about 33.1757, -84.2635, which the Census geocoder places in Pike County 13231 (ECHO also names it 'PIKE COUNTY TESTING FACILITY'; UKG's own location point agrees within 0.5 km). Wrong location on a High plant.",
+  "Confidence overstated by 1 on all 9 plants (score rows): scale cites an unknown headcount. Batesville 6 -> 5, Griffin 5 -> 4, JTS 5 -> 4 (3 recommended: tank steel not stated), Von Ormy 4 -> 3, PowerSecure 4 -> 3, Rock Hill, Canton, Seguin, Pleasanton 3 -> 2. No points change.",
+  "p-yancey-batesville-ms:products (stated) - 'welders' main welded parts are aluminum stud frames, walls and roof' tags the aluminum-first judgement as stated; and p-powersecure-randleman-nc:materials (stated) - 'steel plate' is the weld-test coupon, not a stated production material. Both trimmed with plants_csv_value; no score change. (Out of basis: p-yancey-griffin-ga:prospect_test cites a sentence that is not verbatim on WELDE006244 and asserts steel content 'per the postings' that no Griffin source shows.)"
+ ],
+ "score_problems": [
+  {
+   "plant_id": "p-technibus-rock-hill-sc",
+   "component": "confidence",
+   "ledger_points": 3,
+   "correct_points": 2,
+   "why": "score_scale cites p-technibus-rock-hill-sc:headcount, which has only an unknown row; normalise_scores.py counts a component only when every cited claim is stated, so scale earns no confidence (R1-B Taylor/Panel Built/Modern). The normaliser reproduces this on merge."
+  },
+  {
+   "plant_id": "p-technibus-canton-oh",
+   "component": "confidence",
+   "ledger_points": 3,
+   "correct_points": 2,
+   "why": "score_scale cites p-technibus-canton-oh:headcount, which has only an unknown row; normalise_scores.py counts a component only when every cited claim is stated, so scale earns no confidence (R1-B Taylor/Panel Built/Modern). The normaliser reproduces this on merge."
+  },
+  {
+   "plant_id": "p-jts-abilene-tx",
+   "component": "confidence",
+   "ledger_points": 5,
+   "correct_points": 4,
+   "why": "score_scale cites p-jts-abilene-tx:headcount, which has only an unknown row; normalise_scores.py counts a component only when every cited claim is stated, so scale earns no confidence (R1-B Taylor/Panel Built/Modern). The normaliser reproduces this on merge. Also recommended: add p-jts-abilene-tx:part_size_fit to no-confidence-claims.csv (tank steel not stated; R1-A Harvard precedent), giving 3."
+  },
+  {
+   "plant_id": "p-tomball-controls-von-ormy-tx",
+   "component": "confidence",
+   "ledger_points": 4,
+   "correct_points": 3,
+   "why": "score_scale cites p-tomball-controls-von-ormy-tx:headcount, which has only an unknown row; normalise_scores.py counts a component only when every cited claim is stated, so scale earns no confidence (R1-B Taylor/Panel Built/Modern). The normaliser reproduces this on merge."
+  },
+  {
+   "plant_id": "p-tomball-controls-seguin-tx",
+   "component": "confidence",
+   "ledger_points": 3,
+   "correct_points": 2,
+   "why": "score_scale cites p-tomball-controls-seguin-tx:headcount, which has only an unknown row; normalise_scores.py counts a component only when every cited claim is stated, so scale earns no confidence (R1-B Taylor/Panel Built/Modern). The normaliser reproduces this on merge."
+  },
+  {
+   "plant_id": "p-tomball-controls-pleasanton-tx",
+   "component": "confidence",
+   "ledger_points": 3,
+   "correct_points": 2,
+   "why": "score_scale cites p-tomball-controls-pleasanton-tx:headcount, which has only an unknown row; normalise_scores.py counts a component only when every cited claim is stated, so scale earns no confidence (R1-B Taylor/Panel Built/Modern). The normaliser reproduces this on merge."
+  },
+  {
+   "plant_id": "p-powersecure-randleman-nc",
+   "component": "confidence",
+   "ledger_points": 4,
+   "correct_points": 3,
+   "why": "score_scale cites p-powersecure-randleman-nc:headcount, which has only an unknown row; normalise_scores.py counts a component only when every cited claim is stated, so scale earns no confidence (R1-B Taylor/Panel Built/Modern). The normaliser reproduces this on merge."
+  },
+  {
+   "plant_id": "p-yancey-griffin-ga",
+   "component": "confidence",
+   "ledger_points": 5,
+   "correct_points": 4,
+   "why": "score_scale cites p-yancey-griffin-ga:headcount, which has only an unknown row; normalise_scores.py counts a component only when every cited claim is stated, so scale earns no confidence (R1-B Taylor/Panel Built/Modern). The normaliser reproduces this on merge."
+  },
+  {
+   "plant_id": "p-yancey-batesville-ms",
+   "component": "confidence",
+   "ledger_points": 6,
+   "correct_points": 5,
+   "why": "score_scale cites p-yancey-batesville-ms:headcount, which has only an unknown row; normalise_scores.py counts a component only when every cited claim is stated, so scale earns no confidence (R1-B Taylor/Panel Built/Modern). The normaliser reproduces this on merge."
+  },
+  {
+   "plant_id": "p-tomball-controls-von-ormy-tx",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "correct_points": "20 (RULING)",
+   "why": "As written (JSON-LD at face value): MIG Welder/Fabricator 4318603 JSON-LD datePosted 2026-07-09 = about 131 days; no other Headquarters requisition shares the stamp (checked 4261307 06-17, 4355806 09-21, 4470372 10-16, 4528851 09-23, 4661929 11-12). Case for 12: the board's PublishedDate is 2026-10-16 (31 days), and JSON-LD dates on this board do not follow JobId order (4470372 = Oct 16 but 4528851 = Sep 23; Pleasanton 3558741 = Nov 12), so neither field proves continuous posting since July. At 12: 67 Medium."
+  },
+  {
+   "plant_id": "p-tomball-controls-von-ormy-tx",
+   "component": "score_demand",
+   "ledger_points": 15,
+   "correct_points": "15 (RULING)",
+   "why": "TDLR TABS2025014309: registered 2025-03-15, $4M 29,517 sf addition at 10310 Fischer Road, planned 2025-06-02 to 2026-06-26, status 'Review Complete' (plan review, not completion). Read as a dated plant-level expansion (Eagle precedent). At 8: 68 Medium; with labor also 12: 60 Medium."
+  },
+  {
+   "plant_id": "p-tomball-controls-pleasanton-tx",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "correct_points": "20 (RULING)",
+   "why": "One counted posting; 20 rests on 'Monday-Thursday (Mandatary Fridays) Hours 6:00am-4:30PM' read as mandatory overtime (about 40 h Mon-Thu plus required Fridays; the word overtime is not on the page). The cited Muskogee precedent had two postings at once plus mandatory Fridays, so it is not a direct precedent. The line is Pleasanton-specific (absent from the Von Ormy and Seguin postings). At 12: 60 Medium."
+  },
+  {
+   "plant_id": "p-jts-abilene-tx",
+   "component": "score_material_part",
+   "ledger_points": 20,
+   "correct_points": "20 (RULING; no confidence)",
+   "why": "Stated 60 ft x 13 ft fuel tanks built at 2631 FM 3034 fit the 2026 analyst limits (60 ft x 15 ft) exactly at length; weight unstated; exceed the older sheet. Steel is not stated for the tanks (role lists steel, aluminum and stainless; 7024 rods imply carbon steel). Harvard precedent: points stand, no confidence. At 12: 72 High; at 0: 60 Medium."
+  }
+ ],
+ "score_notes": [
+  "All 54 components (9 plants x 6) re-derived from the cited claims; sums and tiers correct as filed: JTS 80 High, Von Ormy 75 High, Griffin 72 High, Batesville 72 High, Pleasanton 68, Rock Hill 60, Canton 60, Seguin 60, PowerSecure 53 (Medium). Only confidence changes (score_problems); three components are RULINGs kept as written (Von Ormy labor and demand, Pleasanton labor) plus JTS material's confidence.",
+  "Labor counts verified on each company's own board today: IES Jibe API (Rock Hill 1, Canton 1), SmartRecruiters API (Abilene 1 of 82 MCG postings), Paylocity board JSON (Von Ormy, Seguin, Pleasanton 1 each), Southern Company Randleman list (1), UKG LoadSearchResults (Griffin 2, Batesville 2). No uncounted welder requisition at any of the nine sites. Inspectors, helpers and assemblers correctly listed and not counted.",
+  "Process 20 everywhere is correct: MIG/GMAW required or preferred in each site's own production welder posting; no TIG. JTS also names 7024 stick (preferred), Yancey 'complete spot welds where needed' (incidental); neither changes the level.",
+  "Part mix: Technibus and Tomball 15 rest on company/segment-level custom statements (earn points, no confidence, already excluded from confidence as filed); JTS 15 and Griffin 15 rest on stated site-level custom text; PowerSecure and Batesville 8 on product lists. All follow the session rules.",
+  "Material: Yancey 4 (aluminum stud frames, light and medium gauge; no tank size) follows the battery rule; Technibus, Tomball and PowerSecure 0 (no stated part size).",
+  "Demand: Batesville 15 (Jan 28 2025 $20.8M / 250 jobs, in window) correct; JTS 8 correct (SST acquisition 2024-10-01 is before 2024-11-16); others 8 with no plant event found.",
+  "Scale 5 everywhere is correct (stated multi-plant parent, site headcount unknown)."
+ ],
+ "opening_line_problems": [
+  "All nine opening lines use only stated claims; no line asserts an inferred fact. Optional wording fixes only:",
+  "p-tomball-controls-pleasanton-tx:opening_line - 'posting (Nov 12, 2026)': JobId 3558741 shows the requisition predates November (a July 2026 requisition is 4318603), so 'listed as of Nov 12, 2026' is safer than presenting it as a new posting.",
+  "p-yancey-griffin-ga:opening_line - 'a Welder (posted Nov 10, 2026)': the same requisition (WELDE006152) was on the Cat dealer board from 2026-10-09; suggest 'a Welder opening (listed since October 9, re-posted November 10)'.",
+  "p-tomball-controls-von-ormy-tx:opening_line - 'the addition you registered with TDLR' is fair (project name Tomball Controls); 'carries a July 9, 2026 posting date' is accurate as worded. If labor is ruled 12, drop the date clause."
+ ],
+ "plants_closed_or_moved": [],
+ "status_problems": [
+  "p-yancey-griffin-ga (coordinator call, prospect test): no Griffin source says steel is welded there. Griffin welder postings name fuel tanks (material unstated) and aluminum stud frames, walls and roof; the 2020 capabilities sheet and Plant Services item give no material; 'steel piping' appears only in a Vaia copy of an assembly role. Steel rests on the Batesville announcement ('aluminum and steel generator enclosures and fuel tanks') for the same division and identical job texts. Kept as aluminum-first by inference; if a stated steel fact is required, Griffin is aluminum-only on the record and fails the prospect test (a High plant at 72 would leave the profile list).",
+  "p-powersecure-randleman-nc (coordinator call, in-vertical and lookalike): the Randleman posting names 'skids, tanks, SCR stands, and cable trays' with no generator, enclosure or battery wording, and boundary rule 3 sends power-distribution skids elsewhere. The genset tie is inferred from PowerSecure's company-level PowerBlock text ('integral fuel and DEF tanks, and a sound-attenuating enclosure'), ECHO NAICS 335312 (motor and generator manufacturing) for 1410 Coltrane Mill Rd and a 'Power Generation Quality Control Technician III - Test' role on the Randleman list (not read; page did not render). Kept as written; lead: read that posting for a stated genset tie. As the written relationship rule reads (lookalike only where generator enclosures, sub-base tanks or BESS enclosures or skids are a stated product), the as-filed value would be 'new', not lookalike of EK Machine; ranking, not score, is affected.",
+  "p-yancey-batesville-ms: operating (many live production roles incl. Plant Manager, QC, electricians, two welders; MDEQ coverage started 08/20/2025). Status rows correct.",
+  "p-technibus-rock-hill-sc: operates at 1345 Hall Spencer Rd (Technibus Inc air permit 'Operating', stormwater 'Effective'; Banker Steel permits terminated). Address attribution correctly inferred."
+ ],
+ "plant_status_notes": "All nine plants are operating at the recorded street addresses (own boards or ECHO). Griffin's coordinates and county are wrong (see rows). Batesville geocode matches UKG's point within 0.14 km.",
+ "field_drift_notes": [
+  "p-yancey-griffin-ga: lat, lon and county_fips take the corrected values (33.175685, -84.26347, 13231). The address field should become '96 Etheridge Mill Rd., Griffin, GA 30224 (Yancey UKG job board; EPA ECHO: 96 Etheridge Mill Industrial Park)' - drop the profiler's 'coordinates road-level, nearest geocoded address on Ethridge Mill Rd' clause once the coordinates are corrected (no row carries it; set by hand at merge).",
+  "p-yancey-batesville-ms:products takes plants_csv_value (aluminum-first moved to an inferred clause).",
+  "p-powersecure-randleman-nc: headcount and website are blank in plants.csv; the inbox has an unknown headcount row, so set headcount 'unknown'.",
+  "p-tomball-controls-pleasanton-tx: coordinates are city-level (ledger row l24 says so); the UKG-style street geocode was not attempted here.",
+  "p-powersecure-randleman-nc:materials takes plants_csv_value 'steel parts (Randleman Welder II posting)'.",
+  "Ground rule 1 gap (as R1-B found): lat, lon and county_fips have evidence rows only for the two Yancey plants among these nine; Technibus x2, JTS, Tomball x3 and PowerSecure have none in the inbox or ledger. Add Census geocoder rows at merge.",
+  "Otherwise the 87 surviving ledger rows agree with the profiler's plant fields (names, parents, addresses, tiers, relationships, lookalike_of)."
+ ],
+ "leads": [
+  "Yancey Engineered Solutions Barnesville GA: five live welder requisitions on Yancey's UKG board at 'EN-Barnesville-YES' (WELDE006151, 006153, 005301 posted 2026-11-09; 006242, 006245 posted 2026-10-29) plus EV3 Legacy-YES shipping roles; ECHO has YANCEY POWER SYSTEMS / LAMAR COUNTY TESTING FACILITY at 490 Industrial Rd/Dr, Barnesville. Likely list miss with counted postings (profiler D also flagged it).",
+  "Yancey Cordele GA: Welder WELDE005744 (2026-11-02), Operations Manager, QC Manager, Safety Coordinator live; ECHO GAR000107466 YANCEY ENGINEERED SOLUTIONS at 2202 E 13th Ave, Cordele (the profiler's lead gives 502 S Midway Road; reconcile). Also YES locations on the board at Peachtree City (EP4) and Macon (EV1 Prince).",
+  "Tomball Controls San Angelo TX: eight management roles plus 'Project Manager - Industrial Site Remediation & Factory Launch' (2026-11-03/09) on the Paylocity board; a fourth site would make 'three production facilities' stale.",
+  "PowerSecure Randleman: 'Power Generation Quality Control Technician III - Test' on the Randleman list may state genset testing at the site (would settle the status call).",
+  "Tomball Pleasanton posting's About Us: 'we specialize in manufacturing custom fuel tanks, custom sound attenuated enclosures, and access platforms for emergency power generators' (company voice on a site posting; does not change part mix confidence)."
+ ],
+ "method": "Fresh fetch of all 41 cited URLs into a private cache (tools/fetch_page.fetch with_raw=True; browser fallback for UKG and Southern Company), each quote split on '...' and every fragment checked against visible text plus raw source by script (160/161 found). Posting rows checked against the posting's own JobPosting JSON-LD block (title, datePosted, address together) and today's board lists: IES Jibe /api/jobs, SmartRecruiters postings API, Paylocity board JSON, UKG LoadSearchResults, Southern Company Randleman list, Cat dealer page apply link. ECHO get_facilities name searches re-run for the three single-site rows; ECHO DFR and Census reverse geocoder used for the Griffin location. No web search used. No ledger file edited. Note: this checker's first fetch ran in a shared scratchpad folder (scratchpad/fc/) and may have overwritten another checker's cache index.json there; all results here come from a second, private cache.",
+ "apply_note": "Apply after the coordinator merges ledger/inbox/battery-profiler-D.json (rows keyed to that file's claim_id + source_url; ledger-origin rows marked in 'origin'). l69-l71 (Griffin lat/lon/county) carry corrected_source_url to an ECHO DFR record; apply_factcheck.py honours it. Run tools/normalise_scores.py after the merge: it reproduces all nine confidence corrections. Recommended: add p-jts-abilene-tx:part_size_fit to ledger/audit/no-confidence-claims.csv (JTS confidence 4 -> 3). Rule on the RULING items in score_problems and on the two status_problems. Batesville products and PowerSecure materials carry plants_csv_value; the confidence rows carry bare numbers (the normaliser reproduces them).",
+ "rows": [
+  {
+   "claim_id": "c-ies:multi_plant",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1048268/000104826825000174/iesc-20250930.htm",
+   "ledger_value": "IES Infrastructure Solutions segment: 15 locations in ten states incl. Ohio and South Carolina",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[0]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:weld_processes",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/22259",
+   "ledger_value": "MIG (GMAW) on structural steel, generator frames and enclosure components (Rock Hill welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[1]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:materials",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/22259",
+   "ledger_value": "structural steel, sheet metal and galvanized steel (Rock Hill welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[2]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[3]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:production_type",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1048268/000104826825000174/iesc-20250930.htm",
+   "ledger_value": "custom generator enclosures (IES segment level, site not named)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[4]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[5]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[6]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[7]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:weld_processes",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/25339",
+   "ledger_value": "MIG (GMAW) on structural steel, generator frames and enclosure components (Canton welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[8]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:materials",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/25339",
+   "ledger_value": "structural steel, sheet metal and galvanized steel (Canton welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[9]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[10]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:production_type",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1048268/000104826825000174/iesc-20250930.htm",
+   "ledger_value": "custom generator enclosures (IES segment level, site not named)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[11]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[12]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[13]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[14]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:welder_postings",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/22259",
+   "ledger_value": "1 open, counted: Welder - Generator & Enclosure Welder (req 22259), IES board read 2026-11-16, location Rock Hill SC; JSON-LD datePosted 2026-09-15T11:30; seeks generator welders, enclosure welders and fitters; overtime/weekends as needed",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[15]",
+   "verdict": "confirmed",
+   "note": "IES Jibe board API (joinus.ies-co.com/api/jobs, read 2026-11-17) lists req 22259 live, tag Technibus, Rock Hill SC; JSON-LD on the page: title, datePosted 2026-09-15T11:30:00+0000, addressLocality Rock Hill (streetAddress 'UNAVAILABLE'), validThrough 2026-11-30. Description: 'Company: Technibus', Generator Welders, Enclosure Welders and Fitters, overtime/weekends 'as needed'. Only welder role in Rock Hill. Count and date correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:welder_postings",
+   "source_url": "",
+   "ledger_value": "datePosted 2026-09-15T11:30 read as a board re-list stamp, not a proven posting date",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[16]",
+   "verdict": "confirmed",
+   "note": "Confirmed: 22259, 22722 (Rock Hill) and 22219, 22088 (Canton) all carry 2026-09-15T11:30:00+0000 in the board API; 22089 carries 2026-06-26T11:30. Board re-list stamp; 60+ days not claimed (HEM precedent).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:welder_postings",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/22722",
+   "ledger_value": "Paint Helper, Rock Hill (req 22722): JSON-LD datePosted 2026-09-15T11:30:00+0000; helper, listed, not counted",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[17]",
+   "verdict": "confirmed",
+   "note": "Paint Helper 22722 live (board API), Rock Hill, tag Technibus; helper, correctly listed and not counted.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:welder_postings",
+   "source_url": "https://echodata.epa.gov/echo/echo_rest_services.get_facilities?output=JSON&p_fn=TECHNIBUS&p_st=SC",
+   "ledger_value": "posting counted for this plant (single Technibus/IES production site in Rock Hill)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[18]",
+   "verdict": "confirmed",
+   "note": "ECHO get_facilities p_fn=TECHNIBUS p_st=SC re-run 2026-11-17: one facility, 110009806175 (BANKER STEEL - ROCK HILL, 1345 Hall Spencer Rd). The IES board lists no other Rock Hill brand (Rock Hill location search: only Technibus roles). Campus rule satisfied; the inferred tag is right.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder and fitter capacity on generator enclosures and frames: one Rock Hill requisition seeks generator welders, enclosure welders and fitters together and has been live since at least the board's 2026-09-15 stamp.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[19]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:opening_line",
+   "source_url": "",
+   "ledger_value": "Technibus's Rock Hill board is recruiting generator welders, enclosure welders and fitters for MIG welding on structural steel, generator frames and enclosure components, working in sheet metal and galvanized steel; how are you splitting fit-up and welding between frames and enclosure skins today?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[20]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[21]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[22]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[23]",
+   "verdict": "confirmed",
+   "note": "15 confirmed under session-2 rule 1 (company/segment-level custom statement earns points, no confidence).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[24]",
+   "verdict": "confirmed",
+   "note": "12 confirmed: one counted posting; the 2026-09-15 date is a shared re-list stamp, so no 60+ days; overtime 'as needed' is conditional (mining ruling 4).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[25]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[26]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:score_total",
+   "source_url": "",
+   "ledger_value": "60",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[27]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[28]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:confidence",
+   "source_url": "",
+   "ledger_value": "3",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[29]",
+   "verdict": "corrected",
+   "corrected_value": "2",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "Filed 3 (process, labor, scale). Normaliser rule (a component counts only when every claim its score row cites has a stated row and is not in no-confidence-claims.csv; demand 8 never counts): score_scale cites :headcount, which has only an unknown row, so scale earns no confidence (R1-B Taylor/Panel Built/Modern precedent; normalise_scores.py reproduces this on merge). Process and labor count; part mix rests on an inferred segment-level row.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:welder_postings",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/25339",
+   "ledger_value": "1 open, counted: Welder - Generator & Enclosure (req 25339), IES board read 2026-11-16; JSON-LD datePosted 2026-11-10, streetAddress 1501 Raff Rd SW; 1st, 2nd and 3rd shifts listed",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[30]",
+   "verdict": "confirmed",
+   "note": "Board API: req 25339 live, Canton OH, tag Technibus; JSON-LD datePosted 2026-11-10T19:42:00+0000, streetAddress 1501 Raff Rd SW, postalCode 44710 in the same JobPosting block; shifts 1st/2nd/3rd in the description. Only Canton welder role (Canton also has Material Handler, Industrial Painter, Mechanical Assembler, QC Inspector, Materials and Logistic Manager, none counted).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:welder_postings",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/22219",
+   "ledger_value": "listed, not counted: Quality Control Inspector (req 22219, Canton) on the same board",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[31]",
+   "verdict": "confirmed",
+   "note": "QC Inspector 22219 live (Canton); inspector, listed not counted.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual MIG welding capacity on generator enclosures across shifts: the Canton welder posting lists first, second and third shifts.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[32]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:opening_line",
+   "source_url": "",
+   "ledger_value": "Technibus posted a Generator & Enclosure Welder role at 1501 Raff Rd SW in Canton on Nov 10, 2026, with first, second and third shifts for MIG welding on structural steel, generator frames and enclosure components; how are you staffing weld stations across all three shifts?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[33]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[34]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[35]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[36]",
+   "verdict": "confirmed",
+   "note": "15 confirmed (as Rock Hill).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[37]",
+   "verdict": "confirmed",
+   "note": "12 confirmed: one counted posting, 7 days old, no bonus or mandatory overtime.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[38]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[39]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:score_total",
+   "source_url": "",
+   "ledger_value": "60",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[40]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[41]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:confidence",
+   "source_url": "",
+   "ledger_value": "3",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[42]",
+   "verdict": "corrected",
+   "corrected_value": "2",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "Filed 3. Normaliser rule (a component counts only when every claim its score row cites has a stated row and is not in no-confidence-claims.csv; demand 8 never counts): score_scale cites :headcount, which has only an unknown row, so scale earns no confidence (R1-B Taylor/Panel Built/Modern precedent; normalise_scores.py reproduces this on merge). Process and labor count.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:weld_processes",
+   "source_url": "https://jobs.smartrecruiters.com/MissionCriticalGroup/3743990015989206-tank-welder",
+   "ledger_value": "MIG (.045 wire) and stick (7024 rods) preferred; manual or semi-automatic welding in multiple positions (Abilene Tank Welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[43]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:materials",
+   "source_url": "https://jobs.smartrecruiters.com/MissionCriticalGroup/3743990015989206-tank-welder",
+   "ledger_value": "steel, aluminum and stainless steel (Abilene Tank Welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[44]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:part_size_fit",
+   "source_url": "https://jobs.smartrecruiters.com/MissionCriticalGroup/3743990015989206-tank-welder",
+   "ledger_value": "diesel fuel tanks up to 60 ft long and 13 ft wide, 3,000-10,000 gal (Abilene Tank Welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[45]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:part_size_fit",
+   "source_url": "",
+   "ledger_value": "fits the 2026 analyst cell limits (60 ft long, 15 ft wide) at the length limit; weight not stated; too wide for the older sheet's 72 in diameter",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[46]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:production_type",
+   "source_url": "https://jobs.smartrecruiters.com/MissionCriticalGroup/3743990015809364-final-assembly",
+   "ledger_value": "custom generator enclosures (Abilene Final Assembly posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[47]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[48]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[49]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[50]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:welder_postings",
+   "source_url": "https://jobs.smartrecruiters.com/MissionCriticalGroup/3743990015989206-tank-welder",
+   "ledger_value": "1 open, counted: Tank Welder, MCG SmartRecruiters board read 2026-11-16, location 2631 FM 3034 Abilene; trial period ends on a 3:00 PM-12:30 AM shift with 10% differential",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[51]",
+   "verdict": "confirmed",
+   "note": "SmartRecruiters API (2026-11-17): Tank Welder 3743990015989206 active, Abilene 2631 FM 3034, released 2026-10-08. Only welder posting among MCG's 82 live postings at Abilene (others: Project Manager, QC Inspector, Final Assembly). Shift differential, not a sign-on bonus.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:welder_postings",
+   "source_url": "https://api.smartrecruiters.com/v1/companies/MissionCriticalGroup/postings/3743990015989206",
+   "ledger_value": "Tank Welder released 2026-10-08 (SmartRecruiters API), address 2631 FM 3034",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[52]",
+   "verdict": "confirmed",
+   "note": "API fields releasedDate 2026-10-08T14:43:47.277Z and address 2631 FM 3034 are in the same posting record.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:welder_postings",
+   "source_url": "https://jobs.smartrecruiters.com/MissionCriticalGroup/3743990015809364-final-assembly",
+   "ledger_value": "listed, not counted: Final Assembly (Abilene), an assembly role where welding knowledge is only 'beneficial'",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[53]",
+   "verdict": "confirmed",
+   "note": "Final Assembly is an assembly role ('Basic welding and plumbing knowledge is beneficial'); correctly not counted.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:triggers",
+   "source_url": "",
+   "ledger_value": "none within 24 months",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[54]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:triggers",
+   "source_url": "https://prnewswire.com/news-releases/mission-critical-groups-jts-expands-footprint-with-acquisition-of-sst-strengthening-data-center-production-capabilities-302261958.html",
+   "ledger_value": "JTS acquired SST's Abilene facility on 2024-10-01 to expand production capacity",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[55]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-jts:multi_plant",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "JTS operates three locations: Caldwell ID, Nampa ID and Abilene TX (June 2025)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[56]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely tank welding capacity on the evening shift: the Abilene Tank Welder role moves hires onto a 3:00 PM-12:30 AM shift with a 10% differential to build diesel tanks up to 60 ft long.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[57]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Abilene Tank Welder opening (released Oct 8, 2026) builds diesel tanks up to 60 ft long and 13 ft wide and moves new hires onto a 3 PM-12:30 AM shift with a 10% differential; how many tank welders are you running on that evening shift today?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[58]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[59]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:score_material_part",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[60]",
+   "verdict": "confirmed",
+   "note": "20 confirmed as written, RULING flagged: 60 ft x 13 ft is a stated dimension of a welded part at the site and fits the 2026 analyst limits (60 ft x 15 ft) at the length limit; weight unstated; exceeds the older sheet. The posting does not say the tanks are steel ('Work with various metals, including steel, aluminum, and stainless steel'; E7024 rods are a carbon-steel electrode, an inference). Harvard precedent (R1-A): points stand, no confidence. At 12 (Rove): 72 High; at 0: 60 Medium.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[61]",
+   "verdict": "confirmed",
+   "note": "15 confirmed: stated custom work at the site ('custom enclosures for diesel turbine generators', Abilene Final Assembly, 2631 FM 3034).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[62]",
+   "verdict": "confirmed",
+   "note": "12 confirmed (one counted posting, 39 days; 10% shift differential is not a sign-on bonus).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[63]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[64]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:score_total",
+   "source_url": "",
+   "ledger_value": "80",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[65]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[66]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:confidence",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[67]",
+   "verdict": "corrected",
+   "corrected_value": "4",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "Filed 5. Normaliser rule (a component counts only when every claim its score row cites has a stated row and is not in no-confidence-claims.csv; demand 8 never counts): score_scale cites :headcount, which has only an unknown row, so scale earns no confidence (R1-B Taylor/Panel Built/Modern precedent; normalise_scores.py reproduces this on merge). Process, material, part mix and labor count as filed. Material: the Tank Welder posting gives the 60 ft x 13 ft tank size but never says the tanks are steel (it lists 'steel, aluminum, and stainless steel' for the role; 7024 rods imply carbon steel, an inference). R1-A Harvard precedent: points stand, no confidence -> 3. If p-jts-abilene-tx:part_size_fit is added to no-confidence-claims.csv (recommended), the normaliser gives 3.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:products",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "company line: custom sound-attenuated generator enclosures (UL 2200), UL 142 and UL 2085 generator fuel tanks, access platforms and walkways",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[68]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:products",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4318603",
+   "ledger_value": "site work (Von Ormy welder posting): steel fit-up and layout, MIG welding, steel panel assembly with bolt-together construction",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[69]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4318603",
+   "ledger_value": "MIG (Von Ormy welder posting: 2-3 years of MIG welding required)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[70]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:materials",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4318603",
+   "ledger_value": "steel (Von Ormy welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[71]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:certifications",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "UL 2200 enclosures; UL 142 and UL 2085 fuel tanks (company product standards, site not named)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[72]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[73]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:production_type",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "engineered-to-order and custom (company level, site not named)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[74]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[75]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[76]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:products",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "company line: custom sound-attenuated generator enclosures (UL 2200), UL 142 and UL 2085 generator fuel tanks, access platforms and walkways",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[77]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:products",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4667549",
+   "ledger_value": "site work (Seguin welder posting): steel fit-up and layout, MIG welding, steel panel assembly with bolt-together construction",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[78]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4667549",
+   "ledger_value": "MIG (Seguin welder posting: 2-3 years of MIG welding required)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[79]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:materials",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4667549",
+   "ledger_value": "steel (Seguin welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[80]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:certifications",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "UL 2200 enclosures; UL 142 and UL 2085 fuel tanks (company product standards, site not named)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[81]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[82]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:production_type",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "engineered-to-order and custom (company level, site not named)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[83]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[84]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[85]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:products",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "company line: custom sound-attenuated generator enclosures (UL 2200), UL 142 and UL 2085 generator fuel tanks, access platforms and walkways",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[86]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:products",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3558741",
+   "ledger_value": "site work (Pleasanton welder posting): steel fit-up and layout, MIG welding, steel panel assembly with bolt-together construction",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[87]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3558741",
+   "ledger_value": "MIG (Pleasanton welder posting: 2-3 years of MIG welding required)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[88]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:materials",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3558741",
+   "ledger_value": "steel (Pleasanton welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[89]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:certifications",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "UL 2200 enclosures; UL 142 and UL 2085 fuel tanks (company product standards, site not named)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[90]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[91]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:production_type",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "engineered-to-order and custom (company level, site not named)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[92]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[93]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[94]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4318603",
+   "ledger_value": "1 open, counted: MIG Welder/Fabricator (req 4318603), own Paylocity board; JSON-LD datePosted 2026-07-09, streetAddress 10310 Fischer Rd",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[95]",
+   "verdict": "confirmed",
+   "note": "Paylocity detail page JSON-LD (same block): title MIG Welder/Fabricator, datePosted 2026-07-09T14:58:06-05:00, streetAddress 10310 Fischer Rd, Von Ormy. Board list (2026-11-17) shows JobId 4318603 at 'Tomball Headquarters', PublishedDate 2026-10-16. Only welder role at Von Ormy/Headquarters.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/16992380-c2cc-4aba-9ba5-ab99675f1db4/Tomball-Controls-LLC",
+   "ledger_value": "board list read 2026-11-16 shows req 4318603 at Tomball Headquarters with PublishedDate 2026-10-16",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[96]",
+   "verdict": "confirmed",
+   "note": "Board JSON quote found; JobId 4318603 live today.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:welder_postings",
+   "source_url": "",
+   "ledger_value": "JSON-LD datePosted 2026-07-09 read as the posting date; board PublishedDate 2026-10-16 read as a re-publish",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[97]",
+   "verdict": "confirmed",
+   "note": "Checked by this checker (Paylocity detail JSON-LD, 2026-11-17): Headquarters requisitions 4261307 = 2026-06-17, 4355806 = 2026-09-21, 4470372 = 2026-10-16, 4528851 = 2026-09-23, 4661929 = 2026-11-12, all 10310 Fischer Rd; none shares 4318603's 2026-07-09T14:58:06 stamp, so it is not a shared re-list stamp. JobId order and JSON-LD dates are not monotonic (4470372 = Oct 16 but 4528851 = Sep 23; Pleasanton 3558741 = Nov 12), so JSON-LD is not a reliable creation clock on this board, and neither it nor the board's 2026-10-16 PublishedDate proves continuous posting since July. Inferred reading kept as the written convention; see the RULING in score_problems.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:triggers",
+   "source_url": "",
+   "ledger_value": "registration only: status 'Review Complete'; completion of the addition not confirmed",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[98]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:triggers",
+   "source_url": "https://www.tdlr.texas.gov/TABS/Projects/TABS2025014309",
+   "ledger_value": "TDLR registration 2025-03-15: $4,000,000 single-story 29,517 sf building addition/expansion at 10310 Fischer Road (start 6/2/2025, completion 6/26/2026 as registered)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[99]",
+   "verdict": "confirmed",
+   "note": "TDLR page re-read: Registration 3/15/2025, Facility Name Tomball Controls Von Ormy, 10310 Fischer Road, Start 6/2/2025, Completion 6/26/2026, $4,000,000, 'Single story 29,517 sf building addition/expansion...', Type of Work 'Additions to Existing Building', Current Status 'Review Complete'. Owner field names an individual at the plant address (not quoted here; personal name).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely MIG welder/fabricator staffing at the headquarters plant: its MIG Welder/Fabricator requisition carries a 2026-07-09 posting date (JSON-LD) while a 29,517 sf addition was registered for 2025-26.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[100]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Von Ormy MIG Welder/Fabricator posting carries a July 9, 2026 posting date, and the 29,517 sq ft addition you registered with TDLR in March 2025 was scheduled for completion in June 2026; how many MIG welders are you running at Von Ormy today?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[101]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[102]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[103]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[104]",
+   "verdict": "confirmed",
+   "note": "15 confirmed (company-level, no confidence). The Pleasanton posting's About Us also says 'we specialize in manufacturing custom fuel tanks, custom sound attenuated enclosures', still company voice.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[105]",
+   "verdict": "confirmed",
+   "note": "20 confirmed as written under the JSON-LD-at-face-value convention, RULING flagged: the board's PublishedDate is 2026-10-16 (31 days); the JSON-LD stamp is unique to this requisition (five other Headquarters requisitions checked), but JSON-LD dates on this board are not a reliable creation clock. At 12: 67 Medium.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[106]",
+   "verdict": "confirmed",
+   "note": "15 confirmed as written, RULING flagged: a dated (2025-03-15) registration of a $4M, 29,517 sf addition at this street with planned dates inside the window reads as a plant-level expansion event (Eagle precedent: plant-named expansion without completion kept 15). Completion is not confirmed. At 8: 68 Medium (60 Medium if labor also 12).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[107]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:score_total",
+   "source_url": "",
+   "ledger_value": "75",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[108]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[109]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:confidence",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[110]",
+   "verdict": "corrected",
+   "corrected_value": "3",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "Filed 4 (process, labor, demand, scale). Normaliser rule (a component counts only when every claim its score row cites has a stated row and is not in no-confidence-claims.csv; demand 8 never counts): score_scale cites :headcount, which has only an unknown row, so scale earns no confidence (R1-B Taylor/Panel Built/Modern precedent; normalise_scores.py reproduces this on merge). Process, labor and demand (stated TDLR row) count.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4667549",
+   "ledger_value": "1 open, counted: Mig Welder (req 4667549), own Paylocity board; JSON-LD datePosted 2026-11-16, streetAddress 4545 FM 775",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[111]",
+   "verdict": "confirmed",
+   "note": "Paylocity JSON-LD: Mig Welder, datePosted 2026-11-16T17:45:40-06:00, streetAddress 4545 FM 775, Seguin; board list shows JobId 4667549 at 'Seguin', PublishedDate 2026-11-16. Only Seguin welder role (Seguin also lists an Assembler).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[112]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely MIG welding staffing at Seguin: the site posted a MIG Welder requisition on 2026-11-16 for steel fit-up, layout and MIG welding as part of a team.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[113]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Seguin plant posted a MIG Welder opening on Nov 16, 2026 for steel fit-ups, layouts and MIG welding as part of a team; how many welders does the Seguin line run today?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[114]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[115]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[116]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[117]",
+   "verdict": "confirmed",
+   "note": "15 confirmed (company-level, no confidence).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[118]",
+   "verdict": "confirmed",
+   "note": "12 confirmed.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[119]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[120]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:score_total",
+   "source_url": "",
+   "ledger_value": "60",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[121]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[122]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:confidence",
+   "source_url": "",
+   "ledger_value": "3",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[123]",
+   "verdict": "corrected",
+   "corrected_value": "2",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "Filed 3. Normaliser rule (a component counts only when every claim its score row cites has a stated row and is not in no-confidence-claims.csv; demand 8 never counts): score_scale cites :headcount, which has only an unknown row, so scale earns no confidence (R1-B Taylor/Panel Built/Modern precedent; normalise_scores.py reproduces this on merge). Process and labor count.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3558741",
+   "ledger_value": "1 open, counted: MIG Welder/Fabricator (req 3558741), own Paylocity board; JSON-LD datePosted 2026-11-12, streetAddress 716 Eagleford Dr.; schedule Monday-Thursday 6:00am-4:30PM with mandatory ('Mandatary') Fridays",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[124]",
+   "verdict": "confirmed",
+   "note": "Paylocity JSON-LD: MIG Welder/Fabricator, datePosted 2026-11-12T14:53:38-06:00, streetAddress 716 Eagleford Dr., Pleasanton; text 'Location(s): Pleasanton, TX' and 'Work Schedule: Monday-Thursday (Mandatary Fridays) Hours 6:00am-4:30PM'. Board: JobId 3558741 at 'Tomball Controls Pleasanton', PublishedDate 2026-11-12. The low JobId (3558741, against 4318603 for a July 2026 requisition) shows the requisition predates 2026-11-12, so 11-12 is a publish date. The 'Mandatary Fridays' line appears only on the Pleasanton posting (not on Von Ormy or Seguin), so it is site-specific.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:products",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4227058",
+   "ledger_value": "Pleasanton is a welding and fabrication manufacturing facility (EHS posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[125]",
+   "verdict": "confirmed",
+   "note": "EHS Coordinator (4227058, live, 716 Eagleford Dr.) text found; site-level statement.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[126]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welding hours: the Pleasanton MIG Welder/Fabricator schedule runs Monday-Thursday 6:00am-4:30pm plus mandatory Fridays at a site the company calls a welding and fabrication manufacturing facility.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[127]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Pleasanton MIG Welder/Fabricator posting (Nov 12, 2026) runs Monday-Thursday 6:00am-4:30pm with mandatory Fridays at what you call a welding and fabrication manufacturing facility; how much of that Friday time goes to welding?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[128]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[129]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[130]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[131]",
+   "verdict": "confirmed",
+   "note": "15 confirmed (company-level, no confidence).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[132]",
+   "verdict": "confirmed",
+   "note": "20 confirmed as written, RULING flagged: Monday-Thursday 6:00am-4:30PM (about 40 h) plus 'Mandatary Fridays' is unconditional time beyond the four-day week, read as mandatory overtime. The cited Muskogee precedent is not on point: Muskogee's 20 rested on two postings open at once plus 'some mandatory Fridays'. The word overtime is not on the page. At 12: 60 Medium.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[133]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[134]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:score_total",
+   "source_url": "",
+   "ledger_value": "68",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[135]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[136]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:confidence",
+   "source_url": "",
+   "ledger_value": "3",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[137]",
+   "verdict": "corrected",
+   "corrected_value": "2",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "Filed 3. Normaliser rule (a component counts only when every claim its score row cites has a stated row and is not in no-confidence-claims.csv; demand 8 never counts): score_scale cites :headcount, which has only an unknown row, so scale earns no confidence (R1-B Taylor/Panel Built/Modern precedent; normalise_scores.py reproduces this on merge). Process and labor count.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:weld_processes",
+   "source_url": "https://southerncompany.jobs/DA75073478044AEBB49B943162790F4025",
+   "ledger_value": "GMAW / MIG (Randleman Welder II posting; GMAW 2F fillet and 1G plate tests)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[138]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:materials",
+   "source_url": "https://southerncompany.jobs/DA75073478044AEBB49B943162790F4025",
+   "ledger_value": "steel plate and steel parts (Randleman Welder II posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[139]",
+   "verdict": "corrected",
+   "note": "'steel plate' is not in the cited quote; on the page it is the GMAW weld-test coupon ('Capable of passing a steel plate GMAW fillet visual test in the 2F position'), not a stated production material. Trimmed (R1-B 'coiled steel' precedent). No score effect (material 0; prospect test rests on 'steel parts').",
+   "r2_basis": true,
+   "corrected_value": "steel parts (Randleman Welder II posting)",
+   "corrected_quote": "The focus of this position is producing quality fabricated to spec steel parts in a timely and satisfactory manner.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "steel parts (Randleman Welder II posting)"
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:production_type",
+   "source_url": "https://southerncompany.jobs/DA75073478044AEBB49B943162790F4025",
+   "ledger_value": "welded skids, tanks, SCR stands and cable trays built to engineering documents (product list)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[140]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[141]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[142]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[143]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[144]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:welder_postings",
+   "source_url": "https://southerncompany.jobs/DA75073478044AEBB49B943162790F4025",
+   "ledger_value": "1 open, counted: Welder II (Resource DH Req), Southern Company careers board, Randleman NC; JSON-LD datePosted 2026-10-07; GMAW 2F/1G tests, read a WPS",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[145]",
+   "verdict": "confirmed",
+   "note": "Southern Company board: Welder II (Resource DH Req), JSON-LD datePosted 2026-10-07T16:52:30.662Z, addressLocality Randleman, 'Operating Company: PowerSecure', in the same posting. Live on the Randleman list (7 jobs, read 2026-11-17).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:welder_postings",
+   "source_url": "https://southerncompany.jobs/jobs/?location=Randleman",
+   "ledger_value": "Randleman listing read 2026-11-16: Welder II and Fabrication Quality Control Inspector (inspector listed, not counted)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[146]",
+   "verdict": "confirmed",
+   "note": "Randleman list (2026-11-17): Painter - Aluminum/Metal, Team Leader - Closeout/Blast/Paint, Senior Maintenance Technician, Fabrication QC Inspector, Welder II, Industrial/Manufacturing Engineer, Power Generation QC Technician III - Test. One counted welder role; count correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:welder_postings",
+   "source_url": "https://echodata.epa.gov/echo/echo_rest_services.get_facilities?output=JSON&p_fn=POWERSECURE&p_ct=RANDLEMAN&p_st=NC",
+   "ledger_value": "posting counted for this plant (single PowerSecure production site in Randleman)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[147]",
+   "verdict": "confirmed",
+   "note": "ECHO get_facilities p_fn=POWERSECURE p_ct=RANDLEMAN re-run: one facility, 110031395032 POWERSECURE MANUFACTURING INC. - POWERFAB, 1410 Coltrane Mill Rd (NAICS 335312; NPDES 'Effective', RCRA 'Active'). Inferred tag right.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[148]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-powersecure:multi_plant",
+   "source_url": "https://powersecure.com/customer-solutions/how-we-build-your-solution",
+   "ledger_value": "PowerSecure fabricates and assembles key components at its Durham campus",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[149]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely qualified plate-welder supply: Randleman is recruiting a level-II welder (3 years, WPS, GMAW 2F/1G tests) for skids, tanks, SCR stands and cable trays while a fabrication QC inspector role is also open.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[150]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Randleman board lists a Welder II role (posted Oct 7, 2026) for welding and grinding skids, tanks, SCR stands and cable trays to a WPS, with GMAW 2F and 1G plate tests; how are you keeping skid and tank output on schedule while that seat is open?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[151]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[152]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[153]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[154]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[155]",
+   "verdict": "confirmed",
+   "note": "12 confirmed (one counted posting, 41 days).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[156]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[157]",
+   "verdict": "confirmed",
+   "note": "5 confirmed: c-powersecure:multi_plant (Durham campus fabrication) plus the Randleman record; Southern Company parent. No confidence (headcount unknown).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:score_total",
+   "source_url": "",
+   "ledger_value": "53",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[158]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[159]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:confidence",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[160]",
+   "verdict": "corrected",
+   "corrected_value": "3",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "Filed 4 (process, part mix, labor, scale). Normaliser rule (a component counts only when every claim its score row cites has a stated row and is not in no-confidence-claims.csv; demand 8 never counts): score_scale cites :headcount, which has only an unknown row, so scale earns no confidence (R1-B Taylor/Panel Built/Modern precedent; normalise_scores.py reproduces this on merge). Process, part mix (stated product list) and labor count.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "c-yancey:multi_plant",
+   "source_url": "https://www.plantservices.com/industry-news/news/55270725/yancey-engineered-solutions-invests-208m-to-locate-manufacturing-operations-in-mississippi",
+   "ledger_value": "Batesville is the 'next manufacturing facility' of Yancey Engineered Solutions (Feb 2025)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[161]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:weld_processes",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=6d17a6d0-51d1-4ae4-b0ba-17bab944b00e",
+   "ledger_value": "MIG (Griffin welder postings); certified flux-core welder preferred",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[162]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:materials",
+   "source_url": "",
+   "ledger_value": "aluminum-first: aluminum frames, walls and roof are the main welded parts",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[163]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:part_size_fit",
+   "source_url": "",
+   "ledger_value": "weak fit (aluminum-first); no steel part size stated",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[164]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:materials",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=6d17a6d0-51d1-4ae4-b0ba-17bab944b00e",
+   "ledger_value": "aluminum stud frames, walls and roof, and fuel tanks; light and medium gauge fabrication (Griffin welder postings)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[165]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:part_size_fit",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=40973098-32d4-47df-bb33-5e0fc2aef931",
+   "ledger_value": "no part dimension stated; Griffin postings name aluminum stud frames, walls and roof, walls around fuel tanks, light and medium gauge fabrication",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[166]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[167]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[168]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[169]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:prospect_test",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=40973098-32d4-47df-bb33-5e0fc2aef931",
+   "ledger_value": "pass (aluminum-first noted): the site welds in-house (MIG), welding is core to enclosure and fuel-tank production; tanks and steel content per the postings and announcements",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[170]",
+   "verdict": "corrected",
+   "corrected_value": "pass on in-house welding and welding as a core step (MIG welding of fuel tanks and aluminum enclosure stud frames, walls and roof at 96 Etheridge Mill Rd.); steel welding at Griffin is not stated in any Griffin source (tank material unstated; 'steel piping' only in an assembly role; steel rests on the Batesville announcement) - aluminum-first, steel test is a coordinator call",
+   "corrected_quote": "As a Welder at Yancey Engineered Solutions, you will be welding fuel tanks and aluminum stud frames for the weatherproof or sound attenuation enclosures.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "The quoted sentence is not verbatim on WELDE006244: this page reads 'As a Welder at Yancey Engineered Solutions, you will be...' (the other three Yancey welder pages read 'As a Welder you will be...'). The value's 'tanks and steel content per the postings' is not shown by any Griffin posting; the row's own reasoning says so. See status_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:weld_processes",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=0b0f7337-49ea-4dc5-a4dc-65b9519f1f62",
+   "ledger_value": "MIG (Batesville welder postings); certified flux-core welder preferred",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[171]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:materials",
+   "source_url": "",
+   "ledger_value": "aluminum-first: aluminum frames, walls and roof are the main welded parts",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[172]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:part_size_fit",
+   "source_url": "",
+   "ledger_value": "weak fit (aluminum-first); no steel part size stated",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[173]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:materials",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=0b0f7337-49ea-4dc5-a4dc-65b9519f1f62",
+   "ledger_value": "aluminum stud frames, walls and roof, and fuel tanks; light and medium gauge fabrication (Batesville welder postings)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[174]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:part_size_fit",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=d2749a8d-d86f-49e6-b756-9fcda229eaa7",
+   "ledger_value": "no part dimension stated; Batesville postings name aluminum stud frames, walls and roof, walls around fuel tanks, light and medium gauge fabrication",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[175]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:existing_robots",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[176]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:certifications",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[177]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-D.json evidence[178]",
+   "verdict": "confirmed",
+   "note": "Unknown row; no contrary stated fact found in the pages read for this check.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:prospect_test",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=d2749a8d-d86f-49e6-b756-9fcda229eaa7",
+   "ledger_value": "pass (aluminum-first noted): the site welds in-house (MIG), welding is core to enclosure and fuel-tank production; tanks and steel content per the postings and announcements",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[179]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:production_type",
+   "source_url": "https://www.yanceybros.com/wp-content/uploads/2020/04/YPS-capabilities.pdf",
+   "ledger_value": "custom generator enclosures and fuel tanks (Griffin; Yancey Power Systems capabilities sheet)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[180]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=6d17a6d0-51d1-4ae4-b0ba-17bab944b00e",
+   "ledger_value": "Welder (req WELDE006152), Yancey's own UKG board, posted November 10, 2026, Griffin YPS, 96 Etheridge Mill Rd.",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[181]",
+   "verdict": "confirmed",
+   "note": "UKG LoadSearchResults (2026-11-17): WELDE006152 Welder, EP-Griffin-YES, posted 2026-11-10, live; page shows 96 Etheridge Mill Rd., Griffin GA 30224. The same requisition was on the Cat dealer board from 2026-10-09 (its apply link opens opportunityId 6d17a6d0), so 11-10 is a re-post date; the plants value records both.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=40973098-32d4-47df-bb33-5e0fc2aef931",
+   "ledger_value": "Welder - Second Shift (req WELDE006244), Yancey's own UKG board, posted October 29, 2026, Griffin YPS, 96 Etheridge Mill Rd.; 'Individual Bonus Opportunities Available' (not a sign-on bonus)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[182]",
+   "verdict": "confirmed",
+   "note": "UKG: WELDE006244 Welder - Second Shift, EP-Griffin-YES, posted 2026-10-29, live. Exactly two Griffin welder requisitions on the board.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:welder_postings",
+   "source_url": "https://dealertechjobs.caterpillar.com/job/14722/welder",
+   "ledger_value": "the same Griffin Welder role on the Cat dealer board since 2026-10-09 (its apply link opens the UKG requisition)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[183]",
+   "verdict": "confirmed",
+   "note": "Cat dealer page: 'Job Posted: 2026-10-09', 'Location: Griffin, GA, US'; apply link points to UKG opportunityId 6d17a6d0-51d1-4ae4-b0ba-17bab944b00e (WELDE006152). Value correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:prospect_test",
+   "source_url": "https://talents.vaia.com/companies/yancey-bros-co/griffin/assembly-operator-second-shift-106800574/",
+   "ledger_value": "materials seen at Griffin assembly: aluminum siding and steel piping (assembly posting; not a welding role)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[184]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:relationship",
+   "source_url": "https://www.yanceybros.com/wp-content/uploads/2020/04/YPS-capabilities.pdf",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[185]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:triggers",
+   "source_url": "https://www.plantservices.com/industry-news/news/55387137/yancey-engineered-solutions-to-build-57-million-georgia-plant",
+   "ledger_value": "none found at Griffin within 24 months (the June 26, 2026 announcement is a new Cordele factory; Griffin is named as the existing factory)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[186]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely MIG welding capacity across two shifts: Griffin has a Welder and a Welder - Second Shift open at once, both welding fuel tanks and aluminum enclosure frames.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[187]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Griffin plant has a Welder (posted Nov 10, 2026) and a Welder - Second Shift (posted Oct 29) open at 96 Etheridge Mill Rd., both MIG welding fuel tanks and aluminum stud frames for enclosures; how are you splitting tank welding from frame welding across the two shifts?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[188]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[189]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:score_material_part",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[190]",
+   "verdict": "confirmed",
+   "note": "4 confirmed under the battery rule (aluminum stud frames, light and medium gauge; no tank size). The aluminum-first classification is inferred (i163/i164) but the stated rows quote aluminum frames, which is what the normaliser's 4 test requires.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[191]",
+   "verdict": "confirmed",
+   "note": "15 confirmed: 'CUSTOM ENCLOSURES, FUEL TANKS, AND TESTING - Manufactured by Yancey Engineered Solutions in Griffin, GA' (capabilities PDF, 2020).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[192]",
+   "verdict": "confirmed",
+   "note": "20 confirmed: two counted welder requisitions open at once at the named street; 'Individual Bonus Opportunities' is not a sign-on bonus and is not needed.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[193]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[194]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:score_total",
+   "source_url": "",
+   "ledger_value": "72",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[195]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[196]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:confidence",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[197]",
+   "verdict": "corrected",
+   "corrected_value": "4",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "Filed 5. Normaliser rule (a component counts only when every claim its score row cites has a stated row and is not in no-confidence-claims.csv; demand 8 never counts): score_scale cites :headcount, which has only an unknown row, so scale earns no confidence (R1-B Taylor/Panel Built/Modern precedent; normalise_scores.py reproduces this on merge). Process, material (stated aluminum stud-frame rows), part mix (capabilities sheet) and labor count.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:materials",
+   "source_url": "https://panolian.com/?p=301844",
+   "ledger_value": "aluminum and steel generator enclosures and fuel tanks (Jan 2025 announcement)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[198]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:production_type",
+   "source_url": "https://panolian.com/?p=301844",
+   "ledger_value": "generator enclosures and fuel tanks, primarily for data centers (product list)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[199]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=0b0f7337-49ea-4dc5-a4dc-65b9519f1f62",
+   "ledger_value": "Welder (req WELDE006145), Yancey's own UKG board, posted November 9, 2026, Batesville MS 38606 (195 Crown Dr in the page source)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[200]",
+   "verdict": "confirmed",
+   "note": "UKG: WELDE006145 Welder, EP2 Mississippi-YES, posted 2026-11-09, live; Address Line1 '195 Crown Dr' in the page source (DisplayStreetAddress false).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=d2749a8d-d86f-49e6-b756-9fcda229eaa7",
+   "ledger_value": "Welder - Second Shift (req WELDE005616), Yancey's own UKG board, posted November 6, 2026, Batesville MS 38606; 3:00 pm-11:30 pm; 'Individual Bonus Opportunities Available' (not a sign-on bonus)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[201]",
+   "verdict": "confirmed",
+   "note": "UKG: WELDE005616 Welder - Second Shift, EP2 Mississippi-YES, posted 2026-11-06, live; '3:00 pm - 11:30 pm' on the page. Exactly two Batesville welder requisitions.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:welder_postings",
+   "source_url": "https://talents.vaia.com/companies/yancey-bros/welder-62881535/",
+   "ledger_value": "older aggregator copy (Vaia) of a Batesville Welder posting, JSON-LD datePosted 2025-11-26; listed, not counted (aggregator)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[202]",
+   "verdict": "confirmed",
+   "note": "Vaia JSON-LD datePosted 2025-11-26, addressLocality Batesville, validThrough 2027-02-19; aggregator copy, correctly not counted.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:welder_postings",
+   "source_url": "https://echodata.epa.gov/echo/echo_rest_services.get_facilities?output=JSON&p_fn=YANCEY",
+   "ledger_value": "postings counted for this plant (single Yancey production site in Batesville, 195 Crown Dr)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[203]",
+   "verdict": "confirmed",
+   "note": "ECHO p_fn=YANCEY re-run: in Batesville only 195 Crown Drive (3602120237, 110072164821). Inferred tag right.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:triggers",
+   "source_url": "https://panolian.com/?p=301844",
+   "ledger_value": "2025-01-28: $20.8M investment and 250 jobs in Batesville, project to be completed within three years",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[204]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:triggers",
+   "source_url": "https://www.plantservices.com/industry-news/news/55270725/yancey-engineered-solutions-invests-208m-to-locate-manufacturing-operations-in-mississippi",
+   "ledger_value": "$20.8M investment, 250 new jobs (Plant Services, Feb. 27, 2025)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[205]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:status",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=d2749a8d-d86f-49e6-b756-9fcda229eaa7",
+   "ledger_value": "Batesville second-shift Welder posting (3:00 pm - 11:30 pm) on Yancey's UKG board, posted 2026-11-06",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[206]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:relationship",
+   "source_url": "https://panolian.com/?p=301844",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[207]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely ramp-up welding labor: the Batesville plant, announced in January 2025 with 250 jobs, has a Welder and a second-shift Welder open at once.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[208]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Batesville plant has a Welder (posted Nov 9, 2026) and a 3:00-11:30 pm second-shift Welder (Nov 6) open as it builds toward the 250 jobs announced in January 2025; how are you bringing new MIG welders up to speed on fuel tanks and aluminum enclosure frames?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[209]",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[210]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:score_material_part",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[211]",
+   "verdict": "confirmed",
+   "note": "4 confirmed (aluminum stud frames; no tank size).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[212]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[213]",
+   "verdict": "confirmed",
+   "note": "20 confirmed (two at once).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[214]",
+   "verdict": "confirmed",
+   "note": "15 confirmed: Panolian 2025-01-28 (in window) names the Batesville site, $20.8M and 250 jobs.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[215]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:score_total",
+   "source_url": "",
+   "ledger_value": "72",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[216]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[217]",
+   "verdict": "confirmed",
+   "note": "Derived row; re-derived from the rubric, the session rules and the claims it cites.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:confidence",
+   "source_url": "",
+   "ledger_value": "6",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[218]",
+   "verdict": "corrected",
+   "corrected_value": "5",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "Filed 6. Normaliser rule (a component counts only when every claim its score row cites has a stated row and is not in no-confidence-claims.csv; demand 8 never counts): score_scale cites :headcount, which has only an unknown row, so scale earns no confidence (R1-B Taylor/Panel Built/Modern precedent; normalise_scores.py reproduces this on merge). Process, material, part mix, labor and demand 15 count.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:products",
+   "source_url": "https://www.energy-xprt.com/companies/technibus-60553",
+   "ledger_value": "Technibus also makes metal-enclosed bus systems (company line; boundary, v-datacenter-grid-prefab)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[219]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:products",
+   "source_url": "https://www.energy-xprt.com/companies/technibus-60553",
+   "ledger_value": "Technibus also makes metal-enclosed bus systems (company line; boundary, v-datacenter-grid-prefab)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-D.json evidence[220]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:products",
+   "source_url": "https://www.plantservices.com/industry-news/news/55387137/yancey-engineered-solutions-to-build-57-million-georgia-plant",
+   "ledger_value": "sound-attenuated and weather-resistant generator enclosures (division); existing factory, testing and service center at Griffin",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[221]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:address",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=6d17a6d0-51d1-4ae4-b0ba-17bab944b00e",
+   "ledger_value": "96 Etheridge Mill Rd., Griffin, GA 30224 (Yancey's UKG job board location 'Griffin YPS')",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[222]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:products",
+   "source_url": "https://panolian.com/?p=301844",
+   "ledger_value": "aluminum and steel generator enclosures and fuel tanks, primarily for data centers, in the former Crown Cork and Seal facility",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[223]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:products",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=0b0f7337-49ea-4dc5-a4dc-65b9519f1f62",
+   "ledger_value": "welders' main welded parts are aluminum stud frames, walls and roof (Batesville welder posting)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[224]",
+   "verdict": "corrected",
+   "corrected_value": "welds aluminum stud frames, walls and roof to create the enclosures (Batesville welder posting)",
+   "corrected_quote": "Using MIG welding techniques, weld aluminum stud frames, walls and roof to create the enclosures",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "'main welded parts' is the profiler's classification (the same judgement is correctly tagged inferred in p-yancey-batesville-ms:materials, Classification row). The posting lists welding of fuel tanks, aluminum stud frames, walls and roof, secondary components and walls around fuel tanks without ranking them. No score effect (material 4 rests on the aluminum stud frame rows either way).",
+   "plants_csv_value": "Aluminum and steel generator enclosures and fuel tanks, primarily for data centers (former Crown Cork and Seal facility); welders weld aluminum stud frames, walls and roof and fuel tanks (Batesville welder postings); aluminum-first (inferred, see materials)",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:status",
+   "source_url": "https://panolian.com/?p=301844",
+   "ledger_value": "site announced Jan 2025 at the former Crown Cork and Seal facility",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-D.json evidence[225]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:name",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "Tomball Controls - Von Ormy (HQ)",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:address",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "10310 Fischer Rd, Von Ormy, TX 78073",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:parent_company",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "Tomball Controls, three production facilities",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:website",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "https://www.tomballcontrols.com",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:tier",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:relationship",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:lookalike_of",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:prospect_test",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4318603",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:name",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "Tomball Controls - Seguin facility",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:address",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "4545 FM 775, Seguin, TX 78155",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:parent_company",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "Tomball Controls, three production facilities",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:website",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "https://www.tomballcontrols.com",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:tier",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:relationship",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:lookalike_of",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:prospect_test",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4667549",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:name",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "Tomball Controls - Pleasanton facility",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:address",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "716 Eagle Ford Dr, Pleasanton, TX 78064",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:parent_company",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "Tomball Controls, three production facilities",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:website",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "https://www.tomballcontrols.com",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:tier",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:relationship",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:lookalike_of",
+   "source_url": "https://www.tomballcontrols.com/",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:prospect_test",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3558741",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:address",
+   "source_url": "",
+   "ledger_value": "city-level coordinates",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110031395032",
+   "ledger_value": "PowerSecure Manufacturing Inc. - PowerFab",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110031395032",
+   "ledger_value": "1410 COLTRANE MILL RD, RANDLEMAN, NC 27317",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:parent_company",
+   "source_url": "https://southerncompany.jobs/DA75073478044AEBB49B943162790F4025",
+   "ledger_value": "PowerSecure, a Southern Company subsidiary",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:products",
+   "source_url": "https://southerncompany.jobs/DA75073478044AEBB49B943162790F4025",
+   "ledger_value": "Skids, tanks, SCR stands and cable trays",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:tier",
+   "source_url": "https://southerncompany.jobs/DA75073478044AEBB49B943162790F4025",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:tier_secondary",
+   "source_url": "https://southerncompany.jobs/DA75073478044AEBB49B943162790F4025",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:relationship",
+   "source_url": "https://southerncompany.jobs/DA75073478044AEBB49B943162790F4025",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Confirmed as an inferred classification, with a status note: the posting names skids, tanks, SCR stands and cable trays but no generator, enclosure or battery; the genset tie rests on PowerSecure's company-level PowerBlock ('integral fuel and DEF tanks, and a sound-attenuating enclosure'), ECHO NAICS 335312 for the site and a 'Power Generation Quality Control Technician III - Test' role on the Randleman list. See status_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:lookalike_of",
+   "source_url": "https://southerncompany.jobs/DA75073478044AEBB49B943162790F4025",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "See relationship row.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-powersecure-randleman-nc:prospect_test",
+   "source_url": "https://southerncompany.jobs/DA75073478044AEBB49B943162790F4025",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:products",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "integrated generator enclosures and modular power systems",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Confirmed: the sentence names Abilene among JTS's three locations that support customers with integrated generator enclosures; Abilene's own Final Assembly posting shows enclosure builds at 2631 FM 3034.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:tier",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:relationship",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:lookalike_of",
+   "source_url": "https://markets.financialcontent.com/chroniclejournal/article/gnwcq-2025-6-2-jts-opens-second-idaho-facility-creating-140-new-jobs-and-expanding-us-manufacturing-footprint",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:website",
+   "source_url": "https://jobs.smartrecruiters.com/MissionCriticalGroup/3743990015989206-tank-welder",
+   "ledger_value": "https://missioncriticalgroup.com",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:name",
+   "source_url": "https://prnewswire.com/news-releases/mission-critical-groups-jts-expands-footprint-with-acquisition-of-sst-strengthening-data-center-production-capabilities-302261958.html",
+   "ledger_value": "JTS Abilene (acquired SST assets)",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:address",
+   "source_url": "https://jobs.smartrecruiters.com/MissionCriticalGroup/3743990015989206-tank-welder",
+   "ledger_value": "2631 FM 3034, Abilene TX (posting location)",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:parent_company",
+   "source_url": "https://prnewswire.com/news-releases/mission-critical-groups-jts-expands-footprint-with-acquisition-of-sst-strengthening-data-center-production-capabilities-302261958.html",
+   "ledger_value": "Mission Critical Group",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:products",
+   "source_url": "https://jobs.smartrecruiters.com/MissionCriticalGroup/3743990015989206-tank-welder",
+   "ledger_value": "large diesel fuel tanks",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-jts-abilene-tx:prospect_test",
+   "source_url": "https://jobs.smartrecruiters.com/MissionCriticalGroup/3743990015989206-tank-welder",
+   "ledger_value": "pass: welds steel, aluminum and stainless fuel tanks in-house",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:name",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/25339",
+   "ledger_value": "Technibus (IES Infrastructure)",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:parent_company",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/25339",
+   "ledger_value": "IES Infrastructure (IES Holdings)",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:website",
+   "source_url": "https://ies-co.com/CustomPowerSolutionsRR.html",
+   "ledger_value": "IES Holdings site",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:products",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/25339",
+   "ledger_value": "generator enclosures and structural components for data-center power generation",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:tier",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1048268/000104826825000174/iesc-20250930.htm",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:relationship",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/25339",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:lookalike_of",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/25339",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:prospect_test",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/25339",
+   "ledger_value": "pass: MIG welding on structural steel generator frames and enclosures",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:name",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/22259",
+   "ledger_value": "Technibus (IES Infrastructure)",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:parent_company",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/22259",
+   "ledger_value": "IES Infrastructure (IES Holdings)",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:website",
+   "source_url": "https://ies-co.com/CustomPowerSolutionsRR.html",
+   "ledger_value": "IES Holdings site",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:products",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/22259",
+   "ledger_value": "generator enclosures and structural components for data-center power generation",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:tier",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1048268/000104826825000174/iesc-20250930.htm",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:relationship",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/22259",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:lookalike_of",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/22259",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:prospect_test",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/22259",
+   "ledger_value": "pass: MIG welding on structural steel generator frames and enclosures",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110042008555&output=JSON",
+   "ledger_value": "1501 Raff Rd SW, Canton OH",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-canton-oh:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110042008555&output=JSON",
+   "ledger_value": "TECHNIBUS INC (EPA record)",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:address",
+   "source_url": "https://joinus.ies-co.com/ies-infrastructure/jobs/22259",
+   "ledger_value": "posting names Rock Hill, SC",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110009806175&output=JSON",
+   "ledger_value": "EPA facility record at 1345 Hall Spencer Rd lists TECHNIBUS INC among its names",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "ECHO DFR 110009806175 re-read: names include TECHNIBUS INC, TECHNIBUS, INC and TECHNIBUS, INC.; Technibus ICIS-Air 'Operating', Technibus NPDES SCR006674 'Effective', RCRA SQG; the Banker Steel NPDES permits are 'Terminated'. Plant operates at 1345 Hall Spencer Rd.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-technibus-rock-hill-sc:address",
+   "source_url": "https://echodata.epa.gov/echo/echo_rest_services.get_facilities?output=JSON&p_fn=TECHNIBUS&p_st=SC",
+   "ledger_value": "1345 Hall Spencer Rd (EPA street; former Banker Steel - Rock Hill site)",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Confirmed (see l63; ECHO name search re-run).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:name",
+   "source_url": "https://www.yanceybros.com/wp-content/uploads/2020/04/YPS-capabilities.pdf",
+   "ledger_value": "Yancey Engineered Solutions - Griffin",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:parent_company",
+   "source_url": "https://www.plantservices.com/industry-news/news/55387137/yancey-engineered-solutions-to-build-57-million-georgia-plant",
+   "ledger_value": "Yancey Bros. Co.",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110072165887",
+   "ledger_value": "96 Etheridge Mill Industrial Park, Griffin, GA",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:address",
+   "source_url": "https://www.yanceybros.com/wp-content/uploads/2022/01/driving_directions-1.pdf",
+   "ledger_value": "Ethridge Mill Industrial Park off Ethridge Mill Rd, Griffin, GA",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1101+Ethridge+Mill+Rd+Griffin+GA+30224&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "33.217124 (road-level)",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "corrected",
+   "corrected_value": "33.1757 (ECHO coordinates for Yancey's Griffin records at 96 Etheridge Mill: 33.175685 to 33.17738)",
+   "corrected_quote": "\"Latitude\":\"33.175685\"",
+   "corrected_source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110037386067",
+   "corrected_tag": "inferred",
+   "error_kind": "wrong plant or location",
+   "note": "The recorded point is the Census match for 1101 Ethridge Mill Rd, 4.7 km north of the site. Four ECHO records for Yancey at 96 Etheridge Mill (110037386067 YANCEY BROS CO - GRIFFIN, 110037577798 PIKE COUNTY TESTING FACILITY, 110071865974, 110071252545) give 33.1752-33.1774 / -84.2625 to -84.2657, and UKG's own location coordinates for 'Griffin YPS' are 33.18014 / -84.26777 (0.5 km away). The ledger reasoning discarded ECHO because one older record's longitude (-83.7355) is wrong; the other records' longitudes are consistent. New quotes checked with tools/fetch_page.py --check (FOUND).",
+   "plants_csv_value": "33.175685",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1101+Ethridge+Mill+Rd+Griffin+GA+30224&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-84.271537 (road-level)",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "corrected",
+   "corrected_value": "-84.2635 (ECHO coordinates for Yancey's Griffin records at 96 Etheridge Mill)",
+   "corrected_quote": "\"Longitude\":\"-84.26347\"",
+   "corrected_source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110037386067",
+   "corrected_tag": "inferred",
+   "error_kind": "wrong plant or location",
+   "note": "See lat. Sibling of the corrected lat row.",
+   "plants_csv_value": "-84.26347",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1101+Ethridge+Mill+Rd+Griffin+GA+30224&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "13255 (Spalding County)",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "corrected",
+   "corrected_value": "13231 (Pike County)",
+   "corrected_quote": "YANCEY BROTHERS CO. - PIKE COUNTY TESTING FACILITY",
+   "corrected_source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110037577798",
+   "corrected_tag": "inferred",
+   "error_kind": "wrong plant or location",
+   "note": "Census reverse geocoder places the ECHO coordinates (33.175685,-84.26347 and 33.17587,-84.26291) and UKG's 'Griffin YPS' point (33.18014,-84.26777) in Pike County 13231; ECHO names the 96 Etheridge Mill record 'PIKE COUNTY TESTING FACILITY'. Some ECHO program records say Spalding (the site is near the county line, Griffin mailing address). The row's own reasoning flagged the county as unconfirmed.",
+   "plants_csv_value": "13231",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:website",
+   "source_url": "https://www.yanceybros.com/wp-content/uploads/2020/04/YPS-capabilities.pdf",
+   "ledger_value": "https://www.yanceybros.com",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:products",
+   "source_url": "https://www.yanceybros.com/wp-content/uploads/2020/04/YPS-capabilities.pdf",
+   "ledger_value": "custom generator enclosures, fuel tanks and testing",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:tier",
+   "source_url": "https://catmachines.yanceybros.com/yancey",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:lookalike_of",
+   "source_url": "https://www.yanceybros.com/wp-content/uploads/2020/04/YPS-capabilities.pdf",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:name",
+   "source_url": "https://opc.deq.state.ms.us/ai_info.aspx?ai=89536",
+   "ledger_value": "Yancey Engineered Solutions - Batesville",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:parent_company",
+   "source_url": "https://panolian.com/?p=301844",
+   "ledger_value": "Yancey Bros. Co.",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:address",
+   "source_url": "https://opc.deq.state.ms.us/ai_info.aspx?ai=89536",
+   "ledger_value": "195 Crown Dr, Batesville, MS 38606",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=195+Crown+Dr+Batesville+MS+38606&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "34.343589",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=195+Crown+Dr+Batesville+MS+38606&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-89.921335",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=195+Crown+Dr+Batesville+MS+38606&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "28107",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Inferred/derived row with no quote; reasoning checked against the cited claims and the pages read.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:website",
+   "source_url": "https://panolian.com/?p=301844",
+   "ledger_value": "https://www.yanceybros.com",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:tier",
+   "source_url": "https://www.areadevelopment.com/newsItems/2-1-2025/yancey-engineered-solutions-batesville-mississippi.shtml",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:lookalike_of",
+   "source_url": "https://panolian.com/?p=301844",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:status",
+   "source_url": "https://talents.vaia.com/companies/yancey-bros/welder-62881535/",
+   "ledger_value": "Batesville welder posting shows hiring at the site",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:status",
+   "source_url": "https://opc.deq.state.ms.us/ai_info.aspx?ai=89536",
+   "ledger_value": "MDEQ stormwater and water permit coverage record for the site",
+   "tag": "stated",
+   "origin": "ledger/evidence.csv (row not replaced by the inbox file)",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source) 2026-11-17; value matches the page.",
+   "r2_basis": true
+  }
+ ]
+}

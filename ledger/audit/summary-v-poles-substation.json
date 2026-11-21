@@ -1,0 +1,364 @@
+{
+ "vertical": "v-poles-substation",
+ "status": "done",
+ "plants": {
+  "found": 130,
+  "included": 90,
+  "profiled": 81,
+  "excluded": 40,
+  "tiers": {
+   "Medium": 28,
+   "High": 14,
+   "Low": 39
+  },
+  "profiled_fact_checked": 81,
+  "material_unknown": 69
+ },
+ "links": 36,
+ "evidence_rows": 20656,
+ "fact_check_rounds": [
+  {
+   "round": 1,
+   "label": "Round 1: designed sample of 30 plants (all High, all customer plants, then by score), before repairs",
+   "checked": 355,
+   "corrected": 42,
+   "unreachable": 1,
+   "checkers": [
+    {
+     "file": "fact-check-v-poles-substation-1.json",
+     "checked": 136,
+     "corrected": 10,
+     "kinds": {
+      "wrong plant or location": 1,
+      "other": 4,
+      "quote does not support value": 5
+     }
+    },
+    {
+     "file": "fact-check-v-poles-substation-2.json",
+     "checked": 88,
+     "corrected": 18,
+     "kinds": {
+      "other": 1,
+      "quote does not support value": 6,
+      "wrong plant or location": 11
+     }
+    },
+    {
+     "file": "fact-check-v-poles-substation-3.json",
+     "checked": 131,
+     "corrected": 14,
+     "kinds": {
+      "other": 4,
+      "quote does not support value": 8,
+      "wrong plant or location": 2
+     }
+    }
+   ],
+   "rate": 0.1183,
+   "display": "42 / 355 = 11.8%"
+  },
+  {
+   "round": 2,
+   "label": "Round 2: 10 unsampled plants from multi-plant parents, after the first repair pass",
+   "checked": 62,
+   "corrected": 12,
+   "unreachable": 0,
+   "checkers": [
+    {
+     "file": "fact-check-v-poles-substation-round2-A.json",
+     "checked": 22,
+     "corrected": 4,
+     "kinds": {
+      "other": 2,
+      "quote does not support value": 2
+     }
+    },
+    {
+     "file": "fact-check-v-poles-substation-round2-B.json",
+     "checked": 40,
+     "corrected": 8,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 8,
+      "invented fact": 0,
+      "other": 0
+     }
+    }
+   ],
+   "rate": 0.1935,
+   "display": "12 / 62 = 19.4%"
+  },
+  {
+   "round": 3,
+   "label": "Round 3: all 23 plants no checker had seen, after the attribution clean-up",
+   "checked": 219,
+   "corrected": 18,
+   "unreachable": 0,
+   "checkers": [
+    {
+     "file": "fact-check-v-poles-substation-round3-A.json",
+     "checked": 74,
+     "corrected": 5,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "invented fact": 0,
+      "quote does not support value": 4,
+      "other": 1
+     }
+    },
+    {
+     "file": "fact-check-v-poles-substation-round3-B.json",
+     "checked": 90,
+     "corrected": 3,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 2,
+      "invented fact": 0,
+      "other": 1
+     }
+    },
+    {
+     "file": "fact-check-v-poles-substation-round3-C.json",
+     "checked": 55,
+     "corrected": 10,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 6,
+      "invented fact": 0,
+      "other": 4
+     }
+    }
+   ],
+   "rate": 0.0822,
+   "display": "18 / 219 = 8.2%"
+  },
+  {
+   "round": 4,
+   "label": "Round 4: 32 plants added or changed by the first higher-tier review, after the attribution clean-up",
+   "checked": 326,
+   "corrected": 29,
+   "unreachable": 0,
+   "checkers": [
+    {
+     "file": "fact-check-v-poles-substation-round4-A.json",
+     "checked": 125,
+     "corrected": 8,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 8,
+      "invented fact": 0,
+      "other": 0
+     }
+    },
+    {
+     "file": "fact-check-v-poles-substation-round4-B.json",
+     "checked": 64,
+     "corrected": 13,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 13,
+      "invented fact": 0,
+      "other": 0
+     }
+    },
+    {
+     "file": "fact-check-v-poles-substation-round4-C.json",
+     "checked": 137,
+     "corrected": 8,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 8,
+      "invented fact": 0,
+      "other": 0
+     }
+    }
+   ],
+   "rate": 0.089,
+   "display": "29 / 326 = 8.9%"
+  },
+  {
+   "round": 5,
+   "label": "Round 5: 9 plants whose points changed in the final higher-tier review, plus 6 new addresses",
+   "checked": 170,
+   "corrected": 14,
+   "unreachable": 0,
+   "checkers": [
+    {
+     "file": "fact-check-v-poles-substation-round5-A.json",
+     "checked": 170,
+     "corrected": 14,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 13,
+      "invented fact": 0,
+      "other": 1
+     }
+    }
+   ],
+   "rate": 0.0824,
+   "display": "14 / 170 = 8.2%"
+  },
+  {
+   "round": 7,
+   "label": "Round 7: line check of all 81 profiled plants' lines after constrained rewriting (validator-gated), checkers who did not write them",
+   "checked": 133,
+   "corrected": 6,
+   "unreachable": 7,
+   "checkers": [
+    {
+     "file": "fact-check-v-poles-substation-R7-lines-PA.json",
+     "checked": 56,
+     "corrected": 0,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 0,
+      "invented fact": 0,
+      "other": 0
+     }
+    },
+    {
+     "file": "fact-check-v-poles-substation-R7-lines-PB.json",
+     "checked": 77,
+     "corrected": 6,
+     "kinds": {
+      "wrong plant or location": 0,
+      "wrong process": 0,
+      "wrong tier": 0,
+      "closed business": 0,
+      "quote does not support value": 6,
+      "invented fact": 0,
+      "other": 0
+     }
+    }
+   ],
+   "rate": 0.0451,
+   "display": "6 / 133 = 4.5%"
+  },
+  {
+   "round": 8,
+   "label": "Cross-vertical checks (state air permits, job-board dates, OSHA headcounts, profiles of OSHA top-40 entrants): rows for this vertical's plants",
+   "checked": 281,
+   "corrected": 20,
+   "unreachable": 1,
+   "checkers": [
+    {
+     "file": "fact-check-cross-R10-postings.json",
+     "checked": 16,
+     "corrected": 3,
+     "kinds": {
+      "other": 2,
+      "quote does not support value": 1
+     }
+    },
+    {
+     "file": "fact-check-cross-R11-ownboard.json",
+     "checked": 110,
+     "corrected": 15,
+     "kinds": {
+      "wrong plant or location": 1,
+      "other": 4,
+      "quote does not support value": 10
+     }
+    },
+    {
+     "file": "fact-check-cross-R11-sweep.json",
+     "checked": 5,
+     "corrected": 1,
+     "kinds": {
+      "quote does not support value": 1
+     }
+    },
+    {
+     "file": "fact-check-cross-R5-P2.json",
+     "checked": 9,
+     "corrected": 0,
+     "kinds": {}
+    },
+    {
+     "file": "fact-check-cross-R5-P3.json",
+     "checked": 3,
+     "corrected": 0,
+     "kinds": {}
+    },
+    {
+     "file": "fact-check-cross-R5-PERMITS.json",
+     "checked": 8,
+     "corrected": 0,
+     "kinds": {}
+    },
+    {
+     "file": "fact-check-cross-R5-UKG.json",
+     "checked": 62,
+     "corrected": 0,
+     "kinds": {}
+    },
+    {
+     "file": "fact-check-cross-R6-OSHA.json",
+     "checked": 55,
+     "corrected": 1,
+     "kinds": {
+      "other": 1
+     }
+    },
+    {
+     "file": "fact-check-cross-R8-changed-lines.json",
+     "checked": 13,
+     "corrected": 0,
+     "kinds": {}
+    }
+   ],
+   "rate": 0.0712,
+   "display": "20 / 281 = 7.1%"
+  }
+ ],
+ "miss_rate": {
+  "value": "Auditor-measured 8/58 = 13.8% (6 never found, 2 found but wrongly excluded); finder first pass 32/90 = 35.6% (23 never found = 25.6%; 9 found but wrongly excluded = 10.0%)",
+  "note": "Auditor-measured: of the 58 in-definition plants the two list auditors found (now included), 8 were not on the plant-finder's included list; a lower bound, since the auditors used the finder's kinds of sources. First pass: of all 90 plants now included, 32 were not on the finder's included list: 23 it never found (7 auditors, 2 follow-up research, 14 higher-tier reviews and lead close-out) and 9 it found but excluded although the inclusion rule includes them. All are in the ledger now. The last three passes found one plant each. Open lead: MICA Steelworks postings at Rhome TX (not checked). 6 leads unverified with what was tried. Matched pairs re-read 2026-11-19: two unverified directory rows (Arcosa Telecom Structures Tulsa, Lyte Poles Warren MI) would make it 10/60 = 16.7% if both were real in-definition plants; under 20% either way.",
+  "history": [
+   "9.5%",
+   "9.2%",
+   "6.3%",
+   "7.8%",
+   "13.8% auditor (recount)",
+   "35.6% first pass"
+  ]
+ },
+ "known_limits": [
+  "Part size is unknown for 69 of 81 profiled plants, so material scores 0 there; a Low score usually means missing data, not a poor fit (see the Unknowns and ceiling columns).",
+  "Pre-production plants (Nucor Brigham City ramping, Hapco Oklahoma City under construction) are scored on stated plans; Nucor's Indiana pole plant (Crawfordsville) is operating.",
+  "9 plants included by the DOT-listing rule or the lead close-out are base records, not profiled or scored.",
+  "Fact-check error rates are per claim checked; on a strict page-only reading (every clause on the one cited page) round 4 would be higher (checker A: 16.0% vs 6.4%).",
+  "Opening lines and bottleneck guesses of all 81 profiled plants were rebuilt on 2026-11-17/19 under constrained composition (each clause from one stated row with its date; postings 'listed'; no live counts) and gated by tools/validate_lines.py; the round-7 line check found 6/133 = 4.5% (High and Medium 1/83 = 1.2%), and a non-author check of the 13 poles lines changed afterwards found none. 29 lines are 'unknown' where no stated site fact fits (Low bottleneck guess 27, Low opening line 1, Medium bottleneck guess 1).",
+  "Welder postings re-read 2026-11-17/19. Sabre's six plants, FWT and Millerbernd now rest on rows from the companies' own boards (Tallo copies went behind a sign-in wall on 2026-11-18: source failure); Sabre's board shows no dates, so their labor 20 rests on several postings open at once. Postings moved labor at MaiCo Ellsworth (standing ad since 2023; 88 -> 80), Nucor Brigham City (filled; 32 -> 20), PennFab Morrisville (listing names two plants; 55 -> 43), Arcosa Sumterville (closed; 68 -> 48). Judgement calls: Valmont Columbus counts a robot-titled role that requires hands-on welding (58 if not); Millerbernd's two postings tie to its Winsted pole campus only by inference (one names 'Plant 2', a building with no published address; the other only Winsted): points stay under the campus rule, confidence 4 -> 2 (Hennig rule); 80 if Plant 2 were a separate site, 68 on a strict shared-city reading; V&S Schuler Canton's requisition order (52 if a re-list); Western Utility's recruiter-board date not applied (68 if it were). Valmont's five pole plants were re-read on Valmont's Workday board on 2026-11-19 and every gone requisition removed; all five keep labor 20. At Tulsa, a Fitter I that names both Tulsa and Claremore is listed but not counted, and a Robotic Welder that requires hands-on GMAW is counted (still 3 counted). Sabre/FWT, Millerbernd and Valmont posting rows were then re-checked by a non-author: 3/98 = 3.1% corrected, all at Tulsa and all fixed.",
+  "OSHA 300A 2025 headcounts (user-supplied file) raised scale at many plants; a record covering one building of a campus or another business at the address is not used (tools/osha_match.py gates and the R6-OSHA review).",
+  "Company-level sweep (2026-11-19): stated rows whose page is cited by several plants were re-read; rows the page states only for the company were retagged inferred (counted in the cross-vertical round). Confidence fell where a component then rested only on inferred rows."
+ ]
+}

@@ -1,0 +1,1015 @@
+{
+ "checker": "opening-line-checker-round5",
+ "date": "2026-11-13",
+ "vertical": "v-poles-substation",
+ "lines_checked": 98,
+ "lines_corrected": 16,
+ "line_error_rate": 0.1633,
+ "substantive_corrections": 9,
+ "substantive_error_rate": 0.0918,
+ "error_kind_counts": {
+  "contradicts evidence": 1,
+  "closing question not second-person": 7,
+  "stale reasoning": 1,
+  "closed posting": 2,
+  "stale posting count": 2,
+  "inferred presented as stated": 3
+ },
+ "scope": "44 High/Medium plants: opening_line + bottleneck_guess (88 rows); 10 Low plants from stale-lines-2026-11-13.json: opening_line only (Westby, Raycap, Brigham City, Plymouth, ROHN, U.S. Pole, Ameron 66th St, CommStructures, Hapco Abingdon, Hughes).",
+ "sweep_flags": [
+  "Closing question without 'you' (7 form-only corrections + 2 alongside fact errors): run a closer check over every opening_line.",
+  "Opening lines citing a claim with no stated row ('inferred presented as stated', 3): sweep every line whose reasoning names a claim with only inferred rows; stale-lines also flags p-musco-muscatine-ia (prospect_test) and p-valmont-mccook-ne (welder_postings), not checked here.",
+  "Posting counts changed after the line was written (Meyer Fort Worth 6->5; Grid welder posting closed): 4 rows.",
+  "Lead-role counting is inconsistent across Arcosa plants: Clinton (7) and Lancaster (2) count a Lead; Fort Worth, Muskogee and Tulsa exclude Leads as supervisory."
+ ],
+ "spot_checks": [
+  "Arcosa UKG Cobot Welder Operator (Muskogee): live, Posted on October 5, 2026",
+  "Ameron Foreman posting (74117): live, Posted on August 4, 2026, fit-up and welding duty present",
+  "Nucor West Hazleton Fitter Welder 1: live, Apply now, 'Mig Flux core Welding Experience'",
+  "KansasWorks 13626472 MaiCo Welder: live",
+  "Western Utility careers: Welder/Fitter listed for Salem OR and Fernley NV",
+  "Grid/Southland saashr board page 1 of 2: Fitter (Day & Night Shift) Amite $27-$31 listed; no Welder title on page 1; page 2 not opened"
+ ],
+ "rows": [
+  {
+   "claim_id": "p-ameron-tulsa-ok:opening_line",
+   "source_url": "",
+   "ledger_value": "Arcosa's job board has listed day-shift and night-shift Fitter Welder openings for your South Yukon plant in Tulsa since late August 2026; how are you staffing welding across both shifts?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed; Fitter Welder postings dated 2026-08-25/08-28 at 74107."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely fitter-welder staffing on two shifts: day and night Fitter Welder postings for the Yukon plant have been open since 2026-08-25 and 2026-08-28",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:opening_line",
+   "source_url": "",
+   "ledger_value": "Arcosa's job board shows six fitter/welder and lead openings for your Muskogee plant posted since October 23, 2026, plus a Cobot Weld Operator role; which tower and monopole welds are going to the cobots?",
+   "verdict": "corrected",
+   "corrected_value": "Arcosa's job board lists day- and night-shift Fitter/Welder openings for your Muskogee plant, posted October 23 and November 5, 2026, along with four Fitter/Welder Lead roles and an afternoon-shift Cobot Weld Operator role; which welds are you moving to the cobots?",
+   "error_kind": "contradicts evidence",
+   "substantive": true,
+   "note": "The closing question presumes monopole welding at Muskogee, but the only stated products row says monopoles are 'mostly fabricated in a partnership with another Arcosa company, Meyer Utility Structures', and products is not named in the reasoning. 'Six fitter/welder and lead openings' blends 2 counted postings with 4 supervisory Lead roles that plants.csv excludes (count 2). Closing question also lacked 'you'. Replacement rests on welder_postings (stated; Lead quotes carry no date, so none is given) and existing_robots (stated; 'Cobot Weld Operator for the Afternoon Shift'). Cobot posting live 2026-11-13 (Posted on October 5, 2026)."
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely fitter/welder capacity: six fitter/welder and lead postings opened between 2026-10-23 and 2026-11-09, the day shift with some mandatory Fridays, alongside a cobot weld operator posting",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: 'six fitter/welder and lead postings' explicitly includes the 4 Lead roles, dates 2026-10-23 to 2026-11-09 and mandatory Fridays match the stated welder_postings row; cobot posting live 2026-11-13."
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:opening_line",
+   "source_url": "",
+   "ledger_value": "Arcosa's job board has listed a Senior Fitter/Welder opening for your Sumterville plant since July 27, 2026; with mast arms, sign structures and tolling gantries in the shop, which welding jobs are hardest to staff?",
+   "verdict": "corrected",
+   "corrected_value": "Arcosa's job board has listed a Senior Fitter/Welder opening for your Sumterville plant since July 27, 2026; with mast arms, sign structures and tolling gantries in the shop, which welding jobs are hardest for you to staff?",
+   "error_kind": "closing question not second-person",
+   "substantive": false,
+   "note": "Facts all carried by stated welder_postings and products rows; only the closing question lacked 'you'."
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely senior fitter/welder staffing: a Senior Fitter/Welder posting for the plant has been open since 2026-07-27 (109 days on 2026-11-13)",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:opening_line",
+   "source_url": "",
+   "ledger_value": "Crest's job board lists a weekend Submerged Arc Welder for your Pineville Pole team plus GMAW production and prep welders on nights and days; which of those shifts is hardest to fill?",
+   "verdict": "corrected",
+   "corrected_value": "Crest's job board lists a weekend Submerged Arc Welder for your Pineville Pole team plus GMAW production and prep welders on nights and days; which of those shifts is hardest for you to fill?",
+   "error_kind": "closing question not second-person",
+   "substantive": false,
+   "note": "Facts carried by stated welder_postings and weld_processes rows; only the closing question lacked 'you'."
+  },
+  {
+   "claim_id": "p-distran-pineville-la:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welding labor: three welder postings for Pineville at once, covering day, night and weekend shifts (Submerged Arc Welder for the Pole team, Production Welder II, PREP Welder)",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Sabre's job board lists Welder A, Welder C, Welder Trainee and Welder/Fitter C openings for the Kenn site at 5750 I-20 in Fort Worth, with a GMAW 2G test for new welders; which of those roles is hardest for you to fill?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "verdict": "corrected",
+   "corrected_value": "Likely welder staffing: four welder requisitions open at once for the Kenn site at 5750 I-20 (Welder A, Welder C, Welder Trainee, Welder/Fitter C), the Welder C role requiring a GMAW 2G test",
+   "error_kind": "stale reasoning",
+   "substantive": true,
+   "note": "The 'unknown' reasoning says the Kenn posting rows are tagged inferred and the tie to FWT is inferred; the final review made the tie stated (EPA FRS SABRE-FWT at 5750 E Interstate 20; Sabre's board files the Kenn requisitions there) and welder_postings, weld_processes and address now have stated rows. The reasoning is now false, so the row is corrected. Replacement rests on p-fwt-fort-worth-tx:welder_postings and p-fwt-fort-worth-tx:weld_processes (stated). Keeping 'unknown' with reasoning 'not guessed' would also be acceptable. Contrast Sabre Marshall: its 'unknown' reasoning ('No company statement; not guessed') is still true, so it is confirmed."
+  },
+  {
+   "claim_id": "p-fwt-hicksville-oh:opening_line",
+   "source_url": "",
+   "ledger_value": "Sabre has posted three welder openings in Hicksville, Ohio since September 2026, including a Welder/Fitter role that tack-welds pole assemblies with flux-cored arc welding; how are new hires getting through your GMAW 2G test?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-fwt-hicksville-oh:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder staffing: three welder postings for Hicksville, the oldest a night-shift Welder Trainee open since 2026-09-11, two of them requiring a GMAW 2G weld test",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:opening_line",
+   "source_url": "",
+   "ledger_value": "Grid Structures lists a Day & Night Shift welder opening at Amite at $27-$31 an hour asking for some flux core experience, and says both its facilities have state-of-the-art robotics; which welds still go to your welders?",
+   "verdict": "corrected",
+   "corrected_value": "Grid Structures lists a Fitter (Day & Night Shift) opening at Amite at $27-$31 an hour, and says both its facilities are equipped with state-of-the-art robotics; which welds do you still do by hand?",
+   "error_kind": "closed posting",
+   "substantive": true,
+   "note": "The line describes a 'Day & Night Shift welder opening ... asking for some flux core experience', but the current welder_postings row (stated) says the Welder posting seen 2026-11-12 is no longer listed and the open role is a Fitter (Day & Night Shift), $27-$31/hr; the FCAW clause came from the closed Welder posting, so it is dropped from the line (the FCAW process row stays as a standing fact for scoring). Spot-check 2026-11-13: page 1 of 2 of Grid's saashr board shows 'Fitter (Day & Night Shift) Apply Amite, LA $27.00 - $31.00 / Hour' and no Welder title; page 2 not opened. Replacement rests on welder_postings (stated) and existing_robots (stated)."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welding labor alongside robotics: Amite is hiring a welder for day and night shifts at $27-$31/hr although Grid says both its facilities have robotics",
+   "verdict": "corrected",
+   "corrected_value": "Likely fit-up and manual welding labor alongside robotics: Amite has a Fitter (Day & Night Shift) opening at $27-$31/hr although Grid says both its facilities are equipped with robotics",
+   "error_kind": "closed posting",
+   "substantive": true,
+   "note": "Old text says Amite 'is hiring a welder for day and night shifts'; that Welder posting closed (welder_postings stated row). Replacement rests on p-grid-structures-amite-city-la:welder_postings and p-grid-structures-amite-city-la:existing_robots (stated)."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:opening_line",
+   "source_url": "",
+   "ledger_value": "H.W. Metals says your gantries weld custom towers up to 138 in x 138 in x 70 ft while your D1.1-certified welders take the more complex welds; how much of that complex welding is MIG?",
+   "verdict": "corrected",
+   "corrected_value": "H.W. Metals says your gantries weld custom towers up to 138 in x 138 in x 70 ft while your D1.1-certified welders take the more complex welds; how much of that complex welding do you do with MIG?",
+   "error_kind": "closing question not second-person",
+   "substantive": false,
+   "note": "Facts carried by stated part_size_fit, certifications and weld_processes rows; only the closing question lacked 'you'."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely the more complex welds on build-to-print poles and towers, which H.W. Metals routes to its D1.1-certified welders while its automated sub arc and open arc gantry systems complete other welds",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-klute-york-ne:opening_line",
+   "source_url": "",
+   "ledger_value": "Klute told Nebraska's economic development department in August 2025 that you were booked out 60 weeks with not a single repeatable thing in the plant; how do you get new welders productive on one-off poles fast enough?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-klute-york-ne:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder headcount against a 60-week backlog of one-off custom poles: Klute says it is booked out 60 weeks, employs 70 welders and expects to hire dozens more",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: '70 welders ... hire dozens more' is quoted verbatim ('Currently, Klute employs 70 welders and expects to hire dozens more') on the welder_postings row, which is tagged inferred only because no posting is open; claims named."
+  },
+  {
+   "claim_id": "p-lsi-cincinnati-oh:opening_line",
+   "source_url": "",
+   "ledger_value": "LSI says it makes made-to-order 4, 5 and 6 inch steel light poles at its Cincinnati headquarters; how do you handle welding across that many pole configurations?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-lsi-cincinnati-oh:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: 'unknown'; no stated hiring or capacity claim."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:opening_line",
+   "source_url": "",
+   "ledger_value": "MaiCo's equipment page says you run more than 40 Lincoln DC600 MIG welding machines, and a KansasWorks welder posting for Ellsworth has been live since July 29, 2026; how are you keeping those stations staffed?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed; KansasWorks posting 13626472 spot-checked live 2026-11-13."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder supply for more than 40 MIG stations: a welder posting has been open since 2026-07-29",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:opening_line",
+   "source_url": "",
+   "ledger_value": "Meyer has posted seven welder and fitter/welder openings for your Clinton, Illinois pole plant since September 29, 2026 and trains welder candidates in FCAW, SAW and SMAW; how long does a new hire take to qualify?",
+   "verdict": "corrected",
+   "corrected_value": "Meyer has posted seven welder and fitter/welder openings for your Clinton, Illinois pole plant since September 29, 2026 and trains welder candidates in FCAW, SAW and SMAW; how long does it take you to qualify a new hire?",
+   "error_kind": "closing question not second-person",
+   "substantive": false,
+   "note": "Facts match plants.csv (7 postings) and the stated rows; only the closing question lacked 'you'. Coordinator flag: Clinton's 7 counts a Fitter Welder Lead (2026-10-19), while Meyer Fort Worth, Arcosa Muskogee and Meyer Tulsa exclude Lead roles as supervisory (Lancaster's line names its Lead explicitly but plants.csv counts it among 2). The count is kept here to match plants.csv; the Lead-counting rule should be applied consistently in welder_postings."
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder supply as the converted plant ramps up: seven welder and fitter/welder postings open since 2026-09-29, night shifts with a $1.50/hr differential, and in-house welder candidate training",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed against plants.csv (7 postings incl. a Fitter Welder Lead; see the Lead-counting flag on the opening-line row)."
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Arcosa's job board shows six fitter/welder openings for your Fort Worth plant, the oldest a 2nd-shift Senior Fitter/Welder posted July 24, 2026, plus weekend-shift roles; which shift is hardest to fill?",
+   "verdict": "corrected",
+   "corrected_value": "Arcosa's job board shows five fitter/welder openings for your Fort Worth plant, the oldest a 2nd-shift Senior Fitter/Welder posted July 24, 2026, plus weekend-shift roles; which shift is hardest for you to fill?",
+   "error_kind": "stale posting count",
+   "substantive": true,
+   "note": "Line says six; plants.csv and the stated welder_postings row say 5 (the round-4 fact-check dropped the 2nd-shift Lead, a supervisory role). Closing question also lacked 'you'. Replacement rests on welder_postings (stated)."
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely fitter/welder staffing on 2nd and weekend shifts: six fitter/welder postings open, the oldest since 2026-07-24 (112 days on 2026-11-13)",
+   "verdict": "corrected",
+   "corrected_value": "Likely fitter/welder staffing on 2nd and weekend shifts: five fitter/welder postings open, the oldest since 2026-07-24 (112 days on 2026-11-13)",
+   "error_kind": "stale posting count",
+   "substantive": true,
+   "note": "Says six postings; current count is 5. Rests on p-meyer-fort-worth-tx:welder_postings."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Meyer has had a 2nd-shift 'Welders - All Experience Levels' opening at your Hager City plant since September 9, 2026, plus a Welding Instructor for the pole school; how long does a new welder take to reach production?",
+   "verdict": "corrected",
+   "corrected_value": "Meyer has had a 2nd-shift 'Welders - All Experience Levels' opening at your Hager City plant since September 9, 2026, plus a Welding Instructor for the pole school; how long does it take you to bring a new welder to production?",
+   "error_kind": "closing question not second-person",
+   "substantive": false,
+   "note": "Facts carried by the stated welder_postings row (incl. 'welder training program (pole school)'); only the closing question lacked 'you'."
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder supply: a 2nd-shift welder posting open since 2026-09-09 that takes all experience levels, plus Welding Technician and pole-school Welding Instructor postings",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:opening_line",
+   "source_url": "",
+   "ledger_value": "Meyer has listed a Fitter Welder Lead for your Lancaster, SC plant since August 31, 2026, plus career welders with flux core experience and a Pole School Welding Instructor; how many welders is the pole school training?",
+   "verdict": "corrected",
+   "corrected_value": "Meyer has listed a Fitter Welder Lead for your Lancaster, SC plant since August 31, 2026, plus career welders with flux core experience and a Pole School Welding Instructor; how many welders are you training through the pole school?",
+   "error_kind": "closing question not second-person",
+   "substantive": false,
+   "note": "Facts carried by stated welder_postings and weld_processes rows; only the closing question lacked 'you'."
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder supply and training: a Fitter Welder Lead posting open since 2026-08-31, a career Welder posting requiring flux core experience, and Pole School Welding Instructor and Welding Technician postings",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-meyer-steele-al:opening_line",
+   "source_url": "",
+   "ledger_value": "Meyer has had a weekend-shift Seam Welder opening at your Steele, Alabama plant since August 4, 2026, and added Fitter/Welder and Seam Welder postings this fall; how are you staffing seam welding on weekends?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-meyer-steele-al:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely seam-welder and fitter/welder staffing: a weekend Seam Welder posting open since 2026-08-04, a second Seam Welder posting (2026-11-05), a Fitter/Welder posting and a pole-school Welding Instructor posting",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:opening_line",
+   "source_url": "",
+   "ledger_value": "Arcosa said in February 2026 it is preparing to move your Tulsa plant from wind towers to utility structures, and your welder/fitter postings require a 2G flux-core test; how are you qualifying welders for poles?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely building and qualifying a pole welding workforce during the move from wind towers: welder/fitter and lead welder postings since 2026-09-17, two plant welding technician postings, and a 2G FCAW test",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "MICA Steelworks' careers page advertises a signing bonus for welders and fitters, and a Haltom City welder posting lists proficiency with flux core and metal core wire; which of your shifts are hardest to staff?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder supply: MICA advertises a signing bonus for welders and fitters, with Haltom City postings for a day-shift welder and a night-shift submerged arc welder",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:opening_line",
+   "source_url": "",
+   "ledger_value": "Path's case study covers your Transportation & Infrastructure poles; with Big Pole Welder 2 or 3 openings on any shift and a Submerged Arc Seam Welder posted September 30, 2026, which pole welds would you look at next?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed; framed for account expansion (case study names T&I poles), no cell asserted at the plant."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:bottleneck_guess",
+   "source_url": "https://www.millerbernd.com/who-we-are/news/c4-acquisition",
+   "ledger_value": "Likely welder supply and capacity: Millerbernd said its 2025 C4 Welding purchase adds capacity and access to a larger pool of talent, and Winsted has three welder listings open, the oldest since 2026-09-30",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:opening_line",
+   "source_url": "",
+   "ledger_value": "Nello passed a factory acceptance test with Path; with your 2025 campus expansion taking facilities past 320,000 sq ft and Welder and Sub-arc seam welder openings listed, which welds at South Bend would you want to test?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed; FAT attributed to Nello at company level, no plant-level deployment asserted; postings carry no year (as plants.csv says)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welding capacity during the campus expansion: Welder and 2nd-shift Sub-arc seam welder openings are listed while the 2025 expansion and further expansion are underway",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:opening_line",
+   "source_url": "",
+   "ledger_value": "Nucor announced on October 8, 2026 a $105 million expansion of utility pole capacity at your Crawfordsville plant, where Automation Operators run robotic plasma and weld cells; how will you split welding between those cells and your fitter-welders?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-nucor-crawfordsville-in:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely staffing fitter-welders and robotic weld-cell operators while the plant adds capacity under the $105M expansion",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-nucor-decatur-al:opening_line",
+   "source_url": "",
+   "ledger_value": "Nucor announced on October 20, 2026 a $60 million expansion of utility pole production at your Decatur plant with 60 new jobs, and posted a Fitter Welder opening there on November 5, 2026; how are you planning welding for the added output?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-nucor-decatur-al:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder staffing for the ramp-up: a $60M expansion adding 60 jobs while Fitter Welder roles keep being posted (one open since 2026-11-05)",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-nucor-west-hazleton-pa:opening_line",
+   "source_url": "",
+   "ledger_value": "Nucor posted a Fitter Welder opening at your West Hazleton plant on October 27, 2026 asking for MIG and flux-core experience, and said in January 2025 the plant was being modernized and automated to increase production; how is your welding changing as you modernize?",
+   "verdict": "corrected",
+   "corrected_value": "Nucor posted a Fitter Welder opening at your West Hazleton plant on October 27, 2026 asking for MIG and flux-core experience, and Greater Hazleton's CAN DO said in July 2026 that Nucor has invested nearly $60 million since 2022 to modernize and expand the plant; how is your welding changing as you expand?",
+   "error_kind": "inferred presented as stated",
+   "substantive": true,
+   "note": "The clause 'said in January 2025 the plant was being modernized and automated' rests on the Jan 9, 2025 triggers row, which is tagged inferred (the release names no city; plant tie inferred). The stated triggers row is the July 24, 2026 CAN DO item ('Nucor has invested nearly $60 million to modernize and expand its West Hazleton facility'). Replacement uses that row plus weld_processes (stated, 'Date: Oct 27, 2026 ... Mig Flux core Welding Experience'). Posting spot-checked live 2026-11-13 (Apply now shown)."
+  },
+  {
+   "claim_id": "p-nucor-west-hazleton-pa:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welding capacity during modernization: the plant is being modernized and automated to increase production while it still recruits fitter-welders",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed as an inference that names its claims, but it cites the Jan 2025 triggers row, which is tagged inferred; suggest re-pointing it to the stated Jul 24, 2026 CAN DO row ('invested nearly $60 million to modernize and expand')."
+  },
+  {
+   "claim_id": "p-pennfab-morrisville-pa:opening_line",
+   "source_url": "",
+   "ledger_value": "Your equipment page lists a Panasonic robot welding system and your careers page has an opening for a welder with MIG experience; how is welding split today between the robot and your manual welders?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-pennfab-morrisville-pa:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual MIG welding capacity on custom sign and structural work beyond the single Panasonic robot welding system, with a MIG welder role open",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-sabre-alvarado-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Sabre has Welder A, Welder B and Welder Trainee roles open at your Alvarado plant, the oldest posted August 5, 2026, with FCAW and GMAW weld tests; how are you bringing new welders up to those tests?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-sabre-alvarado-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely skilled welder supply: three welder roles open at once, the oldest (Welder Trainee) since 2026-08-05, with FCAW or GMAW weld tests required",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-sabre-bossier-city-la:opening_line",
+   "source_url": "",
+   "ledger_value": "Sabre posted Welder C and Welder/Fitter A roles at your Bossier City plant on October 9, 2026, with a GMAW 2G weld test for the welder role; how are you staffing welding on pole shafts there?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-sabre-bossier-city-la:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder staffing: two welder roles posted 2026-10-09 are open at once, one requiring a GMAW 2G weld test",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-sabre-conroe-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Sabre has four welding roles open at your Conroe plant, GMAW welders, a GMAW fitter and welder trainees, the oldest posted September 2, 2026; how are you bringing new welders up to speed on pole assemblies?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-sabre-conroe-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely GMAW welding and fit-up labor on pole assemblies: four welding roles open at once, two of them trainee roles, the oldest since 2026-09-02",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-sabre-marshall-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Sabre's job board lists Welder C, Welder/Fitter C and two Welder Trainee openings at 2938 Brown Rd in Marshall, where fitters tack-weld pole assemblies with flux-cored arc welding; how are you staffing pole welding at Marshall?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-sabre-marshall-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: 'unknown' with reasoning that is still true. Not a defect, though four open requisitions would support an inferred guess as at other Sabre plants."
+  },
+  {
+   "claim_id": "p-sabre-sioux-city-ia:opening_line",
+   "source_url": "",
+   "ledger_value": "Sabre has a Longseamer Trainee, a night Welder Trainee and a Welder B role open at your Sioux City plant, the oldest posted August 29, 2026; how are you staffing long-seam and night-shift welding?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-sabre-sioux-city-ia:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder recruiting across shifts: three welder roles open, the oldest (Longseamer Trainee) since 2026-08-29, including a night-shift trainee role",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Race Rock's careers page lists 1st- and 2nd-shift Fitter/Welder Leadman roles at your Crowley plant, posted in October 2026 and requiring flux-core, plus a Robotic Weld Cell Operator; how is welding split between that cell and your welders?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-structural-steel-products-crowley-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welding and fit-up labor on poles: two Fitter/Welder Leadman roles (1st and 2nd shift, FCAW test) posted in October 2026 while a Robotic Weld Cell Operator role is also open",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-universal-industrial-sales-lindon-ut:opening_line",
+   "source_url": "",
+   "ledger_value": "Your FCAW / GMAW / Arc Welder opening for days and nights has been posted since September 8, 2026, and your site says every sign structure is unique; how are you covering welding on both shifts while it is open?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-universal-industrial-sales-lindon-ut:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welding labor: a days-and-nights FCAW/GMAW welder posting open since 2026-09-08 (more than 60 days)",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-valmont-birmingham-al:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Birmingham sign-structure plant posted a Tacker opening on October 19, 2026 for production GMAW tack welding on steel shapes. Building on Valmont's 2021 comments about Path's autonomous welding, how are fit-up and tacking staffed on your overhead sign structures?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-valmont-birmingham-al:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual fit-up and GMAW tack welding on overhead sign structures, with a production Tacker role open since 2026-10-19",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Brenham plant has eight welder and fitter-welder roles open, seven of them on night, evening and weekend shifts, all posted since October 22, 2026. Building on Valmont's 2021 comments about Path's autonomous welding, how are you staffing pole fit-up and welding on those shifts?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual fit-up and GMAW/FCAW tack welding of pole shafts across small and large pole lines, with eight welder and fitter-welder roles open (posted 2026-10-22 to 2026-11-10)",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Claremore plant has had an Assembly Welder role open since August 13, 2026 and added a sub-arc Structural Back Welder role on November 9. Building on Valmont's 2021 comments about Path's autonomous welding, how are you staffing assembly welding on pole shafts?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual fit-up and assembly welding of pole shafts: an Assembly Welder role open since 2026-08-13 (more than 90 days) plus a sub-arc Structural Back Welder role posted 2026-11-09",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-valmont-columbus-ne:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Columbus plant has three welder openings posted since October 19, 2026, including a 3rd-shift role asking for 5+ years of MIG experience. Building on Valmont's 2021 comments about Path's autonomous welding, how are you staffing MIG welding across your shifts?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-valmont-columbus-ne:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual MIG welding labor: three welder roles open (posted 2026-10-19 to 2026-11-04), one requiring 5+ years of MIG experience",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-valmont-el-dorado-ks:opening_line",
+   "source_url": "",
+   "ledger_value": "Your El Dorado pole plant has four welder roles open, the oldest a weekend Back Welder posted September 11, 2026. Building on Valmont's 2021 comments about Path's autonomous welding, how are you staffing weekend and evening welding there?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-valmont-el-dorado-ks:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual fit-up and tack welding of small parts onto pole shafts, plus seam back-welding, on weekend and evening crews, with four welder roles open (oldest since 2026-09-11)",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Elkhart plant posted an Aluminum Welder 2nd Shift role on November 10, 2026 and two Welder Assistant roles on November 12. Building on Valmont's 2021 comments about Path's autonomous welding, how much of your welding at Elkhart is steel today?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely staffing the aluminum welding department on two shifts: one welder and two welder-assistant roles posted 2026-11-10 to 2026-11-12",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-valmont-jasper-tn:opening_line",
+   "source_url": "",
+   "ledger_value": "Valmont announced on October 25, 2026 a $45 million, 84-job expansion of your Jasper plant for steel transmission, distribution and substation structures. Building on Valmont's 2021 comments about Path's autonomous welding, how are you planning welding capacity for that expansion?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-valmont-jasper-tn:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely skilled welder supply for the expansion: 84 new jobs planned while a night-shift Fitter/Welder role requiring AWS SAW and GMAW operator qualification is open (posted 2026-10-14)",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-valmont-tulsa-ok:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Tulsa plant posted five welder and fitter roles between November 4 and 12, 2026, and has a Robotic Welder role open. Building on Valmont's 2021 comments about Path's autonomous welding, how is welding split between your robotic welders and manual crews?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-valmont-tulsa-ok:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder and fitter staffing: five welder and fitter roles posted 2026-11-04 to 2026-11-12, after a July 2026 hiring event for Structural Fitter Welders",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Valley plant has five welding roles open, including custom fitters who MIG and flux-core weld poles up to 84 inches in diameter and 30,000 lb. Building on Valmont's 2021 comments about Path's autonomous welding, how is work split between your Moto cell and custom fitters?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual fit-up and MIG/flux-core welding of custom lighting, telecom and utility poles (to 84 in and 30,000 lb), with five welding roles open at once, the oldest since 2026-09-08",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-vs-schuler-burton-oh:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Burton plant builds A-frames, H-frames, bus supports and wood-pole-equivalent structures, and has two 3rd-shift Fitter/Welder openings, one posted July 31, 2026; how are you covering third-shift fit-up and welding?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-vs-schuler-burton-oh:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely third-shift fit-up and welding of tapered pole and substation structures: two 3rd-shift Fitter/Welder roles open, one since 2026-07-31 (more than 100 days)",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-vs-schuler-canton-oh:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Canton shop builds complete substations and structure additions to customer drawings, and has had a Fitter/Welder opening posted since July 31, 2026; how are you covering fit-up and welding while it is open?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-vs-schuler-canton-oh:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual fit-up and welding of custom substation structures built to customer drawings, with a Fitter/Welder role open since 2026-07-31 (more than 100 days)",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-vs-schuler-muskogee-ok:opening_line",
+   "source_url": "",
+   "ledger_value": "V&S Schuler Tubular Products announced in September 2026 a $22 million new plant at Port Muskogee to increase production capacity, adding jobs in welding and fabrication; how will your welding change in the new facility?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-vs-schuler-muskogee-ok:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely capacity of the existing Muskogee plant: the company is relocating to a new $22M facility to increase production capacity and plans new welding jobs",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-western-utility-telecom-salem-or:opening_line",
+   "source_url": "",
+   "ledger_value": "Your about page lists 8 welding stations and 2 seam welders, and you say you specialize in custom-designed structures for distribution, transmission and substation needs; how do you schedule custom work across those welding stations?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed; 'custom-designed structures' and 'distribution, transmission, and substation needs' are two sentences on the same home page, joined in the line."
+  },
+  {
+   "claim_id": "p-western-utility-telecom-salem-or:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder/fitter capacity: Welder/Fitter openings are listed at Salem and Fernley, NV, and the company specializes in custom-designed structures",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed; careers page spot-checked 2026-11-13 lists Welder/Fitter at Salem, Oregon and at Fernley, Nevada."
+  },
+  {
+   "claim_id": "p-nello-westby-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "LaX Industries opened your Westby, Wisconsin facility in 2024 and, under new ownership since February 2026, says it is investing in robotics and automation. Building on the factory acceptance test Path's site reports with Nello, where does your Westby welding fit in that plan?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed; Path clause names Nello, not LaX; ownership change is a stated company-level row."
+  },
+  {
+   "claim_id": "p-raycap-north-charleston-sc:opening_line",
+   "source_url": "",
+   "ledger_value": "Raycap said in a 2019 release that your North Charleston plant includes a 112,000 sq ft steel fabrication and integration facility for STEALTH concealment products; is that steel fabrication still running there, and how do you weld the poles?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed; dated 2019 fact presented as a discovery question."
+  },
+  {
+   "claim_id": "p-nucor-brigham-city-ut:opening_line",
+   "source_url": "",
+   "ledger_value": "Nucor posted a Fitter Welder opening for your new Brigham City utility-structures plant on November 11, 2026, with a 3G weld test due within 30 days of hire; how are you planning to staff welding as the plant starts up?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-valmont-plymouth-in:opening_line",
+   "source_url": "",
+   "ledger_value": "Wisconsin DOT's July 2025 approved list includes your Plymouth plant for steel sign bridges and overhead sign supports. Building on Valmont's 2021 comments about Path's autonomous welding, which of those sign-structure designs do you weld at Plymouth today?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-rohn-peoria-il:opening_line",
+   "source_url": "",
+   "ledger_value": "ROHN lists your Tubular Products division at 6800 W Plank Road in Peoria and sells tapered and flanged steel poles and pre-engineered steel utility poles; how do you weld those poles today?",
+   "verdict": "corrected",
+   "corrected_value": "ROHN lists your Tubular Products division at 6800 W. Plank Road in Peoria; which steel poles do you weld there, and how?",
+   "error_kind": "inferred presented as stated",
+   "substantive": true,
+   "note": "Reasoning says 'composed from stated claims' incl. p-rohn-peoria-il:products, but every products row is tagged inferred (company-level product pages attributed to Plank Road by division name). Replacement keeps only the stated address row. Alternative: keep the products clause explicitly company-level ('ROHN sells ...') only if a stated company-level claim (c-rohn:products) is added."
+  },
+  {
+   "claim_id": "p-us-pole-palmdale-ca:opening_line",
+   "source_url": "",
+   "ledger_value": "Your site says you make fluted, tapered and straight poles in aluminum or steel and design custom pole assemblies; how much of your pole welding at Palmdale is steel?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok-2:opening_line",
+   "source_url": "",
+   "ledger_value": "Ameron has been recruiting a Facility Foreman to manage fit-up and welding at your East 66th Street North plant in Tulsa since August 4, 2026; how large is the welding crew that foreman will run?",
+   "verdict": "corrected",
+   "corrected_value": "Ameron Pole Products has been recruiting a Facility Foreman for your East 66th Street North plant in Tulsa since August 4, 2026; how large is your fit-up and welding crew there?",
+   "error_kind": "inferred presented as stated",
+   "substantive": true,
+   "note": "'to manage fit-up and welding' rests on p-ameron-tulsa-ok-2:prospect_test, which has no stated row (both rows inferred). The duty text is real: spot-checked live 2026-11-13 ('Manage all aspects of fit up and welding processes for assigned work groups and production bays'; Posted on August 4, 2026; Tulsa, OK 74117). Replacement rests on open_postings (stated) and posting_location (stated, 'Tulsa, OK 74117, USA'). Alternative: add a stated duties row from that posting and keep the clause. Closing question also lacked 'you'."
+  },
+  {
+   "claim_id": "p-commstructures-pensacola-fl:opening_line",
+   "source_url": "",
+   "ledger_value": "CommStructures says it designs and fabricates each continuous-taper or step-taper monopole to the project's requirements in its 60,000 sq ft Pensacola facility; how do you set up welding when every monopole is different?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-hapco-abingdon-va:opening_line",
+   "source_url": "",
+   "ledger_value": "Hapco broke ground in 2026 on a 270,000 sq ft Oklahoma City campus, and your Abingdon steel poles come from a 60,000 sq ft steel plant added in 2018; how will you split work between Abingdon and Oklahoma City?",
+   "verdict": "confirmed",
+   "corrected_value": "",
+   "error_kind": "",
+   "substantive": false,
+   "note": "Confirmed: each fact carried by a stated row of a named claim; consistent with plants.csv."
+  },
+  {
+   "claim_id": "p-hughes-brothers-seward-ne:opening_line",
+   "source_url": "",
+   "ledger_value": "Your October 2025 update says Hughes Brothers moved washer nuts and shear blocks to new h-frame robotic systems and started automating base-plate gusset welding; which welds in Seward are next?",
+   "verdict": "corrected",
+   "corrected_value": "Your October 2025 update says Hughes Brothers moved washer nuts and shear blocks to new h-frame robotic systems and started automating base-plate gusset welding; which welds in Seward are you looking at next?",
+   "error_kind": "closing question not second-person",
+   "substantive": false,
+   "note": "Facts carried by stated existing_robots and bottleneck_guess rows; only the closing question lacked 'you'."
+  }
+ ]
+}

@@ -1,0 +1,3131 @@
+{
+ "checker": "fact-checker CS-R3 (seeded random sample of mining records added 2026-11-17 by closure 5 and the R3 miss verification)",
+ "vertical": "v-mining-heavy-equipment",
+ "date": "2026-11-17",
+ "plants": [
+  "p-carwil-winnemucca-nv",
+  "p-aggregate-processing-brooks-ky",
+  "p-d-e-moncks-corner-sc",
+  "p-cmp-attachments-clear-lake-mn",
+  "p-custom-dredge-works-topeka-ks",
+  "p-gill-rock-drill-lebanon-pa",
+  "p-falcon-freeland-mi",
+  "p-top-dog-detroit-lakes-mn",
+  "p-hammersmith-horton-ks",
+  "p-meeker-belleville-pa",
+  "p-aim-grove-city-oh",
+  "p-action-vibratory-newberg-or",
+  "p-richwood-huntington-wv",
+  "p-ez-drill-perry-ok",
+  "p-precision-machine-eugene-or",
+  "p-miller-formless-mchenry-il",
+  "p-brock-chattanooga-tn",
+  "p-mixer-systems-pewaukee-wi",
+  "p-kafka-mosinee-wi",
+  "p-petersen-ogden-ut",
+  "p-argo-brookfield-wi",
+  "p-american-bin-burlington-wi",
+  "p-youngs-machine-monticello-ut",
+  "p-stinger-rose-creek-mn",
+  "p-laidig-mishawaka-in"
+ ],
+ "sample_method": "25 ids supplied by the coordinator in scratchpad mining-new-sample.json: a seeded random sample of the 51 non-excluded records added on 2026-11-17 (closure 5 OSHA 300A candidates and R3 list-audit miss verification). 23 base, 2 profiled (Kafka Mosinee, Laidig Mishawaka).",
+ "decision_rule": "Corrected = the value adds a fact the cited page does not show, tags a judgement as stated (incl. site-attribution or single-site judgements and self-named parents contradicted by a registry), places a company-level fact at the plant, ties a fact to the plant through a city shared by several sites (campus rule), or the quote is not on the page (raw source incl. JSON-LD checked first); also an inferred relationship or tier that breaks the written mining relationship rule or the CLAUDE.md tier definitions. Unreachable = cited page cannot be opened today by any route (never confirmed). Confirmed otherwise. Not additive: limiting labels ('company-level', 'company-wide', '(company product list)'), as-of dates, provenance labels. A full compound value repeated on several rows is confirmed when each row's page carries its clause and the rows together carry the whole value (PPI precedent). Self-named parent rows are confirmed by precedent (Metalcraft, Klein) unless a cited registry record shows another filer. OSHA rows checked against data/osha_2025.csv by record ID and the osha_match.py gates. One test for site placement: a value that ties a fact to the site is stated only when the cited page itself names the place as where the work happens (E-Z Drill 'manufacture our machines in a 22,000-square-foot facility in Perry'; Meeker 'Belleville ... our home ... our manufacturing facility where we make'); a page that only says the company is located or 'growing' there (CMP) makes the tie a judgement. OSHA headcount rows are stated when the record passes the brief's gates (ZIP, street number, street name, operating name); a duplicate filing by the same company with the same count is not an ambiguity (PMM). Dated statements shown as current are corrected to carry their date (kind other; Mixer/MICA precedent).",
+ "claims_checked": 300,
+ "claims_corrected": 4,
+ "claims_unreachable": 5,
+ "error_rate": 0.0133,
+ "error_rate_note": "4/300 = 1.3% over every row checked: all 208 stated rows of the 25 records, plus 92 inferred or unknown rows of the rule-bearing fields (relationship, lookalike_of, tier, tier_secondary, welder_postings, parent_company, headcount) and the prospect_test rows valued unknown. Stated rows only: 3/208 = 1.4%. Excluding the 5 unreachable rows (all Brock, on two blocked press pages): 4/295 = 1.4%. No closed business, wrong plant, wrong process or invented fact. No corrected row changes a score: all four sit on base records (CMP, American Bin, Brock, Gill).",
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 1,
+  "closed business": 0,
+  "quote does not support value": 2,
+  "invented fact": 0,
+  "other": 1
+ },
+ "repeated_kinds": [
+  "No kind reaches 3 (quote does not support value 2, wrong tier 1, other 1). Both 'quote does not support value' corrections are judgements tagged stated: a stated site_attribution row resting on a 'we are here' sentence (CMP), and a self-named parent row resting on a member-list name while the company's own page names an acquirer (American Bin, TPS 2008). Optional cheap sweeps, not required by the threshold: (a) every stated site_attribution row whose quote has no manufacture/build/produce verb tied to the place name; (b) every stated parent_company row whose value equals the plant's own name, checked against the company's About/History page and the company_name of the OSHA record cited on its headcount row (flag when they share no distinctive token)."
+ ],
+ "worst_errors": [
+  "p-american-bin-burlington-wi:parent_company (row 19754): the plant is tagged stated as its own parent from an IAAP member list showing only its name. Its own company page, already cited on the record, says 'In 2008, Turn-Key Processing Solutions (TPS) acquired American Bin & Conveyor.' TPS also owns Phoenix Glasgow per the ledger, which matters for the multi-plant scale half if the plant is profiled. OSHA files both plants under company_name 'AEP Manufacturing'.",
+  "p-brock-chattanooga-tn:tier_secondary (row 19385): Tier 2 is given to an asphalt-plant OEM whose cited page says it builds and supplies replacement parts for all makes of asphalt plants to plant owners. That is aftermarket supply, not supply to Tier 1s, and the row's reasoning concedes it. Correct to unknown.",
+  "p-cmp-attachments-clear-lake-mn:site_attribution (row 19413): 'Clear Lake is the manufacturing site' is tagged stated on 'Our passion for American manufacturing ... keeps us growing here in Clear Lake, MN'. The page names no facility or work location. It is a single-site judgement that belongs in an inferred row; the OSHA NAICS 333120 record at 8101 State Street supports it. Next is Gill 19512: a 2017 weld-shop statement shown undated."
+ ],
+ "status_problems": [
+  {
+   "plant": "p-aggregate-processing-brooks-ky",
+   "problem": "fabrication evidence is undated and probably old",
+   "detail": "The only welding-adjacent facts come from an undated IMAA directory entry. The entry cites 'AutoCAD 2010 along with AGG FLOW 2010', which suggests text from about 2010. The KY SOS profile (Active, last annual report 3/4/2026) shows the corporation exists but lists 'Number of Employees Small (0-19)'. API also says it teams up with outside equipment makers. Not shown closed, but no dated current source shows fabrication at 3201 Coral Ridge Rd. Keep base; do not profile until a current source shows production."
+  },
+  {
+   "plant": "p-brock-chattanooga-tn",
+   "problem": "5 rows unreachable (4 stated, 1 inferred)",
+   "detail": "The forconstructionpros.com release (name, address, products) and the theasphaltpro.com article (main manufacturing facility on the 23-acre site) could not be opened 2026-11-17 (403 Cloudflare; Wayback resets). The plant is current: brock.llc is live with 2011 West Polymer Drive, and OSHA 300A 2025 (ID 2925504, 82 employees) is at the same address. The rows stay not confirmed. Re-read when the archive is reachable, or re-cite name and address to brock.llc."
+  },
+  {
+   "plant": "p-falcon-freeland-mi",
+   "problem": "production address not settled (finder's own caveat)",
+   "detail": "The home page says all equipment is manufactured 'in Northern Michigan at our state-of-the-art facility' and gives 2600 W Salzburg Rd, Freeland as the contact address. OSHA 300A 2025 (ID 3021896, 60 employees, NAICS 333120) is at that address. The finder's inferred row notes that a dealer sheet says the machines are built in Midland (about 15 km away). The record is plausible as placed; the site tie stays inferred, as the ledger has it."
+  },
+  {
+   "plant": "p-gill-rock-drill-lebanon-pa",
+   "problem": "only company-text source is a January 2017 release",
+   "detail": "The welding statement ('full-service machine and weld shop') and the products come from a Newswire release dated January 20, 2017. The plant has no website field. Its operation is current through OSHA 300A 2025 (ID 3280605, 28 employees, submitted 2026-03-16). Not closed. The prospect_test value is corrected to carry 'as of Jan 20, 2017' (row 19512)."
+  }
+ ],
+ "plants_closed_or_moved": [],
+ "plant_status_notes": "25 of 25 have a current source placing the company at the recorded city. Seventeen have an OSHA 300A 2025 record: CarWil, CMP, Gill, Falcon, Meeker, Action, Richwood, E-Z Drill, PMM, Miller Formless (as Power Curbers Companies / MFS Holdings), Brock, Mixer Systems, Kafka, Petersen, Argo, American Bin and Laidig. The other eight have a live own site: Aggregate Processing (KY SOS active 2026), D&E (copyright 2026), Top Dog (2024), Stinger (2025 page stamp), AIM (store live; footer 2021; Stuart FL is a second sales location, not in Grove City), Hammersmith (Vail contact page copyright 2019-2026), Young's (copyright 2026) and Custom Dredge (pages stamped 2026-06-08; job feed live). Recorded addresses match the cited pages or registry. Action Newberg: Webster's footer lists 'Portland, OR' (no street), but the OSHA 2025 filing keeps Newberg current. Petersen has a second site, Pocatello ID (OSHA ID 3006250, 20 employees), outside Ogden, so the campus rule is not triggered; Ogden's company-level rows are labelled.",
+ "field_drift_notes": [
+  "p-stinger-rose-creek-mn products: '(Grade 50 steel)' and 'other skid steer attachments' have no evidence row. The home page carries 'We stick to manufacturing with materials like Grade 50 steel'; add a row or trim.",
+  "p-custom-dredge-works-topeka-ks products: the dredge types (chain ladder, jet ring, deep digging, electric) and 'parts' have no row. All are on the home page menu ('Chain Ladder Dredges', 'Jet Ring', 'Deep Digging Dredges', 'Electric Powered Dredges', 'PARTS FOR ALL DREDGES'); add a row.",
+  "p-hammersmith-horton-ks products: 'land management' is on the cited Holton Recorder page (quote not in a row); add it to row 19992's quote or trim the word.",
+  "p-d-e-moncks-corner-sc products: 'repairs and modifications' and 'custom-built' are backed only by the about-page sentence on row 20060 ('designs, produces, repairs, and custom builds'). 'modifications' is not quoted.",
+  "p-american-bin-burlington-wi products: 'bulk material handling equipment' has no quoted row.",
+  "p-miller-formless-mchenry-il website: powercurbers.com is the parent's site. Heavy Equipment Guide lists Miller Formless's own site, millerformless.com (not opened here).",
+  "p-gill-rock-drill-lebanon-pa site_attribution row 19513 (inferred): its reasoning says the release is 'undated in the text captured'. The byline reads 'Lebanon, PA, January 20, 2017'; reword."
+ ],
+ "leads": [
+  "ACTION Newberg: a web search snippet (discovery only, not quoted) says ACTION 'specializes in the engineered design, welding, and assembly of vibrating conveyors'. If a Webster page carries it, prospect_test can move from unknown to pass. Also add an inferred site-tie row citing OSHA establishment 'ACTION VIBRATORY EQUIPMENT' at 2800 Hayes St.",
+  "CarWil: the home-page product menu lists Processing Circuits, Grizzlies, LHD Mechanical Components, Mechanical Buckets, Hydraulic Face Shovels and Wear Liners. The products field omits the buckets and LHD components; the menu text could back a fuller row.",
+  "Mixer Systems: the careers page has a 'VIEW OPENINGS' board link (not followed). Check it for welder postings before any profiling."
+ ],
+ "ruling_questions": [
+  "CarWil sells both Schenck-side products (grizzlies, processing circuits, material handling systems) and Mine Rite's own kind of product (LHD mechanical buckets). Which lookalike should win when both apply? The ledger has Schenck Process; it is not a rule break either way.",
+  "Aggregate Processing (turnkey aggregate plant integrator that fabricates but names no own crusher, screen or conveyor) is new under consultation 14. American Bin and General Steel (aggregate processing equipment built to spec) are Schenck lookalikes. Confirm that 'no named product' keeps an aggregate plant integrator new.",
+  "American Bin and Phoenix Glasgow both file OSHA 300A under company_name 'AEP Manufacturing', while American Bin's own page names Turn-Key Processing Solutions (TPS, 2008) as the acquirer. Should the parent be TPS (stated, company page), with AEP recorded as the OSHA filer only?"
+ ],
+ "method": "Scope by script from evidence.csv (current row indexes; 439 rows for the 25 plants). In scope: every stated row (208); the inferred or unknown rows of relationship, lookalike_of, tier, tier_secondary, welder_postings, parent_company and headcount; and prospect_test rows valued unknown (300 in all). All 103 distinct cited URLs were fetched fresh on 2026-11-17 with tools/fetch_page.fetch(with_raw=True). Mixer Systems' 412 bot block was passed with curl. Four failed: Brock's forconstructionpros.com (403 Cloudflare in Chromium too) and theasphaltpro.com (504), whose Wayback snapshots exist but web.archive.org reset every connection; and two pages that only back inferred lat/lon rows (Nominatim 429, the bare Census endpoint). Each quote ('...' fragments separately) was matched against normalised visible text plus raw source: 278 found, 0 missing on reachable pages. Each stated value was then read against its page: a script listed every value word of 4+ letters absent from the page text (35 hits). Each hit was read by hand: all were morphology, typos on the page, labels, Brock's unreachable pages, or clauses carried on sibling rows of a multi-row compound field. The site-tie, parent and date judgements were reviewed row by row; four corrections resulted. A second American Bin page (americanconveyor.com/company) was grepped for the parent after the first pass. OSHA rows were checked by record ID in data/osha_2025.csv (all quoted fields match), and second records at the same ZIP and street number were searched (Richwood, Miller and PMM have them). Census and ECHO coordinates were compared numerically with the value and plants.csv. Boards read today: Custom Dredge WP Job Manager feed (curl JSON) and three posting pages (raw source: JSON-LD datePosted and the 'Apply for job' form); Kafka careers page and DOL SeasonalJobs order; Laidig yourpayrollhr list endpoint and both requisition JSONs; Richwood site (no careers link). Every prospect_test 'unknown' plant had all its cited pages grepped for weld/fabricat: none states welding, so all unknowns stand. Relationship and tier were recomputed for all 25 from stated products against the written rule (consultations 9, 14, closure-1 ruling 2). One WebSearch (ACTION Newberg status), used for discovery only. No ledger file was edited.",
+ "apply_note": "apply_factcheck.py run with --apply on a scratch copy of ledger/: 291 confirmed, 4 corrected, 5 unreachable, 0 unmatched; no score component cites a corrected claim. plants.csv diff shows exactly two changed fields: Brock tier_secondary 'Tier 2' -> 'unknown' (coordinator may prefer blank) and American Bin parent_company -> 'Turn-Key Processing Solutions (TPS) (acquired American Bin & Conveyor in 2008)' (row re-cited to americanconveyor.com/company, stated). CMP site_attribution (retag to inferred) and Gill prospect_test (dated) change evidence only. The five Brock rows are marked unreachable. Field drift, leads, ruling questions and status problems are not applied by the script. The real ledger was not edited.",
+ "rows": [
+  {
+   "claim_id": "p-mixer-systems-pewaukee-wi:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "57 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Mixer Systems', 190 Simmons Ave.)",
+   "evidence_row": 19268,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record checked by ID in data/osha_2025.csv: every quoted field (establishment_name, company_name, street_address, city, ZIP, NAICS, annual_average_employees, date_submitted) matches the record. Gate (tools/osha_match.py): same ZIP, street number and street name as the plant address and the establishment name carries the operating name; no second record at the address."
+  },
+  {
+   "claim_id": "p-mixer-systems-pewaukee-wi:name",
+   "source_url": "https://www.mixersystems.com/about/",
+   "ledger_value": "Mixer Systems, Inc.",
+   "evidence_row": 19269,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-mixer-systems-pewaukee-wi:address",
+   "source_url": "https://www.mixersystems.com/careers/",
+   "ledger_value": "190 Simmons Avenue (Pewaukee, WI)",
+   "evidence_row": 19270,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Careers page (browser) footer: '190 Simmons Avenue P.O. Box 10 Pewaukee, WI 53072'."
+  },
+  {
+   "claim_id": "p-mixer-systems-pewaukee-wi:products",
+   "source_url": "https://www.mixersystems.com",
+   "ledger_value": "concrete batch plants",
+   "evidence_row": 19271,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-mixer-systems-pewaukee-wi:products",
+   "source_url": "https://www.mixersystems.com/about/",
+   "ledger_value": "concrete mixers (largest maker of pan mixers in North America)",
+   "evidence_row": 19272,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-mixer-systems-pewaukee-wi:prospect_test",
+   "source_url": "https://biztimes.com/made-in-milwaukee-136/",
+   "ledger_value": "as of Oct 2010: workers weld bins and fabricate mixer paddles and fixtures in-house at the Pewaukee company",
+   "evidence_row": 19273,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "BizTimes 'Made in Milwaukee', JSON-LD datePublished 2010-10-04: 'Pewaukee's Mixer Systems Inc.' and 'The company's workers weld bins, craft conveyors, fabricate the interior paddles and fixtures'; 'We design it, build everything here' supports in-house. Value worded as of Oct 2010. Confirmed."
+  },
+  {
+   "claim_id": "p-mixer-systems-pewaukee-wi:tier",
+   "source_url": "https://www.mixersystems.com/about/",
+   "ledger_value": "OEM",
+   "evidence_row": 19274,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-mixer-systems-pewaukee-wi:relationship",
+   "source_url": "https://www.mixersystems.com",
+   "ledger_value": "new",
+   "evidence_row": 19275,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-mixer-systems-pewaukee-wi:website",
+   "source_url": "https://www.mixersystems.com",
+   "ledger_value": "https://www.mixersystems.com",
+   "evidence_row": 19276,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-falcon-freeland-mi:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "2600 W. Salzburg Road, Freeland, MI 48623",
+   "evidence_row": 19321,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record ID 3021896 matches (2600 W. Salzburg Road, Freeland, 48623); the company home page footer also gives 2600 W Salzburg Rd, Freeland, MI 48623."
+  },
+  {
+   "claim_id": "p-falcon-freeland-mi:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "60 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Falcon Road Maintenance Equipment, LLC', 2600 W. Salzburg Road)",
+   "evidence_row": 19322,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record checked by ID in data/osha_2025.csv: every quoted field (establishment_name, company_name, street_address, city, ZIP, NAICS, annual_average_employees, date_submitted) matches the record. Gate (tools/osha_match.py): same ZIP, street number and street name as the plant address and the establishment name carries the operating name; no second record at the address."
+  },
+  {
+   "claim_id": "p-falcon-freeland-mi:name",
+   "source_url": "https://www.falconrme.com/",
+   "ledger_value": "Falcon Asphalt Repair Equipment",
+   "evidence_row": 19323,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-falcon-freeland-mi:products",
+   "source_url": "https://www.falconrme.com/",
+   "ledger_value": "asphalt hot boxes, asphalt recyclers, patch trucks, tack distributors",
+   "evidence_row": 19324,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-falcon-freeland-mi:prospect_test",
+   "source_url": "",
+   "ledger_value": "unknown: manufacturing at one Northern Michigan facility is stated; welding is not stated",
+   "evidence_row": 19325,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every cited page for this plant was opened 2026-11-17 and grepped for weld/fabricat: no stated welding fact at the site, so 'unknown' is right."
+  },
+  {
+   "claim_id": "p-falcon-freeland-mi:tier",
+   "source_url": "https://www.falconrme.com/",
+   "ledger_value": "OEM",
+   "evidence_row": 19327,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-falcon-freeland-mi:relationship",
+   "source_url": "https://www.falconrme.com/",
+   "ledger_value": "new",
+   "evidence_row": 19328,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-falcon-freeland-mi:website",
+   "source_url": "https://www.falconrme.com/",
+   "ledger_value": "https://www.falconrme.com/",
+   "evidence_row": 19329,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-brock-chattanooga-tn:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "82 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Brock. LLC', 2011 West Polymer Dr.)",
+   "evidence_row": 19377,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record checked by ID in data/osha_2025.csv: every quoted field (establishment_name, company_name, street_address, city, ZIP, NAICS, annual_average_employees, date_submitted) matches the record. Gate (tools/osha_match.py): same ZIP, street number and street name as the plant address and the establishment name carries the operating name; no second record at the address."
+  },
+  {
+   "claim_id": "p-brock-chattanooga-tn:name",
+   "source_url": "https://www.forconstructionpros.com/home/press-release/21520810/brock-industries-brock-industries-opens-manufacturing-facility-in-chattanooga",
+   "ledger_value": "BROCK",
+   "evidence_row": 19378,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "unreachable",
+   "note": "Cited page unreachable 2026-11-17: live URL returns HTTP 403 (Cloudflare challenge in plain fetch and headless Chromium); Wayback snapshot exists (archive.org/wayback/available) but web.archive.org reset the connection on curl and fetch_page (proxy log: ws_closed_mid_exchange, 502). Not confirmed. brock.llc (live) carries the name, '2011 West Polymer Drive Chattanooga, TN 37421' and HMA plant equipment, so the plant itself is current; the press-release clauses (new facility, 23-acre site, main manufacturing facility) could not be re-read."
+  },
+  {
+   "claim_id": "p-brock-chattanooga-tn:address",
+   "source_url": "https://www.forconstructionpros.com/home/press-release/21520810/brock-industries-brock-industries-opens-manufacturing-facility-in-chattanooga",
+   "ledger_value": "2011 West Polymer Drive, Chattanooga, TN 37421",
+   "evidence_row": 19379,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "unreachable",
+   "note": "Cited page unreachable 2026-11-17: live URL returns HTTP 403 (Cloudflare challenge in plain fetch and headless Chromium); Wayback snapshot exists (archive.org/wayback/available) but web.archive.org reset the connection on curl and fetch_page (proxy log: ws_closed_mid_exchange, 502). Not confirmed. brock.llc (live) carries the name, '2011 West Polymer Drive Chattanooga, TN 37421' and HMA plant equipment, so the plant itself is current; the press-release clauses (new facility, 23-acre site, main manufacturing facility) could not be re-read."
+  },
+  {
+   "claim_id": "p-brock-chattanooga-tn:products",
+   "source_url": "https://www.forconstructionpros.com/home/press-release/21520810/brock-industries-brock-industries-opens-manufacturing-facility-in-chattanooga",
+   "ledger_value": "hot mix asphalt plant equipment and components",
+   "evidence_row": 19380,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "unreachable",
+   "note": "Cited page unreachable 2026-11-17: live URL returns HTTP 403 (Cloudflare challenge in plain fetch and headless Chromium); Wayback snapshot exists (archive.org/wayback/available) but web.archive.org reset the connection on curl and fetch_page (proxy log: ws_closed_mid_exchange, 502). Not confirmed. brock.llc (live) carries the name, '2011 West Polymer Drive Chattanooga, TN 37421' and HMA plant equipment, so the plant itself is current; the press-release clauses (new facility, 23-acre site, main manufacturing facility) could not be re-read."
+  },
+  {
+   "claim_id": "p-brock-chattanooga-tn:products",
+   "source_url": "https://brock.llc",
+   "ledger_value": "customized equipment and manufactured parts for hot mix asphalt plants; product galleries: baghouse, cold feed bins, conveyors, drags, drums, filler silos, heating equipment",
+   "evidence_row": 19381,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "brock.llc opened 2026-11-17: both fragments on the page; the footer also gives 2011 West Polymer Drive, Chattanooga, TN 37421."
+  },
+  {
+   "claim_id": "p-brock-chattanooga-tn:products",
+   "source_url": "https://theasphaltpro.com/articles/brock-opens-new-paint-booth-and-new-main-office/",
+   "ledger_value": "HMA plant equipment and parts; main manufacturing facility on the 23-acre Chattanooga site",
+   "evidence_row": 19382,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "unreachable",
+   "note": "Cited page unreachable 2026-11-17: live URL returns HTTP 403 (Cloudflare challenge in plain fetch and headless Chromium); Wayback snapshot exists (archive.org/wayback/available) but web.archive.org reset the connection on curl and fetch_page (proxy log: ws_closed_mid_exchange, 502). Not confirmed. brock.llc (live) carries the name, '2011 West Polymer Drive Chattanooga, TN 37421' and HMA plant equipment, so the plant itself is current; the press-release clauses (new facility, 23-acre site, main manufacturing facility) could not be re-read."
+  },
+  {
+   "claim_id": "p-brock-chattanooga-tn:prospect_test",
+   "source_url": "",
+   "ledger_value": "unknown: building of asphalt plant equipment at the Chattanooga facility is stated; welding is not stated",
+   "evidence_row": 19383,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every cited page for this plant was opened 2026-11-17 and grepped for weld/fabricat: no stated welding fact at the site, so 'unknown' is right."
+  },
+  {
+   "claim_id": "p-brock-chattanooga-tn:tier",
+   "source_url": "https://brock.llc",
+   "ledger_value": "OEM",
+   "evidence_row": 19384,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-brock-chattanooga-tn:tier_secondary",
+   "source_url": "https://brock.llc",
+   "ledger_value": "Tier 2",
+   "evidence_row": 19385,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "unknown",
+   "corrected_quote": "",
+   "corrected_tag": "unknown",
+   "error_kind": "wrong tier",
+   "plants_csv_value": "unknown",
+   "note": "Tier 2 means supplying components or sub-weldments to Tier 1s. The cited home page says 'BROCK builds and supplies parts for all makes and models of asphalt plants' and is 'a leading provider of customized equipment, manufactured parts, OEM parts, and on-site services for hot mix asphalt plants'. That is replacement parts sold to plant owners (aftermarket), not supply to Tier 1s. The row's own reasoning admits 'buyer is the plant owner'. No page names an OEM or Tier 1 buyer, and even OEM buyers would make it Tier 1, not Tier 2. No secondary tier is supported. Primary OEM stands. The coordinator may prefer a blank tier_secondary to 'unknown' (apply_factcheck writes 'unknown')."
+  },
+  {
+   "claim_id": "p-brock-chattanooga-tn:relationship",
+   "source_url": "https://www.forconstructionpros.com/home/press-release/21520810/brock-industries-brock-industries-opens-manufacturing-facility-in-chattanooga",
+   "ledger_value": "new",
+   "evidence_row": 19386,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "unreachable",
+   "note": "Inferred relationship row; the rule check passes (asphalt-plant makers stay new under consultation 14, and brock.llc, live, shows HMA plant equipment). But the cited page could not be opened 2026-11-17 (forconstructionpros.com 403 Cloudflare in plain fetch and Chromium; Wayback reset). Per the brief, a row on an unreachable source is not confirmed. Re-cite to brock.llc."
+  },
+  {
+   "claim_id": "p-brock-chattanooga-tn:website",
+   "source_url": "https://brock.llc",
+   "ledger_value": "https://brock.llc",
+   "evidence_row": 19387,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-cmp-attachments-clear-lake-mn:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "47 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'CMP', 8101 State Street)",
+   "evidence_row": 19408,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record checked by ID in data/osha_2025.csv: every quoted field (establishment_name, company_name, street_address, city, ZIP, NAICS, annual_average_employees, date_submitted) matches the record. Gate (tools/osha_match.py): same ZIP, street number and street name as the plant address and the establishment name carries the operating name; no second record at the address."
+  },
+  {
+   "claim_id": "p-cmp-attachments-clear-lake-mn:name",
+   "source_url": "https://www.cmpattachments.com",
+   "ledger_value": "CMP Attachments, LLC",
+   "evidence_row": 19409,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-cmp-attachments-clear-lake-mn:address",
+   "source_url": "https://www.cmpattachments.com",
+   "ledger_value": "8101 State St., Clear Lake, MN",
+   "evidence_row": 19410,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-cmp-attachments-clear-lake-mn:products",
+   "source_url": "https://www.cmpattachments.com",
+   "ledger_value": "equipment attachments; excavator grapples",
+   "evidence_row": 19411,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-cmp-attachments-clear-lake-mn:prospect_test",
+   "source_url": "",
+   "ledger_value": "unknown: manufacturing in Clear Lake is stated; welding is not stated",
+   "evidence_row": 19412,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every cited page for this plant was opened 2026-11-17 and grepped for weld/fabricat: no stated welding fact at the site, so 'unknown' is right."
+  },
+  {
+   "claim_id": "p-cmp-attachments-clear-lake-mn:site_attribution",
+   "source_url": "https://www.cmpattachments.com",
+   "ledger_value": "Clear Lake is the manufacturing site",
+   "evidence_row": 19413,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "Clear Lake is the manufacturing site (inferred)",
+   "corrected_quote": "Our passion for American manufacturing and drive to create new products keeps us growing here in Clear Lake, MN",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "keep (site_attribution is not a plants.csv column)",
+   "note": "The home page says 'Our passion for American manufacturing and drive to create new products keeps us growing here in Clear Lake, MN' and gives 8101 State St. It does not say Clear Lake is where CMP manufactures; that is a single-site judgement tagged stated (FACT-CHECK LESSON: site judgements go in an inferred row citing the registry). The OSHA 300A record (ID 3235133, 'CMP', 8101 State Street, NAICS 333120, 47) supports the tie. Retag inferred; reasoning: 'Home page places the company in Clear Lake and talks of American manufacturing; OSHA 300A NAICS 333120 record at 8101 State Street; no other site found.' The prospect_test row's clause 'manufacturing in Clear Lake is stated' leans on the same reading (row left confirmed: welding is not stated, so unknown is right)."
+  },
+  {
+   "claim_id": "p-cmp-attachments-clear-lake-mn:tier",
+   "source_url": "https://www.cmpattachments.com",
+   "ledger_value": "OEM",
+   "evidence_row": 19414,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-cmp-attachments-clear-lake-mn:relationship",
+   "source_url": "https://www.cmpattachments.com",
+   "ledger_value": "lookalike",
+   "evidence_row": 19415,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-cmp-attachments-clear-lake-mn:lookalike_of",
+   "source_url": "https://www.cmpattachments.com",
+   "ledger_value": "Mine Rite",
+   "evidence_row": 19416,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-cmp-attachments-clear-lake-mn:website",
+   "source_url": "https://www.cmpattachments.com",
+   "ledger_value": "https://www.cmpattachments.com",
+   "evidence_row": 19417,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-meeker-belleville-pa:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "56 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Meeker Equipment Co Inc', 4381 Front Mountain Road)",
+   "evidence_row": 19423,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record checked by ID in data/osha_2025.csv: every quoted field (establishment_name, company_name, street_address, city, ZIP, NAICS, annual_average_employees, date_submitted) matches the record. Gate (tools/osha_match.py): same ZIP, street number and street name as the plant address and the establishment name carries the operating name; no second record at the address."
+  },
+  {
+   "claim_id": "p-meeker-belleville-pa:name",
+   "source_url": "https://www.meekerequipment.com",
+   "ledger_value": "Meeker Equipment Co LLC",
+   "evidence_row": 19424,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-meeker-belleville-pa:address",
+   "source_url": "https://www.meekerequipment.com",
+   "ledger_value": "4381 Front Mountain Road, Belleville, PA 17004",
+   "evidence_row": 19425,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-meeker-belleville-pa:products",
+   "source_url": "https://www.meekerequipment.com",
+   "ledger_value": "asphalt plant equipment and Infernotherm products, made at the Belleville facility; combination drum and batch plants",
+   "evidence_row": 19426,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Home page About paragraph: 'Big Valley in Belleville, PA is our home ... We invite you to visit our state of the art (65,000 square ft.) manufacturing facility where we make your asphalt plant equipment and Infernotherm products. Call us today for a factory tour.' plus the footer address 4381 Front Mountain Road, Belleville. The page itself places the factory at its Belleville home, so 'made at the Belleville facility' is stated (unlike CMP, whose page names no facility)."
+  },
+  {
+   "claim_id": "p-meeker-belleville-pa:prospect_test",
+   "source_url": "",
+   "ledger_value": "unknown: manufacturing at the Belleville facility is stated; welding is not stated",
+   "evidence_row": 19427,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every cited page for this plant was opened 2026-11-17 and grepped for weld/fabricat: no stated welding fact at the site, so 'unknown' is right."
+  },
+  {
+   "claim_id": "p-meeker-belleville-pa:tier",
+   "source_url": "https://www.meekerequipment.com",
+   "ledger_value": "OEM",
+   "evidence_row": 19428,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-meeker-belleville-pa:relationship",
+   "source_url": "https://www.meekerequipment.com",
+   "ledger_value": "new",
+   "evidence_row": 19429,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-meeker-belleville-pa:website",
+   "source_url": "https://www.meekerequipment.com",
+   "ledger_value": "https://www.meekerequipment.com",
+   "evidence_row": 19430,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-carwil-winnemucca-nv:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "37 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Carwil, LLC', 55000 Westmoreland Rd)",
+   "evidence_row": 19492,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record ID 3086986 matches every quoted field. Tagged inferred correctly: the OSHA street number is 55000 Westmoreland Rd while the company gives 5500 Westmoreland Road, so the street-number gate fails; the plants.csv headcount shows it with that limit in the text."
+  },
+  {
+   "claim_id": "p-carwil-winnemucca-nv:address",
+   "source_url": "https://www.carwil.com/contact/",
+   "ledger_value": "5500 Westmoreland Road, Winnemucca, NV 89445",
+   "evidence_row": 19493,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-carwil-winnemucca-nv:name",
+   "source_url": "https://www.carwil.com/about/",
+   "ledger_value": "CarWil",
+   "evidence_row": 19494,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-carwil-winnemucca-nv:products",
+   "source_url": "https://www.carwil.com/about/",
+   "ledger_value": "durable material handling systems; abrasion-resistant materials; custom steel construction for underground, surface and process mining",
+   "evidence_row": 19495,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-carwil-winnemucca-nv:products",
+   "source_url": "https://www.carwil.com",
+   "ledger_value": "industrial equipment and wear-parts",
+   "evidence_row": 19496,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-carwil-winnemucca-nv:prospect_test",
+   "source_url": "https://www.carwil.com/about/",
+   "ledger_value": "custom weld shop in Winnemucca (20,000 sq ft, built by 2005)",
+   "evidence_row": 19497,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-carwil-winnemucca-nv:tier",
+   "source_url": "https://www.carwil.com/about/",
+   "ledger_value": "Contract fabricator",
+   "evidence_row": 19498,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-carwil-winnemucca-nv:tier_secondary",
+   "source_url": "https://www.carwil.com",
+   "ledger_value": "OEM",
+   "evidence_row": 19499,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-carwil-winnemucca-nv:relationship",
+   "source_url": "https://www.carwil.com/about/",
+   "ledger_value": "lookalike",
+   "evidence_row": 19500,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Rule check: CarWil sells material handling systems, grizzlies and processing circuits (Schenck Process side) and also 'Mechanical Buckets' and LHD components (Mine Rite side) per its home-page product menu. Both lookalike mappings fit the written rule; Schenck Process is not a rule break. Ruling question raised (buckets for LHDs are Mine Rite's own product line)."
+  },
+  {
+   "claim_id": "p-carwil-winnemucca-nv:lookalike_of",
+   "source_url": "https://www.carwil.com/about/",
+   "ledger_value": "Schenck Process",
+   "evidence_row": 19501,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-carwil-winnemucca-nv:website",
+   "source_url": "https://www.carwil.com",
+   "ledger_value": "https://www.carwil.com",
+   "evidence_row": 19502,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-gill-rock-drill-lebanon-pa:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "903-905 Cornwall Road, Lebanon, PA 17042",
+   "evidence_row": 19508,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record ID 3280605 matches (903-905 Cornwall Road, Lebanon, 17042); address restates the record."
+  },
+  {
+   "claim_id": "p-gill-rock-drill-lebanon-pa:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "28 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Gill Rock Drill Company Inc', 903-905 Cornwall Road)",
+   "evidence_row": 19509,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record checked by ID in data/osha_2025.csv: every quoted field (establishment_name, company_name, street_address, city, ZIP, NAICS, annual_average_employees, date_submitted) matches the record. Gate (tools/osha_match.py): same ZIP, street number and street name as the plant address and the establishment name carries the operating name; no second record at the address."
+  },
+  {
+   "claim_id": "p-gill-rock-drill-lebanon-pa:name",
+   "source_url": "https://www.newswire.com/news/gill-rock-drill-company-invests-in-new-state-of-the-art-equipment-18483969",
+   "ledger_value": "Gill Rock Drill Company",
+   "evidence_row": 19510,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-gill-rock-drill-lebanon-pa:products",
+   "source_url": "https://www.newswire.com/news/gill-rock-drill-company-invests-in-new-state-of-the-art-equipment-18483969",
+   "ledger_value": "its own drilling machine (Gill Beetle Drill); drilling equipment, tools and supplies",
+   "evidence_row": 19511,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page: 'manufactures its own drilling machine, the Gill Beetle Drill' and 'manufacturer and distributor of drilling equipment, tools and supplies' (Jan 20, 2017 release); both clauses on the page."
+  },
+  {
+   "claim_id": "p-gill-rock-drill-lebanon-pa:prospect_test",
+   "source_url": "https://www.newswire.com/news/gill-rock-drill-company-invests-in-new-state-of-the-art-equipment-18483969",
+   "ledger_value": "full-service machine and weld shop",
+   "evidence_row": 19512,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "note": "The quote is on the page, but the release is dated January 20, 2017 (byline 'Lebanon, PA, January 20, 2017 (Newswire.com)'). The value shows a 2017 statement as a standing fact. The Mixer Systems row in this sample and the MICA Kaufman precedent word such facts 'as of' their date, and round 1 counted old figures shown as current (pattern g). Re-word with the date. The inferred site_attribution row 19513 also says the release is 'undated in the text captured'; reword that reasoning. Operation is current through OSHA 300A 2025 (ID 3280605).",
+   "corrected_value": "as of Jan 20, 2017 (Newswire release): full-service machine and weld shop",
+   "corrected_quote": "A full-service machine and weld shop for all manufacturing needs",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "plants_csv_value": "keep (prospect_test is not a plants.csv column)"
+  },
+  {
+   "claim_id": "p-gill-rock-drill-lebanon-pa:tier",
+   "source_url": "https://www.newswire.com/news/gill-rock-drill-company-invests-in-new-state-of-the-art-equipment-18483969",
+   "ledger_value": "OEM",
+   "evidence_row": 19514,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-gill-rock-drill-lebanon-pa:tier_secondary",
+   "source_url": "https://www.newswire.com/news/gill-rock-drill-company-invests-in-new-state-of-the-art-equipment-18483969",
+   "ledger_value": "Contract fabricator",
+   "evidence_row": 19515,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-gill-rock-drill-lebanon-pa:relationship",
+   "source_url": "https://www.newswire.com/news/gill-rock-drill-company-invests-in-new-state-of-the-art-equipment-18483969",
+   "ledger_value": "new",
+   "evidence_row": 19516,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-miller-formless-mchenry-il:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "42 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Power Curbers Companies', 1805 North Dot Street)",
+   "evidence_row": 19522,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record ID 3038805 matches every quoted field. Inferred is right: two records at 1805 Dot Street (MFS Holdings ID 3038414 and Power Curbers Companies ID 3038805), each 42 employees, NAICS 333120, so the one-candidate gate fails."
+  },
+  {
+   "claim_id": "p-miller-formless-mchenry-il:name",
+   "source_url": "https://www.powercurbers.com/contact",
+   "ledger_value": "Miller Formless",
+   "evidence_row": 19523,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Power Curbers contact page lists 'Miller Formless Address 1805 Dot Street McHenry, IL 60050'."
+  },
+  {
+   "claim_id": "p-miller-formless-mchenry-il:address",
+   "source_url": "https://www.powercurbers.com/contact",
+   "ledger_value": "1805 Dot Street, McHenry, IL 60050",
+   "evidence_row": 19524,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-miller-formless-mchenry-il:products",
+   "source_url": "https://www.powercurbers.com",
+   "ledger_value": "Miller Formless M-1000 curb and gutter machine (company product list)",
+   "evidence_row": 19525,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-miller-formless-mchenry-il:products",
+   "source_url": "https://www.heavyequipmentguide.ca/article/43658/power-curbers-expands-slipform-paving-solutions-with-miller-formless-acquisition",
+   "ledger_value": "mid-sized slipform machines (McHenry-based producer; acquired by Power Curbers Companies, finalized Aug 29 2025)",
+   "evidence_row": 19526,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Heavy Equipment Guide (JSON-LD datePublished 2025-09-09): 'a producer of mid-sized slipform machines based in McHenry, Illinois. The acquisition was finalized on August 29, 2025'."
+  },
+  {
+   "claim_id": "p-miller-formless-mchenry-il:parent_company",
+   "source_url": "https://www.heavyequipmentguide.ca/article/43658/power-curbers-expands-slipform-paving-solutions-with-miller-formless-acquisition",
+   "ledger_value": "Power Curbers Companies (acquisition finalized Aug 29 2025)",
+   "evidence_row": 19527,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-miller-formless-mchenry-il:prospect_test",
+   "source_url": "",
+   "ledger_value": "unknown: Miller Formless is a McHenry-based producer of slipform machines; welding at McHenry is not stated",
+   "evidence_row": 19528,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every cited page for this plant was opened 2026-11-17 and grepped for weld/fabricat: no stated welding fact at the site, so 'unknown' is right."
+  },
+  {
+   "claim_id": "p-miller-formless-mchenry-il:tier",
+   "source_url": "https://www.powercurbers.com",
+   "ledger_value": "OEM",
+   "evidence_row": 19529,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-miller-formless-mchenry-il:relationship",
+   "source_url": "https://www.powercurbers.com",
+   "ledger_value": "new",
+   "evidence_row": 19530,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-miller-formless-mchenry-il:website",
+   "source_url": "https://www.powercurbers.com/contact",
+   "ledger_value": "https://www.powercurbers.com",
+   "evidence_row": 19531,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-ez-drill-perry-ok:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "610 CEDAR STREET, PERRY, OK 73077",
+   "evidence_row": 19537,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record ID 2947385 matches (610 CEDAR STREET, PERRY, 73077); address restates the record."
+  },
+  {
+   "claim_id": "p-ez-drill-perry-ok:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "54 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'E-Z Drill, Inc', 610 CEDAR STREET)",
+   "evidence_row": 19538,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record checked by ID in data/osha_2025.csv: every quoted field (establishment_name, company_name, street_address, city, ZIP, NAICS, annual_average_employees, date_submitted) matches the record. Gate (tools/osha_match.py): same ZIP, street number and street name as the plant address and the establishment name carries the operating name; no second record at the address."
+  },
+  {
+   "claim_id": "p-ez-drill-perry-ok:name",
+   "source_url": "https://www.ezdrill.com",
+   "ledger_value": "E-Z Drill, Inc.",
+   "evidence_row": 19539,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-ez-drill-perry-ok:products",
+   "source_url": "https://www.ezdrill.com/about/",
+   "ledger_value": "automatic drills and dowel drilling equipment; vertical drills for utilities",
+   "evidence_row": 19540,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "About page carries both clauses ('designs and manufactures automatic drills and dowel drilling equipment'; 'We also offer vertical drills for utilities')."
+  },
+  {
+   "claim_id": "p-ez-drill-perry-ok:site_attribution",
+   "source_url": "https://www.ezdrill.com/about/",
+   "ledger_value": "machines are engineered and manufactured in Perry, Oklahoma",
+   "evidence_row": 19541,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "About page: 'We engineer and manufacture our machines in a 22,000-square-foot facility in Perry, Okla' - the site tie is stated, not a judgement. Confirmed."
+  },
+  {
+   "claim_id": "p-ez-drill-perry-ok:prospect_test",
+   "source_url": "",
+   "ledger_value": "unknown: manufacturing in Perry is stated; welding is not stated",
+   "evidence_row": 19542,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every cited page for this plant was opened 2026-11-17 and grepped for weld/fabricat: no stated welding fact at the site, so 'unknown' is right."
+  },
+  {
+   "claim_id": "p-ez-drill-perry-ok:tier",
+   "source_url": "https://www.ezdrill.com/about/",
+   "ledger_value": "OEM",
+   "evidence_row": 19543,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-ez-drill-perry-ok:relationship",
+   "source_url": "https://www.ezdrill.com/about/",
+   "ledger_value": "new",
+   "evidence_row": 19544,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-ez-drill-perry-ok:website",
+   "source_url": "https://www.ezdrill.com",
+   "ledger_value": "https://www.ezdrill.com",
+   "evidence_row": 19545,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-kafka-mosinee-wi:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "70 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Kafka Conveyors & Equipment', 213202 State HWY 107)",
+   "evidence_row": 19581,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record checked by ID in data/osha_2025.csv: every quoted field (establishment_name, company_name, street_address, city, ZIP, NAICS, annual_average_employees, date_submitted) matches the record. Gate (tools/osha_match.py): same ZIP, street number and street name as the plant address and the establishment name carries the operating name; no second record at the address."
+  },
+  {
+   "claim_id": "p-kafka-mosinee-wi:name",
+   "source_url": "https://www.kafkaconveyors.com/",
+   "ledger_value": "Kafka Conveyors & Equipment, Inc. - Mosinee",
+   "evidence_row": 19582,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-kafka-mosinee-wi:address",
+   "source_url": "https://www.kafkaconveyors.com/",
+   "ledger_value": "213202 State Highway 107, Mosinee, WI 54455",
+   "evidence_row": 19583,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-kafka-mosinee-wi:address",
+   "source_url": "https://seasonaljobs.dol.gov/jobs/H-400-24185-170347",
+   "ledger_value": "213202 State Highway 107, Mosinee, WI 54455",
+   "evidence_row": 19584,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-kafka-mosinee-wi:website",
+   "source_url": "https://www.kafkaconveyors.com/",
+   "ledger_value": "https://www.kafkaconveyors.com",
+   "evidence_row": 19585,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-kafka-mosinee-wi:products",
+   "source_url": "https://www.kafkaconveyors.com/",
+   "ledger_value": "Aggregate and mining equipment: stacking and transfer conveyors, feeders, hoppers and truck unloaders",
+   "evidence_row": 19586,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-kafka-mosinee-wi:tier",
+   "source_url": "https://www.kafkaconveyors.com/",
+   "ledger_value": "OEM",
+   "evidence_row": 19587,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-kafka-mosinee-wi:relationship",
+   "source_url": "https://www.kafkaconveyors.com/",
+   "ledger_value": "lookalike",
+   "evidence_row": 19588,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-kafka-mosinee-wi:lookalike_of",
+   "source_url": "https://www.kafkaconveyors.com/",
+   "ledger_value": "Schenck Process",
+   "evidence_row": 19589,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-laidig-mishawaka-in:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "120 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Laidig Systems, Inc.', 14535 Dragoon Trl)",
+   "evidence_row": 19594,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record checked by ID in data/osha_2025.csv: every quoted field (establishment_name, company_name, street_address, city, ZIP, NAICS, annual_average_employees, date_submitted) matches the record. Gate (tools/osha_match.py): same ZIP, street number and street name as the plant address and the establishment name carries the operating name; no second record at the address."
+  },
+  {
+   "claim_id": "p-laidig-mishawaka-in:name",
+   "source_url": "https://www.laidig.com/company/careers",
+   "ledger_value": "Laidig Systems, Inc. - Mishawaka",
+   "evidence_row": 19595,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-laidig-mishawaka-in:address",
+   "source_url": "https://www.laidig.com/contact/contact-laidig",
+   "ledger_value": "14535 Dragoon Trail, Mishawaka, IN 46544",
+   "evidence_row": 19596,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-laidig-mishawaka-in:website",
+   "source_url": "https://www.laidig.com/contact/contact-laidig",
+   "ledger_value": "https://www.laidig.com",
+   "evidence_row": 19597,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-laidig-mishawaka-in:products",
+   "source_url": "https://www.laidig.com/node/55",
+   "ledger_value": "Silo reclaim and unloading systems for bulk materials, for industries including feed & grain, biomass, power, mining & minerals and cement",
+   "evidence_row": 19598,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "node/55: 'Laidig engineers, manufactures, and installs reclaim systems' and the industry list incl. mining & minerals, cement on the page."
+  },
+  {
+   "claim_id": "p-laidig-mishawaka-in:tier",
+   "source_url": "https://www.laidig.com/node/55",
+   "ledger_value": "OEM",
+   "evidence_row": 19599,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-laidig-mishawaka-in:relationship",
+   "source_url": "https://www.laidig.com/node/55",
+   "ledger_value": "lookalike",
+   "evidence_row": 19600,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-laidig-mishawaka-in:lookalike_of",
+   "source_url": "https://www.laidig.com/node/55",
+   "ledger_value": "Schenck Process",
+   "evidence_row": 19601,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-richwood-huntington-wv:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "283 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Richwood Industries', 707 7th Street West)",
+   "evidence_row": 19655,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record ID 2911527 matches every quoted field. Inferred is right: a second record at the same address (Richwood Industries Inc - SVC Division, ID 2935856, 58, NAICS 333131) fails the one-candidate gate; plants.csv headcount is 'unknown'."
+  },
+  {
+   "claim_id": "p-richwood-huntington-wv:name",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "Richwood Industries - Huntington",
+   "evidence_row": 19656,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record ID 2911527: establishment_name 'Richwood Industries' at 707 7th Street West as quoted; the name value only restates it."
+  },
+  {
+   "claim_id": "p-richwood-huntington-wv:address",
+   "source_url": "https://www.richwood.com/about-us",
+   "ledger_value": "707 7th Street West, Huntington, WV 25704",
+   "evidence_row": 19657,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-richwood-huntington-wv:website",
+   "source_url": "https://www.richwood.com/about-us",
+   "ledger_value": "https://www.richwood.com",
+   "evidence_row": 19658,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-richwood-huntington-wv:products",
+   "source_url": "https://www.richwood.com/transfer-chutes-liners/complete-transfer-chutes/",
+   "ledger_value": "Conveyor belt cleaners and complete transfer chutes for mining and bulk material handling",
+   "evidence_row": 19659,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Chutes page carries the chutes clause; the belt-cleaner clause is on sibling row 19660 (about page) and the mining/bulk clause on 19661 (home page): the three rows together carry the full value (PPI multi-row precedent)."
+  },
+  {
+   "claim_id": "p-richwood-huntington-wv:products",
+   "source_url": "https://www.richwood.com/about-us",
+   "ledger_value": "Conveyor belt cleaners and complete transfer chutes for mining and bulk material handling",
+   "evidence_row": 19660,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "About page: 'Since inception as a belt cleaner manufacturer'. Full value carried across rows 19659-19661."
+  },
+  {
+   "claim_id": "p-richwood-huntington-wv:products",
+   "source_url": "https://www.richwood.com/",
+   "ledger_value": "Conveyor belt cleaners and complete transfer chutes for mining and bulk material handling",
+   "evidence_row": 19661,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Home page: mining and bulk material handling industries sentence. Full value carried across rows 19659-19661."
+  },
+  {
+   "claim_id": "p-richwood-huntington-wv:tier",
+   "source_url": "https://www.richwood.com/about-us",
+   "ledger_value": "OEM",
+   "evidence_row": 19662,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-richwood-huntington-wv:relationship",
+   "source_url": "https://www.richwood.com/",
+   "ledger_value": "lookalike",
+   "evidence_row": 19663,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Rule check: belt cleaners and transfer chutes for mining and bulk handling, Martin Engineering precedent; consistent."
+  },
+  {
+   "claim_id": "p-richwood-huntington-wv:lookalike_of",
+   "source_url": "https://www.richwood.com/",
+   "ledger_value": "Schenck Process",
+   "evidence_row": 19664,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-richwood-huntington-wv:welder_postings",
+   "source_url": "https://www.richwood.com/about-us",
+   "ledger_value": "none found: own site has no careers page; search (2026-11-17) found no Richwood posting",
+   "evidence_row": 19665,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "richwood.com home and about pages (visible text and raw source) carry no career, job or employment link today; 'none found' right."
+  },
+  {
+   "claim_id": "p-richwood-huntington-wv:prospect_test",
+   "source_url": "https://www.richwood.com/transfer-chutes-liners/complete-transfer-chutes/",
+   "ledger_value": "unknown: welding not shown",
+   "evidence_row": 19666,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every cited page for this plant was opened 2026-11-17 and grepped for weld/fabricat: no stated welding fact at the site, so 'unknown' is right."
+  },
+  {
+   "claim_id": "p-action-vibratory-newberg-or:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "41 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'ACTION VIBRATORY EQUIPMENT', 2800 HAYES STREET)",
+   "evidence_row": 19671,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record checked by ID in data/osha_2025.csv: every quoted field (establishment_name, company_name, street_address, city, ZIP, NAICS, annual_average_employees, date_submitted) matches the record. Gate (tools/osha_match.py): same ZIP, street number and street name as the plant address and the establishment name carries the operating name; no second record at the address."
+  },
+  {
+   "claim_id": "p-action-vibratory-newberg-or:name",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "ACTION Vibratory Equipment (Webster Action Equipment Company) - Newberg",
+   "evidence_row": 19672,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record ID 3012004: establishment 'ACTION VIBRATORY EQUIPMENT', company 'WEBSTER ACTION EQUIPMENT COMPANY INC.' as quoted; the name value restates both."
+  },
+  {
+   "claim_id": "p-action-vibratory-newberg-or:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "2800 Hayes Street, Newberg, OR 97132",
+   "evidence_row": 19673,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record ID 3012004: 2800 HAYES STREET, NEWBERG, 97132 as quoted. Webster's site footer lists 'Portland, OR' among its locations (no street); the 2025 OSHA filing (submitted 2026-02-02, 41 employees) keeps Newberg current."
+  },
+  {
+   "claim_id": "p-action-vibratory-newberg-or:parent_company",
+   "source_url": "https://www.websterchain.com/webster-industries-acquires-action-equipment-company/",
+   "ledger_value": "Webster Industries",
+   "evidence_row": 19674,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Webster release posted March 2, 2021: 'Webster Industries Acquires Action Equipment Company'."
+  },
+  {
+   "claim_id": "p-action-vibratory-newberg-or:website",
+   "source_url": "https://www.websterchain.com/webster-industries-acquires-action-equipment-company/",
+   "ledger_value": "https://www.websterchain.com",
+   "evidence_row": 19675,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-action-vibratory-newberg-or:products",
+   "source_url": "https://www.websterchain.com/products/vibrating-conveyors/",
+   "ledger_value": "Vibratory process equipment (vibrating conveyors) used in sawmills, foundries, quarries, scrap metal processing yards and recycling facilities",
+   "evidence_row": 19676,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Webster/ACTION vibrating-conveyor page opened 2026-11-17 carries the quote. The ACTION line is tied to Newberg by the OSHA establishment 'ACTION VIBRATORY EQUIPMENT' (2800 Hayes St, NAICS 333922) and the 2021 release ('will continue to brand and market itself as ACTION Vibratory Equipment', 'over 35' staff); the value names no site. Confirmed; lead: add an inferred site-tie row citing the OSHA record (Webster also lists Tiffin OH and Meridian MS). Rule applied (also Laidig existing_robots and production_type): a product fact from a brand or company page that names no plant is confirmed without a label when the brand has one production establishment on the registries and the value claims no site. PMM, Argo and Petersen carry labels from the closure finder's own convention, not because the rule requires them."
+  },
+  {
+   "claim_id": "p-action-vibratory-newberg-or:tier",
+   "source_url": "https://www.websterchain.com/webster-industries-acquires-action-equipment-company/",
+   "ledger_value": "OEM",
+   "evidence_row": 19677,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-action-vibratory-newberg-or:relationship",
+   "source_url": "https://www.websterchain.com/products/vibrating-conveyors/",
+   "ledger_value": "lookalike",
+   "evidence_row": 19678,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Rule check: ACTION vibratory conveyors and feeders are bulk-material equipment under the written rule; consistent. Webster/ACTION page opened 2026-11-17."
+  },
+  {
+   "claim_id": "p-action-vibratory-newberg-or:lookalike_of",
+   "source_url": "https://www.websterchain.com/products/vibrating-conveyors/",
+   "ledger_value": "Schenck Process",
+   "evidence_row": 19679,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-action-vibratory-newberg-or:welder_postings",
+   "source_url": "https://www.websterchain.com/webster-industries-acquires-action-equipment-company/",
+   "ledger_value": "none counted: no posting on a fetchable board (aggregator Fitter/Fabricator listing gone, HTTP 410; career.com blocked)",
+   "evidence_row": 19680,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Neither cited page names a posting; the value counts none and explains why. Consistent with the aggregator/blocked-board rules (no labor points, base record)."
+  },
+  {
+   "claim_id": "p-action-vibratory-newberg-or:prospect_test",
+   "source_url": "https://www.websterchain.com/webster-industries-acquires-action-equipment-company/",
+   "ledger_value": "unknown: welding at Newberg not shown on a fetchable page",
+   "evidence_row": 19681,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every cited page for this plant was opened 2026-11-17 and grepped for weld/fabricat: no stated welding fact at the site, so 'unknown' is right."
+  },
+  {
+   "claim_id": "p-petersen-ogden-ut:name",
+   "source_url": "https://www.petersenInc.com/mining/",
+   "ledger_value": "Petersen Inc. (Ogden)",
+   "evidence_row": 19716,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Mining page carries the quote and the footer '1527 North 2000 West Ogden, Utah 84404'."
+  },
+  {
+   "claim_id": "p-petersen-ogden-ut:address",
+   "source_url": "https://www.petersenInc.com/mining/",
+   "ledger_value": "1527 N 2000 W, Ogden, UT 84404",
+   "evidence_row": 19717,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Mining page footer: '1527 North 2000 West Ogden, Utah 84404'."
+  },
+  {
+   "claim_id": "p-petersen-ogden-ut:parent_company",
+   "source_url": "https://www.thefabricator.com/thefabricator/news/machining/precinmac-acquires-petersen-inc",
+   "ledger_value": "Precinmac (acquired Petersen Inc., April 2022)",
+   "evidence_row": 19718,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "TheFabricator, April 8, 2022: Precinmac acquired Petersen Inc.; 'locations in Ogden, Utah, and Pocatello, Idaho' also on the page."
+  },
+  {
+   "claim_id": "p-petersen-ogden-ut:website",
+   "source_url": "https://www.peterseninc.com/",
+   "ledger_value": "https://www.peterseninc.com",
+   "evidence_row": 19719,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-petersen-ogden-ut:products",
+   "source_url": "https://www.petersenInc.com/mining/",
+   "ledger_value": "company-level: mining equipment (dump beds, booms, crawler frames, dippers/buckets, water trucks) and custom mining equipment (conveying systems, hoppers, chutes, bins, bucket elevators, tanks)",
+   "evidence_row": 19720,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Mining page (title 'Mining Fabrication'): both lists on the page; value labelled company-level and the site tie sits in the inferred site_attribution row (Pocatello is a second Petersen site, OSHA ID 3006250, 20 employees)."
+  },
+  {
+   "claim_id": "p-petersen-ogden-ut:products",
+   "source_url": "https://www.peterseninc.com/",
+   "ledger_value": "company-level: also nuclear, petrochemical and aerospace fabrication",
+   "evidence_row": 19721,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-petersen-ogden-ut:tier",
+   "source_url": "https://www.peterseninc.com/",
+   "ledger_value": "Contract fabricator",
+   "evidence_row": 19722,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-petersen-ogden-ut:tier_secondary",
+   "source_url": "https://www.petersenInc.com/mining/",
+   "ledger_value": "Tier 1",
+   "evidence_row": 19723,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-petersen-ogden-ut:relationship",
+   "source_url": "https://www.petersenInc.com/mining/",
+   "ledger_value": "lookalike",
+   "evidence_row": 19724,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-petersen-ogden-ut:lookalike_of",
+   "source_url": "https://www.petersenInc.com/mining/",
+   "ledger_value": "Mine Rite",
+   "evidence_row": 19725,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-petersen-ogden-ut:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "459 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Petersen Inc.', 1527 N. 2000 W.)",
+   "evidence_row": 19728,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record checked by ID in data/osha_2025.csv: every quoted field (establishment_name, company_name, street_address, city, ZIP, NAICS, annual_average_employees, date_submitted) matches the record. Gate (tools/osha_match.py): same ZIP, street number and street name as the plant address and the establishment name carries the operating name; no second record at the address."
+  },
+  {
+   "claim_id": "p-american-bin-burlington-wi:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=221%20Front%20St%2C%20Burlington%2C%20WI%2053105&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "42.667234",
+   "evidence_row": 19750,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-american-bin-burlington-wi:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=221%20Front%20St%2C%20Burlington%2C%20WI%2053105&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-88.279603",
+   "evidence_row": 19751,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-american-bin-burlington-wi:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=221%20Front%20St%2C%20Burlington%2C%20WI%2053105&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "55101",
+   "evidence_row": 19752,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-american-bin-burlington-wi:name",
+   "source_url": "https://www.iaap-aggregates.org/uploads/1/1/0/0/110027599/iaap_associate_members_06-18-2026.pdf",
+   "ledger_value": "American Bin & Conveyor, LLC",
+   "evidence_row": 19753,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-american-bin-burlington-wi:parent_company",
+   "source_url": "https://www.iaap-aggregates.org/uploads/1/1/0/0/110027599/iaap_associate_members_06-18-2026.pdf",
+   "ledger_value": "American Bin & Conveyor, LLC",
+   "evidence_row": 19754,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "note": "The value names American Bin & Conveyor as its own parent, tagged stated, on an IAAP member list that shows only the name 'AMERICAN BIN & CONVEYOR, LLC'. That is a judgement, and the company's own page contradicts it. americanconveyor.com/company (already cited on this plant's tier and prospect_test rows; opened 2026-11-17) says 'In 2008, Turn-Key Processing Solutions (TPS) acquired American Bin & Conveyor.' This agrees with the ledger's p-phoenix-glasgow-mo parent row (TPS group). Separately, the OSHA 300A record on this plant's headcount row (ID 2902753) files under company_name 'AEP Manufacturing', as does Phoenix Manufacturing, Glasgow MO (ID 2902742). AEP is probably a TPS filing entity, but no page says so (ruling question). Correct to the TPS value from the company page (stated). If profiled, the scale half for a multi-plant parent becomes arguable (TPS also owns Phoenix Glasgow).",
+   "corrected_value": "Turn-Key Processing Solutions (TPS) (acquired American Bin & Conveyor in 2008)",
+   "corrected_quote": "In 2008, Turn-Key Processing Solutions (TPS) acquired American Bin & Conveyor.",
+   "corrected_tag": "stated",
+   "corrected_source_url": "https://www.americanconveyor.com/company",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Turn-Key Processing Solutions (TPS) (acquired American Bin & Conveyor in 2008)"
+  },
+  {
+   "claim_id": "p-american-bin-burlington-wi:address",
+   "source_url": "https://www.americanconveyor.com/",
+   "ledger_value": "221 Front St, Burlington, WI 53105",
+   "evidence_row": 19755,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-american-bin-burlington-wi:address",
+   "source_url": "https://www.iaap-aggregates.org/uploads/1/1/0/0/110027599/iaap_associate_members_06-18-2026.pdf",
+   "ledger_value": "221 Front St, Burlington, WI 53105",
+   "evidence_row": 19756,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-american-bin-burlington-wi:website",
+   "source_url": "https://www.iaap-aggregates.org/uploads/1/1/0/0/110027599/iaap_associate_members_06-18-2026.pdf",
+   "ledger_value": "https://www.americanconveyor.com",
+   "evidence_row": 19757,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-american-bin-burlington-wi:products",
+   "source_url": "https://www.iaap-aggregates.org/uploads/1/1/0/0/110027599/iaap_associate_members_06-18-2026.pdf",
+   "ledger_value": "complete aggregate crushing and screening plants",
+   "evidence_row": 19758,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-american-bin-burlington-wi:products",
+   "source_url": "https://www.americanconveyor.com/",
+   "ledger_value": "bins, hoppers, silos and sumps",
+   "evidence_row": 19759,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-american-bin-burlington-wi:products",
+   "source_url": "https://www.iaap-aggregates.org/uploads/1/1/0/0/110027599/iaap_associate_members_06-18-2026.pdf#x2",
+   "ledger_value": "conveyors, stackers, screen towers and chassis",
+   "evidence_row": 19760,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-american-bin-burlington-wi:products",
+   "source_url": "https://www.americanconveyor.com/products/structures",
+   "ledger_value": "custom designed crushing and screening equipment structures",
+   "evidence_row": 19761,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-american-bin-burlington-wi:tier",
+   "source_url": "https://www.americanconveyor.com/company",
+   "ledger_value": "OEM",
+   "evidence_row": 19762,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-american-bin-burlington-wi:relationship",
+   "source_url": "https://www.americanconveyor.com/products/structures",
+   "ledger_value": "lookalike",
+   "evidence_row": 19763,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-american-bin-burlington-wi:lookalike_of",
+   "source_url": "https://www.americanconveyor.com/products/structures",
+   "ledger_value": "Schenck Process",
+   "evidence_row": 19764,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-american-bin-burlington-wi:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "24 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'American Bin and Conveyor LLC', 221 Front Street)",
+   "evidence_row": 19765,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record ID 2902753 matches every quoted field (company_name 'AEP Manufacturing'); gate passes on establishment name, ZIP, number and street. Note: the same company_name files Phoenix Manufacturing, Glasgow MO (ID 2902742); see the parent_company correction."
+  },
+  {
+   "claim_id": "p-american-bin-burlington-wi:address",
+   "source_url": "https://www.americanconveyor.com/company",
+   "ledger_value": "manufacturing facility in Burlington",
+   "evidence_row": 19769,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1105%20NW%20Lower%20Silver%20Rd%2C%20Topeka%2C%20KS%2066608&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "39.080963",
+   "evidence_row": 19770,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1105%20NW%20Lower%20Silver%20Rd%2C%20Topeka%2C%20KS%2066608&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-95.678576",
+   "evidence_row": 19771,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1105%20NW%20Lower%20Silver%20Rd%2C%20Topeka%2C%20KS%2066608&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "20177",
+   "evidence_row": 19772,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:name",
+   "source_url": "https://www.customdredgeworks.com/",
+   "ledger_value": "Custom Dredge Works",
+   "evidence_row": 19773,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:parent_company",
+   "source_url": "https://www.customdredgeworks.com/about-cdw/",
+   "ledger_value": "established 2001 as a MidWestern Metals subsidiary",
+   "evidence_row": 19774,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:parent_company",
+   "source_url": "https://www.customdredgeworks.com/careers/",
+   "ledger_value": "Custom Dredge Works (family owned)",
+   "evidence_row": 19775,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:address",
+   "source_url": "https://www.customdredgeworks.com/contact-us/",
+   "ledger_value": "1105 NW Lower Silver Rd, Topeka, KS 66608",
+   "evidence_row": 19776,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Contact page: 'Office Address 1105 NW Lower Silver Rd. Topeka, KS 66608'."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:address",
+   "source_url": "https://www.customdredgeworks.com/",
+   "ledger_value": "manufacturing complex in northern Topeka",
+   "evidence_row": 19777,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "About/home text: 'Housed within our expansive 36-acre industrial office and manufacturing complex in northern Topeka, Kansas' on the page."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:website",
+   "source_url": "https://www.customdredgeworks.com/",
+   "ledger_value": "https://www.customdredgeworks.com",
+   "evidence_row": 19779,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:products",
+   "source_url": "https://www.customdredgeworks.com/",
+   "ledger_value": "aggregate mining dredges",
+   "evidence_row": 19780,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Home page product menu carries 'Cutter Suction Dredges' and the page says 'the Best Aggregate Mining Dredge in the world'; value supported."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:products",
+   "source_url": "https://www.customdredgeworks.com/#x2",
+   "ledger_value": "dredge components: dewatering bucket wheels",
+   "evidence_row": 19781,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:products",
+   "source_url": "https://www.customdredgeworks.com/#x3",
+   "ledger_value": "dredge components: booster pumps",
+   "evidence_row": 19782,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:products",
+   "source_url": "https://www.customdredgeworks.com/#x4",
+   "ledger_value": "heavy-duty steel dredge construction",
+   "evidence_row": 19783,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:tier",
+   "source_url": "https://www.customdredgeworks.com/",
+   "ledger_value": "OEM",
+   "evidence_row": 19784,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:relationship",
+   "source_url": "https://www.customdredgeworks.com/",
+   "ledger_value": "new",
+   "evidence_row": 19785,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Rule check: dredge OEMs stay new under consultation 14 (VMI, Ellicott, DSC precedent); booster pumps and dewatering bucket wheels are not on the rule's bulk-material list. Consistent."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:welder_postings",
+   "source_url": "https://www.customdredgeworks.com/job/custom-dredge-works-topeka-ks-55-welder-fabricator/",
+   "ledger_value": "Welder/Fabricator, Topeka, MIG and flux core",
+   "evidence_row": 19787,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Own-board posting page live 2026-11-17 with an 'Apply for job' form (raw source); 'MIG and Flux Core' required; location Topeka in the WP Job Manager feed."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:welder_postings",
+   "source_url": "https://www.customdredgeworks.com/job/custom-dredge-works-topeka-ks-55-welder-fabricator/#x2",
+   "ledger_value": "Welder/Fabricator datePosted 2025-09-24",
+   "evidence_row": 19788,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2025-09-24 in the raw source as quoted."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:welder_postings",
+   "source_url": "https://www.customdredgeworks.com/job/custom-dredge-works-topeka-ks-55-welder-fabricator/#x3",
+   "ledger_value": "Welder/Fabricator live with an application form",
+   "evidence_row": 19789,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "'Apply for job' button and application form in the raw source of the live page."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:welder_postings",
+   "source_url": "https://www.customdredgeworks.com/job/experienced-welder-level-2-4/",
+   "ledger_value": "Experienced Welder Level 2-4, Topeka; MIG, TIG, arc and spot",
+   "evidence_row": 19790,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Live page with 'Apply for job' form (raw source); MIG, TIG, arc and spot named as quoted."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:welder_postings",
+   "source_url": "https://www.customdredgeworks.com/job/experienced-welder-level-2-4/#x2",
+   "ledger_value": "Experienced Welder Level 2-4 datePosted 2025-09-24",
+   "evidence_row": 19791,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2025-09-24 in the raw source."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:welder_postings",
+   "source_url": "https://www.customdredgeworks.com/job/job-description-level-1-welder/",
+   "ledger_value": "Level 1 Welder (trainee), Topeka",
+   "evidence_row": 19792,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Live page with 'Apply for job' form (raw source); trainee assists experienced welders with 'MIG, TIG, arc, and spot welding' (trainees count under the session-2 labor rule)."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:welder_postings",
+   "source_url": "https://www.customdredgeworks.com/job/job-description-level-1-welder/#x2",
+   "ledger_value": "Level 1 Welder datePosted 2025-09-24",
+   "evidence_row": 19793,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2025-09-24 in the raw source."
+  },
+  {
+   "claim_id": "p-custom-dredge-works-topeka-ks:welder_postings",
+   "source_url": "https://www.customdredgeworks.com/jm-ajax/get_listings/",
+   "ledger_value": "counting",
+   "evidence_row": 19794,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "WP Job Manager feed re-read 2026-11-17 (curl): nine listings, all dated 2025-09-24, Topeka KS / Topeka, Kansas: Professional Engineer, Lead Industrial Painter, Welder/Fabricator, Drafter/Designer, Level 1 Welder, Electrical Controls Designer, Lead Hydraulics Technician, Experienced Welder Level 2-4, CNC Machinist. Three counted welder postings open at once; one shared date = standing ads, never 60+ days; the plants field says exactly that. Shared-city rule met: the about page describes one 36-acre Topeka campus ('That entire industrial complex is now our Headquarters and Home')."
+  },
+  {
+   "claim_id": "p-aggregate-processing-brooks-ky:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=3201%20Coral%20Ridge%20Rd%2C%20Brooks%2C%20KY%2040109&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "38.057852",
+   "evidence_row": 19809,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-aggregate-processing-brooks-ky:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=3201%20Coral%20Ridge%20Rd%2C%20Brooks%2C%20KY%2040109&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-85.710538",
+   "evidence_row": 19810,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-aggregate-processing-brooks-ky:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=3201%20Coral%20Ridge%20Rd%2C%20Brooks%2C%20KY%2040109&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "21029",
+   "evidence_row": 19811,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-aggregate-processing-brooks-ky:name",
+   "source_url": "https://sosbes.sos.ky.gov/BusSearchNProfile/Profile.aspx/?ctr=645895",
+   "ledger_value": "Aggregate Processing, Inc.",
+   "evidence_row": 19812,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-aggregate-processing-brooks-ky:parent_company",
+   "source_url": "https://sosbes.sos.ky.gov/BusSearchNProfile/Profile.aspx/?ctr=645895",
+   "ledger_value": "Aggregate Processing, Inc. (Kentucky corporation)",
+   "evidence_row": 19813,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "KY SOS: 'Company Type KCO - Kentucky Corporation'; a self-named parent from the company's own registry entry is confirmed by precedent (Metalcraft, Klein)."
+  },
+  {
+   "claim_id": "p-aggregate-processing-brooks-ky:address",
+   "source_url": "https://sosbes.sos.ky.gov/BusSearchNProfile/Profile.aspx/?ctr=645895",
+   "ledger_value": "3201 Coral Ridge Rd, Brooks, KY 40109",
+   "evidence_row": 19814,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-aggregate-processing-brooks-ky:address",
+   "source_url": "https://web.indmaa.org/Processing-Systems-Mobile-Stationary-Portable/Aggregate-Processing,-Inc-683",
+   "ledger_value": "3201 Coral Ridge Rd, Brooks, KY 40109",
+   "evidence_row": 19815,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-aggregate-processing-brooks-ky:products",
+   "source_url": "https://web.indmaa.org/Processing-Systems-Mobile-Stationary-Portable",
+   "ledger_value": "turnkey aggregate processing systems",
+   "evidence_row": 19816,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "IMAA category page carries the API entry (3201 Coral Ridge Road, Brooks) with the quoted sentence."
+  },
+  {
+   "claim_id": "p-aggregate-processing-brooks-ky:products",
+   "source_url": "https://web.indmaa.org/Processing-Systems-Mobile-Stationary-Portable/Aggregate-Processing,-Inc-683",
+   "ledger_value": "50,000 sq ft facility with fabrication and machine shop",
+   "evidence_row": 19817,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "API's IMAA member page: 'We have a 50,000 Square Foot Facility with Fabrication and Machine Shop Capabilities.'"
+  },
+  {
+   "claim_id": "p-aggregate-processing-brooks-ky:tier",
+   "source_url": "https://web.indmaa.org/Processing-Systems-Mobile-Stationary-Portable",
+   "ledger_value": "OEM",
+   "evidence_row": 19818,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-aggregate-processing-brooks-ky:relationship",
+   "source_url": "https://web.indmaa.org/Processing-Systems-Mobile-Stationary-Portable",
+   "ledger_value": "new",
+   "evidence_row": 19819,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Rule check: the IMAA entry says API is a 'Turn Key Systems Provider' that 'teamed up with some of the industries top equipment manufacturers' and names no crusher, screen, conveyor or feeder of its own; no named bulk-material product, so new is consistent with consultation 14 (plant builders stay new). Boundary noted."
+  },
+  {
+   "claim_id": "p-aggregate-processing-brooks-ky:prospect_test",
+   "source_url": "https://web.indmaa.org/Processing-Systems-Mobile-Stationary-Portable/Aggregate-Processing,-Inc-683",
+   "ledger_value": "unknown (fabrication stated; welding not shown)",
+   "evidence_row": 19820,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every cited page for this plant was opened 2026-11-17 and grepped for weld/fabricat: no stated welding fact at the site, so 'unknown' is right."
+  },
+  {
+   "claim_id": "p-aggregate-processing-brooks-ky:prospect_test",
+   "source_url": "https://sosbes.sos.ky.gov/BusSearchNProfile/Profile.aspx/?ctr=645895",
+   "ledger_value": "active corporation (last annual report 2026-03-04)",
+   "evidence_row": 19821,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "KY SOS profile opened 2026-11-17: 'Status A - Active' and 'Last Annual Report 3/4/2026'. (The same page lists 'Number of Employees Small (0-19)'.)"
+  },
+  {
+   "claim_id": "p-argo-brookfield-wi:name",
+   "source_url": "https://argoind.com/",
+   "ledger_value": "Argo Industries (Brookfield)",
+   "evidence_row": 19823,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-argo-brookfield-wi:address",
+   "source_url": "https://argoind.com/",
+   "ledger_value": "4430 N. 127th Street, Brookfield, WI 53005",
+   "evidence_row": 19824,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-argo-brookfield-wi:website",
+   "source_url": "https://argoind.com/",
+   "ledger_value": "https://argoind.com",
+   "evidence_row": 19825,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-argo-brookfield-wi:products",
+   "source_url": "https://argoind.com/product-lines/crushing-screening-systems/",
+   "ledger_value": "company-level: crushing and screening systems for aggregate producers, recyclers and mining operations",
+   "evidence_row": 19826,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-argo-brookfield-wi:products",
+   "source_url": "https://argoind.com/product-lines/ras-rap-and-cold-feed-bins/",
+   "ledger_value": "company-level: RAS (recycled asphalt shingles), RAP (reclaimed asphalt pavement) and cold-feed bins",
+   "evidence_row": 19827,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-argo-brookfield-wi:products",
+   "source_url": "https://argoind.com/capabilities/fabrication/",
+   "ledger_value": "company-level: custom hoppers, chutes, conveyors and structural assemblies for the aggregate and mining industry",
+   "evidence_row": 19828,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-argo-brookfield-wi:tier",
+   "source_url": "https://argoind.com/about/",
+   "ledger_value": "OEM",
+   "evidence_row": 19829,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-argo-brookfield-wi:tier_secondary",
+   "source_url": "https://argoind.com/capabilities/fabrication/",
+   "ledger_value": "Contract fabricator",
+   "evidence_row": 19830,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-argo-brookfield-wi:relationship",
+   "source_url": "https://argoind.com/product-lines/crushing-screening-systems/",
+   "ledger_value": "lookalike",
+   "evidence_row": 19831,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-argo-brookfield-wi:lookalike_of",
+   "source_url": "https://argoind.com/capabilities/fabrication/",
+   "ledger_value": "Schenck Process",
+   "evidence_row": 19832,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-argo-brookfield-wi:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "23 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Argo Industries Inc', 4430 N 127th Street)",
+   "evidence_row": 19836,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record checked by ID in data/osha_2025.csv: every quoted field (establishment_name, company_name, street_address, city, ZIP, NAICS, annual_average_employees, date_submitted) matches the record. Gate (tools/osha_match.py): same ZIP, street number and street name as the plant address and the establishment name carries the operating name; no second record at the address."
+  },
+  {
+   "claim_id": "p-precision-machine-eugene-or:name",
+   "source_url": "https://www.pr.com/press-release/859879",
+   "ledger_value": "Precision Machine & Manufacturing, Inc. (PMM)",
+   "evidence_row": 19841,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-precision-machine-eugene-or:address",
+   "source_url": "https://premach.com/",
+   "ledger_value": "1290 S. Bertelsen Road, Eugene, OR 97402",
+   "evidence_row": 19842,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-precision-machine-eugene-or:website",
+   "source_url": "https://premach.com/",
+   "ledger_value": "https://premach.com",
+   "evidence_row": 19843,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-precision-machine-eugene-or:products",
+   "source_url": "https://premach.com/heavy-duty-screw-conveyors-augers/",
+   "ledger_value": "company-level: heavy-duty screw conveyors for cement, mining and aggregates",
+   "evidence_row": 19844,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-precision-machine-eugene-or:products",
+   "source_url": "https://premach.com/pmm-target-industries/heavy-metal-mineral-processing/",
+   "ledger_value": "company-level: rotary valve airlocks for metal and mineral processing",
+   "evidence_row": 19845,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-precision-machine-eugene-or:products",
+   "source_url": "https://www.pr.com/press-release/859879",
+   "ledger_value": "company-level: rotary feeders, rotary valves and screw conveyors for bulk material handling",
+   "evidence_row": 19846,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-precision-machine-eugene-or:tier",
+   "source_url": "https://www.pr.com/press-release/859879",
+   "ledger_value": "OEM",
+   "evidence_row": 19847,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-precision-machine-eugene-or:relationship",
+   "source_url": "https://www.pr.com/press-release/859879",
+   "ledger_value": "lookalike",
+   "evidence_row": 19848,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-precision-machine-eugene-or:lookalike_of",
+   "source_url": "https://premach.com/pmm-target-industries/heavy-metal-mineral-processing/",
+   "ledger_value": "Schenck Process",
+   "evidence_row": 19849,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-precision-machine-eugene-or:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "40 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Precision Machine & Manufacturing', 1290 S. Bertelsen Rd)",
+   "evidence_row": 19852,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OSHA record ID 2971933 matches every quoted field. A second record at the same address (ID 2973536, 'Precision Machine & Mfg. Inc.', 1290 S BERTELSEN ROAD, 40, NAICS 332313) is the same company filed twice with the same count. Both pass the brief's stated gates (ZIP, street number, street name, operating name), so there is no ambiguity in value or name. This differs from Richwood (a second division with a different count) and Miller (neither record carries the operating name), which are rightly inferred. Confirmed as stated."
+  },
+  {
+   "claim_id": "p-stinger-rose-creek-mn:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=61441%20170th%20Street%2C%20Rose%20Creek%2C%20MN%2055970&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "43.601519",
+   "evidence_row": 19938,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-stinger-rose-creek-mn:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=61441%20170th%20Street%2C%20Rose%20Creek%2C%20MN%2055970&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-92.820198",
+   "evidence_row": 19939,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-stinger-rose-creek-mn:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=61441%20170th%20Street%2C%20Rose%20Creek%2C%20MN%2055970&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "27099",
+   "evidence_row": 19940,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-stinger-rose-creek-mn:name",
+   "source_url": "https://stingerattachments.com/",
+   "ledger_value": "Stinger Attachments",
+   "evidence_row": 19941,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-stinger-rose-creek-mn:address",
+   "source_url": "https://stingerattachments.com/contact/",
+   "ledger_value": "61441 170th Street, Rose Creek, MN 55970",
+   "evidence_row": 19942,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-stinger-rose-creek-mn:website",
+   "source_url": "https://stingerattachments.com/",
+   "ledger_value": "https://stingerattachments.com",
+   "evidence_row": 19944,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-stinger-rose-creek-mn:products",
+   "source_url": "https://stingerattachments.com/#x2",
+   "ledger_value": "skid steer rock buckets, material buckets",
+   "evidence_row": 19945,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-stinger-rose-creek-mn:prospect_test",
+   "source_url": "https://stingerattachments.com/about/",
+   "ledger_value": "unknown (manufacturing at the site; welding not shown)",
+   "evidence_row": 19947,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every cited page for this plant was opened 2026-11-17 and grepped for weld/fabricat: no stated welding fact at the site, so 'unknown' is right."
+  },
+  {
+   "claim_id": "p-stinger-rose-creek-mn:tier",
+   "source_url": "https://stingerattachments.com/",
+   "ledger_value": "OEM",
+   "evidence_row": 19948,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-stinger-rose-creek-mn:relationship",
+   "source_url": "https://stingerattachments.com/",
+   "ledger_value": "lookalike",
+   "evidence_row": 19949,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-stinger-rose-creek-mn:lookalike_of",
+   "source_url": "https://stingerattachments.com/",
+   "ledger_value": "Mine Rite",
+   "evidence_row": 19950,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-top-dog-detroit-lakes-mn:name",
+   "source_url": "https://www.topdogattachments.com/",
+   "ledger_value": "Top Dog Attachments",
+   "evidence_row": 19955,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-top-dog-detroit-lakes-mn:parent_company",
+   "source_url": "https://www.topdogattachments.com/about-us",
+   "ledger_value": "CJ Inc. (formerly CJJ Inc.)",
+   "evidence_row": 19956,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-top-dog-detroit-lakes-mn:address",
+   "source_url": "https://www.topdogattachments.com/about-us",
+   "ledger_value": "909 Cormorant Avenue, Detroit Lakes, MN 56501",
+   "evidence_row": 19957,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-top-dog-detroit-lakes-mn:website",
+   "source_url": "https://www.topdogattachments.com/",
+   "ledger_value": "https://www.topdogattachments.com",
+   "evidence_row": 19959,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-top-dog-detroit-lakes-mn:products",
+   "source_url": "https://www.topdogattachments.com/#x2",
+   "ledger_value": "skid steer and tractor attachments",
+   "evidence_row": 19960,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-top-dog-detroit-lakes-mn:products",
+   "source_url": "https://www.topdogattachments.com/about-us",
+   "ledger_value": "over 50 attachments",
+   "evidence_row": 19961,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-top-dog-detroit-lakes-mn:products",
+   "source_url": "https://www.topdogattachments.com/#x3",
+   "ledger_value": "of heavy duty A50 steel",
+   "evidence_row": 19962,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-top-dog-detroit-lakes-mn:prospect_test",
+   "source_url": "https://www.topdogattachments.com/about-us",
+   "ledger_value": "unknown (manufacturing at the site; welding not shown)",
+   "evidence_row": 19964,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every cited page for this plant was opened 2026-11-17 and grepped for weld/fabricat: no stated welding fact at the site, so 'unknown' is right."
+  },
+  {
+   "claim_id": "p-top-dog-detroit-lakes-mn:tier",
+   "source_url": "https://www.topdogattachments.com/",
+   "ledger_value": "OEM",
+   "evidence_row": 19965,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-top-dog-detroit-lakes-mn:relationship",
+   "source_url": "https://www.topdogattachments.com/",
+   "ledger_value": "lookalike",
+   "evidence_row": 19966,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-top-dog-detroit-lakes-mn:lookalike_of",
+   "source_url": "https://www.topdogattachments.com/",
+   "ledger_value": "Mine Rite",
+   "evidence_row": 19967,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-hammersmith-horton-ks:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=401%20Central%20Ave%2C%20Horton%2C%20KS%2066439&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "39.655808",
+   "evidence_row": 19984,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-hammersmith-horton-ks:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=401%20Central%20Ave%2C%20Horton%2C%20KS%2066439&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-95.527536",
+   "evidence_row": 19985,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-hammersmith-horton-ks:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=401%20Central%20Ave%2C%20Horton%2C%20KS%2066439&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "20013",
+   "evidence_row": 19986,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-hammersmith-horton-ks:name",
+   "source_url": "https://www.holtonrecorder.net/node/8222",
+   "ledger_value": "Hammersmith Manufacturing - Horton facility",
+   "evidence_row": 19987,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Holton Recorder, Wed 08/09/2023: 'Horton-based Hammersmith Manufacturing' and 'sharing some work with the Horton facility' both on the page."
+  },
+  {
+   "claim_id": "p-hammersmith-horton-ks:parent_company",
+   "source_url": "https://www.holtonrecorder.net/node/8222#x2",
+   "ledger_value": "Hammersmith Manufacturing (Vail Products is its subsidiary)",
+   "evidence_row": 19988,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-hammersmith-horton-ks:address",
+   "source_url": "https://www.vailproducts.com/contact",
+   "ledger_value": "401 Central Ave, Horton, KS 66439",
+   "evidence_row": 19989,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-hammersmith-horton-ks:website",
+   "source_url": "https://www.vailproducts.com/contact",
+   "ledger_value": "https://www.vailproducts.com",
+   "evidence_row": 19991,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-hammersmith-horton-ks:products",
+   "source_url": "https://www.holtonrecorder.net/node/8222#x3",
+   "ledger_value": "shares some Vail severe-duty attachment work with Holton",
+   "evidence_row": 19992,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Holton Recorder, Aug 9, 2023: 'the Holton facility has focused mainly on the \"severe-duty\" implements marketed under the Vail brand while still sharing some work with the Horton facility'. The value reads the shared work as that Vail severe-duty work, which is the sentence's own subject; the plants field's 'land management' is also on the page. Confirmed. Limit: the article does not say which tasks Horton does. The in-definition tie for Horton also rests on 'we started our Horton facility from ground zero' and the 65-70% attachment line (company-level, labelled)."
+  },
+  {
+   "claim_id": "p-hammersmith-horton-ks:products",
+   "source_url": "https://www.holtonrecorder.net/node/8222#x4",
+   "ledger_value": "company-level: attachment line about 65-70% of Hammersmith output",
+   "evidence_row": 19993,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-hammersmith-horton-ks:prospect_test",
+   "source_url": "https://www.holtonrecorder.net/node/8222",
+   "ledger_value": "unknown (manufacturing at the site; welding not shown)",
+   "evidence_row": 19994,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every cited page for this plant was opened 2026-11-17 and grepped for weld/fabricat: no stated welding fact at the site, so 'unknown' is right."
+  },
+  {
+   "claim_id": "p-hammersmith-horton-ks:tier",
+   "source_url": "https://www.holtonrecorder.net/node/8222",
+   "ledger_value": "OEM",
+   "evidence_row": 19995,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-hammersmith-horton-ks:relationship",
+   "source_url": "https://www.holtonrecorder.net/node/8222",
+   "ledger_value": "lookalike",
+   "evidence_row": 19996,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-hammersmith-horton-ks:lookalike_of",
+   "source_url": "https://www.holtonrecorder.net/node/8222",
+   "ledger_value": "Mine Rite",
+   "evidence_row": 19997,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-aim-grove-city-oh:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1720%20Feddern%20Avenue%2C%20Grove%20City%2C%20OH%2043123&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "39.913208",
+   "evidence_row": 20034,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-aim-grove-city-oh:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1720%20Feddern%20Avenue%2C%20Grove%20City%2C%20OH%2043123&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-83.041908",
+   "evidence_row": 20035,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-aim-grove-city-oh:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1720%20Feddern%20Avenue%2C%20Grove%20City%2C%20OH%2043123&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "39049",
+   "evidence_row": 20036,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-aim-grove-city-oh:name",
+   "source_url": "https://www.aimattachments.com/about-us",
+   "ledger_value": "AIM Attachments",
+   "evidence_row": 20037,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-aim-grove-city-oh:address",
+   "source_url": "https://www.aimattachments.com/contact",
+   "ledger_value": "1720 Feddern Avenue, Grove City, OH 43123",
+   "evidence_row": 20038,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-aim-grove-city-oh:website",
+   "source_url": "https://www.aimattachments.com/about-us",
+   "ledger_value": "https://www.aimattachments.com",
+   "evidence_row": 20040,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-aim-grove-city-oh:products",
+   "source_url": "https://www.aimattachments.com/contact#x2",
+   "ledger_value": "buckets",
+   "evidence_row": 20041,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-aim-grove-city-oh:products",
+   "source_url": "https://www.aimattachments.com/contact#x3",
+   "ledger_value": "thumbs",
+   "evidence_row": 20042,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-aim-grove-city-oh:products",
+   "source_url": "https://www.aimattachments.com/contact#x4",
+   "ledger_value": "couplers",
+   "evidence_row": 20043,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-aim-grove-city-oh:products",
+   "source_url": "https://www.aimattachments.com/contact#x5",
+   "ledger_value": "grapples",
+   "evidence_row": 20044,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-aim-grove-city-oh:products",
+   "source_url": "https://www.aimattachments.com/contact#x6",
+   "ledger_value": "rakes",
+   "evidence_row": 20045,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-aim-grove-city-oh:products",
+   "source_url": "https://www.aimattachments.com/contact#x7",
+   "ledger_value": "forks",
+   "evidence_row": 20046,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-aim-grove-city-oh:products",
+   "source_url": "https://www.aimattachments.com/contact#x8",
+   "ledger_value": "rippers",
+   "evidence_row": 20047,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-aim-grove-city-oh:prospect_test",
+   "source_url": "https://www.aimattachments.com/about-us",
+   "ledger_value": "unknown (manufacturing at the site; welding not shown)",
+   "evidence_row": 20048,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every cited page for this plant was opened 2026-11-17 and grepped for weld/fabricat: no stated welding fact at the site, so 'unknown' is right."
+  },
+  {
+   "claim_id": "p-aim-grove-city-oh:tier",
+   "source_url": "https://www.aimattachments.com/about-us",
+   "ledger_value": "OEM",
+   "evidence_row": 20049,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-aim-grove-city-oh:relationship",
+   "source_url": "https://www.aimattachments.com/about-us",
+   "ledger_value": "lookalike",
+   "evidence_row": 20050,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-aim-grove-city-oh:lookalike_of",
+   "source_url": "https://www.aimattachments.com/about-us",
+   "ledger_value": "Mine Rite",
+   "evidence_row": 20051,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-d-e-moncks-corner-sc:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2936%20S%20Live%20Oak%20Dr%2C%20Moncks%20Corner%2C%20SC%2029461&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "33.092117",
+   "evidence_row": 20053,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-d-e-moncks-corner-sc:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2936%20S%20Live%20Oak%20Dr%2C%20Moncks%20Corner%2C%20SC%2029461&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-80.079406",
+   "evidence_row": 20054,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-d-e-moncks-corner-sc:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2936%20S%20Live%20Oak%20Dr%2C%20Moncks%20Corner%2C%20SC%2029461&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "45015",
+   "evidence_row": 20055,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Page opened 2026-11-17; matched address as quoted, and the value equals the page's coordinates/county FIPS (6 decimals) and plants.csv."
+  },
+  {
+   "claim_id": "p-d-e-moncks-corner-sc:name",
+   "source_url": "https://demfg.com/about-us/",
+   "ledger_value": "D&E Manufacturing, Inc.",
+   "evidence_row": 20056,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-d-e-moncks-corner-sc:address",
+   "source_url": "https://demfg.com/contact-us/",
+   "ledger_value": "2936 S. Live Oak Dr., Moncks Corner, SC 29461",
+   "evidence_row": 20057,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-d-e-moncks-corner-sc:website",
+   "source_url": "https://demfg.com/about-us/",
+   "ledger_value": "https://demfg.com",
+   "evidence_row": 20059,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-d-e-moncks-corner-sc:products",
+   "source_url": "https://demfg.com/about-us/#x2",
+   "ledger_value": "attachments for heavy equipment for construction, landscaping, industrial and agricultural use",
+   "evidence_row": 20060,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-d-e-moncks-corner-sc:products",
+   "source_url": "https://demfg.com/about-us/#x3",
+   "ledger_value": "thumbs",
+   "evidence_row": 20061,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-d-e-moncks-corner-sc:products",
+   "source_url": "https://demfg.com/about-us/#x5",
+   "ledger_value": "buckets",
+   "evidence_row": 20062,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-d-e-moncks-corner-sc:prospect_test",
+   "source_url": "https://demfg.com/about-us/",
+   "ledger_value": "unknown (manufacturing at the site; welding not shown)",
+   "evidence_row": 20063,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every cited page for this plant was opened 2026-11-17 and grepped for weld/fabricat: no stated welding fact at the site, so 'unknown' is right."
+  },
+  {
+   "claim_id": "p-d-e-moncks-corner-sc:tier",
+   "source_url": "https://demfg.com/about-us/",
+   "ledger_value": "OEM",
+   "evidence_row": 20064,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-d-e-moncks-corner-sc:relationship",
+   "source_url": "https://demfg.com/about-us/",
+   "ledger_value": "lookalike",
+   "evidence_row": 20065,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-d-e-moncks-corner-sc:lookalike_of",
+   "source_url": "https://demfg.com/about-us/",
+   "ledger_value": "Mine Rite",
+   "evidence_row": 20066,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-youngs-machine-monticello-ut:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110005210538&output=JSON",
+   "ledger_value": "37.882714",
+   "evidence_row": 20068,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-17: Latitude 37.882714, Longitude -109.342938, FacilityFipsCode 49037 for YOUNGS MACHINE COMPANY, 1149 NORTH MAIN, MONTICELLO UT 84535; equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-youngs-machine-monticello-ut:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110005210538&output=JSON",
+   "ledger_value": "-109.342938",
+   "evidence_row": 20069,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-17: Latitude 37.882714, Longitude -109.342938, FacilityFipsCode 49037 for YOUNGS MACHINE COMPANY, 1149 NORTH MAIN, MONTICELLO UT 84535; equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-youngs-machine-monticello-ut:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110005210538&output=JSON",
+   "ledger_value": "49037",
+   "evidence_row": 20070,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "EPA ECHO DFR JSON opened 2026-11-17: Latitude 37.882714, Longitude -109.342938, FacilityFipsCode 49037 for YOUNGS MACHINE COMPANY, 1149 NORTH MAIN, MONTICELLO UT 84535; equals the value and plants.csv."
+  },
+  {
+   "claim_id": "p-youngs-machine-monticello-ut:name",
+   "source_url": "https://www.youngsmachine.com/",
+   "ledger_value": "Young's Machine Company",
+   "evidence_row": 20071,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-youngs-machine-monticello-ut:parent_company",
+   "source_url": "https://www.youngsmachine.com/about",
+   "ledger_value": "Young's Machine Company (third-generation family-owned)",
+   "evidence_row": 20072,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-youngs-machine-monticello-ut:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110005210538&output=JSON",
+   "ledger_value": "1149 North Main, Monticello, UT 84535",
+   "evidence_row": 20073,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-youngs-machine-monticello-ut:website",
+   "source_url": "https://www.youngsmachine.com/",
+   "ledger_value": "https://www.youngsmachine.com",
+   "evidence_row": 20075,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-youngs-machine-monticello-ut:products",
+   "source_url": "https://www.youngsmachine.com/about#x2",
+   "ledger_value": "purpose-built utility vehicles for underground mining",
+   "evidence_row": 20076,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-youngs-machine-monticello-ut:products",
+   "source_url": "https://www.youngsmachine.com/about#x3",
+   "ledger_value": "haulage trucks 3 to 20 ton",
+   "evidence_row": 20077,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-youngs-machine-monticello-ut:products",
+   "source_url": "https://www.youngsmachine.com/about#x5",
+   "ledger_value": "maintenance and lube trucks",
+   "evidence_row": 20078,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-youngs-machine-monticello-ut:products",
+   "source_url": "https://www.youngsmachine.com/about#x4",
+   "ledger_value": "reconditioning of mining equipment",
+   "evidence_row": 20079,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-youngs-machine-monticello-ut:prospect_test",
+   "source_url": "https://www.youngsmachine.com/about",
+   "ledger_value": "unknown (manufacturing at the site; welding not shown)",
+   "evidence_row": 20080,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every cited page for this plant was opened 2026-11-17 and grepped for weld/fabricat: no stated welding fact at the site, so 'unknown' is right."
+  },
+  {
+   "claim_id": "p-youngs-machine-monticello-ut:tier",
+   "source_url": "https://www.youngsmachine.com/about",
+   "ledger_value": "OEM",
+   "evidence_row": 20081,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked: tier follows from the quoted products and selling model (not from industry alone); tag inferred is correct."
+  },
+  {
+   "claim_id": "p-youngs-machine-monticello-ut:relationship",
+   "source_url": "https://www.youngsmachine.com/about",
+   "ledger_value": "lookalike",
+   "evidence_row": 20082,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-youngs-machine-monticello-ut:lookalike_of",
+   "source_url": "https://www.youngsmachine.com/about",
+   "ledger_value": "Mine Rite",
+   "evidence_row": 20083,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row checked against the written mining relationship rule (Mine Rite lookalike for attachment/bucket/body/tank sellers and mining-machine structures; Schenck Process lookalike for crushers, screens, conveyors, feeders; machine OEMs, asphalt/batch-plant, dredge and drill OEMs new); consistent with the stated products."
+  },
+  {
+   "claim_id": "p-kafka-mosinee-wi:welder_postings",
+   "source_url": "https://www.kafkaconveyors.com/careers",
+   "ledger_value": "Welder/Fabricator on Kafka's own careers page, read 2026-11-17: JobPosting datePosted 2023-03-30, jobLocation 213202 WI-107; text: 'two Welder/Fabricator positions available'; MIG welding named, wire feed welding required. DOL SeasonalJobs order H-400-24185-170347 dated 7/25/2024: 4 Welders/fabricators at 213202 State Highway 107, 10/1/2024 to 6/30/2025, INACTIVE",
+   "evidence_row": 20105,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Kafka careers page live 2026-11-17: Welder/Fabricator ad text ('two Welder/Fabricator positions available', 'wire feed welding', 'MIG welding') and the JSON-LD block (datePosted 2023-03-30, streetAddress 213202 WI-107) both on the page. The plants field does not claim it as counted, matching the coordinator's apply-flow ruling (labor 0)."
+  },
+  {
+   "claim_id": "p-kafka-mosinee-wi:welder_postings",
+   "source_url": "https://seasonaljobs.dol.gov/jobs/H-400-24185-170347",
+   "ledger_value": "Welder/Fabricator on Kafka's own careers page, read 2026-11-17: JobPosting datePosted 2023-03-30, jobLocation 213202 WI-107; text: 'two Welder/Fabricator positions available'; MIG welding named, wire feed welding required. DOL SeasonalJobs order H-400-24185-170347 dated 7/25/2024: 4 Welders/fabricators at 213202 State Highway 107, 10/1/2024 to 6/30/2025, INACTIVE",
+   "evidence_row": 20106,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "SeasonalJobs order H-400-24185-170347 opened 2026-11-17: 'Welders/fabricators', 4 workers, 213202 State Highway 107, 10/1/2024-6/30/2025, INACTIVE, Date Posted 7/25/2024 - all as in the value's DOL clause; the careers clauses sit on sibling row 20105 (PPI multi-row precedent)."
+  },
+  {
+   "claim_id": "p-kafka-mosinee-wi:weld_processes",
+   "source_url": "https://www.kafkaconveyors.com/careers",
+   "ledger_value": "MIG: named in Kafka's own Welder/Fabricator posting, which requires wire feed welding",
+   "evidence_row": 20107,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-kafka-mosinee-wi:production_type",
+   "source_url": "https://www.kafkaconveyors.com/",
+   "ledger_value": "custom (company-wide): Kafka says many configurations and options make each product custom to every customer's need, and offers custom designing and manufacturing of portable chassis and stationary structures",
+   "evidence_row": 20108,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-laidig-mishawaka-in:welder_postings",
+   "source_url": "https://secure3.yourpayrollhr.com/ta/TPCA319.careers?ShowJob=839110350",
+   "ledger_value": "Welder/Fabricator, first shift, on Laidig's own job board (yourpayrollhr.com), location 14535 Dragoon Trail, read 2026-11-17: SMAW, FCAW, GMAW, GTAW; build heavy industrial weldments from a print; 5 plus years fabrication experience mandatory; proof of past AWS D1.1 certifications; work overtime as required. Also on the board: Heavy Mechanical Equipment Assembler",
+   "evidence_row": 20127,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Public job page (yourpayrollhr) live 2026-11-17; location 14535 Dragoon Trail; first shift. Requisition 839110350 is on the board's list endpoint today."
+  },
+  {
+   "claim_id": "p-laidig-mishawaka-in:welder_postings",
+   "source_url": "https://secure3.yourpayrollhr.com/ta/rest/ui/recruitment/companies/%7CTPCA319/job-requisitions/839110350?lang=en-US",
+   "ledger_value": "Welder/Fabricator, first shift, on Laidig's own job board (yourpayrollhr.com), location 14535 Dragoon Trail, read 2026-11-17: SMAW, FCAW, GMAW, GTAW; build heavy industrial weldments from a print; 5 plus years fabrication experience mandatory; proof of past AWS D1.1 certifications; work overtime as required. Also on the board: Heavy Mechanical Equipment Assembler",
+   "evidence_row": 20128,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Requisition JSON 839110350 read 2026-11-17: SMAW, FCAW, GMAW, GTAW; 'Work overtime as required' (not mandatory OT); 5 plus years; AWS D1.1 proof - all on the page."
+  },
+  {
+   "claim_id": "p-laidig-mishawaka-in:welder_postings",
+   "source_url": "https://secure3.yourpayrollhr.com/ta/rest/ui/recruitment/companies/%7CTPCA319/job-requisitions?offset=0&size=20&sort=desc&ein_id=&lang=en-US",
+   "ledger_value": "Welder/Fabricator, first shift, on Laidig's own job board (yourpayrollhr.com), location 14535 Dragoon Trail, read 2026-11-17: SMAW, FCAW, GMAW, GTAW; build heavy industrial weldments from a print; 5 plus years fabrication experience mandatory; proof of past AWS D1.1 certifications; work overtime as required. Also on the board: Heavy Mechanical Equipment Assembler",
+   "evidence_row": 20129,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "List endpoint read 2026-11-17 carries both requisitions (839110350 Welder/Fabricator, 453219650 Heavy Mechanical Equipment Assembler), both at 14535 Dragoon Trail."
+  },
+  {
+   "claim_id": "p-laidig-mishawaka-in:weld_processes",
+   "source_url": "https://secure3.yourpayrollhr.com/ta/TPCA319.careers?ShowJob=839110350",
+   "ledger_value": "SMAW, FCAW, GMAW and GTAW (own Welder/Fabricator posting)",
+   "evidence_row": 20130,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  },
+  {
+   "claim_id": "p-laidig-mishawaka-in:materials",
+   "source_url": "https://secure3.yourpayrollhr.com/ta/rest/ui/recruitment/companies/%7CTPCA319/job-requisitions/453219650?lang=en-US",
+   "ledger_value": "steel (assembler posting at 14535 Dragoon Trail: cutting and heating of steel components)",
+   "evidence_row": 20131,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Requisition 453219650 (assembler) at 14535 Dragoon Trail: 'cutting and heating of steel components' on the page."
+  },
+  {
+   "claim_id": "p-laidig-mishawaka-in:existing_robots",
+   "source_url": "https://www.laidig.com/project_management/manufacturing",
+   "ledger_value": "yes: a robotic welder system for auger flighting (brand not stated); Laidig names robotic welding technology",
+   "evidence_row": 20132,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Manufacturing page: 'robotic welding technology' and 'weld our own auger flighting using ... a robotic welder system' on the page; value adds no site or brand."
+  },
+  {
+   "claim_id": "p-laidig-mishawaka-in:production_type",
+   "source_url": "https://www.laidig.com/storage-handling/reclaim-systems",
+   "ledger_value": "custom-engineered: Laidig says it customizes every reclaim system ('A tailored system, designed for your exact needs')",
+   "evidence_row": 20133,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote found on the page opened 2026-11-17 (visible text or raw source) and supports the value."
+  }
+ ],
+ "score_problems": [
+  "Kafka Mosinee (43 Low, confidence 1) and Laidig Mishawaka (52 Medium, confidence 3) components re-read against their rows: Kafka process 20 (MIG in own Welder/Fabricator ad), part mix 15 company-wide without confidence, labor 0 after the apply-flow override, demand 8, scale 0 (70); Laidig process 12 (GTAW in the plant's own production posting, TIG rule), part mix 15, labor 12 (one live undated own-board posting; 'overtime as required' is not mandatory), demand 8, scale 5 (120). Totals and confidence consistent; no corrected row touches either plant. Cosmetic: Kafka score_labor row 20119 reasoning still opens 'rubric 12' before the override text, while the value is 0."
+ ],
+ "opening_line_problems": [
+  "None. Kafka line: the OSHA 2025 headcount (70, submitted Jan 7 2026) and the DOL order (dated July 25, 2024; 4 Welders/fabricators at 213202 State Highway 107) are both stated and re-read today. Laidig line: the Welder/Fabricator role at 14535 Dragoon Trail with SMAW/FCAW/GMAW/GTAW and 'build heavy industrial weldments from a print', and the robotic auger-flighting statement, are both on pages opened today. Bottleneck guesses use only those stated rows and are worded 'Likely'/'Possibly'."
+ ],
+ "score_notes": []
+}

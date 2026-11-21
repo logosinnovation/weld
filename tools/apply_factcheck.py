@@ -1,0 +1,125 @@
+#!/usr/bin/env python3
+"""Apply fact-checker verdicts to the ledger.
+
+Usage: python3 tools/apply_factcheck.py ledger/audit/fact-check-<vertical>-*.json [--apply]
+
+- evidence.csv: rows matched on (claim_id, source_url) get verified = confirmed /
+  corrected / unreachable. Corrected rows take corrected_value, corrected_quote and
+  corrected_tag (an "unknown" correction clears the quote and sets tag unknown). The
+  original value is kept in reasoning ("fact-check 2026-11-12: was ...").
+- plants.csv: when a corrected claim's field is a plants.csv column, the plant's field
+  takes the corrected value.
+- Prints every score component (<id>:score_*) whose reasoning cites a corrected claim,
+  so the coordinator can re-score it.
+"""
+import csv
+import json
+import re
+import sys
+
+import datetime
+TODAY = datetime.date.today().isoformat()
+files = [a for a in sys.argv[1:] if not a.startswith("--")]
+rows = []
+for f in files:
+    d = json.load(open(f))
+    for r in d.get("rows", []):
+        r["_file"] = f
+        rows.append(r)
+ev = list(csv.DictReader(open("ledger/evidence.csv")))
+ecols = list(ev[0].keys())
+pl = list(csv.DictReader(open("ledger/plants.csv")))
+pcols = list(pl[0].keys())
+pid = {p["id"]: p for p in pl}
+idx = {}
+for i, e in enumerate(ev):
+    idx.setdefault((e["claim_id"], e["source_url"]), []).append(i)
+    if e["source_url"]:  # rows with no source_url are already indexed under (claim_id, "")
+        idx.setdefault((e["claim_id"], ""), []).append(i)
+
+unmatched, corrected_claims, counts = [], set(), {"confirmed": 0, "corrected": 0, "unreachable": 0}
+for r in rows:
+    v = r.get("verdict")
+    if v not in counts:
+        continue
+    counts[v] += 1
+    hits = idx.get((r["claim_id"], r.get("source_url", "")))
+    if not hits:  # fallback by claim id only when the claim has exactly one row (2026-11-19: a multi-row fallback rewrote every row)
+        allrows = idx.get((r["claim_id"], ""), [])
+        hits = allrows if len(allrows) == 1 else []
+    if hits and len(hits) > 1:  # several rows share claim and URL (or are all blank-URL): pick the row whose value is the verdict's ledger_value (2026-11-20)
+        lv = (r.get("ledger_value") or "").strip()
+        exact = [i for i in hits if ev[i]["value"].strip() == lv]
+        pref = [i for i in hits if lv and (ev[i]["value"].startswith(lv[:80]) or lv.startswith(ev[i]["value"][:80]))]
+        pick = exact or pref
+        if len(pick) == 1:
+            hits = pick
+        else:
+            unmatched.append((r["claim_id"], "ambiguous: %d rows share claim and URL" % len(hits)))
+            continue
+    if not hits:
+        unmatched.append((r["claim_id"], r.get("source_url", "")[:80]))
+        continue
+    for i in hits:
+        e = ev[i]
+        e["verified"] = v
+        if v == "corrected":
+            cv = (r.get("corrected_value") or "").strip()
+            old = e["value"]
+            if cv:
+                e["value"] = cv
+            cq = (r.get("corrected_quote") or "").strip()
+            cu = (r.get("corrected_source_url") or "").strip()
+            if cu.startswith("http"):
+                e["source_url"] = cu
+            if cv.lower() == "unknown" or cq.lower() == "unknown":
+                e["tag"] = "unknown"
+                e["quote"] = ""
+            else:
+                if cq:
+                    e["quote"] = cq[:300]
+                if r.get("corrected_tag") in ("stated", "inferred", "unknown"):
+                    e["tag"] = r["corrected_tag"]
+            e["reasoning"] = (e["reasoning"] + " | " if e["reasoning"] else "") + \
+                f"fact-check {TODAY}: was '{old[:120]}'; {r.get('error_kind', '')}; {r.get('note', '')[:200]}"
+            if e["tag"] == "inferred" and not e["reasoning"]:
+                e["reasoning"] = "fact-check correction"
+            corrected_claims.add(r["claim_id"])
+            pid_, field = r["claim_id"].split(":", 1)
+            pv = (r.get("plants_csv_value") or "").strip()
+            # status rows describe a plant's operating state; the plants.csv status column (base|profiled|excluded) is set only by the coordinator
+            if pid_ in pid and field in pcols and field not in ("status", "id"):
+                if pv and (pv.lower().lstrip("( ").startswith("keep") or "identical to the current" in pv.lower()):
+                    pass  # multi-row claim: this row is one fragment; the field keeps its value
+                elif pv and pv.lstrip("( ").lower().startswith("same as"):
+                    if cv:
+                        pid[pid_][field] = cv
+                elif pv:
+                    pid[pid_][field] = pv
+                elif cv and len(idx.get((r["claim_id"], ""), [])) <= 1:
+                    pid[pid_][field] = cv
+                elif cv:  # multi-row field and no plants_csv_value: do not overwrite the field with one fragment (2026-11-19 sweep finding)
+                    print("  plants.csv not changed (multi-row claim, no plants_csv_value):", r["claim_id"])
+        break  # one verdict corrects one row
+
+cid = re.compile(r"\b([pcv]-[a-z0-9-]+:[a-z_]+)")
+affected = []
+for e in ev:
+    if ":score_" in e["claim_id"]:
+        cited = set(cid.findall(e["reasoning"] or ""))
+        hit = cited & corrected_claims
+        if hit:
+            affected.append((e["claim_id"], e["value"], sorted(hit)))
+print(json.dumps(counts), "| rows:", len(rows), "| unmatched:", len(unmatched))
+for u in unmatched[:20]:
+    print("  UNMATCHED", u)
+print("score components citing corrected claims:")
+for a in affected:
+    print("  ", a)
+if "--apply" in sys.argv:
+    for name, cols, data in (("evidence", ecols, ev), ("plants", pcols, pl)):
+        with open(f"ledger/{name}.csv", "w", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=cols)
+            w.writeheader()
+            w.writerows(data)
+    print("applied")

@@ -1,0 +1,2771 @@
+{
+ "checker": "fact-checker R2-G",
+ "vertical": "v-enclosures-battery-generator",
+ "date": "2026-11-17",
+ "plants": [
+  "p-falcon-structures-manor-tx",
+  "p-phoenix-products-jacksonville-fl",
+  "p-phoenix-products-jacksonville-fl-2",
+  "p-fidelity-mcgregor-tx",
+  "p-fidelity-ocala-fl",
+  "p-fidelity-ocala-fl-2"
+ ],
+ "decision_rule": "Corrected = the value adds a fact the cited page does not show, tags a judgement as stated, places a company-level fact at the plant, ties a posting through a shared city, misdates a posting, or the quote is not on the page (raw source checked first); Confirmed otherwise. Unreachable only if the source cannot be reached at all.",
+ "claims_checked": 131,
+ "claims_corrected": 12,
+ "claims_unreachable": 0,
+ "error_rate": 0.0916,
+ "error_rate_note": "Headline on the R2 basis (rows flagged r2_basis: stated rows, every row of a claim a score row cites, and the 6 opening lines): 12/131 = 9.2%. Stated rows only: 12/112 = 10.7%. All 258 rows written (inbox battery-profiler-G.json evidence, the plants' unreplaced ledger rows, c-fidelity/c-phoenix-products/c-falcon-structures and the demand_outlook rows the scores cite): 12/258 = 4.7%. LINE DRAWN: a clause stating a fact or a judgement about the plant or company (status, site tie, material share, posting state) that the cited page does not carry is corrected; a scoring label appended to a supported value is confirmed with a note. STRICT ALTERNATIVE: also correcting the two scoring labels in stated rows (Falcon production_type '(mixed)'; Fidelity Plant 2 triggers 'not a production-capacity event') gives 14/131 = 10.7%, over the 10% checkpoint; neither label changes a score. Every quote whose page was reachable was found on a fresh fetch (62 URLs, all HTTP 200; menafn loaded today although the profiler logged a 502); the 15 geocoder rows carry a synthetic 'matched address' label by design and were checked against the Census response values. 0 unreachable. All corrections are value or tag problems on pages that carry the quote; none changes a score component, a tier, or a plants.csv field.",
+ "claims_checked_all_rows": 258,
+ "claims_corrected_all_rows": 12,
+ "error_rate_all_rows": 0.0465,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 12,
+  "invented fact": 0,
+  "other": 0
+ },
+ "repeated_kinds": [
+  "quote does not support value (12) - repeats the pattern the coordinator already sweeps for: (a) compound values carrying clauses from a sibling page (c-fidelity:production_type, c-phoenix-products:materials, p-fidelity-ocala-fl:materials, Falcon weld_processes); (e) a material-share judgement tagged stated (c-fidelity:products 'aluminum-first'); (b) plans or registrations restated as work under way (Phoenix Zoo 'construction from June 2025', McGregor ledger status 'operations starting Oct 2026', McGregor TDLR 'being fitted out'), the same kind as R2-E's Cordele rows; (c) a company-level product line tagged stated at a site (McGregor menafn products row); (d) a site-attribution judgement inside a stated address row (Phoenix 8th St 'same 32206 block area'). Five are older ledger rows the profiler neither replaced nor retired (evidence.csv rows 15110, 15862, 15970, 15975, 15976) and three are company-level c- rows; SWEEP: when a profiler overwrites a claim, check the claim's surviving ledger rows from earlier slices (finder, sweep) for the same patterns."
+ ],
+ "worst_errors": [
+  "p-fidelity-mcgregor-tx:status (ledger row, menafn) and :products (TDLR row) - the start-up plant is described as 'operations starting Oct 2026' and 'fabrication space being fitted out', but the Oct 7 release says only 'preparing to begin operations this month', the TDLR record shows a registered project (status 'Project Registered', scheduled 2026-08-01 to 11-01), and the CEO on 2026-10-15 still hoped to produce 'in November'. The plant's pre-production status rests on stated facts that show preparation, not production. Corrected; no score effect (labor and demand rest on live postings and the dated opening).",
+  "c-fidelity:production_type (fuel-tanks page) - cited by score_part_mix at all three Fidelity plants, the row adds 'custom welded aluminum tube frame enclosures, packaged per project' that /products/fuel-tanks/ does not carry. Trimmed to the tank sentence; the enclosure and package clauses stand on their own sibling rows. Part mix 15 unchanged (company-level, no confidence).",
+  "p-phoenix-products-jacksonville-fl:triggers (JAXUSA) - 'construction from June 2025' turns 'construction scheduled to begin in June 2025' into a fact. The 231,000 sq ft Zoo Parkway plant is not shown complete or operating by any stated row (live postings carry its street address and Ring Power lists it as HQ with hours, which is consistent with operation). Corrected; demand 15 unchanged because the dated announcement naming the site is the event."
+ ],
+ "score_problems": [
+  {
+   "plant_id": "p-falcon-structures-manor-tx",
+   "component": "score_material_part",
+   "ledger_points": 20,
+   "correct_points": 20,
+   "why": "RULING (profiler flag). 20 follows the EK Machine Fall River precedent and the battery material rule: the case study states five 40-foot containers made into generator enclosures (a stated length of the welded steel enclosure, 40 ft x 8 ft standard, within the 2026 analyst 60 ft x 15 ft cell; over the older sheet's 72 in), and Falcon is single-site (ECHO name search; inferred row), so the campus rule ties the company fact to Manor. Against: Falcon buys the containers and welds openings and reinforcement on them; the steel grating and inset ladder were made by a partner; the case study is undated. At 0 the total is 36 Low. Confidence correctly excludes material (site attribution inferred)."
+  },
+  {
+   "plant_id": "p-fidelity-ocala-fl; p-fidelity-ocala-fl-2; p-fidelity-mcgregor-tx",
+   "component": "score_material_part",
+   "ledger_points": 4,
+   "correct_points": 4,
+   "why": "RULING (profiler flag). 4 follows the Yancey precedent in outcome (both an aluminum frame/enclosure line and steel tanks welded at the site; no steel tank size stated), but the Yancey plants scored 4 on a stated aluminum-first fact ('main welded parts are aluminum stud frames'). No Fidelity page or posting says aluminum is the main welded part: each Ocala plant has a Steel Welder (UL 142/2085 tanks, hiring bonus) and an Aluminum Welder (frame weldments), and Fidelity says it uses 'flat sheets of steel, flat sheets of aluminum'. If 4 needs a stated aluminum-first or thin-sheet main part, these are 0 (unknown part size): P1 75 High, P2 68 Medium, McGregor 75 High. If 4 stands but the aluminum-first premise is treated as inferred, material should earn no confidence: P1 4 -> 3, P2 3 -> 2, McGregor 4 -> 3 (normalise_scores.py will count it because :materials has stated rows)."
+  },
+  {
+   "plant_id": "p-fidelity-ocala-fl",
+   "component": "score_demand",
+   "ledger_points": 15,
+   "correct_points": 15,
+   "why": "RULING (profiler flag). The CEO states on 2026-10-15 'about an eight-acre expansion right here in Plant One. The plans are getting processed now' - a dated, plant-named expansion, which the trigger list allows; Phoenix Zoo earns 15 on an announced plan in the same way. Against: a podcast remark with plans still in processing, no announcement, permit or start. At 8 the total is 72 (High either way)."
+  },
+  {
+   "plant_id": "p-phoenix-products-jacksonville-fl; p-phoenix-products-jacksonville-fl-2",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "correct_points": 20,
+   "why": "RULING (profiler flag). All five counted Service Fabricator requisitions are live today on Ring Power's iCIMS board (Phoenix search: 14 roles; Zoo 26-15431, 26-15432, 26-15670; 8th St 26-15466, 26-15660), each with its JSON-LD streetAddress and the posted date recorded. Duties include 'Operates company-provided welding, cutting systems ...' and 'Fit and assemble parts', so they fit the counting rule (production welding or fitting), unlike PSI's Fabrication Team Member (press brake and shear only). Caution: the text is Ring Power's generic dealer template ('Service Fabricator A', 'relevant Dealer software', job quoting), the same template family as the repair-worded Service Welders that are listed but not counted; treating one template as production and the other as repair is a judgement. If Service Fabricators are not counted: Zoo 55, 8th St 48 (both Medium). If Service Welders were also counted, labor stays 20."
+  },
+  {
+   "plant_id": "p-phoenix-products-jacksonville-fl; p-phoenix-products-jacksonville-fl-2",
+   "component": "score_process",
+   "ledger_points": 20,
+   "correct_points": 20,
+   "why": "RULING (profiler flag). Under the session-2 rule (MIG or flux-core named, required or desired, in a welder posting for the plant), Zoo's Service Welder II requires '3g and 4G SMAW, FCAW, GMAW certifications' and 8th St's Service Welder III lists SMAW & FCAW as highly desired; both postings name the street address. The roles are repair-worded. At 0: Zoo 55, 8th St 48; both process and labor at 0: Zoo 35 Low, 8th St 28 Low."
+  },
+  {
+   "plant_id": "p-phoenix-products-jacksonville-fl",
+   "component": "score_scale",
+   "ledger_points": 5,
+   "correct_points": 5,
+   "why": "Stands. Session-2 rule 3 (a plant under construction does not make a company multi-plant) does not bite: Ring Power lists Phoenix Products HQ at 1511 Zoo Pkwy Bldg #600 with services and opening hours, and live postings carry that street address; 8th St also has live postings, services and a 2026 Tampa submittal. Two sites 8.1 km apart (Ring Power coordinates). If the coordinator reads JAXUSA's 'relocate' as making 8th St a closing site, scale would be 0 at both: Zoo 70 High, 8th St 63 Medium."
+  },
+  {
+   "plant_id": "p-fidelity-ocala-fl; p-fidelity-ocala-fl-2; p-fidelity-mcgregor-tx; p-phoenix-products-jacksonville-fl; p-phoenix-products-jacksonville-fl-2",
+   "component": "confidence",
+   "ledger_points": "4; 3; 4; 3; 2",
+   "correct_points": "4; 3; 4; 3; 2",
+   "why": "Correct under session-2 rule 1 (company-level part mix earns points, no confidence), but c-fidelity:production_type and c-phoenix-products:production_type are tagged stated, so normalise_scores.py will add 1 to each unless both are added to ledger/audit/no-confidence-claims.csv (as c-yancey:production_type was)."
+  }
+ ],
+ "score_notes": [
+  "All 36 components (6 plants x 6) re-derived from the cited claims; sums and tiers correct: Fidelity Ocala Plant 1 79 High, Fidelity McGregor 79 High, Phoenix Zoo Pkwy 75 High, Fidelity Ocala Plant 2 72 High, Phoenix 8th St 68 Medium, Falcon Manor 56 Medium. Confidence correct given the two no-confidence additions (score_problems). No corrected row moves a component.",
+  "Fidelity labor 20 at both Ocala plants stands. The CEO says (IndustryWeek 2026-10-15) 'we've been able to fill all of our positions here in Ocala', in the context of word-of-mouth recruiting; it is not a West River-style disclaimer that listed openings are not hiring, and the Steel Welder postings (hiring bonus) were re-published on Fidelity's board on 2026-11-16, after the interview. Each Ocala plant has two counted welder postings open at once plus a hiring bonus.",
+  "Fidelity Plant 2 demand 8 agreed: the 25,000 sq ft warehouse is storage (Komatsu Peoria office precedent); the About page's Plant 2 expansion is dated 2024 only.",
+  "Fidelity McGregor demand 15 agreed: a dated plant opening (KXXV 2026-01-20; release 2026-10-07; TDLR registration 2026-07-10), within 24 months. Labor 20 rests on three live, site-named postings (Steel Welder, Aluminum Welder, Stair Weld Assembler), as rule 6 allows for a start-up.",
+  "Falcon labor 0 agreed: the Paylocity board JSON lists exactly five Manor roles, none welding; requisition 3747774 is inactive. Process 20 as a standing fact from Falcon's own MIG welder page (Claremore precedent).",
+  "Fidelity Plant 1 Aluminum Welder (posted 2026-03-11) has been listed eight months; under the standing-ad rule it counts as open, and no score rests on its 60+ days."
+ ],
+ "opening_line_problems": [
+  "p-fidelity-mcgregor-tx:opening_line - acceptable (every clause stated), two suggested edits: (1) 'hire toward 500 jobs' uses KXXV's January 2026 figure while Fidelity's own 2026-10-07 release says 'approximately 450 new jobs over the next four years'; (2) it is now past mid-November, so 'production hoped for by November 2026' reads better as 'the CEO said in October that production should start in November'. Suggested: 'Your McGregor plant at 2055 S Main Street has Steel Welder, Aluminum Welder and Stair Weld Assembler roles open, and in October Fidelity said it was preparing to start production in the 194,000 sq ft leased building with about 450 jobs planned over four years; how are you setting up MIG welding for tanks and aluminum enclosures as you hire?'",
+  "p-fidelity-ocala-fl:opening_line and p-fidelity-ocala-fl-2:opening_line - acceptable (every clause stated; dates match the JSON-LD datePosted, as the rules require). Caution as in R3-I: Fidelity's Paylocity JobIds run in time order (3713472 and 3990291 date from March 2026, 4.55M from end of September), so Steel Welder 4058923 ('posted July 20') and especially Plant 2's 3568326 ('posted Aug 3, 2026', an id below March's) predate their JSON-LD dates, which are re-list stamps. Safer wording: 'listed (JSON-LD July 20)' / 'listed since at least Aug 3, 2026'. No score rests on the dates.",
+  "p-phoenix-products-jacksonville-fl:opening_line, p-phoenix-products-jacksonville-fl-2:opening_line, p-falcon-structures-manor-tx:opening_line - no problem: every clause rests on a confirmed stated row (Falcon's 'does its welding in-house at its 10-acre Manor facility' rests on the About-page weld_processes row, not the corrected MIG-page row), and none asserts that Zoo Pkwy is operating or that 8th St is closing."
+ ],
+ "plants_closed_or_moved": [],
+ "status_problems": [
+  "p-fidelity-mcgregor-tx: pre-production / start-up. Live site-named welder postings today; the CEO hoped to produce 'in November' (2026-10-15); TDLR fit-out scheduled to finish 2026-11-01 (status still 'Project Registered'). Operation not shown. The ledger's stated status row (menafn) still says 'base' and is corrected; the inbox's inferred :status row (profiled, pre-production) is right.",
+  "p-phoenix-products-jacksonville-fl (1511 Zoo Pkwy Bldg 600): the 2025 release planned completion by May 2026; no stated row shows completion, but Ring Power lists it as Phoenix Products HQ with opening hours and three live fabricator postings carry its address. Treated as operating-likely, not asserted.",
+  "p-phoenix-products-jacksonville-fl-2 (1544 E 8th St): JAXUSA (2025) says Phoenix will 'relocate from its current 89,000 square-foot facility'; that the 89,000 sq ft facility is 8th St is inferred. Not vacated today: two Service Fabricators, a Service Welder III and an Electrical Fabricator posted Oct-Nov 2026 name 1544 East 8th Street, Ring Power lists it with services and hours, and a 2026 Tampa genset submittal names it as the enclosure and sub-base tank manufacturer. ECHO's PHOENIX PRODUCTS INC at 1727 Bennett St is about 0.11 km away (same campus).",
+  "p-falcon-structures-manor-tx, p-fidelity-ocala-fl, p-fidelity-ocala-fl-2: operating at the recorded addresses (own boards list current roles at Manor TX, Plant 1 1900 NE 25th Ave and Plant 2 1101 SW 37th Ave; ECHO records match)."
+ ],
+ "plant_status_notes": "See status_problems. Census geocodes for Falcon, Fidelity Plant 1, Plant 2, McGregor and Phoenix 8th St match the stored lat/lon to 6 decimals and the stored county FIPS; Phoenix Zoo's lat/lon match Ring Power's location JSON (Census has no match for that address).",
+ "field_drift_notes": [
+  "p-fidelity-ocala-fl and p-fidelity-ocala-fl-2 plants.csv products carry 'day tanks' and 'stairs and platforms' in the company line, but no evidence row in the ledger or the inbox for these plants or c-fidelity names day tanks, and stairs and platforms appear only on the McGregor menafn row (ledger row 15975, now inferred). Add c-fidelity:products rows from fidelitymfg.com (Stairs and Platforms page; a day-tank page if one exists) or trim the clauses (ground rule 1).",
+  "c-fidelity:headcount keeps a stale stated row ('almost 400', About page 2024 block) beside the 540 (Jan 2026) and 'more than 500' (Jun 2026) rows; suggest retiring it. If the 'more than 550' figure is wanted, add a row citing the menafn release (2026-10-07).",
+  "p-fidelity-mcgregor-tx: two stale ledger rows sit beside the profiler's new rows: :status (menafn, 'base', corrected here) and :products (TDLR, a building fact filed as a product). Neither is in evidence_remove; retire or move them at merge.",
+  "p-phoenix-products-jacksonville-fl-2: add an inferred :site_attribution row for the ECHO 1727 Bennett St record (0.11 km, same campus) to replace the judgement trimmed from the :address row."
+ ],
+ "leads": [
+  "Fidelity: menafn (2026-10-07) states 'a company of more than 550 employees' and 'approximately 450 new jobs over the next four years' at McGregor; 265,000 sq ft future facility on 124 adjacent acres (IndustryWeek).",
+  "Ring Power's Phoenix search also lists two Electricians (2026-11-16), Service Laborers and a Warehouse Associate - Phoenix Products; site addresses not checked (not welding roles)."
+ ],
+ "method": "Fresh fetch of all 62 cited URLs on 2026-11-17 into a new private cache (tools/fetch_page.fetch with_raw=True; Paylocity requisition 3747774 by headless browser); every quote fragment checked against visible text plus raw source. Fidelity's Paylocity board read in full through its embedded JSON (32 roles; LocationName and JobLocation Address2 for Plant 1/2/3 and Parts Warehouse; PublishedDate) and each cited requisition's JSON-LD datePosted; Falcon's Paylocity board JSON (5 roles); Ring Power's iCIMS board searched for 'Phoenix' (14 roles, all cited requisitions live) and each cited posting's JSON-LD (datePosted, streetAddress, validThrough) and Apply button; Ring Power's location JSON for both Phoenix sites; EPA ECHO DFR JSON for Falcon, Fidelity Plant 1 and 2 and Phoenix (1727 Bennett St); Census geocoder for every recorded address plus 1727 Bennett St; TDLR TABS2026025021; KXXV and menafn JSON-LD dates. No web search used. No ledger file edited. Note: the first two helper scripts of this check were briefly written into the shared scratchpad folder 'fc/' that another checker also uses; all results here come from a separate folder 'r2g-battery/'. Every cached welder page (Fidelity, Phoenix, Falcon) grepped for TIG/GTAW/tungsten/heliarc: no hit, so process 20 (not 12) at all six plants.",
+ "apply_note": "Apply after the coordinator merges ledger/inbox/battery-profiler-G.json (rows keyed to that file's claim_id + source_url; ledger-origin rows marked in 'origin'). Every corrected row carries plants_csv_value 'keep current': without it apply_factcheck.py would write the corrected evidence value into the plant field (8th St address, McGregor status and products, Plant 1 materials, both triggers fields, Falcon weld_processes). Inbox rows corrected: evidence[0], [5], [11], [20], [80], [98], [109]; surviving ledger rows corrected: evidence.csv rows 15110 (c-fidelity:products), 15862 (Phoenix 8th St ECHO address), 15970 (McGregor status, menafn), 15975 and 15976 (McGregor products, menafn and TDLR). Rows flagged sibling_of_corrected are confirmed and need no value sync. Rule on the score_problems RULINGs (Falcon material, Fidelity material and its confidence, Fidelity Plant 1 demand, Phoenix labor and process, Phoenix scale). Add c-fidelity:production_type and c-phoenix-products:production_type to ledger/audit/no-confidence-claims.csv, or the normaliser raises confidence at five plants.",
+ "rows": [
+  {
+   "claim_id": "c-fidelity:production_type",
+   "source_url": "https://fidelitymfg.com/products/fuel-tanks/",
+   "ledger_value": "custom sub-base tanks and custom welded aluminum tube frame enclosures, packaged per project (company-level)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[0]",
+   "verdict": "corrected",
+   "corrected_value": "custom UL 142 and UL 2085 sealed secondary-containment sub-base tanks for all equipment manufacturers (company-level)",
+   "corrected_quote": "Fidelity Manufacturing delivers custom UL142 and UL2085 sealed secondary containment sub-base tanks for all equipment manufacturers.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Compound value adds 'custom welded aluminum tube frame enclosures, packaged per project', which /products/fuel-tanks/ does not carry (no 'aluminum', 'enclosure' or 'package' in the page body). Those clauses are on the sibling rows (c-fidelity:production_type on /products/enclosures/ and /products/packages/), which are confirmed. Score effect none: part mix 15 still rests on stated company-level custom statements (no confidence). Cited by score_part_mix at all three Fidelity plants.",
+   "r2_basis": true,
+   "plants_csv_value": "keep current"
+  },
+  {
+   "claim_id": "c-fidelity:production_type",
+   "source_url": "https://fidelitymfg.com/products/enclosures/",
+   "ledger_value": "custom enclosures for any manufacturer's genset (company-level)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[1]",
+   "verdict": "confirmed",
+   "note": "Enclosures page: 'custom welded aluminum tube frame enclosures for all equipment manufacturers and KW ranges'. Sibling of corrected c-fidelity:production_type (fuel-tanks page): this row carries the clause trimmed there; confirmed as written, no value sync needed.",
+   "r2_basis": true,
+   "sibling_of_corrected": "c-fidelity:production_type (fuel-tanks page)"
+  },
+  {
+   "claim_id": "c-fidelity:production_type",
+   "source_url": "https://fidelitymfg.com/products/packages/",
+   "ledger_value": "custom package options per project (company-level)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[2]",
+   "verdict": "confirmed",
+   "note": "Packages page: 'More custom options available for each project requirement'. Sibling of corrected c-fidelity:production_type (fuel-tanks page): this row carries the clause trimmed there; confirmed as written, no value sync needed.",
+   "r2_basis": true,
+   "sibling_of_corrected": "c-fidelity:production_type (fuel-tanks page)"
+  },
+  {
+   "claim_id": "c-fidelity:certifications",
+   "source_url": "https://fidelitymfg.com/about/",
+   "ledger_value": "ISO 9001:2015 (achieved 2024, company-level)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[3]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-fidelity:certifications",
+   "source_url": "https://fidelitymfg.com/certifications-and-qualifications/",
+   "ledger_value": "UL 2085 and UL 142 listed steel fuel tanks; UL 2200 enclosures; AWS Certified Welders (code not named) (company-level)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[4]",
+   "verdict": "confirmed",
+   "note": "Certifications page lists UL 2085 and UL 142 listed structural steel fuel tank, UL 2200 compliant enclosure construction, 'AWS Certified Welders' (no code).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-fidelity:headcount",
+   "source_url": "https://www.industryweek.com/leadership/growth-strategies/podcast/55412005/podcast-what-happened-when-fidelity-manufacturing-changed-from-family-owned-to-employee-owned",
+   "ledger_value": "540 people company-wide (January 2026); over 550 by Oct 2026",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[5]",
+   "verdict": "corrected",
+   "corrected_value": "540 people company-wide in January 2026 (CEO, IndustryWeek 2026-10-15); the interviewer cites about 550",
+   "corrected_quote": "In January of this year, we had 540 people. ... is now I think I said 550",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "'over 550 by Oct 2026' is not the CEO's statement on this page: the 550 is the interviewer's reading ('is now I think I said 550 ...'). The menafn release of 2026-10-07 does state 'a company of more than 550 employees'; cite it in its own row if the figure is wanted. No score effect (company-level; scale rests on multi_plant).",
+   "r2_basis": true,
+   "plants_csv_value": "keep current"
+  },
+  {
+   "claim_id": "c-fidelity:headcount",
+   "source_url": "https://magazine.manufacturing-today.com/manufacturing-today-issue-249-june-2026/0776014001782483419/p248",
+   "ledger_value": "more than 500 people company-wide (June 2026)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[6]",
+   "verdict": "confirmed",
+   "note": "Manufacturing Today June 2026 issue, p248.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-fidelity:multi_plant",
+   "source_url": "https://www.industryweek.com/leadership/growth-strategies/podcast/55412005/podcast-what-happened-when-fidelity-manufacturing-changed-from-family-owned-to-employee-owned",
+   "ledger_value": "two Ocala plants (Plant One about 65,000 sq ft, Plant Two 80,000 sq ft of manufacturing) plus a Texas plant opening",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[7]",
+   "verdict": "confirmed",
+   "note": "Same page also gives Plant Two '80,000 square feet of manufacturing' and 'we're also opening a plant in Texas this year'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-fidelity:materials",
+   "source_url": "https://www.industryweek.com/leadership/growth-strategies/podcast/55412005/podcast-what-happened-when-fidelity-manufacturing-changed-from-family-owned-to-employee-owned",
+   "ledger_value": "flat sheets of steel and aluminum, from raw material to finished tanks and enclosures (company-level)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[8]",
+   "verdict": "confirmed",
+   "note": "IndustryWeek: 'takes raw material, flat sheets of steel, flat sheets of aluminum, to build our tanks and enclosures'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-phoenix-products:products",
+   "source_url": "https://www.phoenixprods.com/about-us-2/",
+   "ledger_value": "custom generator enclosures, UL 142 and UL 2085 fuel tanks and fueling systems, designed and fabricated in-house (company-level; site copyright 2021, predates Zoo Pkwy)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[9]",
+   "verdict": "confirmed",
+   "note": "About page: 'Headquartered in Jacksonville ... manufacturer of custom generator enclosures, UL 142 and UL 2085 fuel tanks, and fueling systems' and 'Designed and fabricated in-house'; footer 'Copyright 2021', 1544 E 8th Street.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-phoenix-products:production_type",
+   "source_url": "https://www.phoenixprods.com/generator-enclosures/",
+   "ledger_value": "custom fabricated generator enclosures (company-level)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[10]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-phoenix-products:materials",
+   "source_url": "https://www.phoenixprods.com/generator-enclosures/diesel-generator-enclosures/",
+   "ledger_value": "enclosures primarily aluminum (14-gauge aluminum side panels with mechanical fasteners); carbon and stainless steel options; steel UL 142 tanks (company-level)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[11]",
+   "verdict": "corrected",
+   "corrected_value": "enclosures built with 14-gauge aluminum side panels and stainless steel mechanical fasteners; carbon steel and stainless steel construction options (company-level)",
+   "corrected_quote": "Interlocking, pre-painted (both sides) 14-gauge aluminum side panels with stainless steel mechanical fasteners ... Carbon steel and stainless steel construction options",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The diesel-enclosures page does not say 'primarily aluminum' or mention steel UL 142 tanks; those clauses are on the sibling rows (enclosure-resources: 'primarily manufactured using aluminum'; fuel-tanks: 'Each steel tank is tested ... UL 142'), both confirmed. No score effect (material 0; company-level).",
+   "r2_basis": true,
+   "plants_csv_value": "keep current"
+  },
+  {
+   "claim_id": "c-phoenix-products:materials",
+   "source_url": "https://www.phoenixprods.com/resources/enclosure-resources/",
+   "ledger_value": "enclosures primarily aluminum (company-level)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[12]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported. Sibling of corrected c-phoenix-products:materials (diesel-enclosures page): this row carries the clause trimmed there; confirmed as written, no value sync needed.",
+   "r2_basis": true,
+   "sibling_of_corrected": "c-phoenix-products:materials (diesel-enclosures page)"
+  },
+  {
+   "claim_id": "c-phoenix-products:materials",
+   "source_url": "https://www.phoenixprods.com/fuel-tanks/",
+   "ledger_value": "steel UL 142 tanks; sub-base tanks up to 25,000 gallons (capacity, not a part size) (company-level)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[13]",
+   "verdict": "confirmed",
+   "note": "Fuel-tanks page: 'Each steel tank is tested ... UL 142'; sub-base tanks 'up to 25,000 gallons'. (The page also carries injected spam lines; none quoted.) Sibling of corrected c-phoenix-products:materials (diesel-enclosures page): this row carries the clause trimmed there; confirmed as written, no value sync needed.",
+   "r2_basis": true,
+   "sibling_of_corrected": "c-phoenix-products:materials (diesel-enclosures page)"
+  },
+  {
+   "claim_id": "c-phoenix-products:certifications",
+   "source_url": "https://www.phoenixprods.com/resources/certifications/",
+   "ledger_value": "ISO 9001:2015; UL 142 and UL 2085 listed generator base tanks (UL MH15322); Miami-Dade NOA 18-0430.09 (company-level)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[14]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-phoenix-products:headcount",
+   "source_url": "https://jaxusa.org/news/phoenix-products-announces-ambitious-expansion-in-jacksonville/",
+   "ledger_value": "150 employees company-wide at the June 2025 announcement (plan 270)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[15]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-phoenix-products:multi_plant",
+   "source_url": "https://www.ringpower.com/locations/jacksonville-phoenix-products-hq/",
+   "ledger_value": "two Phoenix Products locations in Jacksonville, both listed for Generator Enclosures and Fuel Tank Systems (Ring Power location data)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[16]",
+   "verdict": "confirmed",
+   "note": "Ring Power location JSON: both Phoenix entries list services ['Generator Enclosures','Fuel Tank Systems'] and hours 7:30 AM - 5:00 PM.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-falcon-structures:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-G.json evidence[17]",
+   "verdict": "confirmed",
+   "note": "Judgement or unknown row; consistent with the confirmed stated rows.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4058923",
+   "ledger_value": "MIG (Plant 1 Steel Welder posting: MIG on steel and stainless steel)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[18]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3990291",
+   "ledger_value": "MIG welder used by the Plant 1 Aluminum Welder",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[19]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:materials",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4058923",
+   "ledger_value": "steel and stainless steel (Steel Welder); aluminum frame weldments (Aluminum Welder)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[20]",
+   "verdict": "corrected",
+   "corrected_value": "steel and stainless steel (Plant 1 Steel Welder posting)",
+   "corrected_quote": "Mig weld milled steel and stainless steel.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The Steel Welder page (4058923) carries no aluminum clause; 'aluminum frame weldments (Aluminum Welder)' is on the Aluminum Welder page, which sibling row p-fidelity-ocala-fl:materials (3990291) already cites and is confirmed. Cited by score_material_part; points unchanged (4 rests on the sibling row). plants.csv materials needs no change (keep current).",
+   "r2_basis": true,
+   "plants_csv_value": "keep current"
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:materials",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3990291",
+   "ledger_value": "aluminum (Plant 1 Aluminum Welder role: frame weldments and brackets)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[21]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported. Sibling of corrected p-fidelity-ocala-fl:materials (4058923 Steel Welder page): this row carries the clause trimmed there; confirmed as written, no value sync needed.",
+   "r2_basis": true,
+   "sibling_of_corrected": "p-fidelity-ocala-fl:materials (4058923 Steel Welder page)"
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:products",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4058923",
+   "ledger_value": "UL 142 and UL 2085 tanks built by Plant 1 Steel Welders",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[22]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:certifications",
+   "source_url": "https://fidelitymfg.com/about/",
+   "ledger_value": "company-level, inferred at site: ISO 9001:2015; UL 142 / UL 2085 listed steel tanks; UL 2200 enclosures; AWS Certified Welders (code not named)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[23]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:part_size_fit",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3990291",
+   "ledger_value": "unknown: no steel tank dimension or weight stated; aluminum frame weldments welded at the site (weak fit)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[24]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:production_type",
+   "source_url": "https://fidelitymfg.com/products/fuel-tanks/",
+   "ledger_value": "custom per project (company-level, inferred at site): custom sub-base tanks, custom enclosures, custom package options",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[25]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4058923",
+   "ledger_value": "counted: Steel Welder posted 2026-07-20 (MIG; 'HIRING BONUS AVAILABLE')",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[26]",
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2026-07-20; 'NOW HIRING WELDERS — HIRING BONUS AVAILABLE!' on the page; board lists 4058923 at Plant 1 today (PublishedDate 2026-11-16, re-post stamp).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3990291",
+   "ledger_value": "counted: Aluminum Welder posted 2026-03-11 (1st shift; open 60+ days, board and JSON-LD dates agree)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[27]",
+   "verdict": "confirmed",
+   "note": "JSON-LD 2026-03-11 and board PublishedDate 2026-03-11 agree; listed at Plant 1 today. No score rests on 60+ days.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4497932",
+   "ledger_value": "listed, not counted: Steel Welding Supervisor (2nd shift) posted 2026-10-19",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[28]",
+   "verdict": "confirmed",
+   "note": "Board lists 4497932 Steel Welding Supervisor at Plant 1 (PublishedDate 2026-10-07; JSON-LD 2026-10-19). Supervisor: listed, not counted.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/ccbabf98-4351-45fb-bab0-36eb799ecf36",
+   "ledger_value": "site tie: board location 'Plant 1' with street 1900 NE 25th Ave for Steel Welder 4058923 and Aluminum Welder 3990291",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[29]",
+   "verdict": "confirmed",
+   "note": "Board JSON: LocationName 'Plant 1', JobLocation Address2 '1900 NE 25th Ave' for 4058923 and 3990291.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:triggers",
+   "source_url": "https://www.industryweek.com/leadership/growth-strategies/podcast/55412005/podcast-what-happened-when-fidelity-manufacturing-changed-from-family-owned-to-employee-owned",
+   "ledger_value": "eight-acre expansion at Plant One in planning (stated 2026-10-15)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[30]",
+   "verdict": "confirmed",
+   "note": "IndustryWeek dated Oct. 15, 2026: 'about an eight-acre expansion right here in Plant One. The plans are getting processed now'. Planned, not built: see score_problems (RULING).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:headcount",
+   "source_url": "https://www.industryweek.com/leadership/growth-strategies/podcast/55412005/podcast-what-happened-when-fidelity-manufacturing-changed-from-family-owned-to-employee-owned",
+   "ledger_value": "unknown (company: 540 in January 2026; site split not stated)",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-G.json evidence[31]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:site_attribution",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000365462&output=JSON",
+   "ledger_value": "Plant 1 and Plant 2 are separate sites about 8.5 km apart (not one campus); facts naming only 'Ocala' are inferred at either plant",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[32]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3568326",
+   "ledger_value": "MIG (Plant 2 Steel Welder posting: MIG on steel and stainless steel)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[33]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3713472",
+   "ledger_value": "MIG welder used by the Plant 2 Aluminum Welder",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[34]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:materials",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3568326",
+   "ledger_value": "steel and stainless steel (Steel Welder)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[35]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:materials",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3713472",
+   "ledger_value": "aluminum (Plant 2 Aluminum Welder and Chop Saw Operator: frame weldments and brackets)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[36]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:products",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3568326",
+   "ledger_value": "UL 142 and UL 2085 tanks built by Plant 2 Steel Welders",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[37]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:certifications",
+   "source_url": "https://fidelitymfg.com/about/",
+   "ledger_value": "company-level, inferred at site: ISO 9001:2015; UL 142 / UL 2085 listed steel tanks; UL 2200 enclosures; AWS Certified Welders (code not named)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[38]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:part_size_fit",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3713472",
+   "ledger_value": "unknown: no steel tank dimension or weight stated; aluminum frame weldments welded at the site (weak fit)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[39]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:production_type",
+   "source_url": "https://fidelitymfg.com/about/",
+   "ledger_value": "Plant 2: four enclosure lines with cranes (About page, 2024 entry)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[40]",
+   "verdict": "confirmed",
+   "note": "About page 2024 entry: Plant 2 expanded to 100,000 sq ft, 'a total of 4 Enclosure lines, complete with cranes'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:production_type",
+   "source_url": "https://fidelitymfg.com/products/fuel-tanks/",
+   "ledger_value": "custom per project (company-level, inferred at site)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[41]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3568326",
+   "ledger_value": "counted: Steel Welder posted 2026-08-03 (MIG; 'HIRING BONUS AVAILABLE')",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[42]",
+   "verdict": "confirmed",
+   "note": "JSON-LD 2026-08-03; hiring bonus line on page; board lists 3568326 at Plant 2 today.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3713472",
+   "ledger_value": "counted: Aluminum Welder, 2nd shift with 10% shift premium, JSON-LD datePosted 2026-03-06 (board PublishedDate 2026-05-05)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[43]",
+   "verdict": "confirmed",
+   "note": "JSON-LD 2026-03-06; board PublishedDate 2026-05-05; 'shift premium of 10% for 2nd shift' on page; listed at Plant 2 today.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/ccbabf98-4351-45fb-bab0-36eb799ecf36",
+   "ledger_value": "site tie: board location 'Plant 2' with street 1101 SW 37th Ave for Steel Welder 3568326 and Aluminum Welder 3713472",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[44]",
+   "verdict": "confirmed",
+   "note": "Board JSON: LocationName 'Plant 2', Address2 '1101 SW 37th Ave'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:triggers",
+   "source_url": "https://www.industryweek.com/leadership/growth-strategies/podcast/55412005/podcast-what-happened-when-fidelity-manufacturing-changed-from-family-owned-to-employee-owned",
+   "ledger_value": "25,000 sq ft warehouse next to Plant Two just finished or completing (stated 2026-10-15); not a production-capacity event",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[45]",
+   "verdict": "confirmed",
+   "note": "IndustryWeek 2026-10-15: 'We just finished or are just completing now a 25,000 square foot warehouse right next to Plant Two'. 'not a production-capacity event' is the scoring note (storage), not a page fact; agreed (demand 8).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:headcount",
+   "source_url": "https://www.industryweek.com/leadership/growth-strategies/podcast/55412005/podcast-what-happened-when-fidelity-manufacturing-changed-from-family-owned-to-employee-owned",
+   "ledger_value": "unknown (company: 540 in January 2026; site split not stated)",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-G.json evidence[46]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:site_attribution",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110070741774&output=JSON",
+   "ledger_value": "Plant 2 is a separate site from Plant 1 (about 8.5 km apart)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[47]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4445372",
+   "ledger_value": "MIG (McGregor Steel Welder: MIG on steel and stainless steel)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[48]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4550566",
+   "ledger_value": "MIG on aluminum (McGregor Aluminum Welder)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[49]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:materials",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4445372",
+   "ledger_value": "steel and stainless steel (Steel Welder)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[50]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:materials",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4550566",
+   "ledger_value": "aluminum enclosures (Aluminum Welder)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[51]",
+   "verdict": "confirmed",
+   "note": "McGregor Aluminum Welder (4550566): 'precision aluminum enclosures used in backup power generation systems'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:products",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4445372",
+   "ledger_value": "tanks, frames, brackets and structural assemblies (McGregor Steel Welder duties)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[52]",
+   "verdict": "confirmed",
+   "note": "McGregor Steel Welder (4445372) duty line.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:products",
+   "source_url": "https://www.kxxv.com/news/local-news/in-your-neighborhood/florida-manufacturer-to-bring-hundreds-of-jobs-to-mcgregor",
+   "ledger_value": "generator enclosures and fuel tanks (planned McGregor production)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[53]",
+   "verdict": "confirmed",
+   "note": "KXXV 2026-01-20: 'Production is expected to begin by the end of the year, with the company building generator enclosures and fuel tanks.' Planned production at McGregor.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:part_size_fit",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4550566",
+   "ledger_value": "unknown: no tank dimension or weight stated; aluminum enclosure line at the site (weak fit)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[54]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:production_type",
+   "source_url": "https://fidelitymfg.com/products/fuel-tanks/",
+   "ledger_value": "custom per project (company-level, inferred at site); site: tanks, frames, structural assemblies, aluminum enclosures, stair systems",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[55]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:certifications",
+   "source_url": "https://fidelitymfg.com/about/",
+   "ledger_value": "company-level, inferred at site: ISO 9001:2015; UL 142 / UL 2085 listed tanks; AWS Certified Welders (code not named)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[56]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4445372",
+   "ledger_value": "counted: Steel Welder, JSON-LD datePosted 2026-10-14 (board PublishedDate 2026-08-24)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[57]",
+   "verdict": "confirmed",
+   "note": "JSON-LD 2026-10-14; board PublishedDate 2026-08-24; listed at Plant 3 today. 'Career advancement and bonus opportunities' perk is not a sign-on bonus.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4550566",
+   "ledger_value": "counted: Aluminum Welder, JSON-LD datePosted 2026-10-14 (board PublishedDate 2026-09-30)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[58]",
+   "verdict": "confirmed",
+   "note": "JSON-LD 2026-10-14; board 2026-09-30; Plant 3.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4550588",
+   "ledger_value": "counted: Stair Weld Assembler, JSON-LD datePosted 2026-10-16 (assembles, fits and welds stair components)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[59]",
+   "verdict": "confirmed",
+   "note": "JSON-LD 2026-10-16; board 2026-09-30; 'assembling, fitting, and welding stair components'; counts under the counting rule.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/ccbabf98-4351-45fb-bab0-36eb799ecf36",
+   "ledger_value": "site tie: board location 'Plant 3' with street 2055 S Main Street, McGregor TX",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[60]",
+   "verdict": "confirmed",
+   "note": "Board JSON: Plant 3 Address2 '2055 S Main Street'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:triggers",
+   "source_url": "https://www.kxxv.com/news/local-news/in-your-neighborhood/florida-manufacturer-to-bring-hundreds-of-jobs-to-mcgregor",
+   "ledger_value": "plant opening: moving into more than 150,000 sq ft of the former Ferguson Building; 500 jobs planned; production expected by end of 2026 (KXXV, 2026-01-20)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[61]",
+   "verdict": "confirmed",
+   "note": "KXXV JSON-LD datePublished 2026-01-20; 'more than 150,000 square feet ... former Ferguson Building'; 'plans to create 500 jobs'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:triggers",
+   "source_url": "https://www.industryweek.com/leadership/growth-strategies/podcast/55412005/podcast-what-happened-when-fidelity-manufacturing-changed-from-family-owned-to-employee-owned",
+   "ledger_value": "start-up: leased 194,000 sq ft building ('the 200,000 square feet is actually 194,000'); hoping to produce by November 2026; 265,000 sq ft future facility planned on adjacent land (IndustryWeek, 2026-10-15)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[62]",
+   "verdict": "confirmed",
+   "note": "IndustryWeek 2026-10-15: 194,000 sq ft leased; 'hopefully in November of this year'; 265,000 sq ft future facility on 124 adjacent acres.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:status",
+   "source_url": "https://www.industryweek.com/leadership/growth-strategies/podcast/55412005/podcast-what-happened-when-fidelity-manufacturing-changed-from-family-owned-to-employee-owned",
+   "ledger_value": "profiled as a pre-production (start-up) plant",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[63]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:headcount",
+   "source_url": "https://www.kxxv.com/news/local-news/in-your-neighborhood/florida-manufacturer-to-bring-hundreds-of-jobs-to-mcgregor",
+   "ledger_value": "unknown (start-up; 500 jobs planned within the next few years)",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-G.json evidence[64]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:prospect_test",
+   "source_url": "https://www.tdlr.texas.gov/TABS/Search/Print/TABS2026025021",
+   "ledger_value": "pass (start-up): Steel Welders will MIG weld steel tanks and structural assemblies; aluminum enclosures also welded",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[65]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:lat",
+   "source_url": "https://www.ringpower.com/locations/jacksonville-phoenix-products-hq/",
+   "ledger_value": "30.41766187234272",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[66]",
+   "verdict": "confirmed",
+   "note": "Ring Power JSON lat/lng for Phoenix Products HQ.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:lon",
+   "source_url": "https://www.ringpower.com/locations/jacksonville-phoenix-products-hq/",
+   "ledger_value": "-81.62393501747155",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[67]",
+   "verdict": "confirmed",
+   "note": "Ring Power JSON lat/lng for Phoenix Products HQ.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:site_attribution",
+   "source_url": "https://www.ringpower.com/locations/jacksonville-phoenix-products-hq/",
+   "ledger_value": "Zoo Pkwy and 1544 E 8th St are about 8.1 km apart: two sites, not one campus",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[68]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:products",
+   "source_url": "https://www.ringpower.com/locations/jacksonville-phoenix-products-hq/",
+   "ledger_value": "Generator Enclosures and Fuel Tank Systems (Ring Power location services for Phoenix Products HQ)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[69]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:products",
+   "source_url": "https://jaxusa.org/news/phoenix-products-announces-ambitious-expansion-in-jacksonville/",
+   "ledger_value": "custom generator enclosures, fuel tanks and fueling systems (company boilerplate; inferred at this site)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[70]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:weld_processes",
+   "source_url": "https://careers-ringpower.icims.com/jobs/15641/job?in_iframe=1",
+   "ledger_value": "GMAW and FCAW (with SMAW) certifications required by the Zoo Pkwy Service Welder II (repair-worded role)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[71]",
+   "verdict": "confirmed",
+   "note": "Service Welder II - Phoenix Products (26-15641), JSON-LD streetAddress '1511 Zoo Parkway, BLDG 600', posted 2026-11-12, live on the board. '3g and 4G SMAW, FCAW, GMAW certifications' under Required. Duties: 'performs the appropriate welding for the needed repair'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:materials",
+   "source_url": "https://www.phoenixprods.com/resources/enclosure-resources/",
+   "ledger_value": "company-level, inferred at site: aluminum enclosures (primarily), carbon and stainless steel options; steel UL 142 tanks",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[72]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:certifications",
+   "source_url": "https://www.phoenixprods.com/resources/certifications/",
+   "ledger_value": "company-level, inferred at site: ISO 9001:2015; UL 142 / UL 2085 base tanks; Miami-Dade NOA",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[73]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:part_size_fit",
+   "source_url": "https://www.phoenixprods.com/fuel-tanks/",
+   "ledger_value": "unknown: only capacities stated (sub-base tanks up to 25,000 gallons, gensets up to 80,000 lb, ISO containers up to 40 ft for packaging); none is a welded part size",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[74]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:production_type",
+   "source_url": "https://www.phoenixprods.com/generator-enclosures/",
+   "ledger_value": "custom fabricated enclosures (company-level, inferred at site); site product list: generator enclosures and fuel tank systems",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[75]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:welder_postings",
+   "source_url": "https://careers-ringpower.icims.com/jobs/15641/job?in_iframe=1",
+   "ledger_value": "listed, not counted: Service Welder II posted 2026-11-12 (duties: welding 'for the needed repair')",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[76]",
+   "verdict": "confirmed",
+   "note": "Live on Ring Power's iCIMS board (Phoenix search, 14 roles, read 2026-11-17).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:welder_postings",
+   "source_url": "https://careers-ringpower.icims.com/jobs/15670/job?in_iframe=1",
+   "ledger_value": "counted: Service Fabricator posted 2026-11-16 (operates welding and cutting systems, fits and assembles parts from prints)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[77]",
+   "verdict": "confirmed",
+   "note": "26-15670, posted 11/16/2026, Zoo Pkwy, live (Apply button). Duties as quoted; template 'Service Fabricator A'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:welder_postings",
+   "source_url": "https://careers-ringpower.icims.com/jobs/15432/job?in_iframe=1",
+   "ledger_value": "counted: Service Fabricator posted 2026-10-12 (operates welding and cutting systems, fits and assembles parts from prints)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[78]",
+   "verdict": "confirmed",
+   "note": "26-15432, posted 10/12/2026, Zoo Pkwy, live.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:welder_postings",
+   "source_url": "https://careers-ringpower.icims.com/jobs/15431/job?in_iframe=1",
+   "ledger_value": "counted: Service Fabricator posted 2026-10-12 (operates welding and cutting systems, fits and assembles parts from prints)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[79]",
+   "verdict": "confirmed",
+   "note": "26-15431, posted 10/12/2026, Zoo Pkwy, live.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:triggers",
+   "source_url": "https://jaxusa.org/news/phoenix-products-announces-ambitious-expansion-in-jacksonville/",
+   "ledger_value": "new 231,000 sq ft manufacturing facility at 1511 Zoo Parkway Bldg 600 (announced 2025-06-11; construction from June 2025, completion expected May 2026)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[80]",
+   "verdict": "corrected",
+   "corrected_value": "new 231,000 sq ft manufacturing facility at 1511 Zoo Parkway Building 600 (announced 2025-06-11; construction scheduled to begin June 2025, completion expected by May 2026)",
+   "corrected_quote": "June 11, 2025 ... a new 231,000 square-foot state-of-the-art manufacturing facility at 1511 Zoo Parkway Building 600, Jacksonville, FL 32218. ... with construction scheduled to begin in June 2025 and completion expected by May 2026.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The release says construction was 'scheduled to begin in June 2025'; 'construction from June 2025' reads as construction having started, which the page does not show (same pattern as R2-E Cordele 'will refurbish'). Demand 15 is unaffected: the dated announcement naming the site is the event. plants.csv triggers already reads 'announced 2025-06-11; completion expected May 2026' (keep current).",
+   "r2_basis": true,
+   "plants_csv_value": "keep current"
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:triggers",
+   "source_url": "https://www.jaxusa.org/news-insights/phoenix-products-announces-ambitious-expansion-in-jacksonville",
+   "ledger_value": "multiple new production lines planned for the new facility",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[81]",
+   "verdict": "confirmed",
+   "note": "JAXUSA: 'plans to implement multiple new production lines, achieving a remarkable 400 percent increase'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:headcount",
+   "source_url": "https://jaxusa.org/news/phoenix-products-announces-ambitious-expansion-in-jacksonville/",
+   "ledger_value": "unknown (company 150 in June 2025, plan 270; site split not stated)",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-G.json evidence[82]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:products",
+   "source_url": "https://www.ringpower.com/locations/jacksonville-phoenix-products-hq/",
+   "ledger_value": "Generator Enclosures and Fuel Tank Systems (Ring Power location services for Phoenix Products-Jacksonville, 1544 E 8th St)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[83]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:products",
+   "source_url": "https://www.tampa.gov/sites/default/files/bid/docs/27-c-00004-genset-reportu.pdf",
+   "ledger_value": "named as the 'Enclosure & Sub-Base Fuel Tank Manufacturer' at 1544 E 8th St on a City of Tampa generator submittal (cover sheet undated)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[84]",
+   "verdict": "confirmed",
+   "note": "Tampa Contract 27-C-00004 genset plan (document dated OCTOBER 2026; submittal comments dated 07/02/2026). The submittal cover names Phoenix Products, 1544 E 8th St as 'Enclosure & Sub-Base Fuel Tank Manufacturer'; the cover sheet itself carries no date.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:products",
+   "source_url": "https://jaxusa.org/news/phoenix-products-announces-ambitious-expansion-in-jacksonville/",
+   "ledger_value": "custom generator enclosures, fuel tanks and fueling systems (company boilerplate; inferred at this site)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[85]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:weld_processes",
+   "source_url": "https://careers-ringpower.icims.com/jobs/15624/job?in_iframe=1",
+   "ledger_value": "FCAW (with SMAW) certifications desired for the 8th St Service Welder III (repair-worded role)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[86]",
+   "verdict": "confirmed",
+   "note": "Service Welder III (26-15624), streetAddress '1544 East 8th Street', posted 2026-11-05, live. FCAW listed under 'Not Required but Highly Desired'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:materials",
+   "source_url": "https://www.phoenixprods.com/resources/enclosure-resources/",
+   "ledger_value": "company-level, inferred at site: aluminum enclosures (primarily), carbon and stainless steel options; steel UL 142 tanks",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[87]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:certifications",
+   "source_url": "https://www.phoenixprods.com/resources/certifications/",
+   "ledger_value": "company-level, inferred at site: ISO 9001:2015; UL 142 / UL 2085 base tanks; Miami-Dade NOA",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[88]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:part_size_fit",
+   "source_url": "https://www.phoenixprods.com/fuel-tanks/",
+   "ledger_value": "unknown: only capacities stated (sub-base tanks up to 25,000 gallons; gensets up to 80,000 lb); not welded part sizes",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[89]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:production_type",
+   "source_url": "https://www.phoenixprods.com/generator-enclosures/",
+   "ledger_value": "custom fabricated enclosures (company-level, inferred at site); site product list: generator enclosures and fuel tank systems",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[90]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:welder_postings",
+   "source_url": "https://careers-ringpower.icims.com/jobs/15624/job?in_iframe=1",
+   "ledger_value": "listed, not counted: Service Welder III posted 2026-11-05 (duties: welding 'for the needed repair')",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[91]",
+   "verdict": "confirmed",
+   "note": "26-15624 live; repair-worded; listed, not counted.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:welder_postings",
+   "source_url": "https://careers-ringpower.icims.com/jobs/15660/job?in_iframe=1",
+   "ledger_value": "counted: Service Fabricator posted 2026-11-16 (operates welding and cutting systems, fits and assembles parts from prints)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[92]",
+   "verdict": "confirmed",
+   "note": "26-15660, posted 11/16/2026, 1544 East 8th Street, live.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:welder_postings",
+   "source_url": "https://careers-ringpower.icims.com/jobs/15466/job?in_iframe=1",
+   "ledger_value": "counted: Service Fabricator posted 2026-10-14 (operates welding and cutting systems, fits and assembles parts from prints)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[93]",
+   "verdict": "confirmed",
+   "note": "26-15466, posted 10/14/2026, 1544 East 8th Street, live.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:triggers",
+   "source_url": "https://jaxusa.org/news/phoenix-products-announces-ambitious-expansion-in-jacksonville/",
+   "ledger_value": "none found at this site within 24 months (the June 2025 announcement concerns the new Zoo Pkwy facility)",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[94]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:headcount",
+   "source_url": "https://jaxusa.org/news/phoenix-products-announces-ambitious-expansion-in-jacksonville/",
+   "ledger_value": "unknown (company 150 in June 2025; site split not stated)",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-G.json evidence[95]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:site_attribution",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110070375119&output=JSON",
+   "ledger_value": "single production site: Falcon's own pages give only 7717 Gilbert Rd and one facility; EPA registry lists only this address",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[96]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:prospect_test",
+   "source_url": "https://www.falconstructures.com/about-us",
+   "ledger_value": "pass (boundary: ISO container modifier with a genset enclosure case study and BESS enclosure blog): welds in-house; welding is a core step; steel containers",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[97]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:weld_processes",
+   "source_url": "https://www.falconstructures.com/careers/experienced-mig-welder",
+   "ledger_value": "MIG (Experienced MIG Welder/Hotwork page on Falcon's site; requisition not live today)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[98]",
+   "verdict": "corrected",
+   "note": "'requisition not live today' is not on the cited page (the careers page still shows the role with an Apply button); it is carried by the stated Paylocity row for requisition 3747774 ('that job does not exist or is not currently active'), which is confirmed. Same sibling-clause pattern as the other compound corrections. Process 20 unchanged (standing fact, Claremore precedent); plants.csv weld_processes keeps its value, which the two rows together support.",
+   "r2_basis": true,
+   "corrected_value": "MIG (Experienced MIG Welder/Hotwork page on Falcon's site)",
+   "corrected_quote": "If you are a skilled MIG Welder looking for a challenging and rewarding opportunity, we encourage you to apply for this position.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "keep current"
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:materials",
+   "source_url": "https://www.falconstructures.com/capabilities-qualifications",
+   "ledger_value": "steel (container steel evaluated to AC462 under ICC-ES ESR-4163)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[99]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:certifications",
+   "source_url": "https://www.falconstructures.com/capabilities-qualifications",
+   "ledger_value": "factory certified in more than a dozen state modular programs; container steel to ICC-ES ESR-4163 (no welding code named)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[100]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:part_size_fit",
+   "source_url": "https://www.falconstructures.com/case-study-custom-generator-enclosures",
+   "ledger_value": "five 40-foot shipping containers modified into generator enclosures, 23+ reinforced openings on each (Taylor Power Systems case study)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[101]",
+   "verdict": "confirmed",
+   "note": "Case study (undated) lists '5 40-foot shipping containers' and '23+ reinforced openings on each container'; Falcon partnered with a local metalworking company for steel grating and the inset ladder.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:part_size_fit",
+   "source_url": "",
+   "ledger_value": "fit judgement: a 40 ft x 8 ft container fits the 2026 analyst cell (60 ft x 15 ft), not the older 72 in sheet; welded work is openings and reinforcement on a purchased container",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[102]",
+   "verdict": "confirmed",
+   "note": "Judgement or unknown row; consistent with the confirmed stated rows.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:products",
+   "source_url": "https://www.falconstructures.com/case-study-custom-generator-enclosures",
+   "ledger_value": "container generator enclosures (Taylor Power Systems case study: five 40-foot containers)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[103]",
+   "verdict": "confirmed",
+   "note": "Case study title 'Shipping Container Generator Enclosures for Taylor Power Systems'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:production_type",
+   "source_url": "https://www.falconstructures.com/custom-shipping-containers",
+   "ledger_value": "configured from a standard library of floor plans and modification options, with special projects beyond it (mixed)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[104]",
+   "verdict": "confirmed",
+   "note": "Page: 'Most Falcon projects rely on standardized elements and established modification options'; 'Configured Beyond the Standard Library' and special container projects. '(mixed)' is the scoring label, not a page fact.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:production_type",
+   "source_url": "https://www.falconstructures.com",
+   "ledger_value": "one unit or a hundred at a time",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[105]",
+   "verdict": "confirmed",
+   "note": "Homepage line found.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/f0abbe33-d4f6-454a-aac6-1511e9436567",
+   "ledger_value": "none found: Falcon's Paylocity board read 2026-11-17 lists five roles (Hardware Installer, Carpenter/Sheetrock Installer, Experienced Plumber, Project Coordinator, Experienced Painter), no welder",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[106]",
+   "verdict": "confirmed",
+   "note": "Paylocity board JSON 2026-11-17: exactly five jobs, all Manor TX: Experienced Painter (2026-10-30), Project Coordinator (10-27), Experienced Plumber (10-27), Hardware Installer (10-01), Carpenter/Sheetrock Installer (09-29). No welder role.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3747774",
+   "ledger_value": "Experienced MIG Welder/Hotwork requisition 3747774 inactive on Paylocity (2026-11-17)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[107]",
+   "verdict": "confirmed",
+   "note": "Requisition page loads 'We're sorry, that job does not exist or is not currently active.' (browser); Falcon's MIG welder page still links Apply to 3747774. Sibling of corrected p-falcon-structures-manor-tx:weld_processes (MIG welder page): this row carries the clause trimmed there; confirmed as written, no value sync needed.",
+   "r2_basis": true,
+   "sibling_of_corrected": "p-falcon-structures-manor-tx:weld_processes (MIG welder page)"
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:welder_postings",
+   "source_url": "https://www.falconstructures.com/careers",
+   "ledger_value": "none found: careers page open positions 2026-11-17 are Experienced Plumber, Experienced Carpenter / Sheetrock Installer and Project Coordinator",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[108]",
+   "verdict": "confirmed",
+   "note": "Careers page quote found; list renders in a browser. Board JSON (row above) is the full list.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:triggers",
+   "source_url": "https://www.falconstructures.com/about-us",
+   "ledger_value": "none found within 24 months (facility doubled in 2022, outside the window; 2026 news items are a product floor plan and a services launch)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[109]",
+   "verdict": "corrected",
+   "corrected_value": "none found within 24 months: the About-page timeline dates the facility doubling to 2022 (outside the window); its 2026 entry is an expansion of Project Services to include permitting, not a plant event",
+   "corrected_quote": "We expanded our facility — doubling its size and tripling its production capacity — allowing us to create bigger projects faster than ever.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The About page timeline carries 2022 (doubling) and 2026 ('Expanded Project Services To Include Permitting'); it has no 'product floor plan' item, so '2026 news items are a product floor plan and a services launch' adds a fact the cited page does not show. Demand 8 unaffected. plants.csv triggers 'none found within 24 months (facility doubled in 2022)' (keep current).",
+   "r2_basis": true,
+   "plants_csv_value": "keep current"
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox battery-profiler-G.json evidence[110]",
+   "verdict": "confirmed",
+   "note": "Judgement or unknown row; consistent with the confirmed stated rows.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:weld_processes",
+   "source_url": "https://www.falconstructures.com/about-us",
+   "ledger_value": "welding performed in-house in the 10-acre Manor facility (process not named on this page)",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[111]",
+   "verdict": "confirmed",
+   "note": "About page: 'Welding, carpentry, electrical, finishing, and painting are all performed within our 10-acre ... manufacturing facility'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:parent_company",
+   "source_url": "https://www.industryweek.com/leadership/growth-strategies/podcast/55412005/podcast-what-happened-when-fidelity-manufacturing-changed-from-family-owned-to-employee-owned",
+   "ledger_value": "Fidelity Manufacturing, employee-owned through an ESOP since the end of September 2026",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[112]",
+   "verdict": "confirmed",
+   "note": "IndustryWeek: 'completed its transition to an ESOP ... just at the very end of September'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:parent_company",
+   "source_url": "https://www.industryweek.com/leadership/growth-strategies/podcast/55412005/podcast-what-happened-when-fidelity-manufacturing-changed-from-family-owned-to-employee-owned",
+   "ledger_value": "Fidelity Manufacturing, employee-owned through an ESOP since the end of September 2026",
+   "tag": "stated",
+   "origin": "inbox battery-profiler-G.json evidence[113]",
+   "verdict": "confirmed",
+   "note": "As Plant 1.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[114]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:score_material_part",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[115]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[116]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[117]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[118]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[119]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:score_total",
+   "source_url": "",
+   "ledger_value": "79",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[120]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[121]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:confidence",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[122]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely steel and aluminum MIG welder staffing at Plant 1: a Steel Welder role carries a hiring bonus and the Aluminum Welder role has been open since March 2026 while an eight-acre expansion is being planned.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[123]",
+   "verdict": "confirmed",
+   "note": "Judgement or unknown row; consistent with the confirmed stated rows.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:opening_line",
+   "source_url": "",
+   "ledger_value": "Plant One at 1900 NE 25th Ave has an eight-acre expansion in planning (Oct 2026), a Steel Welder opening with a hiring bonus for MIG work on UL 142 and UL 2085 tanks (posted July 20), and an Aluminum Welder role open since March 11, 2026; how are you planning to staff tank and frame welding as Plant One grows?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[124]",
+   "verdict": "confirmed",
+   "note": "Judgement or unknown row; consistent with the confirmed stated rows.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[125]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:score_material_part",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[126]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[127]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[128]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[129]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[130]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:score_total",
+   "source_url": "",
+   "ledger_value": "72",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[131]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[132]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:confidence",
+   "source_url": "",
+   "ledger_value": "3",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[133]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely MIG welder staffing for tank building at Plant 2, where a Steel Welder role carries a hiring bonus and a second-shift Aluminum Welder role (10% premium) has been posted since spring 2026.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[134]",
+   "verdict": "confirmed",
+   "note": "Judgement or unknown row; consistent with the confirmed stated rows.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:opening_line",
+   "source_url": "",
+   "ledger_value": "Plant 2 at 1101 SW 37th Ave is completing a 25,000 sq ft warehouse next door (Oct 2026) and has a Steel Welder opening with a hiring bonus (posted Aug 3, 2026) alongside a second-shift Aluminum Welder role; how are you keeping MIG welding capacity in step with the plant's four enclosure lines?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[135]",
+   "verdict": "confirmed",
+   "note": "Judgement or unknown row; consistent with the confirmed stated rows.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[136]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:score_material_part",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[137]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[138]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[139]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[140]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[141]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:score_total",
+   "source_url": "",
+   "ledger_value": "79",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[142]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[143]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:confidence",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[144]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely building a welding workforce from scratch: the plant is a start-up hiring Steel Welders, Aluminum Welders and a Stair Weld Assembler at once toward a planned 500 jobs.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[145]",
+   "verdict": "confirmed",
+   "note": "Judgement or unknown row; consistent with the confirmed stated rows.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Your McGregor plant at 2055 S Main Street has Steel Welder, Aluminum Welder and Stair Weld Assembler roles open, with production hoped for by November 2026 in the 194,000 sq ft leased building; how are you setting up MIG welding for tanks and aluminum enclosures as you hire toward 500 jobs?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[146]",
+   "verdict": "confirmed",
+   "note": "Judgement or unknown row; consistent with the confirmed stated rows.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[147]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[148]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[149]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[150]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:score_demand",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[151]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[152]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:score_total",
+   "source_url": "",
+   "ledger_value": "75",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[153]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[154]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:confidence",
+   "source_url": "",
+   "ledger_value": "3",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[155]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely fabrication and welding staffing for the new Zoo Parkway plant: three Service Fabricator roles are open at once after a plan to add multiple production lines and 120 jobs.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[156]",
+   "verdict": "confirmed",
+   "note": "Judgement or unknown row; consistent with the confirmed stated rows.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:opening_line",
+   "source_url": "",
+   "ledger_value": "Phoenix Products has three Service Fabricator roles posted at 1511 Zoo Parkway between Oct 12 and Nov 16, 2026, following the June 2025 plan for a 231,000 sq ft facility there with multiple new production lines; how are you staffing fabrication and welding for those new lines?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[157]",
+   "verdict": "confirmed",
+   "note": "Judgement or unknown row; consistent with the confirmed stated rows.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[158]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[159]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[160]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[161]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[162]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[163]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:score_total",
+   "source_url": "",
+   "ledger_value": "68",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[164]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[165]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:confidence",
+   "source_url": "",
+   "ledger_value": "2",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[166]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely fitter and fabricator staffing at 8th Street while the company builds out its Zoo Parkway plant: two Service Fabricator roles are open there at once.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[167]",
+   "verdict": "confirmed",
+   "note": "Judgement or unknown row; consistent with the confirmed stated rows.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:opening_line",
+   "source_url": "",
+   "ledger_value": "Your 1544 E 8th St site has two Service Fabricator roles posted between Oct 14 and Nov 16, 2026 and is named on a City of Tampa generator submittal as the enclosure and sub-base fuel tank manufacturer; how are you splitting tank and enclosure fabrication between 8th Street and Zoo Parkway?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[168]",
+   "verdict": "confirmed",
+   "note": "Judgement or unknown row; consistent with the confirmed stated rows.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[169]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:score_material_part",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[170]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[171]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[172]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[173]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:score_scale",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[174]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:score_total",
+   "source_url": "",
+   "ledger_value": "56",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[175]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[176]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:confidence",
+   "source_url": "",
+   "ledger_value": "2",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[177]",
+   "verdict": "confirmed",
+   "note": "Re-derived from the cited claims under the rubric and the delegation rules; see score_notes/score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely cutting and welding of reinforced openings on each container (the generator-enclosure job needed 23+ per container); no welder role is open today, so labor pressure is not shown.",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[178]",
+   "verdict": "confirmed",
+   "note": "Judgement or unknown row; consistent with the confirmed stated rows.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Falcon modified five 40-foot shipping containers into generator enclosures for Taylor Power Systems, each with 23+ reinforced openings, and does its welding in-house at its 10-acre Manor facility; how are you handling the cutting and welding of those openings today?",
+   "tag": "inferred",
+   "origin": "inbox battery-profiler-G.json evidence[179]",
+   "verdict": "confirmed",
+   "note": "Judgement or unknown row; consistent with the confirmed stated rows.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "v-enclosures-battery-generator:demand_outlook",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/102729/000010272926000050/vmi-20260926x10q.htm",
+   "ledger_value": "Strong (inferred from data-center and grid load growth)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 81",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:name",
+   "source_url": "https://fidelitymfg.com/",
+   "ledger_value": "Fidelity Mfg. Plant 1 (main office)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15104",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:address",
+   "source_url": "https://fidelitymfg.com/",
+   "ledger_value": "1900 NE 25th Ave, Ocala, FL 34470",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15105",
+   "verdict": "confirmed",
+   "note": "Homepage and board (Plant 1 Address2 1900 NE 25th Ave).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:parent_company",
+   "source_url": "https://fidelitymfg.com/about/",
+   "ledger_value": "Fidelity Manufacturing",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15106",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:website",
+   "source_url": "https://fidelitymfg.com/",
+   "ledger_value": "https://fidelitymfg.com",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15107",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-fidelity:products",
+   "source_url": "https://fidelitymfg.com/products/fuel-tanks/",
+   "ledger_value": "UL 142/2085 sub-base tanks; carbon steel",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15108",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:products",
+   "source_url": "https://fidelitymfg.com/about/",
+   "ledger_value": "company enclosure and tank lines built at this plant (inferred)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15109",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "c-fidelity:products",
+   "source_url": "https://fidelitymfg.com/products/enclosures/",
+   "ledger_value": "welded aluminum tube frame enclosures (aluminum-first)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15110",
+   "verdict": "corrected",
+   "note": "'(aluminum-first)' is a judgement the page does not state: it names an aluminum tube-frame enclosure line but says nothing about the share of aluminum against Fidelity's steel UL 142/2085 tank line (Fidelity: 'flat sheets of steel, flat sheets of aluminum'). This bears on the Fidelity material RULING (score_problems). Ledger row 15110; no plant field change.",
+   "r2_basis": true,
+   "corrected_value": "custom welded aluminum tube frame enclosures for all equipment manufacturers and KW ranges (company-level)",
+   "corrected_quote": "Our expert team provides custom welded aluminum tube frame enclosures for all equipment manufacturers and KW ranges.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "keep current"
+  },
+  {
+   "claim_id": "c-fidelity:headcount",
+   "source_url": "https://fidelitymfg.com/about/",
+   "ledger_value": "company: almost 400 employees",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15111",
+   "verdict": "confirmed",
+   "note": "About page (2024 timeline block): 'almost 400 employees'. Correct to the page but stale; superseded by 540 (Jan 2026) and 'more than 550' (Oct 2026 release). Suggest retiring.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:tier",
+   "source_url": "https://fidelitymfg.com/products/fuel-tanks/",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15112",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:relationship",
+   "source_url": "https://fidelitymfg.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15113",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:lookalike_of",
+   "source_url": "https://fidelitymfg.com/",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15114",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:prospect_test",
+   "source_url": "https://fidelitymfg.com/products/fuel-tanks/",
+   "ledger_value": "pass (aluminum-first enclosures; steel tanks)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15115",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:name",
+   "source_url": "https://fidelitymfg.com/",
+   "ledger_value": "Fidelity Mfg. Plant 2",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15116",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:address",
+   "source_url": "https://fidelitymfg.com/",
+   "ledger_value": "1101 SW 37th Ave, Ocala, FL 34474",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15117",
+   "verdict": "confirmed",
+   "note": "Homepage and board (Plant 2 Address2 1101 SW 37th Ave).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:products",
+   "source_url": "https://fidelitymfg.com/about/",
+   "ledger_value": "Plant 2: four enclosure lines",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15118",
+   "verdict": "confirmed",
+   "note": "Same About-page 2024 entry; 'four enclosure lines' is a production line count filed as products. Stated at Plant 2 by name.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:products",
+   "source_url": "",
+   "ledger_value": "company enclosure and tank lines built at this plant (inferred)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15119",
+   "verdict": "confirmed",
+   "note": "Judgement or unknown row; consistent with the confirmed stated rows.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:parent_company",
+   "source_url": "https://fidelitymfg.com/about/",
+   "ledger_value": "Fidelity Manufacturing",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15120",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:website",
+   "source_url": "https://fidelitymfg.com/",
+   "ledger_value": "https://fidelitymfg.com",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15121",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:tier",
+   "source_url": "https://fidelitymfg.com/products/fuel-tanks/",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15122",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:relationship",
+   "source_url": "https://fidelitymfg.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15123",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:lookalike_of",
+   "source_url": "https://fidelitymfg.com/",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15124",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:prospect_test",
+   "source_url": "https://fidelitymfg.com/products/fuel-tanks/",
+   "ledger_value": "pass (aluminum-first enclosures; steel tanks)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15125",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:name",
+   "source_url": "https://www.falconstructures.com",
+   "ledger_value": "Falcon Structures",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15757",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:address",
+   "source_url": "https://www.falconstructures.com",
+   "ledger_value": "7717 Gilbert Rd, Manor, TX 78653",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15758",
+   "verdict": "confirmed",
+   "note": "Homepage footer '7717 Gilbert Rd. Manor, TX 78653'; ECHO FRS 110070375119 FALCON STRUCTURES, 7717 GILBERT RD, MANOR.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:website",
+   "source_url": "https://www.falconstructures.com",
+   "ledger_value": "https://www.falconstructures.com",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15759",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:products",
+   "source_url": "https://www.falconstructures.com/blog/battery-energy-storage-system-design",
+   "ledger_value": "container-based modular structures; BESS enclosure modifications",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15760",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:tier",
+   "source_url": "https://www.falconstructures.com/blog/battery-energy-storage-system-design",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15761",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "v-enclosures-battery-generator:demand_outlook",
+   "source_url": "https://www.eia.gov/todayinenergy/detail.php?id=65964",
+   "ledger_value": "Strong: 2025 on course for record US battery-storage additions (Texas 7.0 GW planned)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15815",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "v-enclosures-battery-generator:demand_outlook",
+   "source_url": "https://www.nasdaq.com/press-release/generac-reports-third-quarter-2025-results-2025-10-29",
+   "ledger_value": "Strong: generator demand from data centers (Generac Q3 2025, 2025-10-29)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15816",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:parent_company",
+   "source_url": "https://jaxusa.org/news/phoenix-products-announces-ambitious-expansion-in-jacksonville/",
+   "ledger_value": "Ring Power Corporation",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15842",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:website",
+   "source_url": "https://www.ringpower.com/locations/jacksonville-phoenix-products-hq/",
+   "ledger_value": "https://www.ringpower.com (Phoenix Products location page)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15843",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:tier",
+   "source_url": "https://jaxusa.org/news/phoenix-products-announces-ambitious-expansion-in-jacksonville/",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15845",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:relationship",
+   "source_url": "https://jaxusa.org/news/phoenix-products-announces-ambitious-expansion-in-jacksonville/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15846",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:lookalike_of",
+   "source_url": "https://jaxusa.org/news/phoenix-products-announces-ambitious-expansion-in-jacksonville/",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15847",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:prospect_test",
+   "source_url": "https://jaxusa.org/news/phoenix-products-announces-ambitious-expansion-in-jacksonville/",
+   "ledger_value": "pass: welds steel in-house (welders, fuel tanks)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15848",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:parent_company",
+   "source_url": "https://jaxusa.org/news/phoenix-products-announces-ambitious-expansion-in-jacksonville/",
+   "ledger_value": "Ring Power Corporation",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15849",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:website",
+   "source_url": "https://www.ringpower.com/locations/jacksonville-phoenix-products-hq/",
+   "ledger_value": "https://www.ringpower.com (Phoenix Products location page)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15850",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:tier",
+   "source_url": "https://jaxusa.org/news/phoenix-products-announces-ambitious-expansion-in-jacksonville/",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15852",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:relationship",
+   "source_url": "https://jaxusa.org/news/phoenix-products-announces-ambitious-expansion-in-jacksonville/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15853",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:lookalike_of",
+   "source_url": "https://jaxusa.org/news/phoenix-products-announces-ambitious-expansion-in-jacksonville/",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15854",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:prospect_test",
+   "source_url": "https://jaxusa.org/news/phoenix-products-announces-ambitious-expansion-in-jacksonville/",
+   "ledger_value": "pass (provisional): may be the plant the 2025 relocation replaces",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15855",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:name",
+   "source_url": "https://www.ringpower.com/locations/jacksonville-phoenix-products-hq/",
+   "ledger_value": "Phoenix Products HQ",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15856",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:address",
+   "source_url": "https://jaxusa.org/news/phoenix-products-announces-ambitious-expansion-in-jacksonville/",
+   "ledger_value": "1511 Zoo Pkwy Bldg 600, Jacksonville, FL 32218",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15857",
+   "verdict": "confirmed",
+   "note": "JAXUSA 2025-06-11 gives 1511 Zoo Parkway Building 600, 32218.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:name",
+   "source_url": "https://www.ringpower.com/locations/jacksonville-phoenix-products-hq/",
+   "ledger_value": "Phoenix Products - Jacksonville",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15860",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:address",
+   "source_url": "https://www.ringpower.com/locations/jacksonville-phoenix-products-hq/",
+   "ledger_value": "1544 E 8th St, Jacksonville, FL 32206",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15861",
+   "verdict": "confirmed",
+   "note": "Ring Power location JSON street '1544 E 8th St', zip 32206.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:address",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110017873988&output=JSON",
+   "ledger_value": "EPA record PHOENIX PRODUCTS INC at 1727 Bennett St (same 32206 block area)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15862",
+   "verdict": "corrected",
+   "corrected_value": "EPA ECHO record PHOENIX PRODUCTS INC at 1727 Bennett St, Jacksonville FL 32206",
+   "corrected_quote": "\"FacilityStreet\":\"1727 BENNETT ST\"",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "'(same 32206 block area)' is a site-attribution judgement inside a stated row (FACT-CHECK LESSONS: such judgements go in their own inferred row citing the registry search). The judgement is right: Census geocodes 1727 Bennett St about 0.11 km from 1544 E 8th St, and ECHO's own coordinates (30.3450, -81.6342) sit on the same block, so it is one campus under the campus rule. Add an inferred site_attribution row saying so; plants.csv address unchanged (keep current).",
+   "r2_basis": true,
+   "plants_csv_value": "keep current"
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:status",
+   "source_url": "https://menafn.com/1111774076/Fidelity-Manufacturing-Becomes-100-Employee-Owned",
+   "ledger_value": "base: pre-production / start-up plant (operations starting Oct 2026)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15970",
+   "verdict": "corrected",
+   "corrected_value": "Oct 7 2026 release: the company is 'preparing to begin operations this month' at McGregor in a planned 200,000 sq ft facility; operations start not shown",
+   "corrected_quote": "where the company is preparing to begin operations this month in a planned 200,000-square-foot facility",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Value tags a status decision ('base: pre-production / start-up plant') as stated and turns 'preparing to begin operations this month' into 'operations starting Oct 2026'. The release (menafn, dated 2026-10-07) shows preparation, not a start; the CEO on 2026-10-15 still hoped to produce 'in November'. The status decision itself is the inbox's inferred :status row (profiled, pre-production). Same kind as R2-E's Cordele status rows. No score effect.",
+   "r2_basis": true,
+   "plants_csv_value": "keep current"
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:name",
+   "source_url": "https://www.tdlr.texas.gov/TABS/Search/Print/TABS2026025021",
+   "ledger_value": "Fidelity Manufacturing Plant 3A",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15971",
+   "verdict": "confirmed",
+   "note": "TDLR TABS2026025021 facility name.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:address",
+   "source_url": "https://www.tdlr.texas.gov/TABS/Search/Print/TABS2026025021",
+   "ledger_value": "2055 S. Main Street Unit #2, Mcgregor, TX 76657",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15972",
+   "verdict": "confirmed",
+   "note": "TDLR location address; Fidelity's board gives '2055 S Main Street' (Plant 3).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:parent_company",
+   "source_url": "https://menafn.com/1111774076/Fidelity-Manufacturing-Becomes-100-Employee-Owned",
+   "ledger_value": "employee-owned (ESOP) since 2026-09-30",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15973",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:website",
+   "source_url": "https://menafn.com/1111774076/Fidelity-Manufacturing-Becomes-100-Employee-Owned",
+   "ledger_value": "https://www.fidelitymfg.com",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15974",
+   "verdict": "confirmed",
+   "note": "Judgement or unknown row; consistent with the confirmed stated rows.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:products",
+   "source_url": "https://menafn.com/1111774076/Fidelity-Manufacturing-Becomes-100-Employee-Owned",
+   "ledger_value": "generator enclosures, sub-base fuel tanks, packages",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15975",
+   "verdict": "corrected",
+   "corrected_value": "company-level (inferred at McGregor): Fidelity designs and builds generator enclosures, sub-base fuel tanks, stairs and platforms and complete generator packages",
+   "corrected_quote": "The employee-owned company designs and builds generator enclosures, sub-base fuel tanks, stairs and platforms, and complete generator packages",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Company-level product sentence in the ESOP release, tagged stated at the McGregor plant; the release's McGregor sentence names no product. Retag inferred (as the Ocala equivalents already are). The site-level product rows are the KXXV planned-production row and the McGregor posting rows (both confirmed). plants.csv products unaffected (keep current).",
+   "r2_basis": true,
+   "plants_csv_value": "keep current"
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:products",
+   "source_url": "https://www.tdlr.texas.gov/TABS/Search/Print/TABS2026025021",
+   "ledger_value": "fabrication space being fitted out",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15976",
+   "verdict": "corrected",
+   "corrected_value": "TDLR project TABS2026025021 (registered 2026-07-10): converting approx. 194,000 sq ft of warehouse space into industrial fabrication, warehouse and office space; scheduled 2026-08-01 to 2026-11-01; current status 'Project Registered'",
+   "corrected_quote": "Converting approx. 194,000 SF of warehouse space into industrial fabrication spaces, warehouse space and office space.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "'fabrication space being fitted out' asserts work under way; the TDLR page shows a registered project with scheduled start and completion dates and status 'Project Registered', not progress. It is also a building fact filed under :products; better moved to :status or :triggers. No score effect; plants.csv products does not carry it.",
+   "r2_basis": true,
+   "plants_csv_value": "keep current"
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:tier",
+   "source_url": "https://menafn.com/1111774076/Fidelity-Manufacturing-Becomes-100-Employee-Owned",
+   "ledger_value": "Tier 1",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15977",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:relationship",
+   "source_url": "https://menafn.com/1111774076/Fidelity-Manufacturing-Becomes-100-Employee-Owned",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15978",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:lookalike_of",
+   "source_url": "https://menafn.com/1111774076/Fidelity-Manufacturing-Becomes-100-Employee-Owned",
+   "ledger_value": "EK Machine",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15979",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:triggers",
+   "source_url": "https://menafn.com/1111774076/Fidelity-Manufacturing-Becomes-100-Employee-Owned",
+   "ledger_value": "new 200,000 sq ft plant, ~450 jobs over four years (Oct 2026)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 15981",
+   "verdict": "confirmed",
+   "note": "menafn release dated 2026-10-07; 'planned 200,000-square-foot facility', 'approximately 450 new jobs over the next four years'. Note: newer than KXXV's 500.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:triggers",
+   "source_url": "https://magazine.manufacturing-today.com/manufacturing-today-issue-249-june-2026/0776014001782483419/p249",
+   "ledger_value": "Trade magazine names the first Texas regional plant as a 200,000 sq ft site in Waco (McGregor is in the Waco area; same plant as ledger record); first regional plant is currently underway in Texas",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 15991",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1900%20NE%2025th%20Ave%2C%20Ocala%2C%20FL%2034470&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "29.206954",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18151",
+   "verdict": "confirmed",
+   "note": "Census geocoder (or Ring Power JSON) response matches the stored value to 6 decimals and the county FIPS.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1900%20NE%2025th%20Ave%2C%20Ocala%2C%20FL%2034470&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-82.103314",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18152",
+   "verdict": "confirmed",
+   "note": "Census geocoder (or Ring Power JSON) response matches the stored value to 6 decimals and the county FIPS.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1900%20NE%2025th%20Ave%2C%20Ocala%2C%20FL%2034470&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "12083",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18153",
+   "verdict": "confirmed",
+   "note": "Census geocoder (or Ring Power JSON) response matches the stored value to 6 decimals and the county FIPS.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1101%20SW%2037th%20Ave%2C%20Ocala%2C%20FL%2034474&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "29.177043",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18154",
+   "verdict": "confirmed",
+   "note": "Census geocoder (or Ring Power JSON) response matches the stored value to 6 decimals and the county FIPS.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1101%20SW%2037th%20Ave%2C%20Ocala%2C%20FL%2034474&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-82.18419",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18155",
+   "verdict": "confirmed",
+   "note": "Census geocoder (or Ring Power JSON) response matches the stored value to 6 decimals and the county FIPS.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-ocala-fl-2:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1101%20SW%2037th%20Ave%2C%20Ocala%2C%20FL%2034474&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "12083",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18156",
+   "verdict": "confirmed",
+   "note": "Census geocoder (or Ring Power JSON) response matches the stored value to 6 decimals and the county FIPS.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=7717%20Gilbert%20Rd%2C%20Manor%2C%20TX%2078653&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "30.282437",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18322",
+   "verdict": "confirmed",
+   "note": "Census geocoder (or Ring Power JSON) response matches the stored value to 6 decimals and the county FIPS.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=7717%20Gilbert%20Rd%2C%20Manor%2C%20TX%2078653&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-97.577713",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18323",
+   "verdict": "confirmed",
+   "note": "Census geocoder (or Ring Power JSON) response matches the stored value to 6 decimals and the county FIPS.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=7717%20Gilbert%20Rd%2C%20Manor%2C%20TX%2078653&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "48453",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18324",
+   "verdict": "confirmed",
+   "note": "Census geocoder (or Ring Power JSON) response matches the stored value to 6 decimals and the county FIPS.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1511%20Zoo%20Pkwy%20Bldg%20600%2C%20Jacksonville%2C%20FL%2032218&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "12031",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18345",
+   "verdict": "confirmed",
+   "note": "Census geocoder (or Ring Power JSON) response matches the stored value to 6 decimals and the county FIPS.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1544%20E%208th%20St%2C%20Jacksonville%2C%20FL%2032206&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "30.345244",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18346",
+   "verdict": "confirmed",
+   "note": "Census geocoder (or Ring Power JSON) response matches the stored value to 6 decimals and the county FIPS.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1544%20E%208th%20St%2C%20Jacksonville%2C%20FL%2032206&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-81.634387",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18347",
+   "verdict": "confirmed",
+   "note": "Census geocoder (or Ring Power JSON) response matches the stored value to 6 decimals and the county FIPS.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1544%20E%208th%20St%2C%20Jacksonville%2C%20FL%2032206&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "12031",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18348",
+   "verdict": "confirmed",
+   "note": "Census geocoder (or Ring Power JSON) response matches the stored value to 6 decimals and the county FIPS.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2055%20S%20Main%20St%20Unit%202%2C%20McGregor%2C%20TX%2076657&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "31.424896",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18370",
+   "verdict": "confirmed",
+   "note": "Census geocoder (or Ring Power JSON) response matches the stored value to 6 decimals and the county FIPS.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2055%20S%20Main%20St%20Unit%202%2C%20McGregor%2C%20TX%2076657&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-97.398035",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18371",
+   "verdict": "confirmed",
+   "note": "Census geocoder (or Ring Power JSON) response matches the stored value to 6 decimals and the county FIPS.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2055%20S%20Main%20St%20Unit%202%2C%20McGregor%2C%20TX%2076657&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "48309",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18372",
+   "verdict": "confirmed",
+   "note": "Census geocoder (or Ring Power JSON) response matches the stored value to 6 decimals and the county FIPS.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl-2:welder_postings",
+   "source_url": "https://careers-ringpower.icims.com/jobs/15652/job?in_iframe=1",
+   "ledger_value": "listed, not counted: Electrical Fabricator - Phoenix Products posted 2026-11-12",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 18392",
+   "verdict": "confirmed",
+   "note": "26-15652, posted 11/12/2026, 1544 East 8th Street, live.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:relationship",
+   "source_url": "https://www.falconstructures.com/case-study-custom-generator-enclosures",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18413",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-falcon-structures-manor-tx:lookalike_of",
+   "source_url": "https://www.falconstructures.com/case-study-custom-generator-enclosures",
+   "ledger_value": "EK Machine: states container generator enclosures and BESS enclosure mods (company-level)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 18414",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (visible text or raw source, 2026-11-17); value supported.",
+   "r2_basis": false
+  }
+ ]
+}

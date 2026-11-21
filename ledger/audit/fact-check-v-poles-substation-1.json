@@ -1,0 +1,1247 @@
+{
+ "checker": 1,
+ "score_checks": [
+  {
+   "claim_id": "p-millerbernd-winsted-mn:score_*",
+   "source_url": "",
+   "verdict": "confirmed",
+   "note": "Total 88 = 20+20+15+20+8+5, which is correct. Labor 20 for several postings at once holds on the Big Pole Welder 2/3 (two listings) and SAW seam welder postings. The plants.csv welder_postings also counts 'Welder 2 - CP-W' (Winsted), which likely means Circular Products-Winsted (595 Industrial Dr, a sister campus); this is unverified, so don't count it for this plant. Material 20 rests partly on existing_robots, now inferred. Demand 8 cites v-poles-substation:demand_outlook, which exists (4 rows)."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:score_*",
+   "source_url": "",
+   "verdict": "confirmed",
+   "note": "Total 67 = 0+20+15+12+15+5, which is correct. Process 0 is consistent: SAW only and no rubric level (MIG/FCAW not stated). Material 20 rests on inferred part_size_fit and relationship (FAT on base plates, plant not named). Confidence 3 looks low by one: scale rests on stated parent_company (multi-plant group)."
+  },
+  {
+   "claim_id": "p-nello-spring-grove-mn:score_*",
+   "source_url": "",
+   "verdict": "confirmed",
+   "note": "Total 35 = 0+0+15+0+15+5, which is correct. The demand trigger (Feb 2026 new ownership plus robotics investment) is company-level for a two-site division; acceptable. Confidence 2 could be 3 (scale is stated)."
+  },
+  {
+   "claim_id": "p-nello-westby-wi:score_*",
+   "source_url": "",
+   "verdict": "confirmed",
+   "note": "Total 35 is correct; same notes as Spring Grove."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:score_*",
+   "source_url": "",
+   "verdict": "confirmed",
+   "note": "Total 88 = 20+20+15+20+8+5, which is correct. Labor 20 (posting open 106 days) is verified on KansasWorks. Process 20 relies on MIG, but the ledger's weld_processes has only a SAW row (1409); the MIG fact ('more than 40 Lincoln DC600 MIG welding machines', maicoind.com/equipment) is true but has no evidence row (ground rule 1). Scale 5 counts the 'Mai group of companies' as a multi-plant parent; it is a group of sister companies (steel service, transport, supply), so this is arguable."
+  },
+  {
+   "claim_id": "p-universal-industrial-sales-lindon-ut:score_*",
+   "source_url": "",
+   "verdict": "confirmed",
+   "note": "Total 61 = 20+0+8+20+8+5, which is correct. Labor 20 is valid (posting dated 2026-09-08, 65 days, Lindon UT per the detail page). Confidence 5 matches."
+  },
+  {
+   "claim_id": "p-klute-york-ne:score_*",
+   "source_url": "",
+   "verdict": "confirmed",
+   "note": "Total 55 = 0+20+15+0+15+5, which is correct. Material 20 is based on stated 45,000 lb sections from a 60 ft brake versus the 2026 report limit (55,000 lb, 60 ft). plants.csv website is 'unknown' although kluteinc.com is cited in evidence; this is a minor data gap."
+  },
+  {
+   "claim_id": "p-pennfab-morrisville-pa:score_*",
+   "source_url": "",
+   "verdict": "confirmed",
+   "note": "Total 55 = 20+0+15+12+8+0, which is correct. Labor 12 is valid (one immediate opening, no date)."
+  },
+  {
+   "claim_id": "p-dihighway-new-york-mills-ny:score_*",
+   "source_url": "",
+   "verdict": "confirmed",
+   "note": "Total 55 = 20+12+15+0+8+0, which is correct. Material 12 (Rove) is a judgement based on the stated 240 ft span."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:score_*",
+   "source_url": "",
+   "verdict": "confirmed",
+   "note": "Total 68 = 20+0+15+20+8+5, which is correct. Labor 20 rests on a company-wide sign-on bonus plus a Haltom City Welder posting. The row 1508 reasoning text still describes a level-12 fallback before the normalisation note; the value of 0 is consistent with the rule."
+  }
+ ],
+ "vertical": "v-poles-substation",
+ "date": "2026-11-12",
+ "plants": [
+  "p-millerbernd-winsted-mn",
+  "p-nello-south-bend-in",
+  "p-nello-spring-grove-mn",
+  "p-nello-westby-wi",
+  "p-maico-ellsworth-ks",
+  "p-universal-industrial-sales-lindon-ut",
+  "p-klute-york-ne",
+  "p-pennfab-morrisville-pa",
+  "p-dihighway-new-york-mills-ny",
+  "p-mica-haltom-city-tx"
+ ],
+ "claims_checked": 136,
+ "claims_corrected": 10,
+ "claims_unreachable": 0,
+ "error_rate": 0.0735,
+ "error_kind_counts": {
+  "wrong plant or location": 1,
+  "other": 4,
+  "quote does not support value": 5
+ },
+ "repeated_kinds": [
+  "quote does not support value (5: rows 1457, 2162, 677, 797, 815): a compound value carries a clause that is true but sits on a different page than the cited source_url; all five are citation-only, with no false fact. Sweep: for every compound value, check each clause against its own row's source page.",
+  "other (4: rows 1196, 374, 380, 1197): three are a plant-level attribution tagged 'stated' when the source (Path video pages) names only the company (1196 Millerbernd existing_robots; 374/380 LaX relationship). Sweep every row that cites a path-robotics.com page and is tagged stated for a plant. Row 1197 is a malformed value (label instead of date)."
+ ],
+ "citation_only_corrections": 5,
+ "false_or_wrong_plant_corrections": 1,
+ "verdict_rules": [
+  "Corrected when the value asserts anything (including one clause of a compound value) that its own cited source page does not support for this plant and no sibling row with the same claim_id carries it; citation-only errors still count as corrections.",
+  "Confirmed when the quote is on the page and the page (not only the quote) supports the whole value for this plant.",
+  "A plant-specific deployment or relationship needs a source naming the plant or a single-site company; otherwise the tag must be inferred.",
+  "Company-level product and capability statements are accepted for a plant when the company's own site names this plant as its (main) plant, or the page is site-specific, and no sister site is described as making a different line (applies to MICA 491/814/1499, Millerbernd 340-342, LaX 372/378).",
+  "Unreachable rows (none) are excluded from claims_checked; score_* rows are not counted as claims and their checks are under score_checks."
+ ],
+ "worst_errors": [
+  "p-millerbernd-winsted-mn:welder_postings (row 347, factoryfix 1902638266): counts 'MIG Welder Travel Contract' as a Winsted Millerbernd posting; on the page it is FlexTrades (Remote · Nationwide). Wrong plant or location; the URL's own posting is closed.",
+  "p-millerbernd-winsted-mn:existing_robots (row 1196): tagged stated for the Winsted main campus, but Path's video names only the company, which has three welding campuses. This contradicts the coordinator's customer_other_plant downgrade and props up score_material_part 20 and confidence 6. Same stated-for-inferred error on p-nello-spring-grove-mn:relationship and p-nello-westby-wi:relationship (the Path FAT quote names Nello, not LaX).",
+  "p-maico-ellsworth-ks:welder_postings (row 797) and p-mica-haltom-city-tx:welder_postings (row 815): compound labor values carry clauses (a Maico CNC posting; MICA night SAW and fitter openings) that are not on the cited pages, and these rows support labor scores of 20. The core facts hold (Maico welder posting 106 days old; MICA sign-on bonus), so scores are unchanged, but the citations need splitting. Similar: UIS 1457 'specialty welding', PennFab 2162 and 677."
+ ],
+ "opening_line_problems": [
+  "p-maico-ellsworth-ks: the opening line uses '40 Lincoln DC600 MIG machines', which is true on maicoind.com/equipment but has no evidence row (weld_processes has only the SAW row 1409).",
+  "p-nello-south-bend-in: '...so which other welded parts at South Bend could follow?' implies the Nello FAT parts came from South Bend; Path names no plant (inferred attribution). No deployment is asserted.",
+  "p-pennfab-morrisville-pa: 'builds highway sign structures and substations' is tagged stated with a Panasonic-only quote; the about page lists Substations among projects PennFab 'can handle', which is softer than 'builds'.",
+  "Opening lines tagged 'stated' with quotes covering only one clause (p-pennfab-morrisville-pa row 2170, p-dihighway-new-york-mills-ny row 2189, p-mica-haltom-city-tx row 1505); each clause traces to a stated row, but other profilers tag opening lines 'inferred'. Make the tag consistent."
+ ],
+ "plants_closed_or_moved": [
+  "p-dihighway-new-york-mills-ny: not confirmed closed. A map-directory listing gives a New Hartford, NY address (a search snippet says it is marked closed; it may be an hours badge), while dihighway.com and the 2026-11-12 AISC directory still list 40 Greenman Ave, New York Mills. Treated as open at the recorded address; recheck."
+ ],
+ "priority_rows_verdict": "Millerbernd tallo rows (1191, 1197): the tallo URL's own job is gone, but the quotes sit on 'Millerbernd Manufacturing Co. / Winsted, MN' cards. The SAW detail page says the role welds 'pole shafts' in Winsted, so both support THIS plant (confirmed; row 1197's value field is malformed). UIS Paylocity rows (1457, 1465): the job detail page 4487723 states 'Lindon, UT', so the posting supports THIS plant. Row 1465 is confirmed; row 1457 is corrected only for the unsupported 'specialty welding' clause.",
+ "inferred_rows_check": "No inferred row claims certainty its quote lacks. The reverse problem (inferred presented as stated) was found 3 times: 1196, 374, 380.",
+ "rows": [
+  {
+   "claim_id": "p-millerbernd-winsted-mn:address",
+   "source_url": "https://www.millerbernd.com/careers",
+   "ledger_value": "622 6th Street South, Winsted, MN 55395",
+   "evidence_row": 339,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:products",
+   "source_url": "https://www.millerbernd.com/",
+   "ledger_value": "Lighting poles and structures, high mast, decorative lighting",
+   "evidence_row": 340,
+   "verdict": "confirmed",
+   "note": "Quote covers only 'Lighting Poles and Structures'; same cited page also lists 'High Mast' and 'Decorative Lighting', so value is supported by the source."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:products",
+   "source_url": "https://www.thefabricator.com/thefabricator/news/shopmanagement/millerbernd-mfg-expands-in-minnesota",
+   "ledger_value": "Fabricator of light and traffic structures",
+   "evidence_row": 341,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:products",
+   "source_url": "https://www.txdot.gov/content/dam/docs/division/mtd/mpl/itspoles.pdf",
+   "ledger_value": "TxDOT-approved ITS pole fabrication plant",
+   "evidence_row": 342,
+   "verdict": "confirmed",
+   "note": "TxDOT ITS pole list: '98013 Millerbernd Manufacturing Company Winsted, MN'."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:headcount",
+   "source_url": "https://www.millerbernd.com/careers",
+   "ledger_value": "625+ (Winsted and Sauk Rapids combined)",
+   "evidence_row": 346,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:welder_postings",
+   "source_url": "https://jobs.factoryfix.com/jobs/welder-2-experienced-mig--winsted--mn--1902638266--V2",
+   "ledger_value": "Winsted welder postings seen on job boards (e.g. Welder 2 or 3 - Winsted - any shift; MIG Welder Travel Contract); none dated in fetched text; live status unverified",
+   "evidence_row": 347,
+   "verdict": "corrected",
+   "error_kind": "wrong plant or location",
+   "corrected_value": "Winsted welder postings by Millerbernd listed in FactoryFix's similar-jobs panel: 'Welder 2 or 3 - Winsted - any shift' and 'Welder 1 - any shift' (both Millerbernd Manufacturing Co., Winsted, MN); the URL's own posting is closed; no dates shown",
+   "corrected_quote": "Welder 2 or 3 - Winsted - any shift Millerbernd Manufacturing Co. • Winsted, MN",
+   "corrected_tag": "stated",
+   "note": "'MIG Welder Travel Contract' on this page is posted by FlexTrades (Remote · Nationwide), not Millerbernd, so it was wrongly counted as a Winsted posting. The page itself says 'Sorry, the job you are looking for is now closed'."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:name",
+   "source_url": "https://www.millerbernd.com/",
+   "ledger_value": "Millerbernd Manufacturing - Winsted main campus",
+   "evidence_row": 348,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:triggers",
+   "source_url": "https://www.thefabricator.com/thefabricator/news/shopmanagement/millerbernd-mfg-expands-in-minnesota",
+   "ledger_value": "2020 announcement: 110,000 sq ft new Winsted plant; pole division capacity +35% (older than 24 months)",
+   "evidence_row": 349,
+   "verdict": "confirmed",
+   "note": "Article dated June 17, 2020; correctly flagged as older than 24 months."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:address",
+   "source_url": "https://nelloinc.com/",
+   "ledger_value": "1201 S Sheridan Street, South Bend, IN 46619",
+   "evidence_row": 362,
+   "verdict": "confirmed",
+   "note": "Address also on nelloinc.com footer and careers page."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:products",
+   "source_url": "https://nelloinc.com/manufacturing",
+   "ledger_value": "Tapered steel poles and substation structures",
+   "evidence_row": 363,
+   "verdict": "confirmed",
+   "note": "nelloinc.com/manufacturing is South Bend specific ('we fabricate the backbone of the grid right here in South Bend, Indiana')."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:products",
+   "source_url": "https://nelloinc.com/transmission-infrastructure",
+   "ledger_value": "Transmission and distribution poles",
+   "evidence_row": 364,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:welder_postings",
+   "source_url": "https://nelloinc.com/careers",
+   "ledger_value": "2 welder postings listed on careers page fetched 2026-11-12 (Welder; Sub-arc seam welder 2nd shift); post dates not shown; sub-arc named",
+   "evidence_row": 368,
+   "verdict": "confirmed",
+   "note": "Careers page says 'family-owned and operated right here in South Bend'; no LaX postings on this page, so postings belong to South Bend. No dates shown."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:name",
+   "source_url": "https://nelloinc.com/our-divisions",
+   "ledger_value": "Nello Corporation - South Bend",
+   "evidence_row": 369,
+   "verdict": "confirmed",
+   "note": "Same block reads 'Nello Corporation is the heavy-lift engine of the grid'."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:triggers",
+   "source_url": "https://nelloinc.com/our-company",
+   "ledger_value": "2025 launch of campus expansion: over 100 acres, total facilities over 320,000 sq ft",
+   "evidence_row": 370,
+   "verdict": "confirmed",
+   "note": "Timeline item on our-company; manufacturing page ties the 100+ acre, 320,000 sq ft campus to South Bend. 2025 is within 24 months."
+  },
+  {
+   "claim_id": "p-nello-spring-grove-mn:address",
+   "source_url": "https://www.laxindustries.com/",
+   "ledger_value": "700 East Main Street, Spring Grove, MN 55974",
+   "evidence_row": 371,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-nello-spring-grove-mn:products",
+   "source_url": "https://nelloinc.com/our-divisions",
+   "ledger_value": "Electrical substation columns, beams, awnings",
+   "evidence_row": 372,
+   "verdict": "confirmed",
+   "note": "Division-level statement covering both LaX sites (Spring Grove and Westby); not split by site."
+  },
+  {
+   "claim_id": "p-nello-spring-grove-mn:relationship",
+   "source_url": "https://www.path-robotics.com/videos/nello-utility-pole-welding",
+   "ledger_value": "customer_other_plant",
+   "evidence_row": 374,
+   "verdict": "corrected",
+   "error_kind": "other",
+   "corrected_value": "customer_other_plant",
+   "corrected_quote": "We just passed another FAT, this time with Nello. Nello designs and manufactures engineered steel structures for wireless telecom and electric utility networks.",
+   "corrected_tag": "inferred",
+   "note": "Inferred presented as stated. The Path quote names Nello, not LaX; the classification relies on the separate nelloinc.com statement that LaX is a sister division. Nello's FAT was passed, but the cell was not yet on its floor ('Looking forward to seeing this cell run on their floor'). The South Bend relationship row is correctly tagged inferred."
+  },
+  {
+   "claim_id": "p-nello-spring-grove-mn:name",
+   "source_url": "https://nelloinc.com/our-divisions",
+   "ledger_value": "LaX Industries - Spring Grove",
+   "evidence_row": 376,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-nello-westby-wi:address",
+   "source_url": "https://www.laxindustries.com/",
+   "ledger_value": "306 Norse Drive, Westby, WI 54667",
+   "evidence_row": 377,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-nello-westby-wi:products",
+   "source_url": "https://nelloinc.com/our-divisions",
+   "ledger_value": "Electrical substation columns, beams, awnings",
+   "evidence_row": 378,
+   "verdict": "confirmed",
+   "note": "Division-level statement covering both LaX sites; not split by site."
+  },
+  {
+   "claim_id": "p-nello-westby-wi:relationship",
+   "source_url": "https://www.path-robotics.com/videos/nello-utility-pole-welding",
+   "ledger_value": "customer_other_plant",
+   "evidence_row": 380,
+   "verdict": "corrected",
+   "error_kind": "other",
+   "corrected_value": "customer_other_plant",
+   "corrected_quote": "We just passed another FAT, this time with Nello. Nello designs and manufactures engineered steel structures for wireless telecom and electric utility networks.",
+   "corrected_tag": "inferred",
+   "note": "Inferred presented as stated; same issue as p-nello-spring-grove-mn:relationship. The Path page does not mention LaX or Westby."
+  },
+  {
+   "claim_id": "p-nello-westby-wi:name",
+   "source_url": "https://nelloinc.com/our-divisions",
+   "ledger_value": "LaX Industries - Westby",
+   "evidence_row": 382,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-nello-westby-wi:triggers",
+   "source_url": "https://www.laxindustries.com/about",
+   "ledger_value": "second facility opened in Westby, WI in 2024 (month not stated)",
+   "evidence_row": 383,
+   "verdict": "confirmed",
+   "note": "2024 opening; month not stated, so it cannot be shown to fall within 24 months (cutoff 2024-11-12). Score uses the Feb 2026 trigger instead."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:address",
+   "source_url": "https://www.micasteelworks.com/contact",
+   "ledger_value": "4201 Old Denton Rd",
+   "evidence_row": 490,
+   "verdict": "confirmed",
+   "note": "Contact page lists '4201 Old Denton Rd, Haltom City, TX 76117' as 'HALTOM CITY PLANT'; Euless and Kaufman are listed as offices (AISC also lists a Kaufman facility)."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:products",
+   "source_url": "https://www.micasteelworks.com",
+   "ledger_value": "tubular steel poles, substation steel, lattice",
+   "evidence_row": 491,
+   "verdict": "confirmed",
+   "note": "Company-level product page. Accepted for Haltom City because MICA's contact page calls Haltom City its 'PLANT' (Euless and Kaufman are 'OFFICE') and TxDOT lists Haltom City as the former Falcon Steel pole plant. See verdict_rules."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:found_by",
+   "source_url": "https://www.areadevelopment.com/newsitems/7-14-2015/falcon-steel-haltom-city-texas890873.shtml",
+   "ledger_value": "company site;news",
+   "evidence_row": 495,
+   "verdict": "confirmed",
+   "note": "found_by metadata; the 2015 Falcon Steel article is about the Haltom City plant, tied to MICA by the TxDOT 'formerly Falcon Steel' listing."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:name",
+   "source_url": "https://www.maicoind.com/about",
+   "ledger_value": "MaiCo Industries, Inc.",
+   "evidence_row": 612,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:address",
+   "source_url": "https://www.maicoind.com/about",
+   "ledger_value": "936 N Highway 14, Ellsworth, KS 67439",
+   "evidence_row": 613,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:products",
+   "source_url": "https://www.maicoind.com/about",
+   "ledger_value": "multi-sided poles for DOT, sports lighting, wind tower, utility",
+   "evidence_row": 614,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:products",
+   "source_url": "https://www.maicoind.com/",
+   "ledger_value": "steel poles, bridge tub girders, building structural steel, skid attachments, specialty fabrication",
+   "evidence_row": 615,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:website",
+   "source_url": "https://www.maicoind.com/",
+   "ledger_value": "https://www.maicoind.com/",
+   "evidence_row": 617,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-universal-industrial-sales-lindon-ut:name",
+   "source_url": "https://uisutah.squarespace.com/about",
+   "ledger_value": "Universal Industrial Sales, Inc.",
+   "evidence_row": 631,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-universal-industrial-sales-lindon-ut:address",
+   "source_url": "https://wisconsindot.gov/Documents/doing-bus/eng-consultants/cnslt-rsrces/tools/appr-prod/ap-current/sign-structures.pdf",
+   "ledger_value": "433 N 1030 W, Lindon, UT 84042",
+   "evidence_row": 632,
+   "verdict": "confirmed",
+   "note": "WisDOT sign-structures approved list; Paylocity detail page also says Lindon, UT."
+  },
+  {
+   "claim_id": "p-universal-industrial-sales-lindon-ut:products",
+   "source_url": "https://uisutah.squarespace.com/signstructures",
+   "ledger_value": "overhead sign structures",
+   "evidence_row": 633,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-universal-industrial-sales-lindon-ut:products",
+   "source_url": "https://uisutah.squarespace.com/tapered-poles",
+   "ledger_value": "steel tapered poles",
+   "evidence_row": 634,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-universal-industrial-sales-lindon-ut:headcount",
+   "source_url": "https://uisutah.squarespace.com/about",
+   "ledger_value": "over 200",
+   "evidence_row": 635,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-universal-industrial-sales-lindon-ut:website",
+   "source_url": "https://uisutah.squarespace.com/about",
+   "ledger_value": "https://uisutah.squarespace.com/",
+   "evidence_row": 636,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-pennfab-morrisville-pa:name",
+   "source_url": "https://www.pennfab.com/about/",
+   "ledger_value": "PennFab, Inc.",
+   "evidence_row": 674,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-pennfab-morrisville-pa:address",
+   "source_url": "https://www.roads.maryland.gov/OMT/signalstruc.pdf",
+   "ledger_value": "20 Steel Road South, Morrisville, PA 19067",
+   "evidence_row": 675,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-pennfab-morrisville-pa:products",
+   "source_url": "https://www.pennfab.com/about/",
+   "ledger_value": "highway sign structures",
+   "evidence_row": 676,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-pennfab-morrisville-pa:products",
+   "source_url": "https://roads.maryland.gov/OMT/overheadsign.pdf",
+   "ledger_value": "signal and overhead sign structures",
+   "evidence_row": 677,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "overhead sign structures (Maryland qualified producer list 803)",
+   "corrected_quote": "PennFab, Inc. Morrisville, PA (SM8) 20 Steel Road South Morrisville, PA 19067",
+   "corrected_tag": "stated",
+   "note": "The cited PDF is '803 - Overhead Sign Structures' only; 'signal' structures are not on it. Signal structures are supported by roads.maryland.gov/OMT/signalstruc.pdf ('818 - Signal Structures'), which row 675 cites for the address. The value is true, but the citation is wrong."
+  },
+  {
+   "claim_id": "p-pennfab-morrisville-pa:website",
+   "source_url": "https://www.pennfab.com/",
+   "ledger_value": "https://www.pennfab.com/",
+   "evidence_row": 679,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-pennfab-morrisville-pa:welder_postings",
+   "source_url": "https://www.pennfab.com/careers/",
+   "ledger_value": "1 open (Welder; MIG; immediate opening; posting date not shown; page live 2026-11-12)",
+   "evidence_row": 682,
+   "verdict": "confirmed",
+   "note": "Careers page live 2026-11-12: 'Welder / IMMEDIATE OPENING! / Must have MIG welding experience.' PennFab is single-site (Morrisville)."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:prospect_test",
+   "source_url": "https://www.maicoind.com/about",
+   "ledger_value": "pass",
+   "evidence_row": 780,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-universal-industrial-sales-lindon-ut:prospect_test",
+   "source_url": "https://uisutah.squarespace.com/signstructures",
+   "ledger_value": "pass",
+   "evidence_row": 782,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-pennfab-morrisville-pa:prospect_test",
+   "source_url": "https://www.pennfab.com/about/",
+   "ledger_value": "pass",
+   "evidence_row": 787,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:products",
+   "source_url": "https://www.maicoind.com/poles-towers/traffic-signal-poles",
+   "ledger_value": "traffic/signal, lighting, utility poles; sign structures; bridge girders",
+   "evidence_row": 796,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:welder_postings",
+   "source_url": "https://www.kansasworks.com/jobs/13626472",
+   "ledger_value": "1 welder posting open (posted 2026-07-29, updated 2026-10-15; still live 2026-11-12, 106 days); AWS/AISC standards; processes not named; also a CNC operator posting",
+   "evidence_row": 797,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "1 welder posting open at Maico Industries, Ellsworth KS (posted 2026-07-29, updated 2026-10-15; still live 2026-11-12, 106 days); AWS/AISC standards; processes not named",
+   "corrected_quote": "Posted On: Jul 29, 2026",
+   "corrected_tag": "stated",
+   "note": "Posting verified ('Welder at Maico Industries in Ellsworth, Kansas'; Updated On: Oct 15, 2026), but the value's clause 'also a CNC operator posting' is not on the cited page and no sibling welder_postings row carries it. Citation-only error; the welder posting itself is confirmed for this plant."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:found_by",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC;state DOT list;company site",
+   "evidence_row": 798,
+   "verdict": "confirmed",
+   "note": "Checked against the AISC directory snapshot (ledger/audit/source-snapshot-aisc-directory-2026-11-12.txt); the live directory is browser-paginated and the plain fetch shows only the filter UI. Row matches exactly. Snapshot: ledger/audit/source-snapshot-aisc-directory-2026-11-12.txt"
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:found_by",
+   "source_url": "https://www.mass.gov/info-details/approved-fabricators-of-signs-luminaires-and-signal-supports",
+   "ledger_value": "state DOT list",
+   "evidence_row": 799,
+   "verdict": "confirmed",
+   "note": "MassDOT approved fabricators page lists 'Maico Industries – Ellsworth, KS'."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:products",
+   "source_url": "https://www.micasteelworks.com/utilities",
+   "ledger_value": "steel utility poles incl. transmission poles, substation structures, light-duty distribution",
+   "evidence_row": 814,
+   "verdict": "confirmed",
+   "note": "Company-level products page; Haltom City is the former Falcon Steel transmission-pole plant (TxDOT HMIP 99879)."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:welder_postings",
+   "source_url": "https://www.micasteelworks.com/careers",
+   "ledger_value": "Sign-on bonus advertised on company careers page (live 2026-11-12); aggregator shows Welder 1st shift (Mon-Fri 5:00 AM-3:30 PM, Saturday as needed), night-shift SAW welder and fitter openings at Haltom City; count and oldest date not shown",
+   "evidence_row": 815,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "Sign-on bonus for welders and fitters advertised on the MICA careers page (company-wide; applications to 4201 Old Denton Road, Haltom City); count and dates not shown",
+   "corrected_quote": "★ Signing Bonus for Welders & Fitters",
+   "corrected_tag": "stated",
+   "note": "The cited careers page carries only the signing bonus. The value's aggregator clauses are true but cited elsewhere: the Haltom City 'Welder - 1st shift' schedule is on row 1501 (vaia job page), and the 'Night-Shift Submerged Arc Welder (SAW)' and 'Fitter' cards for Haltom City are on talents.vaia.com/companies/mica-steelworks/ (cited only by weld_processes row 1495). These need their own welder_postings rows. Citation-only error."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:found_by",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC;job posting;web search",
+   "evidence_row": 816,
+   "verdict": "confirmed",
+   "note": "Checked against the AISC directory snapshot; row matches exactly. Snapshot: ledger/audit/source-snapshot-aisc-directory-2026-11-12.txt"
+  },
+  {
+   "claim_id": "p-klute-york-ne:address",
+   "source_url": "https://nemep.unl.edu/klute-inc",
+   "ledger_value": "1313 Road G, York, NE",
+   "evidence_row": 847,
+   "verdict": "confirmed",
+   "note": "kluteinc.com/products footer also gives '1313 Rd G, | York, NE 68467'."
+  },
+  {
+   "claim_id": "p-klute-york-ne:products",
+   "source_url": "https://opportunity.nebraska.gov/family-owned-manufacturer-flourishes-in-rural-nebraska/",
+   "ledger_value": "steel products for electrical substations",
+   "evidence_row": 848,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-klute-york-ne:products",
+   "source_url": "https://nemep.unl.edu/klute-inc",
+   "ledger_value": "substation and transmission line steel",
+   "evidence_row": 849,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-klute-york-ne:headcount",
+   "source_url": "https://opportunity.nebraska.gov/family-owned-manufacturer-flourishes-in-rural-nebraska/",
+   "ledger_value": "175",
+   "evidence_row": 850,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-klute-york-ne:welder_postings",
+   "source_url": "https://opportunity.nebraska.gov/family-owned-manufacturer-flourishes-in-rural-nebraska/",
+   "ledger_value": "no open posting verified; company says it is continually recruiting welders (70 employed, expects to hire dozens more); careers page lists no postings; aggregator listings not re-openable",
+   "evidence_row": 851,
+   "verdict": "confirmed",
+   "note": "Article dated Aug 19, 2025. Web search shows 2026 Klute job-board postings (e.g. a welder/fabricator posting), but none was re-opened here; value correctly claims no verified open posting."
+  },
+  {
+   "claim_id": "p-klute-york-ne:found_by",
+   "source_url": "https://nemep.unl.edu/klute-inc",
+   "ledger_value": "web search;state manufacturing directory;job posting",
+   "evidence_row": 855,
+   "verdict": "confirmed",
+   "note": "found_by is process metadata; the source confirms the company exists."
+  },
+  {
+   "claim_id": "p-klute-york-ne:triggers",
+   "source_url": "https://opportunity.nebraska.gov/family-owned-manufacturer-flourishes-in-rural-nebraska/",
+   "ledger_value": "booked out 60 weeks",
+   "evidence_row": 856,
+   "verdict": "confirmed",
+   "note": "Aug 19, 2025 article; within 24 months."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:found_by",
+   "source_url": "https://www.txdot.gov/content/dam/docs/division/mtd/mpl/hmip.pdf",
+   "ledger_value": "state DOT list",
+   "evidence_row": 887,
+   "verdict": "confirmed",
+   "note": "TxDOT HMIP: '99879 MICA Steelworks (formerly Falcon Steel America– Fort Worth ... Haltom City, TX'."
+  },
+  {
+   "claim_id": "p-dihighway-new-york-mills-ny:address",
+   "source_url": "https://www.dihighway.com/overhead-sign-structures",
+   "ledger_value": "40 Greenman Ave., New York Mills, NY 13417",
+   "evidence_row": 914,
+   "verdict": "confirmed",
+   "note": "OPEN/MOVED FLAG (not a correction): a map-directory listing gives a New Hartford, NY address for Di Highway Sign & Structure, and a search snippet says it is marked closed (the fetched page shows no closed text; it may be an hours badge). dihighway.com and the 2026-11-12 AISC directory both still list 40 Greenman Ave, New York Mills. Treated as open at the recorded address; recheck."
+  },
+  {
+   "claim_id": "p-dihighway-new-york-mills-ny:products",
+   "source_url": "https://www.dihighway.com",
+   "ledger_value": "overhead and cantilever spans, sign and structure gantries",
+   "evidence_row": 915,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-dihighway-new-york-mills-ny:found_by",
+   "source_url": "https://www.dihighway.com/overhead-sign-structures",
+   "ledger_value": "AISC;company site",
+   "evidence_row": 919,
+   "verdict": "confirmed",
+   "note": "found_by is process metadata; the AISC snapshot also lists 'DI Highway Sign & Structure Corp. New York Mills NY Bridge Fabricator - Simple'."
+  },
+  {
+   "claim_id": "p-klute-york-ne:name",
+   "source_url": "https://nemep.unl.edu/klute-inc",
+   "ledger_value": "Klute, Inc.",
+   "evidence_row": 939,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-dihighway-new-york-mills-ny:name",
+   "source_url": "https://www.dihighway.com",
+   "ledger_value": "DiHighway Sign & Structure Corp.",
+   "evidence_row": 956,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-dihighway-new-york-mills-ny:website",
+   "source_url": "https://www.dihighway.com",
+   "ledger_value": "https://www.dihighway.com",
+   "evidence_row": 957,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:weld_processes",
+   "source_url": "https://jobs.factoryfix.com/jobs/welder-2-or-3-winsted-any-shift--winsted--mn--699229077--V3",
+   "ledger_value": "MIG (GMAW) on Big Pole production weldments (Transportation & Infrastructure, Winsted)",
+   "evidence_row": 1190,
+   "verdict": "confirmed",
+   "note": "FactoryFix posting: 'Big Pole Welder 2 or 3 ... to join our Transportation & Infrastructure team in Winsted' - T&I poles are the main campus line, not Circular Products."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:weld_processes",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/mn/winsted/welder-1-or-2-any-shift-5bc347ac",
+   "ledger_value": "SAW seam welding",
+   "evidence_row": 1191,
+   "verdict": "confirmed",
+   "note": "PRIORITY ROW. The URL's own job (Welder 1 or 2) is gone ('The job you requested is no longer available'); the quote now sits in the page's rotating 'similar jobs' panel on a card reading 'Millerbernd Manufacturing Co. / Winsted, MN · Onsite'. Detail page https://tallo.com/talent/job/manufacturing/welder-or-solderer/mn/winsted/submerged-arc-seam-welder-2n-406f120c says 'operation of a submerged arc seam welding machine to place a continuous weld on one or two sides of pole shafts' and 'Location: Winsted, MN (Onsite)'. Pole shafts are the main-campus (T&I) line, so this supports THIS plant. Recommend re-citing the detail URL; no archive saved."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:materials",
+   "source_url": "https://jobs.factoryfix.com/jobs/welder-2-or-3-winsted-any-shift--winsted--mn--699229077--V3",
+   "ledger_value": "carbon steel",
+   "evidence_row": 1192,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:certifications",
+   "source_url": "https://www.millerbernd.com/transportation-infrastructure",
+   "ledger_value": "DOT certified in 40+ states",
+   "evidence_row": 1193,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:part_size_fit",
+   "source_url": "https://www.millerbernd.com/who-we-are/our-story",
+   "ledger_value": "Early-1970s company history: poles 10 to 200 ft, 1/16 to 1/2 in high-strength steel; current pole dimensions not stated",
+   "evidence_row": 1194,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:production_type",
+   "source_url": "https://www.millerbernd.com/transportation-infrastructure",
+   "ledger_value": "many part types, built to each state's specifications",
+   "evidence_row": 1195,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:existing_robots",
+   "source_url": "https://www.path-robotics.com/videos/case-study-millerbernd",
+   "ledger_value": "yes: Path welding cells, per Path's video page (extent and date not given)",
+   "evidence_row": 1196,
+   "verdict": "corrected",
+   "error_kind": "other",
+   "corrected_value": "yes: Path welding cells per Path's Millerbernd video page (company-level; plant not named; attributed to the Winsted main campus because T&I poles are made there)",
+   "corrected_quote": "Hear how Millerbernd has leveraged Path's intelligent welding cells to fabricate Transportation & Infrastructure poles.",
+   "corrected_tag": "inferred",
+   "note": "Inferred presented as stated. Path's page names the company, not a plant, and Millerbernd has three welding campuses (622 6th St S Winsted; Circular Products at 595 Industrial Dr Winsted and Sauk Rapids). The coordinator already applied this strict rule to :relationship (customer_other_plant), and a 'stated' existing_robots contradicts that. Score_material_part 20 (row 1204) leans on this claim, so it rests on an inference. Knock-on: row 1204 (score_material_part) says 'counts toward confidence: yes' and plants.csv confidence is 6; with existing_robots inferred, material/part fit no longer rests on stated evidence, so confidence should be 5."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:welder_postings",
+   "source_url": "https://tallo.com/talent/job/manufacturing/welder-or-solderer/mn/winsted/welder-1-or-2-any-shift-5bc347ac",
+   "ledger_value": "oldest open posting date",
+   "evidence_row": 1197,
+   "verdict": "corrected",
+   "error_kind": "other",
+   "corrected_value": "2026-09-30 (Submerged Arc Seam Welder - 2nd or Weekend shift, Millerbernd, Winsted MN; updated 2026-10-30)",
+   "corrected_quote": "Posted Sep 30, 2026 (Updated Oct 30, 2026)",
+   "corrected_tag": "stated",
+   "note": "PRIORITY ROW. Malformed value: the field holds the label 'oldest open posting date' instead of a date. The quote is on the page on the similar-jobs card for Millerbernd's SAW seam welder posting in Winsted, MN. The detail page (https://tallo.com/talent/job/manufacturing/welder-or-solderer/mn/winsted/submerged-arc-seam-welder-2n-406f120c) ties the role to welding pole shafts, so it supports THIS plant. The URL's own job is gone and the panel rotates; re-cite the detail URL."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:welder_postings",
+   "source_url": "https://www.millerbernd.com/careers",
+   "ledger_value": "4x10 week with optional overtime",
+   "evidence_row": 1198,
+   "verdict": "confirmed",
+   "note": "Company-wide careers page (Winsted and Sauk Rapids); optional, not mandatory, overtime so it adds no labor points."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:triggers",
+   "source_url": "https://www.millerbernd.com/who-we-are/news/c4-acquisition",
+   "ledger_value": "Parent acquired C4 Welding, Sauk Rapids MN (now Millerbernd Circular Products), announced 2025-05-15; not a Winsted plant-level trigger",
+   "evidence_row": 1199,
+   "verdict": "confirmed",
+   "note": "C4 page dated 'Winsted, Minn., May 15, 2025'; acquisition is at Sauk Rapids, so it is correctly marked as not a Winsted plant-level trigger."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:triggers",
+   "source_url": "https://www.millerbernd.com/",
+   "ledger_value": "Company news list shows the C4 Welding acquisition",
+   "evidence_row": 1200,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-millerbernd-winsted-mn:welder_postings",
+   "source_url": "https://jobs.factoryfix.com/jobs/welder-2-or-3-winsted-any-shift--winsted--mn--699229077--V3",
+   "ledger_value": "shifts: 1st, 2nd and weekend",
+   "evidence_row": 1209,
+   "verdict": "confirmed",
+   "note": "Shift schedule is on the Big Pole Welder 2 or 3 Winsted posting."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:weld_processes",
+   "source_url": "https://nelloinc.com/careers",
+   "ledger_value": "submerged arc (sub-arc seam welding) stated; robotic and manual welding stated; MIG/FCAW not stated",
+   "evidence_row": 1346,
+   "verdict": "confirmed",
+   "note": "Sub-arc seam welder posting on South Bend careers page."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:weld_processes",
+   "source_url": "https://nelloinc.com/manufacturing",
+   "ledger_value": "robotic and manual welding; AWS D1.1 qualified",
+   "evidence_row": 1347,
+   "verdict": "confirmed",
+   "note": "South Bend manufacturing page."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:materials",
+   "source_url": "https://nelloinc.com/manufacturing",
+   "ledger_value": "galvanized and weathering steel poles",
+   "evidence_row": 1348,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:certifications",
+   "source_url": "https://nelloinc.com/manufacturing",
+   "ledger_value": "ISO 9001:2015",
+   "evidence_row": 1349,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:production_type",
+   "source_url": "https://nelloinc.com/careers",
+   "ledger_value": "custom-engineered poles and substation steel alongside high-volume wireless tower pipe",
+   "evidence_row": 1351,
+   "verdict": "confirmed",
+   "note": "Quote is generic careers text; the manufacturing page also says 'CUSTOM STEEL FABRICATION SERVICEs'. Accepted."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:production_type",
+   "source_url": "https://nelloinc.com/manufacturing",
+   "ledger_value": "high-volume wireless pipe processing",
+   "evidence_row": 1352,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:existing_robots",
+   "source_url": "https://nelloinc.com/manufacturing",
+   "ledger_value": "yes (brand not stated)",
+   "evidence_row": 1353,
+   "verdict": "confirmed",
+   "note": "South Bend manufacturing page; brand not stated."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:parent_company",
+   "source_url": "https://nelloinc.com/our-company",
+   "ledger_value": "Nello Industries Investco",
+   "evidence_row": 1362,
+   "verdict": "confirmed",
+   "note": "Page states 'Nello Industries Investco is a diversified industrial group ... Through our operating divisions'."
+  },
+  {
+   "claim_id": "p-nello-spring-grove-mn:materials",
+   "source_url": "https://nelloinc.com/our-divisions",
+   "ledger_value": "structural steel",
+   "evidence_row": 1364,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-nello-spring-grove-mn:certifications",
+   "source_url": "https://nelloinc.com/our-divisions",
+   "ledger_value": "in-house Certified Welding Inspector stated; AISC/ISO apply to Nello Industries, not confirmed for LaX",
+   "evidence_row": 1365,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-nello-spring-grove-mn:production_type",
+   "source_url": "https://nelloinc.com/our-divisions",
+   "ledger_value": "variety of structural steel products incl. custom fabrication",
+   "evidence_row": 1367,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-nello-spring-grove-mn:triggers",
+   "source_url": "https://www.laxindustries.com/about",
+   "ledger_value": "Feb 2026 new ownership; investing in advanced technology, robotics and automation while creating new jobs",
+   "evidence_row": 1370,
+   "verdict": "confirmed",
+   "note": "Company-level trigger for LaX (both sites)."
+  },
+  {
+   "claim_id": "p-nello-westby-wi:materials",
+   "source_url": "https://nelloinc.com/our-divisions",
+   "ledger_value": "structural steel",
+   "evidence_row": 1380,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-nello-westby-wi:certifications",
+   "source_url": "https://nelloinc.com/our-divisions",
+   "ledger_value": "in-house Certified Welding Inspector stated; AISC/ISO apply to Nello Industries, not confirmed for LaX",
+   "evidence_row": 1381,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-nello-westby-wi:production_type",
+   "source_url": "https://nelloinc.com/our-divisions",
+   "ledger_value": "variety of structural steel products incl. custom fabrication",
+   "evidence_row": 1383,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-klute-york-ne:materials",
+   "source_url": "https://www.kluteinc.com/products",
+   "ledger_value": "steel (HSS, wide flange, channel, angle, pipe, plate); galvanized and weathering finishes",
+   "evidence_row": 1395,
+   "verdict": "confirmed",
+   "note": "Products page also says 'Products include galvanized and weathering finishes.'"
+  },
+  {
+   "claim_id": "p-klute-york-ne:production_type",
+   "source_url": "https://opportunity.nebraska.gov/family-owned-manufacturer-flourishes-in-rural-nebraska/",
+   "ledger_value": "custom-engineered, one-off and small batch",
+   "evidence_row": 1398,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-klute-york-ne:production_type",
+   "source_url": "https://www.kluteinc.com/products",
+   "ledger_value": "custom-engineered poles in small batches",
+   "evidence_row": 1399,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-klute-york-ne:existing_robots",
+   "source_url": "https://opportunity.nebraska.gov/family-owned-manufacturer-flourishes-in-rural-nebraska/",
+   "ledger_value": "yes (brand not stated)",
+   "evidence_row": 1400,
+   "verdict": "confirmed",
+   "note": "Nebraska DED article, Aug 2025; Klute is single-site."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:weld_processes",
+   "source_url": "https://www.maicoind.com/equipment",
+   "ledger_value": "submerged arc welding also stated",
+   "evidence_row": 1409,
+   "verdict": "confirmed",
+   "note": "Equipment page; the same page states 'MaiCo Industries has more than 40 Lincoln DC600 MIG welding machines.' (no evidence row carries this MIG fact)."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:materials",
+   "source_url": "https://www.maicoind.com/about",
+   "ledger_value": "steel coils 3/16 to 1/2 in thick",
+   "evidence_row": 1410,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:certifications",
+   "source_url": "https://www.maicoind.com/equipment",
+   "ledger_value": "AWS D1.1, AWS D1.5, CWB (CSA W47.1), AISC (BU, SBR, CPT)",
+   "evidence_row": 1411,
+   "verdict": "confirmed",
+   "note": "Equipment page. AISC BU/SBR/CPT come from the certifications page (row 1412)."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:certifications",
+   "source_url": "https://www.maicoind.com/certifications",
+   "ledger_value": "AISC certifications BU, SBR, CPT",
+   "evidence_row": 1412,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:production_type",
+   "source_url": "https://www.maicoind.com/",
+   "ledger_value": "many part types: poles for DOT, lighting, wind, utility, cell; bridge girders; structurals; skids; custom fabrication",
+   "evidence_row": 1414,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-maico-ellsworth-ks:parent_company",
+   "source_url": "https://www.maicoind.com/about",
+   "ledger_value": "Mai group of companies (PKM Steel Service, MSS Transport, Salina Steel Supply)",
+   "evidence_row": 1419,
+   "verdict": "confirmed",
+   "note": "About page: 'MaiCo Industries, Inc. has complimentary services through companies within the Mai group of companies.' and names PKM Steel Service, MSS Transport, Salina Steel Supply."
+  },
+  {
+   "claim_id": "p-universal-industrial-sales-lindon-ut:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/585cc089-4992-4eb6-871f-6a118fb0bb6b/UNIVERSAL-INDUSTRIAL-SALES-INC",
+   "ledger_value": "FCAW and GMAW (job posting); specialty welding",
+   "evidence_row": 1457,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "FCAW and GMAW (job posting)",
+   "corrected_quote": "FCAW / GMAW / Arc Welder Days & Nights * 09/8/2026",
+   "corrected_tag": "stated",
+   "note": "PRIORITY ROW. The posting supports THIS plant: detail page https://recruiting.paylocity.com/Recruiting/Jobs/Details/4487723 says 'Lindon, UT' and 'FCAW 1G or 3G experience'. However, 'specialty welding' is not on the cited Paylocity page; it is on https://uisutah.squarespace.com/about ('including Induction Bending, Specialty Welding, Fabrication, Galvanizing...') and needs its own evidence row. The value is true, but the citation is wrong."
+  },
+  {
+   "claim_id": "p-universal-industrial-sales-lindon-ut:materials",
+   "source_url": "https://uisutah.squarespace.com/about",
+   "ledger_value": "steel",
+   "evidence_row": 1458,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-universal-industrial-sales-lindon-ut:certifications",
+   "source_url": "https://uisutah.squarespace.com/about",
+   "ledger_value": "AISC certified fabrication shop; Caltrans Welded Steel for Sign Structures; full-time CWIs",
+   "evidence_row": 1459,
+   "verdict": "confirmed",
+   "note": "About page also states Caltrans Welded Steel for Sign Structures."
+  },
+  {
+   "claim_id": "p-universal-industrial-sales-lindon-ut:certifications",
+   "source_url": "https://uisutah.squarespace.com/signstructures",
+   "ledger_value": "Caltrans Welded Steel for Sign Structures; multiple full-time CWIs",
+   "evidence_row": 1460,
+   "verdict": "confirmed",
+   "note": "Signstructures page also states AISC certified shop and the Caltrans certification."
+  },
+  {
+   "claim_id": "p-universal-industrial-sales-lindon-ut:production_type",
+   "source_url": "https://uisutah.squarespace.com/signstructures",
+   "ledger_value": "mixed: unique custom sign structures and poles plus high-volume guardrail",
+   "evidence_row": 1462,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-universal-industrial-sales-lindon-ut:production_type",
+   "source_url": "https://uisutah.squarespace.com/",
+   "ledger_value": "high-volume guardrail",
+   "evidence_row": 1463,
+   "verdict": "confirmed",
+   "note": "'Leading manufacturer of W-Beam and Thrie Beam guardrail in the nation' is read as high-volume; reasonable but the word 'volume' is not stated."
+  },
+  {
+   "claim_id": "p-universal-industrial-sales-lindon-ut:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/585cc089-4992-4eb6-871f-6a118fb0bb6b/UNIVERSAL-INDUSTRIAL-SALES-INC",
+   "ledger_value": "1 welder posting open: FCAW / GMAW / Arc Welder Days & Nights, posted 2026-09-08 (65 days at 2026-11-12); also CWI, CNC, machinist postings",
+   "evidence_row": 1465,
+   "verdict": "confirmed",
+   "note": "PRIORITY ROW. The list page gives location only as 'Universal Industrial Sales' (no city). Detail page https://recruiting.paylocity.com/Recruiting/Jobs/Details/4487723 (opened with --browser) reads 'FCAW / GMAW / Arc Welder Days & Nights * / Lindon, UT / Job Type Full-time' and requires 'FCAW 1G or 3G experience', so the posting supports THIS plant. UIS states one location (Lindon). 2026-09-08 to 2026-11-12 = 65 days, which is correct. Overtime is '8+ hours overtime each week' (not stated as mandatory). Recommend re-citing the detail URL."
+  },
+  {
+   "claim_id": "p-nello-south-bend-in:triggers",
+   "source_url": "https://nelloinc.com/manufacturing",
+   "ledger_value": "further facility and capability expansion underway (undated, current page)",
+   "evidence_row": 1493,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:weld_processes",
+   "source_url": "https://talents.vaia.com/companies/mica-steelworks/haltom-city/welder-1st-shift-70674876/",
+   "ledger_value": "Flux-core / metal-core wire (wire welder); submerged arc (SAW) seams",
+   "evidence_row": 1494,
+   "verdict": "confirmed",
+   "note": "Vaia posting body: 'Location MICA Steelworks – Haltom City, Texas Plant'. 'Perform welding duties with a wire welder'."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:weld_processes",
+   "source_url": "https://talents.vaia.com/companies/mica-steelworks/",
+   "ledger_value": "SAW operator posting at Haltom City",
+   "evidence_row": 1495,
+   "verdict": "confirmed",
+   "note": "Vaia company page card: 'Night-Shift Submerged Arc Welder (SAW) | Precision Welds / MICA Steelworks / Haltom City'. Vaia also shows a 'Welder' posting at Euless, which is a separate site."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:materials",
+   "source_url": "https://talents.vaia.com/companies/mica-steelworks/haltom-city/welder-1st-shift-70674876/",
+   "ledger_value": "steel",
+   "evidence_row": 1496,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:certifications",
+   "source_url": "https://www.micasteelworks.com/about",
+   "ledger_value": "AISC (certified facilities); no AWS D1.1/ASME/ISO/CWB found on MICA site",
+   "evidence_row": 1497,
+   "verdict": "confirmed",
+   "note": "About page 'Our AISC-Certified Facilities'; AISC snapshot lists MICA Haltom City (Highway Component Manufacturer, Building Fabricator)."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:part_size_fit",
+   "source_url": "https://www.micasteelworks.com/utilities",
+   "ledger_value": "unknown: no part dimensions or weights stated; transmission structures up to 345kV double circuit, multi-pole and H/A frames",
+   "evidence_row": 1498,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:production_type",
+   "source_url": "https://www.micasteelworks.com",
+   "ledger_value": "custom engineered and light duty poles (many structure types, engineered-to-order)",
+   "evidence_row": 1499,
+   "verdict": "confirmed",
+   "note": "Company-level product page. Accepted for Haltom City because MICA's contact page calls Haltom City its 'PLANT' (Euless and Kaufman are 'OFFICE') and TxDOT lists Haltom City as the former Falcon Steel pole plant. See verdict_rules."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:welder_postings",
+   "source_url": "https://talents.vaia.com/companies/mica-steelworks/haltom-city/welder-1st-shift-70674876/",
+   "ledger_value": "Haltom City Welder 1st shift schedule",
+   "evidence_row": 1501,
+   "verdict": "confirmed",
+   "note": "Haltom City plant posting."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:headcount",
+   "source_url": "https://jobs.weekday.works/mica-steelworks-fitter%2Fwelder",
+   "ledger_value": "86 (company-wide, aggregator profile; Haltom City site count unknown)",
+   "evidence_row": 1502,
+   "verdict": "confirmed",
+   "note": "weekday.works page is a Kaufman Fitter/Welder posting; 'Employees 86' is the company profile (Vaia says 50-100). Value correctly says company-wide."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:opening_line",
+   "source_url": "https://www.micasteelworks.com/careers",
+   "ledger_value": "MICA Steelworks advertises a signing bonus for welders and fitters, and its Haltom City welder posting asks for proficiency with flux core and metal core wire.",
+   "evidence_row": 1505,
+   "verdict": "confirmed",
+   "note": "Opening line tagged stated; the flux-core clause is supported by row 1494 (Haltom City posting)."
+  },
+  {
+   "claim_id": "p-mica-haltom-city-tx:parent_company",
+   "source_url": "https://www.micasteelworks.com/contact",
+   "ledger_value": "MICA Steelworks (sites: Haltom City, Euless, Kaufman)",
+   "evidence_row": 1513,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-pennfab-morrisville-pa:weld_processes",
+   "source_url": "https://www.pennfab.com/services/welding/",
+   "ledger_value": "GMAW (MIG), flux-core (FCAW), submerged arc (SAW)",
+   "evidence_row": 2161,
+   "verdict": "confirmed",
+   "note": "Quote covers GMAW only, but the same cited page also describes 'Flux Core Welding' ('one of our most-used methods') and 'Sub arc welding', so the value is supported by the source."
+  },
+  {
+   "claim_id": "p-pennfab-morrisville-pa:weld_processes",
+   "source_url": "https://www.pennfab.com/blog/",
+   "ledger_value": "GMAW (MIG), flux-core (FCAW), submerged arc (SAW)",
+   "evidence_row": 2162,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "GMAW (MIG), flux-core (FCAW), submerged arc (SAW)",
+   "corrected_quote": "PennFab utilizes three types of welding — flux core, sub-arc, and gas metal arc welding.",
+   "corrected_tag": "stated",
+   "note": "The cited blog index shows only the post title 'The Main Differences Between Our Three Types of Welding' and names no process. The corrected quote is from the post itself, https://www.pennfab.com/the-main-differences-between-our-three-types-of-welding/ (May 31, 2022), so source_url should change to it. Value unchanged; citation corrected."
+  },
+  {
+   "claim_id": "p-pennfab-morrisville-pa:materials",
+   "source_url": "https://www.pennfab.com/about/",
+   "ledger_value": "carbon steel, stainless steel, aluminum",
+   "evidence_row": 2163,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-pennfab-morrisville-pa:certifications",
+   "source_url": "https://www.pennfab.com/about/",
+   "ledger_value": "AWS D1.1 and D1.5 welders; AISC certified; PennDOT certified; in-house CWIs",
+   "evidence_row": 2164,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-pennfab-morrisville-pa:production_type",
+   "source_url": "https://www.pennfab.com/about/",
+   "ledger_value": "one-time and recurring custom structural work across many structure types",
+   "evidence_row": 2166,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-pennfab-morrisville-pa:existing_robots",
+   "source_url": "https://www.pennfab.com/about/facilities-equipment/",
+   "ledger_value": "yes - Panasonic",
+   "evidence_row": 2167,
+   "verdict": "confirmed",
+   "note": "Facilities-equipment page; single site."
+  },
+  {
+   "claim_id": "p-pennfab-morrisville-pa:opening_line",
+   "source_url": "https://www.pennfab.com/about/facilities-equipment/",
+   "ledger_value": "PennFab lists a Panasonic robot welding system, uses GMAW and flux-core, builds highway sign structures and substations, and is advertising an immediate opening for a MIG welder; how is welding split today between the robot and your manual welders?",
+   "evidence_row": 2170,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-dihighway-new-york-mills-ny:weld_processes",
+   "source_url": "https://www.dihighway.com/capabilities",
+   "ledger_value": "flux-core (FCAW); MIG/SAW not stated",
+   "evidence_row": 2177,
+   "verdict": "confirmed",
+   "note": "Capabilities: 'All of our welders ... are certified to produce product conforming to ... Flux Core Welding Process according to AWS D1.5 specifications'."
+  },
+  {
+   "claim_id": "p-dihighway-new-york-mills-ny:materials",
+   "source_url": "https://www.dihighway.com/about-us",
+   "ledger_value": "steel (galvanized steel products)",
+   "evidence_row": 2178,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-dihighway-new-york-mills-ny:certifications",
+   "source_url": "https://www.dihighway.com/capabilities",
+   "ledger_value": "AISC Certified Bridge Fabrication Simple; AWS D1.5 flux-core welders; 4 AWS CWIs; WBE",
+   "evidence_row": 2179,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-dihighway-new-york-mills-ny:certifications",
+   "source_url": "https://www.dihighway.com/",
+   "ledger_value": "AISC Certified Bridge Fabrication Simple; AWS D1.5 flux-core welders; 4 AWS CWIs; WBE",
+   "evidence_row": 2180,
+   "verdict": "confirmed",
+   "note": "Capabilities page states 'Certified Bridge Fabrication Simple', four AWS CWIs and WBE."
+  },
+  {
+   "claim_id": "p-dihighway-new-york-mills-ny:production_type",
+   "source_url": "https://www.dihighway.com/overhead-sign-structures",
+   "ledger_value": "engineered-to-order sign structures, gantries, rail; customer-designed or in-house designed",
+   "evidence_row": 2182,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-dihighway-new-york-mills-ny:part_size_fit",
+   "source_url": "https://www.dihighway.com/overhead-sign-structures",
+   "ledger_value": "240 ft span (assembled)",
+   "evidence_row": 2183,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  },
+  {
+   "claim_id": "p-dihighway-new-york-mills-ny:opening_line",
+   "source_url": "https://www.dihighway.com/capabilities",
+   "ledger_value": "Di Highway's welders are certified to flux-core welding under AWS D1.5, and it builds overhead sign structures that span up to 240 feet; how are you handling the variety of designs across those jobs?",
+   "evidence_row": 2189,
+   "verdict": "confirmed",
+   "note": "Quote found on the source page and supports the value for this plant."
+  }
+ ]
+}

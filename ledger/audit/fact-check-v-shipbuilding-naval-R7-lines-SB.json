@@ -1,0 +1,488 @@
+{
+ "checker": "line-checker SB (R7)",
+ "vertical": "v-shipbuilding-naval",
+ "date": "2026-11-19",
+ "plants": [
+  "p-electric-boat-groton-ct",
+  "p-electric-boat-north-kingstown-ri",
+  "p-biw-bath-me",
+  "p-nassco-san-diego-ca",
+  "p-fincantieri-marinette-wi",
+  "p-fincantieri-sturgeon-bay-wi",
+  "p-saronic-franklin-la",
+  "p-saronic-brownsville-tx",
+  "p-corn-island-grandview-in",
+  "p-chesapeake-shipbuilding-salisbury-md",
+  "p-philly-shipyard-philadelphia-pa",
+  "p-st-johns-palatka-fl",
+  "p-senesco-north-kingstown-ri",
+  "p-gunderson-marine-portland-or",
+  "p-bae-jacksonville-fl",
+  "p-vessel-repair-port-arthur-tx",
+  "p-westport-orange-shipyard-orange-tx"
+ ],
+ "decision_rule": "Battery R3/R4/R5 rules (fact-check-v-enclosures-battery-generator-R3-lines.json, -R5-lines-A.json), as applied in R6, R7-PA/PB and R7-SA: a line is corrected if any fact is not on a stated row of that plant (or a company row worded company-wide), is placed at the wrong site (shared-city rule), is misdated (board re-post stamp as a posting date; aggregator or expired copy written as live; a date the row does not carry), is a plan written as progress or a superseded figure, uses a live count of postings, leads with an older fact (opening lines; 'read <date>' clauses neutral), rests on a premise no row states (incl. a question presuming welding where no stated row shows it), lacks the closing 'you' question (opening lines), or the bottleneck guess is not hedged. Bottleneck guesses are corrected only when they state as fact something no row supports or place another site's fact at the plant. Leaving out a newer stated fact is not an error unless the line leads with an older dated fact (Marinette, Sturgeon Bay and St. Johns lead with a neutral read clause). A publication date must be on a cited row as the publication date (a hiring or production year in the value does not count: DIS-TRAN R7-PB, Tesla R5-B). A clause attached to more roles than its row carries is corrected (Derrick/Liebherr R6-B). A line clause that matches a stated row's value whose quote is short is confirmed and the row logged as field drift (SA Great Lakes precedent). 'listed <date>' for board stamps (Ashby publishedAt, Paylocity PublishedDate, UKG raw PostedDate, BAE Posted Date) allowed (coordinator rule 2026-11-17). Live = in the board's own list or JSON today, or the rendered page shows the role with Apply where a dead-ID control renders the closed message (GD/NASSCO, BAE). Unreachable = a clause rests only on a source that cannot be re-read today.",
+ "scope": "Every opening_line and bottleneck_guess in ledger/inbox/lines-S3.json: 17 plants, 34 lines; 33 text lines checked (26 on the 13 High/Medium plants, 7 on Low plants Saronic Brownsville, Senesco, Vessel Repair x2 each and Westport opening); 1 line set to 'unknown' (p-westport-orange-shipyard-orange-tx:bottleneck_guess, Low) counted separately.",
+ "lines_checked": 33,
+ "lines_corrected": 3,
+ "lines_unreachable": 0,
+ "lines_confirmed": 30,
+ "claims_checked": 33,
+ "claims_corrected": 3,
+ "claims_unreachable": 0,
+ "unknown_lines": 1,
+ "error_rate": 0.0909,
+ "error_rate_high_medium": 0.1154,
+ "high_medium_lines_checked": 26,
+ "high_medium_lines_corrected": 3,
+ "high_medium_lines_unreachable": 0,
+ "substantive_corrections": 3,
+ "substantive_error_rate": 0.0909,
+ "error_rate_note": "3/33 = 9.1% corrected on all text lines; High/Medium 3/26 = 11.5% (EB Groton 80, EB Quonset 80, BAE 80: all High). No fact, site or score changes: two publication years dropped and one process list re-tied to its requisition; each line is true on the live page and was wrong only against its rows. Over the 10% bar on High/Medium (advisor checkpoint, CLAUDE.md). No unreachable lines. Unknown lines (1, Low) not in any denominator. Confirmed with notes under the SA Great Lakes value-vs-quote precedent (line matches a stated row's value; the row's quote is short): Chesapeake opening and bottleneck (bonus and differential on row 4127's value), St. Johns bottleneck (year on row 5274's value, from the PDF's upload path).",
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 3,
+  "invented fact": 0,
+  "other": 0
+ },
+ "error_sub_kind_counts": {
+  "misdated (publication year on no row)": 2,
+  "clause wider than its row (process list attached to roles whose rows do not carry it)": 1
+ },
+ "repeated_kinds": [
+  "quote does not support value: 3 lines (EB Groton and EB Quonset bottleneck guesses: 'said in 2026' where the cited row's 2026 is the hiring year, not the publication date; BAE opening: GMAW-P attached to Oct 23 roles whose rows do not name it). Sweep: every 'reported/said in <year>' or 'published <month year>' clause should be checked against a date in the cited row's quote (not a hiring or production year in its value), and every plural 'roles ... that name <processes>' clause against a weld_processes row per requisition. R7-PB had one of the same publication-year kind (DIS-TRAN)."
+ ],
+ "validator": {
+  "command": "python3 tools/validate_lines.py --inbox <file>",
+  "S3": "# 33 text lines checked, 0 failing (exit 0)",
+  "inbox_drift": "plants[] opening_line/bottleneck_guess identical to evidence[].value for all 34 lines, and identical to ledger/plants.csv (already merged): no drift",
+  "gap": "the validator pools row values, so value-only clauses (Chesapeake bonus, CareerSource year, 19FortyFive year) pass on the value; they were checked against the live pages here.",
+  "corrections": "the 3 corrected lines swapped into a scratch copy of the inbox file: # 3 text lines checked, 0 failing (exit 0)"
+ },
+ "score_problems": [
+  "No counted posting behind any line is closed (all re-read 2026-11-19). No score moves.",
+  "p-saronic-franklin-la: Fitter publishedAt 2025-11-17 is now 367 days old (standing ad); Welder 2026-03-11 (253 days, 60+ days) live. Labor 20 holds (two counted at once; Welder 60+ days).",
+  "p-chesapeake-shipbuilding-salisbury-md: Shipyard Welder 4274905 and Welder - Electric Department 4274679 carry JSON-LD datePosted 2026-08-19 while the board shows Oct 15, 2026 (batch re-list 08:04:18-08:04:27 of four roles). Lines write 'listed', so no line error. Labor 20 holds (five counted, $1,000 bonus).",
+  "p-electric-boat-groton-ct / -north-kingstown-ri: iCIMS datePosted 2026-09-22 (17304) and 2026-07-31 (20028, oldest at Quonset); others 2026-11-01/04. Labor 20 holds (several at once).",
+  "p-biw-bath-me: iCIMS JSON-LD datePosted on 4952 etc. is synthetic (re-fetched 2026-11-19 13:34:39 UTC it read 2024-11-19T13:34:39 and 3 s later 13:34:42: always now minus two years); not a raw first-posted date, so no standing-ad finding. Labor 20 holds (four counted, live). welder_postings '7 remaining positions' on 4952 now reads 2 (dated read; not used in the lines)."
+ ],
+ "opening_line_problems": [
+  "All 17 text opening lines end with a second-person question; each leads with its newest dated fact or a neutral 'read' clause (Saronic Franklin's inner order runs Mar 2026, Nov 2025, Dec 2025; its lead is the newest, so no error); no live counts; plans written as plans; no banned words. One opening corrected (BAE process list)."
+ ],
+ "plants_closed_or_moved": [],
+ "status_problems": [
+  "p-westport-orange-shipyard-orange-tx: a web-search snippet of a MapQuest listing marks the site 'Closed'; not a source and not verified (MarineLink directory still lists the yard; no 2026 news found). Lead only: the line already asks whether the yard still builds new barges."
+ ],
+ "worst_errors": [
+  "p-bae-jacksonville-fl:opening_line (High 80) - corrected: 'roles ..., listed Nov 11, 2026 and Oct 23, 2026, that name FCAW, GMAW, GMAW-P and SMAW': GMAW-P is named only on 130620BR (the only weld_processes row); the Oct 23 roles name FCAW, SMAW and GMAW. Process list re-tied to 130620BR.",
+  "p-electric-boat-groton-ct:bottleneck_guess (High 80) - corrected: 'a defense-news report said in 2026': the row's 2026 is the hiring year; publication date (August 3, 2026) is on no row. 'in 2026' dropped.",
+  "p-electric-boat-north-kingstown-ri:bottleneck_guess (High 80) - corrected: 'Senator Reed's office said in 2026': same shape (release dated February 20, 2026, not on the row). 'in 2026' dropped."
+ ],
+ "field_drift_notes": [
+  "p-chesapeake-shipbuilding-salisbury-md:welder_postings row 4127 value carries '$1,000 sign-on bonus' but its quote (board list page) does not; the bonus is on each detail page ('$1,000 Sign-On Bonus: Paid in two installments after 60 and 180 days'): add a row per page or extend a detail-page row (fact-check lesson: one row per page per clause).",
+  "p-st-johns-palatka-fl:welder_postings row 5274 value 'Mar 25, 2026': the PDF says 'WEDNESDAY, MARCH 25TH' with no year; 2026 is inferred from the upload path /2026/03/ and the weekday. Value should say so.",
+  "p-electric-boat-groton-ct:hiring_plan row 4815 and p-electric-boat-north-kingstown-ri:hiring_plan row 4843: quotes carry no publication date (pages dated August 3, 2026 and February 20, 2026); add them so the dates can return to the lines.",
+  "p-chesapeake-shipbuilding-salisbury-md:welder_postings row 4127 value also carries the '$2.00 evening/night differential' at board level; it is on the Shipyard Welder page only (row 5142 scopes it): narrow the value.",
+  "p-bae-jacksonville-fl:weld_processes: add rows for the Oct 23 requisitions (FCAW, SMAW, structural GMAW) if the process list should cover them."
+ ],
+ "leads": [
+  "Coordinator: High/Medium line rate 3/26 = 11.5% is over 10%: advisor checkpoint. All three are date/attribution tightening with no score effect; apply plants_csv_value for the three corrected rows (apply_factcheck.py).",
+  "Sweep the other ships and poles line files for 'reported/said in <year>' clauses whose year is a hiring or production year on the row (two here, one in R7-PB).",
+  "Westport Orange open/closed status: verify from a primary source before the next map build."
+ ],
+ "method": "Lines read from the inbox file (evidence[] values; identical to plants[] and to ledger/plants.csv) and traced to every cited claim row in ledger/evidence.csv (dumped with tag, value, quote, URL). Re-read 2026-11-19: EB and BIW iCIMS search lists (keywords welder, shipfitter) and every job page (Seat Location, shift, process text, JSON-LD datePosted); GD job pages 1315893100 and 1315893300 rendered in Chromium with a dead-ID control; FMG ADP apply-custom-filters JSON in Chromium (24 requisitions, locations, text); Saronic Ashby posting API (285 roles, publishedAt, descriptionPlain); Chesapeake Paylocity board pageData and five detail pages; Philly UKG LoadSearchResults (22 roles); St. Johns Paycom board rendered and paged (23 results) plus job JSON-LD; Gunderson gem board rendered and job_posts API; six BAE job pages rendered in Chromium. tools/fetch_page.py --check on every news, release, permit and directory quote behind a line (33 checks, all FOUND, all HTTP 200) and full-text reads for dates and value-only clauses (19FortyFive, NEREJ, Reed, Navy Times, Baird, WorkBoat x2, Seapower, Mainebiz, Professional Mariner, Inquirer x2, St. Johns news, CareerSource PDF, turnto10 x2, Marine Log x3, Waterways Journal, IDEM PDF, MarineLink). Web search used only for open/closed checks (Westport, Vessel Repair). python3 tools/validate_lines.py --inbox ledger/inbox/lines-S3.json. No ledger or inbox file edited.",
+ "apply_note": "Line rows have blank source_url (key (claim_id, '')), as in the inbox file. Apply the 3 corrected rows (plants_csv_value; corrected_tag inferred) after the S3 rows already merged. No unreachable rows.",
+ "unknown_rows": [
+  {
+   "claim_id": "p-westport-orange-shipyard-orange-tx:bottleneck_guess",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "inbox": "ledger/inbox/lines-S3.json",
+   "score_tier": "Low",
+   "note": "set to unknown by the line writer: No stated site-level fact points at a current constraint: the only stated rows are an undated shipyard directory listing (read Nov 13, 2026); no welder posting, contract or output figure within 24 months. Agreed: the only stated rows are the undated MarineLink directory listing; no posting, contract or output figure within 24 months."
+  }
+ ],
+ "rows": [
+  {
+   "claim_id": "p-electric-boat-groton-ct:opening_line",
+   "source_url": "",
+   "ledger_value": "Electric Boat's careers board lists a Welder - Skilled role at the EB Groton Shipyard for welding structural assemblies with GMAW and SMAW in submarine construction (read Nov 13, 2026), and Rhode Island TV news reported on July 29, 2026 that work on the $76.6 billion contract for nine Virginia-class and five Columbia-class submarines will also be performed at the company's Groton headquarters; how are you adding structural welders for those boats?",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "80",
+   "verdict": "confirmed",
+   "note": "EB iCIMS search (keyword welder, 2026-11-19) lists 17304 Welder - Skilled; job page: Seat Location EB Groton Shipyard, 'Welding structural assemblies using GMAW and SMAW during fabrication and installation of submarine construction' FOUND. turnto10 (Wed, July 29, 2026): '$76.6 billion contract includes nine additional Virginia-class submarines and five Columbia-class submarines' and 'Work on the submarines will also be performed at the company's Groton headquarters' FOUND (Groton HQ and shipyard are the same 75 Eastern Point Rd campus). 'read' clause neutral; 'you' question."
+  },
+  {
+   "claim_id": "p-electric-boat-groton-ct:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely structural welder supply: Electric Boat's board lists a Welder - Skilled role at the EB Groton Shipyard across the 1st, 2nd and 3rd shifts and Shipfitter Entry Level & Semi-Skilled and Shipfitter - Skilled roles there (read Nov 13, 2026), and a defense-news report said in 2026 that Electric Boat's hiring expansion includes thousands of tradespeople in Groton.",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "80",
+   "verdict": "corrected",
+   "note": "19FortyFive page re-read 2026-11-19: dated 'August 3, 2026'; 'The expansion includes thousands of tradespeople in Groton, Connecticut, and Quonset Point, Rhode Island' FOUND. But 'said in 2026' is a publication date the cited row does not carry: hiring_plan row 4815's quote has no date and its value's '2026' is the hiring year ('EB plans 8,000 hires in 2026'). Corrected under the DIS-TRAN (R7-PB) and Tesla Lathrop (R5-B) precedent: 'in 2026' dropped. True on the page; lead: add 'August 3, 2026' to the row's quote, then the date can return. Postings clause confirmed (17304, 22457, 22493 live in the iCIMS list). Validator 0 failing on a scratch copy.",
+   "corrected_value": "Likely structural welder supply: Electric Boat's board lists a Welder - Skilled role at the EB Groton Shipyard across the 1st, 2nd and 3rd shifts and Shipfitter Entry Level & Semi-Skilled and Shipfitter - Skilled roles there (read Nov 13, 2026), and a defense-news report said that Electric Boat's hiring expansion includes thousands of tradespeople in Groton.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "error_sub_kind": "misdated (publication year on no row)",
+   "plants_csv_value": "Likely structural welder supply: Electric Boat's board lists a Welder - Skilled role at the EB Groton Shipyard across the 1st, 2nd and 3rd shifts and Shipfitter Entry Level & Semi-Skilled and Shipfitter - Skilled roles there (read Nov 13, 2026), and a defense-news report said that Electric Boat's hiring expansion includes thousands of tradespeople in Groton."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:opening_line",
+   "source_url": "",
+   "ledger_value": "Electric Boat's careers board lists an AFC Welder-Fitter/Fabricator role at the EB Quonset Point Facility, covering manual and mechanized pulse/spray welding of frames and cylinders for the pressure hull (read Nov 13, 2026), and NEREJ reported on September 11, 2026 that the QDC Board approved two lease amendments, one adding about 43 acres where Electric Boat anticipates constructing two buildings of more than 540,000 sq ft for ship manufacturing and fabrication; how are you planning welding staff for those planned buildings?",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "80",
+   "verdict": "confirmed",
+   "note": "21516 AFC Welder-Fitter/Fabricator in the EB iCIMS list 2026-11-19; Seat Location EB Quonset Point Facility; 'manual and mechanized pulse/spray welding processes' FOUND; products row 'Fabricate frames/cylinders to produce the pressure hull' (row 3594). NEREJ print page 'September 11, 2026': 'The QDC Board recently gave unanimous approval to two lease amendments' and 'One change adds approximately 43 acres along Davisville Rd., where Electric Boat anticipates constructing two buildings totaling more than 540,000 s/f for ship manufacturing and fabrication' FOUND. Plan written as plan ('anticipates', 'planned buildings'). Newest dated fact (Sep 11) leads after the neutral read clause; 'you' question."
+  },
+  {
+   "claim_id": "p-electric-boat-north-kingstown-ri:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder supply for hull-cylinder and structural work: Electric Boat's board lists Welder - Entry Level, Welder - Experienced or Formal Training, X-Ray Welder and AFC Welder-Fitter/Fabricator roles at the EB Quonset Point Facility (read Nov 13, 2026), and Senator Reed's office said in 2026 that Electric Boat plans to hire 8,000 workers in the coming year, including 3,500 Rhode Island-based positions.",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "80",
+   "verdict": "corrected",
+   "note": "Reed release re-read 2026-11-19: dated 'February 20, 2026'; 'plan to hire 8,000 workers in the coming year – including 3,500 Rhode Island-based positions' FOUND. But 'said in 2026' is a publication date the cited row does not carry: hiring_plan row 4843's quote has no date and its value's '(2026)' is the hiring year (the release headline: 'projected to hire 8,000 workers in 2026'). Same shape as Groton and DIS-TRAN (R7-PB): 'in 2026' dropped. Lead: add 'February 20, 2026' to the row's quote. Postings clause confirmed (20028, 21521, 21522, 21516 live). Validator 0 failing on a scratch copy.",
+   "corrected_value": "Likely welder supply for hull-cylinder and structural work: Electric Boat's board lists Welder - Entry Level, Welder - Experienced or Formal Training, X-Ray Welder and AFC Welder-Fitter/Fabricator roles at the EB Quonset Point Facility (read Nov 13, 2026), and Senator Reed's office said that Electric Boat plans to hire 8,000 workers in the coming year, including 3,500 Rhode Island-based positions.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "error_sub_kind": "misdated (publication year on no row)",
+   "plants_csv_value": "Likely welder supply for hull-cylinder and structural work: Electric Boat's board lists Welder - Entry Level, Welder - Experienced or Formal Training, X-Ray Welder and AFC Welder-Fitter/Fabricator roles at the EB Quonset Point Facility (read Nov 13, 2026), and Senator Reed's office said that Electric Boat plans to hire 8,000 workers in the coming year, including 3,500 Rhode Island-based positions."
+  },
+  {
+   "claim_id": "p-biw-bath-me:opening_line",
+   "source_url": "",
+   "ledger_value": "Bath Iron Works' careers board lists a Welder (Grade 7) role at Bath that calls for FCAW groove welds to U.T. standards and FCAW/GMAW-P fillet weld tests, with a post end date of 12/31/2026 (read Nov 13, 2026), and Mainebiz reported on April 14, 2026 that BIW had unveiled a $40 million facility aimed at speeding production of Navy destroyers; how are you staffing structural welding for the destroyer schedule?",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "80",
+   "verdict": "confirmed",
+   "note": "BIW iCIMS search (welder) lists 4952 Welder (Grade 7) 2026-11-19; page: Location US-ME-Bath, Post End Date 12/31/2026, 'FCAW groove welding to U.T Testing standards' and 'Fillet weld tests with the following processes FCAW/GMAW-P' FOUND. Mainebiz 'April 14, 2026 ... last week unveiled a $40 million facility aimed at speeding production of Navy destroyers' FOUND. No live count used. 'you' question."
+  },
+  {
+   "claim_id": "p-biw-bath-me:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely structural welder and shipfitter staffing for destroyer production: BIW's board lists a Welder (Grade 7) role and Shipfitter (Grades 1-3), (Grades 4-6) and (Grades 7-9) requisitions at Bath, each with a post end date of 12/31/2026 (read Nov 13, 2026), and General Dynamics announced on July 31, 2025 that the Navy had exercised an option to add another DDG 51 destroyer to BIW's multi-year contract.",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "80",
+   "verdict": "confirmed",
+   "note": "Hedged. 4952, 4964, 4965, 4966 in the BIW iCIMS list 2026-11-19, each Post End Date 12/31/2026, Bath. GD release 'July 31, 2025 ... exercised an option to add an additional DDG 51 destroyer' FOUND."
+  },
+  {
+   "claim_id": "p-nassco-san-diego-ca:opening_line",
+   "source_url": "",
+   "ledger_value": "General Dynamics' careers board lists a Welder (Repair) role at NASSCO in San Diego, Until Filled, that requires qualifying in two gas-shielded FCAW processes, 71T-1 and 811N3 (read Nov 13, 2026), and NASSCO announced on Nov. 10, 2025 that it had been awarded $1.7 billion for the construction of T-AO 215 and T-AO 216; how much of your structural welding on those two ships runs on FCAW?",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "80",
+   "verdict": "confirmed",
+   "note": "GD job page 1315893100 rendered in Chromium 2026-11-19: Welder (Repair), San Diego 92113, 'Job Posting End Date: Until Filled', 'Must be able to qualify in two gas shielded FCAW welding processes 71T-1 and 811N3', Apply Now; a dead job ID renders 'Sorry, the job you are seeking is no longer available' (control), so the role is live (the same string in the plain HTML is a template). GD release 'Nov. 10, 2025 ... awarded $1.7 billion for the construction of T-AO 215 and T-AO 216' FOUND. 'you' question."
+  },
+  {
+   "claim_id": "p-nassco-san-diego-ca:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual FCAW structural welding outside the panel line: Professional Mariner reported in January 2019 that NASSCO's panel line used hybrid laser arc welding and numerically controlled robots to weld steel panels, while a NASSCO Shipfitter (Repair) posting requires a T-1 FCAW certificate and has shipfitters tack and weld foundation and structural members (read Nov 13, 2026).",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "80",
+   "verdict": "confirmed",
+   "note": "Hedged. Professional Mariner dated January 22, 2019: 'hybrid laser arc welding and numerically controlled robots to mill, seam and weld steel panels' FOUND (written past tense with the row's 2019 date). Shipfitter (Repair) 1315893300 live (rendered, Apply Now): 'T-1 welding certificate required for FCAW' and 'Tacks and welds foundation and structural members' FOUND."
+  },
+  {
+   "claim_id": "p-fincantieri-marinette-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Fincantieri Marine Group's careers board lists a Welder role (4334) at Marinette, with flux-core experience preferred and availability for any of the three shifts and weekends (read Nov 13, 2026), and Navy Times reported on Feb. 20, 2026 that Fincantieri is to build four Marine Corps landing vessels at its Marinette Marine yard after the cancellation of its Constellation-class frigate contract; how are you planning welding capacity for the landing vessels?",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "80",
+   "verdict": "confirmed",
+   "note": "FMG ADP requisitions JSON (apply-custom-filters, read in Chromium 2026-11-19, 24 roles): Welder 5001234702306 (client req 4334), 1600 Ely Street, Marinette; 'Flux-core welding experience preferred' and 'any of the three shifts' FOUND. Navy Times 'Feb 20, 2026': 'Fincantieri is to build four U.S. Marine Corps landing vessels at its U.S. Marinette Marine yard ... follows the cancellation of its contract to build Constellation class frigates' FOUND. Baird Oct 15, 2026 left out: FMG-wide funding (its only Marinette-specific item, the weld lab, is undated); omission is not an error, and the line leads with the neutral read clause. 'you' question."
+  },
+  {
+   "claim_id": "p-fincantieri-marinette-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder and shipfitter capacity for the landing-vessel work: Fincantieri Marine Group's board lists a Welder role (any of the three shifts and weekends) and a Shipfitter role (all 4 shifts and weekends) at Marinette (read Nov 13, 2026), and Navy Times reported on Feb. 20, 2026 that four Marine Corps landing vessels are to be built at the Marinette Marine yard.",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "80",
+   "verdict": "confirmed",
+   "note": "Hedged. Welder 4334 and Shipfitter 4285 ('all 4 shifts, and weekends') both in the ADP JSON at 1600 Ely Street 2026-11-19. Navy Times Feb 20, 2026 FOUND."
+  },
+  {
+   "claim_id": "p-fincantieri-sturgeon-bay-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Fincantieri Marine Group's careers board lists a Welder role at Bay Shipbuilding in Sturgeon Bay that requires passing an ABS test in FCAW (read Nov 13, 2026), and WorkBoat reported on August 13, 2026 a MARAD Small Shipyard Grant of $1,273,202 to Bay Shipbuilding for a CNC profile cutter and a 100-ton rough-terrain crane; how are you staffing flux-core welding at Sturgeon Bay?",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "80",
+   "verdict": "confirmed",
+   "note": "ADP JSON 2026-11-19: Welder 5001147586006 (req 4137), 605 N. 3rd Ave., Sturgeon Bay, text names Bay Shipbuilding; 'Ability to pass ABS test in FCAW' FOUND. WorkBoat 'August 13, 2026': 'Fincantieri Marine Group LLC, Bay Shipbuilding, Sturgeon Bay — $1,273,202 for a CNC profile cutter and 100-ton rough-terrain crane' FOUND (Baird Oct 15, 2026 repeats the same award). 'you' question."
+  },
+  {
+   "claim_id": "p-fincantieri-sturgeon-bay-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely flux-core welder and steel fitter capacity: Fincantieri Marine Group's board lists a Welder role (ABS FCAW test; overtime as assigned) and a Steel Fitter role (measure, align, fit, tack-weld and weld steel components) at Sturgeon Bay (read Nov 13, 2026).",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "80",
+   "verdict": "confirmed",
+   "note": "Hedged. Welder 4137 ('overtime as assigned') and Steel Fitter 5001123884006 / 4024 ('Measure, align, fit, tack-weld, and weld steel components') in the ADP JSON at Sturgeon Bay 2026-11-19."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:opening_line",
+   "source_url": "",
+   "ledger_value": "Saronic's careers board lists a Welder role (listed Mar 11, 2026) and a Fitter role (listed Nov 17, 2025) on its Production - LA team in Franklin, and Saronic announced on Dec. 3, 2025 a $300 million investment to expand the Franklin shipyard with three new slips and a dedicated large-vessel production line, and to add 1,500 skilled jobs; how are you staffing structural welding for that expansion?",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "77",
+   "verdict": "confirmed",
+   "note": "Ashby posting API 2026-11-19 (285 roles): Welder, Production - LA, Franklin, LA, publishedAt 2026-03-11; Fitter, Production - LA, Franklin, LA, publishedAt 2025-11-17; both live. WorkBoat 'December 3, 2025': 'announced Dec. 3 a $300 million investment to expand its shipyard at Franklin', 'add 1,500 skilled jobs' and three new slips / dedicated large-vessel production line FOUND. Plan written as plan. Leads with the newest dated fact (Mar 11, 2026). 'you' question."
+  },
+  {
+   "claim_id": "p-saronic-franklin-la:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely structural welder and fitter supply: Saronic's board lists a Welder role (listed Mar 11, 2026) and a Fitter role whose duties include tacking and welding foundations (listed Nov 17, 2025) in Franklin, and Saronic announced on Dec. 3, 2025 that its $300 million Franklin expansion is to add 1,500 skilled jobs.",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "77",
+   "verdict": "confirmed",
+   "note": "Hedged. Same Ashby roles live; Fitter text 'Tacking and welding of foundations' FOUND; WorkBoat 1,500 jobs FOUND."
+  },
+  {
+   "claim_id": "p-saronic-brownsville-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Seapower reported on July 16, 2026 that Saronic is to build Port Alpha in Brownsville through a planned investment of more than $3 billion, and Saronic's careers board lists a Weld Engineer (All Levels) role for Port Alpha (listed Mar 20, 2026) whose key responsibility is building the shipyard's welding program from the ground up, including integration of automated welding technologies; which welds do you expect to automate first at Port Alpha?",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "Low",
+   "score_total": "20",
+   "verdict": "confirmed",
+   "note": "Seapower 'July 16, 2026': Brownsville selected for Port Alpha, 'planned investment of more than $3 billion' FOUND. Ashby: Weld Engineer (All Levels), Port Alpha, Brownsville, TX, publishedAt 2026-03-20, live 2026-11-19; 'building the shipyard's welding program from the ground up, including ... integration of automated welding technologies' FOUND. Newest first; question premise (automated welding) on the weld_program row; 'you' question."
+  },
+  {
+   "claim_id": "p-saronic-brownsville-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly building a welding program and workforce from scratch: Saronic's Weld Engineer role for Port Alpha (listed Mar 20, 2026) covers procedure development, qualification programs and welder training requirements, and Seapower reported on July 16, 2026 that construction is anticipated to begin in 2026, with Port Alpha expected to open for operations in 2028.",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "Low",
+   "score_total": "20",
+   "verdict": "confirmed",
+   "note": "Hedged ('Possibly'). Weld Engineer text 'procedure development, qualification programs, welder training requirements' FOUND; Seapower 'Construction is anticipated to begin in 2026, with Port Alpha expected to open for operations in 2028' FOUND (attributed to the July report; plan as plan)."
+  },
+  {
+   "claim_id": "p-corn-island-grandview-in:opening_line",
+   "source_url": "",
+   "ledger_value": "WorkBoat reported on August 13, 2026 a MARAD grant of $1,174,867 to Corn Island Shipyard for plasma-cutting, stiffener-welding, material-handling and welding equipment, and the yard's Indiana air permit renewal of May 22, 2024 lists 95 FCAW stations; which welds on your custom barges is the new equipment meant to take on?",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "Medium",
+   "score_total": "50",
+   "verdict": "confirmed",
+   "note": "WorkBoat 'August 13, 2026': 'Corn Island Shipyard Inc., Grandview — $1,174,867 for plasma-cutting, stiffener-welding, material-handling and welding equipment' FOUND. IDEM PDF 47106f: 'Date: May 22, 2024', 'Permit Level: FESOP Renewal', 'Source Name: Corn Island Shipyard Inc', '9447 E SR 66, Grandview', 'Ninety-five (95) FCAW stations' FOUND. Custom barges on the home page FOUND. Newest first; 'you' question."
+  },
+  {
+   "claim_id": "p-corn-island-grandview-in:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly stiffener and panel welding throughput: WorkBoat reported on August 13, 2026 that Corn Island's MARAD grant covers stiffener-welding and welding equipment, and the yard's May 22, 2024 air permit renewal lists 95 FCAW stations.",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "Medium",
+   "score_total": "50",
+   "verdict": "confirmed",
+   "note": "Hedged. Same WorkBoat and IDEM facts FOUND."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:opening_line",
+   "source_url": "",
+   "ledger_value": "Chesapeake Shipbuilding's careers board lists a Fabricator & Fitter role (listed Oct 30, 2026) and a Shipyard Welder role for flux-cored arc welding of 1/4 inch to 1 inch carbon steel plate (listed Oct 15, 2026) in Salisbury, with a $1,000 sign-on bonus; how are you keeping structural welding on pace with your vessel builds?",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "Medium",
+   "score_total": "60",
+   "verdict": "confirmed",
+   "note": "Paylocity board pageData 2026-11-19: Fabricator & Fitter 4627806 PublishedDate 2026-10-30, Shipyard Welder 4274905 PublishedDate 2026-10-15, both Main Location, Salisbury; written 'listed' (Paylocity stamp; coordinator rule). 4274905: 'carbon steel plate and structural components ranging from 1/4 inch to 1 inch thick using Flux-Cored Arc Welding (FCAW)' FOUND. '$1,000 Sign-On Bonus' FOUND on both pages (and on all five counted roles). The bonus sits on stated row 4127's value only; that row's quote (list page) does not carry it (field drift, see notes). 'you' question."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely FCAW welder and fitter capacity: Chesapeake's board lists Shipyard Welder and Welder - Electric Department roles (listed Oct 15, 2026), a Pipefitter & Welder role (listed Oct 16, 2026) and Fabricator & Fitter and Steel Erector roles (listed Oct 30, 2026), with a $1,000 sign-on bonus and a $2.00 shift differential for evening and night shifts.",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "Medium",
+   "score_total": "60",
+   "verdict": "confirmed",
+   "note": "Hedged. All five counted roles in the Paylocity board JSON 2026-11-19 with the listed dates written (Oct 15, Oct 15, Oct 16, Oct 30, Oct 30). '$1,000 Sign-On Bonus' FOUND on all five detail pages. The '$1,000 sign-on bonus; $2.00 evening/night differential' clause matches stated row 4127's board-level value (the differential is on the Shipyard Welder page only, row 5142). Confirmed under the SA Great Lakes value-vs-quote precedent; row 4127's value logged as field drift."
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:opening_line",
+   "source_url": "",
+   "ledger_value": "Hanwha Philly Shipyard's careers board lists a Welder B role (listed Nov 10, 2026) naming FCAW, SMAW, SAW and automated tractor welding, and The Philadelphia Inquirer reported on Sept. 23, 2026 that the yard has agreed to lease 47 more acres at the Navy Yard; how are you planning welding capacity for the larger site?",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "80",
+   "verdict": "confirmed",
+   "note": "UKG LoadSearchResults 2026-11-19 (22 roles): Welder B WELDE002415 PostedDate 2026-11-10 (raw first-posted date), live; detail row names FCAW, SMAW, SAW and tractor welding. Inquirer 'Sept. 23, 2026': 'has agreed to lease more space at the Navy Yard, adding 47 acres' FOUND. Newest first; 'you' question."
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly qualifying new welders fast enough rather than finding applicants: The Philadelphia Inquirer reported in April 2026 that Hanwha officials said the company has received a flood of applications after initial worries about finding workers, especially welders, and the yard's board lists a Welder B role (listed Nov 10, 2026) and a Shipbuilder role for plate and stiffener assembly and large panel and double bottom production (listed Nov 3, 2026).",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "80",
+   "verdict": "confirmed",
+   "note": "Hedged. Inquirer 'April 1, 2026': 'After initial worries about finding workers, especially welders, Hanwha officials said the company has received a flood of applications' FOUND. Welder B (2026-11-10) and Shipbuilder SHIPB002402 (PostedDate 2026-11-03) live in the UKG JSON."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:opening_line",
+   "source_url": "",
+   "ledger_value": "St. Johns Ship Building's Paycom board lists Steel Welder and Steel Shipfitters roles in Palatka as hot jobs (read Nov 13, 2026), and the company said on October 7, 2025 that Johnson Bros. awarded it a contract for three 140 x 40 x 8 ft steel deck barges, with all fabrication and assembly at its Palatka facility; how are you staffing steel welding at Palatka?",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "79",
+   "verdict": "confirmed",
+   "note": "Paycom career-page rendered 2026-11-19 (23 results, 3 pages): Steel Welder and Steel Shipfitters, both 'Hot Job', St. Johns Ship Building Inc - Palatka, FL. News page '[October 7, 2025; Palatka, Florida]' Johnson Bros. contract 'for the construction of three 140’ x 40’ x 8’ steel material deck barges' and 'All fabrication and assembly work will be performed at St. Johns Ship Building’s Palatka, Florida facility' FOUND. Leads with the neutral read clause; 'you' question."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely steel and aluminum welder and fitter capacity: the Palatka board lists Steel Welder, Steel Shipfitters, Aluminum Welder and Aluminum Fitter roles as hot jobs (read Nov 13, 2026), the same trades St. Johns recruited at a Mar 25, 2026 hiring event.",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "79",
+   "verdict": "confirmed",
+   "note": "Hedged. Steel Welder, Steel Shipfitters, Aluminum Welder (page 1) and Aluminum Fitter (page 2) all Hot Job on the rendered board 2026-11-19. CareerSource PDF: 'WEDNESDAY, MARCH 25TH', Steel Ship Fitters, Steel Welders, Aluminum Ship Fitters, Aluminum Welders FOUND; the PDF carries no year: 2026 comes from the row value and the upload path /2026/03/ (25 March 2026 is a Wednesday). Confirmed: the line matches stated row 5274's value (SA Great Lakes value-vs-quote precedent); the row's inferred year is logged in field_drift_notes."
+  },
+  {
+   "claim_id": "p-senesco-north-kingstown-ri:opening_line",
+   "source_url": "",
+   "ledger_value": "Rhode Island TV news reported on Nov. 2, 2026 that Senesco turned to the Community College of Rhode Island, which created a custom 14-week shipbuilding welding program to help train workers for its ferry project; how are you staffing welding on the DRBA ferry?",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "Low",
+   "score_total": "35",
+   "verdict": "confirmed",
+   "note": "turnto10 'Mon, November 2, 2026': 'Senesco turned to the Community College of Rhode Island, which created a custom, 14-week shipbuilding welding program to help train workers for the project' FOUND; DRBA ferry identity from the Marine Log contract row (FOUND). Senesco has one yard (10 MacNaught St). 'you' question."
+  },
+  {
+   "claim_id": "p-senesco-north-kingstown-ri:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder supply for the DRBA ferry build: Rhode Island TV news reported on Nov. 2, 2026 that Senesco turned to the Community College of Rhode Island for a custom 14-week shipbuilding welding program to help train workers for the project.",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "Low",
+   "score_total": "35",
+   "verdict": "confirmed",
+   "note": "Hedged. Same turnto10 sentence FOUND."
+  },
+  {
+   "claim_id": "p-gunderson-marine-portland-or:opening_line",
+   "source_url": "",
+   "ledger_value": "Gunderson Marine & Iron's own board lists Fitter/Welder (Experienced) and Fitter/Welder Trainee roles in Portland (read Nov 13, 2026), and WorkBoat reported on August 13, 2026 a MARAD grant of $1,534,953 to Gunderson Marine for a CNC plasma cutter with a 16-ft cutting width; how are you staffing flux-core welding on your barge work?",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "87",
+   "verdict": "confirmed",
+   "note": "Gem board (rendered and job_posts API 2026-11-19, 6 roles): Fitter/Welder (Experienced) (first_published_at 2026-03-03) and Fitter/Welder Trainee (2026-07-01), both Portland, OR, under 'Gunderson Marine & Iron'. WorkBoat 'August 13, 2026': 'Gunderson Marine LLC, Portland — $1,534,953 for a CNC plasma cutter with a 16' cutting width' FOUND. Flux core on the own-board text too. 'you' question."
+  },
+  {
+   "claim_id": "p-gunderson-marine-portland-or:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely experienced flux-core fitter/welder supply: a JobTarget copy of Gunderson's Fitter/Welder (Experienced) role, dated March 3, 2026, asked for certification with 1/16 in flux core wire in all positions on unlimited thickness plate, and the same role is on Gunderson Marine & Iron's own board (read Nov 13, 2026); Marine Log reported on March 24, 2025 a Tidewater contract for four new liquid refined product barges.",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "87",
+   "verdict": "confirmed",
+   "note": "Hedged. JobTarget copy 'Posted on March 3, 2026' and '1/16” flux core wire in all positions on unlimited thickness plate' FOUND, written past tense as an aggregator copy; the own-board copy carries the same sentence and first_published_at 2026-03-03. Marine Log 'March 24, 2025' Tidewater four barges FOUND (within 24 months)."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:opening_line",
+   "source_url": "",
+   "ledger_value": "BAE Systems' careers board lists Welder - Submarine Program roles at its Jacksonville shipyard, listed Nov 11, 2026 and Oct 23, 2026, that name FCAW, GMAW, GMAW-P and SMAW, and Marine Log reported in June 2025 the ribbon cutting for the $250 million shiplift and land level repair complex at the Jacksonville shipyard; how are you training welders for the submarine structural work?",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "80",
+   "verdict": "corrected",
+   "note": "All six BAE pages rendered 2026-11-19: Posted Date 11/11/2026 (130620BR, 131367BR, 132043BR) and 10/23/2026 (130752BR, 130759BR, 129825BR), Apply Now, Jacksonville; live. 130620BR names 'Flux-Core Arc Welding (FCAW), Gas Metal Arc Welding (GMAW), Gas Metal Arc Welding Pulse (GMAW-P) and Shielded Metal Arc Welding (SMAW)' FOUND; the Oct 23 roles name FCAW, SMAW and structural GMAW, not GMAW-P. The only weld_processes row (4876) cites 130620BR, yet the line says roles listed Nov 11 and Oct 23 'name' all four processes. Corrected under the Derrick/Liebherr (R6-B) precedent: the process list is tied to 130620BR, as the row carries it. Marine Log 'June 03, 2025' ribbon cutting FOUND. Validator 0 failing on a scratch copy.",
+   "corrected_value": "BAE Systems' careers board lists Welder - Submarine Program roles at its Jacksonville shipyard, listed Nov 11, 2026 and Oct 23, 2026, and requisition 130620BR (listed Nov 11, 2026) names FCAW, GMAW, GMAW-P and SMAW; Marine Log reported in June 2025 the ribbon cutting for the $250 million shiplift and land level repair complex at the Jacksonville shipyard; how are you training welders for the submarine structural work?",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "error_sub_kind": "clause wider than its row (process list attached to roles whose rows do not carry it)",
+   "plants_csv_value": "BAE Systems' careers board lists Welder - Submarine Program roles at its Jacksonville shipyard, listed Nov 11, 2026 and Oct 23, 2026, and requisition 130620BR (listed Nov 11, 2026) names FCAW, GMAW, GMAW-P and SMAW; Marine Log reported in June 2025 the ribbon cutting for the $250 million shiplift and land level repair complex at the Jacksonville shipyard; how are you training welders for the submarine structural work?"
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely building a submarine-qualified welding workforce through trade-school partners: BAE Systems' board lists Welder - Submarine Program roles at Jacksonville tied to J-Tech, UTI-Miramar, FCTC and Tidewater Tech (listed Oct 23 and Nov 11, 2026), with SMAW of high strength steel and stainless steel among the skills named.",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "High",
+   "score_total": "80",
+   "verdict": "confirmed",
+   "note": "Hedged. J-Tech (130752BR), UTI-Miramar (130759BR), FCTC (131367BR), Tidewater Tech (129825BR, 132043BR) roles live with Oct 23 / Nov 11 dates; 'Shielded Metal Arc Welding (SMAW) of high strength steel and stainless steel' FOUND on every page."
+  },
+  {
+   "claim_id": "p-vessel-repair-port-arthur-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Waterways Journal reported on March 13, 2026 that Vessel Repair had started a 25-barge build package for Westlake Chemical awarded in December, had cut plate and was building modules, and had added a third erection bay with a pair of 10-ton overhead cranes; where does that barge package stand now, and how are you keeping welding on pace with it?",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "Low",
+   "score_total": "35",
+   "verdict": "confirmed",
+   "note": "Waterways Journal 'March 13, 2026': 'In December, we were awarded a 25-barge build package for Westlake Chemical', 'We’ve officially started that. We’ve cut plate and are building modules', 'added a new bay, equipped with a pair of 10-ton overhead cranes, increasing the yard from two to three erection bays' FOUND. Welding at the site is on stated row 18299 (prospect_test, TCEQ file). No newer item found (web search 2026-11-19). 'you' question."
+  },
+  {
+   "claim_id": "p-vessel-repair-port-arthur-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly hull and module welding throughput: Waterways Journal reported on March 13, 2026 that the plan was to put the Westlake barges out about one a month until the contract is completed, and that the yard had added a third erection bay for module fabrication.",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "Low",
+   "score_total": "35",
+   "verdict": "confirmed",
+   "note": "Hedged ('Possibly'). 'The plan is to put these barges out about one a month until that contract is completed' FOUND, written as the plan."
+  },
+  {
+   "claim_id": "p-westport-orange-shipyard-orange-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "MarineLink's shipyard directory (read Nov 13, 2026) lists Westport Orange Shipyard for new construction of boats, deck barges and liquid cargo barges, with a submerged arc welder for 40-ft plate sections and an Ogden panel line for 50 ft x 60 ft panels; does your yard still build new barges, and if so, which welds do you run outside the panel line?",
+   "tag": "inferred",
+   "origin": "ledger/inbox/lines-S3.json",
+   "score_tier": "Low",
+   "score_total": "23",
+   "verdict": "confirmed",
+   "note": "MarineLink directory re-read 2026-11-19: 'New construction of boats, deck barges and liquid cargo barges for offshore and inland service' and 'submerged arc welder for 40-ft plate sections, Ogden panel line (50 ft x 60 ft panels)' FOUND; undated listing written with the read date; the question asks whether the yard still builds and is hedged ('if so'). Open/closed: a MapQuest listing in search results flags the site 'Closed' (unverified, not a source); see plants_closed_or_moved."
+  }
+ ]
+}

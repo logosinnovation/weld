@@ -1,0 +1,2161 @@
+{
+ "vertical": "v-trailers-chassis-mobile-power",
+ "checker": "TR-CS",
+ "checked_date": "2026-11-20",
+ "plants": [
+  "p-spartan-cargo-alma-ga",
+  "p-w-w-madill-ok",
+  "p-neville-built-kingman-ks",
+  "p-king-kutter-gallipolis-oh",
+  "p-fontaine-haleyville-al",
+  "p-cronkhite-danville-il",
+  "p-premier-trailer-visalia-ca",
+  "p-cb-quality-caldwell-id",
+  "p-rc-trailers-middlebury-in",
+  "p-cozad-stockton-ca",
+  "p-clement-sibley-la",
+  "p-liberty-fillmore-in",
+  "p-freedom-trailers-willacoochee-ga",
+  "p-timpte-david-city-ne",
+  "p-merhow-white-pigeon-mi",
+  "p-load-trail-como-tx",
+  "p-delco-brookston-tx",
+  "p-lamar-sumner-tx",
+  "p-car-mate-leeper-pa",
+  "p-trinity-trailer-boise-id-2",
+  "p-ba-trailers-inman-sc",
+  "p-bear-trailer-lebanon-mo",
+  "p-magic-tilt-clearwater-fl",
+  "p-doonan-great-bend-ks",
+  "p-kaufman-denton-nc",
+  "p-wabash-little-falls-mn",
+  "p-pleasant-valley-teardrop-sugarcreek-oh",
+  "p-keystone-rv-goshen-in-12",
+  "p-keystone-rv-goshen-in-10",
+  "p-jayco-middlebury-in",
+  "p-keystone-rv-goshen-in-11",
+  "p-keystone-rv-pendleton-or-4",
+  "p-wabash-harrison-ar"
+ ],
+ "claims_checked": 255,
+ "claims_corrected": 13,
+ "claims_unreachable": 4,
+ "fact_error_rate": 0.051,
+ "error_kind_counts": {
+  "other": 10,
+  "quote does not support value": 3
+ },
+ "subkind_counts": {
+  "prospect pass without welding shown (T2 says unknown; T15 footing not met)": 4,
+  "OSHA gate failed but row tagged stated": 1,
+  "welder_postings unknown/none set without reading the company's own careers page or board (Coastline pattern)": 3,
+  "value adds a fact the cited page does not show": 2,
+  "label not on cited page": 1,
+  "company-level fact placed at the plant": 1,
+  "judgement tagged stated (OSHA tie inferred)": 1
+ },
+ "sweep_flags": [
+  "other / prospect pass without welding shown (T2 says unknown; T15 footing not met or allows only low confidence): 4 (Premier, Cozad, Clement, Trinity Federal Way). Sweep every base prospect_test row valued pass whose reasoning infers welding from the product, unless the record has a gate-passing OSHA 336212 row plus an EPA name (then pass (low confidence) only) or a site page showing welding.",
+  "other / welder_postings unknown/none set without reading the company's own careers page or board (Coastline pattern): 3 (Lamar ADP board linked but not read; Clement /careers lists MIG welders; Bear employment page lists a Welding Professional). Re-read every base welder_postings row valued unknown or none found with a browser and the board JSON; two of the three also change the prospect footing.",
+  "quote does not support value: 3 (Timpte ADP name label, Freedom \"enclosed cargo\" on the about page, Delco \"robotic welding\")."
+ ],
+ "scope_note": "Base: every row in name, address, parent_company, products, headcount, welder_postings, tier, relationship, prospect_test (stated, inferred and unknown). Excluded: exclusion_reason rows. Pages fetched with tools/fetch_page.py (plain then browser) and quotes checked in text and raw source; OSHA rows against data/osha_2025.csv with the osha_match.py gates; lat/lon by Census reverse geocode (place, county, ZCTA) and distance to the ArcGIS city centre. 1 web search; welder_postings unknown/none rows re-read with a browser and board JSON where a careers link exists (Cronkhite operating status).",
+ "rows": [
+  {
+   "claim_id": "p-spartan-cargo-alma-ga:relationship",
+   "source_url": "",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-spartan-cargo-alma-ga:name",
+   "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetManufacturerDetails/14146?format=json",
+   "ledger_value": "Spartan Cargo Trailers, LLC",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-spartan-cargo-alma-ga:address",
+   "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetManufacturerDetails/14146?format=json",
+   "ledger_value": "140 Business Blvd, Alma, GA 31510",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-spartan-cargo-alma-ga:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "140 Business Blvd, Alma, GA 31510",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-spartan-cargo-alma-ga:parent_company",
+   "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetManufacturerDetails/14146?format=json",
+   "ledger_value": "Spartan Cargo Trailers, LLC",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-spartan-cargo-alma-ga:products",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "site: trailer manufacturing (OSHA NAICS 336214)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-spartan-cargo-alma-ga:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "135 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-spartan-cargo-alma-ga:tier",
+   "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetManufacturerDetails/14146?format=json",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-spartan-cargo-alma-ga:prospect_test",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "unknown",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-w-w-madill-ok:name",
+   "source_url": "https://www.wwtrailer.com/contact",
+   "ledger_value": "W-W Trailer - Madill",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-w-w-madill-ok:parent_company",
+   "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetManufacturerDetails/w-w?format=json",
+   "ledger_value": "W-W Trailer Manufacturer, Inc",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-w-w-madill-ok:address",
+   "source_url": "https://www.wwtrailer.com/contact",
+   "ledger_value": "2006 N First St, Madill, OK 73446",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-w-w-madill-ok:products",
+   "source_url": "https://www.wwtrailer.com/about",
+   "ledger_value": "livestock, cargo and equipment trailers; steel construction",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-w-w-madill-ok:products",
+   "source_url": "https://horsetrailertrader.com/horse-trailer-manufacturers.aspx",
+   "ledger_value": "horse, stock, cargo and utility in steel or aluminum (buyer's guide)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-w-w-madill-ok:tier",
+   "source_url": "https://www.wwtrailer.com/about",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-w-w-madill-ok:relationship",
+   "source_url": "https://www.wwtrailer.com/about",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-w-w-madill-ok:headcount",
+   "source_url": "https://www.wwtrailer.com/contact",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-w-w-madill-ok:welder_postings",
+   "source_url": "https://www.wwtrailer.com/careers",
+   "ledger_value": "none listed",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Careers page holds only a general application form (Position of Interest e.g. Welder)."
+  },
+  {
+   "claim_id": "p-w-w-madill-ok:prospect_test",
+   "source_url": "https://www.wwtrailer.com/contact",
+   "ledger_value": "unknown",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-neville-built-kingman-ks:name",
+   "source_url": "https://www.nevillebuilt.com/",
+   "ledger_value": "Neville Built Trailers - Kingman",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-neville-built-kingman-ks:parent_company",
+   "source_url": "https://www.nevillebuilt.com/",
+   "ledger_value": "Neville Built Trailers LLC",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-neville-built-kingman-ks:address",
+   "source_url": "https://www.nevillebuilt.com/",
+   "ledger_value": "5581 SW 50 St, Kingman, KS 67068",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-neville-built-kingman-ks:products",
+   "source_url": "https://www.nevillebuilt.com/working-at-neville-built",
+   "ledger_value": "All production at the Kingman, KS headquarters",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-neville-built-kingman-ks:products",
+   "source_url": "https://www.nevillebuilt.com/",
+   "ledger_value": "Drop-deck, grain and livestock trailers (company-level; one-plant firm)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-neville-built-kingman-ks:products",
+   "source_url": "https://www.nevillebuilt.com/about-us",
+   "ledger_value": "Steel grain trailers and livestock trailers (company-level)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-neville-built-kingman-ks:tier",
+   "source_url": "https://www.nevillebuilt.com/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-neville-built-kingman-ks:relationship",
+   "source_url": "",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-neville-built-kingman-ks:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-neville-built-kingman-ks:welder_postings",
+   "source_url": "https://www.nevillebuilt.com/working-at-neville-built",
+   "ledger_value": "careers page Welding job family (undated): MIG, batch, each trailer varies",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-neville-built-kingman-ks:prospect_test",
+   "source_url": "https://www.nevillebuilt.com/working-at-neville-built",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-king-kutter-gallipolis-oh:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "62 (OSHA 2025 annual average)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-king-kutter-gallipolis-oh:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000901294&output=JSON",
+   "ledger_value": "King Kutter II - Gallipolis",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-king-kutter-gallipolis-oh:parent_company",
+   "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetManufacturerDetails/4301?format=json",
+   "ledger_value": "King Kutter II, Inc.",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-king-kutter-gallipolis-oh:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "2150 Eastern Ave, Gallipolis, OH 45631",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-king-kutter-gallipolis-oh:products",
+   "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetManufacturerDetails/4301?format=json",
+   "ledger_value": "Trailers (vPIC vehicle type Trailer at the site)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-king-kutter-gallipolis-oh:tier",
+   "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetManufacturerDetails/4301?format=json",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-king-kutter-gallipolis-oh:relationship",
+   "source_url": "",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-king-kutter-gallipolis-oh:welder_postings",
+   "source_url": "https://www.kingkutter.com/",
+   "ledger_value": "unknown: no site-level careers board found; kingkutter.com shows no Gallipolis location (2026-11-20)",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "kingkutter.com (Winfield AL implement maker) read; no careers or Gallipolis page."
+  },
+  {
+   "claim_id": "p-king-kutter-gallipolis-oh:prospect_test",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110000901294&output=JSON",
+   "ledger_value": "pass (low confidence)",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-fontaine-haleyville-al:address",
+   "source_url": "https://www.fontainetrailer.com",
+   "ledger_value": "430 Letson Rd, Haleyville, AL 35565",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-fontaine-haleyville-al:products",
+   "source_url": "https://www.fontainetrailer.com",
+   "ledger_value": "Steel, combo and aluminum flatbeds and drop decks; Infinity combo: steel mainbeams and crossbracing",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Company-level check: fontainetrailer.com (the flatbed line) gives only the Haleyville address; the other OSHA 2025 Fontaine plant (Springville, Fontaine Specialized, a separate ledger record) makes the heavy-haul line, and the Jasper FRS sites have no 2025 OSHA filing. So the flatbed line is not placed at a multi-plant site (unlike Trinity, whose two Boise buildings share one line)."
+  },
+  {
+   "claim_id": "p-fontaine-haleyville-al:products",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "OSHA industry: flatbed trailers",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Company-level check: fontainetrailer.com (the flatbed line) gives only the Haleyville address; the other OSHA 2025 Fontaine plant (Springville, Fontaine Specialized, a separate ledger record) makes the heavy-haul line, and the Jasper FRS sites have no 2025 OSHA filing. So the flatbed line is not placed at a multi-plant site (unlike Trinity, whose two Boise buildings share one line). Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-fontaine-haleyville-al:tier",
+   "source_url": "https://www.fontainetrailer.com",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-fontaine-haleyville-al:relationship",
+   "source_url": "https://www.fontainetrailer.com",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-fontaine-haleyville-al:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "149 (2025 annual average, OSHA Form 300A)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-fontaine-haleyville-al:welder_postings",
+   "source_url": "",
+   "ledger_value": "unknown: careers page https://www.fontainetrailer.com/careers/ returned 404 on 2026-11-20; no board found",
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "fontainetrailer.com/careers/ returned 404 (browser) on 2026-11-20; the homepage raw source holds no careers or ATS link. No quote by design (inferred/unknown); reasoning checked against the rules and, for headcount, data/osha_2025.csv searched by name and ZIP."
+  },
+  {
+   "claim_id": "p-fontaine-haleyville-al:prospect_test",
+   "source_url": "https://www.fontainetrailer.com",
+   "ledger_value": "pass (low confidence)",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Confirmed as inferred: T15 footing is met (OSHA 2897371 NAICS 336212 passes the gates; EPA FRS 110071988329 \"FONTAINE TRAILER COMPANY | 430 SAM LETSON RD HALEYVILLE\"), but the row cites only the homepage; add the FRS row."
+  },
+  {
+   "claim_id": "p-fontaine-haleyville-al:name",
+   "source_url": "https://www.fontainetrailer.com",
+   "ledger_value": "Fontaine - Haleyville",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-fontaine-haleyville-al:parent_company",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "Fontaine",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote supports \"Fontaine\" (OSHA company_name). Note: Fontaine Trailer is widely reported as a Marmon (Berkshire Hathaway) company; no row carries that, so the value stays as quoted. Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-cronkhite-danville-il:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=CRONKHITE&state_abbr=IL&output=JSON",
+   "ledger_value": "Cronkhite Industries - Danville",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cronkhite-danville-il:parent_company",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=CRONKHITE&state_abbr=IL&output=JSON",
+   "ledger_value": "Mohr Manufacturing (dba Cronkhite Industries Inc)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cronkhite-danville-il:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=CRONKHITE&state_abbr=IL&output=JSON",
+   "ledger_value": "2212 Kickapoo Dr, Danville, IL 61832",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cronkhite-danville-il:address",
+   "source_url": "https://bobcatofindy.com/wp-content/uploads/2023/01/6000-Series-Spec-09162020.pdf",
+   "ledger_value": "2212 Kickapoo Dr (spec sheet gives ZIP 61822)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cronkhite-danville-il:products",
+   "source_url": "https://www.southeasternequip.com/new-equipment/6000-series",
+   "ledger_value": "Equipment trailers on a wide-flange I-beam frame, built in Danville",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cronkhite-danville-il:tier",
+   "source_url": "https://www.southeasternequip.com/new-equipment/6000-series",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cronkhite-danville-il:relationship",
+   "source_url": "https://www.southeasternequip.com/new-equipment/6000-series",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cronkhite-danville-il:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-cronkhite-danville-il:welder_postings",
+   "source_url": "",
+   "ledger_value": "unknown: an Illinois JobLink posting for Cronkhite Industries in Danville (illinoisjoblink.illinois.gov/jobs/11921020) was seen in search results only; the page returned 401",
+   "tag": "unknown",
+   "verdict": "unreachable",
+   "note": "illinoisjoblink.illinois.gov/jobs/11921020 returned 401 (its body reads \"This job is not active.\"); cronkhitetrailers.com not read (certificate mismatch; TLS verification was not bypassed)."
+  },
+  {
+   "claim_id": "p-cronkhite-danville-il:prospect_test",
+   "source_url": "https://www.southeasternequip.com/new-equipment/6000-series",
+   "ledger_value": "unknown",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-premier-trailer-visalia-ca:products",
+   "source_url": "https://apgpower.americanpistachios.org/?p=2091",
+   "ledger_value": "Intermodal chassis, hoppers, double flatbeds, ag chassis, produce trailers",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-premier-trailer-visalia-ca:tier",
+   "source_url": "https://apgpower.americanpistachios.org/?p=2091",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-premier-trailer-visalia-ca:relationship",
+   "source_url": "https://apgpower.americanpistachios.org/?p=2091",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-premier-trailer-visalia-ca:welder_postings",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "verdict": "unreachable",
+   "note": "premiertrailer.net homepage now renders (browser) and its menu shows \"Careers\", but /careers returns 404 and Playwright found no careers anchor; the careers content could not be read."
+  },
+  {
+   "claim_id": "p-premier-trailer-visalia-ca:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=PREMIER%20TRAILER&state_abbr=CA&output=JSON",
+   "ledger_value": "30517 Ivy Rd, Visalia, CA 93291",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "FRS holds two records for 30517 Ivy Rd with the same point: VISALIA 93291 and GOSHEN 93227."
+  },
+  {
+   "claim_id": "p-premier-trailer-visalia-ca:prospect_test",
+   "source_url": "https://apgpower.americanpistachios.org/?p=2091",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "verdict": "corrected",
+   "corrected_value": "unknown",
+   "corrected_quote": "Premier Trailer Manufacturing, Inc. and its skilled craftsmen specialize in producing a diverse range of trailers, including Intermodal Chassis Trailers",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "subkind": "prospect pass without welding shown (T2 says unknown; T15 footing not met)",
+   "note": "The row itself says welding and material are not stated. T2: site product shown -> base, welding not shown -> prospect unknown. T15 (low-confidence pass) needs an OSHA 336212 row passing the gates; Premier's OSHA row fails the hours gate, so T15 is not met. Membership still holds on T2."
+  },
+  {
+   "claim_id": "p-premier-trailer-visalia-ca:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=PREMIER%20TRAILER&state_abbr=CA&output=JSON",
+   "ledger_value": "Premier Trailer Manufacturing, Inc.",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-premier-trailer-visalia-ca:parent_company",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-premier-trailer-visalia-ca:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "104 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "104 (OSHA 2025 record, tie inferred)",
+   "corrected_quote": "ID 3242098; establishment_name Shop 1; company_name Premier Trailer Mfg. Inc.; street_address 30517 Ivy Road; city Visalia; zip_code 93291; naics_code 336212; annual_average_employees 104",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "subkind": "OSHA gate failed but row tagged stated",
+   "note": "data/osha_2025.csv row 3242098 has total_hours_worked 8760 for 104 employees = 84 hours per employee, which fails the osha_match.py plausibility gate (500-4,000). Per AGENT_BRIEF a headcount is stated only when every gate passes; otherwise inferred or unused.",
+   "plants_csv_value": "104 (OSHA 2025 record, tie inferred)"
+  },
+  {
+   "claim_id": "p-cb-quality-caldwell-id:relationship",
+   "source_url": "",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-cb-quality-caldwell-id:name",
+   "source_url": "https://www.natm.com/trailer-manufacturer-directory/c--b-quality-trailer-works-inc",
+   "ledger_value": "C&B Quality Trailer Works, Inc.",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cb-quality-caldwell-id:parent_company",
+   "source_url": "https://www.natm.com/trailer-manufacturer-directory/c--b-quality-trailer-works-inc",
+   "ledger_value": "C&B Quality Trailer Works, Inc.",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cb-quality-caldwell-id:address",
+   "source_url": "https://www.cbtrailers.com/",
+   "ledger_value": "1508 E Chicago St, Caldwell, ID 83605",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cb-quality-caldwell-id:address",
+   "source_url": "https://cbtrailers.com/contact-us/factory-contacts/",
+   "ledger_value": "1508 E Chicago St, Caldwell (factory contacts page)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cb-quality-caldwell-id:address",
+   "source_url": "https://www.natm.com/trailer-manufacturer-directory/c--b-quality-trailer-works-inc",
+   "ledger_value": "1508 E. Chicago St., Caldwell, ID 83606 (NATM)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cb-quality-caldwell-id:products",
+   "source_url": "https://www.cbtrailers.com/",
+   "ledger_value": "Horse, stock, utility, dump and enclosed trailers",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cb-quality-caldwell-id:products",
+   "source_url": "https://www.natm.com/trailer-manufacturer-directory/c--b-quality-trailer-works-inc",
+   "ledger_value": "site: aluminum, cargo, dump, enclosed cargo, equipment, gooseneck, horse, livestock and utility/flatbed (NATM listing)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cb-quality-caldwell-id:products",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=C%20%26%20B%20QUALITY&state_abbr=ID&output=JSON",
+   "ledger_value": "EPA FRS registration at 23365 Peckham Rd, Wilder (possible second site)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cb-quality-caldwell-id:tier",
+   "source_url": "https://www.cbtrailers.com/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cb-quality-caldwell-id:welder_postings",
+   "source_url": "",
+   "ledger_value": "unknown: no careers page",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Homepage raw source has no careers, jobs or ATS link. No quote by design (inferred/unknown); reasoning checked against the rules and, for headcount, data/osha_2025.csv searched by name and ZIP."
+  },
+  {
+   "claim_id": "p-cb-quality-caldwell-id:prospect_test",
+   "source_url": "https://www.cbtrailers.com/",
+   "ledger_value": "unknown",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-rc-trailers-middlebury-in:relationship",
+   "source_url": "",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-rc-trailers-middlebury-in:name",
+   "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetManufacturerDetails/18690?format=json",
+   "ledger_value": "RC Trailers, Inc.",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-rc-trailers-middlebury-in:address",
+   "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetManufacturerDetails/18690?format=json",
+   "ledger_value": "51790 County Road 39, Middlebury, IN 46540",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-rc-trailers-middlebury-in:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_detail.disp_program_facility?p_registry_id=110017764267",
+   "ledger_value": "51790 County Road 39, Middlebury, IN 46540",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-rc-trailers-middlebury-in:address",
+   "source_url": "https://www.atw.com/wp-admin/admin-ajax.php?action=store_search&lat=39.5&lng=-98.35&max_results=100&search_radius=500&filter=13&autoload=1",
+   "ledger_value": "51790 County Road 39, Middlebury, IN 46540",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-rc-trailers-middlebury-in:parent_company",
+   "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetManufacturerDetails/18690?format=json",
+   "ledger_value": "RC Trailers, Inc.",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-rc-trailers-middlebury-in:products",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "site: truck trailer manufacturing (OSHA NAICS 336212)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-rc-trailers-middlebury-in:products",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_detail.disp_program_facility?p_registry_id=110017764267",
+   "ledger_value": "site: TRI reporter, air permit",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-rc-trailers-middlebury-in:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "81 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-rc-trailers-middlebury-in:tier",
+   "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetManufacturerDetails/18690?format=json",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-rc-trailers-middlebury-in:prospect_test",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "pass (low confidence)",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-cozad-stockton-ca:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=COZAD&state_abbr=CA&output=JSON",
+   "ledger_value": "Cozad Trailer Sales, LLC",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cozad-stockton-ca:address",
+   "source_url": "https://cozadtrailers.com/en/contact/",
+   "ledger_value": "4907 Waterloo Road, Stockton, CA 95215",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cozad-stockton-ca:products",
+   "source_url": "https://cozadtrailers.com/en/",
+   "ledger_value": "Manufactures trailers for construction, military, aerospace and transportation (company line)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cozad-stockton-ca:tier",
+   "source_url": "https://cozadtrailers.com/en/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cozad-stockton-ca:relationship",
+   "source_url": "https://cozadtrailers.com/en/",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-cozad-stockton-ca:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-cozad-stockton-ca:welder_postings",
+   "source_url": "",
+   "ledger_value": "unknown: no careers page on cozadtrailers.com",
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Homepage raw source has no careers, jobs or ATS link. No quote by design (inferred/unknown); reasoning checked against the rules and, for headcount, data/osha_2025.csv searched by name and ZIP."
+  },
+  {
+   "claim_id": "p-cozad-stockton-ca:prospect_test",
+   "source_url": "https://cozadtrailers.com/en/",
+   "ledger_value": "pass (low confidence)",
+   "tag": "inferred",
+   "verdict": "corrected",
+   "corrected_value": "unknown",
+   "corrected_quote": "Cozad is the world-wide leader in manufacturing the strongest, lightest and most maneuverable trailers",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "subkind": "prospect pass without welding shown (T2 says unknown; T15 footing not met)",
+   "note": "Reasoning infers welding from \"steel heavy-haul trailer manufacturing\" (industry alone). No OSHA 2025 row (checked data/osha_2025.csv: no Cozad record), so T15 is not met; T2 gives prospect unknown. EPA name is \"COZAD TRAILER SALES L L C\"."
+  },
+  {
+   "claim_id": "p-clement-sibley-la:name",
+   "source_url": "https://www.clementind.com/contact-us/",
+   "ledger_value": "Clement Industries - Sibley",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-clement-sibley-la:parent_company",
+   "source_url": "https://www.clementind.com/contact-us/",
+   "ledger_value": "Clement Industries",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-clement-sibley-la:address",
+   "source_url": "https://www.clementind.com/contact-us/",
+   "ledger_value": "11653 US 371 S, Sibley, LA 71073",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-clement-sibley-la:products",
+   "source_url": "https://www.clementind.com/about-us/",
+   "ledger_value": "Dump trailers in steel and aluminum",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-clement-sibley-la:tier",
+   "source_url": "https://www.clementind.com/about-us/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-clement-sibley-la:relationship",
+   "source_url": "https://www.clementind.com/about-us/",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-clement-sibley-la:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-clement-sibley-la:welder_postings",
+   "source_url": "",
+   "ledger_value": "unknown: no careers board read",
+   "tag": "unknown",
+   "verdict": "corrected",
+   "corrected_value": "MIG Welders Steel & Aluminum listed among opportunities in the Production Facility on the company careers page (undated, no requisition; read 2026-11-20)",
+   "corrected_quote": "The following opportunities are available in our Production Facility: MIG Welders Steel & Aluminum, Fabrication Operators, Trailer Finishers, and Laborers.",
+   "corrected_source_url": "https://www.clementind.com/careers",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "subkind": "welder_postings unknown/none set without reading the company's own careers page or board (Coastline pattern)",
+   "plants_csv_value": "MIG Welders Steel & Aluminum listed in the Production Facility on clementind.com/careers (undated, no requisition; read 2026-11-20)",
+   "note": "clementind.com/about-us links /careers; the browser render lists MIG welder openings. Undated, so not a dated posting for labor scoring, but it shows MIG welding of steel at the site."
+  },
+  {
+   "claim_id": "p-clement-sibley-la:prospect_test",
+   "source_url": "https://www.clementind.com/about-us/",
+   "ledger_value": "pass (low confidence)",
+   "tag": "inferred",
+   "verdict": "corrected",
+   "corrected_value": "pass",
+   "corrected_quote": "The following opportunities are available in our Production Facility: MIG Welders Steel & Aluminum, Fabrication Operators, Trailer Finishers, and Laborers.",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "subkind": "prospect pass without welding shown (T2 says unknown; T15 footing not met)",
+   "note": "The cited about-us page shows no welding and the row inferred it from \"steel dump trailers\" (industry alone; no OSHA row, so no T15). The company careers page (browser render 2026-11-20) does show it: MIG welders, steel and aluminum, in the Production Facility; the page gives the office as 11653 Hwy 371 S, the only physical address. So pass on that source, not on the inference.",
+   "corrected_source_url": "https://www.clementind.com/careers"
+  },
+  {
+   "claim_id": "p-liberty-fillmore-in:name",
+   "source_url": "https://www.libertytrailers.com/about-us",
+   "ledger_value": "Liberty Trailers - Fillmore (headquarters and manufacturing)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-liberty-fillmore-in:parent_company",
+   "source_url": "https://www.libertytrailers.com/about-us",
+   "ledger_value": "Liberty Trailers",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-liberty-fillmore-in:address",
+   "source_url": "https://www.libertytrailers.com/about-us",
+   "ledger_value": "130 East Cemetery Road, Fillmore, IN 46128",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-liberty-fillmore-in:products",
+   "source_url": "https://www.libertytrailers.com/about-us",
+   "ledger_value": "Dump, equipment, car hauler, flatbed, tilt, pipe and utility trailers; Fillmore is headquarters and manufacturing",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-liberty-fillmore-in:tier",
+   "source_url": "https://www.libertytrailers.com/about-us",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-liberty-fillmore-in:relationship",
+   "source_url": "https://www.libertytrailers.com/about-us",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-liberty-fillmore-in:headcount",
+   "source_url": "https://www.libertytrailers.com/about-us",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-liberty-fillmore-in:welder_postings",
+   "source_url": "https://www.libertytrailers.com/careers",
+   "ledger_value": "none read on the company careers page",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Browser re-read 2026-11-20: no roles named; the page links an Indeed company page (not read, aggregator)."
+  },
+  {
+   "claim_id": "p-liberty-fillmore-in:prospect_test",
+   "source_url": "https://www.libertytrailers.com/about-us",
+   "ledger_value": "unknown (site product shown; welding not shown)",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-freedom-trailers-willacoochee-ga:name",
+   "source_url": "https://www.freedomtrailers.com/",
+   "ledger_value": "Freedom Trailers - Willacoochee",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-freedom-trailers-willacoochee-ga:parent_company",
+   "source_url": "https://www.freedomtrailers.com/",
+   "ledger_value": "Freedom Trailers",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-freedom-trailers-willacoochee-ga:address",
+   "source_url": "https://www.freedomtrailers.com/",
+   "ledger_value": "774 W Marshall Ave, Willacoochee, GA 31650",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-freedom-trailers-willacoochee-ga:products",
+   "source_url": "https://freedomtrailers.com/about-us/",
+   "ledger_value": "Enclosed cargo trailers built start-to-finish, over 20 a day",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Trailers built start-to-finish, over 20 a day; Gooseneck and option trailers",
+   "corrected_quote": "Freedom Trailers has grown exponentially and is now an industry leader in the production of Gooseneck and option trailers. ... Building over 20 trailers from start-to-finish daily",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "subkind": "value adds a fact the cited page does not show",
+   "note": "The cited about-us page never says \"enclosed cargo\" (0 hits); that wording is on the homepage (separate row). Corrected to what the about-us page carries.",
+   "plants_csv_value": "keep"
+  },
+  {
+   "claim_id": "p-freedom-trailers-willacoochee-ga:products",
+   "source_url": "https://www.freedomtrailers.com/",
+   "ledger_value": "Tubular framing",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-freedom-trailers-willacoochee-ga:products",
+   "source_url": "https://www.ajc.com/business/freedom-trailers-expanding-georgia-plant/XU4Qg1sp8jgwMJtPumpjxI",
+   "ledger_value": "Atkinson County cargo-trailer plant (2014 expansion; context)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-freedom-trailers-willacoochee-ga:tier",
+   "source_url": "https://www.freedomtrailers.com/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-freedom-trailers-willacoochee-ga:relationship",
+   "source_url": "",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-freedom-trailers-willacoochee-ga:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-freedom-trailers-willacoochee-ga:welder_postings",
+   "source_url": "https://freedomtrailers.com/careers/",
+   "ledger_value": "none found",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Careers form lists Sales, Engineering, Clerical/Accounting, Marketing, IT/Technical, Facilities Maintenance."
+  },
+  {
+   "claim_id": "p-freedom-trailers-willacoochee-ga:prospect_test",
+   "source_url": "https://www.freedomtrailers.com/",
+   "ledger_value": "unknown",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-timpte-david-city-ne:parent_company",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "Timpte Industries, Inc.",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-timpte-david-city-ne:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "100 Timpte Parkway, David City, NE 68632",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-timpte-david-city-ne:products",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201230681382_1?cid=3240c29c-650c-44e9-be6f-3af7d653c5f9&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "Welders at the David City Manufacturing Center weld assemblies using fixtures and clamps and operate robotic welders",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-timpte-david-city-ne:products",
+   "source_url": "https://timpte.com/careers/",
+   "ledger_value": "company-level: dry bulk commodity trailers",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-timpte-david-city-ne:products",
+   "source_url": "https://www.timpte.com/",
+   "ledger_value": "company-level: aluminum hopper trailers (aluminum-first boundary)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-timpte-david-city-ne:tier",
+   "source_url": "https://timpte.com/careers/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-timpte-david-city-ne:relationship",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201230681382_1?cid=3240c29c-650c-44e9-be6f-3af7d653c5f9&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-timpte-david-city-ne:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "583 (2025 annual average, OSHA Form 300A)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-timpte-david-city-ne:prospect_test",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201230681382_1?cid=3240c29c-650c-44e9-be6f-3af7d653c5f9&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "pass (aluminum-first noted)",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-timpte-david-city-ne:name",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "Timpte DC Manufacturing - David City",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-timpte-david-city-ne:name",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201230681382_1?cid=3240c29c-650c-44e9-be6f-3af7d653c5f9&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "Timpte - David City Manufacturing Center",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "David City Manufacturing Center",
+   "corrected_quote": "our David City Manufacturing Center",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "subkind": "label not on cited page",
+   "note": "\"Timpte\" does not appear anywhere on the ADP requisition JSON (text or raw). The Timpte label is supported by the separate OSHA name row (Timpte DC Manufacturing), so plants.csv name can stand on that row.",
+   "plants_csv_value": "keep (the OSHA name row carries Timpte)"
+  },
+  {
+   "claim_id": "p-timpte-david-city-ne:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201230681382_1?cid=3240c29c-650c-44e9-be6f-3af7d653c5f9&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "1 open on Timpte's ADP board (read 2026-11-20): Welder, David City NE (listed 2026-10-01); fixtures and robotic welders; up to $5,000 annual bonus",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "ADP requisition JSON: postDate 2026-10-01, location David City NE, \"David City Manufacturing Center\"; board list JSON (11 requisitions read 2026-11-20) has exactly one Welder, so \"1 open\" holds."
+  },
+  {
+   "claim_id": "p-merhow-white-pigeon-mi:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=MERHOW&state_abbr=MI&output=JSON",
+   "ledger_value": "Merhow Industries - White Pigeon",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-merhow-white-pigeon-mi:parent_company",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "Merhow Acquisitions, LLC (DBA Merhow Industries)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-merhow-white-pigeon-mi:address",
+   "source_url": "https://horsetrailertrader.com/trailer-mfg.aspx?make=Merhow",
+   "ledger_value": "617 S Miller Rd, White Pigeon, MI 49099",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-merhow-white-pigeon-mi:products",
+   "source_url": "https://horsetrailertrader.com/trailer-mfg.aspx?make=Merhow",
+   "ledger_value": "horse and living-quarters horse trailers; builds its own living quarters",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-merhow-white-pigeon-mi:products",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "OSHA industry at the site",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-merhow-white-pigeon-mi:tier",
+   "source_url": "https://horsetrailertrader.com/trailer-mfg.aspx?make=Merhow",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-merhow-white-pigeon-mi:relationship",
+   "source_url": "https://horsetrailertrader.com/trailer-mfg.aspx?make=Merhow",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-merhow-white-pigeon-mi:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "134 (2025 annual average, OSHA Form 300A)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-merhow-white-pigeon-mi:welder_postings",
+   "source_url": "https://www.merhow.com/",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "verdict": "unreachable",
+   "note": "merhow.com and merhow.com/careers returned 403 (plain and browser) on 2026-11-20."
+  },
+  {
+   "claim_id": "p-merhow-white-pigeon-mi:prospect_test",
+   "source_url": "https://horsetrailertrader.com/trailer-mfg.aspx?make=Merhow",
+   "ledger_value": "unknown",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-load-trail-como-tx:name",
+   "source_url": "https://www.loadtrail.com/about-us",
+   "ledger_value": "Load Trail - Como",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-load-trail-como-tx:parent_company",
+   "source_url": "https://www.loadtrail.com/about-us",
+   "ledger_value": "Load Trail Company (Load Trail LLC)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Confirmed: the cited page carries the label in its title (\"About Us - Load Trail Company\") and footer (\"© 2023 Load Trail, LLC\"), but the stored quote (facilities/500 employees) does not; replace the quote with \"© 2023 Load Trail, LLC\"."
+  },
+  {
+   "claim_id": "p-load-trail-como-tx:address",
+   "source_url": "https://www.loadtrail.com/about-us",
+   "ledger_value": "811 West Main Street, Como, TX 75431",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-load-trail-como-tx:products",
+   "source_url": "https://www.energyjobshop.com/job/welders-needed-in-tx-3000-bonus/",
+   "ledger_value": "Trailer welding at the Como site",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-load-trail-como-tx:products",
+   "source_url": "https://www.loadtrail.com/about-us",
+   "ledger_value": "Company line (company-level)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-load-trail-como-tx:tier",
+   "source_url": "https://www.loadtrail.com/about-us",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-load-trail-como-tx:relationship",
+   "source_url": "https://www.loadtrail.com/about-us",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-load-trail-como-tx:headcount",
+   "source_url": "https://www.loadtrail.com/about-us",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-load-trail-como-tx:prospect_test",
+   "source_url": "https://www.energyjobshop.com/job/welders-needed-in-tx-3000-bonus/",
+   "ledger_value": "pass (low confidence: welding evidence about four years old)",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-load-trail-como-tx:welder_postings",
+   "source_url": "https://secure5.entertimeonline.com/ta/rest/ui/recruitment/companies/%7CLoadTrail/job-requisitions/386231945?lang=en-US",
+   "ledger_value": "Welder (UKG Ready requisition 386231945), 811 W Main St, Como TX; MIG welding experience required; open on the board 2026-11-20, no posting date shown",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-delco-brookston-tx:relationship",
+   "source_url": "",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-delco-brookston-tx:name",
+   "source_url": "https://www.natm.com/trailer-manufacturer-directory/delco-trailers-llc",
+   "ledger_value": "Delco Trailers, LLC",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-delco-brookston-tx:parent_company",
+   "source_url": "https://www.natm.com/trailer-manufacturer-directory/delco-trailers-llc",
+   "ledger_value": "Delco Trailers, LLC",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-delco-brookston-tx:address",
+   "source_url": "https://www.delcotrailers.com/contact",
+   "ledger_value": "7701 US Hwy 82 W, Brookston, TX 75421",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-delco-brookston-tx:address",
+   "source_url": "https://www.natm.com/trailer-manufacturer-directory/delco-trailers-llc",
+   "ledger_value": "7701 Hwy 82 W, Brookston, TX 75421",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-delco-brookston-tx:products",
+   "source_url": "https://www.delcotrailers.com/manufacturing-facility",
+   "ledger_value": "Every Delco trailer built in Brookston, from steel cutting to powder coat",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-delco-brookston-tx:products",
+   "source_url": "https://www.natm.com/trailer-manufacturer-directory/delco-trailers-llc",
+   "ledger_value": "Steel dump, equipment and car hauler, tilt, deckover, utility, livestock, enclosed cargo and job-site trailers",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-delco-brookston-tx:products",
+   "source_url": "https://www.delcotrailers.com/manufacturing-facility/",
+   "ledger_value": "boundary: high-volume line with robotic welding",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "boundary: high-volume line (150 to 200 trailers per week); welding floor combines skilled craftsmen with automated processes",
+   "corrected_quote": "The ability to produce 150 to 200 trailers per week, with a capacity of 500 units in the same timeframe ... Our welding floor combines skilled craftsmen with automated processes",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "subkind": "value adds a fact the cited page does not show",
+   "note": "\"robotic\" appears nowhere on the manufacturing-facility page; it says \"automated processes\" and \"modern automation\". Robotic welding is not stated.",
+   "plants_csv_value": "Steel dump, car-hauler and equipment, tilt, deckover, utility, gooseneck and bumper-pull livestock, enclosed cargo and job-site trailers, all built at the Brookston facility (company site; NATM listing names the address); boundary: high-volume line (150 to 200 trailers per week; welding floor with automated processes stated) - weak-fit note"
+  },
+  {
+   "claim_id": "p-delco-brookston-tx:tier",
+   "source_url": "https://www.natm.com/trailer-manufacturer-directory/delco-trailers-llc",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-delco-brookston-tx:headcount",
+   "source_url": "https://www.delcotrailers.com/manufacturing-facility",
+   "ledger_value": "nearly 200 (company site)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-delco-brookston-tx:welder_postings",
+   "source_url": "https://www.delcotrailers.com/careers",
+   "ledger_value": "Welding department open on the company apply form, undated",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "The \"CURRENT JOB OPENINGS ... actively taking applications\" list holds Engineering Lead, Dealer Relations and Digital Marketing Ads only; Welding appears only as an apply-by-department card. Value stands."
+  },
+  {
+   "claim_id": "p-delco-brookston-tx:prospect_test",
+   "source_url": "https://www.delcotrailers.com/manufacturing-facility",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lamar-sumner-tx:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "200 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-lamar-sumner-tx:name",
+   "source_url": "https://www.lamartrailers.com",
+   "ledger_value": "Lamar Trailers",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lamar-sumner-tx:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "7271 FM 38 N, Sumner, TX 75486",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-lamar-sumner-tx:products",
+   "source_url": "https://www.lamartrailers.com",
+   "ledger_value": "Dump, car hauler, equipment hauler, utility, deckover, tilt trailers",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lamar-sumner-tx:products",
+   "source_url": "https://www.lamartrailers.com/careers",
+   "ledger_value": "Built in Northeast Texas",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lamar-sumner-tx:tier",
+   "source_url": "https://www.lamartrailers.com",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lamar-sumner-tx:relationship",
+   "source_url": "",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-lamar-sumner-tx:welder_postings",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "verdict": "corrected",
+   "corrected_value": "none found: Lamar's ADP board (the careers page \"See Open Positions\" link) lists 3 openings, all Sumner TX (Maintenance Technician, Quality Control Inspector, Bandsaw Operator); no welder (read 2026-11-20)",
+   "corrected_quote": "\"requisitionTitle\":\"Maintenance Technician\" ... \"requisitionTitle\":\"Quality Control Inspector\" ... \"requisitionTitle\":\"Bandsaw Operator\"",
+   "corrected_source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=505fbdb4-201e-4fb5-8d58-8d813d30010c&timeStamp=1731500000000&lang=en_US&ccId=9201245534721_2&locale=en_US&$top=100",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "subkind": "welder_postings unknown/none set without reading the company's own careers page or board (Coastline pattern)",
+   "plants_csv_value": "none found: ADP board (read 2026-11-20) lists 3 Sumner openings (Maintenance Technician, Quality Control Inspector, Bandsaw Operator), no welder",
+   "note": "The careers page raw source links an ADP board (cid 505fbdb4-...); its JSON lists 3 requisitions, none a welder. Value moves from unknown to none found."
+  },
+  {
+   "claim_id": "p-lamar-sumner-tx:prospect_test",
+   "source_url": "https://www.lamartrailers.com/careers",
+   "ledger_value": "unknown",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-car-mate-leeper-pa:relationship",
+   "source_url": "",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-car-mate-leeper-pa:name",
+   "source_url": "https://natm.com/news/shipping-woes-car-mate-shares-its-solution",
+   "ledger_value": "Car Mate Trailers, Inc.",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-car-mate-leeper-pa:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_detail.disp_program_facility?p_registry_id=110010267433",
+   "ledger_value": "32591 Route 66, Leeper, PA 16233",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-car-mate-leeper-pa:address",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "32591 Route 66, Leeper, PA 16233",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-car-mate-leeper-pa:parent_company",
+   "source_url": "https://natm.com/news/shipping-woes-car-mate-shares-its-solution",
+   "ledger_value": "Car Mate Trailers, Inc.",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-car-mate-leeper-pa:products",
+   "source_url": "https://natm.com/news/shipping-woes-car-mate-shares-its-solution",
+   "ledger_value": "enclosed cargo and open utility trailers built at Leeper; tube welded to the trailer frame",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "FRS page shows AIR MINOR (OPERATING) and a TRI REPORTER entry at this registry, but the TRI entry is under the name PENNSTYLE CAMPERS INC, not Car Mate."
+  },
+  {
+   "claim_id": "p-car-mate-leeper-pa:products",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_detail.disp_program_facility?p_registry_id=110010267433",
+   "ledger_value": "site: TRI reporter, air minor source",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "FRS page shows AIR MINOR (OPERATING) and a TRI REPORTER entry at this registry, but the TRI entry is under the name PENNSTYLE CAMPERS INC, not Car Mate."
+  },
+  {
+   "claim_id": "p-car-mate-leeper-pa:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "83 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-car-mate-leeper-pa:tier",
+   "source_url": "https://natm.com/news/shipping-woes-car-mate-shares-its-solution",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-car-mate-leeper-pa:prospect_test",
+   "source_url": "https://natm.com/news/shipping-woes-car-mate-shares-its-solution",
+   "ledger_value": "pass (low confidence)",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-trinity-trailer-boise-id-2:products",
+   "source_url": "https://www.trinitytrailer.com/",
+   "ledger_value": "stainless steel belt trailer",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "company-level: stainless steel belt trailers (Boise; two Trinity production buildings about 0.7 km apart, rule 7b, no confidence)",
+   "corrected_quote": "Trinity provides the industry’s leading stainless steel belt trailer.",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "subkind": "company-level fact placed at the plant",
+   "note": "The homepage line is company-wide; Trinity files two OSHA 336212 establishments in Boise (Eisenman 143, Federal Way 54) and the ledger has both (p-trinity-trailer-boise-id). The products row must be worded company-level.",
+   "plants_csv_value": "keep (plants.csv already reads \"(city-level)\")"
+  },
+  {
+   "claim_id": "p-trinity-trailer-boise-id-2:tier",
+   "source_url": "https://trinitytrailer.com/about-us",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-trinity-trailer-boise-id-2:relationship",
+   "source_url": "https://trinitytrailer.com/about-us",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-trinity-trailer-boise-id-2:welder_postings",
+   "source_url": "https://trinitytrailer.com/about-us/careers",
+   "ledger_value": "none found: trinitytrailer.com careers (Maintenance Tech, Paint Prep Tech only)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "HubSpot careers page links two openings only (maintenance-tech, paint-prep-tech) plus general consideration."
+  },
+  {
+   "claim_id": "p-trinity-trailer-boise-id-2:address",
+   "source_url": "https://trinitytrailer.com/contact-us",
+   "ledger_value": "7533 S Federal Way, Boise, ID 83716",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-trinity-trailer-boise-id-2:prospect_test",
+   "source_url": "https://www.trinitytrailer.com/",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "verdict": "corrected",
+   "corrected_value": "pass (low confidence)",
+   "corrected_quote": "The frameless, steel trailer design allows the trailer to flex and twist",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "subkind": "prospect pass without welding shown (T2 says unknown; T15 footing not met)",
+   "note": "No page read shows welding. The record meets T15 (OSHA 2025 row 2980916, NAICS 336212, \"Federal Way\" of Trinity Trailer Mfg., gates pass; ECHO name \"TRINITY TRAILER - FEDERAL WAY\" at 7533 S Federal Way), and T15 allows only prospect low confidence, not a plain pass. Quote kept from the cited page; the T15 basis is the ECHO and OSHA rows already on the record."
+  },
+  {
+   "claim_id": "p-trinity-trailer-boise-id-2:parent_company",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=TRINITY%20TRAILER&state_abbr=ID&output=JSON",
+   "ledger_value": "Trinity Trailer Mfg., Inc.",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Value and quote confirmed on the FRS JSON; source_type is \"company site\" but the URL is EPA FRS (should be government file)."
+  },
+  {
+   "claim_id": "p-trinity-trailer-boise-id-2:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "54 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-trinity-trailer-boise-id-2:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110005783651&output=JSON",
+   "ledger_value": "Trinity Trailer - Federal Way building",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ba-trailers-inman-sc:name",
+   "source_url": "https://www.batrailers.com",
+   "ledger_value": "B&A Trailers - Inman",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ba-trailers-inman-sc:parent_company",
+   "source_url": "https://www.batrailers.com/job-openings",
+   "ledger_value": "B&A Trailers, Inc. (a division of McElrath Heritage Group, Inc.)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ba-trailers-inman-sc:address",
+   "source_url": "https://www.batrailers.com",
+   "ledger_value": "233 Frontview Drive, Inman, SC 29349",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ba-trailers-inman-sc:products",
+   "source_url": "https://www.batrailers.com",
+   "ledger_value": "Custom equipment, gooseneck, tilt, dump and kingpin drop-deck trailers built in Inman",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ba-trailers-inman-sc:tier",
+   "source_url": "https://www.batrailers.com",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ba-trailers-inman-sc:relationship",
+   "source_url": "",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-ba-trailers-inman-sc:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "8 (OSHA 2025 annual average)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "osha_match.py tokenising drops \"B\" and \"A\" (one letter), so the tool finds no candidate; matched by eye: establishment \"B & A Trailers\", 233 Frontview Dr, ZIP 29349, 2,851 hours per employee. Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-ba-trailers-inman-sc:welder_postings",
+   "source_url": "https://www.batrailers.com/job-openings",
+   "ledger_value": "none dated: the job-openings page is a standing call for applicants (welding and fabrication experience preferred); no dated posting (browser render 2026-11-20)",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ba-trailers-inman-sc:prospect_test",
+   "source_url": "https://www.batrailers.com/about",
+   "ledger_value": "pass (low confidence)",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "batrailers.com/about returned 502 on the first fetch; quote FOUND on a browser re-fetch."
+  },
+  {
+   "claim_id": "p-bear-trailer-lebanon-mo:relationship",
+   "source_url": "",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-bear-trailer-lebanon-mo:name",
+   "source_url": "https://www.beartrailer.com/",
+   "ledger_value": "Bear Trailer Manufacturing, Inc.",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-bear-trailer-lebanon-mo:parent_company",
+   "source_url": "https://www.beartrailer.com/",
+   "ledger_value": "Bear Trailer Manufacturing, Inc.",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-bear-trailer-lebanon-mo:address",
+   "source_url": "https://www.natm.com/trailer-manufacturer-directory/bear-trailer-manufacturing",
+   "ledger_value": "27877 Glacier Point Rd, Lebanon, MO 65536",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-bear-trailer-lebanon-mo:address",
+   "source_url": "https://www.beartrailer.com/",
+   "ledger_value": "27877 Route 66, Lebanon (company site)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-bear-trailer-lebanon-mo:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=BEAR%20TRAILER&state_abbr=MO&output=JSON",
+   "ledger_value": "27877 Glacier Point Drive, Lebanon (EPA FRS)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-bear-trailer-lebanon-mo:products",
+   "source_url": "https://www.beartrailer.com/",
+   "ledger_value": "Boat trailers",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-bear-trailer-lebanon-mo:products",
+   "source_url": "https://www.natm.com/trailer-manufacturer-directory/bear-trailer-manufacturing",
+   "ledger_value": "site: boat trailers (NATM listing)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-bear-trailer-lebanon-mo:tier",
+   "source_url": "https://www.beartrailer.com/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-bear-trailer-lebanon-mo:welder_postings",
+   "source_url": "",
+   "ledger_value": "unknown: employment page rendered empty",
+   "tag": "inferred",
+   "verdict": "corrected",
+   "corrected_value": "Welding Professional role listed on the company employment page (undated, no requisition; read 2026-11-20); Automation Specialist role runs robotic welders",
+   "corrected_quote": "WELDING PROFESSIONAL ... such as tube lasers, robotic welders, and other automation systems",
+   "corrected_source_url": "https://beartrailer.com/employment/",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "subkind": "welder_postings unknown/none set without reading the company's own careers page or board (Coastline pattern)",
+   "plants_csv_value": "Welding Professional role on beartrailer.com/employment (undated, no requisition; read 2026-11-20); Automation Specialist runs robotic welders",
+   "note": "The employment page rendered fully in a browser on 2026-11-20 (5 roles). The Welding Professional entry repeats the driver description under it (site copy error), so only the title is used. Welding is now shown at the site; steel is still not, so the prospect row stays unknown."
+  },
+  {
+   "claim_id": "p-bear-trailer-lebanon-mo:prospect_test",
+   "source_url": "https://www.beartrailer.com/",
+   "ledger_value": "unknown",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Still unknown: the employment page now shows welding at the site (Welding Professional, robotic welders) but no page states steel. The coordinator may revisit."
+  },
+  {
+   "claim_id": "p-magic-tilt-clearwater-fl:products",
+   "source_url": "https://www.magictilt.com/",
+   "ledger_value": "fully welded",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-magic-tilt-clearwater-fl:tier",
+   "source_url": "https://www.magictilt.com/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-magic-tilt-clearwater-fl:relationship",
+   "source_url": "https://www.magictilt.com/",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-magic-tilt-clearwater-fl:welder_postings",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Homepage raw source has no careers, jobs or ATS link. No quote by design (inferred/unknown); reasoning checked against the rules and, for headcount, data/osha_2025.csv searched by name and ZIP."
+  },
+  {
+   "claim_id": "p-magic-tilt-clearwater-fl:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=MAGIC%20TILT&state_abbr=FL&output=JSON",
+   "ledger_value": "2161 Lions Club Rd, Clearwater, FL 33764",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-magic-tilt-clearwater-fl:prospect_test",
+   "source_url": "https://www.magictilt.com/",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-magic-tilt-clearwater-fl:parent_company",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-magic-tilt-clearwater-fl:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "135 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-magic-tilt-clearwater-fl:name",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110007477033&output=JSON",
+   "ledger_value": "Magic Tilt Trailers - Clearwater",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-doonan-great-bend-ks:name",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "Doonan Specialized Trailer - Great Bend",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-doonan-great-bend-ks:parent_company",
+   "source_url": "https://www.doonan.com/",
+   "ledger_value": "Doonan Specialized Trailer, LLC",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-doonan-great-bend-ks:address",
+   "source_url": "https://www.doonan.com/",
+   "ledger_value": "36 NE Highway 156, Great Bend, KS 67530",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-doonan-great-bend-ks:products",
+   "source_url": "https://www.doonan.com/",
+   "ledger_value": "Platform trailers; Steel flatbed and drop deck",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-doonan-great-bend-ks:tier",
+   "source_url": "https://www.doonan.com/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-doonan-great-bend-ks:relationship",
+   "source_url": "https://www.doonan.com/",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-doonan-great-bend-ks:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "85 (2025 annual average, OSHA Form 300A)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-doonan-great-bend-ks:prospect_test",
+   "source_url": "https://www.doonan.com/",
+   "ledger_value": "pass (low confidence)",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-doonan-great-bend-ks:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/13CF4FFB54DD02ABB2B695823F408F2B/jobs/194020",
+   "ledger_value": "Production Welder (Paycom job 194020), 36 NE Hwy 156, Great Bend KS, listed 2026-03-25 (Doonan Paycom board, read 2026-11-20)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-kaufman-denton-nc:name",
+   "source_url": "https://www.kaufmantrailers.com/enclosed-trailers",
+   "ledger_value": "Kaufman Trailers - Denton enclosed trailer plant",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-kaufman-denton-nc:parent_company",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "Kaufman Trailers (Industrial Performance Group)",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Kaufman Trailers",
+   "corrected_quote": "ID 2995406; establishment_name Industrial Performance Group; company_name Kaufman Trailers; street_address 267 Council Access Road; city DENTON; zip_code 27239",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "subkind": "judgement tagged stated (OSHA tie inferred)",
+   "note": "OSHA record 2995406 fails the establishment-name gate (\"Industrial Performance Group\" is not the plant operating name), which is why the headcount row from the same record is inferred; the parent row from it must be inferred too, and the record names company_name \"Kaufman Trailers\" only. Nothing read names Industrial Performance Group as the parent.",
+   "plants_csv_value": "Kaufman Trailers"
+  },
+  {
+   "claim_id": "p-kaufman-denton-nc:address",
+   "source_url": "https://www.kaufmantrailers.com/enclosed-trailers",
+   "ledger_value": "267 Council Access Rd, Denton, NC 27239",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-kaufman-denton-nc:products",
+   "source_url": "https://www.kaufmantrailers.com/enclosed-trailers",
+   "ledger_value": "Enclosed trailers (three grades) built at the Denton plant; square and rectangular tube frames; aluminum skin",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-kaufman-denton-nc:tier",
+   "source_url": "https://www.kaufmantrailers.com/enclosed-trailers",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-kaufman-denton-nc:relationship",
+   "source_url": "",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "No quote by design (inferred/unknown): checked that the value follows the rules; for headcount unknown, data/osha_2025.csv searched by company name in the state and by ZIP (no record)."
+  },
+  {
+   "claim_id": "p-kaufman-denton-nc:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "25 (OSHA 2025 record, tie inferred)",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv (osha.gov blocked); gates re-run with tools/osha_match.py functions."
+  },
+  {
+   "claim_id": "p-kaufman-denton-nc:welder_postings",
+   "source_url": "https://www.kaufmantrailers.com/careers",
+   "ledger_value": "unknown: no careers page or job board found on kaufmantrailers.com (as for p-kaufman-lexington-nc and p-kaufman-bennettsville-sc)",
+   "tag": "inferred",
+   "verdict": "unreachable",
+   "note": "kaufmantrailers.com/careers returned 404 (browser) on 2026-11-20, after a bot-check page; no board could be read."
+  },
+  {
+   "claim_id": "p-kaufman-denton-nc:prospect_test",
+   "source_url": "https://www.kaufmantrailers.com/enclosed-trailers",
+   "ledger_value": "unknown",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wabash-little-falls-mn:exclusion_reason",
+   "source_url": "https://mn.gov/deed/assets/2026-warn-wabash-national-services-lp_tcm1045-718209.pdf",
+   "ledger_value": "Molded composite parts; manufacturing ceasing 2026",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "WARN letter: idling, all manufacturing to cease, first separations in the 14 days from March 6, 2026. \"Molded composite\" comes from the trailer-bodybuilders row, named in the reasoning; tag inferred, so fine."
+  },
+  {
+   "claim_id": "p-pleasant-valley-teardrop-sugarcreek-oh:exclusion_reason",
+   "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetManufacturerDetails/Pleasant%20Valley?format=json",
+   "ledger_value": "rule 5: camping-trailer maker (teardrop trailers per the vPIC manufacturer name at the site; OSHA 2025 \"Truck campers (i.e., slide-in campers) manufacturing\"); company site unreachable",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "vPIC record Mfr_Name PLEASANT VALLEY TEARDROP TRAILERS LLC, Mfr_CommonName NuCamp, 661 Belden Parkway NE; OSHA 2960840 \"Truck campers\" checked in data/osha_2025.csv. Rule 5 applies."
+  },
+  {
+   "claim_id": "p-keystone-rv-goshen-in-12:exclusion_reason",
+   "source_url": "https://www.keystonerv.com",
+   "ledger_value": "Rule 5 / T18: RV, travel and camping trailers stay out (RV travel trailer and fifth-wheel plant, NAICS 336214)",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-keystone-rv-goshen-in-10:exclusion_reason",
+   "source_url": "https://www.keystonerv.com",
+   "ledger_value": "Rule 5 / T18: RV, travel and camping trailers stay out (RV travel trailer and fifth-wheel plant, NAICS 336214)",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-jayco-middlebury-in:exclusion_reason",
+   "source_url": "https://www.jayco.com",
+   "ledger_value": "Rule 5 / T18: RV, travel and camping trailers stay out (RV travel trailer and fifth-wheel plant, NAICS 336214)",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-keystone-rv-goshen-in-11:exclusion_reason",
+   "source_url": "https://www.keystonerv.com",
+   "ledger_value": "Rule 5 / T18: RV, travel and camping trailers stay out (RV travel trailer and fifth-wheel plant, NAICS 336214)",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-keystone-rv-pendleton-or-4:exclusion_reason",
+   "source_url": "https://www.keystonerv.com",
+   "ledger_value": "Rule 5 / T18: RV, travel and camping trailers stay out (RV travel trailer and fifth-wheel plant, NAICS 336214)",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-wabash-harrison-ar:exclusion_reason",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001710195&output=JSON",
+   "ledger_value": "fails prospect test: wood trailer-flooring plant, no welding (EPA \"WABASH NATIONAL WOOD PRODUCTS\", NAICS 321918; OSHA 2025 \"Wood Flooring Manufacturing\"); Tier 3 materials",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  }
+ ],
+ "membership": {
+  "p-spartan-cargo-alma-ga": "holds: T18 (OSHA 2987473 industry_description names automobile transporter trailers at the site; Spartan named in T18) and T17 (OSHA 2025). Enclosed-cargo product from brand name only; welding not shown, prospect unknown is right.",
+  "p-w-w-madill-ok": "holds: T2 (company contact page: Madill manufacturing facility; steel livestock, cargo, equipment trailers) and T17 (current company page).",
+  "p-neville-built-kingman-ks": "holds: T2 plus site welding (all production at Kingman; MIG welders); T17 current company page.",
+  "p-king-kutter-gallipolis-oh": "holds: T15 (OSHA 2921976 NAICS 336212 passes gates; ECHO name KING KUTTER II, INC. at 2150 Eastern Ave); T19 does not bite because T15 is met; T17 OSHA 2025.",
+  "p-fontaine-haleyville-al": "holds: T2 (company site, flatbeds) and T15 (OSHA 2897371 + FRS FONTAINE TRAILER COMPANY at 430 Sam Letson Rd); T17 OSHA 2025.",
+  "p-cronkhite-danville-il": "fails T17: no OSHA 2025 row, no dated site posting (the JobLink page reads \"This job is not active.\"), and no company page read now (cronkhitetrailers.com unread); the only current source is a dealer page, the same class as the NATM listing the log rules is not a T17 source. Not closed on what was seen: ECHO lists the Danville RCRA facility Active (last inspection 2023-04-17), and search shows dealers listing 2026 model-year Cronkhite trailers (search results, not a quote). Coordinator ruling needed: lead, or base on a company page.",
+  "p-premier-trailer-visalia-ca": "holds on T2 (association page products; single address) and T17 (OSHA 2025 filing exists). T15 is NOT met (OSHA row fails the hours gate), so prospect must be unknown (corrected).",
+  "p-cb-quality-caldwell-id": "holds: T2 (company page, Caldwell address) and T17 (current company page). Wilder FRS address noted.",
+  "p-rc-trailers-middlebury-in": "holds: T15 (OSHA 3128562 NAICS 336212 passes gates; FRS RC TRAILERS) and T17 (OSHA 2025).",
+  "p-cozad-stockton-ca": "holds on T2 (only address; company manufactures trailers) and T17 (current contact page). No OSHA row, so no T15; prospect must be unknown (corrected).",
+  "p-clement-sibley-la": "holds: T2 (company site, single physical address) and T17 (current contact page); site welding now shown (careers: MIG welders, steel and aluminum, in the Production Facility), so prospect pass on that page.",
+  "p-liberty-fillmore-in": "holds: T2 (company names Fillmore Headquarters & Manufacturing) and T17 (current page).",
+  "p-freedom-trailers-willacoochee-ga": "holds: T2 (enclosed cargo on tubular frames at the only address) and T17 (current homepage).",
+  "p-timpte-david-city-ne": "holds: site welding shown (ADP Welder posting at the David City Manufacturing Center, 2026-10-01); T17 OSHA 2025 and posting. Aluminum-first noted.",
+  "p-merhow-white-pigeon-mi": "holds: T18 named by the coordinator (OSHA 3027760, vPIC, directory profile of horse trailers at 617 S Miller); T17 OSHA 2025.",
+  "p-load-trail-como-tx": "holds: welding at the site (UKG Welder requisition at 811 W Main St, Como; older Energy Job Shop ad); T17 per coordinator note (product at site, current company locations page).",
+  "p-delco-brookston-tx": "holds: welding stated at the Brookston facility (Stage 03 - Welding); T17 current company page. Boundary high-volume.",
+  "p-lamar-sumner-tx": "holds: T18 (OSHA 3114650 industry \"Utility trailers manufacturing\" at the site) plus company products; T17 OSHA 2025.",
+  "p-car-mate-leeper-pa": "holds: T18 (OSHA 3191441) plus NATM member article (frame welding mentioned); T17 OSHA 2025.",
+  "p-trinity-trailer-boise-id-2": "holds: T15 (OSHA 2980916 NAICS 336212 \"Federal Way\" passes gates; ECHO TRINITY TRAILER - FEDERAL WAY); T17 OSHA 2025. Products are company-level (rule 7b) and prospect is low confidence (corrected).",
+  "p-ba-trailers-inman-sc": "holds: T2 (\"Proudly built in Inman\") and T17 (current company page; OSHA 2025 row, 8 employees).",
+  "p-bear-trailer-lebanon-mo": "holds: T2 (boat trailers are in under T2; NATM lists boat at the address) and T17 (current company page); welding now shown on the employment page.",
+  "p-magic-tilt-clearwater-fl": "holds: T2 boat trailers, fully welded (company line, single production site, rule 7a); T17 OSHA 2025. Company contact address differs (4760 East Bay Dr).",
+  "p-doonan-great-bend-ks": "holds: site welding (Paycom Production Welder at 36 NE Hwy 156, listed 2026-03-25) and T15 (OSHA 3143949 + FRS DOONAN SPECIALIZED TRAILER LLC); T17 OSHA 2025.",
+  "p-kaufman-denton-nc": "holds: T2 (company page: Enclosed Trailer Plant at 267 Council Access Rd) and T17 (current company page; OSHA 2025 row with inferred tie).",
+  "p-wabash-little-falls-mn": "holds (exclusion): molded-composite parts plant, not a rule-1 welded product, and WARN letter: all manufacturing to cease (separations from 2026-03-06).",
+  "p-pleasant-valley-teardrop-sugarcreek-oh": "holds (exclusion): rule 5 (teardrop camping trailers, NuCamp; OSHA \"Truck campers\").",
+  "p-keystone-rv-goshen-in-12": "holds (exclusion): rule 5/T18 (OSHA 2902879 Plant 57 \"RV Manufacturing\"; Keystone sells travel trailers and fifth wheels).",
+  "p-keystone-rv-goshen-in-10": "holds (exclusion): rule 5/T18 (OSHA 2902850 Plant 25 \"RV Manufacturing\").",
+  "p-jayco-middlebury-in": "holds (exclusion): rule 5/T18 (OSHA 2991674 \"Camping trailers and chassis manufacturing\"; Jayco RVs).",
+  "p-keystone-rv-goshen-in-11": "holds (exclusion): rule 5/T18 (OSHA 2902859 Plant 29 \"RV Manufacturing\").",
+  "p-keystone-rv-pendleton-or-4": "holds (exclusion): rule 5/T18 (OSHA 2905186 Plant 921 \"RV Manufacturing\").",
+  "p-wabash-harrison-ar": "holds (exclusion): fails prospect test, wood flooring plant (OSHA 3181012 NAICS 321918 \"Wood Flooring Manufacturing\"; ECHO WABASH NATIONAL WOOD PRODUCTS); Tier 3."
+ },
+ "membership_failures": [
+  "p-cronkhite-danville-il (T17)"
+ ],
+ "geo": {
+  "p-spartan-cargo-alma-ga": "in Alma city, ZCTA 31510, 4.5 km from centre",
+  "p-w-w-madill-ok": "just outside Madill city limits, ZCTA 73446, 4.7 km",
+  "p-neville-built-kingman-ks": "rural Ninnescah twp, ZCTA 67068, 12.3 km from Kingman centre",
+  "p-king-kutter-gallipolis-oh": "in Gallipolis village, 2.2 km",
+  "p-fontaine-haleyville-al": "outside town limits, ZCTA 35565, 4.8 km",
+  "p-cronkhite-danville-il": "Danville twp, ZCTA 61832, 6.1 km (FRS point 0.3 km away)",
+  "p-premier-trailer-visalia-ca": "in Goshen CDP, ZCTA 93227 (address ZIP 93291), 11.0 km W of Visalia centre; matches the FRS point",
+  "p-cb-quality-caldwell-id": "in Caldwell, 0.9 km",
+  "p-rc-trailers-middlebury-in": "York twp, ZCTA 46540, 7.5 km",
+  "p-cozad-stockton-ca": "unincorporated, ZCTA 95215, 5.8 km",
+  "p-clement-sibley-la": "in Sibley town, 1.2 km (FRS mails it as Minden 71055)",
+  "p-liberty-fillmore-in": "in Fillmore, 1.1 km",
+  "p-freedom-trailers-willacoochee-ga": "in Willacoochee, 1.4 km",
+  "p-timpte-david-city-ne": "in David City, 1.6 km",
+  "p-merhow-white-pigeon-mi": "in White Pigeon, 0.9 km",
+  "p-load-trail-como-tx": "in Como, 0.7 km",
+  "p-delco-brookston-tx": "unincorporated, ZCTA 75421, 5.6 km",
+  "p-lamar-sumner-tx": "unincorporated, ZCTA 75486, 8.9 km",
+  "p-car-mate-leeper-pa": "in Leeper CDP, 0.4 km",
+  "p-trinity-trailer-boise-id-2": "in Boise city, 9.9 km from centre",
+  "p-ba-trailers-inman-sc": "outside town, ZCTA 29349, 4.4 km",
+  "p-bear-trailer-lebanon-mo": "rural May/Smith twp, ZCTA 65536, 15.3 km from Lebanon centre",
+  "p-magic-tilt-clearwater-fl": "inside Largo city limits, ZCTA 33764 (Clearwater mailing), 8.0 km from Clearwater centre",
+  "p-doonan-great-bend-ks": "Great Bend twp, ZCTA 67530, 6.3 km",
+  "p-kaufman-denton-nc": "in Denton town, 0.9 km",
+  "p-wabash-little-falls-mn": "in Little Falls, 0.5 km",
+  "p-pleasant-valley-teardrop-sugarcreek-oh": "in Sugarcreek village (Tuscarawas)",
+  "p-keystone-rv-goshen-in-12": "in Goshen, 5.3 km",
+  "p-keystone-rv-goshen-in-10": "in Goshen, 5.4 km",
+  "p-jayco-middlebury-in": "in Middlebury, 1.1 km",
+  "p-keystone-rv-goshen-in-11": "in Goshen, 3.8 km",
+  "p-keystone-rv-pendleton-or-4": "in Pendleton, 4.4 km",
+  "p-wabash-harrison-ar": "in Harrison, 4.4 km"
+ },
+ "geo_summary": "All 33 points fall in the recorded county and ZIP (ZCTA) except Premier (ZCTA 93227 Goshen vs address ZIP 93291; FRS has the same point under both); none is over 15.3 km from the city centre; Magic Tilt sits inside Largo city limits with a Clearwater mailing address.",
+ "plants_csv_fixes": [
+  {
+   "id": "p-premier-trailer-visalia-ca",
+   "column": "headcount",
+   "proposed": "104 (OSHA 2025 record, tie inferred)",
+   "why": "OSHA row fails the hours-per-employee gate (84); carried in plants_csv_value."
+  },
+  {
+   "id": "p-kaufman-denton-nc",
+   "column": "parent_company",
+   "proposed": "Kaufman Trailers",
+   "why": "carried in plants_csv_value."
+  },
+  {
+   "id": "p-delco-brookston-tx",
+   "column": "products",
+   "proposed": "Steel dump, car-hauler and equipment, tilt, deckover, utility, gooseneck and bumper-pull livestock, enclosed cargo and job-site trailers, all built at the Brookston facility (company site; NATM listing names the address); boundary: high-volume line (150 to 200 trailers per week; welding floor with automated processes stated) - weak-fit note",
+   "why": "\"robotic\" not on the page; carried in plants_csv_value."
+  },
+  {
+   "id": "p-lamar-sumner-tx",
+   "column": "welder_postings",
+   "proposed": "none found: ADP board (read 2026-11-20) lists 3 Sumner openings (Maintenance Technician, Quality Control Inspector, Bandsaw Operator), no welder",
+   "why": "carried in plants_csv_value."
+  },
+  {
+   "id": "p-clement-sibley-la",
+   "column": "welder_postings",
+   "proposed": "MIG Welders Steel & Aluminum listed in the Production Facility on clementind.com/careers (undated, no requisition; read 2026-11-20)",
+   "why": "carried in plants_csv_value."
+  },
+  {
+   "id": "p-bear-trailer-lebanon-mo",
+   "column": "welder_postings",
+   "proposed": "Welding Professional role on beartrailer.com/employment (undated, no requisition; read 2026-11-20); Automation Specialist runs robotic welders",
+   "why": "carried in plants_csv_value."
+  },
+  {
+   "id": "p-clement-sibley-la",
+   "column": "products",
+   "proposed": "add an evidence row for the careers line (MIG welding of steel and aluminum in the Production Facility); the prospect row now cites it",
+   "why": "site welding fact"
+  },
+  {
+   "id": "p-neville-built-kingman-ks",
+   "column": "products",
+   "current": "Drop-deck, grain (hopper), livestock, tank-chassis and sprayer drop-deck trailers; ...",
+   "proposed": "add a products row for tank-chassis and sprayer drop-deck trailers (nevillebuilt.com nav: \"Tank Chassis Trailers - Double Tank Trailers | Sprayer Drop Deck Trailers\") or drop those types",
+   "why": "No evidence row carries them."
+  },
+  {
+   "id": "p-cozad-stockton-ca",
+   "column": "products",
+   "current": "Custom heavy-haul trailers: lowboys, removable goosenecks, stretch decks, steerable trailers, dollies, flip-axle trailers, ...",
+   "proposed": "add a products row quoting the cozadtrailers.com/en/ inventory list (e.g. \"35 Ton Air Ride Double Drop Removable Gooseneck Trailer\", \"85-Ton Steerable Trailer 3+3+3\", \"50 Ton Trailer with 3rd Flip Axle\") or trim to the row",
+   "why": "The only products row covers \"manufacturing trailers for\" construction, military, aerospace and transportation."
+  },
+  {
+   "id": "p-freedom-trailers-willacoochee-ga",
+   "column": "products",
+   "current": "Enclosed cargo, gooseneck, car-hauler and concession trailers on tubular frames, over 20 trailers a day",
+   "proposed": "keep, but add a homepage products row (\"a car hauler, or a concession trailer, we have the perfect enclosed cargo trailer for you\") and use the corrected about-us row for gooseneck",
+   "why": "Gooseneck, car-hauler and concession are on no evidence row."
+  }
+ ],
+ "stated_rows_checked": 144,
+ "stated_rows_corrected": 6,
+ "stated_error_rate": 0.0417,
+ "prospect_rows_corrected": "4 of 25"
+}

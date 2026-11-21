@@ -1,0 +1,276 @@
+{
+ "checker": "fact-checker A (round 2)",
+ "vertical": "v-poles-substation",
+ "date": "2026-11-12",
+ "plants": [
+  "p-sabre-alvarado-tx",
+  "p-sabre-bossier-city-la",
+  "p-fwt-fort-worth-tx",
+  "p-fwt-hicksville-oh",
+  "p-sovereign-allentown-pa"
+ ],
+ "claims_checked": 22,
+ "claims_corrected": 4,
+ "claims_unreachable": 0,
+ "error_rate": 0.1818,
+ "error_kind_counts": {
+  "other": 2,
+  "quote does not support value": 2
+ },
+ "repeated_kinds": [],
+ "plants_closed_or_moved": [],
+ "open_status": [
+  "p-sabre-alvarado-tx: open (Sabre HQ; homepage live; 2021 Blackstone release says based in Alvarado). Street address still unknown.",
+  "p-sabre-bossier-city-la: not verified since 2017; no closure found; pole line status unknown.",
+  "p-fwt-fort-worth-tx: not verified since 2015; no closure found; 2016 T&D World puts the Sabre-FWT plant in Alvarado, and a 2007 item says Sabre moved its Fort Worth operation to Alvarado. Highest risk of the five of being a stale record.",
+  "p-fwt-hicksville-oh: not verified from a fetched page since 2015; search snippets of Sabre Hicksville job listings suggest it operates, but the listings are gone.",
+  "p-sovereign-allentown-pa: not verified since the 2022 acquisition; Nucor's 2025 release names only the eastern-PA Summit location (West Hazleton); no Allentown site in Nucor material found."
+ ],
+ "opening_line_problems": [
+  "p-sabre-bossier-city-la: '$1.6 million investment' is not in any stated claim for this plant; it sits only in the triggers row, which is tagged unknown. The figure is on the cited Area Development and LED pages, so either add a stated claim for it or drop it from the line. The plant also has no :city evidence row although the line names Bossier City (city is on the cited pages).",
+  "p-sovereign-allentown-pa: the line names Allentown but there is no :city evidence row; the city is on the directory page next to the stated address. Add a stated city row (quote 'Allentown').",
+  "p-fwt-fort-worth-tx and p-fwt-hicksville-oh: lines use only stated city and parent_company claims and are dated 2015; acceptable, but the plant may no longer operate (see open_status).",
+  "p-sabre-alvarado-tx: line uses stated products and city; the T&D World page is a 2016 preview of IEEE PES T&D Conference tours and says the process 'interfaces directly with the engineers' designs providing all cutting and forming parameters' - the paraphrase is fair. No line asserts a current Path deployment."
+ ],
+ "score_notes": [
+  "p-sabre-bossier-city-la:score_part_mix = 15 ('engineered-to-order'), but the supporting claim p-sabre-bossier-city-la:production_type says in its own reasoning that the quote is company-level and 'Part mix is not stated'. 15 needs many part types or custom work shown for the plant; at most 8 (consistent with FWT/Sovereign), or 0 as unknown.",
+  "p-fwt-fort-worth-tx:score_part_mix and p-fwt-hicksville-oh:score_part_mix = 8 on 'mix not stated'. The rubric says an unknown component scores 0; 8 needs evidence of a mix.",
+  "p-sabre-bossier-city-la confidence = 2, but only score_scale rests on stated evidence (headcount, parent); part_mix rests on an inferred company-level claim and demand on the vertical outlook. Expected 1.",
+  "p-sabre-bossier-city-la:score_scale = 10 rests on a 2017 headcount (167); stale but within rubric. Its reasoning cites only :headcount, not :parent_company.",
+  "p-sabre-alvarado-tx:score_part_mix = 15 rests on an inferred production_type; the stated products claim (four part types) supports it. OK.",
+  "All score_demand rows cite v-poles-substation:demand_outlook, which exists (4 stated rows). All other cited claim ids exist. Totals add up: Alvarado 28, Bossier 33, Fort Worth 21, Hicksville 21, Sovereign 21.",
+  "p-fwt-fort-worth-tx:score_material_part cites p-fwt-fort-worth-tx:materials, corrected here (tag only); points stay 0."
+ ],
+ "inferred_vs_stated": [
+  "plants.csv shows inferred values with an inline '(inferred)' label for Alvarado weld_processes, bottleneck_guess and Bossier part_size_fit: OK.",
+  "plants.csv p-fwt-fort-worth-tx products and materials carry no 'company-level' label, unlike Hicksville; fixed by the two tag corrections above.",
+  "plants.csv welder_postings 'none found' for both FWT plants, but the evidence rows say 'unknown'; minor mismatch."
+ ],
+ "sources_failed": [
+  "tdlr.texas.gov TABS (under maintenance 2026-11-12)",
+  "Hicksville and Bossier job-board pages from search snippets: listings removed"
+ ],
+ "apply_caveat": "p-sabre-alvarado-tx:parent_company carries corrected_source_url (Blackstone release). tools/apply_factcheck.py does not read that key; the coordinator must swap source_url on evidence row 389 by hand.",
+ "worst_errors": [
+  "p-sabre-alvarado-tx:parent_company: map shows Kohlberg & Company as Sabre's owner (2015). Blackstone-affiliated funds agreed to buy Sabre from The Jordan Company in 2021; round 1 fixed this on Sioux City but not on Sabre's head-office plant.",
+  "p-fwt-fort-worth-tx:products and :materials: a company-level 2015 sentence about FWT (two plants) is tagged stated as plant-level fact for Fort Worth, a plant whose operation since 2015 is not verified; the Hicksville twin rows were already retagged inferred.",
+  "p-sovereign-allentown-pa:certifications: 'none stated' carries the stated tag (should be unknown). Related: Bossier score_part_mix 15 rests on a claim that says part mix is not stated (score note, not counted)."
+ ],
+ "rows": [
+  {
+   "claim_id": "p-sabre-alvarado-tx:products",
+   "source_url": "https://tdworld.com/electric-utility-operations/safety/article/20967142/technical-tour-sabre-industries-facilities",
+   "evidence_row": 384,
+   "ledger_value": "pole shafts, arms, base plates and flange plates",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote is on the page (exact check passed) and is about the Sabre-FWT manufacturing plant at the Alvarado complex. Source is dated March 31, 2016."
+  },
+  {
+   "claim_id": "p-sabre-alvarado-tx:city",
+   "source_url": "https://tdworld.com/electric-utility-operations/safety/article/20967142/technical-tour-sabre-industries-facilities",
+   "evidence_row": 388,
+   "ledger_value": "Alvarado",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote is on the page. Open status: Sabre's homepage (live) and the 2021 Blackstone release say Sabre is based in Alvarado; no closure found. A TDLR record of a 2026 building addition in Alvarado appeared in a search snippet, but the TDLR site was under maintenance on 2026-11-12, so it was not opened."
+  },
+  {
+   "claim_id": "p-sabre-alvarado-tx:parent_company",
+   "source_url": "https://wirelessestimator.com/articles/2015/sabre-acquires-long-established-fwt-to-expand-its-structures-sector/",
+   "evidence_row": 389,
+   "ledger_value": "Sabre Industries, Inc. (Kohlberg & Company portfolio company as of 2015)",
+   "ledger_tag": "stated",
+   "verdict": "corrected",
+   "error_kind": "other",
+   "corrected_value": "Sabre Industries, Inc. (Blackstone-affiliated private equity funds agreed to acquire Sabre from The Jordan Company, announced 2021)",
+   "corrected_quote": "Blackstone (NYSE: BX) announced that private equity funds affiliated with Blackstone have agreed to acquire Sabre Industries, Inc. (“Sabre”) from The Jordan Company.",
+   "corrected_tag": "stated",
+   "corrected_source_url": "https://www.blackstone.com/news/press/blackstone-to-acquire-sabre-industries-inc-a-leading-energy-and-telecom-infrastructure-provider/",
+   "note": "The 2015 quote is on the page, but the owner it names is stale: Kohlberg no longer owns Sabre. Round 1 already corrected the same field on p-sabre-sioux-city-ia this way; the Alvarado row (Sabre's head office) was left with the 2015 owner. Corrected quote verified on the Blackstone release (fetched 2026-11-12). tools/apply_factcheck.py does not read corrected_source_url: the coordinator must set source_url to the Blackstone URL by hand. Current (2026) owner not checked beyond the 2021 release."
+  },
+  {
+   "claim_id": "p-sabre-alvarado-tx:website",
+   "source_url": "https://www.sabreindustries.com",
+   "evidence_row": 2216,
+   "ledger_value": "https://www.sabreindustries.com",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Homepage returned HTTP 200 to a plain request on 2026-11-12 with the quoted title; no human-check wall appeared and nothing was bypassed, so this is confirmed rather than unreachable. The page names Sabre only; it names no plant and does not mention FWT."
+  },
+  {
+   "claim_id": "p-sabre-bossier-city-la:products",
+   "source_url": "https://www.areadevelopment.com/newsitems/6-9-2017/sabre-industries-cellxion-bossier-city-louisiana.shtml",
+   "evidence_row": 397,
+   "ledger_value": "large steel poles and support systems for transmission networks and towers (production line announced 2017); modular shelters",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote is on the page (exact check passed). 'modular shelters' is not in the quote but the same page says the site 'includes a 250,000-square-foot, state-of-the-art, modular shelter manufacturing plant'. 2017 announcement in future tense; whether the pole line is still running is not shown by any fetched page. Open status: no closure found; a Bossier welder/fitter posting describing pole assembly appeared in a search snippet but the ihireconstruction page no longer shows it, so it was not used."
+  },
+  {
+   "claim_id": "p-sabre-bossier-city-la:parent_company",
+   "source_url": "https://www.areadevelopment.com/newsitems/6-9-2017/sabre-industries-cellxion-bossier-city-louisiana.shtml",
+   "evidence_row": 548,
+   "ledger_value": "Sabre Industries, Inc.",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote is on the page: 'Sabre Industries will make a $1.6 million capital investment ... at its Sabre Building Systems by CellXion manufacturing location in Bossier City'. 2017."
+  },
+  {
+   "claim_id": "p-sabre-bossier-city-la:materials",
+   "source_url": "https://www.opportunitylouisiana.gov/news/sabre-industries-announces-50-job-expansion-in-bossier-city",
+   "evidence_row": 1946,
+   "ledger_value": "steel poles",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote is on the LED page, plant-level (Bossier City). Note the same page says existing Bossier work includes concrete, structural steel and ultra-light aluminum shelters."
+  },
+  {
+   "claim_id": "p-sabre-bossier-city-la:headcount",
+   "source_url": "https://www.opportunitylouisiana.gov/news/sabre-industries-announces-50-job-expansion-in-bossier-city",
+   "evidence_row": 1953,
+   "ledger_value": "167 existing jobs retained plus 50 new (2017)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote is on the page; value correctly carries the 2017 date."
+  },
+  {
+   "claim_id": "p-sabre-bossier-city-la:website",
+   "source_url": "https://www.sabreindustries.com",
+   "evidence_row": 2217,
+   "ledger_value": "https://www.sabreindustries.com",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Homepage returned HTTP 200 to a plain request on 2026-11-12 with the quoted title; no human-check wall appeared and nothing was bypassed, so this is confirmed rather than unreachable. The page names Sabre only; it names no plant and does not mention FWT."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:products",
+   "source_url": "https://wirelessestimator.com/articles/2015/sabre-acquires-long-established-fwt-to-expand-its-structures-sector/",
+   "evidence_row": 401,
+   "ledger_value": "steel structures for the electricity transmission and distribution industry and the communications sector",
+   "ledger_tag": "stated",
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "steel structures for the electricity transmission and distribution industry and the communications sector (company-level, 2015)",
+   "corrected_quote": "FWT is a Fort Worth, Tex.-based manufacturer of steel structures for the electricity transmission and distribution industry as well as the communications sector.",
+   "corrected_tag": "inferred",
+   "note": "Quote is on the page, but it describes FWT the company (headquartered in Fort Worth), which had two plants (Fort Worth and Hicksville); the page does not say what the Fort Worth plant makes. The coordinator's sweep already retagged the identical Hicksville row inferred for this reason. Same value, tag should be inferred with reasoning 'company-level 2015 source'."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:city",
+   "source_url": "https://wirelessestimator.com/articles/2015/sabre-acquires-long-established-fwt-to-expand-its-structures-sector/",
+   "evidence_row": 405,
+   "ledger_value": "Fort Worth",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote is on the page (2015). Open status NOT verified: no fetched page after 2015 shows a working FWT/Sabre plant in Fort Worth. Searches found no closure, but a 2007 GlobeSt item says Sabre moved its own Fort Worth operation to Alvarado, and the 2016 T&D World tour puts 'Sabre-FWT's manufacturing plant' in Alvarado. Not marked closed because no source says so; the ledger's operating_status 'unconfirmed' stands."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:parent_company",
+   "source_url": "https://wirelessestimator.com/articles/2015/sabre-acquires-long-established-fwt-to-expand-its-structures-sector/",
+   "evidence_row": 406,
+   "ledger_value": "Sabre Industries, Inc. (acquired FWT 2015)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote is on the page, dated March 9, 2015."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:website",
+   "source_url": "https://www.sabreindustries.com",
+   "evidence_row": 2218,
+   "ledger_value": "https://www.sabreindustries.com",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Homepage returned HTTP 200 to a plain request on 2026-11-12 with the quoted title; no human-check wall appeared and nothing was bypassed, so this is confirmed rather than unreachable. The page names Sabre only; it names no plant and does not mention FWT."
+  },
+  {
+   "claim_id": "p-fwt-fort-worth-tx:materials",
+   "source_url": "https://wirelessestimator.com/articles/2015/sabre-acquires-long-established-fwt-to-expand-its-structures-sector/",
+   "evidence_row": 2219,
+   "ledger_value": "steel (structures)",
+   "ledger_tag": "stated",
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "steel (structures) (company-level, 2015)",
+   "corrected_quote": "FWT is a Fort Worth, Tex.-based manufacturer of steel structures for the electricity transmission and distribution industry",
+   "corrected_tag": "inferred",
+   "note": "Same company-level sentence as the products row; the Hicksville materials row from the same sentence is already tagged inferred ('does not give materials by plant'). Tag should be inferred. p-fwt-fort-worth-tx:score_material_part cites this claim (it scores 0 either way)."
+  },
+  {
+   "claim_id": "p-fwt-hicksville-oh:city",
+   "source_url": "https://wirelessestimator.com/articles/2015/sabre-acquires-long-established-fwt-to-expand-its-structures-sector/",
+   "evidence_row": 411,
+   "ledger_value": "Hicksville",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote is on the page (2015). Open status NOT verified from a fetched page: search snippets show Sabre job listings in Hicksville (welder/fitter, production lead), but the dejobs, symplicity and mediabistro pages no longer show them. No closure found. The ledger's operating_status 'unconfirmed' stands."
+  },
+  {
+   "claim_id": "p-fwt-hicksville-oh:parent_company",
+   "source_url": "https://wirelessestimator.com/articles/2015/sabre-acquires-long-established-fwt-to-expand-its-structures-sector/",
+   "evidence_row": 412,
+   "ledger_value": "Sabre Industries, Inc. (acquired FWT 2015)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote is on the page, dated March 9, 2015."
+  },
+  {
+   "claim_id": "p-fwt-hicksville-oh:website",
+   "source_url": "https://www.sabreindustries.com",
+   "evidence_row": 2221,
+   "ledger_value": "https://www.sabreindustries.com",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Homepage returned HTTP 200 to a plain request on 2026-11-12 with the quoted title; no human-check wall appeared and nothing was bypassed, so this is confirmed rather than unreachable. The page names Sabre only; it names no plant and does not mention FWT."
+  },
+  {
+   "claim_id": "p-sovereign-allentown-pa:address",
+   "source_url": "https://tdworld.com/directory/company/21114878/sovereign-steel-manufacturing-llc",
+   "evidence_row": 472,
+   "ledger_value": "2027 S 12th St Bldg 507",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "On the T&D World directory listing with 'Allentown PA 18103'. The listing is undated."
+  },
+  {
+   "claim_id": "p-sovereign-allentown-pa:products",
+   "source_url": "https://tdworld.com/directory/company/21114878/sovereign-steel-manufacturing-llc",
+   "evidence_row": 473,
+   "ledger_value": "transmission and substation structures: poles, lattice towers and A-frames",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote is on the page (exact check passed)."
+  },
+  {
+   "claim_id": "p-sovereign-allentown-pa:parent_company",
+   "source_url": "https://www.thefabricator.com/thefabricator/news/metalsmaterials/nucor-to-acquire-summit-structures-llc",
+   "evidence_row": 477,
+   "ledger_value": "Nucor Corporation (agreed to acquire Sovereign with Summit Utility Structures, June 2022)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote is on the page, dated June 13, 2022. Nucor's January 2025 release names only the Summit 'location ... in eastern Pennsylvania' and does not mention Sovereign or Allentown."
+  },
+  {
+   "claim_id": "p-sovereign-allentown-pa:materials",
+   "source_url": "https://tdworld.com/directory/company/21114878/sovereign-steel-manufacturing-llc",
+   "evidence_row": 1771,
+   "ledger_value": "steel (steel manufacturing facility)",
+   "ledger_tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote is on the page."
+  },
+  {
+   "claim_id": "p-sovereign-allentown-pa:certifications",
+   "source_url": "https://tdworld.com/directory/company/21114878/sovereign-steel-manufacturing-llc",
+   "evidence_row": 1772,
+   "ledger_value": "none stated; directory lists \"AISC Member, AWS Member\" (memberships, not certifications)",
+   "ledger_tag": "stated",
+   "verdict": "corrected",
+   "error_kind": "other",
+   "corrected_value": "unknown (no certification stated; directory lists AISC Member and AWS Member, which are memberships)",
+   "corrected_quote": "unknown",
+   "corrected_tag": "unknown",
+   "note": "The quote is on the page and the reading is right, but a value of 'none stated' is an unknown and should not carry the stated tag. Round 1 handled this pattern (stated tag on an unknown value) as 'other'. plants.csv certifications text can stay as is."
+  }
+ ]
+}

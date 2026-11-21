@@ -1,0 +1,978 @@
+{
+ "vertical": "v-trailers-chassis-mobile-power",
+ "checker": "fact-checker TR-FE (round 4)",
+ "checked_date": "2026-11-20",
+ "source_file": "ledger/inbox/trailers-profiler-E.json (not merged) plus ledger/evidence.csv base rows",
+ "plants": [
+  "p-hendrickson-somerset-ky",
+  "p-hendrickson-lebanon-ky",
+  "p-dexter-albion-in",
+  "p-lippert-nampa-id",
+  "p-ez-loader-midway-ar",
+  "p-novae-markle-in"
+ ],
+ "claims_checked": 122,
+ "claims_corrected": 4,
+ "claims_unreachable": 0,
+ "fact_error_rate": 0.0328,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 3,
+  "invented fact": 0,
+  "other": 1
+ },
+ "repeated_kind_3_or_more": [
+  "quote does not support value"
+ ],
+ "scope_note": "Stated rows and the inferred rows of the listed fields, from the inbox file (same claim_id and source_url keys) and the ledger base rows the file does not carry; opening lines and bottleneck guesses checked; score_* rows reviewed in score_notes, not counted as claims; unknown-tagged rows not counted (except EZ Loader headcount). Ledger rows superseded by the inbox upsert or removed by its evidence_remove were not checked.",
+ "rows": [
+  {
+   "claim_id": "p-hendrickson-somerset-ky:weld_processes",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001214080506",
+   "ledger_value": "MIG welding machinery in the axle fabrication area; Hendrickson 2G weld test required (Fabricator - 3rd Shift posting, 565 Pin Oak Drive)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Rendered 2026-11-20 (Playwright, 12 s wait): \"Works as a member of the Axle Production department ... Operating all the MIG welding machinery in the Fabrication area.\" and \"Must pass the Hendrickson weld test – 2G.\" The page carries \"axle\"."
+  },
+  {
+   "claim_id": "p-hendrickson-somerset-ky:production_type",
+   "source_url": "https://www.lanereport.com/188110/",
+   "ledger_value": "trailer axles and trailer air suspensions, including INTRAAX (Lane Report, June 11, 2026)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-somerset-ky:production_type",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001234476706",
+   "ledger_value": "suspension parts such as beams, air springs, axles, hubs and locking devices (Assembler - 3rd Shift posting, 565 Pin Oak Drive)",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "parts such as beams, air springs, axles, hubs and locking devices, assembled into the end product (Assembler - 3rd Shift posting, 565 Pin Oak Drive)",
+   "corrected_quote": "Understand associated parts, such as beams, air springs, axles, hubs, and locking devices and their relationship to the end product.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The Assembler page (#26-1418, 565 Pin Oak Drive, rendered 2026-11-20) calls these \"associated parts\" of the \"end product\"; it never says suspension. The suspension label comes from the Lane Report row, not this page (fact-check lesson: no clause the cited page does not carry).",
+   "plants_csv_value": "product list: trailer axles and trailer air suspensions incl. INTRAAX (Lane Report, June 11, 2026); beams, air springs, axles, hubs and locking devices (site Assembler posting)"
+  },
+  {
+   "claim_id": "p-hendrickson-somerset-ky:products",
+   "source_url": "https://www.lanereport.com/188110/",
+   "ledger_value": "trailer axles and trailer air suspensions, including INTRAAX (Lane Report, June 11, 2026)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-somerset-ky:products",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001234476706",
+   "ledger_value": "suspension parts such as beams, air springs, axles and hubs (Assembler - 3rd Shift posting)",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "parts such as beams, air springs, axles and hubs, assembled into the end product (Assembler - 3rd Shift posting)",
+   "corrected_quote": "Understand associated parts, such as beams, air springs, axles, hubs, and locking devices and their relationship to the end product.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Same page as the production_type row: \"suspension parts\" is not on the Assembler page.",
+   "plants_csv_value": "trailer axles and trailer air suspensions, including INTRAAX (Lane Report, June 11, 2026); axle production with MIG welding in the fabrication area (site Fabricator posting); parts such as beams, air springs, axles and hubs (site Assembler posting); NAICS 336330 (OSHA)"
+  },
+  {
+   "claim_id": "p-hendrickson-somerset-ky:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001214080506",
+   "ledger_value": "Fabricator - 3rd Shift (req 26-942), Hendrickson ADP board, 565 Pin Oak Drive, Somerset KY: operates MIG welding machinery in the axle fabrication area, Hendrickson 2G weld test; listed 2026-07-24 (ADP timestampLastPosted, a re-post stamp; no age claimed)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "search-meta timestampLastPosted 2026-07-24T14:04:27Z, expireDate 2026-12-04; live on the board today (apply-custom-filters list, 192 requisitions). Production MIG welding with a weld test: counted."
+  },
+  {
+   "claim_id": "p-hendrickson-somerset-ky:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-listing",
+   "ledger_value": "other Somerset requisitions listed, not counted (no welding duty): Assembler - 3rd Shift, Assembly - 2nd Shift, Material Handler - 2nd/3rd Shifts, Maintenance Technician I (machining and welding capability for maintenance), Plant Accountant, Human Resources Manager",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Board re-read in full 2026-11-20 ($top=200, 192 unique): 7 at Somerset (26-932 HR Manager, 26-937 Assembly - 2nd Shift, 26-942 Fabricator, 26-1363 Maintenance Technician I, 26-1418 Assembler, 26-1454 Plant Accountant, 26-1467 Material Handler). Only the Fabricator does production welding."
+  },
+  {
+   "claim_id": "p-hendrickson-somerset-ky:triggers",
+   "source_url": "https://www.lanereport.com/188110/",
+   "ledger_value": "Hendrickson will invest $13 million to expand its Somerset manufacturing facility by 15,000 sq ft and create up to 30 jobs over three years; the expansion will increase production capacity (Lane Report, June 11, 2026)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "On the page (June 11, 2026). Site tie: Hendrickson global operations page lists one Somerset address (565 Pin Oak Drive) and the article quotes the \"Hendrickson Somerset plant manager\"; the tie is rule 7a/7b, so points without confidence, as the profiler scored."
+  },
+  {
+   "claim_id": "p-hendrickson-somerset-ky:site_attribution",
+   "source_url": "https://www.areadevelopment.com/newsitems/3-31-2011/hendrickson-usa-somerset-kentucky03313.shtml",
+   "ledger_value": "Lane Report expansion (June 11, 2026) placed at 565 Pin Oak Drive under rule 7b: Hendrickson's second Somerset site (2011) is across the street from the first, and the article describes one Somerset-Pulaski County facility making trailer axles and air suspensions",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-somerset-ky:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely MIG welding capacity in axle fabrication: Hendrickson's job board shows a Fabricator - 3rd Shift role at 565 Pin Oak Drive, listed 2026-07-24, that runs the MIG welding machinery and requires the Hendrickson 2G weld test, and The Lane Report reported June 11, 2026 that Hendrickson's planned $13 million expansion will increase production capacity at the Somerset facility.",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-somerset-ky:opening_line",
+   "source_url": "",
+   "ledger_value": "Hendrickson's job board shows a Fabricator - 3rd Shift role at 565 Pin Oak Drive, listed 2026-07-24, that runs the MIG welding machinery in the fabrication area, and The Lane Report reported June 11, 2026 that Hendrickson will invest $13 million to expand its Somerset facility by 15,000 sq ft; how do you plan to staff MIG welding as that addition comes on line?",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-ky:weld_processes",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001166529406",
+   "ledger_value": "robotic GMAW systems for welding of suspension components at the facility (Welding Process Engineer II posting, 655 Hendrickson Drive)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Both clauses are on the page (rendered 2026-11-20): \"welding of suspension components for the facility\" and \"Manage/maintain welding process control activities for robotic GMAW Systems\"; also \"Hands on experience with weld fabrication process to include robotic welding\". The join (suspension components welded on the robotic GMAW systems) is the scope of one role; accepted."
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-ky:weld_processes",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001220222106",
+   "ledger_value": "MIG welding environment named in the Maintenance - 2nd Shift posting's qualifications (655 Hendrickson Drive)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-ky:existing_robots",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001166529406",
+   "ledger_value": "yes: robotic GMAW systems at the facility (Welding Process Engineer II posting); brand not stated",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-ky:certifications",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001207754806",
+   "ledger_value": "IATF 16949 (Quality Engineer posting, 655 Hendrickson Drive)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-ky:production_type",
+   "source_url": "https://www.areadevelopment.com/newsItems/9-10-2014/hendrickson-truck-commercial-vehicle-systems-operations-expansion-lebanon-kentucky589343.shtml",
+   "ledger_value": "suspension systems and components for heavy-duty vehicles (Area Development, Sept 2014)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-ky:production_type",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001166529406",
+   "ledger_value": "welding of suspension components for the facility, with future product launches (Welding Process Engineer II posting)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-ky:products",
+   "source_url": "https://www.areadevelopment.com/newsItems/9-10-2014/hendrickson-truck-commercial-vehicle-systems-operations-expansion-lebanon-kentucky589343.shtml",
+   "ledger_value": "suspension systems and components for heavy-duty vehicles (Area Development, Sept 2014)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-ky:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001166529406",
+   "ledger_value": "Welding Process Engineer II (req 25-663), Hendrickson ADP board, 655 Hendrickson Drive, Lebanon KY: process and products for welding of suspension components, robotic GMAW systems; listed 2026-03-27 (ADP timestampLastPosted, a re-post stamp; no age claimed)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "timestampLastPosted 2026-03-27T15:28:00Z; live. Engineering role, not counted (labor rule)."
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-ky:welder_postings",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-listing",
+   "ledger_value": "none counted: the Lebanon KY requisitions are a Welding Process Engineer II (engineering role), Production Associates (2nd and 3rd shift; assembly with pneumatic and hand tools), Maintenance - 2nd Shift, Maintenance Technician - 3rd Shift, Manufacturing Engineering Tech, Quality Engineer and Buyer 1; no production welder or fitter role",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Board re-read in full: 9 at 655 Hendrickson Drive (25-663 WPE II, 26-822 Quality Engineer, 26-952 Mfg Engineering Tech, 26-977 and 26-1081 maintenance, 26-1366/26-1440/26-1452 Production Associate, 26-1370 Buyer 1). Production Associate text: \"Use required pneumatic/hand tools to assemble product\"; no welding duty. Labor 0 correct."
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-ky:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "WebSearch 2026-11-20 found only the 2014 Lebanon expansion; no dated Lebanon KY event in the window."
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-ky:opening_line",
+   "source_url": "",
+   "ledger_value": "Hendrickson's job board shows a Welding Process Engineer II role at 655 Hendrickson Drive in Lebanon, listed 2026-03-27, that maintains welding process control for the robotic GMAW systems welding suspension components and supports future product launches; how do you bring new suspension parts onto those robotic GMAW systems?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Every clause is on the WPE II row (655 Hendrickson Drive, listed 2026-03-27, robotic GMAW, suspension components, future product launches). The question presumes new parts go onto the robots; acceptable as a question."
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-ky:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly bringing new suspension parts onto the robotic GMAW systems: Hendrickson's job board shows a Welding Process Engineer II role at 655 Hendrickson Drive, listed 2026-03-27, that covers welding process control for robotic GMAW systems and support for future product launches.",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-dexter-albion-in:weld_processes",
+   "source_url": "https://www.dextergroup.com/about/",
+   "ledger_value": "automated welding at the Albion plant (process not named; company history page)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-dexter-albion-in:existing_robots",
+   "source_url": "",
+   "ledger_value": "robotic welding not named for Albion (history page and Albion postings read 2026-11-20)",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-dexter-albion-in:existing_robots",
+   "source_url": "https://www.dextergroup.com/about/",
+   "ledger_value": "automated welding and robotic material handling at the Albion plant (company history page)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-dexter-albion-in:existing_robots",
+   "source_url": "https://dexkoglobal.clearcompany.com/careers/jobs/aea37b1e-16c3-9a1b-5d70-ac5915bcdd93",
+   "ledger_value": "robot operations named in Albion CNC Cell Operator postings (preferred experience)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "The ClearCompany job page itself does not render (fetch_page --browser 2026-11-20: \"We are having trouble loading the page\"); the row was checked against the same job (same id) in the DexKo careers API, careers-api.clearcompany.com/v1/4ca32a41-fdaf-c364-b487-0ac9f5bfccff (63 jobs, read 2026-11-20), which carries the quoted text."
+  },
+  {
+   "claim_id": "p-dexter-albion-in:certifications",
+   "source_url": "https://www.dextergroup.com/about/",
+   "ledger_value": "company-level: Dexter Axle completed ISO 9001:2008 certification (history page)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-dexter-albion-in:production_type",
+   "source_url": "https://dexkoglobal.clearcompany.com/careers/jobs/d1586008-fa73-98d3-2df6-693b3227bc1e",
+   "ledger_value": "staged axles loaded at Albion (CDL Short Haul Driver posting)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "The ClearCompany job page itself does not render (fetch_page --browser 2026-11-20: \"We are having trouble loading the page\"); the row was checked against the same job (same id) in the DexKo careers API, careers-api.clearcompany.com/v1/4ca32a41-fdaf-c364-b487-0ac9f5bfccff (63 jobs, read 2026-11-20), which carries the quoted text."
+  },
+  {
+   "claim_id": "p-dexter-albion-in:production_type",
+   "source_url": "https://dexkoglobal.clearcompany.com/careers/jobs/aea37b1e-16c3-9a1b-5d70-ac5915bcdd93",
+   "ledger_value": "hubs fitted with studs and races (CNC Cell Operator 4 DNP posting, Albion)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "The ClearCompany job page itself does not render (fetch_page --browser 2026-11-20: \"We are having trouble loading the page\"); the row was checked against the same job (same id) in the DexKo careers API, careers-api.clearcompany.com/v1/4ca32a41-fdaf-c364-b487-0ac9f5bfccff (63 jobs, read 2026-11-20), which carries the quoted text."
+  },
+  {
+   "claim_id": "p-dexter-albion-in:site_attribution",
+   "source_url": "https://dextergroup.com/about/locations",
+   "ledger_value": "city-only Albion postings tie to 500 South 7th Street under rule 7a (Dexter lists one Albion site, Plant 13)",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-dexter-albion-in:welder_postings",
+   "source_url": "https://dexkoglobal.clearcompany.com/careers/jobs",
+   "ledger_value": "none found: DexKo ClearCompany careers API, all 63 roles read 2026-11-20; Albion roles are Production Supervisor, Quality Manager, Senior Supply Chain Manager, CNC Cell Operator 3-6 DNP, Maintenance Electrician - 3rd Shift (2), CDL Short Haul Driver and summer 2027 interns; no welding role; the board shows no posting dates",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "careers-api.clearcompany.com/v1/4ca32a41-fdaf-c364-b487-0ac9f5bfccff read 2026-11-20: totalCount 63, 63 returned. Albion roles exactly as listed; the only Welder roles (b34b827f, 23c10f41) are Fremont IN. \"precision welding equipment\" is company boilerplate in every posting."
+  },
+  {
+   "claim_id": "p-dexter-albion-in:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "The Oct 29, 2026 Indiana WARN notice (in.gov PDF, read) covers Plant 61, 21608 Protecta Drive, Elkhart and does not name Albion. Inside INdiana Business (Oct 30, 2026) and an aggregator reportedly say Elkhart work moves to Albion and Fremont, but the IIB body text is obfuscated in the fetch and truckpartsandservice.com returned 403, so no quotable statement; the row stands. Lead for the coordinator."
+  },
+  {
+   "claim_id": "p-dexter-albion-in:opening_line",
+   "source_url": "",
+   "ledger_value": "Dexter's history page, read Nov 20, 2026, says the Albion plant has grown to 580,000 sq ft with stamping, automated welding and robotic material handling; how do you handle welding work that falls outside those automated lines?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Page: \"Opened a plant in Albion, IN, which began with just 28,000 square feet, growing to 580,000 square feet today with ... stamping, automated welding, and robotic material handling.\" The question presumes welding outside the automated lines; acceptable as a question, no pitch."
+  },
+  {
+   "claim_id": "p-lippert-nampa-id:weld_processes",
+   "source_url": "https://corporate.lippert.com/about/locations/us/id/nampa/lippert-084a",
+   "ledger_value": "welding supported at the plant (process not named; Lippert plant page)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-nampa-id:production_type",
+   "source_url": "https://corporate.lippert.com/about/locations/us/id/nampa/lippert-084a",
+   "ledger_value": "axle systems for RV and trailer applications, delivered to OEM partners (Lippert plant page)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-nampa-id:welder_postings",
+   "source_url": "https://careers.lippert.com/api/jobs?location=Nampa%2C%20ID&limit=100&page=1",
+   "ledger_value": "none found: Lippert careers API, Nampa query read 2026-11-20 (14 results, 3 in Nampa); one at 1908 Industrial Rd: Laborer (req 18363, board label 084 LCI Plant Axles, listed 2026-11-18; material movement and parts supply, no welding); no welder",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "API re-read 2026-11-20: totalCount 14; Nampa: 18363 Laborer at 1908 Industrial Rd (posted 2026-11-18, category Assembly, no welding), 18329 Laborer and 18122 CDL Driver at 944 N Kings Rd. No welder at Plant 84."
+  },
+  {
+   "claim_id": "p-lippert-nampa-id:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "WebSearch 2026-11-20 (Lippert Nampa Idaho axle plant 84 2025 OR 2026): plant page, Nampa job listings and company-wide 2026 consolidation plans with no site named; no dated Plant 84 event in the window."
+  },
+  {
+   "claim_id": "p-lippert-nampa-id:opening_line",
+   "source_url": "",
+   "ledger_value": "Lippert's plant page, read Nov 20, 2026, says Plant 84 at 1908 Industrial Rd in Nampa makes axle systems for RV and trailer applications and supports welding, fabrication and assembly; how do you staff welding across those axle systems?",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:weld_processes",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/05C605DF25F113DEA87ABA5647A83CB9/jobs/68567",
+   "ledger_value": "wire feed (hard wire - spray arc) welding; continuous welds 1 in to 6 in; materials .06 in to .75 in (Production Welder posting, Midway)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "JSON-LD title Production Welder, datePosted 2026-10-14, streetAddress 6533 HWY 126 N. Quote on the page. \"hard wire - spray arc\" names neither MIG nor flux-core (Ground Force rule)."
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:weld_processes",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/05C605DF25F113DEA87ABA5647A83CB9/jobs/63728",
+   "ledger_value": "aluminum welding with set-up of machine settings, wire selection and shielding gas (Production Welder - Aluminum posting, Midway)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:materials",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/05C605DF25F113DEA87ABA5647A83CB9/jobs/63728",
+   "ledger_value": "aluminum: production welding on aluminum trailer components and assemblies (Production Welder - Aluminum posting, Midway)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "On the page; the page also says \"weld aluminum straps, plates, tubes, frames, and related components\"."
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:materials",
+   "source_url": "https://www.ezloader.com/",
+   "ledger_value": "steel at the Midway site not stated by a current source",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:part_size_fit",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/05C605DF25F113DEA87ABA5647A83CB9/jobs/68567",
+   "ledger_value": "site postings: straps, plates and tubes welded in production runs, material .06 in to .75 in (Production Welder posting)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:part_size_fit",
+   "source_url": "https://www.ezloader.com/",
+   "ledger_value": "brand-level: EZ Loader custom welded trailers up to 42 ft in length",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:part_size_fit",
+   "source_url": "",
+   "ledger_value": "fit: site components fit both cells; a whole custom trailer up to 42 ft would fit the 2026 analyst limit (60 ft long, 15 ft wide), but the length is brand-level and no steel part is stated for the site",
+   "tag": "inferred",
+   "verdict": "corrected",
+   "corrected_value": "unknown for site parts: the Production Welder posting gives material thickness (.06 in to .75 in) and weld length (1 in to 6 in), not a part dimension or weight, so fit to a cell is not shown; brand-level custom trailers up to 42 ft would sit within the 2026 analyst 60 ft limit but are not placed at the site and no steel part is stated there",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "The judgement \"site components fit both cells\" rests on \".06 in to .75 in\", which the page gives as \"materials used are .06” though .75”\" (stock thickness), not as a part size; the older small cell is limited to 36 in and 50 lb and no length or weight of a strap, plate or tube is stated. Material score 4 does not depend on this row, so no score move.",
+   "plants_csv_value": "site: straps, plates and tubes of .06-.75 in material (part size not stated); brand-level custom welded trailers up to 42 ft (within the 2026 analyst 60 ft limit, not placed at the site)"
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:production_type",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/05C605DF25F113DEA87ABA5647A83CB9/jobs/68567",
+   "ledger_value": "straps, plates and tubes welded in production runs to time standards (Production Welder and Aluminum Welder postings, Midway)",
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "straps, plates and tubes welded in production runs to time standards (Production Welder posting, Midway)",
+   "corrected_quote": "This is a production job; you will be required to produce parts in a timely manner according to time standards. This job requires that you be able to weld various straps, plates and tubes together in production runs.",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "note": "One row per page: the value names the Production Welder AND Aluminum Welder postings but cites only jobs/68567. The Aluminum Welder page (jobs/67674, datePosted 2026-09-29, 6533 HWY 126 N) carries the identical sentence, so a second row citing jobs/67674 can carry it. Fact unchanged; no score move."
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:production_type",
+   "source_url": "https://www.ezloader.com/",
+   "ledger_value": "brand-level: custom welded boat trailers (EZ Loader site)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "data/osha_2025.csv searched: no EZ Loader record anywhere (Midway AR records are UPS and Arkansas Boats only)."
+  },
+  {
+   "claim_id": "c-ez-loader:multi_plant",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/05C605DF25F113DEA87ABA5647A83CB9/career-page",
+   "ledger_value": "multi-site: EZ Loader's own board lists roles at Midway AR (welders), Port St Lucie FL (Assembly Production) and Spokane WA (Manufacturing Quality Control Technician)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Paycom career page rendered 2026-11-20: 9 results incl. Midway welders, Port St Lucie Assembly Production, Spokane Manufacturing Quality Control Technician and Maintenance Supervisor (\"keeps production moving\")."
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "WebSearch 2026-11-20 found only directory listings; no dated Midway event."
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:opening_line",
+   "source_url": "",
+   "ledger_value": "EZ Loader's job board shows Production Welder (listed 2026-10-14), Aluminum Welder (listed 2026-09-29) and Production Welder - Aluminum (listed 2026-08-13) roles at its Midway plant, where the Production Welder welds straps, plates and tubes in production runs to time standards; how do you staff welding for those production runs?",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely keeping production welders staffed: EZ Loader's job board shows Production Welder (listed 2026-10-14), Aluminum Welder (listed 2026-09-29) and Production Welder - Aluminum (listed 2026-08-13) roles at 6533 Hwy 126 N in Midway, and the Production Welder posting sets time standards for welding straps, plates and tubes in production runs.",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-novae-markle-in:weld_processes",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201472121676_1?cid=d16ba13d-474e-4326-b628-74c87f0b289a&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "trailer welding by weld team members on weld lines; process not named (1st shift Weld Opportunity posting, Markle)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-novae-markle-in:production_type",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201472121676_1?cid=d16ba13d-474e-4326-b628-74c87f0b289a&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "trailers welded by the Markle weld teams (Weld Opportunity postings)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-novae-markle-in:production_type",
+   "source_url": "https://www.novae.com/about/",
+   "ledger_value": "company-level: open and enclosed trailers and truck bodies across a portfolio of brands, in aluminum and steel (Novae about page)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-novae-markle-in:existing_robots",
+   "source_url": "https://www.novae.com/about/",
+   "ledger_value": "Novae's about page: the Markle 3 Plant (2024), a 150,000 sq ft facility in Markle, uses advanced manufacturing techniques including robotics",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-novae-markle-in:existing_robots",
+   "source_url": "",
+   "ledger_value": "tie of the Markle 3 robotics to this record is inferred (campus, rule 7b); robotic welding not named",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inside INdiana Business (Sept 25, 2024) places the $35M plant that opened in 2024 at 551 Novae Parkway, which fits the profiler's guess that Markle 3 is 551 Novae Pkwy; the tie to 1 Novae Pkwy stays inferred (campus)."
+  },
+  {
+   "claim_id": "p-novae-markle-in:site_attribution",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress",
+   "ledger_value": "city-only Markle facts tie to this record under rule 7b: Novae's four OSHA 2025 Markle establishments (1, 6, 85 and 551 Novae Pkwy, all NAICS 336212) lie within about 0.95 km of each other on Census interpolated geocodes",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Census interpolated points reproduced (551 Novae Pkwy about 0.95 km from 1 Novae Pkwy). ArcGIS point geocodes put 551 Novae Pkwy at 40.83888,-85.35227 and 1 Novae Pkwy at 40.83311,-85.35351, about 0.65 km apart. Novae about page: Markle 2 plant (dump trailers) is \"across the road from our headquarters in Markle\". Within about 1 km: rule 7b holds."
+  },
+  {
+   "claim_id": "c-novae:multi_plant",
+   "source_url": "https://www.novae.com/about/",
+   "ledger_value": "multi-plant: Novae's about page names the Markle 3 Plant and an acquired manufacturing facility in Idaho",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-novae-markle-in:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=d16ba13d-474e-4326-b628-74c87f0b289a&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "2 counted (city-level, rule 7b): 1st shift Weld Opportunity (listed 2026-09-22) and 3rd Shift Weld Opportunity (listed 2026-08-08), Markle IN, on Novae's own ADP board (all 45 requisitions read with paging 2026-11-20); Third Shift Production Supervisor, Assembler, Material Handler and Maintenance Technician listed, not counted",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "ADP WFN API re-read with $skip 0/20/40/60: totalNumber 45, 45 unique; 8 Markle requisitions as listed (two Weld Opportunity postings, postDate 2026-09-22 and 2026-08-08). Both postings carry city-only locations (\" Markle, IN, US\"). \"Able to work 10 hour shifts with potential overtime\" is conditional."
+  },
+  {
+   "claim_id": "p-novae-markle-in:triggers",
+   "source_url": "https://www.novae.com/about/",
+   "ledger_value": "none found within 24 months: Novae's about page dates the Markle 3 Plant opening to 2024 with no month, so it is not shown to fall on or after 2024-11-20; the groundbreaking was Feb 2023",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inside INdiana Business, Sept 25, 2024: the $35 million plant at 551 Novae Parkway \"opened earlier this year\", so the Markle 3 opening falls before 2024-11-20. No trigger: demand 8 correct."
+  },
+  {
+   "claim_id": "p-novae-markle-in:opening_line",
+   "source_url": "",
+   "ledger_value": "Novae's job board shows a 1st shift Weld Opportunity (listed 2026-09-22) and a 3rd Shift Weld Opportunity (listed 2026-08-08) in Markle for welding trailers; how do you cover trailer welding across those shifts?",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-novae-markle-in:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly weld-team staffing across shifts: Novae's job board shows a 1st shift Weld Opportunity (listed 2026-09-22) and a 3rd Shift Weld Opportunity (listed 2026-08-08) in Markle, both for welding trailers.",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-novae-markle-in:parent_company",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "Novae LLC",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "osha.gov is blocked; record checked in data/osha_2025.csv (AGENT_BRIEF OSHA rule): fields match the quote."
+  },
+  {
+   "claim_id": "p-novae-markle-in:address",
+   "source_url": "https://www.sure-trac.com/",
+   "ledger_value": "1 Novae Pkwy, Markle, IN 46770",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-novae-markle-in:products",
+   "source_url": "https://www.sure-trac.com/",
+   "ledger_value": "Sure-Trac steel utility, car hauler, equipment and dump trailers and enclosed trailers (brand site, whose contact address is 1 Novae Parkway)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-novae-markle-in:relationship",
+   "source_url": "https://www.sure-trac.com/",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-novae-markle-in:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "62 (OSHA 2025 record, tie inferred)",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "osha.gov is blocked; record checked in data/osha_2025.csv (AGENT_BRIEF OSHA rule): fields match the quote."
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-ky:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "246",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "osha.gov is blocked; record checked in data/osha_2025.csv (AGENT_BRIEF OSHA rule): fields match the quote."
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-ky:address",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001166529406",
+   "ledger_value": "655 Hendrickson Drive, Lebanon, KY 40033",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-ky:parent_company",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001166529406",
+   "ledger_value": "Hendrickson",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-ky:products",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001166529406",
+   "ledger_value": "Production welding of parts at this site (posting)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-somerset-ky:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "451",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "osha.gov is blocked; record checked in data/osha_2025.csv (AGENT_BRIEF OSHA rule): fields match the quote."
+  },
+  {
+   "claim_id": "p-hendrickson-somerset-ky:address",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001214080506",
+   "ledger_value": "565 Pin Oak Drive, Somerset, KY 42503",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-somerset-ky:parent_company",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001214080506",
+   "ledger_value": "Hendrickson",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-somerset-ky:products",
+   "source_url": "https://myjobs.adp.com/hendrickson/cx/job-details?reqId=5001214080506",
+   "ledger_value": "Production welding of parts at this site (posting)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-nampa-id:name",
+   "source_url": "https://corporate.lippert.com/about/locations/us/id/nampa/lippert-084a",
+   "ledger_value": "Lippert - Axle Plant #84",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-nampa-id:parent_company",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "Lippert Components, Inc.",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "osha.gov is blocked; record checked in data/osha_2025.csv (AGENT_BRIEF OSHA rule): fields match the quote."
+  },
+  {
+   "claim_id": "p-lippert-nampa-id:address",
+   "source_url": "https://corporate.lippert.com/about/locations/us/id/nampa/lippert-084a",
+   "ledger_value": "1908 Industrial Rd, Nampa, ID 83687",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-nampa-id:products",
+   "source_url": "https://corporate.lippert.com/about/locations/us/id/nampa/lippert-084a",
+   "ledger_value": "Axle systems for RV and trailer applications; welding, fabrication and assembly at the site",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-nampa-id:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "62 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "osha.gov is blocked; record checked in data/osha_2025.csv (AGENT_BRIEF OSHA rule): fields match the quote."
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:relationship",
+   "source_url": "",
+   "ledger_value": "new",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:name",
+   "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetManufacturerDetails/13008?format=json",
+   "ledger_value": "EZ Loader Custom Boat Trailers Inc.",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "vPIC API 2026-11-20: Mfr_Name \"EZ LOADER CUSTOM BOAT TRAILERS INC.\", Address \"6533 Hwy 126 North\", City Midway."
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_detail.disp_program_facility?p_registry_id=110006036100",
+   "ledger_value": "6533 Hwy 126 N, Midway, AR 72651",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found (--check, 2026-11-20)."
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:address",
+   "source_url": "https://vpic.nhtsa.dot.gov/api/vehicles/GetManufacturerDetails/13008?format=json",
+   "ledger_value": "6533 Hwy 126 N, Midway, AR 72651",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:parent_company",
+   "source_url": "https://www.ezloader.com/",
+   "ledger_value": "EZ Loader Boat Trailers (family-owned)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:products",
+   "source_url": "https://www.spokanejournal.com/local-news/ez-loader-boat-trailers-thrives-in-marine-rebound/",
+   "ledger_value": "site welds custom boat trailers (undated article, c. 2000)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the page (--check, 2026-11-20); undated, c. 2000 as the value says."
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:products",
+   "source_url": "https://spokanejournal.com/local-news/ez-loader-defies-rough-waters",
+   "ledger_value": "Midway is a manufacturing site (c. 2003)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote found on the page (--check, 2026-11-20)."
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:products",
+   "source_url": "https://www.ezloader.com/",
+   "ledger_value": "custom welded trailers, painted steel and welded aluminum (brand)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:products",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_detail.disp_program_facility?p_registry_id=110006036100",
+   "ledger_value": "current operation: FRS industrial stormwater and TRI reporter registrations",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Clause check: the FRS page lists TRI REPORTER (TRIS, 02/03/2021), STORM WATER INDUSTRIAL and AIR SYNTHETIC MINOR (OPERATING)."
+  },
+  {
+   "claim_id": "c-hendrickson:multi_plant",
+   "source_url": "https://www.hendrickson-intl.com/company/global-operations",
+   "ledger_value": "multi-plant: Hendrickson's Global Operations & Manufacturing Facilities page lists several US sites, including Kendallville IN, Clarksville TN and Navarre OH",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "c-hendrickson:multi_plant",
+   "source_url": "https://www.hendrickson-intl.com/about",
+   "ledger_value": "Hendrickson states sales and distribution facilities and/or manufacturing and R&D centers in the United States, Canada, Mexico and other countries",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "c-lippert:multi_plant",
+   "source_url": "https://corporate.lippert.com/about/locations",
+   "ledger_value": "multi-plant: Lippert lists RV Chassis Plant #28 in Middlebury and Chassis Plants #19-A to #19-D in Goshen among its locations",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Fragments found in the raw page source (RV Chassis Plant #28, 51040 Greenfield, Chassis Plant #19-A, 3152 Skyview); the rendered first page lists other plants (e.g. Manufactured Housing Chassis Plant #16)."
+  },
+  {
+   "claim_id": "p-novae-markle-in:name",
+   "source_url": "https://www.sure-trac.com/",
+   "ledger_value": "Sure-Trac (Novae) - Markle",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-somerset-ky:name",
+   "source_url": "https://www.hendrickson-intl.com/company/global-operations",
+   "ledger_value": "Hendrickson - Somerset KY plant (trailer commercial vehicle systems)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-ky:name",
+   "source_url": "https://www.hendrickson-intl.com/company/global-operations",
+   "ledger_value": "Hendrickson - Lebanon KY plant (truck commercial vehicle systems)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-nampa-id:parent_company",
+   "source_url": "https://corporate.lippert.com/about/locations/us/id/nampa/lippert-084a",
+   "ledger_value": "Lippert",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-dexter-albion-in:name",
+   "source_url": "https://dextergroup.com/about/locations",
+   "ledger_value": "Dexter Albion, Indiana (Plant 13)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-dexter-albion-in:address",
+   "source_url": "https://dextergroup.com/about/locations",
+   "ledger_value": "500 South 7th Street, Albion, IN 46701",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-dexter-albion-in:parent_company",
+   "source_url": "https://dexkoglobal.clearcompany.com/careers/jobs/e69a21ab-1077-5be9-3da0-4149d5416a3e",
+   "ledger_value": "Dexter (DexKo Global)",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "The ClearCompany job page itself does not render (fetch_page --browser 2026-11-20: \"We are having trouble loading the page\"); the row was checked against the same job (same id) in the DexKo careers API, careers-api.clearcompany.com/v1/4ca32a41-fdaf-c364-b487-0ac9f5bfccff (63 jobs, read 2026-11-20), which carries the quoted text."
+  },
+  {
+   "claim_id": "p-dexter-albion-in:products",
+   "source_url": "https://dexkoglobal.clearcompany.com/careers/jobs/d1586008-fa73-98d3-2df6-693b3227bc1e",
+   "ledger_value": "trailer axles staged and shipped at the site",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "The ClearCompany job page itself does not render (fetch_page --browser 2026-11-20: \"We are having trouble loading the page\"); the row was checked against the same job (same id) in the DexKo careers API, careers-api.clearcompany.com/v1/4ca32a41-fdaf-c364-b487-0ac9f5bfccff (63 jobs, read 2026-11-20), which carries the quoted text. Clause check: \"staged\" and shipping are on the page (\"Locating staged axles for loading\", \"Loading and/or unloading trucks\", \"Delivering product\"); \"trailer\" comes from the same page's company text (\"axles ... serving the commercial trailer, RV, heavy-duty, marine ... markets\"), so the page carries every clause (company-level for the axle type)."
+  },
+  {
+   "claim_id": "p-dexter-albion-in:products",
+   "source_url": "https://dexkoglobal.clearcompany.com/careers/jobs/aea37b1e-16c3-9a1b-5d70-ac5915bcdd93",
+   "ledger_value": "hub assembly at the site",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "The ClearCompany job page itself does not render (fetch_page --browser 2026-11-20: \"We are having trouble loading the page\"); the row was checked against the same job (same id) in the DexKo careers API, careers-api.clearcompany.com/v1/4ca32a41-fdaf-c364-b487-0ac9f5bfccff (63 jobs, read 2026-11-20), which carries the quoted text."
+  },
+  {
+   "claim_id": "p-dexter-albion-in:products",
+   "source_url": "https://dexkoglobal.clearcompany.com/careers/jobs/e69a21ab-1077-5be9-3da0-4149d5416a3e",
+   "ledger_value": "site is a manufacturing facility",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "The ClearCompany job page itself does not render (fetch_page --browser 2026-11-20: \"We are having trouble loading the page\"); the row was checked against the same job (same id) in the DexKo careers API, careers-api.clearcompany.com/v1/4ca32a41-fdaf-c364-b487-0ac9f5bfccff (63 jobs, read 2026-11-20), which carries the quoted text."
+  },
+  {
+   "claim_id": "p-dexter-albion-in:products",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "OSHA 2025 industry: brakes (336340)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "osha.gov is blocked; record checked in data/osha_2025.csv (AGENT_BRIEF OSHA rule): fields match the quote."
+  },
+  {
+   "claim_id": "p-dexter-albion-in:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "650 (OSHA 300A, 2025 annual average)",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "osha.gov is blocked; record checked in data/osha_2025.csv (AGENT_BRIEF OSHA rule): fields match the quote."
+  },
+  {
+   "claim_id": "p-dexter-albion-in:products",
+   "source_url": "https://www.dextergroup.com/about/",
+   "ledger_value": "stamping, automated welding and robotic material handling in the 580,000 sq ft Albion plant (current company history page)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-dexter-albion-in:products",
+   "source_url": "https://dextergroup.com/about/locations",
+   "ledger_value": "Albion is listed as a Dexter manufacturing location (current locations page)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "c-dexter:multi_plant",
+   "source_url": "https://www.dexteraxle.com/about/locations/",
+   "ledger_value": "multi-plant: Dexter's locations page lists El Reno OK (Plant 15) and Fremont IN (Plant 12), each marked Manufacturing, among its sites",
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Cited URL fetched 2026-11-20 (resolves to the Dexter Group locations page): El Reno, Oklahoma (Plant 15) ... Manufacturing and Fremont, Indiana (Plant 12) ... Manufacturing are on it."
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-ky:relationship",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-ky:lookalike_of",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "Hutchens Industries",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-somerset-ky:relationship",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-hendrickson-somerset-ky:lookalike_of",
+   "source_url": "https://www.hendrickson-intl.com/",
+   "ledger_value": "Hutchens Industries",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-dexter-albion-in:relationship",
+   "source_url": "https://dexkoglobal.clearcompany.com/careers/jobs/23c10f41-2f08-1847-3fa8-27f36f84c374",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "The ClearCompany job page itself does not render (fetch_page --browser 2026-11-20: \"We are having trouble loading the page\"); the row was checked against the same job (same id) in the DexKo careers API, careers-api.clearcompany.com/v1/4ca32a41-fdaf-c364-b487-0ac9f5bfccff (63 jobs, read 2026-11-20), which carries the quoted text."
+  },
+  {
+   "claim_id": "p-dexter-albion-in:lookalike_of",
+   "source_url": "https://dexkoglobal.clearcompany.com/careers/jobs/23c10f41-2f08-1847-3fa8-27f36f84c374",
+   "ledger_value": "Hutchens Industries",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "The ClearCompany job page itself does not render (fetch_page --browser 2026-11-20: \"We are having trouble loading the page\"); the row was checked against the same job (same id) in the DexKo careers API, careers-api.clearcompany.com/v1/4ca32a41-fdaf-c364-b487-0ac9f5bfccff (63 jobs, read 2026-11-20), which carries the quoted text."
+  },
+  {
+   "claim_id": "p-lippert-nampa-id:relationship",
+   "source_url": "https://corporate.lippert.com/about/locations/us/id/nampa/lippert-084a",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-lippert-nampa-id:lookalike_of",
+   "source_url": "https://corporate.lippert.com/about/locations/us/id/nampa/lippert-084a",
+   "ledger_value": "Hutchens Industries",
+   "tag": "inferred",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-novae-markle-in:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201472121676_1?cid=d16ba13d-474e-4326-b628-74c87f0b289a&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "1st shift Weld Opportunity, Markle IN, on Novae's own ADP board (read 2026-11-20), listed 2026-09-22; city-level (Novae files several establishments on Novae Pkwy in Markle; rule 7b, no confidence)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-novae-markle-in:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9201455889360_1?cid=d16ba13d-474e-4326-b628-74c87f0b289a&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "3rd Shift Weld Opportunity, Markle IN, on Novae's own ADP board (read 2026-11-20), listed 2026-08-08; city-level (Novae files several establishments on Novae Pkwy in Markle; rule 7b, no confidence)",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/05C605DF25F113DEA87ABA5647A83CB9/jobs/63728",
+   "ledger_value": "Production Welder - Aluminum, EZ Loader Custom, 6533 Hwy 126 N, Midway AR, on EZ Loader's own Paycom board (read 2026-11-20), listed 2026-08-13",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/05C605DF25F113DEA87ABA5647A83CB9/jobs/67674",
+   "ledger_value": "Aluminum Welder, EZ Loader Custom, 6533 Hwy 126 N, Midway AR, on EZ Loader's own Paycom board (read 2026-11-20), listed 2026-09-29",
+   "tag": "stated",
+   "verdict": "confirmed"
+  },
+  {
+   "claim_id": "p-ez-loader-midway-ar:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/05C605DF25F113DEA87ABA5647A83CB9/jobs/68567",
+   "ledger_value": "Production Welder, EZ Loader Custom, 6533 Hwy 126 N, Midway AR, on EZ Loader's own Paycom board (read 2026-11-20), listed 2026-10-14",
+   "tag": "stated",
+   "verdict": "confirmed"
+  }
+ ],
+ "score_notes": {
+  "p-hendrickson-somerset-ky": "No component should change: process 20 (Fabricator 26-942, own MIG duty and 2G test, 565 Pin Oak Drive), material 0, part mix 8 (product list), labor 12 (one counted posting, live, listed 2026-07-24), demand 15 (Lane Report June 11, 2026 expansion to increase production capacity), scale 10 (OSHA 3072415, 451, plus multi-plant): 65 Medium, confidence 4. Site tie for demand: Hendrickson's global operations page lists one Somerset address (565 Pin Oak Drive), so rule 7a also holds; points, no confidence, as scored. Two products/production_type rows need \"suspension\" removed (no score effect).",
+  "p-hendrickson-lebanon-ky": "Process 20 on the NEW BASIS is consistent with the Dexter El Reno precedent (a process stated by a site source): the live WPE II posting at 655 Hendrickson Drive states robotic GMAW systems for the facility's suspension-component welding. Coordinator ruling still needed; if refused, 0 (26 Low, confidence 2). Labor 0 confirmed: all 9 Lebanon requisitions read; no production welder or fitter. Demand 8 (search found no 2025-26 Lebanon event). Scale 10 (OSHA 3072088, 246). 46 Medium, confidence 3. Note the robotic GMAW fact points toward the weak-fit case (fixed robots) but part mix may only go to 0 on a quoted identical-parts line, so 8 stands.",
+  "p-dexter-albion-in": "All components consistent: process 0 (automated welding, no process; no Albion welding role among 63 on the ClearCompany API), material 0, part mix 8 (city-only postings, rule 7a, no confidence), labor 0, demand 8, scale 10 (OSHA 2983107, 650): 26 Low, confidence 1. LEAD, not applied: Dexter's Oct 29, 2026 WARN notice closes Elkhart Plant 61 (notice does not name Albion); Inside INdiana Business (Oct 30, 2026) and an aggregator reportedly say the work moves to Albion and Fremont. The IIB body is obfuscated in the fetch and truckpartsandservice.com returns 403, so there is no quotable statement. If a readable primary source states Elkhart production moving to Albion, demand 8 -> 15 (33 Low).",
+  "p-lippert-nampa-id": "All components consistent: process 0 (plant page \"supports welding\", no process), material 0, part mix 8 (site product list, no custom wording), labor 0 (only a Laborer at 1908 Industrial Rd), demand 8, scale 5 (62 employees, multi-plant): 21 Low, confidence 2.",
+  "p-ez-loader-midway-ar": "PART MIX should be 15, not 8, under the standing rule (stated custom work earns 15; company- or brand-level statements earn points but no confidence; 0 or a cut only with a quoted high-volume identical-parts line). The brand page states \"Custom Welded Boat Trailers ... The diversity of the Custom Trailer separates EZ Loader Custom Boat Trailers from the rest\", and the Midway entity is EZ Loader Custom (vPIC \"EZ LOADER CUSTOM BOAT TRAILERS INC.\" at 6533 Hwy 126 North; board label \"EZ Loader Custom - Midway\"). \"production runs ... time standards\" is not an identical-parts line. Effect: 45 -> 52 Medium; confidence 3 -> 2 (part mix 15 rests on a brand-level row). Recommended, not applied (the profiler left it to the coordinator). Basis rows: p-ez-loader-midway-ar:production_type (https://www.ezloader.com/, brand-level custom welded boat trailers) and the site-placed ledger row p-ez-loader-midway-ar:products (spokanejournal.com, c. 2000: \"EZ Loader plants in Tennessee and Arkansas also weld those parts together to form custom trailers for particular boats\"; old, so it places the custom work at the Arkansas plant but earns no confidence). This also takes the plant off the Medium/Low line. Process 0 stands under the written Ground Force rule (\"wire feed (hard wire - spray arc)\" names neither MIG nor flux-core), though hard wire with spray-arc transfer is a GMAW description; upside 20 (72 High with part mix 15) is the coordinator's call. Material 4 is a judgement: the site postings name only aluminum (two of three roles; the Production Welder role names no material) and aluminum-first is not stated; the steel custom line is brand-level. Labor 20 confirmed (three counted postings live at 6533 HWY 126 N, JSON-LD datePosted 2026-08-13, 2026-09-29, 2026-10-14; overtime \"as needed\" is conditional). Scale 5 (stated multi-site board; no OSHA record).",
+  "p-novae-markle-in": "Labor 20 under rule 7b holds: ArcGIS point geocodes put 551 Novae Pkwy about 0.65 km from 1 Novae Pkwy (Census interpolated 0.95 km), and the about page states the Markle 2 dump-trailer plant is \"across the road from our headquarters\"; both weld postings are city-only, so no confidence. Demand 8 confirmed: Inside INdiana Business (Sept 25, 2024) says the $35M plant at 551 Novae Parkway \"opened earlier this year\", before 2024-11-20. Part mix 8: the about page's \"industry's widest range of high-quality, innovative products\" across \"12 powerful brands\" could be read as many-model work (15, no confidence) but carries no custom or model-count wording at the plant; under the Lippert precedent 8 stands, coordinator's call. Scale 5 (stated multi-plant; 62 at One Novae Pkwy is an inferred tie; no summing of campus records). 41 Low, confidence 1. Field note: the plants.csv products value still ends \"(company-level for this brand; site work not shown in a posting)\"; the Markle Weld Opportunity postings now show trailer welding in Markle, so that clause is stale and should be reworded to the rows."
+ },
+ "worst_errors": [
+  "p-ez-loader-midway-ar:part_size_fit (inferred): material thickness \".06 in to .75 in\" read as part size and \"fit both cells\" asserted; no part dimension or weight is on the page.",
+  "p-hendrickson-somerset-ky:production_type and :products (Assembler 26-1418 page): \"suspension parts\" label added; the page says only \"associated parts, such as beams, air springs, axles, hubs, and locking devices\".",
+  "p-ez-loader-midway-ar:production_type (jobs/68567): names the Aluminum Welder posting too while citing one page (one row per page)."
+ ],
+ "score_problems_summary": "EZ Loader Midway part mix 8 -> 15 under the standing company-level custom rule (45 -> 52 Medium, confidence 3 -> 2). Coordinator rulings still open: Hendrickson Lebanon process 20 new basis; EZ Loader process (Ground Force) and material 4. Lead: Dexter Albion possible trigger from the Elkhart Plant 61 consolidation (no quotable source).",
+ "repeated_kind_flag": "\"quote does not support value\" reached 3. Scope for the sweep: two of the three are the same added word (\"suspension\") on one page (Hendrickson Somerset Assembler 26-1418, production_type and products rows); the third is material thickness read as a part size on an inferred part_size_fit row (EZ Loader Midway). Pattern to sweep: a value that adds a label or a fit judgement the cited page does not carry (category words like \"suspension parts\", and thickness or capacity figures used as part size).",
+ "method": "Pages re-read 2026-11-20 with tools/fetch_page.py (plain, --browser, --raw, --check) and Playwright (Hendrickson ADP job pages with a 12 s render wait; ADP search-meta timestampLastPosted; ADP apply-custom-filters list with $top=200, 192 requisitions). Board APIs: DexKo ClearCompany careers-api (63), Lippert careers API (Nampa query, 14), Novae ADP WFN ($skip paging, 45), EZ Loader Paycom career page and JSON-LD. OSHA rows checked in data/osha_2025.csv. Geocodes: Census and ArcGIS. 6 web searches (Dexter Albion x2, Hendrickson Lebanon, Novae Markle, EZ Loader Midway, Lippert Nampa). The checker did not edit the ledger or run any ledger tool.",
+ "source_failures": [
+  "dexkoglobal.clearcompany.com job pages do not render (\"We are having trouble loading the page\"); read through the careers API",
+  "truckpartsandservice.com 403 (Dexter Elkhart closure article)",
+  "insideindianabusiness.com Oct 30, 2026 Dexter article body obfuscated for non-subscribers (headline and date readable)"
+ ]
+}

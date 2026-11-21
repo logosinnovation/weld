@@ -1,0 +1,1673 @@
+{
+ "checker": "fact-checker R2-A (round 2, confirming; plants checked in round 1 by checker B)",
+ "vertical": "v-mining-heavy-equipment",
+ "date": "2026-11-16",
+ "plants": [
+  "p-astec-yankton-sd",
+  "p-terex-mount-vernon-mo",
+  "p-mclanahan-hollidaysburg-pa",
+  "p-norris-screen-tazewell-va",
+  "p-terex-durand-mi",
+  "p-coperion-sabetha-ks",
+  "p-coperion-whitewater-wi",
+  "p-coperion-kansas-city-mo",
+  "p-general-kinematics-crystal-lake-il",
+  "p-tabor-princeton-wv"
+ ],
+ "decision_rule": "As in round 1 (poles rounds 3-5, ships). Corrected = the value adds a fact the cited page does not show, tags a judgement as stated, places a company-level fact at the plant, ties a posting or fact to the plant through a location shared by several sites (campus rule, consultation 10), or the quote is not on the page (raw source checked before calling a JSON/JSON-LD quote missing). Confirmed = the cited page, or for a multi-row claim a sibling row's page opened 2026-11-16, carries every additive clause. Not additive: limiting parentheticals ('as of 2015', 'company-level', 'products not stated'), technical glosses, rubric labels, and provenance labels that name the source of a fact ('(Welder and Fit-up Welder postings, Mount Vernon)', '(production Welder postings, Yankton)'). This call is applied to all four single-row weld_processes values, each of whose other named postings were opened today and carry the same process. Opening lines: every clause carried by a stated row of a claim named in the reasoning, or by that row's page; ends in a 'you' question; no pitch language; no Path deployment asserted at a Coperion site (mining rule 5). Labor: each counted posting re-read live today on the employer's own board (Terex and Hillenbrand Workday API via headless browser; Astec BrightMove state listings; McLanahan UKG list; GK Paylocity).",
+ "claims_checked": 153,
+ "claims_corrected": 4,
+ "claims_unreachable": 0,
+ "error_rate": 0.0261,
+ "error_rate_note": "4/153 = 2.6%. Denominator: 102 stated rows (101 in-scope stated rows of the 10 plants and the score-cited company/vertical rows, plus c-schenck-process:path_customer, which 3 opening lines rest on) + 41 cited inferred/unknown rows + 10 opening lines. On stated rows plus opening lines only: 4/112 = 3.6%. All 4 corrections share one root cause at one plant (Tabor Princeton): the EPA identity of Astec's Princeton plant is an inferred join that was tagged stated (name 8304, address 8303) and asserted in the opening line (10613), plus one thin row (10609) the replacement line needs. No correction changes a score. The other 9 plants: 0 corrections. Field drift (2 items) and score-row issues (rulings, stale reasoning text) are reported separately and are outside the numerator. Round 1 (checker B) found 17/147 = 11.6% on these plants.",
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 4,
+  "invented fact": 0,
+  "other": 0
+ },
+ "repeated_kinds": [
+  "quote does not support value (4) - one root cause at one plant (p-tabor-princeton-wv), so it is a narrow pattern, not a broad one. SWEEP: every record whose name or address rows come only from an EPA FRS facility name that differs from the operating company (e.g. Tabor Machine Company for Astec Princeton) where no cited page links that EPA facility to the operator. Retag those name/address rows inferred (Mount Vernon precedent, rows 10435/10436), and check that no opening line asserts the EPA identity as fact. Candidates seen in this batch were cleared: Yankton (EPA also lists ASTEC INDUSTRIES at 700 W 21st St), Tazewell (Astec's own posting names Norris Screen), Durand (Terex's own page gives 212 S. Oak Street), Mount Vernon (already inferred)."
+ ],
+ "worst_errors": [
+  "p-tabor-princeton-wv:opening_line (row 10613): states as fact that Astec's Princeton site is 'registered with EPA as Tabor Machine Company'. No page states that identity; the ledger's own row 8310 says it rests on the EPA name. Replacement line in the row: 'An Astec Assembler I posting for Princeton, West Virginia, dated November 13, 2026, lists basic welding among the role's possible duties; how much of the fabrication at your Princeton plant is welded in-house today?'",
+  "p-tabor-princeton-wv:address and :name (rows 8303, 8304): the EPA facility (Tabor Machine Company, 1176 Shelter Rd) is tagged stated as Astec's Princeton plant. The tie is inferred: the 10-K names only the city, EPA names no owner. Retagged inferred, values unchanged (Mount Vernon precedent).",
+  "Not a row error, score RULING: part mix 8 on Tabor and Coperion Whitewater rests on product lists that name no site (an Elgin brand listing; a 2017 Schenck Process worldwide sentence). Under consultation 10 logic it should be 0 (Tabor 21->13, Whitewater 40->32; tiers unchanged). Whitewater is curable with Coperion's Jul 31, 2024 brochure (lead)."
+ ],
+ "score_problems": [
+  "All 60 score components (10 plants x 6) follow the rubric and rules given the confirmed evidence, except the two part-mix RULING items. Every counted posting is live today on the employer's own board. Yankton 3 open (Astec SD listing); Mount Vernon 3 open, REQ-13477 at 124 days; McLanahan 3 open (UKG); Tazewell 2 open; Durand 1 open (REQ-14482; Production Worker REQ-10455 is metal prep, not counted); GK 1 open (Paylocity, published 2026-10-27). Coperion x3 and Tabor: none on the employer board (the WV Fabrication Welder 27776273 is at Poca, not Princeton).",
+  "RULING: part mix 8 -> 0 on Tabor (Elgin brand listing names no plant) and Whitewater (2017 Schenck Process worldwide sentence). The Whitewater 8 can be kept as stated by adding Coperion's Jul 31, 2024 Food Online brochure, which lists the Whitewater products (it would also add 1 confidence).",
+  "RULING/mechanical: confidence. The normaliser rule (a component whose score row cites an unknown headcount earns no confidence) is applied to the seven plants whose scale 5 cites an unknown headcount: Mount Vernon, McLanahan, Norris, Sabetha, Whitewater, Kansas City, Tabor. Yankton and Durand cite a stated but too-old headcount (2015; Aug 2023), which earns no points, yet their confidence still counts scale (3). For consistency with the rule's intent (the headcount contributes nothing), Yankton 3->2 and Durand 3->2. The alternative is to count scale-on-stated-multi_plant for all nine.",
+  "Stale score-row reasoning text (no points change): Durand score_total reasoning '20+0+8+12+8+10 = 58' and score_tier 'total 58' (value 53). Whitewater and Kansas City score_process reasoning still say the posting is 'undated' (it is dated 2026-05-15 / 2025-12-11). Mount Vernon score_labor says 'since its 2026-07-15 start date' (it is the posting date). The confidence reasoning on Mount Vernon, McLanahan, Norris, Sabetha and Whitewater still lists scale among the stated components. score_total reasoning on several plants says 'Confidence 3' where the field is 2.",
+  "Demand checks: Sabetha and Whitewater 15 rest on a dated capacity relocation (Processing, Jan. 24, 2025: 'Capacity will be relocated to facilities in Whitewater...; Sabetha...'). Both pass the shared-city test today: Sabetha's Coperion/Schenck/MAC EPA records are all within ~330 m, and Whitewater has one site. Kansas City stays 8 correctly (second Coperion KC location, 7901 NW 107th Terrace, on Hillenbrand's board). Durand: Terex MPS's Jan 2, 2025 note moves Oklahoma City production to Campsie, not Durand, so no trigger."
+ ],
+ "opening_line_problems": [
+  "p-tabor-princeton-wv: asserts the inferred Astec-Tabor Machine Company identity ('registered with EPA as Tabor Machine Company'). Replacement in row 10613; it rests on corrected row 10609 and confirmed row 8302.",
+  "The other 9 lines: every clause is carried by stated rows or their pages; each ends in a 'you' question; no pitch; the three Coperion lines keep account-expansion framing with no Path deployment asserted (rule 5)."
+ ],
+ "plants_closed_or_moved": [],
+ "plant_status_notes": "All 10 operate at the recorded city, each with a live source today. Yankton: 11 Astec jobs incl. 3 Welders. Mount Vernon: 3 live Workday welder roles. McLanahan Hollidaysburg: 8 live UKG roles. Tazewell: Welder and Welder - 2nd Shift live; a MapQuest directory listing marks Norris Screen 'Closed', but Astec's live postings for 'our Tazewell, VA location, also known as Norris Screen Manufacturing' contradict it. Durand: REQ-14482 and 4 other live roles. Sabetha: R-8870 live, 810 S. Old Hwy 75. Whitewater: R-9255 live, 746 E. Milwaukee Street. Kansas City: R-9301 and two Project Engineers live at 4346 Clary Blvd. GK Crystal Lake: 9 live jobs. Princeton: Assembler I live. EPA FRS records answered today for all 9 FRS-cited addresses, and each city and ZIP matches the address value.",
+ "field_drift_notes": [
+  "p-astec-yankton-sd name: plants.csv 'Astec Yankton (KPI-JCI / Kolberg-Pioneer plant)'. 'KPI-JCI' is in no name row (the name row is EPA 'KOLBERG-PIONEER INC'; 'KPI-JCI' is the brand on the 2015 Rock to Road page). Suggested full field: 'Astec Yankton (Kolberg-Pioneer Inc. plant)'. Not applied by apply_factcheck (not a row).",
+  "p-general-kinematics-crystal-lake-il products: plants.csv adds '; alloy, carbon and stainless weldments', which is on the materials row, not a products row. Suggested full field: 'Vibratory equipment for foundry, recycling, mining and processing'. Not applied by apply_factcheck.",
+  "Every other delegated plants.csv field of the 10 plants matches its evidence rows (checked field by field)."
+ ],
+ "leads": [
+  "p-coperion-whitewater-wi: Coperion brochure on Food Online, July 31, 2024, https://www.foodonline.com/doc/hygienic-process-solutions-0001. Quotes: 'Coperion has dedicated a complete manufacturing location to the production of stainless steel equipment. Located in Whitewater, Wisconsin the plant is completely free of carbon steel manufacturing' and 'A full line of stainless steel hygienic equipment is manufactured at the Whitewater, Wisconsin facility. Those products include feeders, weighbelts, bag dump stations, cyclones, filter receivers, and dust collectors.' This would make materials current (not 2017 plan) and give a site product list (part mix 8 stated).",
+  "p-coperion-kansas-city-mo: Hillenbrand's board lists a second Kansas City location, 7901 NW 107th Terrace (Sales Application Engineer R-9292). It supports keeping the Salina trigger city-only (8)."
+ ],
+ "method": "Scope from evidence.csv by script: every stated row of the delegated fields for the 10 plants; every row (any tag) of each claim cited after 'supporting claims:' in a score_* row (c-astec/c-terex/c-coperion/c-mclanahan:multi_plant and the 5 v-mining-heavy-equipment:demand_outlook rows); the 10 opening_line rows; plus c-schenck-process:path_customer. All 56 distinct source URLs were fetched fresh on 2026-11-16 with tools/fetch_page.fetch(with_raw=True), into a new directory: plain requests, headless Chromium for Workday, UKG and Manufacturing Magazine. All returned 200. Each '...'-joined fragment was matched against normalised visible text and raw source: 110 quoted rows. 2 Terex fragments were inside Workday JSON with HTML entities and were read in the parsed jobDescription; the GK board quote was found by a browser render. 0 unreachable. Boards read today: Terex and Hillenbrand Workday jobs API through a browser page (Terex 462 jobs, searches 'weld' 177 and 'fitter' 8; Hillenbrand 65); Astec BrightMove state listings for SD, VA and WV (stateID 42, 46, 50) and each posting's JSON-LD (title, addressLocality, datePosted); McLanahan UKG list (12); GK Paylocity (9). Site and campus checks: EPA FRS city searches (Whitewater, Sabetha, Princeton, Yankton, Tazewell, Durand, Mount Vernon, Crystal Lake), registry lookups and Census geocoding of the Sabetha addresses. Trigger 'none' checks: WebSearch for 2025-26 plant news on Yankton, McLanahan, Norris/Tazewell, Durand (Terex MPS Jan 2, 2025 note read), GK and Mount Vernon. Search results were used for discovery only, never as quotes. No ledger file was edited.",
+ "apply_note": "apply_factcheck.py dry run: 4 corrected, 149 confirmed, 0 unmatched. Rows 8303 (address), 8304 (name) and 10609 (welder_postings) are retagged or filled out. Their plants_csv_value is the current plants.csv field, verbatim, so those fields do not change: the address and name values are unchanged and only the tag moves to inferred; 10609 is one row of a multi-row field. The opening_line row 10613 has a blank source_url (one row for that claim); its corrected_value replaces the plants.csv opening_line. Score notes, field drift and leads are for the coordinator and are not applied by the script.",
+ "rows": [
+  {
+   "claim_id": "c-schenck-process:path_customer",
+   "source_url": "https://publication.manufacturingdigital.com/manufacturing-magazine-april-2021/0110257001688483198/p183",
+   "ledger_value": "confirmed",
+   "evidence_row": 22,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Manufacturing Magazine, April 2021, p183 (Schenck Process feature): 'Our application with Path Robotics is a welding application' and 'We have just kicked off the beginning of our journey with Path Robotics and will be bringing in their robots this year.' Supports '2021 work with Path Robotics' in three opening lines; no site named, so no deployment is asserted at any Coperion plant (rule 5 kept)."
+  },
+  {
+   "claim_id": "v-mining-heavy-equipment:demand_outlook",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 86,
+   "tag": "unknown",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Stage A placeholder (value unknown, no source) that predates the four stated demand_outlook rows; harmless, but the coordinator may retire it."
+  },
+  {
+   "claim_id": "v-mining-heavy-equipment:demand_outlook",
+   "source_url": "https://im-mining.com/2023/10/09/austin-engineering-eyes-us-expansion-with-wyoming-gov-backed-grant-loan-package/",
+   "ledger_value": "North America is Austin Engineering's strongest business unit and it planned a ~69,000 sq ft Wyoming truck-body plant expansion (Oct 2023; older than 24 months)",
+   "evidence_row": 7571,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "im-mining, Oct 9, 2023: quote and 'circa-69,000-sq.ft' facility both on the page; the value's '(Oct 2023; older than 24 months)' is accurate."
+  },
+  {
+   "claim_id": "v-mining-heavy-equipment:demand_outlook",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/18230/000001823026000008/cat-20251231.htm",
+   "ledger_value": "Construction equipment end-user sales expected to grow in 2026 (Caterpillar Construction Industries)",
+   "evidence_row": 7811,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Caterpillar 10-K FY2025: quote found. Confirmed."
+  },
+  {
+   "claim_id": "p-coperion-sabetha-ks:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=COPERION&state_abbr=KS&output=JSON",
+   "ledger_value": "810 S. OLD HWY 75, SABETHA KS 66534",
+   "evidence_row": 8210,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-coperion-sabetha-ks:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=COPERION&state_abbr=KS&output=JSON",
+   "ledger_value": "Coperion Process Solutions - Sabetha",
+   "evidence_row": 8214,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-coperion-sabetha-ks:name",
+   "source_url": "https://hillenbrand.wd3.myworkdayjobs.com/wday/cxs/hillenbrand/Global/job/Sabetha-KS/Paint---Prep-Technician_R-8870",
+   "ledger_value": "Schenck, a Coperion brand, Sabetha",
+   "evidence_row": 8215,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Workday R-8870 live today (canApply true; requisition location 810 S. Old Hwy 75): 'You’ll join Schenck, a Coperion brand – part of Hillenbrand in Sabetha, Kansas.'"
+  },
+  {
+   "claim_id": "p-coperion-sabetha-ks:parent_company",
+   "source_url": "https://hillenbrand.wd3.myworkdayjobs.com/wday/cxs/hillenbrand/Global/job/Sabetha-KS/Paint---Prep-Technician_R-8870",
+   "ledger_value": "Coperion (Hillenbrand)",
+   "evidence_row": 8216,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Same live R-8870 page; 'part of Hillenbrand'. Confirmed."
+  },
+  {
+   "claim_id": "p-coperion-sabetha-ks:products",
+   "source_url": "https://abagy.com/abagys-new-customer-in-the-us",
+   "ledger_value": "high-mix production; rotors and a pipe-in-pipe relief valve welded in the Sabetha robotic cell (June 2022)",
+   "evidence_row": 8217,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "ABAGY, 21 June 2022: rotors 'historically' in the cell; the pipe-in-pipe relief valve 'was previously welded manually ... With ABAGY, robotic welding became possible'. '(June 2022)' accurate."
+  },
+  {
+   "claim_id": "p-coperion-sabetha-ks:products",
+   "source_url": "https://www.thefabricator.com/thefabricator/news/automationrobotics/manufacturer-increases-robotic-welding-cell-productivity-with-machine-vision-retrofit",
+   "ledger_value": "Schenck Process robotic welding cell at the Sabetha production facility (Jan 2023)",
+   "evidence_row": 8218,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-coperion-sabetha-ks:welder_postings",
+   "source_url": "https://talents.vaia.com/companies/coperion/sabetha/welder-74646664/",
+   "ledger_value": "earlier Welder posting, Sabetha (Coperion), copied on Vaia; datePosted 2026-02-03",
+   "evidence_row": 8220,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Vaia page live; JSON-LD datePosted 2026-02-03 (raw source); text 'Welder in Sabetha', employer Coperion; names no process (weld_processes unknown stands). Not on the employer board today, so no labor (ruling 7)."
+  },
+  {
+   "claim_id": "p-coperion-kansas-city-mo:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=SHICK&state_abbr=MO&output=JSON",
+   "ledger_value": "4346 CLARY BOULEVARD, KANSAS CITY MO 64130",
+   "evidence_row": 8221,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-coperion-kansas-city-mo:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=SHICK&state_abbr=MO&output=JSON",
+   "ledger_value": "Shick U.S.A. / Shick Esteve",
+   "evidence_row": 8222,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "FRS: SHICK U.S.A., 4346 CLARY BOULEVARD; 'Shick Esteve' is on sibling row 8223's page (Vaia) opened today."
+  },
+  {
+   "claim_id": "p-coperion-kansas-city-mo:name",
+   "source_url": "https://talents.vaia.com/companies/hillenbrand/kansas-city/welder-1st-shift-60188047/",
+   "ledger_value": "Coperion (Formerly Shick Esteve), Kansas City",
+   "evidence_row": 8223,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-coperion-kansas-city-mo:parent_company",
+   "source_url": "https://talents.vaia.com/companies/hillenbrand/kansas-city/welder-1st-shift-60188047/",
+   "ledger_value": "Coperion (Hillenbrand)",
+   "evidence_row": 8224,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Vaia KC page: 'employer: hillenbrand' and 'Coperion (Formerly Shick Esteve)'. Confirmed."
+  },
+  {
+   "claim_id": "p-coperion-kansas-city-mo:products",
+   "source_url": "https://talents.vaia.com/companies/hillenbrand/kansas-city/welder-1st-shift-60188047/",
+   "ledger_value": "stainless steel parts, support structures and full hoppers for ingredient automation systems, MIG and TIG",
+   "evidence_row": 8225,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-coperion-kansas-city-mo:welder_postings",
+   "source_url": "https://talents.vaia.com/companies/hillenbrand/kansas-city/welder-1st-shift-60188047/",
+   "ledger_value": "earlier Welder 1st Shift posting, Kansas City (Coperion, formerly Shick Esteve), copied on Vaia; datePosted 2025-12-11",
+   "evidence_row": 8227,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Vaia page live; datePosted 2025-12-11 (raw source); text names 'Coperion (Formerly Shick Esteve) in Kansas City, MO'."
+  },
+  {
+   "claim_id": "p-coperion-whitewater-wi:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=SCHENCK&state_abbr=WI&output=JSON",
+   "ledger_value": "746 E MILWAUKEE ST, WHITEWATER WI 53190",
+   "evidence_row": 8231,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-coperion-whitewater-wi:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=SCHENCK&state_abbr=WI&output=JSON",
+   "ledger_value": "Schenck-AccuRate (EPA FRS)",
+   "evidence_row": 8235,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-coperion-whitewater-wi:products",
+   "source_url": "https://www.powderbulksolids.com/dust-collection/schenck-process-to-open-segregated-stainless-steel-production-plant",
+   "ledger_value": "2017: Schenck Process announced an investment to renovate its Whitewater main plant into a dedicated stainless steel production facility, expected fully operational by October 1, 2017",
+   "evidence_row": 8236,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-coperion-whitewater-wi:welder_postings",
+   "source_url": "https://talents.vaia.com/companies/coperion/whitewater/welder-107369602/",
+   "ledger_value": "earlier Welder posting, Whitewater, copied on Vaia; datePosted 2026-05-15",
+   "evidence_row": 8239,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Vaia page live; datePosted 2026-05-15 (raw source); text 'supporting our Whitewater, Wisconsin location'."
+  },
+  {
+   "claim_id": "p-coperion-whitewater-wi:parent_company",
+   "source_url": "https://talents.vaia.com/companies/coperion/whitewater/welder-107369602/",
+   "ledger_value": "Coperion (Hillenbrand)",
+   "evidence_row": 8252,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Same page; posting body also says 'Coperion, a Hillenbrand company'. Confirmed."
+  },
+  {
+   "claim_id": "p-astec-yankton-sd:parent_company",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/792987/000079298726000011/aste-20251231.htm",
+   "ledger_value": "Astec Industries, Inc.",
+   "evidence_row": 8253,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "10-K property table: 'Yankton, South Dakota | Materials Solutions | Manufacturing, warehouse and offices | 344,995' (one Yankton entry); EPA FRS also lists ASTEC INDUSTRIES at 700 West 21st Street. Confirmed."
+  },
+  {
+   "claim_id": "p-astec-yankton-sd:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=KOLBERG&state_abbr=SD&output=JSON",
+   "ledger_value": "700 W 21st St, Yankton, SD 57078",
+   "evidence_row": 8255,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "FRS: KOLBERG-PIONEER INC, 700 W. 21ST ST., YANKTON 57078; FRS city search also lists ASTEC INDUSTRIES at 700 WEST 21ST STREET (registry 110071235822), so the Astec-KPI join is itself on an EPA record. City and ZIP match."
+  },
+  {
+   "claim_id": "p-astec-yankton-sd:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=KOLBERG&state_abbr=SD&output=JSON",
+   "ledger_value": "KOLBERG-PIONEER INC",
+   "evidence_row": 8256,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-tabor-princeton-wv:parent_company",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/792987/000079298726000011/aste-20251231.htm",
+   "ledger_value": "Astec Industries, Inc.",
+   "evidence_row": 8302,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "10-K property table lists 'Princeton, West Virginia | Materials Solutions | Manufacturing | 84,041' (one Princeton entry); Astec's Assembler I posting is located in Princeton. EPA FRS city search (Princeton, WV, 447 facilities) shows no other Astec, TerraSource, Elgin or Tabor facility than TABOR MACHINE COMPANY, 1176 Shelter Road, so the city-level 10-K fact attaches to the Princeton record under the campus rule. The identity 'Astec's Princeton plant = the EPA-registered Tabor Machine Company' is still a join the ledger itself tags inferred (row 8310: 'The Princeton plant-to-Tabor tie rests on the EPA FRS name'); no page opened today (TerraSource about page, Elgin listing, Assembler I posting) names Tabor Machine Company or 1176 Shelter Rd as Astec's. Kept confirmed for the parent fact (Astec operates the Princeton plant). The EPA identity of that plant is corrected to inferred on rows 8303/8304, and the opening line is corrected."
+  },
+  {
+   "claim_id": "p-tabor-princeton-wv:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=TABOR&state_abbr=WV&output=JSON",
+   "ledger_value": "1176 Shelter Rd, Princeton, WV 24740",
+   "evidence_row": 8303,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "note": "EPA FRS states TABOR MACHINE COMPANY at 1176 SHELTER ROAD, PRINCETON 24740-7704, but it names no owner. The record is Astec's Princeton plant (10-K property table, row 8302; Astec's Princeton posting). That this plant is the EPA-registered Tabor facility is a join no page states. Not stated by: the Astec 10-K (it names 'Elgin' only as a trademark, never Tabor or Shelter Rd), the TerraSource about page, the Elgin Tabor listing, or the Assembler I posting (no street). The ledger's own inferred row 8310 says 'The Princeton plant-to-Tabor tie rests on the EPA FRS name'. Mount Vernon precedent: an EPA-name site tie is tagged inferred (rows 10435/10436). EPA shows no other Astec-related Princeton facility, so the tie is likely; value unchanged, tag to inferred. Reasoning for the row: 'EPA FRS names Tabor Machine Company at this address; that it is Astec's Princeton plant (10-K) is inferred from the EPA name and the Tabor brand's place in Elgin/TerraSource (Astec since Jul 2025).' plants_csv_value is the current address field, verbatim (the field does not change).",
+   "corrected_value": "1176 Shelter Rd, Princeton, WV 24740",
+   "corrected_quote": "\"FacilityName\":\"TABOR MACHINE COMPANY\", \"LocationAddress\":\"1176 SHELTER ROAD\"",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "1176 Shelter Rd, Princeton, WV 24740"
+  },
+  {
+   "claim_id": "p-tabor-princeton-wv:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=TABOR&state_abbr=WV&output=JSON",
+   "ledger_value": "TABOR MACHINE COMPANY",
+   "evidence_row": 8304,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "note": "Same join as row 8303. The EPA name is on the page, but its use as the name of Astec's Princeton plant rests on the inferred EPA-name tie (row 8310). Value unchanged, tag to inferred. plants_csv_value is the current name field, verbatim (the field does not change).",
+   "corrected_value": "TABOR MACHINE COMPANY",
+   "corrected_quote": "\"FacilityName\":\"TABOR MACHINE COMPANY\", \"LocationAddress\":\"1176 SHELTER ROAD\"",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Tabor Machine Company, Princeton"
+  },
+  {
+   "claim_id": "p-norris-screen-tazewell-va:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=NORRIS%20SCREEN&state_abbr=VA&output=JSON",
+   "ledger_value": "21405 Governor G.C. Perry Hwy, Tazewell, VA 24651",
+   "evidence_row": 8315,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "FRS: NORRIS SCREEN & MANUFACTURING LLC, 21405 GOVERNOR G.C. PERRY HIGHWAY, TAZEWELL 24651; posting JSON-LD postalCode 24651. City and ZIP match."
+  },
+  {
+   "claim_id": "p-norris-screen-tazewell-va:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=NORRIS%20SCREEN&state_abbr=VA&output=JSON",
+   "ledger_value": "NORRIS SCREEN & MANUFACTURING LLC",
+   "evidence_row": 8316,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-norris-screen-tazewell-va:products",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=NORRIS%20SCREEN&state_abbr=VA&output=JSON",
+   "ledger_value": "Norris Screen & Manufacturing (EPA FRS)",
+   "evidence_row": 8317,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "The value restates the EPA facility name and claims no product; nothing additive. Confirmed."
+  },
+  {
+   "claim_id": "p-norris-screen-tazewell-va:products",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27788598",
+   "ledger_value": "Astec Tazewell location also known as Norris Screen Manufacturing (products not stated on any Tazewell row's page)",
+   "evidence_row": 8318,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Posting text 'This position will support our Tazewell, VA location, also known as Norris Screen Manufacturing.' The parenthetical is limiting. Confirmed."
+  },
+  {
+   "claim_id": "p-norris-screen-tazewell-va:welder_postings",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27788598",
+   "ledger_value": "Welder (job ID 27788598), Tazewell VA location also known as Norris Screen Manufacturing: datePosted 2026-11-05; $16 to $28 per hour; MIG, stick and arc gouging required",
+   "evidence_row": 8322,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2026-11-05, addressLocality Tazewell (raw source). Live today: Astec Virginia listing (stateID=46) shows Welder 27788598, Welder - 2nd Shift 27788049, EHS Manager."
+  },
+  {
+   "claim_id": "p-norris-screen-tazewell-va:parent_company",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27788598",
+   "ledger_value": "Astec Industries",
+   "evidence_row": 8323,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Posting JSON-LD hiringOrganization 'Astec Industries' plus 'our Tazewell, VA location, also known as Norris Screen Manufacturing': the Astec-Norris join is stated by Astec's own posting. Confirmed."
+  },
+  {
+   "claim_id": "p-mclanahan-hollidaysburg-pa:name",
+   "source_url": "https://www.mclanahan.com/about-us/contact-us",
+   "ledger_value": "McLanahan Corporation",
+   "evidence_row": 8565,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-mclanahan-hollidaysburg-pa:address",
+   "source_url": "https://www.mclanahan.com/about-us/contact-us",
+   "ledger_value": "200 Wall St, Hollidaysburg, PA 16648",
+   "evidence_row": 8566,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-mclanahan-hollidaysburg-pa:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=MCLANAHAN&state_abbr=PA&output=JSON",
+   "ledger_value": "200 Wall St (EPA FRS McLanahan Corp)",
+   "evidence_row": 8567,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-mclanahan-hollidaysburg-pa:parent_company",
+   "source_url": "https://www.mclanahan.com/about-us/contact-us",
+   "ledger_value": "McLanahan Corporation, family-owned",
+   "evidence_row": 8568,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-mclanahan-hollidaysburg-pa:products",
+   "source_url": "https://mclanahan.rec.pro.ukg.net/MCL1002MCLC/JobBoard/21de0376-4faa-4d26-8871-0fd7aa260829/OpportunityDetail?opportunityId=8492fedb-430f-42fc-9861-4e57ed678313",
+   "ledger_value": "assembly welders build major machines and parts-order components",
+   "evidence_row": 8571,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-mclanahan-hollidaysburg-pa:welder_postings",
+   "source_url": "https://mclanahan.rec.pro.ukg.net/MCL1002MCLC/JobBoard/21de0376-4faa-4d26-8871-0fd7aa260829/OpportunityDetail?opportunityId=8492fedb-430f-42fc-9861-4e57ed678313",
+   "ledger_value": "Assembly Welder - 1st Shift (ASSEM001269), Hollidaysburg, posted 2026-10-27",
+   "evidence_row": 8575,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Live on McLanahan's UKG board today (12 opportunities; 3 Assembly Welder roles at Hollidaysburg PA 16648: ASSEM001269 Oct 27, ASSEM001272 Sep 25, ASSEM001288 Nov 13)."
+  },
+  {
+   "claim_id": "p-mclanahan-hollidaysburg-pa:welder_postings",
+   "source_url": "https://mclanahan.rec.pro.ukg.net/MCL1002MCLC/JobBoard/21de0376-4faa-4d26-8871-0fd7aa260829/OpportunityDetail?opportunityId=277e5207-27cf-4fc8-84ad-6892e3880e76",
+   "ledger_value": "Assembly Welder - 3rd Shift, Hollidaysburg: posted 2026-09-25; $3.00 shift differential; MIG welds components for major machines and parts-order components",
+   "evidence_row": 8576,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Live today (UKG list shows Assembly Welder - 3rd Shift, Sep 25, 2026, Hollidaysburg). Campus rule: McLanahan's 900 Beaver St is ~540 m from 200 Wall St (consultation 10), one campus."
+  },
+  {
+   "claim_id": "p-mclanahan-hollidaysburg-pa:welder_postings",
+   "source_url": "https://mclanahan.rec.pro.ukg.net/MCL1002MCLC/JobBoard/21de0376-4faa-4d26-8871-0fd7aa260829/OpportunityDetail?opportunityId=1d125719-e508-4672-88d8-909c10ecdc29",
+   "ledger_value": "Assembly Welder - 1st Shift (Segment), Hollidaysburg, posted 2026-11-13; MIG welds components",
+   "evidence_row": 8577,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Live today (UKG list: Assembly Welder - 1st Shift (Segment), ASSEM001288, Nov 13, 2026, Hollidaysburg). Page also carries 'sub assembly and final assembly of major machines and parts order components' (used by the opening line)."
+  },
+  {
+   "claim_id": "p-mclanahan-hollidaysburg-pa:products",
+   "source_url": "https://mclanahan.rec.pro.ukg.net/MCL1002MCLC/JobBoard/21de0376-4faa-4d26-8871-0fd7aa260829/OpportunityDetail?opportunityId=9d1a2308-2f50-4a86-bc43-4dd1f8fdb555",
+   "ledger_value": "castings removed from molds and finished at Hollidaysburg (Casting Finisher - 3rd Shift posting, Nov 13, 2026)",
+   "evidence_row": 8594,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Casting Finisher - 3rd Shift live today (Nov 13, 2026, Hollidaysburg); 'Remove castings from molds' on the page. The board also lists a Foundry Support Operator at Hollidaysburg."
+  },
+  {
+   "claim_id": "p-terex-durand-mi:products",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/97216/000009721626000035/tex-20251231.htm",
+   "ledger_value": "Crushing and screening equipment",
+   "evidence_row": 8595,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-terex-durand-mi:parent_company",
+   "source_url": "https://terex.wd1.myworkdayjobs.com/wday/cxs/terex/TerexCareers/job/USA-MI-Durand/Welder---2nd-Shift_REQ-14482",
+   "ledger_value": "Terex Corporation (MP)",
+   "evidence_row": 8596,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Workday JSON carries 'MP Durand (Simplicity)' and 'Terex Corporation is a global industrial equipment manufacturer...'."
+  },
+  {
+   "claim_id": "p-terex-durand-mi:welder_postings",
+   "source_url": "https://terex.wd1.myworkdayjobs.com/wday/cxs/terex/TerexCareers/job/USA-MI-Durand/Welder---2nd-Shift_REQ-14482",
+   "ledger_value": "Welder - 2nd Shift (REQ-14482), MP Durand (Simplicity), Durand MI: posted 2026-10-12 (Workday startDate is the posting date); $21.00/hr plus $1.00 2nd-shift premium; in-position MIG welding of tack-welded components using locating fixtures and positioners",
+   "evidence_row": 8600,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Live today: canApply true, startDate 2026-10-12, location 'USA, MI, Durand'. Terex board search 'weld'/'fitter'/all (462 jobs) shows no other Durand welder; Production Worker (MP) 2nd shift REQ-10455 is metal prep (drill presses, brakes, shears, torch), no welding, so not counted."
+  },
+  {
+   "claim_id": "p-terex-durand-mi:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=TEREX&state_abbr=MI&output=JSON",
+   "ledger_value": "212 S Oak St, Durand, MI 48429",
+   "evidence_row": 8601,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "FRS: TEREX POWERSCREEN USA, 212 SOUTH OAK STREET, DURAND 48429 (also POWERSCREEN USA LLC 212 S OAK ST); Terex's Aug 2023 page also gives 212 S. Oak Street. City and ZIP match; one Terex site in Durand."
+  },
+  {
+   "claim_id": "p-terex-durand-mi:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=TEREX&state_abbr=MI&output=JSON",
+   "ledger_value": "TEREX POWERSCREEN USA",
+   "evidence_row": 8602,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-terex-mount-vernon-mo:products",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/97216/000009721626000035/tex-20251231.htm",
+   "ledger_value": "Bulk material handling conveyors (10-K: manufactured in Mount Vernon)",
+   "evidence_row": 8606,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "10-K: 'Bulk material handling conveyors are manufactured in Mount Vernon, Missouri.' Single Terex site in Mount Vernon (EPA FRS city search: only E F MARSH ENGINEERING COMPANY / MARSH ENG MANUFACT PLANT on State Dr)."
+  },
+  {
+   "claim_id": "p-terex-mount-vernon-mo:parent_company",
+   "source_url": "https://terex.wd1.myworkdayjobs.com/wday/cxs/terex/TerexCareers/job/US-MO-Mount-Vernon/Welder_REQ-13477-1",
+   "ledger_value": "Terex Corporation (MP)",
+   "evidence_row": 8607,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Workday JSON carries '\"name\":\"MP Mount Vernon\"' and 'Terex Corporation is a global leader...' (About Terex), so 'Terex Corporation (MP)' is on the page."
+  },
+  {
+   "claim_id": "p-terex-mount-vernon-mo:welder_postings",
+   "source_url": "https://terex.wd1.myworkdayjobs.com/wday/cxs/terex/TerexCareers/job/US-MO-Mount-Vernon/Welder_REQ-13477-1",
+   "ledger_value": "Welder (REQ-13477), MP Mount Vernon: posted 2026-07-15 (Workday startDate is the posting date), open on 2026-11-16; welding of conveyor components; Mig and stick; Friday overtime expected; $18.50-26.00/hr",
+   "evidence_row": 8611,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Two fragments ('Pay scale = $18.50-$26.00/hour', and in row 10440 'Experience Necessary Mig and stick welding') sit inside the Workday JSON with HTML entities/tags ('&#61;', '</b></p><ul><li>'); read in the parsed jobDescription they are on the page: found. Posting live today (canApply true, posted true, startDate 2026-07-15, 'Posted 30+ Days Ago'); board search 'weld' lists it at US-MO Mount Vernon. Open 124 days, so labor 20 holds on 60+ days alone."
+  },
+  {
+   "claim_id": "p-terex-mount-vernon-mo:welder_postings",
+   "source_url": "https://terex.wd1.myworkdayjobs.com/wday/cxs/terex/TerexCareers/job/US-MO-Mount-Vernon/Fit-up-Welder_REQ-14595-1",
+   "ledger_value": "Fit-up Welder (REQ-14595), MP Mount Vernon: posted 2026-10-12 (Workday startDate is the posting start); welding of conveyor components; Mig and stick; Friday overtime expected",
+   "evidence_row": 8612,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Live today: canApply true, startDate 2026-10-12, 'Posted 30+ Days Ago', location US-MO Mount Vernon. Page carries conveyor components, Mig and stick, Friday overtime."
+  },
+  {
+   "claim_id": "p-terex-mount-vernon-mo:welder_postings",
+   "source_url": "https://terex.wd1.myworkdayjobs.com/wday/cxs/terex/TerexCareers/job/US-MO-Mount-Vernon/Fit-up-Welder_REQ-15135-1",
+   "ledger_value": "Fit-up Welder (REQ-15135), MP Mount Vernon: posted 2026-11-06 (Workday startDate); welding of conveyor components; Mig and stick; Friday overtime expected",
+   "evidence_row": 8613,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Live today: canApply true, startDate 2026-11-06, 'Posted 10 Days Ago' (consistent with startDate = posting date)."
+  },
+  {
+   "claim_id": "p-terex-mount-vernon-mo:name",
+   "source_url": "https://www.drybulkmagazine.com/material-handling/06042023/terex-mp-announces-purchase-of-marco-conveyors/",
+   "ledger_value": "MARCO (acquired by Terex MP)",
+   "evidence_row": 8614,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-terex-mount-vernon-mo:products",
+   "source_url": "https://www.drybulkmagazine.com/material-handling/06042023/terex-mp-announces-purchase-of-marco-conveyors/",
+   "ledger_value": "MARCO (as of April 2023): stackers, belt feeders, hoppers, bins; tubular-truss conveyor frames",
+   "evidence_row": 8615,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Dry Bulk, Thursday 6 April 2023: '(as of April 2023)' accurate; 'tubular-truss conveyor frames, which remains a signature product' on the page."
+  },
+  {
+   "claim_id": "v-mining-heavy-equipment:demand_outlook",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/97216/000009721626000035/tex-20251231.htm",
+   "ledger_value": "driven by aggregates replacement demand",
+   "evidence_row": 8774,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Terex 10-K: 'The increase from 2024 was driven primarily by higher order activity within our aggregates business due to replacement demand' (MP backlog). Confirmed."
+  },
+  {
+   "claim_id": "p-coperion-kansas-city-mo:address",
+   "source_url": "https://hillenbrand.wd3.myworkdayjobs.com/wday/cxs/hillenbrand/Global/job/Kansas-City-MO/Mechanical-Assembler_R-9301",
+   "ledger_value": "4346 Clary Blvd (Coperion requisition location)",
+   "evidence_row": 8783,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "R-9301 live today; jobRequisitionLocation '4346 Clary Blvd'."
+  },
+  {
+   "claim_id": "p-coperion-sabetha-ks:address",
+   "source_url": "https://hillenbrand.wd3.myworkdayjobs.com/wday/cxs/hillenbrand/Global/job/Sabetha-KS/Paint---Prep-Technician_R-8870",
+   "ledger_value": "810 S Old Hwy 75 (Coperion requisition location)",
+   "evidence_row": 8784,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "R-8870 live today; jobRequisitionLocation descriptor '810 S. Old Hwy 75'."
+  },
+  {
+   "claim_id": "p-coperion-whitewater-wi:address",
+   "source_url": "https://hillenbrand.wd3.myworkdayjobs.com/wday/cxs/hillenbrand/Global/job/Whitewater-WI/Operations-Support---Admin-Specialist_R-9255",
+   "ledger_value": "746 E Milwaukee St (Coperion requisition location)",
+   "evidence_row": 8785,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "R-9255 live today; jobRequisitionLocation '746 E. Milwaukee Street'."
+  },
+  {
+   "claim_id": "p-astec-yankton-sd:products",
+   "source_url": "https://www.rocktoroad.com/kpi-jci-astec-host-national-dealer-conference-4210/",
+   "ledger_value": "portable, stationary and track-mounted plants, conveyors, washing and classifying systems, jaw and impact crushers (2015)",
+   "evidence_row": 8794,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Rock to Road, Sept 28, 2015; '(2015)' is accurate."
+  },
+  {
+   "claim_id": "p-astec-yankton-sd:headcount",
+   "source_url": "https://www.rocktoroad.com/kpi-jci-astec-host-national-dealer-conference-4210/",
+   "ledger_value": "445 (as of 2015)",
+   "evidence_row": 8797,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Rock to Road, Sept 28, 2015 (event Sept 25, 2015): 'The Yankton facility is home to 445 employees'. '(as of 2015)' is accurate; >36 months, so no scale points (ruling 1)."
+  },
+  {
+   "claim_id": "v-mining-heavy-equipment:demand_outlook",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/18230/000001823026000057/cat-20260930.htm",
+   "ledger_value": "Q3 2026 Construction Industries sales up 18% year on year to $7.983 billion",
+   "evidence_row": 9429,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Caterpillar Q3 2026 10-Q: quote found. Confirmed."
+  },
+  {
+   "claim_id": "p-general-kinematics-crystal-lake-il:name",
+   "source_url": "https://www.generalkinematics.com/blog/gk-grand-opening-expansion/",
+   "ledger_value": "General Kinematics Corporation",
+   "evidence_row": 9586,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-general-kinematics-crystal-lake-il:parent_company",
+   "source_url": "https://www.generalkinematics.com/careers/",
+   "ledger_value": "General Kinematics Corporation (family-owned)",
+   "evidence_row": 9587,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "GK careers page: 'Family owned and founded, GK is now led by the third generation'."
+  },
+  {
+   "claim_id": "p-general-kinematics-crystal-lake-il:address",
+   "source_url": "https://www.generalkinematics.com/product/fabrication-facility-capabilities/",
+   "ledger_value": "5050 Rickert Rd, Crystal Lake, IL 60014",
+   "evidence_row": 9588,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Address is the GK site footer; EPA FRS city search also lists GENERAL KINEMATICS CORP, 5050 RICKERT (GK INDEXABLE INC on Factory Rd is a different company)."
+  },
+  {
+   "claim_id": "p-general-kinematics-crystal-lake-il:products",
+   "source_url": "https://www.generalkinematics.com/blog/gk-grand-opening-expansion/",
+   "ledger_value": "vibratory equipment for foundry, recycling, mining and processing; 42,000 sq ft manufacturing expansion (Oct 2023)",
+   "evidence_row": 9590,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "GK blog, October 25, 2023: 'custom fabricate innovative vibratory equipment for the foundry, recycling, mining, and processing industries' and the 42,000 sq ft expansion. Confirmed."
+  },
+  {
+   "claim_id": "p-general-kinematics-crystal-lake-il:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/0d2a1814-bfaf-424c-b35d-e1485ced4ba2/General-Kinematics-Corporation",
+   "ledger_value": "1 open: Welder, 10/27/2026",
+   "evidence_row": 9594,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Board quote is browser-rendered text: plain fetch shows the same job only in pageData JSON (Welder, PublishedDate 2026-10-27T08:29:04, Crystal Lake, JobId 3891186); fetch_page --browser --check found 'Welder 10/27/2026 Crystal Lake' today. 9 jobs on the board, 1 welder."
+  },
+  {
+   "claim_id": "c-astec:multi_plant",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/792987/000079298726000011/aste-20251231.htm",
+   "ledger_value": "multi-plant: Astec lists Materials Solutions manufacturing sites at Yankton SD and Princeton WV among others (2025 10-K)",
+   "evidence_row": 10408,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Astec 10-K (FY2025) property table: both entries found. Confirmed."
+  },
+  {
+   "claim_id": "c-terex:multi_plant",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/97216/000009721626000035/tex-20251231.htm",
+   "ledger_value": "multi-plant: Terex lists Durand MI and Mount Vernon MO among its manufacturing sites (2025 10-K)",
+   "evidence_row": 10410,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Terex 10-K (FY2025): both sentences found. Confirmed."
+  },
+  {
+   "claim_id": "c-coperion:multi_plant",
+   "source_url": "https://www.processingmagazine.com/news-notes/news/55263413/coperion-announces-closure-of-kansas-manufacturing-plant",
+   "ledger_value": "multi-plant: Coperion's Whitewater WI, Sabetha KS and Kansas City MO facilities manufacture similar products (Jan 2025)",
+   "evidence_row": 10411,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Processing Magazine, Jan. 24, 2025: three facilities 'which manufacture similar products'. Confirmed."
+  },
+  {
+   "claim_id": "c-mclanahan:multi_plant",
+   "source_url": "https://www.mclanahan.com/about-us/iso-certification",
+   "ledger_value": "multi-plant: ISO-certified offices/production sites at Hollidaysburg PA and Cameron Park, New South Wales, Australia",
+   "evidence_row": 10412,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Same ISO page. McLanahan's UKG board also lists a Dungannon (GBR) production role. Confirmed."
+  },
+  {
+   "claim_id": "p-astec-yankton-sd:weld_processes",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27786798",
+   "ledger_value": "MIG (GMAW), stick (SMAW) and arc gouging (production Welder postings, Yankton)",
+   "evidence_row": 10413,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-astec-yankton-sd:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10416,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no page opened today states a dimension or weight of a welded part built at the site (mining rule 1). Material 0 holds."
+  },
+  {
+   "claim_id": "p-astec-yankton-sd:production_type",
+   "source_url": "https://www.rocktoroad.com/kpi-jci-astec-host-national-dealer-conference-4210/",
+   "ledger_value": "mixed (inferred): a broad lineup of portable, stationary and track-mounted plants, conveyors and other equipment (2015 description)",
+   "evidence_row": 10417,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row; the quoted page carries the product families named (re-checked today). Part mix per rule 4 (product list alone 8)."
+  },
+  {
+   "claim_id": "p-astec-yankton-sd:welder_postings",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27786798",
+   "ledger_value": "Welder - Day Shift (job ID 27786798), Yankton SD: datePosted 2026-11-12; welds to fit and join heavy and large mechanical products; MIG, stick and arc gouging required",
+   "evidence_row": 10419,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2026-11-12 and addressLocality Yankton found in raw source; title 'Welder - Day Shift'. Live today: Astec BrightMove South Dakota listing (stateID=42) shows 11 Yankton jobs incl. 3 Welder roles."
+  },
+  {
+   "claim_id": "p-astec-yankton-sd:welder_postings",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27785880",
+   "ledger_value": "Welder - Day Shift (job ID 27785880), Yankton SD: datePosted 2026-09-24; welds to fit and join heavy and large mechanical products; MIG, stick and arc gouging required",
+   "evidence_row": 10420,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2026-09-24, addressLocality Yankton (raw source). Live today. 53 days open, so not 60+; labor 20 rests on three at once."
+  },
+  {
+   "claim_id": "p-astec-yankton-sd:welder_postings",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27776539",
+   "ledger_value": "Welder - Evening Shift (job ID 27776539), Yankton SD: datePosted 2026-10-21; welds to fit and join heavy and large mechanical products; MIG, stick and arc gouging required",
+   "evidence_row": 10421,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2026-10-21, addressLocality Yankton (raw source); title 'Welder - Evening Shift'. Live today."
+  },
+  {
+   "claim_id": "p-astec-yankton-sd:welder_postings",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27782614",
+   "ledger_value": "Fabricator - Fixtures (job ID 27782614), Yankton: designs and fabricates tooling and fixtures",
+   "evidence_row": 10422,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Live today (Yankton list). Fixture/tooling role: listed, not counted (counting rule)."
+  },
+  {
+   "claim_id": "p-astec-yankton-sd:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "evidence_row": 10423,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'none' re-checked: web searches today (2026-11-16) for 2025-26 plant expansions, buildings or contracts at this site found none."
+  },
+  {
+   "claim_id": "p-astec-yankton-sd:opening_line",
+   "source_url": "",
+   "ledger_value": "Astec's Yankton plant posted a Welder - Day Shift role on November 12, 2026, alongside a Welder - Evening Shift role posted October 21 and another Welder - Day Shift role posted September 24, each requiring MIG, stick and arc gouging to fit and join heavy and large mechanical products; how are you keeping welding output on schedule while those seats are open?",
+   "evidence_row": 10425,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by stated rows 10419-10421 (dates, Yankton, title) and their pages (MiG/stick/arc gouging, 'fit and join ... heavy and large mechanical products' on all three). All three are live today. Ends in a 'you' question; no pitch."
+  },
+  {
+   "claim_id": "p-terex-mount-vernon-mo:weld_processes",
+   "source_url": "https://terex.wd1.myworkdayjobs.com/wday/cxs/terex/TerexCareers/job/US-MO-Mount-Vernon/Welder_REQ-13477-1",
+   "ledger_value": "MIG and stick (Welder and Fit-up Welder postings, Mount Vernon)",
+   "evidence_row": 10440,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fragment 'Experience Necessary Mig and stick welding' is split by HTML tags inside the Workday JSON ('Experience Necessary</b></p><ul><li>Mig and stick welding'): found. The label '(Welder and Fit-up Welder postings)' is a provenance label (not additive, see decision_rule); both Fit-up Welder pages opened today also say 'Mig and stick welding'."
+  },
+  {
+   "claim_id": "p-terex-mount-vernon-mo:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10443,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no page opened today states a dimension or weight of a welded part built at the site (mining rule 1). Material 0 holds."
+  },
+  {
+   "claim_id": "p-terex-mount-vernon-mo:production_type",
+   "source_url": "https://www.drybulkmagazine.com/material-handling/06042023/terex-mp-announces-purchase-of-marco-conveyors/",
+   "ledger_value": "mixed (inferred): stackers, belt feeders, hoppers, bins and conveyors (tubular-truss frames)",
+   "evidence_row": 10444,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row; the quoted page carries the product families named (re-checked today). Part mix per rule 4 (product list alone 8)."
+  },
+  {
+   "claim_id": "p-terex-mount-vernon-mo:products",
+   "source_url": "https://www.at-minerals.com/en/news/prostack-at-conexpo-conagg-2026-4356188.html",
+   "ledger_value": "Feb 2026: ProStack TW 36-150 radial telescopic conveyor (46 m) designed for North America and manufactured at Mount Vernon",
+   "evidence_row": 10445,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "AT Minerals, 26.02.2026: 'The new 46-m conveyor ... manufactured at the Terex facility in Mt Vernon, Missouri'; 'TW 36 150 radial telescopic conveyor' on the page."
+  },
+  {
+   "claim_id": "p-terex-mount-vernon-mo:triggers",
+   "source_url": "",
+   "ledger_value": "none within 24 months (Feb 2026 ProStack conveyor launch built at Mount Vernon is product news, not an expansion)",
+   "evidence_row": 10447,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'none' re-checked: web searches today (2026-11-16) for 2025-26 plant expansions, buildings or contracts at this site found none."
+  },
+  {
+   "claim_id": "p-terex-mount-vernon-mo:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10448,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no dated site headcount on any page opened today."
+  },
+  {
+   "claim_id": "p-terex-mount-vernon-mo:opening_line",
+   "source_url": "",
+   "ledger_value": "Terex's Mount Vernon plant posted a Fit-up Welder role on November 6, 2026 while a Welder role posted July 15 is still open, all three MIG and stick welding conveyor components with Friday overtime expected; how are you covering conveyor welding while those roles stay open?",
+   "evidence_row": 10450,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by rows 8611-8613 and their live Workday pages: REQ-15135 posted 2026-11-06, REQ-13477 posted 2026-07-15 and still open, and each page says conveyor components, Mig and stick, and Friday overtime. Ends in a 'you' question; no pitch."
+  },
+  {
+   "claim_id": "p-mclanahan-hollidaysburg-pa:weld_processes",
+   "source_url": "https://mclanahan.rec.pro.ukg.net/MCL1002MCLC/JobBoard/21de0376-4faa-4d26-8871-0fd7aa260829/OpportunityDetail?opportunityId=8492fedb-430f-42fc-9861-4e57ed678313",
+   "ledger_value": "MIG (Assembly Welder postings, Hollidaysburg)",
+   "evidence_row": 10460,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-mclanahan-hollidaysburg-pa:certifications",
+   "source_url": "https://www.mclanahan.com/about-us/iso-certification",
+   "ledger_value": "ISO certification (ISO 9001:2015 named) covering the Hollidaysburg offices/production sites",
+   "evidence_row": 10462,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "ISO page: 'Our ISO certification applies to our offices/production sites at our headquarters in Hollidaysburg, Pa., as well as in Cameron Park, New South Wales, Australia (ISO 9001:2015).' The value's '(ISO 9001:2015 named)' matches the hedge in the field. Confirmed."
+  },
+  {
+   "claim_id": "p-mclanahan-hollidaysburg-pa:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10463,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no page opened today states a dimension or weight of a welded part built at the site (mining rule 1). Material 0 holds."
+  },
+  {
+   "claim_id": "p-mclanahan-hollidaysburg-pa:production_type",
+   "source_url": "https://mclanahan.rec.pro.ukg.net/MCL1002MCLC/JobBoard/21de0376-4faa-4d26-8871-0fd7aa260829/OpportunityDetail?opportunityId=8492fedb-430f-42fc-9861-4e57ed678313",
+   "ledger_value": "mixed (inferred): sub-assembly and final assembly of major machines plus parts-order components",
+   "evidence_row": 10464,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row; the quoted page carries the product families named (re-checked today). Part mix per rule 4 (product list alone 8)."
+  },
+  {
+   "claim_id": "p-mclanahan-hollidaysburg-pa:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "evidence_row": 10466,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'none' re-checked: web searches today (2026-11-16) for 2025-26 plant expansions, buildings or contracts at this site found none."
+  },
+  {
+   "claim_id": "p-mclanahan-hollidaysburg-pa:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10467,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no dated site headcount on any page opened today."
+  },
+  {
+   "claim_id": "p-mclanahan-hollidaysburg-pa:opening_line",
+   "source_url": "",
+   "ledger_value": "McLanahan posted a third Assembly Welder opening at Hollidaysburg on November 13, 2026, alongside 1st- and 3rd-shift Assembly Welder roles posted October 27 and September 25; all three MIG weld components for the sub-assembly and final assembly of major machines and parts-order components; how are you staffing assembly welding across those shifts?",
+   "evidence_row": 10469,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by rows 8575-8577 and their live UKG pages. All three carry MIG and 'sub(-)assembly and final assembly of major machines and parts order components'. Ends in a 'you' question; no pitch."
+  },
+  {
+   "claim_id": "p-norris-screen-tazewell-va:weld_processes",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27788049",
+   "ledger_value": "MIG (GMAW), stick (SMAW) and arc gouging (production Welder postings, Tazewell)",
+   "evidence_row": 10479,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-norris-screen-tazewell-va:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10482,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no page opened today states a dimension or weight of a welded part built at the site (mining rule 1). Material 0 holds."
+  },
+  {
+   "claim_id": "p-norris-screen-tazewell-va:production_type",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10483,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row; the quoted page carries the product families named (re-checked today). Part mix per rule 4 (product list alone 8)."
+  },
+  {
+   "claim_id": "p-norris-screen-tazewell-va:welder_postings",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27788049",
+   "ledger_value": "Welder - 2nd Shift (job ID 27788049), Tazewell VA (Norris Screen Manufacturing): datePosted 2026-10-28; Monday to Thursday, starting at 4 pm; $16 to $28 per hour",
+   "evidence_row": 10485,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "JSON-LD datePosted 2026-10-28, addressLocality Tazewell, postalCode 24651, title 'Welder - 2nd Shift' (raw source). Live today. Page also carries MiG/stick/arc gouging (row 10479 cites this page)."
+  },
+  {
+   "claim_id": "p-norris-screen-tazewell-va:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "evidence_row": 10486,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'none' re-checked: web searches today (2026-11-16) for 2025-26 plant expansions, buildings or contracts at this site found none."
+  },
+  {
+   "claim_id": "p-norris-screen-tazewell-va:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10487,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no dated site headcount on any page opened today."
+  },
+  {
+   "claim_id": "p-norris-screen-tazewell-va:opening_line",
+   "source_url": "",
+   "ledger_value": "Astec's Tazewell plant, also known as Norris Screen Manufacturing, posted a Welder role on November 5, 2026 after a second-shift Welder role posted October 28 that starts at 4 pm, both requiring MIG, stick and arc gouging at $16 to $28 an hour; how are you filling those welding seats?",
+   "evidence_row": 10489,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by rows 8322 and 10485 and their pages: dates 11-05 and 10-28, 'starting at 4 pm', $16-$28 on both, and MiG/stick/arc gouging on both (row 10479 cites 27788049). Both are live. 'Astec's' rests on row 8323 (the posting states the join). Ends in a 'you' question."
+  },
+  {
+   "claim_id": "p-terex-durand-mi:weld_processes",
+   "source_url": "https://terex.wd1.myworkdayjobs.com/wday/cxs/terex/TerexCareers/job/USA-MI-Durand/Welder---2nd-Shift_REQ-14482",
+   "ledger_value": "MIG (Welder - 2nd Shift posting, Durand)",
+   "evidence_row": 10499,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-terex-durand-mi:materials",
+   "source_url": "https://terex.wd1.myworkdayjobs.com/wday/cxs/terex/TerexCareers/job/USA-MI-Durand/Welder---2nd-Shift_REQ-14482",
+   "ledger_value": "steel (steel frames and fabrications)",
+   "evidence_row": 10500,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-terex-durand-mi:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10502,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no page opened today states a dimension or weight of a welded part built at the site (mining rule 1). Material 0 holds."
+  },
+  {
+   "claim_id": "p-terex-durand-mi:production_type",
+   "source_url": "https://terex.wd1.myworkdayjobs.com/wday/cxs/terex/TerexCareers/job/USA-MI-Durand/Welder---2nd-Shift_REQ-14482",
+   "ledger_value": "mixed (inferred): steel fabrications welded to job order specifications",
+   "evidence_row": 10503,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row; the quoted page carries the product families named (re-checked today). Part mix per rule 4 (product list alone 8)."
+  },
+  {
+   "claim_id": "p-terex-durand-mi:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "evidence_row": 10505,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'none' re-checked: web searches today (2026-11-16) for 2025-26 plant expansions, buildings or contracts at this site found none."
+  },
+  {
+   "claim_id": "p-terex-durand-mi:headcount",
+   "source_url": "https://www.terex.com/mps/en/home/simplicity-a-terex-brand-is-excited-to-learn-about-the-revitalization-efforts-in-the-city-of-durand",
+   "ledger_value": "over 100 (as of Aug 2023)",
+   "evidence_row": 10506,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Terex page dated August 28, 2023 ('Simplicity, a Terex Brand, located at 212 S. Oak Street'); 'over 100' is accurate; 38.6 months old on 2026-11-16, so no scale points (36-month ruling)."
+  },
+  {
+   "claim_id": "p-terex-durand-mi:opening_line",
+   "source_url": "",
+   "ledger_value": "Terex's Durand plant posted a 2nd-shift Welder role on October 12, 2026 that MIG welds and tack-welds steel frames using fixtures and positioners, at $21 an hour plus a $1 shift premium; how are you covering frame welding on second shift?",
+   "evidence_row": 10508,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by row 8600 and its live page (REQ-14482; 'tack-welds steel frames', 'in position MIG welding', 'locating fixtures and positioners', '$21.00 hr. plus $1.00 shift premium'). Ends in a 'you' question."
+  },
+  {
+   "claim_id": "p-coperion-sabetha-ks:weld_processes",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10518,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no page names a process for this site."
+  },
+  {
+   "claim_id": "p-coperion-sabetha-ks:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10521,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no page opened today states a dimension or weight of a welded part built at the site (mining rule 1). Material 0 holds."
+  },
+  {
+   "claim_id": "p-coperion-sabetha-ks:production_type",
+   "source_url": "https://www.thefabricator.com/thefabricator/news/automationrobotics/manufacturer-increases-robotic-welding-cell-productivity-with-machine-vision-retrofit",
+   "ledger_value": "high-mix (stated by Schenck Process's robot integrator and The Fabricator, 2022-23)",
+   "evidence_row": 10522,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "The Fabricator, January 6, 2023: 'a benefit with Schenck’s high-mix production'; ABAGY (June 2022) also 'high-mix production'. Stated; part mix 15 holds."
+  },
+  {
+   "claim_id": "p-coperion-sabetha-ks:existing_robots",
+   "source_url": "https://www.thefabricator.com/thefabricator/news/automationrobotics/manufacturer-increases-robotic-welding-cell-productivity-with-machine-vision-retrofit",
+   "ledger_value": "the cell is used mainly to weld rotors (Jan 2023 article)",
+   "evidence_row": 10523,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "The Fabricator, January 6, 2023. Confirmed."
+  },
+  {
+   "claim_id": "p-coperion-sabetha-ks:existing_robots",
+   "source_url": "https://abagy.com/abagys-new-customer-in-the-us",
+   "ledger_value": "ABAGY retrofit of the Sabetha robotic cell (June 2022)",
+   "evidence_row": 10524,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "ABAGY, 21 June 2022; 'The robotic cell has already been operating at the Sabetha Kansas production facility' and 'ABAGY has installed machine vision' are on the same page."
+  },
+  {
+   "claim_id": "p-coperion-sabetha-ks:welder_postings",
+   "source_url": "https://hillenbrand.wd3.myworkdayjobs.com/en-US/Global",
+   "ledger_value": "none found: Hillenbrand board (2026-11-16) lists only a Paint and Prep Technician at Sabetha",
+   "evidence_row": 10525,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Re-checked today: Hillenbrand Workday board (65 requisitions, browser API) has only Paint and Prep Technician R-8870 at Sabetha; searchText 'weld' returns only a Canadian machining co-op. Labor 0 holds."
+  },
+  {
+   "claim_id": "p-coperion-sabetha-ks:triggers",
+   "source_url": "https://www.processingmagazine.com/news-notes/news/55263413/coperion-announces-closure-of-kansas-manufacturing-plant",
+   "ledger_value": "Jan 24, 2025: Coperion closing Salina KS; its Whitewater, Sabetha and Kansas City facilities to increase output to offset the closure",
+   "evidence_row": 10526,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Processing Magazine, Jan. 24, 2025; subtitle 'Capacity will be relocated to facilities in Whitewater, Wisconsin; Sabetha, Kansas; and Kansas City, Missouri.' Shared-city check for Sabetha: EPA FRS city search shows Coperion/Schenck/MAC records only at 810, 819 and 1002 S Old Hwy 75 and 51 Oregon St; 1002 S Old Hwy 75 (39.89493, -95.78826) is ~280 m and 51 Oregon St (39.89973, -95.78996) ~330 m from the record (39.89744, -95.78759): one campus, so the city-only sentence counts. A dated capacity relocation is a plant-level event: demand 15 holds."
+  },
+  {
+   "claim_id": "p-coperion-sabetha-ks:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10527,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no dated site headcount on any page opened today."
+  },
+  {
+   "claim_id": "p-coperion-sabetha-ks:opening_line",
+   "source_url": "",
+   "ledger_value": "A January 24, 2025 report on Coperion's Salina, Kansas closure named Sabetha among the facilities that will increase output to offset it, and Sabetha's robotic welding cell, retrofitted with machine vision for Schenck's high-mix production, was used mainly for rotors as of January 2023; building on Schenck Process's 2021 work with Path Robotics, how are you handling the welding that does not go through that cell?",
+   "evidence_row": 10529,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by rows 10526 (Jan. 24, 2025; increase output to offset), 10522/10523 (Fabricator Jan 6, 2023: high-mix, mainly rotors) and 10524 (ABAGY: machine vision), plus c-schenck-process:path_customer (2021). Framed as account expansion; no Path deployment at Sabetha asserted (rule 5). Ends in a 'you' question."
+  },
+  {
+   "claim_id": "p-coperion-whitewater-wi:weld_processes",
+   "source_url": "https://talents.vaia.com/companies/coperion/whitewater/welder-107369602/",
+   "ledger_value": "TIG and MIG welding; prior TIG experience required (Whitewater Welder posting, Vaia copy, datePosted 2026-05-15)",
+   "evidence_row": 10539,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Vaia Whitewater Welder page: 'Perform TIG and MIG welding, fitting, setup, and layout...' and 'Prior TIG welding experience required.' found today. Shared-city check: EPA FRS city search (Whitewater, WI, 146 facilities) shows only SCHENCK-ACCURATE, 746 E Milwaukee St for Coperion/Schenck names; Hillenbrand board's only Whitewater requisition location is 746 E. Milwaukee Street; a Coperion brochure (Food Online, Jul 31 2024) calls Whitewater 'a complete manufacturing location'. One site, so the city-only posting counts (consultation 10). Process 12 holds (rule 2)."
+  },
+  {
+   "claim_id": "p-coperion-whitewater-wi:materials",
+   "source_url": "https://www.powderbulksolids.com/dust-collection/schenck-process-to-open-segregated-stainless-steel-production-plant",
+   "ledger_value": "stainless steel (2017: investment announced to renovate the main plant into a dedicated stainless steel production facility)",
+   "evidence_row": 10540,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "The 2017 page states the plan; the value's parenthetical says so (limiting). Lead: Coperion's own brochure on Food Online (Jul 31, 2024, https://www.foodonline.com/doc/hygienic-process-solutions-0001) says Whitewater is 'completely free of carbon steel manufacturing' and 'A full line of stainless steel hygienic equipment is manufactured at the Whitewater, Wisconsin facility', which would make the field current."
+  },
+  {
+   "claim_id": "p-coperion-whitewater-wi:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10542,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no page opened today states a dimension or weight of a welded part built at the site (mining rule 1). Material 0 holds."
+  },
+  {
+   "claim_id": "p-coperion-whitewater-wi:production_type",
+   "source_url": "https://www.qlar.com/jp/press-and-media/press-releases/schenck-process-to-open-a-segregated-stainless-steel-production-plant",
+   "ledger_value": "mixed (inferred): pneumatic conveying, weighing, feeding and dust collection equipment",
+   "evidence_row": 10543,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred from a Schenck Process worldwide sentence (2017), as the row says. See score_notes (part mix) and the Food Online lead, which gives a Whitewater-specific product list: 'feeders, weighbelts, bag dump stations, cyclones, filter receivers, and dust collectors'."
+  },
+  {
+   "claim_id": "p-coperion-whitewater-wi:welder_postings",
+   "source_url": "https://hillenbrand.wd3.myworkdayjobs.com/en-US/Global",
+   "ledger_value": "none found: Hillenbrand board (2026-11-16) lists only an Operations Support & Admin Specialist at Whitewater",
+   "evidence_row": 10545,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Re-checked today: Hillenbrand board (65 requisitions) has only Operations Support & Admin Specialist R-9255 at Whitewater. Labor 0 holds."
+  },
+  {
+   "claim_id": "p-coperion-whitewater-wi:triggers",
+   "source_url": "https://www.processingmagazine.com/news-notes/news/55263413/coperion-announces-closure-of-kansas-manufacturing-plant",
+   "ledger_value": "Jan 24, 2025: Coperion closing Salina KS; its Whitewater, Sabetha and Kansas City facilities to increase output to offset the closure",
+   "evidence_row": 10546,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Same Processing page (Jan. 24, 2025). Whitewater has one Coperion site (see row 10539 note), so the city-only sentence counts; demand 15 holds."
+  },
+  {
+   "claim_id": "p-coperion-whitewater-wi:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10547,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no dated site headcount on any page opened today."
+  },
+  {
+   "claim_id": "p-coperion-whitewater-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "A Coperion Welder posting for Whitewater, dated May 15, 2026 on an aggregator copy, asked for TIG and MIG welding with prior TIG experience required, and a January 24, 2025 report on the Salina, Kansas closure named Whitewater among the Coperion facilities that will increase output to offset it; building on Schenck Process's 2021 work with Path Robotics, how are you splitting MIG and TIG work at Whitewater today?",
+   "evidence_row": 10549,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by rows 10539/8239 (Vaia, datePosted 2026-05-15; TIG and MIG; prior TIG required), 10546 and c-schenck-process:path_customer. Labelled as an aggregator copy, so it does not imply a live opening. Rule 5 is kept. Ends in a 'you' question."
+  },
+  {
+   "claim_id": "p-coperion-kansas-city-mo:weld_processes",
+   "source_url": "https://talents.vaia.com/companies/hillenbrand/kansas-city/welder-1st-shift-60188047/",
+   "ledger_value": "MIG and TIG on stainless (Welder 1st Shift posting copied on Vaia, datePosted 2025-12-11)",
+   "evidence_row": 10560,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Vaia KC page carries 'Use MIG and TIG welding techniques to construct stainless steel parts...' and datePosted 2025-12-11. Site tie: the text names 'Coperion (Formerly Shick Esteve)', which EPA places at 4346 Clary Blvd (SHICK U.S.A.; SHICK TUBE VEYOR CORP). Hillenbrand's board also shows a second Kansas City location (7901 NW 107th Terrace, Sales Application Engineer), so the 'Formerly Shick Esteve' text, not the city, carries the tie; process 12 holds."
+  },
+  {
+   "claim_id": "p-coperion-kansas-city-mo:materials",
+   "source_url": "https://talents.vaia.com/companies/hillenbrand/kansas-city/welder-1st-shift-60188047/",
+   "ledger_value": "stainless steel",
+   "evidence_row": 10561,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-coperion-kansas-city-mo:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10563,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no page opened today states a dimension or weight of a welded part built at the site (mining rule 1). Material 0 holds."
+  },
+  {
+   "claim_id": "p-coperion-kansas-city-mo:production_type",
+   "source_url": "https://talents.vaia.com/companies/hillenbrand/kansas-city/welder-1st-shift-60188047/",
+   "ledger_value": "mixed (inferred): stainless parts, support structures and full hoppers for ingredient automation systems",
+   "evidence_row": 10564,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row; the quoted page carries the product families named (re-checked today). Part mix per rule 4 (product list alone 8)."
+  },
+  {
+   "claim_id": "p-coperion-kansas-city-mo:welder_postings",
+   "source_url": "https://hillenbrand.wd3.myworkdayjobs.com/en-US/Global",
+   "ledger_value": "none found: Hillenbrand board (2026-11-16) lists a Mechanical Assembler (R-9301) at 4346 Clary Blvd, not a welding role",
+   "evidence_row": 10566,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Re-checked today: Hillenbrand board has Mechanical Assembler R-9301 and Project Engineers R-9161/R-9162 at 4346 Clary Blvd; no welding role. Labor 0 holds."
+  },
+  {
+   "claim_id": "p-coperion-kansas-city-mo:triggers",
+   "source_url": "https://www.processingmagazine.com/news-notes/news/55263413/coperion-announces-closure-of-kansas-manufacturing-plant",
+   "ledger_value": "not confirmed at this site: Coperion's Jan 2025 Salina release names 'Kansas City, Missouri' without a street",
+   "evidence_row": 10567,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Correctly inferred: Coperion has a second Kansas City location on Hillenbrand's board (7901 NW 107th Terrace), so the city-only Salina sentence does not attach to Clary Blvd (consultation 10). Demand 8 holds."
+  },
+  {
+   "claim_id": "p-coperion-kansas-city-mo:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10568,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no dated site headcount on any page opened today."
+  },
+  {
+   "claim_id": "p-coperion-kansas-city-mo:opening_line",
+   "source_url": "",
+   "ledger_value": "A Coperion Welder 1st Shift posting for the former Shick Esteve plant in Kansas City, dated December 11, 2025 on an aggregator copy, asked for MIG and TIG welding of stainless parts, support structures and full hoppers for ingredient automation systems; building on Schenck Process's 2021 work with Path Robotics, how are you staffing that stainless work today?",
+   "evidence_row": 10570,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by rows 10560/8227/8225/8223 (Vaia: 'Coperion (Formerly Shick Esteve)', MIG and TIG, stainless parts, support structures, full hoppers, ingredient automation; datePosted 2025-12-11) and c-schenck-process:path_customer. Rule 5 is kept. Ends in a 'you' question."
+  },
+  {
+   "claim_id": "p-general-kinematics-crystal-lake-il:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3891186",
+   "ledger_value": "MIG and TIG (Welder posting, Crystal Lake)",
+   "evidence_row": 10580,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-general-kinematics-crystal-lake-il:materials",
+   "source_url": "https://www.generalkinematics.com/product/fabrication-facility-capabilities/",
+   "ledger_value": "alloy, carbon and stainless steel weldments",
+   "evidence_row": 10581,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "The fabrication page names no plant (address is the site footer). GK states no other production site (its scale 0 rests on that), and the Crystal Lake Welder posting opened today says 'MIG and TIG weld all types of steel and stainless steel components', so the material is carried at the site. 'alloy' = alloy steel, covered by 'all types of steel'. Confirmed."
+  },
+  {
+   "claim_id": "p-general-kinematics-crystal-lake-il:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10583,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no page opened today states a dimension or weight of a welded part built at the site (mining rule 1). Material 0 holds."
+  },
+  {
+   "claim_id": "p-general-kinematics-crystal-lake-il:production_type",
+   "source_url": "https://www.generalkinematics.com/blog/gk-grand-opening-expansion/",
+   "ledger_value": "custom: custom-fabricated, custom-engineered vibratory equipment",
+   "evidence_row": 10584,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "GK blog 'custom fabricate'; 'custom-engineered' is on sibling row 10585's careers page ('custom engineered solutions created to solve customer-specific process requirements'). Confirmed; part mix 15 holds."
+  },
+  {
+   "claim_id": "p-general-kinematics-crystal-lake-il:production_type",
+   "source_url": "https://www.generalkinematics.com/careers/",
+   "ledger_value": "custom engineered solutions to customer-specific requirements",
+   "evidence_row": 10585,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-general-kinematics-crystal-lake-il:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3891186",
+   "ledger_value": "Welder, Crystal Lake: MIG and TIG; $21.00-27.00/hr; two years of MIG experience required",
+   "evidence_row": 10587,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Paylocity detail 3891186 live today: Crystal Lake, IL; 'MIG and TIG weld all types of steel and stainless steel components'; 'Minimum of two years of MIG welding experience'; '$21.00 to $27.00 paid per hour'."
+  },
+  {
+   "claim_id": "p-general-kinematics-crystal-lake-il:triggers",
+   "source_url": "",
+   "ledger_value": "none within 24 months (42,000 sq ft expansion completed Oct 2023, outside the window)",
+   "evidence_row": 10588,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'none' re-checked: web searches today (2026-11-16) for 2025-26 plant expansions, buildings or contracts at this site found none."
+  },
+  {
+   "claim_id": "p-general-kinematics-crystal-lake-il:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10589,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no dated site headcount on any page opened today."
+  },
+  {
+   "claim_id": "p-general-kinematics-crystal-lake-il:opening_line",
+   "source_url": "",
+   "ledger_value": "General Kinematics posted a Welder opening at Crystal Lake on October 27, 2026 for MIG and TIG welding of steel and stainless components at $21 to $27 an hour; with vibratory equipment custom fabricated for foundry, recycling and mining customers, how are you scheduling welding across custom jobs?",
+   "evidence_row": 10591,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried by rows 9594/10587 (10/27/2026, $21-$27, Crystal Lake), 10580 (MIG and TIG on steel and stainless components) and 10584 (custom fabricate for foundry, recycling, mining). Ends in a 'you' question."
+  },
+  {
+   "claim_id": "p-tabor-princeton-wv:weld_processes",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10602,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no page names a process for this site."
+  },
+  {
+   "claim_id": "p-tabor-princeton-wv:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10606,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no page opened today states a dimension or weight of a welded part built at the site (mining rule 1). Material 0 holds."
+  },
+  {
+   "claim_id": "p-tabor-princeton-wv:production_type",
+   "source_url": "https://www.environmental-expert.com/products/tabor-incline-vibrating-screen-688831",
+   "ledger_value": "mixed (inferred): Tabor screens in a size range plus custom units",
+   "evidence_row": 10607,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row; the quoted page carries the product families named (re-checked today). Part mix per rule 4 (product list alone 8)."
+  },
+  {
+   "claim_id": "p-tabor-princeton-wv:welder_postings",
+   "source_url": "https://j.brt.mv/ax.do?refresh=true&portalGK=33796",
+   "ledger_value": "none found: Astec board (2026-11-16) lists Assembler I (datePosted 2026-11-13) and EHS Manager at Princeton, no welder role",
+   "evidence_row": 10608,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Re-checked today via the Astec state listings: no Princeton welder role (the WV Fabrication Welder 27776273 is at Poca). 'None found' holds; labor 0."
+  },
+  {
+   "claim_id": "p-tabor-princeton-wv:welder_postings",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27789157",
+   "ledger_value": "Assembler I (job ID 27789157), Princeton: datePosted 2026-11-13",
+   "evidence_row": 10609,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "note": "Thin row (ships precedent; round-1 rule: a row too thin for the line that rests on it is corrected with the fuller value). The Tabor opening line and the welder_postings field rest on 'may include basic welding', which is on this row's page but in no stated row value (only inferred rows 10601/10608). The fuller value and quote are both from this page today: JSON-LD datePosted and addressLocality are in raw source; the duty line is visible. The posting is live (Astec WV listing). plants_csv_value is the current welder_postings field, verbatim (the field does not change).",
+   "corrected_value": "Assembler I (job ID 27789157), Princeton WV: datePosted 2026-11-13; other duties may include basic welding (listed, not counted)",
+   "corrected_quote": "\"datePosted\":\"2026-11-13\" ... \"addressLocality\":\"Princeton\" ... Other duties as assigned: may include basic welding, washing, primer and painting of components or assemblies",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "none found (Astec board 2026-11-16: Assembler I and EHS Manager at Princeton; Assembler duties may include basic welding)"
+  },
+  {
+   "claim_id": "p-tabor-princeton-wv:triggers",
+   "source_url": "",
+   "ledger_value": "none plant-level within 24 months; Astec's July 1, 2025 TerraSource acquisition is company-level",
+   "evidence_row": 10610,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'none' re-checked: web searches today (2026-11-16) for 2025-26 plant expansions, buildings or contracts at this site found none."
+  },
+  {
+   "claim_id": "p-tabor-princeton-wv:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10611,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred 'unknown' re-checked: no dated site headcount on any page opened today."
+  },
+  {
+   "claim_id": "p-tabor-princeton-wv:opening_line",
+   "source_url": "",
+   "ledger_value": "Astec's Princeton, West Virginia site, registered with EPA as Tabor Machine Company, posted an Assembler I role on November 13, 2026 whose duties may include basic welding; how much of your fabrication at Princeton is welded in-house today?",
+   "evidence_row": 10613,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "An Astec Assembler I posting for Princeton, West Virginia, dated November 13, 2026, lists basic welding among the role's possible duties; how much of the fabrication at your Princeton plant is welded in-house today?",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "The line asserts as fact that Astec's Princeton site is 'registered with EPA as Tabor Machine Company'. No stated row carries that join: the 10-K (row 8302) names only the city; EPA (rows 8303/8304, now retagged inferred) names Tabor Machine Company and states no owner; the Assembler I page names no street or Tabor. The ledger's own inferred row 8310 says 'The Princeton plant-to-Tabor tie rests on the EPA FRS name'. The Elgin listing, the TerraSource about page and the posting, all opened today, do not state it either (Mount Vernon precedent: an EPA-name site tie is inferred). The replacement keeps only stated facts: Astec and Princeton (row 8302, 10-K, and the posting), 2026-11-13 and 'may include basic welding' (corrected row 10609). It ends in a 'you' question with no pitch. 'May include basic welding' is now carried by corrected row 10609."
+  },
+  {
+   "claim_id": "p-coperion-whitewater-wi:name",
+   "source_url": "https://talents.vaia.com/companies/coperion/whitewater/welder-107369602/",
+   "ledger_value": "Coperion, Whitewater (Coperion FHN, a Hillenbrand company)",
+   "evidence_row": 12105,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote is in Vaia's employer blurb on the page ('Welder in Whitewater employer: Coperion ... Coperion FHN, a Hillenbrand company'); Coperion FHN is Coperion's Food, Health and Nutrition division (trade press). The posting body itself says 'You’ll join Coperion, a Hillenbrand company, supporting our Whitewater, Wisconsin location'. Confirmed; a re-quote from the posting body would be stronger."
+  },
+  {
+   "claim_id": "p-terex-durand-mi:parent_company",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/97216/000009721626000035/tex-20251231.htm",
+   "ledger_value": "Terex Corporation (Materials Processing segment)",
+   "evidence_row": 12106,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-terex-mount-vernon-mo:parent_company",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/97216/000009721626000035/tex-20251231.htm",
+   "ledger_value": "Terex Corporation (Materials Processing segment)",
+   "evidence_row": 12107,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched today (2026-11-16) on the cited page: every '...'-joined fragment found in visible text; every additive clause of the value is on the page or on a sibling row's page opened today."
+  }
+ ],
+ "score_notes": [
+  {
+   "plant": "p-tabor-princeton-wv",
+   "component": "score_part_mix",
+   "ledger_points": 8,
+   "should_be": 0,
+   "why": "RULING. Rests on p-tabor-princeton-wv:production_type, inferred from an Elgin Separation Solutions brand listing that names no plant (the row itself says so). Elgin and TerraSource have several plants; the listing-to-Princeton tie runs through the EPA name. Consultation 10 says a fact naming only a city earns 0 when the attribution is inferred; a fact naming no site at all is weaker. Total 21 -> 13, Low unchanged."
+  },
+  {
+   "plant": "p-coperion-whitewater-wi",
+   "component": "score_part_mix",
+   "ledger_points": 8,
+   "should_be": 0,
+   "why": "RULING as the ledger stands. Rests on p-coperion-whitewater-wi:production_type, inferred from 'Schenck Process is recognized as a worldwide leader in the manufacture of pneumatic conveying, weighing, feeding and dust collection systems' (2017, company-level; Coperion has three US sites). Total 40 -> 32, Low unchanged. CURE: add the Jul 31, 2024 Food Online brochure row (Whitewater product list), and 8 stands as stated (+1 confidence)."
+  },
+  {
+   "plant": "p-astec-yankton-sd",
+   "component": "confidence",
+   "ledger_points": 3,
+   "should_be": 2,
+   "why": "RULING/consistency. Scale 5 rests on c-astec:multi_plant; the cited headcount (445, 2015) earns nothing (36-month rule). The seven plants with scale 5 and an unknown headcount were synced to no confidence for scale; apply the same here. Alternatively count scale for all nine."
+  },
+  {
+   "plant": "p-terex-durand-mi",
+   "component": "confidence",
+   "ledger_points": 3,
+   "should_be": 2,
+   "why": "RULING/consistency, as for Yankton: the headcount 'over 100 (as of Aug 2023)' is past 36 months and earns nothing, so scale's confidence should follow the rule applied to the seven unknown-headcount plants."
+  },
+  {
+   "plant": "p-terex-durand-mi",
+   "component": "score_total (reasoning text)",
+   "ledger_points": 53,
+   "should_be": 53,
+   "why": "MECHANICAL. Value 53 is right (20+0+8+12+8+5), but the score_total reasoning still says '20+0+8+12+8+10 = 58' and score_tier says 'total 58'. Rewrite the text."
+  },
+  {
+   "plant": "p-coperion-whitewater-wi",
+   "component": "score_process (reasoning text)",
+   "ledger_points": 12,
+   "should_be": 12,
+   "why": "MECHANICAL. 12 is right (rule 2); the reasoning still says 'the posting is undated'; the Vaia JSON-LD dates it 2026-05-15."
+  },
+  {
+   "plant": "p-coperion-kansas-city-mo",
+   "component": "score_process (reasoning text)",
+   "ledger_points": 12,
+   "should_be": 12,
+   "why": "MECHANICAL. 12 is right; the reasoning still says 'posting undated' (it is dated 2025-12-11)."
+  },
+  {
+   "plant": "p-terex-mount-vernon-mo",
+   "component": "score_labor (reasoning text)",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "MECHANICAL. 20 is right (REQ-13477 open 124 days on Terex's board today, plus 3 at once); the reasoning says 'since its 2026-07-15 start date' (sweep pattern d): it is the posting date."
+  }
+ ]
+}

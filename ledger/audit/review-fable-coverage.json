@@ -1,0 +1,202 @@
+{
+ "lens": "coverage",
+ "verdict": "fix_first",
+ "summary": "Not ready for 'done'. The list misses or wrongly excludes plants a Valmont-focused sales team will know: Valmont Valley NE (excluded as an irrigation campus although a posting at 28800 Ida St says it welds poles with MIG and flux-core) and Valmont El Dorado KS (not in the ledger; posting dated Oct 2026 for 'fabrication of steel electrical poles'). V&S Schuler (Canton OH, Muskogee OK, Burton OH) and ROHN Peoria IL are also absent. El Dorado, V&S and ROHN are in the repo's own AISC snapshot and in neither auditor's list; Valley was listed by both auditors and still left excluded. Three profiled plants, including the High-scoring Meyer Tulsa, have never been fact-checked, yet the run log and map say every profiled plant has been. The 5/64 = 7.8% miss rate reproduces but is a lower bound: the auditors share the finder's blind spots and the denominator rule is inconsistent (variants 9.6% and 10.6%); against the plants now verified, the first-pass miss was at least 12/71 = 16.9% and at least 5/71 = 7.0% is still outstanding. Fact error rates recompute (11.8%; 19.4% as reported or 17.9% on the row unit the other rounds use; 8.2%; pooled 11.3%). Of the 31 exclusions, 5 are disputed, 18 accepted and 8 depend on a boundary rule that is not written down. Other fixes: Elkhart and Plymouth exclusions are inconsistent with FWT's inclusion, MICA Kaufman's record contradicts itself, and one link has an unreachable source. Not verified by me: posting open status for Valley, V&S Burton's product, ROHN's in-house welding, a row-by-row diff of the 252 AISC Highway Component Manufacturer holders, the 26 exclusions I accepted from the ledger's own evidence, and the leads in coverage-5.",
+ "findings": [
+  {
+   "id": "coverage-1",
+   "severity": "blocker",
+   "area": "wrong exclusion",
+   "plant_ids": [
+    "p-valmont-valley-ne"
+   ],
+   "finding": "Valmont's Valley, NE plant is excluded as an 'irrigation plant campus' with 'no source found that names poles made there'. Sources below show it welds steel poles (and Valmont is a reported Path customer, so this is a customer_other_plant). Its products row ('Irrigation equipment', tagged stated) rests on a 10-K sentence about the Agriculture segment that does not name Valley's products. Both list auditors rated Valley in definition (B: high) with quoted DOT sources, and the coordinator still counted it as 'found' without revisiting the exclusion.",
+   "evidence": "(1) https://builtin.com/job/custom-fitter-welder/8037274 (Valmont posting, '28800 Ida St Valley Nebraska 68064-8016'; --check FOUND 2026-11-13): \"operates welding equipment to build and weld poles using GMAW (MIG), Flux Core (FCAW) welding\". Posting date/open status not read; confirm before using for labor points. (2) https://www.mass.gov/info-details/approved-fabricators-of-signs-luminaires-and-signal-supports (--check FOUND): \"Valmont Industries – Valley, NE\" under \"approved to manufacture overhead and cantilever sign supports, highway and high mast lighting supports, strain poles, and traffic signal supports\". (3) ledger/audit/source-snapshot-aisc-directory-2026-11-12.txt: \"Valmont Industries, Inc. - Valley\tValley\tNE\tBridge Fabricator - Intermediate, Complex Coatings - Enclosed, Highway Component Manufacturer, Building Fabricator\". (4) Auditor A row: roads.maryland.gov/OMT/lightstruc.pdf \"Valley NE (SM8) 28800 Ida Street\"; auditor B row: GDOT qpl52a.pdf \"Valmont Industries, Inc. – Valley, NE\". (5) Web search summaries (not quotes) show 2025-26 Valley postings: Pole Setup Welder, Sub Arc Seam Welder, 'Experienced Welder ... steel electrical poles, substations'.",
+   "fix": "plants.csv p-valmont-valley-ne: status excluded -> base, clear exclusion_reason, name -> 'Valmont - Valley (steel poles; also irrigation campus)', products -> steel poles (lighting, traffic, sign and high-mast supports per DOT lists), relationship customer_other_plant. Retire evidence rows p-valmont-valley-ne:products ('Irrigation equipment', stated) and :exclusion_reason; add rows from sources 1-3. Then send to a plant-profiler (weld_processes MIG/FCAW is stated in source 1) and a fact-checker. It will likely score Medium or High."
+  },
+  {
+   "id": "coverage-2",
+   "severity": "blocker",
+   "area": "missing plant",
+   "plant_ids": [],
+   "finding": "Valmont's El Dorado, KS steel utility pole plant (955 North Haverhill Rd) is not in plants.csv under any status and was found by neither list auditor. It has a welder posting dated Oct 2026. The plant sits in the repo's own committed AISC snapshot, so the list-sweeps slice had it in hand and did not record it.",
+   "evidence": "(1) https://tallo.com/talent/job/manufacturing/welder-or-solderer/ks/el-dorado/fitterwelder-evening-shift-0eee45f0 (browser fetch, --check FOUND 2026-11-13): \"in the fabrication of steel electrical poles and other structures\"; page also shows \"955 North Haverhill Rd El Dorado Kansas 67042-4806\" and \"Posted Oct 2, 2026 (Updated Oct 24, 2026)\". (2) AISC snapshot: \"Valmont Industries, Inc. - El Dorado\tEl Dorado\tKS\tBuilding Fabricator\". (3) Search summaries only (kansasworks.com/jobs/13593773 returns 401): Fitter/Welder roles using 'GMAW, FCAW, and/or SAW' on pole shafts, 'Large Pole, Small Pole, Backweld' areas. grep of plants.csv and evidence.csv for 'El Dorado' returns nothing.",
+   "fix": "Add base record p-valmont-el-dorado-ks (Valmont Utility - El Dorado; parent Valmont Industries; 955 North Haverhill Rd, El Dorado, KS 67042; OEM; customer_other_plant; found_by 'reviewer;AISC;job posting') with evidence rows from sources 1-2, then profile and fact-check it. Count it as a list miss in run_log.md."
+  },
+  {
+   "id": "coverage-3",
+   "severity": "major",
+   "area": "missing plants",
+   "plant_ids": [],
+   "finding": "V&S Schuler (V&S Utilities), a maker of the same products in tapered tubular T&D poles and substation steel, is absent: no row for Canton OH, Burton/Middlefield OH or Muskogee OK. Neither auditor listed it. All three sites are in the committed AISC snapshot.",
+   "evidence": "https://www.vsschuler.com/ (plain fetch, --check FOUND): \"we fabricate structural steel and aluminum for substation construction, fabricate lattice towers and tapered tubular poles for transmission and distribution, and package all required components\"; \"Since 1994, we’ve also offered tapered pole structures.\"; \"Our four fabrication facilities all hold AISC certification ... our fitters and welders are certified to shop and AWS standards\"; site lists \"V&S SCHULER ENGINEERING – Canton, Ohio\", \"V&S SCHULER ENGINEERING – Burton, Ohio\", \"V&S Schuler Tubular Products, LLC – Muskogee, Okla.\". AISC snapshot: \"V&S Schuler Engineering, Inc.\tCanton\tOH\tHighway Component Manufacturer, Building Fabricator\"; \"V&S Schuler Engineering, Inc.\tMiddlefield\tOH\tBuilding Fabricator\"; \"V&S Schuler Tubular Products\tMuskogee\tOK\tBuilding Fabricator\". Not verified by me: which products Burton/Middlefield makes (a search summary says tapered poles since 2018), and street addresses.",
+   "fix": "Run a plant-finder on V&S Schuler: add p-vs-schuler-canton-oh (substation structures), p-vs-schuler-muskogee-ok (tapered tubular poles) and, once its product is quoted, p-vs-schuler-burton-oh; relationship lookalike of Valmont. Record V&S Capital Steel (Trenton NJ) and V&S Whitlow Electric (Elberton GA) as checked, with the outcome. Profile and fact-check the included ones."
+  },
+  {
+   "id": "coverage-4",
+   "severity": "major",
+   "area": "missing plant",
+   "plant_ids": [],
+   "finding": "ROHN Products, Peoria IL (telecom monopoles, tapered and flanged steel poles, pre-engineered steel utility poles) is absent from the ledger and from both auditor lists, although the AISC snapshot has two Peoria rows for it.",
+   "evidence": "https://www.rohnnet.com/ (plain fetch, --check FOUND): \"Pre-Engineered Steel Utility Poles\"; menu items \"Steel Poles\", \"Light Duty Poles\"; \"One important distinction of ROHN's manufacturing facility is that we have been certified by the American Institute of Steel Construction.\"; address line \"P.O. Box 5999, Peoria, Illinois USA 61601-5999\". AISC snapshot: \"Rohn Products LLC Plank Road Facilities\tPeoria\tIL\tBuilding Fabricator\" and \"Rohn Products, L.L.C.\tPeoria\tIL\tBuilding Fabricator\". Not verified: a current page stating in-house welding of pole shafts (only 2004-2015 catalogs seen in search summaries), the street address, and the reported Frankfort IN site.",
+   "fix": "Add base record p-rohn-peoria-il (OEM; lookalike of Nello: towers plus poles) from the two sources above; plant-finder to confirm in-house pole welding, the address and whether Frankfort IN exists; then profile. Note the tower/pole mix as for Nello."
+  },
+  {
+   "id": "coverage-5",
+   "severity": "major",
+   "area": "unverified leads / discovery method",
+   "plant_ids": [],
+   "finding": "An independent pass of about 25 searches found several more candidate makers that are in neither the ledger nor the auditor lists. None is confirmed to the ledger's standard, so each needs a plant-finder check. The run log's own unresolved leads (line 90: Woerner Wire Works, White Oaks Metal, Summit Manufacturing, Pittsburg Tank & Tower, WirelessPSC, the third Arcosa steel traffic plant, and 'Sabre Structures-PA') were also never closed. The discovery method leaned on DOT lighting/sign lists and company locations pages; it under-covered utility-only plants (no DOT list), substation-steel specialists and telecom monopole shops, and never name-scanned the committed AISC snapshot for known makers.",
+   "evidence": "(a) CommStructures, Pensacola FL: https://www.commstructures.com/ (--check FOUND \"Monopole Towers\"); \"We design, fabricate, and install towers\"; footer \"Pensacola, Fl 32534\". In-house welding of monopoles not quoted. (b) Sabre Tubular Structures-PA: steelorbis.com 2012 article (fetched): \"Located outside Pittsburgh, Pennsylvania, this facility initially provides the company with an additional 145,000 square feet of production capacity for steel utility structures.\" A search summary of a c.2013 profile names Ellwood City, PA; no current source found, may be closed. (c) Hughes Brothers, Seward NE: https://www.hughesbros.com/ (fetched): \"many of our H-frame products have been adapted and engineered to be made of steel\"; \"Our new 70,000 square ft state of the art steel fabrication facility is rolling\"; boundary case (steel H-frame and structure hardware, not tapered poles). (d) M.D. Henry Co., Pelham AL: site unreachable (TLS error); a search summary shows an Alabama bid spec naming it with Substation Enterprises as approved substation-structure manufacturers. (e) Not reachable or not checked: Substation Enterprises (AL), Tower Innovations (Newburgh IN), U.S. Pole Co. (Palmdale CA), Allstate Tower (Henderson KY; AISC row present), MEGATRO (Fort Worth TX), LSI Industries steel poles, Musco sports-lighting poles (IA), Larson Camouflage (Tucson AZ). (f) Sabre site codes with no ledger row: search results for Sabre welder postings (titles only; pages did not resolve to the posting when fetched) show 'Welder A - Kenn' and 'Welder C - Kenn', 'Welder Nights STP', 'Welder/Fitter A - SBSU' and a Conroe, TX location. The ledger has Sabre rows only for Alvarado, Sioux City, Bossier City and the two FWT plants, so 'Kenn' and Conroe may be unrecorded Sabre welding sites. (g) Lyte Poles and General Structures (Warren MI) share 23171 Groesbeck Hwy with p-united-lighting-standards-warren-mi per the Maryland list and search results, so they are one site, not misses.",
+   "fix": "Run one plant-finder slice 'reviewer-leads' over items a-f and run-log line 90, writing a row (base or excluded with reason) for every name so the ledger shows it was checked. Add two mechanical sweeps: (1) grep the AISC snapshot for every parent already in the ledger plus a seed list of known makers and diff cities against plants.csv; (2) for each multi-plant parent (Valmont, Sabre, Arcosa, Nucor), search '<parent> welder <state>' job boards by city."
+  },
+  {
+   "id": "coverage-6",
+   "severity": "blocker",
+   "area": "fact-check coverage",
+   "plant_ids": [
+    "p-meyer-tulsa-ok",
+    "p-hw-metals-tualatin-or",
+    "p-ameron-tulsa-ok-2"
+   ],
+   "finding": "run_log.md (line 226) and the built map state that 'every profiled plant has now been independently fact-checked at least once'. That is false for the current ledger. Three profiled plants merged after round 3 appear in none of the eight fact-check files, and one of them is a High plant (p-meyer-tulsa-ok, 75, one of only four Highs on the map). Round 3 ran at 03:11-03:22; these merged at 03:33 and 03:52.",
+   "evidence": "Diff of the 66 profiled ids against claim_ids in ledger/audit/fact-check-v-poles-substation-{1,2,3,round2-A,round2-B,round3-A,round3-B,round3-C}.json: unchecked = p-hw-metals-tualatin-or (63, Medium), p-ameron-tulsa-ok-2 (33, Low), p-meyer-tulsa-ok (75, High). Their stated evidence rows are all verified=not_checked: 29, 26 and 19 rows (74 total). The HW Metals -> Pacific Steel link rows are also not_checked. Ledger-wide, 323 of 923 stated rows are still not_checked: 87 on profiled plants (74 of them on these three; the other 13 are spread over 6 plants, 7 on p-ameron-tulsa-ok), 109 on excluded plants, 58 on the vertical rows and 69 on company-level or back-test rows; so apart from these three plants almost all unchecked rows are off the map's plant cards. Machine quote check: ledger/audit/merge-plant-profiler-session2-add.json (HW Metals, Ameron 66th St) reports quote_check found 14, not_found 0; ledger/audit/merge-session2-final-adds.json (the 03:52 merge that added Meyer Tulsa, 63 evidence rows) has no quote_check block and there is no quote-check-session2-final-adds.json, so Meyer Tulsa's quotes have no recorded verification of any kind. map/index.html carries the sentence 'every profiled plant has now been independently fact-checked at least once'.",
+   "fix": "First run tools/verify_ledger_quotes.py-style quote verification on the session2-final-adds rows (output to ledger/audit/quote-check-session2-final-adds.json). Then run one fact-checker over the 74 stated rows of these three plants plus the HW Metals link before marking done; apply verdicts; add the result to the round-3 figure (report it as round 3b, not folded silently). Until then change the run-log and map sentence to '63 of 66 profiled plants fact-checked'."
+  },
+  {
+   "id": "coverage-7",
+   "severity": "major",
+   "area": "miss-rate methodology",
+   "plant_ids": [
+    "p-valmont-elkhart-in",
+    "p-valmont-ferndale-wa",
+    "p-valmont-valley-ne",
+    "p-valmont-plymouth-in",
+    "p-tapp-houston-tx"
+   ],
+   "finding": "The reported miss rate (5/64 = 7.8%) reproduces arithmetically, but it is not a sound estimate of list completeness and should not be read as 'the list is 92% complete'. (1) The denominator is inconsistent: Elkhart and Ferndale were removed from numerator and denominator as 'unverified', while 12 auditor rows that the ledger itself excludes as unverified or out of definition stay in the denominator as 'found' (Valley, Plymouth, Commercial Fabricators, Clarkson, Leitchfield, Interstate Structures, Steve Johnson, Hadco, Griffin, Greenacres, Flagpoles Inc, TAPP, which has no US plant). (2) Elkhart and Ferndale were real finder misses at audit time; removing them after the fact lowers the rate by redefining the test. (3) The two auditors are same-method agents that share the finder's blind spots: every plant in findings 2-4 is absent from both auditor lists, so the audit cannot detect that class of miss. (4) ledger/audit/miss-candidates-v-poles-substation.json is stale (81 in definition, 76 matched, 5 unmatched; still maps 'Meyer Utility Structures - Tulsa', 'Arcosa Telecom Structures - Tulsa' and 'Lyte Poles' to other plants by city) and does not reproduce any reported figure; the map embeds it. (5) verticals.csv reason still says 'Plant list complete (94 found, 60 included ... miss rate 6.3%)'.",
+   "evidence": "Recount from the two auditor files: 107 in-definition rows = 68 unique plants. Minus DIS-TRAN Chicago Heights (out of definition), Elkhart, Ferndale and Arcosa Telecom Tulsa (not distinct) = 64; misses Birmingham, Raycap, Brookshire, Cem-Tec, Meyer Tulsa = 5/64 = 7.8% (matches the log). Alternatives: as-audited rule (Elkhart and Ferndale counted as misses) 7/66 = 10.6%; consistent 'ledger-verified in-definition only' rule (drop the 12 excluded rows too) 5/52 = 9.6%. Independent estimate from this review: verified in-definition plants now known = 66 profiled + Valley + El Dorado + V&S Canton + V&S Muskogee + ROHN Peoria = 71; the plant-finder slices originally found 59 of them (66 minus the 4 auditor misses, Meyer Tulsa, HW Metals and Ameron 66th St), so first-pass miss was at least 12/71 = 16.9%, and at least 5/71 = 7.0% is still missing or wrongly excluded today (7/73 = 9.6% if V&S Burton and CommStructures confirm). The 7.0% floor leaves out Elkhart, Plymouth, Salem and Flagpoles Inc, which coverage-8 and coverage-10 recommend reinstating; with those four the outstanding figure would be 9/75 = 12.0%. My pass was not exhaustive (about 25 searches; the 252 Highway Component Manufacturer holders in the AISC snapshot were scanned by name, not diffed row by row), so these are floors. If the coverage-5 leads confirm, the first-pass miss passes CLAUDE.md's 20% line, which requires an advisor checkpoint.",
+   "fix": "In run_log.md and on the map Method page: (a) state the miss rate as '5/64 = 7.8% against two auditors who share the finder's sources; a reviewer pass found at least 5 further plants (list them), so treat 7.8% as a lower bound'; (b) show the 10.6% and 9.6% variants with their rules; (c) regenerate miss-candidates-v-poles-substation.json with the company-name matcher fix or stop embedding it; (d) replace the verticals.csv reason text ('Plant list complete ... 6.3%') with current counts; (e) log an advisor consultation if the recomputed first-pass miss rate is over 20% once the coverage-5 leads are resolved; (f) for the next vertical give one auditor a seeded-recall test (hold back 5 known plants and check the finder returns them) and require the auditors to name-scan the AISC snapshot."
+  },
+  {
+   "id": "coverage-8",
+   "severity": "major",
+   "area": "inconsistent exclusions",
+   "plant_ids": [
+    "p-valmont-elkhart-in",
+    "p-valmont-plymouth-in",
+    "p-valmont-salem-or",
+    "p-fwt-fort-worth-tx",
+    "p-fwt-hicksville-oh"
+   ],
+   "finding": "The 'current operation unverified' bar is applied unevenly inside the same parent tier. Valmont Elkhart is excluded for lack of a current pole source, yet the AISC snapshot taken on 2026-11-12 lists it as a currently certified Highway Component Manufacturer, Ohio DOT lists it for signal supports and strain poles, and the log admits 2026 steel-welder postings were seen in snippets. Valmont Plymouth is excluded because 'pole or monopole production not stated on the locations page', but it is on the MassDOT approved list for sign, luminaire and signal supports (auditors A and B both quoted this; B also cites a WisDOT sign-structure listing at 1545 Pidco Dr). The run log itself (fact-check round 1 entry, line 160) records 'a 2017 communication-structures brochure that places production at Plymouth IN and Salem OR', which contradicts both exclusion reasons ('in-scope pole or monopole production not stated on the locations page') for p-valmont-plymouth-in and p-valmont-salem-or. Meanwhile FWT Fort Worth and FWT Hicksville are profiled on a single 2015 company-level sentence with every profile field unknown.",
+   "evidence": "AISC snapshot: \"Valmont Industries, Inc. - Elkhart\tElkhart\tIN\tHighway Component Manufacturer\" and \"Valmont Industries, Inc. - Plymouth\tPlymouth\tIN\tBridge Fabricator - Simple\". Mass.gov page fetched 2026-11-13 lists \"Valmont Industries - Plymouth, IN\" under fabricators \"approved to manufacture overhead and cantilever sign supports, highway and high mast lighting supports, strain poles, and traffic signal supports\". evidence.csv p-valmont-elkhart-in:products (stated, confirmed) \"Signal Supports and Strain Poles Certified\"; p-fwt-fort-worth-tx:products (inferred) quotes only the 2015 wirelessestimator.com article; p-fwt-*:weld_processes and :welder_postings = unknown. Search results in this review show Sabre welder postings for Hicksville OH (app.energyhire.com, 2025), which would give FWT Hicksville a current source.",
+   "fix": "One rule for all four: a plant with a current government or certification listing for an in-scope product is 'base' (included, low confidence), not excluded. Apply: p-valmont-elkhart-in -> base with the AISC row added as evidence and a research task to fetch a 2026 posting; p-valmont-plymouth-in -> base with the Mass.gov row as products evidence ('sign, luminaire and signal supports; telecom towers'), flagged for a profiler to separate welded pole/sign work from bolted towers. p-valmont-salem-or: have a plant-finder read the 2017 brochure and a current source for monopole or welded-section production at Salem; base if a source places it there, else keep excluded with the brochure cited in the reason. For FWT Fort Worth and Hicksville, fetch a current Sabre posting or site page per plant; if none is found for Fort Worth, apply the Ferndale rule and exclude it."
+  },
+  {
+   "id": "coverage-9",
+   "severity": "major",
+   "area": "contradictory record",
+   "plant_ids": [
+    "p-mica-kaufman-tx",
+    "p-mica-haltom-city-tx"
+   ],
+   "finding": "p-mica-kaufman-tx is status=profiled (28, Low) but plants.csv still carries exclusion_reason 'Galvanizing plant only (plants that only galvanize are out of scope); the pole fabrication is at Haltom City.' evidence.csv holds live contradictory rows for it: tier 'Tier 3' and tier 'OEM'; exclusion_reason (inferred) alongside status 'profiled (exclusion reversed)'. The supplier link p-mica-kaufman-tx -> p-mica-haltom-city-tx describes it as the galvanizer. The map will show a prospect whose own record says it is out of scope.",
+   "evidence": "plants.csv row p-mica-kaufman-tx: status=profiled, tier=OEM, exclusion_reason non-empty. evidence.csv: p-mica-kaufman-tx:exclusion_reason | inferred | not_checked; p-mica-kaufman-tx:tier | inferred | 'Tier 3' and | inferred | 'OEM'; p-mica-kaufman-tx:products stated (confirmed) 'hot-dip galvanizing of fabricated steel' with quote \"MICA Steelworks has been galvanizing fabricated steel products in Kaufman, TX since 1972\". The only fabrication evidence is the TxDOT high-mast list row \"99821 MICA Steelworks (formerly Falcon Steel America– Kaufman Kaufman, TX\", which may list the galvanizing site of a two-site producer.",
+   "fix": "Blank exclusion_reason on the plants.csv row and retire the evidence rows p-mica-kaufman-tx:exclusion_reason and the 'Tier 3' tier row; or, if the coordinator judges the TxDOT row insufficient to show welding at Kaufman (prospect test: welds in-house), set status back to excluded and keep the link. Either way the record must say one thing. Add a line to the plant's opening_line/bottleneck noting that fabrication at Kaufman rests on one TxDOT list row."
+  },
+  {
+   "id": "coverage-10",
+   "severity": "minor",
+   "area": "definition boundary: aluminum-first",
+   "plant_ids": [
+    "p-flagpoles-inc-east-setauket-ny",
+    "p-valmont-farmington-mn",
+    "p-hapco-abingdon-va",
+    "p-hapco-oklahoma-city-ok"
+   ],
+   "finding": "The coordinator resolved 'aluminum-first plants are kept and noted' as included, and profiles Valmont Farmington (aluminum, 17), Hapco Abingdon and the unbuilt aluminum Hapco Oklahoma City, but excludes Flagpoles Inc / P&K Tubular because 'no carbon or stainless steel ... stated'. P&K is on Maryland's lighting and signal structure lists (SM8) and holds AISC Highway Component Manufacturer certification, the same evidence that admitted other plants. Its exclusion_reason evidence row is tagged 'stated' although it is a judgement.",
+   "evidence": "plants.csv p-flagpoles-inc-east-setauket-ny exclusion_reason; evidence p-flagpoles-inc-east-setauket-ny:exclusion_reason | stated; :products | stated | 'lighting and signal structures' quoting roads.maryland.gov lists; AISC snapshot \"Flagpoles Inc. / P&K Tubular\tEast Setauket\tNY\tHighway Component Manufacturer\". Both auditors rated it in definition.",
+   "fix": "Set p-flagpoles-inc-east-setauket-ny to base (aluminum-first, noted; in-house weld process unknown) for consistency with Farmington, or write the rule that separates it (e.g. 'aluminum-first plants are included only when a steel line or in-house welding is stated') into run_log.md and apply it to Farmington and Hapco OKC as well. Retag the exclusion_reason row inferred."
+  },
+  {
+   "id": "coverage-11",
+   "severity": "minor",
+   "area": "exclusion review (all 31 excluded plants)",
+   "plant_ids": [
+    "p-valmont-valley-ne",
+    "p-valmont-elkhart-in",
+    "p-valmont-plymouth-in",
+    "p-valmont-salem-or",
+    "p-flagpoles-inc-east-setauket-ny",
+    "p-valmont-ferndale-wa",
+    "p-valmont-mccook-ne",
+    "p-distran-chicago-heights-il",
+    "p-mid-park-highway-clarkson-ky",
+    "p-mid-park-leitchfield-ky"
+   ],
+   "finding": "Verdict on each of the 31 excluded rows. DISPUTED (5): p-valmont-valley-ne (wrong, coverage-1); p-valmont-elkhart-in, p-valmont-plymouth-in, p-valmont-salem-or (inconsistent bar, coverage-8); p-flagpoles-inc-east-setauket-ny (aluminum rule, coverage-10). ACCEPTED on the reason and evidence in the ledger (18): p-valmont-tuscaloosa-al and p-valmont-bristol-in (concrete), p-valmont-midland-pa (galvanizing), p-valmont-newberry-sc (composite), p-millerbernd-winsted-mn-2 and p-millerbernd-sauk-rapids-mn (circular products, no pole line), p-pacific-steel-structures-greenacres-wa (sales office; maker is p-hw-metals-tualatin-or), p-tapp-houston-tx (no US welding plant), p-hadco-littlestown-pa (luminaires), p-stella-jones-fayetteville-tn (lattice, unbuilt), p-race-rock-crowley-tx (duplicate of p-structural-steel-products-crowley-tx), p-nucor-steel-decatur-trinity-al and p-nucor-steel-indiana-crawfordsville-in (mills, Tier 3), p-valmont-mccook-ne (only multi-site boilerplate; MEP directory says pipe welding), p-valmont-ferndale-wa (last evidence 2017; absent from current locations page), p-distran-chicago-heights-il (plate processing per its own release), p-interstate-structures-jeffersonville-in and p-steve-johnson-wichita-ks (2013 Iowa list only). ACCEPTED BUT RULE-DEPENDENT, re-test under the written boundary rule in coverage-12 (8): p-ackerman-baynes-baltimore-md, p-clark-machine-baltimore-md, p-griffin-welding-waterbury-ct, p-lm-fabrication-bath-pa, p-specialty-fab-north-lima-oh, p-commercial-fabricators-bridgeview-il, p-mid-park-highway-clarkson-ky, p-mid-park-leitchfield-ky. Two housekeeping points: the two Mid-Park rows (Clarkson and Leitchfield, about 10 km apart, same company) look like one operation recorded twice with different reasons; and several excluded rows carry tier and relationship values (e.g. p-valmont-tuscaloosa-al tier OEM) with no evidence row, which the run log accepted as a coverage gap.",
+   "evidence": "Read of plants.csv exclusion_reason for all 31 rows and their evidence.csv rows; independent web checks were made only for Valley, Elkhart (AISC snapshot), Plymouth (Mass.gov list) and the Lyte/United Lighting address. I did not independently re-verify the 18 accepted exclusions or the 8 rule-dependent ones beyond the ledger's own quotes and the Mass.gov list (which names Griffin Welding, L&M Fabrication and Specialty Fab as approved sign/lighting/signal-support fabricators). No wrongly included operating plant was found; the weakest inclusions are p-fwt-fort-worth-tx, p-fwt-hicksville-oh (coverage-8), p-mica-kaufman-tx (coverage-9) and the two LaX plants (coverage-12).",
+   "fix": "Apply coverage-1, -8 and -10 to the five disputed rows. Re-test the eight rule-dependent rows once the boundary rule in coverage-12 is written. Merge p-mid-park-highway-clarkson-ky and p-mid-park-leitchfield-ky into one excluded row unless a source shows two fabrication sites."
+  },
+  {
+   "id": "coverage-12",
+   "severity": "minor",
+   "area": "definition boundary: sign shops, contract fabricators, towers",
+   "plant_ids": [
+    "p-nello-spring-grove-mn",
+    "p-nello-westby-wi",
+    "p-larwel-roanoke-tx",
+    "p-qmf-steel-campbell-tx",
+    "p-metal-pros-wichita-ks",
+    "p-pennfab-morrisville-pa",
+    "p-ackerman-baynes-baltimore-md",
+    "p-lm-fabrication-bath-pa",
+    "p-griffin-welding-waterbury-ct",
+    "p-commercial-fabricators-bridgeview-il",
+    "p-valmont-salem-or"
+   ],
+   "finding": "Three boundary rules are applied case by case rather than by a written test. (1) DOT-list-only fabricators: Larwel, QMF, Metal Pros and PennFab are profiled as contract fabricators on the strength of a state approved-fabricator listing for sign structures, while Ackerman & Baynes, L&M Fabrication, Griffin Welding, Specialty Fab and Commercial Fabricators are excluded although they sit on equivalent lists (MassDOT, WisDOT, AISC HCM). The definition's exclusion of 'general fabricators that build such structures only as occasional custom jobs' needs an operational test. (2) LaX Spring Grove and Westby are in the vertical on one company-level sentence ('electrical substations columns, beams, and awnings'), tagged inferred for both plants; which plant makes substation steel is unknown. (3) Telecom towers: the definition excludes 'bolted lattice towers', but PiRod (Plymouth) and ROHN build welded tower sections as well as monopoles, and Sabre Sioux City and Nello South Bend are included with tower/pole mix unresolved; Plymouth and Salem are excluded on the same facts.",
+   "evidence": "plants.csv exclusion_reason text for the listed ids; evidence p-nello-spring-grove-mn:products and p-nello-westby-wi:products both quote https://nelloinc.com/our-divisions \"LaX Industries manufactures a variety of structural steel products including electrical substations columns, beams, and awnings.\" (inferred). Mass.gov list (fetched) includes Griffin Welding, L&M Fabrication, Specialty Fab alongside profiled Metal Pros, Stony Brook and Hurtt.",
+   "fix": "Write the test into run_log.md and re-apply it to all DOT-list rows, e.g.: include when (a) the company's own page names the structure type as a product line, or (b) two or more current state approved-fabricator lists name the plant for it; otherwise exclude with 'occasional/unverified'. For towers: include a tower plant when a source states monopoles or welded tower sections are made there, and note 'tower/pole mix unknown'. Show LaX plants on the map with a 'substation steel at company level; plant not confirmed' note."
+  },
+  {
+   "id": "coverage-13",
+   "severity": "minor",
+   "area": "supplier links",
+   "plant_ids": [
+    "p-nucor-steel-decatur-trinity-al",
+    "p-nucor-decatur-al",
+    "p-distran-chicago-heights-il",
+    "p-hw-metals-tualatin-or",
+    "p-mica-kaufman-tx"
+   ],
+   "finding": "All 7 links have an evidence row and the three 'adjacent mill / galvanizing' links are tagged inferred, which is correct. Weak points: (1) the Nucor Steel Decatur -> Nucor Decatur link's only evidence row is verified='unreachable', so a displayed link has no checkable source; (2) the DIS-TRAN Chicago Heights -> Washington Court House link rests on a 2021-10-18 release, older than RECENCY_MONTHS=24, and the from-plant's own record says 'current use unverified'; (3) the HW Metals -> Pacific Steel link rows are not_checked (see coverage-6); (4) the MICA Kaufman link conflicts with Kaufman's profiled status (coverage-9); (5) the Crawfordsville mill link asserts supply from adjacency only: its quote says the plant is 'adjacent to the Nucor Steel Indiana sheet steel mill' and nothing about supply (the Decatur quote does say 'supply this new plant' but does not name the mill). links.csv has 7 rows; run_log says 6 in session 1 plus HW Metals.",
+   "evidence": "evidence.csv rows by claim_id: p-nucor-steel-decatur-trinity-al:supplies:p-nucor-decatur-al | inferred | unreachable | \"we will be able to efficiently supply this new plant\"; p-distran-chicago-heights-il:supplies:... | stated | confirmed | crestoperations.com/news/dis-tran-steel-expands-footprint-in-the-midwest; p-hw-metals-tualatin-or:supplies:... two rows stated | not_checked.",
+   "fix": "Re-fetch the Nucor Alabama release (or cite the archived copy) and set verified accordingly, else mark the link 'source unreachable' on the map. Label the three inferred links and the 2021 DIS-TRAN link as 'inferred' / 'as of 2021' in what_is_supplied. Fact-check the HW Metals link with coverage-6."
+  },
+  {
+   "id": "coverage-14",
+   "severity": "minor",
+   "area": "fact-error-rate reporting",
+   "plant_ids": [],
+   "finding": "The three reported rates recompute, with two caveats on honesty of presentation. Round 1: 42 corrected / 355 checked (136 + 88 + 131, 1 unreachable excluded) = 11.8%, correct. Round 2: reported 12/62 = 19.4%; file B holds 45 verdict rows for 40 claim_ids (5 claims have two source rows), while every other file counts verdict rows (files 1-3 and round 3 also contain repeated claim_ids and count each row); on the same unit round 2 is 12/67 = 17.9%. Round 3: 18/219 = 8.2%, correct, but checker C alone found 10/55 = 18.2% and the round excludes the three plants in coverage-6. Pooled over all rounds the rate is 72/636 = 11.3%. Round 3 was a census, not a sample: it covered 219 stated rows on 23 plants, and those plants carry 217 stated rows today. The 'under 10% -> done' rule is met only by this last round, which was measured after a clean-up that had already corrected 95 of 263 previously unchecked stated rows (36%) across the 60 plants then profiled. No post-correction re-measurement exists for the round 1 and round 2 plants.",
+   "evidence": "Recount of verdict fields in the eight ledger/audit/fact-check-*.json files: file 1 126 confirmed/10 corrected; file 2 70/18; file 3 117/14/1 unreachable; round2-A 18/4; round2-B 37/8 over 45 rows (40 unique claim_ids; duplicates: p-meyer-fort-worth-tx:parent_company, p-meyer-lancaster-sc:parent_company, p-distran-washington-court-house-oh:parent_company and :products, p-ameron-tulsa-ok:found_by); round3-A 69/5; round3-B 87/3; round3-C 45/10. Unique claim_ids vs rows: file 1 107/136, file 2 77/88, file 3 106/132, round3-A 61/74, round3-B 67/90, round3-C 44/55. evidence.csv verified column: stated rows 547 confirmed, 53 corrected, 323 not_checked.",
+   "fix": "In run_log.md and the Method page report all three rounds plus the pooled 72/636 = 11.3%, state the unit (evidence rows), give round 2 as 12/67 = 17.9% on rows, and say that 8.2% is the post-clean-up rate on the last 23 plants (all their stated rows) with checker C at 18.2%. After the coverage-6 fact-check, recompute round 3 including those rows; mark done only if the combined round-3 figure stays under 10%."
+  },
+  {
+   "id": "coverage-15",
+   "severity": "suggestion",
+   "area": "pre-production rule",
+   "plant_ids": [
+    "p-nucor-brigham-city-ut",
+    "p-hapco-oklahoma-city-ok",
+    "p-nucor-crawfordsville-in",
+    "p-stella-jones-fayetteville-tn"
+   ],
+   "finding": "The session-2 rule that plants under construction are included as 'pre-production prospects' is reasonable and consistently applied to the three in-scope cases (Stella-Jones Fayetteville stays excluded because it is lattice). Two cautions: the CLAUDE.md prospect test says the plant 'welds in-house', which a plant not yet operating cannot meet, so the rule is a coordinator extension that should be visible on the map; and Hapco Oklahoma City is both unbuilt and aluminum-first with operations expected late 2027, so its 19 (Low) should not read as a scored judgement of fit. Each has a :status evidence row with an empty quote and source.",
+   "evidence": "run_log.md lines 207-210; evidence rows p-hapco-oklahoma-city-ok:status and p-nucor-brigham-city-ut:status are inferred with blank quote and source_url; p-hapco-oklahoma-city-ok:materials quote \"The Oklahoma City facility will manufacture aluminum light poles\".",
+   "fix": "Add a 'pre-production' flag (e.g. in production_type or a map badge) for p-nucor-brigham-city-ut and p-hapco-oklahoma-city-ok, and show 'not yet scored: plant not operating' instead of a Low tier for Hapco OKC. Add the rule to the vertical definition text in verticals.csv so the next list audit uses the same boundary."
+  }
+ ]
+}

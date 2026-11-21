@@ -1,0 +1,300 @@
+{
+ "checker": "fact-checker R4-A (confirming line check)",
+ "vertical": "v-enclosures-battery-generator",
+ "date": "2026-11-17",
+ "plants": [
+  "p-blue-star-north-mankato-mn",
+  "p-enercon-east-peoria-il",
+  "p-fidelity-mcgregor-tx",
+  "p-generac-eagle-wi",
+  "p-general-industries-goldsboro-nc",
+  "p-global-power-components-milwaukee-wi",
+  "p-hennig-power-machesney-park-il",
+  "p-martin-energy-tipton-mo",
+  "p-modern-welding-owensboro-ky",
+  "p-phoenix-products-jacksonville-fl",
+  "p-powersecure-durham-nc",
+  "p-pritchard-brown-baltimore-md",
+  "p-psi-darien-wi"
+ ],
+ "decision_rule": "A line is confirmed only if every fact in it is on a stated evidence row of that plant or the plants.csv field it cites, attributed to that site, correctly dated (own-board JSON-LD/PostedDate, never a re-post stamp), still current on a fresh read of the board today, with no plan written as progress and no company-level fact written as the site's; opening lines newest fact first, no pitch, ending with a second-person question; bottleneck guesses inferred and worded 'likely' or 'possibly'. A clause that is on the source page but on no evidence row is corrected (R3 Phoenix '120 jobs' precedent). Unreachable only if the source cannot be reached at all.",
+ "claims_checked": 23,
+ "claims_corrected": 4,
+ "claims_unreachable": 0,
+ "error_rate": 0.1739,
+ "error_rate_note": "4/23 = 17.4% on the first 23 claim_ids (sorted) of the scope 'lines' list: 13 opening lines and 10 bottleneck guesses on 12 plants (two of the bottlenecks are 'unknown' with no evidence row). No kind reaches 3. Every board and page cited was re-read on 2026-11-17; nothing unreachable. None of the corrections moves a score; the Hennig site tie (score_problems) is a separate RULING outside the line fields.",
+ "error_kind_counts": {
+  "wrong plant or location": 1,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 2,
+  "invented fact": 0,
+  "other": 1
+ },
+ "repeated_kinds": [],
+ "worst_errors": [
+  "p-psi-darien-wi:bottleneck_guess - gives Darien a company-level March 2026 statement ('The Wisconsin facilities are being transformed from fab/weld shop ... into a vertically integrated operation') that sits on no evidence row, undated and in the present tense. Rewritten with the source's wording, date and Wisconsin-wide attribution.",
+  "p-global-power-components-milwaukee-wi:bottleneck_guess - lists the cobot and robotic welding cells as 51st Street evidence, but the Robotics Technician requisition is listed at 51st Street and Burnham (1.3 km away), the same site-attribution slip R3 fixed for the academy. Robot clause now names both locations.",
+  "p-modern-welding-owensboro-ky:opening_line - dates the plant survey 'January 2025' from its file name only (no date in the document; server Last-Modified 13 Nov 2024) and closes with a question that has no 'you'. Reworded."
+ ],
+ "score_problems": [
+  {
+   "plant_id": "p-hennig-power-machesney-park-il",
+   "component": "score_labor and score_process",
+   "ledger_points": "labor 20, process 20 (total 72 High, confidence 5)",
+   "correct_points": "RULING: 20/20 as ruled (72 High) if the coordinator keeps the tie; 0/0 (32 Low, confidence 4) under the strict shared-city rule",
+   "why": "The consultation-15 basis ('the Panel and Sub Welder requisitions sit at the board location whose address field names this record's address') is not what the board shows. Hennig's Paylocity board JSON, re-read 2026-11-17 (74 jobs): every panel and sub-welder requisition has its own JobLocation named 'Hennig Power' with Address null (city Machesney Park only). The label 'Hennig Power' also carries 9904 N Alpine Rd (both Tank Welder requisitions) and 4920 Marlin Drive (one job); the address '10601 N Second Street & 4950 Marlin Drive' appears on one JobLocation only, used by a Recruiter posting (4635411). So the panel and sub postings tie to the record by city and label alone, and Hennig has other production buildings in Machesney Park (Alpine Rd enclosure systems; a separate 'Hennig, Inc. - Alpine' board location now lists a Stacks Welder, 4662472, PublishedDate 2026-11-12). Under the shared-city/campus rule they count only if those buildings are within about 1 km doing the same production: Alpine to 4950 Marlin is 0.83 km by the ECHO points the ledger uses but 1.61 km by Census Geocoder points (9904 N Alpine Rd 42.364490,-89.029254; 4950 Marlin Dr 42.378004,-89.022111), and 10601 N 2nd St does not geocode. If the tie is inferred, labor 20 -> 0 and process 20 -> 0 (all three weld_processes rows are these postings or the Alpine Tank Welder), material 4 stays (company enclosure page, 14-gauge), total 72 -> 32 Low, confidence 5 -> 4. Also: Sub Welder Day (4523133) is listed again on 2026-11-17, so the count is 8, not 7; labor unchanged either way. Both opening and bottleneck lines name only the Machesney Park board, so they stand under either ruling."
+  }
+ ],
+ "score_notes": [
+  "No score component rests on any of the 23 line fields; the four corrections move no score.",
+  "Fidelity McGregor, Martin Tipton, Phoenix Zoo Pkwy, GPC 51st St, PowerSecure Durham and Generac Eagle postings are all still listed today on the companies' own boards, so labor points that rest on them stand as of 2026-11-17."
+ ],
+ "opening_line_problems": [
+  "p-modern-welding-owensboro-ky:opening_line - closing question had no second person; rewritten.",
+  "p-pritchard-brown-baltimore-md:opening_line - 'stressed-skin' on no row; swapped for the materials field's wording.",
+  "Form check on the other 11 openings: each ends with a second-person question (PowerSecure's uses 'your'); dated clauses newest first; no pitch."
+ ],
+ "plants_closed_or_moved": [],
+ "status_problems": [],
+ "plant_status_notes": "Operating evidence seen today: live own-board postings name Fidelity Plant 3 (2055 S Main St), Generac Eagle, GPC 51st Street, Hennig Machesney Park, Martin Tipton, Phoenix 1511 Zoo Pkwy, PowerSecure Durham and PSI 448 W Madison St (Fabrication Manager, JSON-LD 2026-09-30); Enercon's UKG board lists 26 East Peoria roles. Blue Star (careers page carries 2250 Carlson Dr; empty board), General Industries (about page, active ECHO record), Modern Welding (2025 survey file) and Pritchard Brown (site lists 6501 Erdman Ave) show no closure.",
+ "field_drift_notes": [
+  "p-blue-star-north-mankato-mn:products - plants.csv carries 'fabricates its own skids, tanks and enclosures (2020)', but no stated :products row carries it (only inferred relationship, lookalike_of and prospect_test rows quote it). Add a stated row citing powerprogress 5031929.",
+  "p-modern-welding-owensboro-ky - stated weld_processes, products and production_type rows date the survey 'Jan 2025' from the file name only; reword to 'file dated 01-2025' when synced.",
+  "p-hennig-power-machesney-park-il:welder_postings - inferred count row says 7 (2026-11-17); the board lists 8 today (Sub Welder Day back)."
+ ],
+ "leads": [
+  "c-psi:site_roles - add the stated row 'The Wisconsin facilities are being transformed from fab/weld shop and storage warehouse into a vertically integrated operation with painting, laser, and capital equipment.' (8-K ex. 99.1, March 11, 2026 meetings).",
+  "p-pritchard-brown-baltimore-md:materials - if 'stressed-skin' is wanted, add the spec sentence 'prepainted aluminum stressed-skin semi-monocoque construction' to a stated row.",
+  "Hennig 'Hennig, Inc. - Alpine' board location (Stacks Welder, 2026-11-12) is a further Machesney Park production site; worth a separate record decision with 9904 N Alpine Rd."
+ ],
+ "method": "Fresh reads on 2026-11-17 of every source behind each line: tools/fetch_page.py (plain, browser fallback, --raw for JSON-LD); job boards through their JSON (Paylocity window.pageData for Fidelity and Hennig; Generac and GPC Workday CXS job and search endpoints; Enercon UKG job-requisitions API; Martin Paycom pages' JSON-LD; Ring Power iCIMS JSON-LD and search; Southern Company page JSON-LD; PSI Paycom JSON-LD); EPA ECHO facility search and Census Geocoder for the Hennig distances. No web search. No ledger file edited.",
+ "apply_note": "Apply plants_csv_value to the opening_line or bottleneck_guess field of the four corrected plants and to their single evidence rows (claim_id match; source_url as recorded). Rule on the Hennig site tie (score_problems).",
+ "rows": [
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "'unknown' is right: no labor, capacity or robot fact for the site (Blue Star's Paylocity board shows no jobs; the only process source is the April 2020 article). Unknown row, no source needed."
+  },
+  {
+   "claim_id": "p-blue-star-north-mankato-mn:opening_line",
+   "source_url": "",
+   "ledger_value": "Deutz completed its purchase of Blue Star in August 2024, and in 2020 Blue Star said it fabricates its own skids, tanks and enclosures, with about 75% of its business in standard gen-sets; how do you split that fabrication between standard and custom units today?",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "Every clause re-read 2026-11-17. RER Mag 'Aug. 11, 2024': 'Deutz has completed its previously announced purchase of all the shares in Blue Star Power Systems Inc.' (parent_company row, stated). Power Progress, 17 April 2020, about the North Mankato plant (opened late 2019, Blue Star's only facility): 'The company also fabricates its own skids, tanks and enclosures' and 'probably 75% of our business is the standard product offering' (production_type row, stated). Newest fact first, dated clauses carry their years, no pitch, ends with a 'you' question. Drift note, not an error in the line: the skids/tanks/enclosures clause is in the plants.csv products field but only on inferred evidence rows (relationship, lookalike_of, prospect_test); the stated products row says only 'Gen-sets 20 kW to 2.0 MW'. Lead: add a stated :products row with that quote (powerprogress 5031929)."
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly enclosure fabrication capacity for data-center programs: Generac is adding a separate Belvidere building for Enercon's large-megawatt enclosures while East Peoria posts no welder roles.",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "Says 'Possibly'. Belvidere: BizTimes Jun 15, 2026, Generac acquired the Belvidere facility 'to accommodate production of its large megawatt generator enclosures made by subsidiary Enercon Engineering'; the Generac release (finviz copy) gives data-center demand and opening in Q1 2027, so 'is adding' is not overstated. Enercon's own UKG board (company 6194038) re-read 2026-11-17 via its job-requisitions API: 26 East Peoria roles, none a welder or fabricator. Generac Workday 'welder' search: no East Peoria role. Clause about Belvidere is attributed to Belvidere, not to East Peoria."
+  },
+  {
+   "claim_id": "p-enercon-east-peoria-il:opening_line",
+   "source_url": "",
+   "ledger_value": "Generac bought a Belvidere building in June 2026 for the large-megawatt generator enclosures Enercon makes, and your fabrication page lists MIG, TIG and arc welding in the shop that builds your generator enclosures and power modules; which enclosure work do you plan to keep in East Peoria?",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-17. Belvidere clause = plants.csv triggers field and p-generac-belvidere-il:triggers (stated, BizTimes Jun 15, 2026), written as Belvidere's, not East Peoria's. enerconpower.com/fabrication carries both 'Enercon Engineering specializes in custom fabrication for critical power infrastructure—including power modules, generator enclosures, and mobile packaged units' and 'MIG, TIG & Arc Welding' (the row's own quote; weld_processes row stated); the line attributes them to 'your fabrication page', not to a named site, and the single-site row (ECHO: both Enercon records at 201 Altorfer Ln) supports 'the shop'. Newest first (June 2026, then the undated page); ends with a 'you' question; no pitch."
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely building a welding workforce from scratch: the plant is a start-up hiring Steel Welders, Aluminum Welders and a Stair Weld Assembler at once toward approximately 450 planned jobs over four years.",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "Says 'Likely'. Fidelity's Paylocity board re-read 2026-11-17: Steel Welder (4445372), Aluminum Welder (4550566) and Stair Weld Assembler (4550588) all still listed at LocationName 'Plant 3' (2055 S Main Street). 'approximately 450 new jobs over the next four years' found on the menafn copy of the Oct 2026 release (triggers row, stated). Start-up status: IndustryWeek Oct 15, 2026 ('hoping to be producing product' by November)."
+  },
+  {
+   "claim_id": "p-fidelity-mcgregor-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Your McGregor plant at 2055 S Main Street has Steel Welder, Aluminum Welder and Stair Weld Assembler roles open, with production hoped for by November 2026 in the 194,000 sq ft leased building; how are you setting up MIG welding for tanks and aluminum enclosures as you hire toward the approximately 450 jobs planned over the next four years?",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-17: the three Plant 3 roles are still on the board; Plant 3 address 2055 S Main Street (board JSON; TDLR TABS2026025021). IndustryWeek (Oct. 15, 2026): 'the 200,000 square feet is actually 194,000. It's a leased building' and 'by ... November we're hoping to be producing product' (written as a hope, not progress). MIG for tanks (Steel Welder: 'fit-up, and tack-up of tanks', 'MIG weld steel and stainless-steel components') and aluminum enclosures (Aluminum Welder: 'precision aluminum enclosures', 'Perform MIG welding of aluminum'), both on stated rows. 450 jobs: menafn release, stated row. Posting dates are not used (board and JSON-LD dates differ). Ends with a 'you' question."
+  },
+  {
+   "claim_id": "p-generac-eagle-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Eagle board posted MIG Welder roles for 3rd shift on Nov 11 and 2nd shift on Nov 5, 2026, and BizTimes reported in July 2025 that Eagle is expanding fabrication capabilities; how are you staffing welding on the off shifts?",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "Generac's own Workday board re-read 2026-11-17 via its CXS JSON: MIG Welder - 2nd Shift JR18255 startDate 2026-11-05 and MIG Welder - 3rd Shift JR18431 startDate 2026-11-11, both location 'Eagle, WI - USA', canApply true (the only two Eagle results of 7 for 'welder'). Dates are Workday's own posting dates, not re-post stamps. BizTimes 'Jul 24, 2025 11:03 pm': '... and its Eagle plant, which is expanding fabrication capabilities' (triggers row, stated). The unsourced 'base tanks and enclosures' clause is gone. 'Your Eagle board' means Generac's board filtered to Eagle; acceptable. Newest first; ends with a 'you' question."
+  },
+  {
+   "claim_id": "p-general-industries-goldsboro-nc:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "(no evidence row; plants.csv value)",
+   "origin": "ledger/plants.csv only",
+   "verdict": "confirmed",
+   "note": "plants.csv value is 'unknown' and there is no evidence row; an unknown field needs none (brief: rows are required for non-empty, non-unknown fields). No labor, robot or capacity fact exists for the site (no careers page), so 'unknown' is right. No source_url to check."
+  },
+  {
+   "claim_id": "p-general-industries-goldsboro-nc:opening_line",
+   "source_url": "",
+   "ledger_value": "Your GEN-TANK generator base tanks run up to 48 in high, 136 in wide and 465 in long in carbon or stainless steel, built in a 70,000 sq ft Goldsboro shop where skilled welders turn coiled steel into rectangular and cylindrical vessels; how are you welding the largest rectangular base tanks today?",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "Re-read 2026-11-17. GEN-TANK brochure (2022/07 upload): 'sizes up to 48\" high, 136\" wide and 465\" long' and 'GEN-TANK Generator Base Tank' (part_size_fit row, stated). UL-142 base tank page: 'using carbon or stainless steel' (materials row, stated). About page: 'based in Goldsboro, NC' and 'Our facility consists of a 70,000 square-foot metal fabrication shop where skilled welders transform coiled steel into cylindrical or rectangular atmospheric vessels' (address row, stated). One active ECHO record (3048 Thoroughfare Rd), so the single-site tie holds. No dated facts, so no order issue; ends with a 'you' question."
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:bottleneck_guess",
+   "source_url": "https://globalpowercomponents.wd115.myworkdayjobs.com/en-US/GPC/job/51st-Street/Weld-Expediter_JR100124",
+   "ledger_value": "Likely manual MIG welding throughput on I-beam frames and fuel tanks at 51st Street: a temp-to-hire MIG Welder opening, a Weld Expediter role posted to keep welders productive, and cobot and robotic welding cells already in use; GPC's welding academy is at its separate Burnham site.",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "corrected",
+   "corrected_value": "Likely manual MIG welding throughput on I-beam frames and fuel tanks at 51st Street: a temp-to-hire MIG Welder opening and a Weld Expediter role posted to keep welders productive; GPC also runs cobots and robotic welding cells under a Robotics Technician role listed at both 51st Street and Burnham, and its welding academy is at the separate Burnham site.",
+   "corrected_tag": "inferred",
+   "error_kind": "wrong plant or location",
+   "note": "Re-read 2026-11-17 (Workday CXS JSON). MIG Welder JR100145 (startDate 2026-11-10, '51st Street', 'Temp-to-Hire') and Weld Expediter JR100124 (startDate 2026-10-27, '51st Street'; 'keeping welders productive' found) are live and support the 51st Street clauses. But the guess lists 'cobot and robotic welding cells already in use' as 51st Street evidence; the Robotics Technician requisition (JR100037) returns additionalLocations ['Burnham'], and the existing_robots row itself says the cells 'may be at either site'. Burnham (4101 W Burnham St) is 1.3 km away, beyond the campus distance (the same reason the academy clause was moved in R3). The robot clause now names both locations, as the opening line already does. No score moves.",
+   "plants_csv_value": "Likely manual MIG welding throughput on I-beam frames and fuel tanks at 51st Street: a temp-to-hire MIG Welder opening and a Weld Expediter role posted to keep welders productive; GPC also runs cobots and robotic welding cells under a Robotics Technician role listed at both 51st Street and Burnham, and its welding academy is at the separate Burnham site."
+  },
+  {
+   "claim_id": "p-global-power-components-milwaukee-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Your 51st Street MIG Welder opening (posted Nov 10, 2026) covers I-beam frames and fuel tanks from 10 gauge to 1/2 in, and your Robotics Technician role (51st Street and Burnham) runs cobots and robotic welding cells; how are you deciding which frame and tank welds go to the robot cells and which stay manual?",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "GPC's Workday board re-read 2026-11-17: MIG Welder JR100145 startDate 2026-11-10, location '51st Street', still listed; its text: 'Welding I-Beam Frame and Fuel Tanks in flat/vertical overhead positions. The sheet metal thickness will range from 10 gauge up to ½ inch.' Robotics Technician JR100037 (startDate 2026-09-24) location 51st Street with additionalLocations ['Burnham']: 'Operate collaborative robots (cobots) and robotic welding cells to support daily production requirements.' The line names both locations for the robot role. Newest first; ends with a 'you' question."
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual welding labor for panels, sub-weldments and large double-walled fuel tanks: panel and sub-weld welder requisitions are open on day and night shifts while output goals rise (650 units in 2025, 800-900 in 2026), and the CEO said in Feb 2024 that robots are not much help on large, bulky tanks.",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "Says 'Likely'. Hennig's Paylocity board re-read 2026-11-17: Panel Welder I/II/III and Welder I - Sub Welder are listed on both Day and Night shifts (Sub Welder Day 4523133 is listed again today, so 8 counted roles, not 7). WTVO via Yahoo (March 14, 2025): chairman and CEO Dietmar Goellner, 'Our goal right now is to do 650 units this year ... 800 to 900 units next year'. The Fabricator (February 1, 2024), Goellner, Hennig CEO: 'robotics aren't much help for Hennig. For something like the double-walled fuel tanks, which are large and bulky ...'. The line names the city's board only; see score_problems for the site tie behind labor 20."
+  },
+  {
+   "claim_id": "p-hennig-power-machesney-park-il:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Machesney Park board lists panel and sub-weld welder openings on day and night shifts; in March 2025 your CEO set goals of 650 units that year and 800 to 900 the next, and in February 2024 he said large double-walled fuel tanks take about as long to fixture for a robot as to weld by hand; is that still how you see tank welding at those volumes?",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "Same reads as the bottleneck row. Panel and sub-weld openings on day and night shifts: true on the board today. 'in March 2025 your CEO set goals of 650 units that year and 800 to 900 the next': WTVO names Goellner as chairman and CEO. 'in February 2024 he said large double-walled fuel tanks take about as long to fixture for a robot as to weld by hand': The Fabricator, February 1, 2024, attributes this to Goellner (reporter's paraphrase, written as 'he said'; acceptable). Newest first; ends with a 'you' question. The line says 'Your Machesney Park board', which is accurate even though the welder requisitions carry no street address (see score_problems)."
+  },
+  {
+   "claim_id": "p-martin-energy-tipton-mo:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely structural welding capacity for the enclosure expansion: Martin is adding over 400,000 sq ft and has hired about 50 people for it, and its own Tipton board has a Structural Welder (MIG/FCAW, posted Aug 5, 2026) and 2nd and 3rd shift Pipe Welders (posted Sept 10, 2026) open.",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "Says 'Likely'. Martin's own Paycom board re-read 2026-11-17 (browser fetch, raw JSON-LD): Structural Welder job 1001 datePosted 2026-08-05, 'MIG (GMAW) and FCAW'; 2nd and 3rd Shift Pipe Welder job 3894 datePosted 2026-09-10, '15% shift differential'; both 'Tipton - Martin Energy - Tipton, MO 65081', still listed. News Tribune May 6, 2026: 'conducting the largest expansion in company history', 'new facilities totalling an area greater than 400,000 square feet', 'we've already hired about 50 people' (triggers row, stated); the October 2024 article ties the expansion to generator set enclosures (stated row)."
+  },
+  {
+   "claim_id": "p-martin-energy-tipton-mo:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Tipton board has a 2nd and 3rd Shift Pipe Welder (posted Sept 10, 2026, 15% shift differential) and a Structural Welder for MIG and FCAW (posted Aug 5) open, after the May 2026 announcement of the largest expansion in Martin Energy's history, with over 400,000 sq ft of new facilities, full-load testing bays and a 90-ton crane; how are you planning structural welding capacity for the new shops?",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "Same reads as the bottleneck row. News Tribune (May 6, 2026): 'celebrated its 50th anniversary Saturday with an open house and an announcement', 'the largest expansion in company history', 'greater than 400,000 square feet', 'New full-load testing bays and an overhead crane capable of lifting upwards of 90 tons are also part of the expansion' ('90-ton crane' is a fair shortening). Postings dated from Paycom JSON-LD, not re-post stamps. Newest first; ends with a 'you' question; no pitch."
+  },
+  {
+   "claim_id": "p-modern-welding-owensboro-ky:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "(no evidence row; plants.csv value)",
+   "origin": "ledger/plants.csv only",
+   "verdict": "confirmed",
+   "note": "plants.csv value is 'unknown' and there is no evidence row; an unknown field needs none. No labor or capacity fact for the site, so 'unknown' is right. No source_url to check."
+  },
+  {
+   "claim_id": "p-modern-welding-owensboro-ky:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Owensboro plant's January 2025 capability survey lists manual, submerged arc, GMAW, FCAW and TIG welding on carbon and stainless steel at about 1,500 tons a month across tanks, ASME vessels, welded pipe and dredge hulls; which of those lines carries the most manual welding hours?",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "corrected",
+   "corrected_value": "Your Owensboro plant's capability survey (Subsidiary Survey No. 1, file dated 01-2025) lists manual, submerged arc, GMAW, FCAW and TIG welding on carbon and stainless steel at about 1,500 tons a month across tanks, ASME vessels, welded pipe and dredge hulls; on which of those lines do you spend the most manual welding hours?",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "PDF re-read 2026-11-17: names MODERN WELDING COMPANY OF OWENSBORO, INC., 1450 E. Parrish Avenue; 'Weld Equipment/Process - Manual, submerged arc, GMAW, GMAW-S, FCAW-G, FCAW-S, TIG', 'Carbon steel', 'Stainless Steel', 'AVERAGE PRODUCTION PER MONTH: 1,500 tons', ASME vessels, tanks, welded pipe, dredge hulls all found. Two form faults: (1) 'January 2025' is not on the document; the text carries no date (it calls itself 'Subsidiary Survey No. 1'), the date comes only from the file name 'PLT1_01-2025 Final.pdf', and the server's Last-Modified is 13 Nov 2024, so the line now cites the file name instead of asserting a survey month; (2) the closing question had no 'you' ('which of those lines carries the most manual welding hours?'); rewritten as a second-person question. Drift: the stated weld_processes, products and production_type rows also say 'Jan 2025' / 'plant survey, Jan 2025' on the same basis. No score moves.",
+   "plants_csv_value": "Your Owensboro plant's capability survey (Subsidiary Survey No. 1, file dated 01-2025) lists manual, submerged arc, GMAW, FCAW and TIG welding on carbon and stainless steel at about 1,500 tons a month across tanks, ASME vessels, welded pipe and dredge hulls; on which of those lines do you spend the most manual welding hours?"
+  },
+  {
+   "claim_id": "p-phoenix-products-jacksonville-fl:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely fabrication and welding staffing for the new Zoo Parkway plant: three Service Fabricator roles are open at once after a plan to add multiple production lines.",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "Says 'Likely'. Ring Power iCIMS re-read 2026-11-17: Service Fabricator 15431 and 15432 (JSON-LD datePosted 2026-10-12) and 15670 (2026-11-16) all carry streetAddress '1511 Zoo Parkway, BLDG 600' and appear in the live search; the two other live Service Fabricators (15466, 15660) are at 1544 East 8th Street, so 'three' at Zoo Parkway is exact. 'a plan to add multiple production lines': jaxusa 'plans to implement multiple new production lines' (triggers row, stated), written as a plan."
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly welder headcount filled through temps: Durham posted a requisition on 2026-11-16 to convert temporary welders to full-time.",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "Says 'Possibly'. Southern Company board re-read 2026-11-17: 'Welder I - 2nd Shift - (Conversion)', Durham NC, JSON-LD datePosted 2026-11-16, 'conversion requisition for onboarding temp employees to FTE status', still listed (search 'welder powersecure': Durham conversion and Randleman Welder II)."
+  },
+  {
+   "claim_id": "p-powersecure-durham-nc:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Durham campus posted a second-shift Welder I requisition on Nov 16, 2026 to convert temporary welders to full-time, and PowerSecure says it fabricates key components there with advanced welding, powder coating and conduit bending; how much of your Durham welding still runs on temp labor?",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "Same posting read as the bottleneck row (Welder I, 2nd shift, conversion, datePosted 2026-11-16). powersecure.com how-we-build page: 'we fabricate and assemble key components right at our Durham campus. Advanced welding, powder coating, and conduit bending machines' (products row, stated; FOUND on fresh fetch). Durham campus tie: two ECHO records 0.67 km apart, no other Durham site (inferred row). Ends with a second-person question ('your Durham welding')."
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly the welded steel underframe, base and fuel-tank-base work beneath its custom aluminum enclosures where a floor is supplied; no labor, robot or capacity data is public, so this rests on the construction spec alone.",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "confirmed",
+   "note": "Says 'Possibly'. Spec 2130 (re-read): 'an optional floor/underframe', 'The floor and underframe assembly shall consist of fabricated steel or structural steel welded to form the outer perimeter', lift rings 'welded into the base or rupture basin (if applicable)'; home page lists 'fuel tank bases'; about page 'Each enclosure is custom designed'. 'where a floor is supplied' matches 'optional'. No labor, robot or capacity data found, as the line says. One facility (about page: current 70,000 sq ft facility; one ECHO record)."
+  },
+  {
+   "claim_id": "p-pritchard-brown-baltimore-md:opening_line",
+   "source_url": "",
+   "ledger_value": "Pritchard Brown custom designs each enclosure, and its Specification No. 2130 calls for a welded steel floor and underframe (where a floor is supplied) beneath aluminum stressed-skin walls; how do you handle the welded base and underframe work when every enclosure is a custom design?",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "corrected",
+   "corrected_value": "Pritchard Brown custom designs each enclosure, and its Specification No. 2130 calls for a welded steel floor and underframe (where a floor is supplied) beneath aluminum wall panels riveted to aluminized steel framing; how do you handle the welded base and underframe work when every enclosure is a custom design?",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Spec 2130 (Shelterspec-2130-Main.doc, re-read 2026-11-17) and the about page support every clause except 'stressed-skin': that word is in the spec ('prepainted aluminum stressed-skin semi-monocoque construction') but on no evidence row and not in the plants.csv materials field, which says 'riveted to aluminized steel framing' (spec: 'aluminum panels hard-riveted to fabricated aluminized steel Z section wall posts'). Same rule as Phoenix's '120 jobs' in R3 (on the page, on no row). Wording swapped for the materials field's. 'where a floor is supplied' matches the spec's 'optional floor/underframe'. Undated spec, so no date given; ends with a 'you' question.",
+   "plants_csv_value": "Pritchard Brown custom designs each enclosure, and its Specification No. 2130 calls for a welded steel floor and underframe (where a floor is supplied) beneath aluminum wall panels riveted to aluminized steel framing; how do you handle the welded base and underframe work when every enclosure is a custom design?"
+  },
+  {
+   "claim_id": "p-psi-darien-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "PSI says floor space, not manpower, limits its Wisconsin enclosure output; at Darien the likely constraint is fabrication throughput, welding included, while fabrication equipment moves toward Beloit and the plant turns from a fab/weld shop into a vertically integrated line.",
+   "tag": "inferred",
+   "origin": "ledger/evidence.csv",
+   "verdict": "corrected",
+   "corrected_value": "Likely fabrication throughput, welding included: PSI said in March 2026 that its constraint is not manpower or engine supply but space, because its enclosures are large (50+ ft long, 10+ ft wide), that fabrication equipment was being moved to its new Beloit facility, and that its Wisconsin facilities were being transformed from fab/weld shop into a vertically integrated operation; how much of this applies to Darien is not stated.",
+   "corrected_quote": "The Wisconsin facilities are being transformed from fab/weld shop and storage warehouse into a vertically integrated operation with painting, laser, and capital equipment.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "PSI 8-K exhibit 99.1 (summary of March 11, 2026 investor meetings) re-read 2026-11-17. 'The constraint is not manpower or engine supply; enclosures are large (50+ ft long, 10+ ft wide) and space-intensive' (c-psi:bottleneck, stated) and 'Fabrication equipment is being moved to the new facility in Beloit, WI' (c-psi:site_roles, stated) are on the page. But 'the plant turns from a fab/weld shop into a vertically integrated line' is on no evidence row, and the source says 'The Wisconsin facilities are being transformed ...' (company-level, Darien and Beloit together), dated March 2026; the guess gives it to Darien, undated and in the present tense. The equipment move names Beloit as destination only, not Darien as origin. Rewritten with the source's wording and date, attributed to PSI's Wisconsin facilities; lead: add the quoted sentence as a stated c-psi:site_roles row (same URL). No score moves (Darien demand stays 8; the 8-K gives no date for the Darien expansion).",
+   "plants_csv_value": "Likely fabrication throughput, welding included: PSI said in March 2026 that its constraint is not manpower or engine supply but space, because its enclosures are large (50+ ft long, 10+ ft wide), that fabrication equipment was being moved to its new Beloit facility, and that its Wisconsin facilities were being transformed from fab/weld shop into a vertically integrated operation; how much of this applies to Darien is not stated."
+  }
+ ]
+}

@@ -1,0 +1,650 @@
+{
+ "vertical": "v-trailers-chassis-mobile-power",
+ "checker": "line-checker TR-FL",
+ "round": "round3-L",
+ "date": "2026-11-20",
+ "scope": "opening_line and bottleneck_guess of every plant under lines in tr-checks.json: 30 High/Medium profiled plants (High: Etnyre, EK Fall River, Stoughton Stoughton, Stoughton Evansville, Towmaster, Duo Lift; Medium: 24), 60 text lines, 0 unknown lines.",
+ "decision_rule": "corrected = the line adds a fact the cited page does not show, tags a judgement as stated, places a company-level fact at the plant, ties a posting to the plant through a location shared by several sites, a clause rests on no stated row of a cited claim, or a dating/form rule is broken (board dates as 'listed <date>'; no 'posted/currently/now hiring'; no live counts; plans as plans; company facts company-wide; opening ends with a 'you' question; bottleneck starts Likely/Possibly); confirmed = every additive clause rests on a stated row of a cited claim and that row's page carries it today; unreachable = page could not be read. Questions may join stated facts but not assert a new one.",
+ "plants": 30,
+ "claims_checked": 60,
+ "claims_corrected": 2,
+ "claims_unreachable": 0,
+ "claims_confirmed": 58,
+ "error_rate": 0.0333,
+ "error_rate_note": "2/60 = 3.3% on text lines (all 60 on High/Medium plants). Both corrections are Coastline DeLand (Medium 63) and form-level: a count of postings ('three welder roles') resting only on the inferred '3 counted' row; all three roles are live and no fact on any page is contradicted. Substantive (fact) errors: 0/60. No score moves. Under the 10% bar.",
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 0,
+  "invented fact": 0,
+  "other": 2
+ },
+ "repeated_kinds": [],
+ "mechanical_checks": "tools/validate_lines.py --vertical v-trailers-chassis-mobile-power --tiers High,Medium: '60 text lines checked, 0 failing'; plants.csv opening_line and bottleneck_guess equal their single evidence row value for all 60; every bottleneck starts Likely/Possibly; every opening line ends with a 'you' question; no 'posted/currently/now hiring/still open'; no Path or pitch wording. Rewrites: validate_lines.py --inbox on a scratch file with the two corrected rows: '2 text lines checked, 0 failing'.",
+ "method": "Every board re-read 2026-11-20 at the source: UKG LoadSearchResults (Federal Signal, Wilson, Stoughton, Utility); Hendrickson ADP MyJobs via Playwright (full listing, apply-custom-filters, 191 jobs paged: all 15 cited requisitions present; plus search-meta and job-details for addresses and text, each with an Apply control); ADP WFN job-requisitions JSON (Propell, SmithCo, Cimarron) with detail text; Generac Workday CXS (detail + welder search); Paycom (Etnyre, Big Tex; browser board list); Paylocity board JSON (JOST); BambooHR list/detail JSON (Coastline); Lippert careers API (300 jobs); ClearCompany careers API (Dexter, 63 postings); Paycor board (Towmaster); HireClick board (Eby, browser); company pages (Duo Lift, Cottrell, Hutchens, EK, JOST about, Hendrickson global operations, Allmand careers); news/filings (Generac 10-K 'On January 5, 2026' FOUND; ttnews, Truck Parts & Service via browser after one 403, Nasdaq, tycrop.com, CEG, Utility release, Generac 10-K, OK DEQ PDF). OSHA IDs 2965462 and 2980102 checked in data/osha_2025.csv (osha.gov blocked). Every counted posting named in a line is on the company's own board today. 0 web searches used. No ledger file edited.",
+ "worst_errors": [
+  "p-coastline-power-deland-fl:opening_line: 'lists three welder roles in Deland' rests only on an inferred, quote-less count row; rewritten naming the two dated roles (Welder Fabricator I - 2nd Shift, listed Sep 3, 2026; Aluminum Welder Fabricator I, listed Jun 30, 2026).",
+  "p-coastline-power-deland-fl:bottleneck_guess: same count clause ('three welder roles ... at once'); rewritten on the two dated stated rows."
+ ],
+ "leads": [
+  "Hendrickson ADP rows (Lebanon, Elizabethtown, Navarre, Reyco) still say 'board shows no posting date'; each requisition carries timestampLastPosted (e.g. Lebanon 2026-09-09, Elizabethtown 2026-08-20 and 2026-11-09, Navarre 2026-08-03 and 2026-07-06, Reyco 2026-07-28 to 2026-09-28). Not a line error (lines are read-dated); row wording only.",
+  "Towmaster pages say 'At Towmaster, an Aebi Schmidt brand ... As part of the Aebi Schmidt Group'; plants.csv parent_company is 'Monroe Truck Equipment' (not checked here; outside line scope).",
+  "Coastline Welder Fabricator I (Tank) is a 2024-04-25 standing ad; any future line naming it should date it as such.",
+  "Duo Lift bottleneck drops 'minor' from 'Repair minor robot weld defects'; harmless, noted."
+ ],
+ "apply_note": "Apply corrected_value to plants.csv opening_line and bottleneck_guess of p-coastline-power-deland-fl and replace its two line evidence rows (blank source_url) with the corrected rows (reasoning as corrected_reasoning). No score, tier or confidence change.",
+ "rows": [
+  {
+   "claim_id": "p-mega-albuquerque-nm:opening_line",
+   "source_url": "",
+   "ledger_value": "Federal Signal's job board lists a Welder role at 700 Osuna Rd NE in Albuquerque, listed Oct 20, 2026, at a starting wage of $23-$28 an hour for GMAW and FCAW with the ability to weld-wire feed in multiple positions, after Federal Signal announced on Jan 16, 2026 that it had completed its acquisition of Mega Corp.; how are you staffing multi-position welding at Osuna Road?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "67",
+   "verdict": "confirmed",
+   "note": "Federal Signal UKG LoadSearchResults re-read 2026-11-20: WELDE007520 'Welder', Mega-NM 700 Osuna Rd NE, PostedDate 2026-10-20 (live). Detail page: 'Starting Wage $23-$28/hour', 'Gas Metal Arc Welding (GMAW)/Flux Core Arc Welding (FCAW)', 'Ability to weld-wire feed in multiple positions' FOUND. Nasdaq release: 'Jan. 16, 2026' and 'today announced that it has completed the acquisition of Mega Corp.' FOUND (company-level fact worded as Federal Signal's). 'you' question."
+  },
+  {
+   "claim_id": "p-mega-albuquerque-nm:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely skilled multi-position wire-feed welders: Federal Signal's Welder role at 700 Osuna Rd NE (listed Oct 20, 2026, starting wage $23-$28 an hour) calls for GMAW and FCAW and the ability to weld-wire feed in multiple positions.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "67",
+   "verdict": "confirmed",
+   "note": "'Likely'. Same live requisition, wage and GMAW/FCAW/multi-position text FOUND 2026-11-20."
+  },
+  {
+   "claim_id": "p-etnyre-oregon-il:opening_line",
+   "source_url": "",
+   "ledger_value": "Etnyre's Paycom board lists Welder - 1st Shift and Welder - 2nd Shift roles in Oregon, IL, both listed Oct 20, 2026, that perform MIG welding, and a Welding Robot Programmer & Fixture Engineer role, read November 2026, to program Panasonic and AI robotic welding systems; how do you decide which weldments go to the robots and which stay with your manual MIG welders?",
+   "tag": "inferred",
+   "score_tier": "High",
+   "score_total": "73",
+   "verdict": "confirmed",
+   "note": "Paycom board (browser) 2026-11-20 lists Welder - 1st Shift, Welder - 2nd Shift and Welding Robot Programmer & Fixture Engineer, all 'Etnyre - Oregon, IL 61061'. Jobs 411802/411746 JSON-LD datePosted 2026-10-20 and 'Perform MIG welding using standard tools and equipment' FOUND; job 410684 'Develop, program, test, and troubleshoot Panasonic and AI robotic welding systems.' FOUND. 'read November 2026' matches the row read date. City-only posting written 'in Oregon, IL' (rule 7a via the FRS closed-site row), not placed at a street. 'you' question."
+  },
+  {
+   "claim_id": "p-etnyre-oregon-il:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual MIG welding capacity on both shifts: Etnyre's Paycom board lists Welder - 1st Shift and Welder - 2nd Shift roles in Oregon, IL, both listed Oct 20, 2026, that perform MIG welding, with daily and voluntary Saturday overtime opportunities on 1st shift and Friday overtime options on 2nd, alongside a Welding Robot Programmer & Fixture Engineer role, read November 2026, for Panasonic and AI robotic welding systems.",
+   "tag": "inferred",
+   "score_tier": "High",
+   "score_total": "73",
+   "verdict": "confirmed",
+   "note": "'Likely'. Overtime clauses checked on the job pages, not only the row values: 411802 'Monday-Friday (Daily overtime opportunities + voluntary Saturday overtime)'; 411746 'Monday-Thursday (Over-time options on Friday)'. Written as opportunities/options, not mandatory. Robot role live."
+  },
+  {
+   "claim_id": "p-coastline-power-deland-fl:opening_line",
+   "source_url": "",
+   "ledger_value": "Coastline's own careers board (read November 20, 2026) lists three welder roles in Deland, including an Aluminum Welder Fabricator I who MIG welds roof frames and enclosure wall base frames with a spool gun; how are you keeping up with welding across tank and enclosure work?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "63",
+   "verdict": "corrected",
+   "corrected_value": "Coastline's own careers board lists a Welder Fabricator I - 2nd Shift role in its Tank department in Deland, listed Sep 3, 2026, and an Aluminum Welder Fabricator I role, listed Jun 30, 2026, that performs aluminum MIG spool gun welding on roof frames and enclosure wall base frames; how are you keeping up with welding across tank and enclosure work?",
+   "corrected_reasoning": "composed from stated claims: p-coastline-power-deland-fl:welder_postings, p-coastline-power-deland-fl:weld_processes",
+   "error_kind": "other",
+   "error_sub_kind": "count of postings resting only on an inferred, quote-less row (no live counts; postings as listed <date>)",
+   "substantive": false,
+   "note": "BambooHR careers/list and detail JSON re-read 2026-11-20: jobs 28 (Welder Fabricator I, Tank, datePosted 2024-04-25), 52 (Aluminum Welder Fabricator I, Roof Weld, 2026-06-30) and 71 (Welder Fabricator I - 2nd Shift, Tank, 2026-09-03) all 'Open', Deland FL 32724; roof-frame spool-gun sentence FOUND on 52. Facts true today, but the clause 'lists three welder roles' is a count of postings that rests only on the inferred, quote-less p-coastline-power-deland-fl:welder_postings row ('3 counted'); no single stated row carries it (line rule: each clause on one stated row; constrained composition: no live counts). Not the Colonna case (there the count was one requisition's own openings field, past tense, read-dated). Rewritten naming the two dated roles from their stated rows (the 2024 standing ad left out rather than aged). Form-level; the coordinator may overrule. No score moves. validate_lines --inbox on the rewrite: 0 failing."
+  },
+  {
+   "claim_id": "p-coastline-power-deland-fl:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly welder hiring: Coastline's own careers board (read November 20, 2026) lists three welder roles in Deland at once, for tank and roof-frame welding.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "63",
+   "verdict": "corrected",
+   "corrected_value": "Possibly welder hiring for tank and roof-frame work: Coastline's own careers board lists a Welder Fabricator I - 2nd Shift role in its Tank department in Deland, listed Sep 3, 2026, and an Aluminum Welder Fabricator I role for roof-frame welding, listed Jun 30, 2026.",
+   "corrected_reasoning": "composed from stated claims: p-coastline-power-deland-fl:welder_postings",
+   "error_kind": "other",
+   "error_sub_kind": "count of postings resting only on an inferred, quote-less row (no live counts; postings as listed <date>)",
+   "substantive": false,
+   "note": "Same basis as the opening line: 'lists three welder roles in Deland at once' is a count resting only on the inferred '3 counted' row. All three roles live 2026-11-20 (BambooHR JSON). Rewritten on the two dated stated rows; hedge kept. Form-level; no score moves."
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "EK announced on Aug 31, 2026 that it had closed on the purchase of a former trucking company's real estate in Fall River, a move it said will expand its manufacturing capacity, and that Plant 5 will be set up as a manufacturing facility with fabrication equipment and a powder coat paint line; how are you planning welding capacity alongside Plant 5?",
+   "tag": "inferred",
+   "score_tier": "High",
+   "score_total": "87",
+   "verdict": "confirmed",
+   "note": "EK news page re-read 2026-11-20: 'August 31, 2026', 'closed on the purchase of a former trucking company's real estate in Fall River, a move that will expand EK's manufacturing capacity', 'Plant 5 will be set up as a manufacturing facility, equipped with fabrication equipment and a powder coat paint line' FOUND. Plan kept as plan ('will be set up', 'it said will expand'). 'you' question."
+  },
+  {
+   "claim_id": "p-ek-machine-fall-river-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly fabrication capacity: EK announced on Aug 31, 2026 that it had bought a former trucking company's real estate in Fall River to expand its manufacturing capacity, with Plant 5 to be set up with fabrication equipment and a powder coat paint line.",
+   "tag": "inferred",
+   "score_tier": "High",
+   "score_total": "87",
+   "verdict": "confirmed",
+   "note": "'Possibly'. Same page clauses FOUND; 'had bought' = the page's 'closed on the purchase'; Plant 5 wording kept as future."
+  },
+  {
+   "claim_id": "p-generac-berlin-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Generac's Workday board listed a Welder I - 1st Shift role in Berlin on 2026-04-22 covering MIG, aluminum and TIG welding in the fabrication of parts; how do you split that work between manual welders and the robotic welder?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "45",
+   "verdict": "confirmed",
+   "note": "Workday CXS 2026-11-20: JR13679 'Welder I - 1st Shift', Berlin, WI - USA, startDate 2026-04-22, canApply true; also in the welder search list. 'perform Mig welding, Aluminum welding, TIG Welding, electric or robotic welding in the fabrication of parts' and 'Assist with robotic welder.' FOUND. 'listed ... on 2026-04-22' is the board's startDate. 'you' question."
+  },
+  {
+   "claim_id": "p-generac-berlin-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly manual welding across mixed parts: the Welder I role Generac listed for Berlin on 2026-04-22 says components may be standardized or customized and names MIG, aluminum and TIG welding.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "45",
+   "verdict": "confirmed",
+   "note": "'Possibly'. JR13679 live; 'Components may be standardized or customized as to design and function.' FOUND."
+  },
+  {
+   "claim_id": "p-allmand-holdrege-ne:opening_line",
+   "source_url": "",
+   "ledger_value": "Generac's Workday board listed an Allmand Welder II role in Holdrege on 2026-11-13 asking for MIG and stick welding, and Generac's 10-K says it completed its acquisition of Allmand on January 5, 2026; how do you staff MIG welding across your light tower, heater and generator lines?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "65",
+   "verdict": "confirmed",
+   "note": "Workday CXS 2026-11-20: JR18488 Welder II, Holdrege, startDate 2026-11-13 ('Posted 7 Days Ago'), names 'Allmand jobsite equipment'; 'Intermediate MIG (GMAW), and Stick (SMAW) welding.' FOUND. Generac 10-K 'On January 5, 2026' and 'completed the acquisition of Allmand' FOUND (company-level, worded as Generac's acquisition). allmand.com careers: 'Allmand manufactures portable light towers, mobile industrial heaters, and mobile generators' FOUND (question joins stated facts). 'you' question."
+  },
+  {
+   "claim_id": "p-allmand-holdrege-ne:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual MIG welding capacity: Generac's Workday board listed Allmand Welder II roles in Holdrege on 2026-03-06 and 2026-11-13, and the posting asks welders to assist with a robotic welder.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "65",
+   "verdict": "confirmed",
+   "note": "'Likely'. JR12924 (startDate 2026-03-06) and JR18488 (2026-11-13) both live 2026-11-20 at Holdrege; 'Assist with robotic welder.' FOUND on both."
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Big Tex's board lists a Welder role at Big Tex Mt. Pleasant, listed Sep 30, 2026, with a sign-on/retention bonus, alongside a 2nd-shift Welder 1 role listed Sep 4, 2025; how are you keeping welders on the line?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "46",
+   "verdict": "confirmed",
+   "note": "Big Tex Paycom board (browser) 2026-11-20 lists 'Welder 1 (2nd shift 4:00 pm -2:40 a.m.)' and 'Welder Big Tex Mt. Pleasant'. Job 355262: datePosted 2026-09-30, 'Sign-on/Retention Bonus available' FOUND; job 218768: datePosted 2025-09-04, 'Big Tex Mt. Pleasant' FOUND. Dates are the JSON-LD 'listed' dates. 'you' question."
+  },
+  {
+   "claim_id": "p-big-tex-mount-pleasant-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly welder retention: Big Tex's board lists a Welder role at Big Tex Mt. Pleasant, listed Sep 30, 2026, with a sign-on/retention bonus, and a 2nd-shift Welder 1 role listed Sep 4, 2025.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "46",
+   "verdict": "confirmed",
+   "note": "'Possibly'. Same two postings live with the same dates and bonus text."
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:opening_line",
+   "source_url": "",
+   "ledger_value": "Wilson's board lists Night Shift Welder/Assemblers in Yankton, listed Nov 4, 2026, and Day Shift Assemblers/Welders, listed Sep 29, 2026; how do you train new welder/assemblers for both shifts?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "50",
+   "verdict": "confirmed",
+   "note": "Wilson UKG LoadSearchResults 2026-11-20: NIGHT001536 'Night Shift Welder/Assemblers-Yankton, SD' (2026-11-04) and DAYSH001530 'Day Shift Assemblers/Welders-Yankton, SD' (2026-09-29), both Yankton SD 3602 Broadway Ave. Newest first. 'you' question."
+  },
+  {
+   "claim_id": "p-wilson-yankton-sd:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly welder/assembler hiring on two shifts: Wilson's board lists Night Shift Welder/Assemblers (listed Nov 4, 2026) and Day Shift Assemblers/Welders (listed Sep 29, 2026) in Yankton.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "50",
+   "verdict": "confirmed",
+   "note": "'Possibly'. Same two requisitions live with the same dates at 3602 Broadway Ave."
+  },
+  {
+   "claim_id": "p-propell-granbury-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Propell's ADP board listed a Welder Fabricator MIG role in Granbury on 2026-09-04, and VoltaGrid announced on May 11, 2026 that it will expand on Propell's existing Texas facilities by building two additional automated manufacturing plants; how would you staff welding if those plants are built?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "57",
+   "verdict": "confirmed",
+   "note": "Propell ADP WFN board 2026-11-20: 9200912264699_1 'Welder Fabricator MIG', Granbury TX, postDate 2026-09-04 (live; only Propell site in the ledger in Granbury). tycrop.com release: 'May 11, 2026' and 'VoltaGrid will immediately invest in expanding on Propell's existing facilities in Texas by building two additional next-generation automated manufacturing plants' FOUND; written as a plan ('will expand', 'if those plants are built'); company-level, worded as Propell's Texas facilities. 'you' question."
+  },
+  {
+   "claim_id": "p-propell-granbury-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly GTAW and TIG welding capacity: the Welder Fabricator MIG role Propell listed on 2026-09-04 asks for GTAW welds in positions 1F through 4F and proficiency in TIG and MIG.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "57",
+   "verdict": "confirmed",
+   "note": "'Possibly'. Posting text re-read from the ADP requisition JSON: 'Consistently perform high-quality welds using GTAW processes in positions 1F through 4F.' and 'Proficiency in various welding techniques, including TIG and MIG' FOUND."
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:opening_line",
+   "source_url": "",
+   "ledger_value": "Hutchens' careers page, read Nov 20, 2026, lists Automatic Weld & Assembly Operator and Slider Operator roles at Mansfield that tack and weld trailer suspension parts and movable subframes; how do you train operators for the manual welding in those roles?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "46",
+   "verdict": "confirmed",
+   "note": "hutchensindustries.com/careers 2026-11-20: 'Automatic Weld & Assembly Operator Mansfield, Missouri' and 'Automatic Weld & Assembly Slider Operator Mansfield, Missouri' FOUND. Role pages: AWA Operator 'Tack and weld component parts together for trailer suspensions'; Slider 'Welds together metal components of products such as trailer suspension parts, movable subframes ... manipulate welding gun to tack/weld components'. 'tack' is on both pages though not in the cited quotes; the page carries every clause. Standing role pages, no posting date claimed ('read Nov 20, 2026'). 'you' question."
+  },
+  {
+   "claim_id": "p-hutchens-mansfield-mo:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly manual tack-and-weld work around the automatics: Hutchens' AWA Operator page, modified May 31, 2023, names hub welders, robots and washer welders in the Mansfield department, and the AWA Slider Operator page, read Nov 20, 2026, describes manually guiding the gun along the weld line.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "46",
+   "verdict": "confirmed",
+   "note": "'Possibly'. AWA Operator raw source '2023-05-31T08:40:50' (the page's own modified date) and 'Operate all automatics within the department (hub welders, robots, washer welders, bearing block welder, etc.)' FOUND; Slider 'Manually guides gun along weld line' FOUND. Mansfield from the careers list."
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:opening_line",
+   "source_url": "",
+   "ledger_value": "Hendrickson's job board, read Nov 20, 2026, lists a Welder (Nights) role at 180 Mt. Zion Road in Lebanon for MIG, hand and robotic welding; how do you staff manual MIG welding on the night shift?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "58",
+   "verdict": "confirmed",
+   "note": "Hendrickson ADP (Playwright, search-meta and job-details) 2026-11-20: 5001224130906 'Welder (Nights)', 180 Mt. Zion Road, Lebanon, Indiana 46052; 'Perform MIG, hand and robotic welding operations...' FOUND. Read-dated (board field is timestampLastPosted 2026-09-09, a re-post stamp; not converted). 'you' question. Requisition(s) present in the full Hendrickson listing (191 jobs) 2026-11-20."
+  },
+  {
+   "claim_id": "p-hendrickson-lebanon-in:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly night-shift manual MIG welding: Hendrickson's board, read Nov 20, 2026, lists a Welder (Nights) role at Lebanon for MIG, hand and robotic welding that requires passing a welding certification test.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "58",
+   "verdict": "confirmed",
+   "note": "'Possibly'. Same requisition live; 'Ability to pass welding certification test.' FOUND. Requisition(s) present in the full Hendrickson listing (191 jobs) 2026-11-20."
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:opening_line",
+   "source_url": "",
+   "ledger_value": "Hendrickson's job board, read Nov 20, 2026, lists Welder - 1st Shift and Welder - 3rd Shift roles at 940 North Black Branch Road in Elizabethtown for MIG, hand and robotic welding; how do you cover manual MIG welding across those shifts?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "66",
+   "verdict": "confirmed",
+   "note": "Hendrickson ADP 2026-11-20: 5001220202906 'Welder - 1st Shift' and 5001236383006 'Welder - 3rd Shift', both 940 North Black Branch Road, Elizabethtown, Kentucky 42701; MIG, hand and robotic welding sentence FOUND on both. 'you' question. Requisition(s) present in the full Hendrickson listing (191 jobs) 2026-11-20."
+  },
+  {
+   "claim_id": "p-hendrickson-elizabethtown-ky:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely keeping manual MIG welders staffed on first and third shifts: Hendrickson's board, read Nov 20, 2026, lists Welder - 1st Shift and Welder - 3rd Shift roles at Elizabethtown for MIG, hand and robotic welding, and the Welder - 1st Shift posting requires passing a welding certification test.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "66",
+   "verdict": "confirmed",
+   "note": "'Likely'. Both requisitions live; 'Ability to pass welding certification test.' FOUND on the 1st Shift page (and the 3rd). Requisition(s) present in the full Hendrickson listing (191 jobs) 2026-11-20."
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:opening_line",
+   "source_url": "",
+   "ledger_value": "Hendrickson's job board, read Nov 20, 2026, lists Welder - Nights and Welder - Afternoons roles at 4500 Sterilite St NE in Navarre for MIG, hand and robotic welding, and the Welder - Nights posting requires a 2G MIG welding certification test; how do you staff manual MIG welding on those shifts?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "66",
+   "verdict": "confirmed",
+   "note": "Hendrickson ADP 2026-11-20: 5001216054306 'Welder - Nights' and 5001209943906 'Welder - Afternoons', both 4500 Sterilite St, NE, Navarre, Ohio 44662; MIG/hand/robotic sentence and 'Ability to pass 2G MIG welding certification test.' FOUND on Welder - Nights. 'you' question. Requisition(s) present in the full Hendrickson listing (191 jobs) 2026-11-20."
+  },
+  {
+   "claim_id": "p-hendrickson-navarre-oh:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely staffing manual MIG welders on nights and afternoons alongside FANUC welding robots: Hendrickson's board, read Nov 20, 2026, lists Welder - Nights and Welder - Afternoons roles at Navarre and a Manufacturing Engineering Technician role that operates FANUC welding robots.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "66",
+   "verdict": "confirmed",
+   "note": "'Likely'. 5001232395306 'Manufacturing Engineering Technician - Afternoons' live at 4500 Sterilite St NE, Navarre; 'Operate, maintain, and teach FANUC material handling, welding robots or related equipment.' FOUND. Both Welder roles live. Requisition(s) present in the full Hendrickson listing (191 jobs) 2026-11-20."
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:opening_line",
+   "source_url": "",
+   "ledger_value": "Hendrickson's board lists Welding Fabrication Associate roles at 277 North High Street in Hebron for 2nd shift, listed Nov 11, 2026, and 3rd shift, listed Sep 30, 2026, that lay out, position and tack-weld parts for welding; how do you train new associates for those shifts?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "46",
+   "verdict": "confirmed",
+   "note": "Hendrickson ADP 2026-11-20: 5001236315006 'Welding Fabrication Associate - 2nd Shift' (timestampLastPosted 2026-11-11) and 5001228608906 'Welding/Fabrication Associate - 3rd Shift' (2026-09-30), both 277 North High Street, Hebron, Ohio 43025; 'Lay out, position, and tack-weld parts to secure for welding' FOUND on both. Dates are the board's own field written 'listed' (UKG/ADP re-stamp practice), not 'posted'. 'you' question. Requisition(s) present in the full Hendrickson listing (191 jobs) 2026-11-20."
+  },
+  {
+   "claim_id": "p-hendrickson-hebron-oh:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely staffing fit-up and tack welding on 2nd and 3rd shift: Hendrickson's board lists Welding Fabrication Associate roles at Hebron, listed Nov 11, 2026 and Sep 30, 2026, that lay out, position and tack-weld parts for welding.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "46",
+   "verdict": "confirmed",
+   "note": "'Likely'. Same two requisitions, same timestamps and tack-weld text, 2026-11-20. Requisition(s) present in the full Hendrickson listing (191 jobs) 2026-11-20."
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:opening_line",
+   "source_url": "",
+   "ledger_value": "Hendrickson's job board, read Nov 20, 2026, lists Welder and 3rd shift Welder roles at Reyco Granning Suspensions, 1205 Industrial Park Drive in Mount Vernon, for MIG, hand and robotic welding; how do you staff manual MIG welding there?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "61",
+   "verdict": "confirmed",
+   "note": "Hendrickson ADP 2026-11-20: Welder reqs 5001221793506, 5001228260706, 5001221610706, 5001214262106 and '3rd shift Welder' 5001228256206 live at 1205 Industrial Park Drive, Mount Vernon, Missouri 65712; pages name 'Reyco Granning'; MIG/hand/robotic sentence FOUND. Hendrickson global-operations page: 'Reyco Granning Suspensions 1205 Industrial Park Dr' FOUND. 'you' question. Requisition(s) present in the full Hendrickson listing (191 jobs) 2026-11-20."
+  },
+  {
+   "claim_id": "p-reyco-granning-mount-vernon-mo:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely staffing manual MIG welders, including on third shift: Hendrickson's board, read Nov 20, 2026, lists Welder and 3rd shift Welder roles at Mount Vernon for MIG, hand and robotic welding, and a Welder posting requires passing a welding certification test.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "61",
+   "verdict": "confirmed",
+   "note": "'Likely'. Same requisitions live; 'Ability to pass welding certification test.' FOUND. Requisition(s) present in the full Hendrickson listing (191 jobs) 2026-11-20."
+  },
+  {
+   "claim_id": "p-watson-chalin-mckinney-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Hendrickson's ADP board (read November 20, 2026) lists 1st Shift and 2nd Shift Welder roles at the W&C McKinney plant doing MIG, hand and robotic welding; how do you staff welding across both shifts?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "66",
+   "verdict": "confirmed",
+   "note": "Hendrickson ADP 2026-11-20: 5001232557506 '1st Shift Welder' and 5001236327406 '2nd Shift Welder', company 'W&C', 725 E. University Drive, McKinney, Texas 75069; MIG/hand/robotic sentence FOUND. Read-dated (rows treat timestampLastPosted as re-post stamps). 'you' question. Requisition(s) present in the full Hendrickson listing (191 jobs) 2026-11-20."
+  },
+  {
+   "claim_id": "p-watson-chalin-mckinney-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder staffing on two shifts: Hendrickson's ADP board (read November 20, 2026) lists both a 1st Shift and a 2nd Shift Welder role at the McKinney plant.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "66",
+   "verdict": "confirmed",
+   "note": "'Likely'. Both requisitions live at 725 E. University Drive, 2026-11-20. Requisition(s) present in the full Hendrickson listing (191 jobs) 2026-11-20."
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Stoughton told Transport Topics (reported Nov 10, 2026) it plans to add 700 mostly production workers in 2027 after hiring 450 in the second half of 2026 at its Stoughton, Evansville and Brodhead plants; its board lists a Weld School role at Plant 5, listed Aug 5, 2026; how will you train enough welders for that ramp?",
+   "tag": "inferred",
+   "score_tier": "High",
+   "score_total": "80",
+   "verdict": "confirmed",
+   "note": "ttnews re-read 2026-11-20: 'November 10, 2026', 'add 700 mostly production workers in 2027 after hiring 450 employees during the second half of 2026', 'All the 2026 hires were brought in at the Stoughton, Evansville and Brodhead manufacturing plants', CEO Wahlin 'told Transport Topics' FOUND; company-level, worded company-wide. Stoughton UKG: WELDS003473 'Weld School - Stoughton', Plant 5 1111 Veterans Rd, PostedDate 2026-08-05, live. Plan kept as plan. 'you' question."
+  },
+  {
+   "claim_id": "p-stoughton-stoughton-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder supply for a hiring ramp: Stoughton told Transport Topics (reported Nov 10, 2026) it plans to add 700 mostly production workers in 2027, and its board lists Welder (listed May 21, 2026) and Weld School (listed Aug 5, 2026) roles at Plant 5.",
+   "tag": "inferred",
+   "score_tier": "High",
+   "score_total": "80",
+   "verdict": "confirmed",
+   "note": "'Likely'. 2NDSH003339 'Welder' (2026-05-21) and WELDS003473 (2026-08-05) live at Plant 5 1111 Veterans Rd; ttnews 700 clause FOUND."
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Stoughton's board lists Robotic Weld Operator and Robotic Weld Programmer roles at Plant 7 in Evansville, listed Nov 18, 2026; Truck Parts & Service reported Mar 17, 2026 that Stoughton had completed a reconfiguration of its Evansville facility that increased floor space for refrigerated units by 87%; how are you staffing welding on the reconfigured lines?",
+   "tag": "inferred",
+   "score_tier": "High",
+   "score_total": "72",
+   "verdict": "confirmed",
+   "note": "Stoughton UKG 2026-11-20: ROBOT003656 Robotic Weld Operator and ROBOT003655 Robotic Weld Programmer, Plant 7 101 County Road M, PostedDate 2026-11-18. Truck Parts & Service (plain fetch 403 once, browser 200): 'Mar 17, 2026' and 'recently completed a total reconfiguration of its Evansville facility. The project increased floor space dedicated to refrigerated units by 87%' FOUND. Site-level fact. 'you' question."
+  },
+  {
+   "claim_id": "p-stoughton-evansville-wi:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly keeping manual welders alongside the robot cells: Stoughton's board lists Robotic Weld Operator and Robotic Weld Programmer roles at Plant 7, listed Nov 18, 2026, and a Welder role listed Nov 11, 2026.",
+   "tag": "inferred",
+   "score_tier": "High",
+   "score_total": "72",
+   "verdict": "confirmed",
+   "note": "'Possibly'. ROBOT003656/003655 (2026-11-18) and WELDE003631 Welder (2026-11-11) live at Plant 7. 'robot cells' is framing inside the hedge; robots stated ('optimize programs for all existing robots and parts' FOUND)."
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:opening_line",
+   "source_url": "",
+   "ledger_value": "Dexter's board, read Nov 20, 2026, lists Welder roles in Fremont, IN that perform MIG welding on production parts and also run and monitor robotic welding equipment; how do you split work between manual MIG welding and the robots?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "61",
+   "verdict": "confirmed",
+   "note": "ClearCompany careers API (63 postings) 2026-11-20 lists both Welder postings b34b827f and 23c10f41; detail page 'Job Location Fremont, IN', 'Perform MIG welding on production parts', 'Run and monitor robotic welding equipment as required' FOUND. City-only, written 'in Fremont, IN' (one Dexter Fremont plant in the ledger). 'you' question."
+  },
+  {
+   "claim_id": "p-dexter-fremont-in:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly staffing manual MIG welding alongside robotic welding: Dexter's board, read Nov 20, 2026, lists Welder roles in Fremont, IN that perform MIG welding on production parts and run and monitor robotic welding equipment.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "61",
+   "verdict": "confirmed",
+   "note": "'Possibly'. Same two live postings and text."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:opening_line",
+   "source_url": "",
+   "ledger_value": "JOST's board lists Welder TN-3rd Shift, listed Nov 3, 2026, and Welder TN-2nd Shift, listed Oct 15, 2026, at 5080 W Andrew Johnson Hwy in Greeneville, roles that pull and weld parts to print and must pass the JOST Welder Qualification Test; how do you qualify new welders for fifth-wheel production?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "66",
+   "verdict": "confirmed",
+   "note": "Paylocity board JSON 2026-11-20: JobId 4509523 PublishedDate 2026-11-03T10:44:01 and 4505288 2026-10-15T09:56:34, Address 5080 W Andrew Johnson Hwy. Detail pages: 'Pull and weld parts to print or specifications.' and 'Pass JOST Welder Qualification Test' FOUND on both. Fifth wheels at Greeneville: about page 'Greeneville, TN Fifth Wheel Product Line' FOUND (site-level). 'you' question."
+  },
+  {
+   "claim_id": "p-jost-greeneville-tn:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder hiring on 2nd and 3rd shift: JOST's board lists Welder TN-2nd Shift, listed Oct 15, 2026, and Welder TN-3rd Shift, listed Nov 3, 2026, at 5080 W Andrew Johnson Hwy, each requiring the JOST Welder Qualification Test.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "66",
+   "verdict": "confirmed",
+   "note": "'Likely'. Same two postings and dates; qualification test FOUND on each."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:opening_line",
+   "source_url": "",
+   "ledger_value": "Cottrell reported a 2025 average of 1,161 employees at 2125 Candler Road to OSHA, and its careers page, read Nov 20, 2026, lists a Welder role that welds, grinds and torch-cuts parts to production requirements; how do you keep welding output steady across car-hauler models?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "60",
+   "verdict": "confirmed",
+   "note": "data/osha_2025.csv ID 2965462: Cottrell, Inc., 2125 Candler Road, Gainesville 30507, NAICS 336212, annual_average_employees 1161, year 2025 (osha.gov blocked; checked in the file). cottrelltrailers.com/careers 2026-11-20 lists 'Welder' with 'Perform welding, grinding, and torch cutting to assemble and fabricate parts according to production requirements.' FOUND. 'car-hauler models' in the question is framing (about page: 'Every car hauler is locally assembled'); no fact asserted. 'you' question."
+  },
+  {
+   "claim_id": "p-cottrell-gainesville-ga:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly welder hiring for parts fabrication: Cottrell's careers page, read Nov 20, 2026, lists a Welder role that performs welding, grinding and torch cutting to assemble and fabricate parts.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "60",
+   "verdict": "confirmed",
+   "note": "'Possibly'. Welder role still on the careers page 2026-11-20 with the quoted duties."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:opening_line",
+   "source_url": "",
+   "ledger_value": "Towmaster's board, read Nov 20, 2026, lists a 2nd Shift Welder - Trailer role and a Trailer Welder role in Litchfield that weld parts with a pulse MIG welder; how do you staff pulse MIG welding across your trailer lines?",
+   "tag": "inferred",
+   "score_tier": "High",
+   "score_total": "86",
+   "verdict": "confirmed",
+   "note": "Paycor board 2026-11-20 lists '2nd Shift Welder - Trailer - Towmaster' and 'Trailer Welder - Towmaster', both Litchfield, MN. 'welding metal parts using a pulse MIG welder' FOUND on BOTH job pages (2315 and 2605), so the clause covers both roles. 'you' question."
+  },
+  {
+   "claim_id": "p-towmaster-litchfield-mn:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly welder staffing on the trailer lines: Towmaster's board, read Nov 20, 2026, lists a 2nd Shift Welder - Trailer role and a Trailer Welder role in Litchfield that require MIG welding experience.",
+   "tag": "inferred",
+   "score_tier": "High",
+   "score_total": "86",
+   "verdict": "confirmed",
+   "note": "'Possibly'. Both roles live; 'MIG welding experience required' FOUND on both."
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:opening_line",
+   "source_url": "",
+   "ledger_value": "SmithCo's board lists an Evening Welder role in Le Mars with a $2.50 shift premium, listed Nov 2, 2026, and SmithCo announced a nationwide H-GAC cooperative purchasing contract on Jan 5, 2026; how do you plan welding capacity across shifts?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "48",
+   "verdict": "confirmed",
+   "note": "SmithCo ADP WFN board 2026-11-20: 9207365516929_1 'Evening Welder - $2.50 shift premium!' Le Mars, postDate 2026-11-02 (live). CEG page: 'announced on Jan. 5, 2026, that it was awarded a nationwide cooperative purchasing contract' FOUND. 'you' question."
+  },
+  {
+   "claim_id": "p-smithco-le-mars-ia:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly evening-shift welder staffing: SmithCo's board lists an Evening Welder role in Le Mars with a $2.50 shift premium, listed Nov 2, 2026.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "48",
+   "verdict": "confirmed",
+   "note": "'Possibly'. Same requisition live with the same date and premium."
+  },
+  {
+   "claim_id": "p-duo-lift-columbus-ne:opening_line",
+   "source_url": "",
+   "ledger_value": "Duo Lift's employment page (read November 20, 2026) lists a Welder role and a Robot/Cobot Operator who tacks and touches up welds with a hand-held MIG gun; how do you balance manual MIG welding with your robot and cobot cells?",
+   "tag": "inferred",
+   "score_tier": "High",
+   "score_total": "83",
+   "verdict": "confirmed",
+   "note": "duolift.com/employment 2026-11-20 shows 'Robot/Cobot Operator' and 'Welder' sections, 'Columbus, NE 68601'; 'Perform tack welding and touch-up welding with hand-held MIG gun as needed to keep production moving.', 'Perform wire welding to fabricate trailer components', 'Safely operate industrial robotic welding cells and collaborative robots (cobots) for MIG welding' FOUND. Undated page, read-dated. 'you' question."
+  },
+  {
+   "claim_id": "p-duo-lift-columbus-ne:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual MIG finishing around the robot cells: Duo Lift's employment page (read November 20, 2026) asks its Robot/Cobot Operator to repair robot weld defects and complete welds the robot cannot reach.",
+   "tag": "inferred",
+   "score_tier": "High",
+   "score_total": "83",
+   "verdict": "confirmed",
+   "note": "'Likely'. 'Repair minor robot weld defects or complete welds the robot cannot reach.' FOUND (line drops 'minor'; no fact added)."
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:opening_line",
+   "source_url": "",
+   "ledger_value": "Utility's Atkins board lists Welder - Steel MIG and Welder - Aluminum TIG roles for day and night shifts, listed Apr 1, 2026; Utility said in a Mar 16, 2026 release that Atkins is where it builds its 3000R refrigerated trailers; how do you staff steel MIG and aluminum TIG welding on the 3000R line?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "58",
+   "verdict": "confirmed",
+   "note": "Utility UKG LoadSearchResults 2026-11-20: WELDE001011/001012 Steel MIG Day/Night and WELDE001013/001014 Aluminum TIG Day/Night, all VA ATKINS 124 Mountain Empire Road, PostedDate 2026-04-01 (live). Utility release: 'March 16, 2026' and 'Atkins, where the company builds its 3000R' FOUND (site-level). The question joins those two stated facts. 'you' question."
+  },
+  {
+   "claim_id": "p-utility-trailer-atkins-va:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder hiring across both steel and aluminum work: Utility's Atkins board lists Welder - Steel MIG and Welder - Aluminum TIG roles for day and night shifts, listed Apr 1, 2026.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "58",
+   "verdict": "confirmed",
+   "note": "'Likely'. Same four requisitions live with the same date."
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:opening_line",
+   "source_url": "",
+   "ledger_value": "Lippert's board lists Welder 2nd Shift (listed Sep 14, 2026) and Welder 1st Shift (listed Sep 3, 2026) roles at 3152 Skyview Rd that weld hitches onto frames and anything the jig could not weld; with frames varying day to day by schedule and blueprint, how do you keep frame finishing in step with the jig?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "46",
+   "verdict": "confirmed",
+   "note": "Lippert careers API (300 jobs) 2026-11-20: 17751 'Welder 1st Shift' (2026-09-03) and 17823 'Welder 2nd Shift' (2026-09-14), both 3152 Skyview Rd. 'Welding hitches onto frame', 'Welding anything that jig was unable to weld', 'Day to day frames may vary based on schedules and blueprints provided.' FOUND on both. Street-level tie (Lippert's other Goshen record is 2408 Lincolnway E). 'you' question."
+  },
+  {
+   "claim_id": "p-lippert-goshen-in:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely finish-welding labor on a jig line: Lippert's Welder roles at 3152 Skyview Rd (listed Sep 3 and Sep 14, 2026) weld 'anything that jig was unable to weld', and frames vary day to day based on schedules and blueprints.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "46",
+   "verdict": "confirmed",
+   "note": "'Likely'. Same postings, dates and jig/frames text FOUND."
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:opening_line",
+   "source_url": "",
+   "ledger_value": "Lippert's board lists a Chassis Fab Finish role at Plant 28, 51040 Greenfield Pkwy, listed Oct 13, 2026, to weld hitches, brackets and anything the jig could not weld, and a Small Parts Cell Welder role listed Aug 20, 2026 that runs MIG welders; how do you keep manual finish welding in step with the jig line?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "66",
+   "verdict": "confirmed",
+   "note": "Lippert careers API 2026-11-20: 18017 'Chassis Fab Finish' (2026-10-13) and 17623 'Small Parts Cell Welder' (2026-08-20), location '028 LCI Plant RV Chassis', 51040 Greenfield Pkwy. 'Welding hitches onto frame', 'Welding brackets for jacks and slide outs', 'Welding anything that jig was unable to weld' (18017) and 'Must be able to operate appropriate equipment including MIG welders' (17623) FOUND. 'you' question."
+  },
+  {
+   "claim_id": "p-lippert-middlebury-in:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual finish welding after the jig: Lippert's Chassis Fab Finish role at Plant 28, listed Oct 13, 2026, welds 'anything that jig was unable to weld', and the postings say frames vary day to day based on schedules and blueprints.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "66",
+   "verdict": "confirmed",
+   "note": "'Likely'. 18017 live; 'the postings say frames vary' is plural and both 18017 and 17564 (live, same plant) carry 'Day to day frames may vary based on schedules and blueprints provided.'"
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:opening_line",
+   "source_url": "",
+   "ledger_value": "M.H. Eby's board lists a Skilled Aluminum TIG Welder role and a Robotic Welding Operator role at 502 Alexander Dr in Ephrata, both listed Jul 8, 2026, the robot role running an aluminum MIG cell for truck body decks and bulkheads with some manual MIG welding; how do you split aluminum welding between TIG welders and the robot cell?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "69",
+   "verdict": "confirmed",
+   "note": "Eby HireClick board (browser) 2026-11-20 lists 'Robotic Welding Operator' and 'Skilled Aluminum TIG Welder', Ephrata. Detail pages: datePosted '7/8/2026 8:20:28 AM' and '7/8/2026 8:20:09 AM', '502 Alexander Dr', 'Operation of Robotic aluminum MIG welding cell to make truck body decks and bulkheads, some manual MIG welding is required.' FOUND. 'you' question."
+  },
+  {
+   "claim_id": "p-eby-ephrata-pa:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely skilled aluminum TIG welder hiring: M.H. Eby's board lists a Skilled Aluminum TIG Welder role at 502 Alexander Dr, listed Jul 8, 2026, with first and second shift positions.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "69",
+   "verdict": "confirmed",
+   "note": "'Likely'. TIG role live; 'First and Second Shift Positions Available!' FOUND."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:opening_line",
+   "source_url": "",
+   "ledger_value": "Cimarron's board lists Welder I build-line roles in Manhattan, KS, listed Oct 23, 2026, and a MIG Welder role, listed Sep 14, 2026, for aluminum trailer components; how do you staff aluminum MIG and TIG welding on the build line?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "64",
+   "verdict": "confirmed",
+   "note": "Cimarron ADP WFN board 2026-11-20: Welder I 9201854031215_1 and 9201854030095_1 (postDate 2026-10-23, Manhattan) and MIG Welder 9201842979276_1 (2026-09-14, 'Cimarron Kansas', Manhattan), all live. Welder I text: 'The Build Line Welder ... responsible for fabricating and assembling aluminum trailer components', 'Aluminum MIG and/or TIG welding experience'; MIG Welder text: 'ALUMINUM MIG WELDER ... trailer components', 'MIG and/or aluminum TIG welding experience'. Page carries 'build line', TIG and aluminum components for each role. 'you' question."
+  },
+  {
+   "claim_id": "p-cimarron-manhattan-ks:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely aluminum welder hiring for the build line: Cimarron's board lists Welder I roles in Manhattan, KS, listed Oct 23, 2026, that fabricate and assemble aluminum trailer components.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "64",
+   "verdict": "confirmed",
+   "note": "'Likely'. Both Welder I requisitions live (2026-10-23); build-line and aluminum trailer components text FOUND."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:opening_line",
+   "source_url": "",
+   "ledger_value": "Dexter's El Reno plant reported a 2025 average of 157 employees to OSHA, and Oklahoma DEQ's Nov 2, 2022 permit memo describes up to 1,500-2,000 axles a day at the plant with GMAW welding; how do you staff welding for that axle volume?",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "46",
+   "verdict": "confirmed",
+   "note": "data/osha_2025.csv ID 2980102: 'Dexter Axle', 500 SE 27th St., El Reno 73036, annual_average_employees 157, year 2025. OK DEQ PDF re-read 2026-11-20: 'MEMORANDUM November 2, 2022', 'The facility normally produces up to 1,500 - 2,000 axles per day', table 'Welding GMAW 200,000' FOUND. Dates are the sources' own; newest fact first. 'you' question."
+  },
+  {
+   "claim_id": "p-dexter-el-reno-ok:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Possibly welding throughput on the axle lines: Oklahoma DEQ's Nov 2, 2022 permit memo lists GMAW welding with 200,000 lb of electrode a year at El Reno, where the plant produces up to 1,500-2,000 axles per day.",
+   "tag": "inferred",
+   "score_tier": "Medium",
+   "score_total": "46",
+   "verdict": "confirmed",
+   "note": "'Possibly'. Unit checked in the PDF table header: 'Annual Electrode Usage lb/year' with GMAW 200,000 (and condition 10: 'GMAW welding electrode shall not exceed 200,000 lb/year'). Axle figure is the memo's ('normally produces up to'), inside the memo-dated sentence."
+  }
+ ]
+}

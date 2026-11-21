@@ -1,0 +1,1678 @@
+{
+ "checker": "fact-checker C (round 1)",
+ "vertical": "v-mining-heavy-equipment",
+ "date": "2026-11-16",
+ "plants": [
+  "p-paladin-ooltewah-tn",
+  "p-werk-brau-findlay-oh",
+  "p-virnig-rice-mn",
+  "p-rockland-bedford-pa",
+  "p-bobcat-litchfield-mn",
+  "p-bobcat-bismarck-nd",
+  "p-tag-manufacturing-chattanooga-tn",
+  "p-mega-albuquerque-nm",
+  "p-esco-elko-nv",
+  "p-curry-supply-hollidaysburg-pa"
+ ],
+ "decision_rule": "As in poles rounds 3-5, ships and mining A/B. Corrected: the value (or the plants.csv field resting only on it) adds a fact the cited page does not show (including a legal suffix or group name), tags a judgement as stated, places a company-level fact at the plant, ties a posting (or the process it names) to the plant through a city shared by several of the company's sites, restates a dated figure as current, or the quote is not on the page (raw source checked before calling a JSON-LD quote missing). A row too thin for the field, score and line that rest on it is corrected with the fuller value from its own page (ships Chesapeake / mining B precedent). Confirmed: the cited page, or for a multi-row claim a sibling row's page opened 2026-11-16, carries every additive clause; rubric labels ('mixed', 'custom') and technical glosses are not additive. Opening lines: every clause carried by a stated row of a claim named in the reasoning, or by that row's page; ends in a 'you' question; no pitch language; no Path deployment asserted. Welder postings counted for labor were confirmed open today on the board's own list.",
+ "claims_checked": 155,
+ "claims_corrected": 29,
+ "claims_unreachable": 0,
+ "error_rate": 0.187,
+ "error_rate_note": "29/155 = 18.7% (145 evidence rows + 10 opening lines). Substantive (a misplaced fact or a confidence-earning tag): 10/155 = 6.5% (Werk-Brau x5 company-level part size, volumes, robots and part-mix statement at the plant; Rockland part-mix boilerplate; Paladin division products; Bismarck x2 old MSC rows; TAG judgement 'likely the second facility' tagged stated). No score total changes from row errors. Form: 9 thin rows whose page carries the load-bearing clause, 6 legal-suffix or group-name clauses, 3 dates restated (Litchfield x2, ESCO startDate), 1 opening-line wording (TAG 'worked through'). Over the 10% threshold on the full count.",
+ "error_kind_counts": {
+  "wrong plant or location": 2,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 24,
+  "invented fact": 0,
+  "other": 3
+ },
+ "repeated_kinds": [
+  "quote does not support value (24). Three sub-patterns, each 3+: (a) THIN ROWS (9: Paladin 10630, Werk-Brau 7407 and 10645, Virnig 10669, Rockland 10699, Litchfield 8036, Mega 10783, 10790, 10791): the load-bearing fact (MIG/GMAW/FCAW, posting date, street address, OT clause, the deal naming the plant) is on the cited page and in plants.csv but in no row's value. SWEEP every profiled mining plant: process 20/12 needs a weld_processes row whose value names MIG/GMAW/FCAW/TIG; labor points need a welder_postings row stating date and site; demand 15 needs a triggers row naming the plant. (b) COMPANY-LEVEL FACTS AT THE PLANT (Paladin 7434; Werk-Brau 7403, 10648, 10649, 10650, 10651; Rockland 10696): brand boilerplate, company volumes and company robots tagged stated at one site of a multi-site company; part mix on such rows earns no confidence (rule 1). (c) NAMES (Paladin 7430; Werk-Brau 10657; Virnig 9821, 10678; TAG 10769; ESCO 10814): legal suffixes or group names not on the page (', Inc.', ' LLC', 'The Weir Group') and plants.csv parent clauses with no row ('family-owned', 'independent', 'Epiroc AB', 'formerly Stanley Black & Decker', 'ESCO Division').",
+  "other (3): dates restated (Litchfield 8031 and opening line 10725: an April 2021 figure as current; ESCO 7616: Workday startDate called a 'start date', checker B's Terex finding). SWEEP: any mining field or line saying 'start date' from Workday, and any undated figure from a 2021-2023 article.",
+  "Not repeated but worth a sweep: shared-city ties checked only against FRS or the job board's location list. Curry's own locations page showed a second Hollidaysburg site (Curry Rail Services) that the profiler's check missed; the postings survive only because Curry Rail hires separately. Kinds note: Bismarck rows 8023/8024 are classed 'wrong plant or location' (a different facility's name and product), a departure from ships, which classed shared-city ties as 'quote does not support value'."
+ ],
+ "worst_errors": [
+  "p-werk-brau-findlay-oh (rows 10648, 7403, 10650, 10651): plants.csv part_size_fit still says the plant's parts 'fit 2026 analyst cell limits: excavator buckets 24-84 in wide, 2,390-12,370 lb', the fit the coordinator ruled shared-city (three Fostoria Ave sites) and scored 0; the row itself carries only 'made in Findlay'. Company-wide 50,000 attachments/yr, 20,000 miles of wire and the 2022 'robotics' line are likewise presented at 2800 Fostoria (existing_robots 'yes'). The map would show a site part-size fit and robots the evidence does not place there.",
+  "p-mega-albuquerque-nm (rows 10783, 10790, 10791): 47 of Mega's 67 points (process 20, labor 12, demand 15) rest on clauses no row's value carried: GMAW/FCAW (the row says only 'wire-feed', worth 0 under ruling 6), the Oct 20 2026 posting at 700 Osuna Rd NE, and the deal naming the Albuquerque facility (the trigger row is just a date). All three are on the cited pages today; rows corrected. Same thin-row pattern at Werk-Brau, Virnig, Rockland, Litchfield and Paladin.",
+  "p-bobcat-bismarck-nd:name and :products (rows 8023, 8024): leftover 2012 rows name the record 'Bobcat Manufacturing Support Center' and give 'Compact attachments' as its product, though the record was reframed to the Bismarck Manufacturing Facility (excavators, aftermarket parts, Oct 2025) and the 2012 article calls the MSC 'the former Bobcat production facility'. No score effect; retire or mark historical."
+ ],
+ "score_problems": [
+  "p-esco-elko-nv: part mix 15 -> 8 under a strict reading of mining rule 4 (repairs, rebuilds, modifications and heavy fabrication are stated; 'custom' is not); total 60 -> 53, still Medium. Coordinator ruling needed.",
+  "p-werk-brau-findlay-oh and p-rockland-bedford-pa: part mix 15 rests on company-level brand statements tagged stated; rule 1 keeps the points but confidence drops 4 -> 3 at both.",
+  "p-werk-brau-findlay-oh: evidence score rows stale (score_total 88, score_tier High, material reasoning 'level 20') while plants.csv is 68 Medium; plants.csv is right.",
+  "p-curry-supply-hollidaysburg-pa: 61 stands on a board-identity tie (second Curry site in Hollidaysburg: Curry Rail Services, which hires separately); 21 Low if that tie is treated as inferred.",
+  "p-mega-albuquerque-nm: demand 15 is plant-level only because the release names the Albuquerque facility (60 if whole-company deals are always company-level).",
+  "Stale confidence rows (plants.csv right): Paladin row 4 vs 3, Virnig 3 vs 2, ESCO 4 vs 3.",
+  "Process 20 at Werk-Brau, Virnig and Mega, labor at Werk-Brau, Rockland, Litchfield and Mega, and Mega's demand 15 are right but rested on facts no row's value carried (MIG/GMAW/FCAW, posting dates, street addresses, the facility named in the deal); the thin rows are corrected so the points rest on stated rows."
+ ],
+ "opening_line_problems": [
+  "p-bobcat-litchfield-mn: 'at a plant that makes more than 250 unique attachments' restates an April 2021 figure as current (NASSCO precedent). Replacement: 'made ... as of April 2021'.",
+  "p-tag-manufacturing-chattanooga-tn: 'TAG worked through a six-month production backlog' adds an outcome; the UT CIS page says shortages 'contributed to a six-month production backlog'. Replacement in the row. The backlog and lead-time clause sits on production_type row 10765's page but in no row value; add a stated row.",
+  "Passed only on the page of a cited row (rows corrected to carry the clause): Paladin (IGM and/or Wolf robots), Werk-Brau (MIG; June 26 date; 2800 Fostoria; 12,370 lb cut sheet, phrased company-level), Virnig (MIG), Rockland (Mig Welder date and address), Mega (GMAW/FCAW; date and 700 Osuna Rd).",
+  "All 10 end in a 'you'/'your' question, carry no pitch language and assert no Path deployment (no Mine Rite or Coperion site in this set)."
+ ],
+ "plants_closed_or_moved": [],
+ "plant_status_notes": "All 10 operate at the recorded city. Live today: Paladin/C&P Ooltewah (Epiroc board: Welder/Fabricator Oct 25 2026, Material Handler, Assembler; EPA FRS 8822 Apison Pike); Werk-Brau 2800 Fostoria Ave (Paycom: WB Welder Hot Job, JSON-LD streetAddress 2800 Fostoria Ave); Virnig Rice (Paylocity: 7 Rice roles; board also lists Fort Madison IA); Rockland 152 Weber Lane (Paylocity JSON Address; board also shows a new Claysburg PA location); Bobcat Litchfield (Doosan: Welder- 2nd Shift Nov 4 2026; FRS 520 Polydome Dr); Bobcat Bismarck (CEG Oct 2025 says 700+ at the Manufacturing Facility; Welder -Bismarck Oct 20 2026; street address unknown, FRS lead 530 26th Street 'BOBCAT MANUFACTURING', ZIP 58504); TAG Chattanooga (2026 listings and a Feb 2026 dealer item, search discovery only; FRS 6989 and 7080 Discovery Dr; tagmfg.com unreachable); Mega 700 Osuna Rd NE (UltiPro: Welder and Maintenance Technician Oct 20 2026, now Federal Signal); ESCO Elko (Workday R0040294, descriptor 'US204 - ESCO - Elko - 9102 E Idaho St', canApply true; FRS shows SAS Global Corporation at that address); Curry 1477 DeGol Industrial Dr (locations page; FRS 110070492609), with a second Hollidaysburg site (Curry Rail Services, 360 Millennium Lane, which recruits through its own application; Curry Supply's ADP board lists no rail roles).",
+ "method": "All 62 distinct source URLs behind the 10 plants' stated rows and the vertical demand_outlook rows were fetched on 2026-11-16 with tools/fetch_page.fetch(with_raw=True) (plain request with raw source; Chromium fallback for Paycom, UltiPro, global.weir). Every '...'-joined quote fragment was matched against normalised text plus raw source: 142/142 found (row 10654's JSON-LD quote matched by curl against the raw Paycom source, since the browser render drops JSON-LD), 0 unreachable. EPA FRS answered (no 503); records were parsed from JSON for every plant's ZIP or name. Boards read today through their own data: Epiroc search (locationsearch=Ooltewah); Paycom career page and job JSON-LD (Werk-Brau 556209, 608999); Paylocity board pageData JSON (Virnig, Rockland: JobTitle, LocationName, PublishedDate, Address); Doosan search HTML (q=weld at Litchfield and Bismarck) and itemprop datePosted; Federal Signal UltiPro board (browser, q=welder); Weir Workday CXS job JSON (startDate, postedOn, canApply, jobRequisitionLocation) and jobs search (searchText Elko: one Elko posting); Curry ADP job-requisitions API (list and both Welder requisitions: requisitionLocations, postDate, description). Shared-city checks: company locations pages were read for Curry (second Hollidaysburg site found; curryrail.com/careers read) and Virnig (only 101 Gateway Dr NE in Rice); Paladin and Bobcat Litchfield were cleared by EPA FRS (one record in the city) and the board's location only; Werk-Brau, Rockland, Mega and ESCO postings name the street address or Workday site descriptor; Bismarck's posting was not counted. WebSearch was used once, for TAG's open status (discovery only, never a quote). Scope (155 rows): every stated row of the 10 plants in the delegated fields; every row of any tag of a claim cited by a score_* row; the triggers rows (unknown) behind demand 8; Bismarck's unknown address row; and the 10 opening_line rows. Stated website, tier and prospect_test rows are outside the headline count. The shared v-mining-heavy-equipment:demand_outlook rows (SEC Caterpillar and Terex filings) were quote-matched only (quotes on the pages today), not read value against quote; not counted here. The ledger was not edited. APPLY WARNING: tools/apply_factcheck.py copies corrected_value into plants.csv when a corrected row has no plants_csv_value. Per the delegation, plants_csv_value is given only where the plant field must change (7430, 10648, 10650, 10651, 10678, 10769, 10814, 8031, 10725, 10771, 7616). For every other corrected row the plants.csv field is already right and must NOT be overwritten: 7434, 7403, 10657, 9821, 8023, 8024, 7410 (name/address/products/parent), 10645, 10669, 10783 (weld_processes), 7407, 10699, 8036, 10790 (welder_postings), 10630 (existing_robots), 10649, 10696 (production_type), 10791 (triggers).",
+ "rows": [
+  {
+   "claim_id": "p-paladin-ooltewah-tn:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?zip_code=37363&output=JSON",
+   "ledger_value": "C&P Attachments LLC (EPA FRS 110001865900)",
+   "evidence_row": 7427,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "EPA FRS (fetched 2026-11-16) returns RegistryId 110001865900, C&P ATTACHMENTS LLC, 8822 APISON PIKE, OOLTEWAH TN 37363."
+  },
+  {
+   "claim_id": "p-paladin-ooltewah-tn:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?zip_code=37363&output=JSON",
+   "ledger_value": "8822 Apison Pike, Ooltewah TN 37363",
+   "evidence_row": 7428,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Same FRS record: CityName OOLTEWAH, ZipCode 37363. Only Epiroc/Paladin/C&P record in ZIP 37363; the plant operates here (Epiroc board lists 3 open Ooltewah TN 37363 roles today)."
+  },
+  {
+   "claim_id": "p-paladin-ooltewah-tn:address",
+   "source_url": "https://www.careerprofile.epiroc.com/job/Ooltewah-WelderFabricator-TN-37363/1431613333/",
+   "ledger_value": "Epiroc welding role onsite in Ooltewah TN",
+   "evidence_row": 7429,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Posting page live today: 'Welder/Fabricator, United States – (Ooltewah, TN, Onsite)'; itemprop addressLocality Ooltewah, postalCode 37363."
+  },
+  {
+   "claim_id": "p-paladin-ooltewah-tn:parent_company",
+   "source_url": "https://www.careerprofile.epiroc.com/job/Akron-Assembly-and-Configuration-Technician-OH-44306/1447754133/",
+   "ledger_value": "Epiroc (Epiroc Industrial Tools and Attachments LLC)",
+   "evidence_row": 7430,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Epiroc (Epiroc Industrial Tools and Attachments)",
+   "corrected_quote": "Epiroc Industrial Tools and Attachments United States, Tennessee, Ooltewah Jan 28, 2026",
+   "corrected_source_url": "https://diversityjobs.com/career/15599673/Robot-Operator-I-Tennessee-Ooltewah",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Epiroc (Epiroc Industrial Tools and Attachments)",
+   "note": "The Akron page carries the brand list but not 'Epiroc Industrial Tools and Attachments LLC'; the Ooltewah Welder/Fabricator posting names the employer 'Epiroc USA LLC'. The Robot Operator I page (row 10630's page) names 'Epiroc Industrial Tools and Attachments' with no LLC. plants.csv adds 'Epiroc AB' and 'formerly Stanley Black & Decker infrastructure business', which no parent_company row quotes (rows 7430, 8095); trimmed to what the rows carry."
+  },
+  {
+   "claim_id": "p-paladin-ooltewah-tn:products",
+   "source_url": "https://www.timesfreepress.com/news/2015/mar/03/machinery-merger-paladbuys-kodiak-charleston/",
+   "ledger_value": "couplers and attachments for construction and land-clearing equipment (2015)",
+   "evidence_row": 7432,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Times Free Press, Mar 3 2015: 'Paladin Attachments in Ooltewah makes couplers and attachments for construction and land-clearing equipment.' Dated (2015) in the value."
+  },
+  {
+   "claim_id": "p-paladin-ooltewah-tn:products",
+   "source_url": "https://www.paladinattachments.com/about-us",
+   "ledger_value": "CP brand couplers, buckets, thumbs (company-level brand statement)",
+   "evidence_row": 7433,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "paladinattachments.com/about-us: CP brand text on the page; the value marks it company-level."
+  },
+  {
+   "claim_id": "p-paladin-ooltewah-tn:products",
+   "source_url": "https://www.careerprofile.epiroc.com/job/Ooltewah-WelderFabricator-TN-37363/1431613333/",
+   "ledger_value": "Hydraulic attachments and GET",
+   "evidence_row": 7434,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Mining and Infrastructure Attachments division (company-level): hydraulic attachment tools, ground engaging tools and battery-powered hand tools",
+   "corrected_quote": "The Mining and Infrastructure Attachments division is a global leader in developing, manufacturing, and marketing hydraulic attachment tools, ground engaging tools, and infrastructure battery-powered hand tools and attachments.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The sentence is the division boilerplate on the posting, not a statement of what Ooltewah makes; the value places a division-level product line at the plant. plants.csv products does not use it, so no plant field changes."
+  },
+  {
+   "claim_id": "p-paladin-ooltewah-tn:welder_postings",
+   "source_url": "https://www.careerprofile.epiroc.com/search/?q=&locationsearch=Ooltewah",
+   "ledger_value": "1 open on 2026-11-16: Welder/Fabricator, Ooltewah TN 37363, posted 2026-10-25 (22 days); also an Assembler (2026-10-18, not counted)",
+   "evidence_row": 7438,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Epiroc board searched today (locationsearch=Ooltewah): 3 results, Welder/Fabricator Ooltewah TN 37363 Oct 25, 2026 (Production), Material Handler/Kitter Oct 25, Assembler Oct 18. Welder posting itemprop datePosted 'Sun Oct 25 ... 2026'. 22 days on 2026-11-16."
+  },
+  {
+   "claim_id": "p-paladin-ooltewah-tn:welder_postings",
+   "source_url": "https://www.careerprofile.epiroc.com/job/Ooltewah-WelderFabricator-TN-37363/1431613333/",
+   "ledger_value": "Welder/Fabricator pay $21-29/hr; fits components into weld fixtures",
+   "evidence_row": 7439,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Both fragments on the live posting page (fixture fit-up; $21-$29/hr)."
+  },
+  {
+   "claim_id": "p-paladin-ooltewah-tn:name",
+   "source_url": "https://www.careerprofile.epiroc.com/job/Ooltewah-WelderFabricator-TN-37363/1431613333/",
+   "ledger_value": "Epiroc Ooltewah (Mining and Infrastructure Attachments)",
+   "evidence_row": 8094,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Posting page carries the Ooltewah location and the 'Mining and Infrastructure Attachments division' text."
+  },
+  {
+   "claim_id": "p-paladin-ooltewah-tn:parent_company",
+   "source_url": "https://www.careerprofile.epiroc.com/job/Ooltewah-WelderFabricator-TN-37363/1431613333/",
+   "ledger_value": "Epiroc: production facilities on six continents (multi-plant)",
+   "evidence_row": 8095,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the posting page today (production facilities on six continents)."
+  },
+  {
+   "claim_id": "p-paladin-ooltewah-tn:weld_processes",
+   "source_url": "https://www.careerprofile.epiroc.com/job/Ooltewah-WelderFabricator-TN-37363/1431613333/",
+   "ledger_value": "MIG skill required",
+   "evidence_row": 10625,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Posting lists 'Demonstrated skill level of wire feed (MIG) welding.' among requirements, and 'Set-up gas-shield, mig-weld and weld parts'. MIG is named, so mining coordinator ruling 6 (wire feed alone) does not apply."
+  },
+  {
+   "claim_id": "p-paladin-ooltewah-tn:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10628,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row; no source today states a welded part size for Ooltewah. Earns 0."
+  },
+  {
+   "claim_id": "p-paladin-ooltewah-tn:production_type",
+   "source_url": "https://www.timesfreepress.com/news/2015/mar/03/machinery-merger-paladbuys-kodiak-charleston/",
+   "ledger_value": "mixed: couplers and attachments for construction and land-clearing equipment (2015, plant-level)",
+   "evidence_row": 10629,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "2015 plant-level sentence on the TFP page; 'mixed' is a rubric label (not additive)."
+  },
+  {
+   "claim_id": "p-paladin-ooltewah-tn:existing_robots",
+   "source_url": "https://diversityjobs.com/career/15599673/Robot-Operator-I-Tennessee-Ooltewah",
+   "ledger_value": "Robot Operator I posting dated Jan 28, 2026, Ooltewah",
+   "evidence_row": 10630,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Robot Operator I posting dated Jan 28, 2026, Ooltewah: operates and maintains IGM and/or Wolf welding robots (posting expired; Googlebot unavailable_after 02-Feb-2026)",
+   "corrected_quote": "Epiroc Industrial Tools and Attachments United States, Tennessee, Ooltewah Jan 28, 2026 ... role is responsible to operate and maintain the IGM and/or Wolf welding robots, tools, and equipment",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Thin row: plants.csv existing_robots and the opening line say 'IGM and/or Wolf welding robots', which this row's value and quote do not carry. The page does (checked today). Fuller value given so the field and line rest on a stated row. plants.csv existing_robots is already right."
+  },
+  {
+   "claim_id": "p-paladin-ooltewah-tn:welder_postings",
+   "source_url": "",
+   "ledger_value": "site named: board location Ooltewah TN 37363; the ledger has one Epiroc site in Ooltewah (8822 Apison Pike), so the posting counts (mining rule 3). Robot Operator I (Jan 2026) listed, not counted (robot operator).",
+   "evidence_row": 10631,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred site tie holds: EPA FRS ZIP 37363 has one C&P/Epiroc record (8822 Apison Pike) and plants.csv has no other Epiroc/Paladin record in Ooltewah; the posting's board location names Ooltewah TN 37363 (mining rule 3). Robot Operator I listed, not counted."
+  },
+  {
+   "claim_id": "p-paladin-ooltewah-tn:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "evidence_row": 10632,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row; no plant-level Ooltewah trigger since 2024-11-16 seen in the sources opened today."
+  },
+  {
+   "claim_id": "p-paladin-ooltewah-tn:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10633,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row; no site headcount on any page opened."
+  },
+  {
+   "claim_id": "p-paladin-ooltewah-tn:opening_line",
+   "source_url": "",
+   "ledger_value": "Epiroc listed a Welder/Fabricator opening in Ooltewah on Oct. 25, 2026 that asks for demonstrated MIG skill and fitting parts into weld fixtures, after a January posting for an operator to run its IGM and/or Wolf welding robots there; which of your coupler and attachment weldments still go to manual welders?",
+   "evidence_row": 10635,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Every clause carried: Welder/Fabricator Oct 25 2026, MIG skill and fixture fit-up (rows 7438/7439/10625), January Robot Operator for IGM and/or Wolf robots (row 10630's page; row corrected to carry it), couplers and attachments (row 10629). Ends in a 'your' question; no pitch language; no Path claim."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:name",
+   "source_url": "https://www.werk-brau.com/contact-us/",
+   "ledger_value": "Werk-Brau Co., Inc.",
+   "evidence_row": 7398,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Contact page today: 'Shipping Address: Werk-Brau Co., Inc. 2800 Fostoria Ave. Findlay OH, 45840'."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:address",
+   "source_url": "https://www.werk-brau.com/contact-us/",
+   "ledger_value": "2800 Fostoria Ave, Findlay OH 45840 (shipping address)",
+   "evidence_row": 7399,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Same page; the WB Welder posting's JSON-LD streetAddress is also '2800 Fostoria Ave' (Findlay). The plant operates at the recorded address."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=WERK&state_abbr=OH&output=JSON",
+   "ledger_value": "2800 Fostoria Rd, Findlay OH (EPA FRS 110070277408)",
+   "evidence_row": 7400,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "EPA FRS (fetched today): WERK BRAU CO., INC., 2800 FOSTORIA RD., RegistryId 110070277408."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:products",
+   "source_url": "https://www.werk-brau.com/",
+   "ledger_value": "loader buckets, forks, couplers; backhoe attachments",
+   "evidence_row": 7402,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Home page quote present; loader buckets, forks, couplers and backhoe attachments listed."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:products",
+   "source_url": "https://www.werk-brau.com/about-us/",
+   "ledger_value": "welding in-house: 20,000 miles of wire welded and 50,000 attachments produced per year",
+   "evidence_row": 7403,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Werk-Brau company-wide (all sites): 20,000 miles of wire welded and 50,000 attachments produced per year",
+   "corrected_quote": "20,000 Miles of Wire Welded Per Year 1,000,000 Parts Burned Per Year 50,000 Attachments Produced Per Year",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The about-us counters are company figures; Werk-Brau has three Fostoria Ave addresses on its board and 'numerous North American locations' (CEG 2022). The value presents them at this plant without the company-level marker (the coordinator's shared-city ruling 3 for Werk-Brau)."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/4B68B05D00AED00CE277D49A81F72B00/jobs/556209",
+   "ledger_value": "pay $27.80-29.55/hr",
+   "evidence_row": 7407,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "WB Welder, 2800 Fostoria Ave, Findlay OH, posted 2026-06-26; proficient MIG welder; $27.80-29.55/hr",
+   "corrected_quote": "\"title\":\"WB Welder\" ... \"datePosted\":\"2026-06-26\" ... \"streetAddress\":\"2800 Fostoria Ave\" ... Proficient welder (MIG) ... $27.80 - $29.55 Hourly",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Thin row. No welder_postings row states the posting date or the street address, yet plants.csv ('posted 2026-06-26, 143 days ... 2800 Fostoria Ave'), labor 20 (60+ days) and the opening line rest on them. This row's page (job 556209) carries both in its JSON-LD (curl today) and 'Proficient welder (MIG)' in the text. Fuller value given; plants.csv welder_postings is already right."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/4B68B05D00AED00CE277D49A81F72B00/career-page",
+   "ledger_value": "WB Welder still listed on the board 2026-11-16",
+   "evidence_row": 7408,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Paycom career page today lists 'WB Welder Hot Job' (Findlay, OH 45840) among 5 results; still open."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:weld_processes",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/4B68B05D00AED00CE277D49A81F72B00/jobs/556209",
+   "ledger_value": "single and multiple pass welds",
+   "evidence_row": 10645,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "MIG (proficient MIG welder required); single and multiple pass welds",
+   "corrected_quote": "Welds will include single and multiple pass ... Proficient welder (MIG)",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Thin row: the only weld_processes row omits MIG, yet plants.csv 'MIG; single and multiple pass', process 20 and the opening line rest on MIG. The same posting page carries 'Proficient welder (MIG)'. plants.csv already right."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:materials",
+   "source_url": "https://werk-brau.com/extreme-duty-excavator-bucket/",
+   "ledger_value": "T-1 (quenched and tempered) steel in high-wear components of extreme-duty buckets",
+   "evidence_row": 10646,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Extreme-duty bucket page: 'Built using T-1 steel in all high wear components'; the value frames it as the bucket's spec ('quenched and tempered' is a technical gloss, not additive). Product-level, not scored."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:certifications",
+   "source_url": "https://www.werk-brau.com/",
+   "ledger_value": "ISO-certified processes (standard not named; ISO 9001 not stated)",
+   "evidence_row": 10647,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Home page: 'On‑time shipping backed by ISO‑certified processes'; the value says the standard is not named."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:part_size_fit",
+   "source_url": "https://werk-brau.com/hubfs/Excavator%20Buckets/Extreme%20Duty%20Bucket/Extreme-Duty-Bucket.pdf",
+   "ledger_value": "made in Findlay OH",
+   "evidence_row": 10648,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Werk-Brau extreme-duty excavator buckets 24-84 in wide, 2,390-12,370 lb (cut sheet 'Proudly made in Findlay Ohio'; Werk-Brau has three Findlay addresses, so the site is not named)",
+   "corrected_quote": "E25ED24 24” 26” 0.67 0.79 3 2,390 ... E75ED84 84” 91” 5.12 6.65 6 12,370 ... PROUDLY MADE IN FINDLAY OHIO",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "unknown at site level: Werk-Brau extreme-duty excavator buckets 24-84 in wide, 2,390-12,370 lb are 'made in Findlay Ohio' (three Werk-Brau Findlay addresses; site not named); they would fit the 2026 analyst cell limits",
+   "note": "The row carries only 'made in Findlay OH', while plants.csv states the plant's parts fit the cell limits. Per coordinator ruling 3 (2026-11-16) the Findlay attribution is shared-city, so the plant field must not present the fit as this site's; material is correctly 0. The opening line's 'its extreme-duty bucket cut sheet runs up to 12,370 lb' is company-level and accurate."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:production_type",
+   "source_url": "https://werk-brau.com/excavator-attachments",
+   "ledger_value": "custom: attachments custom built to specification and machine model",
+   "evidence_row": 10649,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "custom (company-level): Werk-Brau attachments custom built to specification and machine model",
+   "corrected_quote": "Werk-Brau attachments are custom built to your specification and specific machine model.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Accurate brand statement, but company-level (Werk-Brau has three Findlay Fostoria Ave addresses and other locations) and tagged stated at this plant. Session-2 rule 1: part mix may rest on a company-level claim tagged inferred: points (15) but no confidence. Confidence 4 -> 3. Same treatment as Virnig 10673 and Curry 10832, which the profilers already tagged inferred. plants.csv production_type is set by row 10650's plants_csv_value."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:production_type",
+   "source_url": "https://www.werk-brau.com/about-us/",
+   "ledger_value": "about 50,000 attachments a year across many attachment types",
+   "evidence_row": 10650,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "company-wide: about 50,000 attachments produced per year (all Werk-Brau sites)",
+   "corrected_quote": "50,000 Attachments Produced Per Year",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "custom: built to specification and machine model; about 50,000 attachments a year company-wide",
+   "note": "'across many attachment types' is a characterisation not on the page, and the volume is a company figure placed at this plant (three Findlay addresses). Part mix 15 rests on row 10649 (custom built), unaffected."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:existing_robots",
+   "source_url": "https://www.constructionequipmentguide.com/werk-brau-celebrates-75-years-with-open-house/57810?markdown=1",
+   "ledger_value": "article published 2022-09-07",
+   "evidence_row": 10651,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "robotics used in Werk-Brau manufacturing (company-level, CEG article Sept 7, 2022; site and brand not stated)",
+   "corrected_quote": "Werk-Brau combines modern manufacturing technology such as robotics and high-definition plasma cutting, together with old-world craftsmanship into each bucket, thumb, coupler and attachment it manufactures.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "yes (company-level): robotics in Werk-Brau manufacturing (2022; site and brand not stated)",
+   "note": "The value is only the article date; plants.csv 'yes: robotics (2022; brand not stated)' had no stated row carrying robotics. The page says it of the company (numerous North American locations), so the fact is company-level, not tied to 2800 Fostoria."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:part_size_fit",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=WERK&state_abbr=OH&output=JSON",
+   "ledger_value": "site tie (inferred): \"made in Findlay\" is attributed to 2800 Fostoria Ave, the only current Werk-Brau Findlay manufacturing address in EPA FRS and the welder posting's address; Werk-Brau's board also lists 2500 and 4000 Fostoria Ave (a Quality Weld Inspector is at 4000)",
+   "evidence_row": 10653,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row, correctly tagged; FRS shows 2800 Fostoria Rd and an older 616 N Blanchard St record. The coordinator ruled the tie earns nothing (material 0); the row's reasoning already says so."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:welder_postings",
+   "source_url": "https://www.paycomonline.net/v4/ats/web.php/portal/4B68B05D00AED00CE277D49A81F72B00/jobs/608999",
+   "ledger_value": "not counted: Quality Weld Inspector (posted 2026-10-09) at 4000 Fostoria Ave, a separate Werk-Brau address (inspector role)",
+   "evidence_row": 10654,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Raw page source (curl today): title 'Quality Weld Inspector', datePosted 2026-10-09, streetAddress '4000 Fostoria Ave.'. Inspector listed, not counted. (Plain fetch rendered without JSON-LD; raw source checked as the rule requires.)"
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "evidence_row": 10655,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row; no plant-level trigger since 2024-11-16 seen."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:headcount",
+   "source_url": "https://www.constructionequipmentguide.com/werk-brau-celebrates-75-years/56311?markdown=1",
+   "ledger_value": "more than 500 employees (company, 2022; numerous North American locations)",
+   "evidence_row": 10656,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "CEG page published 2022-04-26 carries the company-level 500+ and 'numerous North American locations'; the value marks company and 2022. Over 36 months: no scale points from it (ruling 1)."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:parent_company",
+   "source_url": "https://www.constructionequipmentguide.com/werk-brau-celebrates-75-years/56311?markdown=1",
+   "ledger_value": "Werk-Brau Co., Inc. (family-owned; several locations)",
+   "evidence_row": 10657,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Werk-Brau (family-owned; numerous North American locations)",
+   "corrected_quote": "The company has grown from a single blacksmith shop to numerous North American locations ... the company has been family owned and operated since its inception.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Legal suffix 'Co., Inc.' is not on the CEG page (it is on the name row's contact page, a different claim). Value otherwise supported. plants.csv parent_company 'Werk-Brau Co., Inc. (family-owned)' is fine as the legal name is quoted on row 7398; no plant change."
+  },
+  {
+   "claim_id": "p-werk-brau-findlay-oh:opening_line",
+   "source_url": "",
+   "ledger_value": "Werk-Brau's WB Welder opening at 2800 Fostoria Ave has been listed since June 26, 2026, for single- and multiple-pass MIG welds, and its extreme-duty bucket cut sheet runs up to 12,370 lb; how are you covering that welding while the seat stays open?",
+   "evidence_row": 10659,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Clauses carried: WB Welder at 2800 Fostoria Ave, datePosted 2026-06-26, still listed today (rows 7407/7408 pages), single- and multiple-pass and MIG (row 10645's page), extreme-duty bucket cut sheet to 12,370 lb (row 10648's page; phrased as the company's cut sheet, not the site's). Ends in a 'you' question; no pitch language. Passes once rows 7407, 10645 and 10648 carry the fuller values."
+  },
+  {
+   "claim_id": "p-virnig-rice-mn:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=VIRNIG&state_abbr=MN&output=JSON",
+   "ledger_value": "Virnig Manufacturing Inc",
+   "evidence_row": 9818,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "EPA FRS (today): VIRNIG MANUFACTURING INC, 101 GATEWAY DR NE, RICE 56367-4592 (RegistryId 110012252631; also 110070312957). FRS also lists an older 'VIRNIG MANUFACTURING INC - PI' record at 27534 173rd St, Pierz."
+  },
+  {
+   "claim_id": "p-virnig-rice-mn:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=VIRNIG&state_abbr=MN&output=JSON",
+   "ledger_value": "101 Gateway Dr NE, Rice, MN",
+   "evidence_row": 9819,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Same FRS record; Paylocity posting map link '101 Gateway Drive Rice MN USA 56367'. The plant operates at the recorded city (board lists 7 open Rice roles today)."
+  },
+  {
+   "claim_id": "p-virnig-rice-mn:address",
+   "source_url": "https://www.virnigmfg.com/about/",
+   "ledger_value": "Rice manufacturing facility since 2001",
+   "evidence_row": 9820,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "About page timeline: 2001, 'Virnig opens its manufacturing facility in Rice, Minnesota'."
+  },
+  {
+   "claim_id": "p-virnig-rice-mn:parent_company",
+   "source_url": "https://www.virnigmfg.com/about/",
+   "ledger_value": "Virnig Manufacturing, Inc.",
+   "evidence_row": 9821,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Virnig Manufacturing",
+   "corrected_quote": "In 1989, Dean and Lois Virnig started Virnig Manufacturing in a two-car garage outside Pierz, Minnesota.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Legal suffix ', Inc.' is not on the about page (it is in the EPA FRS name, row 9818, a different claim). No plant change needed for the suffix; see row 10678 for the plants.csv 'family-owned' clause."
+  },
+  {
+   "claim_id": "p-virnig-rice-mn:products",
+   "source_url": "https://www.virnigmfg.com/",
+   "ledger_value": "compact equipment attachments and trailers",
+   "evidence_row": 9823,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Home page title carries trailers and the attachment classes."
+  },
+  {
+   "claim_id": "p-virnig-rice-mn:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4549812",
+   "ledger_value": "counting call: counted as a welder posting because the role welds by hand (flat, vertical, overhead positions; 1 year welding experience required) as well as tending robots; boundary with the \"robot operators not counted\" rule",
+   "evidence_row": 9827,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred counting call holds under coordinator ruling 5 (2026-11-16): the robot-titled posting requires manual welding ('Weld components in flat, vertical or overhead positions'; 1 year welding experience)."
+  },
+  {
+   "claim_id": "p-virnig-rice-mn:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4549812",
+   "ledger_value": "manual positional welding in the same role",
+   "evidence_row": 10669,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "MIG: sets up, operates and maintains MIG welding equipment as well as robotic welding equipment; manual welding in flat, vertical or overhead positions",
+   "corrected_quote": "As a Robotic Welder, you’ll set up, operate, and maintain MIG welding equipment, and Robotic welding equipment to build products ... Weld components in flat, vertical or overhead positions, standing for long periods.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Thin row: the only weld_processes row does not name MIG, while process 20, plants.csv 'MIG (wire feed), manual and robotic' and the opening line rest on MIG. The other MIG row (9829) is a prospect_test row quoting only 'wire feed', which under coordinator ruling 6 earns nothing. The same page names 'MIG welding equipment' apart from the robotic equipment, so process 20 holds once this row carries it."
+  },
+  {
+   "claim_id": "p-virnig-rice-mn:materials",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4549812",
+   "ledger_value": "mild steel",
+   "evidence_row": 10670,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Posting: 'General knowledge of wire feed welding of mild steel.'"
+  },
+  {
+   "claim_id": "p-virnig-rice-mn:part_size_fit",
+   "source_url": "https://www.virnigmfg.com/product/low-profile-dirt-bucket-heavy-duty/",
+   "ledger_value": "unknown for Rice: Virnig's V60 dirt buckets are 73.5-97.5 in wide and 720-880 lb (would fit a cell), but the page does not say which of its plants (Rice, Pikeville, Fort Madison) builds them",
+   "evidence_row": 10672,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row, correctly tagged: company product page names no plant; earns 0."
+  },
+  {
+   "claim_id": "p-virnig-rice-mn:production_type",
+   "source_url": "https://www.farm-equipment.com/articles/25132-virnig-manufacturing-expands-operations-with-new-facility-in-fort-madison-iowa",
+   "ledger_value": "mixed: full line of attachments for skid steers, mini skid steers, compact tractors, compact wheel loaders and mini excavators, plus trailers (company-level)",
+   "evidence_row": 10673,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred company-level row; quote on the farm-equipment page. Part mix 8 earns points, no confidence (session-2 rule 1)."
+  },
+  {
+   "claim_id": "p-virnig-rice-mn:existing_robots",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4549812",
+   "ledger_value": "yes: robotic welding equipment (brand not stated)",
+   "evidence_row": 10674,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Posting text names robotic welding equipment; brand not stated."
+  },
+  {
+   "claim_id": "p-virnig-rice-mn:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/87e0e2c6-2ed3-4778-9ebe-6a3568409817/Virnig-Manufacturing-Inc",
+   "ledger_value": "1 counted, open on 2026-11-16: Robotic Welder - Days or Nights, Rice MN, published 2026-09-30 (47 days); $25.50 day / $27.90 night",
+   "evidence_row": 10675,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Paylocity board JSON (curl today): 'Robotic Welder - Days or Nights (No Robot Exp. Necessary)', LocationName 'Rice, Minnesota', PublishedDate 2026-09-30; still listed (47 days). Pay $25.50 day / $27.90 night on the detail page. Rice is Virnig's only Rice site (board also lists Fort Madison, IA)."
+  },
+  {
+   "claim_id": "p-virnig-rice-mn:triggers",
+   "source_url": "https://www.farm-equipment.com/articles/25132-virnig-manufacturing-expands-operations-with-new-facility-in-fort-madison-iowa",
+   "ledger_value": "company-level, not this plant: Virnig announced a new Fort Madison, Iowa facility (Mar 26, 2026); Rice continues in the footprint",
+   "evidence_row": 10676,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "farm-equipment.com article dated March 26, 2026; value marks it company-level and not this plant."
+  },
+  {
+   "claim_id": "p-virnig-rice-mn:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10677,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row; no Rice headcount found."
+  },
+  {
+   "claim_id": "p-virnig-rice-mn:parent_company",
+   "source_url": "https://www.farm-equipment.com/articles/25132-virnig-manufacturing-expands-operations-with-new-facility-in-fort-madison-iowa",
+   "ledger_value": "Virnig Manufacturing, Inc. (multi-plant: Rice MN, Pikeville TN, Fort Madison IA)",
+   "evidence_row": 10678,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Virnig Manufacturing (multi-plant: Rice MN, Pikeville TN, Fort Madison IA)",
+   "corrected_quote": "Existing operations in Rice, Minnesota and Pikeville, Tennessee will continue to play a vital role in the company’s manufacturing footprint.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Virnig Manufacturing, Inc. (plants in Rice MN, Pikeville TN, Fort Madison IA)",
+   "note": "', Inc.' is not on the farm-equipment page, and plants.csv adds 'family-owned', which no parent_company row quotes (the article's only 'family-owned' is a different company, Machinery Scope). Multi-plant clause confirmed; scale 5 unaffected. The plants.csv value keeps the legal name, which name row 9818 (EPA FRS) carries, and drops 'family-owned'."
+  },
+  {
+   "claim_id": "p-virnig-rice-mn:opening_line",
+   "source_url": "",
+   "ledger_value": "Virnig posted a Robotic Welder opening in Rice on Sept. 30, 2026 that also covers manual MIG welding in flat, vertical and overhead positions, six months after announcing a new Fort Madison, Iowa facility; how are you splitting attachment welding between your robots and your welders?",
+   "evidence_row": 10680,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Clauses carried: Robotic Welder posted in Rice 2026-09-30 (row 10675), MIG and flat/vertical/overhead manual welding (row 10669's page; row corrected to carry MIG), Fort Madison facility announced March 26, 2026 (row 10676, company-level, phrased as the company's announcement). Ends in a 'your' question; no pitch language."
+  },
+  {
+   "claim_id": "p-rockland-bedford-pa:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=ROCKLAND&state_abbr=PA&output=JSON",
+   "ledger_value": "Rockland Manufacturing, Bedford PA",
+   "evidence_row": 7574,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "EPA FRS (today): ROCKLAND MANUFACTURING, 152 WEBER LANE, BEDFORD 15522 (110070339532); also ROCKLAND MFG CO/BEDFORD TWP at 152 Weber Ln and a separate ROCKLAND MFG/CQR PLANT at 172 Friendship Village Rd."
+  },
+  {
+   "claim_id": "p-rockland-bedford-pa:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=ROCKLAND&state_abbr=PA&output=JSON",
+   "ledger_value": "152 Weber Lane, Bedford PA 15522 (EPA FRS 110070339532)",
+   "evidence_row": 7575,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Same FRS record. The plant operates at the recorded address: both open production postings carry Address '152 WEBER LANE' in the Paylocity board JSON today."
+  },
+  {
+   "claim_id": "p-rockland-bedford-pa:parent_company",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4615184",
+   "ledger_value": "Rockland Manufacturing (family-owned)",
+   "evidence_row": 7576,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Mig Welder posting text: 'Rockland Manufacturing is a family-owned business with two facilities located in Bedford, PA and another facility located in Seguin, TX.' (The Fitter posting says three Bedford-area facilities; row 10703.)"
+  },
+  {
+   "claim_id": "p-rockland-bedford-pa:products",
+   "source_url": "https://rocklandmfg.com/",
+   "ledger_value": "attachments for excavators, loaders, dozers, skid steers",
+   "evidence_row": 7578,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "rocklandmfg.com menu lists EXCAVATORS, LOADERS, DOZERS and SKID STEERS attachment classes."
+  },
+  {
+   "claim_id": "p-rockland-bedford-pa:products",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4615184",
+   "ledger_value": "over 200 custom attachments for heavy equipment made in the USA",
+   "evidence_row": 7579,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the Mig Welder posting."
+  },
+  {
+   "claim_id": "p-rockland-bedford-pa:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4615184",
+   "ledger_value": "Mig Welder: $21.50-25.50/hr, second shift 3:35 PM-2:05 AM",
+   "evidence_row": 7583,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Mig Welder posting: '$21.50 to $25.50 per hour' and 'second shift position, from 3:35 PM- 2:05 AM'."
+  },
+  {
+   "claim_id": "p-rockland-bedford-pa:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4615184",
+   "ledger_value": "MIG",
+   "evidence_row": 10690,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Mig Welder posting: 'Performing MIG welding operations on heavy equipment components and custom attachments'."
+  },
+  {
+   "claim_id": "p-rockland-bedford-pa:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4627811",
+   "ledger_value": "tack welding by fitters before final weld",
+   "evidence_row": 10691,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Fitter Fabricator posting: 'Tack welding assemblies so they’re ready for final weld'."
+  },
+  {
+   "claim_id": "p-rockland-bedford-pa:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10695,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row; no stated part size found. Earns 0."
+  },
+  {
+   "claim_id": "p-rockland-bedford-pa:production_type",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4615184",
+   "ledger_value": "custom: over 200 custom attachments",
+   "evidence_row": 10696,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "custom (company-level): Rockland produces over 200 custom attachments for heavy equipment",
+   "corrected_quote": "We produce over 200 of the highest-quality custom attachments for heavy equipment made in the USA!",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Quote on the Mig Welder posting, but 'We produce over 200 ...' is the company boilerplate (Rockland: two or three Bedford-area facilities plus Seguin TX), tagged stated at the Weber Lane plant. Session-2 rule 1: part mix keeps 15 on a company-level inferred claim but earns no confidence. Confidence 4 -> 3. The plant-level fitter row 10697 (buckets, forks, rakes, grapples, blades) is a product list (8) on its own."
+  },
+  {
+   "claim_id": "p-rockland-bedford-pa:production_type",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4627811",
+   "ledger_value": "fitters build buckets, forks, rakes, grapples and blades in jigs",
+   "evidence_row": 10697,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Fitter Fabricator posting: 'Reading blueprints to build buckets, forks, rakes, grapples, and blades'."
+  },
+  {
+   "claim_id": "p-rockland-bedford-pa:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/All/1d38f329-d7b7-4e9c-b19b-dc9c5c89f02c/ROCKLAND-MANUFACTURING",
+   "ledger_value": "Fitter Fabricator (published 2026-10-30) at 152 Weber Lane",
+   "evidence_row": 10699,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "2 open at 152 Weber Lane (board read 2026-11-16): Mig Welder-Second Shift (published 2026-10-26) and Fitter Fabricator (published 2026-10-30)",
+   "corrected_quote": "\"JobId\":4627811,\"JobTitle\":\"Fitter Fabricator (Construction/Trade Experience a Plus)\",\"LocationName\":\"BEDFORD, PA\" ... \"PublishedDate\":\"2026-10-30T06:51:08-05:00\" ... \"Address\":\"152 WEBER LANE\" ... \"JobId\":4615184,\"JobTitle\":\"Mig Welder-Second Shift\",\"LocationName\":\"BEDFORD, PA\" ... \"PublishedDate\":\"2026-10-26T12:03:28-05:00\" ... \"Address\":\"152 WEBER LANE\"",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Thin row: no welder_postings row states the Mig Welder's date or its 152 Weber Lane address, yet plants.csv, labor 20 (two at once) and the opening line rest on both postings. The board JSON (this row's page, curl today) carries both, each with Address 152 WEBER LANE, so the shared-Bedford problem does not arise. plants.csv already right."
+  },
+  {
+   "claim_id": "p-rockland-bedford-pa:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4627811",
+   "ledger_value": "Fitter Fabricator: first shift Mon-Thu plus regular Friday overtime",
+   "evidence_row": 10700,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Fitter posting: 'First shift, Monday–Thursday, 5:00 am–3:30 pm, plus regular Friday overtime'. Not stated as mandatory; labor 20 rests on two postings open at once instead."
+  },
+  {
+   "claim_id": "p-rockland-bedford-pa:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "evidence_row": 10701,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row; no plant-level trigger since 2024-11-16 found."
+  },
+  {
+   "claim_id": "p-rockland-bedford-pa:headcount",
+   "source_url": "https://www.nist.gov/mep/successstories/2024/rockland-manufacturing-invests-training-prepare-workforce-change-production",
+   "ledger_value": "approximately 250 employees (company-level, NIST MEP story created Oct 29, 2024)",
+   "evidence_row": 10702,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "NIST MEP story 'Created October 29, 2024' (within 36 months); value marks it company-level, so no 100+ site points."
+  },
+  {
+   "claim_id": "p-rockland-bedford-pa:parent_company",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4627811",
+   "ledger_value": "Rockland Manufacturing (family-owned; three facilities around Bedford PA and one in Seguin TX)",
+   "evidence_row": 10703,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Fitter posting: 'family-owned company with three facilities around Bedford, PA and one in Seguin, TX'."
+  },
+  {
+   "claim_id": "p-rockland-bedford-pa:opening_line",
+   "source_url": "",
+   "ledger_value": "Rockland posted a second-shift MIG Welder and a Fitter Fabricator at its 152 Weber Lane plant in late October 2026, with fitters building buckets, forks, rakes, grapples and blades among more than 200 custom attachments; how many of those are one-off builds for you versus repeat models?",
+   "evidence_row": 10705,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Clauses carried: second-shift MIG Welder (2026-10-26) and Fitter Fabricator (2026-10-30) at 152 Weber Lane (board JSON; row 10699 corrected to carry both), fitters build buckets, forks, rakes, grapples and blades (row 10697), more than 200 custom attachments (row 10696, a company figure phrased as Rockland's). Ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-bobcat-litchfield-mn:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=BOBCAT&state_abbr=MN&output=JSON",
+   "ledger_value": "BOBCAT",
+   "evidence_row": 8028,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "EPA FRS (today): 110068366280 BOBCAT, 520 POLYDOME DR, LITCHFIELD 55355-5329; the only Bobcat manufacturing record in Litchfield."
+  },
+  {
+   "claim_id": "p-bobcat-litchfield-mn:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=BOBCAT&state_abbr=MN&output=JSON",
+   "ledger_value": "520 POLYDOME DR, LITCHFIELD, MN 55355-5329",
+   "evidence_row": 8029,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Same FRS record. Plant operates there: Doosan board lists 'Welder- 2nd Shift (Litchfield)', Litchfield MN 55355, today."
+  },
+  {
+   "claim_id": "p-bobcat-litchfield-mn:parent_company",
+   "source_url": "https://www.rermag.com/news-analysis/supply-side/article/21162220/bobcat-co-doosan-bobcat-completes-26-million-expansion-of-litchfield-minn-manufacturing-facility",
+   "ledger_value": "Doosan Bobcat: multi-plant (Gwinner ND, Statesville NC, Litchfield MN and others)",
+   "evidence_row": 8030,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "RER (Apr 25, 2021) names Gwinner ND and Statesville NC investments besides Litchfield."
+  },
+  {
+   "claim_id": "p-bobcat-litchfield-mn:products",
+   "source_url": "https://www.rermag.com/news-analysis/supply-side/article/21162220/bobcat-co-doosan-bobcat-completes-26-million-expansion-of-litchfield-minn-manufacturing-facility",
+   "ledger_value": "250+ attachments",
+   "evidence_row": 8031,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "more than 250 unique attachments (Apr 2021)",
+   "corrected_quote": "The Litchfield facility produces more than 250 unique attachments to equip Bobcat machines for specific tasks to enhance productivity and utility.",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "plants_csv_value": "More than 250 Bobcat attachments (Apr 2021)",
+   "note": "The article is dated April 25, 2021; the value and plants.csv products restate the 2021 count as current with no date (sibling production_type row 10720 carries 'Apr 2021')."
+  },
+  {
+   "claim_id": "p-bobcat-litchfield-mn:welder_postings",
+   "source_url": "https://jobs.doosan.com/bobcat/job/Litchfield-Welder-2nd-Shift-%28Litchfield%29-MN-55355/1437355600/",
+   "ledger_value": "datePosted 2026-11-04 in the page markup (shown as Last Updated Date: Nov 4, 2026)",
+   "evidence_row": 8036,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Welder- 2nd Shift (Litchfield), Litchfield MN 55355, datePosted 2026-11-04 (open on the board 2026-11-16); 4:30pm-3:00am Mon-Thurs, potential for mandatory OT on Fridays; $24.50-$36.08 + $2.00 2nd-shift differential",
+   "corrected_quote": "itemprop=\"datePosted\" content=\"Wed Nov 04 08:00:00 UTC 2026\" ... Second Shift: 4:30pm-3:00am Mon-Thurs (potential for mandatory OT on Fridays) ... Pay Scale: $24.50-$36.08 (+$2.00 shift differntial for 2nd shift)",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Thin row: the only counted-posting row carries just the date, while plants.csv (title, conditional Friday OT, pay) and the opening line ('noting potential mandatory Friday overtime') rest on more. All of it is on this row's page today; the Doosan search (q=weld, Litchfield) lists it dated Nov 4, 2026. Labor 12 is right (ruling 4: conditional OT is not mandatory). plants.csv already right."
+  },
+  {
+   "claim_id": "p-bobcat-litchfield-mn:weld_processes",
+   "source_url": "https://jobs.doosan.com/bobcat/job/Litchfield-Welder-2nd-Shift-%28Litchfield%29-MN-55355/1437355600/",
+   "ledger_value": "arc-welding equipment or spot welder",
+   "evidence_row": 10715,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Posting: 'using electric arc-welding equipment or spot welder'; also 'Sets up electrode wire' and 'manually guides electrode or gun'. MIG/FCAW not named, so process 0 is right."
+  },
+  {
+   "claim_id": "p-bobcat-litchfield-mn:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10718,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row; no stated part size. Earns 0."
+  },
+  {
+   "claim_id": "p-bobcat-litchfield-mn:production_type",
+   "source_url": "https://www.rermag.com/news-analysis/supply-side/article/21162220/bobcat-co-doosan-bobcat-completes-26-million-expansion-of-litchfield-minn-manufacturing-facility",
+   "ledger_value": "many part types: more than 250 unique attachments (Apr 2021)",
+   "evidence_row": 10720,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "RER Apr 25, 2021 sentence; date in the value. Part mix 15 (many part types)."
+  },
+  {
+   "claim_id": "p-bobcat-litchfield-mn:welder_postings",
+   "source_url": "https://jobs.doosan.com/bobcat/job/Litchfield-Fabricator-2nd-Shift-%28Litchfield%29-MN-55355/1437352900/",
+   "ledger_value": "not counted: Fabricator- 2nd Shift (machine operator: brake, plasma, punch, saw, shear, laser)",
+   "evidence_row": 10721,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Fabricator- 2nd Shift posting quote present (machine operator); listed, not counted."
+  },
+  {
+   "claim_id": "p-bobcat-litchfield-mn:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "evidence_row": 10722,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row; the $26M expansion (Apr 2021) is outside 24 months; nothing newer found."
+  },
+  {
+   "claim_id": "p-bobcat-litchfield-mn:headcount",
+   "source_url": "https://www.rermag.com/news-analysis/supply-side/article/21162220/bobcat-co-doosan-bobcat-completes-26-million-expansion-of-litchfield-minn-manufacturing-facility",
+   "ledger_value": "140+ (Apr 2021; stale)",
+   "evidence_row": 10723,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "RER Apr 2021: 'current 140+ member workforce'; over 36 months, no scale points from headcount."
+  },
+  {
+   "claim_id": "p-bobcat-litchfield-mn:opening_line",
+   "source_url": "",
+   "ledger_value": "Bobcat posted a second-shift Welder opening in Litchfield on Nov. 4, 2026, noting potential mandatory Friday overtime, at a plant that makes more than 250 unique attachments; how are you keeping weld capacity in step across that many models?",
+   "evidence_row": 10725,
+   "tag": "inferred",
+   "verdict": "corrected",
+   "corrected_value": "Bobcat posted a second-shift Welder opening in Litchfield on Nov. 4, 2026, noting potential mandatory Friday overtime, at a plant that made more than 250 unique attachments as of April 2021; how are you keeping weld capacity in step across that many models?",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "plants_csv_value": "Bobcat posted a second-shift Welder opening in Litchfield on Nov. 4, 2026, noting potential mandatory Friday overtime, at a plant that made more than 250 unique attachments as of April 2021; how are you keeping weld capacity in step across that many models?",
+   "note": "'at a plant that makes more than 250 unique attachments' restates an April 2021 figure as current (ships NASSCO precedent). Replacement dates it to its source (April 2021, carried by row 10720). Posting clause confirmed (live today, datePosted Nov 4 2026, 'potential for mandatory OT on Fridays'). Ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-bobcat-bismarck-nd:parent_company",
+   "source_url": "https://jobs.doosan.com/bobcat/job/Bismarck-Welder-Bismarck-ND-58504/1442008500/",
+   "ledger_value": "Doosan Bobcat (Bobcat Company; Doosan Group)",
+   "evidence_row": 8022,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Bismarck Welder posting: 'As a part of the Doosan Group ...'; page also names Doosan Bobcat."
+  },
+  {
+   "claim_id": "p-bobcat-bismarck-nd:name",
+   "source_url": "https://www.constructionequipmentguide.com/bobcat-expands-operations-in-bismarck/18099?markdown=1",
+   "ledger_value": "Bobcat Manufacturing Support Center, Bismarck",
+   "evidence_row": 8023,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Bobcat Manufacturing Support Center (MSC), Bismarck (Apr 2012 article): not shown to be the current Bobcat Bismarck Manufacturing Facility this record now describes",
+   "corrected_quote": "Bobcat Company and Menlo Worldwide Logistics announced the expansion of operations at Bobcat’s Manufacturing Support Center (MSC) in Bismarck, N.D.",
+   "corrected_tag": "stated",
+   "error_kind": "wrong plant or location",
+   "note": "The record was reframed to the Bismarck Manufacturing Facility (row 10735; plants.csv name). This 2012 row still gives the MSC as the plant's name. The 2012 article describes the MSC as 'the former Bobcat production facility', handled by Menlo, and a 'former MSC building' turned into an innovation center; nothing ties it to the excavator plant. Retire the row or mark it historical. plants.csv name is already right."
+  },
+  {
+   "claim_id": "p-bobcat-bismarck-nd:products",
+   "source_url": "https://www.constructionequipmentguide.com/bobcat-expands-operations-in-bismarck/18099?markdown=1",
+   "ledger_value": "Compact attachments",
+   "evidence_row": 8024,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Compact attachments production moving to the Bismarck MSC (Apr 2012); current status and site unknown",
+   "corrected_quote": "Production of Bobcat compact attachments will begin moving to the new MSC (the former Bobcat production facility) immediately.",
+   "corrected_tag": "stated",
+   "error_kind": "wrong plant or location",
+   "note": "Undated 'Compact attachments' presents a 2012 move to the MSC as this facility's current product; the Oct 2025 source for this record says excavators and aftermarket parts. plants.csv products already marks it '(current status unknown)'."
+  },
+  {
+   "claim_id": "p-bobcat-bismarck-nd:welder_postings",
+   "source_url": "https://jobs.doosan.com/bobcat/job/Bismarck-Welder-Bismarck-ND-58504/1442008500/",
+   "ledger_value": "datePosted 2026-10-20 in the page markup",
+   "evidence_row": 8026,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Raw markup today: itemprop datePosted 'Tue Oct 20 ... 2026'; Doosan search (q=weld, Bismarck) lists 'Welder -Bismarck' Oct 20, 2026. Location is city only (58504), so not counted (rule 3)."
+  },
+  {
+   "claim_id": "p-bobcat-bismarck-nd:name",
+   "source_url": "https://www.constructionequipmentguide.com/bobcat-company-invests-48-million-to-renovate-bismarck-nd-facility/69241?markdown=1",
+   "ledger_value": "Bobcat Bismarck Manufacturing Facility",
+   "evidence_row": 10735,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "CEG, published 2025-10-06: 'Bobcat Bismarck Manufacturing Facility, where excavators and aftermarket parts are manufactured.' Operating in Bismarck."
+  },
+  {
+   "claim_id": "p-bobcat-bismarck-nd:products",
+   "source_url": "https://www.constructionequipmentguide.com/bobcat-company-invests-48-million-to-renovate-bismarck-nd-facility/69241?markdown=1",
+   "ledger_value": "excavators and aftermarket parts (Oct 2025); the 2012 move of compact attachments to the Bismarck MSC is not confirmed as current",
+   "evidence_row": 10736,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Same page; the value dates it and keeps the 2012 attachments move unconfirmed."
+  },
+  {
+   "claim_id": "p-bobcat-bismarck-nd:weld_processes",
+   "source_url": "https://jobs.doosan.com/bobcat/job/Bismarck-Welder-Bismarck-ND-58504/1442008500/",
+   "ledger_value": "arc welding with electrode wire and gun, plus spot welding (Bobcat Bismarck welder posting; MIG not named; site within Bismarck not named)",
+   "evidence_row": 10737,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred row, correctly tagged (city-level posting, several Bismarck addresses). 'electrode wire', 'gun' and spot welding are on the posting."
+  },
+  {
+   "claim_id": "p-bobcat-bismarck-nd:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10740,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row; earns 0."
+  },
+  {
+   "claim_id": "p-bobcat-bismarck-nd:production_type",
+   "source_url": "https://www.constructionequipmentguide.com/bobcat-company-invests-48-million-to-renovate-bismarck-nd-facility/69241?markdown=1",
+   "ledger_value": "mixed: excavators and aftermarket parts",
+   "evidence_row": 10741,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "CEG 2025 sentence; 'mixed' is a rubric label."
+  },
+  {
+   "claim_id": "p-bobcat-bismarck-nd:welder_postings",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=BOBCAT&state_abbr=ND&output=JSON",
+   "ledger_value": "EPA FRS: several Bobcat Bismarck addresses",
+   "evidence_row": 10743,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "FRS (today) lists BOBCAT CO 521 South 22nd St, BOBCAT COMPANY 403 South Airport Rd and BOBCAT COMPANY-BISMARCK FACILITY 536 26th St, plus BOBCAT MANUFACTURING 530 26th St and the Accelerator Center 3901 Morrison Ave. Several Bismarck sites; labor 0 stands."
+  },
+  {
+   "claim_id": "p-bobcat-bismarck-nd:triggers",
+   "source_url": "https://www.constructionequipmentguide.com/bobcat-company-invests-48-million-to-renovate-bismarck-nd-facility/69241?markdown=1",
+   "ledger_value": "scope is shared spaces (breakrooms, meeting rooms, offices)",
+   "evidence_row": 10744,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "CEG 2025: 22,560 sq ft of shared spaces (breakrooms, meeting areas, conference rooms, offices). Not a production trigger; demand 8."
+  },
+  {
+   "claim_id": "p-bobcat-bismarck-nd:headcount",
+   "source_url": "https://www.constructionequipmentguide.com/bobcat-company-invests-48-million-to-renovate-bismarck-nd-facility/69241?markdown=1",
+   "ledger_value": "more than 700 at the Bismarck Manufacturing Facility (Oct 2025)",
+   "evidence_row": 10745,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "CEG published 2025-10-06 (within 36 months): 'More than 700 professional and production employees work at the Bobcat Bismarck Manufacturing Facility'. Site-level; scale 10 with row 10746."
+  },
+  {
+   "claim_id": "p-bobcat-bismarck-nd:parent_company",
+   "source_url": "https://www.constructionequipmentguide.com/bobcat-company-invests-48-million-to-renovate-bismarck-nd-facility/69241?markdown=1",
+   "ledger_value": "Doosan Bobcat: multi-site North American operations",
+   "evidence_row": 10746,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "CEG 2025: 'employing more than 5,000 people at offices, facilities and manufacturing operations across North America'."
+  },
+  {
+   "claim_id": "p-bobcat-bismarck-nd:address",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10748,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row; FRS today gives no record tying the Manufacturing Facility to one address. Lead: FRS 110071310116 'BOBCAT MANUFACTURING', 530 26th Street, Bismarck 58504 (posting ZIP is 58504); not enough to set the address."
+  },
+  {
+   "claim_id": "p-bobcat-bismarck-nd:opening_line",
+   "source_url": "",
+   "ledger_value": "Bobcat posted a Welder opening in Bismarck on Oct. 20, 2026, a year after completing a $4.8 million renovation of its Bismarck manufacturing facility, where more than 700 people build excavators and aftermarket parts; how much of your excavator weldment work is still welded by hand?",
+   "evidence_row": 10750,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Clauses carried: Welder posting in Bismarck dated Oct 20, 2026 (row 8026; phrased city-level), $4.8M renovation of the Bismarck manufacturing facility completed (row 10744's page, published Oct 6, 2025), 700+ people, excavators and aftermarket parts (rows 10745, 10741). Ends in a 'your' question; no pitch language; no site tie asserted for the posting."
+  },
+  {
+   "claim_id": "p-tag-manufacturing-chattanooga-tn:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=TAG%20MANUF&state_abbr=TN&output=JSON",
+   "ledger_value": "TAG Manufacturing, Inc.",
+   "evidence_row": 7409,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "EPA FRS (today): 110057556381 TAG MANUFACTURING, INC., 6989 DISCOVERY DR., Chattanooga 37416. Operating: 2026 TAG postings (career.com maintenance technician, Apr 30 2026; search discovery only) and a Feb 2026 dealer partnership item; UT CIS says two Chattanooga facilities."
+  },
+  {
+   "claim_id": "p-tag-manufacturing-chattanooga-tn:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=TAG%20MANUF&state_abbr=TN&output=JSON",
+   "ledger_value": "7080 Discovery Drive (EPA FRS 110072121917), likely the second Chattanooga facility",
+   "evidence_row": 7410,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "7080 Discovery Drive, Chattanooga TN 37416 (EPA FRS 110072121917, TAG MANUFACTURING); a second TAG FRS record. The record address 6989 Discovery Dr is FRS 110057556381 (TAG MANUFACTURING, INC.)",
+   "corrected_quote": "\"FacilityName\":\"TAG MANUFACTURING\", \"LocationAddress\":\"7080 DISCOVERY DRIVE\"",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "'likely the second Chattanooga facility' is a judgement tagged stated (FRS gives no facility role). Move it to an inferred row. Note also that plants.csv address (6989 Discovery Dr) rests only on the name row's quote; no address row states it. No plant field change."
+  },
+  {
+   "claim_id": "p-tag-manufacturing-chattanooga-tn:products",
+   "source_url": "https://www.cis.tennessee.edu/building-more-efficient-future-tag-manufacturing",
+   "ledger_value": "buckets, couplers, and attachments for heavy equipment",
+   "evidence_row": 7411,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "UT CIS case study: 'Since 2005, TAG Manufacturing has produced buckets, couplers, and attachments for heavy equipment'. (plants.csv adds 'excavators, backhoes, wheel loaders', which no products row quotes: field drift, not scored.)"
+  },
+  {
+   "claim_id": "p-tag-manufacturing-chattanooga-tn:headcount",
+   "source_url": "https://www.cis.tennessee.edu/building-more-efficient-future-tag-manufacturing",
+   "ledger_value": "more than 70 employees, 400,000 sq ft across two Chattanooga facilities (company-level)",
+   "evidence_row": 7412,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Quote on the UT CIS page; the value marks it company-level. The case study is undated, so the 70+ figure earns nothing under the 36-month rule; scale 5 rests on two physical facilities, not headcount."
+  },
+  {
+   "claim_id": "p-tag-manufacturing-chattanooga-tn:weld_processes",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10761,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row; no readable source names a process today."
+  },
+  {
+   "claim_id": "p-tag-manufacturing-chattanooga-tn:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10764,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row; no stated part size. Earns 0."
+  },
+  {
+   "claim_id": "p-tag-manufacturing-chattanooga-tn:production_type",
+   "source_url": "https://www.cis.tennessee.edu/building-more-efficient-future-tag-manufacturing",
+   "ledger_value": "mixed: buckets, couplers and attachments, with hundreds of active orders in production at once",
+   "evidence_row": 10765,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "UT CIS page carries 'hundreds of active orders moving through production at any given time'; product list = mixed (rubric label)."
+  },
+  {
+   "claim_id": "p-tag-manufacturing-chattanooga-tn:welder_postings",
+   "source_url": "",
+   "ledger_value": "none found",
+   "evidence_row": 10767,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row. Discovery search today found 2026 TAG listings for maintenance and burn-table roles but no readable welder posting; labor 0 stands."
+  },
+  {
+   "claim_id": "p-tag-manufacturing-chattanooga-tn:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "evidence_row": 10768,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row; the case study is undated and the April 2025 Wingspire credit facility (search discovery only) is financing, not a plant trigger."
+  },
+  {
+   "claim_id": "p-tag-manufacturing-chattanooga-tn:parent_company",
+   "source_url": "https://www.cis.tennessee.edu/building-more-efficient-future-tag-manufacturing",
+   "ledger_value": "TAG Manufacturing, Inc. (two Chattanooga facilities)",
+   "evidence_row": 10769,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "TAG Manufacturing (two Chattanooga facilities)",
+   "corrected_quote": "Today, the company employs more than 70 people and operates approximately 400,000 square feet of manufacturing space across two Chattanooga facilities.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "TAG Manufacturing, Inc. (two Chattanooga facilities)",
+   "note": "', Inc.' is not on the UT CIS page (it is the FRS name, row 7409). plants.csv adds 'independent', which no parent_company row quotes; dropped. Scale 5 (two facilities) unaffected."
+  },
+  {
+   "claim_id": "p-tag-manufacturing-chattanooga-tn:opening_line",
+   "source_url": "",
+   "ledger_value": "A University of Tennessee case study says TAG worked through a six-month production backlog, with lead times as long as 20 weeks and hundreds of active orders in process across its two Chattanooga facilities; where does welding sit in your lead time today?",
+   "evidence_row": 10771,
+   "tag": "inferred",
+   "verdict": "corrected",
+   "corrected_value": "A University of Tennessee case study says supply-chain disruptions and workforce shortages left TAG with a six-month production backlog and lead times as long as 20 weeks, with hundreds of active orders in production across its two Chattanooga facilities; where does welding sit in your lead time today?",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "A University of Tennessee case study says supply-chain disruptions and workforce shortages left TAG with a six-month production backlog and lead times as long as 20 weeks, with hundreds of active orders in production across its two Chattanooga facilities; where does welding sit in your lead time today?",
+   "note": "'TAG worked through a six-month production backlog' adds an outcome the page does not state: it says shortages 'contributed to a six-month production backlog, while lead times stretched as long as 20 weeks'. Also, no stated row's value carries the backlog or lead time (production_type row 10765 carries only the active orders); the clause is on that row's page. Recommend a stated row quoting the backlog sentence. Ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-mega-albuquerque-nm:name",
+   "source_url": "https://www.megacorpinc.com/",
+   "ledger_value": "MEGA Corp.",
+   "evidence_row": 7519,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "megacorpinc.com today carries 'MEGA Corp.' and 700 Osuna Rd. NE."
+  },
+  {
+   "claim_id": "p-mega-albuquerque-nm:address",
+   "source_url": "https://www.megacorpinc.com/",
+   "ledger_value": "700 Osuna Rd. NE, Albuquerque NM 87113",
+   "evidence_row": 7520,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Home page footer: '700 Osuna Rd. NE Albuquerque, NM 87113'. Operating there: the Federal Signal UltiPro board lists Welder and Maintenance Technician at 'Ground Force (Mega) – Albuquerque, NM, 700 Osuna Rd NE' today."
+  },
+  {
+   "claim_id": "p-mega-albuquerque-nm:address",
+   "source_url": "https://www.megacorpinc.com/sitefooter/aboutmega.asp",
+   "ledger_value": "manufactured at US headquarters in Albuquerque",
+   "evidence_row": 7521,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "About page: 'Mega products are manufactured at our US headquarters in Albuquerque, NM'."
+  },
+  {
+   "claim_id": "p-mega-albuquerque-nm:products",
+   "source_url": "https://www.megacorpinc.com/",
+   "ledger_value": "water tanks, service bodies, haulage equipment",
+   "evidence_row": 7523,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Home page menu lists the tank, service-body and haulage product lines."
+  },
+  {
+   "claim_id": "p-mega-albuquerque-nm:products",
+   "source_url": "https://www.megacorpinc.com/sitefooter/aboutmega.asp",
+   "ledger_value": "for construction and mining",
+   "evidence_row": 7524,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "About page sentence present."
+  },
+  {
+   "claim_id": "p-mega-albuquerque-nm:headcount",
+   "source_url": "https://www.megacorpinc.com/sitefooter/aboutmega.asp",
+   "ledger_value": "approximately 100 employees (company-level)",
+   "evidence_row": 7525,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "About page: 'approximately 100 employees'; marked company-level (Mega's own US manufacturing is the Albuquerque HQ)."
+  },
+  {
+   "claim_id": "p-mega-albuquerque-nm:parent_company",
+   "source_url": "https://www.nasdaq.com/press-release/federal-signal-completes-acquisition-mega-corp-2026-01-16",
+   "ledger_value": "acquisition completed Jan 16, 2026 (release date)",
+   "evidence_row": 10781,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Nasdaq release dated Jan. 16, 2026: Federal Signal 'has completed the acquisition of Mega Corp.'"
+  },
+  {
+   "claim_id": "p-mega-albuquerque-nm:parent_company",
+   "source_url": "https://recruiting2.ultipro.com/FED1002FSC/JobBoard/d5675b81-d6f5-4226-9f8c-be296cda2308/OpportunityDetail?opportunityId=47702c88-8da1-430f-b2ca-066797e9a98c",
+   "ledger_value": "Federal Signal: manufacturing facilities worldwide (multi-plant)",
+   "evidence_row": 10782,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Posting boilerplate: Federal Signal 'Headquartered in Downers Grove, IL, with manufacturing facilities worldwide'."
+  },
+  {
+   "claim_id": "p-mega-albuquerque-nm:weld_processes",
+   "source_url": "https://recruiting2.ultipro.com/FED1002FSC/JobBoard/d5675b81-d6f5-4226-9f8c-be296cda2308/OpportunityDetail?opportunityId=47702c88-8da1-430f-b2ca-066797e9a98c",
+   "ledger_value": "wire-feed welding in multiple positions, inside and on top of tanks",
+   "evidence_row": 10783,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "GMAW and FCAW, wire feed in multiple positions, inside and on top of tanks",
+   "corrected_quote": "Utilize the following welding processes, Gas Metal Arc Welding (GMAW)/Flux Core Arc Welding (FCAW) ... Ability to weld-wire feed in multiple positions",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Thin row: the only weld_processes row says only 'wire-feed', which under coordinator ruling 6 earns process 0, while plants.csv 'GMAW and FCAW', process 20 and the opening line ('GMAW and flux-core') rest on the named processes. The same posting (browser render today) names GMAW/FCAW. plants.csv already right."
+  },
+  {
+   "claim_id": "p-mega-albuquerque-nm:materials",
+   "source_url": "https://recruiting2.ultipro.com/FED1002FSC/JobBoard/d5675b81-d6f5-4226-9f8c-be296cda2308/OpportunityDetail?opportunityId=47702c88-8da1-430f-b2ca-066797e9a98c",
+   "ledger_value": "steel plate",
+   "evidence_row": 10785,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Posting: 'edges of steel plate'."
+  },
+  {
+   "claim_id": "p-mega-albuquerque-nm:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10787,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row; only capacities and truck classes stated (mining rule 1). Earns 0."
+  },
+  {
+   "claim_id": "p-mega-albuquerque-nm:production_type",
+   "source_url": "https://recruiting2.ultipro.com/FED1002FSC/JobBoard/d5675b81-d6f5-4226-9f8c-be296cda2308/OpportunityDetail?opportunityId=47702c88-8da1-430f-b2ca-066797e9a98c",
+   "ledger_value": "custom: custom solutions; diverse mine-support product line",
+   "evidence_row": 10788,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Posting: 'We offer a diverse product line for surface & underground mining ... custom solutions for 50 years.' Part mix 15 on a stated custom statement (mining rule 4)."
+  },
+  {
+   "claim_id": "p-mega-albuquerque-nm:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/FED1002FSC/JobBoard/d5675b81-d6f5-4226-9f8c-be296cda2308/OpportunityDetail?opportunityId=47702c88-8da1-430f-b2ca-066797e9a98c",
+   "ledger_value": "pay $23-28/hr; heavy fabrication",
+   "evidence_row": 10790,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "1 open: Welder (Req WELDE007520), Ground Force (Mega) – Albuquerque, 700 Osuna Rd NE, posted October 20, 2026; heavy fabrication; $23-28/hr",
+   "corrected_quote": "Posted on October 20, 2026 ... Ground Force (Mega) – Albuquerque, NM 700 Osuna Rd NE Albuquerque, NM 87113, USA ... Starting Wage $23-$28/hour depending on experience.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Thin row: the only welder_postings row carries the pay, while plants.csv, labor 12 and the opening line rest on the date and the 700 Osuna Rd NE location, both on this page (browser render) and on the board list today (Welder, Oct 20, 2026, Requisition WELDE007520). plants.csv already right."
+  },
+  {
+   "claim_id": "p-mega-albuquerque-nm:triggers",
+   "source_url": "https://www.federalsignal.com/fs-news/federal-signal-to-acquire-mega-corp.-expand-specialty-metal-extraction-support-platform",
+   "ledger_value": "agreement dated Dec 18, 2025",
+   "evidence_row": 10791,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Federal Signal agreed to acquire Mega Corp. (Dec 18, 2025); the purchase includes Mega's manufacturing facility in Albuquerque",
+   "corrected_quote": "DOWNERS GROVE, Illinois, December 18, 2025 ... The purchase price includes the acquisition of Mega’s manufacturing facility in Albuquerque, New Mexico.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Thin row: the value is only the date, but demand 15 rests on the acquisition naming this plant, and plants.csv triggers says 'including the Albuquerque plant'. The release (this row's page) names the Albuquerque manufacturing facility. With it, demand 15 is plant-level (the NNS Goose Creek facility-acquisition precedent; unlike NABRICO, the deal names this plant and Mega has no other US plant). plants.csv already right."
+  },
+  {
+   "claim_id": "p-mega-albuquerque-nm:headcount",
+   "source_url": "https://www.federalsignal.com/fs-news/federal-signal-to-acquire-mega-corp.-expand-specialty-metal-extraction-support-platform",
+   "ledger_value": "approximately 95 team members (Dec 2025)",
+   "evidence_row": 10792,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Federal Signal release, Dec 18, 2025: 'approximately 95 talented team members' (within 36 months; under 100)."
+  },
+  {
+   "claim_id": "p-mega-albuquerque-nm:opening_line",
+   "source_url": "",
+   "ledger_value": "Federal Signal posted a Welder opening at Ground Force/Mega's 700 Osuna Rd plant on Oct. 20, 2026, for GMAW and flux-core welding in multiple positions on its tanks, nine months after completing the Mega acquisition; how are you staffing that welding under the new ownership?",
+   "evidence_row": 10794,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Clauses carried: Welder at 700 Osuna Rd posted Oct 20, 2026 (row 10790's page, open today), GMAW/FCAW in multiple positions on tanks (row 10783's page), acquisition completed Jan 16, 2026 (row 10781). Ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-esco-elko-nv:name",
+   "source_url": "https://weir.wd3.myworkdayjobs.com/wday/cxs/weir/Weir_External_Careers/job/Elko/Welder_R0040294",
+   "ledger_value": "ESCO Elko site (Weir requisition location US204)",
+   "evidence_row": 7606,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Workday CXS today: jobRequisitionLocation descriptor 'US204 - ESCO - Elko - 9102 E Idaho St'."
+  },
+  {
+   "claim_id": "p-esco-elko-nv:address",
+   "source_url": "https://weir.wd3.myworkdayjobs.com/wday/cxs/weir/Weir_External_Careers/job/Elko/Welder_R0040294",
+   "ledger_value": "9102 E Idaho St, Elko NV",
+   "evidence_row": 7607,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Same descriptor names the street address; the requisition is live today (canApply true), so the site operates at the recorded address."
+  },
+  {
+   "claim_id": "p-esco-elko-nv:parent_company",
+   "source_url": "https://weir.wd3.myworkdayjobs.com/wday/cxs/weir/Weir_External_Careers/job/Elko/Welder_R0040294",
+   "ledger_value": "Weir",
+   "evidence_row": 7608,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Posting carries Weir's boilerplate ('global leader in mining technology')."
+  },
+  {
+   "claim_id": "p-esco-elko-nv:products",
+   "source_url": "https://weir.wd3.myworkdayjobs.com/wday/cxs/weir/Weir_External_Careers/job/Elko/Welder_R0040294",
+   "ledger_value": "MIG welding on large mining buckets; heavy fabrication and repair",
+   "evidence_row": 7610,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Posting: 'Perform MIG welding on large-scale mining buckets and heavy equipment components, focusing on heavy fabrication and repair work.'"
+  },
+  {
+   "claim_id": "p-esco-elko-nv:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?zip_code=89801&output=JSON",
+   "ledger_value": "EPA FRS lists SAS Global Corporation at 9102 E Idaho St (coordinates source)",
+   "evidence_row": 7615,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "EPA FRS ZIP 89801 (today): SAS GLOBAL CORPORATION at 9102 E IDAHO ST; no Weir or ESCO record. The value states only that, which is accurate; the site tie rests on the Workday descriptor."
+  },
+  {
+   "claim_id": "p-esco-elko-nv:welder_postings",
+   "source_url": "https://weir.wd3.myworkdayjobs.com/wday/cxs/weir/Weir_External_Careers/job/Elko/Welder_R0040294",
+   "ledger_value": "1 open on 2026-11-16: Welder R0040294, start date 2026-10-21 (\"Posted 25 Days Ago\"), requisition location US204 - ESCO - Elko - 9102 E Idaho St",
+   "evidence_row": 7616,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "1 open on 2026-11-16: Welder R0040294, posted 2026-10-21 (Workday startDate; 'Posted 25 Days Ago'), requisition location US204 - ESCO - Elko - 9102 E Idaho St",
+   "corrected_quote": "\"startDate\":\"2026-10-21\",\"timeType\":\"Full time\",\"jobReqId\":\"R0040294\"",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "plants_csv_value": "1 open (posted 2026-10-21): Welder R0040294, US204 ESCO Elko, 9102 E Idaho St; MIG on large mining buckets",
+   "note": "Workday CXS today: canApply true; the board search for 'Elko' returns this as the only Elko posting; the requisition-location descriptor names the site (rule 3), so labor 12 holds. But Workday's startDate is the posting's start, not a job start date (checker B, Terex Mount Vernon and Durand): the value and plants.csv say 'start date 2026-10-21'. The opening line already says 'posted', so it stands."
+  },
+  {
+   "claim_id": "p-esco-elko-nv:weld_processes",
+   "source_url": "https://weir.wd3.myworkdayjobs.com/wday/cxs/weir/Weir_External_Careers/job/Elko/Welder_R0040294",
+   "ledger_value": "MIG experience required on thick materials",
+   "evidence_row": 10804,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Posting must-have: 'Proven experience in MIG welding, especially on thick materials and structural components.'"
+  },
+  {
+   "claim_id": "p-esco-elko-nv:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10808,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row; 'large-scale mining buckets' has no stated dimension or weight. Earns 0."
+  },
+  {
+   "claim_id": "p-esco-elko-nv:production_type",
+   "source_url": "https://weir.wd3.myworkdayjobs.com/wday/cxs/weir/Weir_External_Careers/job/Elko/Welder_R0040294",
+   "ledger_value": "custom/repair: structural repairs, rebuilds and modifications of large mining buckets, plus heavy fabrication",
+   "evidence_row": 10809,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Posting: 'structural repairs, rebuilds, and modifications'; plus 'heavy fabrication'. Accurate; see score_notes on whether part mix 15 is 'stated custom'."
+  },
+  {
+   "claim_id": "p-esco-elko-nv:welder_postings",
+   "source_url": "https://www.energyjobshop.com/job/welders-mining-equipment-fabrication-weir-esco-elko-nv/",
+   "ledger_value": "repeat hiring: an earlier Weir ESCO Elko welder listing (aggregator, \"Added 7 months ago\")",
+   "evidence_row": 10811,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Aggregator copy present ('Added 7 months ago' on the page); not counted, consistent with ruling 7."
+  },
+  {
+   "claim_id": "p-esco-elko-nv:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "evidence_row": 10812,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row; no Elko trigger since 2024-11-16 found."
+  },
+  {
+   "claim_id": "p-esco-elko-nv:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10813,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row."
+  },
+  {
+   "claim_id": "p-esco-elko-nv:parent_company",
+   "source_url": "https://www.global.weir/about-us/",
+   "ledger_value": "The Weir Group: manufacturing operations and service centres worldwide (multi-plant)",
+   "evidence_row": 10814,
+   "tag": "stated",
+   "verdict": "corrected",
+   "corrected_value": "Weir PLC: technology hubs, manufacturing operations and service centres across 50+ countries (multi-plant)",
+   "corrected_quote": "We have a team of over 12,000 experts across 50+ countries, supported by a network of technology hubs, manufacturing operations and service centres. ... © 2026 Weir PLC",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "plants_csv_value": "Weir PLC (ESCO)",
+   "note": "'The Weir Group' is not on global.weir/about-us (the page names 'Weir PLC'). plants.csv 'The Weir Group PLC (ESCO Division)': 'ESCO Division' is on no row (the Workday descriptor says only 'ESCO'). Multi-plant clause confirmed; scale 5 unaffected."
+  },
+  {
+   "claim_id": "p-esco-elko-nv:opening_line",
+   "source_url": "",
+   "ledger_value": "Weir posted a Welder opening at its Elko facility on Oct. 21, 2026, for MIG welding on large-scale mining buckets, including structural repairs, rebuilds and modifications; how do you schedule welders between new fabrication and repair work on those buckets?",
+   "evidence_row": 10816,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Clauses carried: Welder at the Elko facility with start date Oct 21, 2026 (Workday startDate; postedOn 'Posted 25 Days Ago' today), MIG on large-scale mining buckets, structural repairs, rebuilds and modifications (rows 10804, 7610, 10809). Ends in a 'you' question; no pitch language."
+  },
+  {
+   "claim_id": "p-curry-supply-hollidaysburg-pa:name",
+   "source_url": "https://www.currysupply.com/locations",
+   "ledger_value": "Curry Supply & Curry Designs",
+   "evidence_row": 7553,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Locations page: 'Curry Supply & Curry Designs 1477 DeGol Industrial Drive Hollidaysburg, PA'."
+  },
+  {
+   "claim_id": "p-curry-supply-hollidaysburg-pa:address",
+   "source_url": "https://www.currysupply.com/locations",
+   "ledger_value": "1477 DeGol Industrial Drive, Hollidaysburg PA",
+   "evidence_row": 7554,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Same page; FRS 110070492609 also at 1477 DeGol Industrial Dr. The plant operates there (listed today)."
+  },
+  {
+   "claim_id": "p-curry-supply-hollidaysburg-pa:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=CURRY%20SUPPLY&state_abbr=PA&output=JSON",
+   "ledger_value": "EPA FRS 110070492609",
+   "evidence_row": 7555,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "EPA FRS (today): CURRY SUPPLY CO/HOLLIDAYSBURG, 1477 DEGOL INDUSTRIAL DR, RegistryId 110070492609."
+  },
+  {
+   "claim_id": "p-curry-supply-hollidaysburg-pa:parent_company",
+   "source_url": "https://www.currysupply.com/",
+   "ledger_value": "Curry Supply Company (family-owned; three facilities)",
+   "evidence_row": 7556,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Home page: 'Curry Supply remains family-owned and operated, with over 700 employees across three facilities.'"
+  },
+  {
+   "claim_id": "p-curry-supply-hollidaysburg-pa:products",
+   "source_url": "https://www.currysupply.com/products/water/off-road",
+   "ledger_value": "off-road water trucks use",
+   "evidence_row": 7558,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Off-road water page sentence present (including the page's 'minim' typo)."
+  },
+  {
+   "claim_id": "p-curry-supply-hollidaysburg-pa:products",
+   "source_url": "https://www.currysupply.com/",
+   "ledger_value": "on-road and off-road fuel/lube and water trucks",
+   "evidence_row": 7559,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Home page menu lists on- and off-road fuel/lube and water trucks."
+  },
+  {
+   "claim_id": "p-curry-supply-hollidaysburg-pa:headcount",
+   "source_url": "https://www.currysupply.com/",
+   "ledger_value": "over 700 employees across three facilities (company-level)",
+   "evidence_row": 7560,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Home page, current; marked company-level, so no 100+ site points."
+  },
+  {
+   "claim_id": "p-curry-supply-hollidaysburg-pa:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions?cid=e18bb1e8-9cf5-4c99-b6d9-b4bd53e49342&lang=en_US&locale=en_US&$top=100",
+   "ledger_value": "2 open on 2026-11-16, both posted 2026-11-11, Hollidaysburg PA: Welder (night shift, 6:30 PM-5:00 AM Mon-Thu) and Welder I/II (5:30 am-4:00 pm Mon-Thu)",
+   "evidence_row": 7564,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "ADP requisitions API today: two 'Welder' requisitions, postDate 2026-11-11T19:04 and 18:57, cityName Hollidaysburg, postalCode 16648 (night shift; Welder I/II days 5:30am-4:00pm). Open today. Shared-city check: Curry's own locations page lists a second Hollidaysburg site, Curry Rail Services at 360 Millennium Lane, so the row reasoning ('Hollidaysburg is Curry's only site in that city') is wrong. But the board separates them: currysupply.com/careers links this ADP board (cid e18bb1e8...), whose 11 open requisitions today cover Curry Supply group locations (Hollidaysburg, Altoona, Curryville, East Freedom, Gilbert AZ, Benbrook TX, Richmond) and include no rail role and no Curry Rail location (Hockley TX, Shoshoni WY); curryrail.com/careers recruits through its own downloadable application and email. As in the Bollinger Pascagoula ruling (careers page routes the other site to another channel), the Hollidaysburg requisitions on Curry Supply's board belong to Curry Supply & Curry Designs at 1477 DeGol Industrial Dr. Recommend a stated row quoting curryrail.com/careers ('Download Our Application'; 'Email Us') and correcting the reasoning; the tie is by board identity, so the coordinator may treat it as inferred (sensitivity below)."
+  },
+  {
+   "claim_id": "p-curry-supply-hollidaysburg-pa:weld_processes",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9205247376662_1?cid=e18bb1e8-9cf5-4c99-b6d9-b4bd53e49342&lang=en_US&locale=en_US",
+   "ledger_value": "MIG production welding",
+   "evidence_row": 10826,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Requisition 9205247376662_1 text today: 'full-time MIG welding production'. Process 20 holds on the board-identity tie. Shared-city check: Curry's own locations page lists a second Hollidaysburg site, Curry Rail Services at 360 Millennium Lane, so the row reasoning ('Hollidaysburg is Curry's only site in that city') is wrong. But the board separates them: currysupply.com/careers links this ADP board (cid e18bb1e8...), whose 11 open requisitions today cover Curry Supply group locations (Hollidaysburg, Altoona, Curryville, East Freedom, Gilbert AZ, Benbrook TX, Richmond) and include no rail role and no Curry Rail location (Hockley TX, Shoshoni WY); curryrail.com/careers recruits through its own downloadable application and email. As in the Bollinger Pascagoula ruling (careers page routes the other site to another channel), the Hollidaysburg requisitions on Curry Supply's board belong to Curry Supply & Curry Designs at 1477 DeGol Industrial Dr. Recommend a stated row quoting curryrail.com/careers ('Download Our Application'; 'Email Us') and correcting the reasoning; the tie is by board identity, so the coordinator may treat it as inferred (sensitivity below)."
+  },
+  {
+   "claim_id": "p-curry-supply-hollidaysburg-pa:weld_processes",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9205249754114_1?cid=e18bb1e8-9cf5-4c99-b6d9-b4bd53e49342&lang=en_US&locale=en_US",
+   "ledger_value": "MIG; fit and tack",
+   "evidence_row": 10827,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Requisition 9205249754114_1: 'The Welder executes MIG welding process to fabricate, fit, and secure components according to blueprints.' Shared-city check: Curry's own locations page lists a second Hollidaysburg site, Curry Rail Services at 360 Millennium Lane, so the row reasoning ('Hollidaysburg is Curry's only site in that city') is wrong. But the board separates them: currysupply.com/careers links this ADP board (cid e18bb1e8...), whose 11 open requisitions today cover Curry Supply group locations (Hollidaysburg, Altoona, Curryville, East Freedom, Gilbert AZ, Benbrook TX, Richmond) and include no rail role and no Curry Rail location (Hockley TX, Shoshoni WY); curryrail.com/careers recruits through its own downloadable application and email. As in the Bollinger Pascagoula ruling (careers page routes the other site to another channel), the Hollidaysburg requisitions on Curry Supply's board belong to Curry Supply & Curry Designs at 1477 DeGol Industrial Dr. Recommend a stated row quoting curryrail.com/careers ('Download Our Application'; 'Email Us') and correcting the reasoning; the tie is by board identity, so the coordinator may treat it as inferred (sensitivity below)."
+  },
+  {
+   "claim_id": "p-curry-supply-hollidaysburg-pa:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 10831,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row; capacities and classes only (mining rule 1). Earns 0."
+  },
+  {
+   "claim_id": "p-curry-supply-hollidaysburg-pa:production_type",
+   "source_url": "https://www.currysupply.com/",
+   "ledger_value": "mixed: broad line of commercial trucks (water, fuel/lube, service), custom truck fabrication, plus stock work-ready trucks (company-level)",
+   "evidence_row": 10832,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Inferred company-level row; quote on the home page; part mix 8, no confidence."
+  },
+  {
+   "claim_id": "p-curry-supply-hollidaysburg-pa:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9205249754114_1?cid=e18bb1e8-9cf5-4c99-b6d9-b4bd53e49342&lang=en_US&locale=en_US",
+   "ledger_value": "night-shift welder posting",
+   "evidence_row": 10834,
+   "tag": "stated",
+   "verdict": "confirmed",
+   "note": "Requisition 9205249754114_1 text today: 'We are seeking qualified candidates with MIG welding experience for a night shift position.' Shared-city check: Curry's own locations page lists a second Hollidaysburg site, Curry Rail Services at 360 Millennium Lane, so the row reasoning ('Hollidaysburg is Curry's only site in that city') is wrong. But the board separates them: currysupply.com/careers links this ADP board (cid e18bb1e8...), whose 11 open requisitions today cover Curry Supply group locations (Hollidaysburg, Altoona, Curryville, East Freedom, Gilbert AZ, Benbrook TX, Richmond) and include no rail role and no Curry Rail location (Hockley TX, Shoshoni WY); curryrail.com/careers recruits through its own downloadable application and email. As in the Bollinger Pascagoula ruling (careers page routes the other site to another channel), the Hollidaysburg requisitions on Curry Supply's board belong to Curry Supply & Curry Designs at 1477 DeGol Industrial Dr. Recommend a stated row quoting curryrail.com/careers ('Download Our Application'; 'Email Us') and correcting the reasoning; the tie is by board identity, so the coordinator may treat it as inferred (sensitivity below)."
+  },
+  {
+   "claim_id": "p-curry-supply-hollidaysburg-pa:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months",
+   "evidence_row": 10835,
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "Unknown row; no plant-level trigger since 2024-11-16 found."
+  },
+  {
+   "claim_id": "p-curry-supply-hollidaysburg-pa:opening_line",
+   "source_url": "",
+   "ledger_value": "Curry Supply posted two Welder openings in Hollidaysburg on Nov. 11, 2026, one on days and one on nights, both for MIG production welding; which of your water and fuel/lube truck builds are those welders going to?",
+   "evidence_row": 10837,
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Every clause is carried: two Welder requisitions in Hollidaysburg posted Nov 11, 2026, one days and one nights, both MIG production (ADP API today), and water and fuel/lube trucks (row 7559). The line does not name the DeGol Drive plant, and its question asks rather than asserts where the welders go. Ends in a 'your' question; no pitch language. The postings are Curry Supply's (separate Curry Rail hiring; see row 7564)."
+  }
+ ],
+ "score_notes": [
+  {
+   "plant": "p-esco-elko-nv",
+   "component": "score_part_mix",
+   "ledger_points": 15,
+   "should_be": 8,
+   "why": "RUBRIC RULING NEEDED, not a row error. Mining rule 4 gives 15 only for stated custom or high-mix work. The posting states 'structural repairs, rebuilds, and modifications' plus 'heavy fabrication' of large mining buckets but never says custom or high-mix; 'custom/repair' is the profiler's label. Strict reading: 8, total 60 -> 53 Medium. Keep 15 only if the coordinator rules that repair, rebuild and modification work is custom work by nature."
+  },
+  {
+   "plant": "p-esco-elko-nv",
+   "component": "confidence",
+   "ledger_points": 4,
+   "should_be": 3,
+   "why": "plants.csv already 3 (scale rests on an unknown headcount, normaliser rule); evidence row 10825 still says 4. Stale row only. Labor 12 confirmed (R0040294 live, descriptor names the site); process 20 confirmed (MIG must-have)."
+  },
+  {
+   "plant": "p-werk-brau-findlay-oh",
+   "component": "confidence",
+   "ledger_points": 4,
+   "should_be": 3,
+   "why": "Part mix 15 rests on row 10649, a company-level brand statement tagged stated (corrected to inferred). Session-2 rule 1: points stay, confidence does not. Confidence 4 -> 3 (process, labor, scale)."
+  },
+  {
+   "plant": "p-werk-brau-findlay-oh",
+   "component": "score_total",
+   "ledger_points": 88,
+   "should_be": 68,
+   "why": "STALE EVIDENCE ROWS: plants.csv is 68 Medium (material 0 per coordinator ruling 3), but score_total row 10666 says 88, score_tier row 10667 says High, and score_material_part row 10661 has value 0 with reasoning still saying 'rubric level 20'. All six components check: 20+0+15+20+8+5 = 68 (labor 20: WB Welder at 2800 Fostoria, datePosted 2026-06-26, 143 days, still listed today; process 20 once row 10645 names MIG)."
+  },
+  {
+   "plant": "p-rockland-bedford-pa",
+   "component": "confidence",
+   "ledger_points": 4,
+   "should_be": 3,
+   "why": "Part mix 15 rests on row 10696, Rockland's company boilerplate ('We produce over 200 ... custom attachments') tagged stated at the Weber Lane plant (corrected to inferred). Rule 1: points stay, confidence does not. Total 68 unchanged; confidence 4 -> 3. Labor 20 confirmed: Mig Welder-Second Shift (2026-10-26) and Fitter Fabricator (2026-10-30), both open today with Address '152 WEBER LANE' in the Paylocity JSON (Muskogee two-at-once precedent); 'regular Friday overtime' is not stated as mandatory and is not needed. Lead: a new Rockland Claysburg PA board location (Steel Yard Operator, 2026-11-13)."
+  },
+  {
+   "plant": "p-curry-supply-hollidaysburg-pa",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "Confirmed with a caveat. Curry's locations page lists a second Hollidaysburg site (Curry Rail Services, 360 Millennium Lane), so the profiler's 'only site in that city' reasoning is wrong, and both Welder requisitions give only 'Hollidaysburg, PA 16648'. They count by board identity: currysupply.com/careers links this ADP board, which lists no rail roles or Curry Rail locations, and curryrail.com/careers recruits by its own application (Bollinger Pascagoula precedent). Sensitivity: if the coordinator treats the board-identity tie as inferred attribution, process 20 -> 0 and labor 20 -> 0, total 61 -> 21 Low."
+  },
+  {
+   "plant": "p-paladin-ooltewah-tn",
+   "component": "confidence",
+   "ledger_points": 4,
+   "should_be": 3,
+   "why": "plants.csv 3 is right (scale rests on parent + unknown headcount, which earns no confidence); evidence row 10644 says 4. Stale row only. Components 20+0+8+12+8+5 = 53 check (Welder/Fabricator open today, posted Oct 25 2026; MIG named)."
+  },
+  {
+   "plant": "p-virnig-rice-mn",
+   "component": "confidence",
+   "ledger_points": 3,
+   "should_be": 2,
+   "why": "plants.csv 2 is right (process and labor; scale rests on unknown headcount; part mix company-level inferred); evidence row 10689 says 3. Process 20 holds only once row 10669 names MIG (it is on the page). 20+0+8+12+8+5 = 53 checks; labor 12 under ruling 4 ('Fridays required as needed', 'Work overtime as needed' are conditional) and ruling 5 (robot-titled role requiring manual positional welding)."
+  },
+  {
+   "plant": "p-mega-albuquerque-nm",
+   "component": "score_demand",
+   "ledger_points": 15,
+   "should_be": 15,
+   "why": "Confirmed, but only through row 10791's page: the Dec 18, 2025 release says 'The purchase price includes the acquisition of Mega’s manufacturing facility in Albuquerque, New Mexico.' A deal naming the plant is plant-level (NNS Goose Creek precedent); unlike NABRICO (whole multi-facility business), Mega's own manufacturing is this one plant. Sensitivity: 8 (total 60) if the coordinator treats any whole-company acquisition as company-level. Row 10791 must carry the facility clause (corrected)."
+  },
+  {
+   "plant": "p-mega-albuquerque-nm",
+   "component": "score_process",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "Holds only once row 10783 names GMAW/FCAW (on the page); as written the row says only 'wire-feed', which under ruling 6 earns 0. Labor 12 confirmed (Welder WELDE007520, 700 Osuna Rd NE, Oct 20 2026, on the UltiPro board today)."
+  },
+  {
+   "plant": "p-bobcat-bismarck-nd",
+   "component": "score_scale",
+   "ledger_points": 10,
+   "should_be": 10,
+   "why": "Confirmed: 'More than 700 ... work at the Bobcat Bismarck Manufacturing Facility' (CEG, Oct 6 2025, within 36 months) plus multi-site parent. Labor 0 and process 0 stand (city-only posting; FRS shows 5+ Bobcat Bismarck addresses). Relationship new, lookalike_of blank: consistent with ruling 2. Total 26 Low checks."
+  },
+  {
+   "plant": "p-bobcat-litchfield-mn",
+   "component": "score_labor",
+   "ledger_points": 12,
+   "should_be": 12,
+   "why": "Confirmed: Welder- 2nd Shift (Litchfield) live today, datePosted Nov 4 2026; 'potential for mandatory OT on Fridays' is conditional (ruling 4). Process 0 stands (arc/spot welding with electrode wire; MIG/FCAW not named). Total 40 Low checks."
+  },
+  {
+   "plant": "p-tag-manufacturing-chattanooga-tn",
+   "component": "score_total",
+   "ledger_points": 21,
+   "should_be": 21,
+   "why": "Checks: 0+0+8+0+8+5 (two physical facilities, ROHN precedent; 70+ is company-level and undated). No readable welder posting today."
+  }
+ ]
+}

@@ -1,0 +1,3804 @@
+{
+ "checker": "fact-checker CS-R2 (ships base-record sample; independent, seeded sample of 25 of 83 base records)",
+ "vertical": "v-shipbuilding-naval",
+ "date": "2026-11-19",
+ "plants": [
+  "p-steiner-construction-bayou-la-batre-al",
+  "p-swiftships-morgan-city-la",
+  "p-wct-marine-astoria-or",
+  "p-giddings-boatworks-coos-bay-or",
+  "p-birdon-bayou-la-batre-al",
+  "p-hadrian-cherokee-al",
+  "p-trident-ontonagon-mi",
+  "p-southwest-shipyard-houston-tx",
+  "p-new-pacific-vancouver-wa",
+  "p-bludworth-marine-galveston-tx",
+  "p-jemison-bayou-la-batre-al",
+  "p-blount-boats-warren-ri",
+  "p-fmt-shipyard-harvey-la",
+  "p-john-bludworth-corpus-christi-tx",
+  "p-biw-brunswick-me",
+  "p-sunflower-dubuque-ia",
+  "p-swiftships-amelia-la",
+  "p-master-boat-coden-al-2",
+  "p-lad-services-stephensville-la",
+  "p-west-gulf-marine-galveston-tx",
+  "p-thoma-sea-lockport-la",
+  "p-anduril-sparrows-point-md",
+  "p-dakota-creek-anacortes-wa",
+  "p-steiner-bayou-la-batre-al",
+  "p-gulf-copper-port-arthur-tx"
+ ],
+ "sample_method": "Sample supplied by the coordinator: scratchpad/ships-base-sample.json, a seeded random sample of ships' 83 base records (25 ids). Every evidence row whose claim_id starts with one of the 25 ids was pulled from ledger/evidence.csv by script (361 rows).",
+ "decision_rule": "Corrected = the value adds a fact the cited page does not show (page-level: each row's page must carry every clause of its value; the session lesson 'cite one row per page that carries each clause'), tags a judgement as stated (parent 'independent', an EPA registrant read as parent, a ledger status class), places a company- or city-level fact at the plant where the shared-city/campus rule makes the attribution inferred, presents a plan as done, or the quote is not on the page (visible text and raw source, HTML-unescaped, checked; '...' fragments checked separately; never FOUND on an HTTP error page). Confirmed otherwise. Not additive: limiting parentheticals ('company-level', 'site role not stated', 'pre-production', 'approximate'), provenance labels ('EPA FRS', registry ids), and values that only restate a government record. Unreachable = no fresh 2xx read today after retries; never confirmed. Relationship and lookalike_of checked against the ships relationship rule (run_log 'Ships Stages B-C merged'): (a) Navy/Coast Guard combatant, auxiliary or submarine builders -> HII; (b) structural units, modules, hull sections for Navy yards -> HII; (c) barge, tug, towboat, workboat -> LAD Services; (d) unmanned or small military steel craft -> Saronic; other in-scope -> new; other LAD sites -> customer_other_plant. Construction (not repair-only) and steel (not aluminum-only) checked per the R2 boundary reading.",
+ "claims_checked": 254,
+ "claims_corrected": 16,
+ "claims_unreachable": 1,
+ "error_rate": 0.063,
+ "error_rate_note": "16/254 = 6.3% (page-level, the delegation's rule) over every stated row of the 25 records (167) plus every inferred row of relationship, lookalike_of, tier, tier_secondary, welder_postings and parent_company (87). Stated rows only: 16/167 = 9.6%. 1 row unreachable (WCT projects page, HTTP 502 five times), counted in the denominator as not confirmed; excluding it 16/253 = 6.3%. Joint-support reading: 7 of the 16 are rows of a compound value pasted identically onto two or three rows from different pages, where the set of rows together carries every clause (Hadrian products 5749, Hadrian triggers 5752/5753, Bludworth Galveston products 5868/5869, West Gulf products 6150/6151); counting those as supported gives 9/254 = 3.5%. No closed plant, wrong process, wrong tier, invented fact or wrong relationship found. No score effect (base records carry no scores). 7 OSHA headcount rows checked against data/osha_2025.csv by record ID: all fields match. 50 geocoder/Nominatim rows (inferred, outside the denominator) re-queried: all match the API response; BIW Brunswick's stored point is the EPA FRS Harding-facility point (43.91601,-69.885034), correctly kept over the geocoder's wrong '1 BATH RD' match 6 km west. Previous ships base sample (round 2): 13.0%.",
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 15,
+  "invented fact": 0,
+  "other": 1
+ },
+ "repeated_kinds": [
+  "quote does not support value (16) has three repeated roots, each 3+ in a 25-plant sample. SWEEP (a), 7 rows: a compound value copied verbatim onto two or three evidence rows from different pages, each page carrying only some clauses (Hadrian products and triggers, Bludworth Galveston products, West Gulf products). Script: every claim_id with 2+ stated rows sharing an identical value but different source_urls; give each row only the clauses its page carries. In this sample 7 claims have 2+ stated rows with one value from different pages: 4 are defective (Hadrian products and triggers, Bludworth Galveston products, West Gulf products) and 3 are clean (New Pacific products, where both pages carry every clause, and the West Gulf and Sunflower address pairs).",
+  "SWEEP (b), 3 rows: judgements tagged stated: parent_company '(independent)' (John Bludworth 5590), an EPA facility registrant read as parent (Jemison 5668), and a ledger status class 'base (pre-production prospect)' (Anduril 4538). Script: stated rows of parent_company whose value contains 'independent', 'family-owned', 'no parent' or cites an EPA FRS name, and every stated status row.",
+  "SWEEP (c), 3 rows (4 with Sunflower 6193): a company or legal name, or a program name, carried from another page: 'Hadrian Automation' (on no cited page; pages say 'Hadrian'), 'Anduril Industries' (on gCaptain, cited to Breaking Defense), 'Trident Maritime Systems ... manufacturing' cited to an atlist map JSON that never names Trident. Script: for stated name and parent_company rows, check the value's distinctive tokens against the cited page text.",
+  "Single roots: a ZIP and street prefix added to a news-sourced address (New Pacific 5893); a grant-program name carried from the MARAD list onto a news row (Sunflower 6193, same family as sweep c); a scheduled delivery recorded as delivered (Jemison 5672, kind other)."
+ ],
+ "worst_errors": [
+  "p-hadrian-cherokee-al:triggers (5752, 5753) and :products (5749): one compound value pasted onto three pages. Washington Technology lacks the $1.5B private clause and every products clause (its quoted sentence is about automation for welding, not products); Marine Link's row quotes only 'March 23, 2026' yet the value says Mar 20. Breaking Defense (5754) alone carries every trigger clause. The same pattern recurs on Bludworth Galveston (5868/5869) and West Gulf (6150/6151) products: 7 of 16 corrections.",
+  "p-jemison-bayou-la-batre-al:triggers (5672): 'Nissa Kay delivery April 2025' (plants.csv: 'delivered') rests on a March 25, 2025 article that says the boat 'will be delivered next month'. A plan is recorded as done, and it is Jemison's only trigger. Its parent_company row (5668) also reads an EPA facility registrant as the parent of the operating shipbuilder.",
+  "p-hadrian-cherokee-al:parent_company (5743): 'Hadrian Automation' is on none of the four cited pages (all say 'Hadrian'). Applying the correction changes the plants.csv field. Same kind as Anduril 4534 ('Anduril Industries' cited to a page that says only 'Anduril') and Trident 4416 (an atlist map JSON that never names Trident)."
+ ],
+ "status_problems": [
+  {
+   "plant": "p-thoma-sea-lockport-la",
+   "problem": "operation at the Lockport yard not verified after March 2021",
+   "detail": "Only dated source is the March 6, 2021 USACE award (contractor location 'Lockport, La.'). A 2026-11-19 search (discovery only, not quoted) found a MapQuest listing marking 6130 Hwy 308 as closed, federal contractor records listing the company in Houma, and 2025-26 Coast Guard awards with Houma place of performance. Under the R2 boundary reading the yard has no stated new hull in the last five years. Not shown closed by a quotable source; hold as base, do not profile, and check p-thoma-sea-houma-la as the active yard."
+  },
+  {
+   "plant": "p-sunflower-dubuque-ia",
+   "problem": "operation not verified after May 2023",
+   "detail": "Sources are the May 8, 2023 KQ Radio grant story, an undated MarineLink directory listing and EPA FRS. A 2026-11-19 search found only 2018-2020 trade items (crane barges built in-house) and undated listings; nothing 2024 or later. Not shown closed."
+  },
+  {
+   "plant": "p-southwest-shipyard-houston-tx",
+   "problem": "new-construction role undated; possible duplicate with p-southwest-shipyard-houston-tx-2",
+   "detail": "Brady Island's 'new construction' rests on an undated directory line (shipyards.marinelink.com). EPA FRS registers one facility named 'SOUTHWEST SHIPYARD - BRADY ISLAND/BRADY WEST' at 8502 Cypress St; the Brady West record (8114 Hockley St) is 0.46 km away with the same products (dry docks, new construction). Under the campus rule (within about 1 km, same production) they may be one plant. A search found Southwest's new-build deliveries (2020 tank barge 'built in Houston', July 2025 USACE revetment-barge award) but none naming Brady Island."
+  },
+  {
+   "plant": "p-lad-services-stephensville-la",
+   "problem": "new-build role at this yard rests on a 2020 page",
+   "detail": "Already flagged by the coordinator's status rows (6812, 6995): EPA names the site 'LAD SALVAGE'; three street numbers on E Stephensville Rd. LAD's employment page (read today) lists no openings and gives 2547 Hwy 662 as the company address. No change; keep unprofiled."
+  },
+  {
+   "plant": "p-wct-marine-astoria-or",
+   "problem": "inclusion rests on an undated capability statement; site intermittently unreachable",
+   "detail": "Home and contact pages answered on a CLI retry today (statements as quoted); the projects page (Tidewater BLT 20 barge, row 5542) returned 502 on every try, so that row is unreachable. No dated WCT newbuild found; the site calls itself 'a convenient repair facility' as well as new construction. Boundary rule 1 (stated new hull in the last five years) is not met on the cited evidence."
+  },
+  {
+   "plant": "p-biw-brunswick-me",
+   "problem": "site-specific sources dated 2018 and March 2023",
+   "detail": "BDN (2018) and the Maine DEP air license (March 13, 2023) are the only site sources. BIW's iCIMS board today has a US-ME-Brunswick location facet (so Brunswick roles exist), though the welder search returns Bath only. Plant is not in doubt; plants.csv county_fips is blank (EPA FIPSCode 23005)."
+  },
+  {
+   "plant": "p-trident-ontonagon-mi",
+   "problem": "in-house welding not confirmed from a fetched page",
+   "detail": "Trident's site says the plant 'specializes in fabrication, production, and engineering for naval equipment and systems'; the only posting seen live is NDT Technician x2 (Vaia, 6 days ago). The Welder posting in plants.csv's welder_postings comes from a search snippet (bot-blocked page) with no row. Prospect test stays low-certainty."
+  }
+ ],
+ "plants_closed_or_moved": [],
+ "plant_status_notes": "20 of 25 have a source placing the company at the recorded site that is live today or dated 2025 or later: live own site or board read 2026-11-19 (Swiftships x2 'c 2026', Giddings 'c 2026', Birdon 'c 2026', Trident Ontonagon page and Vaia board, Bludworth Marine, John Bludworth, Blount 'c 2026', West Gulf, Dakota Creek board with a Nov 17, 2026 posting, Steiner Shipyard, LAD), 2026 news (Steiner Construction Aug 2026 launch, Hadrian Mar 2026 opening, New Pacific Sep 2026, FMT Apr 2026, John Bludworth Jun 2026, Master Boat Coden-2 Mar 2026, Anduril Oct 2026, Gulf Copper Nov 2025 and Davie closing), or a 2025 OSHA 300A record matching name, street and ZIP (Steiner Construction, Steiner Shipyard, Birdon, Blount, Dakota Creek, John Bludworth, Jemison, Gulf Copper Central Yard). Exceptions: Thoma-Sea Lockport (2021; no OSHA 2025 record for any Thoma-Sea site), Sunflower (2023), Southwest Brady Island (undated directory), LAD Stephensville (2020 page) and BIW Brunswick SFAB (2023 DEP license; BIW's board has a Brunswick location facet); see status_problems. Pre-production records (Hadrian Factory 4 opened Mar 2026; Anduril Arsenal-2 operations 2030; Master Boat Coden-2 under construction, 18-24 months from Dec 2025; New Pacific first vessels, lead boat Q3 2028) are flagged as such in their rows. Every plant builds or is planned to build steel in-definition structures except where noted (Swiftships, Birdon, Blount, Dakota Creek, Steiner Shipyard, Master Boat build steel and aluminum; none is aluminum-only on the evidence). Haversine check against all plants: no duplicate except the Southwest Brady Island/Brady West pair; Swiftships Amelia (2397 Hwy 662) and LAD's Hwy 662 record (2547) are different companies. Relationship and lookalike_of: all 25 follow the ships rule. Hadrian (unspecified submarine components -> new, as GDLS Lima) and Anduril (stated modules and bow hull sections -> rule (b) HII) are consistent; Birdon (Coast Guard WLR/WLIC cutters -> rule (a)) and Dakota Creek (Navy YT-808 harbor tugs read as service craft -> rule (c)) are judgement calls within the rule; Giddings, Jemison (fishing) are new; Gulf Copper Port Arthur (DDG units, rule (b)) holds.",
+ "field_drift_notes": [
+  "p-steiner-construction-bayou-la-batre-al products: 'barges, fishing vessels' are on the 2022 Waterways Journal page (row 5641's page) but on no row value; 'Parker Towing, Evansville Marine' appear on no cited page as Steiner customers (only as unrelated 'Trending' headlines); triggers says '$14.0M' while row 5642 says $13.9M. Suggested products: 'Inland towboats (USACE 100 ft towboat for TAI Holdings, launched Aug 26, 2026; 17 towboats for Maritime Partners); 24-acre yard'.",
+  "p-swiftships-morgan-city-la and p-swiftships-amelia-la products: 'patrol vessels, fast attack craft, landing craft, fast supply and crew vessels, USVs' are on no row (rows say 'Steel, aluminum or composite vessels ... (company-level)'). The shipyards page states site roles that could be quoted: Amelia 'Military yard with large scale production for a serial production', Morgan City 'Military yard with a training facility', both with fabrication bays.",
+  "p-trident-ontonagon-mi: parent_company '(J.F. Lehman & Company)' and the welder_postings search-snippet text ('Welder - Ontonagon, MI' dated 2026-06-01 on jobs.buildsubmarines.com) have no row.",
+  "p-hadrian-cherokee-al parent_company 'Hadrian Automation' -> 'Hadrian' (correction 5743).",
+  "p-anduril-sparrows-point-md triggers: '2M+ sq ft, $3.7B private, up to $2.9B Navy, >3,000 direct jobs' are on gCaptain/Breaking Defense but row 4539's value is only 'Arsenal-2 announced (Oct 2026)'.",
+  "p-dakota-creek-anacortes-wa products: 'US Navy YT-808 yard tugs' (home page 'Recent projects') and the vessel-type list (new-construction page) are on no row value (4185 says only 'vessel types incl. barges'). welder_postings text says 'one opening'; the board now lists two (Stockroom Clerk added Nov 17, 2026), still no welder.",
+  "p-steiner-bayou-la-batre-al products: 'tugs, steel shrimp trawlers, barges; repair and conversion' are on facility-capabilities/about pages but no row carries them (3846 lists ferries, push boats, OSVs, trawlers).",
+  "p-fmt-shipyard-harvey-la: parent_company 'Florida Marine Transporters' vs row 5618 and its page 'Florida Marine Transportation'; products '(Maritime Partners series 2025-2026)': no row carries 2025.",
+  "p-john-bludworth-corpus-christi-tx products '(1,200-3,200 hp ...)' is on no row.",
+  "p-birdon-bayou-la-batre-al products '16 river buoy tenders and 11 inland construction tenders' is on row 3868's page but not in a row value (minor).",
+  "county_fips blank in plants.csv for p-biw-brunswick-me (EPA 23005), p-master-boat-coden-al-2 (Mobile 01097) and p-swiftships-amelia-la (St. Mary 22101, per Nominatim 'Saint Mary Parish').",
+  "p-jemison-bayou-la-batre-al triggers: see correction 5672 (scheduled, not delivered)."
+ ],
+ "leads": [
+  "Giddings Boat Works: the 'Wanted Welder Fabricator' page (giddingsboatworks.com/wanted-welder-fabricator/) has no date in its HTML; the WordPress REST API (wp-json/wp/v2/pages/2515) gives published 2023-05-02, so it is a standing ad (counts as open, labor 12 if profiled, never 60+). The page lists 'Stick, Dual Shield, Flux Core' (FCAW) and 'hiring beginners to journeyman'.",
+  "Southwest Shipyard Galveston (p-southwest-shipyard-galveston-tx): the directory row 4006 cites says 'Galveston: enclosed new construction line for 10K and 30K bbl barges, enclosed paint booth, high speed fabrication and panel line, module fabrication to 500 tons with two 250-ton cranes'.",
+  "Trident Ontonagon: add a name row citing tridentllc.com/location-ontonagon-manufacturing; the Vaia board names 'Trident Maritime Systems-Heavy Equipment Group Ontonagon'.",
+  "Thoma-Sea: 2025-26 Coast Guard awards (place of performance Houma) and a NOAA research-ship contract (delivery 2027-28) surfaced in search; they belong to p-thoma-sea-houma-la if a primary source names the site.",
+  "Sunflower: sunflowerboatandbarge.com (named in search) may carry a current statement; MCS Magazine 2018-2020 items describe crane barges built in-house.",
+  "Anduril parent_company: re-cite to gCaptain ('Anduril Industries plans to invest $3.7 billion...')."
+ ],
+ "ruling_questions": [
+  "Compound values pasted on several rows (7 of 17 corrections): is the headline rate page-level (17/254 = 6.7%) or joint-support (10/254 = 3.9%)? Earlier rounds reported both (poles F2 checker A 'strict page-only reading'); this file uses page-level as the delegation's rule says.",
+  "Southwest Shipyard Brady Island and Brady West: EPA registers them as one facility; 0.46 km apart, same production. Merge under the campus rule?",
+  "Thoma-Sea Lockport: hold as base, or exclude pending a current source, given a 2021-only record and search signals that work moved to Houma?",
+  "Gulf Copper Port Arthur (4466 products, 4474 Ingalls link): Marine Log names 'its Port Arthur and Galveston facilities'; EPA FRS registers three Port Arthur sites 5.5-7 km apart, but OSHA 2025 has only the Central Yard (5700 Procter St). Confirmed here on the current-production reading of the shared-city rule. If EPA registrations count as other production sites, both rows become inferred (2 more corrections, 18/254 = 7.1%).",
+  "Is a parent_company parenthetical like '(independent)' or '(family-owned; no parent stated)' a limiting parenthetical (not additive) or a judgement? Counted here only where tagged stated and not on the page (John Bludworth 5590); the inferred ones (Swiftships, Southwest, Thoma-Sea, Bludworth, Sunflower) are fine."
+ ],
+ "method": "Rows pulled by script from ledger/evidence.csv for the 25 sample ids (361 rows: 254 in scope under the key rows, and 107 inferred or unknown rows of other fields read but outside the denominator, under rows_read_out_of_scope). After the eye read, a script checked every number, date and proper noun in each confirmed stated value against that row's own page; the hits were resolved by hand (one more correction: Sunflower 6193). OSHA file searched for other Gulf Copper and Thoma-Sea establishments; ECHO DFR read for Thoma-Sea Lockport (110012383438, CAA synthetic-minor source, no status field). All 111 distinct cited URLs fetched fresh on 2026-11-19 with tools/fetch_page.fetch(with_raw=True) into the scratchpad: 104 answered 200 on the first pass; Nominatim (3) answered via curl with a generic client name after a 429; wctmarine.com (home, contact) and blountboats.com (no slash) answered on a fetch_page CLI retry after connection resets; wctmarine.com/projects returned 502 every time (unreachable). Each quote and each '...' fragment matched against normalised visible text plus raw source (HTML-unescaped). Then every in-scope row was read by eye against its page for value clauses, dates and site attribution. OSHA rows checked against data/osha_2025.csv by record ID. Census geocoder and Nominatim responses parsed and compared numerically with row values and plants.csv. EPA FRS JSON read for site lists (Thoma-Sea, Gulf Copper) and coordinates (BIW, FMT, John Bludworth). Live boards re-read: Dakota Creek employment page, LAD employment page, BIW iCIMS welder search, Vaia (Trident), Giddings welder page plus its WordPress REST record. Haversine check of the 25 against all plants (0.5 km). WebSearch used 3 times (of 5), discovery only, never quoted: Sunflower Dubuque, Thoma-Sea Lockport, Southwest Brady Island. evidence_row = 1-based CSV record number counting the header as row 1 (records, not physical lines; apply_factcheck matches on claim_id + source_url). No ledger file was edited.",
+ "apply_note": "Not run against the ledger. Rows carry corrected_value / corrected_quote / corrected_tag / corrected_source_url and plants_csv_value in apply_factcheck.py's form. Fragments of multi-row claims carry '(keep current ...)' so plants.csv fields stay. Fields that change in plants.csv if applied: p-hadrian-cherokee-al parent_company -> 'Hadrian'; p-jemison-bayou-la-batre-al triggers -> scheduled-delivery wording; p-sunflower-dubuque-ia triggers -> grant wording without the program name. Retags only (field unchanged): Jemison parent_company, Anduril status. Field drift, leads, ruling questions and status problems are not applied by the script.",
+ "rows": [
+  {
+   "claim_id": "p-biw-brunswick-me:name",
+   "source_url": "https://www1.maine.gov/dep/ftp/AIR/licenses/ch115/A0271PRA.pdf",
+   "ledger_value": "Bath Iron Works - Structural Fabrication Facility (SFAB, formerly Hardings)",
+   "evidence_row": 3613,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-biw-brunswick-me:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=BATH%20IRON&state_abbr=ME&output=JSON",
+   "ledger_value": "Route 1 / Bath Rd, Brunswick, ME 04011",
+   "evidence_row": 3614,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-biw-brunswick-me:parent_company",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=BATH%20IRON&state_abbr=ME&output=JSON",
+   "ledger_value": "General Dynamics",
+   "evidence_row": 3615,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-biw-brunswick-me:products",
+   "source_url": "https://www1.maine.gov/dep/ftp/AIR/licenses/ch115/A0271PRA.pdf",
+   "ledger_value": "Structural steel processed (cutting, welded, heat treated, shaped) for the Bath main yard",
+   "evidence_row": 3616,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-biw-brunswick-me:products",
+   "source_url": "https://bangordailynews.com/2018/03/26/news/bath-iron-works-is-planning-for-an-expansion-at-its-brunswick-facility",
+   "ledger_value": "structural steel fabrication for Navy destroyers",
+   "evidence_row": 3617,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-biw-brunswick-me:tier",
+   "source_url": "https://www1.maine.gov/dep/ftp/AIR/licenses/ch115/A0271PRA.pdf",
+   "ledger_value": "OEM",
+   "evidence_row": 3618,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-biw-brunswick-me:tier_secondary",
+   "source_url": "https://www1.maine.gov/dep/ftp/AIR/licenses/ch115/A0271PRA.pdf",
+   "ledger_value": "Tier 1",
+   "evidence_row": 3619,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-biw-brunswick-me:relationship",
+   "source_url": "https://hii.com/news/hii-signs-performance-based-production-agreements-with-path-robotics-and-graymatter-robotics",
+   "ledger_value": "lookalike",
+   "evidence_row": 3620,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-biw-brunswick-me:lookalike_of",
+   "source_url": "https://hii.com/news/hii-signs-performance-based-production-agreements-with-path-robotics-and-graymatter-robotics",
+   "ledger_value": "HII",
+   "evidence_row": 3621,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-master-boat-coden-al-2:name",
+   "source_url": "https://www.marinelog.com/shipbuilding/shipyards/shipyard-news/master-boat-to-build-new-60m-defense-shipbuilding-facility/",
+   "ledger_value": "Master Boat defense shipbuilding facility",
+   "evidence_row": 3837,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-master-boat-coden-al-2:address",
+   "source_url": "https://www.marinelog.com/shipbuilding/shipyards/shipyard-news/master-boat-to-build-new-60m-defense-shipbuilding-facility/",
+   "ledger_value": "Across Bayou Coden from the existing yard",
+   "evidence_row": 3838,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-master-boat-coden-al-2:products",
+   "source_url": "https://www.fox10tv.com/2026/03/22/master-boat-builders-signs-contract-with-austal-usa-fabricate-modules-us-navy/",
+   "ledger_value": "Serial production of steel and aluminum ships and modules for Navy and Coast Guard",
+   "evidence_row": 3839,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-master-boat-coden-al-2:tier",
+   "source_url": "https://www.marinelog.com/shipbuilding/shipyards/shipyard-news/master-boat-to-build-new-60m-defense-shipbuilding-facility/",
+   "ledger_value": "OEM",
+   "evidence_row": 3840,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-master-boat-coden-al-2:tier_secondary",
+   "source_url": "https://www.marinelog.com/shipbuilding/shipyards/shipyard-news/master-boat-to-build-new-60m-defense-shipbuilding-facility/",
+   "ledger_value": "Tier 1",
+   "evidence_row": 3841,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-master-boat-coden-al-2:relationship",
+   "source_url": "https://www.marinelog.com/shipbuilding/shipyards/shipyard-news/master-boat-to-build-new-60m-defense-shipbuilding-facility/",
+   "ledger_value": "lookalike",
+   "evidence_row": 3842,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-steiner-bayou-la-batre-al:name",
+   "source_url": "https://steinershipyard.com/about-us/",
+   "ledger_value": "Steiner Shipyard",
+   "evidence_row": 3843,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-steiner-bayou-la-batre-al:address",
+   "source_url": "https://steinershipyard.com/contact-us/",
+   "ledger_value": "8640 Hemley St, Bayou La Batre, AL 36509",
+   "evidence_row": 3844,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-steiner-bayou-la-batre-al:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=STEINER%20SHIPYARD&state_abbr=AL&output=JSON",
+   "ledger_value": "8640 Hemsley Street, Bayou La Batre (EPA FRS registry 110070278795)",
+   "evidence_row": 3845,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-steiner-bayou-la-batre-al:products",
+   "source_url": "https://steinershipyard.com/about-us/",
+   "ledger_value": "New construction steel or aluminum vessels: ferries, push boats, OSVs, trawlers",
+   "evidence_row": 3846,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-steiner-bayou-la-batre-al:tier",
+   "source_url": "https://steinershipyard.com/facility-capabilities/",
+   "ledger_value": "OEM",
+   "evidence_row": 3847,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-steiner-bayou-la-batre-al:relationship",
+   "source_url": "https://steinershipyard.com/about-us/",
+   "ledger_value": "lookalike",
+   "evidence_row": 3848,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-birdon-bayou-la-batre-al:name",
+   "source_url": "https://www.marinelog.com/news/birdon-buys-metal-shark-bayou-la-batre-shipyard/",
+   "ledger_value": "Birdon America Bayou La Batre shipyard",
+   "evidence_row": 3865,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-birdon-bayou-la-batre-al:address",
+   "source_url": "https://www.marinelog.com/news/birdon-buys-metal-shark-bayou-la-batre-shipyard/",
+   "ledger_value": "yard lineage Horizon -> Metal Shark -> Birdon",
+   "evidence_row": 3867,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-birdon-bayou-la-batre-al:products",
+   "source_url": "https://birdon.us/birdon-provides-update-on-planned-improvements-continued-capital-investments-in-bayou-la-batre-shipyard",
+   "ledger_value": "Coast Guard WCC hulls and superstructures built onsite",
+   "evidence_row": 3868,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-birdon-bayou-la-batre-al:products",
+   "source_url": "https://www.marinelog.com/news/birdon-buys-metal-shark-bayou-la-batre-shipyard/",
+   "ledger_value": "Equipment for steel and aluminum vessels up to 300 ft",
+   "evidence_row": 3869,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-birdon-bayou-la-batre-al:tier",
+   "source_url": "https://birdon.us/birdon-provides-update-on-planned-improvements-continued-capital-investments-in-bayou-la-batre-shipyard",
+   "ledger_value": "OEM",
+   "evidence_row": 3870,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-birdon-bayou-la-batre-al:relationship",
+   "source_url": "https://www.marinelog.com/inland-coastal/birdon-america-starts-construction-on-third-waterways-commerce-cutter/",
+   "ledger_value": "lookalike",
+   "evidence_row": 3871,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-thoma-sea-lockport-la:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=THOMA-SEA&state_abbr=LA&output=JSON",
+   "ledger_value": "Thoma-Sea Lockport yard (EPA FRS)",
+   "evidence_row": 3946,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-thoma-sea-lockport-la:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=THOMA-SEA&state_abbr=LA&output=JSON",
+   "ledger_value": "6130 Highway 308, Lockport (EPA FRS registry 110012383438)",
+   "evidence_row": 3947,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-thoma-sea-lockport-la:products",
+   "source_url": "https://www.marinelog.com/tag/drift-collection-vessel",
+   "ledger_value": "USACE drift collection vessel",
+   "evidence_row": 3948,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). Award is dated March 6, 2021 (Marine Log tag page). EPA FRS has one Thoma-Sea Lockport site (others are in Houma), so the city-only award passes the shared-city rule; see status_problems for age and Lockport operation."
+  },
+  {
+   "claim_id": "p-thoma-sea-lockport-la:tier",
+   "source_url": "https://www.marinelog.com/tag/drift-collection-vessel",
+   "ledger_value": "OEM",
+   "evidence_row": 3949,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-thoma-sea-lockport-la:relationship",
+   "source_url": "https://www.marinelog.com/tag/drift-collection-vessel",
+   "ledger_value": "lookalike",
+   "evidence_row": 3950,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-swiftships-morgan-city-la:address",
+   "source_url": "https://swiftships.com/contact-us/",
+   "ledger_value": "1105 Levee Road, Morgan City, LA 70380",
+   "evidence_row": 3951,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-swiftships-morgan-city-la:name",
+   "source_url": "https://swiftships.com/",
+   "ledger_value": "Swiftships",
+   "evidence_row": 3952,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-swiftships-morgan-city-la:tier",
+   "source_url": "https://swiftships.com/about-us/shipyards-and-drydocks/",
+   "ledger_value": "OEM",
+   "evidence_row": 3954,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-swiftships-morgan-city-la:relationship",
+   "source_url": "https://swiftships.com/",
+   "ledger_value": "lookalike",
+   "evidence_row": 3955,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-swiftships-morgan-city-la:lookalike_of",
+   "source_url": "https://swiftships.com/",
+   "ledger_value": "Saronic",
+   "evidence_row": 3956,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-swiftships-amelia-la:address",
+   "source_url": "https://swiftships.com/contact-us/",
+   "ledger_value": "2397 Highway 662, Amelia, LA 70340",
+   "evidence_row": 3957,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-swiftships-amelia-la:name",
+   "source_url": "https://swiftships.com/",
+   "ledger_value": "Swiftships",
+   "evidence_row": 3958,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-swiftships-amelia-la:tier",
+   "source_url": "https://swiftships.com/about-us/shipyards-and-drydocks/",
+   "ledger_value": "OEM",
+   "evidence_row": 3960,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-swiftships-amelia-la:relationship",
+   "source_url": "https://swiftships.com/",
+   "ledger_value": "lookalike",
+   "evidence_row": 3961,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-swiftships-amelia-la:lookalike_of",
+   "source_url": "https://swiftships.com/",
+   "ledger_value": "Saronic",
+   "evidence_row": 3962,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-southwest-shipyard-houston-tx:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=SOUTHWEST%20SHIPYARD&state_abbr=TX&output=JSON",
+   "ledger_value": "Southwest Shipyard - Brady Island",
+   "evidence_row": 4004,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-southwest-shipyard-houston-tx:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=SOUTHWEST%20SHIPYARD&state_abbr=TX&output=JSON",
+   "ledger_value": "8502 Cypress Street, Houston (EPA FRS registry 110000462240)",
+   "evidence_row": 4005,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-southwest-shipyard-houston-tx:products",
+   "source_url": "https://shipyards.marinelink.com/yard/southwest-shipyard",
+   "ledger_value": "New construction and drydock repair (7 dry docks)",
+   "evidence_row": 4006,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). Undated directory line; see status_problems."
+  },
+  {
+   "claim_id": "p-southwest-shipyard-houston-tx:tier",
+   "source_url": "https://shipyards.marinelink.com/yard/southwest-shipyard",
+   "ledger_value": "OEM",
+   "evidence_row": 4007,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-southwest-shipyard-houston-tx:relationship",
+   "source_url": "https://shipyards.marinelink.com/yard/southwest-shipyard",
+   "ledger_value": "lookalike",
+   "evidence_row": 4008,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-southwest-shipyard-houston-tx:lookalike_of",
+   "source_url": "https://shipyards.marinelink.com/yard/southwest-shipyard",
+   "ledger_value": "LAD Services",
+   "evidence_row": 4009,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-blount-boats-warren-ri:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=BLOUNT&state_abbr=RI&output=JSON",
+   "ledger_value": "Blount Boats, Inc.",
+   "evidence_row": 4130,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-blount-boats-warren-ri:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=BLOUNT&state_abbr=RI&output=JSON",
+   "ledger_value": "461 Water St, Warren, RI 02885",
+   "evidence_row": 4131,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-blount-boats-warren-ri:products",
+   "source_url": "https://www.blountboats.com/",
+   "ledger_value": "Commercial steel and aluminum vessels",
+   "evidence_row": 4132,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-blount-boats-warren-ri:tier",
+   "source_url": "https://www.blountboats.com/",
+   "ledger_value": "OEM",
+   "evidence_row": 4133,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-blount-boats-warren-ri:relationship",
+   "source_url": "https://www.blountboats.com/",
+   "ledger_value": "lookalike",
+   "evidence_row": 4134,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-dakota-creek-anacortes-wa:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=DAKOTA%20CREEK&state_abbr=WA&output=JSON",
+   "ledger_value": "Dakota Creek Industries Inc",
+   "evidence_row": 4182,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-dakota-creek-anacortes-wa:address",
+   "source_url": "https://www.skagit.org/investors/investor-directory/p/item/1348/dakota-creek-industries-inc",
+   "ledger_value": "820 4th St, Anacortes, WA",
+   "evidence_row": 4183,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-dakota-creek-anacortes-wa:products",
+   "source_url": "https://dakotacreek.com/",
+   "ledger_value": "Steel and aluminum vessels up to 400 ft",
+   "evidence_row": 4184,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-dakota-creek-anacortes-wa:products",
+   "source_url": "https://dakotacreek.com/new-construction/",
+   "ledger_value": "vessel types incl. barges",
+   "evidence_row": 4185,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-dakota-creek-anacortes-wa:tier",
+   "source_url": "https://dakotacreek.com/",
+   "ledger_value": "OEM",
+   "evidence_row": 4186,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-dakota-creek-anacortes-wa:relationship",
+   "source_url": "https://dakotacreek.com/new-construction/",
+   "ledger_value": "lookalike",
+   "evidence_row": 4187,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-dakota-creek-anacortes-wa:welder_postings",
+   "source_url": "https://dakotacreek.com/employment/",
+   "ledger_value": "none found (employment page lists one opening, #2026-04 Marine Painter, posted July 15, 2026)",
+   "evidence_row": 4188,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). Live board today lists #2026-07 Stockroom Clerk (Nov 17, 2026) and #2026-04 Marine Painter; still no welder or fitter role. The 'one opening' wording was true on 2026-11-13."
+  },
+  {
+   "claim_id": "p-giddings-boatworks-coos-bay-or:name",
+   "source_url": "https://www.giddingsboatworks.com/",
+   "ledger_value": "Giddings Boat Works",
+   "evidence_row": 4230,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-giddings-boatworks-coos-bay-or:address",
+   "source_url": "https://www.giddingsboatworks.com/",
+   "ledger_value": "63106 Troller Rd",
+   "evidence_row": 4231,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-giddings-boatworks-coos-bay-or:products",
+   "source_url": "https://www.giddingsboatworks.com/",
+   "ledger_value": "Steel fishing vessels, rebuilds",
+   "evidence_row": 4232,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-giddings-boatworks-coos-bay-or:tier",
+   "source_url": "https://www.giddingsboatworks.com/",
+   "ledger_value": "OEM",
+   "evidence_row": 4233,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-giddings-boatworks-coos-bay-or:relationship",
+   "source_url": "https://www.giddingsboatworks.com/",
+   "ledger_value": "new",
+   "evidence_row": 4234,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-giddings-boatworks-coos-bay-or:welder_postings",
+   "source_url": "https://www.giddingsboatworks.com/",
+   "ledger_value": "Wanted Welder Fabricator (undated)",
+   "evidence_row": 4235,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). Home-page menu link to /wanted-welder-fabricator/: no date in visible text or raw source (no JSON-LD). Lead: WordPress REST API gives page published 2023-05-02 (standing ad) and lists 'Stick, Dual Shield, Flux Core'."
+  },
+  {
+   "claim_id": "p-trident-ontonagon-mi:name",
+   "source_url": "https://api.atlist.com/v1/map/0bcc686f-bcb6-4073-9078-cb5d84eb5f1d/markers",
+   "ledger_value": "Trident Maritime Systems Ontonagon manufacturing",
+   "evidence_row": 4416,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "note": "The atlist marker JSON names the marker 'Ontonagon' at 921 River St but never names Trident; 'Trident Maritime Systems ... manufacturing' comes from tridentllc.com (location-ontonagon-manufacturing), which is not this row's page.",
+   "corrected_value": "Ontonagon (location-map marker, 921 River St, Ontonagon, MI 49953)",
+   "corrected_quote": "\"formattedAddress\":\"921 River St, Ontonagon, MI 49953, USA\",\"name\":\"Ontonagon\"",
+   "plants_csv_value": "(keep current: name is carried by the tridentllc.com and Vaia pages; lead: add a name row citing tridentllc.com)"
+  },
+  {
+   "claim_id": "p-trident-ontonagon-mi:address",
+   "source_url": "https://www.tridentllc.com/location-ontonagon-manufacturing",
+   "ledger_value": "921 River St, Ontonagon, MI 49953",
+   "evidence_row": 4417,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-trident-ontonagon-mi:parent_company",
+   "source_url": "https://www.tridentllc.com/location-ontonagon-manufacturing",
+   "ledger_value": "Trident Maritime Systems",
+   "evidence_row": 4418,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-trident-ontonagon-mi:products",
+   "source_url": "https://www.tridentllc.com/location-ontonagon-manufacturing",
+   "ledger_value": "Fabrication and production of naval equipment and systems",
+   "evidence_row": 4419,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-trident-ontonagon-mi:tier",
+   "source_url": "https://www.tridentllc.com/location-ontonagon-manufacturing",
+   "ledger_value": "Tier 1; secondary OEM",
+   "evidence_row": 4420,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-trident-ontonagon-mi:relationship",
+   "source_url": "https://www.tridentllc.com/location-ontonagon-manufacturing",
+   "ledger_value": "new",
+   "evidence_row": 4421,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-trident-ontonagon-mi:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=LAKE%20SHORE%20SYSTEMS&state_abbr=MI&output=JSON",
+   "ledger_value": "Lake Shore Systems (former name)",
+   "evidence_row": 4422,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-trident-ontonagon-mi:welder_postings",
+   "source_url": "https://talents.vaia.com/companies/trident-maritime-systems-heavy-equipment-group/",
+   "ledger_value": "NDT Technician, Ontonagon",
+   "evidence_row": 4424,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). Vaia lists two NDT Technician roles at Ontonagon (posted 6 days ago); inspector roles are listed, not counted. No welder role at Ontonagon on the page."
+  },
+  {
+   "claim_id": "p-trident-ontonagon-mi:found_by",
+   "source_url": "https://api.atlist.com/v1/map/0bcc686f-bcb6-4073-9078-cb5d84eb5f1d/markers",
+   "ledger_value": "company site",
+   "evidence_row": 4425,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-trident-ontonagon-mi:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=921%20River%20St%2C%20Ontonagon%2C%20MI%2049953&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "26131",
+   "evidence_row": 4426,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-trident-ontonagon-mi:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=921%20River%20St%2C%20Ontonagon%2C%20MI%2049953&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "46.87467",
+   "evidence_row": 4427,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-gulf-copper-port-arthur-tx:name",
+   "source_url": "https://www.marinelog.com/shipbuilding/shipyards/shipyard-news/gulf-copper-in-new-agreement-to-support-ingalls-with-outfitted-structural-units/",
+   "ledger_value": "Gulf Copper & Manufacturing Corporation, Port Arthur",
+   "evidence_row": 4463,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-gulf-copper-port-arthur-tx:parent_company",
+   "source_url": "https://www.davie.ca/en/news/davie-defense-closes-gulf-copper-acquisition-confirming-u-s-shipbuilding-expansion/",
+   "ledger_value": "Davie Defense (Inocea Group)",
+   "evidence_row": 4465,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-gulf-copper-port-arthur-tx:products",
+   "source_url": "https://www.marinelog.com/shipbuilding/shipyards/shipyard-news/gulf-copper-in-new-agreement-to-support-ingalls-with-outfitted-structural-units/",
+   "ledger_value": "Outfitted structural units for Flight III destroyers",
+   "evidence_row": 4466,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). Marine Log names 'its Port Arthur and Galveston facilities'. EPA FRS registers three Gulf Copper Port Arthur sites 5.5-7 km apart (5700 Procter St Ext; 2020 S Gulfway Dr; 320 Houston Ave), but data/osha_2025.csv has only one Gulf Copper Port Arthur establishment (Central Yard, 5700 Procter St, 179 employees) and gulfcopper.com now redirects to the parent. Confirmed on the current-production reading of the campus rule; see ruling_questions."
+  },
+  {
+   "claim_id": "p-gulf-copper-port-arthur-tx:tier",
+   "source_url": "https://www.hii.com/news/at-sea-air-space-2026-hii-celebrates-manufacturing-job-creation-expansion-of-us-shipbuilding-industrial-base",
+   "ledger_value": "Tier 1",
+   "evidence_row": 4467,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-gulf-copper-port-arthur-tx:relationship",
+   "source_url": "https://www.hii.com/news/at-sea-air-space-2026-hii-celebrates-manufacturing-job-creation-expansion-of-us-shipbuilding-industrial-base",
+   "ledger_value": "lookalike",
+   "evidence_row": 4468,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-gulf-copper-port-arthur-tx:found_by",
+   "source_url": "https://www.marinelog.com/shipbuilding/shipyards/shipyard-news/gulf-copper-in-new-agreement-to-support-ingalls-with-outfitted-structural-units/",
+   "ledger_value": "news;government file (EPA FRS)",
+   "evidence_row": 4471,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-gulf-copper-port-arthur-tx:supplies:p-ingalls-pascagoula-ms",
+   "source_url": "https://www.marinelog.com/shipbuilding/shipyards/shipyard-news/gulf-copper-in-new-agreement-to-support-ingalls-with-outfitted-structural-units/",
+   "ledger_value": "Outfitted structural units for Flight III Arleigh Burke-class destroyers",
+   "evidence_row": 4474,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). Same basis as 4466 (one OSHA-reporting Gulf Copper establishment in Port Arthur); see ruling_questions."
+  },
+  {
+   "claim_id": "p-anduril-sparrows-point-md:name",
+   "source_url": "https://gcaptain.com/anduril-to-build-massive-maryland-shipyard-for-virginia-class-submarine-components/",
+   "ledger_value": "Arsenal-2",
+   "evidence_row": 4531,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-anduril-sparrows-point-md:address",
+   "source_url": "https://gcaptain.com/anduril-to-build-massive-maryland-shipyard-for-virginia-class-submarine-components/",
+   "ledger_value": "Tradepoint Atlantic, Sparrows Point, MD",
+   "evidence_row": 4532,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-anduril-sparrows-point-md:county_fips",
+   "source_url": "https://breakingdefense.com/2026/10/anduril-establishes-new-shipyard-to-manufacture-components-for-virginia-class-subs/",
+   "ledger_value": "24005",
+   "evidence_row": 4533,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-anduril-sparrows-point-md:parent_company",
+   "source_url": "https://breakingdefense.com/2026/10/anduril-establishes-new-shipyard-to-manufacture-components-for-virginia-class-subs/",
+   "ledger_value": "Anduril Industries",
+   "evidence_row": 4534,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "note": "Breaking Defense says 'Anduril' only; 'Anduril Industries' is on the gCaptain page (re-cited).",
+   "corrected_quote": "Anduril Industries plans to invest $3.7 billion in a new Maryland shipyard",
+   "corrected_source_url": "https://gcaptain.com/anduril-to-build-massive-maryland-shipyard-for-virginia-class-submarine-components/",
+   "plants_csv_value": "(keep current)"
+  },
+  {
+   "claim_id": "p-anduril-sparrows-point-md:products",
+   "source_url": "https://breakingdefense.com/2026/10/anduril-establishes-new-shipyard-to-manufacture-components-for-virginia-class-subs/",
+   "ledger_value": "Torpedo tubes first, then complex components and hull sections",
+   "evidence_row": 4535,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-anduril-sparrows-point-md:tier",
+   "source_url": "https://gcaptain.com/anduril-to-build-massive-maryland-shipyard-for-virginia-class-submarine-components/",
+   "ledger_value": "Tier 1",
+   "evidence_row": 4536,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-anduril-sparrows-point-md:relationship",
+   "source_url": "https://breakingdefense.com/2026/10/anduril-establishes-new-shipyard-to-manufacture-components-for-virginia-class-subs/",
+   "ledger_value": "lookalike",
+   "evidence_row": 4537,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-anduril-sparrows-point-md:status",
+   "source_url": "https://breakingdefense.com/2026/10/anduril-establishes-new-shipyard-to-manufacture-components-for-virginia-class-subs/",
+   "ledger_value": "base (pre-production prospect)",
+   "evidence_row": 4538,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "note": "'base (pre-production prospect)' is a ledger classification (judgement) tagged stated; the page states only the 2030 start and permitting. Retag inferred (Master Boat Coden-2's status row is inferred).",
+   "corrected_tag": "inferred",
+   "plants_csv_value": "(keep current)"
+  },
+  {
+   "claim_id": "p-anduril-sparrows-point-md:triggers",
+   "source_url": "https://breakingdefense.com/2026/10/anduril-establishes-new-shipyard-to-manufacture-components-for-virginia-class-subs/",
+   "ledger_value": "Arsenal-2 announced (Oct 2026)",
+   "evidence_row": 4539,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-anduril-sparrows-point-md:found_by",
+   "source_url": "https://breakingdefense.com/2026/10/anduril-establishes-new-shipyard-to-manufacture-components-for-virginia-class-subs/",
+   "ledger_value": "news",
+   "evidence_row": 4542,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-anduril-sparrows-point-md:supplies:p-nns-newport-news-va",
+   "source_url": "https://gcaptain.com/anduril-to-build-massive-maryland-shipyard-for-virginia-class-submarine-components/",
+   "ledger_value": "Planned: Virginia-class complex components and large assemblies (from ~2030)",
+   "evidence_row": 4543,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-anduril-sparrows-point-md:supplies:c-electric-boat",
+   "source_url": "https://gcaptain.com/anduril-to-build-massive-maryland-shipyard-for-virginia-class-submarine-components/",
+   "ledger_value": "Planned: Virginia-class complex components and large assemblies (from ~2030)",
+   "evidence_row": 4544,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-trident-ontonagon-mi:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=921%20River%20St%2C%20Ontonagon%2C%20MI%2049953&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-89.32197",
+   "evidence_row": 4560,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-trident-ontonagon-mi:state",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=921%20River%20St%2C%20Ontonagon%2C%20MI%2049953&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "MI",
+   "evidence_row": 4561,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-trident-ontonagon-mi:city",
+   "source_url": "https://www.tridentllc.com/location-ontonagon-manufacturing",
+   "ledger_value": "Ontonagon",
+   "evidence_row": 4598,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-trident-ontonagon-mi:website",
+   "source_url": "https://www.tridentllc.com/location-ontonagon-manufacturing",
+   "ledger_value": "https://www.tridentllc.com",
+   "evidence_row": 4599,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-trident-ontonagon-mi:tier_secondary",
+   "source_url": "https://www.tridentllc.com/location-ontonagon-manufacturing",
+   "ledger_value": "OEM",
+   "evidence_row": 4600,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-anduril-sparrows-point-md:city",
+   "source_url": "https://gcaptain.com/anduril-to-build-massive-maryland-shipyard-for-virginia-class-submarine-components/",
+   "ledger_value": "Sparrows Point",
+   "evidence_row": 4621,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-anduril-sparrows-point-md:state",
+   "source_url": "https://gcaptain.com/anduril-to-build-massive-maryland-shipyard-for-virginia-class-submarine-components/",
+   "ledger_value": "MD",
+   "evidence_row": 4622,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-master-boat-coden-al-2:parent_company",
+   "source_url": "https://www.marinelog.com/shipbuilding/shipyards/shipyard-news/master-boat-to-build-new-60m-defense-shipbuilding-facility/",
+   "ledger_value": "Master Boat Builders, Inc.",
+   "evidence_row": 5378,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-steiner-bayou-la-batre-al:parent_company",
+   "source_url": "https://steinershipyard.com",
+   "ledger_value": "independent, family-owned (no parent stated)",
+   "evidence_row": 5379,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-steiner-bayou-la-batre-al:website",
+   "source_url": "https://steinershipyard.com",
+   "ledger_value": "https://steinershipyard.com",
+   "evidence_row": 5380,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-birdon-bayou-la-batre-al:parent_company",
+   "source_url": "https://www.marinelog.com/news/birdon-buys-metal-shark-bayou-la-batre-shipyard/",
+   "ledger_value": "Birdon (Birdon America, Inc. subsidiary)",
+   "evidence_row": 5382,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-birdon-bayou-la-batre-al:website",
+   "source_url": "https://birdon.us",
+   "ledger_value": "https://birdon.us",
+   "evidence_row": 5383,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-thoma-sea-lockport-la:parent_company",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=THOMA-SEA&state_abbr=LA&output=JSON",
+   "ledger_value": "independent (no parent stated)",
+   "evidence_row": 5405,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-swiftships-morgan-city-la:parent_company",
+   "source_url": "https://swiftships.com/",
+   "ledger_value": "independent (no parent stated)",
+   "evidence_row": 5406,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-swiftships-morgan-city-la:website",
+   "source_url": "https://swiftships.com/",
+   "ledger_value": "https://swiftships.com",
+   "evidence_row": 5407,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-swiftships-amelia-la:parent_company",
+   "source_url": "https://swiftships.com/",
+   "ledger_value": "independent (no parent stated)",
+   "evidence_row": 5408,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-swiftships-amelia-la:website",
+   "source_url": "https://swiftships.com/",
+   "ledger_value": "https://swiftships.com",
+   "evidence_row": 5409,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-southwest-shipyard-houston-tx:parent_company",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=SOUTHWEST%20SHIPYARD&state_abbr=TX&output=JSON",
+   "ledger_value": "independent (no parent stated)",
+   "evidence_row": 5423,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-blount-boats-warren-ri:website",
+   "source_url": "https://www.blountboats.com",
+   "ledger_value": "https://www.blountboats.com",
+   "evidence_row": 5431,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-dakota-creek-anacortes-wa:website",
+   "source_url": "https://dakotacreek.com",
+   "ledger_value": "https://dakotacreek.com",
+   "evidence_row": 5435,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-giddings-boatworks-coos-bay-or:website",
+   "source_url": "https://www.giddingsboatworks.com",
+   "ledger_value": "https://www.giddingsboatworks.com",
+   "evidence_row": 5440,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-master-boat-coden-al-2:lookalike_of",
+   "source_url": "https://www.marinelog.com/shipbuilding/shipyards/shipyard-news/master-boat-to-build-new-60m-defense-shipbuilding-facility/",
+   "ledger_value": "HII",
+   "evidence_row": 5460,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-steiner-bayou-la-batre-al:lookalike_of",
+   "source_url": "https://steinershipyard.com/about-us/",
+   "ledger_value": "LAD Services",
+   "evidence_row": 5461,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-birdon-bayou-la-batre-al:lookalike_of",
+   "source_url": "https://www.marinelog.com/inland-coastal/birdon-america-starts-construction-on-third-waterways-commerce-cutter/",
+   "ledger_value": "HII",
+   "evidence_row": 5463,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-thoma-sea-lockport-la:lookalike_of",
+   "source_url": "https://www.marinelog.com/tag/drift-collection-vessel",
+   "ledger_value": "LAD Services",
+   "evidence_row": 5468,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-blount-boats-warren-ri:lookalike_of",
+   "source_url": "https://www.blountboats.com/",
+   "ledger_value": "LAD Services",
+   "evidence_row": 5471,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-dakota-creek-anacortes-wa:lookalike_of",
+   "source_url": "https://dakotacreek.com/new-construction/",
+   "ledger_value": "LAD Services",
+   "evidence_row": 5474,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-gulf-copper-port-arthur-tx:lookalike_of",
+   "source_url": "https://www.hii.com/news/at-sea-air-space-2026-hii-celebrates-manufacturing-job-creation-expansion-of-us-shipbuilding-industrial-base",
+   "ledger_value": "HII",
+   "evidence_row": 5478,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-anduril-sparrows-point-md:lookalike_of",
+   "source_url": "https://breakingdefense.com/2026/10/anduril-establishes-new-shipyard-to-manufacture-components-for-virginia-class-subs/",
+   "ledger_value": "HII",
+   "evidence_row": 5479,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-wct-marine-astoria-or:name",
+   "source_url": "https://www.wctmarine.com/",
+   "ledger_value": "WCT Marine & Construction, Inc.",
+   "evidence_row": 5537,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-wct-marine-astoria-or:parent_company",
+   "source_url": "https://www.wctmarine.com/",
+   "ledger_value": "WCT Marine & Construction, Inc.",
+   "evidence_row": 5538,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). Value is the operating company itself (no parent); page names Columbia Steel & Welding Supply as a partner company, which plants.csv shows as a parenthetical."
+  },
+  {
+   "claim_id": "p-wct-marine-astoria-or:address",
+   "source_url": "https://www.wctmarine.com/contact-us",
+   "ledger_value": "300 Railroad Ave. Hangar 3, Astoria, OR 97103",
+   "evidence_row": 5539,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). Fetched 2026-11-19 by fetch_page CLI (first plain/browser attempts were connection resets)."
+  },
+  {
+   "claim_id": "p-wct-marine-astoria-or:website",
+   "source_url": "https://www.wctmarine.com/",
+   "ledger_value": "https://www.wctmarine.com",
+   "evidence_row": 5540,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-wct-marine-astoria-or:products",
+   "source_url": "https://www.wctmarine.com/",
+   "ledger_value": "New construction, welding, boat building and fabrication",
+   "evidence_row": 5541,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-wct-marine-astoria-or:products",
+   "source_url": "https://www.wctmarine.com/projects",
+   "ledger_value": "Tidewater BLT 20 barge",
+   "evidence_row": 5542,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "unreachable",
+   "note": "wctmarine.com/projects returned HTTP 502 on five tries (plain, browser, CLI x3) on 2026-11-19; the home and contact pages answered on a CLI retry. Not confirmed."
+  },
+  {
+   "claim_id": "p-wct-marine-astoria-or:tier",
+   "source_url": "https://www.wctmarine.com/",
+   "ledger_value": "OEM",
+   "evidence_row": 5543,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-wct-marine-astoria-or:tier_secondary",
+   "source_url": "https://www.wctmarine.com/",
+   "ledger_value": "Contract fabricator",
+   "evidence_row": 5544,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-wct-marine-astoria-or:relationship",
+   "source_url": "https://www.wctmarine.com/",
+   "ledger_value": "lookalike",
+   "evidence_row": 5545,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-wct-marine-astoria-or:lookalike_of",
+   "source_url": "https://www.wctmarine.com/",
+   "ledger_value": "LAD Services",
+   "evidence_row": 5546,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-john-bludworth-corpus-christi-tx:name",
+   "source_url": "https://www.jbludshipyard.com/",
+   "ledger_value": "John Bludworth Shipyard, L.L.C.",
+   "evidence_row": 5589,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-john-bludworth-corpus-christi-tx:parent_company",
+   "source_url": "https://www.jbludshipyard.com/",
+   "ledger_value": "John Bludworth Shipyard, LLC (independent)",
+   "evidence_row": 5590,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "note": "'(independent)' is a judgement the page does not state (the quote is the company's own name and address). Drop the clause or move it to an inferred row.",
+   "corrected_value": "John Bludworth Shipyard, LLC",
+   "plants_csv_value": "(keep current: plants.csv already carries 'John Bludworth Shipyard, LLC')"
+  },
+  {
+   "claim_id": "p-john-bludworth-corpus-christi-tx:address",
+   "source_url": "https://www.jbludshipyard.com/",
+   "ledger_value": "3101 Navigation Blvd, Corpus Christi",
+   "evidence_row": 5591,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-john-bludworth-corpus-christi-tx:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=BLUDWORTH&state_abbr=TX&output=JSON",
+   "ledger_value": "3101 E Navigation, Corpus Christi 78402 (EPA FRS)",
+   "evidence_row": 5592,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-john-bludworth-corpus-christi-tx:lat",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=BLUDWORTH&state_abbr=TX&output=JSON",
+   "ledger_value": "27.823775 (EPA FRS)",
+   "evidence_row": 5593,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-john-bludworth-corpus-christi-tx:website",
+   "source_url": "https://www.jbludshipyard.com/",
+   "ledger_value": "https://www.jbludshipyard.com",
+   "evidence_row": 5594,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-john-bludworth-corpus-christi-tx:products",
+   "source_url": "https://www.marinelog.com/inland-coastal/inland/southern-devall-expands-fleet-with-two-new-3000-hp-towboats/",
+   "ledger_value": "Two 3,000 hp towboats for Southern Devall (2026)",
+   "evidence_row": 5595,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-john-bludworth-corpus-christi-tx:products",
+   "source_url": "https://www.jbludshipyard.com/",
+   "ledger_value": "Design, new construction and repair for inland or offshore vessels",
+   "evidence_row": 5596,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-john-bludworth-corpus-christi-tx:triggers",
+   "source_url": "https://www.marinelog.com/inland-coastal/inland/southern-devall-expands-fleet-with-two-new-3000-hp-towboats/",
+   "ledger_value": "2026-06-10: two towboats delivered to Southern Devall",
+   "evidence_row": 5597,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). Page (Jun 10, 2026): Southern Devall 'has expanded its fleet with the addition of two new 3,000-horsepower towboats' built by John Bludworth; 'delivered' reads that addition."
+  },
+  {
+   "claim_id": "p-john-bludworth-corpus-christi-tx:tier",
+   "source_url": "https://www.marinelog.com/inland-coastal/inland/southern-devall-expands-fleet-with-two-new-3000-hp-towboats/",
+   "ledger_value": "OEM",
+   "evidence_row": 5598,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-john-bludworth-corpus-christi-tx:relationship",
+   "source_url": "https://www.marinelog.com/inland-coastal/inland/southern-devall-expands-fleet-with-two-new-3000-hp-towboats/",
+   "ledger_value": "lookalike",
+   "evidence_row": 5599,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-john-bludworth-corpus-christi-tx:lookalike_of",
+   "source_url": "https://www.marinelog.com/inland-coastal/inland/southern-devall-expands-fleet-with-two-new-3000-hp-towboats/",
+   "ledger_value": "LAD Services",
+   "evidence_row": 5600,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-fmt-shipyard-harvey-la:name",
+   "source_url": "https://www.marinelog.com/news/fmt-shipyard-delivers-two-towboats-to-maritime-partners/",
+   "ledger_value": "FMT Shipyard & Repair",
+   "evidence_row": 5617,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-fmt-shipyard-harvey-la:parent_company",
+   "source_url": "https://navalmarinearchive.com/sbh/shipyards/small/fmt.html",
+   "ledger_value": "Florida Marine Transportation (FMT)",
+   "evidence_row": 5618,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-fmt-shipyard-harvey-la:address",
+   "source_url": "https://navalmarinearchive.com/sbh/shipyards/small/fmt.html",
+   "ledger_value": "3640 Peters Road, Harvey",
+   "evidence_row": 5619,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-fmt-shipyard-harvey-la:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=FMT%20SHIPYARD&state_abbr=LA&output=JSON",
+   "ledger_value": "3640 Peters Rd, Harvey 70058 (EPA FRS)",
+   "evidence_row": 5620,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-fmt-shipyard-harvey-la:lat",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=FMT%20SHIPYARD&state_abbr=LA&output=JSON",
+   "ledger_value": "29.85683 (EPA FRS)",
+   "evidence_row": 5621,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-fmt-shipyard-harvey-la:products",
+   "source_url": "https://www.marinelog.com/news/fmt-shipyard-delivers-two-towboats-to-maritime-partners/",
+   "ledger_value": "Towboats for Maritime Partners",
+   "evidence_row": 5622,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-fmt-shipyard-harvey-la:triggers",
+   "source_url": "https://www.marinelog.com/news/fmt-shipyard-delivers-two-towboats-to-maritime-partners/",
+   "ledger_value": "2026-04-01 two towboats delivered",
+   "evidence_row": 5623,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-fmt-shipyard-harvey-la:tier",
+   "source_url": "https://www.marinelog.com/news/fmt-shipyard-delivers-two-towboats-to-maritime-partners/",
+   "ledger_value": "OEM",
+   "evidence_row": 5624,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-fmt-shipyard-harvey-la:relationship",
+   "source_url": "https://www.marinelog.com/news/fmt-shipyard-delivers-two-towboats-to-maritime-partners/",
+   "ledger_value": "lookalike",
+   "evidence_row": 5625,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-fmt-shipyard-harvey-la:lookalike_of",
+   "source_url": "https://www.marinelog.com/news/fmt-shipyard-delivers-two-towboats-to-maritime-partners/",
+   "ledger_value": "LAD Services",
+   "evidence_row": 5626,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-steiner-construction-bayou-la-batre-al:name",
+   "source_url": "https://www.waterwaysjournal.net/2026/09/11/corps-launches-new-towboat-for-upper-mississippi-river/",
+   "ledger_value": "Steiner Construction Company shipyard",
+   "evidence_row": 5635,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-steiner-construction-bayou-la-batre-al:parent_company",
+   "source_url": "https://govcontractfinder.com/contracts/inland-river-towboat-w912es26pa044",
+   "ledger_value": "Steiner Construction Company, Inc.",
+   "evidence_row": 5636,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-steiner-construction-bayou-la-batre-al:address",
+   "source_url": "https://govcontractfinder.com/contracts/inland-river-towboat-w912es26pa044",
+   "ledger_value": "9195 Little River Road, Bayou La Batre, AL 36509",
+   "evidence_row": 5637,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). govcontractfinder mirror of the USACE award states the build site at 9195 Little River Road."
+  },
+  {
+   "claim_id": "p-steiner-construction-bayou-la-batre-al:products",
+   "source_url": "https://govcontractfinder.com/contracts/inland-river-towboat-w912es26pa044",
+   "ledger_value": "USACE inland towboat, 100 ft (TAI Holdings prime)",
+   "evidence_row": 5639,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-steiner-construction-bayou-la-batre-al:products",
+   "source_url": "https://www.waterwaysjournal.net/2025/01/24/maritime-partners-christens-mv-mandy-whipple/",
+   "ledger_value": "17th towboat for Maritime Partners",
+   "evidence_row": 5640,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-steiner-construction-bayou-la-batre-al:products",
+   "source_url": "https://www.waterwaysjournal.net/?p=28949",
+   "ledger_value": "24-acre yard, two production buildings with 10-ton cranes (2022 relocation)",
+   "evidence_row": 5641,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). Quote carries the buildings; '24-acre' and the March 23, 2022 date are on the same page."
+  },
+  {
+   "claim_id": "p-steiner-construction-bayou-la-batre-al:triggers",
+   "source_url": "https://www.waterwaysjournal.net/2026/09/11/corps-launches-new-towboat-for-upper-mississippi-river/",
+   "ledger_value": "TAI Holdings $13.9M award 2026-03-11",
+   "evidence_row": 5642,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-steiner-construction-bayou-la-batre-al:tier",
+   "source_url": "https://www.waterwaysjournal.net/2025/01/24/maritime-partners-christens-mv-mandy-whipple/",
+   "ledger_value": "OEM",
+   "evidence_row": 5643,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-steiner-construction-bayou-la-batre-al:relationship",
+   "source_url": "https://www.waterwaysjournal.net/2025/01/24/maritime-partners-christens-mv-mandy-whipple/",
+   "ledger_value": "lookalike",
+   "evidence_row": 5644,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-steiner-construction-bayou-la-batre-al:lookalike_of",
+   "source_url": "https://www.waterwaysjournal.net/2025/01/24/maritime-partners-christens-mv-mandy-whipple/",
+   "ledger_value": "LAD Services",
+   "evidence_row": 5645,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-jemison-bayou-la-batre-al:name",
+   "source_url": "https://navalmarinearchive.com/sbh/shipyards/small/jemison.html",
+   "ledger_value": "Jemison Marine & Shipbuilding",
+   "evidence_row": 5667,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-jemison-bayou-la-batre-al:parent_company",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=JEMISON&state_abbr=AL&output=JSON",
+   "ledger_value": "T. M. Jemison Construction Company, Inc. (EPA FRS)",
+   "evidence_row": 5668,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "note": "The EPA record is a facility registration naming 'T. M. Jemison Construction Company, Inc.' at the yard; it does not say that company is the parent of the operating shipbuilder (OSHA's establishment at the same address is 'Jemison Marin & Shipbuilding Company, Inc.'). Parent is a judgement: retag inferred.",
+   "corrected_tag": "inferred",
+   "plants_csv_value": "(keep current)"
+  },
+  {
+   "claim_id": "p-jemison-bayou-la-batre-al:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=JEMISON&state_abbr=AL&output=JSON",
+   "ledger_value": "9315 Little River Road, Bayou La Batre (EPA FRS)",
+   "evidence_row": 5669,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-jemison-bayou-la-batre-al:address",
+   "source_url": "https://navalmarinearchive.com/sbh/shipyards/small/jemison.html",
+   "ledger_value": "Yard at Little River Road and Powell Avenue",
+   "evidence_row": 5670,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-jemison-bayou-la-batre-al:products",
+   "source_url": "https://www.nationalfisherman.com/third-time-a-charm-with-scallop/bottom-trawler",
+   "ledger_value": "Steel hull fishing vessels",
+   "evidence_row": 5671,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-jemison-bayou-la-batre-al:triggers",
+   "source_url": "https://www.nationalfisherman.com/third-time-a-charm-with-scallop/bottom-trawler",
+   "ledger_value": "Nissa Kay delivery April 2025",
+   "evidence_row": 5672,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "error_kind": "other",
+   "note": "National Fisherman (March 25, 2025) says the Nissa Kay 'will be delivered next month'; the value (and plants.csv triggers) presents a scheduled delivery as done. No later source confirms delivery.",
+   "corrected_value": "Nissa Kay (third newbuild scalloper/bottom trawler) scheduled for delivery April 2025 ('will be delivered next month', National Fisherman, Mar 25, 2025)",
+   "plants_csv_value": "2025-03-25 report: third newbuild scalloper/bottom trawler (Nissa Kay) for Atlantic Shellfish to be delivered the following month"
+  },
+  {
+   "claim_id": "p-jemison-bayou-la-batre-al:tier",
+   "source_url": "https://www.nationalfisherman.com/third-time-a-charm-with-scallop/bottom-trawler",
+   "ledger_value": "OEM",
+   "evidence_row": 5673,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-jemison-bayou-la-batre-al:relationship",
+   "source_url": "https://www.nationalfisherman.com/third-time-a-charm-with-scallop/bottom-trawler",
+   "ledger_value": "new",
+   "evidence_row": 5674,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-hadrian-cherokee-al:name",
+   "source_url": "https://www.marinelink.com/news/hadrian-opens-alabama-facility-support-537178",
+   "ledger_value": "Hadrian - Factory 4, Cherokee (pre-production)",
+   "evidence_row": 5742,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-hadrian-cherokee-al:parent_company",
+   "source_url": "https://www.marinelink.com/news/hadrian-opens-alabama-facility-support-537178",
+   "ledger_value": "Hadrian Automation",
+   "evidence_row": 5743,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "note": "'Hadrian Automation' is on no cited page (Marine Link, 256 Today, Washington Technology, Breaking Defense all say 'Hadrian'). Legal-name clause added.",
+   "corrected_value": "Hadrian",
+   "plants_csv_value": "Hadrian"
+  },
+  {
+   "claim_id": "p-hadrian-cherokee-al:address",
+   "source_url": "https://256today.com/mission-critical-navy-hadrian-unveil-2-4-billion-factory-of-the-future-in-northwest-alabama/",
+   "ledger_value": "Barton Riverfront Industrial Park, Cherokee, AL, on the site of a former railcar plant (FreightCar America, closed 2021); street address 1200 Haley Drive only by inference from EPA's FreightCar record",
+   "evidence_row": 5744,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-hadrian-cherokee-al:city",
+   "source_url": "https://www.marinelink.com/news/hadrian-opens-alabama-facility-support-537178",
+   "ledger_value": "Cherokee",
+   "evidence_row": 5746,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-hadrian-cherokee-al:state",
+   "source_url": "https://www.marinelink.com/news/hadrian-opens-alabama-facility-support-537178",
+   "ledger_value": "AL",
+   "evidence_row": 5747,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-hadrian-cherokee-al:products",
+   "source_url": "https://www.marinelink.com/news/hadrian-opens-alabama-facility-support-537178",
+   "ledger_value": "Components, assemblies and finished products for Columbia- and Virginia-class submarines (pre-production: opened Mar 2026, full rate expected within about 24 months)",
+   "evidence_row": 5748,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). Marine Link (Mar 23, 2026) carries 'has opened', components/parts/assemblies/finished products and 'within 24 months of contract award'."
+  },
+  {
+   "claim_id": "p-hadrian-cherokee-al:products",
+   "source_url": "https://washingtontechnology.com/contracts/2026/03/navy-bets-900m-automated-factories-boost-submarine-production/412310",
+   "ledger_value": "Components, assemblies and finished products for Columbia- and Virginia-class submarines (pre-production: opened Mar 2026, full rate expected within about 24 months)",
+   "evidence_row": 5749,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "note": "Washington Technology (Mar 23, 2026) does not carry 'assemblies, finished products' or the 24-month full-rate clause; the quoted sentence is about automation for welding, not products. The page says Factory 4 will 'produce components and systems for Columbia- and Virginia-class submarines'. Joint reading: the full field is carried by the Marine Link row (5748).",
+   "corrected_value": "Components and systems for Columbia- and Virginia-class submarines (Factory 4, Cherokee; up to 1,000 employees planned)",
+   "corrected_quote": "Dubbed Factory 4, the 46-acre facility and its up-to-1,000 employees are slated to produce components and systems for Columbia- and Virginia-class submarines",
+   "plants_csv_value": "(keep current: fragment of a multi-row claim; Marine Link row carries the field)"
+  },
+  {
+   "claim_id": "p-hadrian-cherokee-al:tier",
+   "source_url": "https://www.marinelink.com/news/hadrian-opens-alabama-facility-support-537178",
+   "ledger_value": "Tier 1",
+   "evidence_row": 5750,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-hadrian-cherokee-al:relationship",
+   "source_url": "https://www.marinelink.com/news/hadrian-opens-alabama-facility-support-537178",
+   "ledger_value": "new",
+   "evidence_row": 5751,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-hadrian-cherokee-al:triggers",
+   "source_url": "https://washingtontechnology.com/contracts/2026/03/navy-bets-900m-automated-factories-boost-submarine-production/412310",
+   "ledger_value": "Mar 20, 2026: Factory 4 opened under a Navy public-private partnership (about $1.5B private plus $900M Navy); up to 1,000 jobs planned",
+   "evidence_row": 5752,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "note": "Washington Technology carries the March 20, 2026 ribbon-cutting, the $900M Navy contract and up to 1,000 employees, but not 'about $1.5B private' (that clause is on Marine Link and Breaking Defense). Joint reading: Breaking Defense row 5754 carries every clause.",
+   "corrected_value": "Mar 20, 2026: Factory 4 ribbon-cutting (Cherokee); Navy $900M contract; up to 1,000 employees planned",
+   "corrected_quote": "Hadrian's Factory 4 submarine-part plant in Cherokee, Alabama, on the morning of its ribbon-cutting ceremony, March 20, 2026. ... The Navy is betting $900 million that highly automated factories can help it add submarines",
+   "plants_csv_value": "(keep current: fragment of a multi-row claim; Breaking Defense row carries every clause)"
+  },
+  {
+   "claim_id": "p-hadrian-cherokee-al:triggers",
+   "source_url": "https://www.marinelink.com/news/hadrian-opens-alabama-facility-support-537178",
+   "ledger_value": "Mar 20, 2026: Factory 4 opened under a Navy public-private partnership (about $1.5B private plus $900M Navy); up to 1,000 jobs planned",
+   "evidence_row": 5753,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "note": "The quote is only the article date 'March 23, 2026'; Marine Link does not carry 'Mar 20' (it says Hadrian 'has opened' the facility, published March 23). It does carry the $1.5B + $900M partnership and up to 1,000 jobs.",
+   "corrected_value": "Factory 4 opened (Marine Link, Mar 23, 2026) under a Navy public-private partnership (more than $1.5B private capital plus $900M Navy); up to 1,000 jobs when fully operational",
+   "corrected_quote": "The contract with the Navy is structured as a public-private partnership combining more than $1.5 billion in private capital with $900 million in government funding through Navy appropriations",
+   "plants_csv_value": "(keep current: fragment of a multi-row claim; Breaking Defense row carries every clause)"
+  },
+  {
+   "claim_id": "p-hadrian-cherokee-al:triggers",
+   "source_url": "https://breakingdefense.com/2026/03/navy-hadrian-launch-public-private-partnership-open-facility-to-build-submarine-parts/",
+   "ledger_value": "Mar 20, 2026: Factory 4 opened under a Navy public-private partnership (about $1.5B private plus $900M Navy); up to 1,000 jobs planned",
+   "evidence_row": 5754,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). Breaking Defense (Mar 20, 2026) carries the March 20 opening, $1.5B private + $900M Navy and up to 1,000 jobs: every clause of the value."
+  },
+  {
+   "claim_id": "p-bludworth-marine-galveston-tx:name",
+   "source_url": "https://www.vesselrepair.com/galveston-shipyard.html",
+   "ledger_value": "Bludworth Marine - Galveston Shipyard",
+   "evidence_row": 5862,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-bludworth-marine-galveston-tx:parent_company",
+   "source_url": "https://www.vesselrepair.com",
+   "ledger_value": "Bludworth Marine, L.L.C. (family-owned; no parent stated)",
+   "evidence_row": 5863,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-bludworth-marine-galveston-tx:address",
+   "source_url": "https://www.vesselrepair.com/galveston-shipyard.html",
+   "ledger_value": "6200 Harborside Dr, Galveston, TX 77554",
+   "evidence_row": 5864,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-bludworth-marine-galveston-tx:city",
+   "source_url": "https://www.vesselrepair.com/galveston-shipyard.html",
+   "ledger_value": "Galveston",
+   "evidence_row": 5865,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-bludworth-marine-galveston-tx:state",
+   "source_url": "https://www.vesselrepair.com/galveston-shipyard.html",
+   "ledger_value": "TX",
+   "evidence_row": 5866,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-bludworth-marine-galveston-tx:website",
+   "source_url": "https://www.vesselrepair.com",
+   "ledger_value": "https://www.vesselrepair.com",
+   "evidence_row": 5867,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-bludworth-marine-galveston-tx:products",
+   "source_url": "https://www.vesselrepair.com/galveston-shipyard.html",
+   "ledger_value": "New offshore supply-type vessels, inland tugs and barges (company-wide: stainless acid, deck, hopper, caustic and petroleum barges); 300 x 100 ft graving dock repair; marine fabrication",
+   "evidence_row": 5868,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "note": "Galveston page carries offshore construction and supply-type vessels, inland tugs and barges, the 300x100x10 ft graving dock and vessel/marine fabrication, but not the company-wide barge list (stainless acid, deck, hopper, caustic, petroleum), which is on the new-tug-barge page.",
+   "corrected_value": "New offshore construction and supply-type vessels, inland tugs and barges; 300 x 100 ft graving dock repair; vessel and marine fabrication",
+   "plants_csv_value": "(keep current: fragment of a multi-row claim)"
+  },
+  {
+   "claim_id": "p-bludworth-marine-galveston-tx:products",
+   "source_url": "https://www.vesselrepair.com/new-tug-barge-construction.html",
+   "ledger_value": "New offshore supply-type vessels, inland tugs and barges (company-wide: stainless acid, deck, hopper, caustic and petroleum barges); 300 x 100 ft graving dock repair; marine fabrication",
+   "evidence_row": 5869,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "note": "The new-tug-barge page carries the company-wide barge types but not 'offshore supply-type vessels' or the 300x100 ft graving dock (Galveston page).",
+   "corrected_value": "Company-wide new tug and barge construction: stainless steel acid barges, sand dredges, deck, hopper, bulk caustic and petroleum liquid barges",
+   "plants_csv_value": "(keep current: fragment of a multi-row claim)"
+  },
+  {
+   "claim_id": "p-bludworth-marine-galveston-tx:tier",
+   "source_url": "https://www.vesselrepair.com/galveston-shipyard.html",
+   "ledger_value": "OEM",
+   "evidence_row": 5870,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-bludworth-marine-galveston-tx:relationship",
+   "source_url": "https://www.vesselrepair.com/new-tug-barge-construction.html",
+   "ledger_value": "lookalike",
+   "evidence_row": 5871,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-bludworth-marine-galveston-tx:lookalike_of",
+   "source_url": "https://www.vesselrepair.com/new-tug-barge-construction.html",
+   "ledger_value": "LAD Services",
+   "evidence_row": 5872,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-new-pacific-vancouver-wa:name",
+   "source_url": "https://www.workboat.com/new-pacific-books-first-shipbuilding-order-two-tugs-for-american-marine",
+   "ledger_value": "New Pacific Industrial (pre-production for vessels)",
+   "evidence_row": 5891,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-new-pacific-vancouver-wa:parent_company",
+   "source_url": "https://www.marinelog.com/news/new-pacific-gets-into-shipbuilding-with-two-glosten-designed-tugboats/",
+   "ledger_value": "New Pacific Industrial (independent new venture; no parent stated)",
+   "evidence_row": 5892,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-new-pacific-vancouver-wa:address",
+   "source_url": "https://maritime-executive.com/article/new-shipbuilding-company-launches-at-the-former-kaiser-yard-in-vancouver",
+   "ledger_value": "Columbia Business Center (former Kaiser Vancouver shipyard), SE Columbia Way, Vancouver, WA 98661",
+   "evidence_row": 5893,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "note": "Maritime Executive says 'the Columbia Business Center on Vancouver's Columbia Way'; 'SE' and ZIP 98661 are not on the page (they come from the inferred geocoder row). Minor.",
+   "corrected_value": "Columbia Business Center (former Kaiser Vancouver shipyard), Columbia Way, Vancouver, WA",
+   "plants_csv_value": "(keep current: street prefix and ZIP rest on the inferred Census geocoder row)"
+  },
+  {
+   "claim_id": "p-new-pacific-vancouver-wa:city",
+   "source_url": "https://www.workboat.com/new-pacific-books-first-shipbuilding-order-two-tugs-for-american-marine",
+   "ledger_value": "Vancouver",
+   "evidence_row": 5894,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-new-pacific-vancouver-wa:state",
+   "source_url": "https://www.workboat.com/new-pacific-books-first-shipbuilding-order-two-tugs-for-american-marine",
+   "ledger_value": "WA",
+   "evidence_row": 5895,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-new-pacific-vancouver-wa:products",
+   "source_url": "https://www.workboat.com/new-pacific-books-first-shipbuilding-order-two-tugs-for-american-marine",
+   "ledger_value": "Oceangoing tugs (two 122 x 37 ft Glosten-designed tugs for American Marine Corp., first newbuild program, lead boat due Q3 2028; pre-production for vessels); heavy industrial fabrication",
+   "evidence_row": 5896,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). WorkBoat (Sep 8, 2026) carries every clause: Glosten, 122x37, American Marine, first new construction program, Q3 2028 lead boat, heavy industrial fabrication."
+  },
+  {
+   "claim_id": "p-new-pacific-vancouver-wa:products",
+   "source_url": "https://www.marinelog.com/news/new-pacific-gets-into-shipbuilding-with-two-glosten-designed-tugboats/",
+   "ledger_value": "Oceangoing tugs (two 122 x 37 ft Glosten-designed tugs for American Marine Corp., first newbuild program, lead boat due Q3 2028; pre-production for vessels); heavy industrial fabrication",
+   "evidence_row": 5897,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). Marine Log (Sep 8, 2026) carries every clause."
+  },
+  {
+   "claim_id": "p-new-pacific-vancouver-wa:tier",
+   "source_url": "https://www.workboat.com/new-pacific-books-first-shipbuilding-order-two-tugs-for-american-marine",
+   "ledger_value": "OEM",
+   "evidence_row": 5898,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-new-pacific-vancouver-wa:tier_secondary",
+   "source_url": "https://www.marinelog.com/news/new-pacific-gets-into-shipbuilding-with-two-glosten-designed-tugboats/",
+   "ledger_value": "Contract fabricator",
+   "evidence_row": 5899,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-new-pacific-vancouver-wa:relationship",
+   "source_url": "https://www.workboat.com/new-pacific-books-first-shipbuilding-order-two-tugs-for-american-marine",
+   "ledger_value": "lookalike",
+   "evidence_row": 5900,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-new-pacific-vancouver-wa:lookalike_of",
+   "source_url": "https://www.workboat.com/new-pacific-books-first-shipbuilding-order-two-tugs-for-american-marine",
+   "ledger_value": "LAD Services",
+   "evidence_row": 5901,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-new-pacific-vancouver-wa:triggers",
+   "source_url": "https://maritime-executive.com/article/new-shipbuilding-company-launches-at-the-former-kaiser-yard-in-vancouver",
+   "ledger_value": "Sep 2026: first new-construction contract (two oceangoing tugs for American Marine Corp.); new shipbuilding company launched at the former Kaiser yard",
+   "evidence_row": 5902,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). Maritime Executive (2026-09-08) carries the AMC two-tug contract and the launch at the former Kaiser yard."
+  },
+  {
+   "claim_id": "p-west-gulf-marine-galveston-tx:name",
+   "source_url": "https://www.westgulfmarine.com/about-us",
+   "ledger_value": "West Gulf Marine - Galveston shipyard",
+   "evidence_row": 6143,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-west-gulf-marine-galveston-tx:address",
+   "source_url": "https://www.westgulfmarine.com/",
+   "ledger_value": "6000 Harborside Dr, Galveston, TX 77554",
+   "evidence_row": 6144,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-west-gulf-marine-galveston-tx:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=WEST%20GULF%20MARINE&state_abbr=TX&output=JSON",
+   "ledger_value": "6000 Harborside Dr, Galveston, TX 77554",
+   "evidence_row": 6145,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-west-gulf-marine-galveston-tx:city",
+   "source_url": "https://www.westgulfmarine.com/about-us",
+   "ledger_value": "Galveston",
+   "evidence_row": 6146,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-west-gulf-marine-galveston-tx:state",
+   "source_url": "https://www.westgulfmarine.com/about-us",
+   "ledger_value": "TX",
+   "evidence_row": 6147,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-west-gulf-marine-galveston-tx:parent_company",
+   "source_url": "https://www.marinelog.com/inland-coastal/inland/maritime-partners-acquires-tank-barge-builder-west-gulf-marine/",
+   "ledger_value": "Maritime Partners (acquired West Gulf Marine, reported Oct 2025)",
+   "evidence_row": 6148,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). Quote is only the date; the page says Maritime Partners 'has reportedly added West Gulf Marine ... to its portfolio', which the value reflects ('reported'). Suggest quoting that sentence."
+  },
+  {
+   "claim_id": "p-west-gulf-marine-galveston-tx:website",
+   "source_url": "https://www.westgulfmarine.com/",
+   "ledger_value": "https://www.westgulfmarine.com",
+   "evidence_row": 6149,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-west-gulf-marine-galveston-tx:products",
+   "source_url": "https://www.westgulfmarine.com/about-us",
+   "ledger_value": "Inland tank barges (black oil, petrochemical, refined products) for operators such as Kirby, Canal Barge and Enterprise; steel fabrication through delivery",
+   "evidence_row": 6150,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "note": "westgulfmarine.com/about-us carries inland tank barges and 'steel fabrication to final delivery' but not the cargo list or the operators Kirby, Canal Barge and Enterprise (those are on Marine Log).",
+   "corrected_value": "Inland tank barges; steel fabrication through delivery (Galveston shipyard)",
+   "plants_csv_value": "(keep current: fragment of a multi-row claim)"
+  },
+  {
+   "claim_id": "p-west-gulf-marine-galveston-tx:products",
+   "source_url": "https://www.marinelog.com/inland-coastal/inland/maritime-partners-acquires-tank-barge-builder-west-gulf-marine/",
+   "ledger_value": "Inland tank barges (black oil, petrochemical, refined products) for operators such as Kirby, Canal Barge and Enterprise; steel fabrication through delivery",
+   "evidence_row": 6151,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "note": "Marine Log carries the cargo list and the operators but not 'steel fabrication through delivery' (about-us page).",
+   "corrected_value": "Tank barges for black oil, petrochemicals and refined products, serving operators including Kirby, Canal Barge and Enterprise (Oct 2025 report)",
+   "corrected_quote": "West Gulf Marine specializes in the construction of tank barges used to transport black oil, petrochemicals, refined products, and more along the inland and intracoastal waterways, serving many major operators, including Kirby Corporation, Canal Barge Company and Enterprise Product Partners",
+   "plants_csv_value": "(keep current: fragment of a multi-row claim)"
+  },
+  {
+   "claim_id": "p-west-gulf-marine-galveston-tx:tier",
+   "source_url": "https://www.westgulfmarine.com/about-us",
+   "ledger_value": "OEM",
+   "evidence_row": 6152,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-west-gulf-marine-galveston-tx:relationship",
+   "source_url": "https://www.westgulfmarine.com/about-us",
+   "ledger_value": "lookalike",
+   "evidence_row": 6153,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-west-gulf-marine-galveston-tx:lookalike_of",
+   "source_url": "https://www.westgulfmarine.com/about-us",
+   "ledger_value": "LAD Services",
+   "evidence_row": 6154,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-west-gulf-marine-galveston-tx:triggers",
+   "source_url": "https://www.marinelog.com/inland-coastal/inland/maritime-partners-acquires-tank-barge-builder-west-gulf-marine/",
+   "ledger_value": "Oct 6, 2025 report: Maritime Partners (largest US marine equipment lessor) has reportedly added West Gulf Marine to its portfolio (closing date not stated)",
+   "evidence_row": 6157,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-sunflower-dubuque-ia:name",
+   "source_url": "https://kqradio.com/2023/05/08/eastern-iowa-shipyard-receives-federal-funding-to-expand",
+   "ledger_value": "Sunflower Enterprises - Dubuque shipyard",
+   "evidence_row": 6181,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-sunflower-dubuque-ia:address",
+   "source_url": "https://intelligence.marinelink.com/companies/company/sunflower-enterprises-llc-202582",
+   "ledger_value": "5 Jones Street, Dubuque, IA 52001",
+   "evidence_row": 6182,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-sunflower-dubuque-ia:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=SUNFLOWER&state_abbr=IA&output=JSON",
+   "ledger_value": "5 Jones Street, Dubuque, IA 52001",
+   "evidence_row": 6183,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-sunflower-dubuque-ia:city",
+   "source_url": "https://kqradio.com/2023/05/08/eastern-iowa-shipyard-receives-federal-funding-to-expand",
+   "ledger_value": "Dubuque",
+   "evidence_row": 6184,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-sunflower-dubuque-ia:state",
+   "source_url": "https://intelligence.marinelink.com/companies/company/sunflower-enterprises-llc-202582",
+   "ledger_value": "IA",
+   "evidence_row": 6185,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-sunflower-dubuque-ia:parent_company",
+   "source_url": "https://kqradio.com/2023/05/08/eastern-iowa-shipyard-receives-federal-funding-to-expand",
+   "ledger_value": "Sunflower Enterprises, LLC (owner-operated; no parent stated)",
+   "evidence_row": 6186,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-sunflower-dubuque-ia:products",
+   "source_url": "https://kqradio.com/2023/05/08/eastern-iowa-shipyard-receives-federal-funding-to-expand",
+   "ledger_value": "Custom barges (manufacturer); shipyard on the Mississippi River (May 2023)",
+   "evidence_row": 6187,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-sunflower-dubuque-ia:tier",
+   "source_url": "https://kqradio.com/2023/05/08/eastern-iowa-shipyard-receives-federal-funding-to-expand",
+   "ledger_value": "OEM",
+   "evidence_row": 6188,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-sunflower-dubuque-ia:relationship",
+   "source_url": "https://kqradio.com/2023/05/08/eastern-iowa-shipyard-receives-federal-funding-to-expand",
+   "ledger_value": "lookalike",
+   "evidence_row": 6189,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-sunflower-dubuque-ia:lookalike_of",
+   "source_url": "https://kqradio.com/2023/05/08/eastern-iowa-shipyard-receives-federal-funding-to-expand",
+   "ledger_value": "LAD Services",
+   "evidence_row": 6190,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-sunflower-dubuque-ia:triggers",
+   "source_url": "https://kqradio.com/2023/05/08/eastern-iowa-shipyard-receives-federal-funding-to-expand",
+   "ledger_value": "May 2023: $600,000 Small Shipyard Grant to expand the Dubuque shipyard (before the 24-month window)",
+   "evidence_row": 6193,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "note": "KQ Radio (May 8, 2023) says '$600,000 in federal funding'; it never names the Small Shipyard Grant program (that comes from the MARAD FY2023 list in closure-2's grant reconciliation, not this row's page). Same root as the earlier '(100-ton travel lift)' correction on this row.",
+   "corrected_value": "May 2023: $600,000 in federal funding to expand the Dubuque shipyard (before the 24-month window)",
+   "plants_csv_value": "May 2023: $600,000 in federal funding to expand the Dubuque shipyard (before the 24-month window)"
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?registry_id=110058894932&output=JSON",
+   "ledger_value": "LAD Salvage (EPA FRS name for the site)",
+   "evidence_row": 6791,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?registry_id=110058894932&output=JSON",
+   "ledger_value": "1079 E Stephensville Rd, Stephensville, LA 70380 (EPA FRS 110058894932)",
+   "evidence_row": 6792,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:address",
+   "source_url": "https://shipbuildinghistory.com/shipyards/small/lad.htm",
+   "ledger_value": "shipyard at 1039 East Stephensville Road (as of April 2020; street number differs from EPA)",
+   "evidence_row": 6793,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). Page header: 'Most recent update: April 7, 2020.'"
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:city",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?registry_id=110058894932&output=JSON",
+   "ledger_value": "Stephensville (Morgan City mailing address)",
+   "evidence_row": 6795,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:state",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?registry_id=110058894932&output=JSON",
+   "ledger_value": "LA",
+   "evidence_row": 6796,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:parent_company",
+   "source_url": "https://shipbuildinghistory.com/shipyards/small/lad.htm",
+   "ledger_value": "LAD Companies Inc.",
+   "evidence_row": 6800,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:website",
+   "source_url": "https://shipbuildinghistory.com/shipyards/small/lad.htm",
+   "ledger_value": "https://www.ladcompanies.com",
+   "evidence_row": 6801,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:products",
+   "source_url": "https://shipbuildinghistory.com/shipyards/small/lad.htm",
+   "ledger_value": "special-purpose barges (2020 page; yard named)",
+   "evidence_row": 6803,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:tier",
+   "source_url": "https://shipbuildinghistory.com/shipyards/small/lad.htm",
+   "ledger_value": "OEM",
+   "evidence_row": 6805,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:tier_secondary",
+   "source_url": "https://www.ladcompanies.com/",
+   "ledger_value": "Contract fabricator",
+   "evidence_row": 6806,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:relationship",
+   "source_url": "https://www.path-robotics.com/news/lad-services-partners-with-path-robotics-to-revolutionize-barge-manufacturing-with-physical-ai-for-w",
+   "ledger_value": "customer_other_plant",
+   "evidence_row": 6807,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:found_by",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?registry_id=110058894932&output=JSON",
+   "ledger_value": "government file (EPA FRS);other (shipbuildinghistory.com);other (MarineLink directory)",
+   "evidence_row": 6809,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:welder_postings",
+   "source_url": "https://www.ladcompanies.com/employment-opportunities",
+   "ledger_value": "none found",
+   "evidence_row": 6811,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). LAD employment page read today: application instructions only, no listings."
+  },
+  {
+   "claim_id": "p-steiner-bayou-la-batre-al:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "53 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Steiner Shipbuilding', 8640 Hemley Street)",
+   "evidence_row": 18358,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv by record ID: every quoted field matches (ID, name, street, city, ZIP, NAICS 336611, employees, date_submitted; year 2025)."
+  },
+  {
+   "claim_id": "p-birdon-bayou-la-batre-al:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "114 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Birdon America', 13980 shell belt rd)",
+   "evidence_row": 18360,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv by record ID: every quoted field matches (ID, name, street, city, ZIP, NAICS 336611, employees, date_submitted; year 2025)."
+  },
+  {
+   "claim_id": "p-blount-boats-warren-ri:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "30 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Blount Boats, Inc.', 461 Water Street)",
+   "evidence_row": 18365,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv by record ID: every quoted field matches (ID, name, street, city, ZIP, NAICS 336611, employees, date_submitted; year 2025)."
+  },
+  {
+   "claim_id": "p-dakota-creek-anacortes-wa:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "171 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Dakota Creek Industries Inc.', 820 4TH ST)",
+   "evidence_row": 18368,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv by record ID: every quoted field matches (ID, name, street, city, ZIP, NAICS 336611, employees, date_submitted; year 2025)."
+  },
+  {
+   "claim_id": "p-john-bludworth-corpus-christi-tx:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "83 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'John Bludworth Shipyard,LLC', 3101 Navigation Blvd)",
+   "evidence_row": 18380,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv by record ID: every quoted field matches (ID, name, street, city, ZIP, NAICS 336611, employees, date_submitted; year 2025)."
+  },
+  {
+   "claim_id": "p-steiner-construction-bayou-la-batre-al:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "90 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Steiner Construction Company, Inc.', 9195 Little River Road)",
+   "evidence_row": 18381,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv by record ID: every quoted field matches (ID, name, street, city, ZIP, NAICS 336611, employees, date_submitted; year 2025)."
+  },
+  {
+   "claim_id": "p-jemison-bayou-la-batre-al:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "17 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Jemison Marin & Shipbuilding Company, Inc.', 9315 Little River Road)",
+   "evidence_row": 18382,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Checked against data/osha_2025.csv by record ID: every quoted field matches (ID, name, street, city, ZIP, NAICS 336611, employees, date_submitted; year 2025)."
+  }
+ ],
+ "rows_read_out_of_scope": [
+  {
+   "claim_id": "p-biw-brunswick-me:welder_postings",
+   "source_url": "https://careers-gdbiw.icims.com/jobs/search?ss=1&searchKeyword=welder&in_iframe=1",
+   "ledger_value": "none found naming Brunswick",
+   "evidence_row": 3622,
+   "tag": "unknown",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND). iCIMS board read today: location facet includes US-ME-Brunswick, but the welder search returns Bath roles only (Welder Grade 7, Req 2026-5467, US-ME-Bath)."
+  },
+  {
+   "claim_id": "p-biw-brunswick-me:prospect_test",
+   "source_url": "https://www1.maine.gov/dep/ftp/AIR/licenses/ch115/A0271PRA.pdf",
+   "ledger_value": "pass",
+   "evidence_row": 3623,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-master-boat-coden-al-2:status",
+   "source_url": "https://www.marinelog.com/shipbuilding/shipyards/shipyard-news/master-boat-to-build-new-60m-defense-shipbuilding-facility/",
+   "ledger_value": "base (pre-production prospect)",
+   "evidence_row": 3836,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-birdon-bayou-la-batre-al:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=HORIZON%20SHIPBUILDING&state_abbr=AL&output=JSON",
+   "ledger_value": "13980 Shell Belt Rd., Bayou La Batre (EPA FRS registry 110057744909)",
+   "evidence_row": 3866,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-swiftships-morgan-city-la:products",
+   "source_url": "https://swiftships.com/about-us/shipyards-and-drydocks/",
+   "ledger_value": "Steel, aluminum or composite vessels for defense and commercial clients (company-level)",
+   "evidence_row": 3953,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-swiftships-amelia-la:products",
+   "source_url": "https://swiftships.com/about-us/shipyards-and-drydocks/",
+   "ledger_value": "Steel, aluminum or composite vessels for defense and commercial clients (company-level)",
+   "evidence_row": 3959,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-blount-boats-warren-ri:prospect_test",
+   "source_url": "https://www.blountboats.com/",
+   "ledger_value": "pass (steel and aluminum)",
+   "evidence_row": 4135,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-dakota-creek-anacortes-wa:prospect_test",
+   "source_url": "https://dakotacreek.com/",
+   "ledger_value": "pass (steel and aluminum)",
+   "evidence_row": 4189,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-giddings-boatworks-coos-bay-or:prospect_test",
+   "source_url": "https://www.giddingsboatworks.com/",
+   "ledger_value": "pass",
+   "evidence_row": 4236,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-blount-boats-warren-ri:welder_postings",
+   "source_url": "https://www.blountboats.com",
+   "ledger_value": "not checked",
+   "evidence_row": 4311,
+   "tag": "unknown",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-trident-ontonagon-mi:prospect_test",
+   "source_url": "https://www.tridentllc.com/location-ontonagon-manufacturing",
+   "ledger_value": "pass (low certainty)",
+   "evidence_row": 4423,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-gulf-copper-port-arthur-tx:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=GULF%20COPPER&state_abbr=TX&output=JSON",
+   "ledger_value": "5700 Procter St Ext, Port Arthur, TX 77642",
+   "evidence_row": 4464,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-gulf-copper-port-arthur-tx:prospect_test",
+   "source_url": "https://www.marinelog.com/shipbuilding/shipyards/shipyard-news/gulf-copper-in-new-agreement-to-support-ingalls-with-outfitted-structural-units/",
+   "ledger_value": "pass",
+   "evidence_row": 4469,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-gulf-copper-port-arthur-tx:welder_postings",
+   "source_url": "",
+   "ledger_value": "none found",
+   "evidence_row": 4470,
+   "tag": "unknown",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "No source (unknown/status row); read for consistency."
+  },
+  {
+   "claim_id": "p-gulf-copper-port-arthur-tx:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/coordinates?x=-93.888951&y=29.920942&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "48245",
+   "evidence_row": 4472,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-gulf-copper-port-arthur-tx:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/coordinates?x=-93.888951&y=29.920942&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "29.920942",
+   "evidence_row": 4473,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-anduril-sparrows-point-md:prospect_test",
+   "source_url": "https://breakingdefense.com/2026/10/anduril-establishes-new-shipyard-to-manufacture-components-for-virginia-class-subs/",
+   "ledger_value": "pass (pre-production)",
+   "evidence_row": 4540,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-anduril-sparrows-point-md:welder_postings",
+   "source_url": "",
+   "ledger_value": "none (pre-production)",
+   "evidence_row": 4541,
+   "tag": "unknown",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "No source (unknown/status row); read for consistency."
+  },
+  {
+   "claim_id": "p-gulf-copper-port-arthur-tx:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/coordinates?x=-93.888951&y=29.920942&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-93.888951",
+   "evidence_row": 4568,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-gulf-copper-port-arthur-tx:state",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/coordinates?x=-93.888951&y=29.920942&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "TX",
+   "evidence_row": 4569,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-gulf-copper-port-arthur-tx:city",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=GULF%20COPPER&state_abbr=TX&output=JSON",
+   "ledger_value": "Port Arthur",
+   "evidence_row": 4610,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-wct-marine-astoria-or:lat",
+   "source_url": "https://www.wctmarine.com/contact-us",
+   "ledger_value": "46.19694 (OSM: Railroad Avenue, Tongue Point Village, Astoria)",
+   "evidence_row": 5547,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-steiner-construction-bayou-la-batre-al:lat",
+   "source_url": "https://govcontractfinder.com/contracts/inland-river-towboat-w912es26pa044",
+   "ledger_value": "30.40323 (OSM centroid of Little River Road; approximate)",
+   "evidence_row": 5638,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-wct-marine-astoria-or:prospect_test",
+   "source_url": "https://www.wctmarine.com/",
+   "ledger_value": "pass (welding stated; steel inferred)",
+   "evidence_row": 5683,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-john-bludworth-corpus-christi-tx:prospect_test",
+   "source_url": "https://www.jbludshipyard.com/",
+   "ledger_value": "pass (inferred)",
+   "evidence_row": 5687,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-fmt-shipyard-harvey-la:prospect_test",
+   "source_url": "https://www.marinelog.com/news/fmt-shipyard-delivers-two-towboats-to-maritime-partners/",
+   "ledger_value": "pass (inferred)",
+   "evidence_row": 5690,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-steiner-construction-bayou-la-batre-al:prospect_test",
+   "source_url": "https://www.waterwaysjournal.net/?p=28949",
+   "ledger_value": "pass (inferred)",
+   "evidence_row": 5692,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-jemison-bayou-la-batre-al:prospect_test",
+   "source_url": "https://www.nationalfisherman.com/third-time-a-charm-with-scallop/bottom-trawler",
+   "ledger_value": "pass (steel hulls stated; welding inferred)",
+   "evidence_row": 5695,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-hadrian-cherokee-al:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=FREIGHTCAR&state_abbr=AL&output=JSON",
+   "ledger_value": "1200 Haley Drive, Cherokee, AL (Barton Riverfront Industrial Park; former FreightCar America plant)",
+   "evidence_row": 5745,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-hadrian-cherokee-al:verticals",
+   "source_url": "https://www.marinelink.com/news/hadrian-opens-alabama-facility-support-537178",
+   "ledger_value": "v-shipbuilding-naval",
+   "evidence_row": 5755,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-hadrian-cherokee-al:lat",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=NAVISTAR&state_abbr=AL&output=JSON",
+   "ledger_value": "34.748472",
+   "evidence_row": 5756,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-hadrian-cherokee-al:lon",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=NAVISTAR&state_abbr=AL&output=JSON",
+   "ledger_value": "-87.882771",
+   "evidence_row": 5757,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-hadrian-cherokee-al:county_fips",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=NAVISTAR&state_abbr=AL&output=JSON",
+   "ledger_value": "01033",
+   "evidence_row": 5758,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-bludworth-marine-galveston-tx:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=6200%20Harborside%20Dr%2C%20Galveston%2C%20TX%2077554&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "29.297139,-94.841451 (county 48167)",
+   "evidence_row": 5873,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-bludworth-marine-galveston-tx:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=6200%20Harborside%20Dr%2C%20Galveston%2C%20TX%2077554&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "29.297139,-94.841451 (county 48167)",
+   "evidence_row": 5874,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-bludworth-marine-galveston-tx:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=6200%20Harborside%20Dr%2C%20Galveston%2C%20TX%2077554&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "48167 (Galveston County)",
+   "evidence_row": 5875,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-bludworth-marine-galveston-tx:verticals",
+   "source_url": "https://www.vesselrepair.com/galveston-shipyard.html",
+   "ledger_value": "v-shipbuilding-naval",
+   "evidence_row": 5876,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-new-pacific-vancouver-wa:verticals",
+   "source_url": "https://www.workboat.com/new-pacific-books-first-shipbuilding-order-two-tugs-for-american-marine",
+   "ledger_value": "v-shipbuilding-naval",
+   "evidence_row": 5903,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-new-pacific-vancouver-wa:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2501%20SE%20Columbia%20Way%2C%20Vancouver%2C%20WA%2098661&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "45.617324,-122.645312 (county 53011)",
+   "evidence_row": 5904,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-new-pacific-vancouver-wa:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2501%20SE%20Columbia%20Way%2C%20Vancouver%2C%20WA%2098661&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "45.617324,-122.645312 (county 53011)",
+   "evidence_row": 5905,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-new-pacific-vancouver-wa:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2501%20SE%20Columbia%20Way%2C%20Vancouver%2C%20WA%2098661&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "53011 (Clark County)",
+   "evidence_row": 5906,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-west-gulf-marine-galveston-tx:verticals",
+   "source_url": "https://www.westgulfmarine.com/about-us",
+   "ledger_value": "v-shipbuilding-naval",
+   "evidence_row": 6155,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-west-gulf-marine-galveston-tx:prospect_test",
+   "source_url": "https://www.westgulfmarine.com/about-us",
+   "ledger_value": "pass (steel fabrication of barges in-house)",
+   "evidence_row": 6156,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-west-gulf-marine-galveston-tx:found_by",
+   "source_url": "https://www.westgulfmarine.com/about-us",
+   "ledger_value": "closure;list audit;company site;news;government file",
+   "evidence_row": 6158,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-west-gulf-marine-galveston-tx:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=6000%20Harborside%20Dr%2C%20Galveston%2C%20TX%2077554&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "29.297144,-94.838874 (county 48167)",
+   "evidence_row": 6159,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-west-gulf-marine-galveston-tx:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=6000%20Harborside%20Dr%2C%20Galveston%2C%20TX%2077554&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "29.297144,-94.838874 (county 48167)",
+   "evidence_row": 6160,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-west-gulf-marine-galveston-tx:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=6000%20Harborside%20Dr%2C%20Galveston%2C%20TX%2077554&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "48167 (Galveston County)",
+   "evidence_row": 6161,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-sunflower-dubuque-ia:verticals",
+   "source_url": "https://kqradio.com/2023/05/08/eastern-iowa-shipyard-receives-federal-funding-to-expand",
+   "ledger_value": "v-shipbuilding-naval",
+   "evidence_row": 6191,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-sunflower-dubuque-ia:prospect_test",
+   "source_url": "https://kqradio.com/2023/05/08/eastern-iowa-shipyard-receives-federal-funding-to-expand",
+   "ledger_value": "pass (inferred: manufactures custom barges in-house; steel not stated)",
+   "evidence_row": 6192,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-sunflower-dubuque-ia:found_by",
+   "source_url": "https://kqradio.com/2023/05/08/eastern-iowa-shipyard-receives-federal-funding-to-expand",
+   "ledger_value": "closure;list audit;news;government file",
+   "evidence_row": 6194,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-sunflower-dubuque-ia:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=5%20Jones%20St%2C%20Dubuque%2C%20IA%2052001&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "42.493006,-90.658905 (county 19061)",
+   "evidence_row": 6195,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-sunflower-dubuque-ia:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=5%20Jones%20St%2C%20Dubuque%2C%20IA%2052001&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "42.493006,-90.658905 (county 19061)",
+   "evidence_row": 6196,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-sunflower-dubuque-ia:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=5%20Jones%20St%2C%20Dubuque%2C%20IA%2052001&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "19061 (Dubuque County)",
+   "evidence_row": 6197,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:address_conflict",
+   "source_url": "https://intelligence.marinelink.com/companies/company/lad-services-201520",
+   "ledger_value": "1043 E. Stephensville Road (MarineLink vessel-operator directory); 1039 (Shipbuilding History, 2020); 1079 (EPA FRS). Taken as one yard on E Stephensville Rd",
+   "evidence_row": 6794,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1079%20E%20Stephensville%20Rd%2C%20Morgan%20City%2C%20LA%2070380&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "22099 (St. Martin Parish)",
+   "evidence_row": 6797,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1079%20E%20Stephensville%20Rd%2C%20Morgan%20City%2C%20LA%2070380&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "29.779190582537",
+   "evidence_row": 6798,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1079%20E%20Stephensville%20Rd%2C%20Morgan%20City%2C%20LA%2070380&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-91.165951087852",
+   "evidence_row": 6799,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:verticals",
+   "source_url": "https://shipbuildinghistory.com/shipyards/small/lad.htm",
+   "ledger_value": "v-shipbuilding-naval",
+   "evidence_row": 6802,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:products",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?registry_id=110058894932&output=JSON",
+   "ledger_value": "EPA registers the site as LAD Salvage; LAD offers marine salvage (current use of the site for new barges not confirmed)",
+   "evidence_row": 6804,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 6808,
+   "tag": "unknown",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "No source (unknown/status row); read for consistency."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:prospect_test",
+   "source_url": "https://shipbuildinghistory.com/shipyards/small/lad.htm",
+   "ledger_value": "pass (low certainty: barge building at this yard is stated only on a 2020 page; EPA names it LAD Salvage)",
+   "evidence_row": 6810,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Fetched 2026-11-19 (HTTP 200); quote found (FOUND)."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:status",
+   "source_url": "",
+   "ledger_value": "base",
+   "evidence_row": 6812,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "No source (unknown/status row); read for consistency."
+  },
+  {
+   "claim_id": "p-lad-services-stephensville-la:status",
+   "source_url": "",
+   "ledger_value": "base, not profiled: no source says which of LAD's yards builds new barges (it ranks 9th by the profiling order as a customer_other_plant)",
+   "evidence_row": 6995,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "No source (unknown/status row); read for consistency."
+  },
+  {
+   "claim_id": "p-biw-brunswick-me:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=Route%201%20/%20Bath%20Rd%2C%20Brunswick%2C%20ME%2004011&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "43.91601",
+   "evidence_row": 16683,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-biw-brunswick-me:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=Route%201%20/%20Bath%20Rd%2C%20Brunswick%2C%20ME%2004011&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-69.885034",
+   "evidence_row": 16684,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-steiner-bayou-la-batre-al:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=8640%20Hemley%20St%2C%20Bayou%20La%20Batre%2C%20AL%2036509&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "30.402168",
+   "evidence_row": 16751,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-steiner-bayou-la-batre-al:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=8640%20Hemley%20St%2C%20Bayou%20La%20Batre%2C%20AL%2036509&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-88.245056",
+   "evidence_row": 16752,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-steiner-bayou-la-batre-al:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=8640%20Hemley%20St%2C%20Bayou%20La%20Batre%2C%20AL%2036509&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "01097",
+   "evidence_row": 16753,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-birdon-bayou-la-batre-al:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=13980%20Shell%20Belt%20Rd%2C%20Bayou%20La%20Batre%2C%20AL%2036509&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "30.399128",
+   "evidence_row": 16760,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-birdon-bayou-la-batre-al:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=13980%20Shell%20Belt%20Rd%2C%20Bayou%20La%20Batre%2C%20AL%2036509&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-88.256795",
+   "evidence_row": 16761,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-birdon-bayou-la-batre-al:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=13980%20Shell%20Belt%20Rd%2C%20Bayou%20La%20Batre%2C%20AL%2036509&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "01097",
+   "evidence_row": 16762,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-thoma-sea-lockport-la:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=6130%20Highway%20308%2C%20Lockport%2C%20LA&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "29.65365",
+   "evidence_row": 16799,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-thoma-sea-lockport-la:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=6130%20Highway%20308%2C%20Lockport%2C%20LA&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-90.53592",
+   "evidence_row": 16800,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-thoma-sea-lockport-la:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=6130%20Highway%20308%2C%20Lockport%2C%20LA&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "22057",
+   "evidence_row": 16801,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-swiftships-morgan-city-la:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1105%20Levee%20Road%2C%20Morgan%20City%2C%20LA%2070380&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "29.719806",
+   "evidence_row": 16802,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-swiftships-morgan-city-la:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1105%20Levee%20Road%2C%20Morgan%20City%2C%20LA%2070380&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-91.209639",
+   "evidence_row": 16803,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-swiftships-morgan-city-la:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=1105%20Levee%20Road%2C%20Morgan%20City%2C%20LA%2070380&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "22101",
+   "evidence_row": 16804,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-southwest-shipyard-houston-tx:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=8502%20Cypress%20Street%2C%20Houston%2C%20TX&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "29.72297",
+   "evidence_row": 16823,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-southwest-shipyard-houston-tx:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=8502%20Cypress%20Street%2C%20Houston%2C%20TX&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-95.27538",
+   "evidence_row": 16824,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-southwest-shipyard-houston-tx:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=8502%20Cypress%20Street%2C%20Houston%2C%20TX&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "48201",
+   "evidence_row": 16825,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-blount-boats-warren-ri:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=461%20Water%20St%2C%20Warren%2C%20RI%2002885&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "41.72397",
+   "evidence_row": 16865,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-blount-boats-warren-ri:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=461%20Water%20St%2C%20Warren%2C%20RI%2002885&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-71.28473",
+   "evidence_row": 16866,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-blount-boats-warren-ri:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=461%20Water%20St%2C%20Warren%2C%20RI%2002885&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "44001",
+   "evidence_row": 16867,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-dakota-creek-anacortes-wa:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=820%204th%20St%2C%20Anacortes%2C%20WA%2098221&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "48.51913",
+   "evidence_row": 16883,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-dakota-creek-anacortes-wa:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=820%204th%20St%2C%20Anacortes%2C%20WA%2098221&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-122.60973",
+   "evidence_row": 16884,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-dakota-creek-anacortes-wa:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=820%204th%20St%2C%20Anacortes%2C%20WA%2098221&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "53057",
+   "evidence_row": 16885,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-giddings-boatworks-coos-bay-or:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=63106%20Troller%20Rd%2C%20Coos%20Bay%2C%20OR%2097420&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "43.33593",
+   "evidence_row": 16901,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-giddings-boatworks-coos-bay-or:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=63106%20Troller%20Rd%2C%20Coos%20Bay%2C%20OR%2097420&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-124.31786",
+   "evidence_row": 16902,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-giddings-boatworks-coos-bay-or:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=63106%20Troller%20Rd%2C%20Coos%20Bay%2C%20OR%2097420&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "41011",
+   "evidence_row": 16903,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-wct-marine-astoria-or:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=300%20Railroad%20Ave%2C%20Hangar%203%2C%20Astoria%2C%20OR%2097103&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-123.76362",
+   "evidence_row": 16942,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-wct-marine-astoria-or:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=300%20Railroad%20Ave%2C%20Hangar%203%2C%20Astoria%2C%20OR%2097103&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "41007",
+   "evidence_row": 16943,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-john-bludworth-corpus-christi-tx:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=3101%20Navigation%20Blvd%2C%20Corpus%20Christi%2C%20TX%2078402&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-97.431167",
+   "evidence_row": 16953,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-john-bludworth-corpus-christi-tx:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=3101%20Navigation%20Blvd%2C%20Corpus%20Christi%2C%20TX%2078402&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "48355",
+   "evidence_row": 16954,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-fmt-shipyard-harvey-la:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=3640%20Peters%20Rd%2C%20Harvey%2C%20LA%2070058&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-90.06245",
+   "evidence_row": 16961,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-fmt-shipyard-harvey-la:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=3640%20Peters%20Rd%2C%20Harvey%2C%20LA%2070058&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "22051",
+   "evidence_row": 16962,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-steiner-construction-bayou-la-batre-al:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=9195%20Little%20River%20Rd%2C%20Bayou%20La%20Batre%2C%20AL%2036509&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-88.25884",
+   "evidence_row": 16966,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-steiner-construction-bayou-la-batre-al:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=9195%20Little%20River%20Rd%2C%20Bayou%20La%20Batre%2C%20AL%2036509&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "01097",
+   "evidence_row": 16967,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-jemison-bayou-la-batre-al:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=9315%20Little%20River%20Rd%2C%20Bayou%20La%20Batre%2C%20AL%2036509&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "30.40209",
+   "evidence_row": 16974,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-jemison-bayou-la-batre-al:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=9315%20Little%20River%20Rd%2C%20Bayou%20La%20Batre%2C%20AL%2036509&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-88.25997",
+   "evidence_row": 16975,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-jemison-bayou-la-batre-al:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=9315%20Little%20River%20Rd%2C%20Bayou%20La%20Batre%2C%20AL%2036509&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "01097",
+   "evidence_row": 16976,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-gulf-copper-port-arthur-tx:headcount",
+   "source_url": "https://www.osha.gov/Establishment-Specific-Injury-and-Illness-Data",
+   "ledger_value": "179 (2025 annual average, employer-reported to OSHA, Form 300A; establishment 'Gulf Copper Central Yard', 5700 Procter Street)",
+   "evidence_row": 18375,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "Checked against data/osha_2025.csv by record ID: every quoted field matches (ID, name, street, city, ZIP, NAICS 336611, employees, date_submitted; year 2025)."
+  },
+  {
+   "claim_id": "p-master-boat-coden-al-2:lat",
+   "source_url": "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Coden%2C%20AL%2C%20USA",
+   "ledger_value": "30.382977",
+   "evidence_row": 18829,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-master-boat-coden-al-2:lon",
+   "source_url": "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Coden%2C%20AL%2C%20USA",
+   "ledger_value": "-88.238336",
+   "evidence_row": 18830,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-swiftships-amelia-la:lat",
+   "source_url": "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Amelia%2C%20LA%2C%20USA",
+   "ledger_value": "29.668038",
+   "evidence_row": 18831,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-swiftships-amelia-la:lon",
+   "source_url": "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Amelia%2C%20LA%2C%20USA",
+   "ledger_value": "-91.104383",
+   "evidence_row": 18832,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-anduril-sparrows-point-md:lat",
+   "source_url": "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Sparrows%20Point%2C%20MD%2C%20USA",
+   "ledger_value": "39.219275",
+   "evidence_row": 18833,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  },
+  {
+   "claim_id": "p-anduril-sparrows-point-md:lon",
+   "source_url": "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Sparrows%20Point%2C%20MD%2C%20USA",
+   "ledger_value": "-76.476072",
+   "evidence_row": 18834,
+   "tag": "inferred",
+   "in_scope": false,
+   "verdict": "read_out_of_scope",
+   "note": "API response fetched 2026-11-19; value matches the response numerically (or is the documented no-match placement)."
+  }
+ ],
+ "score_problems": [
+  "not applicable: base records carry no scores"
+ ],
+ "opening_line_problems": [
+  "not applicable: base records carry no opening lines"
+ ],
+ "score_notes": []
+}

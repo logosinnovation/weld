@@ -1,0 +1,2448 @@
+{
+ "checker": "fact-checker A (round 1)",
+ "vertical": "v-shipbuilding-naval",
+ "date": "2026-11-13",
+ "plants": [
+  "p-arcosa-marine-ashland-city-tn",
+  "p-bae-jacksonville-fl",
+  "p-chesapeake-shipbuilding-salisbury-md",
+  "p-corn-island-grandview-in",
+  "p-electric-boat-groton-ct",
+  "p-fincantieri-sturgeon-bay-wi",
+  "p-gunderson-marine-portland-or",
+  "p-jamesbuilt-calvert-city-ky",
+  "p-keel-ladson-sc",
+  "p-nassco-san-diego-ca",
+  "p-nns-oyster-point-newport-news-va",
+  "p-saronic-brownsville-tx",
+  "p-st-johns-palatka-fl"
+ ],
+ "decision_rule": "As in poles rounds 3-5 and ships checker B. Corrected: the value adds a fact the cited page does not show, tags a judgement as stated, places a company-level fact at the plant, ties a posting (or the process it names) to the plant through a location shared by several sites, dates an event to an article, restates a dated status as current, or the quote is not on the page. A row too thin for the field, line and score that cite it is corrected with the fuller value (checker B precedent). Confirmed: the cited page, or for a multi-row claim a sibling row's page opened 2026-11-13, carries every additive clause. Limiting parentheticals and rubric labels ('Rove', 'many part types') are not additive. A value that labels itself '(company level)' and isn't used in plants.csv is confirmed, as B did for Keel Goose Creek. Opening lines: every clause carried by a stated row of a claim named in the reasoning, or by that row's page; ends in a 'you' question; no pitch language; no Path deployment asserted at an unnamed HII/Saronic site. Scope (headline denominator): every stated row of the 13 plants in the delegated fields; every row (any tag) of a claim cited by a score_* row or an opening line, including company (c-) rows; and the 13 opening_line rows. The shared Path-customer rows (4, 13) and the vertical demand row (65), already judged by checker B, are reported under shared_claims_checked and left out. Stated tier/prospect_test rows are reported under wider_set, also left out.",
+ "claims_checked": 205,
+ "claims_corrected": 8,
+ "claims_unreachable": 0,
+ "error_rate": 0.039,
+ "error_rate_note": "8/205 = 3.9%. 192 evidence rows + 13 opening lines. Substantive (a wrong or misplaced fact, or a point-earning tie): 1/205 (JamesBuilt process). The rest is form: a clause missing from the cited page (3: NABRICO 'former Arcosa', Fincantieri 'S.p.A.', NASSCO 'in series'); a thin row (1, Chesapeake postings); event dates or tense taken from an article (3). Score changes come mostly from rubric rulings and new evidence (score_notes), not row errors. Wider set (adding 6 out-of-scope stated tier/prospect_test rows, all corrected to inferred): 14/211 = 6.6%.",
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 5,
+  "invented fact": 0,
+  "other": 3
+ },
+ "repeated_kinds": [
+  "quote does not support value (5): 4296 NABRICO 'former Arcosa' (same as B's Caruthersville row; sweep every NABRICO parent row); 3821 Fincantieri 'S.p.A.' not on the cited page; 5156 NASSCO 'in series' not on the cited page; 4389 Chesapeake welder_postings too thin for the five-posting field and line; 5702 JamesBuilt process from a James Marine, Inc. multi-site posting. SWEEP: (a) any process, materials or labor row tied to a plant through a pooled multi-city posting or a different division's posting (James Marine Paducah, Wickliffe and Calvert City sites; any parent posting 'Location: A, B and C'); (b) welder_postings fields that list more postings or bonuses than their rows' values carry (field drift: Chesapeake; check with tools/field_drift_check.py).",
+  "other (3): dates or tense restated from an article. 5373: Fincantieri's MARAD grant dated Oct 15, 2026 (Baird article) instead of the Aug 13, 2026 award, and its opening line. 5164: NASSCO's line says the 2019 panel line 'has run ... since 2019'. Checker B found the same pattern 3 times (EB Quonset approval month, LAD 'moves ahead', Saronic 'set to begin'), so 6 across the vertical. SWEEP: every v-shipbuilding-naval triggers row dated by a news article: check the event date against the primary list (the MARAD Aug 13, 2026 and Jul 21, 2025 lists), and every opening line with present-perfect or 'now' wording resting on an older dated source.",
+  "Out of scope, for the same sweep as checker B (b): 6 stated tier/prospect_test rows here (3824, 3898, 4008 tier; 4391, 4594, 4748 prospect_test) need retagging inferred."
+ ],
+ "worst_errors": [
+  "p-jamesbuilt-calvert-city-ky:weld_processes (row 5702): process 12 rests on a 'DIVISION – James Marine, Inc.' barge-repair Welder posting pooled across Paducah, Wickliffe and Calvert City (Calvert City's address also houses Paducah River Painting). It is tagged stated as this yard's process. No James Built posting names a process. Process 12 -> 0, total 59 -> 47 (Medium), confidence 5 -> 4.",
+  "p-arcosa-marine-ashland-city-tn: demand 15 rests on the sale of Arcosa's entire barge business (all facilities), a company-level event, while the rows are accurate. Demand 15 -> 8, total 80 -> 73 (still High), confidence 6 -> 5. Row 4296 also says 'former Arcosa Marine Products' on a page that doesn't say it.",
+  "p-fincantieri-sturgeon-bay-wi:triggers (row 5373) and its opening line: the MARAD grant is dated Oct 15, 2026 (the Baird article date). WorkBoat's MARAD list awards it Aug 13, 2026. No point change, but the line tells the prospect the wrong month. Separately, plants.csv confidence 5 contradicts the plant's own score_total row (4).",
+  "Score ruling, not a row error: p-nassco-san-diego-ca material 12 rests on the 52 x 52 x 30 ft blast/paint-cell envelope, a facility capacity under rule 2. 12 -> 0, total 87 -> 75 (still High)."
+ ],
+ "score_problems": [
+  "p-arcosa-marine-ashland-city-tn: score_demand 15 -> 8 (whole-business sale = company-level trigger); total 80 -> 73 High; confidence 6 -> 5.",
+  "p-jamesbuilt-calvert-city-ky: score_process 12 -> 0 (pooled multi-site James Marine, Inc. posting); total 59 -> 47 Medium; confidence 5 -> 4. Lead: labor 20 (total 55) if the live James Built Structural Steel Fitter and Welder Trainee postings get stated rows.",
+  "p-nassco-san-diego-ca: score_material_part 12 -> 0 (cell envelope is a facility capacity, rule 2); total 87 -> 75 High; confidence 5 unchanged.",
+  "p-chesapeake-shipbuilding-salisbury-md: score_process 20 -> 12 (rule 1: the live Fabricator & Fitter posting 4627806 names 'SMAW, MIG, TIG'; add the row); total 63 -> 55 Medium; confidence 4 unchanged.",
+  "p-fincantieri-sturgeon-bay-wi: confidence 5 -> 4 in plants.csv (scale rests on an inferred site headcount; the score_total row already says 4). Points unchanged at 80.",
+  "No tier changes. Rule 1 test: a case-sensitive grep for TIG, GTAW and tungsten over every counted welder/fitter posting (NABRICO x5, BAE, Chesapeake x4, EB x3, FMG x2, Gunderson, Keel, NASSCO x2) found TIG only in Chesapeake 4627806. All other components on the 13 plants follow the rubric and the four coordinator rules on today's evidence; every counted posting is open today. Leads that would raise scores: JamesBuilt labor 20 (two more James Built postings); Gunderson labor 20 (Fitter/Welder Trainee)."
+ ],
+ "opening_line_problems": [
+  "p-fincantieri-sturgeon-bay-wi: '(October 2026)' dates the grant to a news article; the award is August 2026. Replacement in the row.",
+  "p-nassco-san-diego-ca: 'has run a robotic hybrid laser panel line since 2019' restates a 2019 commissioning as current. Replacement: 'commissioned ... in 2019'.",
+  "p-chesapeake-shipbuilding-salisbury-md: the line is accurate today, but its 'five openings ... $1,000 sign-on' clause had no stated row until the row 4389 correction. The line is confirmed.",
+  "Passes only on this checker's reading (a clause carried by the page of a cited stated row, or by a stated row of a claim the reasoning does not name). Not flipped; the coordinator should re-cite or trim: Saronic 'welding-cell' (path_link's page says 'intelligent welding cells'; the row's quote doesn't); BAE 'groove-weld' (on the 5175 posting page, not in its quote or value); Chesapeake 'cruise ship builds' (production_type 5482, not named in the reasoning); Fincantieri 'barge and vessel work' (products/production_type, not named in the reasoning).",
+  "All 13 lines end in a 'you' question with no pitch language. The two Path-customer sites (OPIP for HII, Port Alpha for Saronic) assert no plant-level Path deployment."
+ ],
+ "plants_closed_or_moved": [],
+ "plant_status_notes": "All 13 operate at the recorded city, or are being built there. Live postings today at 12 of 13: NABRICO Ashland City (ADP, 1050 Trinity Rd); BAE 8500 Heckscher Dr; Chesapeake 710 Fitzwater St (Paylocity JSON); EB 75 Eastern Point Rd (JSON-LD); FMG Bay Shipbuilding Co.-BSC05; Gunderson (JobTarget; own site live); James Built Calvert City; Keel Ladson HQ; NASSCO 92113; NNS OPIP; Saronic Port Alpha Brownsville; St. Johns Palatka (Paycom). Corn Island has no live posting; its Aug 13, 2026 MARAD grant names the Grandview yard, and a Sep 2025 senator's tour was found (search discovery). Saronic Port Alpha is pre-production: site selected Jul 16, 2026, groundbreaking reported Sep 30, 2026 (search discovery: Navy News, gCaptain, Texas governor), operations expected 2028. Gunderson's Antarctic McMurdo pier reached Antarctica Feb 2026 and its Tidewater barges deliver through Feb 2027 (search discovery). Note: James Built shares 390 Riverside Lane with Paducah River Painting (JMI locations page). Unverified lead: a search summary says Dee Burch acquired all shares of Gunderson Marine & Iron in 2024. The ledger's parent row (Oregon Green Manufacturing, as of Nov 2023) may be stale. No score effect (scale 0 either way).",
+ "field_drift_notes": [
+  "p-bae-jacksonville-fl name: 'BAE Systems Jacksonville Ship Repair' is in no name row (EPA: BAE SYSTEMS MARITIME SOLUTIONS JACKSONVILLE LLC; Seapower: 'BAE Systems Ship Repair').",
+  "p-saronic-brownsville-tx triggers: 'up to 10,000 direct jobs' is on the Seapower page but not in row 4988's value.",
+  "p-electric-boat-groton-ct welder_postings: '$32.46-$41.64/hr' and p-nassco-san-diego-ca '$37.34-$40.78/hr' are on the posting pages but not in the row values.",
+  "p-st-johns-palatka-fl welder_postings: '6 counted ... hot jobs'. Aluminum Shipfitter (21783) is not flagged Hot Job on Paycom today; the other five are. All six are listed (board pages 1-2).",
+  "p-chesapeake-shipbuilding-salisbury-md weld_processes: TIG in the Fabricator & Fitter posting has no row (see score_notes).",
+  "p-nassco-san-diego-ca production_type: 'in series (T-AO)' (row 5156 corrected)."
+ ],
+ "method": "All 105 distinct source URLs cited by the in-scope rows were requested on 2026-11-13 with requests and a Chromium (Playwright) render (8-20 s waits for Paycom, ADP myjobs and Paylocity). Each quote's '...'-joined fragments were matched against normalised visible text and raw HTML/JSON: 188 found, 1 AISC row matched the committed snapshot, 4 inferred rows have no source, 0 unreachable. Boards read through their own data today: NABRICO ADP job-requisitions list API (all 34, with postDate and location); BAE search results (browser; JSON postedDate for all six reqs); Chesapeake and Keel Paylocity board JSON (PublishedDate, LocationName, address); EB iCIMS JSON-LD (datePosted, streetAddress); FMG ADP myjobs search and job details (requisition location); GD careers pages for NASSCO; HII careers search; Saronic Ashby posting API (274 jobs; Port Alpha listings); St. Johns Paycom board and job pages; James Marine Kentucky careers page; JobTarget for Gunderson. Extra pages: EPA FRS NASSCO CA (all NASSCO records, to test the 92113 tie); WorkBoat Aug 13, 2026 MARAD list (Bay Shipbuilding, Ashland City); Keel and James Marine locations pages; Gunderson's own site. WebSearch was used three times, for open/closed status only (Gunderson, Corn Island, Saronic groundbreaking); no search summary is used as a quote. Every corrected_quote was re-matched on its page today. evidence_row = 0-based CSV record index + 2, as in checker B's file.",
+ "apply_note": "apply_factcheck.py copies corrected_value into plants.csv when the claim field is a plants column. Row 4296 (parent_company) is one row of a multi-row claim: keep the current plants.csv value. Row 4389's corrected_value is the current plants.csv string verbatim. Row 5156 (production_type): set plants.csv to its plants_csv_value by hand, not to the row value. Rows 5373, 5702, 5375 and 5164 should flow to plants.csv as given. Score changes in score_notes are not applied by the script.",
+ "shared_claims_checked": [
+  {
+   "claim_id": "c-hii:path_customer",
+   "source_url": "https://www.path-robotics.com/news/path-robotics-announces-300-million-series-e-led-by-georgian",
+   "ledger_value": "confirmed",
+   "evidence_row": 4,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Shared Path-customer row; quote on the Path page today. Same verdict as checker B. Not counted here."
+  },
+  {
+   "claim_id": "c-hii:path_customer",
+   "source_url": "https://www.path-robotics.com/news/hii-signs-performance-based-production-agreements-with-path-robotics-and-graymatter-robotics",
+   "ledger_value": "confirmed",
+   "evidence_row": 13,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "confirmed",
+   "note": "Shared Path-customer row; quote on the Path page today. Same verdict as checker B. Not counted here."
+  },
+  {
+   "claim_id": "v-shipbuilding-naval:demand_outlook",
+   "source_url": "https://www.path-robotics.com/news/hii-signs-performance-based-production-agreements-with-path-robotics-and-graymatter-robotics",
+   "ledger_value": "Strong: HII outsourcing +30% in 2026; Saronic $300M Franklin expansion; Arcosa barge backlog $296.9M",
+   "evidence_row": 65,
+   "tag": "stated",
+   "in_scope": false,
+   "verdict": "corrected",
+   "note": "Shared vertical row; already corrected by checker B (the Path page carries only the HII clause). Not counted here. Keel and OPIP demand 8 do not change.",
+   "corrected_value": "(as checker B, row 65)",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  }
+ ],
+ "wider_set": {
+  "rows": [
+   {
+    "claim_id": "p-fincantieri-sturgeon-bay-wi:tier",
+    "source_url": "https://fincantierimarinegroup.com/us-shipyards/bay-shipbuilding/",
+    "ledger_value": "OEM",
+    "evidence_row": 3824,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "corrected",
+    "corrected_value": "OEM",
+    "corrected_quote": "is a 63-acre custom-built facility designed for efficient new construction, major conversions, repairs, and sustainment of commercial, Coast Guard, and Army Corps of Engineers’ vessels.",
+    "corrected_tag": "inferred",
+    "error_kind": "quote does not support value",
+    "severity": "attribution",
+    "note": "Out of the delegated field list. Tier is a judgement (CLAUDE.md: industry alone never sets a tier); the quote supports OEM but does not state it. Value is right; retag inferred with reasoning (checker B sweep (b))."
+   },
+   {
+    "claim_id": "p-nassco-san-diego-ca:tier",
+    "source_url": "https://nassco.com/about-us/",
+    "ledger_value": "OEM",
+    "evidence_row": 3898,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "corrected",
+    "corrected_value": "OEM",
+    "corrected_quote": "NASSCO’s shipyard facilities are capable of building commercial cargo ships and tankers and Navy auxiliary ships up to 1,000 feet in length",
+    "corrected_tag": "inferred",
+    "error_kind": "quote does not support value",
+    "severity": "attribution",
+    "note": "Out of the delegated field list. Tier judgement tagged stated. Value is right; retag inferred with reasoning (checker B sweep (b))."
+   },
+   {
+    "claim_id": "p-saronic-brownsville-tx:tier",
+    "source_url": "https://seapowermagazine.org/saronic-to-build-port-alpha-next-generation-shipyard-in-texas/",
+    "ledger_value": "OEM",
+    "evidence_row": 4008,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "corrected",
+    "corrected_value": "OEM",
+    "corrected_quote": "its next-generation shipyard designed to help restore American maritime strength",
+    "corrected_tag": "inferred",
+    "error_kind": "quote does not support value",
+    "severity": "attribution",
+    "note": "Out of the delegated field list. Tier judgement tagged stated; the quote ('next-generation shipyard') does not state OEM. Value is right; retag inferred with reasoning (checker B sweep (b))."
+   },
+   {
+    "claim_id": "p-chesapeake-shipbuilding-salisbury-md:prospect_test",
+    "source_url": "https://www.chesapeakeshipbuilding.com/projects",
+    "ledger_value": "pass",
+    "evidence_row": 4391,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "corrected",
+    "corrected_value": "pass",
+    "corrected_quote": "Our welders and welding processes are certified by the American Bureau of Shipping (ABS) and the U.S. Coast Guard.",
+    "corrected_tag": "inferred",
+    "error_kind": "quote does not support value",
+    "severity": "attribution",
+    "note": "Out of the delegated field list. Prospect-test verdict tagged stated (poles F2 precedent: retag inferred). Value is right; retag inferred with reasoning (checker B sweep (b))."
+   },
+   {
+    "claim_id": "p-keel-ladson-sc:prospect_test",
+    "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4401313",
+    "ledger_value": "pass",
+    "evidence_row": 4594,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "corrected",
+    "corrected_value": "pass",
+    "corrected_quote": "Welding of various pre-fitted assemblies for Columbia-class submarines, Virginia-class submarines, Gerald R. Ford-class aircraft carriers, and associated fixtures.",
+    "corrected_tag": "inferred",
+    "error_kind": "quote does not support value",
+    "severity": "attribution",
+    "note": "Out of the delegated field list. Prospect-test verdict tagged stated. Value is right; retag inferred with reasoning (checker B sweep (b))."
+   },
+   {
+    "claim_id": "p-bae-jacksonville-fl:prospect_test",
+    "source_url": "https://seapowermagazine.org/bae-systems-ship-repair-begins-production-of-submarine-components/",
+    "ledger_value": "pass",
+    "evidence_row": 4748,
+    "tag": "stated",
+    "in_scope": false,
+    "verdict": "corrected",
+    "corrected_value": "pass",
+    "corrected_quote": "We have been adding capability and resources at our Jacksonville shipyard and are ready now to start executing this important work of building high-quality, reliable structures for Electric Boat and the U.S. Navy.",
+    "corrected_tag": "inferred",
+    "error_kind": "quote does not support value",
+    "severity": "attribution",
+    "note": "Out of the delegated field list. Prospect-test verdict tagged stated. Value is right; retag inferred with reasoning (checker B sweep (b))."
+   }
+  ],
+  "note": "Stated rows outside the delegated fields and not cited by a score or line, checked because checker B flagged the pattern. Not in the headline."
+ },
+ "rows": [
+  {
+   "claim_id": "p-fincantieri-sturgeon-bay-wi:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=FINCANTIERI&state_abbr=WI&output=JSON",
+   "ledger_value": "Fincantieri Bay Shipbuilding",
+   "evidence_row": 3818,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-fincantieri-sturgeon-bay-wi:address",
+   "source_url": "https://fincantierimarinegroup.com/",
+   "ledger_value": "605 N 3rd Ave, Sturgeon Bay, WI 54235",
+   "evidence_row": 3819,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-fincantieri-sturgeon-bay-wi:parent_company",
+   "source_url": "https://fincantierimarinegroup.com/us-shipyards/bay-shipbuilding/",
+   "ledger_value": "Fincantieri Marine Group (Fincantieri S.p.A.)",
+   "evidence_row": 3821,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "Fincantieri Marine Group (Fincantieri S.p.A.)",
+   "corrected_quote": "Fincantieri Marine Group is hiring Welders in the Weld at our Sturgeon Bay, WI location. ... Fincantieri Marine Group (FMG) is a subsidiary of Fincantieri S.p.A.",
+   "corrected_source_url": "https://myjobs.adp.com/fmgexternaljobs/cx/job-details?reqId=5001147586006",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "severity": "attribution",
+   "plants_csv_value": "Fincantieri Marine Group (Fincantieri S.p.A.) (unchanged)",
+   "note": "The Bay Shipbuilding page carries 'Fincantieri Marine Group' but not 'Fincantieri S.p.A.'; there is no sibling parent row. The FMG requisition page for the Sturgeon Bay Welder (row 5366's page, browser-rendered today) carries both. Value unchanged."
+  },
+  {
+   "claim_id": "p-fincantieri-sturgeon-bay-wi:products",
+   "source_url": "https://fincantierimarinegroup.com/us-shipyards/bay-shipbuilding/",
+   "ledger_value": "new construction, conversion, repair",
+   "evidence_row": 3822,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-fincantieri-sturgeon-bay-wi:products",
+   "source_url": "https://myjobs.adp.com/fmgexternaljobs/cx?__tx_annotation=false&c=2155013&d=FMG-External&sor=adprm",
+   "ledger_value": "ATBs, OSVs, LNG bunker barges; new construction, conversion, repair",
+   "evidence_row": 3823,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (headless-browser render); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-fincantieri-sturgeon-bay-wi:welder_postings",
+   "source_url": "https://myjobs.adp.com/fmgexternaljobs/cx/job-listing?keyword=weld",
+   "ledger_value": "Welder open in Sturgeon Bay; Steel Fitter open in Sturgeon Bay",
+   "evidence_row": 3827,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Browser render of the FMG ADP search (keyword weld) today lists Welder #4137 and Steel Fitter #4024 at Sturgeon Bay."
+  },
+  {
+   "claim_id": "p-electric-boat-groton-ct:name",
+   "source_url": "https://careers-gdeb.icims.com/jobs/17304/welder---skilled/job?in_iframe=1",
+   "ledger_value": "Electric Boat - Groton Shipyard",
+   "evidence_row": 3845,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-electric-boat-groton-ct:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=ELECTRIC%20BOAT&state_abbr=CT&output=JSON",
+   "ledger_value": "75 Eastern Point Rd, Groton, CT 06340",
+   "evidence_row": 3846,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-electric-boat-groton-ct:products",
+   "source_url": "https://careers-gdeb.icims.com/jobs/17304/welder---skilled/job?in_iframe=1",
+   "ledger_value": "Nuclear-powered submarines; welded structural assemblies",
+   "evidence_row": 3847,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-nassco-san-diego-ca:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=NASSCO&state_abbr=CA&output=JSON",
+   "ledger_value": "General Dynamics NASSCO",
+   "evidence_row": 3893,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-nassco-san-diego-ca:address",
+   "source_url": "https://nassco.com/about-us/",
+   "ledger_value": "2798 E Harbor Dr, San Diego, CA 92113",
+   "evidence_row": 3894,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-nassco-san-diego-ca:parent_company",
+   "source_url": "https://nassco.com/about-us/",
+   "ledger_value": "General Dynamics",
+   "evidence_row": 3896,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-nassco-san-diego-ca:products",
+   "source_url": "https://nassco.com/about-us/",
+   "ledger_value": "Navy auxiliary and support ships, tankers, dry cargo carriers; hull blocks",
+   "evidence_row": 3897,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-nns-oyster-point-newport-news-va:name",
+   "source_url": "https://careers.huntingtoningalls.com/job/Newport-News-WELDER-EXPERIENCED-OPIP-Virg/1433385900/",
+   "ledger_value": "Newport News Shipbuilding - Oyster Point Industrial Park (OPIP)",
+   "evidence_row": 3922,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-nns-oyster-point-newport-news-va:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=NEWPORT%20NEWS&state_abbr=VA&output=JSON",
+   "ledger_value": "11850 Jefferson Ave, Newport News, VA 23606",
+   "evidence_row": 3923,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-nns-oyster-point-newport-news-va:parent_company",
+   "source_url": "https://careers.huntingtoningalls.com/job/Newport-News-WELDER-EXPERIENCED-OPIP-Virg/1433385900/",
+   "ledger_value": "HII (Huntington Ingalls Industries)",
+   "evidence_row": 3924,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page; the page also says 'HII's Newport News Shipbuilding (NNS) division'."
+  },
+  {
+   "claim_id": "p-nns-oyster-point-newport-news-va:products",
+   "source_url": "https://careers.huntingtoningalls.com/job/Newport-News-WELDER-EXPERIENCED-OPIP-Virg/1433385900/",
+   "ledger_value": "Offsite NNS fabrication: steel foundations and structural/pipe welds for carriers and submarines",
+   "evidence_row": 3926,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-nns-oyster-point-newport-news-va:welder_postings",
+   "source_url": "https://careers.huntingtoningalls.com/search/?q=welder&sortColumn=referencedate&sortDirection=desc",
+   "ledger_value": "1 open (Oct 23, 2026)",
+   "evidence_row": 3929,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "HII careers search today lists 'WELDER EXPERIENCED - OPIP ... Oct 23, 2026'."
+  },
+  {
+   "claim_id": "p-saronic-brownsville-tx:name",
+   "source_url": "https://seapowermagazine.org/saronic-to-build-port-alpha-next-generation-shipyard-in-texas/",
+   "ledger_value": "Port Alpha",
+   "evidence_row": 4001,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-saronic-brownsville-tx:address",
+   "source_url": "https://seapowermagazine.org/saronic-to-build-port-alpha-next-generation-shipyard-in-texas/",
+   "ledger_value": "Port of Brownsville, Brownsville TX",
+   "evidence_row": 4002,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-saronic-brownsville-tx:parent_company",
+   "source_url": "https://seapowermagazine.org/saronic-to-build-port-alpha-next-generation-shipyard-in-texas/",
+   "ledger_value": "Saronic Technologies",
+   "evidence_row": 4004,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-saronic-brownsville-tx:products",
+   "source_url": "https://seapowermagazine.org/saronic-to-build-port-alpha-next-generation-shipyard-in-texas/",
+   "ledger_value": "vessels up to 850 ft",
+   "evidence_row": 4006,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-saronic-brownsville-tx:products",
+   "source_url": "https://jobs.ashbyhq.com/saronic/2716eacb-2a2f-485c-bf89-8f23da656f32",
+   "ledger_value": "block construction and panel fabrication; panel-line and robotic welding",
+   "evidence_row": 4007,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Ashby posting today: 'welding processes support block construction and panel fabrication strategies' and 'panel line welding, robotic welding, and mechanized welding'."
+  },
+  {
+   "claim_id": "p-saronic-brownsville-tx:welder_postings",
+   "source_url": "https://api.ashbyhq.com/posting-api/job-board/saronic",
+   "ledger_value": "Weld Engineer posted 2026-03-20",
+   "evidence_row": 4010,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Ashby API today: 'Weld Engineer (All Levels)', department Port Alpha, Brownsville TX, publishedAt 2026-03-20T16:42; still listed."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:name",
+   "source_url": "https://www.stjohnsshipbuilding.com/contact",
+   "ledger_value": "St. Johns Ship Building",
+   "evidence_row": 4108,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:address",
+   "source_url": "https://www.stjohnsshipbuilding.com/contact",
+   "ledger_value": "560 Stokes Landing Rd., Palatka, FL 32177",
+   "evidence_row": 4109,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=ST.%20JOHNS%20SHIP&state_abbr=FL&output=JSON",
+   "ledger_value": "Rt 3 Box 4785, Palatka (EPA FRS registry 110006153161)",
+   "evidence_row": 4110,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:products",
+   "source_url": "https://www.stjohnsshipbuilding.com/new-ship-construction",
+   "ledger_value": "Steel and aluminum workboats and barges",
+   "evidence_row": 4111,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:products",
+   "source_url": "https://www.stjohnsshipbuilding.com/news",
+   "ledger_value": "Three 140 x 40 x 8 ft steel deck barges for Johnson Bros. (awarded 2025-10-07)",
+   "evidence_row": 4112,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:parent_company",
+   "source_url": "https://www.stjohnsshipbuilding.com/news",
+   "ledger_value": "Americraft Marine Group",
+   "evidence_row": 4113,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:triggers",
+   "source_url": "https://www.marinelog.com/news/duffy-announces-8-75m-in-small-shipyard-grants/",
+   "ledger_value": "MARAD FY2025 grant, 110-ton crane",
+   "evidence_row": 4289,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:triggers",
+   "source_url": "https://www.stjohnsshipbuilding.com/news",
+   "ledger_value": "Oct 15, 2025: MARAD-funded 100-ton crane in service; Oct 7, 2025: Johnson Bros. contract for three steel deck barges, built at Palatka; May 28, 2025: first U.S. Navy shipbuilding contract (dive support vessel)",
+   "evidence_row": 4290,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the news page; 'dive support vessel' is in the May 28, 2025 item ('to construct a Dive Support Vessel (DSV)')."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=NABRICO&state_abbr=TN&output=JSON",
+   "ledger_value": "NABRICO Marine Products - Ashland City",
+   "evidence_row": 4293,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=ARCOSA%20MARINE&state_abbr=TN&output=JSON",
+   "ledger_value": "Arcosa Marine Products Plant 296",
+   "evidence_row": 4294,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:address",
+   "source_url": "https://nabricomarine.com/contact-us/",
+   "ledger_value": "1050 Trinity Rd, Ashland City, TN 37015",
+   "evidence_row": 4295,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:parent_company",
+   "source_url": "https://www.workboat.com/arcosa-completes-sale-of-inland-barge-business",
+   "ledger_value": "NABRICO Marine Products (former Arcosa Marine Products)",
+   "evidence_row": 4296,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "NABRICO Marine Products (former Arcosa Marine Products)",
+   "corrected_quote": "While the business is now operating as a standalone entity under Wynnchurch Capital, the entire leadership team from Arcosa Marine remains in place.",
+   "corrected_source_url": "https://www.waterwaysjournal.net/2026/05/15/nabrico-forges-path-anticipates-growing-demand-for-new-construction-barges/",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "severity": "attribution",
+   "plants_csv_value": "(keep current: NABRICO Marine Products (Wynnchurch Capital investment, April 2026))",
+   "note": "WorkBoat's page names Arcosa Marine Products, the Nabrico brand and Wynnchurch, but never says NABRICO Marine Products is the former Arcosa Marine Products. Sibling parent rows 4297 (nabricomarine.com/about) and 5542 (Wynnchurch) don't say it either. The clause is true and on the Waterways Journal page. Same finding as checker B on Caruthersville. Do not let apply_factcheck.py copy this value into plants.csv parent_company."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:parent_company",
+   "source_url": "https://nabricomarine.com/about/",
+   "ledger_value": "Independent (NABRICO)",
+   "evidence_row": 4297,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:products",
+   "source_url": "https://nabricomarine.com/about/",
+   "ledger_value": "Dry cargo (flat-deck, hopper) and tank barges built at Ashland City",
+   "evidence_row": 4298,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:products",
+   "source_url": "https://nabricomarine.com/barges/",
+   "ledger_value": "Every hull built at Ashland City",
+   "evidence_row": 4299,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-corn-island-grandview-in:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=CORN%20ISLAND&state_abbr=IN&output=JSON",
+   "ledger_value": "Corn Island Shipyard",
+   "evidence_row": 4339,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-corn-island-grandview-in:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=CORN%20ISLAND&state_abbr=IN&output=JSON",
+   "ledger_value": "9447 E State Hwy 66, Grandview, IN 47615",
+   "evidence_row": 4340,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-corn-island-grandview-in:products",
+   "source_url": "https://www.cornislandshipyard.com/",
+   "ledger_value": "Custom barges and specialized marine structures",
+   "evidence_row": 4341,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-corn-island-grandview-in:products",
+   "source_url": "https://www.marinelog.com/inland-coastal/inland/senator-todd-young-tours-indianas-corn-island-shipyard/",
+   "ledger_value": "high automation",
+   "evidence_row": 4342,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-corn-island-grandview-in:products",
+   "source_url": "https://www.cornislandshipyard.com/facility",
+   "ledger_value": "single side welder",
+   "evidence_row": 4343,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-corn-island-grandview-in:triggers",
+   "source_url": "https://www.workboat.com/marad-awards-35-2-million-to-45-small-shipyards",
+   "ledger_value": "Aug 13, 2026: MARAD FY2026 grant, $1,174,867 for plasma-cutting, stiffener-welding, material-handling and welding equipment",
+   "evidence_row": 4348,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the WorkBoat page dated August 13, 2026; grant names 'Corn Island Shipyard Inc., Grandview' (single-site company), so rule 4 applies."
+  },
+  {
+   "claim_id": "p-jamesbuilt-calvert-city-ky:name",
+   "source_url": "https://www.marinelog.com/news/duffy-announces-8-75m-in-small-shipyard-grants/",
+   "ledger_value": "JamesBuilt, LLC",
+   "evidence_row": 4350,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-jamesbuilt-calvert-city-ky:parent_company",
+   "source_url": "https://jamesmarine.com/about-jmi/",
+   "ledger_value": "James Marine, Inc.",
+   "evidence_row": 4352,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-jamesbuilt-calvert-city-ky:products",
+   "source_url": "https://www.jamesmarine.com/",
+   "ledger_value": "New construction",
+   "evidence_row": 4353,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-jamesbuilt-calvert-city-ky:triggers",
+   "source_url": "https://www.marinelog.com/news/duffy-announces-8-75m-in-small-shipyard-grants/",
+   "ledger_value": "Jul 21, 2025: MARAD FY2025 grant $599,130 for a 65-ton crane",
+   "evidence_row": 4355,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-jamesbuilt-calvert-city-ky:welder_postings",
+   "source_url": "https://jamesmarine.com/jobs-and-careers-kentucky/",
+   "ledger_value": "Experienced Welders (James Built division, Calvert City; barge repair duties) and Welder (James Marine; Paducah, Wickliffe and Calvert City; TIG/MIG; overtime as needed) listed 2026-11-13; no dates shown",
+   "evidence_row": 4356,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page; both listings are live today. The value describes the multi-site Welder posting accurately (division James Marine, Inc.; three locations), so the row stands; the error is in using that posting for this plant's process (row 5702)."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=CHESAPEAKE%20SHIPBUILDING&state_abbr=MD&output=JSON",
+   "ledger_value": "Chesapeake Shipbuilding Corporation",
+   "evidence_row": 4383,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:address",
+   "source_url": "https://www.chesapeakeshipbuilding.com/",
+   "ledger_value": "710 Fitzwater St, Salisbury, MD 21801",
+   "evidence_row": 4384,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:products",
+   "source_url": "https://www.chesapeakeshipbuilding.com/projects",
+   "ledger_value": "Steel and aluminum commercial vessels 100-400 ft",
+   "evidence_row": 4385,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:products",
+   "source_url": "https://www.chesapeakeshipbuilding.com/",
+   "ledger_value": "commercial ships to 450 ft, cruise ships, riverboats",
+   "evidence_row": 4386,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/f15fbfaa-32ca-4670-be6e-f16bf7d47497/Chesapeake-Shipbuilding-Corp",
+   "ledger_value": "Steel Erector (job 4627807), posted 2026-10-30, Main Location",
+   "evidence_row": 4389,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "5 counted, open on Paylocity (read 2026-11-13): Shipyard Welder (Oct 15, 2026; FCAW), Welder - Electric Department (Oct 15), Pipefitter & Welder (Oct 16), Fabricator & Fitter (Oct 30), Steel Erector (Oct 30); $1,000 sign-on bonus; $2.00 evening/night differential. Not counted: Certified Welding Inspector",
+   "corrected_quote": "Steel Erector 10/30/2026 Main Location Fabricator & Fitter 10/30/2026 Main Location Pipefitter & Welder 10/16/2026 Main Location Welder - Electric Department 10/15/2026 Main Location Crane Operator 10/15/2026 Main Location Shipyard Welder 10/15/2026 Main Location",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "severity": "thin (value true but too narrow for the field, line and labor 20 that cite it)",
+   "plants_csv_value": "(identical to the current plants.csv welder_postings)",
+   "note": "The row carried only the Steel Erector. Yet plants.csv, the opening line ('five welding and fitting openings ... $1,000 sign-on bonus') and labor 20 rest on five postings, and no row stated that. The board (this row's page) lists all five today, with Main Location = 710 Fitzwater St in its JSON. The $1,000 sign-on bonus is on each posting's detail page (e.g. 4274905, row 5484's page; also 4627807, 4627806, 4274679, 4274530). Steel Erector and Fabricator & Fitter are tack-welding roles. The corrected value is the plants.csv string verbatim: the five postings and dates are on this row's page, and the $1,000 sign-on and $2.00 differential are on sibling row 5484's page (4274905), opened today. Recommend a separate stated sign-on row as well. Same treatment as checker B's thin c-eastern-shipbuilding:triggers row."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:triggers",
+   "source_url": "https://www.marinelog.com/news/duffy-announces-8-75m-in-small-shipyard-grants/",
+   "ledger_value": "Jul 21, 2025: MARAD Small Shipyard Grant of $817,150 for a 160-ton rough terrain mobile crane",
+   "evidence_row": 4390,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-gunderson-marine-portland-or:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=GUNDERSON&state_abbr=OR&output=JSON",
+   "ledger_value": "Gunderson",
+   "evidence_row": 4463,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-gunderson-marine-portland-or:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=GUNDERSON&state_abbr=OR&output=JSON",
+   "ledger_value": "4350 NW Front Ave, Portland, OR 97210",
+   "evidence_row": 4464,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-gunderson-marine-portland-or:parent_company",
+   "source_url": "https://bendbulletin.com/2023/11/28/portland-built-barge-will-support-antarctic-research-under-44-million-federal-contract",
+   "ledger_value": "Oregon Green Manufacturing (bought Gunderson from Greenbrier, May 2023; as of Nov 2023)",
+   "evidence_row": 4465,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-gunderson-marine-portland-or:products",
+   "source_url": "https://www.marinelog.com/inland-coastal/inland/tidewater-transportation-goes-to-gunderson-for-four-new-refined-products-barges",
+   "ledger_value": "20,000-barrel tank barges",
+   "evidence_row": 4466,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-gunderson-marine-portland-or:products",
+   "source_url": "https://bendbulletin.com/2023/11/28/portland-built-barge-will-support-antarctic-research-under-44-million-federal-contract",
+   "ledger_value": "Antarctic barge built in Portland",
+   "evidence_row": 4467,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-gunderson-marine-portland-or:headcount",
+   "source_url": "https://bendbulletin.com/2023/11/28/portland-built-barge-will-support-antarctic-research-under-44-million-federal-contract",
+   "ledger_value": "about 300 (Nov 2023; stale)",
+   "evidence_row": 4468,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-gunderson-marine-portland-or:triggers",
+   "source_url": "https://www.workboat.com/marad-awards-35-2-million-to-45-small-shipyards",
+   "ledger_value": "Aug 13, 2026: MARAD FY2026 grant, $1,534,953 for a 16-ft CNC plasma cutter",
+   "evidence_row": 4473,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the WorkBoat page dated August 13, 2026; names 'Gunderson Marine LLC, Portland' (single Portland yard)."
+  },
+  {
+   "claim_id": "p-keel-ladson-sc:name",
+   "source_url": "https://keelusa.com/locations/",
+   "ledger_value": "Keel - Ladson Headquarters",
+   "evidence_row": 4584,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-keel-ladson-sc:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=PEGASUS%20STEEL&state_abbr=SC&output=JSON",
+   "ledger_value": "Pegasus Steel, a Keel company - Ladson",
+   "evidence_row": 4585,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-keel-ladson-sc:address",
+   "source_url": "https://keelusa.com/locations/",
+   "ledger_value": "8001 Commerce Center Rd, Ladson, SC 29456",
+   "evidence_row": 4586,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-keel-ladson-sc:parent_company",
+   "source_url": "https://keelusa.com/keel-a-purpose-built-company/",
+   "ledger_value": "Keel (Arlington Capital Partners)",
+   "evidence_row": 4587,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-keel-ladson-sc:products",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4401313",
+   "ledger_value": "Welded pre-fitted assemblies for Columbia- and Virginia-class submarines and Ford-class carriers",
+   "evidence_row": 4588,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on posting 4401313, which the board files under 'Ladson Headquarters'."
+  },
+  {
+   "claim_id": "p-keel-ladson-sc:products",
+   "source_url": "https://www.hii.com/news/at-sea-air-space-2026-hii-celebrates-manufacturing-job-creation-expansion-of-us-shipbuilding-industrial-base",
+   "ledger_value": "Submarine modules and CVN units for Newport News (company level)",
+   "evidence_row": 4589,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the HII page. The value labels itself '(company level)' and is not used in plants.csv products; same treatment as checker B's twin row p-keel-goose-creek-sc:products (4602), confirmed. Recommend retag inferred or move to c-keel:products in a sweep."
+  },
+  {
+   "claim_id": "p-keel-ladson-sc:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/9298c9b6-3bb4-4a0d-a877-d406414fb161/Keel-Platform",
+   "ledger_value": "Welder, Ladson Headquarters, posted 08/7/2026; Welding Instructor (11/2/2026) and Welding Engineer (09/1/2026) at Ladson: not counted",
+   "evidence_row": 4592,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Open today: Keel Paylocity board JSON lists Welder (JobId 4401313) at 'Ladson Headquarters', PublishedDate 2026-08-07 (98 days). Keel's locations page lists one Ladson site (8001 Commerce Center Rd)."
+  },
+  {
+   "claim_id": "p-keel-ladson-sc:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4401313",
+   "ledger_value": "Weld tests FCAW, GMAW-pulsed, GMAW-spray; shift differentials and overtime potential",
+   "evidence_row": 4593,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=BAE%20SYSTEMS&state_abbr=FL&output=JSON",
+   "ledger_value": "BAE Systems Jacksonville shipyard",
+   "evidence_row": 4743,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the EPA page. Note: plants.csv name 'BAE Systems Jacksonville Ship Repair - Jacksonville shipyard' has no name row carrying 'Jacksonville Ship Repair'; Seapower (row 4745's page) names the unit 'BAE Systems Ship Repair' and 'our Jacksonville shipyard'. Not a fact error."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=BAE%20SYSTEMS&state_abbr=FL&output=JSON",
+   "ledger_value": "8500 Heckscher Dr, Jacksonville, FL 32226",
+   "evidence_row": 4744,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:parent_company",
+   "source_url": "https://seapowermagazine.org/bae-systems-ship-repair-begins-production-of-submarine-components/",
+   "ledger_value": "BAE Systems",
+   "evidence_row": 4745,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:products",
+   "source_url": "https://seapowermagazine.org/bae-systems-ship-repair-begins-production-of-submarine-components/",
+   "ledger_value": "Structural steel components (deck modules) for Columbia- and Virginia-class submarines",
+   "evidence_row": 4746,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:state",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=8500%20Heckscher%20Dr%2C%20Jacksonville%2C%20FL%2032226&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "FL",
+   "evidence_row": 4839,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-keel-ladson-sc:city",
+   "source_url": "https://keelusa.com/locations/",
+   "ledger_value": "Ladson",
+   "evidence_row": 4848,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:city",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=BAE%20SYSTEMS&state_abbr=FL&output=JSON",
+   "ledger_value": "Jacksonville",
+   "evidence_row": 4879,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "c-hii:multi_plant",
+   "source_url": "https://virginiabusiness.com/hii-partners-path-robotics-ai-welding-newport-news/",
+   "ledger_value": "HII operates Newport News Shipbuilding (VA) and Ingalls Shipbuilding (MS) shipyards",
+   "evidence_row": 4891,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Shared row (cited by OPIP scale). Same verdict as checker B (row 4891)."
+  },
+  {
+   "claim_id": "c-saronic:multi_plant",
+   "source_url": "https://api.ashbyhq.com/posting-api/job-board/saronic",
+   "ledger_value": "Saronic produces vessels in Austin TX as well as at the Franklin LA shipyard",
+   "evidence_row": 4893,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Shared row; quote in the Ashby API today. Same verdict as checker B (row 4893)."
+  },
+  {
+   "claim_id": "c-keel:multi_plant",
+   "source_url": "https://keelusa.com/history/",
+   "ledger_value": "nine facilities, over 1,150 team members (2024 formation)",
+   "evidence_row": 4894,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "c-keel:triggers",
+   "source_url": "https://breakingdefense.com/2025/03/navy-contractor-keel-to-open-new-70m-facilities-for-submarine-fabrication/",
+   "ledger_value": "Mar 2025: plan for $70M in three new Charleston-area facilities (prep and paint; Columbia-class superstructure fabrication; employee building), sites not named",
+   "evidence_row": 4898,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-nns-oyster-point-newport-news-va:weld_processes",
+   "source_url": "https://careers.huntingtoningalls.com/job/Newport-News-WELDER-EXPERIENCED-OPIP-Virg/1433385900/",
+   "ledger_value": "SMAW, FCAW, GMAW and GTAW",
+   "evidence_row": 4921,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the OPIP posting. GTAW is named in this structural welder posting itself, so rule 1 gives 12."
+  },
+  {
+   "claim_id": "p-nns-oyster-point-newport-news-va:materials",
+   "source_url": "https://careers.huntingtoningalls.com/job/Newport-News-WELDER-EXPERIENCED-OPIP-Virg/1433385900/",
+   "ledger_value": "steel (foundations, structural and pipe joints)",
+   "evidence_row": 4922,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-nns-oyster-point-newport-news-va:welder_postings",
+   "source_url": "https://careers.huntingtoningalls.com/job/Newport-News-WELDER-EXPERIENCED-OPIP-Virg/1433385900/",
+   "ledger_value": "WELDER EXPERIENCED - OPIP, Req 49933, posted Oct 23, 2026; team X65 OPIP Mechanical; offsite listing",
+   "evidence_row": 4923,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Posting live today; 'Offsite Location: Oyster Point Industrial Park (OPIP)'."
+  },
+  {
+   "claim_id": "p-saronic-brownsville-tx:materials",
+   "source_url": "https://api.ashbyhq.com/posting-api/job-board/saronic",
+   "ledger_value": "steel (large-structure steel shipbuilding)",
+   "evidence_row": 4984,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-saronic-brownsville-tx:existing_robots",
+   "source_url": "https://api.ashbyhq.com/posting-api/job-board/saronic",
+   "ledger_value": "planned (pre-production): panel line, robotic and mechanized welding",
+   "evidence_row": 4985,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-saronic-brownsville-tx:weld_program",
+   "source_url": "https://api.ashbyhq.com/posting-api/job-board/saronic",
+   "ledger_value": "Weld Engineer to build the Port Alpha welding program from the ground up, incl. integration of automated welding",
+   "evidence_row": 4986,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-saronic-brownsville-tx:welder_postings",
+   "source_url": "https://jobs.ashbyhq.com/saronic",
+   "ledger_value": "none counted: Port Alpha roles on the board are engineering and planning (Weld Engineer 2026-03-20; Manufacturing Automation Engineer 2026-10-14)",
+   "evidence_row": 4987,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (raw HTML/JSON of the plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-saronic-brownsville-tx:triggers",
+   "source_url": "https://seapowermagazine.org/saronic-to-build-port-alpha-next-generation-shipyard-in-texas/",
+   "ledger_value": "Jul 16, 2026: Saronic selected Brownsville for Port Alpha; $3B+ planned investment; construction expected 2026, operations 2028; announcement date Jul 16, 2026",
+   "evidence_row": 4988,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page; 'construction expected 2026, operations 2028' is on the same page (row 4000's quote). Groundbreaking reported Sep 30, 2026 (search discovery only), so the plant is under construction."
+  },
+  {
+   "claim_id": "p-saronic-brownsville-tx:path_link",
+   "source_url": "https://www.marinelink.com/news/ai-welding-studied-louisiana-shipyard-535657",
+   "ledger_value": "Franklin robotics lessons to inform Port Alpha",
+   "evidence_row": 4989,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-keel-ladson-sc:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4401313",
+   "ledger_value": "FCAW, pulsed GMAW and spray GMAW (welder qualification tests)",
+   "evidence_row": 5022,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-keel-ladson-sc:materials",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4401313",
+   "ledger_value": "steel (welding to AWS D1.1, the structural steel code)",
+   "evidence_row": 5023,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-keel-ladson-sc:production_type",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4401313",
+   "ledger_value": "various pre-fitted assemblies for Columbia- and Virginia-class submarines, Ford-class carriers and associated fixtures",
+   "evidence_row": 5024,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-electric-boat-groton-ct:parent_company",
+   "source_url": "https://turnto10.com/news/local/story/general-dynamics-electric-boat-77-billion-dollar-submarine-contract-newport-news-shipbuilding-virgina-columbia-class-groton-connecticut-quonset-point-rhode-island-department-of-defense-july-29-2026",
+   "ledger_value": "General Dynamics",
+   "evidence_row": 5092,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page. The page also names Groton and Quonset Point as EB sites, which carries the multi-plant basis of score_scale 5."
+  },
+  {
+   "claim_id": "p-electric-boat-groton-ct:weld_processes",
+   "source_url": "https://careers-gdeb.icims.com/jobs/17304/welder---skilled/job?in_iframe=1",
+   "ledger_value": "GMAW and SMAW on structural assemblies",
+   "evidence_row": 5095,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-electric-boat-groton-ct:materials",
+   "source_url": "https://careers-gdeb.icims.com/jobs/22457/shipfitter-entry-level-%26-semi-skilled/job?in_iframe=1",
+   "ledger_value": "steel",
+   "evidence_row": 5096,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-electric-boat-groton-ct:production_type",
+   "source_url": "https://careers-gdeb.icims.com/jobs/22457/shipfitter-entry-level-%26-semi-skilled/job?in_iframe=1",
+   "ledger_value": "many part types: steel pieces, hull sections, bulkheads, equipment foundations",
+   "evidence_row": 5097,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-electric-boat-groton-ct:welder_postings",
+   "source_url": "https://careers-gdeb.icims.com/jobs/17304/welder---skilled/job?in_iframe=1",
+   "ledger_value": "Welder - Skilled, EB Groton Shipyard (shifts 1st, 2nd, 3rd)",
+   "evidence_row": 5101,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Open on EB iCIMS today (Apply link live); JSON-LD datePosted 2026-09-22, streetAddress 75 Eastern Point Road, Groton."
+  },
+  {
+   "claim_id": "p-electric-boat-groton-ct:welder_postings",
+   "source_url": "https://careers-gdeb.icims.com/jobs/22457/shipfitter-entry-level-%26-semi-skilled/job?in_iframe=1",
+   "ledger_value": "Shipfitter Entry Level & Semi-Skilled, EB Groton Shipyard",
+   "evidence_row": 5102,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Open today; JSON-LD datePosted 2026-11-04, 75 Eastern Point Road. Shipfitters fit structural weld joints; counted under the ledger's counting rule (fitters count)."
+  },
+  {
+   "claim_id": "p-electric-boat-groton-ct:welder_postings",
+   "source_url": "https://careers-gdeb.icims.com/jobs/22493/shipfitter---skilled/job?in_iframe=1",
+   "ledger_value": "Shipfitter - Skilled, EB Groton Shipyard",
+   "evidence_row": 5103,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Open today; JSON-LD datePosted 2026-11-04, 75 Eastern Point Road."
+  },
+  {
+   "claim_id": "p-electric-boat-groton-ct:triggers",
+   "source_url": "https://turnto10.com/news/local/story/general-dynamics-electric-boat-77-billion-dollar-submarine-contract-newport-news-shipbuilding-virgina-columbia-class-groton-connecticut-quonset-point-rhode-island-department-of-defense-july-29-2026",
+   "ledger_value": "Jul 29 2026: $76.6B award (9 Virginia, 5 Columbia) with work at Groton",
+   "evidence_row": 5104,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (WJAR, Jul 29 2026), which also names Groton and Quonset Point as EB work sites."
+  },
+  {
+   "claim_id": "p-nassco-san-diego-ca:weld_processes",
+   "source_url": "https://www.gd.com/careers/welder-repair-san-diego-ca-us-1315893100-nassco-opportunity",
+   "ledger_value": "FCAW (gas-shielded 71T-1 and 811N3)",
+   "evidence_row": 5149,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-nassco-san-diego-ca:weld_processes",
+   "source_url": "https://www.gd.com/careers/shipfitter-repair-san-diego-ca-us-1315893300-nassco-opportunity",
+   "ledger_value": "FCAW certificate required for shipfitters; SMAW optional",
+   "evidence_row": 5150,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-nassco-san-diego-ca:weld_processes",
+   "source_url": "https://professionalmariner.com/nassco-commissions-robotic-production-line-for-steel-welding/",
+   "ledger_value": "hybrid laser arc welding on the panel line",
+   "evidence_row": 5151,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-nassco-san-diego-ca:materials",
+   "source_url": "https://professionalmariner.com/nassco-commissions-robotic-production-line-for-steel-welding/",
+   "ledger_value": "steel (plates as thin as 5 mm on the panel line)",
+   "evidence_row": 5152,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-nassco-san-diego-ca:existing_robots",
+   "source_url": "https://professionalmariner.com/nassco-commissions-robotic-production-line-for-steel-welding/",
+   "ledger_value": "yes: robotic panel line with hybrid laser arc welding (Jan 2019); brand not stated",
+   "evidence_row": 5153,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the Jan 22, 2019 article ('(SAN DIEGO) - General Dynamics NASSCO has commissioned a new panel line')."
+  },
+  {
+   "claim_id": "p-nassco-san-diego-ca:part_size_fit",
+   "source_url": "https://nassco.com/about-us/",
+   "ledger_value": "hull blocks up to 52 x 52 x 30 ft: beyond cell limits (2026 report: 15 ft wide); Rove",
+   "evidence_row": 5154,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-nassco-san-diego-ca:production_type",
+   "source_url": "https://www.gd.com/careers/shipfitter-repair-san-diego-ca-us-1315893300-nassco-opportunity",
+   "ledger_value": "many part types: plates, bulkheads, foundations and structural members",
+   "evidence_row": 5155,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-nassco-san-diego-ca:production_type",
+   "source_url": "https://nassco.com/about-us/",
+   "ledger_value": "Navy auxiliaries in series; commercial tankers and cargo ships; repair",
+   "evidence_row": 5156,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "Navy auxiliary and support ships; commercial oil tankers and dry cargo carriers; repair services",
+   "corrected_quote": "The company specializes in the design and construction of auxiliary and support ships for the U.S. Navy and oil tankers and dry cargo carriers for commercial markets.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "severity": "attribution",
+   "plants_csv_value": "many part types: plates, bulkheads, foundations and structural members; Navy auxiliary and support ships (T-AO), commercial tankers and cargo ships, and repair",
+   "note": "'in series' is not on nassco.com/about-us or on sibling row 5155's page (Shipfitter posting). It is a characterisation (the T-AO release, a triggers row, says NASSCO is under contract for 17 of 20 ships). Drop it from the stated value, or carry it on an inferred row. Part mix 15 is unaffected: the many-part-types basis is row 5155."
+  },
+  {
+   "claim_id": "p-nassco-san-diego-ca:welder_postings",
+   "source_url": "https://www.gd.com/careers/welder-repair-san-diego-ca-us-1315893100-nassco-opportunity",
+   "ledger_value": "Welder (Repair), San Diego 92113, Until Filled",
+   "evidence_row": 5159,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "GD posting live today ('Until Filled', shift ALL). Location 'San Diego, CA, US, 92113' is the main yard's ZIP (2798 E Harbor Dr); text says 'Works in all areas of the shipyard and on board ships'. EPA lists other NASSCO records at 1645 and 1902 Tidelands Ave (91950, National City) and pier sites; none of NASSCO's other construction or shop sites is in 92113. Counted for this yard (boundary, noted)."
+  },
+  {
+   "claim_id": "p-nassco-san-diego-ca:welder_postings",
+   "source_url": "https://www.gd.com/careers/shipfitter-repair-san-diego-ca-us-1315893300-nassco-opportunity",
+   "ledger_value": "Shipfitter (Repair), San Diego 92113, Until Filled",
+   "evidence_row": 5160,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "GD posting live today ('Until Filled'); pay $37.34-$40.78; same 92113 location reading as row 5159."
+  },
+  {
+   "claim_id": "p-nassco-san-diego-ca:triggers",
+   "source_url": "https://investorrelations.gd.com/news/press-release-details/2025/General-Dynamics-NASSCO-Awarded-1-7-billion-to-construct-T-AO-215-and-T-AO-216/default.aspx",
+   "ledger_value": "Nov 10 2025: $1.7B award to build T-AO 215 and T-AO 216",
+   "evidence_row": 5161,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the release. The text says 'five additional T-AOs currently under construction in the NASSCO shipyard' (dateline San Diego); NASSCO's other three sites are repair. Plant tie confirmed."
+  },
+  {
+   "claim_id": "p-nassco-san-diego-ca:scale_basis",
+   "source_url": "https://investorrelations.gd.com/news/press-release-details/2025/General-Dynamics-NASSCO-Awarded-1-7-billion-to-construct-T-AO-215-and-T-AO-216/default.aspx",
+   "ledger_value": "multi-site parent",
+   "evidence_row": 5162,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:weld_processes",
+   "source_url": "https://jobs.baesystems.com/global/en/job/130620BR/Welder-Submarine-Program",
+   "ledger_value": "FCAW, GMAW, GMAW-P, SMAW; GMAW and SMAW on structural assemblies",
+   "evidence_row": 5175,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the browser-rendered posting (130620BR), which is live today. Process clauses (FCAW, GMAW, GMAW-P, SMAW groove-weld qualification) are on the page."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:materials",
+   "source_url": "https://jobs.baesystems.com/global/en/job/130620BR/Welder-Submarine-Program",
+   "ledger_value": "high strength steel and stainless steel",
+   "evidence_row": 5176,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (raw HTML/JSON of the plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:production_type",
+   "source_url": "https://seapowermagazine.org/bae-systems-ship-repair-begins-production-of-submarine-components/",
+   "ledger_value": "submarine structural steel components (deck modules) for EB",
+   "evidence_row": 5177,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:production_type",
+   "source_url": "https://www.marinelog.com/shipbuilding/shipyards/shipyard-news/bae-jacksonville-wins-sub-module-fabrication-contract",
+   "ledger_value": "fabrication for a wide variety of surface vessels",
+   "evidence_row": 5178,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:welder_postings",
+   "source_url": "https://jobs.baesystems.com/global/en/job/130620BR/Welder-Submarine-Program",
+   "ledger_value": "Welder - Submarine Program 130620BR, Jacksonville, posted 11/11/2026",
+   "evidence_row": 5183,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Browser render today shows the requisition live with Apply and the stated Posted Date; all six reqs (130620BR, 130752BR, 130759BR, 131367BR, 129825BR, 132043BR) are on the live search results, whose JSON postedDate matches (2026-10-23 or 2026-11-11). A plain fetch returns a generic 'position has been filled' template; the rendered page and search list govern. The posting names the 'Jacksonville Maritime Solutions shipyard' (EPA: BAE SYSTEMS MARITIME SOLUTIONS JACKSONVILLE LLC, 8500 Heckscher Dr)."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:welder_postings",
+   "source_url": "https://jobs.baesystems.com/global/en/job/130752BR/Welder-Submarine-Program-J-Tech",
+   "ledger_value": "Welder - Submarine Program (J-Tech) 130752BR, Jacksonville, posted 10/23/2026",
+   "evidence_row": 5184,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Browser render today shows the requisition live with Apply and the stated Posted Date; all six reqs (130620BR, 130752BR, 130759BR, 131367BR, 129825BR, 132043BR) are on the live search results, whose JSON postedDate matches (2026-10-23 or 2026-11-11). A plain fetch returns a generic 'position has been filled' template; the rendered page and search list govern. The posting names the 'Jacksonville Maritime Solutions shipyard' (EPA: BAE SYSTEMS MARITIME SOLUTIONS JACKSONVILLE LLC, 8500 Heckscher Dr)."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:welder_postings",
+   "source_url": "https://jobs.baesystems.com/global/en/job/130759BR/Welder-Submarine-Program-UTI-Miramar",
+   "ledger_value": "Welder - Submarine Program (UTI-Miramar) 130759BR, Jacksonville, posted 10/23/2026",
+   "evidence_row": 5185,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Browser render today shows the requisition live with Apply and the stated Posted Date; all six reqs (130620BR, 130752BR, 130759BR, 131367BR, 129825BR, 132043BR) are on the live search results, whose JSON postedDate matches (2026-10-23 or 2026-11-11). A plain fetch returns a generic 'position has been filled' template; the rendered page and search list govern. The posting names the 'Jacksonville Maritime Solutions shipyard' (EPA: BAE SYSTEMS MARITIME SOLUTIONS JACKSONVILLE LLC, 8500 Heckscher Dr)."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:welder_postings",
+   "source_url": "https://jobs.baesystems.com/global/en/job/131367BR/Welder-Submarine-Program-FCTC",
+   "ledger_value": "Welder - Submarine Program (FCTC) 131367BR, Jacksonville, posted 11/11/2026",
+   "evidence_row": 5186,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Browser render today shows the requisition live with Apply and the stated Posted Date; all six reqs (130620BR, 130752BR, 130759BR, 131367BR, 129825BR, 132043BR) are on the live search results, whose JSON postedDate matches (2026-10-23 or 2026-11-11). A plain fetch returns a generic 'position has been filled' template; the rendered page and search list govern. The posting names the 'Jacksonville Maritime Solutions shipyard' (EPA: BAE SYSTEMS MARITIME SOLUTIONS JACKSONVILLE LLC, 8500 Heckscher Dr)."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:welder_postings",
+   "source_url": "https://jobs.baesystems.com/global/en/job/129825BR/Welder-Submarine-Program-Tidewater-Tech",
+   "ledger_value": "Welder - Submarine Program (Tidewater Tech) 129825BR, Jacksonville, posted 10/23/2026",
+   "evidence_row": 5187,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Browser render today shows the requisition live with Apply and the stated Posted Date; all six reqs (130620BR, 130752BR, 130759BR, 131367BR, 129825BR, 132043BR) are on the live search results, whose JSON postedDate matches (2026-10-23 or 2026-11-11). A plain fetch returns a generic 'position has been filled' template; the rendered page and search list govern. The posting names the 'Jacksonville Maritime Solutions shipyard' (EPA: BAE SYSTEMS MARITIME SOLUTIONS JACKSONVILLE LLC, 8500 Heckscher Dr)."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:welder_postings",
+   "source_url": "https://jobs.baesystems.com/global/en/job/132043BR/Welder-Submarine-Program-Tidewater-Tech",
+   "ledger_value": "Welder - Submarine Program (Tidewater Tech) 132043BR, Jacksonville, posted 11/11/2026",
+   "evidence_row": 5188,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Browser render today shows the requisition live with Apply and the stated Posted Date; all six reqs (130620BR, 130752BR, 130759BR, 131367BR, 129825BR, 132043BR) are on the live search results, whose JSON postedDate matches (2026-10-23 or 2026-11-11). A plain fetch returns a generic 'position has been filled' template; the rendered page and search list govern. The posting names the 'Jacksonville Maritime Solutions shipyard' (EPA: BAE SYSTEMS MARITIME SOLUTIONS JACKSONVILLE LLC, 8500 Heckscher Dr)."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:triggers",
+   "source_url": "https://www.marinelog.com/shipbuilding/shipyards/bae-systems-cuts-ribbon-for-250m-jacksonville-shiplift-and-land-level-facility/",
+   "ledger_value": "Jun 2025: $250M shiplift and land-level repair complex opened at the Jacksonville shipyard",
+   "evidence_row": 5189,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:scale_basis",
+   "source_url": "https://seapowermagazine.org/bae-systems-ship-repair-begins-production-of-submarine-components/",
+   "ledger_value": "multi-site parent",
+   "evidence_row": 5190,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "c-fincantieri:multi_plant",
+   "source_url": "https://gcaptain.com/fincantieri-adds-600-shipyard-workers-as-u-s-shipbuilding-renaissance-gains-steam",
+   "ledger_value": "yes: four U.S. shipyards (three in Wisconsin, one in Florida)",
+   "evidence_row": 5318,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-fincantieri-sturgeon-bay-wi:weld_processes",
+   "source_url": "https://myjobs.adp.com/fmgexternaljobs/cx/job-details?reqId=5001147586006",
+   "ledger_value": "FCAW (ABS flux-core test required)",
+   "evidence_row": 5366,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (headless-browser render); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-fincantieri-sturgeon-bay-wi:materials",
+   "source_url": "https://myjobs.adp.com/fmgexternaljobs/cx/job-details?reqId=5001123884006",
+   "ledger_value": "steel",
+   "evidence_row": 5367,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (headless-browser render); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-fincantieri-sturgeon-bay-wi:production_type",
+   "source_url": "https://myjobs.adp.com/fmgexternaljobs/cx/job-details?reqId=5001123884006",
+   "ledger_value": "many part types: articulated tug-barge units, OPA 90 vessels, dredges, offshore supply vessels, Great Lakes self-unloaders; construction, repair and conversion",
+   "evidence_row": 5368,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (headless-browser render); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-fincantieri-sturgeon-bay-wi:welder_postings",
+   "source_url": "https://myjobs.adp.com/fmgexternaljobs/cx/job-details?reqId=5001147586006",
+   "ledger_value": "Welder (req 4137) at Bay Shipbuilding, Sturgeon Bay; FCAW; overtime as assigned",
+   "evidence_row": 5370,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Open today: ADP job-details render shows Requisition 4137, Location 'Bay Shipbuilding Co.-BSC05', Sturgeon Bay; 'Other duties and overtime as assigned'. No posting date shown."
+  },
+  {
+   "claim_id": "p-fincantieri-sturgeon-bay-wi:welder_postings",
+   "source_url": "https://myjobs.adp.com/fmgexternaljobs/cx/job-details?reqId=5001123884006",
+   "ledger_value": "Steel Fitter (req 4024) at Bay Shipbuilding; fits, tack-welds and welds steel",
+   "evidence_row": 5371,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Open today: Requisition 4024, Location 'Bay Shipbuilding Co.-BSC05'. No posting date shown."
+  },
+  {
+   "claim_id": "p-fincantieri-sturgeon-bay-wi:headcount",
+   "source_url": "https://gcaptain.com/fincantieri-adds-600-shipyard-workers-as-u-s-shipbuilding-renaissance-gains-steam",
+   "ledger_value": "about 200 employees added at FBS Feb-Sep 2025 (total not stated)",
+   "evidence_row": 5372,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the gCaptain page dated September 3, 2025 ('since February 2025'); value's 'Feb-Sep 2025' is carried."
+  },
+  {
+   "claim_id": "p-fincantieri-sturgeon-bay-wi:triggers",
+   "source_url": "https://www.bairdmaritime.com/security/naval/fincantieri-wisconsin-shipyard-funding-upgrades",
+   "ledger_value": "Oct 15, 2026: MARAD Small Shipyard Grant to Bay Shipbuilding for a CNC profile cutter and a 100-ton rough terrain crane",
+   "evidence_row": 5373,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "Aug 13, 2026: MARAD Small Shipyard Grant ($1,273,202) to Fincantieri Marine Group LLC, Bay Shipbuilding, Sturgeon Bay, for a CNC profile cutter and a 100-ton rough-terrain crane (FMG statement reported by Baird Maritime Oct 15, 2026)",
+   "corrected_quote": "August 13, 2026 ... Fincantieri Marine Group LLC, Bay Shipbuilding, Sturgeon Bay — $1,273,202 for a CNC profile cutter and 100-ton rough-terrain crane.",
+   "corrected_source_url": "https://www.workboat.com/marad-awards-35-2-million-to-45-small-shipyards",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "severity": "date",
+   "plants_csv_value": "Aug 13, 2026: MARAD Small Shipyard Grant ($1,273,202) to Bay Shipbuilding for a CNC profile cutter and a 100-ton rough-terrain crane",
+   "note": "The Baird page (published 15 Oct 2026) reports FMG saying Bay Shipbuilding 'will receive the MARAD award'; it gives no award date. The value dates the grant to the article. The award is on the Aug 13, 2026 WorkBoat list of 45 grants, the same list cited for Corn Island and Gunderson. Demand 15 is unaffected (rule 4: the grant names the plant; within 24 months either way)."
+  },
+  {
+   "claim_id": "p-fincantieri-sturgeon-bay-wi:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown: no stated dimension or weight of welded parts",
+   "evidence_row": 5383,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row with no source: judgement checked against the plant's pages opened today; consistent."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:parent_company",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 5476,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row with no source: judgement checked against the plant's pages opened today; consistent."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4274905",
+   "ledger_value": "FCAW (and SMAW when required) on carbon steel plate 1/4-1 in (Shipyard Welder)",
+   "evidence_row": 5477,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the Shipyard Welder page, open today (board PublishedDate 2026-10-15, Main Location = 710 Fitzwater St)."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4274530",
+   "ledger_value": "TIG of stainless and aluminum in the separate pipefitter/welder role",
+   "evidence_row": 5478,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the Pipefitter & Welder page, open today. TIG appears only in this separate pipe role, so rule 1 (TIG) leaves process at 20."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:materials",
+   "source_url": "https://www.chesapeakeshipbuilding.com/projects",
+   "ledger_value": "steel and aluminum",
+   "evidence_row": 5479,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:certifications",
+   "source_url": "https://www.chesapeakeshipbuilding.com/projects",
+   "ledger_value": "ABS and U.S. Coast Guard certification of welders and welding processes (no AWS D1.1, ASME IX, AISC or ISO 9001 found)",
+   "evidence_row": 5480,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:production_type",
+   "source_url": "https://www.chesapeakeshipbuilding.com/projects",
+   "ledger_value": "mixed: customized vessels from stock or original designs, including a 12-ship cruise series (Project Blue) for one client",
+   "evidence_row": 5481,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the projects page; the Project Blue clause (12 ships, one client, American Cruise Lines) is on sibling row 5482's page, opened today."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:production_type",
+   "source_url": "https://www.chesapeakeshipbuilding.com/news/cruise-ships-built-on-the-bay",
+   "ledger_value": "12-ship Project Blue series",
+   "evidence_row": 5482,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (dated Feb 21, 2022); a standing order, not used as a trigger."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:existing_robots",
+   "source_url": "https://www.chesapeakeshipbuilding.com/",
+   "ledger_value": "unknown; two hull fabrication buildings outfitted with 'automatic welding equipment', not described as robotic",
+   "evidence_row": 5483,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4274905",
+   "ledger_value": "$2.00 shift differential for evening and night shifts (Shipyard Welder)",
+   "evidence_row": 5484,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the Shipyard Welder page (4274905), open today; the same page shows '$1,000 Sign-On Bonus'."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:part_size_fit",
+   "source_url": "",
+   "ledger_value": "unknown: no stated dimension or weight of welded parts or units",
+   "evidence_row": 5494,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row with no source: judgement checked against the plant's pages opened today; consistent."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:headcount",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "evidence_row": 5495,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Inferred row with no source: judgement checked against the plant's pages opened today; consistent."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:parent_company",
+   "source_url": "https://www.wynnchurch.com/portfolio/nabrico-marine-products",
+   "ledger_value": "NABRICO Marine Products (Wynnchurch Capital investment, April 2026)",
+   "evidence_row": 5542,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "c-nabrico:multi_plant",
+   "source_url": "https://www.wynnchurch.com/portfolio/nabrico-marine-products",
+   "ledger_value": "NABRICO operates six manufacturing facilities",
+   "evidence_row": 5543,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:weld_processes",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/88609838_56?cid=81462df6-ccee-442f-9f3f-7e62b0968391&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "FCAW (required) and SMAW in Ashland City welder postings; SMAW tack welds (tacker)",
+   "evidence_row": 5545,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page. SMAW: the Welder II requisition (row 5554's page) says 'Perform FCAW (Flux Core Arc Welding) and/or SMAW'; tack SMAW is sibling row 5546."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:weld_processes",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/76414226_1?cid=81462df6-ccee-442f-9f3f-7e62b0968391&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "SMAW tack welds required for tackers",
+   "evidence_row": 5546,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:weld_processes",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/84869918_4?cid=81462df6-ccee-442f-9f3f-7e62b0968391&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "weld school curriculum covers FCAW, SAW and SMAW",
+   "evidence_row": 5547,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:materials",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/84861996_20?cid=81462df6-ccee-442f-9f3f-7e62b0968391&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "steel (fabricated steel components for inland barges)",
+   "evidence_row": 5548,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:part_size_fit",
+   "source_url": "https://nabricomarine.com/barges/",
+   "ledger_value": "Rove: whole hulls are built at Ashland City, e.g. the COB-70 hopper at 200 x 70 ft, beyond every cell limit; barge components welded in the shops are not dimensioned",
+   "evidence_row": 5550,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page (COB-70 200 x 70 ft listed under 'Every hull below is built at our Ashland City ... shipyard'). 'Rove' and 'beyond every cell limit' are rubric labels, not additive."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:production_type",
+   "source_url": "https://nabricomarine.com/barges/",
+   "ledger_value": "mixed: six standard hulls (tank, hopper, specialty) with custom configurations",
+   "evidence_row": 5551,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/88609838_56?cid=81462df6-ccee-442f-9f3f-7e62b0968391&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "Welder - 1st Shift (structural, FCAW), posted 2026-11-05, Ashland City",
+   "evidence_row": 5553,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Open today in NABRICO's ADP list API (34 requisitions read): postDate 2026-11-05, location Ashland City. FCAW required on the requisition page."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/53236592_1?cid=81462df6-ccee-442f-9f3f-7e62b0968391&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "Welder II - 2nd Shift (FCAW), posted 2026-08-31 (74 days open), Ashland City; overtime, weekends and holidays",
+   "evidence_row": 5554,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Open today in the ADP list API: postDate 2026-08-31 (74 days), Ashland City."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/84861996_20?cid=81462df6-ccee-442f-9f3f-7e62b0968391&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "Fitter - 1st Shift, posted 2026-11-02, Ashland City",
+   "evidence_row": 5555,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Open today in the ADP list API: postDate 2026-11-02, Ashland City."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/53474649_1?cid=81462df6-ccee-442f-9f3f-7e62b0968391&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "Fitter - 2nd Shift, posted 2026-09-01 (73 days open), Ashland City",
+   "evidence_row": 5556,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Open today in the ADP list API: postDate 2026-09-01 (73 days), Ashland City."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/76414226_1?cid=81462df6-ccee-442f-9f3f-7e62b0968391&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "Tacker - 2nd Shift (SMAW tack welds), posted 2026-10-14, Ashland City; overtime and weekend work may be required",
+   "evidence_row": 5557,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Open today in the ADP list API: postDate 2026-10-14, Ashland City."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/84870425_36?cid=81462df6-ccee-442f-9f3f-7e62b0968391&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "listed, not counted: Automated Welding Operator - 2nd Shift (operator role), posted 2026-11-02",
+   "evidence_row": 5558,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Open today (2026-11-02); correctly listed, not counted."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/84869918_4?cid=81462df6-ccee-442f-9f3f-7e62b0968391&timeStamp=1731500000000&lang=en_US&ccId=19000101_000001&locale=en_US",
+   "ledger_value": "listed, not counted: Weld School Manager (management), posted 2026-11-02",
+   "evidence_row": 5559,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Open today (2026-11-02); correctly listed, not counted."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:triggers",
+   "source_url": "https://www.waterwaysjournal.net/2026/05/15/nabrico-forges-path-anticipates-growing-demand-for-new-construction-barges/",
+   "ledger_value": "Apr 2026: Arcosa completed the sale of its barge business to Wynnchurch; the transaction included the Ashland City barge construction yard",
+   "evidence_row": 5560,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the WJ page; 'Apr 2026' is carried by sibling row 5561 (WorkBoat, 'April 2, 2026'), opened today. Value is accurate; see score_notes on whether a whole-business sale is a plant-level trigger."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:triggers",
+   "source_url": "https://www.workboat.com/arcosa-completes-sale-of-inland-barge-business",
+   "ledger_value": "sale completed (WorkBoat, Apr 2, 2026)",
+   "evidence_row": 5561,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:weld_processes",
+   "source_url": "https://phx.us-west.paycomonline.net/v4/ats/web.php/portal/6F59C596B579D23FF89BEE3C6E272F58/jobs/21777",
+   "ledger_value": "GTAW, GMAW, FCAW, SMAW and SAW listed in the Steel Welder posting (generic list); aluminum welders also hired",
+   "evidence_row": 5618,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (raw HTML/JSON of the plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:materials",
+   "source_url": "https://www.stjohnsshipbuilding.com/who-we-are",
+   "ledger_value": "steel and aluminum",
+   "evidence_row": 5619,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:part_size_fit",
+   "source_url": "https://www.stjohnsshipbuilding.com/news",
+   "ledger_value": "Rove: current steel deck barges are 140 x 40 x 8 ft (Oct 2025 order), beyond cell width and length",
+   "evidence_row": 5621,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:production_type",
+   "source_url": "https://www.stjohnsshipbuilding.com/new-ship-construction",
+   "ledger_value": "many part types: custom steel and aluminum workboats (CTVs, push boats, tugs, landing craft, OSVs) and deck and tank barges",
+   "evidence_row": 5622,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:welder_postings",
+   "source_url": "https://phx.us-west.paycomonline.net/v4/ats/web.php/portal/6F59C596B579D23FF89BEE3C6E272F58/jobs/21777",
+   "ledger_value": "Steel Welder (Hot Job), Palatka",
+   "evidence_row": 5624,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Rendered today on St. Johns' Paycom board (browser, 20 s wait): listing live with Apply. Steel Fabricator and Aluminum Shipfitter pages show no location line; St. Johns is a single-site employer on its own board."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:welder_postings",
+   "source_url": "https://phx.us-west.paycomonline.net/v4/ats/web.php/portal/6F59C596B579D23FF89BEE3C6E272F58/jobs/28035",
+   "ledger_value": "Steel Shipfitters (Hot Job; fit and weld), Palatka",
+   "evidence_row": 5625,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Rendered today on St. Johns' Paycom board (browser, 20 s wait): listing live with Apply. Steel Fabricator and Aluminum Shipfitter pages show no location line; St. Johns is a single-site employer on its own board."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:welder_postings",
+   "source_url": "https://phx.us-west.paycomonline.net/v4/ats/web.php/portal/6F59C596B579D23FF89BEE3C6E272F58/jobs/16893",
+   "ledger_value": "Steel Fabricator (Hot Job; fit and weld units)",
+   "evidence_row": 5626,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Rendered today on St. Johns' Paycom board (browser, 20 s wait): listing live with Apply. Steel Fabricator and Aluminum Shipfitter pages show no location line; St. Johns is a single-site employer on its own board."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:welder_postings",
+   "source_url": "https://phx.us-west.paycomonline.net/v4/ats/web.php/portal/6F59C596B579D23FF89BEE3C6E272F58/jobs/21763",
+   "ledger_value": "Aluminum Welder (Hot Job), Palatka",
+   "evidence_row": 5627,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Rendered today on St. Johns' Paycom board (browser, 20 s wait): listing live with Apply. Steel Fabricator and Aluminum Shipfitter pages show no location line; St. Johns is a single-site employer on its own board."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:welder_postings",
+   "source_url": "https://phx.us-west.paycomonline.net/v4/ats/web.php/portal/6F59C596B579D23FF89BEE3C6E272F58/jobs/21783",
+   "ledger_value": "Aluminum Shipfitter (fit and tack-weld)",
+   "evidence_row": 5628,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Rendered today on St. Johns' Paycom board (browser, 20 s wait): listing live with Apply. Steel Fabricator and Aluminum Shipfitter pages show no location line; St. Johns is a single-site employer on its own board."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:welder_postings",
+   "source_url": "https://phx.us-west.paycomonline.net/v4/ats/web.php/portal/6F59C596B579D23FF89BEE3C6E272F58/jobs/755",
+   "ledger_value": "Aluminum Fitter (Hot Job), $18.00",
+   "evidence_row": 5629,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Rendered today on St. Johns' Paycom board (browser, 20 s wait): listing live with Apply. Steel Fabricator and Aluminum Shipfitter pages show no location line; St. Johns is a single-site employer on its own board."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:welder_postings",
+   "source_url": "https://phx.us-west.paycomonline.net/v4/ats/web.php/portal/6F59C596B579D23FF89BEE3C6E272F58/career-page",
+   "ledger_value": "board lists 23 openings incl. Welding Supervisor, Aluminum Welding Supervisor, Steel Ship Fit Supervisor (supervisory, not counted); no posting dates shown",
+   "evidence_row": 5630,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Rendered today on St. Johns' Paycom board (browser, 20 s wait): listing live with Apply. Steel Fabricator and Aluminum Shipfitter pages show no location line; St. Johns is a single-site employer on its own board."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:welder_postings",
+   "source_url": "https://careersourcenortheastflorida.com/wp-content/uploads/2026/03/St-Johns-Shipbuilding-Hiring-Event.pdf",
+   "ledger_value": "same welder and fitter roles recruited at a Mar 25, 2026 hiring event",
+   "evidence_row": 5631,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "c-americraft:multi_plant",
+   "source_url": "https://americraftmarinegroup.com/",
+   "ledger_value": "unknown: Americraft Marine names only St. Johns",
+   "evidence_row": 5633,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-corn-island-grandview-in:production_type",
+   "source_url": "https://www.cornislandshipyard.com/about",
+   "ledger_value": "many part types: custom designed products for ocean and inland service",
+   "evidence_row": 5649,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-corn-island-grandview-in:existing_robots",
+   "source_url": "https://www.cornislandshipyard.com/about",
+   "ledger_value": "unknown (company states a high degree of automation; robots not named)",
+   "evidence_row": 5650,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-corn-island-grandview-in:welder_postings",
+   "source_url": "https://www.cornislandshipyard.com/careers",
+   "ledger_value": "none found: careers page lists no openings; aggregator listings (Tallo, RoadDog/360 Industrial staffing) expired or not tied to Corn Island",
+   "evidence_row": 5651,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Careers page read today: no job list. Consistent with 'none found'."
+  },
+  {
+   "claim_id": "p-gunderson-marine-portland-or:weld_processes",
+   "source_url": "https://www.jobtarget.com/jobs/jt-m9k4fh6szr/fitterwelder-experienced-portland-oregon",
+   "ledger_value": "FCAW (gas-shielded flux core; 1/16 in wire, all positions) in its Fitter/Welder posting",
+   "evidence_row": 5680,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page; 'gas-shielded flux core' is on the same page (Experience Preferred)."
+  },
+  {
+   "claim_id": "p-gunderson-marine-portland-or:materials",
+   "source_url": "https://www.jobtarget.com/jobs/jt-m9k4fh6szr/fitterwelder-experienced-portland-oregon",
+   "ledger_value": "steel (structural steel, heavy steel components)",
+   "evidence_row": 5681,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-gunderson-marine-portland-or:certifications",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC: Bridge Fabricator - Advanced, Hydraulic Fabricator - Advanced, Fracture Control Endorsement - Bridge, Complex Coatings - Enclosed",
+   "evidence_row": 5682,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "AISC row: matches the committed snapshot."
+  },
+  {
+   "claim_id": "p-gunderson-marine-portland-or:part_size_fit",
+   "source_url": "https://www.marinelog.com/news/tidewater-transportation-goes-to-gunderson-for-four-new-refined-products-barges/",
+   "ledger_value": "Rove: Tidewater tank barges are 272 x 42 x 18.5 ft, beyond every cell limit; components not dimensioned",
+   "evidence_row": 5683,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-gunderson-marine-portland-or:production_type",
+   "source_url": "https://www.jobtarget.com/jobs/jt-m9k4fh6szr/fitterwelder-experienced-portland-oregon",
+   "ledger_value": "many part types: barges and heavy steel structures; 'every day brings something different'",
+   "evidence_row": 5684,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-gunderson-marine-portland-or:welder_postings",
+   "source_url": "https://www.jobtarget.com/jobs/jt-m9k4fh6szr/fitterwelder-experienced-portland-oregon",
+   "ledger_value": "1 counted: Fitter/Welder (Experienced), Portland, posted March 3, 2026, still listed on JobTarget (company board unreachable); gas-shielded flux core",
+   "evidence_row": 5686,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "JobTarget listing live today with Apply ('Posted on March 3, 2026'). Gunderson's own site (gunderson-marine.squarespace.com) is live with a Careers section; no job list readable there. Counted at 12 (any open posting), not 20, as the ledger does."
+  },
+  {
+   "claim_id": "p-gunderson-marine-portland-or:triggers",
+   "source_url": "https://www.marinelog.com/news/tidewater-transportation-goes-to-gunderson-for-four-new-refined-products-barges/",
+   "ledger_value": "Mar 24, 2025: Tidewater contract for four liquid refined product barges",
+   "evidence_row": 5687,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the page; Mar 24, 2025 is within 24 months of 2026-11-13."
+  },
+  {
+   "claim_id": "p-jamesbuilt-calvert-city-ky:address",
+   "source_url": "https://jamesmarine.com/kentucky-locations/",
+   "ledger_value": "390 Riverside Lane, Calvert City, KY 42029",
+   "evidence_row": 5697,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote on the Kentucky locations page. Same address also lists Paducah River Painting."
+  },
+  {
+   "claim_id": "p-jamesbuilt-calvert-city-ky:parent_company",
+   "source_url": "https://jamesmarine.com/jobs-and-careers-kentucky/",
+   "ledger_value": "James Marine, Inc. (JMI family of companies)",
+   "evidence_row": 5698,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "c-james-marine:multi_plant",
+   "source_url": "https://jamesmarine.com/jobs-and-careers-kentucky/",
+   "ledger_value": "12 locations across Kentucky, Louisiana and Alabama; over 1,500 employees",
+   "evidence_row": 5699,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-jamesbuilt-calvert-city-ky:products",
+   "source_url": "https://jamesmarine.com/james-built/",
+   "ledger_value": "tank, towboat, mid-stream fueling, deck and specialty barge construction; major repairs and hull replating",
+   "evidence_row": 5701,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-jamesbuilt-calvert-city-ky:weld_processes",
+   "source_url": "https://jamesmarine.com/jobs-and-careers-kentucky/",
+   "ledger_value": "TIG and MIG named in the James Marine Welder posting listing Calvert City among three locations",
+   "evidence_row": 5702,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "unknown at site level: TIG and MIG are named only in a James Marine, Inc. division Welder posting (barge repair) whose location is Paducah, Wickliffe and Calvert City",
+   "corrected_quote": "Welder DIVISION – James Marine, Inc. Location: Paducah, KY, Wickliffe, KY and Calvert City, KY ... A Shipyard Worker/Welder is responsible for the repair of barges and materials. ... Strong knowledge of TIG and MIG welding processes.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "severity": "point-earning tie",
+   "plants_csv_value": "unknown (TIG and MIG named in a James Marine, Inc. multi-site barge-repair Welder posting for Paducah, Wickliffe and Calvert City; not tied to the James Built yard)",
+   "note": "The posting is filed under 'DIVISION – James Marine, Inc.', not James Built, and pools three cities. Calvert City's 390 Riverside Lane also houses Paducah River Painting. The job is barge repair in dry docks. The James Built-division postings at Calvert City (Experienced Welders, Structural Steel Fitter, Welder Trainee) name no process. Under coordinator rule 3 and the poles precedent (inferred-attribution postings earn no points), this ties a process to the plant through a location shared by several sites. Process 12 -> 0 (see score_notes)."
+  },
+  {
+   "claim_id": "p-jamesbuilt-calvert-city-ky:production_type",
+   "source_url": "https://jamesmarine.com/james-built/",
+   "ledger_value": "many part types: specialty vessel construction of any size boat or barge, flexible design; plus major repairs",
+   "evidence_row": 5706,
+   "tag": "stated",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Quote matched on the page fetched 2026-11-13 (plain fetch); every additive clause of the value is on the page or on a sibling row's page opened today."
+  },
+  {
+   "claim_id": "p-arcosa-marine-ashland-city-tn:opening_line",
+   "source_url": "",
+   "ledger_value": "NABRICO posted a flux-core structural welder opening at Ashland City on Nov 5, 2026, while a second-shift Welder II seat has been open since Aug 31 and a Weld School Manager role is open; how are you covering weld hours on the hopper and tank hulls in the meantime?",
+   "evidence_row": 5564,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is carried: Welder - 1st Shift posted 2026-11-05 with FCAW on its page (rows 5553, 5545); Welder II open since 2026-08-31 (5554); Weld School Manager open (5559); hopper and tank hulls (5551, 4298). All open today in the ADP API. Ends in a 'you' question; no pitch; no Path or LAD claim."
+  },
+  {
+   "claim_id": "p-bae-jacksonville-fl:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Jacksonville shipyard posted six Welder - Submarine Program openings in October and November 2026, asking for FCAW and GMAW groove-weld qualification on high strength steel, after the $250 million shiplift opened there in June 2025; how are you training welders for the deck-module work?",
+   "evidence_row": 5192,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Six Welder - Submarine Program reqs posted 10/23 and 11/11/2026, all live today (rows 5183-5188). FCAW/GMAW groove-weld qualification on high strength steel is on the posting page cited by 5175/5176. The $250M shiplift opened June 2025 (5189). 'Deck-module work' is row 4746/5177. Ends in a 'you' question."
+  },
+  {
+   "claim_id": "p-chesapeake-shipbuilding-salisbury-md:opening_line",
+   "source_url": "",
+   "ledger_value": "Chesapeake Shipbuilding lists five welding and fitting openings in Salisbury with a $1,000 sign-on bonus (newest Oct 30, 2026), including a Shipyard Welder for flux-core work on 1/4 to 1 inch carbon steel; how are you keeping welding on pace with the cruise ship builds?",
+   "evidence_row": 5486,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Every clause is true today and carried by welder_postings and weld_processes rows. Five welding/fitting openings, newest Oct 30 2026, and the $1,000 sign-on are in row 4389's corrected value (board page plus sibling 5484's page). FCAW on 1/4-1 in carbon steel is row 5477. 'Cruise ship builds' comes from production_type (5482), which the reasoning does not name (see opening_line_problems). Ends in a 'you' question."
+  },
+  {
+   "claim_id": "p-corn-island-grandview-in:opening_line",
+   "source_url": "",
+   "ledger_value": "Corn Island received a $1.17 million MARAD grant in August 2026 for plasma-cutting, stiffener-welding and welding equipment; which welds on your custom barges is that equipment meant to take over?",
+   "evidence_row": 5654,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Grant clause carried by row 4348 (Aug 13, 2026; $1,174,867); custom barges by 5649/4341. Ends in a 'you' question."
+  },
+  {
+   "claim_id": "p-electric-boat-groton-ct:opening_line",
+   "source_url": "",
+   "ledger_value": "Electric Boat's July 2026 award covers 14 more submarines with work at Groton, and your Groton Shipyard has a skilled welder posting (GMAW and SMAW) and two shipfitter postings open; how are you adding structural welders?",
+   "evidence_row": 5108,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "July 2026 award, 14 submarines, work at Groton (row 5104). Groton skilled welder posting with GMAW/SMAW and two shipfitter postings, all live today (5101-5103, 5095). Ends in a 'you' question."
+  },
+  {
+   "claim_id": "p-fincantieri-sturgeon-bay-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Bay Shipbuilding is getting a MARAD-funded CNC profile cutter and 100-ton crane (October 2026) and has Welder (flux-core, ABS test) and Steel Fitter roles open in Sturgeon Bay; where is welding the constraint on your current barge and vessel work?",
+   "evidence_row": 5375,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "Bay Shipbuilding won a MARAD Small Shipyard Grant in August 2026 for a CNC profile cutter and a 100-ton crane, and has Welder (flux-core, ABS test) and Steel Fitter roles open in Sturgeon Bay; where is welding the constraint on your current barge and vessel work?",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "severity": "date",
+   "plants_csv_value": "(same as corrected_value)",
+   "note": "'(October 2026)' dates the grant to the Baird article; the award is dated Aug 13, 2026 (row 5373 correction). Every other clause is carried: Welder 4137 (FCAW ABS test) and Steel Fitter 4024 are open at 'Bay Shipbuilding Co.-BSC05' today. Ends in a 'you' question; no pitch language; no Path claim."
+  },
+  {
+   "claim_id": "p-gunderson-marine-portland-or:opening_line",
+   "source_url": "",
+   "ledger_value": "Gunderson won a $1.53 million MARAD grant in August 2026 for a 16-ft CNC plasma cutter while building Tidewater's four 272-ft tank barges, and an experienced flux-core fitter/welder opening has been listed since March 3; how are you staffing the welding on the barge program?",
+   "evidence_row": 5689,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Aug 2026 grant, $1.53M, 16-ft CNC plasma cutter (4473); Tidewater's four 272-ft barges (5687, 5683); flux-core fitter/welder listed since March 3 (5686, 5680), live on JobTarget today. Ends in a 'you' question."
+  },
+  {
+   "claim_id": "p-jamesbuilt-calvert-city-ky:opening_line",
+   "source_url": "",
+   "ledger_value": "James Marine is listing experienced welders for the James Built yard at Calvert City, which received a $599,130 MARAD grant for a 65-ton crane in July 2025; how are you splitting welders between new tank and deck barge builds and repair work there?",
+   "evidence_row": 5714,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Experienced welders for James Built at Calvert City (row 4356; live today); $599,130 grant, 65-ton crane, July 2025 (4355); tank and deck barge builds (5701). Does not rely on the TIG/MIG posting. Ends in a 'you' question."
+  },
+  {
+   "claim_id": "p-keel-ladson-sc:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Ladson Welder posting, open since Aug 7, 2026, requires seven FCAW and pulsed or spray GMAW weld tests for Columbia, Virginia and Ford-class assemblies; how long does it take you to qualify a new welder?",
+   "evidence_row": 5028,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Ladson Welder open since Aug 7, 2026 (board JSON today, row 4592); seven FCAW and pulsed/spray GMAW tests (4593/5022); Columbia, Virginia and Ford-class assemblies (5024). Ends in a 'you' question."
+  },
+  {
+   "claim_id": "p-nassco-san-diego-ca:opening_line",
+   "source_url": "",
+   "ledger_value": "NASSCO won $1.7 billion for T-AO 215 and 216 in November 2025, and your yard has run a robotic hybrid laser panel line since 2019 while your shipfitters and welders qualify on FCAW; which structural weldments do you still weld by hand?",
+   "evidence_row": 5164,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "corrected",
+   "corrected_value": "NASSCO won $1.7 billion for T-AO 215 and 216 in November 2025, and your yard commissioned a robotic hybrid laser arc panel line in 2019, while your welders and shipfitters qualify on FCAW; which structural weldments do you still weld by hand?",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "severity": "status tense",
+   "plants_csv_value": "(same as corrected_value)",
+   "note": "'has run ... since 2019' restates a January 2019 commissioning as current operation. The only later evidence (a 2025 posting, now 404) is unquoted, per row 5153's own reasoning. The replacement dates the clause to its source. The T-AO clause (release, Nov 10 2025) and the FCAW clause (both postings, live today) are confirmed. Ends in a 'you' question."
+  },
+  {
+   "claim_id": "p-nns-oyster-point-newport-news-va:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Oyster Point Industrial Park shop has had an experienced-welder opening since Oct 23, 2026 for SMAW, FCAW, GMAW and GTAW work on carrier and submarine steel foundations; with HII's Path agreement in place, which OPIP welds would you look at first?",
+   "evidence_row": 4924,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "OPIP welder opening Oct 23, 2026 (3929/4923, live today); SMAW, FCAW, GMAW, GTAW (4921); carrier and submarine steel foundations (3926/4922). 'HII's Path agreement in place' is c-hii:path_customer (stated, company level) and asserts no deployment at OPIP, which satisfies the HII rule. Ends in a 'you' question."
+  },
+  {
+   "claim_id": "p-saronic-brownsville-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Saronic chose Brownsville for Port Alpha in July 2026, and your Weld Engineer posting covers building the welding program from the ground up, including panel-line and robotic welding; how will the Franklin welding-cell lessons shape your Port Alpha weld plan?",
+   "evidence_row": 4991,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "July 2026 Brownsville selection (4988); Weld Engineer posting (live today) building the welding program incl. panel-line and robotic welding (4986, 4985/4007). 'Franklin welding-cell lessons' is carried by path_link's page ('intelligent welding cells' at Franklin; 'Lessons learned from robotics deployment in Franklin will inform ... Port Alpha'). Asserts no Path deployment at Port Alpha. Ends in a 'you' question."
+  },
+  {
+   "claim_id": "p-st-johns-palatka-fl:opening_line",
+   "source_url": "",
+   "ledger_value": "St. Johns lists steel and aluminum welder and fitter roles as hot jobs on its Palatka board after winning three 140 x 40 ft steel deck barges for Johnson Bros. in October 2025 and its first Navy contract in May 2025; how are you staffing the steel welding on those jobs?",
+   "evidence_row": 5635,
+   "tag": "inferred",
+   "in_scope": true,
+   "verdict": "confirmed",
+   "note": "Steel and aluminum welder/fitter hot jobs on the Palatka board (5624-5629, live today); three 140 x 40 ft steel deck barges for Johnson Bros., October 2025 (4290, 5621); first Navy contract May 2025 (4290). Ends in a 'you' question."
+  }
+ ],
+ "score_notes": [
+  {
+   "plant": "p-arcosa-marine-ashland-city-tn",
+   "component": "score_demand",
+   "ledger_points": 15,
+   "should_be": 8,
+   "why": "RUBRIC RULING, not a row error (the trigger rows are accurate). Sensitivity: 80 High if a sale naming the yard counts as plant-level. The only trigger is the April 2026 sale of Arcosa's whole barge business to Wynnchurch, which included 'all of Arcosa Marine's facilities' (Ashland City, Caruthersville, idle Madisonville). That is a company-level ownership change. Listing a yard among every facility doesn't make it a plant-level trigger (LaX precedent: company-level = 8). The ledger's own score_total reasoning flags it. No Ashland City grant is on the Aug 13, 2026 MARAD list (Caruthersville's Plant No. 1075 is). Vertical outlook only = 8."
+  },
+  {
+   "plant": "p-arcosa-marine-ashland-city-tn",
+   "component": "score_total",
+   "ledger_points": 80,
+   "should_be": 73,
+   "why": "20+12+8+20+8+5 = 73, still High. Confidence 6 -> 5: demand 8 never counts. The other five components rest on stated rows: process 5545, material 5548/5550, part mix 5551, labor 5553-5557 (all open today in the ADP API), scale 5542 + c-nabrico 5543."
+  },
+  {
+   "plant": "p-jamesbuilt-calvert-city-ky",
+   "component": "score_process",
+   "ledger_points": 12,
+   "should_be": 0,
+   "why": "The TIG/MIG requirement comes from a 'DIVISION – James Marine, Inc.' barge-repair Welder posting pooled across Paducah, Wickliffe and Calvert City (row 5702 corrected). No James Built-division posting names a process. Rule 3 and the precedent that inferred-attribution postings earn no points: 0."
+  },
+  {
+   "plant": "p-jamesbuilt-calvert-city-ky",
+   "component": "score_total",
+   "ledger_points": 59,
+   "should_be": 47,
+   "why": "0+0+15+12+15+5 = 47, still Medium. Confidence 5 -> 4 (part mix, labor, demand, scale)."
+  },
+  {
+   "plant": "p-jamesbuilt-calvert-city-ky",
+   "component": "score_labor",
+   "ledger_points": 12,
+   "should_be": 12,
+   "why": "Confirmed on the rows: the Experienced Welders posting (DIVISION – James Built, Calvert City) is live today, with no date shown. LEAD, not applied: the same page lists two more James Built-division Calvert City roles today, Structural Steel Fitter ('positioning angle/I-beam structures to weld') and Welder Trainee (Entry Level). With stated rows for them, 'several at once' gives 20 (total 55). The Structural Steel Fitter text also states steel for James Built, which would fill materials. Material score stays 0 (no part size)."
+  },
+  {
+   "plant": "p-nassco-san-diego-ca",
+   "component": "score_material_part",
+   "ledger_points": 12,
+   "should_be": 0,
+   "why": "RUBRIC RULING, not a row error (row 5154 is honestly inferred). Coordinator rule 2 sends this to the checkers. 52 x 52 x 30 ft is the envelope of the yard's blast and paint cells ('2 blast cells and 5 paint cells for indoor prep and coating of hull blocks (52'x52'x30')'), a facility capacity, and the row is tagged inferred. No stated dimension or weight of a welded product built here is in the ledger. The release's T-AO wording gives no length. Unknown = 0. A stated T-AO or block dimension would restore 12."
+  },
+  {
+   "plant": "p-nassco-san-diego-ca",
+   "component": "score_total",
+   "ledger_points": 87,
+   "should_be": 75,
+   "why": "20+0+15+20+15+5 = 75, still High. Confidence stays 5 (material was already unconfirmed). Process 20 and labor 20 confirmed: both FCAW postings are live today at 'San Diego, CA, US, 92113', the main yard's ZIP; the text says 'Works in all areas of the shipyard and on board ships'. Both are repair-department roles at the construction yard (boundary, already flagged in the ledger)."
+  },
+  {
+   "plant": "p-fincantieri-sturgeon-bay-wi",
+   "component": "confidence",
+   "ledger_points": 5,
+   "should_be": 4,
+   "why": "plants.csv says 5, but the plant's own score_total row says 4. Scale 10 rests on 100+ at the site, inferred from '200 at Fincantieri Bay Shipbuilding' added in 2025 (Hughes precedent: an inferred headcount earns points, not confidence). Process, part mix, labor and demand are stated: 4. Points unchanged at 80."
+  },
+  {
+   "plant": "p-fincantieri-sturgeon-bay-wi",
+   "component": "score_demand",
+   "ledger_points": 15,
+   "should_be": 15,
+   "why": "The grant names 'Fincantieri Marine Group LLC, Bay Shipbuilding, Sturgeon Bay' (rule 4); it was awarded Aug 13, 2026, not Oct 15 (row 5373 corrected). Within 24 months either way."
+  },
+  {
+   "plant": "p-electric-boat-groton-ct",
+   "component": "score_scale",
+   "ledger_points": 5,
+   "should_be": 5,
+   "why": "Stands. The cited parent row (5092) names General Dynamics only, but its page (WJAR, Jul 29 2026) names Groton and Quonset Point as EB work sites, and the ledger holds both EB plants. Reasoning should also cite p-electric-boat-groton-ct:triggers or a c-electric-boat:multi_plant row."
+  },
+  {
+   "plant": "p-chesapeake-shipbuilding-salisbury-md",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "Five welding/fitting postings are open at once today (board PublishedDate Oct 15 to Oct 30, 2026; Main Location = 710 Fitzwater St), each with a $1,000 sign-on bonus. Both facts are carried by row 4389 as corrected (board page plus sibling 5484's page)."
+  },
+  {
+   "plant": "p-chesapeake-shipbuilding-salisbury-md",
+   "component": "score_process",
+   "ledger_points": 20,
+   "should_be": 12,
+   "why": "Coordinator rule 1. The live Fabricator & Fitter posting (Paylocity 4627806, Main Location, posted 10/30/2026; a structural fitter role, one of the five counted) says 'Must be able to set up welding machines and equipment (SMAW, MIG, TIG).' A structural fitter posting at the plant names TIG alongside MIG, so it is 12, not the pipe-role-only exemption. Not yet in a ledger row: add a stated weld_processes row from 4627806. Total 63 -> 55 (Medium); confidence unchanged at 4."
+  },
+  {
+   "plant": "p-chesapeake-shipbuilding-salisbury-md",
+   "component": "score_total",
+   "ledger_points": 63,
+   "should_be": 55,
+   "why": "12+0+8+20+15+0 = 55, still Medium. Confidence 4 (process, part mix, labor, demand)."
+  },
+  {
+   "plant": "p-gunderson-marine-portland-or",
+   "component": "score_labor",
+   "ledger_points": 12,
+   "should_be": 12,
+   "why": "The JobTarget listing (posted March 3, 2026) is live today. Gunderson's own site is up but shows no readable job list. 12 (any open posting) is the right conservative level. LEAD: JobTarget's similar-jobs panel lists a second Gunderson Marine posting, 'Fitter/Welder Trainee', Portland. Open it and add a row; two at once would give 20 (total 82)."
+  },
+  {
+   "plant": "p-keel-ladson-sc",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "Welder JobId 4401313 is open today at 'Ladson Headquarters' (PublishedDate 2026-08-07, 98 days); Keel lists one Ladson site."
+  },
+  {
+   "plant": "p-bae-jacksonville-fl",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "All six reqs are live on BAE's search results today; postedDate 2026-10-23 (3) and 2026-11-11 (3); 'Jacksonville Maritime Solutions shipyard'."
+  },
+  {
+   "plant": "p-arcosa-marine-ashland-city-tn",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "All five counted reqs are open in the ADP list API today; two have been open 60+ days (2026-08-31, 2026-09-01)."
+  },
+  {
+   "plant": "p-st-johns-palatka-fl",
+   "component": "score_process",
+   "ledger_points": 12,
+   "should_be": 12,
+   "why": "Rule 1: GTAW is named in the Steel Welder posting itself (a production welder role), alongside GMAW and FCAW."
+  },
+  {
+   "plant": "p-nns-oyster-point-newport-news-va",
+   "component": "score_process",
+   "ledger_points": 12,
+   "should_be": 12,
+   "why": "Rule 1: GTAW is named in the OPIP structural welder posting itself."
+  },
+  {
+   "plant": "p-saronic-brownsville-tx",
+   "component": "score_total",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "All components confirmed. Pre-production: the Weld Engineer posting is still listed (publishedAt 2026-03-20), and groundbreaking was reported Sep 30, 2026, so the yard is being built. That newer dated trigger could replace the July selection; no point change."
+  }
+ ]
+}

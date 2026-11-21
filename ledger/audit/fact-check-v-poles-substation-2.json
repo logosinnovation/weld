@@ -1,0 +1,736 @@
+{
+ "checker": 2,
+ "vertical": "v-poles-substation",
+ "plants": [
+  "p-valmont-claremore-ok",
+  "p-valmont-tulsa-ok",
+  "p-valmont-mccook-ne",
+  "p-valmont-brenham-tx",
+  "p-valmont-columbus-ne",
+  "p-valmont-elkhart-in",
+  "p-valmont-ferndale-wa",
+  "p-valmont-jasper-tn",
+  "p-valmont-birmingham-al",
+  "p-valmont-farmington-mn"
+ ],
+ "claims_checked": 88,
+ "claims_corrected": 18,
+ "claims_unreachable": 0,
+ "error_rate": 0.2045,
+ "error_kind_counts": {
+  "other": 1,
+  "quote does not support value": 6,
+  "wrong plant or location": 11
+ },
+ "repeated_kinds": [
+  "wrong plant or location",
+  "quote does not support value"
+ ],
+ "worst_errors": [
+  "SWEEP KEY for the repeated kind \"wrong plant or location\" (11 rows): company-wide Valmont brochures were used as stated plant-level evidence. Grep every evidence row for source_url https://webassets.valmont.com/valmontstaging/vsna-resources/transportation-brochure.pdf?sfvrsn=4 (2008 catalog, footer CAT2012 11/08; predates the 2018 Walpar acquisition) and https://webassets.valmont.com/valmontstaging/docs/librariesprovider22/default-document-library/valmont-communication-structures-brochure-bro1045-0517.pdf?sfvrsn=4 (says production is in Plymouth IN and Salem OR). Also sweep Valmont postings for multi-site boilerplate (\"pivot or other components, communication towers, and/or overhead sign structures\"; \"metal and/or aluminum components\"; \"if applicable based on location\"). Worst instance: p-valmont-elkhart-in and p-valmont-ferndale-wa have part_size_fit, materials, certifications and production_type tagged stated from that 2008 catalog. score_material_part = 20 on each breaks the coordinator's own \"no plant-level size = 0\" rule; corrected, both totals fall from 41 to 21. Valmont lists Elkhart today as \"Valmont Extrusions\" (2008: steel AND aluminum poles), so the opening line's \"steel\" is unsupported.",
+  "p-valmont-mccook-ne:products and opening_line: \"pivot or other components, communication towers, and overhead sign structures\" is multi-site Welder 4 boilerplate. The same page carries a Farmington line, the same sentence is on a Brenham posting, and NEMEP calls McCook \"primarily engaged in pipe welding\". The coordinator reinstated McCook into the vertical on this sentence alone; inclusion and the opening line need review. Its materials row also cites the communication-structures brochure, which places production in Plymouth IN / Salem OR (materials corrected to unknown).",
+  "p-valmont-birmingham-al: materials, certifications (AISC) and production_type (\"custom-designs\") come from the 2008 catalog, which predates the 2018 Walpar acquisition. The Maryland SHA list shows no AISC line for Walpar. score_part_mix 15 should be 0 (total 28 to 13), and the opening line's \"custom-designs overhead sign structures\" is unsupported for this plant."
+ ],
+ "opening_line_problems": [
+  "p-valmont-mccook-ne: \"communication towers and overhead sign structures\" rests on multi-site boilerplate, not a McCook statement. No Path deployment is asserted (2021 quote framed as past).",
+  "p-valmont-elkhart-in: \"makes steel signal supports and strain poles\". \"Steel\" is not stated for Elkhart (Ohio DOT list gives no material; 2008 catalog says steel and aluminum; current Valmont page says Valmont Extrusions). The brochure facts are company-wide but are attributed to \"Valmont's pole brochure\", which is acceptable. No current deployment is asserted.",
+  "p-valmont-birmingham-al: \"custom-designs overhead sign structures\" comes from a 2008 company catalog that predates Walpar ownership. \"Served the transportation market since 1974\" is stated (SteelOrbis 2018).",
+  "p-valmont-ferndale-wa: \"makes steel poles in an AISC-certified, AWS D1.1 network\" uses the present tense on 2008/2017 sources, and the plant's current operation is unverified. AWS D1.1 is not stated for Ferndale.",
+  "No opening line among the 10 asserts a current Path deployment. Claremore, Tulsa, Brenham, Jasper, Columbus and Farmington use only stated facts (Claremore from a posting about 2 years old; Columbus's \"asks for\" is present tense on an inactive posting)."
+ ],
+ "plants_closed_or_moved": [
+  "p-valmont-ferndale-wa: open status UNVERIFIED. Last evidence placing West Coast Engineering at 6823 Northgate Way, Ferndale is a 2017 brochure. The current Valmont locations page lists WCE only at Delta, BC; a 2024 shipping record seen in search uses the Delta address; wceng.com returned 502. No closure report found. Not marked closed.",
+  "p-valmont-elkhart-in: possible street renumbering or second building. The ledger has 58027 Charlotte Avenue (Ohio DOT 2021; Valmont page \"Valmont Extrusions\"), while 2026 Valmont postings in search snippets give 3403 Charlotte Ave, Elkhart 46517-1150 for pole work. Fetch returned 404, so unresolved. The plant appears open.",
+  "p-valmont-claremore-ok: open (other Valmont Claremore postings in search), but the ledger address is unknown. Search snippets give 25010 Alliance Dr, Claremore, OK 74017 (not fetched, so not verified)."
+ ],
+ "rows": [
+  {
+   "claim_id": "p-valmont-brenham-tx:address",
+   "source_url": "https://builtin.com/job/small-pole-fitter-welder-8-days/8082628",
+   "ledger_value": "2551 Valmont Dr, Brenham, TX 77833",
+   "verdict": "confirmed",
+   "note": "Built In posting header: Brenham, TX; 2551 Valmont Dr. Plant open: TxDOT ITS list dated October 16, 2026 lists Valmont Brenham."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:products",
+   "source_url": "https://builtin.com/job/small-pole-fitter-welder-8-days/8082628",
+   "ledger_value": "Steel poles (pole assemblies, large/small pole lines)",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:products",
+   "source_url": "https://builtin.com/job/large-pole-shaft-line-lead/4154166",
+   "ledger_value": "Steel poles (large pole assembly line)",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:products",
+   "source_url": "https://www.txdot.gov/content/dam/docs/division/mtd/mpl/itspoles.pdf",
+   "ledger_value": "ITS / traffic signal pole fabrication plant approved by TxDOT",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:relationship",
+   "source_url": "https://www.robotics247.com/article/path_robotics_raises_100m_in_series_c_financing_for_autonomous_welding/robot_arm",
+   "ledger_value": "customer_other_plant",
+   "verdict": "confirmed",
+   "note": "Quote is on the page (Robotics 24/7, July 20, 2021; Diane Larkin, EVP Global Operations, Valmont). Supports a 2021 parent-level reference only; names no plant; value asserts no plant deployment. Tag \"stated\" here is inconsistent with the same claim tagged \"inferred\" on Elkhart, Birmingham and Ferndale."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:welder_postings",
+   "source_url": "https://builtin.com/job/fitter-welder-7-evenings/8193904",
+   "ledger_value": "3 pole-line postings seen on Built In (Fitter Welder 7 Evenings; Small Pole Fitter Welder 8 Days; Large Pole Shaft Line Lead), no posting dates shown; live status unverified",
+   "verdict": "corrected",
+   "error_kind": "other",
+   "corrected_value": "3 pole-line postings seen on Built In, all removed: Fitter Welder 7 - Evenings and Small Pole Fitter Welder 8 - Days removed 2026-01-23; Large Pole Shaft Line Lead removed 2025-05-08",
+   "corrected_quote": "Sorry, this job was removed at 06:21 p.m. (UTC) on Friday, Jan 23, 2026",
+   "corrected_tag": "stated",
+   "note": "The quote is on the page and the posting is for Brenham (2551 Valmont Dr). But the page shows the posting was removed, while the value says \"live status unverified\". Stale status. Note also that this Brenham posting repeats the multi-site sentence \"communication towers, components, and overhead sign structures\" used on the McCook posting."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:name",
+   "source_url": "https://builtin.com/job/small-pole-fitter-welder-8-days/8082628",
+   "ledger_value": "Valmont Utility / Lighting & Transportation - Brenham",
+   "verdict": "confirmed",
+   "note": "The address supports the city. \"Utility / Lighting & Transportation\" is a ledger label, not on this page."
+  },
+  {
+   "claim_id": "p-valmont-tulsa-ok:address",
+   "source_url": "https://builtin.com/job/ehs-manager/4154154",
+   "ledger_value": "801 N Xanthus, Tulsa, OK 74110",
+   "verdict": "confirmed",
+   "note": "Built In EHS Manager (removed 2025-05-08, \"2 Locations\") prints 801 N Xanthus. OESC event page (July 2026) confirms \"Valmont Utility 801 N. Xanthus Tulsa, OK 74110\", so the plant is open."
+  },
+  {
+   "claim_id": "p-valmont-tulsa-ok:relationship",
+   "source_url": "https://www.robotics247.com/article/path_robotics_raises_100m_in_series_c_financing_for_autonomous_welding/robot_arm",
+   "ledger_value": "customer_other_plant",
+   "verdict": "confirmed",
+   "note": "Quote is on the page (Robotics 24/7, July 20, 2021; Diane Larkin, EVP Global Operations, Valmont). Supports a 2021 parent-level reference only; names no plant; value asserts no plant deployment. Tag \"stated\" here is inconsistent with the same claim tagged \"inferred\" on Elkhart, Birmingham and Ferndale."
+  },
+  {
+   "claim_id": "p-valmont-tulsa-ok:name",
+   "source_url": "https://builtin.com/job/ehs-manager/4154154",
+   "ledger_value": "Valmont Utility - Tulsa",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:city",
+   "source_url": "https://www.weldinginfo.org/job/fitter-13",
+   "ledger_value": "Claremore",
+   "verdict": "confirmed",
+   "note": "weldinginfo.org aggregator: \"Claremore, Oklahoma, US\", \"Posted 2 years ago\". Search results show other Valmont Claremore postings giving 25010 Alliance Dr, Claremore, OK 74017 (not fetched; Built In copies 404/429). The text is identical to the Tulsa Fitter posting but has no on-page multi-site marker."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:products",
+   "source_url": "https://www.weldinginfo.org/job/fitter-13",
+   "ledger_value": "Welds poles with GMAW",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:relationship",
+   "source_url": "https://www.robotics247.com/article/path_robotics_raises_100m_in_series_c_financing_for_autonomous_welding/robot_arm",
+   "ledger_value": "customer_other_plant",
+   "verdict": "confirmed",
+   "note": "Quote is on the page (Robotics 24/7, July 20, 2021; Diane Larkin, EVP Global Operations, Valmont). Supports a 2021 parent-level reference only; names no plant; value asserts no plant deployment. Tag \"stated\" here is inconsistent with the same claim tagged \"inferred\" on Elkhart, Birmingham and Ferndale."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:welder_postings",
+   "source_url": "https://www.weldinginfo.org/job/fitter-13",
+   "ledger_value": "none open verified: the Fitter posting shows 'Posted 2 years ago'",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:name",
+   "source_url": "https://www.weldinginfo.org/job/fitter-13",
+   "ledger_value": "Valmont Utility - Claremore",
+   "verdict": "confirmed",
+   "note": "The page says \"Valmont Industries\" / \"Valmont\", not \"Valmont Utility\". City supported."
+  },
+  {
+   "claim_id": "p-valmont-jasper-tn:products",
+   "source_url": "https://www.tn.gov/ecd/news/2021/1/25/governor-lee--commissioner-rolfe-announce-valmont-industries-to-expand-marion-county-operations.html",
+   "ledger_value": "Steel poles and structures for utility and transportation",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-jasper-tn:products",
+   "source_url": "https://www.areadevelopment.com/newsItems/10-25-2026/valmont-industries-jasper-tennessee.shtml",
+   "ledger_value": "Engineered steel transmission, distribution and substation structures",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-jasper-tn:headcount",
+   "source_url": "https://www.tn.gov/ecd/news/2024/5/7/governor-lee--commissioner-mcwhorter-announces-valmont-s-plan-to-expand-jasper-operations.html",
+   "ledger_value": "270",
+   "verdict": "confirmed",
+   "note": "270 as of May 7, 2024 (tn.gov). Score_scale 10 is OK."
+  },
+  {
+   "claim_id": "p-valmont-jasper-tn:relationship",
+   "source_url": "https://www.robotics247.com/article/path_robotics_raises_100m_in_series_c_financing_for_autonomous_welding/robot_arm",
+   "ledger_value": "customer_other_plant",
+   "verdict": "confirmed",
+   "note": "Quote is on the page (Robotics 24/7, July 20, 2021; Diane Larkin, EVP Global Operations, Valmont). Supports a 2021 parent-level reference only; names no plant; value asserts no plant deployment. Tag \"stated\" here is inconsistent with the same claim tagged \"inferred\" on Elkhart, Birmingham and Ferndale."
+  },
+  {
+   "claim_id": "p-valmont-jasper-tn:name",
+   "source_url": "https://talents.vaia.com/companies/valmont-industries/fitter-welder-weekend-night-shift-23178957/",
+   "ledger_value": "Valmont Utility - Jasper",
+   "verdict": "confirmed",
+   "note": "The Vaia posting says \"Jasper\" with no state, and its employer blurb mentions \"Steele, Alabama\" (auto-generated). Jasper TN is confirmed by the tn.gov and Area Development pages. The posting also says \"repetitive types of assembling operations\" and \"high volume, fast paced environment\", which under the Columbus override would make score_part_mix 8, not 15."
+  },
+  {
+   "claim_id": "p-valmont-jasper-tn:triggers",
+   "source_url": "https://www.areadevelopment.com/newsItems/10-25-2026/valmont-industries-jasper-tennessee.shtml",
+   "ledger_value": "2026-10-25: $45M expansion, 84 jobs, more capacity for engineered steel transmission, distribution and substation structures",
+   "verdict": "confirmed",
+   "note": "Area Development 10/25/2026 confirms $45M and 84 jobs. The plant is open."
+  },
+  {
+   "claim_id": "p-valmont-jasper-tn:triggers",
+   "source_url": "https://www.areadevelopment.com/newsItems/5-10-2024/valmont-industries-marion-county-tennessee.shtml",
+   "ledger_value": "May 2024 expansion $6M, 80 jobs",
+   "verdict": "confirmed",
+   "note": "Area Development 05/10/2024 confirms \"$6 million project is expected to create 80 jobs\" (Marion County / Jasper). Within RECENCY_MONTHS (24) of 2026-11-12 only until about 2026-05; the 2026-10-25 expansion is the in-window trigger."
+  },
+  {
+   "claim_id": "p-valmont-columbus-ne:address",
+   "source_url": "https://simplify.jobs/p/aa55c27e-de5b-4b62-8fc3-b36a25dbc962/Welder",
+   "ledger_value": "1600 E 29th Ave, Columbus, NE 68601",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-columbus-ne:products",
+   "source_url": "https://simplify.jobs/p/aa55c27e-de5b-4b62-8fc3-b36a25dbc962/Welder",
+   "ledger_value": "Steel electrical poles, substations, other structures",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-columbus-ne:products",
+   "source_url": "https://nemep.unl.edu/valmont-newmark-inc",
+   "ledger_value": "Steel utility poles and associated structures",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-columbus-ne:relationship",
+   "source_url": "https://www.robotics247.com/article/path_robotics_raises_100m_in_series_c_financing_for_autonomous_welding/robot_arm",
+   "ledger_value": "customer_other_plant",
+   "verdict": "confirmed",
+   "note": "Quote is on the page (Robotics 24/7, July 20, 2021; Diane Larkin, EVP Global Operations, Valmont). Supports a 2021 parent-level reference only; names no plant; value asserts no plant deployment. Tag \"stated\" here is inconsistent with the same claim tagged \"inferred\" on Elkhart, Birmingham and Ferndale."
+  },
+  {
+   "claim_id": "p-valmont-columbus-ne:welder_postings",
+   "source_url": "https://simplify.jobs/p/aa55c27e-de5b-4b62-8fc3-b36a25dbc962/Welder",
+   "ledger_value": "1 open Welder posting (Columbus NE), 'Posted on Sep 17' (year not shown); live status unverified",
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "No open posting: the Simplify Welder posting (Columbus NE, \"Posted on Sep 17\", year not shown) is marked Inactive",
+   "corrected_quote": "Inactive",
+   "corrected_tag": "stated",
+   "note": "Page header shows the posting as \"Inactive\", not open. Value says \"1 open Welder posting\". The other Columbus welder_postings row (Built In, removed 2026-01-30) already says none open, so the two rows conflict. Score_labor 0 is right."
+  },
+  {
+   "claim_id": "p-valmont-columbus-ne:name",
+   "source_url": "https://nemep.unl.edu/valmont-newmark-inc",
+   "ledger_value": "Valmont Newmark - Columbus",
+   "verdict": "confirmed",
+   "note": "MISSED FACT on this NEMEP page: \"Employees: 218\" (1600 E 29th Ave, Columbus). Ledger headcount is unknown with score_scale 5. With 218 it would be 10, putting the total at 46 (Medium)."
+  },
+  {
+   "claim_id": "p-valmont-mccook-ne:address",
+   "source_url": "https://simplify.jobs/p/f163b89e-ad48-488d-83e9-f05f2c33ba7e/Welder-4",
+   "ledger_value": "75 South Hwy 83, McCook, NE 69001",
+   "verdict": "confirmed",
+   "note": "The posting shows live on 2026-11-12, so the plant is open."
+  },
+  {
+   "claim_id": "p-valmont-mccook-ne:products",
+   "source_url": "https://simplify.jobs/p/f163b89e-ad48-488d-83e9-f05f2c33ba7e/Welder-4",
+   "ledger_value": "Pivot components, communication towers, overhead sign structures",
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "unknown for McCook: the Welder 4 product sentence is multi-site boilerplate. NEMEP describes the McCook site as pipe welding",
+   "corrected_quote": "Valmont Industries, Inc. is primarily engaged in pipe welding.",
+   "corrected_tag": "inferred",
+   "note": "The quote is on a McCook posting (75 South Hwy 83), but the page shows it is a multi-location template. It contains a \"Farmington, MN: Focus areas are plugs, tenons, and small diameter poles.\" line and several \"if applicable based on location\" clauses, and the same \"communication towers ... overhead sign structures\" sentence is on Brenham's Fitter Welder 7 posting. The corrected quote is from nemep.unl.edu/valmont-industries-inc-1/ (Red Willow County, 75 US Highway 83, Mc Cook), which is already a ledger source. The coordinator reinstated McCook into the vertical on this sentence alone, so its inclusion should be re-examined."
+  },
+  {
+   "claim_id": "p-valmont-mccook-ne:relationship",
+   "source_url": "https://www.robotics247.com/article/path_robotics_raises_100m_in_series_c_financing_for_autonomous_welding/robot_arm",
+   "ledger_value": "customer_other_plant: Valmont confirmed Path reference is from 2021 and names no plant; no current deployment asserted",
+   "verdict": "confirmed",
+   "note": "Quote is on the page (Robotics 24/7, July 20, 2021; Diane Larkin, EVP Global Operations, Valmont). Supports a 2021 parent-level reference only; names no plant; value asserts no plant deployment. Tag \"stated\" here is inconsistent with the same claim tagged \"inferred\" on Elkhart, Birmingham and Ferndale."
+  },
+  {
+   "claim_id": "p-valmont-mccook-ne:welder_postings",
+   "source_url": "https://simplify.jobs/p/f163b89e-ad48-488d-83e9-f05f2c33ba7e/Welder-4",
+   "ledger_value": "1 open Welder 4 posting shown live 2026-11-12 ($22.53/hr; MIG; Mon-Thu 6:00-4:30 + overtime as needed; no sign-on bonus stated; no posting date)",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-mccook-ne:name",
+   "source_url": "https://simplify.jobs/p/f163b89e-ad48-488d-83e9-f05f2c33ba7e/Welder-4",
+   "ledger_value": "Valmont - McCook",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-farmington-mn:address",
+   "source_url": "https://www.valmontstructures.com/contact/locations",
+   "ledger_value": "20805 Eaton Ave, Farmington, MN 55024",
+   "verdict": "confirmed",
+   "note": "The current Valmont locations page (footer 2024) lists Farmington under Aluminium, so the plant is presumably open."
+  },
+  {
+   "claim_id": "p-valmont-farmington-mn:products",
+   "source_url": "https://simplify.jobs/p/f163b89e-ad48-488d-83e9-f05f2c33ba7e/Welder-4",
+   "ledger_value": "Small diameter poles, plugs, tenons",
+   "verdict": "confirmed",
+   "note": "The line is on a McCook posting (template) but names Farmington outright, so it is accepted. The 2008 transportation catalog independently lists \"Farmington, Minnesota, USA ALUMINUM POLES\", which supports the inferred aluminum-first materials row. SCORE NOTE: score_material_part 4 rests on materials tagged inferred, while the coordinator's rule says 4 needs stated aluminum-first. The 2008 catalog line would supply that stated support."
+  },
+  {
+   "claim_id": "p-valmont-farmington-mn:relationship",
+   "source_url": "https://www.robotics247.com/article/path_robotics_raises_100m_in_series_c_financing_for_autonomous_welding/robot_arm",
+   "ledger_value": "customer_other_plant",
+   "verdict": "confirmed",
+   "note": "Quote is on the page (Robotics 24/7, July 20, 2021; Diane Larkin, EVP Global Operations, Valmont). Supports a 2021 parent-level reference only; names no plant; value asserts no plant deployment. Tag \"stated\" here is inconsistent with the same claim tagged \"inferred\" on Elkhart, Birmingham and Ferndale."
+  },
+  {
+   "claim_id": "p-valmont-farmington-mn:name",
+   "source_url": "https://www.valmontstructures.com/contact/locations",
+   "ledger_value": "Valmont Structures - Farmington (aluminum)",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:address",
+   "source_url": "https://www.dot.state.oh.us/Divisions/ConstructionMgt/Materials/Pages/SignalSupportsandStrainPolesCertified.aspx",
+   "ledger_value": "58027 Charlotte Avenue, Elkhart, IN 46516",
+   "verdict": "confirmed",
+   "note": "Ohio DOT list (last update 2021; Valmont Elkhart certified 07/19/05) gives 46516. The Valmont page gives 46517-1150 and calls the site \"Valmont Extrusions\". Search snippets show 2026 Valmont postings at \"3403 Charlotte Ave Elkhart Indiana 46517-1150\" with pole work (tapering, plasma-cut holes in poles); fetch returned 404. Street number unresolved."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:name",
+   "source_url": "https://www.dot.state.oh.us/Divisions/ConstructionMgt/Materials/Pages/SignalSupportsandStrainPolesCertified.aspx",
+   "ledger_value": "Valmont Industries, Inc. (Elkhart)",
+   "verdict": "confirmed",
+   "note": "Ohio DOT list last updated 2021 (certification dated 2005)."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:products",
+   "source_url": "https://www.dot.state.oh.us/Divisions/ConstructionMgt/Materials/Pages/SignalSupportsandStrainPolesCertified.aspx",
+   "ledger_value": "Signal supports and strain poles",
+   "verdict": "confirmed",
+   "note": "Ohio DOT list heading plus listing (last updated 2021, certified 2005). Old, but it supports the value."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:website",
+   "source_url": "https://www.dot.state.oh.us/Divisions/ConstructionMgt/Materials/Pages/SignalSupportsandStrainPolesCertified.aspx",
+   "ledger_value": "https://www.valmont.com",
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "www.valmontstructures.com (Valmont locations page entry for 58027 Charlotte Avenue, labelled \"Valmont Extrusions\")",
+   "corrected_quote": "Web: www.valmontstructures.com Mailing and Shipping Address 58027 Charlotte Avenue Elkhart, IN 46517-1150",
+   "corrected_tag": "stated",
+   "note": "The Ohio DOT quote names no website. The corrected source is https://www.valmontstructures.com/contact/locations. That page names the Elkhart site \"Valmont Extrusions\"."
+  },
+  {
+   "claim_id": "p-valmont-birmingham-al:address",
+   "source_url": "https://www.roads.maryland.gov/OMT/overheadsign.pdf",
+   "ledger_value": "4200 Jefferson Ave SW, Birmingham, AL 35221",
+   "verdict": "confirmed",
+   "note": "Maryland SHA qualified list dated 03/11/2026 shows \"Qualified for Sourcing on State Projects\", so the plant is open."
+  },
+  {
+   "claim_id": "p-valmont-birmingham-al:name",
+   "source_url": "https://www.roads.maryland.gov/OMT/overheadsign.pdf",
+   "ledger_value": "Walpar-Valmont Birmingham",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-birmingham-al:products",
+   "source_url": "https://www.roads.maryland.gov/OMT/overheadsign.pdf",
+   "ledger_value": "Overhead sign structures",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-birmingham-al:products",
+   "source_url": "https://www.steelorbis.com/steel-news/latest-news/valmont-industries-inc-acquires-walpar-llc-1052462.htm",
+   "ledger_value": "Overhead sign structures (Walpar line)",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-birmingham-al:headcount",
+   "source_url": "https://www.steelorbis.com/steel-news/latest-news/valmont-industries-inc-acquires-walpar-llc-1052462.htm",
+   "ledger_value": "approx. 70 (2018)",
+   "verdict": "confirmed",
+   "note": "Approx. 70 as of 2018 (acquisition). Stale."
+  },
+  {
+   "claim_id": "p-valmont-birmingham-al:website",
+   "source_url": "https://www.valmontstructures.com/products-solutions/sign-structures",
+   "ledger_value": "valmontstructures.com sign structures page",
+   "verdict": "confirmed",
+   "note": "The Walpar product-line page on valmontstructures.com."
+  },
+  {
+   "claim_id": "p-valmont-birmingham-al:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress",
+   "ledger_value": "33.449783339802,-86.901980709429 (county 01073)",
+   "verdict": "confirmed",
+   "note": "The quote is not on the stored URL, which has no query string. Re-running the Census geocoder for \"4200 Jefferson Ave SW, Birmingham, AL 35221\" on 2026-11-12 returned matched address 4200 JEFFERSON AVE SW, BIRMINGHAM, AL, 35221, x=-86.901980709429, y=33.449783339802, county 01073. Values match."
+  },
+  {
+   "claim_id": "p-valmont-ferndale-wa:name",
+   "source_url": "https://www.valmontstructures.com/products-solutions/sign-structures",
+   "ledger_value": "Valmont West Coast Engineering",
+   "verdict": "confirmed",
+   "note": "The sign-structures page only lists the brand name. The Ferndale tie comes from the 2017 brochure."
+  },
+  {
+   "claim_id": "p-valmont-ferndale-wa:products",
+   "source_url": "https://webassets.valmont.com/valmontstaging/vsna-resources/transportation-brochure.pdf?sfvrsn=4",
+   "ledger_value": "Steel poles; facilities AISC certified with AWS approved welders",
+   "verdict": "confirmed",
+   "note": "Value should carry the date \"as of 2008\". Supported for Ferndale by the location list and adjacent sentence in the Transportation catalog (footer \"CAT2012 11/08\", i.e. Nov 2008), but 18 years old. Current status unverified (see address)."
+  },
+  {
+   "claim_id": "p-valmont-ferndale-wa:website",
+   "source_url": "https://www.valmontstructures.com/products-solutions/sign-structures",
+   "ledger_value": "https://www.valmontstructures.com",
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "wceng.com (2017 West Coast Engineering brochure); valmontstructures.com also printed on it",
+   "corrected_quote": "WCENG.COM",
+   "corrected_tag": "stated",
+   "note": "\"Valmont West Coast Engineering\" appears only in the brand drop-down of the sign-structures page and names no website. The corrected source is the 2017 WCE high-mast brochure (BRO1065 10/17). wceng.com returned 502 on 2026-11-12."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:weld_processes",
+   "source_url": "https://builtin.com/job/small-pole-fitter-welder-8-days/8082628",
+   "ledger_value": "FCAW tack welding",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:materials",
+   "source_url": "https://builtin.com/job/small-pole-fitter-welder-8-days/8082628",
+   "ledger_value": "steel (carbon vs stainless not stated)",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:certifications",
+   "source_url": "https://builtin.com/job/large-pole-shaft-line-lead/4154166",
+   "ledger_value": "Weld test certification (SAW/FCAW/GMAW); no AWS/ISO/AISC named",
+   "verdict": "confirmed",
+   "note": "Quote found on the Brenham posting; it supports the value. Score check (script run 2026-11-12): all 60 score_* rows for these 10 plants cite claim_ids that exist in evidence.csv (including v-poles-substation:demand_outlook and c-valmont:path_customer). Evidence score values match plants.csv, and all 10 totals equal the sum of their components."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:production_type",
+   "source_url": "https://builtin.com/job/small-pole-fitter-welder-8-days/8082628",
+   "ledger_value": "mixed: poles assembled to drawings on small and large pole lines",
+   "verdict": "confirmed",
+   "note": "The quote supports drawing-driven assembly. \"Mixed\" is a rubric judgement and should arguably be tagged inferred."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:welder_postings",
+   "source_url": "https://builtin.com/job/small-pole-fitter-welder-8-days/8082628",
+   "ledger_value": "none open verified: Small Pole Fitter Welder 8 - Days removed 2026-01-23; Large Pole Shaft Line Lead removed 2025-05-08; Large Pole posting asks for overtime and weekends when required",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-brenham-tx:welder_postings",
+   "source_url": "https://builtin.com/job/large-pole-shaft-line-lead/4154166",
+   "ledger_value": "Large Pole Shaft Line Lead: overtime and weekends when required",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:weld_processes",
+   "source_url": "https://www.weldinginfo.org/job/fitter-13",
+   "ledger_value": "GMAW",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:certifications",
+   "source_url": "https://www.weldinginfo.org/job/fitter-13",
+   "ledger_value": "AWS D1.1 (GMAW welder qualification)",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-claremore-ok:part_size_fit",
+   "source_url": "https://www.weldinginfo.org/job/fitter-13",
+   "ledger_value": "Up to 120 in diameter and 80,000 lb: exceeds the older large-cell limit (72 in, 10,500 lb) and the 2026 limit (55,000 lb); suited to Rove",
+   "verdict": "confirmed",
+   "note": "Supported, but from a posting about 2 years old (about Nov 2024). The posting also says \"Performs repetitive operations according to Weld Procedure Specifications\", which makes score_part_mix 15 (company-level ETO) inconsistent with the coordinator's Columbus override to 8."
+  },
+  {
+   "claim_id": "p-valmont-tulsa-ok:weld_processes",
+   "source_url": "https://builtin.com/job/fitter/4154063",
+   "ledger_value": "GMAW",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-tulsa-ok:certifications",
+   "source_url": "https://builtin.com/job/fitter/4154063",
+   "ledger_value": "AWS D1.1 (GMAW)",
+   "verdict": "confirmed",
+   "note": "MISSED FACT: the same Tulsa Fitter posting says \"Will work on product up to 120 inches in diameter and weighing up to 80,000lbs.\" The ledger has p-valmont-tulsa-ok:part_size_fit = unknown and score_material_part 0. On the Claremore rule this would be 12, putting Tulsa at 67."
+  },
+  {
+   "claim_id": "p-valmont-tulsa-ok:welder_postings",
+   "source_url": "https://builtin.com/job/fitter/4154063",
+   "ledger_value": "none open verified: Fitter posting removed 2025-05-08",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-tulsa-ok:triggers",
+   "source_url": "https://oklahoma.gov/oesc/events-calendar/2026/july/valmont-2026-07-15.html",
+   "ledger_value": "Hiring event 2026-07-15: Structural Fitter Welders, Quality Inspectors, Maintenance Techs",
+   "verdict": "confirmed",
+   "note": "OESC page confirms the event (07-15-2026, 801 N. Xanthus, Tulsa). Rubric note: a hiring event is a labour signal more than a demand trigger. score_demand 15 is generous, and score_labor 0 ignores it."
+  },
+  {
+   "claim_id": "p-valmont-jasper-tn:materials",
+   "source_url": "https://www.areadevelopment.com/newsItems/10-25-2026/valmont-industries-jasper-tennessee.shtml",
+   "ledger_value": "steel (carbon vs stainless not stated)",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-columbus-ne:weld_processes",
+   "source_url": "https://simplify.jobs/p/aa55c27e-de5b-4b62-8fc3-b36a25dbc962/Welder",
+   "ledger_value": "MIG (GMAW)",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-columbus-ne:materials",
+   "source_url": "https://simplify.jobs/p/aa55c27e-de5b-4b62-8fc3-b36a25dbc962/Welder",
+   "ledger_value": "steel (carbon vs stainless not stated)",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-columbus-ne:welder_postings",
+   "source_url": "https://builtin.com/job/experienced-welder/8328814",
+   "ledger_value": "none open verified: Simplify posting marked Inactive; Built In Experienced Welder removed 2026-01-30",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-mccook-ne:weld_processes",
+   "source_url": "https://simplify.jobs/p/f163b89e-ad48-488d-83e9-f05f2c33ba7e/Welder-4",
+   "ledger_value": "GMAW (MIG); no TIG named",
+   "verdict": "confirmed",
+   "note": "Stays confirmed: GMAW/MIG is a requirement of the posted McCook job (\"hands-on MIG welding experience in a production environment\"), not part of the multi-site \"items such as\" product list."
+  },
+  {
+   "claim_id": "p-valmont-mccook-ne:parent_company",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/102729/000010272926000007/vmi-20251227x10k.htm",
+   "ledger_value": "Valmont Industries",
+   "verdict": "confirmed",
+   "note": "The 10-K names McCook a principal manufacturing location. The 10-K also says Agriculture manufacturing is concentrated in Nebraska."
+  },
+  {
+   "claim_id": "p-valmont-mccook-ne:headcount",
+   "source_url": "https://nemep.unl.edu/valmont-industries-inc-1/",
+   "ledger_value": "30",
+   "verdict": "confirmed",
+   "note": "NEMEP: Employees 30, Red Willow County, 75 US Highway 83 Mc Cook. Undated. The same page says \"primarily engaged in pipe welding\"."
+  },
+  {
+   "claim_id": "p-valmont-mccook-ne:materials",
+   "source_url": "https://webassets.valmont.com/valmontstaging/docs/librariesprovider22/default-document-library/valmont-communication-structures-brochure-bro1045-0517.pdf?sfvrsn=4",
+   "ledger_value": "steel (communication monopole shafts, company brochure); aluminum components also named in McCook posting; steel at McCook not stated",
+   "verdict": "corrected",
+   "error_kind": "wrong plant or location",
+   "corrected_value": "unknown for McCook (no McCook-specific material statement)",
+   "corrected_quote": "unknown",
+   "corrected_tag": "unknown",
+   "note": "The quote is on the page, but the 2017 communication-structures brochure (BRO1045 0517) is company-level. It says tower and monopole design and production is in \"Plymouth, IN, and Salem OR\", not McCook, so it cannot be a stated McCook fact. Sweep key: this brochure URL. The posting's \"weld metal and/or aluminum components\" sentence is not used as a replacement, because it is multi-site boilerplate also found on the Brenham Fitter Welder 7 posting."
+  },
+  {
+   "claim_id": "p-valmont-mccook-ne:certifications",
+   "source_url": "https://simplify.jobs/p/f163b89e-ad48-488d-83e9-f05f2c33ba7e/Welder-4",
+   "ledger_value": "McCook posting lists AWS-certified or CWB-certified welder operator qualification as desired; plant-level AWS D1.1 or AISC certification at McCook not stated",
+   "verdict": "confirmed",
+   "note": "Stays confirmed: these are desired qualifications of the posted McCook job, not the multi-site product list."
+  },
+  {
+   "claim_id": "p-valmont-mccook-ne:opening_line",
+   "source_url": "https://simplify.jobs/p/f163b89e-ad48-488d-83e9-f05f2c33ba7e/Welder-4",
+   "ledger_value": "Valmont's McCook, Nebraska plant is hiring a welder to produce GMAW welds on communication towers and overhead sign structures, and a Valmont executive said in 2021 that Path Robotics brings autonomous welding to its factory floors.",
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "Valmont's McCook, Nebraska plant has an open MIG (GMAW) production welder posting, and a Valmont executive said in 2021 that Path Robotics brings autonomous welding to its factory floors.",
+   "corrected_quote": "Have six months to one year of previous hands-on MIG welding experience in a production environment.",
+   "corrected_tag": "stated",
+   "note": "The opening line names \"communication towers and overhead sign structures\" from the multi-site boilerplate sentence (see the products row). Those products are not established for McCook. The line asserts no current Path deployment, which is OK. The posting is shown live (\"Confirmed live in the last 24 hours\")."
+  },
+  {
+   "claim_id": "p-valmont-mccook-ne:opening_line",
+   "source_url": "https://www.robotics247.com/article/path_robotics_raises_100m_in_series_c_financing_for_autonomous_welding/robot_arm",
+   "ledger_value": "(second fact in opening line: Valmont 2021 Path quote)",
+   "verdict": "confirmed",
+   "note": "Quote found on the page; it supports the value for this plant."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:address",
+   "source_url": "https://www.valmontstructures.com/contact/locations",
+   "ledger_value": "58027 Charlotte Avenue, Elkhart, IN 46517-1150",
+   "verdict": "confirmed",
+   "note": "Ohio DOT list (last update 2021; Valmont Elkhart certified 07/19/05) gives 46516. The Valmont page gives 46517-1150 and calls the site \"Valmont Extrusions\". Search snippets show 2026 Valmont postings at \"3403 Charlotte Ave Elkhart Indiana 46517-1150\" with pole work (tapering, plasma-cut holes in poles); fetch returned 404. Street number unresolved."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:materials",
+   "source_url": "https://webassets.valmont.com/valmontstaging/vsna-resources/transportation-brochure.pdf?sfvrsn=4",
+   "ledger_value": "steel (ASTM A572 / A595 Gr A; company-wide pole spec)",
+   "verdict": "corrected",
+   "error_kind": "wrong plant or location",
+   "corrected_value": "steel and aluminum poles (2008 catalog location list); the current Valmont locations page labels the site \"Valmont Extrusions\"",
+   "corrected_quote": "Elkhart, Indiana, USA ST E EL A ND A LUM I NUM PO L E S",
+   "corrected_tag": "stated",
+   "note": "The quoted ASTM A572/A595 sentence is from the company-wide \"Steel Traffic Specifications\" page of the Transportation catalog (footer \"CAT2012 11/08\", i.e. Nov 2008). It is not an Elkhart statement. The same catalog lists Elkhart as steel AND aluminum poles (the PDF letter-spacing is reproduced as extracted). Combined with the \"Valmont Extrusions\" label, Elkhart may be aluminum-heavy. The opening line's \"steel\" is unsupported."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:certifications",
+   "source_url": "https://webassets.valmont.com/valmontstaging/vsna-resources/transportation-brochure.pdf?sfvrsn=4",
+   "ledger_value": "AWS D1.1",
+   "verdict": "corrected",
+   "error_kind": "wrong plant or location",
+   "corrected_value": "AISC-certified facilities with AWS-approved welders, as of 2008 (catalog statement covering the listed North American locations, Elkhart included); AWS D1.1 is a company-wide traffic-pole spec, not stated for Elkhart",
+   "corrected_quote": "Our facilities are AISC certified",
+   "corrected_tag": "stated",
+   "note": "The quoted D1.1 text is from the company-wide steel traffic-pole spec in the Transportation catalog (footer \"CAT2012 11/08\", i.e. Nov 2008). The supplied AISC directory snapshot stops at company names starting with N (1,160 of 1,881 rows), so it cannot confirm or deny a current Valmont AISC listing."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:part_size_fit",
+   "source_url": "https://webassets.valmont.com/valmontstaging/vsna-resources/transportation-brochure.pdf?sfvrsn=4",
+   "ledger_value": "Single-piece shafts up to 50 ft: within the 65 ft large-cell length; weight/diameter not stated",
+   "verdict": "corrected",
+   "error_kind": "wrong plant or location",
+   "corrected_value": "unknown at plant level (company-wide catalog: street-lighting shafts single-piece up to 50 ft, steel and aluminum)",
+   "corrected_quote": "unknown",
+   "corrected_tag": "inferred",
+   "note": "\"Our shafts are available in single-piece, up to 50 feet\" is a company-wide street-lighting sentence about \"steel and aluminum poles\" in the Transportation catalog (footer \"CAT2012 11/08\", i.e. Nov 2008). It is not an Elkhart dimension. SCORE MISMATCH: score_material_part = 20 rests on this row. The coordinator's own normalisation rule (\"Valmont plants without a plant-level size score 0\", applied to McCook) gives 0, so the total drops from 41 to 21."
+  },
+  {
+   "claim_id": "p-valmont-elkhart-in:production_type",
+   "source_url": "https://webassets.valmont.com/valmontstaging/vsna-resources/transportation-brochure.pdf?sfvrsn=4",
+   "ledger_value": "Catalog poles with custom options (mixed)",
+   "verdict": "corrected",
+   "error_kind": "wrong plant or location",
+   "corrected_value": "unknown at plant level (company-wide catalog offers custom cross-sections)",
+   "corrected_quote": "unknown",
+   "corrected_tag": "inferred",
+   "note": "\"Custom cross-sections are also\" is the company-wide decorative-pole text in the Transportation catalog (footer \"CAT2012 11/08\", i.e. Nov 2008). \"Mixed\" is a rubric label, not a stated fact. Score_part_mix 8 then has only inferred support."
+  },
+  {
+   "claim_id": "p-valmont-birmingham-al:materials",
+   "source_url": "https://webassets.valmont.com/valmontstaging/vsna-resources/transportation-brochure.pdf?sfvrsn=4",
+   "ledger_value": "steel and aluminum sign structures",
+   "verdict": "corrected",
+   "error_kind": "wrong plant or location",
+   "corrected_value": "unknown",
+   "corrected_quote": "unknown",
+   "corrected_tag": "unknown",
+   "note": "The quote is on the page, but the Transportation catalog (footer \"CAT2012 11/08\", i.e. Nov 2008) predates the 2018 Walpar acquisition. Birmingham is not among its listed plants, and its sign-structure phone number (574-936-4221) is the Plymouth IN line. Neither the Walpar sign-structures page nor the SteelOrbis article states a material."
+  },
+  {
+   "claim_id": "p-valmont-birmingham-al:certifications",
+   "source_url": "https://webassets.valmont.com/valmontstaging/vsna-resources/transportation-brochure.pdf?sfvrsn=4",
+   "ledger_value": "AISC (facilities, company-wide); AWS D1.1 (company-wide)",
+   "verdict": "corrected",
+   "error_kind": "wrong plant or location",
+   "corrected_value": "unknown (Maryland SHA list, dated 03/11/2026, shows the Walpar-Valmont Birmingham entry with no AISC line, while it prints AISC lines for other producers)",
+   "corrected_quote": "unknown",
+   "corrected_tag": "unknown",
+   "note": "The AISC statement covers the 2008 network, which predates Walpar. Transportation catalog (footer \"CAT2012 11/08\", i.e. Nov 2008). The AISC snapshot stops at N."
+  },
+  {
+   "claim_id": "p-valmont-birmingham-al:production_type",
+   "source_url": "https://webassets.valmont.com/valmontstaging/vsna-resources/transportation-brochure.pdf?sfvrsn=4",
+   "ledger_value": "custom-designed structures to government specifications",
+   "verdict": "corrected",
+   "error_kind": "wrong plant or location",
+   "corrected_value": "unknown",
+   "corrected_quote": "unknown",
+   "corrected_tag": "unknown",
+   "note": "\"custom-design structures to meet specific needs\" is from the 2008 Transportation catalog (footer \"CAT2012 11/08\", i.e. Nov 2008), which predates Walpar. The Walpar product page says only \"from consultation to design and fabrication\". SCORE MISMATCH: score_part_mix 15 rests on this row, so it should be 0 and the total drops from 28 to 13. The opening line's \"custom-designs\" is not supported for this plant."
+  },
+  {
+   "claim_id": "p-valmont-ferndale-wa:address",
+   "source_url": "https://webassets.valmont.com/valmontstaging/docs/librariesProvider21/canada-brochures-product-lit/high-mast-lighting-structures-wce-bro1065-1017.pdf?sfvrsn=2",
+   "ledger_value": "6823 Northgate Way, Ferndale, WA 98248",
+   "verdict": "confirmed",
+   "note": "The 2017 WCE brochure (BRO1065 10/17) prints \"6823 Northgate Way ... Ferndale, WA 98248 USA\". OPEN STATUS UNVERIFIED: the current Valmont locations page lists West Coast Engineering only at 7984 River Road, Delta, BC, and no source after 2017 places WCE in Ferndale. No closure report found either. LEDGER INCONSISTENCY: a second evidence row, p-valmont-ferndale-wa:address, is tagged unknown (\"unknown (Ferndale, WA)\"), while this row is stated and plants.csv carries the street address."
+  },
+  {
+   "claim_id": "p-valmont-ferndale-wa:materials",
+   "source_url": "https://webassets.valmont.com/valmontstaging/vsna-resources/transportation-brochure.pdf?sfvrsn=4",
+   "ledger_value": "steel poles (ASTM A572 / A595 Gr A, company spec)",
+   "verdict": "corrected",
+   "error_kind": "wrong plant or location",
+   "corrected_value": "steel poles (2008 catalog location list)",
+   "corrected_quote": "Ferndale, Washington, USA",
+   "corrected_tag": "stated",
+   "note": "The quoted ASTM sentence is the company-wide traffic-pole spec, not a Ferndale statement. The Ferndale-specific support is the location list in the 2008 transportation catalog (footer CAT2012 11/08): \"Ferndale, Washington, USA\" with the label \"STEEL POLES\" (PDF letter-spaced \"ST E EL P OLES\") printed beneath it. It is 18 years old."
+  },
+  {
+   "claim_id": "p-valmont-ferndale-wa:certifications",
+   "source_url": "https://webassets.valmont.com/valmontstaging/vsna-resources/transportation-brochure.pdf?sfvrsn=4",
+   "ledger_value": "AISC (facilities, company-wide); AWS D1.1",
+   "verdict": "corrected",
+   "error_kind": "quote does not support value",
+   "corrected_value": "AISC-certified facilities with AWS-approved welders, as of 2008 (catalog statement covering the listed North American locations, Ferndale included); AWS D1.1 not stated for Ferndale",
+   "corrected_quote": "Our facilities are AISC certified",
+   "corrected_tag": "stated",
+   "note": "The quote supports AISC (2008) for the listed locations, which include Ferndale. It does not support \"AWS D1.1\". The AISC directory snapshot stops at N, so current AISC status cannot be checked. Transportation catalog (footer \"CAT2012 11/08\", i.e. Nov 2008)."
+  },
+  {
+   "claim_id": "p-valmont-ferndale-wa:part_size_fit",
+   "source_url": "https://webassets.valmont.com/valmontstaging/vsna-resources/transportation-brochure.pdf?sfvrsn=4",
+   "ledger_value": "Single-piece shafts up to 50 ft (company-wide): large cell by length",
+   "verdict": "corrected",
+   "error_kind": "wrong plant or location",
+   "corrected_value": "unknown at plant level (company-wide catalog street-lighting shafts up to 50 ft)",
+   "corrected_quote": "unknown",
+   "corrected_tag": "inferred",
+   "note": "The value admits \"company-wide\" yet is tagged stated. SCORE MISMATCH: score_material_part = 20 conflicts with the coordinator's normalisation rule (no plant-level size = 0). It should be 0, so the total drops from 41 to 21."
+  },
+  {
+   "claim_id": "p-valmont-ferndale-wa:production_type",
+   "source_url": "https://webassets.valmont.com/valmontstaging/vsna-resources/transportation-brochure.pdf?sfvrsn=4",
+   "ledger_value": "Catalog poles with custom options (mixed); high-mast structures offered",
+   "verdict": "corrected",
+   "error_kind": "wrong plant or location",
+   "corrected_value": "unknown at plant level",
+   "corrected_quote": "unknown",
+   "corrected_tag": "inferred",
+   "note": "Company-wide decorative-pole sentence from the Transportation catalog (footer \"CAT2012 11/08\", i.e. Nov 2008). \"High-mast structures offered\" does fit the 2017 WCE high-mast brochure, but that brochure does not state a production type."
+  }
+ ]
+}

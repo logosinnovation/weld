@@ -1,0 +1,108 @@
+{
+ "verdict": "ready",
+ "summary": "Map reviewed in headless Chromium at 1440 px, 390 px and dark mode: all six views, state click, filters, search, maker select, six sort orders, live / pre-production / research-first / merge toggles, stated-only mode, 6 plant profiles, 8 evidence drawers, keyboard open-close-restore, three CSV downloads parsed. Zero console errors, no page or dialog overflow. Headline figures match ledger/audit/summary.json and plants.csv: 117 found, 80 included, 80 profiled, High 8 / Medium 32 / Low 40, fact-check 11.8% / 19.4% / 8.2% / 8.9%, miss rate 5/64 = 7.8% and 22/80 = 27.5%. Existing Path accounts (15 plants: Millerbernd, Valmont, Nello) sit in their own block with a badge that opens the Path evidence row. Ten display defects fixed in tools/build_map.py and tools/map_template.html (the interrupted run's builder edits were sound and kept; its template was half-wired and is finished). The map is ready to ship as a display of the ledger. Remaining items are ledger content and process: the vertical cannot be marked done until the stale verticals.csv reason is rewritten and the advisor checkpoint for the 27.5% first-pass miss rate is logged.",
+ "findings": [
+  {
+   "id": "map-1",
+   "severity": "high",
+   "finding": "61 score-component rows showed only their first reasoning under points a later coordinator note had changed (Nucor Crawfordsville process 0/20 under 'MIG/flux-core stated'; Hapco OKC scale 0/10 under 'multi-plant parent stated'; 38 material rows normalised 12 -> 0). Profile and drawer now list the later notes first as the basis for the points, and mark the first reasoning as earlier only when the row itself names a different point level.",
+   "fixed": true
+  },
+  {
+   "id": "map-2",
+   "severity": "high",
+   "finding": "Pre-production banner said 'most of its score components read 0' on Meyer Tulsa and Clinton (75 High, one unknown) and never showed the ledger's status row. Banner now branches on the kind (ledger status row = 'Pre-production plant': Nucor Brigham City, Hapco Oklahoma City; trigger line only = 'New or converting plant': Meyer Tulsa, Meyer Clinton), counts the real unknowns, and shows the clickable status note. Nucor Crawfordsville shows 'listed as pre-production prospect; found to be operating' with its inferred label.",
+   "fixed": true
+  },
+  {
+   "id": "map-3",
+   "severity": "high",
+   "finding": "Interrupted-run leftovers: the builder emitted an AISC 'snapshot' verdict that the drawer rendered as a red failed quote check; the Method quote-check line was labelled 'at merge' and did not sum. Drawer now shows a grey 'quote matches saved directory snapshot' note. Method now reports stated rows apart (the script reads stated rows only): of 1204 stated rows, 1081 found on the live page, 25 match the saved AISC snapshot, 0 not found, 1 unreachable, 97 with no check record for their present quote text; of 2064 inferred and unknown rows, 1364 have no quote, 542 carry an unchecked context quote, 145 were found while tagged stated, 13 not found. Sums to 3268.",
+   "fixed": true
+  },
+  {
+   "id": "map-4",
+   "severity": "medium",
+   "finding": "Two tag functions disagreed: in stated-only mode a partly inferred value was hidden on the page but exported in the CSV, and a live-trigger badge could sit beside a hidden trigger. One function (claimInfo) now drives page, CSV, supply links and the Method counts. CSV no longer blanks identity or score columns in stated-only mode; score components not resting on stated evidence are listed in inferred_fields; last_checked exports (was always blank).",
+   "fixed": true
+  },
+  {
+   "id": "map-5",
+   "severity": "medium",
+   "finding": "A rep opening an operating Low plant saw no explanation. Every Low profile now carries a banner headed with the count ('Low score: N of 6 components unknown'): which components, that they score 0 for lack of a source, the calculated ceiling, and whether it could reach 70 (5 Low plants could not: p-fwt-fort-worth-tx 41, p-browning-enterprise-attalla-al 56, p-mica-kaufman-tx, p-chm-fort-worth-tx and p-chm-saginaw-tx 68). Call-list rows carry the per-row note and the header paragraph. Supply-link cards showed the linked plant's tier bare; it now carries the inferred label and hides in stated-only mode.",
+   "fixed": true
+  },
+  {
+   "id": "map-6",
+   "severity": "medium",
+   "finding": "Profile header showed tier and relationship as bare badges (both inferred on all 80 plants) with no inferred label. They are now clickable chips with the label; relationship reads 'known customer', not 'known_customer'.",
+   "fixed": true
+  },
+  {
+   "id": "map-7",
+   "severity": "medium",
+   "finding": "Evidence drawer claimed 'the one matching the displayed value is outlined' and outlined the last row even when no row carried the displayed text. It now shows the page value and says the field summarises the rows. This applies to many fields: among included plants the ledger field matches no evidence row verbatim for products 52, triggers 49, production_type 47, part_size_fit 40, welder_postings 36, certifications 35, materials 31, weld_processes 25, parent_company 23, found_by 22, lookalike_of 19 (the field is a summary of several rows). Every such value still opens its rows in one click.",
+   "fixed": true
+  },
+  {
+   "id": "map-8",
+   "severity": "low",
+   "finding": "Method address counts were computed after unsourced addresses were blanked (said 6 without a street address; the ledger has 16 of 80, 1 city-level). Now read from the builder's raw count.",
+   "fixed": true
+  },
+  {
+   "id": "map-9",
+   "severity": "low",
+   "finding": "Back-test bullets quote the run log's dated scores ('best Valmont plant (Claremore) 60'). Added a build-time line with the present scores of all 15 plants at confirmed Path customers (Millerbernd 88, Valley 88, Claremore 80, Jasper 72 ...). Run-log bullets carry their section name.",
+   "fixed": true
+  },
+  {
+   "id": "map-10",
+   "severity": "low",
+   "finding": "Vertical card led with the stale verticals.csv reason ('94 found, 60 included, miss rate 6.3%'). The audit summary now comes first and the reason is labelled as dated text. Supply-chain maker list used raw parent strings ('none named (privately owned)', 'employee-owned (ESOP...)'); it now uses the same account grouping as the call list. Duplicate status-detail rows are shown once; empty 'Reasoning:' labels removed.",
+   "fixed": true
+  },
+  {
+   "id": "ledger-1",
+   "severity": "medium",
+   "finding": "LEDGER, not fixable here. verticals.csv reason for v-poles-substation is stale (94 found / 60 included / 6.3%; says next step is an attribution sweep). Status is still 'partial'; header reads '0 / 17 verticals done'.",
+   "fixed": false
+  },
+  {
+   "id": "ledger-2",
+   "severity": "medium",
+   "finding": "LEDGER. Advisor checkpoint: first-pass miss rate 22/80 = 27.5% is over the 20% threshold and no advisor consultation is logged after number 4; one is also required before marking the vertical done.",
+   "fixed": false
+  },
+  {
+   "id": "ledger-3",
+   "severity": "medium",
+   "finding": "LEDGER. Fields with a value but no evidence row, shown as 'not sourced' on the page (included plants). address (11): p-sabre-alvarado-tx p-sabre-sioux-city-ia p-fwt-fort-worth-tx p-fwt-hicksville-oh p-meyer-steele-al p-meyer-hager-city-wi p-meyer-fort-worth-tx p-meyer-lancaster-sc p-nucor-decatur-al p-nucor-west-hazleton-pa p-qmf-steel-campbell-tx. found_by (10) and certifications (6, same list minus the first four): p-vs-schuler-canton-oh p-vs-schuler-burton-oh p-vs-schuler-muskogee-ok p-rohn-peoria-il p-sabre-conroe-tx p-commstructures-pensacola-fl p-hughes-brothers-seward-ne p-lsi-cincinnati-oh p-musco-muscatine-ia p-us-pole-palmdale-ca. headcount (8): p-meyer-steele-al p-meyer-clinton-il p-meyer-hager-city-wi p-meyer-fort-worth-tx p-meyer-lancaster-sc p-hurtt-marceline-mo p-stony-brook-calverton-ny p-brookfield-brookfield-mo. tier_secondary: p-nello-spring-grove-mn p-nello-westby-wi. lookalike_of: p-race-rock-brookshire-tx p-cem-tec-phoenix-az. products: p-hapco-oklahoma-city-ok. parent_company: p-qmf-steel-campbell-tx. part_size_fit: p-sabre-conroe-tx. Excluded plants have more (parent_company 21, headcount 21, welder_postings 15, address 9, website 11, tier 5).",
+   "fixed": false
+  },
+  {
+   "id": "ledger-4",
+   "severity": "medium",
+   "finding": "LEDGER. 16 of 80 included plants have no street address (the run log lists job-board addresses found for 9 of them, not merged). Website is blank for 4 profiled plants: p-nucor-crawfordsville-in p-nucor-brigham-city-ut p-sovereign-allentown-pa p-mica-kaufman-tx.",
+   "fixed": false
+  },
+  {
+   "id": "ledger-5",
+   "severity": "medium",
+   "finding": "LEDGER. 97 stated rows have no quote-check record for their present quote text (about half have a record for the same claim and URL with a different quote, so were edited after the check, mostly by the f2-attribution and repair passes; 44 have no record at all). Re-run tools/verify_ledger_quotes.py before marking done. 13 rows now tagged inferred or unknown still carry a quote the script did not find: 6 Census-geocoder lat rows whose quote describes the JSON result (p-valmont-birmingham-al p-raycap-north-charleston-sc p-race-rock-brookshire-tx p-race-rock-crowley-tx p-cem-tec-phoenix-az p-ehresmann-yankton-sd) and p-pennfab-morrisville-pa:weld_processes (source_url is the blog index, which shows only the article title; the quote is in the article), p-nucor-west-hazleton-pa:city, p-kw-industries-sugar-land-tx:website, p-brookfield-brookfield-mo:products, p-structural-steel-products-crowley-tx:website, p-valmont-elkhart-in:website, p-valmont-ferndale-wa:website. 1 stated row unreachable: p-valmont-elkhart-in:materials (closed Teal posting).",
+   "fixed": false
+  },
+  {
+   "id": "ledger-6",
+   "severity": "low",
+   "finding": "LEDGER. p-meyer-tulsa-ok has two identical status_detail rows (shown once). The evidence row v-poles-substation:status says 'accepted' while verticals.csv says 'partial'. 46 fact-check verdicts match no current evidence row (superseded posting rows; build_map prints the note) and so are not displayed. Tier and relationship are tagged inferred on all 80 plants, so stated-only mode hides both everywhere; 3 opening lines are hidden there too because a composing claim is not stated. ledger/inbox/fable-final-fixes.json is an empty leftover from the interrupted run.",
+   "fixed": false
+  },
+  {
+   "id": "ledger-7",
+   "severity": "low",
+   "finding": "LEDGER. 61 score rows keep a first reasoning segment that a later 'Coordinator override' or 'normalisation' note contradicts (e.g. p-nucor-crawfordsville-in:score_process, p-hapco-oklahoma-city-ok:score_scale, 38 score_material_part rows), and notes for decisions logged on 2026-11-13 are dated 2026-11-12. The page now shows the note as the basis, but the rows read inconsistently to any other consumer; rewrite the first segment when a score is overridden.",
+   "fixed": false
+  }
+ ]
+}

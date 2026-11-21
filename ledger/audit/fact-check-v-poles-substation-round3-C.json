@@ -1,0 +1,562 @@
+{
+ "checker": "fact-checker C (round 3, confirming)",
+ "vertical": "v-poles-substation",
+ "date": "2026-11-13",
+ "plants": [
+  "p-united-lighting-standards-warren-mi",
+  "p-brookfield-brookfield-mo",
+  "p-hapco-abingdon-va",
+  "p-chm-saginaw-tx",
+  "p-nucor-brigham-city-ut",
+  "p-grid-structures-amite-city-la",
+  "p-kw-industries-east-bernard-tx"
+ ],
+ "claims_checked": 55,
+ "claims_corrected": 10,
+ "claims_unreachable": 0,
+ "error_rate": 0.1818,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 6,
+  "invented fact": 0,
+  "other": 4
+ },
+ "repeated_kinds": [
+  "quote does not support value (6): Nucor Brigham City products, triggers, welder_postings and found_by; ULS products; Hapco products. Pattern: a value clause (a role, date, 'light', or provenance) that is not in the quoted sentence. Sweep for it: in the stated rows added in session 2 (verified=not_checked), and in compound or glossed values ledger-wide.",
+  "other (4): two details not on the cited page (ZIP 84302 in Nucor address; 'steel utility structures' gloss in Nucor products), one plan presented as a current fact (Nucor materials), and one wrong 'date not stated' clause (Hapco trigger)."
+ ],
+ "worst_errors": [
+  "p-nucor-brigham-city-ut:products (line 458): tagged stated, but the quote ('The $204.5 million project is expected to create 200 jobs...') says nothing about products. The same Area Development page does support the value: 'The new utility structure production plant will utilize straight-line production and advanced hot-dip galvanizing operations.'",
+  "p-nucor-brigham-city-ut:triggers (line 2546): the value lists 'machine operator' hiring that no cited page shows, and takes 'fitter welder' from a different posting. The cited page supports only a Racking & Finishing Operator (galvanizing) role posted Nov 7, 2026. score_demand cites this row, but stays 15 on the Jan 9, 2025 announcement.",
+  "p-hapco-abingdon-va:triggers (line 2088): the value says the Oklahoma City groundbreaking date is 'not stated on page', but the page's groundbreaking speech dates it to 2026 ('2026 marks a special year for Hapco... This ceremonial groundbreaking starts a new chapter'). It is a company-level trigger at another site, so the score does not change."
+ ],
+ "opening_line_problems": [
+  "p-grid-structures-amite-city-la: 'Grid Structures has a Day & Night Shift welder opening at Amite' is a posting on the careers site of Southland Steel Fabricators Inc (Grid's parent), titled 'WELDER - AMITE LA'. It is not Grid-branded, and it now shows only on page 2 of the listing. Grid's Amite operation is confirmed elsewhere ('Our Amite operation' in a Grid posting; AISC 'Southland Grid Structures LLC., Amite'), so attributing the opening to Grid is a mild inference. Suggest 'Grid Structures' parent, Southland Steel, has a Day & Night Shift welder opening at Amite...'.",
+  "p-nucor-brigham-city-ut: 'is hiring fitter welders' uses the plural, but one Fitter Welder posting is open (Nov 11, 2026) and the earlier one is filled. Suggest 'is hiring a fitter welder'. Otherwise stated ($200M and 200 jobs from the Jan 9, 2025 release), and no Path deployment is asserted.",
+  "No problems: United Lighting Standards, Hapco and CHM Saginaw lines use only stated claims and assert no Path deployment. Brookfield and KW opening lines are 'unknown'."
+ ],
+ "score_problems": [
+  "p-grid-structures-amite-city-la:score_process 0 — EVIDENCE MISSED: the open Amite welder posting detail (secure7.saashr.com Southland Steel Fabricators careers, location '13040 Foulks Lane, Amite, LA, 70422') requires '1-2 years welding experience with some flux core welding (FCAW)'. weld_processes is 'unknown' and process scores 0. Under the run_log process rule (MIG or flux-core stated in production at the plant = 20), a stated FCAW row would justify 20, or 12 if the coordinator reads a hiring requirement as weaker than a production statement. Total 40 -> 60 (Medium) at 20. Add a stated weld_processes row and re-score. The coordinator decides; this checker did not change it.",
+  "p-hapco-abingdon-va:score_material_part 4: run_log rule (advisor consultation 2) gives 4 only 'when an evidence row quotes aluminum-first'. No row does. 'Aluminum-first' is the agent's judgement from relative floor areas (325,000 sq ft facility with 'aluminum manufacturing technologies' against a 60,000 sq ft steel plant), and the 325,000 sq ft page does not say the facility is aluminum-only. Under the rule this is 0 with no part-size evidence (total 32 -> 28), or 4 kept as inferred and not counted toward confidence (confidence 3 -> 2).",
+  "p-hapco-abingdon-va:score_scale 5: its only support is scale_note (inferred). That row says common ownership with Concord American Flagpole is not stated, and the Oklahoma City campus has only broken ground. Neither establishes a multi-plant parent (the same reasoning took Stony Brook scale from 5 to 0 in the clean-up). Should be 0 unless a stated second operating plant is found. With the material issue above, Hapco would be 32 -> 23 (Low either way).",
+  "p-brookfield-brookfield-mo:score_scale 0: the reasoning cites p-brookfield-brookfield-mo:headcount, which has no evidence row. Points are 0, so there is no score effect, but the citation is broken (ground rule 1).",
+  "p-kw-industries-east-bernard-tx:score_scale 5: 'multi-plant parent' cites only p-kw-industries-east-bernard-tx:address (inferred). The fact is stated on the Maryland list (KW Industries, Inc. at East Bernard and Sugarland) and in the AISC snapshot (KW Industries, Inc. at East Bernard TX and Sugar Land TX, both Highway Component Manufacturer). Cite a stated row for it.",
+  "p-nucor-brigham-city-ut:score_scale 5: cites parent_company, which has one stated row (Nucor PDF) and one inferred row (Area Development; legal suffix). With 'all cited claims stated', confidence would be 2, not 3; with the stated row alone it is 3. The rule is ambiguous with duplicate rows; retire the inferred duplicate.",
+  "p-nucor-brigham-city-ut:score_demand 15: the cited triggers row 2546 is corrected (machine operator dropped), but the Jan 9, 2025 announcement (row 2545, confirmed) is within 24 months, so 15 stands. labor 12 is correct: one open welder posting, no sign-on bonus or mandatory overtime ('weekends and holidays as operating conditions require' is not mandatory overtime).",
+  "Arithmetic checked for all 7 plants: component sums equal score_total, tiers are right (all Low), and every cited claim_id exists except Brookfield headcount (above).",
+  "Operates-at-city check (CHM Saginaw): chmutility.com labels 700 E McLeroy Blvd, Saginaw the 'Corporate Office'; its listed production facility is 4700 Blue Mound Rd, Fort Worth, and AISC lists CHM only at Fort Worth. Saginaw as a fabrication site rests on the Ohio certified signal-supports list and the current MassDOT list, plus a 2015 'Keystone Saginaw, Texas plant' lead from search. Not marked closed or moved; the coordinator should settle plant vs office before outreach. Its part_mix 15 and scale 5 rest on company-level inferred CHM Utility claims.",
+  "p-kw-industries-east-bernard-tx lead: the AISC snapshot lists 'KW Industries, Inc. East Bernard TX Highway Component Manufacturer'. That supports a stated certifications row (now 'unknown') and fabrication at East Bernard (prospect_test is now 'unconfirmed')."
+ ],
+ "plants_closed_or_moved": [],
+ "other_findings": [
+  "All 7 plants show current activity at the recorded city: ULS Warren (lead times updated 11/6/2026); Brookfield (TxDOT list dated Oct 28, 2026; AISC snapshot); Hapco Abingdon (site, AISC); Nucor Brigham City (Nov 2026 postings list it as a current production facility); Grid Amite (contact page, AISC 'Southland Grid Structures LLC., Amite', open Amite postings); KW East Bernard (Maryland list 03/11/2026; AISC snapshot); CHM Saginaw (see next note).",
+  "CHM Saginaw: chmutility.com labels 700 E McLeroy Blvd 'Corporate Office' and gives its only production facility as 4700 Blue Mound Rd, Fort Worth. AISC lists CHM only at Fort Worth (Highway Component Manufacturer). Saginaw's standing as a fabrication site rests on the Ohio certified signal-supports list and the current MassDOT approved-fabricator list, which both give Saginaw. Lead, not evidence: a 2015 Keystone/Bridgewell presentation in search results says the 'Keystone Saginaw, Texas plant' doubled capacity. Not marked closed or moved, but the plant-vs-office question should be settled before the Saginaw row is used in outreach.",
+  "Grid Amite vs Greensburg conflict: gridstructures.com says Grid 'operates out of Southland's original fabrication plant, as well as a second location in Greensburg'. BIC Magazine (Oct 8, 2024) calls Greensburg (251 Greensburg St.) Southland's 'original facility' and says Southland opened 'a second fabrication facility in Amite in 2020'. Which site is 'original' is unresolved. This does not change any confirmed value, but statements tied to 'the original plant' should not be assigned to Amite.",
+  "KW East Bernard lead: the AISC snapshot lists 'KW Industries, Inc. East Bernard TX Highway Component Manufacturer'. certifications is 'unknown' and prospect_test is 'unconfirmed'. An AISC certification at that address can be a stated certifications row, and it shows that fabrication (not only warehousing) takes place at East Bernard.",
+  "Score effect of the corrections: none of the 7 corrected claims changes a score component.",
+  "Brookfield website: both brookfieldfabricating.com (listed on Georgia QPL-52, 2023) and brookfab.com are unreachable; the plant itself is current on the TxDOT list dated Oct 28, 2026."
+ ],
+ "rows": [
+  {
+   "claim_id": "p-nucor-brigham-city-ut:products",
+   "source_url": "https://www.areadevelopment.com/newsitems/1-13-2025/nucor-towers-structures-brigham-city-utah.shtml",
+   "ledger_value": "utility poles / steel utility structures",
+   "evidence_line": 458,
+   "verdict": "corrected",
+   "corrected_value": "utility structures (planned utility structure production plant)",
+   "corrected_quote": "The new utility structure production plant will utilize straight-line production and advanced hot-dip galvanizing operations.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The cited quote is about the $204.5M investment and 200 jobs; it says nothing about products. The same page supports the value with a different sentence."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:address",
+   "source_url": "https://www.gridstructures.com/contact",
+   "ledger_value": "13040 Foulks Ln",
+   "evidence_line": 513,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 513. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:parent_company",
+   "source_url": "https://www.gridstructures.com",
+   "ledger_value": "Southland Steel",
+   "evidence_line": 518,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 518. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-nucor-brigham-city-ut:found_by",
+   "source_url": "https://www.areadevelopment.com/newsitems/1-13-2025/nucor-towers-structures-brigham-city-utah.shtml",
+   "ledger_value": "news",
+   "evidence_line": 534,
+   "verdict": "corrected",
+   "note": "Provenance value tagged stated with a quote ('The $204.5 million project is expected to create 200 jobs...') that cannot state how the plant was found. The same quote was rejected for products (line 458). Retag inferred with provenance reasoning, as the clean-up did for Grid's found_by. Value intact.",
+   "corrected_value": "news",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-hapco-abingdon-va:name",
+   "source_url": "https://www.hapco.com/",
+   "ledger_value": "Hapco Pole Products",
+   "evidence_line": 561,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 561. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-hapco-abingdon-va:address",
+   "source_url": "https://roads.maryland.gov/OMT/lightstruc.pdf",
+   "ledger_value": "26252 Hillman Highway, Abingdon, VA 24210",
+   "evidence_line": 562,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 562. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-hapco-abingdon-va:products",
+   "source_url": "https://www.hapco.com/",
+   "ledger_value": "aluminum and steel light poles",
+   "evidence_line": 563,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 563. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-hapco-abingdon-va:products",
+   "source_url": "https://www.hapco.com/steel-poles/steel-plant-tour/",
+   "ledger_value": "steel light poles (separate 60,000 sq ft steel manufacturing facility, 2018)",
+   "evidence_line": 564,
+   "verdict": "corrected",
+   "note": "'Light' is not on the steel-plant-tour page (title 'Steel Plant Tour - Hapco Pole Products'; menu 'Steel Poles'). Value trimmed to 'steel poles'. Light poles in general are supported by row 563.",
+   "corrected_value": "steel poles (separate 60,000 sq ft steel manufacturing facility, 2018)",
+   "corrected_quote": "In 2018, Hapco expanded manufacturing capabilities with a 60,000-square-foot, state-of-the-art STEEL manufacturing facility adjacent to our current manufacturing campus in Abingdon, Virginia.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-hapco-abingdon-va:materials",
+   "source_url": "https://www.hapco.com/manufacturing/",
+   "ledger_value": "aluminum: 325,000 sq ft facility with aluminum manufacturing technologies",
+   "evidence_line": 565,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 565. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-hapco-abingdon-va:website",
+   "source_url": "https://www.hapco.com/",
+   "ledger_value": "https://www.hapco.com/",
+   "evidence_line": 566,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 566. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-kw-industries-east-bernard-tx:name",
+   "source_url": "https://roads.maryland.gov/OMT/lightstruc.pdf",
+   "ledger_value": "KW Industries, Inc. (East Bernard)",
+   "evidence_line": 659,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 659. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant. Maryland list (dated 03/11/2026) lists the East Bernard site as qualified."
+  },
+  {
+   "claim_id": "p-brookfield-brookfield-mo:name",
+   "source_url": "https://www.dot.ga.gov/PartnerSmart/Materials/Documents/qpl52a.pdf",
+   "ledger_value": "Brookfield Fabricating Corp.",
+   "evidence_line": 676,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 676. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-brookfield-brookfield-mo:website",
+   "source_url": "https://www.dot.ga.gov/PartnerSmart/Materials/Documents/qpl52a.pdf",
+   "ledger_value": "https://www.brookfieldfabricating.com/",
+   "evidence_line": 679,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 679. Confirmed as the web address printed on Georgia QPL-52 (revised July 19, 2023). Note: brookfieldfabricating.com does not load (SSL error / 502), and brookfab.com and www.brookfab.com (seen in a directory search result) return 'Page cannot be displayed'. The website is listed but unreachable, so the map should not present it as live."
+  },
+  {
+   "claim_id": "p-chm-saginaw-tx:name",
+   "source_url": "https://www.dot.ga.gov/PartnerSmart/Materials/Documents/qpl52a.pdf",
+   "ledger_value": "CHM Industries, Inc.",
+   "evidence_line": 684,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 684. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-chm-saginaw-tx:address",
+   "source_url": "https://www.dot.state.oh.us/Divisions/ConstructionMgt/Materials/Pages/SignalSupportsandStrainPolesCertified.aspx",
+   "ledger_value": "700 E McLeroy Blvd, Saginaw, TX 76179",
+   "evidence_line": 685,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 685. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant. Ohio list misspells the name 'CMH'; the address matches."
+  },
+  {
+   "claim_id": "p-chm-saginaw-tx:website",
+   "source_url": "https://www.dot.ga.gov/PartnerSmart/Materials/Documents/qpl52a.pdf",
+   "ledger_value": "www.keystonepoles.com (as listed on Georgia DOT QPL-52A)",
+   "evidence_line": 687,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 687. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-united-lighting-standards-warren-mi:name",
+   "source_url": "https://www.unitedlightingstandards.com/",
+   "ledger_value": "United Lighting Standards",
+   "evidence_line": 730,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 730. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-united-lighting-standards-warren-mi:address",
+   "source_url": "https://www.unitedlightingstandards.com/",
+   "ledger_value": "23171 Groesbeck Hwy, Warren, MI 48089",
+   "evidence_line": 731,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 731. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-united-lighting-standards-warren-mi:products",
+   "source_url": "https://www.unitedlightingstandards.com/",
+   "ledger_value": "steel and aluminum light poles",
+   "evidence_line": 732,
+   "verdict": "corrected",
+   "note": "The cited quote says 'steel and aluminum poles'. 'Light' appears only in the page title on the same page, so the quote is replaced and the value is unchanged.",
+   "corrected_value": "steel and aluminum light poles",
+   "corrected_quote": "United Lighting Standards • Steel & Aluminum Light Pole Manufacturer",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value"
+  },
+  {
+   "claim_id": "p-united-lighting-standards-warren-mi:materials",
+   "source_url": "https://www.unitedlightingstandards.com/",
+   "ledger_value": "steel and aluminum",
+   "evidence_line": 733,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 733. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-united-lighting-standards-warren-mi:website",
+   "source_url": "https://www.unitedlightingstandards.com/",
+   "ledger_value": "https://www.unitedlightingstandards.com/",
+   "evidence_line": 734,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 734. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-brookfield-brookfield-mo:products",
+   "source_url": "https://www.mass.gov/info-details/approved-fabricators-of-signs-luminaires-and-signal-supports",
+   "ledger_value": "listed on state DOT list",
+   "evidence_line": 795,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 795. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-brookfield-brookfield-mo:found_by",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC",
+   "evidence_line": 796,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 796. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant. AISC snapshot row present."
+  },
+  {
+   "claim_id": "p-chm-saginaw-tx:products",
+   "source_url": "https://www.mass.gov/info-details/approved-fabricators-of-signs-luminaires-and-signal-supports",
+   "ledger_value": "listed on state DOT list",
+   "evidence_line": 797,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 797. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-brookfield-brookfield-mo:found_by",
+   "source_url": "https://www.txdot.gov/content/dam/docs/division/mtd/mpl/osb.pdf",
+   "ledger_value": "state DOT list",
+   "evidence_line": 875,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 875. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:existing_robots",
+   "source_url": "https://www.gridstructures.com/capabilities/production",
+   "ledger_value": "both Grid Structures facilities equipped with robotics (welding not specified); brand not stated",
+   "evidence_line": 1583,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1583. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:welder_postings",
+   "source_url": "https://secure7.saashr.com/ta/6215176.careers?CareersSearch",
+   "ledger_value": "1 Welder (Day & Night Shift) opening at Amite, LA, $27.00-$31.00/hr; posting date not shown; page read 2026-11-12",
+   "evidence_line": 1584,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1584. Confirmed. The posting is on page 2 of the paginated Southland Steel Fabricators Inc listing (browser, 2026-11-13). The posting detail gives the location '13040 Foulks Lane, Amite, LA, 70422', which is Grid's contact address, so it is this plant. It is still open; no posting date is shown. The detail also says '1-2 years welding experience with some flux core welding (FCAW)' (see score_problems)."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:triggers",
+   "source_url": "https://www.bicmagazine.com/industry/investment-banking/southland-steel-fabricators-invests-25-million-for-advanced-technology-expansion-louisiana-facility/",
+   "ledger_value": "Southland Steel announced a $25M expansion of its Greensburg facility on October 8, 2024 (other site; before 2024-11-12)",
+   "evidence_line": 1586,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1586. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:parent_company",
+   "source_url": "https://www.gridstructures.com/capabilities/production",
+   "ledger_value": "Southland Steel (Grid Structures operates out of Southland's original fabrication plant and a second location in Greensburg, LA)",
+   "evidence_line": 1589,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1589. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant. Verbatim. Note the BIC Magazine article (row 1586's source) calls Greensburg Southland's 'original facility' and says Amite opened in 2020, which conflicts with this page's wording. See other_findings."
+  },
+  {
+   "claim_id": "p-chm-saginaw-tx:address",
+   "source_url": "https://www.chmutility.com/get-in-touch",
+   "ledger_value": "700 E. McLeroy Blvd., Saginaw, TX 76179 (labeled Corporate Office on chmutility.com; the production facility listed there is 4700 Blue Mound Rd., Fort Worth)",
+   "evidence_line": 1633,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 1633. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant. The page labels Saginaw 'Corporate Office'; the value records that caveat accurately."
+  },
+  {
+   "claim_id": "p-hapco-abingdon-va:materials",
+   "source_url": "https://www.hapco.com/steel-poles/steel-plant-tour/",
+   "ledger_value": "steel: separate 60,000 sq ft steel plant (2018) adjacent to the Abingdon campus",
+   "evidence_line": 2082,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2082. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-hapco-abingdon-va:certifications",
+   "source_url": "https://www.hapco.com/hapco-certifications/",
+   "ledger_value": "ISO 9001:2015; AISC",
+   "evidence_line": 2083,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2083. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant. Company claim on the page; independently the AISC snapshot lists 'Hapco Pole Products, Abingdon, VA, Highway Component Manufacturer'."
+  },
+  {
+   "claim_id": "p-hapco-abingdon-va:production_type",
+   "source_url": "https://www.hapco.com/manufacturing/",
+   "ledger_value": "dedicated custom lines",
+   "evidence_line": 2085,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2085. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-hapco-abingdon-va:triggers",
+   "source_url": "https://www.hapco.com/hapco-breaks-ground-on-new-oklahoma-city-manufacturing-facility/",
+   "ledger_value": "Hapco broke ground on a new 270,000 sq ft Oklahoma City manufacturing campus (other site; date not stated on page)",
+   "evidence_line": 2088,
+   "verdict": "corrected",
+   "corrected_value": "Hapco broke ground on a new 270,000 sq ft Oklahoma City manufacturing campus in 2026, its 75th-anniversary year (other site; exact date not shown)",
+   "corrected_quote": "the beginning of a new 270,000-square-foot manufacturing campus ... 2026 marks a special year for Hapco. We are celebrating our 75th anniversary as a company ... This ceremonial groundbreaking starts a new chapter for Hapco",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "note": "The value says 'date not stated on page', but the groundbreaking speech on the page dates the event to 2026. It is a company-level trigger at another site, so score_demand stays 8."
+  },
+  {
+   "claim_id": "p-united-lighting-standards-warren-mi:production_type",
+   "source_url": "https://www.unitedlightingstandards.com/",
+   "ledger_value": "standard to custom",
+   "evidence_line": 2103,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2103. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-united-lighting-standards-warren-mi:prospect_test",
+   "source_url": "https://www.unitedlightingstandards.com/",
+   "ledger_value": "pass",
+   "evidence_line": 2110,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2110. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant. The page states that ULS designs and fabricates steel and aluminum poles using AWS welding procedures. That meets the welding and steel parts of the prospect test. CONTRADICTION: the ledger also has an inferred prospect_test row for this plant ('pass (inferred)'), whose reasoning says 'Welding in-house is not stated on a reachable page'. That is stale for ULS: this page states fabricating and welding procedures. Retire the inferred row."
+  },
+  {
+   "claim_id": "p-chm-saginaw-tx:website",
+   "source_url": "https://www.chmutility.com/",
+   "ledger_value": "https://www.chmutility.com/",
+   "evidence_line": 2214,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2214. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:website",
+   "source_url": "https://www.gridstructures.com/",
+   "ledger_value": "https://www.gridstructures.com/",
+   "evidence_line": 2219,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2219. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-united-lighting-standards-warren-mi:parent_company",
+   "source_url": "https://www.unitedlightingstandards.com/",
+   "ledger_value": "DWM Holdings, Inc. (named in the site copyright line; ownership structure not stated)",
+   "evidence_line": 2244,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2244. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant. The value is caveated ('ownership structure not stated'); the page supports it."
+  },
+  {
+   "claim_id": "p-kw-industries-east-bernard-tx:website",
+   "source_url": "https://kwindustries.com/",
+   "ledger_value": "https://kwindustries.com/",
+   "evidence_line": 2249,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2249. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-kw-industries-east-bernard-tx:parent_company",
+   "source_url": "https://roads.maryland.gov/OMT/lightstruc.pdf",
+   "ledger_value": "KW Industries, Inc. (the operating company; ownership not stated)",
+   "evidence_line": 2250,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2250. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-nucor-brigham-city-ut:name",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "Nucor Towers & Structures (Brigham City)",
+   "evidence_line": 2525,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2525. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant. AISC snapshot row present."
+  },
+  {
+   "claim_id": "p-nucor-brigham-city-ut:parent_company",
+   "source_url": "https://s202.q4cdn.com/531038915/files/doc_news/Nucor-Towers--Structures-Expanding-Nationwide-Footprint-2025.pdf",
+   "ledger_value": "Nucor Corporation",
+   "evidence_line": 2526,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2526. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-nucor-brigham-city-ut:address",
+   "source_url": "https://kvnutalk.com/nucor-to-build-200m-facility-in-brigham-city-creating-200-jobs/",
+   "ledger_value": "1050 Watery Lane, Brigham City, UT 84302 (Nucor's Brigham City campus address)",
+   "evidence_line": 2527,
+   "verdict": "corrected",
+   "corrected_value": "1050 Watery Lane, Brigham City, UT (Nucor's Brigham City campus address)",
+   "corrected_quote": "The Utah facility will be located on Nucor’s existing Brigham City campus, located at 1050 Watery Lane.",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "note": "Detail not on the page: ZIP 84302 is not on the KVNU page (it appears on the Nucor job posting pages, e.g. 'Brigham City, UT, US, 84302'). Street and campus clause confirmed. Minor."
+  },
+  {
+   "claim_id": "p-nucor-brigham-city-ut:status_detail",
+   "source_url": "https://s202.q4cdn.com/531038915/files/doc_news/Nucor-to-Expand-Utility-Towers--Structures-Facility-in-Indiana-2026.pdf",
+   "ledger_value": "under construction per Nucor (Oct 8, 2026)",
+   "evidence_line": 2532,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2532. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant. Oct 8, 2026 Nucor release."
+  },
+  {
+   "claim_id": "p-nucor-brigham-city-ut:status_detail",
+   "source_url": "https://jobs.nucor.com/job/Brigham-City-Fitter-Welder-Nucor-Towers-&-Structures-UT-84302/1424539200/",
+   "ledger_value": "listed as a current production facility in a Nucor posting dated Nov 11, 2026",
+   "evidence_line": 2533,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2533. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant. Posting dated Nov 11, 2026."
+  },
+  {
+   "claim_id": "p-nucor-brigham-city-ut:products",
+   "source_url": "https://www.utah.gov/pmn/sitemap/notice/990957.html",
+   "ledger_value": "overhead powerline support structures (steel utility structures)",
+   "evidence_line": 2534,
+   "verdict": "corrected",
+   "corrected_value": "overhead powerline support structures (planned, per 2025 Section 401 notice)",
+   "corrected_quote": "The facility will manufacture overhead powerline support structures.",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "note": "Detail not on the page: the gloss '(steel utility structures)' is not in the Utah notice (steel is supported by other rows). The notice is a May 2025 plan in future tense. Minor."
+  },
+  {
+   "claim_id": "p-nucor-brigham-city-ut:materials",
+   "source_url": "https://s202.q4cdn.com/531038915/files/doc_news/Nucor-Towers--Structures-Expanding-Nationwide-Footprint-2025.pdf",
+   "ledger_value": "steel (plate and sheet from Nucor mills)",
+   "evidence_line": 2535,
+   "verdict": "corrected",
+   "corrected_value": "steel: plate and sheet from Nucor mills via rail (planned, per Jan 9, 2025 announcement)",
+   "corrected_quote": "It will receive plate and sheet products from Nucor steel mills via rail to meet its raw material needs.",
+   "corrected_tag": "stated",
+   "error_kind": "other",
+   "note": "A Jan 2025 plan ('will receive') is presented as a current fact. Steel itself is confirmed for the plant by the Nov 2026 posting (row 2536). Minor."
+  },
+  {
+   "claim_id": "p-nucor-brigham-city-ut:materials",
+   "source_url": "https://jobs.nucor.com/job/Brigham-City-Fitter-Welder-Nucor-Towers-&-Structures-UT-84302/1424539200/",
+   "ledger_value": "steel",
+   "evidence_line": 2536,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2536. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-nucor-brigham-city-ut:certifications",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC certified (Building Fabricator)",
+   "evidence_line": 2538,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2538. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant. AISC snapshot row present: Building Fabricator only."
+  },
+  {
+   "claim_id": "p-nucor-brigham-city-ut:welder_postings",
+   "source_url": "https://jobs.nucor.com/job/Brigham-City-Fitter-Welder-Nucor-Towers-&-Structures-UT-84302/1424539200/",
+   "ledger_value": "posting date Nov 11, 2026",
+   "evidence_line": 2542,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2542. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-nucor-brigham-city-ut:welder_postings",
+   "source_url": "https://jobs.nucor.com/job/Brigham-City-Fitter-Welder-Nucor-Towers-&-Structures-UT-84302/1392702100/",
+   "ledger_value": "earlier Fitter Welder posting (Jul 29, 2026) filled",
+   "evidence_line": 2543,
+   "verdict": "corrected",
+   "corrected_value": "earlier Fitter Welder posting (Jul 29, 2026) filled",
+   "corrected_quote": "Fitter Welder - Nucor Towers & Structures Date: Jul 29, 2026 Company: Nucor Sorry, this position has been filled.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Value is right and the date is on the page, but the cited quote ('Sorry, this position has been filled.') shows neither the role nor the Jul 29, 2026 date. Quote replaced; value unchanged."
+  },
+  {
+   "claim_id": "p-nucor-brigham-city-ut:triggers",
+   "source_url": "https://s202.q4cdn.com/531038915/files/doc_news/Nucor-Towers--Structures-Expanding-Nationwide-Footprint-2025.pdf",
+   "ledger_value": "announced Jan 9, 2025",
+   "evidence_line": 2545,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2545. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant."
+  },
+  {
+   "claim_id": "p-nucor-brigham-city-ut:triggers",
+   "source_url": "https://jobs.nucor.com/job/Brigham-City-Racking-&-Finishing-Operator-Nucor-Towers-&-Structures-UT-84302/1428651100/",
+   "ledger_value": "Nov 2026: hiring production roles (fitter welder, machine operator, galvanizing racking & finishing)",
+   "evidence_line": 2546,
+   "verdict": "corrected",
+   "corrected_value": "Nov 2026: hiring production roles at Brigham City, incl. a Racking & Finishing Operator for galvanizing (posted Nov 7, 2026)",
+   "corrected_quote": "Racking & Finishing Operator - Nucor Towers & Structures Apply now » Date: Nov 7, 2026 Location: Brigham City, UT, US, 84302",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Compound value: 'machine operator' appears on no cited page, and 'fitter welder' comes from a different posting. The cited racking page supports only the racking & finishing (galvanizing) role, dated Nov 7, 2026. The open Fitter Welder posting (Nov 11, 2026) is covered by welder_postings row 2542."
+  },
+  {
+   "claim_id": "p-grid-structures-amite-city-la:certifications",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC certified: Building Fabricator; Bridge Fabricator - Simple (directory row 'Southland Grid Structures LLC.', Amite)",
+   "evidence_line": 2581,
+   "verdict": "confirmed",
+   "note": "evidence.csv line 2581. Quote is on the page (fetched 2026-11-13) and supports every clause for this plant. AISC snapshot row present."
+  }
+ ],
+ "correction_breakdown": {
+  "quote_only_value_intact": [
+   "p-nucor-brigham-city-ut:welder_postings (2543)",
+   "p-united-lighting-standards-warren-mi:products (732)"
+  ],
+  "tag_only_value_intact": [
+   "p-nucor-brigham-city-ut:found_by (534)"
+  ],
+  "value_changed": [
+   "p-nucor-brigham-city-ut:products (458, reworded, same meaning)",
+   "p-nucor-brigham-city-ut:triggers (2546)",
+   "p-nucor-brigham-city-ut:address (2527, ZIP removed)",
+   "p-nucor-brigham-city-ut:products (2534, gloss removed)",
+   "p-nucor-brigham-city-ut:materials (2535, plan flagged)",
+   "p-hapco-abingdon-va:triggers (2088)",
+   "p-hapco-abingdon-va:products (564, 'light' removed)"
+  ]
+ }
+}

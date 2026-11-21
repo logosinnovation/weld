@@ -1,0 +1,2493 @@
+{
+ "agent": "plant-finder-DC-SWEEP",
+ "date": "2026-11-19",
+ "vertical": "v-datacenter-grid-prefab",
+ "patterns": {
+  "1": "name/parent_company labels not on the cited page",
+  "2": "rubric judgements in stated part_size_fit/materials rows",
+  "3": "compound values with clauses from another page; address city/ZIP not on the cited record",
+  "4": "city-only posting ties without a met campus test",
+  "5": "plants.csv clauses with no evidence row",
+  "6": "FTI Excellerate sibling relationships"
+ },
+ "summary": {
+  "1": {
+   "found": 258,
+   "fixed": 252,
+   "retired_rows": 0,
+   "not_fixed": 6,
+   "row_fixes": 78,
+   "plants_field_fixes": 174
+  },
+  "2": {
+   "found": 5,
+   "fixed": 5,
+   "retired_rows": 0,
+   "not_fixed": 0,
+   "row_fixes": 3,
+   "plants_field_fixes": 2
+  },
+  "3": {
+   "found": 47,
+   "fixed": 47,
+   "retired_rows": 0,
+   "not_fixed": 0,
+   "row_fixes": 24,
+   "plants_field_fixes": 23
+  },
+  "4": {
+   "found": 13,
+   "fixed": 8,
+   "retired_rows": 0,
+   "not_fixed": 5,
+   "row_fixes": 4,
+   "plants_field_fixes": 1
+  },
+  "5": {
+   "found": 4,
+   "fixed": 4,
+   "retired_rows": 0,
+   "not_fixed": 0,
+   "row_fixes": 0,
+   "plants_field_fixes": 2
+  },
+  "6": {
+   "found": 4,
+   "fixed": 4,
+   "retired_rows": 4,
+   "not_fixed": 0,
+   "row_fixes": 0,
+   "plants_field_fixes": 0
+  }
+ },
+ "score_components_affected": [
+  {
+   "plant": "p-vertiv-pelzer-sc",
+   "components": [
+    "score_process",
+    "score_labor",
+    "score_material_part"
+   ],
+   "note": "OPEN: process 20 and labor 12 rest on the Pelzer Welder Level 4 posting, tied by the inferred campus reading (Pelzer Sites P1/P2; second Vertiv address 0.67-0.82 km away, its production not stated). Checker B asked for a ruling (58 kept vs 26 Low). Rows unchanged."
+  },
+  {
+   "plant": "p-nvent-trachte-houston-tx",
+   "components": [
+    "score_labor"
+   ],
+   "note": "labor 20 rests on two city-only Houston welder postings whose tie is inferred (second nVent Houston production site, 271 McCarty St); already ruled by the coordinator (2026-11-19 rulings: city-only postings tied through the hiring entity keep points, no confidence; listed in no-confidence-claims.csv). Score rows not changed."
+  },
+  {
+   "plant": "p-gw-electric-bolingbrook-il",
+   "components": [
+    "score_process",
+    "score_labor"
+   ],
+   "note": "Bolingbrook-only welder postings tie to 305 under reading A (facilities page lists 305 as the one Bolingbrook manufacturing location; one OSHA establishment); 245 W Crossroads (0.43 km, molding) fails the same-production limb, so the literal reading C (process 0, labor 0) remains the alternative. Coordinator ruled demand 8; rows unchanged."
+  },
+  {
+   "plant": "p-eaton-greenwood-sc",
+   "components": [
+    "score_process",
+    "score_material_part",
+    "score_part_mix",
+    "score_labor"
+   ],
+   "note": "already 0 under the written rule (building not stated); unchanged."
+  },
+  {
+   "plant": "p-fti-olathe-ks",
+   "components": [
+    "score_labor",
+    "score_process"
+   ],
+   "note": "labor 12 rests on the city-only Automated Machine Operator posting whose tie is inferred (FTI also posts Olathe Mechanical); already ruled by the coordinator (points kept, no confidence); rows unchanged."
+  },
+  {
+   "plant": "p-hardin-lacon-il",
+   "components": [
+    "score_material_part (confidence only)"
+   ],
+   "note": "material 4 now rests on a stated sheet-metal/gauge page fact plus an inferred thin-sheet classification row; points unchanged; whether material earns confidence is the coordinator ruling checker B and C asked for."
+  },
+  {
+   "plant": "p-dvm-north-wales-pa",
+   "components": [
+    "score_material_part (confidence only)"
+   ],
+   "note": "material 4 now rests on a stated sheet-metal/gauge page fact plus an inferred thin-sheet classification row; points unchanged; whether material earns confidence is the coordinator ruling checker B and C asked for."
+  },
+  {
+   "plant": "p-powell-north-canton-oh",
+   "components": [
+    "score_material_part (confidence only)"
+   ],
+   "note": "material 4 now rests on a stated sheet-metal/gauge page fact plus an inferred thin-sheet classification row; points unchanged; whether material earns confidence is the coordinator ruling checker B and C asked for."
+  },
+  {
+   "plant": "p-powell-northlake-il",
+   "components": [
+    "score_material_part (confidence only)"
+   ],
+   "note": "material 4 now rests on a stated sheet-metal/gauge page fact plus an inferred thin-sheet classification row; points unchanged; whether material earns confidence is the coordinator ruling checker B and C asked for."
+  },
+  {
+   "plant": "p-fti-pittsboro-in",
+   "components": [],
+   "note": "relationship new -> lookalike (EK Machine); base records, no score rows; raises their profiling rank (lookalike first)."
+  },
+  {
+   "plant": "p-fti-opelika-al",
+   "components": [],
+   "note": "relationship new -> lookalike (EK Machine); base records, no score rows; raises their profiling rank (lookalike first)."
+  },
+  {
+   "plant": "p-fti-monroe-la",
+   "components": [],
+   "note": "relationship new -> lookalike (EK Machine); base records, no score rows; raises their profiling rank (lookalike first)."
+  },
+  {
+   "plant": "p-fti-el-paso-tx",
+   "components": [],
+   "note": "relationship new -> lookalike (EK Machine); base records, no score rows; raises their profiling rank (lookalike first)."
+  }
+ ],
+ "coverage_limits": "Pattern 1 coverage: every stated name and parent_company row on the 208 non-DNT records was compared with its quote; rows with words outside the quote were tested against a fresh fetch of the cited page (OSHA rows against the full record in data/osha_2025.csv) by single tokens; a second pass phrase-tested legal suffixes and read parenthetical clauses by hand on rows that passed. plants.csv name and parent values were then rebuilt so no word sits outside the field rows; owner labels were dropped from names even where a parent row states the owner (coordinator may restore them). Pattern 4 coverage: second production sites were found from same-company records in the ledger and from an OSHA 2025 company-name match in the same city, plus the sites the four checkers named; no new ECHO/FRS lookup was run, so a second site known only to EPA could be missed. Pattern 3 coverage: every stated products, production_type, existing_robots, address and welder_postings row on the 208 non-DNT data-center records (773 rows, 472 pages) was screened mechanically against a fresh fetch of its cited page for dates, IDs/ZIPs and words in parentheses or the value that the page does not carry; 158 rows flagged, read by hand; most were ledger conventions (listed/read dates, \"live\", \"not counted\", geocode notes) or plural/spelling noise. Pages over 400k characters were truncated in the screen (Ashby board API, some Eaton and Lever pages); those rows were spot-checked with fetch_page --grep only where flagged. OSHA-cited address rows were compared to data/osha_2025.csv by record ID. Rows not on any fetched page (blank URL) were not screened.",
+ "not_read": [
+  "G&W Team Lead II Weld/Fab posting text (not-counted call relies on fact-check C reading)",
+  "Powell North Canton Lead Welder, Weekend Shift 8031 (listed, not counted as a lead; hands-on welding not re-checked)",
+  "Powell Houston (Jacintoport, Mosley Road), Schneider El Paso and Wunderlich-Malec Baldwin records (being profiled; findings listed under pattern 1 as skipped_dnt)",
+  "PRNewswire row 21813 (Modine Franklin) clauses now carried only there were not re-fetched"
+ ],
+ "instances": {
+  "1": [
+   {
+    "claim_id": "p-powersecure-durham-nc:name",
+    "row": 14898,
+    "found": "value 'PowerSecure Distributed Infrastructure': 'Infrastructure' is spelled 'INFASTRUCTURE' on the EPA record; value now follows the page",
+    "fix": "row value corrected to 'PowerSecure Distributed Infastructure [sic] (EPA facility name)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-harvard-integrations-tea-sd:name",
+    "row": 15497,
+    "found": "value 'Harvard Integrations LP': legal form 'LP' is not on the cited Hill Companies page",
+    "fix": "row value corrected to 'Harvard Integrations'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-enercon-east-peoria-il:parent_company",
+    "row": 15612,
+    "found": "value 'Generac Holdings Inc. (multi-plant)': 'Holdings Inc.' is not on the BizTimes page",
+    "fix": "row value corrected to 'Generac (multi-plant: Beaver Dam, Oshkosh and other Generac facilities)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-elgin-power-beaver-wv:parent_company",
+    "row": 20683,
+    "found": "value 'Mining Controls, LLC (Elgin Power Solutions; employee-owned)': ', LLC' is not on the Elgin careers page",
+    "fix": "row value corrected to 'Mining Controls (Elgin Power Solutions; employee-owned)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-delta-star-lynchburg-va:parent_company",
+    "row": 20694,
+    "found": "value 'Delta Star Inc. (a MacLean Power Systems company)': 'Inc.' is not on deltastar.com",
+    "fix": "row value corrected to 'Delta Star (a MacLean Power Systems company)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-delta-star-san-carlos-ca:parent_company",
+    "row": 20704,
+    "found": "value 'Delta Star Inc. (a MacLean Power Systems company)': 'Inc.' is not on deltastar.com",
+    "fix": "row value corrected to 'Delta Star (a MacLean Power Systems company)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-ep2-des-moines-ia:parent_company",
+    "row": 20735,
+    "found": "value 'Flex Ltd. (Cloud & Power Infrastructure segment, becoming Axiom)': 'Ltd.' is not on ep2.com",
+    "fix": "row value corrected to 'Flex (Cloud & Power Infrastructure segment, becoming Axiom)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-emi-houston-tx:parent_company",
+    "row": 20755,
+    "found": "value 'Electro-Mechanical Industries, Inc. (employee-owned since 2025)': 'employee-owned since 2025' is not page text; the page names the 2025 Employee Equity Appreciation Plan",
+    "fix": "row value corrected to 'Electro-Mechanical Industries, Inc. (EMI Employee Equity Appreciation Plan established 2025)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-emi-magnolia-tx:parent_company",
+    "row": 20767,
+    "found": "value 'Electro-Mechanical Industries, Inc. (employee-owned since 2025)': 'employee-owned since 2025' is not page text; the page names the 2025 Employee Equity Appreciation Plan",
+    "fix": "row value corrected to 'Electro-Mechanical Industries, Inc. (EMI Employee Equity Appreciation Plan established 2025)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-dis-tran-alexandria-la:name",
+    "row": 20777,
+    "found": "value 'DIS-TRAN Packaged Substations - Port of Alexandria plant': the posting says 'Port of Alexandria Facility', not 'plant'",
+    "fix": "row value corrected to 'DIS-TRAN Packaged Substations - Port of Alexandria Facility'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nvent-trachte-eastanollee-ga:parent_company",
+    "row": 20789,
+    "found": "value 'nVent Electric plc (nVent TRACHTE, engineered building solutions)': legal name 'nVent Electric plc' is not on the TRACHTE locations page",
+    "fix": "row value corrected to 'nVent (nVent TRACHTE, engineered building solutions)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nvent-trachte-hitchcock-tx:parent_company",
+    "row": 20798,
+    "found": "value 'nVent Electric plc (nVent TRACHTE, engineered building solutions)': legal name 'nVent Electric plc' is not on the TRACHTE locations page",
+    "fix": "row value corrected to 'nVent (nVent TRACHTE, engineered building solutions)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nvent-trachte-eleanor-wv:parent_company",
+    "row": 20819,
+    "found": "value 'nVent Electric plc (nVent TRACHTE, engineered building solutions)': legal name 'nVent Electric plc' is not on the TRACHTE locations page",
+    "fix": "row value corrected to 'nVent (nVent TRACHTE, engineered building solutions)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nvent-trachte-millington-md:parent_company",
+    "row": 20830,
+    "found": "value 'nVent Electric plc (nVent TRACHTE, engineered building solutions)': legal name 'nVent Electric plc' is not on the TRACHTE locations page",
+    "fix": "row value corrected to 'nVent (nVent TRACHTE, engineered building solutions)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-atkinson-pittsburg-ks:parent_company",
+    "row": 20845,
+    "found": "value 'nVent Electric plc (nVent TRACHTE; earlier ledger source: Atkinson Industries d/b/a AZZ)': 'Electric plc' and the clause 'earlier ledger source: Atkinson Industries d/b/a AZZ' are not on the TRACHTE locations page (the AZZ d/b/a has its own row on the 2019 Pittsburg page)",
+    "fix": "row value corrected to 'nVent (nVent TRACHTE)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-great-lakes-corry-pa:name",
+    "row": 20870,
+    "found": "value 'Great Lakes Data Racks & Cabinets, Corry plant': the page says 'manufacturing facility in Corry', not 'plant'",
+    "fix": "row value corrected to 'Great Lakes Data Racks & Cabinets, Corry manufacturing facility'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-stulz-frederick-md:name",
+    "row": 20954,
+    "found": "value 'STULZ USA - Frederick (HQ and plant)': 'HQ and plant' is not page text; the page says 'STULZ's headquarters in Frederick, Maryland'",
+    "fix": "row value corrected to 'STULZ USA - Frederick (headquarters)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-swanton-swanton-oh:name",
+    "row": 21002,
+    "found": "value 'Swanton Welding & Machining - Swanton (main facility, headquarters)': 'headquarters' is not on the locations page",
+    "fix": "row value corrected to 'Swanton Welding & Machining - Swanton (Main Facility)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-point-eight-belle-chasse-la:name",
+    "row": 21070,
+    "found": "value 'Point Eight Power (Mission Critical Group), Belle Chasse': '(Mission Critical Group)' is not on the OSHA record; the owner rests on the parent_company row",
+    "fix": "row value corrected to 'Point Eight Power, Belle Chasse'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-point-eight-bay-st-louis-ms:name",
+    "row": 21135,
+    "found": "value 'Point Eight Power BSL (Mission Critical Group), Bay St. Louis': '(Mission Critical Group)' is not on the OSHA record",
+    "fix": "row value corrected to 'Point Eight Power BSL, Bay St. Louis'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-dvm-west-chester-pa:name",
+    "row": 21153,
+    "found": "value 'DVM Manufacturing, LLC - West Chester (Mission Critical Group)': '(Mission Critical Group)' is not on the OSHA record",
+    "fix": "row value corrected to 'DVM Manufacturing, LLC - West Chester'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-dvm-stone-mountain-ga:name",
+    "row": 21171,
+    "found": "value 'DVM Manufacturing, LLC - Stone Mountain (Mission Critical Group)': '(Mission Critical Group)' is not on the OSHA record; the record spells 'Stone Montain'",
+    "fix": "row value corrected to 'DVM Manufacturing, LLC - Stone Montain [sic], Stone Mountain'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-federal-pacific-bristol-va:parent_company",
+    "row": 21214,
+    "found": "value 'Federal Pacific unified brand of Electro-Mechanical': 'brand of Electro-Mechanical' is not on the about page; Electro-Mechanical, LLC rests on the Fabricator posting row",
+    "fix": "row value corrected to 'Federal Pacific: a unified manufacturer of medium-voltage power infrastructure bringing together a family of power brands'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-dis-tran-pineville-la:parent_company",
+    "row": 21233,
+    "found": "value 'Crest Industries, LLC (DIS-TRAN Packaged Substations)': ', LLC' is not on the Lever posting",
+    "fix": "row value corrected to 'Crest Industries (DIS-TRAN Packaged Substations)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fibrebond-minden-la:name",
+    "row": 21335,
+    "found": "value 'Fibrebond (Eaton), Minden manufacturing campus': '(Eaton)' and 'manufacturing campus' are not on the OSHA record; Eaton ownership rests on the parent_company row",
+    "fix": "row value corrected to 'Fibrebond LLC, Minden'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fibrebond-north-little-rock-ar:name",
+    "row": 21341,
+    "found": "value 'Eaton Fibrebond North Little Rock plant (pre-production)': 'plant (pre-production)' is not page text; the release says Eaton 'intends to locate a new state-of-the-art manufacturing facility in North Little Rock'",
+    "fix": "row value corrected to 'Eaton North Little Rock manufacturing facility (Fibrebond)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-trachte-sun-prairie-wi:name",
+    "row": 21360,
+    "found": "value 'Trachte Building Systems, Inc. (Sun Prairie)': 'Inc.' is not on trachte.com home page",
+    "fix": "row value corrected to 'Trachte Building Systems (Sun Prairie)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-trachte-sun-prairie-wi:parent_company",
+    "row": 21361,
+    "found": "value 'Trachte Building Systems, Inc. (100% employee-owned; not nVent)': 'not nVent' is a disambiguation judgement, not page text",
+    "fix": "row value corrected to 'Trachte Building Systems, Inc. (100% employee-owned)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-panelmatic-houston-tx:parent_company",
+    "row": 21382,
+    "found": "value 'Panelmatic, Inc.': 'Inc.' is not on the contact page",
+    "fix": "row value corrected to 'Panelmatic'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-panelmatic-conroe-tx:parent_company",
+    "row": 21400,
+    "found": "value 'Panelmatic, Inc.': 'Inc.' is not on the contact page",
+    "fix": "row value corrected to 'Panelmatic'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-panelmatic-brookfield-oh:parent_company",
+    "row": 21418,
+    "found": "value 'Panelmatic, Inc.': 'Inc.' is not on the contact page",
+    "fix": "row value corrected to 'Panelmatic'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-jabil-prince-george-va:name",
+    "row": 21436,
+    "found": "value 'Jabil - Prince George County (Crosspointe Logistics Center) plant for Siemens (pre-production)': 'plant' and 'pre-production' are not page text; the release says 'will establish a new manufacturing site'",
+    "fix": "row value corrected to 'Jabil - new manufacturing site at Crosspointe Logistics Center, Prince George County (power distribution equipment for Siemens)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-jabil-prince-george-va:parent_company",
+    "row": 21437,
+    "found": "value 'Jabil Inc.': 'Inc.' is not on the VEDP release",
+    "fix": "row value corrected to 'Jabil'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nortek-dcc-dyersburg-tn:name",
+    "row": 21641,
+    "found": "value 'Nortek Data Center Cooling - Dyersburg': 'Nortek Data Center Cooling' is not on this OSHA record (establishment Nortek Global, company Nortek Global DCC)",
+    "fix": "row value corrected to 'Nortek Global (Nortek Global DCC) - Dyersburg'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nortek-dcc-dyersburg-tn:parent_company",
+    "row": 21643,
+    "found": "value 'Madison Industries (Nortek Data Center Cooling)': 'Madison Industries' and 'Nortek Data Center Cooling' are not on the OSHA record",
+    "fix": "row value corrected to 'Nortek Global DCC'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nortek-dcc-oklahoma-city-ok:parent_company",
+    "row": 21655,
+    "found": "value 'Madison Industries (Nortek Data Center Cooling)': 'Madison Industries' is not on the OSHA record",
+    "fix": "row value corrected to 'Nortek Data Center Cooling (OSHA company name)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-stulz-denton-tx:name",
+    "row": 21668,
+    "found": "value 'STULZ USA - Denton': 'STULZ USA' is not on the OSHA record",
+    "fix": "row value corrected to 'STULZ Air Technology Systems, Inc. - Denton'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-stulz-denton-tx:parent_company",
+    "row": 21670,
+    "found": "value 'STULZ Air Technology Systems, Inc. (STULZ USA)': '(STULZ USA)' is not on the OSHA record",
+    "fix": "row value corrected to 'STULZ Air Technology Systems, Inc.'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-chatsworth-georgetown-tx:name",
+    "row": 21734,
+    "found": "value 'Chatsworth Products Company, Georgetown, TX (OSHA establishment name); board label Georgetown Plant needs its own Paycom row': value carried a to-do note ('OSHA establishment name; board label Georgetown Plant needs its own Paycom row'); trimmed to the record's establishment_name; Paycom 'Georgetown Plant' row added",
+    "fix": "row value corrected to 'Chatsworth Products Company, Georgetown, TX'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-chatsworth-simi-valley-ca:name",
+    "row": 21748,
+    "found": "value 'Chatsworth Products Co, CA (OSHA establishment name); board label Simi Valley Plant needs its own Paycom row': value carried a to-do note ('board label Simi Valley Plant needs its own Paycom row'); trimmed to the record's establishment_name; Paycom 'Simi Valley Plant' row added",
+    "fix": "row value corrected to 'Chatsworth Products Co, CA'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-chatsworth-new-bern-nc:name",
+    "row": 22199,
+    "found": "value 'Chatsworth Products Company, New Bern, NC (OSHA establishment name)': annotation '(OSHA establishment name)' dropped; value is the record's establishment_name",
+    "fix": "row value corrected to 'Chatsworth Products Company, New Bern, NC'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-crown-fontana-ca:name",
+    "row": 21895,
+    "found": "value 'Crown Technical Systems - Fontana (headquarters plant)': 'plant' is not page text ('Headquarters: Fontana')",
+    "fix": "row value corrected to 'Crown Technical Systems - Fontana (headquarters)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-excellerate-little-chute-wi:parent_company",
+    "row": 22051,
+    "found": "value 'Faith Technologies Inc. (FTI)': 'Inc.' is not on the eSkid product page",
+    "fix": "row value corrected to 'Faith Technologies (FTI)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-cep-usa-north-little-rock-ar:parent_company",
+    "row": 22086,
+    "found": "value 'CEP S.p.A. (Italy)': '(Italy)' paraphrase; the page says 'the Italian company'",
+    "fix": "row value corrected to 'CEP S.p.A. (Italian company)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-chatsworth-new-bern-nc:parent_company",
+    "row": 22201,
+    "found": "value 'Chatsworth Products, Inc. (employee-owned)': '(employee-owned)' is not on the Paycom New Bern page; 'CHATSWORTH PRODUCTS INC' is its hiringOrganization",
+    "fix": "row value corrected to 'Chatsworth Products, Inc.'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fti-pittsboro-in:name",
+    "row": 22215,
+    "found": "value 'FTI Pittsboro plant': the page says 'a 500,000-square-foot manufacturing facility', not 'plant'",
+    "fix": "row value corrected to 'FTI Pittsboro manufacturing facility'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fti-opelika-al:name",
+    "row": 22233,
+    "found": "value 'FTI Opelika plant': the page says 'advanced manufacturing facility in Opelika', not 'plant'",
+    "fix": "row value corrected to 'FTI Opelika manufacturing facility'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fti-opelika-al:parent_company",
+    "row": 22234,
+    "found": "value 'Faith Technologies Incorporated (FTI)': 'Incorporated' is not on the Expansion Solutions page",
+    "fix": "row value corrected to 'Faith Technologies (FTI)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fti-monroe-la:name",
+    "row": 22252,
+    "found": "value 'FTI Monroe Excellerate plant': the release says 'new Excellerate manufacturing facility', not 'plant'",
+    "fix": "row value corrected to 'FTI Monroe Excellerate manufacturing facility'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-schneider-smyrna-tn:name",
+    "row": 22304,
+    "found": "value 'Schneider Electric - Smyrna plant': 'plant' is not on the OSHA record (establishment_name Schneider Electric)",
+    "fix": "row value corrected to 'Schneider Electric, Smyrna'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-schneider-mount-juliet-tn:name",
+    "row": 22328,
+    "found": "value 'Schneider Electric Mount Juliet plant': 'plant' is not on the OSHA record",
+    "fix": "row value corrected to 'Schneider Electric Mount Juliet'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-intelliflex-fort-worth-tx:parent_company",
+    "row": 22385,
+    "found": "value 'CES Corporation': 'Corporation' is not on the Intelliflex page",
+    "fix": "row value corrected to 'CES Corp'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-siemens-pomona-ca:name",
+    "row": 22531,
+    "found": "value 'Siemens Electrical Products, Pomona': the record spells 'Productxs'; value follows the record",
+    "fix": "row value corrected to 'Siemens Electrical Productxs [sic], Pomona'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-eaton-chandler-az:name",
+    "row": 22652,
+    "found": "value 'Eaton - Phoenix satellite assembly (Chandler)': 'assembly' is not on the OSHA record",
+    "fix": "row value corrected to 'Eaton - PHOENIX SATELLITE (Chandler)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-eaton-hayward-ca:name",
+    "row": 22669,
+    "found": "value 'Eaton - San Francisco satellite assembly (Hayward)': 'assembly' is not on the OSHA record",
+    "fix": "row value corrected to 'Eaton - SAN FRANCISCO SATELLITE (Hayward)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-eaton-windsor-ct:name",
+    "row": 22686,
+    "found": "value 'Eaton - Hartford satellite assembly (Windsor)': 'assembly' is not on the OSHA record",
+    "fix": "row value corrected to 'Eaton - HARTFORD SATELLITE (Windsor)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-eaton-carol-stream-il:name",
+    "row": 22966,
+    "found": "value 'Carol Stream site': 'site' is not page text; the posting says 'join our team at Carol Stream'",
+    "fix": "row value corrected to 'Carol Stream'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-eaton-greenwood-sc:parent_company",
+    "row": 23192,
+    "found": "value 'Eaton Corporation plc': 'Corporation plc' is not on the OSHA record (company_name EATON)",
+    "fix": "row value corrected to 'Eaton'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-eaton-sumter-sc:parent_company",
+    "row": 23209,
+    "found": "value 'Eaton Corporation plc': 'Corporation plc' is not on the OSHA record (company_name EATON)",
+    "fix": "row value corrected to 'Eaton'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-maverick-power-garland-tx:parent_company",
+    "row": 23530,
+    "found": "value 'Maverick Power LLC': 'LLC' is not on the expansion release",
+    "fix": "row value corrected to 'Maverick Power'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-maverick-power-dallas-tx:parent_company",
+    "row": 23550,
+    "found": "value 'Maverick Power LLC': 'LLC' is not on the expansion release",
+    "fix": "row value corrected to 'Maverick Power'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-maverick-power-dallas-tx:name",
+    "row": 23546,
+    "found": "value 'Maverick Power - Dallas 1 design headquarters and manufacturing (pre-production)': '(pre-production)' is not page text",
+    "fix": "row value corrected to 'Maverick Power - Dallas 1 design headquarters and manufacturing'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nucor-data-systems-madison-in:parent_company",
+    "row": 23666,
+    "found": "value 'Nucor Corporation (Nucor Data Systems)': 'Nucor Corporation' is not on the OSHA record (company_name NUCOR DATA SYSTEMS)",
+    "fix": "row value corrected to 'Nucor Data Systems'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nucor-data-systems-frankfort-ky:parent_company",
+    "row": 23688,
+    "found": "value 'Nucor Corporation (Nucor Data Systems)': 'Corporation' is not on the OSHA record (company_name Nucor)",
+    "fix": "row value corrected to 'Nucor (Nucor Data Systems)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-thermo-bond-elk-point-sd:parent_company",
+    "row": 23846,
+    "found": "value 'Thermo Bond (Muth family owned since 2014)': 'owned since 2014' restated as the page's July 2014 return to Muth family ownership (the timeline also shows a 2001 acquisition and a 2009 sale)",
+    "fix": "row value corrected to 'Thermo Bond (returned to Muth family ownership in July 2014)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-chatsworth-simi-valley-ca:name",
+    "row": null,
+    "found": "plants.csv name carried the label 'Simi Valley Plant' (and a to-do note) with no row on a page that shows it",
+    "fix": "Paycom name row added (job 399735); plants name rebuilt from the two rows",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-chatsworth-georgetown-tx:name",
+    "row": null,
+    "found": "plants.csv name carried the label 'Georgetown Plant' (and a to-do note) with no row on a page that shows it",
+    "fix": "Paycom name row added (job 369530); plants name rebuilt from the two rows",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-vertiv-anderson-sc:parent_company",
+    "row": null,
+    "found": "plants.csv parent carried a to-do note (\"E&I Engineering per OSHA/ECHO records; ownership link needs its own row\")",
+    "fix": "parent row added on Vertiv release (Vertiv names its Anderson switchgear and busbar facility); plants parent set to Vertiv",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-atkinson-pittsburg-ks:name",
+    "row": null,
+    "found": "plants.csv name 'Atkinson Industries (AZZ e-house plant), Pittsburg' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Atkinson Industries, Pittsburg' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-atkinson-pittsburg-ks:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'nVent Electric plc (nVent TRACHTE; earlier ledger source: Atkinson Industries d/b/a AZZ)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'nVent (nVent TRACHTE)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-girtz-monticello-in:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Legrand North America (acquired June 10, 2026)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Legrand (acquired June 2026)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-enercon-east-peoria-il:name",
+    "row": null,
+    "found": "plants.csv name 'Enercon Engineering, Inc. (Enercon, a Generac company) - East Peoria' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Enercon Engineering Inc - East Peoria' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-enercon-east-peoria-il:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Generac Holdings Inc. (acquisition dated February 2026 in a Generac release and April 2026 on Enercon's site)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Generac Holdings Inc. (acquired Feb 2026 per Generac; April 2026 per Enercon)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-powersecure-durham-nc:name",
+    "row": null,
+    "found": "plants.csv name 'PowerSecure Distributed Infrastructure - Durham plant (Stirrup Creek Dr)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'PowerSecure - Durham' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-powersecure-durham-nc:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'PowerSecure, Inc. (Southern Company)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'PowerSecure' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-maysteel-germantown-wi:name",
+    "row": null,
+    "found": "plants.csv name 'Maysteel (Germantown / Richfield facility)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Maysteel Germantown' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-panel-built-blairsville-ga:name",
+    "row": null,
+    "found": "plants.csv name 'Panel Built, Inc. (Steel Buildings Facility)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Panel Built, Inc. - Blairsville' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-harvard-integrations-tea-sd:name",
+    "row": null,
+    "found": "plants.csv name 'Harvard Integrations LP' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Harvard Integrations - Tea' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nvent-trachte-houston-tx:name",
+    "row": null,
+    "found": "plants.csv name 'nVent TRACHTE - Houston (EPA facility names: Central Electric Manufacturing; Avail Switchgear Systems)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'nVent TRACHTE - Houston' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-powell-houston-tx-2:name",
+    "row": null,
+    "found": "plants.csv name 'Powell Industries - Airport Blvd, Houston (Electrical Division Airport)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Powell Industries - Airport Blvd, Houston' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-elgin-power-beaver-wv:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Mining Controls, LLC (Elgin Power Solutions; employee-owned)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Mining Controls (Elgin Power Solutions; employee-owned)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-delta-star-lynchburg-va:name",
+    "row": null,
+    "found": "plants.csv name 'Delta Star East (with Delta Iron Works tank fabrication on the same campus), Lynchburg' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Delta Star East, Lynchburg' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-delta-star-lynchburg-va:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Delta Star Inc. (a MacLean Power Systems company)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Delta Star (a MacLean Power Systems company)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-delta-star-san-carlos-ca:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Delta Star Inc. (a MacLean Power Systems company)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Delta Star (a MacLean Power Systems company)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-ep2-des-moines-ia:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Flex Ltd. (Cloud & Power Infrastructure segment, becoming Axiom)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Flex (Cloud & Power Infrastructure segment, becoming Axiom)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-virginia-transformer-troutville-va:name",
+    "row": null,
+    "found": "plants.csv name 'Virginia Transformer Corp - Troutville (tank fabrication and Integrated Power Module production)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Virginia Transformer Corp - Troutville' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-emi-houston-tx:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Electro-Mechanical Industries, Inc. (employee-owned since 2025)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Electro-Mechanical Industries, Inc. (EMI Employee Equity Appreciation Plan established 2025)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-emi-magnolia-tx:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Electro-Mechanical Industries, Inc. (employee-owned since 2025)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Electro-Mechanical Industries, Inc. (EMI Employee Equity Appreciation Plan established 2025)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-dis-tran-alexandria-la:name",
+    "row": null,
+    "found": "plants.csv name 'DIS-TRAN Packaged Substations - Port of Alexandria factory-built substation plant' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'DIS-TRAN Packaged Substations - Port of Alexandria Facility' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nvent-trachte-eastanollee-ga:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'nVent Electric plc (nVent TRACHTE, engineered building solutions)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'nVent (nVent TRACHTE, engineered building solutions)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nvent-trachte-hitchcock-tx:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'nVent Electric plc (nVent TRACHTE, engineered building solutions)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'nVent (nVent TRACHTE, engineered building solutions)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nvent-trachte-goodyear-az:name",
+    "row": null,
+    "found": "plants.csv name 'nVent engineered buildings - Goodyear (new plant, pre-production)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'nVent engineered buildings - Goodyear (pre-production)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nvent-trachte-eleanor-wv:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'nVent Electric plc (nVent TRACHTE, engineered building solutions)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'nVent (nVent TRACHTE, engineered building solutions)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nvent-trachte-millington-md:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'nVent Electric plc (nVent TRACHTE, engineered building solutions)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'nVent (nVent TRACHTE, engineered building solutions)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-great-lakes-edinboro-pa:name",
+    "row": null,
+    "found": "plants.csv name 'Great Lakes Data Racks & Cabinets (Vertiv), Edinboro' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Great Lakes Data Racks & Cabinets - Edinboro' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-great-lakes-corry-pa:name",
+    "row": null,
+    "found": "plants.csv name 'Great Lakes Data Racks & Cabinets (Vertiv), Corry plant' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Great Lakes Data Racks & Cabinets, Corry manufacturing facility' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-crusoe-arvada-co:name",
+    "row": null,
+    "found": "plants.csv name 'Crusoe (Arvada; former Easter-Owens)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Crusoe (Arvada)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-flex-dallas-tx:name",
+    "row": null,
+    "found": "plants.csv name 'Flex Dallas (Crown Technical Systems / Crown Texas)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Flex Dallas' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-stulz-frederick-md:name",
+    "row": null,
+    "found": "plants.csv name 'STULZ USA - Frederick (HQ and plant)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'STULZ USA - Frederick (headquarters)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-subzero-salt-lake-city-ut:name",
+    "row": null,
+    "found": "plants.csv name 'Subzero Engineering / Simplex Modular Cleanrooms (Salt Lake City)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Subzero Engineering (Salt Lake City)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-swanton-swanton-oh:name",
+    "row": null,
+    "found": "plants.csv name 'Swanton Welding & Machining - Swanton (main facility, headquarters)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Swanton Welding & Machining - Swanton (Main Facility)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-tas-houston-tx:name",
+    "row": null,
+    "found": "plants.csv name 'TAS Energy (Comfort Systems USA) - Houston, 6110 Cullen Blvd' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'TAS Energy - Houston, 6110 Cullen Blvd' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-royal-switchgear-bessemer-al:name",
+    "row": null,
+    "found": "plants.csv name 'Royal Switchgear Manufacturing (Power Grid Components) - Bessemer, Turin Dr' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Royal Switchgear Manufacturing - Bessemer, Turin Dr' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-point-eight-belle-chasse-la:name",
+    "row": null,
+    "found": "plants.csv name 'Point Eight Power (Mission Critical Group), Belle Chasse' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Point Eight Power, Belle Chasse' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-point-eight-bay-st-louis-ms:name",
+    "row": null,
+    "found": "plants.csv name 'Point Eight Power BSL (Mission Critical Group), Bay St. Louis' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Point Eight Power BSL, Bay St. Louis' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-dvm-west-chester-pa:name",
+    "row": null,
+    "found": "plants.csv name 'DVM Manufacturing, LLC - West Chester (Mission Critical Group)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'DVM Manufacturing, LLC - West Chester' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-dvm-stone-mountain-ga:name",
+    "row": null,
+    "found": "plants.csv name 'DVM Manufacturing, LLC - Stone Mountain (Mission Critical Group)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'DVM Manufacturing, LLC - Stone Mountain' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-dis-tran-pineville-la:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Crest Industries, LLC (DIS-TRAN Packaged Substations)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Crest Industries (DIS-TRAN Packaged Substations)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fibrebond-minden-la:name",
+    "row": null,
+    "found": "plants.csv name 'Fibrebond (Eaton), Minden manufacturing campus' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Fibrebond LLC, Minden' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fibrebond-north-little-rock-ar:name",
+    "row": null,
+    "found": "plants.csv name 'Eaton Fibrebond North Little Rock plant (pre-production)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Eaton North Little Rock manufacturing facility (Fibrebond)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-trachte-sun-prairie-wi:name",
+    "row": null,
+    "found": "plants.csv name 'Trachte Building Systems, Inc. (Sun Prairie)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Trachte Building Systems (Sun Prairie)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-trachte-sun-prairie-wi:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Trachte Building Systems, Inc. (100% employee-owned; not nVent)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Trachte Building Systems, Inc. (100% employee-owned)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-panelmatic-houston-tx:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Panelmatic, Inc.' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Panelmatic' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-panelmatic-conroe-tx:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Panelmatic, Inc.' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Panelmatic' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-panelmatic-brookfield-oh:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Panelmatic, Inc.' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Panelmatic' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-jabil-prince-george-va:name",
+    "row": null,
+    "found": "plants.csv name 'Jabil - Prince George County plant for Siemens (pre-production)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Jabil - new manufacturing site at Crosspointe Logistics Center, Prince George County' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-jabil-prince-george-va:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Jabil Inc.' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Jabil' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-vertiv-ironton-oh:name",
+    "row": null,
+    "found": "plants.csv name 'Vertiv - Ironton manufacturing (NA Mfg Ironton)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'NA Mfg Ironton (Vertiv Corporation)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-vertiv-ironton-oh:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Vertiv Holdings Co (Vertiv Corporation)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Vertiv' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-vertiv-anderson-sc:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Vertiv (E&I Engineering per OSHA/ECHO records; ownership link needs its own row)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Vertiv' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-vertiv-delaware-oh:name",
+    "row": null,
+    "found": "plants.csv name 'Vertiv - Delaware manufacturing (NA Mfg Delaware)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'NA Mfg Delaware (Vertiv Corporation)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-vertiv-delaware-oh:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Vertiv Holdings Co (Vertiv Corporation)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Vertiv' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nortek-dcc-dyersburg-tn:name",
+    "row": null,
+    "found": "plants.csv name 'Nortek Data Center Cooling - Dyersburg' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Nortek Global (Nortek Global DCC) - Dyersburg' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nortek-dcc-dyersburg-tn:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Madison Industries (Nortek Data Center Cooling)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Nortek Global DCC' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nortek-dcc-oklahoma-city-ok:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Madison Industries (Nortek Data Center Cooling)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Nortek Data Center Cooling' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-stulz-denton-tx:name",
+    "row": null,
+    "found": "plants.csv name 'STULZ USA - Denton' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'STULZ Air Technology Systems, Inc. - Denton' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-stulz-denton-tx:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'STULZ Air Technology Systems, Inc. (STULZ USA)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'STULZ Air Technology Systems, Inc.' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-basx-redmond-or:name",
+    "row": null,
+    "found": "plants.csv name 'BASX (AAON) - Redmond' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'BASX - Redmond' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-aaon-memphis-tn:name",
+    "row": null,
+    "found": "plants.csv name 'AAON - Memphis (data-center thermal plant)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Aaon, Inc. (Memphis)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nvent-hoffman-anoka-mn:name",
+    "row": null,
+    "found": "plants.csv name 'nVent Hoffman - Anoka (Hoffman Industries, LLC)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Hoffman Industries, LLC - Anoka' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nvent-hoffman-anoka-mn:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'nVent Electric plc' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'nVent' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-chatsworth-georgetown-tx:name",
+    "row": null,
+    "found": "plants.csv name 'Chatsworth Products Company, Georgetown, TX (OSHA establishment name); board label Georgetown Plant needs its own Paycom row' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Chatsworth Products Company, Georgetown, TX (Georgetown Plant)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-chatsworth-simi-valley-ca:name",
+    "row": null,
+    "found": "plants.csv name 'Chatsworth Products Co, CA (OSHA establishment name); board label Simi Valley Plant needs its own Paycom row' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Chatsworth Products Co, CA (Simi Valley Plant)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-chatsworth-new-bern-nc:name",
+    "row": null,
+    "found": "plants.csv name 'Chatsworth Products Company, New Bern, NC (OSHA establishment name)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Chatsworth Products Company, New Bern, NC (New Bern Plant)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-chatsworth-new-bern-nc:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Chatsworth Products, Inc. (employee-owned)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Chatsworth Products, Inc.' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-crown-fontana-ca:name",
+    "row": null,
+    "found": "plants.csv name 'Crown Technical Systems - Fontana (headquarters plant)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Crown Technical Systems - Fontana (headquarters)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-wunderlich-malec-winslow-me:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Wunderlich-Malec Engineering, Inc. (employee-owned)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Wunderlich-Malec Engineering, Inc.' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-ptmw-topeka-ks:name",
+    "row": null,
+    "found": "plants.csv name 'PTMW, Inc. - Topeka (headquarters plant)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'PTMW, Inc. - Topeka' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-ptmw-topeka-ks:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'PTMW, Inc. (woman-owned)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'PTMW, Inc.' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-compu-dynamics-odessa-tx:name",
+    "row": null,
+    "found": "plants.csv name 'Compu Dynamics Modular (CDM) - Odessa modular manufacturing facility' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Compu Dynamics Modular - Odessa' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-excellerate-little-chute-wi:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Faith Technologies Inc. (FTI)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Faith Technologies (FTI)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-cep-usa-north-little-rock-ar:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'CEP S.p.A. (Italy)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'CEP S.p.A. (Italian company)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-interstates-sioux-center-ia:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Interstates (Interstates Companies)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Interstates' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-interstates-topeka-ks:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Interstates (Interstates Companies)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Interstates' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-schneider-west-chester-oh:name",
+    "row": null,
+    "found": "plants.csv name 'Schneider Electric - West Chester prefabricated data-center plant' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Schneider Electric - West Chester' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-epd-houston-tx:name",
+    "row": null,
+    "found": "plants.csv name 'Electronic Power Design (EPD) - Houston' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Electronic Power Design - Houston' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-epd-houston-tx:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Voltaris (acquisition of EPD)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Voltaris' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fti-pittsboro-in:name",
+    "row": null,
+    "found": "plants.csv name 'FTI (Faith Technologies) Excellerate - Pittsboro plant (pre-production)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'FTI Pittsboro manufacturing facility' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fti-opelika-al:name",
+    "row": null,
+    "found": "plants.csv name 'FTI (Faith Technologies) Excellerate - Opelika plant' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'FTI Opelika manufacturing facility' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fti-opelika-al:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Faith Technologies Incorporated (FTI)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Faith Technologies (FTI)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fti-monroe-la:name",
+    "row": null,
+    "found": "plants.csv name 'FTI (Faith Technologies) Excellerate - Monroe plant (pre-production)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'FTI Monroe Excellerate manufacturing facility' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fti-olathe-ks:name",
+    "row": null,
+    "found": "plants.csv name 'FTI (Faith Technologies) Excellerate - Olathe plant' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'FTI Excellerate Olathe' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fti-el-paso-tx:name",
+    "row": null,
+    "found": "plants.csv name 'FTI (Faith Technologies) Excellerate - El Paso plant' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'FTI Excellerate - El Paso' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-eaton-bellevue-ne:name",
+    "row": null,
+    "found": "plants.csv name 'Eaton - Bellevue medium-voltage switchgear plant (pre-production)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Eaton Bellevue switchgear plant' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-eaton-henrico-va:name",
+    "row": null,
+    "found": "plants.csv name 'Eaton - Henrico County critical power manufacturing campus (pre-production)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Eaton Henrico County campus' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-mmr-lafayette-la:name",
+    "row": null,
+    "found": "plants.csv name 'MMR Group - Lafayette modular electrical assembly facility' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'MMR Group Lafayette factory' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-mmr-lafayette-la:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'MMR Group (MMR Constructors, Inc.)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'MMR Group' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-schneider-smyrna-tn:name",
+    "row": null,
+    "found": "plants.csv name 'Schneider Electric - Smyrna plant' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Schneider Electric, Smyrna' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-siemens-fort-worth-tx:name",
+    "row": null,
+    "found": "plants.csv name 'Siemens - Fort Worth electrical equipment plant' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Siemens Fort Worth' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-siemens-fort-worth-tx:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Siemens (Siemens Industry, Inc.; Smart Infrastructure, Electrical Products)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Siemens Industry, Inc.' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-mcm-engineering-enoch-ut:name",
+    "row": null,
+    "found": "plants.csv name 'MCM Engineering II - Enoch plant' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'MCM Engineering II - Enoch' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-mcm-engineering-enoch-ut:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'LS ELECTRIC America (MCM Engineering II is its local operating company)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'LS ELECTRIC America' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-intelliflex-fort-worth-tx:name",
+    "row": null,
+    "found": "plants.csv name 'Intelliflex USA - Fort Worth plant (Oak Grove Road)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Intelliflex USA Inc Fort Worth plant' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-intelliflex-fort-worth-tx:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'CES Corporation (Intelliflex USA Inc. is a wholly owned subsidiary)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'CES Corp' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-mps-mount-juliet-tn:name",
+    "row": null,
+    "found": "plants.csv name 'Modular Power Solutions (MPS) - Mount Juliet prefabrication facility' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Modular Power Solutions, Mount Juliet' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-txla-huffman-tx:name",
+    "row": null,
+    "found": "plants.csv name 'TxLa Systems - Huffman manufacturing facility (corporate office and building fabrication)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'TxLa Systems Huffman manufacturing facility' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-txla-huffman-tx:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Mission Critical Group (MCG)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Mission Critical Group' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-powerflo-williamstown-wv:name",
+    "row": null,
+    "found": "plants.csv name 'PowerFlo Solutions - Williamstown plant (former Hino facility; pre-production)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'PowerFlo Solutions Williamstown' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-powerflo-reno-oh:name",
+    "row": null,
+    "found": "plants.csv name 'PowerFlo Solutions (PowerFlo Integrated) - Reno, Ohio 7 facility' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'PowerFlo Integrated, Reno' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-modutek-soperton-ga:name",
+    "row": null,
+    "found": "plants.csv name 'Modutek International (MTEK) - Soperton headquarters plant' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Modutek International LLC (MTEK), Soperton' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-modutek-soperton-ga:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Modutek International LLC (parent not stated)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Modutek International LLC' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-integra-akron-oh:name",
+    "row": null,
+    "found": "plants.csv name 'Integra Mission Critical - Akron factories (first plant 2018; second 250,000 sq ft factory 2024)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Integra Mission Critical Akron factory' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-integra-akron-oh:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Integra Mission Critical (Integra One, LLC)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Integra Mission Critical' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-siemens-pendergrass-ga:name",
+    "row": null,
+    "found": "plants.csv name 'Siemens - Pendergrass busway plant (pre-production)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Siemens Pendergrass' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-siemens-pendergrass-ga:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Siemens (Siemens Industry, Inc.; Smart Infrastructure)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Siemens Industry, Inc.' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-siemens-knightdale-nc:name",
+    "row": null,
+    "found": "plants.csv name 'Siemens - Knightdale facility (Raleigh integrated power delivery assembly)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Siemens Knightdale facility (Raleigh)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-siemens-knightdale-nc:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Siemens (Siemens Industry, Inc.; Smart Infrastructure, Electrification & Automation)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Siemens Industry, Inc.' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-siemens-wendell-nc:name",
+    "row": null,
+    "found": "plants.csv name 'Siemens - Wendell switchgear plant (Electrification and Automation US headquarters)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Siemens Wendell' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-siemens-pomona-ca:name",
+    "row": null,
+    "found": "plants.csv name 'Siemens - Pomona Electrical Products factory' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Siemens - Pomona' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-siemens-pomona-ca:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Siemens (Siemens Industry, Inc.; Smart Infrastructure, Electrical Products)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Siemens Industry, Inc.' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-siemens-energy-pearl-ms:name",
+    "row": null,
+    "found": "plants.csv name 'Siemens Energy - Pearl high-voltage switchgear factory (pre-production)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Siemens Energy Pearl' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-siemens-energy-richland-ms:name",
+    "row": null,
+    "found": "plants.csv name 'Siemens Energy - Richland high-voltage switchgear factory' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Siemens Energy Richland' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-meppi-new-galilee-pa:name",
+    "row": null,
+    "found": "plants.csv name 'Mitsubishi Electric Power Products (MEPPI) - New Galilee advanced switchgear facility' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'MEPPI New Galilee factory' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-cel-williamsburg-va:name",
+    "row": null,
+    "found": "plants.csv name 'CEL Critical Power - James City County (Williamsburg) plant' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'CEL Critical Power, Williamsburg' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-cel-williamsburg-va:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'CEL Critical Power (Dublin, Ireland)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'CEL Critical Power' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-giga-energy-houston-tx:name",
+    "row": null,
+    "found": "plants.csv name 'Giga Energy - Houston transformer factory' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Giga Energy Houston factory' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-abb-mebane-nc:name",
+    "row": null,
+    "found": "plants.csv name 'ABB - Mebane plant (former GE Industrial Solutions Mebane Operations)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'ABB, Inc. Mebane' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-abb-mebane-nc:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'ABB (ABB Inc.; Electrification, Distribution Solutions)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'ABB, Inc.' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-baer-georgetown-tx:name",
+    "row": null,
+    "found": "plants.csv name 'Baer Manufacturing - Georgetown CrossPoint plant (pre-production)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Baer Manufacturing Georgetown' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-baer-georgetown-tx:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Hunt Electric (Baer Manufacturing is a division)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Hunt Electric' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-eaton-chandler-az:name",
+    "row": null,
+    "found": "plants.csv name 'Eaton - Phoenix satellite assembly (Chandler)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Eaton - PHOENIX SATELLITE (Chandler)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-eaton-hayward-ca:name",
+    "row": null,
+    "found": "plants.csv name 'Eaton - San Francisco satellite assembly (Hayward)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Eaton - SAN FRANCISCO SATELLITE (Hayward)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-eaton-windsor-ct:name",
+    "row": null,
+    "found": "plants.csv name 'Eaton - Hartford satellite assembly (Windsor)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Eaton - HARTFORD SATELLITE (Windsor)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-central-electric-fulton-mo:name",
+    "row": null,
+    "found": "plants.csv name 'Central Electric Manufacturing - Fulton (nVent switchgear)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Central Electric Manufacturing Company (Fulton)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-sps-winneconne-wi:name",
+    "row": null,
+    "found": "plants.csv name 'Switchgear Power Systems (SPS) - Winneconne headquarters plant' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Switchgear Power Systems (SPS) - Winneconne' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nvent-oshkosh-wi:name",
+    "row": null,
+    "found": "plants.csv name 'Powergrid Solutions LLC (nVent) - Oshkosh switchgear plant' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Powergrid Solutions LLC - Oshkosh' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nvent-oshkosh-wi:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'nVent Electric plc (nVent EBS Holdings LLC)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'nVent (nVent EBS Holdings LLC)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-eaton-greenwood-sc:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Eaton Corporation plc' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Eaton' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-eaton-sumter-sc:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Eaton Corporation plc' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Eaton' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-schneider-fairfield-oh:name",
+    "row": null,
+    "found": "plants.csv name 'Schneider Electric - Fairfield plant' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Schneider Electric (Fairfield)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-myers-controlled-power-north-canton-oh:name",
+    "row": null,
+    "found": "plants.csv name 'Myers Controlled Power LLC (Controlled Power Corp, CPC)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Myers Controlled Power LLC' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-myers-controlled-power-north-canton-oh:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Myers Power Products, Inc.' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Myers Power Products' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-layerzero-streetsboro-oh:name",
+    "row": null,
+    "found": "plants.csv name 'LayerZero Power Systems - Philipp Parkway (LZ - Philipp)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'LZ - Philipp (LayerZero Power Systems, LLC)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-layerzero-streetsboro-oh:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'LayerZero Power Systems, LLC (employee-owned)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'LayerZero Power Systems, LLC' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-qes-west-jordan-ut:name",
+    "row": null,
+    "found": "plants.csv name 'Quality Electrical Systems (QES) - West Jordan manufacturing facility' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Quality Electrical Systems - West Jordan' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-module-x-shreveport-la:name",
+    "row": null,
+    "found": "plants.csv name 'Module X Solutions (MXS) - Shreveport manufacturing facility' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Module X Solutions - Main Facility, Shreveport' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-daikin-modular-phoenix-az:name",
+    "row": null,
+    "found": "plants.csv name 'Daikin Applied - Modular Solutions facility (Phoenix)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Daikin Modular Solutions (Phoenix)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-asco-lexington-nc:name",
+    "row": null,
+    "found": "plants.csv name 'ASCO Power Technologies - Welcome, NC plant (Lexington)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'ASCO Power Technologies - Lexington' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-kratos-arvada-co:name",
+    "row": null,
+    "found": "plants.csv name 'Kratos Power & Controls (Kratos Industries, a brand of Legrand) - Arvada' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Kratos Power & Controls - Arvada' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-trystar-houston-tx:name",
+    "row": null,
+    "found": "plants.csv name 'Trystar Houston (Trystar TPMG, LLC; former Total Plant Management Group)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Trystar Houston' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-intermountain-electronics-price-ut:name",
+    "row": null,
+    "found": "plants.csv name 'Intermountain Electronics (IE Corp) - Price headquarters factory' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Intermountain Electronics - Price' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-intermountain-electronics-centralia-il:name",
+    "row": null,
+    "found": "plants.csv name 'Intermountain Electronics (IE Corp) - Centralia factory' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Intermountain Electronics - Centralia' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-intermountain-electronics-commerce-city-co:name",
+    "row": null,
+    "found": "plants.csv name 'Intermountain Electronics (IE Corp) - Denver (Commerce City) factory' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Intermountain Electronics - Denver (Commerce City)' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-intermountain-electronics-south-point-oh:name",
+    "row": null,
+    "found": "plants.csv name 'Intermountain Electronics (IE Corp) - South Point factory' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Intermountain Electronics - South Point' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-maverick-power-garland-tx:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Maverick Power LLC' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Maverick Power' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-maverick-power-dallas-tx:name",
+    "row": null,
+    "found": "plants.csv name 'Maverick Power - Dallas 1 design headquarters and manufacturing (pre-production)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Maverick Power - Dallas 1 design headquarters and manufacturing' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-maverick-power-dallas-tx:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Maverick Power LLC' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Maverick Power' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-iem-fremont-ca:name",
+    "row": null,
+    "found": "plants.csv name 'IEM FRE1 (The New IEM, LLC), Fremont' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'IEM FRE1, Fremont' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-iem-fremont-ca:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'The New IEM, LLC (IEM Holdings Group, Inc.)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'The New IEM, LLC' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nucor-data-systems-madison-in:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Nucor Corporation (Nucor Data Systems)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Nucor Data Systems' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nucor-data-systems-frankfort-ky:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Nucor Corporation (Nucor Data Systems)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Nucor (Nucor Data Systems)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-roeslein-red-bud-il:name",
+    "row": null,
+    "found": "plants.csv name 'Roeslein Modular Fabrication (RMF), Red Bud' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Roeslein Modular Fabrication, Red Bud' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-forge-racks-connersville-in:name",
+    "row": null,
+    "found": "plants.csv name 'Forge Racks and Dunnage (Polargy) - Connersville' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Forge Racks and Dunnage - Connersville' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-forge-racks-connersville-in:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Polargy LLC (acquired 2026-05-19)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Polargy LLC' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-liquidstack-carrollton-tx:name",
+    "row": null,
+    "found": "plants.csv name 'LiquidStack - Carrollton manufacturing (headquarters plant and second facility two blocks away)' carries words no name row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'LiquidStack Carrollton manufacturing' (from the name rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-thermo-bond-elk-point-sd:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Thermo Bond (Thermo Bond Buildings; Muth family owned since 2014)' carries words no parent_company row shows (label, owner, legal suffix, note or status)",
+    "fix": "set to 'Thermo Bond (returned to Muth family ownership in July 2014)' (from the parent_company rows)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-powell-houston-tx:name",
+    "row": null,
+    "found": "plants name carries '(EPA: Powell Electrical Systems)' with no name row; row 20635 'Jacintoport fabrication yard' to be checked against the Global Services PDF",
+    "fix": "not touched: plant is being profiled now (profiler E); pass to its fact-checker",
+    "outcome": "skipped_dnt"
+   },
+   {
+    "claim_id": "p-powell-houston-tx:parent_company",
+    "row": null,
+    "found": "row 20636 'Powell Industries, Inc.' cites a PDF quote naming no company; suffix to be checked",
+    "fix": "not touched: plant is being profiled now (profiler E); pass to its fact-checker",
+    "outcome": "skipped_dnt"
+   },
+   {
+    "claim_id": "p-powell-houston-tx-3:parent_company",
+    "row": null,
+    "found": "row 20656 'Powell Industries, Inc.' cites a PDF quote naming no company; suffix to be checked",
+    "fix": "not touched: plant is being profiled now (profiler E); pass to its fact-checker",
+    "outcome": "skipped_dnt"
+   },
+   {
+    "claim_id": "p-wunderlich-malec-baldwin-fl:parent_company",
+    "row": null,
+    "found": "plants parent '(employee-owned)' has no parent row",
+    "fix": "not touched: plant is being profiled now (profiler E); pass to its fact-checker",
+    "outcome": "skipped_dnt"
+   },
+   {
+    "claim_id": "p-schneider-el-paso-tx:name",
+    "row": null,
+    "found": "plants name '(medium-voltage switchgear)' has no name row",
+    "fix": "not touched: plant is being profiled now (profiler E); pass to its fact-checker",
+    "outcome": "skipped_dnt"
+   },
+   {
+    "claim_id": "p-schneider-el-paso-tx:parent_company",
+    "row": null,
+    "found": "plants parent '(Schneider Electric USA, Inc.)' has no parent row",
+    "fix": "not touched: plant is being profiled now (profiler E); pass to its fact-checker",
+    "outcome": "skipped_dnt"
+   },
+   {
+    "claim_id": "p-powell-northlake-il:parent_company",
+    "row": 20666,
+    "found": "value 'Powell Industries, Inc.': 'Powell Industries, Inc.' is not on the Global Services PDF; the legal name now rests on a 10-K row (second pass: phrase test)",
+    "fix": "row value corrected to 'Powell (Global Services overview lists Electrical Division Northlake)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-powell-north-canton-oh:parent_company",
+    "row": 20674,
+    "found": "value 'Powell Industries, Inc.': 'Powell Industries, Inc.' is not on the Global Services PDF; the legal name now rests on a 10-K row (second pass: phrase test)",
+    "fix": "row value corrected to 'Powell (Global Services overview lists Electrical Division North Canton, OH)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-dis-tran-alexandria-la:parent_company",
+    "row": 20778,
+    "found": "value 'Crest Industries, LLC (DIS-TRAN Packaged Substations)': ', LLC' is not on distran.com (second pass: phrase test)",
+    "fix": "row value corrected to 'Crest Industries (DIS-TRAN Packaged Substations)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nvent-trachte-goodyear-az:name",
+    "row": 20807,
+    "found": "value 'nVent engineered buildings - Goodyear (pre-production)': 'nVent engineered buildings' and '(pre-production)' are not on the locations page as written; the page says 'Goodyear, Arizona Facility COMING SOON' (pre-production status stays in products) (second pass: phrase test)",
+    "fix": "row value corrected to 'nVent TRACHTE - Goodyear, Arizona Facility (COMING SOON)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-mcs-alum-bank-pa:name",
+    "row": 21195,
+    "found": "value 'Mission Critical Solutions, LLC (MCS Headquarters)': ', LLC' is not on the facilities page (second pass: phrase test)",
+    "fix": "row value corrected to 'Mission Critical Solutions (MCS Headquarters)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-mcs-alum-bank-pa:parent_company",
+    "row": 21196,
+    "found": "value 'Mission Critical Solutions, LLC (family owned; not Mission Critical Group)': ', LLC' and '(family owned; not Mission Critical Group)' are not page text; the disambiguation from Mission Critical Group is a judgement (second pass: phrase test)",
+    "fix": "row value corrected to 'Mission Critical Solutions (founded 2008)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-trystar-faribault-mn:parent_company",
+    "row": 21250,
+    "found": "value 'Trystar, LLC': ', LLC' is not on the about page (second pass: phrase test)",
+    "fix": "row value corrected to 'Trystar'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-trystar-houston-tx:parent_company",
+    "row": 23435,
+    "found": "value 'Trystar, LLC': ', LLC' is not on the acquisition article (second pass: phrase test)",
+    "fix": "row value corrected to 'Trystar'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-iem-san-antonio-tx:name",
+    "row": 21308,
+    "found": "value 'IEM San Antonio (Brooks) manufacturing plant (pre-production)': '(Brooks)' and '(pre-production)' are not on the posting; it says 'our new manufacturing plant is coming online' (pre-production status stays in products) (second pass: phrase test)",
+    "fix": "row value corrected to 'IEM San Antonio new manufacturing plant (coming online)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fibrebond-minden-la:parent_company",
+    "row": 21322,
+    "found": "value 'Eaton (Fibrebond, acquired 2025)': 'acquired 2025' is not stated on the posting near the company line; the posting says 'Fibrebond, an Eaton company' (second pass: phrase test)",
+    "fix": "row value corrected to 'Eaton (Fibrebond, an Eaton company)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-intermountain-electronics-centralia-il:parent_company",
+    "row": 23472,
+    "found": "value 'Intermountain Electronics, Inc. (IE Corp)': 'Inc. (IE Corp)' is not on the Paylocity posting text cited (the page names 'Intermountain Electronics (IE)') (second pass: phrase test)",
+    "fix": "row value corrected to 'Intermountain Electronics (IE)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-intermountain-electronics-commerce-city-co:parent_company",
+    "row": 23491,
+    "found": "value 'Intermountain Electronics, Inc. (IE Corp)': 'Inc. (IE Corp)' is not on the Paylocity posting text cited (second pass: phrase test)",
+    "fix": "row value corrected to 'Intermountain Electronics (IE)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-intermountain-electronics-south-point-oh:parent_company",
+    "row": 23510,
+    "found": "value 'Intermountain Electronics, Inc. (IE Corp)': 'Inc. (IE Corp)' is not on the Paylocity posting text cited (second pass: phrase test)",
+    "fix": "row value corrected to 'Intermountain Electronics (IE)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-powell-northlake-il:parent_company",
+    "row": null,
+    "found": "plants.csv parent 'Powell Industries, Inc.' rested on a PDF row that names no company",
+    "fix": "10-K parent row added; plants parent kept",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-powell-north-canton-oh:parent_company",
+    "row": null,
+    "found": "plants.csv parent 'Powell Industries, Inc.' rested on a PDF row that names no company",
+    "fix": "10-K parent row added; plants parent kept",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nvent-trachte-goodyear-az:name",
+    "row": null,
+    "found": "plants.csv name 'nVent engineered buildings - Goodyear (new plant, pre-production)' carries words no name row shows (second pass)",
+    "fix": "set to 'nVent TRACHTE - Goodyear'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-iem-san-antonio-tx:name",
+    "row": null,
+    "found": "plants.csv name 'IEM San Antonio (Brooks) manufacturing plant (pre-production)' carries words no name row shows (second pass)",
+    "fix": "set to 'IEM San Antonio new manufacturing plant'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-dis-tran-alexandria-la:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Crest Industries, LLC (DIS-TRAN Packaged Substations)' carries words no parent_company row shows (second pass)",
+    "fix": "set to 'Crest Industries (DIS-TRAN Packaged Substations)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-mcs-alum-bank-pa:name",
+    "row": null,
+    "found": "plants.csv name 'Mission Critical Solutions, LLC (MCS Headquarters), Alum Bank' carries words no name row shows (second pass)",
+    "fix": "set to 'Mission Critical Solutions (MCS Headquarters), Alum Bank'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-mcs-alum-bank-pa:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Mission Critical Solutions, LLC (family owned; not Mission Critical Group)' carries words no parent_company row shows (second pass)",
+    "fix": "set to 'Mission Critical Solutions (founded 2008)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-trystar-faribault-mn:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Trystar, LLC' carries words no parent_company row shows (second pass)",
+    "fix": "set to 'Trystar'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-trystar-houston-tx:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Trystar, LLC' carries words no parent_company row shows (second pass)",
+    "fix": "set to 'Trystar'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fibrebond-minden-la:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Eaton (Fibrebond, acquired 2025)' carries words no parent_company row shows (second pass)",
+    "fix": "set to 'Eaton (Fibrebond, an Eaton company)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-intermountain-electronics-centralia-il:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Intermountain Electronics, Inc. (IE Corp)' carries words no parent_company row shows (second pass)",
+    "fix": "set to 'Intermountain Electronics (IE)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-intermountain-electronics-commerce-city-co:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Intermountain Electronics, Inc. (IE Corp)' carries words no parent_company row shows (second pass)",
+    "fix": "set to 'Intermountain Electronics (IE)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-intermountain-electronics-south-point-oh:parent_company",
+    "row": null,
+    "found": "plants.csv parent_company 'Intermountain Electronics, Inc. (IE Corp)' carries words no parent_company row shows (second pass)",
+    "fix": "set to 'Intermountain Electronics (IE)'",
+    "outcome": "fixed"
+   }
+  ],
+  "2": [
+   {
+    "claim_id": "p-hardin-lacon-il:materials",
+    "row": 24496,
+    "found": "stated row value '14 gauge galvannealed enclosure construction (thin sheet)' carries the rubric label 'thin sheet'",
+    "fix": "value trimmed to the page text; thin-sheet classification moved to an inferred part_size_fit row",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-hardin-lacon-il:part_size_fit",
+    "row": 24497,
+    "found": "stated row value begins 'thin sheet:' (rubric judgement not on the page)",
+    "fix": "stated row trimmed to the page fact; new inferred row (blank source) carries the thin-sheet classification",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-dvm-north-wales-pa:part_size_fit",
+    "row": 24585,
+    "found": "stated row value begins 'thin sheet:' (rubric judgement not on the page)",
+    "fix": "stated row trimmed to the page fact; new inferred row carries the classification",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-powell-north-canton-oh:part_size_fit",
+    "row": null,
+    "found": "plants.csv part_size_fit carries 'thin sheet, weak fit (rubric classification, inferred)' with no inferred row after the fact-check correction",
+    "fix": "inferred row added (blank source)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-powell-northlake-il:part_size_fit",
+    "row": null,
+    "found": "plants.csv part_size_fit carries 'thin sheet, weak fit (rubric classification, inferred)' with no inferred row after the fact-check correction",
+    "fix": "inferred row added (blank source)",
+    "outcome": "fixed"
+   }
+  ],
+  "3": [
+   {
+    "claim_id": "p-vertiv-anderson-sc:address",
+    "row": null,
+    "found": "plants.csv address was overwritten with a single corrected row value 'ECHO: E&I Engineering USA Corp, 400 Supreme Industrial Dr, Anderson' (apply_factcheck pasted the ECHO row)",
+    "fix": "address restored to '400 Supreme Industrial Drive, Anderson, SC 29621' (OSHA address row 21547)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nvent-trachte-houston-tx:welder_postings",
+    "row": null,
+    "found": "plants.csv welder_postings had been overwritten with one corrected inferred row ('second nVent production site in Houston: NVENT, 271 McCarty St ...'), dropping the posting summary",
+    "fix": "restored from the stated posting rows 23907-23909 with the inferred site-tie clause (rows 23910, 23911 and the new site_attribution row)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-crusoe-arvada-co:products",
+    "row": null,
+    "found": "plants.csv products had been overwritten with the single corrected company-level row (Crusoe Spark ...), dropping the stated site-level product row 24206",
+    "fix": "products rebuilt from rows 24206 (site, stated) and 20901 (company-level, inferred)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-chatsworth-simi-valley-ca:weld_processes",
+    "row": null,
+    "found": "plants.csv weld_processes had been overwritten with the single corrected Welder 1 row, dropping the 2nd Shift requisition that its own row carries",
+    "fix": "rebuilt from the two requisition rows (one clause per row)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-crusoe-brighton-co:address",
+    "row": 20927,
+    "found": "value '22600 E I-76 Frontage Road, Brighton, CO 80603': ZIP 80603 is not on the cited Bisnow page",
+    "fix": "row value set to '22600 E I-76 Frontage Road, Brighton, CO'; plants.csv field set to '22600 E I-76 Frontage Road, Brighton, CO'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-flex-dallas-tx:address",
+    "row": 20941,
+    "found": "value '4001 N Prairie Creek Road, Dallas, TX 75227': ZIP 75227 is not on the cited Dallas Innovates page",
+    "fix": "row value set to '4001 N Prairie Creek Road, Dallas, TX'; plants.csv field set to '4001 N Prairie Creek Road, Dallas, TX'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-subzero-salt-lake-city-ut:address",
+    "row": 20981,
+    "found": "value '805 South 3600 West, Salt Lake City, UT 84104': ZIP 84104 is not on the cited Digitalisation World page",
+    "fix": "row value set to '805 South 3600 West, Salt Lake City, UT'; plants.csv field set to '805 South 3600 West, Salt Lake City, UT'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-harvard-integrations-tea-sd:address",
+    "row": 15499,
+    "found": "value '27157 470th Ave, Tea, SD 57064': ZIP 57064 is not on the cited Hill Companies page",
+    "fix": "row value set to '27157 470th Ave, Tea, SD'; plants.csv field set to '27157 470th Ave, Tea, SD'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fibrebond-north-little-rock-ar:address",
+    "row": 21343,
+    "found": "value 'North Little Rock, AR 72116 (street not stated)': ZIP 72116 is not on the cited AEDC release",
+    "fix": "row value set to 'North Little Rock, AR (street not stated)'; plants.csv field set to 'North Little Rock, AR (street not stated)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-powersecure-durham-nc:address",
+    "row": 14900,
+    "found": "value 'Second EPA record at 4068 Stirrup Creek Dr (same campus to be confirmed)': clause \"(same campus to be confirmed)\" is a judgement, not page text; the campus reading is the inferred row 17850",
+    "fix": "row value set to 'second EPA record at 4068 Stirrup Creek Dr'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-enercon-east-peoria-il:products",
+    "row": 14622,
+    "found": "value 'UL switchgear and power distribution (boundary, sheet-metal switchgear maker with in-house MIG/TIG welding; single production site) - fits v-datacenter-grid-prefab; vertical added': value carried judgements (boundary, sheet-metal maker, in-house MIG/TIG, single production site, fits the vertical) that the home page does not carry",
+    "fix": "row value set to 'precision-engineered switchgear, control panels, generator docking stations and power packaging systems, designed and manufactured by Enercon'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-harvard-integrations-tea-sd:products",
+    "row": 15504,
+    "found": "value 'power distribution centers (single Tea campus) - fits v-datacenter-grid-prefab; vertical added': value carried judgements (single Tea campus; fits the vertical; vertical added) not on the page; the page also carries the prefabricated-enclosure line the plants.csv field uses",
+    "fix": "row value set to 'power distribution centers, generator enclosures and sub-base fuel tanks; prefabricated modular enclosures for mission-critical electrical equipment for data ce'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-girtz-monticello-in:products",
+    "row": 18676,
+    "found": "value 'power skid bases and switchgear power modules (site-level permit and company site) - fits v-datacenter-grid-prefab; vertical added': \"switchgear power modules\" and \"(site-level permit and company site)\" join a company-site clause to a permit row; the permit carries enclosures and skid bases only (switchgear modules rest on row 14478, girtz.com)",
+    "fix": "row value set to 'metal enclosures and skid bases for power packaging; diesel generator quality assurance testing (2026 state air permit)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-emi-magnolia-tx:products",
+    "row": 20770,
+    "found": "value 'company line: steel fabrication for data center, BESS and power delivery skids; Magnolia location opened January 2025': \"company line: steel fabrication for data center, BESS and power delivery skids\" is not on the cited about page (it is on the home page, now its own row)",
+    "fix": "row value set to 'Magnolia location opened January 2025'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-point-eight-bay-st-louis-ms:products",
+    "row": 21126,
+    "found": "value 'switchgear components: copper bus assembly and sheet-metal punch/brake forming (site postings); no welded structure shown': \"sheet-metal punch/brake forming\" and \"switchgear components\" are not on the cited Bus CNC Operator posting (another site posting)",
+    "fix": "row value set to 'copper bus assembly for electrical equipment (Bus CNC Operator posting); no welded structure shown'; plants.csv field set to 'copper bus assembly for electrical equipment (site posting); no welded structure shown'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-dis-tran-pineville-la:products",
+    "row": 21236,
+    "found": "value 'headquarters of a packaged and factory-built substation maker; no production shown at this address': \"headquarters ... no production shown at this address\" is not on the cited Lever posting (headquarters rests on the distransubstations.com name row 21232)",
+    "fix": "row value set to 'DIS-TRAN Packaged Substations: design and supply of high-voltage, open-air substations and switchyards since 1965 (the cited Welder posting is at the Port of Al'; plants.csv field set to 'company line: high-voltage, open-air substations and switchyards (DIS-TRAN Packaged Substations); headquarters at Pineville per the company site; no production '",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fibrebond-minden-la:products",
+    "row": 21325,
+    "found": "value 'pre-integrated modular buildings and power enclosures (e-houses) and skids, concrete or steel structural enclosures, for data center, utility, industrial and communications custome': \"pre-integrated modular buildings ... skids ... data center ... communications customers\" is not on the cited /utility/ page (it is on Eaton's Fibrebond postings, now its own row)",
+    "fix": "row value set to 'concrete or steel structural enclosures integrating relay panels, termination cabinets, DC power systems and building utilities (utility line)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-aaon-memphis-tn:welder_postings",
+    "row": 21712,
+    "found": "value 'listed: Welder JR102780 and weld helpers/supervisor': \"supervisor\" is not on the cited posting page",
+    "fix": "row value set to 'listed: Welder (Days) JR102780, Memphis, datePosted 2026-10-14; the page's similar-jobs list shows Welder Helper (Days) and Welder Helper (Nights) at Memphis'; plants.csv field set to 'listed (record excluded): Welder (Days) JR102780 (datePosted 2026-10-14); Welder Helper Days and Nights (similar-jobs list); AAON own Workday board read 2026-11'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-modine-jefferson-city-mo:products",
+    "row": 21787,
+    "found": "value 'Data-center chillers (Airedale by Modine): two chiller production lines running, four planned; site also part of Perform': \"(Airedale by Modine)\" and \"site also part of Perform...\" are not on the cited BizTimes page",
+    "fix": "row value set to 'data-center chillers: two chiller production lines already running at Jefferson City, a total of four planned'; plants.csv field set to 'data-center chillers: two chiller production lines running at Jefferson City, a total of four planned (BizTimes, Oct 29, 2025); no welded steel frame or skid st'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-modine-grenada-ms:products",
+    "row": 21800,
+    "found": "value 'Data-center chillers (Airedale by Modine): chiller production launched, two of five planned lines running; no welded ste': \"(Airedale by Modine)\" is not on the cited BizTimes page",
+    "fix": "row value set to 'data-center chillers: chiller production launched at Grenada, two of five planned lines running; no welded steel frame or skid stated'; plants.csv field set to 'data-center chillers: chiller production launched at Grenada, two of five planned lines running (BizTimes, Oct 29, 2025); no welded steel frame or skid stated'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-modine-franklin-wi:products",
+    "row": 21814,
+    "found": "value 'Airedale by Modine data-center cooling products; 155,000 sq ft facility opened Nov 2025 (300+ jobs by March 2026); desig': \"Airedale by Modine\", \"155,000 sq ft\", \"opened Nov 2025\" and \"300+ jobs by March 2026\" are not on the cited BizTimes page (they rest on the PRNewswire row 21813)",
+    "fix": "row value set to 'data-center products: initial production at Franklin this quarter (BizTimes, Oct 29, 2025); Franklin designed for flexible manufacturing and able to produce mod'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-modine-grand-prairie-tx:products",
+    "row": 21827,
+    "found": "value 'Pre-production / ramp-up note: new data-center facility with five chiller lines, scheduled to open early in Modine fisca; Pre-production / ramp-up note: new data-center facility wi': value repeated itself and was cut mid-word (\"fisca\")",
+    "fix": "row value set to 'pre-production: new data-center facility at Grand Prairie with five chiller lines, scheduled to open early next fiscal year (BizTimes, Oct 29, 2025); able to pr'; plants.csv field set to 'pre-production: new data-center facility with five chiller lines, scheduled to open early next fiscal year (BizTimes, Oct 29, 2025); stated as able to produce m'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-eaton-carol-stream-il:products",
+    "row": 22963,
+    "found": "value 'metal stamping for Eaton vehicle division (presses, tool and die)': \"tool and die\" and \"for Eaton vehicle division\" are not on the cited posting as written",
+    "fix": "row value set to 'metal stamping: operates stamping presses (Press Operator posting, Carol Stream); the posting carries Eaton's Mobility Group (Vehicle and eMobility) separation '; plants.csv field set to 'metal stamping (stamping presses; Press Operator posting); posting carries Eaton's Mobility Group (Vehicle and eMobility) notice'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-eaton-fayetteville-nc:welder_postings",
+    "row": 23092,
+    "found": "value 'none with a welder title; Fabricator Operator (1st Shift, posted 2026-11-13, $18/h) names spot welding and stud welding of sheet metal': \"stud welding\" is not on the cited posting",
+    "fix": "row value set to 'none with a welder title; Fabricator Operator (1st Shift, posted 2026-11-13, $18.40/h) operates spot-welders, punch presses and other metal-fabrication equipmen'; plants.csv field set to 'none with a welder title; Fabricator Operator (1st Shift, posted 2026-11-13, $18.40/h) operates spot-welders, punch presses and other metal-fabrication equipmen'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-thermo-bond-elk-point-sd:welder_postings",
+    "row": 23856,
+    "found": "value '2 open; 2 open (Welder AM - Weekdays; Welder AM - Weekends), Elk Point, MIG': value \"2 open (Weekdays; Weekends)\" cites the Weekdays page only; the Weekends posting has its own row (23857)",
+    "fix": "row value set to '1 open: Welder AM - Weekdays, Elk Point, SD; operates a MIG welder'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-tas-houston-tx-2:address",
+    "row": 21583,
+    "found": "value '2920 Airport Blvd, Houston (OSHA ZIP 77019; geocoded 77051)': \"geocoded 77051\" is a Census geocoder result, not on the OSHA record; moved to an inferred row",
+    "fix": "row value set to '2920 Airport Blvd., Houston, TX 77019 (OSHA record)'; plants.csv field set to '2920 Airport Blvd, Houston, TX (OSHA ZIP 77019)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-tas-houston-tx-3:address",
+    "row": 21599,
+    "found": "value '12218 Robin, Houston (OSHA ZIP 77021; geocoded Robin Blvd 77045)': \"geocoded Robin Blvd 77045\" is a Census geocoder result, not on the OSHA record; moved to an inferred row",
+    "fix": "row value set to '12218 Robin, Houston, TX 77021 (OSHA record)'; plants.csv field set to '12218 Robin, Houston, TX (OSHA ZIP 77021)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-daikin-modular-phoenix-az:address",
+    "row": null,
+    "found": "plants.csv address '4940 W Lower Buckeye Rd, Phoenix, AZ 85043 (OSHA files ZIP 85205)': ZIP 85043 is on no address row (the OSHA record files 85205)",
+    "fix": "set to '4940 W Lower Buckeye Rd, Phoenix, AZ (OSHA ZIP 85205)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nvent-oshkosh-wi:address",
+    "row": null,
+    "found": "plants.csv address '3110 Progress Drive, Oshkosh, WI 54901': ZIP 54901 stayed in plants.csv after the fact-check corrected the OSHA row to 54902",
+    "fix": "set to '3110 Progress Drive, Oshkosh, WI 54902'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fti-monroe-la:address",
+    "row": null,
+    "found": "plants.csv address '535 Highway 594, Monroe, LA 71203': ZIP 71203 is not on the cited FTI release",
+    "fix": "set to '535 Highway 594, Monroe, LA'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-mcm-engineering-enoch-ut:address",
+    "row": null,
+    "found": "plants.csv address '655 E 4930 N, Enoch, UT 84721': ZIP 84721 is not on the cited mcmeng2.com page",
+    "fix": "set to '655 E 4930 N, Enoch, UT'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-fti-olathe-ks:address",
+    "row": null,
+    "found": "plants.csv address '22150 W. 167th St., Olathe, KS 66062 (second building; adjacent to the 2019 Excellerate building)': ZIP 66062 is not on the cited REjournals page (the adjacency clause rests on products row 23573)",
+    "fix": "set to '22150 W. 167th St., Olathe, KS (second building; adjacent to the 2019 Excellerate building)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-great-lakes-corry-pa:address",
+    "row": null,
+    "found": "plants.csv address 'Corry, PA (street address not stated on pages read)': \"on pages read\" is a note, not page text",
+    "fix": "set to 'Corry, PA (street not stated)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-point-eight-belle-chasse-la:address",
+    "row": null,
+    "found": "plants.csv address '1510 Engineers Rd, Belle Chasse, LA 70037 (campus also 1503 Engineers Rd)': \"(campus also 1503 Engineers Rd)\" has no address row",
+    "fix": "set to '1510 Engineers Rd, Belle Chasse, LA 70037'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-balazs-honey-brook-pa:address",
+    "row": null,
+    "found": "plants.csv address 'Honey Brook, PA 19344 (street address not stated on the company site; city-level coordinates)': ZIP 19344 is not on the cited about page",
+    "fix": "set to 'Honey Brook, PA (street not stated) [coordinates city-level]'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-eaton-bellevue-ne:address",
+    "row": null,
+    "found": "plants.csv address 'Bellevue, NE (street not stated; replaces Eaton Omaha switchgear site six miles away)': \"replaces Eaton Omaha switchgear site\" is not page text",
+    "fix": "set to 'Bellevue, NE (street not stated; Eaton is moving from its current Omaha site to a new facility six miles away)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-eaton-henrico-va:address",
+    "row": null,
+    "found": "plants.csv address 'Henrico County, VA (Richmond area; street not stated)': \"Richmond area\" is not on the cited page",
+    "fix": "set to 'Henrico County, VA (street not stated)'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-mps-mount-juliet-tn:address",
+    "row": null,
+    "found": "plants.csv address 'Mount Juliet, TN (street not stated; 12.5-acre site) [coordinates city-level]': \"12.5-acre site\" has no address row",
+    "fix": "set to 'Mount Juliet, TN (street not stated) [coordinates city-level]'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-powerflo-williamstown-wv:address",
+    "row": null,
+    "found": "plants.csv address 'former Hino Motors Manufacturing facility, Williamstown, WV (street not stated) [coordinates city-level]': \"Hino Motors Manufacturing\" is not on the cited release (it says the Hino manufacturing facility)",
+    "fix": "set to 'former Hino manufacturing facility, Williamstown, WV (street not stated) [coordinates city-level]'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-integra-akron-oh:address",
+    "row": null,
+    "found": "plants.csv address 'Akron, OH 44306 (factory streets not stated; Akron office listed at 1212 Massillon Rd) [coordinates city-level]': wording kept to the contact-page office address",
+    "fix": "set to 'Akron, OH 44306 (contact page office: 1212 Massillon Rd; factory street not stated) [coordinates city-level]'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-siemens-pendergrass-ga:address",
+    "row": null,
+    "found": "plants.csv address 'Pendergrass, GA (street not stated; 550,000 sq ft new plant) [coordinates city-level]': \"plant\" restated as the page's \"manufacturing facility\"",
+    "fix": "set to 'Pendergrass, GA (street not stated; new 550,000 sq ft manufacturing facility) [coordinates city-level]'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-siemens-knightdale-nc:address",
+    "row": null,
+    "found": "plants.csv address 'Knightdale, NC (Raleigh area; street not stated; 131,000 sq ft) [coordinates city-level]': \"Raleigh area\" and \"131,000 sq ft\" are not on the cited posting",
+    "fix": "set to 'Knightdale, NC (street not stated) [coordinates city-level]'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-siemens-energy-pearl-ms:address",
+    "row": null,
+    "found": "plants.csv address 'Pearl, Rankin County, MS (street not stated) [coordinates city-level]': \"Rankin County\" is not on the cited release",
+    "fix": "set to 'Pearl, MS (street not stated) [coordinates city-level]'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-meppi-new-galilee-pa:address",
+    "row": null,
+    "found": "plants.csv address 'New Galilee, Beaver County, PA (street not stated) [coordinates city-level]': \"Beaver County\" is not on the cited release",
+    "fix": "set to 'New Galilee, PA (street not stated) [coordinates city-level]'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-giga-energy-houston-tx:address",
+    "row": null,
+    "found": "plants.csv address 'Houston, TX (street not stated; 63,000 sq ft) [coordinates city-level]': \"63,000 sq ft\" is not on the cited about page",
+    "fix": "set to 'Houston, TX (street not stated) [coordinates city-level]'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-baer-georgetown-tx:address",
+    "row": null,
+    "found": "plants.csv address 'CrossPoint Business District, Georgetown, TX (street not stated; EPA lists Baer Manufacturing at 4815 N Interstate 35 Ste 104, Georgetown) [coordinates city-level]': the EPA clause \"4815 N Interstate 35 Ste 104\" has no address row",
+    "fix": "set to 'CrossPoint Business District, Georgetown, TX (street not stated) [coordinates city-level]'",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-sps-winneconne-wi:address",
+    "row": 23121,
+    "found": "value '205 W Enterprise Rd, Winneconne (second SPS establishment on the campus)': plants address names 202 W Enterprise Rd, which no address row carried (only the 205 record); both OSHA records are now quoted",
+    "fix": "row value set to '202 W Enterprise Rd (SPS 202) and 205 W Enterprise Rd (SPS 205), Winneconne, WI 54986: two SPS OSHA establishments on one campus'",
+    "outcome": "fixed"
+   }
+  ],
+  "4": [
+   {
+    "claim_id": "p-eaton-greenwood-sc:welder_postings",
+    "row": 24328,
+    "found": "row 24328 (Robot Weld technician) names only Greenwood, SC without the building qualifier the other Greenwood rows carry; Eaton has other production buildings in Greenwood 29649",
+    "fix": "qualifier added; the inferred site_attribution row 24317 (not settled) already covers it; no points ride on this robot-operator posting",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-vertiv-pelzer-sc:products",
+    "row": 21523,
+    "found": "base row 21523 says 'site fabricates steel components ...' as a stated site fact from a posting that names Pelzer only (Vertiv posts 'Pelzer Sites', P1 and P2)",
+    "fix": "value restated as the posting fact; the tie rests on the existing inferred site_attribution row 24274 (campus reading)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-nvent-trachte-houston-tx:products",
+    "row": 17840,
+    "found": "base row 17840 states the Houston Electrical Installation Assembler posting's work as a site product with no qualifier; the posting names Houston only and nVent has a second Houston production site (271 McCarty St)",
+    "fix": "qualifier added; new inferred site_attribution row covering every Central Electric Houston posting",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-maverick-power-garland-tx:products",
+    "row": 23542,
+    "found": "row 23542 'second Garland facility (plant manager posting)' is tagged stated on the Miller Road record; Maverick has two Garland sites (OSHA 1601 Shiloh Road)",
+    "fix": "row restated as the posting fact; new inferred site_attribution row; no score (base record, no welder posting)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-tas-houston-tx:products",
+    "row": null,
+    "found": "posting-sourced products/welder_postings rows tie Workday postings located 'Houston, TX (TAS-Cullen HQ)' to this record with no site-attribution row; TAS has five Houston establishments",
+    "fix": "inferred site_attribution row added (label match to the OSHA establishment); no score (base record)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-tas-houston-tx-2:products",
+    "row": null,
+    "found": "posting-sourced products/welder_postings rows tie Workday postings located 'Houston, TX (TAS - Airport B and TAS-AIRPORT)' to this record with no site-attribution row; TAS has five Houston establishments",
+    "fix": "inferred site_attribution row added (label match to the OSHA establishment); no score (base record)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-tas-houston-tx-3:products",
+    "row": null,
+    "found": "posting-sourced products/welder_postings rows tie Workday postings located 'Houston, TX (TAS-Robin)' to this record with no site-attribution row; TAS has five Houston establishments",
+    "fix": "inferred site_attribution row added (label match to the OSHA establishment); no score (base record)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-gw-electric-bolingbrook-il:triggers",
+    "row": null,
+    "found": "plants.csv triggers said '(same campus)' for the 245 molding building, a campus conclusion no row carries (the site_attribution row now says the campus test is not met)",
+    "fix": "triggers text rewritten without the campus clause; inferred triggers row added; demand already 8 by ruling",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-crusoe-tulsa-ok:welder_postings",
+    "row": null,
+    "found": "Crusoe has two Tulsa sites (5404 S 122nd East Ave; 3995 N 125th E Ave); the Ashby board labels them Tulsa and Tulsa (2); no welder posting at either, and the company-level \"Tulsa named as a build site\" rows are company-level, not postings",
+    "fix": "checked: no city-only posting tie to fix",
+    "outcome": "no_change"
+   },
+   {
+    "claim_id": "p-rk-mission-critical-aurora-co:welder_postings",
+    "row": null,
+    "found": "two RK Aurora sites; the \"none found\" posting result covers both and ties nothing",
+    "fix": "checked: no city-only posting tie to fix",
+    "outcome": "no_change"
+   },
+   {
+    "claim_id": "p-powersecure-durham-nc:welder_postings",
+    "row": null,
+    "found": "4001/4058/4068 Stirrup Creek Dr; inferred campus rows 17850 and 18555 already exist; the one Durham posting is not counted",
+    "fix": "checked: no city-only posting tie to fix",
+    "outcome": "no_change"
+   },
+   {
+    "claim_id": "p-sps-winneconne-wi:welder_postings",
+    "row": null,
+    "found": "202 and 205 W Enterprise Rd, one campus (both NAICS 335313); no postings read",
+    "fix": "checked: no city-only posting tie to fix",
+    "outcome": "no_change"
+   },
+   {
+    "claim_id": "p-schneider-west-chester-oh:welder_postings",
+    "row": null,
+    "found": "other West Chester OSHA sites are NAICS 238210 contractor offices; no postings",
+    "fix": "checked: no city-only posting tie to fix",
+    "outcome": "no_change"
+   }
+  ],
+  "5": [
+   {
+    "claim_id": "p-gw-electric-bolingbrook-il:welder_postings",
+    "row": null,
+    "found": "clause 'listed, not counted: Quality Weld Inspector (3), Team Lead II Weld/Fab (2), Material Handler I Weld/Fab (2)' had no evidence row",
+    "fix": "stated row on the G&W careers list (all seven roles live) plus an inferred not-counted row",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-sc-electric-chicago-il:welder_postings",
+    "row": null,
+    "found": "clause 'listed, not counted: ... Supervisor-Fabrication (2026-09-29)' had no row (Staff Engineer clause rested only on an existing_robots row)",
+    "fix": "stated rows on requisitions 107259 and 106679 plus an inferred not-counted row",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-powell-northlake-il:products",
+    "row": null,
+    "found": "plants.csv clause 'company line: e-house(s) ...' had no Northlake, North Canton or c-powell row",
+    "fix": "company-level products row added citing powellind.com/integrated-package-solutions (onshore power control rooms and e-houses)",
+    "outcome": "fixed"
+   },
+   {
+    "claim_id": "p-powell-north-canton-oh:products",
+    "row": null,
+    "found": "plants.csv clause 'company line: e-house(s) ...' had no Northlake, North Canton or c-powell row",
+    "fix": "company-level products row added citing powellind.com/integrated-package-solutions (onshore power control rooms and e-houses)",
+    "outcome": "fixed"
+   }
+  ],
+  "6": [
+   {
+    "claim_id": "p-fti-pittsboro-in:relationship",
+    "row": null,
+    "found": "relationship 'new' although FTI Excellerate's company-level line includes generator enclosures (Olathe moved to lookalike of EK Machine)",
+    "fix": "relationship lookalike, lookalike_of EK Machine (inferred rows citing the Olathe EDC page; site tie in reasoning); old new row retired",
+    "outcome": "fixed_and_retired"
+   },
+   {
+    "claim_id": "p-fti-opelika-al:relationship",
+    "row": null,
+    "found": "relationship 'new' although FTI Excellerate's company-level line includes generator enclosures (Olathe moved to lookalike of EK Machine)",
+    "fix": "relationship lookalike, lookalike_of EK Machine (inferred rows citing the Olathe EDC page; site tie in reasoning); old new row retired",
+    "outcome": "fixed_and_retired"
+   },
+   {
+    "claim_id": "p-fti-monroe-la:relationship",
+    "row": null,
+    "found": "relationship 'new' although FTI Excellerate's company-level line includes generator enclosures (Olathe moved to lookalike of EK Machine)",
+    "fix": "relationship lookalike, lookalike_of EK Machine (inferred rows citing the Olathe EDC page; site tie in reasoning); old new row retired",
+    "outcome": "fixed_and_retired"
+   },
+   {
+    "claim_id": "p-fti-el-paso-tx:relationship",
+    "row": null,
+    "found": "relationship 'new' although FTI Excellerate's company-level line includes generator enclosures (Olathe moved to lookalike of EK Machine)",
+    "fix": "relationship lookalike, lookalike_of EK Machine (inferred rows citing the Olathe EDC page; site tie in reasoning); old new row retired",
+    "outcome": "fixed_and_retired"
+   }
+  ]
+ }
+}

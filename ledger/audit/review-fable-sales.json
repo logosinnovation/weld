@@ -1,0 +1,248 @@
+{
+  "lens": "sales",
+  "verdict": "fix_first",
+  "summary": "Not ready for 'done' from a sales-trust point of view; most fixes are mechanical. What holds up: the map loads with 0 console errors at 1440 px and 390 px, no horizontal page scroll, all six views render, the controls I exercised work (all five dropdown filters singly and combined, Reset, the three checkbox filters, four sort orders, search, CSV download, profile dialog from the call list and from a map dot, evidence drawer with Back and Escape, zoom buttons, colour-by, 'Show on map', four makers in Supply chain with link evidence, the Excluded reason drawer; clicking a state on the map is the one interaction I could not drive from the script and did not verify), the shipped map is byte-equivalent in data to a fresh build of the current ledger (rebuilt in a scratch copy), inferred values carry a visible badge everywhere, and I found no personal contact data anywhere in the ledger, inbox, audit files or map (0 emails; 11 phone strings, all company main lines inside quoted DOT-list / company-page text). What does not hold up: (1) the #2 row on the call list is Path's own published case-study customer, shown with a cold-pitch opener and the label 'customer other plant', and #7 (Nello) hides the fact that Path already ran a factory acceptance test with it; (2) the Method page and the vertical card, which are the trust signals, show stale or mislabelled audit numbers (miss rate 6.3% where the run log says 7.8%; 'Round 1 (before repairs) 10.5%' is rounds 1 and 3 added together; the card still says 94 found / 60 profiled); (3) one opening line has no evidence row and contains pitch language, two are 'unknown', eight rest only on 2015-2021 sources, and 50 of 66 carry no question; (4) parent_company is used as a free-text note, so there is no usable account roll-up for a team that sells enterprise accounts. Screenshots are in /tmp/claude-0/-home-user-weld/15c8b7fa-2833-5efe-87c1-28b9533d13eb/scratchpad/review-shots/ (desk-*.png, mob-*.png). The single field that would most improve the call list is a clean account key with a Path-relationship status (finding sales-13). Limits of this review: I read all 66 opening lines and bottleneck guesses, checked every number and year in every line against that plant's evidence rows by script (all appear in some row; eight lines use a figure that appears only in rows tagged inferred or unknown, listed in sales-10), and re-read the composing rows in full for seven plants; I re-fetched one live source (Meyer Tulsa).",
+  "findings": [
+    {
+      "id": "sales-1",
+      "severity": "blocker",
+      "area": "call list: existing Path accounts shown as cold prospects",
+      "plant_ids": [
+        "p-millerbernd-winsted-mn",
+        "p-nello-south-bend-in",
+        "p-nello-westby-wi",
+        "p-nello-spring-grove-mn"
+      ],
+      "finding": "Row #2 of the call list (Millerbernd Winsted, 88, High) is Path's own published customer. The ledger knows it: existing_robots = 'yes: Path welding cells per Path's Millerbernd video page', and its material score of 20 rests on 'Path's case-study page says Path cells fabricate Millerbernd's T&I poles'. Yet the call list shows relationship 'customer other plant' and the opener is a cold pitch: '...how are you covering pole welding capacity?'. A Path SDR who dials this from the list is cold-calling a reference account. Row #7 (Nello South Bend, 67) has the same problem in a milder form: Path's site says 'We just passed another FAT, this time with Nello', but the opener ('which welds are still done by hand?') and the call-list row do not mention it. The LaX Westby opener does the opposite and puts the sister company's FAT into a line meant to be spoken to the prospect. Same root issue as evidence-3; this finding adds the call-list consequence and the display fix.",
+      "evidence": "plants.csv p-millerbernd-winsted-mn: relationship=customer_other_plant, existing_robots as quoted; evidence row p-millerbernd-winsted-mn:relationship quote 'Hear how Millerbernd has leveraged Path's intelligent welding cells to fabricate Transportation & Infrastructure poles.' (https://www.path-robotics.com/videos/case-study-millerbernd). Evidence row p-nello-south-bend-in:relationship quote 'We just passed another FAT, this time with Nello.' (https://www.path-robotics.com/videos/nello-utility-pole-welding). Screenshot desk-calls.png (row 2), desk-drawer-opening.png. Method page text: 'customer_other_plant: Same parent as a reported customer, but this plant is not reported as converted', which is not what a rep needs to know about Millerbernd's only pole campus.",
+      "fix": "1) Map (tools/map_template.html, renderCalls and profileHtml): for any plant whose parent has a c-<company>:path_customer row (c-millerbernd, c-nello, c-valmont), show a badge in the Relationship cell: 'Path reference customer (plant not named)' for Millerbernd, 'Path FAT passed (site not named)' for Nello, 'Path customer per 2021 reference' for Valmont, linked to that evidence row; add a call-list filter 'Hide existing Path accounts' and, by default, list them in a separate 'Existing accounts: route to account owner' block above the ranked net-new list. 2) Keep the Path fact out of the spoken line (it belongs in the badge, which quotes Path's page and says 'plant not named'). Replace the Millerbernd opening_line with an expansion question that makes no deployment claim: 'A Millerbernd posting for Big Pole welders in Winsted calls for GMAW butt, V, single-bevel and fillet welds on carbon steel across 1st, 2nd and weekend shifts; which pole lines are those welders for?' (same composing claims as today: p-millerbernd-winsted-mn:weld_processes, :welder_postings; past-tense 'calls for' kept because the dated rows are tagged inferred). 3) Nello South Bend: keep the line, change the ending to '...which welds are still done by hand beside your robotic cells?' and add the FAT badge. 4) LaX Westby: remove ', and Path's site says Nello, part of the same group, passed a Path factory acceptance test' from the spoken line and end it like Spring Grove: '...where does welding at your Westby plant fit in that plan?'; the FAT fact moves to the badge. 5) If the coordinator keeps the strict relationship rule, change the Method-page wording for customer_other_plant to 'Plant of a company Path reports as a customer; Path's material does not name the plant'."
+    },
+    {
+      "id": "sales-2",
+      "severity": "blocker",
+      "area": "trust signals: Method page and vertical card show stale or mislabelled audit numbers",
+      "plant_ids": [],
+      "finding": "The page a sceptical sales leader opens to answer 'why should I trust it' disagrees with the run log in four places. (a) Miss rate: Method table shows 'Final: 4 / 63 = 6.3%, history 9.5% -> 9.2% -> 6.3%'; run_log.md's last entry says 'Miss rate, updated: 5 / 64 = 7.8%' after Meyer Tulsa was confirmed as a miss. The map understates its own miss rate. (b) Fact error rate: Method shows 'Round 1 (before repairs): 60 / 574 = 10.5%'. That is round 1 (42/355 = 11.8%) and round 3 (18/219 = 8.2%, run after repairs) summed; the checker table under it lists 'fact-checker A/B/C (round 3, confirming)' inside the round 1 block. Neither logged rate (11.8%, 8.2%) appears, and round 3, the confirming result, is not reported as such. (c) The vertical card on the first screen ('Why this status') still reads '94 found, 60 included, all 60 profiled; miss rate 6.3% ... Next session: one more attribution sweep', directly under counters that say 66 / 66 / 31 excluded (97 found). (d) Known limits contradict the map: 'sites still under construction are logged as future triggers' (they are now profiled pre-production prospects); 'Coordinates: 1 plants use a city centroid' two lines above 'Most plants have city-centroid coordinates only'; 'The map will mark any displayed value without an evidence row as unsourced' and 'the list-auditor will test this' are future-tense log lines; the heading 'Worst errors found in round 1' has an empty body. The run log's claim that every profiled plant has been fact-checked is also false for three plants (see coverage-6), so the page must not repeat it.",
+      "evidence": "Scratch text dump of the Method view (desk-method.txt, screenshot desk-method-full.png) vs ledger/run_log.md lines 226 and 239. verticals.csv v-poles-substation reason field begins 'Coordinator 2026-11-12: PARTIAL. Plant list complete (94 found, 60 included, all 60 profiled; miss rate 6.3%)'. tools/map_template.html line 711 prints 'Round 1 (before repairs)' for the pooled r1 object; build_map.py parse_log (lines 151-161) collects every bold 'Miss rate' bullet in the log, including the newest ('Miss rate, updated: 5 / 64 = 7.8%'); the page nevertheless prints the earlier 'Final: 4 / 63 = 6.3%' headline and a history that stops at 6.3%. The sentence 'every profiled plant has now been independently fact-checked at least once' is present in map/index.html inside the embedded run-log text (grep count 1).",
+      "fix": "1) build_map.py: group fact-check files by round (files '...-1/-2/-3.json' = round 1; 'round2-A/B' = round 2; 'round3-A/B/C' = round 3) and print three lines: 'Round 1 (before repairs): 42 / 355 = 11.8%', 'Round 2 (10 multi-plant-parent plants, after repairs): 12 / 62 = 19.4%', 'Round 3 (23 previously unchecked plants, after clean-up): 18 / 219 = 8.2%'. 2) Miss rate: print the newest collected 'Miss rate' bullet, not the one whose headline says 'final' (now 5 / 64 = 7.8%, history 9.5 -> 9.2 -> 6.3 -> 7.8) and add the coverage reviewer's caveat once coverage-1/-2 are settled. 3) Rewrite verticals.csv v-poles-substation reason (and its evidence row) to current counts: 97 found, 66 included and profiled, 31 excluded, miss rate as recomputed, three fact-check rounds. 4) Delete or update the four stale Known-limits bullets; hide the 'Worst errors' heading when it has no rows; fix '1 plants'. 5) Correct the run_log sentence about every profiled plant being fact-checked (it is shown on the map through the embedded log) once coverage-6 is resolved, and state fact-check coverage as a number computed from the audit files (profiled plants with at least one verdict / 66), not as a sentence copied from the log."
+    },
+    {
+      "id": "sales-3",
+      "severity": "major",
+      "area": "ground rule 1: opening lines with no evidence row, pitch text, or 'unknown'",
+      "plant_ids": [
+        "p-ameron-tulsa-ok",
+        "p-kw-industries-east-bernard-tx",
+        "p-brookfield-brookfield-mo",
+        "p-qmf-steel-campbell-tx",
+        "p-valmont-farmington-mn"
+      ],
+      "finding": "(a) p-ameron-tulsa-ok has an opening_line in plants.csv with no evidence row; the map therefore blanks it and the call list shows 'not sourced' in the Opening line column (row 57) and the CSV download exports an empty cell, so the plant has no opener anywhere a rep can see it. The text ends in a pitch, not a fact: '...we would like to show how Path cells handle pole welding at that site.' (also raised in evidence-12). (b) KW East Bernard and Brookfield have opening_line = 'unknown'; the call list renders 'unknown' followed by an 'unknown' badge ('unknown unknown'), which looks like a bug. The same double print appears for headcount and bottleneck in the profile. (c) p-qmf-steel-campbell-tx:opening_line evidence value is the placeholder 'see record', so the drawer does not show the line it is supposed to back. (d) Valmont Farmington's line is an instruction to the rep, not an opener: '...under the Aluminium label; confirm any steel work before a steel-welding pitch.'",
+      "evidence": "Script over plants.csv x evidence.csv: 1 profiled opening_line without a row (p-ameron-tulsa-ok); tags of opening_line rows: 58 inferred, 5 stated, 2 unknown, 1 missing. desk-calls.txt lines 715-724 ('not sourced') and 805-814 ('unknown unknown'). Evidence row p-qmf-steel-campbell-tx:opening_line value = 'see record'. Stated rows for Farmington: products quote 'Farmington, MN: Focus areas are plugs, tenons, and small diameter poles.'",
+      "fix": "p-ameron-tulsa-ok: set opening_line to 'EPA's facility registry lists 2333 S Yukon Ave in Tulsa as Ameron Tulsa Pole Products Welding & Fabrication; which weld processes run at the Yukon Avenue plant today?' and add an evidence row (tag inferred, reasoning 'composed from stated claims: p-ameron-tulsa-ok:name, p-ameron-tulsa-ok:found_by'); keep the Florida DOT clause only if a stated row quotes the Yukon Ave listing. p-valmont-farmington-mn: 'Valmont's site says its Farmington, Minnesota plant focuses on plugs, tenons and small-diameter poles; how much of that work is steel rather than aluminum?'. p-qmf-steel-campbell-tx: copy the plants.csv line into the evidence row's value. Map: when a value is exactly 'unknown', print it once (suppress the badge), and for opening_line print 'No opener yet: research first'."
+    },
+    {
+      "id": "sales-4",
+      "severity": "major",
+      "area": "opening lines resting only on old sources",
+      "plant_ids": [
+        "p-fwt-fort-worth-tx",
+        "p-fwt-hicksville-oh",
+        "p-sabre-alvarado-tx",
+        "p-sabre-bossier-city-la",
+        "p-valmont-birmingham-al",
+        "p-raycap-north-charleston-sc",
+        "p-hapco-abingdon-va",
+        "p-distran-washington-court-house-oh",
+        "p-valmont-claremore-ok",
+        "p-valmont-tulsa-ok",
+        "p-valmont-brenham-tx",
+        "p-valmont-columbus-ne",
+        "p-meyer-steele-al",
+        "p-meyer-hager-city-wi",
+        "p-meyer-fort-worth-tx",
+        "p-meyer-lancaster-sc",
+        "p-arcosa-traffic-structures-sumterville-fl",
+        "p-arcosa-telecom-muskogee-ok"
+      ],
+      "finding": "Eight openers have a 2015-2021 fact as their only content: both FWT plants carry the identical line 'A 2015 announcement said FWT, a Sabre subsidiary, would continue to serve customers from its plants in Fort Worth and Hicksville, Ohio'; Sabre Alvarado quotes a 2016 IEEE tour preview; Sabre Bossier a 2017 announcement; Valmont Birmingham a 2018 SteelOrbis report; Raycap a 2019 release; Hapco Abingdon a 2018 building; DIS-TRAN Washington Court House a February 2021 start-up. The ledger itself holds a row p-fwt-fort-worth-tx:operating_status = 'unconfirmed: only source is 2015 announcement', and the FWT and Sabre Alvarado lines rest only on rows tagged inferred or unknown, so two profiled, scored plants are on the call list although the ledger has not confirmed they operate (coverage-8 covers the uneven bar). Read to a plant manager in late 2026 these say 'we have not looked at you in years'. Four Valmont lines are built on postings the line itself calls removed, 'earlier' or two years old (Claremore, Tulsa, Brenham, Columbus); they are honest, but they are history, not a hook. Six Arcosa-family lines say 'has advertised' or 'expired, undated' while the evidence reviewer found live dated welder postings for the same plants on Arcosa's own job board (evidence-1), and live Sabre postings exist for the Sabre sites (evidence-2). The lines therefore undersell the best current hook for 10 or more plants of the two largest lookalike accounts.",
+      "evidence": "plants.csv opening_line for each id; regex for years 2015-2021 in opening lines returns exactly these eight; regex for 'expired|undated|date not shown|removed|earlier' returns Brenham, Tulsa, Columbus, Lancaster, MICA Haltom, Sumterville. Cross-reference: ledger/audit/review-fable-evidence.json evidence-1, evidence-2, evidence-11.",
+      "fix": "Research, then rewrite: after the evidence-1 and evidence-2 re-reads of Arcosa's and Sabre's job boards, recompose the lines for the eight Arcosa-family and four Sabre/FWT plants from the live, dated posting rows. Until then, mechanical interim: (1) FWT Fort Worth and Hicksville: set opening_line to 'unknown' (no current plant-level source; the call list then shows 'No opener yet: research first'). (2) Turn the remaining old-fact lines into dated discovery questions, e.g. Bossier: 'Sabre said in 2017 it would add a production line for large steel transmission poles at Bossier City; is that line running today, and how are those poles welded?'; Birmingham: 'SteelOrbis reported in 2018 that Valmont bought Walpar, a Birmingham maker of overhead sign structures; is the Birmingham plant still building sign structures, and how are they welded?'; Alvarado, Raycap, Hapco Abingdon, DIS-TRAN WCH on the same pattern, each keeping only its existing stated clause. (3) Add an 'as of' date to every line on the call list (the newest retrieved or posted date among the composing claims), and grey out lines whose newest dated fact is outside RECENCY_MONTHS."
+    },
+    {
+      "id": "sales-5",
+      "severity": "major",
+      "area": "call-list field contradicts the opening line",
+      "plant_ids": [
+        "p-nucor-brigham-city-ut"
+      ],
+      "finding": "Brigham City's opener says the plant 'is hiring fitter welders', and its trigger says 'Nov 2026: hiring production roles'. The Welder postings field shown in the profile and the CSV says only 'earlier Fitter Welder posting (Jul 29, 2026) filled'. A rep reading the profile sees a filled posting and a line claiming current hiring. The ledger does hold the supporting fact: a second stated, confirmed row for a Fitter Welder posting dated Nov 11, 2026; plants.csv shows the wrong one of the two rows.",
+      "evidence": "evidence.csv p-nucor-brigham-city-ut:welder_postings has two stated rows: value 'posting date Nov 11, 2026', quote 'Date: Nov 11, 2026 Location: Brigham City, UT, US, 84302' (jobs.nucor.com/.../1424539200/, confirmed) and 'earlier Fitter Welder posting (Jul 29, 2026) filled' (corrected). plants.csv welder_postings = the second only. Labor is scored 12, consistent with the first.",
+      "fix": "plants.csv p-nucor-brigham-city-ut welder_postings -> '1 open Fitter Welder (posted 2026-11-11); earlier Fitter Welder posting (2026-07-29) filled'. Suggested opener ending with a question: 'Nucor posted a Fitter Welder opening for its new Brigham City utility-structures plant on November 11, 2026; how are you planning to staff welding as the plant starts up?'. General check for the coordinator: 38 profiled plants have a welder_postings string in plants.csv that equals no evidence-row value (41 for triggers, 50 for bottleneck_guess); where the evidence is split over several rows the map's drawer opens on the last row rather than the one that supports the displayed text, so the displayed compound string should be stored as one inferred 'summary' row citing its stated parts."
+    },
+    {
+      "id": "sales-6",
+      "severity": "major",
+      "area": "parent_company used as a note; account roll-up only in one view, with polluted labels",
+      "plant_ids": [
+        "p-sabre-sioux-city-ia",
+        "p-sabre-alvarado-tx",
+        "p-sabre-bossier-city-la",
+        "p-fwt-fort-worth-tx",
+        "p-fwt-hicksville-oh",
+        "p-meyer-fort-worth-tx",
+        "p-meyer-lancaster-sc",
+        "p-hurtt-marceline-mo",
+        "p-metal-pros-wichita-ks",
+        "p-union-metal-canton-oh",
+        "p-hapco-abingdon-va",
+        "p-hapco-oklahoma-city-ok",
+        "p-sovereign-allentown-pa",
+        "p-chm-saginaw-tx",
+        "p-structural-steel-products-fort-worth-tx",
+        "p-structural-steel-products-crowley-tx"
+      ],
+      "finding": "Path sells enterprise accounts, but the only account roll-up is the Supply-chain view's Maker menu; the call list and search have none. The Maker menu does group variant strings (makerNorm puts all 10 Arcosa plants and all 7 Nucor plants together), but because parent_company holds narrative text its labels read as notes. The menu lists entries such as 'Sabre Industries, Inc. (TPG signed definitive agreements on 2026-02-06 to acquire a majority stake; existing investor Blackstone will retain a significant minority stake) (5 plants)', 'employee-owned (ESOP launched 2016) (1 plant)', 'none named (privately owned) (1 plant)', 'independent (privately owned; an individual bought the company in 2012; no parent group named) (1 plant)', 'DWM Holdings, Inc. (named in the site copyright line; ownership structure not stated)'. Searching the call list for 'arcosa' returns 10 plants and 'CRH' returns 8, because Meyer Fort Worth and Lancaster carry a different parent string. Hapco's two plants sit under two parents ('unknown (no parent named...)' and 'Dyson-Kissner-Moran Corporation'), Race Rock appears as 'Race Rock' and 'Race Rock Group', and CHM Saginaw's parent is blank. The call-list table has no parent column at all, so rows 3 and 4 do not show that they are Race Rock and Arcosa/CRH plants. The Sabre string also states a deal 'close expected by Q2 2026' as if still pending in November 2026 (evidence-9).",
+      "evidence": "Playwright: #makerSel option texts (printed in full); tools/map_template.html makerList()/makerNorm group by a normalised parent string and label the group with its most common raw string; call-list search counts 'arcosa' = 10 of 66, 'CRH' = 8 of 66; plants.csv parent_company values for the listed ids; desk-supply.png.",
+      "fix": "Add two plants.csv columns (with evidence rows): account (short clean name: Arcosa, Valmont, Nucor, Sabre, Race Rock, Nello, Crest, CHM, MICA, KW, Hapco, or the company's own name for independents) and ownership_note (the current free text: CRH closing, TPG stake, ESOP, family-owned). Set parent_company to the legal parent name only, or 'none (independent)' . Map: group the Maker menu and a new call-list 'Account' column and filter on account; show per-account roll-up (plants, High/Medium/Low, plants with open welder postings, account-level trigger such as 'CRH completed acquisition of Arcosa, Oct 2026'). Search should match account as well as parent."
+    },
+    {
+      "id": "sales-7",
+      "severity": "major",
+      "area": "'Stated facts only' and the INFERRED badge on scores",
+      "plant_ids": [],
+      "finding": "Two trust controls work against the product. (a) Ticking 'Stated facts only' on the call list replaces 58 of 66 opening lines with 'inferred value hidden' (and 3 trigger cells); of the other eight lines, five are tagged stated, two are 'unknown' and one is unsourced, because composed lines are tagged inferred even when every composing claim is stated. A sales leader who ticks the box to see the trustworthy version is left with a call list that has five openers. (b) Every one of the six score components in every profile carries an 'INFERRED' badge (the rubric judgement), including components the same panel counts toward 'Confidence 5 of 6: components resting on stated evidence'. The first impression of the top plant's profile is six purple INFERRED badges under an 88. The distinction between 'a rubric judgement on stated facts' and 'a guess' is explained in small grey text only.",
+      "evidence": "Playwright: #stated checked on #calls -> 58 '.ol .hid' and 3 '.trg .hid' elements in #calllist (desk-calls-stated.png). Profile text dump profile-p-millerbernd-winsted-mn.txt: all six components followed by 'INFERRED'; mob-profile-p-meyer-tulsa-ok.png.",
+      "fix": "map_template.html: (1) in stated-only mode, show a composed line when all claims named in its reasoning have at least one stated row, with the badge 'composed from stated claims'; hide it only if a composing claim is inferred-only. (2) For score components, replace the INFERRED badge with 'rubric: stated evidence' (green outline) when the component counts toward confidence and 'rubric: inferred evidence' otherwise; keep the full inferred badge for bottleneck, tier and relationship. No ledger change needed."
+    },
+    {
+      "id": "sales-8",
+      "severity": "minor",
+      "area": "unknowns / ceiling feature",
+      "plant_ids": [
+        "p-raycap-north-charleston-sc",
+        "p-brookfield-brookfield-mo",
+        "p-ameron-tulsa-ok",
+        "p-pelco-structural-claremore-ok",
+        "p-maico-ellsworth-ks",
+        "p-millerbernd-winsted-mn"
+      ],
+      "finding": "The idea is right and is explained well on the Method page, but as shipped the ceiling ranks plants by how little is known. Raycap (score 23, concealed small-cell poles, postings 'not verifiable') has the highest ceiling on the map, 100; Brookfield (score 8, website unreachable) shows 80; Ameron Yukon (21, confidence 0) shows 88. The 'Low score, high ceiling (research first)' filter passes 25 of 39 Low plants, so it does not tell a researcher where to start, and there is no 'sort by ceiling' option. Six plants show ceiling 95, including MaiCo and Millerbernd with '0 of 6' unknowns, because 7 demand points are added silently; a reader sees no unknowns and a ceiling above the score. 'none found' postings count as known (labor 0, not unknown) while 'unknown' postings count as unknown, so two plants with the same absence of information get ceilings 20 points apart depending on the profiler's wording (e.g. Ameron Yukon 'unknown' vs Sovereign 'none found').",
+      "evidence": "CSV export from the map (path-prospect-call-list-2026-11-13.csv): ceiling_calculated distribution {75: 19, 80: 9, 95: 6, 68: 6, ...}; Raycap 'unk 4 of 6, ceil 100'; Brookfield 'unk 4 of 6, ceil 80'; MaiCo and Millerbernd 'unk 0 of 6, ceil 95'. Playwright: #lowceil checked -> '25 of 66 profiled plants' (desk-calls-lowceil.png).",
+      "fix": "map_template.html / build_map.py: (1) in the Unknowns cell list which components are unknown (e.g. 'material, scale') instead of only a count; (2) show the demand allowance separately ('+7 if a plant trigger is found') or leave it out of the ceiling; (3) add 'ceiling' and 'unknowns' to the sort menu; (4) narrow the research-first filter to plants with at least one positive stated signal (process 20, or labor above 0, or demand 15) and ceiling 70+, and say how many pass; (5) treat labor 0 with 'none found' and with 'unknown' the same way, and state the rule on the Method page."
+    },
+    {
+      "id": "sales-9",
+      "severity": "minor",
+      "area": "map bugs with repro steps",
+      "plant_ids": [],
+      "finding": "(1) Footer: open map/index.html, scroll to the bottom: 'Run dates: 2026-02-06 to 2026-11-13'. The run started 2026-11-12; build_map.py line 134 collects every date-like string in run_log.md (2026-02-06 is the TPG signing date, 2026-02-27 the Arcosa call, 2026-10-08 a Nucor release). (2) Footer: 'built from ledger commit 230804e' while HEAD is cab6398; the data matches the current ledger, so only the label is stale (the build ran before the commit). (3) Call list at 1440 px: opening lines are cut at 230 characters with an ellipsis (20 of 66 lines are longer; max 316) and the cut often removes the question, e.g. row 1 ends 'take so...'; the full text needs a click into the profile. (4) Evidence drawer for an opening line shows internal clean-up notes to the reader, e.g. Millerbernd: 'clean-up 2026-11-13: old line cited the submerged arc seam welder opening, which is carried only by inferred rows; new line uses the stated GMAW, shift and 4x10 rows'. (5) Tie order: at score 88 the call list puts MaiCo above Millerbernd and at 60 the order among four plants is not explained; no tie-break is documented. (6) Phone (390 x 844): the first plant row starts about 900 px down, below the header, three stat tiles, search, two buttons, five selects and three checkboxes (mob-calls.png); the tab strip is clipped mid-word with no scroll hint ('C' of 'Call list' at the right edge). The stacked card layout further down reads well (mob-calls-scrolled.png). (7) 'Pre-production only (under construction or ramping up: 2 plants)' sits on every view's filter bar and is easy to miss on the call list where it matters. (8) Filter menus offer values that return nothing on the call list: relationship 'known customer' (0 plants), tiers 'Tier 1', 'Tier 2', 'Tier 3' and 'unknown', score tier 'Not profiled', and states that hold only excluded plants (for example Connecticut, Maryland, Washington); a rep who picks one sees '0 of 66' with no explanation. (9) Supply chain, maker 'H.W. Metal Products': the linked customer Pacific Steel Structures is listed under the heading 'TIER 3', which reads as if the pole seller were a materials supplier to HW Metals.",
+      "evidence": "Playwright runs r1.js-r3.js in the scratchpad; meta.dates in the embedded data = ['2026-02-06','2026-02-27','2026-10-08','2026-11-05','2026-11-11','2026-11-12','2026-11-13']; git log shows HEAD cab6398; scratch rebuild: embedded data equal except commit. Screenshots desk-calls.png, desk-drawer-opening.png, mob-calls.png. r4.js: option lists of the five selects; '#sclist' text for maker H.W. ('TIER 3 | Pacific Steel Structures, LLC <- is supplied by H.W. Metal Products').",
+      "fix": "(1) build_map.py: take run dates only from '## YYYY-MM-DD' session headings in run_log.md plus evidence retrieved_date. (2) Rebuild after the final commit, or print the build date instead of a commit. (3) Let the call-list opening line wrap in full (drop max: 230 on line 681) or add a 'more' toggle; cap composed lines at about 220 characters when they are rewritten. (4) In the drawer, print only the 'composed from stated claims: ...' part of reasoning; keep text after ' | ' or 'clean-up' out of the reader view. (5) Tie-break by confidence, then live trigger, then name, and say so under the table. (6) On narrow screens collapse the filter block behind a 'Filters' button and add a fade on the tab strip's right edge. (7) Show a 'Pre-production' filter chip beside 'Live trigger only' on the call list. (8) Build each filter menu from the plants in the current view and show counts per option. (9) Group linked plants under 'Customer' / 'Supplier' headings rather than the linked plant's own tier."
+    },
+    {
+      "id": "sales-10",
+      "severity": "minor",
+      "area": "opening lines: voice, length, missing question (all 66 read)",
+      "plant_ids": [
+        "p-maico-ellsworth-ks",
+        "p-klute-york-ne",
+        "p-universal-industrial-sales-lindon-ut",
+        "p-nello-spring-grove-mn",
+        "p-mica-haltom-city-tx",
+        "p-meyer-tulsa-ok",
+        "p-distran-pineville-la",
+        "p-hw-metals-tualatin-or",
+        "p-western-utility-telecom-salem-or",
+        "p-nucor-crawfordsville-in",
+        "p-meyer-lancaster-sc",
+        "p-arcosa-traffic-structures-sumterville-fl",
+        "p-nucor-brigham-city-ut",
+        "p-kw-industries-sugar-land-tx",
+        "p-fwt-fort-worth-tx",
+        "p-fwt-hicksville-oh",
+        "p-sabre-alvarado-tx",
+        "p-valmont-tulsa-ok",
+        "p-mica-kaufman-tx",
+        "p-klute-york-ne"
+      ],
+      "finding": "The lines are accurate to their composing claims as far as I checked (I re-read the rows behind Millerbernd, Meyer Tulsa, Brigham City, Nello, HW Metals, Klute, MaiCo; the Meyer Tulsa 'pole school' wording is on the live posting: 'Oversee the daily pole school operations'). The weakness is usability. Only 16 of 66 lines contain a question; the other 50 are a statement of what Path read about the plant, which gives a rep nothing to ask. Four questions are in the third person, as if talking about the prospect to someone else (MaiCo 'on its multi-sided poles', Klute 'how does it get new welders productive', Universal 'off its welders', LaX Spring Grove 'at its Spring Grove ... plant'). Six lines carry research caveats in brackets inside the spoken sentence ('(date not shown)', '(now expired, undated)', 'an expired, undated ... posting', '(removed May 2025)'). Median length is 194 characters, 20 are over 230 and 3 over 300, too long to say. Number check: a script compared every number, dollar figure and year in each line with that plant's evidence rows. Every figure appears in some row for the plant, but in eight lines it appears only in rows tagged inferred or unknown, so 'composed from stated claims' is not strictly true for them: Nucor Brigham City ('$200 million', '200 planned jobs': the only row is headcount, tagged inferred, and a second source in the ledger says '$204.5 million project'), KW Sugar Land ('1 or 1,000', production_type tagged inferred), FWT Fort Worth and Hicksville ('2015'), Sabre Alvarado ('2016'), Valmont Tulsa ('removed May 2025'), MICA Kaufman ('August 2026'), Klute ('August 2025').",
+      "evidence": "Script over plants.csv opening_line for the 66 profiled plants: with '?' = 16; length median 194, max 316, over 230 = 20, over 300 = 3; third-person question regex hits the four ids named; caveat regex hits Brenham, Valmont Tulsa, Columbus, Lancaster, MICA Haltom, Sumterville. Live check: python3 tools/fetch_page.py <Meyer Weld Tech posting URL in p-meyer-tulsa-ok:status_detail> --grep school -> 'Oversee the daily pole school operations'.",
+      "fix": "Voice fixes (text change only, same composing claims): MaiCo '...could automated welding on your multi-sided poles take some of that load?'; Klute '...so how do you get new welders productive on one-off poles fast enough?'; Universal '...so could automated welding take some of that work off your welders?'; LaX Spring Grove '...where does welding at your Spring Grove plant fit in that plan?'. MICA Haltom: 'MICA Steelworks' careers page advertises a signing bonus for welders and fitters, and a Haltom City welder posting lists proficiency with flux core and metal core wire; which shifts are hardest to staff?'. Add a closing question to the statement-only lines in the top 15, built on the existing stated clause: Meyer Tulsa '...; how are you qualifying welders for poles as wind tower work finishes?'; DIS-TRAN Pineville '...; which of those shifts is hardest to fill?'; HW Metals '...; how much pole and tower welding still goes to manual MIG after the gantries?'; Western Utility Telecom '...; how do 8 welding stations keep up with custom orders?'; Nucor Crawfordsville '...; which welds will stay manual after the expansion?'. For every other statement-only line, either add a question the same way or add a separate plants.csv column discovery_question so the fact and the question are stored apart. Move bracketed caveats out of the line into the as-of date proposed in sales-4. Cap lines at about 220 characters. For the eight lines whose figure sits only in an inferred row: either add a stated row that quotes the figure for that plant (Brigham City: 'The new $200 million Utah facility ... is expected to create 200 full-time jobs' is already quoted under headcount; file it as a stated triggers row and note the $204.5 million figure from the other source) or drop the figure from the line."
+    },
+    {
+      "id": "sales-11",
+      "severity": "minor",
+      "area": "bottleneck_guess quality (all 66 read)",
+      "plant_ids": [
+        "p-pelco-structural-claremore-ok",
+        "p-distran-washington-court-house-oh",
+        "p-mica-kaufman-tx",
+        "p-chm-fort-worth-tx",
+        "p-chm-saginaw-tx",
+        "p-structural-steel-products-fort-worth-tx",
+        "p-sabre-bossier-city-la",
+        "p-maico-ellsworth-ks",
+        "p-larwel-roanoke-tx",
+        "p-meyer-hager-city-wi",
+        "p-meyer-steele-al",
+        "p-structural-steel-products-crowley-tx"
+      ],
+      "finding": "Every non-unknown bottleneck has an evidence row tagged inferred (0 tagged stated), so the ground rule holds and the map badges them. Quality problems: (a) six values are not guesses at all: 'Unclear; single open Fitter/Welder listing.' (Pelco), 'Unclear; no welder postings found.' (DIS-TRAN WCH), 'Unclear; mainly a galvanizing site, welding labor constraint is company-level.' (MICA Kaufman, which also contradicts its profiled status, see coverage-9), 'Unclear; 42 manual final-weld stations, no hiring signal found.' (both CHM rows; the source says '42 welding stations', the word 'manual' is added), 'Unknown; company site unreachable.' (SSP Fort Worth). (b) Sabre Bossier: 'Shared capacity with shelter plant (speculative, inferred)' is labelled speculative by its own author. (c) MaiCo: 'welder capacity vs 40+ MIG stations (inferred)' is a fragment, not a sentence a rep can use. (d) Larwel's guess is about 'custom rail and bridge work', not the sign structures that put it in this vertical. (e) Half the strings end in '(inferred)' and half do not, although all carry the badge; several read as stated fact without it, e.g. Hager City 'Full-penetration slip-joint welds on poles held to a 90% UT pass rate, done by manual welders.' and Crowley 'Welding and fit-up labor ..., given three welding postings plus supervisors being hired at the same site'. (f) For 50 plants the plants.csv string differs from the evidence row's value; for 45 of them the difference is more than a trailing '(inferred)' (e.g. Ameron 66th St adds 'a Foreman posting for the plant has been open since 2026-08-04', Ehresmann is shortened), so the card and the drawer show different wording.",
+      "evidence": "Script: bottleneck evidence tags for profiled plants (no stated; none missing where value is not unknown); plants.csv vs evidence value mismatch count bottleneck_guess = 50, of which 45 remain after stripping a trailing '(inferred)', case and final full stop; values quoted from plants.csv.",
+      "fix": "Set bottleneck_guess to 'unknown' (tag unknown) for Pelco, DIS-TRAN WCH, MICA Kaufman, CHM Fort Worth, CHM Saginaw, SSP Fort Worth and Sabre Bossier. MaiCo -> 'Welder supply for more than 40 MIG stations: one welder posting has been open since 2026-07-29'. Larwel -> 'Manual MIG welding of overhead sign structures in a 12,000 sq ft shop'. Strip the trailing '(inferred)' from all strings (the badge carries it) and make plants.csv equal the evidence row's value for all 50 mismatches (copy the longer, more specific of the two). Reword fact-sounding guesses to start with the inference: 'Likely manual ...' ."
+    },
+    {
+      "id": "sales-12",
+      "severity": "minor",
+      "area": "ground-rule checks from the user's side",
+      "plant_ids": [
+        "p-nello-spring-grove-mn",
+        "p-nello-westby-wi",
+        "p-race-rock-brookshire-tx",
+        "p-cem-tec-phoenix-az",
+        "p-hapco-oklahoma-city-ok",
+        "p-qmf-steel-campbell-tx"
+      ],
+      "finding": "Rule 4 (personal data): pass. grep for email patterns over ledger/*.csv, run_log.md, ledger/audit, ledger/inbox and map/index.html returns nothing. Phone-pattern grep returns 11 strings, all company switchboard numbers that sit inside quoted DOT-list or company-page text (Universal, PennFab, Brookfield x2, CHM, SSP, Commercial Fabricators, Mid-Park); none is in plants.csv and none is tied to a named person. The only personal names I saw are public founders or executives in quotes (e.g. 'Paul K. Mai founded MaiCo Industries'). Rule 'inferred visibly labelled': pass on every view (badge 'inferred' or 'inferred - composed'; footer sentence; CSV column inferred_fields). Rule 1 (every shown value has a row): enforced by the template, which blanks any field without a row, but that hides data silently. Besides the Ameron opener (sales-3), these profiled fields are blanked on the map for lack of a row: tier_secondary 'Tier 1' on both LaX plants; lookalike_of 'Valmont' on Race Rock Brookshire and Cem-Tec (their relationship row says 'lookalike (Valmont)', so the customer they resemble is not shown, which CLAUDE.md requires: 'name the customer it resembles and why'); products on Hapco Oklahoma City; plus 11 'unknown' addresses, 8 'unknown' headcounts, and QMF parent and address. The CSV download blanks the same fields (checked: Ameron opening_line, LaX tier_secondary, Brookshire lookalike_of and Hapco Oklahoma City products are empty cells), so page and CSV agree, but neither tells the reader that the ledger holds a value that was withheld.",
+      "evidence": "Commands: grep -rhoE '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}' over the paths named (0 hits); phone regex '\\(?[0-9]{3}\\)?[-. ][0-9]{3}[-. ][0-9]{4}' (11 distinct strings, contexts printed per claim_id). Coverage script: non-empty plants.csv fields with no '<id>:<field>' evidence row, profiled: tier_secondary 2, lookalike_of 2, opening_line 1, products 1, parent_company 1, address 11, headcount 8 (county_fips and last_checked are not displayed). Template lines 300-307 blank unsourced fields.",
+      "fix": "Add evidence rows: p-nello-spring-grove-mn:tier_secondary and p-nello-westby-wi:tier_secondary (inferred, with reasoning) or clear the field; p-race-rock-brookshire-tx:lookalike_of and p-cem-tec-phoenix-az:lookalike_of = 'Valmont' (inferred; reasoning names the shared product line), and normalise lookalike_of to one format ('c-valmont' vs 'Valmont' vs 'c-millerbernd' are mixed); p-hapco-oklahoma-city-ok:products (quote the source the profiler took the planned product list from; if none can be re-found, set products to 'unknown'). Add tag-unknown rows for the 'unknown' address / headcount / parent values so the map prints 'unknown' rather than 'not sourced'. Make build_map.py print (or fail on) every profiled field it blanks, so a missing row is fixed in the ledger instead of disappearing on the map."
+    },
+    {
+      "id": "sales-13",
+      "severity": "suggestion",
+      "area": "top 10: would a rep know who, what and why; the one field to add",
+      "plant_ids": [
+        "p-maico-ellsworth-ks",
+        "p-millerbernd-winsted-mn",
+        "p-structural-steel-products-crowley-tx",
+        "p-meyer-tulsa-ok",
+        "p-distran-pineville-la",
+        "p-mica-haltom-city-tx",
+        "p-nello-south-bend-in",
+        "p-hw-metals-tualatin-or",
+        "p-universal-industrial-sales-lindon-ut",
+        "p-western-utility-telecom-salem-or"
+      ],
+      "finding": "What and why are clear for eight of the top ten: MaiCo (40+ MIG machines, posting open 106 days), Crowley (new facility, three welding roles, FCAW, a robot cell already there), Meyer Tulsa (wind-to-pole conversion, 2G FCAW test, night premium), DIS-TRAN Pineville (GMAW welders on three shifts), MICA Haltom (sign-on bonus, flux/metal core), HW Metals (MIG plus gantries, 70 ft towers), Universal (FCAW/GMAW posting open 65 days, every structure unique), Western Utility Telecom (GMAW spray, FCAW, custom). The two exceptions are the ones where Path already has history (Millerbernd, Nello; sales-1). 'Who' is missing everywhere: the call list gives no account, no owner flag and no entry point, and the parent appears only inside the profile, so a rep cannot see that row 4 is an Arcosa/CRH plant with nine sister plants on the same list or that row 3 belongs to Race Rock, which also has the $100M Brookshire expansion at rank 19. Rank 10 is a four-way tie at 60 with no stated tie-break, and Valmont Claremore (60) rests on a two-year-old posting. The single addition that would most improve the list: a clean account key with a Path-relationship status per account (existing reference customer / FAT passed / 2021 reference / none), shown as a column and filter on the call list. It tells the rep whether to call at all and who inside Path owns the conversation, it lets an AE work Arcosa (10 plants), Valmont (10), Nucor (7), Sabre (5) and Race Rock (3) as accounts with their account-level triggers (CRH closed on Arcosa in Oct 2026), and every fact it needs is already in the ledger (c-millerbernd, c-nello, c-valmont path_customer rows; parent rows). Second and third choices: an as-of date per opener (sales-4), and a target role taken only from stated postings or pages (for example Meyer advertises a 'Plant Welding Engineer' and 'Plant Welding Technician', Crowley a 'Fitter/Welder Leadman'), stored as a role, never a person.",
+      "evidence": "Top ten as rendered on the call list (desk-calls.txt rows 1-10) with their plants.csv fields; parent strings from plants.csv; maker counts from the Supply-chain menu.",
+      "fix": "Implement the account and path_status columns described in sales-6 and sales-1; add them to the call-list table and the CSV export; add an account roll-up block at the top of the call list. No new research is needed for the ten plants above."
+    },
+    {
+      "id": "sales-14",
+      "severity": "suggestion",
+      "area": "pre-production badge and live-trigger label",
+      "plant_ids": [
+        "p-meyer-tulsa-ok",
+        "p-meyer-clinton-il",
+        "p-nucor-brigham-city-ut",
+        "p-hapco-oklahoma-city-ok",
+        "p-nucor-crawfordsville-in",
+        "p-structural-steel-products-crowley-tx"
+      ],
+      "finding": "The Pre-production badge works and is explained (2 plants: Brigham City and Hapco Oklahoma City; Crawfordsville is correctly not flagged because it is operating). The sales reason given for the badge, 'no welding process or robots locked in yet', applies equally to the two Arcosa wind-tower conversions, which are not flagged: Meyer Tulsa (rank 4, 'preparing for a transition ... from wind towers to utility structures') and Meyer Clinton ('began delivering utility poles in the second quarter' of 2026). A rep filtering on Pre-production misses the best example on the map. Separately, the 'LIVE TRIGGER' badge covers very different things without saying which: a $100M groundbreaking (Brookshire), a state hiring event (Valmont Tulsa), a posting for a galvanizing operator (Brigham City) and a Feb 2025 building announcement (Crowley, 21 months old). Hapco Oklahoma City is a planned aluminum plant that opens in late 2027; on the call list it carries the same badge as Brigham City, which is hiring welders now.",
+      "evidence": "pre.txt (Playwright, pre-production filter -> '2 of 66'); plants.csv triggers for the ids named; build_map.py line 335 regex 'under construction|ramping'.",
+      "fix": "Rename the badge to 'New or converting plant' and extend the build_map.py test to triggers or status_detail that name a conversion or transition (adds Meyer Tulsa and Meyer Clinton; store the decision as a '<id>:status' evidence row as was done for the other three). Show the trigger's date and kind beside the LIVE TRIGGER badge (expansion / new plant / conversion / hiring / ownership) and sort live triggers newest first. On Hapco Oklahoma City add 'aluminum-first; opens late 2027' next to the badge."
+    }
+  ]
+}

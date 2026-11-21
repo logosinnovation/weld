@@ -1,0 +1,2193 @@
+{
+ "checker": "fact-checker R3-I",
+ "vertical": "v-mining-heavy-equipment",
+ "date": "2026-11-16",
+ "plants": [
+  "p-thomas-conveyor-burleson-tx",
+  "p-brookville-equipment-brookville-pa",
+  "p-astec-eugene-or",
+  "p-kress-brimfield-il",
+  "p-npk-walton-hills-oh",
+  "p-tread-roanoke-va",
+  "p-paladin-dexter-mi"
+ ],
+ "decision_rule": "Corrected = the value adds a fact the cited page does not show, tags a judgement as stated, places a company-level fact at the plant, ties a posting through a shared city, misdates a posting, or the quote is not on the page (raw source checked first); Confirmed otherwise. Unreachable only if the source cannot be reached at all.",
+ "claims_checked": 109,
+ "claims_corrected": 8,
+ "claims_unreachable": 0,
+ "error_rate": 0.0734,
+ "error_rate_note": "Headline on R2-A's basis (rows flagged r2_basis: stated rows, every row of a claim that a score row cites, and the 7 opening lines): 8/109 = 7.3%. Counting each untrimmed sibling row of the corrected compound values as its own correction (decision rule read row by row; 6 siblings in basis): 14/109 = 12.8%. Stated rows only: 8/90 = 8.9% (14/90 = 15.6% with siblings). All 205 rows written (adds score_*, total, tier, confidence, relationship, lookalike_of, tier, prospect_test rows): 9/205 = 4.4% (15/205 = 7.3% with siblings); not comparable to round 2. Every quote whose page was reachable was found on a fresh fetch (visible text or raw source); the 3 EPA FRS address rows (503) were confirmed through EPA ECHO per the brief, so 0 unreachable. The 8 value/tag corrections are clauses not on the cited page or a judgement tagged stated, not missing quotes. The ninth (out of basis) is Brookville confidence 4 -> 3. One score RULING: Brookville material 20 vs 0 (83 High vs 63 Medium), see score_problems.",
+ "claims_checked_all_rows": 205,
+ "claims_corrected_all_rows": 9,
+ "error_rate_all_rows": 0.0439,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 8,
+  "invented fact": 0,
+  "other": 1
+ },
+ "repeated_kinds": [
+  "quote does not support value (8) - one pattern: compound or descriptive clauses added to a value that the cited page does not carry (Thomas \"CEMA-standard equipment\"; Kress \"Off-highway ... (mining)\" and \"low-volume\"; Brookville vehicle list, \"customizable\" across all lines, and \"welded ... frame\" on the flat car; NPK \"manual\" bays), plus one attribution judgement tagged stated (Brookville about-us part_size_fit row). All quotes are on their pages; nothing invented in substance (each dropped clause is true elsewhere on the company site or a fair inference), and only one score component is in question (Brookville material, a RULING). SWEEP: for multi-row compound values written by profilers G-I, check each clause of products, production_type, existing_robots and part_size_fit against the cited rows only, and either trim the clause or add a row citing the page that carries it; retag any site-attribution row (campus-rule reasoning) as inferred."
+ ],
+ "worst_errors": [
+  "p-brookville-equipment-brookville-pa:part_size_fit (2 rows) and score_material_part - the High tier (83) rests on material 20 from a whole-vehicle figure (26 ft, 13 ton Mining Flat Car) whose cited block never says welded or frame, attributed to 175 Evans St by campus-rule reasoning tagged stated, while a second Brookville site 1.3 km away does shop repairs and rebuilds. Value trimmed, attribution row retagged inferred, confidence 4 -> 3; material 20 vs 0 is a RULING (as written 0: 63 Medium).",
+  "p-brookville-equipment-brookville-pa:products and :production_type - compound values list vehicles (slope and haulage tractors, flat cars, maintenance units) and extend \"customizable\" to rail, tunneling, streetcars and locomotives, none of which the cited pages show (they are on uncited /mining-rail/, /mining-rubber-tired/ and home-page lines). Trimmed; add rows to restore.",
+  "p-kress-brimfield-il:products / :production_type and p-thomas-conveyor-burleson-tx:production_type - descriptors not on the cited pages (\"Off-highway\", \"(mining)\", \"low-volume\", \"CEMA-standard equipment\"). Trimmed; Kress part mix 15 and Thomas part mix 15 stand on stated custom lines."
+ ],
+ "score_problems": [
+  {
+   "plant_id": "p-brookville-equipment-brookville-pa",
+   "component": "score_material_part",
+   "ledger_points": 20,
+   "correct_points": 0,
+   "why": "RULING. As written, consultation 10 gives 0: the 26 ft / 13 ton Mining Flat Car fact names no site; Brookville has a second Brookville address, 4 S Pickering St (Brookville Services), 1.3 km from 175 Evans St, beyond the ~1 km campus distance, and /service-support/ shows it doing \"repairs in the shop or on the road\" and vehicle rebuilds, so the attribution is inferred and earns 0. Also the cited block never calls the flat car welded or a frame (welded status inferred from about-us \"all-welded steel frames\", a 1970s line). Total 83 -> 63 (Medium). Case for keeping 20 (coordinator call): about-us says new production moved to the current Evans St campus, and under the ships repair-only precedent a service/rebuild shop is not a production plant, so the company has no other new-build production site in Brookville; a whole-product dimension of a steel vehicle counts like a vessel dimension (ships rule 2). If kept, 20 earns no confidence (Werk-Brau precedent)."
+  },
+  {
+   "plant_id": "p-brookville-equipment-brookville-pa",
+   "component": "confidence",
+   "ledger_points": 4,
+   "correct_points": 3,
+   "why": "Under either reading of the material RULING: 0 points cannot count, and a kept 20 rests on two inferences (site tie, welded-part status). Add p-brookville-equipment-brookville-pa:part_size_fit to ledger/audit/no-confidence-claims.csv (normalise_scores.py counts a claim as stated if any row is stated)."
+  }
+ ],
+ "score_notes": [
+  "All 42 components (7 plants x 6) re-derived from the cited claims; sums and tiers correct: Thomas 88 High, Brookville 83 High, Tread 75 High, NPK 65, Kress 63, Astec Eugene 61, Paladin Dexter 53 (Medium). Confidence correct except Brookville (score_problems); Brookville material is a RULING. None of the seven plants is in no-confidence-claims.csv.",
+  "Thomas material 20 (profiler sensitivity): stands. \"systems up to 120\" in diameter\" is a stated dimension of the plant's own product; 10 ft fits the 2026 analyst 15 ft width; length and weight unstated. Same standard as Process Machinery (weight only) and Deere Davenport (2026 limits). Over the older sheet's 72 in, which is a diameter limit for round parts.",
+  "Thomas labor 20: four production Welder postings open at once naming the site, oldest 97 days (dated, not a standing ad). Scale 5: Martin's own posting for the Thomas Conveyor location (\"At Martin Sprocket & Gear ...\") ties the site to Martin, whose company page states \"regional & branch manufacturing plants\"; headcount unknown.",
+  "Brookville labor 20: four undated production welder roles live at once on its own UKG board at 175 Evans St; several-at-once = 20 (Supreme Stoneboro precedent), not claimed as 60+ days. Scale 0: family owned, single company.",
+  "Tread material 20 (sensitivity): stands; a stated 14 ft stainless tank built by a single-site company fits both cells on length. Tread demand 8 (sensitivity 15): stands. The Dec 17 2025 post describes one ANFO unit for one customer, an ordinary sale, not an expansion, building, contract award or acquisition under the consultation 10 trigger test. Labor 12: one posting; \"Fridays are reserved for overtime as needed\" is conditional (ruling 4).",
+  "Kress part mix 15 (sensitivity 8): stands. The single-site company states \"Whether you need custom fabrications or a complete machine\" and \"develop machines that meet specific application needs\" (stated custom, mining rule 4). Labor 20: two Manufacturing Welder postings open at once (two = several, G.R. and Muskogee precedents). Material 0: no part size or material stated.",
+  "NPK material 0 (sensitivity 20): stands. Pedestal boom sizes are horizontal/vertical reach ratings, not a dimension or weight of a welded part (mining rule 1). Scale 10: c-npk:multi_plant (Japan, US, Europe) and 120 employees at the one Walton Hills campus (June 2024, inside 36 months). Part mix 15: pedestal booms \"Custom-designed for your requirements\", assembled on site.",
+  "Astec Eugene: labor 20 on the $1,500 sign-on bonus (also two postings at once); part mix 8 on the June 2013 JCI product list (JCI = Astec-Franklin Blvd per the site's own postings); scale 5 on c-astec:multi_plant (ledger, stated, confirmed in round 2: 10-K manufacturing sites at Yankton, Princeton and others); material 0. Confidence 4 is what normalise_scores.py gives (products has a stated row).",
+  "Paladin Dexter: process 20 (gas-shield MIG and \"wire feed (M.I.G.)\" in a posting that requires manual all-position welding, ruling 5), labor 12 (one counted posting, Nov 6 2026), part mix 8 company-level with no confidence, scale 5 (Epiroc six-continent production), material 0. Confidence 3 correct."
+ ],
+ "opening_line_problems": [
+  "p-npk-walton-hills-oh:opening_line - the question's premise \"sending to the manual bays\" asserts the bays are manual, which CEG does not say (existing_robots corrected). Suggested line: \"Your Welder opening in Walton Hills, published September 28, 2026 for first or second shift, calls for gas-shielded MIG work, and CEG reported in June 2024 that the plant runs robotic welders alongside its welding bays; which weldments still go to the welding bays rather than the robots?\" Also, the Paylocity JobId shows the requisition predates June 2026, so \"published\" is safer than \"posted\".",
+  "p-tread-roanoke-va:opening_line - acceptable as written (every clause stated). Optional: the JobId shows the requisition predates Oct 2025 and its JSON-LD (Nov 4) and board (Nov 10) dates differ, so \"listed as of November 2026\" avoids presenting a re-list stamp as a fresh opening.",
+  "The other five lines (Thomas, Brookville, Astec Eugene, Kress, Paladin Dexter) use only stated claims and were checked clause by clause: Thomas (four postings Aug 11-Nov 12, all MIG; 120 in systems), Brookville (four roles, 12% differentials, arc and MIG on steel in all four postings), Astec (Jul 24 2026, GMAW/FCAW 3G & 4G, $1,500 bonus), Kress (Nov 7 and Oct 1, multi-pass, all positions, \"specific application needs\"), Paladin (Nov 6, 2nd shift, robot plus manual fit-and-weld without fixtures)."
+ ],
+ "plants_closed_or_moved": [],
+ "status_problems": [
+  "p-paladin-dexter-mi (boundary, coordinator call): no Paladin or Epiroc page states what Dexter builds. This check also read the live Dexter Laser Operator and Production Assembler postings: neither names a product (Epiroc and Paladin boilerplate only; the Assembler post offers a sign-on bonus, not a welding role). EPA ECHO still carries SWEEPSTER-HARLEY ATTACHMENTS (NAICS 333120 and 339994 broom/brush) at 2800 North Zeeb Road. If accepted as the Sweepster/Harley plant, exclude under the M-B New Holstein ruling (sweeping/snow attachments).",
+  "p-brookville-equipment-brookville-pa: mining is one of three core lines with streetcars and locomotives; share not stated. Kept in vertical as a mining-vehicle OEM (lookalike of Mine Rite, underground mining vehicles).",
+  "p-kress-brimfield-il: the lead product is slag pot and specialty carriers for the metals industry; coal haulers (mining) and the K13 scraper (construction) keep it in the vertical as a mixed OEM; postings say \"steel, construction, and mining industries\".",
+  "p-tread-roanoke-va: explosives delivery bodies are truck-mounted (v-truck-bodies overlap, already noted on the relationship row).",
+  "All seven plants operate at the recorded address today: each has a live own-board posting naming the site (Thomas 555 N Burleson; Brookville 175 Evans St; Astec Franklin Blvd; Kress Brimfield; NPK Walton Hills; Tread 176 Eastpark Dr; Paladin Dexter facility). None closed or moved."
+ ],
+ "plant_status_notes": "See status_problems. Geocodes for Brookville, Kress and Paladin match the Census responses to 6 decimals with the stated county FIPS.",
+ "field_drift_notes": [
+  "After the corrections, plants.csv fields products (Brookville, Kress), production_type (Thomas, Brookville, Kress), part_size_fit (Brookville) and existing_robots (NPK) take the corrected values (plants_csv_value). Sibling evidence rows that share these values (Brookville products /products and metro-magazine; Brookville production_type metro-magazine; Kress products K13 and diversifiedproducts; Kress production_type ADP) still carry the old text and must be synced at merge, or apply_factcheck will leave value drift."
+ ],
+ "leads": [
+  "Brookville: add products rows from /mining-rail/ and /mining-rubber-tired/ to restore the vehicle list, and the home-page \"custom solutions manufacturer\" line for production_type.",
+  "Paylocity re-list stamps (NPK 4162624, Tread 3292594): job IDs predate the published dates; worth a sweep of other Paylocity-dated postings claimed as 60+ days or recent."
+ ],
+ "method": "Fresh fetch of every cited URL into a new cache (tools/fetch_page.fetch with_raw=True; browser fallback for UKG/UltiPro), each quote fragment checked against visible text plus raw source; job boards read through their JSON APIs (UltiPro LoadSearchResults, UKG Ready job-requisitions, ADP job-requisitions, Paylocity board JSON, BrassRing JSON-LD and apply form, Epiroc itemprop datePosted); EPA ECHO used where FRS returned 503; Census geocoder responses compared to the recorded lat/lon/FIPS. No web search used. No ledger file edited.",
+ "apply_note": "Apply after the coordinator merges ledger/inbox/mining-profiler-I.json (rows keyed to that file's claim_id + source_url; ledger-origin rows marked in 'origin'). Sibling rows flagged sibling_of_corrected are confirmed but must take the corrected row's value at merge. Rule on Brookville material (score_problems) and add p-brookville-equipment-brookville-pa:part_size_fit to ledger/audit/no-confidence-claims.csv.",
+ "rows": [
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/MAR1022/JobBoard/7db9926f-7564-3521-4a93-13c1764fdae3/OpportunityDetail?opportunityId=5bf63ce6-bb0d-47de-9765-f8c5f1c3723f",
+   "ledger_value": "4 open on parent Martin Sprocket & Gear's own UltiPro board (2026-11-16), location \"Thomas Conveyor\", 555 North Burleson, Burleson TX 76028: Welder - 2nd Shift (posted 2026-11-12), Welder - 1st Shift (2026-11-02), Welder - 2nd Shift (2026-10-12), Welder - 1st Shift (2026-08-11, open about 97 days); \"Perform MIG welding to join metal parts\"; flux core a plus; 2nd shift +6%",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[0]",
+   "verdict": "confirmed",
+   "note": "Martin Sprocket & Gear UltiPro board, read via its LoadSearchResults JSON 2026-11-16: exactly four Welder postings at location \"Thomas Conveyor\" (555 North Burleson): WELDE009077 2026-11-12, WELDE009050 2026-11-02, WELDE009008 2026-10-12, WELDE008852 2026-08-11 (UpdatedDate 2026-09-23). Each detail page requires MIG and lists flux core as a plus; 2nd-shift pages give +6%. Martin's board lists no other Burleson location, so the postings name the site. Count and dates correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/MAR1022/JobBoard/7db9926f-7564-3521-4a93-13c1764fdae3/OpportunityDetail?opportunityId=21b61271-317f-49e5-aacf-f03fba6b68bc",
+   "ledger_value": "4 open on parent Martin Sprocket & Gear's own UltiPro board (2026-11-16), location \"Thomas Conveyor\", 555 North Burleson, Burleson TX 76028: Welder - 2nd Shift (posted 2026-11-12), Welder - 1st Shift (2026-11-02), Welder - 2nd Shift (2026-10-12), Welder - 1st Shift (2026-08-11, open about 97 days); \"Perform MIG welding to join metal parts\"; flux core a plus; 2nd shift +6%",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[1]",
+   "verdict": "confirmed",
+   "note": "Martin Sprocket & Gear UltiPro board, read via its LoadSearchResults JSON 2026-11-16: exactly four Welder postings at location \"Thomas Conveyor\" (555 North Burleson): WELDE009077 2026-11-12, WELDE009050 2026-11-02, WELDE009008 2026-10-12, WELDE008852 2026-08-11 (UpdatedDate 2026-09-23). Each detail page requires MIG and lists flux core as a plus; 2nd-shift pages give +6%. Martin's board lists no other Burleson location, so the postings name the site. Count and dates correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:weld_processes",
+   "source_url": "https://recruiting2.ultipro.com/MAR1022/JobBoard/7db9926f-7564-3521-4a93-13c1764fdae3/OpportunityDetail?opportunityId=5bf63ce6-bb0d-47de-9765-f8c5f1c3723f",
+   "ledger_value": "MIG (GMAW) required; flux core (FCAW) a plus (Burleson Welder postings, 2026)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[2]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:materials",
+   "source_url": "https://www.thomasconveyor.com/view/bucket-elevator-systems",
+   "ledger_value": "carbon steel, stainless steel and galvanized steel (bucket elevator systems)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[3]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:part_size_fit",
+   "source_url": "https://www.thomasconveyor.com/view/services",
+   "ledger_value": "cell, boundary (2026 analyst limits): custom bulk-handling conveyors up to 120 in diameter fit the 15 ft width; 120 in exceeds the older sheet's 72 in diameter; length and weight not stated",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[5]",
+   "verdict": "confirmed",
+   "note": "\"We design and produce systems up to 120\" in diameter\" (services page, under bespoke bulk-handling conveyors). Thomas Conveyor gives one address and says it manufactures in Texas, so the attribution is sound; fit judgement per the 2026 analyst limits as in Process Machinery/Deere.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:part_size_fit",
+   "source_url": "https://www.thomasconveyor.com/view/support",
+   "ledger_value": "cell, boundary (2026 analyst limits): custom bulk-handling conveyors up to 120 in diameter fit the 15 ft width; 120 in exceeds the older sheet's 72 in diameter; length and weight not stated",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[6]",
+   "verdict": "confirmed",
+   "note": "\"We design and produce systems up to 120\" in diameter\" (services page, under bespoke bulk-handling conveyors). Thomas Conveyor gives one address and says it manufactures in Texas, so the attribution is sound; fit judgement per the 2026 analyst limits as in Process Machinery/Deere.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:production_type",
+   "source_url": "https://www.thomasconveyor.com/view/services",
+   "ledger_value": "custom: specializes in custom conveyor systems built to customer specifications, plus stock components and CEMA-standard equipment",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[7]",
+   "verdict": "corrected",
+   "corrected_value": "custom: specializes in custom conveyor systems built to customer specifications",
+   "corrected_quote": "Thomas Conveyor Company specializes in custom conveyor systems, showcasing our expertise and in-house capabilities. ... We produce custom conveyor systems and components based on your specifications, utilizing our in-house laser, waterjet, and plasma technologies.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Quote found on the page (fresh fetch 2026-11-16), but the value adds \"plus stock components and CEMA-standard equipment\". The services page shows neither; \"stock conveyor components\" is only on /view/support (not cited for this field) and no Thomas page fetched (home, services, support, contact) says \"CEMA-standard\" (support says only \"As a member of CEMA\", a trade association). Clause dropped. Part mix 15 is unaffected (stated custom work stays).",
+   "plants_csv_value": "custom: specializes in custom conveyor systems built to customer specifications",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (company site, Martin board and news search 2026-11-16)",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[9]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Martin's board shows four Welder openings at your Burleson plant, posted between August 11 and November 12, 2026, all requiring MIG experience, and your site says you design and produce custom conveyor systems up to 120 inches in diameter; how are you keeping custom conveyor orders on schedule while those welding seats are open?",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[11]",
+   "verdict": "confirmed",
+   "note": "Every clause traced to a stated row (see opening_line_problems for wording notes).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-martin-sprocket:multi_plant",
+   "source_url": "https://www.martinsprocket.com/view/companypage/company",
+   "ledger_value": "multi-plant: Martin Sprocket & Gear runs regional and branch manufacturing plants",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[12]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[13]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:score_material_part",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[14]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[15]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[16]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[17]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[18]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:score_total",
+   "source_url": "",
+   "ledger_value": "88",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[19]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[20]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:confidence",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[21]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:name",
+   "source_url": "https://www.brookvillecorp.com/about-us/",
+   "ledger_value": "Brookville Equipment Corporation",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[22]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:address",
+   "source_url": "https://www.brookvillecorp.com/careers/",
+   "ledger_value": "175 Evans St, Brookville, PA 15825",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[23]",
+   "verdict": "confirmed",
+   "note": "Address confirmed on the cited page; the plant operates there today (live own-board postings for this site, 2026-11-16).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:address",
+   "source_url": "https://secure4.saashr.com/ta/6153800.careers?ShowJob=1023727618",
+   "ledger_value": "175 Evans St, Brookville, PA 15825",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[24]",
+   "verdict": "confirmed",
+   "note": "Address confirmed on the cited page; the plant operates there today (live own-board postings for this site, 2026-11-16).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:products",
+   "source_url": "https://www.brookvillecorp.com/",
+   "ledger_value": "Underground mining rail and rubber-tired vehicles (locomotives, personnel carriers, maintenance units, flat cars, slope and haulage tractors), tunneling equipment and mining rebuilds; also streetcars, passenger, freight and low/zero-emission locomotives, locomotive overhaul, industrial chassis and contract manufacturing (share by volume not stated)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[25]",
+   "verdict": "corrected",
+   "corrected_value": "Mining rail, mining rubber-tired, mining tunneling and mining rebuild lines; streetcars; freight, passenger and low/zero-emission locomotives; locomotive overhaul; industrial chassis; contract manufacturing (share by volume not stated)",
+   "corrected_quote": "Mining Rail Mining Rubber Tired Mining Tunneling Mining Rebuild",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Compound value: the three cited pages (home, /products, Metro Magazine) show the four mining lines, streetcars, Freight/Passenger/Low-Zero Emission Locomotive, Locomotive Overhaul, Industrial Chassis and contract manufacturing, but none shows the parenthetical vehicle list \"(locomotives, personnel carriers, maintenance units, flat cars, slope and haulage tractors)\" or \"Underground\". Those items are on /mining-rail/ (\"Battery Locomotives\", \"Diesel Personnel Carriers & Maintenance Units\", \"Mining Flat Car\") and /mining-rubber-tired/ (\"Diesel Slope Tractors\", \"15-ton battery haulage tractors\"), which are not cited for products. Either trim (this value) or add two products rows from those pages to keep the longer text. Sibling rows (/products and metro-magazine) still carry the old value and must take the same value at merge.",
+   "plants_csv_value": "Mining rail, mining rubber-tired, mining tunneling and mining rebuild lines; streetcars; freight, passenger and low/zero-emission locomotives; locomotive overhaul; industrial chassis; contract manufacturing (share by volume not stated)",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:products",
+   "source_url": "https://www.brookvillecorp.com/products",
+   "ledger_value": "Underground mining rail and rubber-tired vehicles (locomotives, personnel carriers, maintenance units, flat cars, slope and haulage tractors), tunneling equipment and mining rebuilds; also streetcars, passenger, freight and low/zero-emission locomotives, locomotive overhaul, industrial chassis and contract manufacturing (share by volume not stated)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[26]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch and supports its own fragment. Sibling of a corrected compound value: this row carries the same untrimmed value, which must follow the corrected row's corrected_value at merge (one error, counted once on the corrected row; counted per row the rate is in error_rate_note).",
+   "sibling_of_corrected": true,
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:products",
+   "source_url": "https://www.metro-magazine.com/news/brookville-equipment-earns-iso-90012015-certification",
+   "ledger_value": "Underground mining rail and rubber-tired vehicles (locomotives, personnel carriers, maintenance units, flat cars, slope and haulage tractors), tunneling equipment and mining rebuilds; also streetcars, passenger, freight and low/zero-emission locomotives, locomotive overhaul, industrial chassis and contract manufacturing (share by volume not stated)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[27]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch and supports its own fragment. Sibling of a corrected compound value: this row carries the same untrimmed value, which must follow the corrected row's corrected_value at merge (one error, counted once on the corrected row; counted per row the rate is in error_rate_note).",
+   "sibling_of_corrected": true,
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:weld_processes",
+   "source_url": "https://secure4.saashr.com/ta/6153800.careers?ShowJob=1023727618",
+   "ledger_value": "MIG and arc welding of steel, tack welding and torch cutting (Welder- Framing, Fabrication Welder and Part-Time Welder postings, live 2026-11-16); no TIG named",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[28]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:materials",
+   "source_url": "https://secure4.saashr.com/ta/6153800.careers?ShowJob=1023727618",
+   "ledger_value": "steel (welder postings); all-steel heavy-duty vehicle frames",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[29]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:materials",
+   "source_url": "https://www.brookvillecorp.com/mining-rail/",
+   "ledger_value": "steel (welder postings); all-steel heavy-duty vehicle frames",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[30]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:certifications",
+   "source_url": "https://www.metro-magazine.com/news/brookville-equipment-earns-iso-90012015-certification",
+   "ledger_value": "ISO 9001:2015 (DEKRA, reported Feb 2024); AAR M-1003",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[31]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:certifications",
+   "source_url": "https://www.brookvillecorp.com/careers/",
+   "ledger_value": "ISO 9001:2015 (DEKRA, reported Feb 2024); AAR M-1003",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[32]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:part_size_fit",
+   "source_url": "https://www.brookvillecorp.com/mining-rail/",
+   "ledger_value": "cell on length, boundary: the mining flat car (welded steel plate deck and frame on wheelsets) is 26 ft long, within the older 65 ft and 2026 60 ft limits; 13 tons is whole-vehicle weight (within 55,000 lb, over the older 10,500 lb sheet); width and frame weight not stated",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[33]",
+   "verdict": "corrected",
+   "corrected_value": "cell on length, boundary: the Mining Flat Car is 26 ft long with a smooth plate deck and weighs 13 tons as a whole vehicle (20-ton capacity); 26 ft is within the older 65 ft and 2026 60 ft limits and 13 tons (26,000 lb) is within the 2026 analyst 55,000 lb (over the older 10,500 lb sheet); width and the weight of the welded frame are not stated",
+   "corrected_quote": "The 26′ long flat deck car weighs 13 tons and can hold a maximum capacity of 20 tons ... Standard Smooth Plate Deck Surface",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The flat-car block on /mining-rail/ gives 26 ft, 13 tons, 20-ton capacity, \"Standard Smooth Plate Deck Surface\" and \"Solid axle wheelset\"; it never says \"welded\" or \"frame\" for the flat car. The value's \"(welded steel plate deck and frame on wheelsets)\" is the profiler's reading. Support for welded construction exists elsewhere (about-us: \"the product advances to include all-welded steel frames\", a 1970s history line; mining-rail: diesel locomotives have \"a heavy-duty welded frame\"), so the welded status is inferred, not stated, for the flat car. Value trimmed to what the block shows.",
+   "plants_csv_value": "cell on length, boundary: the Mining Flat Car is 26 ft long with a smooth plate deck and weighs 13 tons as a whole vehicle (20-ton capacity); 26 ft is within the older 65 ft and 2026 60 ft limits and 13 tons (26,000 lb) is within the 2026 analyst 55,000 lb (over the older 10,500 lb sheet); width and the weight of the welded frame are not stated",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:part_size_fit",
+   "source_url": "https://www.brookvillecorp.com/about-us/",
+   "ledger_value": "cell on length, boundary: the mining flat car (welded steel plate deck and frame on wheelsets) is 26 ft long, within the older 65 ft and 2026 60 ft limits; 13 tons is whole-vehicle weight (within 55,000 lb, over the older 10,500 lb sheet); width and frame weight not stated",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[34]",
+   "verdict": "corrected",
+   "corrected_value": "cell on length, boundary: the Mining Flat Car is 26 ft long with a smooth plate deck and weighs 13 tons as a whole vehicle (20-ton capacity); 26 ft is within the older 65 ft and 2026 60 ft limits and 13 tons (26,000 lb) is within the 2026 analyst 55,000 lb (over the older 10,500 lb sheet); width and the weight of the welded frame are not stated",
+   "corrected_quote": "Production Moves to Current Campus ... After Pickering Street was destroyed by the 1996 flood, a new 72,000 sq. ft. production and office space opened. ... Brookville Services was founded at BROOKVILLE’s previous South Pickering Street location.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Quote found. The row is the site-attribution step (campus rule), a judgement: the flat-car fact names no site, and Brookville has two Brookville addresses 1.3 km apart (175 Evans St; Brookville Services, 4 S Pickering St). /service-support/ (fetched for this check) shows Brookville Services doing \"repairs in the shop or on the road\", fleet management and vehicle rebuilds, i.e. a service/rebuild unit, while about-us says new production moved to the current campus. Under the ships repair-only precedent a service/rebuild shop is not a production site, so the attribution to Evans St holds and material keeps its points; but it rests on this inference, so the row is inferred (Thomas and Tread carry their attribution rows as inferred too).",
+   "plants_csv_value": "same as corrected_value",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:production_type",
+   "source_url": "https://www.metro-magazine.com/news/brookville-equipment-earns-iso-90012015-certification",
+   "ledger_value": "custom and low-volume: customizable mining vehicles across rail, rubber-tired and tunneling lines, streetcars and locomotives, plus contract fabrication and welding for prototype and small quantity orders",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[35]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch and supports its own fragment. Sibling of a corrected compound value: this row carries the same untrimmed value, which must follow the corrected row's corrected_value at merge (one error, counted once on the corrected row; counted per row the rate is in error_rate_note).",
+   "sibling_of_corrected": true,
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:production_type",
+   "source_url": "https://www.brookvillecorp.com/mining-rubber-tired/",
+   "ledger_value": "custom and low-volume: customizable mining vehicles across rail, rubber-tired and tunneling lines, streetcars and locomotives, plus contract fabrication and welding for prototype and small quantity orders",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[36]",
+   "verdict": "corrected",
+   "corrected_value": "custom and low-volume: customizable rubber-tired mining equipment, plus contract fabrication and welding for prototype and small quantity orders",
+   "corrected_quote": "BROOKVILLE's customizable rubber tired mining equipment brings the same renowned American-manufactured quality",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The two cited quotes state customizable rubber-tired mining equipment and contract fabrication/welding \"for prototype and small quantity orders\". The value extends \"customizable\" to rail and tunneling lines, streetcars and locomotives, which neither cited page states. The home page line \"BROOKVILLE is a custom solutions manufacturer delivering OEM equipment and contract manufacturing services\" (not cited) would support the wider reading if added as a row. Part mix 15 stands either way. Sibling row (metro-magazine) carries the old value and must take the same value at merge.",
+   "plants_csv_value": "custom and low-volume: customizable rubber-tired mining equipment, plus contract fabrication and welding for prototype and small quantity orders",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:welder_postings",
+   "source_url": "https://secure4.saashr.com/ta/6153800.careers?CareersSearch&ein_id=68099136&lang=en-US",
+   "ledger_value": "4 open on Brookville's own UKG Ready board (undated; read 2026-11-16), all at 175 Evans St: Part-Time Welder ($22-28/hr, 12% differential after 4:30 pm), Welder- Framing Night Shift ($18-30/hr, 12% shift differential), Welder- Framing ($18-25/hr), Fabrication Welder Night Shift ($18-23/hr, 12% differential); \"Ability to Arc and Mig weld steel\"",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[38]",
+   "verdict": "confirmed",
+   "note": "UKG Ready job-requisitions JSON (2026-11-16): 9 jobs, all at 175 EVANS ST; the 4 welder roles (1040511238 Part-Time Welder, 1023727619 Welder- Framing Night Shift, 1023727618 Welder- Framing, 1006912899 Fabrication Welder Night Shift) carry no date field in the API or page source, so \"undated\" is right. All four ask \"Ability to Arc and Mig weld steel\". Counted as open, several at once (Supreme Stoneboro precedent), not as 60+ days.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:welder_postings",
+   "source_url": "https://secure4.saashr.com/ta/6153800.careers?ShowJob=1040511238",
+   "ledger_value": "4 open on Brookville's own UKG Ready board (undated; read 2026-11-16), all at 175 Evans St: Part-Time Welder ($22-28/hr, 12% differential after 4:30 pm), Welder- Framing Night Shift ($18-30/hr, 12% shift differential), Welder- Framing ($18-25/hr), Fabrication Welder Night Shift ($18-23/hr, 12% differential); \"Ability to Arc and Mig weld steel\"",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[39]",
+   "verdict": "confirmed",
+   "note": "UKG Ready job-requisitions JSON (2026-11-16): 9 jobs, all at 175 EVANS ST; the 4 welder roles (1040511238 Part-Time Welder, 1023727619 Welder- Framing Night Shift, 1023727618 Welder- Framing, 1006912899 Fabrication Welder Night Shift) carry no date field in the API or page source, so \"undated\" is right. All four ask \"Ability to Arc and Mig weld steel\". Counted as open, several at once (Supreme Stoneboro precedent), not as 60+ days.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:welder_postings",
+   "source_url": "https://secure4.saashr.com/ta/6153800.careers?ShowJob=1023727619",
+   "ledger_value": "4 open on Brookville's own UKG Ready board (undated; read 2026-11-16), all at 175 Evans St: Part-Time Welder ($22-28/hr, 12% differential after 4:30 pm), Welder- Framing Night Shift ($18-30/hr, 12% shift differential), Welder- Framing ($18-25/hr), Fabrication Welder Night Shift ($18-23/hr, 12% differential); \"Ability to Arc and Mig weld steel\"",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[40]",
+   "verdict": "confirmed",
+   "note": "UKG Ready job-requisitions JSON (2026-11-16): 9 jobs, all at 175 EVANS ST; the 4 welder roles (1040511238 Part-Time Welder, 1023727619 Welder- Framing Night Shift, 1023727618 Welder- Framing, 1006912899 Fabrication Welder Night Shift) carry no date field in the API or page source, so \"undated\" is right. All four ask \"Ability to Arc and Mig weld steel\". Counted as open, several at once (Supreme Stoneboro precedent), not as 60+ days.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:welder_postings",
+   "source_url": "https://secure4.saashr.com/ta/6153800.careers?ShowJob=1023727618",
+   "ledger_value": "4 open on Brookville's own UKG Ready board (undated; read 2026-11-16), all at 175 Evans St: Part-Time Welder ($22-28/hr, 12% differential after 4:30 pm), Welder- Framing Night Shift ($18-30/hr, 12% shift differential), Welder- Framing ($18-25/hr), Fabrication Welder Night Shift ($18-23/hr, 12% differential); \"Ability to Arc and Mig weld steel\"",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[41]",
+   "verdict": "confirmed",
+   "note": "UKG Ready job-requisitions JSON (2026-11-16): 9 jobs, all at 175 EVANS ST; the 4 welder roles (1040511238 Part-Time Welder, 1023727619 Welder- Framing Night Shift, 1023727618 Welder- Framing, 1006912899 Fabrication Welder Night Shift) carry no date field in the API or page source, so \"undated\" is right. All four ask \"Ability to Arc and Mig weld steel\". Counted as open, several at once (Supreme Stoneboro precedent), not as 60+ days.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:welder_postings",
+   "source_url": "https://secure4.saashr.com/ta/6153800.careers?ShowJob=1006912899",
+   "ledger_value": "4 open on Brookville's own UKG Ready board (undated; read 2026-11-16), all at 175 Evans St: Part-Time Welder ($22-28/hr, 12% differential after 4:30 pm), Welder- Framing Night Shift ($18-30/hr, 12% shift differential), Welder- Framing ($18-25/hr), Fabrication Welder Night Shift ($18-23/hr, 12% differential); \"Ability to Arc and Mig weld steel\"",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[42]",
+   "verdict": "confirmed",
+   "note": "UKG Ready job-requisitions JSON (2026-11-16): 9 jobs, all at 175 EVANS ST; the 4 welder roles (1040511238 Part-Time Welder, 1023727619 Welder- Framing Night Shift, 1023727618 Welder- Framing, 1006912899 Fabrication Welder Night Shift) carry no date field in the API or page source, so \"undated\" is right. All four ask \"Ability to Arc and Mig weld steel\". Counted as open, several at once (Supreme Stoneboro precedent), not as 60+ days.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:triggers",
+   "source_url": "https://www.metro-magazine.com/news/brookville-equipment-earns-iso-90012015-certification",
+   "ledger_value": "none found within 24 months (ISO 9001:2015 certification reported Feb 16, 2024 is outside the window)",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[43]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:opening_line",
+   "source_url": "",
+   "ledger_value": "Your board lists four welder openings at Evans Street, including night-shift framing and fabrication roles with a 12% differential and a part-time welder role, each asking for arc and MIG welding of steel; how are you staffing welding across both shifts?",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[45]",
+   "verdict": "confirmed",
+   "note": "Every clause traced to a stated row (see opening_line_problems for wording notes).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[46]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:score_material_part",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[47]",
+   "verdict": "confirmed",
+   "note": "RULING pending (score_problems): as written under the consultation 10 campus rule material is 0 (total 63, Medium); the checker's case for keeping 20 (83, High) is in score_problems. Not counted as a correction, as in R3-GH.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[48]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[49]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[50]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:score_scale",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[51]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:score_total",
+   "source_url": "",
+   "ledger_value": "83",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[52]",
+   "verdict": "confirmed",
+   "note": "RULING pending (score_problems): as written under the consultation 10 campus rule material is 0 (total 63, Medium); the checker's case for keeping 20 (83, High) is in score_problems. Not counted as a correction, as in R3-GH.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[53]",
+   "verdict": "confirmed",
+   "note": "RULING pending (score_problems): as written under the consultation 10 campus rule material is 0 (total 63, Medium); the checker's case for keeping 20 (83, High) is in score_problems. Not counted as a correction, as in R3-GH.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:confidence",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[54]",
+   "verdict": "corrected",
+   "note": "Confidence 4 -> 3 under either reading of the material RULING (score_problems): if material is 0 it cannot count; if the coordinator keeps 20, it rests on an inferred site tie and an inferred welded-part status, so no confidence (Werk-Brau precedent). Add p-brookville-equipment-brookville-pa:part_size_fit to ledger/audit/no-confidence-claims.csv so normalise_scores.py keeps it. Out of the R2-A basis (a score row).",
+   "corrected_value": "3",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "plants_csv_value": "3",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-astec-eugene-or:name",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27780204",
+   "ledger_value": "Astec - Franklin Blvd, Eugene (formerly Johnson Crushers International, JCI)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[55]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-astec-eugene-or:parent_company",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27780204",
+   "ledger_value": "Astec Industries, Inc.",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[56]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-astec-eugene-or:parent_company",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/792987/000079298726000011/aste-20251231.htm",
+   "ledger_value": "Astec Industries, Inc.",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[57]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-astec-eugene-or:products",
+   "source_url": "https://www.aggbusiness.com/johnson-crushers-international-kpi-jci-celebrates-3000th-screen-sold/",
+   "ledger_value": "Crushers, screens and crushing/screening plants (JCI brand; as of Jun 2013: horizontal and incline screens, roller-bearing cone crushers, portable, stationary and track-mounted plants); Astec Materials Solutions segment site",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[58]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-astec-eugene-or:products",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/792987/000079298726000011/aste-20251231.htm",
+   "ledger_value": "Crushers, screens and crushing/screening plants (JCI brand; as of Jun 2013: horizontal and incline screens, roller-bearing cone crushers, portable, stationary and track-mounted plants); Astec Materials Solutions segment site",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[59]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-astec-eugene-or:weld_processes",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27780204",
+   "ledger_value": "GMAW/FCAW, all-position 3G and 4G (Welder II postings, Franklin Blvd, posted 2026-07-24)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[60]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-astec-eugene-or:materials",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27786991",
+   "ledger_value": "steel (Franklin Blvd maintenance posting)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[61]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-astec-eugene-or:production_type",
+   "source_url": "https://www.aggbusiness.com/johnson-crushers-international-kpi-jci-celebrates-3000th-screen-sold/",
+   "ledger_value": "product lines (crushers, screens, crushing/screening plants); custom or high-volume not stated",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[64]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-astec-eugene-or:welder_postings",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27780204",
+   "ledger_value": "2 open on Astec's own BrassRing board (read 2026-11-16), both naming Eugene Franklin Blvd: Welder II- Day Shift (req 27780204) and Welder II- Swing Shift (req 27780205), JSON-LD datePosted 2026-07-24 (about 115 days); GMAW/FCAW 3G & 4G; $1,500 sign-on bonus; swing shift $2.00/hr differential",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[66]",
+   "verdict": "confirmed",
+   "note": "Both BrassRing pages: JSON-LD datePosted 2026-07-24, title \"...Eugene Franklin Blvd\", apply form live; $1500.00 Sign-On Bonus on both; $2.00/hr differential on swing shift. Astec has a second Eugene site (Peterson, Airport Rd), but the titles name Franklin Blvd, so the campus rule is met.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-astec-eugene-or:welder_postings",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27780205",
+   "ledger_value": "2 open on Astec's own BrassRing board (read 2026-11-16), both naming Eugene Franklin Blvd: Welder II- Day Shift (req 27780204) and Welder II- Swing Shift (req 27780205), JSON-LD datePosted 2026-07-24 (about 115 days); GMAW/FCAW 3G & 4G; $1,500 sign-on bonus; swing shift $2.00/hr differential",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[67]",
+   "verdict": "confirmed",
+   "note": "Both BrassRing pages: JSON-LD datePosted 2026-07-24, title \"...Eugene Franklin Blvd\", apply form live; $1500.00 Sign-On Bonus on both; $2.00/hr differential on swing shift. Astec has a second Eugene site (Peterson, Airport Rd), but the titles name Franklin Blvd, so the campus rule is met.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-astec-eugene-or:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months at the site (Astec's July 1, 2025 TerraSource acquisition is company-level)",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[68]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-astec-eugene-or:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Franklin Blvd plant has had Welder II openings on day and swing shift posted since July 24, 2026, asking for all-position GMAW/FCAW and offering a $1,500 sign-on bonus; how are you covering fabrication welding while those roles stay open?",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[70]",
+   "verdict": "confirmed",
+   "note": "Every clause traced to a stated row (see opening_line_problems for wording notes).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-astec-eugene-or:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[71]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-astec-eugene-or:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[72]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-astec-eugene-or:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[73]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-astec-eugene-or:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[74]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-astec-eugene-or:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[75]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-astec-eugene-or:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[76]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-astec-eugene-or:score_total",
+   "source_url": "",
+   "ledger_value": "61",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[77]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-astec-eugene-or:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[78]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-astec-eugene-or:confidence",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[79]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:name",
+   "source_url": "https://www.kresscarrier.com/about.html",
+   "ledger_value": "Kress Corporation",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[81]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:products",
+   "source_url": "https://www.kresscarrier.com/",
+   "ledger_value": "Off-highway bottom-dump coal haulers (mining), slag pot carriers and specialty transport carriers for the metals industry, K13 wheel tractor scraper, diversified machines (fire dozer cab, high stacker, personnel carriers) and subcontract fabrication",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[82]",
+   "verdict": "corrected",
+   "corrected_value": "Bottom-dump coal haulers, slag pot carriers and specialty transport carriers for the metals industry, K13 wheel tractor scraper, diversified machines (fire dozer cab, high stacker, personnel carriers) and subcontract fabrication",
+   "corrected_quote": "The Kress unitized bottom dump coal hauler is designed to offer the smoothest ride ... leading manufacturer of slag pot carriers, with hundreds of units in operation throughout the world",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "The home page shows the coal hauler, slag pot carriers and \"Kress Specialty transport carriers ... for the metals industry\"; it does not say \"Off-highway\" or tag the hauler \"(mining)\" (no cited products page uses either word). Descriptors dropped; the rest is supported by the three cited pages. Sibling rows (K13.html, diversifiedproducts.html) carry the old value and must take the same value at merge. Mining relevance is still carried by the Manufacturing Welder postings (\"specialized industrial equipment for steel, construction, and mining industries\"), which could be added as a products row.",
+   "plants_csv_value": "Bottom-dump coal haulers, slag pot carriers and specialty transport carriers for the metals industry, K13 wheel tractor scraper, diversified machines (fire dozer cab, high stacker, personnel carriers) and subcontract fabrication",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:products",
+   "source_url": "https://www.kresscarrier.com/K13.html",
+   "ledger_value": "Off-highway bottom-dump coal haulers (mining), slag pot carriers and specialty transport carriers for the metals industry, K13 wheel tractor scraper, diversified machines (fire dozer cab, high stacker, personnel carriers) and subcontract fabrication",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[83]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch and supports its own fragment. Sibling of a corrected compound value: this row carries the same untrimmed value, which must follow the corrected row's corrected_value at merge (one error, counted once on the corrected row; counted per row the rate is in error_rate_note).",
+   "sibling_of_corrected": true,
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:products",
+   "source_url": "https://www.kresscarrier.com/diversifiedproducts.html",
+   "ledger_value": "Off-highway bottom-dump coal haulers (mining), slag pot carriers and specialty transport carriers for the metals industry, K13 wheel tractor scraper, diversified machines (fire dozer cab, high stacker, personnel carriers) and subcontract fabrication",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[84]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch and supports its own fragment. Sibling of a corrected compound value: this row carries the same untrimmed value, which must follow the corrected row's corrected_value at merge (one error, counted once on the corrected row; counted per row the rate is in error_rate_note).",
+   "sibling_of_corrected": true,
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:weld_processes",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9204897751202_1?cid=9dd2de8c-9976-4ff3-bfae-32b905ca374d&lang=en_US&locale=en_US",
+   "ledger_value": "manual arc welding with a weld gun, multi-pass, all positions; flux core (FCAW) a plus (Manufacturing Welder postings, 2026)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[85]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:certifications",
+   "source_url": "https://www.kresscarrier.com/ISOandQuality.html",
+   "ledger_value": "ISO 9001:2015 (annual NSF audit)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[87]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:production_type",
+   "source_url": "https://www.kresscarrier.com/diversifiedproducts.html",
+   "ledger_value": "custom and low-volume: specialty carriers built to application requirements, custom fabrications or complete machines, subcontract work",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[89]",
+   "verdict": "corrected",
+   "corrected_value": "custom: machines developed to meet specific application needs; custom fabrications or complete machines; subcontract work",
+   "corrected_quote": "Whether you need custom fabrications or a complete machine, our experienced sales and engineering staff can support you.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "Neither cited quote (diversified products page; ADP posting \"develop machines that meet specific application needs\") states low volume; \"low-volume\" is the profiler's reading (Brookville's \"small quantity orders\" is the contrast case where it is stated). Dropped. Part mix 15 stands on the stated custom-fabrication line. Sibling row (ADP 9204897751202_1) carries the old value and must take the same value at merge.",
+   "plants_csv_value": "custom: machines developed to meet specific application needs; custom fabrications or complete machines; subcontract work",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:production_type",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9204897751202_1?cid=9dd2de8c-9976-4ff3-bfae-32b905ca374d&lang=en_US&locale=en_US",
+   "ledger_value": "custom and low-volume: specialty carriers built to application requirements, custom fabrications or complete machines, subcontract work",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[90]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch and supports its own fragment. Sibling of a corrected compound value: this row carries the same untrimmed value, which must follow the corrected row's corrected_value at merge (one error, counted once on the corrected row; counted per row the rate is in error_rate_note).",
+   "sibling_of_corrected": true,
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9204897751202_1?cid=9dd2de8c-9976-4ff3-bfae-32b905ca374d&lang=en_US&locale=en_US",
+   "ledger_value": "2 open on Kress's own ADP board (read 2026-11-16), both Brimfield: Manufacturing Welder - 1st Shift (posted 2026-11-07) and Manufacturing Welder - 2nd Shift (posted 2026-10-01, 46 days), $25-28/hr; multi-pass, all positions; flux core a plus; 2nd shift 15% differential",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[92]",
+   "verdict": "confirmed",
+   "note": "Kress ADP board JSON (19 jobs, all Brimfield) lists both Manufacturing Welder requisitions: 1st shift postDate 2026-11-07, 2nd shift postDate 2026-10-01; pay range 25-28 USD; 15% 2nd-shift differential; single-site company.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:welder_postings",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9204897762408_1?cid=9dd2de8c-9976-4ff3-bfae-32b905ca374d&lang=en_US&locale=en_US",
+   "ledger_value": "2 open on Kress's own ADP board (read 2026-11-16), both Brimfield: Manufacturing Welder - 1st Shift (posted 2026-11-07) and Manufacturing Welder - 2nd Shift (posted 2026-10-01, 46 days), $25-28/hr; multi-pass, all positions; flux core a plus; 2nd shift 15% differential",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[93]",
+   "verdict": "confirmed",
+   "note": "Kress ADP board JSON (19 jobs, all Brimfield) lists both Manufacturing Welder requisitions: 1st shift postDate 2026-11-07, 2nd shift postDate 2026-10-01; pay range 25-28 USD; 15% 2nd-shift differential; single-site company.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (company site, ADP board and news search 2026-11-16)",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[94]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Brimfield plant posted a 1st-shift Manufacturing Welder opening on November 7, 2026, alongside a 2nd-shift opening posted October 1, both for multi-pass, all-position welding on machines built to specific application needs; how are you covering that welding while both openings stay unfilled?",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[96]",
+   "verdict": "confirmed",
+   "note": "Every clause traced to a stated row (see opening_line_problems for wording notes).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[97]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[98]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[99]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[100]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[101]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:score_scale",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[102]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:score_total",
+   "source_url": "",
+   "ledger_value": "63",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[103]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[104]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:confidence",
+   "source_url": "",
+   "ledger_value": "3",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[105]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4162624",
+   "ledger_value": "gas-shielded MIG (Welder posting, Walton Hills, 2026)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[106]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:production_type",
+   "source_url": "https://www.npkce.com/pedestal-boom-systems/",
+   "ledger_value": "custom and high-mix: pedestal boom systems custom-designed for each requirement, plus hydraulic hammers, crushers, shears and other attachment lines",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[110]",
+   "verdict": "confirmed",
+   "note": "Pedestal-boom page: \"Custom-designed for your requirements\" and \"Engineered and manufactured in the U.S.\"; the same page's product menu lists Hydraulic Hammers, Concrete Crushers, Demolition Shears and accessories, which supports the attachment-line clause and the many-part-types reading; the Product Assembler posting (Walton Hills, published 2026-08-10) places boom assembly at the site.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:production_type",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/e0768e64-5656-4fa2-93bb-1efe4b86885f",
+   "ledger_value": "custom and high-mix: pedestal boom systems custom-designed for each requirement, plus hydraulic hammers, crushers, shears and other attachment lines",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[111]",
+   "verdict": "confirmed",
+   "note": "Pedestal-boom page: \"Custom-designed for your requirements\" and \"Engineered and manufactured in the U.S.\"; the same page's product menu lists Hydraulic Hammers, Concrete Crushers, Demolition Shears and accessories, which supports the attachment-line clause and the many-part-types reading; the Product Assembler posting (Walton Hills, published 2026-08-10) places boom assembly at the site.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:existing_robots",
+   "source_url": "https://www.constructionequipmentguide.com/npk-continues-to-grow-debuts-v250r-crusher-pulverizer/65053?markdown=1",
+   "ledger_value": "yes: robotic welders alongside manual welding bays (June 2024); brand not stated",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[112]",
+   "verdict": "corrected",
+   "corrected_value": "yes: robotic welders and welding bays at the Walton Hills facility (June 2024); brand not stated",
+   "corrected_quote": "equipped with state-of-the-art machining centers, robotic welders and welding bays that stay consistently busy.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "CEG (published 2024-06-18) says \"robotic welders and welding bays\"; it does not say the bays are manual. \"manual\" dropped (the inference that the bays are manual is fair but belongs in an inferred row or the bottleneck guess).",
+   "plants_csv_value": "yes: robotic welders and welding bays at the Walton Hills facility (June 2024); brand not stated",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/e0768e64-5656-4fa2-93bb-1efe4b86885f",
+   "ledger_value": "1 open on NPK's own Paylocity board (read 2026-11-16): Welder, Walton Hills, published 2026-09-28 (49 days); gas-shielded MIG; first and second shift available",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[113]",
+   "verdict": "confirmed",
+   "note": "NPK Paylocity board: Welder, LocationName Walton Hills, PublishedDate 2026-09-28; the details page has no JSON-LD date. Note (no verdict change): the JobId 4162624 is lower than NPK's Senior Product Development Engineer (4253144, published 2026-06-15), so the requisition was created before mid-June 2026 and 2026-09-28 is a re-publish stamp (same reading as the HEM re-list stamp). The board date is the date the brief tells us to use; \"49 days\" is a floor, not the true age. Labor stays 12 either way.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4162624",
+   "ledger_value": "1 open on NPK's own Paylocity board (read 2026-11-16): Welder, Walton Hills, published 2026-09-28 (49 days); gas-shielded MIG; first and second shift available",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[114]",
+   "verdict": "confirmed",
+   "note": "NPK Paylocity board: Welder, LocationName Walton Hills, PublishedDate 2026-09-28; the details page has no JSON-LD date. Note (no verdict change): the JobId 4162624 is lower than NPK's Senior Product Development Engineer (4253144, published 2026-06-15), so the requisition was created before mid-June 2026 and 2026-09-28 is a re-publish stamp (same reading as the HEM re-list stamp). The board date is the date the brief tells us to use; \"49 days\" is a floor, not the true age. Labor stays 12 either way.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:triggers",
+   "source_url": "https://www.constructionequipmentguide.com/npk-continues-to-grow-debuts-v250r-crusher-pulverizer/65053?markdown=1",
+   "ledger_value": "none within 24 months (latest dated: second manufacturing facility completed 2023; 45,000 sq ft added 2022)",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[115]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:triggers",
+   "source_url": "https://www.npkce.com/about-us/",
+   "ledger_value": "none within 24 months (latest dated: second manufacturing facility completed 2023; 45,000 sq ft added 2022)",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[116]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-npk:multi_plant",
+   "source_url": "https://www.constructionequipmentguide.com/npk-continues-to-grow-debuts-v250r-crusher-pulverizer/65053?markdown=1",
+   "ledger_value": "multi-plant: NPK fabricates in Japan, the United States and Europe",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[117]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:headcount",
+   "source_url": "https://www.constructionequipmentguide.com/npk-continues-to-grow-debuts-v250r-crusher-pulverizer/65053?markdown=1",
+   "ledger_value": "120 (2024)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[118]",
+   "verdict": "confirmed",
+   "note": "CEG 2024-06-18: \"Many of the company's 120 employees are long tenured\" and, on the same page, \"this growth has melded all NPKCE divisions onto one campus\" in Walton Hills. The company figure is attributed to the campus; Genesis (Superior WI, NPKCE-owned) is counted separately in the ledger at 117 employees (2019), so 120 cannot include it. Attribution sound; within 36 months.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Welder opening in Walton Hills, posted September 28, 2026 for first or second shift, calls for gas-shielded MIG work, and CEG reported in June 2024 that the plant runs robotic welders alongside its welding bays; which weldments are you still sending to the manual bays rather than the robots?",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[120]",
+   "verdict": "confirmed",
+   "note": "Every clause traced to a stated row (see opening_line_problems for wording notes).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[121]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[122]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[123]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[124]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[125]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:score_scale",
+   "source_url": "",
+   "ledger_value": "10",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[126]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:score_total",
+   "source_url": "",
+   "ledger_value": "65",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[127]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[128]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:confidence",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[129]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3292594",
+   "ledger_value": "1 open on the company's own Paylocity board (2026-11-16): Welder Level I - Day shift, Roanoke VA (Tread's only stated site, 176 Eastpark Dr), JSON-LD datePosted 2026-11-04 (board shows 11/10/2026); \"Capable of Flux Core Arc welding, MIG welding\"; stainless and mild steel structural weldments; Fridays overtime as needed (conditional)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[130]",
+   "verdict": "confirmed",
+   "note": "Tread Paylocity: JSON-LD datePosted 2026-11-04T21:04:42-06:00, streetAddress 176 Eastpark Dr (names the site); board list shows the only job, PublishedDate 2026-11-10. Note (no verdict change): JobId 3292594 is lower than a Paylocity requisition published 2025-10-01 (3615629), which suggests (Paylocity ids appear to be global and sequential, compared here across companies) that the requisition predates Oct 2025 and both dates are re-list stamps (HEM precedent). Counted as open (12) under the standing-ad rule; \"Fridays are reserved for overtime as needed\" is conditional, not mandatory.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:weld_processes",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3292594",
+   "ledger_value": "FCAW and MIG (Welder Level I posting, Roanoke, 2026)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[131]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:materials",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3292594",
+   "ledger_value": "stainless steel and mild steel",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[132]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:materials",
+   "source_url": "https://treadcorp.com/products/storage-bin/",
+   "ledger_value": "stainless steel and mild steel",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[133]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:part_size_fit",
+   "source_url": "https://treadcorp.com/a-turn-key-anfo-truck-solution-for-cal-nevada/",
+   "ledger_value": "cell on length, boundary: a three-compartment stainless ANFO tank 14 ft long (unit described in a Dec 17, 2025 Tread post) is within the older 65 ft and 2026 60 ft limits; width, diameter and weight not stated",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[135]",
+   "verdict": "confirmed",
+   "note": "Tread post datePublished 2025-12-17: \"three-compartment, stainless-steel 14ft long ANFO tank\"; /company/: \"Corporate offices and manufacturing facilities are located in Roanoke\"; the only Roanoke address on the contact page and in the posting JSON-LD is 176 Eastpark Dr. 20,000 lb is payload and correctly not used.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:part_size_fit",
+   "source_url": "https://treadcorp.com/company/",
+   "ledger_value": "cell on length, boundary: a three-compartment stainless ANFO tank 14 ft long (unit described in a Dec 17, 2025 Tread post) is within the older 65 ft and 2026 60 ft limits; width, diameter and weight not stated",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[136]",
+   "verdict": "confirmed",
+   "note": "Tread post datePublished 2025-12-17: \"three-compartment, stainless-steel 14ft long ANFO tank\"; /company/: \"Corporate offices and manufacturing facilities are located in Roanoke\"; the only Roanoke address on the contact page and in the posting JSON-LD is 176 Eastpark Dr. 20,000 lb is payload and correctly not used.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:production_type",
+   "source_url": "https://treadcorp.com/electric-emulsion-matrix-module/",
+   "ledger_value": "custom: equipment individually designed and configured to each customer; full-service fabrication shop",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[137]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:production_type",
+   "source_url": "https://www.treadcorp.com/",
+   "ledger_value": "custom: equipment individually designed and configured to each customer; full-service fabrication shop",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[138]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:triggers",
+   "source_url": "https://treadcorp.com/a-turn-key-anfo-truck-solution-for-cal-nevada/",
+   "ledger_value": "none counted within 24 months (Dec 17, 2025: CAL-NEVADA's first Tread ANFO unit, a single-unit sale, not counted as a plant trigger)",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[140]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Welder Level I opening in Roanoke, posted November 4, 2026, covers FCAW and MIG on stainless and mild-steel weldments with Fridays held for overtime as needed, and a December 2025 post on your site describes a CAL-NEVADA unit with a three-compartment, 14 ft stainless ANFO tank; how are you staffing tank welding as custom orders come in?",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[142]",
+   "verdict": "confirmed",
+   "note": "Every clause traced to a stated row (see opening_line_problems for wording notes).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[143]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:score_material_part",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[144]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[145]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[146]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[147]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:score_scale",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[148]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:score_total",
+   "source_url": "",
+   "ledger_value": "75",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[149]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[150]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:confidence",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[151]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:name",
+   "source_url": "https://www.paladinattachments.com/",
+   "ledger_value": "Paladin Attachments (Epiroc), Dexter MI",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[152]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:products",
+   "source_url": "https://www.paladinattachments.com/",
+   "ledger_value": "not stated at site; Paladin attachment brands (company-level); EPA and a trade directory tie the address to the Sweepster (sweeper and broom attachments) and Harley brands (inferred)",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[153]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:products",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?p_id=110001845380&output=JSON",
+   "ledger_value": "not stated at site; Paladin attachment brands (company-level); EPA and a trade directory tie the address to the Sweepster (sweeper and broom attachments) and Harley brands (inferred)",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[154]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:products",
+   "source_url": "https://constructionequipment.com/company/sweepster",
+   "ledger_value": "not stated at site; Paladin attachment brands (company-level); EPA and a trade directory tie the address to the Sweepster (sweeper and broom attachments) and Harley brands (inferred)",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[155]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:weld_processes",
+   "source_url": "https://www.careerprofile.epiroc.com/job/Dexter-Robot-Weld-Operator-MI-48103/1435293633/",
+   "ledger_value": "gas-shielded MIG; manual all-position welding and fitting without fixtures (Robot Weld Operator posting, Dexter, 2026)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[156]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:production_type",
+   "source_url": "https://www.paladinattachments.com/en/about-us",
+   "ledger_value": "mixed (company-level): 11 brands from dedicated work tools to custom solutions; site product mix not stated",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[160]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:existing_robots",
+   "source_url": "https://www.careerprofile.epiroc.com/job/Dexter-Robot-Weld-Operator-MI-48103/1435293633/",
+   "ledger_value": "yes: robotic welder at Dexter (Robot Weld Operator posting, Nov 6, 2026); brand not stated",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[161]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:welder_postings",
+   "source_url": "https://www.careerprofile.epiroc.com/search/?q=&locationsearch=Dexter",
+   "ledger_value": "1 open on Epiroc's own careers board (read 2026-11-16): Robot Weld Operator, Dexter MI, posted 2026-11-06, 2nd shift; requires manual all-position welding, layout and fitting without fixtures and gas-shield MIG, so it counts (ruling 5)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[162]",
+   "verdict": "confirmed",
+   "note": "Epiroc search by Dexter (2026-11-16): 5 postings; Robot Weld Operator dated Nov 6, 2026 (itemprop datePosted Fri Nov 06 2026), \"based onsite at our Dexter, MI facility\", 2nd shift 2:30 pm-1:00 am Mon-Thu. Text requires \"all position welding\", \"Perform all types of welding, layout, fit, and weld components ... without fixtures\" and gas-shield MIG, so it counts under ruling 5. No other Epiroc or Paladin site in Dexter was found (the Epiroc search by Dexter shows one facility; ECHO lists only 2800 N Zeeb Rd for Paladin/Sweepster in Dexter).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:welder_postings",
+   "source_url": "https://www.careerprofile.epiroc.com/job/Dexter-Robot-Weld-Operator-MI-48103/1435293633/",
+   "ledger_value": "1 open on Epiroc's own careers board (read 2026-11-16): Robot Weld Operator, Dexter MI, posted 2026-11-06, 2nd shift; requires manual all-position welding, layout and fitting without fixtures and gas-shield MIG, so it counts (ruling 5)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[163]",
+   "verdict": "confirmed",
+   "note": "Epiroc search by Dexter (2026-11-16): 5 postings; Robot Weld Operator dated Nov 6, 2026 (itemprop datePosted Fri Nov 06 2026), \"based onsite at our Dexter, MI facility\", 2nd shift 2:30 pm-1:00 am Mon-Thu. Text requires \"all position welding\", \"Perform all types of welding, layout, fit, and weld components ... without fixtures\" and gas-shield MIG, so it counts under ruling 5. No other Epiroc or Paladin site in Dexter was found (the Epiroc search by Dexter shows one facility; ECHO lists only 2800 N Zeeb Rd for Paladin/Sweepster in Dexter).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:triggers",
+   "source_url": "",
+   "ledger_value": "none found within 24 months (Epiroc board and news search 2026-11-16)",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[164]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-epiroc:multi_plant",
+   "source_url": "https://www.careerprofile.epiroc.com/job/Ooltewah-WelderFabricator-TN-37363/1431613333/",
+   "ledger_value": "multi-plant: Epiroc production facilities on six continents",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[165]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Robot Weld Operator opening in Dexter, posted November 6, 2026 for second shift, asks the operator to run the robotic welder and also lay out, fit and weld parts by hand without fixtures; how are you splitting work between the robot and manual welding at Dexter?",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[167]",
+   "verdict": "confirmed",
+   "note": "Every clause traced to a stated row (see opening_line_problems for wording notes).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[168]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[169]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[170]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:score_labor",
+   "source_url": "",
+   "ledger_value": "12",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[171]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[172]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[173]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:score_total",
+   "source_url": "",
+   "ledger_value": "53",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[174]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:score_tier",
+   "source_url": "",
+   "ledger_value": "Medium",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[175]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:confidence",
+   "source_url": "",
+   "ledger_value": "3",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[176]",
+   "verdict": "confirmed",
+   "note": "Checked against the rubric, the mining rules and the cited claims; see score_notes.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:prospect_test",
+   "source_url": "https://secure4.saashr.com/ta/6153800.careers?ShowJob=1023727619",
+   "ledger_value": "pass (inferred): in-house arc and MIG welding of steel vehicle frames is a core production step at Evans St",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[182]",
+   "verdict": "confirmed",
+   "note": "Pass is a judgement, tagged inferred; the quote shows in-house production welding at the site.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-astec-eugene-or:prospect_test",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27780205",
+   "ledger_value": "pass (inferred): in-house GMAW/FCAW production welding of steel crusher and screen weldments at Franklin Blvd",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[183]",
+   "verdict": "confirmed",
+   "note": "Pass is a judgement, tagged inferred; the quote shows in-house production welding at the site.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:prospect_test",
+   "source_url": "https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions/9204897762408_1?cid=9dd2de8c-9976-4ff3-bfae-32b905ca374d&lang=en_US&locale=en_US",
+   "ledger_value": "pass (inferred): in-house multi-pass production welding of heavy carriers and haulers at Brimfield",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-I.json evidence[184]",
+   "verdict": "confirmed",
+   "note": "Pass is a judgement, tagged inferred; the quote shows in-house production welding at the site.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=175%20Evans%20St%2C%20Brookville%2C%20PA%2015825&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "41.153987",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[185]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=175%20Evans%20St%2C%20Brookville%2C%20PA%2015825&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-79.065346",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[186]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=175%20Evans%20St%2C%20Brookville%2C%20PA%2015825&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "42065",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[187]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=227%20W%20Illinois%20St%2C%20Brimfield%2C%20IL%2061517&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "40.844875",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[188]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=227%20W%20Illinois%20St%2C%20Brimfield%2C%20IL%2061517&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-89.886527",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[189]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=227%20W%20Illinois%20St%2C%20Brimfield%2C%20IL%2061517&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "17143",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[190]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2800%20N%20Zeeb%20Rd%2C%20Dexter%2C%20MI%2048130&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "42.323743",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[191]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2800%20N%20Zeeb%20Rd%2C%20Dexter%2C%20MI%2048130&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-83.840621",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[192]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2800%20N%20Zeeb%20Rd%2C%20Dexter%2C%20MI%2048130&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "26161",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-I.json evidence[193]",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:address",
+   "source_url": "https://www.paladinattachments.com/",
+   "ledger_value": "2800 Zeeb Road, Dexter MI 48130",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 7417",
+   "verdict": "confirmed",
+   "note": "Address confirmed on the cited page; the plant operates there today (live own-board postings for this site, 2026-11-16).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:tier",
+   "source_url": "https://www.paladinattachments.com/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 7423",
+   "verdict": "confirmed",
+   "note": "OEM: sells finished product under its own name; tier is a judgement, tagged inferred.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:address",
+   "source_url": "https://www.kresscarrier.com/Contact.html",
+   "ledger_value": "227 W. Illinois St., Brimfield IL 61517",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 7526",
+   "verdict": "confirmed",
+   "note": "Address confirmed on the cited page; the plant operates there today (live own-board postings for this site, 2026-11-16).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:tier",
+   "source_url": "https://www.kresscarrier.com/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 7529",
+   "verdict": "confirmed",
+   "note": "OEM: sells finished product under its own name; tier is a judgement, tagged inferred.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:tier",
+   "source_url": "https://www.brookvillecorp.com/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 7536",
+   "verdict": "confirmed",
+   "note": "OEM: sells finished product under its own name; tier is a judgement, tagged inferred.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=PALADIN&state_abbr=MI&output=JSON",
+   "ledger_value": "2800 N ZEEB RD, DEXTER, MI 48130",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 8078",
+   "verdict": "confirmed",
+   "note": "Cited EPA FRS endpoint returned 503 on 2026-11-16 (outage); per the brief, checked in EPA ECHO instead (echo_rest_services.get_facilities, same registry): PALADIN ATTACHMENTS IES LLC | 2800 N ZEEB RD | DEXTER (registry 110070298035), plus SWEEPSTER-HARLEY ATTACHMENTS at 2800 NORTH ZEEB ROAD. Base-record row (not written by profiler I).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:prospect_test",
+   "source_url": "https://www.careerprofile.epiroc.com/job/Dexter-Robot-Weld-Operator-MI-48103/1435293633/",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 8080",
+   "verdict": "confirmed",
+   "note": "Pass is a judgement, tagged inferred; the quote shows in-house production welding at the site.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:tier",
+   "source_url": "https://www.careerprofile.epiroc.com/job/Dexter-Robot-Weld-Operator-MI-48103/1435293633/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 8081",
+   "verdict": "confirmed",
+   "note": "OEM: sells finished product under its own name; tier is a judgement, tagged inferred.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-astec-eugene-or:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?facility_name=JOHNSON%20CRUSHERS&state_abbr=OR&output=JSON",
+   "ledger_value": "86470 Franklin Blvd, Eugene, OR 97405",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 8258",
+   "verdict": "confirmed",
+   "note": "Cited EPA FRS endpoint returned 503 on 2026-11-16 (outage); per the brief, checked in EPA ECHO instead (echo_rest_services.get_facilities, same registry): JOHNSON CRUSHERS INTERNATIONAL | 86470 FRANKLIN BLVD | EUGENE (registry 110000816751). The Franklin Blvd Welder II postings (postal code 97405, \"formerly Johnson Crushers International\") place the operating plant there. Base-record row (not written by profiler I).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-astec-eugene-or:tier",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/792987/000079298726000011/aste-20251231.htm",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 8262",
+   "verdict": "confirmed",
+   "note": "OEM: sells finished product under its own name; tier is a judgement, tagged inferred.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:name",
+   "source_url": "https://www.constructionequipmentguide.com/npk-construction-equipment-expands-in-walton-hills/37430?markdown=1",
+   "ledger_value": "NPK Construction Equipment, Inc.",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 9486",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:address",
+   "source_url": "https://www.npkce.com/",
+   "ledger_value": "7550 Independence Dr, Walton Hills, OH 44146",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 9488",
+   "verdict": "confirmed",
+   "note": "Address confirmed on the cited page; the plant operates there today (live own-board postings for this site, 2026-11-16).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/frs_rest_services.get_facilities?output=JSON&facility_name=NPK&state_abbr=OH",
+   "ledger_value": "7550 Independence Dr",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 9489",
+   "verdict": "confirmed",
+   "note": "Cited EPA FRS endpoint returned 503 on 2026-11-16 (outage); per the brief, checked in EPA ECHO instead (echo_rest_services.get_facilities, same registry): NPK CONSTRUCTION EQUIPMENT | 7550 INDEPENDENCE DR | WALTON HILLS (registry 110004730499). Base-record row (not written by profiler I).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:tier",
+   "source_url": "https://www.constructionequipmentguide.com/npk-construction-equipment-celebrates-35-years/48340?markdown=1",
+   "ledger_value": "OEM",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 9495",
+   "verdict": "confirmed",
+   "note": "OEM: sells finished product under its own name; tier is a judgement and the cited CEG page itself says \"a full-fledged OEM manufacturer\", so stated is acceptable.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:prospect_test",
+   "source_url": "https://www.constructionequipmentguide.com/npk-continues-to-grow-debuts-v250r-crusher-pulverizer/65053?markdown=1",
+   "ledger_value": "pass: robotic welders and welding bays at Walton Hills (2024)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 9497",
+   "verdict": "confirmed",
+   "note": "Pass is a judgement, tagged inferred; the quote shows in-house production welding at the site.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:name",
+   "source_url": "https://www.thomasconveyor.com/view/contact",
+   "ledger_value": "Thomas Conveyor Company - Burleson",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 13560",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:address",
+   "source_url": "https://www.thomasconveyor.com/view/contact",
+   "ledger_value": "555 N Burleson Blvd, Burleson, TX 76028",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 13561",
+   "verdict": "confirmed",
+   "note": "Address confirmed on the cited page; the plant operates there today (live own-board postings for this site, 2026-11-16).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:tier",
+   "source_url": "https://www.thomasconveyor.com/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 13566",
+   "verdict": "confirmed",
+   "note": "OEM: sells finished product under its own name; tier is a judgement, tagged inferred.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:relationship",
+   "source_url": "https://www.thomasconveyor.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 13567",
+   "verdict": "confirmed",
+   "note": "Written relationship rule (consultation 9, clarified; coordinator sweep): crusher/screen/conveyor maker -> lookalike of Schenck Process. Tagged inferred, as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:lookalike_of",
+   "source_url": "https://www.thomasconveyor.com/",
+   "ledger_value": "Schenck Process",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 13568",
+   "verdict": "confirmed",
+   "note": "Written relationship rule (consultation 9, clarified; coordinator sweep): crusher/screen/conveyor maker -> lookalike of Schenck Process. Tagged inferred, as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/MAR1022/JobBoard/7db9926f-7564-3521-4a93-13c1764fdae3/OpportunityDetail?opportunityId=48f61eae-e82c-4810-a49a-a88ffa29c01b",
+   "ledger_value": "4 open on parent Martin Sprocket & Gear's own UltiPro board (2026-11-16), location \"Thomas Conveyor\", 555 North Burleson, Burleson TX 76028: Welder - 2nd Shift (posted 2026-11-12), Welder - 1st Shift (2026-11-02), Welder - 2nd Shift (2026-10-12), Welder - 1st Shift (2026-08-11, open about 97 days); \"Perform MIG welding to join metal parts\"; flux core a plus; 2nd shift +6%",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 13571",
+   "verdict": "confirmed",
+   "note": "Martin Sprocket & Gear UltiPro board, read via its LoadSearchResults JSON 2026-11-16: exactly four Welder postings at location \"Thomas Conveyor\" (555 North Burleson): WELDE009077 2026-11-12, WELDE009050 2026-11-02, WELDE009008 2026-10-12, WELDE008852 2026-08-11 (UpdatedDate 2026-09-23). Each detail page requires MIG and lists flux core as a plus; 2nd-shift pages give +6%. Martin's board lists no other Burleson location, so the postings name the site. Count and dates correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/MAR1022/JobBoard/7db9926f-7564-3521-4a93-13c1764fdae3/OpportunityDetail?opportunityId=8e87bb3f-cb62-4695-b7c8-865ab25768d9",
+   "ledger_value": "4 open on parent Martin Sprocket & Gear's own UltiPro board (2026-11-16), location \"Thomas Conveyor\", 555 North Burleson, Burleson TX 76028: Welder - 2nd Shift (posted 2026-11-12), Welder - 1st Shift (2026-11-02), Welder - 2nd Shift (2026-10-12), Welder - 1st Shift (2026-08-11, open about 97 days); \"Perform MIG welding to join metal parts\"; flux core a plus; 2nd shift +6%",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 13572",
+   "verdict": "confirmed",
+   "note": "Martin Sprocket & Gear UltiPro board, read via its LoadSearchResults JSON 2026-11-16: exactly four Welder postings at location \"Thomas Conveyor\" (555 North Burleson): WELDE009077 2026-11-12, WELDE009050 2026-11-02, WELDE009008 2026-10-12, WELDE008852 2026-08-11 (UpdatedDate 2026-09-23). Each detail page requires MIG and lists flux core as a plus; 2nd-shift pages give +6%. Martin's board lists no other Burleson location, so the postings name the site. Count and dates correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:prospect_test",
+   "source_url": "https://recruiting2.ultipro.com/MAR1022/JobBoard/7db9926f-7564-3521-4a93-13c1764fdae3/OpportunityDetail?opportunityId=21b61271-317f-49e5-aacf-f03fba6b68bc",
+   "ledger_value": "pass (inferred): production MIG welding of conveyor parts at the site",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 13573",
+   "verdict": "confirmed",
+   "note": "Pass is a judgement, tagged inferred; the quote shows in-house production welding at the site.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:name",
+   "source_url": "https://treadcorp.com/contact/",
+   "ledger_value": "Tread Corporation - Roanoke",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 13593",
+   "verdict": "confirmed",
+   "note": "Quote found on a fresh fetch (2026-11-16, raw source included) and supports the value.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:address",
+   "source_url": "https://treadcorp.com/contact/",
+   "ledger_value": "176 Eastpark Dr, Roanoke, VA 24019",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 13594",
+   "verdict": "confirmed",
+   "note": "Address confirmed on the cited page; the plant operates there today (live own-board postings for this site, 2026-11-16).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:tier",
+   "source_url": "https://www.treadcorp.com/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 13598",
+   "verdict": "confirmed",
+   "note": "OEM: sells finished product under its own name; tier is a judgement, tagged inferred.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:relationship",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3292594",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 13599",
+   "verdict": "confirmed",
+   "note": "Written relationship rule (consultation 9, clarified; coordinator sweep): attachments, tanks/bodies sold as products, or mining-machine structures -> lookalike of Mine Rite. Tagged inferred, as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:lookalike_of",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3292594",
+   "ledger_value": "Mine Rite",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 13600",
+   "verdict": "confirmed",
+   "note": "Written relationship rule (consultation 9, clarified; coordinator sweep): attachments, tanks/bodies sold as products, or mining-machine structures -> lookalike of Mine Rite. Tagged inferred, as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3292594#jsonld",
+   "ledger_value": "1 open on the company's own Paylocity board (2026-11-16): Welder Level I - Day shift, Roanoke VA (Tread's only stated site, 176 Eastpark Dr), JSON-LD datePosted 2026-11-04 (board shows 11/10/2026); \"Capable of Flux Core Arc welding, MIG welding\"; stainless and mild steel structural weldments; Fridays overtime as needed (conditional)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 13602",
+   "verdict": "confirmed",
+   "note": "Tread Paylocity: JSON-LD datePosted 2026-11-04T21:04:42-06:00, streetAddress 176 Eastpark Dr (names the site); board list shows the only job, PublishedDate 2026-11-10. Note (no verdict change): JobId 3292594 is lower than a Paylocity requisition published 2025-10-01 (3615629), which suggests (Paylocity ids appear to be global and sequential, compared here across companies) that the requisition predates Oct 2025 and both dates are re-list stamps (HEM precedent). Counted as open (12) under the standing-ad rule; \"Fridays are reserved for overtime as needed\" is conditional, not mandatory.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:welder_postings",
+   "source_url": "https://recruiting.paylocity.com/recruiting/jobs/All/5982c650-4df9-44dc-a68e-87d84c6c4267/Tread-Corporation",
+   "ledger_value": "1 open on the company's own Paylocity board (2026-11-16): Welder Level I - Day shift, Roanoke VA (Tread's only stated site, 176 Eastpark Dr), JSON-LD datePosted 2026-11-04 (board shows 11/10/2026); \"Capable of Flux Core Arc welding, MIG welding\"; stainless and mild steel structural weldments; Fridays overtime as needed (conditional)",
+   "tag": "stated",
+   "origin": "ledger evidence.csv row 13603",
+   "verdict": "confirmed",
+   "note": "Tread Paylocity: JSON-LD datePosted 2026-11-04T21:04:42-06:00, streetAddress 176 Eastpark Dr (names the site); board list shows the only job, PublishedDate 2026-11-10. Note (no verdict change): JobId 3292594 is lower than a Paylocity requisition published 2025-10-01 (3615629), which suggests (Paylocity ids appear to be global and sequential, compared here across companies) that the requisition predates Oct 2025 and both dates are re-list stamps (HEM precedent). Counted as open (12) under the standing-ad rule; \"Fridays are reserved for overtime as needed\" is conditional, not mandatory.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-tread-roanoke-va:prospect_test",
+   "source_url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/3292594",
+   "ledger_value": "pass (inferred): in-house FCAW/MIG welding of mild and stainless structural weldments",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 13604",
+   "verdict": "confirmed",
+   "note": "Pass is a judgement, tagged inferred; the quote shows in-house production welding at the site.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-astec-eugene-or:relationship",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27788827",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 13918",
+   "verdict": "confirmed",
+   "note": "Written relationship rule (consultation 9, clarified; coordinator sweep): crusher/screen/conveyor maker -> lookalike of Schenck Process. Tagged inferred, as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-astec-eugene-or:lookalike_of",
+   "source_url": "https://j.brt.mv/PortalViewRequirement.do?reqGK=27788827",
+   "ledger_value": "Schenck Process",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 13919",
+   "verdict": "confirmed",
+   "note": "Written relationship rule (consultation 9, clarified; coordinator sweep): crusher/screen/conveyor maker -> lookalike of Schenck Process. Tagged inferred, as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:relationship",
+   "source_url": "https://www.paladinattachments.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 13930",
+   "verdict": "confirmed",
+   "note": "Written relationship rule (consultation 9, clarified; coordinator sweep): attachments, tanks/bodies sold as products, or mining-machine structures -> lookalike of Mine Rite. Tagged inferred, as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-paladin-dexter-mi:lookalike_of",
+   "source_url": "https://www.paladinattachments.com/",
+   "ledger_value": "Mine Rite",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 13931",
+   "verdict": "confirmed",
+   "note": "Written relationship rule (consultation 9, clarified; coordinator sweep): attachments, tanks/bodies sold as products, or mining-machine structures -> lookalike of Mine Rite. Tagged inferred, as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:relationship",
+   "source_url": "https://www.constructionequipmentguide.com/npk-construction-equipment-expands-in-walton-hills/37430?markdown=1",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 13941",
+   "verdict": "confirmed",
+   "note": "Written relationship rule (consultation 9, clarified; coordinator sweep): attachments, tanks/bodies sold as products, or mining-machine structures -> lookalike of Mine Rite. Tagged inferred, as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-npk-walton-hills-oh:lookalike_of",
+   "source_url": "https://www.constructionequipmentguide.com/npk-construction-equipment-expands-in-walton-hills/37430?markdown=1",
+   "ledger_value": "Mine Rite",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 13942",
+   "verdict": "confirmed",
+   "note": "Written relationship rule (consultation 9, clarified; coordinator sweep): attachments, tanks/bodies sold as products, or mining-machine structures -> lookalike of Mine Rite. Tagged inferred, as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:relationship",
+   "source_url": "https://www.kresscarrier.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 13943",
+   "verdict": "confirmed",
+   "note": "Written relationship rule (consultation 9, clarified; coordinator sweep): attachments, tanks/bodies sold as products, or mining-machine structures -> lookalike of Mine Rite. Tagged inferred, as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-kress-brimfield-il:lookalike_of",
+   "source_url": "https://www.kresscarrier.com/",
+   "ledger_value": "Mine Rite",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 13944",
+   "verdict": "confirmed",
+   "note": "Written relationship rule (consultation 9, clarified; coordinator sweep): attachments, tanks/bodies sold as products, or mining-machine structures -> lookalike of Mine Rite. Tagged inferred, as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:relationship",
+   "source_url": "https://www.brookvillecorp.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 13945",
+   "verdict": "confirmed",
+   "note": "Written relationship rule (consultation 9, clarified; coordinator sweep): attachments, tanks/bodies sold as products, or mining-machine structures -> lookalike of Mine Rite. Tagged inferred, as it should be.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-brookville-equipment-brookville-pa:lookalike_of",
+   "source_url": "https://www.brookvillecorp.com/",
+   "ledger_value": "Mine Rite",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv row 13946",
+   "verdict": "confirmed",
+   "note": "Written relationship rule (consultation 9, clarified; coordinator sweep): attachments, tanks/bodies sold as products, or mining-machine structures -> lookalike of Mine Rite. Tagged inferred, as it should be.",
+   "r2_basis": false
+  }
+ ]
+}

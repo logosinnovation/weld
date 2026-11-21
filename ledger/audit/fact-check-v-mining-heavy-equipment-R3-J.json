@@ -1,0 +1,965 @@
+{
+ "checker": "fact-checker R3-J",
+ "vertical": "v-mining-heavy-equipment",
+ "date": "2026-11-16",
+ "plants": [
+  "p-fecon-lebanon-oh",
+  "p-general-steel-dickinson-nd"
+ ],
+ "decision_rule": "Corrected = the value adds a fact the cited page does not show, tags a judgement as stated, places a company-level fact at the plant, ties a posting through a shared city, misdates a posting, or the quote is not on the page (raw source checked first); Confirmed otherwise. Unreachable only if the source cannot be reached at all.",
+ "claims_checked": 57,
+ "claims_corrected": 1,
+ "claims_unreachable": 0,
+ "error_rate": 0.0175,
+ "error_rate_note": "Headline on the round-3 basis (rows flagged r2_basis: stated rows, every row of a claim that a score row cites, and the 2 opening lines): 1/57 = 1.8%. Stated rows only: 1/44 = 2.3%. All 86 rows written (adds score_*, total, tier, confidence, relationship, lookalike_of, tier, prospect_test, certification-image and bottleneck rows): 2/86 = 2.3%. Excluded, as in R3-I: unknown-tagged rows (no source to check: Fecon existing_robots and headcount; General Steel existing_robots, headcount and certifications) and v-mining-heavy-equipment:demand_outlook (vertical-level). Every quote was found on a fresh fetch (visible text or raw source/JSON-LD), so 0 unreachable. The one basis correction is a tier judgement tagged stated (value unchanged); the out-of-basis one is General Steel confidence 1 -> 0. No compound value was corrected, so no sibling rows to sync. Four score RULINGS (Fecon material, labor, demand; General Steel campus) are listed in score_problems and are not counted as corrections.",
+ "claims_checked_all_rows": 86,
+ "claims_corrected_all_rows": 2,
+ "error_rate_all_rows": 0.0233,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 1,
+  "invented fact": 0,
+  "other": 1
+ },
+ "repeated_kinds": [],
+ "worst_errors": [
+  "p-general-steel-dickinson-nd:confidence - written 1, should be 0: the scale row cites the unknown-only headcount claim, so no component passes the all-cited-claims-stated test (score unchanged at 28 Low). Out of basis.",
+  "p-general-steel-dickinson-nd:tier (ledger row by plant-finder mining miss-verifier 2) - OEM tagged stated on a quote that says only that General Steel fabricates equipment \"for numerous companies\"; retag inferred, value OEM unchanged (Fisher-branded Air Separator and pugmills are its own products)."
+ ],
+ "score_problems": [
+  {
+   "plant_id": "p-general-steel-dickinson-nd",
+   "component": "confidence",
+   "ledger_points": 1,
+   "correct_points": 0,
+   "why": "Normaliser rule: a component counts only when every claim its score row cites has a stated row. score_scale cites c-general-steel:multi_plant (stated) and p-general-steel-dickinson-nd:headcount (unknown only), so scale fails; part mix rests on an inferred-only production_type; demand 8 never counts; the rest are 0. normalise_scores.py will write 0 on its next run. If the coordinator drops the headcount citation from the scale row (Thomas/PPI/Mellott form), 1 is restored; that is a citation-form choice, not new evidence."
+  },
+  {
+   "plant_id": "p-general-steel-dickinson-nd",
+   "component": "score_process, score_material_part, score_labor (campus RULING)",
+   "ledger_points": "0/0/0 (total 28 Low)",
+   "correct_points": "coordinator call: 0/0/0 = 28 Low as written, or 12/20/20 = 75 High (scale 0 under TAG) / 80 High (scale 5 if Fisher Industries counts as a multi-plant parent)",
+   "why": "As written the profiler follows the Austin Mills precedent (second facility, no address, distance unknown -> 0). What this check found bears on the call: every General Steel source gives one address. Fisher's locations page lists GENERAL STEEL & SUPPLY COMPANY only at 3020 Energy Drive (shared with Fisher Industries HQ and Fisher Sand & Gravel Company); the April 20, 2021 Dickinson Press ad gives 3020 Energy Drive as the only address for \"a 40,000 sq ft repair facility, a 56,000 sq ft manufacturing facility, and a 100,000 sq ft warehouse\" and says \"Our Dickinson location\" (singular); ECHO has General Steel only at 3020 Energy Dr, with Fisher Building 4 (3076 Energy Dr) about 20 m away. No source places a General Steel facility anywhere else, in Dickinson or out of it. Unlike Austin Mills (a stated separate leased facility) and Brookville (a known second address 1.3 km away), here the second facility is most likely the repair building on the same address. Two further points: (a) if the second facility is outside Dickinson, the city-only postings count under the written rule anyway (no other production site in Dickinson); (b) under the ships repair-only precedent a repair building is not a production site. Against: the ad is from 2021 and names no building addresses; ECHO also carries a street-less \"FISHER MARTIN INC SHOP NORTHGATE INDUSTRIAL PARK\" record in Dickinson (110056191614) whose operator and use are unknown. Upside components re-derived and correct: process 12 (GTAW beside GMAW in the production Fabrication Welder posting, mining rule 2; Welder I \"stick and wire\" earns nothing under ruling 6); material 20 (stainless stated; 13 ft separator \"fabricated by General Steel\" and 36 in x 10 ft pugmill fit the 2026 analyst cell); labor 20 (two at once, Welder I open 152 days, $1,000 sign-on on both); scale falls to 0 under TAG if the two facilities are one campus."
+  },
+  {
+   "plant_id": "p-fecon-lebanon-oh",
+   "component": "score_material_part (RULING)",
+   "ledger_points": 20,
+   "correct_points": "20 as written (Pierce Pacific precedent); 0 gives 56 Medium",
+   "why": "Rests on assembled stone-crusher weights (3,330 and 3,965 lb) and widths (working 62/76 in; overall 78/92 in, both over the older sheet's 72 in, within the 2026 analyst 15 ft). The product is a steel-bodied attachment with a rotor and hydraulic drive; \"welded\" is not stated on the page (Werk-Brau/Pierce Pacific precedents accept that). Site tie inferred but sound: ECHO has one Fecon facility, the 2014 building is adjacent, and the ISO certificate covers 3460/3425 Grant Drive. Consistent with precedent; kept. Confidence 4 counts it, as at Tread."
+  },
+  {
+   "plant_id": "p-fecon-lebanon-oh",
+   "component": "score_labor (RULING)",
+   "ledger_points": 20,
+   "correct_points": "20 as written; 12 gives 68 Medium",
+   "why": "Three distinct requisitions (Job Ids 1361, 1362, 1364) live on the own Paycor board on 2026-11-16, undated, all Lebanon (Fecon's only site), all production manual welding: \"several at once\" = 20 under the standing-ad rule. The \"# of Openings: 0\" field: this check read all 23 live Fecon postings and every one, including roles plainly being recruited, shows 0, so it is an unused field and not a statement that listings do not mean hiring (the West River exception does not apply). The run_log's consultation 14 counts the three under the standing-ad rule but does not mention this field; the coordinator may want to log the reading. Two Welder II postings carry the same text (one says experience \"required\", one \"preferred\"); a reading that they are one standing ad would give 12."
+  },
+  {
+   "plant_id": "p-fecon-lebanon-oh",
+   "component": "score_demand (RULING)",
+   "ledger_points": 8,
+   "correct_points": "8 as written; 15 gives 83 High",
+   "why": "Consultation 10 lists \"contract\" among dated trigger events. The Sourcewell award (post dated Mar 11, 2025; contract active Feb 24, 2025, maturity Feb 24, 2029; within 24 months) is a contract award, but it is a cooperative purchasing vehicle with pre-negotiated pricing, not an order, and states no production increase. The profiler's 8 is the conservative reading; the letter of the rule allows 15. No precedent in the log; tier unchanged either way (High)."
+  }
+ ],
+ "score_notes": [
+  "All 12 components (2 plants x 6) re-derived from the cited claims; sums and tiers correct: Fecon 76 High (20+20+8+20+8+0), General Steel 28 Low (0+0+15+0+8+5). Fecon confidence 4 correct; General Steel confidence 1 -> 0 (score_problems). Neither plant is in no-confidence-claims.csv. The profiler's request to add p-general-steel-dickinson-nd:production_type there is harmless but unnecessary: the claim has no stated row, so the normaliser already withholds confidence.",
+  "Fecon process 20: no TIG/GTAW on any of the three welder postings or elsewhere on the board.",
+  "Fecon scale 0: single production site; Windjammer Capital is a private-equity owner (no precedent treats a PE owner as a multi-plant parent); headcount unknown."
+ ],
+ "opening_line_problems": [
+  "p-general-steel-dickinson-nd:opening_line - RULING, same as R3-GH PPI Pella: the line leads with postings the score does not count; it asserts no site tie and every clause is stated, so it is confirmed. Wording fix: the ApplicantPro board is Fisher Industries' company-wide board (it also lists a Laredo TX welder), so \"Your Dickinson job board lists\" overstates. Suggested: \"Your job board lists a General Steel & Supply Welder - Fabrication opening in Dickinson posted September 16, 2026 for stainless GMAW and GTAW work and a Welder I opening posted June 17, 2026, both with a $1,000 sign-on bonus, and in March 2025 Fisher released its 200th Fisher Air Separator; how are you staffing new-equipment fabrication while those roles stay open?\"",
+  "p-fecon-lebanon-oh:opening_line - acceptable as written (every clause stated; no posting date claimed)."
+ ],
+ "plants_closed_or_moved": [],
+ "status_problems": [
+  "p-fecon-lebanon-oh: boundary (forestry/land clearing and compact-loader attachments) correctly noted; the new stone-crusher line is also a CTL/skid-steer attachment, so the boundary label stands. Open at 3460 Grant Drive (ECHO, ISO certificate to 2027, 23 live postings).",
+  "p-general-steel-dickinson-nd: in definition (aggregate crushers, screens, conveyors, feeders). Open: two live postings, March 2025 milestone. 3020 Energy Drive is a shared Fisher address (Fisher Industries HQ, Fisher Sand & Gravel, General Steel); the record is right for General Steel, but the campus question (score_problems) decides most of its score."
+ ],
+ "plant_status_notes": "Fecon lat/lon/FIPS match the ECHO DFR record (Census geocoder has no Grant Dr match, as the profiler logged). General Steel lat/lon/FIPS match the Census response to 6 decimals.",
+ "field_drift_notes": [
+  "General Steel confidence 1 -> 0 (plants_csv_value on the confidence row). General Steel tier row retag only; plants.csv tier OEM unchanged. No compound value corrected, so no sibling rows to sync."
+ ],
+ "leads": [
+  "General Steel campus: ECHO record 110056191614 \"FISHER MARTIN INC SHOP NORTHGATE INDUSTRIAL PARK\" (Dickinson, no street address): check whether it is a Fisher/General Steel shop before ruling.",
+  "Fecon: the About page names \"SWX Group, a Fecon subsidiary\"; no production evidence found, but worth a check for a second site.",
+  "Sweep candidate: 25 mining ledger tier rows are tagged stated with value OEM; R3-GH and this check each found one whose quote does not say OEM or own-name sales."
+ ],
+ "method": "Fresh fetch of every cited URL into a new scratch cache (tools/fetch_page.fetch with_raw=True), each quote split on \"...\" and every fragment checked against visible text plus raw source (JSON-LD, page JSON). Fecon Paycor board and all 23 posting pages read (Job Id, # of Openings, no datePosted/JSON-LD); ApplicantPro board read in headless Chromium for live status and Posted dates, JSON-LD datePosted read from each job page. EPA ECHO DFR and get_facilities/get_qid (FECON; FISHER in Dickinson; GENERAL STEEL in ND) re-run; Census geocoder response compared to recorded lat/lon/FIPS; ISO certificate image viewed. No web search used. No ledger file edited.",
+ "apply_note": "Apply after the coordinator merges ledger/inbox/mining-profiler-J.json (rows keyed to that file's claim_id + source_url; ledger-origin rows marked in origin). Retag the General Steel tier row inferred (value unchanged); set General Steel confidence to 0 or re-run normalise_scores.py. Rule on the four RULINGS in score_problems.",
+ "rows": [
+  {
+   "claim_id": "p-fecon-lebanon-oh:parent_company",
+   "source_url": "https://fecon.com/fecon-llc-acquired-by-windjammer-capital/",
+   "ledger_value": "Windjammer Capital Investors (bought Fecon from LFM Capital; announced Jan 5, 2022)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[0]",
+   "verdict": "confirmed",
+   "note": "Release page dated Jan 5, 2022 (JSON-LD datePublished 2022-01-06T00:35Z); both fragments on the page. About page files the same sale under 2021; no later sale found on fecon.com.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:parent_company",
+   "source_url": "https://www.fecon.com/about/",
+   "ledger_value": "Windjammer Capital Investors",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[1]",
+   "verdict": "confirmed",
+   "note": "About page timeline (2021 entry). Quote on page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:lat",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110070296147",
+   "ledger_value": "39.38468",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[2]",
+   "verdict": "confirmed",
+   "note": "ECHO DFR for registry 110070296147: FECON LLC, 3460 GRANT DR, LEBANON, Warren County; Latitude 39.38468. Matches the recorded address.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:lon",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110070296147",
+   "ledger_value": "-84.25225",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[3]",
+   "verdict": "confirmed",
+   "note": "ECHO DFR: Longitude -84.25225 (same record as lat).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:county_fips",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110070296147",
+   "ledger_value": "39165",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[4]",
+   "verdict": "confirmed",
+   "note": "ECHO DFR: FacilityFipsCode 39165 (Warren County OH).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:products",
+   "source_url": "https://fecon.com/bullhog",
+   "ledger_value": "Bull Hog drum mulchers for skid steers, compact track loaders, excavators and tractors",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[5]",
+   "verdict": "confirmed",
+   "note": "Quote on the Bull Hog page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:products",
+   "source_url": "https://fecon.com/fecon-launches-the-blackhawk-mulching-head-with-x-lock-tooling-standard/",
+   "ledger_value": "forestry mulchers, stump grinders and stone crushers; attachments and tractors",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[6]",
+   "verdict": "confirmed",
+   "note": "Blackhawk launch release; quote on page. Company-level product statement; Fecon has one production site (registry row), so it carries to the plant via the inferred part_size_fit attribution row.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:products",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d06361b3d101636472b70e3952&id=8a7883a8a184746e01a1a310695364b2&source=&lang=en",
+   "ledger_value": "FTX tractors",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[7]",
+   "verdict": "confirmed",
+   "note": "Welder II (Job Id 1361) posting boilerplate; quote on page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:products",
+   "source_url": "",
+   "ledger_value": "boundary (forestry/land clearing)",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[8]",
+   "verdict": "confirmed",
+   "note": "Boundary label (consultation 9: forestry/land-clearing and compact-attachment makers are boundary, kept and noted). Stone crushers are skid-steer/CTL attachments, so the boundary label still fits.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:weld_processes",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d06361b3d101636472b70e3952&id=8a7885a8a184742e01a1a322b3ef05e1&source=&lang=en",
+   "ledger_value": "GMAW/MIG spray transfer, .045-.052 metal-core wire, 90/10 gas; GMAW/MIG and FCAW required (Welder S2)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[9]",
+   "verdict": "confirmed",
+   "note": "Fecon Paycor board (recruitingbypaycor.com, embedded as an iframe on fecon.com/careers) read 2026-11-16: 23 live postings, all Lebanon OH; Welding department lists Welder (S2), Welder II, Welder II. Job Id 1364 (Welder - Nights): all three fragments on the page. Spray transfer, metal-core wire and 90/10 gas appear on all three welder postings, not only S2. No TIG/GTAW on any Fecon welder posting.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:weld_processes",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d06361b3d101636472b70e3952&id=8a7883a8a184746e01a1a310695364b2&source=&lang=en",
+   "ledger_value": "GMAW/MIG and FCAW required (Welder II, 1361)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[10]",
+   "verdict": "confirmed",
+   "note": "Job Id 1361 page (URL id ...310695364b2): Position Welder II, Lebanon OH; quote on page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:weld_processes",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d06361b3d101636472b70e3952&id=8a7885a8a184742e01a1a32115b20507&source=&lang=en",
+   "ledger_value": "GMAW/MIG and FCAW required (Welder II, 1362)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[11]",
+   "verdict": "confirmed",
+   "note": "Job Id 1362 page (URL id ...32115b20507): Position Welder II, Lebanon OH; quote on page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:materials",
+   "source_url": "https://fecon.com/product/stone-crusher/",
+   "ledger_value": "high-strength steel body structure (stone crusher)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[12]",
+   "verdict": "confirmed",
+   "note": "Stone Crusher page: quote on page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:materials",
+   "source_url": "https://fecon.com/fecon-redline-lp/",
+   "ledger_value": "AR400 abrasion-resistant steel on wear surfaces (Red Line)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[13]",
+   "verdict": "confirmed",
+   "note": "Red Line page: both fragments on page; Red Line attachments are \"Designed, built and supported by Fecon\".",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:certifications",
+   "source_url": "https://fecon.com/iso-certificate/",
+   "ledger_value": "ISO 9001",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[14]",
+   "verdict": "confirmed",
+   "note": "Page title on the ISO certificate page; supports ISO 9001 only (the certificate detail rests on the inferred image row).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:certifications",
+   "source_url": "https://fecon.com/wp-content/uploads/2025/03/ISO-Certificate-of-Program-06-24_Page_1-792x1024.jpg",
+   "ledger_value": "ISO 9001:2015 with Design; 3460/3425 Grant Drive, Lebanon; current certificate July 9, 2024; expires July 8, 2027",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[15]",
+   "verdict": "confirmed",
+   "note": "Certificate image viewed 2026-11-16: Smithers Quality Assessments, Fecon LLC, 3460/3425 Grant Drive, Lebanon OH 45036, ISO 9001:2015 with Design, certificate 21.191.1, original approval July 10, 2021, current July 9, 2024, expires July 8, 2027; scope as quoted in the reasoning. All correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:part_size_fit",
+   "source_url": "https://fecon.com/product/stone-crusher/",
+   "ledger_value": "stone crushers: SC6220 3,330 lb, 62 in; SC7620 3,965 lb, 76 in",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[16]",
+   "verdict": "confirmed",
+   "note": "All three fragments on the page. Spec table: working width 76 in / 62 in, OVERALL width 92 in / 78 in, weights 3,965 / 3,330 lb. Value is right as written (working widths); note that both overall widths also exceed the older sheet's 72 in and are within the 2026 analyst 15 ft.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:part_size_fit",
+   "source_url": "",
+   "ledger_value": "fit judgement (assembled weights) and single-site attribution",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[17]",
+   "verdict": "confirmed",
+   "note": "Fit and attribution judgement correctly tagged inferred. ECHO name search FECON (re-run 2026-11-16) returns one facility; About page: 2014 building \"adjacent to Fecon's existing factory\"; ISO certificate covers 3460/3425 Grant Drive. Assembled-weight basis follows the Pierce Pacific precedent (see score_problems RULING).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:part_size_fit",
+   "source_url": "https://echodata.epa.gov/echo/dfr_rest_services.get_dfr?output=JSON&p_id=110070296147",
+   "ledger_value": "single site (registry)",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[18]",
+   "verdict": "confirmed",
+   "note": "ECHO DFR carries \"FacilityName\":\"FECON LLC\"; ECHO get_facilities p_fn=FECON returned QueryRows 1 (2026-11-16).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:production_type",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d06361b3d101636472b70e3952&id=8a7885a8a184742e01a1a322b3ef05e1&source=&lang=en",
+   "ledger_value": "several product lines designed and built in-house",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[19]",
+   "verdict": "confirmed",
+   "note": "Job Id 1364 boilerplate: \"We design, build, test, sell and service our equipment consisting of products such as ...\"; value is a fair rendering (product list, no custom or high-volume line).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:welder_postings",
+   "source_url": "https://recruitingbypaycor.com/career/CareerHome.action?clientId=8a7883d06361b3d101636472b70e3952",
+   "ledger_value": "Welding department: Welder (S2), Welder II, Welder II, Lebanon OH",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[22]",
+   "verdict": "confirmed",
+   "note": "Fecon Paycor board (recruitingbypaycor.com, embedded as an iframe on fecon.com/careers) read 2026-11-16: 23 live postings, all Lebanon OH; Welding department lists Welder (S2), Welder II, Welder II. Board text matches the quote.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:welder_postings",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d06361b3d101636472b70e3952&id=8a7885a8a184742e01a1a322b3ef05e1&source=&lang=en",
+   "ledger_value": "Welder (S2) = Welder - Nights, Lebanon OH, Job Id 1364",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[23]",
+   "verdict": "confirmed",
+   "note": "Job Id 1364 page: Position Welder (S2), Location Lebanon OH, Job Id 1364, # of Openings 0, Job Title Welder - Nights. Quote on page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:welder_postings",
+   "source_url": "https://fecon.com/careers/",
+   "ledger_value": "counting: 3 counted, open at once (labor 20)",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[24]",
+   "verdict": "confirmed",
+   "note": "Fecon Paycor board (recruitingbypaycor.com, embedded as an iframe on fecon.com/careers) read 2026-11-16: 23 live postings, all Lebanon OH; Welding department lists Welder (S2), Welder II, Welder II. No date in page text or raw source, no JSON-LD on board or posting pages. All 23 postings (welding and non-welding, e.g. Brake Press Operator 1367, Receiving Specialist 1365) show \"# of Openings: 0\", so the field is unused; Fecon makes no statement that listings do not mean it is hiring. All three welder roles are production manual welding (\"handheld welding equipment\"), so 3 counted, open at once. The Paycor record ids decode (Hibernate UUIDHex time field) to 2026-11-03 20:18-20:38 UTC for 1361/1362/1364, as the profiler noted; not used for any field. Count and dating correct under the standing-ad rule. Note: the consultation-14 log records the three as counted under the standing-ad rule but does not mention the \"# of Openings\" field itself (see score_problems).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:triggers",
+   "source_url": "https://fecon.com/fecon-awarded-sourcewell-contract/",
+   "ledger_value": "Sourcewell cooperative purchasing contract awarded; post dated Mar 11, 2025",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[25]",
+   "verdict": "confirmed",
+   "note": "\"datePublished\":\"2025-03-11T12:23:46+00:00\" is in the raw source; the award sentence is visible. Post also states Active: February 24, 2025; Maturity: February 24, 2029.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:triggers",
+   "source_url": "https://www.sourcewell-mn.gov/cooperative-purchasing/010925-fecon",
+   "ledger_value": "contract 010925-FECON (maturity 2/24/2029); not counted as a trigger",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[26]",
+   "verdict": "confirmed",
+   "note": "Sourcewell page: \"Fecon | Vegetation management mulching attachments and tractors | #010925-FECON | Maturity Date: 2/24/2029\". Not-counted judgement correctly tagged inferred; see score_problems (demand RULING).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely manual weld capacity, including nights: a night-shift Welder (S2) and two Welder II requisitions are live at once on the Lebanon board, all requiring GMAW/MIG spray transfer and FCAW.",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[27]",
+   "verdict": "confirmed",
+   "note": "Built only from stated posting and process claims; labelled likely; company states no bottleneck.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Lebanon careers board lists three welder openings, a night-shift Welder (S2) and two Welder II roles, each requiring GMAW/MIG and FCAW, and your stone crusher attachments weigh 3,330 to 3,965 lb with a high-strength steel body structure; how are you staffing manual welding on nights?",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[28]",
+   "verdict": "confirmed",
+   "note": "Every clause traces to a stated row: three welder openings (board), night-shift Welder (S2) (Job Title Welder - Nights), GMAW/MIG and FCAW required (all three postings), 3,330-3,965 lb stone crushers (product page), high-strength steel body structure (product page). No posting date claimed. Confirmed.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:score_process",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[29]",
+   "verdict": "confirmed",
+   "note": "GMAW/MIG and FCAW required in all three Lebanon production welder postings; no TIG: rubric 20.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:score_material_part",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[30]",
+   "verdict": "confirmed",
+   "note": "20 under the Pierce Pacific assembled-attachment precedent and Tread single-site precedent; RULING (see score_problems).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:score_part_mix",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[31]",
+   "verdict": "confirmed",
+   "note": "Product list on the plant's own posting, no custom or high-volume line: 8.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[32]",
+   "verdict": "confirmed",
+   "note": "Three counted welder requisitions live at once on the own board: 20 (several at once). RULING noted in score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[33]",
+   "verdict": "confirmed",
+   "note": "No dated plant-level event counted; vertical outlook 8. RULING on Sourcewell in score_problems.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:score_scale",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[34]",
+   "verdict": "confirmed",
+   "note": "Single production site (registry); owner is a private-equity firm, not a stated multi-plant manufacturer; headcount unknown: 0.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:score_total",
+   "source_url": "",
+   "ledger_value": "76",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[35]",
+   "verdict": "confirmed",
+   "note": "20+20+8+20+8+0 = 76.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[36]",
+   "verdict": "confirmed",
+   "note": "76 = High.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:confidence",
+   "source_url": "",
+   "ledger_value": "4",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[37]",
+   "verdict": "confirmed",
+   "note": "Normaliser test (every cited claim has a stated row, none in no-confidence-claims.csv): process, material, part mix, labor count; demand 8 and scale 0 do not. 4 correct; matches the Tread precedent (inferred site-tie row beside stated size rows).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:parent_company",
+   "source_url": "https://www.fisherind.com/general-steel-and-supply-co",
+   "ledger_value": "Fisher Sand & Gravel Co. (Fisher Industries)",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[38]",
+   "verdict": "confirmed",
+   "note": "General Steel page: \"A Subsidiary of Fisher Sand & Gravel Co.\" on page; the page title and footer carry Fisher Industries.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:products",
+   "source_url": "https://www.fisherind.com/new-equipment",
+   "ledger_value": "aggregate processing equipment fully customized; air separators, chain feeders, conveyors, crushers, generator vans, pugmills, screen plants, truck scales, wash plants",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[39]",
+   "verdict": "confirmed",
+   "note": "New-equipment page: every fragment on page. The plant value's \"built to customer specification\" is on the same page (\"We build to your specifications for any portable or commercial pit or quarry\"), though not in the quote. The page speaks for Fisher Industries; the company-level label sits in the inferred row and the plant value. Confirmed (R3-GH PPI Pella precedent).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:products",
+   "source_url": "https://fisher.applicantpro.com/jobs/4120398",
+   "ledger_value": "refurbishing of heavy equipment",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[40]",
+   "verdict": "confirmed",
+   "note": "Welder I JSON-LD description: \"perform various welding duties on the manufacturing of new equipment and the refurbishing of heavy equipment\" (raw source).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:products",
+   "source_url": "https://www.fisherind.com/general-steel-and-supply-co",
+   "ledger_value": "company-level (two fabrication facilities)",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[41]",
+   "verdict": "confirmed",
+   "note": "Quote on the General Steel page; company-level judgement correctly inferred.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:weld_processes",
+   "source_url": "https://fisher.applicantpro.com/jobs/4211131",
+   "ledger_value": "GMAW and GTAW on stainless",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[42]",
+   "verdict": "confirmed",
+   "note": "Welder - Fabrication JSON-LD description: \"Perform stainless steel welding using GMAW and GTAW processes\".",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:weld_processes",
+   "source_url": "https://fisher.applicantpro.com/jobs/4120398",
+   "ledger_value": "stick and wire",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[43]",
+   "verdict": "confirmed",
+   "note": "Welder I JSON-LD description: \"Welding skills with both stick and wire welders required\". \"Wire\" alone is not MIG/FCAW (ruling 6), as the profiler applied.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:materials",
+   "source_url": "https://fisher.applicantpro.com/jobs/4211131",
+   "ledger_value": "stainless steel",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[44]",
+   "verdict": "confirmed",
+   "note": "Welder - Fabrication JSON-LD: \"The Fabrication Welder - Stainless Steel will be responsible for joining metal using a variety of techniques\"; quote fragment on page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:part_size_fit",
+   "source_url": "https://www.fisherind.com/air-separator",
+   "ledger_value": "13 ft diameter Fisher Air Separator",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[45]",
+   "verdict": "confirmed",
+   "note": "Air Separator page: \"13' Portable Air Separator | The 13' diameter Fisher Air Separator ...\".",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:part_size_fit",
+   "source_url": "https://www.fisherind.com/pugmill",
+   "ledger_value": "36 in x 10 ft pugmill",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[46]",
+   "verdict": "confirmed",
+   "note": "Pugmill page: quote on page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:part_size_fit",
+   "source_url": "https://www.fisherind.com/blog/general-steel-amp-supply-co-produces-its-200th-air-separator",
+   "ledger_value": "air separator fabricated by General Steel; 200th unit March 2025",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[47]",
+   "verdict": "confirmed",
+   "note": "Blog dated March 21, 2025: \"Fisher Industries has just released our 200th Fisher Air Separator\"; both fragments on page. Names no facility.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:part_size_fit",
+   "source_url": "",
+   "ledger_value": "not attributed to the site",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[48]",
+   "verdict": "confirmed",
+   "note": "Correctly inferred: sizes are company-level; no facility named (mining rule 1).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:production_type",
+   "source_url": "https://www.fisherind.com/general-steel-and-supply-co",
+   "ledger_value": "custom (company-level)",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[49]",
+   "verdict": "confirmed",
+   "note": "Quote on the General Steel page; company-level, correctly tagged inferred (points, no confidence).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:welder_postings",
+   "source_url": "https://fisher.applicantpro.com/jobs/4120398",
+   "ledger_value": "Welder I, General Steel & Supply, Dickinson; posted 2026-06-17; $1000 sign-on bonus",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[50]",
+   "verdict": "confirmed",
+   "note": "Live 2026-11-16 on fisher.applicantpro.com (board line: \"Welder I | Dickinson, ND, USA | Fisher Industries - General Steel & Supply | Posted: Jun 17, 2026 Closing Date: Dec 16, 2026\"). JSON-LD datePosted 2026-06-17, streetAddress empty, addressLocality Dickinson; $1000 Sign-On Bonus and the Dickinson sentence in the description. Open 152 days.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:welder_postings",
+   "source_url": "https://fisher.applicantpro.com/jobs/4211131",
+   "ledger_value": "Welder - Fabrication, General Steel & Supply, Dickinson; posted 2026-09-16; stainless GMAW/GTAW; $1000 sign-on bonus",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[51]",
+   "verdict": "confirmed",
+   "note": "Live 2026-11-16 on the board (\"Welder - Fabrication | Dickinson, ND, USA | Fisher Industries - General Steel & Supply | Posted: Sep 16, 2026\"). JSON-LD datePosted 2026-09-16; \"General Steel & Supply\" is the job-info department field (raw source); GMAW/GTAW line and $1000 Sign-On Bonus in the description. Date correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:welder_postings",
+   "source_url": "https://www.fisherind.com/general-steel-and-supply-co",
+   "ledger_value": "not counted: site not settled (second fabrication facility not located)",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[52]",
+   "verdict": "confirmed",
+   "note": "Quote on page. Campus judgement correctly tagged inferred; see score_problems RULING (one address on every General Steel source).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:welder_postings",
+   "source_url": "https://echodata.epa.gov/echo/echo_rest_services.get_facilities?output=JSON&p_fn=FISHER&p_ct=DICKINSON&p_st=ND",
+   "ledger_value": "registry: all Fisher Dickinson industrial records on Energy Drive",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[53]",
+   "verdict": "confirmed",
+   "note": "ECHO re-run 2026-11-16: GENERAL STEEL & SUPPLY only at 3020 ENERGY DR (110004063913); Fisher records at 3076 Energy Drive (Building 4, 110072193730), 3079 Energy Drive (Fisher North), 3020 Energy Dr (Fisher Industries; Fisher Sand & Gravel portable), 10575 32nd St SW (pits), plus records without a street, including \"FISHER MARTIN INC SHOP NORTHGATE INDUSTRIAL PARK\" (110056191614). Row is accurate; the Northgate shop record is not named in it (lead).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:welder_postings",
+   "source_url": "https://local.thedickinsonpress.com/dickinson-us-nd/fisher-industries-701-456-9184/2021-04-20-11875542-general-steel-and-supply-co-54-years-we-are-currenty-hiring-welders-check-our-website-for-all-our-latest-employment-opportunities-est-1967-our-dickinson-location-also-has-a-full-stocked-parts-department-featuring-a-steel-service-center-",
+   "ledger_value": "2021 ad: repair and manufacturing facilities under one address (suggestive, not proof)",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[54]",
+   "verdict": "confirmed",
+   "note": "Dickinson Press ad (Published Date April 20, 2021): 3020 Energy Drive is the only address; \"We operate a 40,000 sq ft repair facility, a 56,000 sq ft manufacturing facility, and a 100,000 sq ft warehouse\"; \"Our Dickinson location also has a full-stocked parts department\". Reading correct and correctly tagged inferred.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:triggers",
+   "source_url": "https://www.fisherind.com/blog/general-steel-amp-supply-co-produces-its-200th-air-separator",
+   "ledger_value": "200th Fisher Air Separator, March 2025 (not counted)",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[55]",
+   "verdict": "confirmed",
+   "note": "Blog dated March 21, 2025: production milestone, not an expansion, contract or hiring event; names no facility. Correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "c-general-steel:multi_plant",
+   "source_url": "https://www.fisherind.com/general-steel-and-supply-co",
+   "ledger_value": "two metal fabrication facilities",
+   "tag": "stated",
+   "origin": "inbox mining-profiler-J.json evidence[56]",
+   "verdict": "confirmed",
+   "note": "Quote on the General Steel page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder hiring for new-equipment fabrication in Dickinson: Welder I (posted June 17, 2026) and Welder - Fabrication (posted September 16, 2026) are both live with a $1,000 sign-on bonus.",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[60]",
+   "verdict": "confirmed",
+   "note": "Built from the stated posting rows; labelled likely; reasoning discloses the unsettled site tie.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Dickinson job board lists a Welder - Fabrication opening posted September 16, 2026 for stainless GMAW and GTAW work and a Welder I opening posted June 17, 2026, both with a $1,000 sign-on bonus, and in March 2025 you released the 200th Fisher Air Separator; how are you staffing new-equipment fabrication while those roles stay open?",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[61]",
+   "verdict": "confirmed",
+   "note": "Every clause traces to stated rows (posting titles, JSON-LD dates, GMAW/GTAW stainless, $1,000 sign-on on both, \"Fisher Industries has just released our 200th Fisher Air Separator\" in March 2025). It names only the city and the board, no site tie, so it is confirmed under the R3-GH PPI Pella precedent; see opening_line_problems (RULING and a wording fix: the board is Fisher Industries' company-wide ApplicantPro board, which also lists a Laredo TX welder, not a Dickinson board).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:score_process",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[62]",
+   "verdict": "confirmed",
+   "note": "0: the only MIG source is a posting whose site tie is inferred (campus RULING). If attributed: 12 (GTAW alongside GMAW in the production Fabrication Welder posting, mining rule 2; Welder I \"stick and wire\" earns nothing under ruling 6).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:score_material_part",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[63]",
+   "verdict": "confirmed",
+   "note": "0: sizes company-level (mining rule 1). Upside 20 if the campus is accepted (13 ft separator and 36 in x 10 ft pugmill fit the 2026 analyst cell; the blog says the separator is fabricated by General Steel).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:score_part_mix",
+   "source_url": "",
+   "ledger_value": "15",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[64]",
+   "verdict": "confirmed",
+   "note": "Stated custom work at company level: 15, no confidence (session-2 rule 1).",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[65]",
+   "verdict": "confirmed",
+   "note": "0 as the attribution stands (campus RULING). Upside 20: two counted production welder postings open at once, Welder I open 152 days, $1,000 sign-on.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:score_demand",
+   "source_url": "",
+   "ledger_value": "8",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[66]",
+   "verdict": "confirmed",
+   "note": "No dated plant-level event; 8.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:score_scale",
+   "source_url": "",
+   "ledger_value": "5",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[67]",
+   "verdict": "confirmed",
+   "note": "5: General Steel states two metal fabrication facilities; headcount unknown. If the facilities are ruled one campus, TAG makes General Steel single-plant (0) unless Fisher Industries counts as a multi-plant parent.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:score_total",
+   "source_url": "",
+   "ledger_value": "28",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[68]",
+   "verdict": "confirmed",
+   "note": "0+0+15+0+8+5 = 28.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:score_tier",
+   "source_url": "",
+   "ledger_value": "Low",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[69]",
+   "verdict": "confirmed",
+   "note": "28 = Low.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:confidence",
+   "source_url": "",
+   "ledger_value": "1",
+   "tag": "inferred",
+   "origin": "inbox mining-profiler-J.json evidence[70]",
+   "verdict": "corrected",
+   "corrected_value": "0",
+   "corrected_quote": "",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "plants_csv_value": "0",
+   "note": "The scale row cites c-general-steel:multi_plant AND p-general-steel-dickinson-nd:headcount; headcount is tagged unknown only, so the normaliser's all-cited-claims-stated test fails and scale earns no confidence (same as Virnig Rice and ESCO Elko, whose scale rows cite an unknown headcount). Part mix rests on an inferred row only; process, material and labor are 0; demand 8 never counts. Confidence 0, not 1. Citation form: Thomas, PPI and Mellott cite only c-...:multi_plant and keep the point; the coordinator may instead drop the headcount citation from the scale row, which would restore 1.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:name",
+   "source_url": "https://www.fisherind.com/general-steel-and-supply-co",
+   "ledger_value": "General Steel & Supply Co.",
+   "tag": "stated",
+   "origin": "ledger evidence.csv data row 14366 (0-based, header excluded)",
+   "verdict": "confirmed",
+   "note": "Quote on the General Steel page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:parent_company",
+   "source_url": "https://fisher.applicantpro.com/jobs/4120398",
+   "ledger_value": "Fisher Industries",
+   "tag": "stated",
+   "origin": "ledger evidence.csv data row 14367 (0-based, header excluded)",
+   "verdict": "confirmed",
+   "note": "Welder I JSON-LD description: \"General Steel & Supply Co. is the manufacturing division of Fisher Industries that fabricates ...\".",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:address",
+   "source_url": "https://www.fisherind.com/locations",
+   "ledger_value": "3020 Energy Drive, Dickinson ND 58601",
+   "tag": "stated",
+   "origin": "ledger evidence.csv data row 14368 (0-based, header excluded)",
+   "verdict": "confirmed",
+   "note": "Fisher locations page lists GENERAL STEEL & SUPPLY COMPANY at 3020 Energy Drive, Dickinson ND 58601 (same address as Fisher Industries HQ and Fisher Sand & Gravel Company). ECHO: GENERAL STEEL & SUPPLY at 3020 ENERGY DR, NAICS 333131. Operating: two live welder postings, March 2025 production milestone.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:website",
+   "source_url": "https://www.fisherind.com/general-steel-and-supply-co",
+   "ledger_value": "https://www.fisherind.com",
+   "tag": "stated",
+   "origin": "ledger evidence.csv data row 14369 (0-based, header excluded)",
+   "verdict": "confirmed",
+   "note": "Page title \"General Steel and Supply Co. - Fisher Industries\" on fisherind.com.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:tier",
+   "source_url": "https://www.fisherind.com/general-steel-and-supply-co",
+   "ledger_value": "OEM",
+   "tag": "stated",
+   "origin": "ledger evidence.csv data row 14371 (0-based, header excluded)",
+   "verdict": "corrected",
+   "corrected_value": "OEM",
+   "corrected_quote": "Our signature piece of equipment is the patented Fisher Air Separator.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Tier is a judgement. The quote (\"We currently fabricate innovative and top-quality aggregate processing equipment for numerous companies\") says it fabricates for other companies and never says OEM or own-name sales. OEM stands as an inferred call: the same page names the patented Fisher Air Separator as its signature product and the product pages sell Fisher-branded pugmills and plants. Retag only; value unchanged (same pattern R3-GH corrected at Construction Attachments).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:relationship",
+   "source_url": "https://www.fisherind.com/new-equipment",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv data row 14372 (0-based, header excluded)",
+   "verdict": "confirmed",
+   "note": "Written rule (crusher and screen makers are lookalikes of Schenck Process; coordinator R2 rulings). Quote on the new-equipment page; products include crushers and screen plants. Correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:lookalike_of",
+   "source_url": "https://www.fisherind.com/new-equipment",
+   "ledger_value": "Schenck Process",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv data row 14373 (0-based, header excluded)",
+   "verdict": "confirmed",
+   "note": "Schenck Process, per the relationship row. Correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:prospect_test",
+   "source_url": "https://fisher.applicantpro.com/jobs/4120398",
+   "ledger_value": "pass",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv data row 14377 (0-based, header excluded)",
+   "verdict": "confirmed",
+   "note": "Posting sentence is in the Welder I JSON-LD description; inferred pass is reasonable (welding core, steel incl. stainless). Correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:lat",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=3020%20Energy%20Drive%2C%20Dickinson%2C%20ND%2058601&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "46.884728",
+   "tag": "stated",
+   "origin": "ledger evidence.csv data row 14378 (0-based, header excluded)",
+   "verdict": "confirmed",
+   "note": "Census geocoder: matchedAddress 3020 ENERGY DR, DICKINSON, ND, 58601; y 46.884727701702 -> 46.884728.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:lon",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=3020%20Energy%20Drive%2C%20Dickinson%2C%20ND%2058601&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "-102.736976",
+   "tag": "stated",
+   "origin": "ledger evidence.csv data row 14379 (0-based, header excluded)",
+   "verdict": "confirmed",
+   "note": "Census geocoder: x -102.736975847059 -> -102.736976.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-general-steel-dickinson-nd:county_fips",
+   "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=3020%20Energy%20Drive%2C%20Dickinson%2C%20ND%2058601&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+   "ledger_value": "38089",
+   "tag": "stated",
+   "origin": "ledger evidence.csv data row 14380 (0-based, header excluded)",
+   "verdict": "confirmed",
+   "note": "Census geocoder: STATE 38, COUNTY 089 -> 38089.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:name",
+   "source_url": "https://www.fecon.com/contact-us/",
+   "ledger_value": "Fecon, LLC",
+   "tag": "stated",
+   "origin": "ledger evidence.csv data row 14409 (0-based, header excluded)",
+   "verdict": "confirmed",
+   "note": "Contact page: \"Fecon, LLC 3460 Grant Drive Lebanon, OH 45036\".",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:address",
+   "source_url": "https://www.fecon.com/contact-us/",
+   "ledger_value": "3460 Grant Drive, Lebanon, OH 45036",
+   "tag": "stated",
+   "origin": "ledger evidence.csv data row 14411 (0-based, header excluded)",
+   "verdict": "confirmed",
+   "note": "Contact page address; ECHO DFR and ISO certificate agree (3460 Grant Dr). Operating: 23 live postings, news posts dated Jul-Aug 2026.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:website",
+   "source_url": "https://www.fecon.com/contact-us/",
+   "ledger_value": "https://www.fecon.com",
+   "tag": "stated",
+   "origin": "ledger evidence.csv data row 14412 (0-based, header excluded)",
+   "verdict": "confirmed",
+   "note": "Contact page on www.fecon.com.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:tier",
+   "source_url": "https://www.fecon.com/about/",
+   "ledger_value": "OEM",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv data row 14414 (0-based, header excluded)",
+   "verdict": "confirmed",
+   "note": "OEM: sells Fecon-branded Bull Hog mulchers, stone crushers and FTX tractors (product pages). Correct as inferred.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:welder_postings",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d06361b3d101636472b70e3952&id=8a7885a8a184742e01a1a32115b20507&source=&lang=en",
+   "ledger_value": "Welder II, Lebanon OH",
+   "tag": "stated",
+   "origin": "ledger evidence.csv data row 14416 (0-based, header excluded)",
+   "verdict": "confirmed",
+   "note": "Job Id 1362 page; quote on page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:welder_postings",
+   "source_url": "https://recruitingbypaycor.com/career/JobIntroduction.action?clientId=8a7883d06361b3d101636472b70e3952&id=8a7883a8a184746e01a1a310695364b2&source=&lang=en",
+   "ledger_value": "Welder II (second requisition), Lebanon OH",
+   "tag": "stated",
+   "origin": "ledger evidence.csv data row 14417 (0-based, header excluded)",
+   "verdict": "confirmed",
+   "note": "Job Id 1361 page; quote on page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:prospect_test",
+   "source_url": "https://www.fecon.com/about/",
+   "ledger_value": "pass (boundary)",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv data row 14419 (0-based, header excluded)",
+   "verdict": "confirmed",
+   "note": "About page quote present; postings show production manual welding of steel. Inferred pass (boundary) correct.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:relationship",
+   "source_url": "https://www.fecon.com/",
+   "ledger_value": "lookalike",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv data row 14875 (0-based, header excluded)",
+   "verdict": "confirmed",
+   "note": "Consultation 14 flip (attachments sold as products; Mine Rite lookalike). Matches the written rule.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-fecon-lebanon-oh:lookalike_of",
+   "source_url": "https://www.fecon.com/",
+   "ledger_value": "Mine Rite",
+   "tag": "inferred",
+   "origin": "ledger evidence.csv data row 14876 (0-based, header excluded)",
+   "verdict": "confirmed",
+   "note": "Mine Rite, per the relationship row. Correct.",
+   "r2_basis": false
+  }
+ ]
+}

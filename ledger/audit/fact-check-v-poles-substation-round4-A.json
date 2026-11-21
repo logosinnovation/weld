@@ -1,0 +1,1054 @@
+{
+ "checker": "fact-checker A (round 4, confirming)",
+ "vertical": "v-poles-substation",
+ "date": "2026-11-13",
+ "plants": [
+  "p-valmont-plymouth-in",
+  "p-valmont-valley-ne",
+  "p-hw-metals-tualatin-or",
+  "p-ameron-tulsa-ok-2",
+  "p-meyer-tulsa-ok",
+  "p-valmont-el-dorado-ks",
+  "p-vs-schuler-canton-oh",
+  "p-vs-schuler-burton-oh"
+ ],
+ "decision_rule": "Corrected: the value adds a fact the cited page does not show, tags a judgement, plan or verdict as stated, places a company-level or inferred-site fact at the plant, or the quote is not on the page. Confirmed: every additive clause is on the cited page (not only the quoted fragment) or on a sibling row of the same claim_id whose source was opened on 2026-11-13 (this ledger repeats a compound value on every row of a claim; round 3 judged multi-row welder_postings the same way). A clause found only under a different claim (e.g. existing_robots, welder_postings) counts as additive. Limiting parentheticals ('not mandatory overtime', 'not shown to be welded here') and source notes ('AISC lists it as Middlefield') are not additive. Sensitivity: under a strict page-only reading, which also corrects the 3 CRH parent rows, the 5 Meyer posting rows whose street comes from the job-board API and inferred row 2615, the Meyer name label, the Burton city source note and the 2 'structural wind towers' rows, the rate is 20/125 = 0.16.",
+ "claims_checked": 125,
+ "claims_corrected": 8,
+ "claims_unreachable": 0,
+ "error_rate": 0.064,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 8,
+  "invented fact": 0,
+  "other": 0
+ },
+ "repeated_kinds": [
+  "quote does not support value (8 of 8 corrections). Sub-patterns for the sweep: (a) a qualification read as the plant's process: Ameron 66th St weld_processes (Foreman 'highly preferred' flux/metal core; score impact) and Valley's 'GMAW on the seam welders' (a GMAW test); (b) a 2011 plan written as current products at a site tied by inference (Ameron 66th St products x2); (c) a compound clause taken from another claim's page (Valley production_type 'Moto cell', Burton weld_processes 'two postings / MIG Welder/Fitter'); (d) a detail or legal name not on the cited page (HW 'transmission poles', Ameron 'high mast', Ameron 'Ameron Pole Products LLC' on the EPA FRS page). Sweep (a) first: p-arcosa-telecom-muskogee-ok:weld_processes rests on the same Arcosa Foreman template wording ('same basis as Muskogee' in the Ameron score row)."
+ ],
+ "worst_errors": [
+  "p-ameron-tulsa-ok-2:weld_processes: 'flux-core and metal-core' tagged stated, but the only source is a Foreman (supervisor) posting that lists 'flux and metal core welding' as highly preferred experience. Process not stated; score_process 20 -> 0 under run-log rule 2, total 33 -> 13, confidence 2 -> 1. The ledger's own score_labor row says the Foreman is not a welder posting.",
+  "p-ameron-tulsa-ok-2:products (rows from areadevelopment.com and newson6.com): a 2011 plan ('will produce', 'will focus') for a plant located only as 'Cherokee Industrial Park, just south of the Whirlpool plant' is tagged stated as the 66th St plant's products; the areadevelopment row also adds 'high mast', which that page does not say. Retag inferred and mark planned.",
+  "p-valmont-valley-ne:production_type (and weld_processes): the stated production_type adds 'a robotic Moto cell' that is not on the cited Custom Fitter page, and weld_processes says GMAW is run 'on the Sub Arc seam welders' when the page only requires a GMAW qualification test. No score change (part mix 15 and process 20 stand on other stated text), but this is the map's second-highest plant (88)."
+ ],
+ "score_problems": [
+  "p-ameron-tulsa-ok-2:score_process 20 -> 0 (weld_processes corrected to unknown; Foreman 'highly preferred' line is a non-welding role's qualification, run-log rule 2). Total 33 -> 13 (Low), confidence 2 -> 1 (scale only).",
+  "p-ameron-tulsa-ok-2:score_total reasoning text says 'confidence 3 (process, demand, scale...)'; plants.csv has 2 (demand 8 no longer counts). After the fix it should read 1.",
+  "p-hw-metals-tualatin-or:score_total reasoning says 'confidence 4 (process, material, part mix, demand...)'; plants.csv has 3, which is right under the 2026-11-13 rule (demand 8 never counts). Wording only.",
+  "Arithmetic and rubric checked for all 8 plants against confirmed evidence: Plymouth 0+0+8+0+8+5=21 Low conf 0; Valley 20+20+15+20+8+5=88 High conf 4; HW 20+20+15+0+8+0=63 Medium conf 3; Ameron 20+0+0+0+8+5=33 Low conf 2 (should be 13/1); Meyer 20+0+15+20+15+5=75 High conf 4; El Dorado 20+0+15+20+8+5=68 Medium conf 2; V&S Canton 12+0+15+20+8+5=60 Medium conf 4; V&S Burton 12+0+15+20+8+5=60 Medium conf 4. Only Ameron changes."
+ ],
+ "score_notes": [
+  {
+   "plant": "p-ameron-tulsa-ok-2",
+   "component": "score_process",
+   "ledger_points": 20,
+   "should_be": 0,
+   "why": "weld_processes corrected to unknown: flux/metal core appear only as 'highly preferred' experience in a Foreman posting (non-welding role). Run-log rule 2 / clarified wording: a qualification in a non-welding role does not count. Total 33 -> 13, confidence 2 -> 1."
+  },
+  {
+   "plant": "p-ameron-tulsa-ok-2",
+   "component": "score_scale",
+   "ledger_points": 5,
+   "should_be": 5,
+   "why": "Kept, but the cited TRI row shows only that Arcosa is the parent, not that it is multi-plant. Cite an Arcosa multi-plant row (as Valmont plants cite c-valmont:multi_plant). Same for p-meyer-tulsa-ok:score_scale."
+  },
+  {
+   "plant": "p-meyer-tulsa-ok",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "Holds on two Welder/Fitter postings open at once (2026-10-30, 2026-11-10). Note: the job-board API files both under 'Tulsa OK Windtowers' (same site; they may staff wind-tower work), and the 'Lead Welder' posting lists supervisory duties only. If the coordinator counts only Meyer-pole welder roles, only the Lead Welder (supervisory duties) remains under the Meyer label, plus two Weld Tech trainer roles, and labor could fall to 12. Coordinator's call; not counted as an error."
+  },
+  {
+   "plant": "p-valmont-valley-ne",
+   "component": "score_part_mix",
+   "ledger_points": 15,
+   "should_be": 15,
+   "why": "production_type corrected only to drop the Moto-cell clause; custom fitters welding lighting, comm-tower and utility poles to shop drawings still supports 15. score_total's own sensitivity note (8 if the robotic cell is weighed) stands."
+  },
+  {
+   "plant": "p-valmont-valley-ne",
+   "component": "score_material_part",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "84 in diameter and 30,000 lb (stated, Custom Fitter) fit the 2026 analyst limits (15 ft wide, 55,000 lb); length not stated. Per the consultation-2 material rule this is a stated dimension, so 20 stands; 12 under the older sheet."
+  },
+  {
+   "plant": "p-hw-metals-tualatin-or",
+   "component": "score_total",
+   "ledger_points": 63,
+   "should_be": 63,
+   "why": "Points correct; the reasoning text's 'confidence 4' is stale (plants.csv 3 is right)."
+  },
+  {
+   "plant": "p-vs-schuler-canton-oh; p-vs-schuler-burton-oh",
+   "component": "score_process",
+   "ledger_points": 12,
+   "should_be": 12,
+   "why": "'MIG, TIG, stick and flux-core' = rubric 'mixed with TIG' (12), matching the coordinator's decision in run_log (QMF precedent). 20 only if the session-2 wording is applied regardless of TIG."
+  },
+  {
+   "plant": "p-valmont-el-dorado-ks; p-valmont-valley-ne; p-meyer-tulsa-ok; p-vs-schuler-canton-oh; p-vs-schuler-burton-oh",
+   "component": "score_labor",
+   "ledger_points": 20,
+   "should_be": 20,
+   "why": "All counted postings are open on 2026-11-13 and dated as stated: Valley 5 (oldest 2026-09-08, 66 days), El Dorado 4 (oldest 2026-09-11, 63 days), Meyer 3 (oldest 2026-09-17), Canton 1 (2026-07-31, 105 days), Burton 2 (2026-07-31 and 2026-09-10). Workday cxs canApply=true and job-board search lists; UKG LoadSearchResults API; Dayforce board listing."
+  }
+ ],
+ "opening_line_problems": [
+  "Skipped per delegation (opening_line and bottleneck_guess are being rewritten in parallel). One input to that rewrite: the Ameron 66th St line cites 'flux and metal core welding experience highly preferred', which is a Foreman qualification, not the plant's process."
+ ],
+ "plants_closed_or_moved": [],
+ "plant_status_notes": "All 8 operate at the recorded city. Plymouth: open Warehouse postings at 1545 Pidco Dr, current WisDOT (7/25/2025), MassDOT and AISC listings; no welder postings on Valmont's board. Valley and El Dorado: open, dated postings at 28800 Ida St and 955 North Haverhill Rd. HW Metals: live site, 19480 SW 118th Ave, Tualatin. Ameron 66th St: four open Arcosa postings at 4903 E 66th St N (API label 'Tulsa, OK -Tube'), EPA TRI not closed; the Census geocoder places the address in unincorporated Tulsa County (postal city Tulsa), about 1 km south of the Whirlpool plant. Meyer Tulsa: 14 open postings at 15300 Tiger Switch Rd (labels 'Tulsa, OK Meyer' and 'Tulsa OK Windtowers'); the geocoder places the site in Catoosa city, Rogers County (county_fips 40131 already reflects this); 'Tulsa' is the EPA and posting city. V&S Canton: open posting at 2240 Allen Ave SE. V&S Burton: open postings at 15175 Kinsman Rd, Middlefield OH 44062, which the geocoder places in Burton township, Geauga County; the company calls the site Burton, Ohio.",
+ "method": "Every stated row in the delegated fields for the 8 plants (125 rows) plus the claims cited by score rows. 51 non-AISC source pages fetched with tools/fetch_page.py on 2026-11-13 (plain or headless browser); every '...'-joined quote fragment matched the normalised page text (125/125). AISC rows checked against the full lines of ledger/audit/source-snapshot-aisc-directory-2026-11-12.txt. Workday cxs JSON rows checked per fragment (title, startDate) plus canApply and location. Open status: Valmont Workday jobs search API, Arcosa UKG LoadSearchResults API (306 postings, addresses), V&S Dayforce board listing. Census geocoder for city checks. Replacement quotes re-checked with --check. The 5 shared claims cited by score rows (4 v-poles-substation:demand_outlook rows, c-valmont:multi_plant) were checked and are listed under shared_claims_checked, outside the denominator, because round 3 left vertical and company rows out and other round-4 checkers may also check them. No ledger files edited.",
+ "shared_claims_checked": [
+  {
+   "claim_id": "v-poles-substation:demand_outlook",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/102729/000010272926000050/vmi-20260926x10q.htm",
+   "ledger_value": "Strong: grid capacity and data-center load growth",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 46. Quote on the page (fetched 2026-11-13). Valmont 10-Q (period ended 2026-09-26): 'Demand remained strong, supported by ... grid capacity, including investments to serve growing power demand from data centers'."
+  },
+  {
+   "claim_id": "v-poles-substation:demand_outlook",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1739445/000173944526000029/aca-20251231.htm",
+   "ledger_value": "Strong: Arcosa converting idled wind tower plant to utility structures",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 47. Quote on the page (fetched 2026-11-13). Arcosa FY2025 10-K. 'Strong' rests on 'Due to increased demand for utility structures'."
+  },
+  {
+   "claim_id": "v-poles-substation:demand_outlook",
+   "source_url": "https://hydrocarbonprocessing.com/news/2026/07/modernizing-the-grid-building-with-nucor-domestic-eaf-steel/",
+   "ledger_value": "Strong: Nucor building three new pole plants",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 48. Quote on the page (fetched 2026-11-13). hydrocarbonprocessing.com, July 2026; Nucor statement on three new pole plants. 'Strong' is a summary label."
+  },
+  {
+   "claim_id": "v-poles-substation:demand_outlook",
+   "source_url": "https://www.steelorbis.com/steel-news/latest-news/nucor-to-invest-105-million-to-expand-utility-structures-facility-in-indiana-1482465.htm",
+   "ledger_value": "Strong: Nucor $105M Crawfordsville expansion (Oct 2026)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 49. Quote on the page (fetched 2026-11-13). steelorbis, Thursday 08 October 2026: $105M Crawfordsville expansion."
+  },
+  {
+   "claim_id": "c-valmont:multi_plant",
+   "source_url": "https://vmt-general.s3.amazonaws.com/resources/catalogs/telecom-macro-solutions-product-guide.pdf",
+   "ledger_value": "multi-plant parent: 84 manufacturing facilities in 21 countries (2026 Valmont telecom product guide)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2766. Quote on the page (fetched 2026-11-13). Valmont telecom product guide PDF, (c) 2026: 'We have 84 manufacturing facilities in 21 countries'."
+  }
+ ],
+ "rows": [
+  {
+   "claim_id": "p-valmont-plymouth-in:address",
+   "source_url": "https://www.valmontstructures.com/contact/locations",
+   "ledger_value": "1545 Pidco Drive, Plymouth, IN 46563",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 322. Quote on the page (fetched 2026-11-13). Valmont Structures locations page lists 'Mailing and Shipping Address 1545 Pidco Drive Plymouth, IN 46563-1354' (valmont-towers block). Also on WisDOT list, MassDOT list and the Plymouth Warehouse posting."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:address",
+   "source_url": "https://www.valmontstructures.com/contact/locations",
+   "ledger_value": "28800 Ida Street, Valley, NE 68064",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 325. Quote on the page (fetched 2026-11-13). Locations page lists 28800 Ida Street, P.O. Box 358, Valley, NE 68064-0358; Workday postings give 28800 Ida St Valley Nebraska 68064-8016."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:name",
+   "source_url": "https://www.hwmetals.com/",
+   "ledger_value": "H.W. Metal Products, Inc.",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2359. Quote on the page (fetched 2026-11-13). hwmetals.com home page."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:address",
+   "source_url": "https://www.hwmetals.com/contact",
+   "ledger_value": "19480 SW 118th Ave, Tualatin, OR 97062",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2361. Quote on the page (fetched 2026-11-13). Contact page: 19480 SW 118th Ave., PO Box 849, Tualatin, Oregon 97062."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:address",
+   "source_url": "https://www.hwmetals.com/about/employment",
+   "ledger_value": "19480 SW 118th Ave, Tualatin, OR 97062",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2362. Quote on the page (fetched 2026-11-13). Employment page footer."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:city",
+   "source_url": "https://www.hwmetals.com/contact",
+   "ledger_value": "Tualatin",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2363. Quote on the page (fetched 2026-11-13). Contact page."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:state",
+   "source_url": "https://www.hwmetals.com/contact",
+   "ledger_value": "OR",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2364. Quote on the page (fetched 2026-11-13). Contact page."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:products",
+   "source_url": "https://www.hwmetals.com/tapered-tubular-steel",
+   "ledger_value": "custom steel poles",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2369. Quote on the page (fetched 2026-11-13). Page heading on the tapered-tubular-steel page."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:products",
+   "source_url": "https://www.pacificsteelstructures.com/wp-content/uploads/HW-Metals-Equipment-List.pdf",
+   "ledger_value": "tapered tubular steel transmission poles (for Pacific Steel Structures)",
+   "verdict": "corrected",
+   "corrected_value": "tapered tubular structures fabricated for Pacific Steel Structures under a long-term agreement",
+   "corrected_quote": "HW Metals, Inc is Pacific Steel Structures manufacturing partner. We have a long term agreement in place to provide fabrication for us on all tapered tubular structures.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 2370. 'transmission poles' is not on the Pacific Steel PDF (or on any HW page read); the page says 'all tapered tubular structures'. Detail not on the page."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:weld_processes",
+   "source_url": "https://www.hwmetals.com/metal-plate-services/welding",
+   "ledger_value": "MIG; submerged arc; open arc (automated gantries)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2382. Quote on the page (fetched 2026-11-13). Welding page heading; body: 'submerged (sub) arc and open arc welding services, as well as MIG welding' and 'automated sub arc or open arc gantry welding system'."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:certifications",
+   "source_url": "https://www.hwmetals.com/",
+   "ledger_value": "AAR certified steel processor and tubing manufacturer",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2383. Quote on the page (fetched 2026-11-13). Home page: 'an AAR (Association of American Railroads) certified steel processor and tubing manufacturer'."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:certifications",
+   "source_url": "https://www.pacificsteelstructures.com/wp-content/uploads/HW-Metals-Equipment-List.pdf",
+   "ledger_value": "D1.1-certified welders",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2384. Quote on the page (fetched 2026-11-13). Pacific Steel's HW equipment PDF, last line of the Welding section."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:part_size_fit",
+   "source_url": "https://www.hwmetals.com/tapered-tubular-steel",
+   "ledger_value": "towers up to 138 in x 138 in x 70 ft and 11 ft diameter; continuous lengths to 60 ft",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2385. Quote on the page (fetched 2026-11-13). Tapered-tubular-steel page."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:materials",
+   "source_url": "https://www.pacificsteelstructures.com/wp-content/uploads/HW-Metals-Equipment-List.pdf",
+   "ledger_value": "carbon steel",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2386. Quote on the page (fetched 2026-11-13). PDF laser-table capacity line ('3/4” Carbon Steel'); the same table lists stainless and aluminum. A stronger quote for the material of welded parts is on hwmetals.com/steel-fabrication: 'complete assemblies and carbon steel fabricated products'. Value is accurate; no correction."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok-2:name",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_dtl.disp_program_facility?p_registry_id=110064455879",
+   "ledger_value": "Ameron Pole Products LLC (Tulsa tube manufacturing plant)",
+   "verdict": "corrected",
+   "corrected_value": "Ameron Pole Products LLC (Tulsa, OK 74117 plant)",
+   "corrected_quote": "Ameron Pole Products LLC is searching for a Facility Foreman for our Tulsa, OK Plant.",
+   "corrected_source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=d753aa4e-d36e-4b69-9d38-05e4b5067326",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 2404. The cited EPA FRS page shows only 'NOV AMERON TULSA POLE PRODUCTS TUBE MANUFACTURING'; 'Ameron Pole Products LLC' (legal suffix) is not on it (round-2 sub-pattern a). The Foreman posting (location Tulsa, OK 74117; job-board API address 4903 E 66th St N) carries the legal name. Keep the FRS row as a second source for the EPA facility name."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok-2:parent_company",
+   "source_url": "https://data.epa.gov/efservice/tri_facility/tri_facility_id/7411WNVMRN493NR/JSON",
+   "ledger_value": "Arcosa, Inc. (acquired by CRH, completed Oct 2026)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2405. Quote on the page (fetched 2026-11-13). TRI JSON for facility 7411WNVMRN493NR shows parent_co_name 'ARCOSA INC'. The CRH clause is not on this page but is carried by the same claim's sibling row 2405 (https://www.arcosa.com, inferred), and arcosa.com still shows 'CRH Completes $8.5B Acquisition of Arcosa' (fetched 2026-11-13). Confirmed at claim level."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok-2:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_dtl.disp_program_facility?p_registry_id=110064455879",
+   "ledger_value": "4903 E 66th St N, Tulsa, OK 74117",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2407. Quote on the page (fetched 2026-11-13). FRS registry 110064455879: NOV AMERON TULSA POLE PRODUCTS TUBE MANUFACTURING, 4903 E 66TH ST N, TULSA, OK 74117. Arcosa job-board API also gives 4903 E 66th St N for four open postings (label 'Tulsa, OK -Tube')."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok-2:address",
+   "source_url": "https://data.epa.gov/efservice/tri_facility/tri_facility_id/7411WNVMRN493NR/JSON",
+   "ledger_value": "4903 E 66th St N, Tulsa, OK 74117",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2408. Quote on the page (fetched 2026-11-13). TRI JSON gives '4903 N 66TH ST E', ZIP 74117, same EPA registry id 110064455879 as the FRS page; street words are transposed in TRI, same site."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok-2:city",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_dtl.disp_program_facility?p_registry_id=110064455879",
+   "ledger_value": "Tulsa",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2409. Quote on the page (fetched 2026-11-13). FRS page. Census geocoder places the address in unincorporated Tulsa County (Tulsa CCD); 'Tulsa' is the postal city."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok-2:state",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_dtl.disp_program_facility?p_registry_id=110064455879",
+   "ledger_value": "OK",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2410. Quote on the page (fetched 2026-11-13). FRS page."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok-2:products",
+   "source_url": "https://www.areadevelopment.com/newsitems/1-25-2011/ameron-steel-tulsa-oklahoma1253.shtml",
+   "ledger_value": "steel poles for highway lighting, traffic signal control structures, light rail, high mast and smart grid structures, highway signage (2011 plant announcement)",
+   "verdict": "corrected",
+   "corrected_value": "planned (2011 announcement): steel poles for highway lighting and signs, traffic signal controls, light rail and smart grid structures",
+   "corrected_quote": "The poles will be used in highway lighting and signs, traffic signal controls, light rail, and smart grid structures.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 2415. 'high mast' is not on this page (it is on the News On 6 page). The page describes a plant Ameron 'is building' in 2011 (future tense) and gives no address; the tie to 4903 E 66th St N rests on News On 6's 'just south of the Whirlpool plant' (Census geocoder: 4903 E 66th St N is about 1.0 km due south of 7301 Whirlpool Dr), so the plant-level attribution is inferred. The ledger's own production_type row treats this list as a plan."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok-2:products",
+   "source_url": "https://www.newson6.com/story/5e3665182f69d76f620775e5/california-company-to-build-new-plant-in-tulsa",
+   "ledger_value": "steel poles for highway lighting, traffic signal control structures, light rail, high mast and smart grid structures, highway signage",
+   "verdict": "corrected",
+   "corrected_value": "planned (2011 announcement): steel poles for highway lighting, traffic signal control structures, light rail, high mast and smart grid structures, and highway signage",
+   "corrected_quote": "The release says the new Tulsa plant will focus on the national transportation infrastructure market for applications, such as highway lighting, traffic signal control structures, light rail, high mast and smart grid structures, and highway signage.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 2416. Quote is on the page, but it is a 2011 plan ('will focus') written as the plant's current products, and the page locates the plant only as 'Cherokee Industrial Park, just south of the Whirlpool plant', not at 4903 E 66th St N (the tie is a good inference, not a statement). Round-3 sub-pattern (b): planned facts in the present tense."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok-2:products",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_dtl.disp_program_facility?p_registry_id=110064455879",
+   "ledger_value": "pole products tube manufacturing (steel pipe/tube from purchased steel)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2417. Quote on the page (fetched 2026-11-13). FRS page NAICS text plus facility name 'POLE PRODUCTS TUBE MANUFACTURING'."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok-2:materials",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_dtl.disp_program_facility?p_registry_id=110064455879",
+   "ledger_value": "steel",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2419. Quote on the page (fetched 2026-11-13). FRS NAICS text 'FROM PURCHASED STEEL'."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:weld_processes",
+   "source_url": "https://www.hwmetals.com/equipment-list",
+   "ledger_value": "MIG",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2529. Quote on the page (fetched 2026-11-13). Equipment list: 'MIG Welding / Used in the custom welding of both small and large parts.'"
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:certifications",
+   "source_url": "https://www.hwmetals.com/equipment-list",
+   "ledger_value": "welders certified to D1.1",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2530. Quote on the page (fetched 2026-11-13). Equipment list."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:certifications",
+   "source_url": "https://www.hwmetals.com/metal-plate-services/welding",
+   "ledger_value": "welders certified to D1.1",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2531. Quote on the page (fetched 2026-11-13). Welding page."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:part_size_fit",
+   "source_url": "https://www.hwmetals.com/",
+   "ledger_value": "processed and fabricated steel products up to 60 ft long",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2532. Quote on the page (fetched 2026-11-13). Home page: 'up to 60 feet in length and larger'."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:part_size_fit",
+   "source_url": "https://www.hwmetals.com/equipment-list",
+   "ledger_value": "custom poles welded to 50 ft",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2533. Quote on the page (fetched 2026-11-13). Equipment list: 'Automatic Open Arc Beam Welder / Used for welding custom poles up to 50' in length'."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:production_type",
+   "source_url": "https://www.hwmetals.com/steel-fabrication",
+   "ledger_value": "build-to-print custom fabrication",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2535. Quote on the page (fetched 2026-11-13). Steel-fabrication page ('Fabrications / Build to Print'; 'Working off customer supplied drawings')."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:production_type",
+   "source_url": "https://www.hwmetals.com/tapered-tubular-steel",
+   "ledger_value": "custom tapered poles and towers built to spec",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2536. Quote on the page (fetched 2026-11-13). Tapered-tubular-steel page heading; body 'tapered and fabricated custom steel towers and tubing'."
+  },
+  {
+   "claim_id": "p-hw-metals-tualatin-or:products",
+   "source_url": "https://www.hwmetals.com/steel-fabrication",
+   "ledger_value": "custom tapered tubular steel poles and build-to-print structures",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2537. Quote on the page (fetched 2026-11-13). Steel-fabrication page."
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok-2:weld_processes",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=d753aa4e-d36e-4b69-9d38-05e4b5067326",
+   "ledger_value": "flux-core and metal-core",
+   "verdict": "corrected",
+   "corrected_value": "unknown (welding and fit-up are stated at the plant; the process is not: flux- and metal-core are named only as 'highly preferred' experience for a Foreman, a non-welding supervisory role)",
+   "corrected_quote": "Manage all aspects of fit up and welding processes for assigned work groups and production bays",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 2551. Worst error. Same sub-pattern as round-3 Nucor Crawfordsville: a preferred qualification in a non-welding role read as the plant's production process. The ledger's own score_labor row says 'Foreman is not a welder posting', yet score_process takes 20 from this posting. Arcosa's job-board API (read 2026-11-13) files this site as 'Tulsa, OK -Tube'; its only open Fitter Welder postings in Tulsa are at 2333 S Yukon Ave ('Tulsa, OK -Finish'), a different plant. Run-log rule 2 (2026-11-13): process 0. The score_process row says 'same basis as Muskogee' -> sweep p-arcosa-telecom-muskogee-ok:weld_processes (not seen by this checker)."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:name",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=37bed2ea-ee3c-4a09-b401-9655f365137d",
+   "ledger_value": "Meyer Utility Structures (Tulsa / Tiger Switch Rd)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2569. Quote on the page (fetched 2026-11-13). Lead Welder posting (Tulsa, OK 74116). 'Tiger Switch Rd' in the label is not on the page but is a locating label; Arcosa's job-board API gives this posting's address as 15300 Tiger Switch Rd."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:parent_company",
+   "source_url": "https://data.epa.gov/efservice/tri_facility/tri_facility_id/7411WDMNDS153TI/JSON",
+   "ledger_value": "Arcosa, Inc. (acquired by CRH, completed Oct 2026)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2573. Quote on the page (fetched 2026-11-13). TRI JSON 7411WDMNDS153TI: parent 'ARCOSA INC'. CRH clause carried by sibling row 2574 (arcosa.com, inferred), re-read 2026-11-13. Confirmed at claim level."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:parent_company",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=ddd39990-2c63-411a-987d-21df466ad17a",
+   "ledger_value": "Arcosa, Inc. (acquired by CRH, completed Oct 2026)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2574. Quote on the page (fetched 2026-11-13). Weld Tech posting: 'Meyer Utility Structures, an Arcosa subsidiary'. CRH clause carried by sibling row 2574. Confirmed at claim level."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:address",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_dtl.disp_program_facility?p_registry_id=110070346127",
+   "ledger_value": "15300 Tiger Switch Rd, Tulsa, OK 74116",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2576. Quote on the page (fetched 2026-11-13). FRS registry 110070346127 page."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:address",
+   "source_url": "https://data.epa.gov/efservice/tri_facility/tri_facility_id/7411WDMNDS153TI/JSON",
+   "ledger_value": "15300 Tiger Switch Rd, Tulsa, OK 74116",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2577. Quote on the page (fetched 2026-11-13). TRI JSON: '15300 TIGERSWITCH ROAD', ZIP 74116, fac_closed_ind 0."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:city",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_dtl.disp_program_facility?p_registry_id=110070346127",
+   "ledger_value": "Tulsa",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2580. Quote on the page (fetched 2026-11-13). FRS page gives TULSA. Census geocoder places 15300 Tiger Switch Rd in Catoosa city, Rogers County (county_fips 40131 already reflects this); Tulsa is the postal city. Not an error."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:state",
+   "source_url": "https://frs-public.epa.gov/ords/frs_public2/fii_query_dtl.disp_program_facility?p_registry_id=110070346127",
+   "ledger_value": "OK",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2582. Quote on the page (fetched 2026-11-13). FRS page."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:products",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=ddd39990-2c63-411a-987d-21df466ad17a",
+   "ledger_value": "utility poles",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2589. Quote on the page (fetched 2026-11-13). Weld Tech (2nd Shift) WELDT015126, posted 2026-10-30, 74116; API address 15300 Tiger Switch Rd, location 'Tulsa, OK Meyer'."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:products",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=5f459ed9-6a5b-48fb-8e36-00bcfcdc91c4",
+   "ledger_value": "utility structures (UT/MT/VT inspection during manufacture)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2590. Quote on the page (fetched 2026-11-13). NDT Quality Inspector posting (2026-11-11, 74116; API address 15300 Tiger Switch Rd)."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:products",
+   "source_url": "https://www.fool.com/earnings/call-transcripts/2026/02/27/arcosa-aca-q4-2025-earnings-call-transcript",
+   "ledger_value": "structural wind towers still built at the site through 2027",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2592. Quote on the page (fetched 2026-11-13). Transcript: 'At Tulsa, our wind tower backlog stretches through 2027, and we have the ability in that facility to roll both product lines in parallel.' 'structural' is Arcosa's product term and not on the page; descriptive only, not counted."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:products",
+   "source_url": "https://data.epa.gov/efservice/tri_facility/tri_facility_id/7411WDMNDS153TI/JSON",
+   "ledger_value": "structural wind towers (EPA TRI facility name)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2593. Quote on the page (fetched 2026-11-13). TRI facility name 'ARCOSA WIND TOWERS INC. PLT 1675'. 'structural' descriptive only (see 2591)."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:weld_processes",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=a382ad09-9b60-4d56-bbb4-0b1496b6b4b2",
+   "ledger_value": "flux-core (FCAW): a 2G FCAW weld test on 1 in plate is required in both Welder/Fitter postings at the site; FCAW, SAW and SMAW experience required for the Meyer plant welding technician (Weld Tech) postings",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2603. Quote on the page (fetched 2026-11-13). Welder/Fitter SRFIT014598 (posted 2026-10-30, 74116, 'Ability to successfully pass a 2G Flux Core (FCAW) weld test on 1” plate'). Union of rows 2602-2605 carries every clause of the shared value."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:weld_processes",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=c3ac0d88-10bc-4cfc-b8ad-5c09521b37b4",
+   "ledger_value": "flux-core (FCAW): a 2G FCAW weld test on 1 in plate is required in both Welder/Fitter postings at the site; FCAW, SAW and SMAW experience required for the Meyer plant welding technician (Weld Tech) postings",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2604. Quote on the page (fetched 2026-11-13). Welder/Fitter WELDE015073 (posted 2026-11-10, 74116), same requirement."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:weld_processes",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=ddd39990-2c63-411a-987d-21df466ad17a",
+   "ledger_value": "flux-core (FCAW): a 2G FCAW weld test on 1 in plate is required in both Welder/Fitter postings at the site; FCAW, SAW and SMAW experience required for the Meyer plant welding technician (Weld Tech) postings",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2605. Quote on the page (fetched 2026-11-13). Weld Tech (2nd Shift): '3 - 5 years FCAW, SAW, and SMAW welding experience.' under What You'll Need (required)."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:weld_processes",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=d13cf4e4-6d87-4d99-9427-03923c8cd8e3",
+   "ledger_value": "flux-core (FCAW): a 2G FCAW weld test on 1 in plate is required in both Welder/Fitter postings at the site; FCAW, SAW and SMAW experience required for the Meyer plant welding technician (Weld Tech) postings",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2606. Quote on the page (fetched 2026-11-13). Weld Tech (1st Shift) duties."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=a382ad09-9b60-4d56-bbb4-0b1496b6b4b2",
+   "ledger_value": "3 open welder postings at 15300 Tiger Switch Rd on Arcosa's job board (read 2026-11-13): Welder/Fitter (posted 2026-10-30) and Welder/Fitter $25.33 + $1.50/hr night shift premium (2026-11-10), both headed Arcosa Wind Towers and Meyer Utility Structures; Meyer 2nd-shift Lead Welder (2026-09-17, oldest, 57 days). Also 2 Meyer Weld Tech (plant welding technician) postings (2026-09-30, 2026-10-30). FCAW 2G test; no sign-on bonus or mandatory overtime stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2611. Quote on the page (fetched 2026-11-13). Posted October 30, 2026; location Tulsa, OK 74116; header 'Arcosa Wind Towers and Meyer Utility Structures'. Street and open status checked in Arcosa's UKG job-board API (LoadSearchResults, 306 postings, read 2026-11-13): Address Line1 '15300 Tiger Switch Rd.', location 'Tulsa OK Windtowers'. Street is also carried by the claim's inferred sibling row 2615."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=c3ac0d88-10bc-4cfc-b8ad-5c09521b37b4",
+   "ledger_value": "3 open welder postings at 15300 Tiger Switch Rd on Arcosa's job board (read 2026-11-13): Welder/Fitter (posted 2026-10-30) and Welder/Fitter $25.33 + $1.50/hr night shift premium (2026-11-10), both headed Arcosa Wind Towers and Meyer Utility Structures; Meyer 2nd-shift Lead Welder (2026-09-17, oldest, 57 days). Also 2 Meyer Weld Tech (plant welding technician) postings (2026-09-30, 2026-10-30). FCAW 2G test; no sign-on bonus or mandatory overtime stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2612. Quote on the page (fetched 2026-11-13). Posted November 10, 2026; 74116; API: 15300 Tiger Switch Rd., 'Tulsa OK Windtowers'; open."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=37bed2ea-ee3c-4a09-b401-9655f365137d",
+   "ledger_value": "3 open welder postings at 15300 Tiger Switch Rd on Arcosa's job board (read 2026-11-13): Welder/Fitter (posted 2026-10-30) and Welder/Fitter $25.33 + $1.50/hr night shift premium (2026-11-10), both headed Arcosa Wind Towers and Meyer Utility Structures; Meyer 2nd-shift Lead Welder (2026-09-17, oldest, 57 days). Also 2 Meyer Weld Tech (plant welding technician) postings (2026-09-30, 2026-10-30). FCAW 2G test; no sign-on bonus or mandatory overtime stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2613. Quote on the page (fetched 2026-11-13). Posted September 17, 2026 (57 days); 2nd Shift Lead Welder; API: 15300 Tiger Switch Rd, 'Tulsa, OK Meyer'; open. The posting lists supervisory duties only (no welding duties)."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=d13cf4e4-6d87-4d99-9427-03923c8cd8e3",
+   "ledger_value": "3 open welder postings at 15300 Tiger Switch Rd on Arcosa's job board (read 2026-11-13): Welder/Fitter (posted 2026-10-30) and Welder/Fitter $25.33 + $1.50/hr night shift premium (2026-11-10), both headed Arcosa Wind Towers and Meyer Utility Structures; Meyer 2nd-shift Lead Welder (2026-09-17, oldest, 57 days). Also 2 Meyer Weld Tech (plant welding technician) postings (2026-09-30, 2026-10-30). FCAW 2G test; no sign-on bonus or mandatory overtime stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2614. Quote on the page (fetched 2026-11-13). Weld Tech (1st Shift), posted September 30, 2026; API address 15300 Tiger Switch Rd; open."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=ddd39990-2c63-411a-987d-21df466ad17a",
+   "ledger_value": "3 open welder postings at 15300 Tiger Switch Rd on Arcosa's job board (read 2026-11-13): Welder/Fitter (posted 2026-10-30) and Welder/Fitter $25.33 + $1.50/hr night shift premium (2026-11-10), both headed Arcosa Wind Towers and Meyer Utility Structures; Meyer 2nd-shift Lead Welder (2026-09-17, oldest, 57 days). Also 2 Meyer Weld Tech (plant welding technician) postings (2026-09-30, 2026-10-30). FCAW 2G test; no sign-on bonus or mandatory overtime stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2615. Quote on the page (fetched 2026-11-13). Weld Tech (2nd Shift), posted October 30, 2026; API address 15300 Tiger Switch Rd; open. No posting states a sign-on bonus or mandatory overtime ('Standard Hours: May change based on production needs')."
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:triggers",
+   "source_url": "https://www.fool.com/earnings/call-transcripts/2026/02/27/arcosa-aca-q4-2025-earnings-call-transcript",
+   "ledger_value": "Feb 27, 2026: Arcosa said it is preparing to transition its Tulsa, Oklahoma wind tower facility to utility structures, moving its people to utility poles as wind tower orders finish",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2617. Quote on the page (fetched 2026-11-13). Transcript dated Friday, Feb. 27, 2026; also: 'As wind tower orders are being finished, we will be moving our people to produce utility poles.' Tulsa wind tower facility = TRI 'ARCOSA WIND TOWERS INC. PLT 1675' at 15300 Tigerswitch Road."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:parent_company",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/Valley-NE/Custom-Fitter_R29389",
+   "ledger_value": "Valmont Industries",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2769. Quote on the page (fetched 2026-11-13). Custom Fitter R29389 page (28800 Ida St) under the Valmont header."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:products",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/Valley-NE/Custom-Fitter_R29389",
+   "ledger_value": "steel poles: lighting, communication tower and utility poles (Custom Fitter posting)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2773. Quote on the page (fetched 2026-11-13). Custom Fitter R29389 required qualification."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:products",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/Valley-NE/Sub-Arc-Welder-Operator_R29396",
+   "ledger_value": "steel poles (seam-welded steel shafts)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2774. Quote on the page (fetched 2026-11-13). Sub Arc Welder Operator R29396 essential function."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:products",
+   "source_url": "https://wisconsindot.gov/Documents/doing-bus/eng-consultants/cnslt-rsrces/tools/appr-prod/ap-current/sign-structures.pdf",
+   "ledger_value": "steel sign bridges and overhead sign supports (WisDOT approved: monotubes, planar trusses, four chord trusses; list edited 7/25/2025)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2775. Quote on the page (fetched 2026-11-13). WisDOT list: Valmont Industries, 28800 Ida St, Valley, NE 68064, products (1)(2)(3)."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:products",
+   "source_url": "https://www.mass.gov/info-details/approved-fabricators-of-signs-luminaires-and-signal-supports",
+   "ledger_value": "overhead and cantilever sign supports, highway and high mast lighting supports, strain poles and traffic signal supports (MassDOT approved fabricator)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2776. Quote on the page (fetched 2026-11-13). MassDOT page lists 'Valmont Industries - Valley, NE'."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:city",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Valley-NE/Custom-Fitter_R29389",
+   "ledger_value": "Valley",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2779. Quote on the page (fetched 2026-11-13). cxs JSON for R29389: location 'Valley NE', address line '28800 Ida St Valley Nebraska 68064-8016'."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:state",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Valley-NE/Custom-Fitter_R29389",
+   "ledger_value": "NE",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2780. Quote on the page (fetched 2026-11-13). Same as city row."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:weld_processes",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/Valley-NE/Custom-Fitter_R29389",
+   "ledger_value": "GMAW (MIG) and flux-core (FCAW) on pole fit-up and weld-off (Custom Fitter); GMAW in the robotic Moto cell; submerged arc (SAW) plus GMAW on the Sub Arc seam welders that weld the seams of steel shafts",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2783. Quote on the page (fetched 2026-11-13). Custom Fitter R29389 (open, canApply true, startDate 2026-11-02). See row 2783 for the shared value's seam-welder clause."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:weld_processes",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/Valley-NE/Sub-Arc-Welder-Operator_R29396",
+   "ledger_value": "GMAW (MIG) and flux-core (FCAW) on pole fit-up and weld-off (Custom Fitter); GMAW in the robotic Moto cell; submerged arc (SAW) plus GMAW on the Sub Arc seam welders that weld the seams of steel shafts",
+   "verdict": "corrected",
+   "corrected_value": "GMAW (MIG) and flux-core (FCAW) on pole fit-up and weld-off (Custom Fitter); GMAW in the robotic Moto cell; submerged arc (SAW) on the Sub Arc seam welders that weld the seams of steel shafts (seam-welder operators must also pass an AWS GMAW qualification test)",
+   "corrected_quote": "responsible for operating the Sub Arc Seam Welder to weld the seams of steel shafts ... Pass an American Welding Society (AWS) welder operator qualification test for submerged arc welding (SAW) and gas metal arc welding (GMAW)",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 2784. The page states a GMAW qualification test for seam-welder operators, not GMAW welding on the seam welders. Minor (GMAW is stated at the plant on two other postings; score_process 20 unaffected). The shared value on sibling rows 2782 and 2784 should take the same wording."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:weld_processes",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/Valley-NE/Robotic-Welder_R29336",
+   "ledger_value": "GMAW (MIG) and flux-core (FCAW) on pole fit-up and weld-off (Custom Fitter); GMAW in the robotic Moto cell; submerged arc (SAW) plus GMAW on the Sub Arc seam welders that weld the seams of steel shafts",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2785. Quote on the page (fetched 2026-11-13). Robotic Welder R29336: 'Operates welding equipment to perform GMAW (MIG) welding.' See row 2783 for the shared value's seam-welder clause."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:materials",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/Valley-NE/Sub-Arc-Welder-Operator_R29396",
+   "ledger_value": "steel",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2786. Quote on the page (fetched 2026-11-13). Sub Arc Welder Operator R29396 summary."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:certifications",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC: Bridge Fabricator - Intermediate; Complex Coatings - Enclosed; Highway Component Manufacturer; Building Fabricator",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2787. Quote on the page (fetched 2026-11-13). AISC snapshot line 4835 matches the full certification list."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:part_size_fit",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/Valley-NE/Custom-Fitter_R29389",
+   "ledger_value": "custom-fitter product up to 84 in diameter and up to 30,000 lb",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2788. Quote on the page (fetched 2026-11-13). Custom Fitter R29389 summary."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:production_type",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/Valley-NE/Custom-Fitter_R29389",
+   "ledger_value": "custom work across several product lines: lighting, communication tower and utility poles, welded to shop drawings by custom fitters; also a robotic Moto cell for bases and components on steel tubes",
+   "verdict": "corrected",
+   "corrected_value": "custom work across several product lines: lighting, communication tower and utility poles, welded to shop drawings by custom fitters",
+   "corrected_quote": "Ability to read and decipher Lighting, Comm Tower and Utility blueprints ... Must be able to manufacture product per shop drawings.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 2790. Compound value: the clause 'also a robotic Moto cell for bases and components on steel tubes' is not on the cited Custom Fitter page; it comes from the Robotic Welder posting (R29336), which is evidenced under existing_robots, a different claim. Remaining clauses confirmed (title 'Custom Fitter'; 'specialized certifications to customer requirements'). score_part_mix 15 unaffected."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:existing_robots",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/Valley-NE/Robotic-Welder_R29336",
+   "ledger_value": "yes: a robotic 'Moto Cell' welds bases, hand-hole rims and other components onto steel square tubes (GMAW); brand not stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2791. Quote on the page (fetched 2026-11-13). Robotic Welder R29336: 'operation of the Moto Cell, to weld the base and other components of steel square tubes ... weld bases, hand hole rims and other components'. No robot brand named."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Valley-NE/Sub-Arc-Welder-Operator_R28800-1",
+   "ledger_value": "5 open welding postings at 28800 Ida St on Valmont's job board (read 2026-11-13): Sub Arc Welder Operator (posted 2026-09-08, oldest, 66 days), Experienced Welder (2026-10-22), Custom Fitter (2026-11-02), Robotic Welder / Moto cell (2026-11-02), Sub Arc Welder Operator (2026-11-04). GMAW, FCAW, SAW; 2nd, 3rd and weekend shifts with a $2/hr shift differential; overtime 'when required' (not mandatory); no sign-on bonus stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2792. Quote on the page (fetched 2026-11-13). cxs JSON R28800: title Sub Arc Welder Operator, startDate 2026-09-08, canApply true, location Valley NE (66 days on 2026-11-13). Union of the five cited postings carries every clause: $2/hr differential on all five; 2nd and 3rd shifts (Custom Fitter, Sub Arc R29396, Robotic); 'Weekend Shift: Friday - Sunday' (Experienced Welder); 'Ability to work overtime when required for business needs' (Robotic Welder); no sign-on bonus on any. Valmont job-board search 2026-11-13 still lists them."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Valley-NE/Experienced-Welder_R29292",
+   "ledger_value": "5 open welding postings at 28800 Ida St on Valmont's job board (read 2026-11-13): Sub Arc Welder Operator (posted 2026-09-08, oldest, 66 days), Experienced Welder (2026-10-22), Custom Fitter (2026-11-02), Robotic Welder / Moto cell (2026-11-02), Sub Arc Welder Operator (2026-11-04). GMAW, FCAW, SAW; 2nd, 3rd and weekend shifts with a $2/hr shift differential; overtime 'when required' (not mandatory); no sign-on bonus stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2793. Quote on the page (fetched 2026-11-13). cxs JSON R29292: Experienced Welder, startDate 2026-10-22, canApply true."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Valley-NE/Custom-Fitter_R29389",
+   "ledger_value": "5 open welding postings at 28800 Ida St on Valmont's job board (read 2026-11-13): Sub Arc Welder Operator (posted 2026-09-08, oldest, 66 days), Experienced Welder (2026-10-22), Custom Fitter (2026-11-02), Robotic Welder / Moto cell (2026-11-02), Sub Arc Welder Operator (2026-11-04). GMAW, FCAW, SAW; 2nd, 3rd and weekend shifts with a $2/hr shift differential; overtime 'when required' (not mandatory); no sign-on bonus stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2794. Quote on the page (fetched 2026-11-13). cxs JSON R29389: Custom Fitter, startDate 2026-11-02, canApply true."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Valley-NE/Robotic-Welder_R29336",
+   "ledger_value": "5 open welding postings at 28800 Ida St on Valmont's job board (read 2026-11-13): Sub Arc Welder Operator (posted 2026-09-08, oldest, 66 days), Experienced Welder (2026-10-22), Custom Fitter (2026-11-02), Robotic Welder / Moto cell (2026-11-02), Sub Arc Welder Operator (2026-11-04). GMAW, FCAW, SAW; 2nd, 3rd and weekend shifts with a $2/hr shift differential; overtime 'when required' (not mandatory); no sign-on bonus stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2795. Quote on the page (fetched 2026-11-13). cxs JSON R29336: Robotic Welder, startDate 2026-11-02, canApply true."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/Valley-NE/Sub-Arc-Welder-Operator_R29396",
+   "ledger_value": "5 open welding postings at 28800 Ida St on Valmont's job board (read 2026-11-13): Sub Arc Welder Operator (posted 2026-09-08, oldest, 66 days), Experienced Welder (2026-10-22), Custom Fitter (2026-11-02), Robotic Welder / Moto cell (2026-11-02), Sub Arc Welder Operator (2026-11-04). GMAW, FCAW, SAW; 2nd, 3rd and weekend shifts with a $2/hr shift differential; overtime 'when required' (not mandatory); no sign-on bonus stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2796. Quote on the page (fetched 2026-11-13). cxs JSON R29396: Sub Arc Welder Operator, startDate 2026-11-04, canApply true."
+  },
+  {
+   "claim_id": "p-valmont-valley-ne:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/Valley-NE/Experienced-Welder_R29292",
+   "ledger_value": "5 open welding postings at 28800 Ida St on Valmont's job board (read 2026-11-13): Sub Arc Welder Operator (posted 2026-09-08, oldest, 66 days), Experienced Welder (2026-10-22), Custom Fitter (2026-11-02), Robotic Welder / Moto cell (2026-11-02), Sub Arc Welder Operator (2026-11-04). GMAW, FCAW, SAW; 2nd, 3rd and weekend shifts with a $2/hr shift differential; overtime 'when required' (not mandatory); no sign-on bonus stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2798. Quote on the page (fetched 2026-11-13). Experienced Welder R29292 page; also 'Weekend Shift: Friday - Sunday, 6:00 a.m. - 6:00 p.m.'."
+  },
+  {
+   "claim_id": "p-valmont-el-dorado-ks:parent_company",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/El-Dorado-KS/Submerged-Arc-Seam-Welder--Evening-Shift-_R29088",
+   "ledger_value": "Valmont Industries",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2805. Quote on the page (fetched 2026-11-13). SAW Seam Welder R29088 page address under the Valmont header."
+  },
+  {
+   "claim_id": "p-valmont-el-dorado-ks:address",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/El-Dorado-KS/Submerged-Arc-Seam-Welder--Evening-Shift-_R29088",
+   "ledger_value": "955 North Haverhill Rd, El Dorado, KS 67042-4806",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2806. Quote on the page (fetched 2026-11-13). Same page."
+  },
+  {
+   "claim_id": "p-valmont-el-dorado-ks:city",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/El-Dorado-KS/Submerged-Arc-Seam-Welder--Evening-Shift-_R29088",
+   "ledger_value": "El Dorado",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2807. Quote on the page (fetched 2026-11-13). Same page."
+  },
+  {
+   "claim_id": "p-valmont-el-dorado-ks:state",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/El-Dorado-KS/Submerged-Arc-Seam-Welder--Evening-Shift-_R29088",
+   "ledger_value": "KS",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2808. Quote on the page (fetched 2026-11-13). Same page."
+  },
+  {
+   "claim_id": "p-valmont-el-dorado-ks:products",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/El-Dorado-KS/Submerged-Arc-Seam-Welder--Evening-Shift-_R29088",
+   "ledger_value": "steel electrical poles and other structures",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2814. Quote on the page (fetched 2026-11-13). SAW Seam Welder R29088 essential function."
+  },
+  {
+   "claim_id": "p-valmont-el-dorado-ks:products",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/El-Dorado-KS/Back-Welder--Weekend-Shift-_R28834",
+   "ledger_value": "utility structures",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2815. Quote on the page (fetched 2026-11-13). Back Welder R28834 essential function."
+  },
+  {
+   "claim_id": "p-valmont-el-dorado-ks:products",
+   "source_url": "https://www.epa.gov/node/232497",
+   "ledger_value": "steel poles (EPA 2019 award page)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2816. Quote on the page (fetched 2026-11-13). EPA 2019 P2 award page, located 'El Dorado, Kansas'. Old (2019) but used only for products."
+  },
+  {
+   "claim_id": "p-valmont-el-dorado-ks:weld_processes",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/El-Dorado-KS/Fitter-Welder--Weekend-Shift-_R29427",
+   "ledger_value": "GMAW, flux-core (FCAW) and submerged arc (SAW): fitters tack-weld small parts to pole shafts with GMAW, FCAW and/or SAW; back welders run SAW (1G, 2F) and spray-transfer GMAW (2G, 2F) full-penetration seam welds; SAW seam welders",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2821. Quote on the page (fetched 2026-11-13). Fitter Welder R29427 essential function. Union of rows 2820-2821 carries the shared value; 'SAW seam welders' is supported by the Back Welder's 'longitudinal welding of shaft seams' with sub arc."
+  },
+  {
+   "claim_id": "p-valmont-el-dorado-ks:weld_processes",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/El-Dorado-KS/Back-Welder--Weekend-Shift-_R28834",
+   "ledger_value": "GMAW, flux-core (FCAW) and submerged arc (SAW): fitters tack-weld small parts to pole shafts with GMAW, FCAW and/or SAW; back welders run SAW (1G, 2F) and spray-transfer GMAW (2G, 2F) full-penetration seam welds; SAW seam welders",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2822. Quote on the page (fetched 2026-11-13). Back Welder R28834."
+  },
+  {
+   "claim_id": "p-valmont-el-dorado-ks:materials",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/El-Dorado-KS/Fitter-Welder--Weekend-Shift-_R29427",
+   "ledger_value": "steel",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2823. Quote on the page (fetched 2026-11-13). Fitter Welder R29427."
+  },
+  {
+   "claim_id": "p-valmont-el-dorado-ks:certifications",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC: Building Fabricator",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2824. Quote on the page (fetched 2026-11-13). AISC snapshot line 4822 matches."
+  },
+  {
+   "claim_id": "p-valmont-el-dorado-ks:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/El-Dorado-KS/Back-Welder--Weekend-Shift-_R28834",
+   "ledger_value": "4 open welder postings at 955 North Haverhill Rd on Valmont's job board (read 2026-11-13): Back Welder, weekend (posted 2026-09-11, oldest, 63 days), Submerged Arc Seam Welder, evening (2026-10-02), Fitter Welder, weekend (2026-11-06), Fitter Welder, weekend (2026-11-09); also a Welding Supervisor (2026-09-29). GMAW, FCAW, SAW; weekend shift 36 hours worked, paid for 40; $1.00-$1.50/hr shift differentials; no sign-on bonus or mandatory overtime stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2828. Quote on the page (fetched 2026-11-13). cxs JSON R28834: Back Welder (Weekend Shift), startDate 2026-09-11 (63 days), canApply true. Union of cited postings carries every clause: '36 hours worked - Paid for 40 hours' (weekend postings), $1.00 differential (Fitter Welder R29427), $1.50 (SAW R29088); no sign-on bonus or mandatory overtime stated. Valmont job-board search 2026-11-13 lists all of them."
+  },
+  {
+   "claim_id": "p-valmont-el-dorado-ks:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/El-Dorado-KS/Submerged-Arc-Seam-Welder--Evening-Shift-_R29088",
+   "ledger_value": "4 open welder postings at 955 North Haverhill Rd on Valmont's job board (read 2026-11-13): Back Welder, weekend (posted 2026-09-11, oldest, 63 days), Submerged Arc Seam Welder, evening (2026-10-02), Fitter Welder, weekend (2026-11-06), Fitter Welder, weekend (2026-11-09); also a Welding Supervisor (2026-09-29). GMAW, FCAW, SAW; weekend shift 36 hours worked, paid for 40; $1.00-$1.50/hr shift differentials; no sign-on bonus or mandatory overtime stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2829. Quote on the page (fetched 2026-11-13). cxs JSON R29088: startDate 2026-10-02, canApply true."
+  },
+  {
+   "claim_id": "p-valmont-el-dorado-ks:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/El-Dorado-KS/Fitter-Welder_R29215",
+   "ledger_value": "4 open welder postings at 955 North Haverhill Rd on Valmont's job board (read 2026-11-13): Back Welder, weekend (posted 2026-09-11, oldest, 63 days), Submerged Arc Seam Welder, evening (2026-10-02), Fitter Welder, weekend (2026-11-06), Fitter Welder, weekend (2026-11-09); also a Welding Supervisor (2026-09-29). GMAW, FCAW, SAW; weekend shift 36 hours worked, paid for 40; $1.00-$1.50/hr shift differentials; no sign-on bonus or mandatory overtime stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2830. Quote on the page (fetched 2026-11-13). cxs JSON R29215: Fitter Welder (Weekend Shift), startDate 2026-11-06, canApply true."
+  },
+  {
+   "claim_id": "p-valmont-el-dorado-ks:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/El-Dorado-KS/Fitter-Welder--Weekend-Shift-_R29427",
+   "ledger_value": "4 open welder postings at 955 North Haverhill Rd on Valmont's job board (read 2026-11-13): Back Welder, weekend (posted 2026-09-11, oldest, 63 days), Submerged Arc Seam Welder, evening (2026-10-02), Fitter Welder, weekend (2026-11-06), Fitter Welder, weekend (2026-11-09); also a Welding Supervisor (2026-09-29). GMAW, FCAW, SAW; weekend shift 36 hours worked, paid for 40; $1.00-$1.50/hr shift differentials; no sign-on bonus or mandatory overtime stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2831. Quote on the page (fetched 2026-11-13). cxs JSON R29427: Fitter Welder (Weekend Shift), startDate 2026-11-09, canApply true."
+  },
+  {
+   "claim_id": "p-valmont-el-dorado-ks:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/wday/cxs/valmont/ValmontCareers/job/El-Dorado-KS/Welding-Supervisor_R29026",
+   "ledger_value": "4 open welder postings at 955 North Haverhill Rd on Valmont's job board (read 2026-11-13): Back Welder, weekend (posted 2026-09-11, oldest, 63 days), Submerged Arc Seam Welder, evening (2026-10-02), Fitter Welder, weekend (2026-11-06), Fitter Welder, weekend (2026-11-09); also a Welding Supervisor (2026-09-29). GMAW, FCAW, SAW; weekend shift 36 hours worked, paid for 40; $1.00-$1.50/hr shift differentials; no sign-on bonus or mandatory overtime stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2832. Quote on the page (fetched 2026-11-13). cxs JSON R29026: Welding Supervisor, startDate 2026-09-29, canApply true (not counted as a welder posting)."
+  },
+  {
+   "claim_id": "p-valmont-el-dorado-ks:welder_postings",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/El-Dorado-KS/Back-Welder--Weekend-Shift-_R28834",
+   "ledger_value": "4 open welder postings at 955 North Haverhill Rd on Valmont's job board (read 2026-11-13): Back Welder, weekend (posted 2026-09-11, oldest, 63 days), Submerged Arc Seam Welder, evening (2026-10-02), Fitter Welder, weekend (2026-11-06), Fitter Welder, weekend (2026-11-09); also a Welding Supervisor (2026-09-29). GMAW, FCAW, SAW; weekend shift 36 hours worked, paid for 40; $1.00-$1.50/hr shift differentials; no sign-on bonus or mandatory overtime stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2834. Quote on the page (fetched 2026-11-13). Back Welder R28834 page."
+  },
+  {
+   "claim_id": "p-valmont-plymouth-in:products",
+   "source_url": "https://wisconsindot.gov/Documents/doing-bus/eng-consultants/cnslt-rsrces/tools/appr-prod/ap-current/sign-structures.pdf",
+   "ledger_value": "steel sign bridges and overhead sign supports (WisDOT approved: monotubes, planar trusses, four chord trusses; list edited 7/25/2025)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2861. Quote on the page (fetched 2026-11-13). WisDOT list (edited 7/25/2025): Valmont Industries, 1545 Pidco Dr, Plymouth, IN 46563, approved products (1)(2)(3) = monotubes, planar trusses, four chord trusses."
+  },
+  {
+   "claim_id": "p-valmont-plymouth-in:products",
+   "source_url": "https://www.mass.gov/info-details/approved-fabricators-of-signs-luminaires-and-signal-supports",
+   "ledger_value": "overhead and cantilever sign supports, highway and high mast lighting supports, strain poles and traffic signal supports (MassDOT approved fabricator)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2862. Quote on the page (fetched 2026-11-13). MassDOT page lists 'Valmont Industries - Plymouth, IN' under the category that covers overhead and cantilever sign supports, highway and high mast lighting supports, strain poles and traffic signal supports."
+  },
+  {
+   "claim_id": "p-valmont-plymouth-in:products",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/Plymouth-IN/Warehouse-Associate_R26439",
+   "ledger_value": "communication tower components (picked and packed for the Site Pro 1 telecom business; not shown to be welded here)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2863. Quote on the page (fetched 2026-11-13). Warehouse Associate R26439 at 1545 Pidco Drive: 'the Picker/Packer is responsible to accurately pick all communication tower components per the packing slip'. The limiting note '(not shown to be welded here)' is accurate."
+  },
+  {
+   "claim_id": "p-valmont-plymouth-in:materials",
+   "source_url": "https://wisconsindot.gov/Documents/doing-bus/eng-consultants/cnslt-rsrces/tools/appr-prod/ap-current/sign-structures.pdf",
+   "ledger_value": "steel (WisDOT steel sign-structure list)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2864. Quote on the page (fetched 2026-11-13). WisDOT list title is 'STEEL SIGN BRIDGES AND OVERHEAD SIGN SUPPORTS' and lists the Plymouth plant."
+  },
+  {
+   "claim_id": "p-valmont-plymouth-in:certifications",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC: Bridge Fabricator - Simple",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2865. Quote on the page (fetched 2026-11-13). AISC snapshot line 4829: 'Valmont Industries, Inc. - Plymouth / Plymouth / IN / Bridge Fabricator - Simple' (full certification list matches)."
+  },
+  {
+   "claim_id": "p-valmont-plymouth-in:parent_company",
+   "source_url": "https://valmont.wd1.myworkdayjobs.com/en-US/ValmontCareers/job/Plymouth-IN/Warehouse-Associate_R26439",
+   "ledger_value": "Valmont Industries",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2905. Quote on the page (fetched 2026-11-13). Plymouth Workday posting shows the plant address under the Valmont header."
+  },
+  {
+   "claim_id": "p-vs-schuler-canton-oh:parent_company",
+   "source_url": "https://vsschuler.com/about/",
+   "ledger_value": "Hill & Smith Holdings PLC (parent of V&S Schuler since 2007); V&S Utilities group of five fabrication facilities",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2907. Quote on the page (fetched 2026-11-13). About page: 'Hill & Smith Holdings PLC ... has been our parent company since purchasing V&S Schuler in 2007' and 'the group has five fabrication facilities' (About V&S Utilities)."
+  },
+  {
+   "claim_id": "p-vs-schuler-canton-oh:multi_plant",
+   "source_url": "https://vsschuler.com/about/",
+   "ledger_value": "V&S Utilities: five fabrication facilities (Canton OH, Burton OH, Muskogee OK, Trenton NJ, Elberton GA)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2909. Quote on the page (fetched 2026-11-13). About page lists Canton, Burton, Muskogee, Elberton, Trenton and states 'the group has five fabrication facilities'."
+  },
+  {
+   "claim_id": "p-vs-schuler-canton-oh:name",
+   "source_url": "https://vsschuler.com/vs-schuler-engineering-canton-ohio/",
+   "ledger_value": "V&S Schuler Engineering (Canton)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2914. Quote on the page (fetched 2026-11-13). Canton page title."
+  },
+  {
+   "claim_id": "p-vs-schuler-canton-oh:address",
+   "source_url": "https://www.vsschuler.com/",
+   "ledger_value": "2240 Allen Ave SE, Canton, OH 44707",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2915. Quote on the page (fetched 2026-11-13). vsschuler.com footer: 2240 Allen Ave. S.E., Canton, OH 44707."
+  },
+  {
+   "claim_id": "p-vs-schuler-canton-oh:address",
+   "source_url": "https://jobs.dayforcehcm.com/en-US/hs/ClientCareersSiteVSSchuler/jobs/5716",
+   "ledger_value": "2240 Allen Ave SE, Canton, OH 44707 (current welder posting location)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2916. Quote on the page (fetched 2026-11-13). Dayforce job 5716, Req 982, open and listed on the V&S Dayforce board 2026-11-13."
+  },
+  {
+   "claim_id": "p-vs-schuler-canton-oh:products",
+   "source_url": "https://vsschuler.com/vs-schuler-engineering-canton-ohio/",
+   "ledger_value": "complete substations, substation structure additions, grating platforms (substation steel)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2917. Quote on the page (fetched 2026-11-13). Canton page."
+  },
+  {
+   "claim_id": "p-vs-schuler-canton-oh:weld_processes",
+   "source_url": "https://jobs.dayforcehcm.com/en-US/hs/ClientCareersSiteVSSchuler/jobs/5716",
+   "ledger_value": "MIG, TIG, stick and flux-core (Canton Fitter/Welder posting)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2919. Quote on the page (fetched 2026-11-13). Dayforce job 5716 (Canton)."
+  },
+  {
+   "claim_id": "p-vs-schuler-canton-oh:certifications",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC: Highway Component Manufacturer, Building Fabricator",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2921. Quote on the page (fetched 2026-11-13). AISC snapshot line 4782 matches."
+  },
+  {
+   "claim_id": "p-vs-schuler-canton-oh:certifications",
+   "source_url": "https://vsschuler.com/vs-schuler-engineering-canton-ohio/",
+   "ledger_value": "Certified Welding Inspectors on staff",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2922. Quote on the page (fetched 2026-11-13). Canton page."
+  },
+  {
+   "claim_id": "p-vs-schuler-canton-oh:production_type",
+   "source_url": "https://vsschuler.com/vs-schuler-engineering-canton-ohio/",
+   "ledger_value": "custom: programs written per piece from customer drawings and criteria",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2924. Quote on the page (fetched 2026-11-13). Canton page (programs are for CNC punching, drilling and cutting; pieces then go to fitting and welding stations)."
+  },
+  {
+   "claim_id": "p-vs-schuler-canton-oh:welder_postings",
+   "source_url": "https://jobs.dayforcehcm.com/en-US/hs/ClientCareersSiteVSSchuler/jobs/5716",
+   "ledger_value": "1 open: Fitter/Welder-Canton (Req 982), posted 2026-07-31 (105 days); MIG, TIG, stick, flux-core; M-Thu days or Sun-Wed nights; $26.01/hr plus $4/hr 3rd-shift differential; overtime 'may be required' (not mandatory); no sign-on bonus stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2925. Quote on the page (fetched 2026-11-13). Dayforce job 5716: Req #982, Posted Friday, July 31, 2026 (105 days), Shift 'M-Thurs 5:30am-4pm or Sun-Wed 6:30p -5a', 'Overtime or shift work may be required based on project needs', no sign-on bonus. Still listed as open 2026-11-13."
+  },
+  {
+   "claim_id": "p-vs-schuler-burton-oh:parent_company",
+   "source_url": "https://vsschuler.com/about/",
+   "ledger_value": "Hill & Smith Holdings PLC (parent of V&S Schuler since 2007); V&S Utilities group of five fabrication facilities",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2939. Quote on the page (fetched 2026-11-13). About page (see 2906)."
+  },
+  {
+   "claim_id": "p-vs-schuler-burton-oh:multi_plant",
+   "source_url": "https://vsschuler.com/about/",
+   "ledger_value": "V&S Utilities: five fabrication facilities (Canton OH, Burton OH, Muskogee OK, Trenton NJ, Elberton GA)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2941. Quote on the page (fetched 2026-11-13). About page (see 2908)."
+  },
+  {
+   "claim_id": "p-vs-schuler-burton-oh:name",
+   "source_url": "https://vsschuler.com/vs-schuler-engineering-burton-ohio/",
+   "ledger_value": "V&S Schuler Engineering (Burton)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2946. Quote on the page (fetched 2026-11-13). Burton page title."
+  },
+  {
+   "claim_id": "p-vs-schuler-burton-oh:address",
+   "source_url": "https://www.vsschuler.com/",
+   "ledger_value": "15175 Kinsman Rd, Middlefield, OH 44062 (company calls the site Burton, Ohio)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2947. Quote on the page (fetched 2026-11-13). vsschuler.com footer: 15175 Kinsman Rd., Middlefield, OH 44062; same page names the site 'V&S SCHULER ENGINEERING - Burton, Ohio'."
+  },
+  {
+   "claim_id": "p-vs-schuler-burton-oh:address",
+   "source_url": "https://jobs.dayforcehcm.com/en-US/hs/ClientCareersSiteVSSchuler/jobs/5721",
+   "ledger_value": "15175 Kinsman Rd, Middlefield, OH 44062 (current welder posting location)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2948. Quote on the page (fetched 2026-11-13). Dayforce job 5721 (Req 983), open."
+  },
+  {
+   "claim_id": "p-vs-schuler-burton-oh:city",
+   "source_url": "https://vsschuler.com/vs-schuler-engineering-burton-ohio/",
+   "ledger_value": "Burton (company name for the site; postal city Middlefield; AISC lists it as Middlefield)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2949. Quote on the page (fetched 2026-11-13). Burton page names the facility 'in Burton, Ohio' and its footer gives 15175 Kinsman Rd., Middlefield, OH 44062. Census geocoder: Burton township, Geauga County. 'AISC lists it as Middlefield' is a source note (AISC snapshot line 4784), not a plant fact."
+  },
+  {
+   "claim_id": "p-vs-schuler-burton-oh:products",
+   "source_url": "https://vsschuler.com/vs-schuler-engineering-burton-ohio/",
+   "ledger_value": "tapered tubular structures: A-frames, H-frames, bus support, switch structures, wood pole equivalents and masts; embedded and base-plated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2950. Quote on the page (fetched 2026-11-13). Burton page."
+  },
+  {
+   "claim_id": "p-vs-schuler-burton-oh:products",
+   "source_url": "https://vsschuler.com/about/",
+   "ledger_value": "tapered poles (plant opened 2018)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2951. Quote on the page (fetched 2026-11-13). About page."
+  },
+  {
+   "claim_id": "p-vs-schuler-burton-oh:weld_processes",
+   "source_url": "https://jobs.dayforcehcm.com/en-US/hs/ClientCareersSiteVSSchuler/jobs/5721",
+   "ledger_value": "MIG, TIG, stick and flux-core (two Middlefield Fitter/Welder postings; one titled MIG Welder/Fitter in the body)",
+   "verdict": "corrected",
+   "corrected_value": "MIG, TIG, stick and flux-core (Middlefield Fitter/Welder posting, Req 983)",
+   "corrected_quote": "Perform welding processes including MIG, TIG, stick, and flux-core.",
+   "corrected_tag": "stated",
+   "error_kind": "quote does not support value",
+   "note": "evidence.csv data row 2952. Compound value: 'two Middlefield Fitter/Welder postings; one titled MIG Welder/Fitter in the body' is not on the cited job 5721 (Req 983). The 'MIG Welder/Fitter' headings are on job 5808 (Req 988), which is evidenced only under welder_postings. Add a weld_processes row for job 5808 if the two-posting wording is wanted. score_process 12 unaffected."
+  },
+  {
+   "claim_id": "p-vs-schuler-burton-oh:materials",
+   "source_url": "https://vsschuler.com/vs-schuler-engineering-burton-ohio/",
+   "ledger_value": "galvanized steel or weathering steel",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2953. Quote on the page (fetched 2026-11-13). Burton page."
+  },
+  {
+   "claim_id": "p-vs-schuler-burton-oh:certifications",
+   "source_url": "https://aisc.my.site.com/public/map-us",
+   "ledger_value": "AISC: Building Fabricator (listed at Middlefield OH)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2954. Quote on the page (fetched 2026-11-13). AISC snapshot line 4784 matches."
+  },
+  {
+   "claim_id": "p-vs-schuler-burton-oh:certifications",
+   "source_url": "https://vsschuler.com/vs-schuler-engineering-burton-ohio/",
+   "ledger_value": "AISC certification; PE-led engineering staff at the facility",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2955. Quote on the page (fetched 2026-11-13). Burton page. The PE clause is staff, not a certification; the value does not call it one."
+  },
+  {
+   "claim_id": "p-vs-schuler-burton-oh:production_type",
+   "source_url": "https://vsschuler.com/vs-schuler-engineering-burton-ohio/",
+   "ledger_value": "several product types (A-frames, H-frames, bus supports, switch structures, wood pole equivalents, masts)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2957. Quote on the page (fetched 2026-11-13). Burton page."
+  },
+  {
+   "claim_id": "p-vs-schuler-burton-oh:welder_postings",
+   "source_url": "https://jobs.dayforcehcm.com/en-US/hs/ClientCareersSiteVSSchuler/jobs/5721",
+   "ledger_value": "2 open Fitter/Welder 3rd-shift postings at Middlefield: Req 983 at 15175 Kinsman Rd (posted 2026-07-31, 105 days) and Req 988 (posted 2026-09-10); MIG, TIG, stick, flux-core; Mon-Thu nights; $25.26-$29.26/hr; overtime 'may be required'; referral bonus; no sign-on bonus stated",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2958. Quote on the page (fetched 2026-11-13). Dayforce job 5721: Req #983, 15175 Kinsman Rd, posted July 31, 2026 (105 days), 3rd 8p-6:30p Mon-Thurs, $25.26-$29.26/hr, 'Overtime or shift work may be required', 'Referral bonus program'. Req 988 clause carried by sibling row 2958. Both listed as open 2026-11-13."
+  },
+  {
+   "claim_id": "p-vs-schuler-burton-oh:welder_postings",
+   "source_url": "https://jobs.dayforcehcm.com/en-US/hs/ClientCareersSiteVSSchuler/jobs/5808",
+   "ledger_value": "second open posting: Fitter/Welder 3rd Shift, Req 988, Middlefield, posted 2026-09-10",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2959. Quote on the page (fetched 2026-11-13). Dayforce job 5808: Req 988, Middlefield, OH 44062, posted Thursday, September 10, 2026; open."
+  },
+  {
+   "claim_id": "p-vs-schuler-burton-oh:triggers",
+   "source_url": "https://vsschuler.com/vs-schuler-engineering-burton-ohio/",
+   "ledger_value": "undated: facility 'now 68,500-square feet after recent expansion' (not placeable within 24 months)",
+   "verdict": "confirmed",
+   "note": "evidence.csv data row 2960. Quote on the page (fetched 2026-11-13). Burton page; undated 'recent expansion'. The limiting note is accurate."
+  }
+ ]
+}

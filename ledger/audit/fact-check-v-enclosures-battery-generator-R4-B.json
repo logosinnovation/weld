@@ -1,0 +1,270 @@
+{
+ "checker": "fact-checker R4-B (confirming, lines)",
+ "vertical": "v-enclosures-battery-generator",
+ "date": "2026-11-17",
+ "plants": [
+  "p-psi-darien-wi",
+  "p-simplex-springfield-il",
+  "p-taylor-power-richland-ms",
+  "p-tesla-brookshire-tx",
+  "p-tesla-lathrop-ca",
+  "p-tomball-controls-pleasanton-tx",
+  "p-tomball-controls-seguin-tx",
+  "p-tomball-controls-von-ormy-tx",
+  "p-united-alloy-janesville-wi",
+  "p-united-alloy-seguin-tx",
+  "p-united-alloy-union-oh",
+  "p-yancey-barnesville-ga",
+  "p-yancey-batesville-ms",
+  "p-yancey-cordele-ga",
+  "p-yancey-griffin-ga"
+ ],
+ "decision_rule": "Scope: scope-file 'lines' from the 24th claim_id (p-psi-darien-wi:opening_line) to the end, 22 claims. A line is confirmed only if every fact is on a stated evidence row of that plant (or the plants.csv field it cites), attributed to the site, correctly dated (own-board JSON-LD datePosted or raw PostedDate; UKG board dates written as 'listed'), still current today (boards and postings re-read 2026-11-17), with no plan written as progress and no company-level fact written as the site's; opening lines newest fact first, no pitch, ending with a second-person 'you' question; bottleneck guesses say 'likely' or 'possibly'. Corrected otherwise. 'unknown' values with no supporting fact to check are confirmed.",
+ "claims_checked": 21,
+ "claims_corrected": 6,
+ "claims_unreachable": 0,
+ "error_rate": 0.2857,
+ "error_rate_note": "6/21 = 28.6% over the 21 evidence rows in scope (scope file lists 22 claim_ids; p-taylor-power-richland-ms:bottleneck_guess has no evidence row, plants.csv holds 'unknown', so it is not a row here: see field_drift_notes). Without the one wording-level correction (Simplex opening line): 5/21 = 23.8%. Over the 18 text lines only (excluding the 3 bare 'unknown' bottleneck values): 6/18 = 33.3%. 0 unreachable: every cited page and board was fetched fresh. No score moves.",
+ "claims_checked_all_rows": 21,
+ "claims_corrected_all_rows": 6,
+ "error_rate_all_rows": 0.2857,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 3,
+  "invented fact": 0,
+  "other": 3
+ },
+ "repeated_kinds": [
+  "other (3): a dated source written as current. Tesla Brookshire and Tesla Lathrop present aggregator posting copies (diversityjobs, now marked 'Job posting has expired'; dated Jan 7 2026 and Jul 29 2025) as live ('your ... posting asks'); Taylor Richland states an August 2020 article fact undated, in the present tense, ahead of a newer 2025 fact. SWEEP: every opening line or bottleneck guess in the vertical that cites an aggregator posting (diversityjobs, justjobs, jofdav, vaia, talents mirrors) or an article older than 12 months: re-open the source and, unless the company's own board shows it live, write it as a dated past-tense fact in newest-first order.",
+  "quote does not support value (3): a clause stronger than its source. United Alloy Union (an announced 532,000 sq ft expansion written as a buildout under way), Yancey Cordele bottleneck ('operations' and 'maintenance' roles that no stated Cordele row carries; the operations role is Batesville-based), Simplex ('bringing each enclosure to final form' for 'begins to assume its final form'; wording-level). SWEEP: in every High and Medium line, check each expansion, renovation or hiring-plan clause against its row for tense (announced/planned vs under way/done) and each list of roles against the stated welder_postings rows."
+ ],
+ "worst_errors": [
+  "p-tesla-lathrop-ca:opening_line and p-tesla-brookshire-tx:opening_line - each tells the prospect 'your body-in-white ... posting asks for RSW and GMAW knowledge', but the only readable copies (diversityjobs) are dated Jul 29 2025 and Jan 7 2026 and now say 'Job posting has expired'; Tesla's own board is unreadable. Lathrop also puts its April 2025 article fact ahead of the newer posting while its reasoning calls both sources undated. Rewritten as dated past-tense facts, newest first.",
+  "p-united-alloy-union-oh:opening_line (High, 75) - 'keeping welder headcount in step with the 532,000-square-foot buildout' presents an expansion announced in May 2025 (ground-breaking planned for October 2025) as construction under way; no row shows it started or finished. Reworded to 'the expansion to 532,000 square feet you announced in May 2025'.",
+  "p-taylor-power-richland-ms:opening_line - leads with an August 2020 Power Progress fact about one generator line's enclosures as if current ('builds the ... enclosures for your generator sets'), the February 2025 posting second, and ends with a question with no 'you' that presumes welding at Richland (inferred in the ledger). Rewritten newest first, dated, with a 'you' question about the Richland fabrication shop."
+ ],
+ "score_problems": [],
+ "score_notes": [
+  "No score moves. Tesla Brookshire and Lathrop labor is already 0 (welder_postings 'unknown'); the expired postings only set process wording. Taylor, Simplex, United Alloy Union and Cordele corrections are line text only (Union demand stays on the dated May 2025 expansion trigger). All counted welder postings behind the lines checked (Tomball x3, United Alloy x6, Yancey x12) are live today on the companies' own boards, so no labor component built on them changes; Hennig and the other welder_postings claims in the scope file were not in this slice."
+ ],
+ "opening_line_problems": [
+  "p-simplex-springfield-il:opening_line: Facility page re-fetched 2026-11-17. 'custom manufactured in our factory' and the HQ ('It houses the Simplex manufacturing plant') are on the page. But the page says the product only 'begins to assume",
+  "p-taylor-power-richland-ms:opening_line: Both sources re-fetched 2026-11-17. (1) The Power Progress article is dated 25 August 2020 and describes the enclosed units of one generator line ('The enclosed units are packaged within a sound-atten",
+  "p-tesla-brookshire-tx:opening_line: driveteslacanada page re-fetched: 'Megapack 3 is officially rolling off the line at our newest Megafactory in Brookshire, Texas!' and 'designed capacity of 50 GWh/year dedicated to Megapack 3' found; ",
+  "p-tesla-lathrop-ca:opening_line: techeblog article re-fetched: dated April 29, 2025; 'letting the Lathrop factory produce a Megapack every 68 minutes when running at full speed' and 'handle repeating tasks such as welding' found. The",
+  "p-united-alloy-union-oh:opening_line: All four Union MIG welder requisitions live 2026-11-17 at 1925 Union Airpark Blvd (board dates 2026-09-28, 10-14, 10-27, 10-29; 'listed' is right; raw PostedDate of MIGWE001915 is 2026-09-22). All fou"
+ ],
+ "plants_closed_or_moved": [],
+ "status_problems": [
+  "None found in this slice. Every plant with a cited live posting is hiring at the recorded address today (PSI 448 W Madison St; Tomball 716 Eagleford Dr, 4545 FM 775, 10310 Fischer Rd; United Alloy 4100 Kennedy Rd, 1721 Eighth St, 1925 Union Airpark Blvd; Yancey 96 Etheridge Mill Rd, 460 Industrial Rd, 195 Crown Dr, 502 S Midway Rd). Tesla's two plants operate (Brookshire production began Aug 2026); Simplex HQ page live; Taylor Richland has no newer source than the Feb 2025 posting."
+ ],
+ "field_drift_notes": [
+  "plants.csv opening_line and bottleneck_guess equal the evidence values for all 21 rows before this check; after applying, set plants.csv to plants_csv_value for the 6 corrected claims.",
+  "p-taylor-power-richland-ms:bottleneck_guess (22nd scope claim) has no evidence row; plants.csv holds 'unknown', which needs none. Kept out of rows so apply_factcheck.py does not report it unmatched; nothing to correct."
+ ],
+ "plant_status_notes": "See status_problems. Yancey Cordele QC Manager (59222625, the source of the corrected bottleneck and of the opening line's product clause) checked: its body names no other base (unlike the Operations Manager, which says Batesville).",
+ "leads": [
+  "Yancey Cordele: Maintenance Technician MAINT005665 (raw PostedDate 2026-06-10), Shipping Technician SHIPP005740 and Safety Training Coordinator SAFET006323 (2026-11-14) are live at 502 S. Midway Road; listed-not-counted rows could restore the 'maintenance' clause with a source.",
+  "Yancey's board also lists Barnesville '960 Legacy Park, Dr' (Shipping Technician) apart from 460 Industrial Road, plus Milner (861 Old Milner Road) and Macon (703 Joe Tamplin Industrial Blvd) locations; the Barnesville welder postings all name 460 Industrial Road, so no attribution change.",
+  "Tomball Pleasanton req 3558741: JobId sits beside 2025-era requisitions (Electrical Apprentice 3530262) while board and JSON-LD both say 2026-11-12, the Paylocity re-publish pattern mining R3-I noted. No 60+ day claim rests on it; Pleasanton labor 20 rests on mandatory Fridays."
+ ],
+ "method": "Fresh fetch 2026-11-17 of every source behind each line: own job boards read in full through their JSON (UKG LoadSearchResults for United Alloy and Yancey, all 266 Yancey postings; Paylocity board JSON for Tomball; Paycom board searched with Playwright for PSI) and each cited posting's detail page or JSON-LD (datePosted, streetAddress, raw PostedDate/UpdatedDate); article and registry quotes checked with tools/fetch_page.py --check (visible text plus raw source). No web search used. No ledger file edited.",
+ "apply_note": "Apply the 6 corrected rows: write corrected_value into evidence value (tag inferred, unchanged) and plants_csv_value into the plants.csv opening_line / bottleneck_guess column. Rows are keyed by claim_id; these composed lines have no source_url. No score change.",
+ "rows": [
+  {
+   "claim_id": "p-psi-darien-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Darien is hiring a Fabrication Manager (posted Sept 30, 2026) to run laser cutting, press-brake forming and welding for its custom-designed power generation packages, after PSI reported in March 2026 that the Darien expansion is complete; how are you splitting fabrication work between Darien and the Beloit plants?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Fabrication Manager (Paycom job 392204) live 2026-11-17 on PSI's own board (found by board search 'Fabrication'; detail page has Apply); JSON-LD datePosted 2026-09-30, streetAddress 448 West Madison Street; body carries 'laser cutting, press-brake forming, welding'. 'custom-designed integrated power generation packages' is on psiengines.com/facilities/ (Darien entry); 'The overall Darien facility expansion is complete.' is on the 2026-03-11 SEC exhibit; Beloit fabrication move is c-psi:site_roles (stated). Newest first, no pitch, 'you' question. No welder role on the board (search 'Welder': none)."
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "'unknown' with reasoning; no welder posting, process or volume signal in the ledger. Nothing to support or contradict."
+  },
+  {
+   "claim_id": "p-simplex-springfield-il:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Springfield headquarters plant custom-manufactures the enclosures for your fuel supply and load bank products, fabricating the sheet metal and bringing each enclosure to final form in your own welding shop; how do you schedule that welding shop across fuel-supply and load-bank enclosures?",
+   "tag": "inferred",
+   "verdict": "corrected",
+   "corrected_value": "Your Springfield headquarters plant custom-manufactures the enclosures for your fuel supply and load bank products, fabricating the sheet metal before each enclosure begins to take its final form in your own welding shop; how do you schedule that welding shop across fuel-supply and load-bank enclosures?",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Facility page re-fetched 2026-11-17. 'custom manufactured in our factory' and the HQ ('It houses the Simplex manufacturing plant') are on the page. But the page says the product only 'begins to assume its final form in our welding shop' (paint, wiring and assembly follow on the same page); the line's 'bringing each enclosure to final form in your own welding shop' overstates what the welding shop does. Reworded to the page's own sense. WORDING-LEVEL correction (a coordinator could accept the original as a fair paraphrase); counted, and the rate is also given without it. No score effect.",
+   "plants_csv_value": "Your Springfield headquarters plant custom-manufactures the enclosures for your fuel supply and load bank products, fabricating the sheet metal before each enclosure begins to take its final form in your own welding shop; how do you schedule that welding shop across fuel-supply and load-bank enclosures?"
+  },
+  {
+   "claim_id": "p-taylor-power-richland-ms:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Richland metal fabrication shop builds the sound-attenuated, powder-coated enclosures for your generator sets, and a February 2025 Taylor Power Systems posting still named it as the metal fabrication shop that works alongside your main office and production facility; how is enclosure welding staffed at Richland?",
+   "tag": "inferred",
+   "verdict": "corrected",
+   "corrected_value": "A February 2025 Taylor Power Systems posting names your metal fabrication shop in Richland alongside your main office and production facility, and Power Progress reported in August 2020 that the enclosed units of a Taylor generator line it covered were packaged in a sound-attenuated, powder-coated enclosure manufactured at that Richland facility; how are you staffing the Richland metal fabrication shop today?",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "Both sources re-fetched 2026-11-17. (1) The Power Progress article is dated 25 August 2020 and describes the enclosed units of one generator line ('The enclosed units are packaged within a sound-attenuated enclosure manufactured at Taylor's fabrication facility in Richland, Miss.'); the line states it undated, in the present tense ('builds ... the enclosures for your generator sets'), and puts this 2020 fact before the February 2025 posting (newest-first rule broken). (2) The jofdav copy of req MAN-25-00081 (Open Date 2/24/2025, Location Richland) carries 'we also operate a metal fabrication shop in Richland MS'. (3) The closing question 'how is enclosure welding staffed at Richland?' has no second-person 'you', and presumes welding at Richland, which the ledger tags inferred (prospect_test: 'welding at the site is not stated outright'). Rewritten newest first, dated, with a 'you' question about the Richland fabrication shop (the 2025 fact) that presumes neither welding nor current enclosure work.",
+   "plants_csv_value": "A February 2025 Taylor Power Systems posting names your metal fabrication shop in Richland alongside your main office and production facility, and Power Progress reported in August 2020 that the enclosed units of a Taylor generator line it covered were packaged in a sound-attenuated, powder-coated enclosure manufactured at that Richland facility; how are you staffing the Richland metal fabrication shop today?"
+  },
+  {
+   "claim_id": "p-tesla-brookshire-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "'unknown' with reasoning (own board blocked). Nothing to support or contradict."
+  },
+  {
+   "claim_id": "p-tesla-brookshire-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Megapack 3 started rolling off your Brookshire line in August 2026, in a factory designed for 50 GWh a year of that one product, and your body-in-white technician posting asks for RSW and GMAW knowledge; where do you still need people on welding?",
+   "tag": "inferred",
+   "verdict": "corrected",
+   "corrected_value": "Megapack 3 started rolling off your Brookshire line in August 2026, in a factory designed for 50 GWh a year of that one product, and a body-in-white Fabrication Technician posting there dated January 2026 asked for RSW and GMAW knowledge; where do you still need people on welding?",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "driveteslacanada page re-fetched: 'Megapack 3 is officially rolling off the line at our newest Megafactory in Brookshire, Texas!' and 'designed capacity of 50 GWh/year dedicated to Megapack 3' found; JSON-LD datePublished 2026-08-06. But the diversityjobs copy of the Fabrication Technician, Body in White, Megafactory posting now reads 'Job posting has expired' and is dated Jan 07, 2026; the line says 'your body-in-white technician posting asks', presenting an expired January 2026 posting as live. RSW and GMAW MIG/MAG wording confirmed on the page. Reworded to a dated past-tense fact; the line makes no closure claim because only the mirror copy shows 'expired' and Tesla's own board is unreadable (Akamai 403).",
+   "plants_csv_value": "Megapack 3 started rolling off your Brookshire line in August 2026, in a factory designed for 50 GWh a year of that one product, and a body-in-white Fabrication Technician posting there dated January 2026 asked for RSW and GMAW knowledge; where do you still need people on welding?"
+  },
+  {
+   "claim_id": "p-tesla-lathrop-ca:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "verdict": "confirmed",
+   "note": "'unknown' with reasoning (own board blocked). Nothing to support or contradict."
+  },
+  {
+   "claim_id": "p-tesla-lathrop-ca:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Lathrop Megafactory can produce a Megapack every 68 minutes at full speed with robotic arms handling repeat welding, and your body-in-white engineering posting asks for RSW and GMAW knowledge; where do you still weld or rework by hand?",
+   "tag": "inferred",
+   "verdict": "corrected",
+   "corrected_value": "A body-in-white process engineer posting for your Lathrop Megafactory dated July 2025 asked for RSW and GMAW knowledge, and an April 2025 look inside the plant reported robotic arms handling repeat tasks such as welding, with a Megapack every 68 minutes at full speed; where do you still weld or rework by hand?",
+   "corrected_tag": "inferred",
+   "error_kind": "other",
+   "note": "techeblog article re-fetched: dated April 29, 2025; 'letting the Lathrop factory produce a Megapack every 68 minutes when running at full speed' and 'handle repeating tasks such as welding' found. The diversityjobs copy of the Process Engineer, Body in White, Megafactory posting is dated Jul 29, 2025 and now reads 'Job posting has expired'; the line says 'your body-in-white engineering posting asks', presenting an expired posting as live. Its reasoning also says 'Undated sources, so no date claimed', but both sources are dated, and the newer one (Jul 2025 posting) comes second. Rewritten newest first, as dated past-tense facts; no closure claim in the line (mirror copy shows expired; own board unreadable).",
+   "plants_csv_value": "A body-in-white process engineer posting for your Lathrop Megafactory dated July 2025 asked for RSW and GMAW knowledge, and an April 2025 look inside the plant reported robotic arms handling repeat tasks such as welding, with a Megapack every 68 minutes at full speed; where do you still weld or rework by hand?"
+  },
+  {
+   "claim_id": "p-tomball-controls-pleasanton-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Pleasanton MIG Welder/Fabricator posting (Nov 12, 2026) runs Monday-Thursday 6:00am-4:30pm with mandatory Fridays at what you call a welding and fabrication manufacturing facility; how much of that Friday time do you spend on welding?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Tomball's own Paylocity board read 2026-11-17: req 3558741 'MIG Welder/Fabricator' live at 'Tomball Controls Pleasanton' (PublishedDate 2026-11-12); detail JSON-LD datePosted 2026-11-12T14:53, streetAddress 716 Eagleford Dr.; 'Mandatary Fridays' and '6:00am-4:30PM' on the page. EHS Coordinator req 4227058 live, carries 'welding and fabrication manufacturing facility in Pleasanton, Texas'. Note: the JobId (3558741, near Electrical Apprentice 3530262) suggests an older requisition re-published; the line gives the date without the word 'posted' and both board and JSON-LD say 2026-11-12, so it stands under the date rule."
+  },
+  {
+   "claim_id": "p-tomball-controls-seguin-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Seguin plant posted a MIG Welder opening on Nov 16, 2026 for steel fit-ups, layouts and MIG welding as part of a team; how many welders do you run on the Seguin line today?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Req 4667549 'Mig Welder' live at location Seguin (board PublishedDate 2026-11-16); JSON-LD datePosted 2026-11-16T17:45, streetAddress 4545 FM 775; 'fit ups and layouts with steel' and 'MIG Welding as part of a team' on the page. Highest JobId on the board, consistent with a new requisition. 'you' question."
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely MIG welder/fabricator staffing at the headquarters plant: one MIG Welder/Fabricator requisition is open at 10310 Fischer Rd (its JSON-LD date, 2026-07-09, conflicts with the board's 2026-10-16, so how long it has been open is not known) while a 29,517 sf addition was registered for 2025-26.",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Req 4318603 live at 'Tomball Headquarters' (board PublishedDate 2026-10-16); JSON-LD datePosted still 2026-07-09, streetAddress 10310 Fischer Rd. TDLR TABS2025014309 quotes found (registered 3/15/2025, 29,517 sf, start 6/2/2025, completion 6/26/2026). The guess says 'Likely', gives both dates and claims no duration."
+  },
+  {
+   "claim_id": "p-tomball-controls-von-ormy-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Von Ormy board has a MIG Welder/Fabricator opening at 10310 Fischer Rd, and the 29,517 sq ft addition you registered with TDLR in March 2025 was scheduled for completion in June 2026; how many MIG welders are you running at Von Ormy today?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Req 4318603 live at 10310 Fischer Rd (JSON-LD streetAddress); no date given in the line (both dates set aside by the ruling). TDLR registration March 2025 and scheduled completion June 2026 confirmed; written as a schedule, not as finished work. Newest first, 'you' question."
+  },
+  {
+   "claim_id": "p-united-alloy-janesville-wi:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Janesville board lists a 2nd Shift Mig Welder (listed October 21, 2026), welding fabricated components to custom or stock specifications and testing to AWS D1.1; how do you split custom and stock work across your welders?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "United Alloy UKG board (LoadSearchResults) read 2026-11-17: '2nd Shift Mig Welder' 2NDSH001944 live at 4100 Kennedy Road, board date 2026-10-21 (raw PostedDate 2026-10-07; the line says 'listed', which is right). Detail page carries 'custom or stock specifications' and 'AWS D1.1'."
+  },
+  {
+   "claim_id": "p-united-alloy-seguin-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Seguin board lists a 2nd Shift MIG Welder (listed November 12, 2026) with a $3.00 shift premium, welding fabricated components to custom or stock specifications; how are you staffing second-shift welding at Seguin?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "2nd Shift MIG Welder 2NDSH002011 live at 1721 Eighth St, board date 2026-11-12 = raw PostedDate 2026-11-12T14:04; detail page carries '$3.00 Shift Premium' and 'custom or stock specifications'. 'you' question."
+  },
+  {
+   "claim_id": "p-united-alloy-union-oh:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Union plant has four MIG welder openings, listed between September 28 and October 29, 2026, for large tank and structural work to AWS D1.1, and it runs weld orientations every two weeks for up to eight welders; how are you keeping welder headcount in step with the 532,000-square-foot buildout?",
+   "tag": "inferred",
+   "verdict": "corrected",
+   "corrected_value": "Your Union plant has four MIG welder openings, listed between September 28 and October 29, 2026, for large tank and structural work to AWS D1.1, and it runs weld orientations every two weeks for up to eight welders; how are you keeping welder headcount in step with the expansion to 532,000 square feet you announced in May 2025?",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "All four Union MIG welder requisitions live 2026-11-17 at 1925 Union Airpark Blvd (board dates 2026-09-28, 10-14, 10-27, 10-29; 'listed' is right; raw PostedDate of MIGWE001915 is 2026-09-22). All four carry 'heavy tank and structural fabrication' in the intro and 'AWS D1.1'; MIGWE001956 and MIGWE001985 carry the orientation line ('every two weeks', 'up to eight welders'). 532,000 sq ft total from the 2025-05-20 Business Wire release (found). But 'keeping welder headcount in step with the 532,000-square-foot buildout' presents the expansion as construction under way; the stated trigger rows show only the May 2025 announcement of the total footprint and a June 2025 report that ground-breaking was planned for October (no row shows building started or finished). Same class as the R3 Cordele fix ('still being refurbished'). Reworded to the announced expansion with its date. Postings, AWS D1.1 and orientation clauses confirmed.",
+   "plants_csv_value": "Your Union plant has four MIG welder openings, listed between September 28 and October 29, 2026, for large tank and structural work to AWS D1.1, and it runs weld orientations every two weeks for up to eight welders; how are you keeping welder headcount in step with the expansion to 532,000 square feet you announced in May 2025?"
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely MIG welder headcount: Barnesville has seven Welder requisitions open at once (four building enclosures and fuel tanks, three on second-shift upfit and repair), all listed on Yancey's board between Oct 27 and Nov 9, 2026.",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Yancey UKG board read 2026-11-17 (266 postings, all pages): seven Welder requisitions at 460 Industrial Road live (WELDE006151, 006153, 005301 board 11-09; 006245, 006242 board 10-29; 005302, 004838 board 10-27). WELDE005301, 006153 and 006245 carry 'upfit and repair work on enclosures'; the other four do not. 'listed' dates right. Says 'Likely'."
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Barnesville plant at 460 Industrial Road has seven Welder requisitions open, listed between Oct 27 and Nov 9, 2026, three of them second-shift roles focused on upfit and repair of enclosures; how are you splitting your MIG welders between new enclosure and fuel-tank builds and upfit work?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Same board read: seven Welder requisitions at 460 Industrial Road listed 2026-10-27 to 2026-11-09, three of them second-shift roles with the upfit-and-repair line (a fourth second-shift role, WELDE004838, does build work; the line's 'three of them' is accurate). MIG in every posting. 'you' question."
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Batesville plant has a Welder (listed Nov 9, 2026) and a 3:00-11:30 pm second-shift Welder (listed Nov 6) open as it builds toward the 250 jobs announced in January 2025; how are you bringing new MIG welders up to speed on fuel tanks and aluminum enclosure frames?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Board read: WELDE006145 Welder (listed 11-09) and WELDE005616 Welder - Second Shift (listed 11-06) live at 195 Crown Dr; '3:00 pm - 11:30 pm' and 'welding fuel tanks and aluminum stud frames' on the pages. 250 jobs: Panolian 2025-01-28 (found). 'as it builds toward the 250 jobs' rests on the live hiring, not on a claim that the jobs exist; acceptable. Newest first, 'you' question."
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely staffing a plant from scratch: the company will refurbish the former Big Tex building, has one Welder requisition open (listed Nov 2, 2026) alongside operations, quality and maintenance roles, and plans 300 jobs over several years.",
+   "tag": "inferred",
+   "verdict": "corrected",
+   "corrected_value": "Likely staffing a plant from scratch: the company will refurbish the former Big Tex building, has one Welder requisition open (listed Nov 2, 2026) alongside a Quality Control Manager role, and plans 300 jobs over several years.",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "note": "Board read 2026-11-17: at 502 S. Midway Road Cordele the live roles are Welder WELDE005744 (listed 11-02), Quality Control Manager, Maintenance Technician, Shipping Technician, Safety Training Coordinator and Operations Manager OPERA005736. The ledger's own stated status row (corrected in R2-E) says the Operations Manager body reads 'Role is based in Batesville, MS', so it does not show Cordele staffing; and no evidence row carries a maintenance role at Cordele. The clause 'alongside operations, quality and maintenance roles' therefore rests on one Batesville-based role and one unsourced role. Corrected to what the stated rows carry (QC Manager, quote on the stated welder_postings row). The rest (will refurbish; 300 jobs over several years; listed Nov 2) confirmed.",
+   "plants_csv_value": "Likely staffing a plant from scratch: the company will refurbish the former Big Tex building, has one Welder requisition open (listed Nov 2, 2026) alongside a Quality Control Manager role, and plans 300 jobs over several years."
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Cordele plant at 502 South Midway Road lists a Welder role requiring MIG (listed Nov 2, 2026), after the June 2026 announcement of a $5.7 million facility in the former Big Tex plant with 300 new jobs over several years; how are you planning to staff welding of custom fuel tanks and generator enclosures as Cordele ramps up?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "WELDE005744 live at 502 S. Midway Road, board date 2026-11-02 ('listed' right; raw PostedDate 2026-06-30). MIG required ('Minimum 1 year experience of MIG welding'). Governor release 2026-06-25 ('will invest $5.7 million in a new manufacturing facility in Cordele, creating 300 new jobs over the next several years') and 'will refurbish the former Big Tex manufacturing facility' found. 'custom fabricated fuel tanks and generator enclosures' on the live QC Manager posting. 'as Cordele ramps up' is in the question, not a claim of progress. Newest first."
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Griffin plant has a Welder (listed Nov 10, 2026) and a Welder - Second Shift (listed Oct 29) open at 96 Etheridge Mill Rd., both MIG welding fuel tanks and aluminum stud frames for enclosures; how are you splitting tank welding from frame welding across the two shifts?",
+   "tag": "inferred",
+   "verdict": "confirmed",
+   "note": "Board read: WELDE006152 Welder (listed 11-10) and WELDE006244 Welder - Second Shift (listed 10-29) live at 96 Etheridge Mill Rd. Griffin; both carry 'welding fuel tanks and aluminum stud frames' and MIG. 'you' question."
+  }
+ ]
+}

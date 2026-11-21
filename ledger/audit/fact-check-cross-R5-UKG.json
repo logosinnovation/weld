@@ -1,0 +1,1114 @@
+{
+ "checker": "fact-checker R5-UKG",
+ "vertical": "cross (postings-ukg: v-poles-substation, v-mining-heavy-equipment, v-shipbuilding-naval, v-enclosures-battery-generator)",
+ "date": "2026-11-17",
+ "plants": [
+  "p-amerequip-kiel-wi",
+  "p-ameron-tulsa-ok",
+  "p-ameron-tulsa-ok-2",
+  "p-arcosa-shoring-mason-mi",
+  "p-arcosa-telecom-muskogee-ok",
+  "p-arcosa-traffic-structures-sumterville-fl",
+  "p-conrad-morgan-city-la",
+  "p-conrad-morgan-city-la-2",
+  "p-ground-force-post-falls-id",
+  "p-mega-albuquerque-nm",
+  "p-meyer-clinton-il",
+  "p-meyer-fort-worth-tx",
+  "p-meyer-hager-city-wi",
+  "p-meyer-lancaster-sc",
+  "p-meyer-steele-al",
+  "p-meyer-tulsa-ok",
+  "p-philly-shipyard-philadelphia-pa",
+  "p-thomas-conveyor-burleson-tx",
+  "p-united-alloy-janesville-wi",
+  "p-united-alloy-seguin-tx",
+  "p-united-alloy-union-oh",
+  "p-yancey-barnesville-ga",
+  "p-yancey-batesville-ms",
+  "p-yancey-cordele-ga",
+  "p-yancey-griffin-ga"
+ ],
+ "decision_rule": "Corrected = the value adds a fact the cited page does not show, tags a judgement as stated, places a fact at the wrong site, misdates a posting (raw first-posted vs 'Posted on' stamp), miscounts or mis-classes a posting under the counting rules, or the quote is not on the cited page (rendered text and raw source both checked); Confirmed otherwise. Unreachable only if the source cannot be reached at all.",
+ "claims_checked": 103,
+ "claims_corrected": 1,
+ "claims_unreachable": 0,
+ "error_rate": 0.0097,
+ "error_rate_note": "All 103 evidence rows in ledger/inbox/postings-ukg.json checked: 79 stated rows (79 UKG job-detail pages, every quote fragment found on a fresh read, rendered text or raw JSON; 0 corrected), 3 inferred rows with URLs (Mason detail page, Federal Signal search API, EPA ECHO), 10 inferred blank-URL count rows checked against the 8 boards' LoadSearchResults lists, 6 score rows, 6 opening-line/bottleneck rows. 1 correction (Mason quote not on the cited page) = 1/103 = 1.0%. Stated rows only: 0/79 = 0%. The 25 plants updates were also checked clause by clause against the boards and pages (see plants_update_notes); no plants.csv value must change.",
+ "claims_checked_all_rows": 103,
+ "claims_corrected_all_rows": 1,
+ "error_rate_all_rows": 0.0097,
+ "error_kind_counts": {
+  "wrong plant or location": 0,
+  "wrong process": 0,
+  "wrong tier": 0,
+  "closed business": 0,
+  "quote does not support value": 1,
+  "invented fact": 0,
+  "other": 0
+ },
+ "repeated_kinds": [],
+ "worst_errors": [
+  "p-arcosa-shoring-mason-mi:welder_postings (inferred, detail URL CONTR015127) - quote taken from the board search JSON BriefDescription, not from the cited detail page, and its '1st shift' contradicts the page's '2nd Shift: 4pm - 1:30am'; value right, quote replaced. No score impact (base plant)."
+ ],
+ "score_problems": [],
+ "score_notes": [
+  "Cordele labor 12 -> 20 CONFIRMED: WELDE005744 live on Yancey's UKG board (502 S. Midway Road, OpportunityIsClosed false), raw PostedDate 2026-06-30 = 140 days before 2026-11-17, inside the coordinator rule's 60-day to 12-month band; total 79 High; confidence 4 unchanged.",
+  "Sumterville labor 20 -> 0 CONFIRMED: SENIO014691 OpportunityIsClosed true and off the 312-posting Arcosa list; 1749 CR 525 lists only Machine Operator_Entry and Accounting Mgr. Total 48 Medium; confidence 3 -> 2.",
+  "Other 21 plants: labor points re-derived from today's counts and dates under the stated rules, with every counted/not-counted classification read on the page: 20 for Ameron Yukon (2), Muskogee (2), Clinton (8), Fort Worth (8), Lancaster (2), Steele (3), Meyer Tulsa (2), Philly (2), Thomas (4), Union (4), Barnesville (7), Batesville (2), Griffin (2); 20 for single counted postings open 60+ days by raw date: Hager City (69 days), Conrad Front St (183), Conrad Deepwater South (188); 12 for Mega (28 days), Janesville (41), Seguin (5); 0 for Ameron 66th St N and Ground Force Post Falls. Barnesville WELDE004838 raw 2025-10-20 (393 days) is a standing ad (open, not 60+ days); Barnesville stays 20 on several counted postings. Amerequip and Mason are base (unscored). No point changes beyond Cordele and Sumterville.",
+  "Classifications read on the pages: Clinton (FITTE014602, FITTE015387) and Lancaster (FITTE014918) leads list hands-on welding ('Repair welds', full-penetration welds): counted. Fort Worth FITTE015171, Tulsa LEADW015038 and the four Muskogee leads list only supervisory duties: not counted. Steele Seam Welders (SEAMW014759, SEAMW015341) require 'Weld metal parts together manually and by using an automatic welding machine': manual welding required, counted (robot/auto-titled rule satisfied). Muskogee Cobot Weld Operator (MACHI015121) operates, programs and inspects cobots with no manual welding duty: robot operator, not counted. Philly Shipbuilder: plate and stiffener assembly, panel production and hot work, 'welding and fitting' experience: fitting role, counted (as confirmed 2026-11-13).",
+  "RULING (no run_log ruling found on student programmes; coordinator call): United Alloy Weld Youth Apprentice, Janesville WELDY002024 and Seguin WELDY001554. Both pages: 'The UA student learner program ... intended for students interested in pursuing a career in welding', for a 'High School Junior or Senior ... 16-18 years', with welding duties ('Welds product using fixturing (if applicable) with minimal supervision'). Treated as listed, not counted, as the inbox and the confirmed battery-profiler-C rows do: a school-year student-learner programme, not a production hire (Janesville's starts 2027-08-02, so it is not an open role today). If counted as a trainee: Seguin (programme started 2026-07-13, posting live since 2026-01-22) would have 2 counted postings -> labor 20, total 53 -> 61 Medium; Janesville likewise 53 -> 61 Medium (the existing SENSITIVITY note). Tiers unchanged either way."
+ ],
+ "opening_line_problems": [],
+ "plants_closed_or_moved": [],
+ "status_problems": [],
+ "plant_status_notes": "No plant closed or moved. All 25 plants' welder_postings values were re-checked clause by clause against the eight boards (LoadSearchResults read 2026-11-17: Arcosa 312, Yancey 266, Federal Signal 154, Martin 124, United Alloy 31, Philly 24, Conrad 14, Amerequip 9) and the detail JSONs: counts, requisitions, raw and stamp dates, day counts, addresses and named clauses match. Completeness only (no change required): Steele also lists Weld Tech - (Off shift) WELDT014721 (2026-07-30) and Production Supervisor - Fit/Weld PRODU015255 (2026-10-26); Union also lists CWI - 2nd Shift CERTI001991 and Weld Engineering Technician (CWI) WELDE001993 (both 2026-10-27); none would be counted.",
+ "field_drift_notes": [
+  "No plants.csv field changes. The one corrected row (Mason) carries plants_csv_value 'keep ...' so apply_factcheck.py does not overwrite the Mason welder_postings field with the row-level value.",
+  "Sumterville confidence changes 3 -> 2 (plants update) and score_tier stays Medium, but neither the ledger nor this inbox carries a :confidence or :score_tier evidence row for Sumterville (pre-existing gap); add them at merge.",
+  "evidence_remove: all 97 (claim_id, source_url) pairs exist exactly once in evidence.csv and each has a replacement row in the inbox; no inbox row overwrites a ledger key outside the list; 6 inbox keys are new (3 Fort Worth, 1 Clinton, 1 Meyer Tulsa postings, 1 Amerequip ECHO row). Run apply_removals.py before merge_inbox.py as the inbox notes say."
+ ],
+ "leads": [
+  "Mason quote pattern: the board search JSON BriefDescription can differ from the detail page (here '1st shift' vs the page's '2nd Shift'); quotes must come from the cited detail page.",
+  "United Alloy Weld Youth Apprentice postings (Janesville, Seguin) are a recurring classification question; see the RULING in score_notes."
+ ],
+ "method": "Fresh Playwright read 2026-11-17 of all 80 cited UKG detail pages (rendered innerText + raw page source with JSON escapes undone), each quote split on '...' and every fragment checked normalised against both; RequisitionNumber, PostedDate, OpportunityIsClosed and Line1 parsed from the page JSON and the 'Posted on' stamp from the rendered text. Board lists pulled for all 8 tenants via JobBoardView/LoadSearchResults (Top 200, paged). EPA ECHO get_facilities/get_qid re-run with curl. Lead and Shipbuilder duties read in full.",
+ "apply_note": "Apply after the coordinator merges ledger/inbox/postings-ukg.json (rows keyed to that file's claim_id + source_url). One row changes: p-arcosa-shoring-mason-mi:welder_postings at the CONTR015127 URL takes corrected_quote. No plants.csv value changes. Cordele and Sumterville score moves are confirmed and may be applied.",
+ "rows": [
+  {
+   "claim_id": "p-amerequip-kiel-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/AME1109AMQP/JobBoard/ec25a2d9-efc8-442d-80c3-0de8aad7e42e/OpportunityDetail?opportunityId=b6961435-65ff-497d-92d0-6267ecbe3f17",
+   "ledger_value": "Welder (WELDE001035): first posted 2025-12-15 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2025-12-15, the same date; Kiel WI, board location 1015 Calumet Ave",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[0]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE001035, PostedDate 2025-12-15, 'Posted on' December 15, 2025, OpportunityIsClosed false, Line1 1015 Calumet Ave; on the board list ('Headquarters'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-amerequip-kiel-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/AME1109AMQP/JobBoard/ec25a2d9-efc8-442d-80c3-0de8aad7e42e/OpportunityDetail?opportunityId=a1266093-c488-4b0c-bf30-06876fb833f4",
+   "ledger_value": "Welder Weekend shift (WELDE001066): first posted 2026-10-14 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-10-14, the same date; weekend shift; Kiel WI, board location 1015 Calumet Ave",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[1]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE001066, PostedDate 2026-10-14, 'Posted on' October 14, 2026, OpportunityIsClosed false, Line1 1015 Calumet Ave; on the board list ('Headquarters'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-amerequip-kiel-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/AME1109AMQP/JobBoard/ec25a2d9-efc8-442d-80c3-0de8aad7e42e/OpportunityDetail?opportunityId=9cc01ef0-7ec3-404f-a93a-90a4763297eb",
+   "ledger_value": "Welder- 2nd shift (WELDE001067): first posted 2026-10-14 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-10-14, the same date; 2nd shift; Kiel WI, board location 1015 Calumet Ave; wire welding .035 and .045 wire",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[2]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE001067, PostedDate 2026-10-14, 'Posted on' October 14, 2026, OpportunityIsClosed false, Line1 1015 Calumet Ave; on the board list ('Headquarters'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=755063c1-9148-4211-96c7-47b8d5b9d502",
+   "ledger_value": "Fitter Welder_Career _ Day Shift 5:00AM-3:30PM (FITTE014876): first posted 2026-08-25 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-08-25, the same date; day shift 5:00AM-3:30PM; Tulsa OK 74107 (board location 2333 S Yukon Ave)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[3]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE014876, PostedDate 2026-08-25, 'Posted on' August 25, 2026, OpportunityIsClosed false, Line1 2333 S Yukon Ave; on the board list ('Tulsa, OK -Finish'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=202c7928-70b1-4f3b-84af-90b17871c045",
+   "ledger_value": "Fitter Welder_Career_ Night Shift 4:00PM to 2:30AM Weekdays (FITTE014915): first posted 2026-08-28 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-08-28, the same date; night shift 4:00PM-2:30AM weekdays; Tulsa OK 74107 (board location 2333 S Yukon Ave)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[4]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE014915, PostedDate 2026-08-28, 'Posted on' August 28, 2026, OpportunityIsClosed false, Line1 2333 S Yukon Ave; on the board list ('Tulsa, OK -Finish'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=30523c38-ba99-47e2-8b5e-39157434548c",
+   "ledger_value": "Fitter/Welder - Day Shift (FITTE015245): first posted 2026-10-23 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-10-23, the same date; Muskogee OK (board location 4020 Tull Ave); 4am-2:30pm Mon-Thu with some mandatory Fridays",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[5]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE015245, PostedDate 2026-10-23, 'Posted on' October 23, 2026, OpportunityIsClosed false, Line1 4020 Tull Ave; on the board list ('Muskogee, OK'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=db5ab0b1-213c-4e51-971c-9d1cf1fa75f6",
+   "ledger_value": "Fitter/Welder - Night Shift (FITTE015243): first posted 2026-11-05 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-11-05, the same date; Muskogee OK (board location 4020 Tull Ave)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[6]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE015243, PostedDate 2026-11-05, 'Posted on' November 5, 2026, OpportunityIsClosed false, Line1 4020 Tull Ave; on the board list ('Muskogee, OK'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=2fbbadd5-0f84-40bf-8340-ecf324cc1f0f",
+   "ledger_value": "listed, not counted: Fitter/Welder Lead (Low Profile Station) (FITTE015356), listed 2026-11-09; Muskogee OK (4020 Tull Ave); supervisory lead under the counting rule",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[7]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE015356, PostedDate 2026-11-09, 'Posted on' November 9, 2026, OpportunityIsClosed false, Line1 4020 Tull Ave; on the board list ('Muskogee, OK'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=7d7ff676-8457-4082-9ed6-90abbd3d604c",
+   "ledger_value": "listed, not counted: Fitter/Welder Lead (Arms) (FITTE015357), listed 2026-11-09; Muskogee OK (4020 Tull Ave); supervisory lead under the counting rule",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[8]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE015357, PostedDate 2026-11-09, 'Posted on' November 9, 2026, OpportunityIsClosed false, Line1 4020 Tull Ave; on the board list ('Muskogee, OK'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=da88e65d-494c-4b9f-80db-e0a0412f4f64",
+   "ledger_value": "listed, not counted: Fitter/Welder Lead (Telecom Towers) (FITTE015358), listed 2026-11-09; Muskogee OK (4020 Tull Ave); supervisory lead under the counting rule",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[9]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE015358, PostedDate 2026-11-09, 'Posted on' November 9, 2026, OpportunityIsClosed false, Line1 4020 Tull Ave; on the board list ('Muskogee, OK'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=0302121d-2648-42a3-90d1-262ba0e2b47a",
+   "ledger_value": "listed, not counted: Fitter/Welder Lead (Night Shift) (FITTE015359), listed 2026-11-09; Muskogee OK (4020 Tull Ave); supervisory lead under the counting rule",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[10]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE015359, PostedDate 2026-11-09, 'Posted on' November 9, 2026, OpportunityIsClosed false, Line1 4020 Tull Ave; on the board list ('Muskogee, OK'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=c69a295b-f4f0-477d-97e3-c043da65c67b",
+   "ledger_value": "closed: Senior Fitter/Welder (SENIO014691), first posted 2026-07-27 (raw first-posted date: PostedDate in the board's job JSON), Sumterville FL (board location 1749 CR 525); the job JSON reads OpportunityIsClosed true on 2026-11-17 and the posting is no longer on Arcosa's board list",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[11]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: SENIO014691, PostedDate 2026-07-27, 'Posted on' July 27, 2026, OpportunityIsClosed true, Line1 1749 CR 525; off the board list. Value matches (title, req, raw date, stamp, site, named clauses). Closed status confirmed (OpportunityIsClosed true; not on the 312-posting list).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-conrad-morgan-city-la:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/CON1089COSP/JobBoard/6554dd3b-1e05-4c1c-9fbf-4c08b0376985/OpportunityDetail?opportunityId=a1448e0d-e4fd-4c1a-ab4c-93b8dd79f1e7",
+   "ledger_value": "Structural Fitter (STRUC001047): first posted 2026-05-18 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-05-18, the same date; Morgan City LA, board location 1501 Front Street",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[12]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: STRUC001047, PostedDate 2026-05-18, 'Posted on' May 18, 2026, OpportunityIsClosed false, Line1 1501 Front Street; on the board list ('Morgan City'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-conrad-morgan-city-la-2:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/CON1089COSP/JobBoard/6554dd3b-1e05-4c1c-9fbf-4c08b0376985/OpportunityDetail?opportunityId=b6bbb219-ec7e-43b8-8dba-339a91f9723f",
+   "ledger_value": "Structural Welder (STRUC001046): first posted 2026-05-13 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-05-13, the same date; Morgan City LA, board location Deepwater South, 995 Duhon Blvd",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[13]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: STRUC001046, PostedDate 2026-05-13, 'Posted on' May 13, 2026, OpportunityIsClosed false, Line1 995 Duhon Blvd; on the board list ('Deepwater South'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-mega-albuquerque-nm:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/FED1002FSC/JobBoard/d5675b81-d6f5-4226-9f8c-be296cda2308/OpportunityDetail?opportunityId=47702c88-8da1-430f-b2ca-066797e9a98c",
+   "ledger_value": "Welder (WELDE007520): first posted 2026-10-20 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-10-20, the same date; 700 Osuna Rd NE; GMAW/FCAW; $23-28/hr",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[14]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE007520, PostedDate 2026-10-20, 'Posted on' October 20, 2026, OpportunityIsClosed false, Line1 700 Osuna Rd NE; on the board list ('Mega-NM'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=56e021f8-26c2-449d-a081-c10b5cf13daf",
+   "ledger_value": "Night Shift Welder (WELDE015007): first posted 2026-09-29 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-09-29, the same date; night shift; Clinton IL utility pole plant (board location 10000 Tabor Rd)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[15]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE015007, PostedDate 2026-09-29, 'Posted on' September 29, 2026, OpportunityIsClosed false, Line1 10000 Tabor Rd; on the board list ('Clinton, IL'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=1df0c73d-9a6a-46cd-9ac4-fc8ef2426953",
+   "ledger_value": "Night Shift- Sr. Fitter/Welder (SRFIT015005): first posted 2026-09-29 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-09-29, the same date; night shift; Clinton IL plant (board location 10000 Tabor Rd)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[16]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: SRFIT015005, PostedDate 2026-09-29, 'Posted on' September 29, 2026, OpportunityIsClosed false, Line1 10000 Tabor Rd; on the board list ('Clinton, IL'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=897e8c15-67f9-4723-862c-de5438cc7f01",
+   "ledger_value": "Night Shift Fitter/Welder (FITTE015006): first posted 2026-09-29 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-09-29, the same date; night shift 6pm-4:30am, $1.50/hour shift differential; Clinton IL 61727 (board location 10000 Tabor Rd)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[17]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE015006, PostedDate 2026-09-29, 'Posted on' September 29, 2026, OpportunityIsClosed false, Line1 10000 Tabor Rd; on the board list ('Clinton, IL'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=3d21bd4e-4218-471e-b4df-5a19f81cccbb",
+   "ledger_value": "Fitter Welder_Lead (FITTE014602): first posted 2026-07-13 (raw first-posted date: PostedDate in the board's job JSON); listed 2026-10-19 (UKG 'Posted on' re-post stamp); Clinton IL plant (board location 10000 Tabor Rd)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[18]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE014602, PostedDate 2026-07-13, 'Posted on' October 19, 2026, OpportunityIsClosed false, Line1 10000 Tabor Rd; on the board list ('Clinton, IL'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=7483bd57-93f8-4191-a8d1-19494621ae5d",
+   "ledger_value": "Sr. Fitter/Welder (SRFIT015337): first posted 2026-11-06 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-11-06, the same date; Clinton IL plant (board location 10000 Tabor Rd)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[19]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: SRFIT015337, PostedDate 2026-11-06, 'Posted on' November 6, 2026, OpportunityIsClosed false, Line1 10000 Tabor Rd; on the board list ('Clinton, IL'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=4a2e38cf-3bae-4376-a6aa-945fd285e5af",
+   "ledger_value": "Fitter/Welder (FITTE015339): first posted 2026-11-06 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-11-06, the same date; Clinton IL plant (board location 10000 Tabor Rd); flux or metal core welding experience highly preferred",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[20]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE015339, PostedDate 2026-11-06, 'Posted on' November 6, 2026, OpportunityIsClosed false, Line1 10000 Tabor Rd; on the board list ('Clinton, IL'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=bfdfb7e5-33d1-4010-a5c6-302aa7895551",
+   "ledger_value": "Welder (WELDE015340): first posted 2026-11-06 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-11-06, the same date; Clinton IL utility pole plant (board location 10000 Tabor Rd)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[21]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE015340, PostedDate 2026-11-06, 'Posted on' November 6, 2026, OpportunityIsClosed false, Line1 10000 Tabor Rd; on the board list ('Clinton, IL'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=1f030420-91fb-4c93-97ab-d766efc18fda",
+   "ledger_value": "Fitter Welder_Lead (FITTE015387): first posted 2026-11-16 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-11-16, the same date; lead role that performs full-penetration welds; Clinton IL plant (board location 10000 Tabor Rd)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[22]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE015387, PostedDate 2026-11-16, 'Posted on' November 16, 2026, OpportunityIsClosed false, Line1 10000 Tabor Rd; on the board list ('Clinton, IL'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=2a845a68-c661-4014-b218-babba429e365",
+   "ledger_value": "listed, not counted: Weld Tech (WELDT014932), listed 2026-09-01; Clinton IL plant welding technician (10000 Tabor Rd)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[23]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDT014932, PostedDate 2026-09-01, 'Posted on' September 1, 2026, OpportunityIsClosed false, Line1 10000 Tabor Rd; on the board list ('Clinton, IL'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=1696d020-cb81-477a-829b-dbe41a0e945b",
+   "ledger_value": "Fitter/Welder _Senior 2ND SHIFT 4:00PM-2:30AM (FITTE014650): first posted 2026-07-24 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-07-24, the same date; 2nd shift Mon-Fri 4pm-2:30am, Saturdays as production requires; Fort Worth TX plant (board location 2300 W. Risinger Rd.)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[24]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE014650, PostedDate 2026-07-24, 'Posted on' July 24, 2026, OpportunityIsClosed false, Line1 2300 W. Risinger Rd.; on the board list ('Fort Worth, TX'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=9b59237b-ad22-4821-8c3b-1b80e13373e6",
+   "ledger_value": "Fitter/Welder- Weekend Shift (FITTE014805): first posted 2026-08-11 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-08-11, the same date; weekend shift; Fort Worth TX plant (board location 2300 W. Risinger Rd.)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[25]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE014805, PostedDate 2026-08-11, 'Posted on' August 11, 2026, OpportunityIsClosed false, Line1 2300 W. Risinger Rd.; on the board list ('Fort Worth, TX'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=367e2df4-e954-4b44-be85-bd1097514e29",
+   "ledger_value": "Fitter Welder Career-Weekend Shift (FITTE015235): first posted 2026-10-21 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-10-21, the same date; weekend shift; Fort Worth TX plant (board location 2300 W. Risinger Rd.)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[26]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE015235, PostedDate 2026-10-21, 'Posted on' October 21, 2026, OpportunityIsClosed false, Line1 2300 W. Risinger Rd.; on the board list ('Fort Worth, TX'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=df225d52-b2c0-4ef9-a85f-ecba9294b65c",
+   "ledger_value": "Fitter Welder_Career 2ND SHIFT 4:00PM-2:30AM (FITTE015315): first posted 2026-11-02 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-11-02, the same date; 2nd shift 4:00PM-2:30AM; Fort Worth TX plant (board location 2300 W. Risinger Rd.)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[27]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE015315, PostedDate 2026-11-02, 'Posted on' November 2, 2026, OpportunityIsClosed false, Line1 2300 W. Risinger Rd.; on the board list ('Fort Worth, TX'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=a9d1a616-94cc-498c-9183-2f55fa2df9ba",
+   "ledger_value": "Fitter/Welder _Senior 2ND SHIFT 4:00PM-2:30AM (FITTE015316): first posted 2026-11-02 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-11-02, the same date; 2nd shift 4:00PM-2:30AM; Fort Worth TX plant (board location 2300 W. Risinger Rd.)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[28]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE015316, PostedDate 2026-11-02, 'Posted on' November 2, 2026, OpportunityIsClosed false, Line1 2300 W. Risinger Rd.; on the board list ('Fort Worth, TX'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=757843f2-50d4-4794-b334-9f900a95bbb4",
+   "ledger_value": "Fitter Welder_Career 1st Shift (FITTE015393): first posted 2026-11-13 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-11-13, the same date; 1st shift; Fort Worth TX plant (board location 2300 W. Risinger Rd.); flux or metal core welding experience highly preferred",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[29]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE015393, PostedDate 2026-11-13, 'Posted on' November 13, 2026, OpportunityIsClosed false, Line1 2300 W. Risinger Rd.; on the board list ('Fort Worth, TX'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=47606bd8-c50e-4936-b612-7df733a95710",
+   "ledger_value": "Fitter/Welder Senior 1st Shift (FITTE015394): first posted 2026-11-13 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-11-13, the same date; 1st shift; Fort Worth TX plant (board location 2300 W. Risinger Rd.)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[30]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE015394, PostedDate 2026-11-13, 'Posted on' November 13, 2026, OpportunityIsClosed false, Line1 2300 W. Risinger Rd.; on the board list ('Fort Worth, TX'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=93a5b886-66cb-40a9-90c7-3fff16019144",
+   "ledger_value": "Fitter/Welder _Senior Weekend Shift (FITTE015414): first posted 2026-11-17 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-11-17, the same date; weekend shift Fri-Sun; Fort Worth TX plant (board location 2300 W. Risinger Rd.); MIG welding process named",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[31]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE015414, PostedDate 2026-11-17, 'Posted on' November 17, 2026, OpportunityIsClosed false, Line1 2300 W. Risinger Rd.; on the board list ('Fort Worth, TX'). Value matches (title, req, raw date, stamp, site, named clauses). 'Fri-Sun' is on the page: 'Schedule- Fri-Sun 4:00am-430pm'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=43dad7b4-4c47-41f9-9331-56ffb9d8428b",
+   "ledger_value": "listed, not counted: Fitter/Welder Lead - 2nd Shift (FITTE015171), listed 2026-10-07; Fort Worth TX (2300 W. Risinger Rd.); supervisory lead under the counting rule",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[32]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE015171, PostedDate 2026-10-07, 'Posted on' October 7, 2026, OpportunityIsClosed false, Line1 2300 W. Risinger Rd.; on the board list ('Fort Worth, TX'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=af831e49-85b3-466e-b358-f5eefcf5e4c3",
+   "ledger_value": "Welders - All Experience Levels (WELDE014972): first posted 2026-09-09 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-09-09, the same date; 2nd shift Mon-Fri 2:45 pm-12:45 am; starting pay $25.89; flux or metal core welding experience highly preferred; Hager City WI plant (board location W8020 150th Ave)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[33]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE014972, PostedDate 2026-09-09, 'Posted on' September 9, 2026, OpportunityIsClosed false, Line1 W8020 150th Ave; on the board list ('Hager City, WI'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=51321a99-8629-499e-8f2f-1aea4643be02",
+   "ledger_value": "listed, not counted: Welding Technician (WELDI015046), listed 2026-09-18; plant welding technician (W8020 150th Ave)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[34]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDI015046, PostedDate 2026-09-18, 'Posted on' September 18, 2026, OpportunityIsClosed false, Line1 W8020 150th Ave; on the board list ('Hager City, WI'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=bd50fed7-5189-4970-9fde-fd914693738b",
+   "ledger_value": "listed, not counted: Welding Instructor (2nd Shift) (WELDI015179), listed 2026-10-12; welder training instructor (W8020 150th Ave)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[35]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDI015179, PostedDate 2026-10-12, 'Posted on' October 12, 2026, OpportunityIsClosed false, Line1 W8020 150th Ave; on the board list ('Hager City, WI'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=cbbc8142-6c49-491a-88d0-a1589eebd099",
+   "ledger_value": "Fitter Welder_Lead (FITTE014918): first posted 2026-08-31 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-08-31, the same date; Lancaster SC plant (board location 3468 Old Camden Hwy)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[36]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE014918, PostedDate 2026-08-31, 'Posted on' August 31, 2026, OpportunityIsClosed false, Line1 3468 Old Camden Hwy; on the board list ('Lancaster, SC'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=9f39a218-36d1-4eb9-9a01-6c3ed95b42b5",
+   "ledger_value": "Welder (WELDE015078): first posted 2026-09-22 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-09-22, the same date; career welders; at least 6 months of flux core welding experience; Lancaster SC plant (board location 3468 Old Camden Hwy)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[37]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE015078, PostedDate 2026-09-22, 'Posted on' September 22, 2026, OpportunityIsClosed false, Line1 3468 Old Camden Hwy; on the board list ('Lancaster, SC'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=2ccbdba7-9d2f-4e64-838f-813b9f991d3e",
+   "ledger_value": "listed, not counted: Pole School Welding Instructor (2nd Shift) (POLES015168), listed 2026-10-13; pole school welding instructor (3468 Old Camden Hwy)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[38]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: POLES015168, PostedDate 2026-10-13, 'Posted on' October 13, 2026, OpportunityIsClosed false, Line1 3468 Old Camden Hwy; on the board list ('Lancaster, SC'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=6388ede6-6840-40b9-8a5f-f30ad9944fb5",
+   "ledger_value": "listed, not counted: Welding Technician - Multiple Shifts (WELDI015164), listed 2026-10-16; plant welding technician (3468 Old Camden Hwy)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[39]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDI015164, PostedDate 2026-10-16, 'Posted on' October 16, 2026, OpportunityIsClosed false, Line1 3468 Old Camden Hwy; on the board list ('Lancaster, SC'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-steele-al:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=ed4bc510-ab97-4040-a5f5-fc17109b9bd8",
+   "ledger_value": "Seam Welder - ( Weekend Shift) (SEAMW014759): first posted 2026-08-04 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-08-04, the same date; weekend shift; Steele AL plant (board location 585 Duncan Farms Rd)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[40]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: SEAMW014759, PostedDate 2026-08-04, 'Posted on' August 4, 2026, OpportunityIsClosed false, Line1 585 Duncan Farms Rd; on the board list ('Gadsden, AL'). Value matches (title, req, raw date, stamp, site, named clauses). Counted: the page requires 'Weld metal parts together manually and by using an automatic welding machine'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-steele-al:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=afd4fd18-60e6-4a9a-89cd-c4b4a4e431e7",
+   "ledger_value": "Fitter/Welder (FITTE015163): first posted 2026-10-14 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-10-14, the same date; Steele AL plant (board location 585 Duncan Farms Rd); flux core experience preferred",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[41]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: FITTE015163, PostedDate 2026-10-14, 'Posted on' October 14, 2026, OpportunityIsClosed false, Line1 585 Duncan Farms Rd; on the board list ('Gadsden, AL'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-steele-al:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=be3c141d-7d65-45f5-812f-9beb78d40eb5",
+   "ledger_value": "Seam Welder (SEAMW015341): first posted 2026-11-05 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-11-05, the same date; Steele AL plant (board location 585 Duncan Farms Rd)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[42]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: SEAMW015341, PostedDate 2026-11-05, 'Posted on' November 5, 2026, OpportunityIsClosed false, Line1 585 Duncan Farms Rd; on the board list ('Gadsden, AL'). Value matches (title, req, raw date, stamp, site, named clauses). Counted: the page requires 'Weld metal parts together manually and by using an automatic welding machine'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-steele-al:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=280ca060-fc2b-4507-86cf-7ff62f480d16",
+   "ledger_value": "listed, not counted: Welding Instructor - (Off Shift) (WELDI014712), listed 2026-07-29; pole school welding instructor (585 Duncan Farms Rd)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[43]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDI014712, PostedDate 2026-07-29, 'Posted on' July 29, 2026, OpportunityIsClosed false, Line1 585 Duncan Farms Rd; on the board list ('Gadsden, AL'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=c3ac0d88-10bc-4cfc-b8ad-5c09521b37b4",
+   "ledger_value": "Welder/ Fitter ($25.33 + $1.50/hr Night Shift Premium) (WELDE015073): first posted 2026-09-22 (raw first-posted date: PostedDate in the board's job JSON); listed 2026-11-10 (UKG 'Posted on' re-post stamp); $25.33 + $1.50/hr night shift premium; Tulsa OK 74116 (board location 15300 Tiger Switch Rd.)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[44]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE015073, PostedDate 2026-09-22, 'Posted on' November 10, 2026, OpportunityIsClosed false, Line1 15300 Tiger Switch Rd.; on the board list ('Tulsa OK Windtowers'). Value matches (title, req, raw date, stamp, site, named clauses). ZIP 74116 in the JSON address.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=b974e3fe-b411-4da5-8568-e4e8e4a8db82",
+   "ledger_value": "Welder/Fitter (WELDE015385): first posted 2026-11-13 (raw first-posted date: PostedDate in the board's job JSON); listed 2026-11-16 (UKG 'Posted on' re-post stamp); Arcosa Wind Towers and Meyer Utility Structures; flux core experience highly desired; Tulsa OK 74116 (board location 15300 Tiger Switch Rd.)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[45]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE015385, PostedDate 2026-11-13, 'Posted on' November 16, 2026, OpportunityIsClosed false, Line1 15300 Tiger Switch Rd.; on the board list ('Tulsa OK Windtowers'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=a382ad09-9b60-4d56-bbb4-0b1496b6b4b2",
+   "ledger_value": "closed: Welder/Fitter (SRFIT014598), first posted 2026-07-09 (raw first-posted date: PostedDate in the board's job JSON; the 'Posted on October 30, 2026' read on 2026-11-13 was a re-post stamp), board location 15300 Tiger Switch Rd.; the job JSON reads OpportunityIsClosed true on 2026-11-17 and it is no longer on Arcosa's board list",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[46]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: SRFIT014598, PostedDate 2026-07-09, 'Posted on' October 30, 2026, OpportunityIsClosed true, Line1 15300 Tiger Switch Rd.; off the board list. Value matches (title, req, raw date, stamp, site, named clauses). Closed status confirmed; the page still shows the 'Posted on October 30, 2026' re-post stamp against raw 2026-07-09.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=37bed2ea-ee3c-4a09-b401-9655f365137d",
+   "ledger_value": "listed, not counted: Lead Welder (LEADW015038), listed 2026-09-17; supervisory lead (15300 Tiger Switch Rd)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[47]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: LEADW015038, PostedDate 2026-09-17, 'Posted on' September 17, 2026, OpportunityIsClosed false, Line1 15300 Tiger Switch Rd; on the board list ('Tulsa, OK Meyer'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=d13cf4e4-6d87-4d99-9427-03923c8cd8e3",
+   "ledger_value": "listed, not counted: Weld Tech (1st Shift) (WELDT015123), listed 2026-09-30; plant welding technician (15300 Tiger Switch Rd)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[48]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDT015123, PostedDate 2026-09-30, 'Posted on' September 30, 2026, OpportunityIsClosed false, Line1 15300 Tiger Switch Rd; on the board list ('Tulsa, OK Meyer'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=ddd39990-2c63-411a-987d-21df466ad17a",
+   "ledger_value": "listed, not counted: Weld Tech (2nd Shift) (WELDT015126), listed 2026-10-30; plant welding technician (15300 Tiger Switch Rd)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[49]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDT015126, PostedDate 2026-09-30, 'Posted on' October 30, 2026, OpportunityIsClosed false, Line1 15300 Tiger Switch Rd; on the board list ('Tulsa, OK Meyer'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/PHI1012PSHP/JobBoard/0c249280-d8e4-4995-8566-77ba7689e58a/OpportunityDetail?opportunityId=396379a2-6504-437b-802c-a5ebe4d6b2fa",
+   "ledger_value": "Welder B (WELDE002415): first posted 2026-11-10 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-11-10, the same date; Philadelphia PA 19112; FCAW, SMAW, SAW and tractor (automated) welding",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[50]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE002415, PostedDate 2026-11-10, 'Posted on' November 10, 2026, OpportunityIsClosed false, Line1 2100 Kitty Hawk Ave; on the board list ('Philadelphia'). Value matches (title, req, raw date, stamp, site, named clauses). 'tractor (automated)' is on the page: 'Automated Welding Process (use of tractors)'.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-philly-shipyard-philadelphia-pa:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/PHI1012PSHP/JobBoard/0c249280-d8e4-4995-8566-77ba7689e58a/OpportunityDetail?opportunityId=38badcf6-fdc1-40e3-aaff-0a42f320f677",
+   "ledger_value": "Shipbuilder (SHIPB002402): first posted 2026-11-03 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-11-03, the same date; basic plate and stiffener assembly; large panel and double bottom production; Philadelphia PA 19112",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[51]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: SHIPB002402, PostedDate 2026-11-03, 'Posted on' November 3, 2026, OpportunityIsClosed false, Line1 2100 Kitty Hawk Ave; on the board list ('Philadelphia'). Value matches (title, req, raw date, stamp, site, named clauses). Counting: the Shipbuilder page carries 'basic plate and stiffener assembly', 'large panel and double bottom production' and hot work, and asks for shipyard 'welding and fitting' experience; counted as a fitting role as in the confirmed 2026-11-13 row.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/MAR1022/JobBoard/7db9926f-7564-3521-4a93-13c1764fdae3/OpportunityDetail?opportunityId=21b61271-317f-49e5-aacf-f03fba6b68bc",
+   "ledger_value": "Welder - 2nd Shift (WELDE009077): first posted 2026-11-12 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-11-12, the same date; MIG welding; 2nd shift +6%",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[52]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE009077, PostedDate 2026-11-12, 'Posted on' November 12, 2026, OpportunityIsClosed false, Line1 555 North Burleson; on the board list ('Thomas Conveyor'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/MAR1022/JobBoard/7db9926f-7564-3521-4a93-13c1764fdae3/OpportunityDetail?opportunityId=48f61eae-e82c-4810-a49a-a88ffa29c01b",
+   "ledger_value": "Welder - 1st Shift (WELDE009050): first posted 2026-11-02 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-11-02, the same date; Thomas Conveyor location",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[53]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE009050, PostedDate 2026-11-02, 'Posted on' November 2, 2026, OpportunityIsClosed false, Line1 555 North Burleson; on the board list ('Thomas Conveyor'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/MAR1022/JobBoard/7db9926f-7564-3521-4a93-13c1764fdae3/OpportunityDetail?opportunityId=8e87bb3f-cb62-4695-b7c8-865ab25768d9",
+   "ledger_value": "Welder - 2nd Shift (WELDE009008): first posted 2026-10-12 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-10-12, the same date; Thomas Conveyor location",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[54]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE009008, PostedDate 2026-10-12, 'Posted on' October 12, 2026, OpportunityIsClosed false, Line1 555 North Burleson; on the board list ('Thomas Conveyor'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-thomas-conveyor-burleson-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/MAR1022/JobBoard/7db9926f-7564-3521-4a93-13c1764fdae3/OpportunityDetail?opportunityId=5bf63ce6-bb0d-47de-9765-f8c5f1c3723f",
+   "ledger_value": "Welder - 1st Shift (WELDE008852): first posted 2026-08-11 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-08-11, the same date; flux core a plus",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[55]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE008852, PostedDate 2026-08-11, 'Posted on' August 11, 2026, OpportunityIsClosed false, Line1 555 North Burleson; on the board list ('Thomas Conveyor'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-united-alloy-janesville-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/UNI1108UNAY/JobBoard/58a16832-7db2-47b4-aa7f-68266f035ef6/OpportunityDetail?opportunityId=3e3f9bde-e552-40a2-ba06-451fd234cc21",
+   "ledger_value": "2nd Shift Mig Welder (2NDSH001944): first posted 2026-10-07 (raw first-posted date: PostedDate in the board's job JSON); listed 2026-10-21 (UKG 'Posted on' re-post stamp); 4100 Kennedy Road; OT as required (conditional)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[56]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: 2NDSH001944, PostedDate 2026-10-07, 'Posted on' October 21, 2026, OpportunityIsClosed false, Line1 4100 Kennedy Road; on the board list ('United Alloy Inc'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-united-alloy-janesville-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/UNI1108UNAY/JobBoard/58a16832-7db2-47b4-aa7f-68266f035ef6/OpportunityDetail?opportunityId=c00576a7-8aeb-4434-a76d-928f204c6d61",
+   "ledger_value": "listed, not counted: Weld Youth Apprentice (WELDY002024), listed 2026-11-16; student programme starting 2027-08-02 (4100 Kennedy Road)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[57]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDY002024, PostedDate 2026-11-16, 'Posted on' November 16, 2026, OpportunityIsClosed false, Line1 4100 Kennedy Road; on the board list ('United Alloy Inc'). Value matches (title, req, raw date, stamp, site, named clauses). Not counted: student-learner programme (see the RULING in score_notes).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-united-alloy-janesville-wi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/UNI1108UNAY/JobBoard/58a16832-7db2-47b4-aa7f-68266f035ef6/OpportunityDetail?opportunityId=a18846b2-6311-419b-9b5b-beb754a4b5ae",
+   "ledger_value": "listed, not counted: 2nd Shift Operations Supervisor-Weld (2NDSH002006), listed 2026-11-04; supervisor (4100 Kennedy Road)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[58]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: 2NDSH002006, PostedDate 2026-11-04, 'Posted on' November 4, 2026, OpportunityIsClosed false, Line1 4100 Kennedy Road; on the board list ('United Alloy Inc'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-united-alloy-seguin-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/UNI1108UNAY/JobBoard/58a16832-7db2-47b4-aa7f-68266f035ef6/OpportunityDetail?opportunityId=501b4f3a-67e3-4908-aeb7-c2a12ab91cd9",
+   "ledger_value": "2nd Shift MIG Welder (2NDSH002011): first posted 2026-11-12 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-11-12, the same date; 1721 Eighth St; $3.00 shift premium; OT as required (conditional)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[59]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: 2NDSH002011, PostedDate 2026-11-12, 'Posted on' November 12, 2026, OpportunityIsClosed false, Line1 1721 Eighth St; on the board list ('United Alloy Texas'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-united-alloy-seguin-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/UNI1108UNAY/JobBoard/58a16832-7db2-47b4-aa7f-68266f035ef6/OpportunityDetail?opportunityId=2f12d7e1-e5a5-45bb-9038-c730e6cb49fe",
+   "ledger_value": "listed, not counted: Weld Youth Apprentice (WELDY001554), listed 2026-01-22; student programme with a 2026-07-13 start (1721 Eighth St)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[60]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDY001554, PostedDate 2026-01-22, 'Posted on' January 22, 2026, OpportunityIsClosed false, Line1 1721 Eighth St; on the board list ('United Alloy Texas'). Value matches (title, req, raw date, stamp, site, named clauses). Not counted: student-learner programme (see the RULING in score_notes).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-united-alloy-seguin-tx:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/UNI1108UNAY/JobBoard/58a16832-7db2-47b4-aa7f-68266f035ef6/OpportunityDetail?opportunityId=5e6dabf6-38b3-4cc2-932e-306b2ee24558",
+   "ledger_value": "listed, not counted: 2nd Shift Operations Supervisor-Weld (2NDSH001917), listed 2026-09-23; supervisor (1721 Eighth St)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[61]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: 2NDSH001917, PostedDate 2026-09-23, 'Posted on' September 23, 2026, OpportunityIsClosed false, Line1 1721 Eighth St; on the board list ('United Alloy Texas'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-united-alloy-union-oh:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/UNI1108UNAY/JobBoard/58a16832-7db2-47b4-aa7f-68266f035ef6/OpportunityDetail?opportunityId=435d1568-76ba-4e48-8ab5-8d18e5c3fee5",
+   "ledger_value": "Welder (MIG) - 1st Shift (WELDE001999): first posted 2026-10-29 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-10-29, the same date; 1925 Union Airpark Blvd; $25/hour starting",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[62]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE001999, PostedDate 2026-10-29, 'Posted on' October 29, 2026, OpportunityIsClosed false, Line1 1925 Union Airpark Blvd; on the board list ('United Alloy Union, OH'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-united-alloy-union-oh:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/UNI1108UNAY/JobBoard/58a16832-7db2-47b4-aa7f-68266f035ef6/OpportunityDetail?opportunityId=7aa26cb3-9244-4c2d-b310-a1242c33105e",
+   "ledger_value": "MIG Welder - Multiple Shifts Available (MIGWE001985): first posted 2026-10-27 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-10-27, the same date; 1925 Union Airpark Blvd; Friday overtime 'as Mandated'",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[63]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: MIGWE001985, PostedDate 2026-10-27, 'Posted on' October 27, 2026, OpportunityIsClosed false, Line1 1925 Union Airpark Blvd; on the board list ('United Alloy Union, OH'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-united-alloy-union-oh:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/UNI1108UNAY/JobBoard/58a16832-7db2-47b4-aa7f-68266f035ef6/OpportunityDetail?opportunityId=c5a44413-2056-4db6-ba81-a1d66ff896bd",
+   "ledger_value": "MIG Welder - 1st & 2nd Shift (MIGWE001956): first posted 2026-10-14 (raw first-posted date: PostedDate in the board's job JSON); 'Posted on' stamp 2026-10-14, the same date; 1925 Union Airpark Blvd; weld orientations every two weeks for up to eight welders",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[64]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: MIGWE001956, PostedDate 2026-10-14, 'Posted on' October 14, 2026, OpportunityIsClosed false, Line1 1925 Union Airpark Blvd; on the board list ('United Alloy Union, OH'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-united-alloy-union-oh:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/UNI1108UNAY/JobBoard/58a16832-7db2-47b4-aa7f-68266f035ef6/OpportunityDetail?opportunityId=9e84996c-b9d1-46dd-9343-7264f92658f8",
+   "ledger_value": "MIG Welder - 2nd Shift (MIGWE001915): first posted 2026-09-22 (raw first-posted date: PostedDate in the board's job JSON); listed 2026-09-28 (UKG 'Posted on' re-post stamp); 1925 Union Airpark Blvd; $28/hour with the 2nd-shift premium",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[65]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: MIGWE001915, PostedDate 2026-09-22, 'Posted on' September 28, 2026, OpportunityIsClosed false, Line1 1925 Union Airpark Blvd; on the board list ('United Alloy Union, OH'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-united-alloy-union-oh:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/UNI1108UNAY/JobBoard/58a16832-7db2-47b4-aa7f-68266f035ef6/OpportunityDetail?opportunityId=c65091a5-6b68-4748-aba5-d76506151fe9",
+   "ledger_value": "listed, not counted: Certified Weld Inspector (CWI)-  3rd Shift (CERTI002008), listed 2026-11-06; inspector (1925 Union Airpark Blvd)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[66]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: CERTI002008, PostedDate 2026-11-06, 'Posted on' November 6, 2026, OpportunityIsClosed false, Line1 1925 Union Airpark Blvd; on the board list ('United Alloy Union, OH'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=8c372b7a-2e1a-4d79-9140-11a9c6b0e5f3",
+   "ledger_value": "Welder (WELDE006151): first posted 2026-10-08 (raw first-posted date: PostedDate in the board's job JSON); listed 2026-11-09 (UKG 'Posted on' re-post stamp); Barnesville GA (board location 460 Industrial Road); MIG required, flux-core certification preferred; individual bonus opportunities (not a sign-on bonus)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[67]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE006151, PostedDate 2026-10-08, 'Posted on' November 9, 2026, OpportunityIsClosed false, Line1 460 Industrial Road; on the board list ('EN-Barnesville-YES'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=37a559a8-a466-4e4f-9cb4-7160b1a5893c",
+   "ledger_value": "Welder - Second Shift (WELDE006153): first posted 2026-10-08 (raw first-posted date: PostedDate in the board's job JSON); listed 2026-11-09 (UKG 'Posted on' re-post stamp); second shift; primarily upfit and repair work on enclosures; Barnesville GA (board location 460 Industrial Road)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[68]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE006153, PostedDate 2026-10-08, 'Posted on' November 9, 2026, OpportunityIsClosed false, Line1 460 Industrial Road; on the board list ('EN-Barnesville-YES'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=46698d8d-cdc6-40ff-89ed-6ce30fd3d218",
+   "ledger_value": "Welder - Second Shift (WELDE005301): first posted 2026-03-12 (raw first-posted date: PostedDate in the board's job JSON); listed 2026-11-09 (UKG 'Posted on' re-post stamp); second shift; primarily upfit and repair work on enclosures; Barnesville GA (board location 460 Industrial Road)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[69]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE005301, PostedDate 2026-03-12, 'Posted on' November 9, 2026, OpportunityIsClosed false, Line1 460 Industrial Road; on the board list ('EN-Barnesville-YES'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=be294e6a-7aaa-4c90-beae-c19d2958bb4e",
+   "ledger_value": "Welder - Second Shift (WELDE006245): first posted 2026-10-28 (raw first-posted date: PostedDate in the board's job JSON); listed 2026-10-29 (UKG 'Posted on' re-post stamp); second shift; primarily upfit and repair work on enclosures; Barnesville GA (board location 460 Industrial Road)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[70]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE006245, PostedDate 2026-10-28, 'Posted on' October 29, 2026, OpportunityIsClosed false, Line1 460 Industrial Road; on the board list ('EN-Barnesville-YES'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=c22f7170-8eac-44fa-9003-6a76163eb549",
+   "ledger_value": "Welder (WELDE006242): first posted 2026-10-28 (raw first-posted date: PostedDate in the board's job JSON); listed 2026-10-29 (UKG 'Posted on' re-post stamp); Barnesville GA 30204 (board location 460 Industrial Road)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[71]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE006242, PostedDate 2026-10-28, 'Posted on' October 29, 2026, OpportunityIsClosed false, Line1 460 Industrial Road; on the board list ('EN-Barnesville-YES'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=632ce280-2429-4d18-9e16-af34e558ed72",
+   "ledger_value": "Welder (WELDE005302): first posted 2026-03-12 (raw first-posted date: PostedDate in the board's job JSON); listed 2026-10-27 (UKG 'Posted on' re-post stamp); Barnesville GA 30204 (board location 460 Industrial Road)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[72]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE005302, PostedDate 2026-03-12, 'Posted on' October 27, 2026, OpportunityIsClosed false, Line1 460 Industrial Road; on the board list ('EN-Barnesville-YES'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-barnesville-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=9ec3ba88-d396-4364-ad3a-2c56fbee17c2",
+   "ledger_value": "Welder - Second Shift (WELDE004838): first posted 2025-10-20 (raw first-posted date: PostedDate in the board's job JSON); listed 2026-10-27 (UKG 'Posted on' re-post stamp); second shift; Barnesville GA 30204 (board location 460 Industrial Road)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[73]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE004838, PostedDate 2025-10-20, 'Posted on' October 27, 2026, OpportunityIsClosed false, Line1 460 Industrial Road; on the board list ('EN-Barnesville-YES'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=0b0f7337-49ea-4dc5-a4dc-65b9519f1f62",
+   "ledger_value": "Welder (WELDE006145): first posted 2026-10-06 (raw first-posted date: PostedDate in the board's job JSON); listed 2026-11-09 (UKG 'Posted on' re-post stamp); Batesville MS 38606 (195 Crown Dr)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[74]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE006145, PostedDate 2026-10-06, 'Posted on' November 9, 2026, OpportunityIsClosed false, Line1 195 Crown Dr; on the board list ('EP2 Mississippi-YES'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-batesville-ms:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=d2749a8d-d86f-49e6-b756-9fcda229eaa7",
+   "ledger_value": "Welder - Second Shift (WELDE005616): first posted 2026-05-27 (raw first-posted date: PostedDate in the board's job JSON); listed 2026-11-06 (UKG 'Posted on' re-post stamp); second shift 3:00-11:30 pm; Batesville MS 38606; 'Individual Bonus Opportunities Available' (not a sign-on bonus)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[75]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE005616, PostedDate 2026-05-27, 'Posted on' November 6, 2026, OpportunityIsClosed false, Line1 195 Crown Dr; on the board list ('EP2 Mississippi-YES'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=a7d98fc4-3a60-47fd-84a7-f3c3367e6ee3",
+   "ledger_value": "Welder (WELDE005744): first posted 2026-06-30 (raw first-posted date: PostedDate in the board's job JSON); listed 2026-11-02 (UKG 'Posted on' re-post stamp); Cordele GA 31015 (board location 502 S. Midway Road); MIG required, flux-core certification preferred; individual bonus opportunities (not a sign-on bonus)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[76]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE005744, PostedDate 2026-06-30, 'Posted on' November 2, 2026, OpportunityIsClosed false, Line1 502 S. Midway Road; on the board list ('EP3-Cordele-YES'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=6d17a6d0-51d1-4ae4-b0ba-17bab944b00e",
+   "ledger_value": "Welder (WELDE006152): first posted 2026-10-08 (raw first-posted date: PostedDate in the board's job JSON); listed 2026-11-10 (UKG 'Posted on' re-post stamp); Griffin YPS, 96 Etheridge Mill Rd.",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[77]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE006152, PostedDate 2026-10-08, 'Posted on' November 10, 2026, OpportunityIsClosed false, Line1 96 Etheridge Mill Rd.; on the board list ('EP-Griffin-YES'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-griffin-ga:welder_postings",
+   "source_url": "https://recruiting.ultipro.com/YAN1000YANCE/JobBoard/1be0f333-fd25-49d5-aaef-9cd764ffc43f/OpportunityDetail?opportunityId=40973098-32d4-47df-bb33-5e0fc2aef931",
+   "ledger_value": "Welder - Second Shift (WELDE006244): first posted 2026-10-28 (raw first-posted date: PostedDate in the board's job JSON); listed 2026-10-29 (UKG 'Posted on' re-post stamp); second shift; Griffin YPS, 96 Etheridge Mill Rd.; 'Individual Bonus Opportunities Available' (not a sign-on bonus)",
+   "tag": "stated",
+   "origin": "inbox postings-ukg.json evidence[78]",
+   "verdict": "confirmed",
+   "note": "Fresh read 2026-11-17 (Playwright, rendered text + raw source): every quote fragment found. Job JSON: WELDE006244, PostedDate 2026-10-28, 'Posted on' October 29, 2026, OpportunityIsClosed false, Line1 96 Etheridge Mill Rd.; on the board list ('EP-Griffin-YES'). Value matches (title, req, raw date, stamp, site, named clauses).",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok:welder_postings",
+   "source_url": "",
+   "ledger_value": "2 open fitter welder postings at 2333 S Yukon Ave (board label 'Tulsa, OK -Finish') on Arcosa's UKG board, re-read 2026-11-17: Fitter Welder Career Day Shift 5:00AM-3:30PM FITTE014876 (first posted 2026-08-25, oldest, 84 days) and Night Shift 4:00PM-2:30AM weekdays FITTE014915 (first posted 2026-08-28); first-posted dates read from the job JSON equal the 'Posted on' stamps. No sign-on bonus stated",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[79]",
+   "verdict": "confirmed",
+   "note": "Arcosa UKG board LoadSearchResults re-read 2026-11-17 (312 postings): location 'Tulsa, OK -Finish' 2333 S Yukon Ave lists exactly two Fitter Welder postings, FITTE014876 (2026-08-25) and FITTE014915 (2026-08-28), plus Material Handler, Material Handler Lead, Document Control Specialist and Machinist Operator; both detail JSONs read OpportunityIsClosed false and PostedDate equal to the stamp; 84 days correct; no sign-on bonus on either page. Count, dates and attribution (address on the posting) correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-ameron-tulsa-ok-2:welder_postings",
+   "source_url": "",
+   "ledger_value": "none found: Arcosa's UKG board re-read 2026-11-17 lists no welder or fitter posting at 4903 E 66th St N (ZIP 74117); open roles there are a weekend-shift Foreman over fit-up and welding (listed 2026-08-04), 4 Machinist Operators (listed 2026-10-29, 10-30, 11-13, 11-16) and a Maintenance Mechanic (listed 2026-10-29)",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[80]",
+   "verdict": "confirmed",
+   "note": "Board re-read 2026-11-17: 'Tulsa, OK -Tube' 4903 E 66th St N lists Foreman (Weekend Shift Fri-Sun) FACIL014762 2026-08-04, Machinist Operator x4 (2026-10-29, 10-30, 11-13, 11-16) and Maintenance Mechanic 2026-10-29; no welder or fitter posting. Matches.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-arcosa-telecom-muskogee-ok:welder_postings",
+   "source_url": "",
+   "ledger_value": "2 open fitter/welder postings for the Muskogee plant (4020 Tull Ave) on Arcosa's UKG board, re-read 2026-11-17: Fitter/Welder - Day Shift FITTE015245 (first posted 2026-10-23, oldest, 25 days; 4am-2:30pm Mon-Thu with some mandatory Fridays) and Fitter/Welder - Night Shift FITTE015243 (first posted 2026-11-05); first-posted dates read from the job JSON equal the 'Posted on' stamps. No sign-on bonus stated. Not counted: four Fitter/Welder Lead roles (Arms, Low Profile Station, Night Shift, Telecom Towers; listed 2026-11-09), whose duties are supervisory, and a Cobot Welder Operator (listed 2026-10-05)",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[81]",
+   "verdict": "confirmed",
+   "note": "Board re-read 2026-11-17: 4020 Tull Ave lists Fitter/Welder Day FITTE015245 (10-23) and Night FITTE015243 (11-05), four Fitter/Welder Lead postings (11-09) and Cobot Welder Operator (10-05), plus non-welding roles. Lead detail pages read: 'Manage employees, monitor, and approve timesheets and work logs', no welding duty, so supervisory; not counted is correct. 25 days correct. Cobot Weld Operator brief: operating, setting up and monitoring cobots, basic programming, inspecting welds; no manual welding: not counted is correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:welder_postings",
+   "source_url": "",
+   "ledger_value": "none found: the plant's only fitter/welder posting, Senior Fitter/Welder SENIO014691 (first posted 2026-07-27; open on the 2026-11-13 read), is closed on Arcosa's UKG board on 2026-11-17 (job JSON OpportunityIsClosed true; off the board list); the board lists no other welder or fitter role at 1749 CR 525",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[82]",
+   "verdict": "confirmed",
+   "note": "Board re-read 2026-11-17: 1749 CR 525 lists only Machine Operator_Entry (2026-10-08) and Accounting Mgr (2026-11-16); SENIO014691 is off the board list and its detail JSON reads OpportunityIsClosed true (UpdatedDate 2026-11-16). No board posting names Sumterville elsewhere. Correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:welder_postings",
+   "source_url": "",
+   "ledger_value": "8 open welder/fitter postings for the Clinton plant (10000 Tabor Rd) on Arcosa's UKG board, re-read 2026-11-17 (first-posted dates from the job JSON): Fitter Welder Lead FITTE014602 (first posted 2026-07-13, oldest, 127 days; listed 2026-10-19), Night Shift Welder, Night Shift Fitter/Welder and Night Shift Sr. Fitter/Welder (first posted 2026-09-29), Welder, Fitter/Welder and Sr. Fitter/Welder (2026-11-06), and a second Fitter Welder Lead FITTE015387 (first posted 2026-11-16, new). Night shift 6pm-4:30am with $1.50/hr differential; flux or metal core highly preferred; no sign-on bonus or mandatory overtime stated. Also a Weld Tech (plant welding technician) posting (listed 2026-09-01), not counted",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[83]",
+   "verdict": "confirmed",
+   "note": "Board re-read 2026-11-17: 10000 Tabor Rd lists exactly eight welding production roles (WELDE015007, SRFIT015005, FITTE015006 stamped 09-29; FITTE014602 stamped 10-19, raw 2026-07-13; SRFIT015337, FITTE015339, WELDE015340 11-06; FITTE015387 11-16) plus Weld Tech WELDT014932 (09-01). Both Fitter Welder_Lead pages list hands-on duties ('Perform full-penetration welds', 'Repair welds'), so working leads; counted correctly. 127 days correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:welder_postings",
+   "source_url": "",
+   "ledger_value": "8 open fitter/welder postings for the Fort Worth plant (2300 W. Risinger Rd) on Arcosa's UKG board, re-read 2026-11-17 (first-posted dates from the job JSON, equal to the 'Posted on' stamps): Senior Fitter/Welder 2nd shift FITTE014650 (first posted 2026-07-24, oldest, 116 days), Fitter/Welder Weekend Shift (2026-08-11), Fitter Welder Career Weekend Shift (2026-10-21), Fitter Welder Career 2nd shift and Senior Fitter/Welder 2nd shift (2026-11-02), Fitter Welder Career 1st Shift and Fitter/Welder Senior 1st Shift (2026-11-13, new) and Fitter/Welder Senior Weekend Shift (2026-11-17, new). 2nd shift Mon-Fri 4pm-2:30am, Saturdays as production requires; MIG named, flux or metal core highly preferred; no sign-on bonus stated. Not counted: Fitter/Welder Lead - 2nd Shift (listed 2026-10-07), a supervisory role",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[84]",
+   "verdict": "confirmed",
+   "note": "Board re-read 2026-11-17: 2300 W. Risinger Rd. lists exactly eight Fitter/Welder postings (FITTE014650 07-24, 014805 08-11, 015235 10-21, 015315 and 015316 11-02, 015393 and 015394 11-13, 015414 11-17), raw = stamp on each, plus Fitter/Welder Lead - 2nd Shift FITTE015171 (10-07), whose duties are assisting the bay supervisor and coaching (no welding duty): not counted is correct. 116 days correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-hager-city-wi:welder_postings",
+   "source_url": "",
+   "ledger_value": "1 open welder posting for the Hager City plant (W8020 150th Ave) on Arcosa's UKG board, re-read 2026-11-17: 'Welders - All Experience Levels' WELDE014972 (2nd shift Mon-Fri 2:45 pm-12:45 am, starting pay $25.89; flux or metal core highly preferred; first posted 2026-09-09, equal to the 'Posted on' stamp; 69 days open); no sign-on bonus stated. Also a Welding Technician (listed 2026-09-18) and a Welding Instructor (listed 2026-10-12), not counted",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[85]",
+   "verdict": "confirmed",
+   "note": "Board re-read 2026-11-17: W8020 150th Ave lists Welders - All Experience Levels WELDE014972 (09-09, raw = stamp), Welding Technician (09-18) and Welding Instructor (10-12), plus Machine Operator, Quality Inspector Trainee, Project Manager, NDT Inspector. 69 days correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-lancaster-sc:welder_postings",
+   "source_url": "",
+   "ledger_value": "2 open welder/fitter postings for the Lancaster plant (3468 Old Camden Hwy) on Arcosa's UKG board, re-read 2026-11-17: Fitter Welder Lead FITTE014918 (first posted 2026-08-31, oldest, 78 days) and Welder WELDE015078 (career welders, first posted 2026-09-22; 6 months flux core experience required); first-posted dates read from the job JSON equal the 'Posted on' stamps. No sign-on bonus stated. Also a Pole School Welding Instructor (2nd shift, listed 2026-10-13) and a Welding Technician - Multiple Shifts (listed 2026-10-16), not counted",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[86]",
+   "verdict": "confirmed",
+   "note": "Board re-read 2026-11-17: 3468 Old Camden Hwy lists Fitter Welder_Lead FITTE014918 (08-31) and Welder WELDE015078 (09-22), Pole School Welding Instructor (10-13) and Welding Technician - Multiple Shifts (10-16). The Lancaster lead page lists 'Repair welds', 'Weld clips and hardware', full-penetration welds: a working lead, counted correctly. 78 days correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-steele-al:welder_postings",
+   "source_url": "",
+   "ledger_value": "3 open welder/fitter postings for the Steele plant (585 Duncan Farms Rd) on Arcosa's UKG board, re-read 2026-11-17: Seam Welder - Weekend Shift SEAMW014759 (first posted 2026-08-04, oldest, 105 days), Fitter/Welder FITTE015163 (2026-10-14; flux core experience preferred), Seam Welder SEAMW015341 (2026-11-05); first-posted dates read from the job JSON equal the 'Posted on' stamps. No sign-on bonus or mandatory overtime stated. Also a Welding Instructor (pole school, listed 2026-07-29), not counted",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[87]",
+   "verdict": "confirmed",
+   "note": "Board re-read 2026-11-17: 585 Duncan Farms Rd (label 'Gadsden, AL', city Steele) lists SEAMW014759 (08-04), FITTE015163 (10-14), SEAMW015341 (11-05) and Welding Instructor WELDI014712 (07-29). The board also lists Weld Tech - (Off shift) WELDT014721 (2026-07-30) and a Production Supervisor - Fit/Weld (10-26), which the field does not mention; both are not-counted roles, so the count and score are unaffected (completeness note only). 105 days correct. Seam Welder pages require manual welding as well as automatic: counted.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-tulsa-ok:welder_postings",
+   "source_url": "",
+   "ledger_value": "2 open welder postings at 15300 Tiger Switch Rd on Arcosa's UKG board (re-read 2026-11-17): Welder/Fitter $25.33 + $1.50/hr night shift premium WELDE015073 (first posted 2026-09-22, listed 2026-11-10; oldest, 56 days) and Welder/Fitter WELDE015385 (first posted 2026-11-13, listed 2026-11-16, new; flux core highly desired), both headed Arcosa Wind Towers and Meyer Utility Structures. Closed since the 2026-11-13 read: Welder/Fitter SRFIT014598 (first posted 2026-07-09; its 'Posted on October 30, 2026' was a re-post stamp). Not counted: a Meyer 2nd-shift Lead Welder (listed 2026-09-17; supervisory duties) and 2 Meyer Weld Tech postings (listed 2026-09-30, 2026-10-30)",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[88]",
+   "verdict": "confirmed",
+   "note": "Board re-read 2026-11-17: the two counted Welder/Fitter postings (WELDE015073, WELDE015385) sit under board location 'Tulsa OK Windtowers', 15300 Tiger Switch Rd., the same street address as 'Tulsa, OK Meyer' (Lead Welder, 2 Weld Tech); both postings are headed 'Arcosa Wind Towers/Meyer Utility Structures', and the ledger plant record is that shared site, so attribution stands. SRFIT014598 off the list and OpportunityIsClosed true. Lead Welder page: assists the bay supervisor, no welding duty: not counted is correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-arcosa-shoring-mason-mi:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/ARC1026ARCOI/JobBoard/2af23579-6cf8-4926-be1a-3bc74872c197/OpportunityDetail?opportunityId=5d26d369-7f3e-4609-9909-6b20fb6dba31",
+   "ledger_value": "Mason: one CNC Control/Process Op role (listed 2026-11-05); no welder role",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[89]",
+   "verdict": "corrected",
+   "note": "The quote 'Arcosa Shoring Products is seeking a 1st shift person for our Mason, MI facility for Control/Process Operator.' is not on the cited detail page (rendered text and raw source both checked on a fresh read 2026-11-17); it is only in the board search JSON BriefDescription (LoadSearchResults), the same situation the inbox notes give for dropping the Ameron Yukon clause. It also contradicts the posting itself, which is titled 'Control/Process Op_Career_2nd Shift' with 'Schedule: 2nd Shift: 4pm - 1:30am'. Value is right (one Mason role, CONTR015127, CNC, listed 2026-11-05, no welder role; board 685 Hull Rd lists nothing else); quote replaced with text from the cited page. No score or field change (Mason is base).",
+   "corrected_value": "Mason: one CNC Control/Process Op role (listed 2026-11-05); no welder role",
+   "corrected_quote": "Control/Process Op_Career_2nd Shift ... Posted on November 5, 2026 ... Mason, MI 48854, USA ... As a Control/Process Operator, you will set up and operate computer numerical controlled (CNC) machinery",
+   "corrected_tag": "inferred",
+   "error_kind": "quote does not support value",
+   "r2_basis": true,
+   "plants_csv_value": "keep (multi-row claim; field unchanged: only this row's quote changes)"
+  },
+  {
+   "claim_id": "p-ground-force-post-falls-id:welder_postings",
+   "source_url": "https://recruiting2.ultipro.com/FED1002FSC/JobBoard/d5675b81-d6f5-4226-9f8c-be296cda2308/JobBoardView/LoadSearchResults",
+   "ledger_value": "none found: Federal Signal UltiPro board re-read 2026-11-17 (154 postings) lists 4 Post Falls roles (Ground Force Idaho, 6001 E Seltice Way: electrical and hydraulic assemblers, listed 2026-11-16) and no welder role; older Welder/Fabricator aggregator posting expired, undated",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[90]",
+   "verdict": "confirmed",
+   "note": "Federal Signal board LoadSearchResults re-read 2026-11-17: 154 postings; 'Ground Force Idaho' 6001 E Seltice Way lists ELECT007610, HYDRA007612, HYDRA007613, HYDRA007614 (all 2026-11-16), no welder role. The cited URL is the POST search endpoint (no GET page); the result was reproduced by POSTing to it. Correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-amerequip-kiel-wi:welder_postings",
+   "source_url": "https://echodata.epa.gov/echo/echo_rest_services.get_facilities?output=JSON&p_fn=AMEREQUIP",
+   "ledger_value": "site attribution: the board's location record for all three Welder postings is 1015 Calumet Ave, Kiel, and the only Kiel facility is 1015 Calumet Ave",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[91]",
+   "verdict": "confirmed",
+   "note": "EPA ECHO get_facilities p_fn=AMEREQUIP re-run 2026-11-17 (QueryRows 5): AMEREQUIP CORP KIEL OPERATION 1015 CALUMET AVENUE KIEL WI; PLANT 2 1131 MILWAUKEE DR NEW HOLSTEIN; WISCONSIN AVE 1711 WISCONSIN AVE NEW HOLSTEIN; plus Lester Prairie MN and Frederick OK (not mentioned in the reasoning, which is not exhaustive but its point, no other Kiel site, holds). All three Welder JSONs give Line1 1015 Calumet Ave. Tag inferred is right.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:score_labor",
+   "source_url": "",
+   "ledger_value": "20",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[92]",
+   "verdict": "confirmed",
+   "note": "Rule check: WELDE005744 is live (on the board list under EP3-Cordele-YES 502 S. Midway Road; OpportunityIsClosed false), counted (Welder, MIG), raw PostedDate 2026-06-30 confirmed in the job JSON (stamp November 2, 2026). 2026-06-30 to 2026-11-17 = 140 days, inside the 60-day to 12-month band of coordinator rule 2026-11-17, so open 60+ days: labor 20 is correct. No sign-on bonus ('Individual Bonus Opportunities Available' only) or mandatory overtime on the page.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:score_total",
+   "source_url": "",
+   "ledger_value": "79",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[93]",
+   "verdict": "confirmed",
+   "note": "Components 20+4+15+20+15+5 = 79 (process, material, part mix, demand, scale as in plants.csv; labor 20 confirmed). Correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-yancey-cordele-ga:score_tier",
+   "source_url": "",
+   "ledger_value": "High",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[94]",
+   "verdict": "confirmed",
+   "note": "79 is High (70+). Correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:score_labor",
+   "source_url": "",
+   "ledger_value": "0",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[95]",
+   "verdict": "confirmed",
+   "note": "Rule check: the only counted posting is closed (confirmed) and no other welder/fitter posting is at 1749 CR 525: 'none found' = 0. Correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:score_total",
+   "source_url": "",
+   "ledger_value": "48",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[96]",
+   "verdict": "confirmed",
+   "note": "20+0+15+0+8+5 = 48, Medium (45-69); confidence 3 -> 2 follows from labor no longer resting on a stated row. Correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:opening_line",
+   "source_url": "",
+   "ledger_value": "Meyer has eight welder and fitter/welder openings live for your Clinton, Illinois pole plant, the oldest a Fitter Welder Lead first posted July 13, 2026, and trains welder candidates in FCAW, SAW and SMAW; how long does it take you to qualify a new hire?",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[97]",
+   "verdict": "confirmed",
+   "note": "Uses only stated facts: eight live counted postings (confirmed), FITTE014602 raw first-posted 2026-07-13 (confirmed in its JSON), and FCAW/SAW/SMAW candidate training (ledger row p-meyer-clinton-il:weld_processes, Weld Tech posting, still live). Correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-clinton-il:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely welder supply as the converted plant ramps up: eight welder and fitter/welder postings open, the oldest first posted 2026-07-13, night shifts with a $1.50/hr differential, and in-house welder candidate training",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[98]",
+   "verdict": "confirmed",
+   "note": "Inference tagged inferred; its stated inputs (eight postings, oldest raw 2026-07-13, $1.50/hr night differential, candidate training) all confirmed. Acceptable.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:opening_line",
+   "source_url": "",
+   "ledger_value": "Arcosa's job board shows eight fitter/welder openings for your Fort Worth plant, the oldest a 2nd-shift Senior Fitter/Welder first posted July 24, 2026, plus weekend and 1st-shift roles; which shift is hardest for you to fill?",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[99]",
+   "verdict": "confirmed",
+   "note": "Uses only stated facts: eight live Fitter/Welder postings, oldest FITTE014650 2nd shift raw = stamp 2026-07-24, weekend and 1st-shift roles present. Correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-meyer-fort-worth-tx:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "Likely fitter/welder staffing on 2nd and weekend shifts: eight fitter/welder postings open, the oldest first posted 2026-07-24 (116 days on 2026-11-17)",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[100]",
+   "verdict": "confirmed",
+   "note": "Inference tagged inferred; inputs (eight postings, oldest 2026-07-24, 116 days) confirmed. Acceptable.",
+   "r2_basis": false
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:opening_line",
+   "source_url": "",
+   "ledger_value": "Your Sumterville plant builds mast arm and strain poles, overhead sign structures and tolling gantries, and the Senior Fitter/Welder opening Arcosa first posted on July 27, 2026 has now closed on its job board; how many fitter/welders does that work take?",
+   "tag": "inferred",
+   "origin": "inbox postings-ukg.json evidence[101]",
+   "verdict": "confirmed",
+   "note": "Uses only stated facts: products (ledger row) and SENIO014691 first posted 2026-07-27 and now closed (both confirmed in the job JSON). Correct.",
+   "r2_basis": true
+  },
+  {
+   "claim_id": "p-arcosa-traffic-structures-sumterville-fl:bottleneck_guess",
+   "source_url": "",
+   "ledger_value": "unknown",
+   "tag": "unknown",
+   "origin": "inbox postings-ukg.json evidence[102]",
+   "verdict": "confirmed",
+   "note": "Tagged unknown with the reason (its only basis closed). Correct.",
+   "r2_basis": false
+  }
+ ]
+}
