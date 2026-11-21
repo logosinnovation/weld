@@ -123,6 +123,7 @@ async function run(label, ctxOpts, full) {
     const ev = p.locator('#profile [data-claim]').first(); await ev.click(); await p.waitForTimeout(400);
     const dt = await text('#drawer'); drawers++;
     check(/source/i.test(dt) && /retrieved|Retrieved/.test(dt) && /verified|Verified/i.test(dt), `${label}: evidence drawer opened from ${nm}`);
+    check(!/(Produced by|Retrieved)\s*\n\s*\d+\s*(\n|$)/.test(dt) && !/verified: \d+\b/.test(dt), `${label}: drawer from ${nm} shows text, not interned indexes`);
     if (drawers === 1) await shot('drawer');
     await p.keyboard.press('Escape'); await p.waitForTimeout(150); await p.keyboard.press('Escape'); await p.waitForTimeout(200);
     if (nm.startsWith('Saronic')) await shot('profile-saronic');

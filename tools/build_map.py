@@ -595,7 +595,15 @@ def main():
     def js(o):
         return json.dumps(o, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/").replace("\u2028", "\\u2028").replace("\u2029", "\\u2029")
 
-    page = tpl.replace("__DATA__", js(data)).replace("__GEO__", js(geo))
+    # the embedded data is gzipped and base64-encoded (2026-11-21, before the bridge vertical): the page unpacks it with
+    # DecompressionStream on load. MAP_PLAIN=1 writes plain JSON instead (for debugging).
+    import gzip, base64
+    if os.environ.get("MAP_PLAIN"):
+        page = tpl.replace("__DATAENC__", "").replace("__DATA__", js(data))
+    else:
+        packed = base64.b64encode(gzip.compress(json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode("utf-8"), 9)).decode("ascii")
+        page = tpl.replace("__DATAENC__", ' data-enc="gzip-b64"').replace("__DATA__", packed)
+    page = page.replace("__GEO__", js(geo))
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
         f.write(page)

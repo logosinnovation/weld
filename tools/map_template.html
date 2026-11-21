@@ -311,12 +311,20 @@ footer strong{color:var(--text)}
 <dialog id="profile" aria-labelledby="profile-t"></dialog>
 <dialog id="drawer" aria-labelledby="drawer-t"></dialog>
 
-<script id="data" type="application/json">__DATA__</script>
+<script id="data" type="application/json"__DATAENC__>__DATA__</script>
 <script id="geo" type="application/json">__GEO__</script>
 <script>
-(function(){
+(async function(){
 "use strict";
-const D = JSON.parse(document.getElementById('data').textContent);
+// the build may gzip the data and embed it as base64 (data-enc="gzip-b64") to stay under the artifact size limit
+async function readData(el) {
+  if (el.dataset.enc !== 'gzip-b64') return JSON.parse(el.textContent);
+  const bin = atob(el.textContent.trim()), bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  const txt = await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
+  return JSON.parse(txt);
+}
+const D = await readData(document.getElementById('data'));
 const GEO = JSON.parse(document.getElementById('geo').textContent);
 const EV = D.ev, M = D.meta, C = M.counts;
 // restore the compacted evidence rows (build_map.py drops empty keys and interns source URLs)
